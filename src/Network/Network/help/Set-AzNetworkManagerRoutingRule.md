@@ -15,7 +15,8 @@ Updates a network manager routing rule.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerRoutingRule -InputObject <PSNetworkManagerRoutingRule> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByNameParameters
@@ -23,14 +24,16 @@ Set-AzNetworkManagerRoutingRule -InputObject <PSNetworkManagerRoutingRule> [-AsJ
 Set-AzNetworkManagerRoutingRule -Name <String> -ResourceGroupName <String> -NetworkManagerName <String>
  -RoutingConfigurationName <String> -RuleCollectionName <String> -DestinationAddress <String>
  -DestinationType <String> [-NextHopAddress <String>] -NextHopType <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzNetworkManagerRoutingRule -ResourceId <String> -DestinationAddress <String> -DestinationType <String>
  [-NextHopAddress <String>] -NextHopType <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

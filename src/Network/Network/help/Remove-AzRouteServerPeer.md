@@ -15,13 +15,15 @@ Removes a Peer from an Azure RouteServer
 ### RouteServerNPeerNameParameterSet (Default)
 ```
 Remove-AzRouteServerPeer -ResourceGroupName <String> -PeerName <String> -RouteServerName <String> [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RouteServerNPeerInputObjectParameterSet
 ```
 Remove-AzRouteServerPeer -InputObject <PSRouteServerPeer> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RouteServerNPeerResourceIdParameterSet

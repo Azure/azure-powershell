@@ -115,7 +115,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayGlobalConfig -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
@@ -272,6 +272,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWafPolicyExceptions()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyWithException -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestApplicationGatewayCRUDRewriteRuleSetUrlConfiguration()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
@@ -371,6 +379,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationGatewayFirewallPolicyWithCustomBlockResponse()
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyComputedDisabledRules()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyComputedDisabledRules");
         }
     }
 }

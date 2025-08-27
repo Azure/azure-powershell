@@ -17,7 +17,8 @@ Creates a NAT rule on a VpnGateway which can be associated with VpnSiteLinkConne
 New-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-Type <String>] [-Mode <String>] -InternalMapping <String[]> -ExternalMapping <String[]>
  [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
@@ -25,7 +26,8 @@ New-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String>
 New-AzVpnGatewayNatRule -ParentObject <PSVpnGateway> -Name <String> [-Type <String>] [-Mode <String>]
  -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRange <String[]>]
  [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
@@ -33,7 +35,8 @@ New-AzVpnGatewayNatRule -ParentObject <PSVpnGateway> -Name <String> [-Type <Stri
 New-AzVpnGatewayNatRule -ParentResourceId <String> -Name <String> [-Type <String>] [-Mode <String>]
  -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRange <String[]>]
  [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +73,7 @@ Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/vpnGateways/testvpngw/natRules/testNatRule
 ```
 
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub. Then, we will create VpnGateway under that Virtual Hub. Then, using this command: New-AzVpnGatewayNatRule, NAT rule can be createdand associated with created VpnGateway.
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub. Then, we will create VpnGateway under that Virtual Hub. Then, using this command: New-AzVpnGatewayNatRule, NAT rule can be created and associated with created VpnGateway.
 
 ## PARAMETERS
 

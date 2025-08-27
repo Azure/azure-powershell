@@ -17,12 +17,12 @@
 .Synopsis
 Retrieves the status of an Azure Migrate job.
 .Description
-The Get-AzMigrateLocalJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateLocalJob cmdlet retrieves the status of an Azure Migrate job.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocaljob
 #>
 function Get-AzMigrateLocalJob {
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(

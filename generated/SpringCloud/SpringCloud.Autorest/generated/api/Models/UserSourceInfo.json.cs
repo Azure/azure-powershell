@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Extensions;
 
-    /// <summary>Source information for a deployment</summary>
+    /// <summary>Source with uploaded location</summary>
     public partial class UserSourceInfo
     {
 
@@ -72,10 +72,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 
             switch ( json.StringProperty("type") )
             {
-                case "UploadedUserSourceInfo":
-                {
-                    return new UploadedUserSourceInfo(json);
-                }
                 case "Jar":
                 {
                     return new JarUploadedUserSourceInfo(json);
@@ -117,6 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             }
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
+            AddIf( null != (((object)this._relativePath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString(this._relativePath.ToString()) : null, "relativePath" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -135,6 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
             }
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)_version;}
+            {_relativePath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonString>("relativePath"), out var __jsonRelativePath) ? (string)__jsonRelativePath : (string)_relativePath;}
             AfterFromJson(json);
         }
     }

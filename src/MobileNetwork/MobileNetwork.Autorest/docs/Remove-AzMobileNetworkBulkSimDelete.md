@@ -25,6 +25,20 @@ Remove-AzMobileNetworkBulkSimDelete -InputObject <IMobileNetworkIdentity> -Sim <
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### BulkViaJsonFilePath
+```
+Remove-AzMobileNetworkBulkSimDelete -ResourceGroupName <String> -SimGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### BulkViaJsonString
+```
+Remove-AzMobileNetworkBulkSimDelete -ResourceGroupName <String> -SimGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Bulk delete SIMs from a SIM group.
 
@@ -73,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -84,6 +97,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,7 +166,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: BulkExpanded
+Parameter Sets: BulkExpanded, BulkViaJsonFilePath, BulkViaJsonString
 Aliases:
 
 Required: True
@@ -138,7 +181,7 @@ A list of SIM resource names to delete.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: BulkExpanded, BulkViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -153,7 +196,7 @@ The name of the SIM Group.
 
 ```yaml
 Type: System.String
-Parameter Sets: BulkExpanded
+Parameter Sets: BulkExpanded, BulkViaJsonFilePath, BulkViaJsonString
 Aliases:
 
 Required: True
@@ -168,7 +211,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: BulkExpanded
+Parameter Sets: BulkExpanded, BulkViaJsonFilePath, BulkViaJsonString
 Aliases:
 
 Required: False
@@ -218,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAsyncOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAsyncOperationStatus
 
 ## NOTES
 

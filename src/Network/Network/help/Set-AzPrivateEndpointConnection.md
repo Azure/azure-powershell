@@ -15,14 +15,16 @@ Updates a private endpoint connection state on private link service.
 ### ByResourceId (Default)
 ```
 Set-AzPrivateEndpointConnection -PrivateLinkServiceConnectionState <String> [-Description <String>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResource
 ```
 Set-AzPrivateEndpointConnection -Name <String> -PrivateLinkServiceConnectionState <String>
  [-Description <String>] -ResourceGroupName <String> -ServiceName <String>
- [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String> [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>]
+ -PrivateLinkResourceType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

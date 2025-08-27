@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.BillingBenefits",
-  "ModuleVersion": "0.2.0",
+  "ModuleVersion": "0.2.1",
   "Cmdlets": [
     {
       "VerbName": "Get",

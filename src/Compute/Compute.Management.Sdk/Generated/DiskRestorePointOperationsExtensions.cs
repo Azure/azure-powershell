@@ -22,67 +22,13 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class DiskRestorePointOperationsExtensions
     {
             /// <summary>
-            /// Get disk restorePoint resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='restorePointCollectionName'>
-            /// The name of the restore point collection that the disk restore point
-            /// belongs.
-            /// </param>
-            /// <param name='vmRestorePointName'>
-            /// The name of the vm restore point that the disk disk restore point belongs.
-            /// </param>
-            /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
-            /// </param>
-            public static DiskRestorePoint Get(this IDiskRestorePointOperations operations, string resourceGroupName, string restorePointCollectionName, string vmRestorePointName, string diskRestorePointName)
-            {
-                return operations.GetAsync(resourceGroupName, restorePointCollectionName, vmRestorePointName, diskRestorePointName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get disk restorePoint resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='restorePointCollectionName'>
-            /// The name of the restore point collection that the disk restore point
-            /// belongs.
-            /// </param>
-            /// <param name='vmRestorePointName'>
-            /// The name of the vm restore point that the disk disk restore point belongs.
-            /// </param>
-            /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiskRestorePoint> GetAsync(this IDiskRestorePointOperations operations, string resourceGroupName, string restorePointCollectionName, string vmRestorePointName, string diskRestorePointName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, restorePointCollectionName, vmRestorePointName, diskRestorePointName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Lists diskRestorePoints under a vmRestorePoint.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -103,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -124,13 +70,13 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Grants access to a diskRestorePoint.
+            /// Get disk restorePoint resource
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -140,7 +86,61 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
+            /// </param>
+            public static DiskRestorePoint Get(this IDiskRestorePointOperations operations, string resourceGroupName, string restorePointCollectionName, string vmRestorePointName, string diskRestorePointName)
+            {
+                return operations.GetAsync(resourceGroupName, restorePointCollectionName, vmRestorePointName, diskRestorePointName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get disk restorePoint resource
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='restorePointCollectionName'>
+            /// The name of the restore point collection that the disk restore point
+            /// belongs.
+            /// </param>
+            /// <param name='vmRestorePointName'>
+            /// The name of the vm restore point that the disk disk restore point belongs.
+            /// </param>
+            /// <param name='diskRestorePointName'>
+            /// The name of the DiskRestorePoint
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DiskRestorePoint> GetAsync(this IDiskRestorePointOperations operations, string resourceGroupName, string restorePointCollectionName, string vmRestorePointName, string diskRestorePointName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, restorePointCollectionName, vmRestorePointName, diskRestorePointName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Grants access to a diskRestorePoint.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='restorePointCollectionName'>
+            /// The name of the restore point collection that the disk restore point
+            /// belongs.
+            /// </param>
+            /// <param name='vmRestorePointName'>
+            /// The name of the vm restore point that the disk disk restore point belongs.
+            /// </param>
+            /// <param name='diskRestorePointName'>
+            /// The name of the DiskRestorePoint
             /// </param>
             /// <param name='grantAccessData'>
             /// Access data object supplied in the body of the get disk access operation.
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
             /// </param>
             /// <param name='grantAccessData'>
             /// Access data object supplied in the body of the get disk access operation.
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
             /// </param>
             public static void RevokeAccess(this IDiskRestorePointOperations operations, string resourceGroupName, string restorePointCollectionName, string vmRestorePointName, string diskRestorePointName)
             {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
             /// </param>
             /// <param name='grantAccessData'>
             /// Access data object supplied in the body of the get disk access operation.
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
             /// </param>
             /// <param name='grantAccessData'>
             /// Access data object supplied in the body of the get disk access operation.
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
             /// </param>
             public static void BeginRevokeAccess(this IDiskRestorePointOperations operations, string resourceGroupName, string restorePointCollectionName, string vmRestorePointName, string diskRestorePointName)
             {
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection that the disk restore point
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the vm restore point that the disk disk restore point belongs.
             /// </param>
             /// <param name='diskRestorePointName'>
-            /// The name of the disk restore point created.
+            /// The name of the DiskRestorePoint
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.8.0
+* Added new optional parameter CVMOsDiskEncryptionSetId in Restore-AzRecoveryServicesBackupItem.
+
+## Version 7.7.2
+* Added fix for resume protection with AzureFileshare.
+* Added fix for Get backup item for MSSQL soft deleted items.
+* Added check to compare the VM resource group in the list of VMs returned for registration.
+* Added RetainRecoveryPointsAsPerPolicy as MUA protected operation in Disable-AzRecoveryServicesBackupProtection cmdlet.
+
+## Version 7.7.1
 * Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
 * Updated Azure Backup SDK version to support protecting TVM with standard policy.
 
@@ -79,7 +90,7 @@
 * Added CRR support for taiwannorth, taiwannorthwest region.
 * Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
 * Added warning for Standard to Enhanced policy migration for AzureVMs.
-* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to ouptput Job object if PassThru not given.
+* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to output Job object if PassThru not given.
 * Fixed issue with Get-AzRecoveryServicesVaultSettingsFile cmdlet to return private endpoint state for backup.
 
 ## Version 6.7.0
@@ -406,7 +417,7 @@
 * Updated table format for SQL in azure VM
 * Added alternate method to fetch location in AzureFileShare
 * Updated ScheduleRunDays in SchedulePolicy object according to timezone
-* Made some attibutes read-only in Get-AzRecoveryServicesBackupWorkloadRecoveryConfig
+* Made some attributes read-only in Get-AzRecoveryServicesBackupWorkloadRecoveryConfig
 
 ## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP

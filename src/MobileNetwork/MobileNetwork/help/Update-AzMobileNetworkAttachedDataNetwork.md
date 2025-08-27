@@ -8,25 +8,69 @@ schema: 2.0.0
 # Update-AzMobileNetworkAttachedDataNetwork
 
 ## SYNOPSIS
-Updates an attached data network.
+update an attached data network.
+Must be created in the same location as its parent packet core data plane.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName <String>
- -PacketCoreControlPlaneName <String> -PacketCoreDataPlaneName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DnsAddress <String[]>] [-NaptConfigurationEnabled <NaptEnabled>]
- [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>]
- [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>]
- [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-UserEquipmentAddressPoolPrefix <String[]>]
+Update-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreControlPlaneName <String>
+ -PacketCoreDataPlaneName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DnsAddress <String[]>] [-NaptConfigurationEnabled <String>] [-NaptConfigurationPinholeLimit <Int32>]
+ [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>] [-PinholeTimeoutUdp <Int32>]
+ [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>] [-PortReuseHoldTimeTcp <Int32>]
+ [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>] [-UserEquipmentAddressPoolPrefix <String[]>]
  [-UserEquipmentStaticAddressPoolPrefix <String[]>] [-UserPlaneDataInterfaceIpv4Address <String>]
  [-UserPlaneDataInterfaceIpv4Gateway <String>] [-UserPlaneDataInterfaceIpv4Subnet <String>]
- [-UserPlaneDataInterfaceName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-UserPlaneDataInterfaceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityPacketCoreDataPlaneExpanded
+```
+Update-AzMobileNetworkAttachedDataNetwork -Name <String>
+ -PacketCoreDataPlaneInputObject <IMobileNetworkIdentity> [-DnsAddress <String[]>]
+ [-NaptConfigurationEnabled <String>] [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>]
+ [-PinholeTimeoutTcp <Int32>] [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>]
+ [-PortRangeMinPort <Int32>] [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityPacketCoreControlPlaneExpanded
+```
+Update-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreDataPlaneName <String>
+ -PacketCoreControlPlaneInputObject <IMobileNetworkIdentity> [-DnsAddress <String[]>]
+ [-NaptConfigurationEnabled <String>] [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>]
+ [-PinholeTimeoutTcp <Int32>] [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>]
+ [-PortRangeMinPort <Int32>] [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMobileNetworkAttachedDataNetwork -InputObject <IMobileNetworkIdentity> [-DnsAddress <String[]>]
+ [-NaptConfigurationEnabled <String>] [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>]
+ [-PinholeTimeoutTcp <Int32>] [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>]
+ [-PortRangeMinPort <Int32>] [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates an attached data network.
+update an attached data network.
+Must be created in the same location as its parent packet core data plane.
 
 ## EXAMPLES
 
@@ -45,15 +89,15 @@ Updates an attached data network.
 
 ## PARAMETERS
 
-### -AttachedDataNetworkName
-The name of the attached data network.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,11 +136,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the attached data network.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPacketCoreDataPlaneExpanded, UpdateViaIdentityPacketCoreControlPlaneExpanded
+Aliases: AttachedDataNetworkName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NaptConfigurationEnabled
 Whether NAPT is enabled for connections to this attached data network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,12 +198,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PacketCoreControlPlaneInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityPacketCoreControlPlaneExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PacketCoreControlPlaneName
 The name of the packet core control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -139,12 +243,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PacketCoreDataPlaneInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: UpdateViaIdentityPacketCoreDataPlaneExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PacketCoreDataPlaneName
 The name of the packet core data plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPacketCoreControlPlaneExpanded
 Aliases:
 
 Required: True
@@ -270,7 +389,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -285,7 +404,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -445,7 +564,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAttachedDataNetwork
 
 ## NOTES
 

@@ -13,7 +13,7 @@ Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operatin
     $delName = New-LiveTestResourceName
     $wsName = New-LiveTestResourceName
 
-    $pflName = New-AdlAnalyticsAccount
+    $pflName = New-LiveTestResourceName
     $envName = New-LiveTestResourceName
     $tplName = New-LiveTestResourceName
     $daprName = New-LiveTestResourceName
@@ -67,7 +67,6 @@ Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operatin
     Assert-AreEqual $appConfig.DaprLogLevel $actual.Configuration.DaprLogLevel
     Assert-AreEqual $true $actual.Configuration.DaprEnabled
     Assert-AreEqual $true $actual.Configuration.DaprEnableApiLogging
-    Assert-AreEqual $false $actual.Configuration.IngressExternal
     Assert-AreEqual $appSecretName $actual.Configuration.Secret[0].Name
     Assert-Null $actual.Configuration.Secret[0].Value
 
@@ -110,7 +109,6 @@ Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operatin
     Assert-AreEqual $appConfig.DaprLogLevel $app.Configuration.DaprLogLevel
     Assert-AreEqual $true $app.Configuration.DaprEnabled
     Assert-AreEqual $true $app.Configuration.DaprEnableApiLogging
-    Assert-AreEqual $false $app.Configuration.IngressExternal
     Assert-AreEqual $appSecretName $app.Configuration.Secret[0].Name
     Assert-Null $app.Configuration.Secret[0].Value
 
@@ -140,7 +138,6 @@ Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operatin
     Assert-AreEqual $appConfig.DaprLogLevel $app.Configuration.DaprLogLevel
     Assert-AreEqual $true $app.Configuration.DaprEnabled
     Assert-AreEqual $false $app.Configuration.DaprEnableApiLogging
-    Assert-AreEqual $false $app.Configuration.IngressExternal
     Assert-AreEqual $appSecretName $app.Configuration.Secret[0].Name
     Assert-Null $app.Configuration.Secret[0].Value
     Assert-NotNull $app.Tag

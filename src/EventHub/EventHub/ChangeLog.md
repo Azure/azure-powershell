@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.4.0
+* Added new cmdlets for Eventhubnetworksecurityperimeterconfiguration - 'Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation', 'Get-AzEventHubNetworkSecurityPerimeterConfiguration'
+
+## Version 5.3.0
 * Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
 * Added new cmdlets for doing namespace failover - 'Start-AzEventHubNamespaceFailOver'
 * Added new cmdlets for generating replication object for Replication parameter - 'New-AzEventHubLocationsNameObject'
@@ -159,7 +164,7 @@ for a better powershell experience and as a result would witness breaking change
 * Fix for issue #9786 : cannot create a rule with Listen only rights
 
 ## Version 1.3.0
-* Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
+* Added new cmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
 * added verification and error message for authorizationrules rights if only 'Manage' is assigned
 
 ## Version 1.2.0

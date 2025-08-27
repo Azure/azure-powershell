@@ -62,6 +62,7 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
@@ -125,6 +126,12 @@ param(
     [System.String]
     # SrpAccountMigrationType in ARM contract which is 'accountMigrations'
     ${Type},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Forces the cmdlet to convert the account's redundancy configuration without prompting for confirmation.
+    ${Force},
 
     [Parameter(ParameterSetName='CustomerViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
@@ -212,6 +219,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -237,8 +253,6 @@ begin {
             CustomerViaIdentityExpanded = 'Az.Storage.custom\Start-AzStorageAccountMigration';
         }
         if (('CustomerExpanded', 'CustomerViaJsonString', 'CustomerViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

@@ -18,7 +18,7 @@ New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <S
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
  [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
  [-FederatedClientId <String>] [-NfsV4IdDomain <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -217,21 +217,6 @@ Domain for NFSv4 user ID mapping. This property will be set for all NetApp accou
 Type: String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

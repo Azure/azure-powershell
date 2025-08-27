@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Cmdlet
     public abstract class ManagedInstanceOperationCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlManagedInstanceOperationModel>, AzureSqlManagedInstanceOperationAdapter>
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override AzureSqlManagedInstanceOperationAdapter InitModelAdapter()

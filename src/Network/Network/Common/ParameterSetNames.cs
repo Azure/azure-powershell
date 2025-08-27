@@ -31,5 +31,6 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByFactoryNameByParameterObject = "ByFactoryNameByParameterObject";
         internal const string ByIntegrationRuntimeName = "ByIntegrationRuntimeName";
         internal const string ByIntegrationRuntimeObject = "ByIntegrationRuntimeObject";
+        internal const string ByName = "ByName";
     }
 }

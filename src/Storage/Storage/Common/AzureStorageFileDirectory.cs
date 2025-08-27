@@ -123,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 return new InvalidCloudFileDirectory(shareFileDirClient.Uri, credentials);
             }
-            if (credentials.IsSAS) // the Uri already contains credentail.
+            if (credentials.IsSAS) // the Uri already contains credential.
             {
                 credentials = null;
             }

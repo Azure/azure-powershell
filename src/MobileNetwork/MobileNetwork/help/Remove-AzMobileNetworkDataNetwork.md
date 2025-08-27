@@ -19,6 +19,13 @@ Remove-AzMobileNetworkDataNetwork -MobileNetworkName <String> -Name <String> -Re
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityMobileNetwork
+```
+Remove-AzMobileNetworkDataNetwork -Name <String> -MobileNetworkInputObject <IMobileNetworkIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzMobileNetworkDataNetwork -InputObject <IMobileNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -72,11 +79,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MobileNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
+Parameter Sets: DeleteViaIdentityMobileNetwork
 Aliases:
 
 Required: True
@@ -106,7 +127,7 @@ The name of the data network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityMobileNetwork
 Aliases: DataNetworkName
 
 Required: True

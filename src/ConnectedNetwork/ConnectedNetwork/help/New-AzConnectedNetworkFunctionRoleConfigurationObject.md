@@ -221,10 +221,7 @@ Specifies the name of the administrator account.
 
  **Max-length (Linux):** 64 characters 
 
- **Max-length (Windows):** 20 characters  
-
-\<li\> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-\<li\> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ **Max-length (Windows):** 20 characters
 
 ```yaml
 Type: System.String
@@ -250,9 +247,7 @@ The maximum length of the binary array is 65535 bytes.
 
 
  customData is passed to the VM to be saved as a file.
-For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
-
- For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)
 
 ```yaml
 Type: System.String

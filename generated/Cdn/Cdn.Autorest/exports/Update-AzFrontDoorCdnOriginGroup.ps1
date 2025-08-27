@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an existing origin group within a profile.
+Update an existing origin group within a profile.
 .Description
-update an existing origin group within a profile.
+Update an existing origin group within a profile.
 .Example
 $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
 Update-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $updateLoadBalancingSetting

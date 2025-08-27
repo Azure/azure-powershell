@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetainRecoveryPointsAsPerPolicy
-If this option is used, all the recovery points for this item will expire as per the retention policy.
+If this option is used, all the recovery points for this item will expire as per the retention policy. Please note that this parameter works only on Recovery Services Vaults that have the Immutability feature enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

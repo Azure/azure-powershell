@@ -37,6 +37,13 @@ Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Exchange <String> -Preference <
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### NAPTR
+```
+Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Preference <UInt16> -Order <UInt16> -Flags <String>
+ -Services <String> -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### PTR
 ```
 Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Ptrdname <String> [-DefaultProfile <IAzureContextContainer>]
@@ -79,13 +86,6 @@ Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -KeyTag <Int32> -Algorithm <Int3
 ```
 Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
  -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### NAPTR
-```
-Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Order <UInt16> -Preference <UInt16> -Flags <String> 
- -Services <String> -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -404,7 +404,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-
 ### -Ipv4Address
 Specifies an IPv4 address for an A record.
 
@@ -600,12 +599,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Services
-Specifies the services field for a Named Authority Pointer (NAPTR) record.
+### -Selector
+The selector field of the TLSA record to add.
 
 ```yaml
-Type: System.String
-Parameter Sets: NAPTR
+Type: System.Int32
+Parameter Sets: TLSA
 Aliases:
 
 Required: True
@@ -615,12 +614,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Selector
-The selector field of the TLSA record to add.
+### -Services
+Specifies the services field for a Named Authority Pointer (NAPTR) record.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: TLSA
+Type: System.String
+Parameter Sets: NAPTR
 Aliases:
 
 Required: True

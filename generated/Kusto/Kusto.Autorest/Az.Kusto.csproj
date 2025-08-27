@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>Kusto</PsModuleName>
     <PsRootModuleName>Kusto</PsRootModuleName>
+    <PsModuleFolder>Kusto.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Kusto</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

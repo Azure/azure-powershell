@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeletionDate
-The deletion date of the Azure Synaspe SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)
+The deletion date of the Azure Synapse SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]

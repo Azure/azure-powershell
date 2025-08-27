@@ -44,7 +44,7 @@ Name                                               Type
 testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Databases/Scripts
 ```
 
-The above command creates a Kusto database script named "newkustocript" in the resource group "testrg".
+The above command creates a Kusto database script named "newkustoscript" in the resource group "testrg".
 
 This script contains database scoped commands and the permissions of the script executor will be removed upon completion
 

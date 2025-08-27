@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
 schema: 2.0.0
@@ -20,7 +20,7 @@ Restart-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <St
 
 ### ByInputObjectVMwareCbt
 ```
-Restart-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
+Restart-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -166,3 +166,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

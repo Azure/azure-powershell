@@ -21,16 +21,16 @@ New-AzDiskUpdateConfig [[-SkuName] <String>] [-Tier <String>] [-DiskIOPSReadOnly
  [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DiskEncryptionSetId <String>] [-EncryptionType <String>]
  [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>] [-AcceleratedNetwork <Boolean>]
  [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDiskUpdateConfig** cmdlet creates a configurable disk update object.
+The New-AzDiskUpdateConfig cmdlet creates a configurable disk update object.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskSizeGB 10 -SkuName Premium_LRS -OsType Windows -EncryptionSettingsEnabled $true;
 $secretUrl = 'https://myvault.vault-int.azure-int.net/secrets/123/';
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
@@ -41,14 +41,13 @@ $diskupdateconfig = Set-AzDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconf
 Update-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DiskUpdate $diskupdateconfig;
 ```
 
-The first command creates a local empty disk update object with size 10GB in Premium_LRS storage
-account type. It also sets Windows OS type and enables encryption settings. The second and third
-commands set the disk encryption key and key encryption key settings for the disk update object.
-The last command takes the disk update object and updates an existing disk with name 'Disk01' in
-resource group 'ResourceGroup01'.
+The first command creates a local empty disk update object with size 10GB in Premium_LRS storage account type.
+It also sets Windows OS type and enables encryption settings.
+The second and third commands set the disk encryption key and key encryption key settings for the disk update object.
+The last command takes the disk update object and updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01'.
 
 ### Example 2
-```powershell
+```
 New-AzDiskUpdateConfig -DiskSizeGB 10 | Update-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01';
 ```
 
@@ -72,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -Architecture
-CPU architecture supported by an OS disk. Possible values are "X64" and "Arm64".
+CPU architecture supported by an OS disk.
+Possible values are "X64" and "Arm64".
 
 ```yaml
 Type: System.String
@@ -87,7 +87,9 @@ Accept wildcard characters: False
 ```
 
 ### -BurstingEnabled
-Enables bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
+Enables bursting beyond the provisioned performance target of the disk.
+Bursting is disabled by default.
+Does not apply to Ultra disks.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -177,7 +179,8 @@ Accept wildcard characters: False
 ```
 
 ### -DiskIOPSReadOnly
-The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes.
+The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly.
+One operation can transfer between 4k and 256k bytes.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -192,7 +195,8 @@ Accept wildcard characters: False
 ```
 
 ### -DiskIOPSReadWrite
-The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes.
+The number of IOPS allowed for this disk; only settable for UltraSSD disks.
+One operation can transfer between 4k and 256k bytes.
 
 ```yaml
 Type: System.Int32
@@ -207,7 +211,8 @@ Accept wildcard characters: False
 ```
 
 ### -DiskMBpsReadOnly
-The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
+The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly.
+MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -222,7 +227,8 @@ Accept wildcard characters: False
 ```
 
 ### -DiskMBpsReadWrite
-The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
+The bandwidth allowed for this disk; only settable for UltraSSD disks.
+MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
 
 ```yaml
 Type: System.Int32
@@ -267,7 +273,8 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionType
-The type of key used to encrypt the data of the disk. Available values are: EncryptionAtRestWithPlatformKey, EncryptionAtRestWithCustomerKey
+The type of key used to encrypt the data of the disk.
+Available values are: EncryptionAtRestWithPlatformKey, EncryptionAtRestWithCustomerKey
 
 ```yaml
 Type: System.String
@@ -297,7 +304,8 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSharesCount
-The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
+The maximum number of VMs that can attach to the disk at the same time.
+Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -312,7 +320,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkAccessPolicy
-Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll
+Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DenyAll
 
 ```yaml
 Type: System.String
@@ -342,6 +350,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Policy for controlling export on the disk.
 
@@ -358,7 +381,8 @@ Accept wildcard characters: False
 ```
 
 ### -PurchasePlan
-Sets the purchase plan for the disk. Used for establishing the purchase context of any 3rd Party artifact through Marketplace.
+Sets the purchase plan for the disk.
+Used for establishing the purchase context of any 3rd Party artifact through Marketplace.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSPurchasePlan
@@ -373,7 +397,9 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Specifies the Sku name of the storage account.  Available values are Standard_LRS, Premium_LRS, StandardSSD_LRS, and UltraSSD_LRS.  UltraSSD_LRS can only be used with Empty value for CreateOption parameter.
+Specifies the Sku name of the storage account. 
+Available values are Standard_LRS, Premium_LRS, StandardSSD_LRS, and UltraSSD_LRS. 
+UltraSSD_LRS can only be used with Empty value for CreateOption parameter.
 
 ```yaml
 Type: System.String
@@ -403,8 +429,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
+Key-value pairs in the form of a hash table.
+For example: @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -443,13 +469,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -458,7 +485,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -469,23 +496,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=23.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
 ### System.Int32
-
 ### System.Collections.Hashtable
-
 ### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
 ### Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-
 ### Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
-
 ## NOTES
 
 ## RELATED LINKS

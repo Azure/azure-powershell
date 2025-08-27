@@ -22,7 +22,8 @@ Test-AzPrivateIPAddressAvailability -VirtualNetwork <PSVirtualNetwork> -IPAddres
 ### TestByResourceId
 ```
 Test-AzPrivateIPAddressAvailability -ResourceGroupName <String> -VirtualNetworkName <String>
- -IPAddress <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -IPAddress <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,5 +132,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
-
-

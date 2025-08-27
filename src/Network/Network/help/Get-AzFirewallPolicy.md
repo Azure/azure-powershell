@@ -20,7 +20,8 @@ Get-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-DefaultProfile
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzFirewallPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFirewallPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

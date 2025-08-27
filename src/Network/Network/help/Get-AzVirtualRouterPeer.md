@@ -20,7 +20,8 @@ Get-AzVirtualRouterPeer -ResourceGroupName <String> -PeerName <String> -VirtualR
 
 ### VirtualRouterPeerResourceIdParameterSet
 ```
-Get-AzVirtualRouterPeer -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualRouterPeer -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

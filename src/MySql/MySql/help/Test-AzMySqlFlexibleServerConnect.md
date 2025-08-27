@@ -15,29 +15,31 @@ Test out the connection to the database server
 ### Test (Default)
 ```
 Test-AzMySqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
- -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -AdministratorLoginPassword <SecureString> [-Timeout <Int32>] [-AdministratorUserName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
 Test-AzMySqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
- -QueryText <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -QueryText <String> -AdministratorLoginPassword <SecureString> [-Timeout <Int32>]
+ [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
 Test-AzMySqlFlexibleServerConnect [-DatabaseName <String>] -QueryText <String>
- -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] -InputObject <IMySqlIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -AdministratorLoginPassword <SecureString> [-Timeout <Int32>] [-AdministratorUserName <String>]
+ -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### TestViaIdentity
 ```
 Test-AzMySqlFlexibleServerConnect [-DatabaseName <String>] -AdministratorLoginPassword <SecureString>
- [-AdministratorUserName <String>] -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-Timeout <Int32>] [-AdministratorUserName <String>] -InputObject <IMySqlIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +49,7 @@ Test out the connection to the database server
 
 ### Example 1: Test connection by name
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
 Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password
 ```
 
@@ -59,7 +61,7 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
 Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Test-AzMySqlFlexibleServerConnect -AdministratorLoginPassword $password
 ```
 
@@ -71,7 +73,7 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
 Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password -QueryText "SELECT * FROM test"
 ```
 
@@ -220,6 +222,22 @@ Parameter Sets: Test, TestAndQuery
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+The timeout in seconds for query execution.
+Valid range is 1-31536000 seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

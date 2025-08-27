@@ -119,6 +119,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable advanced connectivity feature on virtual network gateway")]
+        public SwitchParameter EnableAdvancedConnectivityFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
         public SwitchParameter EnablePrivateIpAddress { get; set; }
 
@@ -308,7 +313,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
+            HelpMessage = "P2S Client Connection Configuration that associate between address and policy group")]
         public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -440,6 +445,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.DisableIPsecProtection = this.DisableIPsecProtection;
             vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
+            vnetGateway.EnableAdvancedConnectivity = this.EnableAdvancedConnectivityFeature.IsPresent;
             vnetGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.IsPresent;
 
             if (this.VirtualNetworkGatewayPolicyGroup != null && this.VirtualNetworkGatewayPolicyGroup.Length > 0)

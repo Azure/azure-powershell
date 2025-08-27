@@ -362,14 +362,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 TypeHandlerVersion = Version,
                 // Define the public and private property bags that will be passed to the extension.
                 Settings = publicSettings,
-                //PrivateConfuguration contains sensitive data in a plain text
+                //PrivateConfiguration contains sensitive data in a plain text
                 ProtectedSettings = privateSettings,
                 AutoUpgradeMinorVersion = AutoUpdate.IsPresent
             };
 
             //Add retry logic due to CRP service restart known issue CRP bug: 3564713
             var count = 1;
-            Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
+            Rest.Azure.AzureOperationResponse<VirtualMachineExtension, VirtualMachineExtensionsCreateOrUpdateHeaders> op = null;
 
             if (NoWait.IsPresent)
             {

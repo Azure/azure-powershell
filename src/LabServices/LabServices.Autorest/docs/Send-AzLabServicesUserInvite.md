@@ -25,6 +25,32 @@ Send-AzLabServicesUserInvite -LabName <String> -ResourceGroupName <String> -User
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### InviteViaIdentityExpanded
+```
+Send-AzLabServicesUserInvite -InputObject <ILabServicesIdentity> [-Text <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### InviteViaIdentityLabExpanded
+```
+Send-AzLabServicesUserInvite -LabInputObject <ILabServicesIdentity> -UserName <String> [-Text <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### InviteViaJsonFilePath
+```
+Send-AzLabServicesUserInvite -LabName <String> -ResourceGroupName <String> -UserName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### InviteViaJsonString
+```
+Send-AzLabServicesUserInvite -LabName <String> -ResourceGroupName <String> -UserName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### Users
 ```
 Send-AzLabServicesUserInvite -User <User> [-SubscriptionId <String>] [-Text <String>]
@@ -76,13 +102,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: InviteViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Invite operation
+
+```yaml
+Type: System.String
+Parameter Sets: InviteViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Invite operation
+
+```yaml
+Type: System.String
+Parameter Sets: InviteViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: InviteViaIdentityLabExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LabName
 The name of the lab that uniquely identifies it within containing lab account.
 Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: InviteExpanded
+Parameter Sets: InviteExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: True
@@ -112,7 +198,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: InviteExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityExpanded, InviteViaIdentityLabExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: False
@@ -128,7 +214,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: InviteExpanded
+Parameter Sets: InviteExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: True
@@ -139,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service user.
 
 ```yaml
 Type: System.String
@@ -158,7 +244,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InviteExpanded, InviteViaJsonFilePath, InviteViaJsonString, ResourceId, Users
 Aliases:
 
 Required: False
@@ -173,7 +259,7 @@ Custom text for the invite email.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InviteExpanded, InviteViaIdentityExpanded, InviteViaIdentityLabExpanded, ResourceId, Users
 Aliases:
 
 Required: False
@@ -184,10 +270,10 @@ Accept wildcard characters: False
 ```
 
 ### -User
-To construct, see NOTES section for USER properties and create a hash table.
+The object of lab service user to invite.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 Parameter Sets: Users
 Aliases:
 
@@ -204,7 +290,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: InviteExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityLabExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: True
@@ -250,11 +336,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ### System.Boolean
 

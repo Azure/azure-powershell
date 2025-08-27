@@ -79,6 +79,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
 
 SOURCE <IUserSourceInfo>: Uploaded source information of the deployment.
   Type <String>: Type of the source uploaded
+  [RelativePath <String>]: Relative path of the storage which stores the source
   [Version <String>]: Version of the source
 
 SPRINGINPUTOBJECT <ISpringCloudIdentity>: Identity Parameter

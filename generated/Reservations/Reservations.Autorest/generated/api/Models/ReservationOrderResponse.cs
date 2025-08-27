@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for PlanInformation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderBillingPlanInformation Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.PlanInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderPropertiesInternal)Property).PlanInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderPropertiesInternal)Property).PlanInformation = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderBillingPlanInformation Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.PlanInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderPropertiesInternal)Property).PlanInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderPropertiesInternal)Property).PlanInformation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ReservationOrderProperties()); set { {_property = value;} } }
@@ -74,22 +74,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponseInternal.Type { get => this._type; set { {_type = value;} } }

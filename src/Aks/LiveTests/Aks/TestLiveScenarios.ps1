@@ -96,7 +96,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
     # step 3: create the second node pool
     Write-Host "##[section]Start to create AKS node pool : New-AzAksNodePool"
 
-    New-AzAksNodePool -ResourceGroupName $rgName -ClusterName $kubeName -Name $usrNodeName -Mode User -OsType Windows -OsSKU Windows2022 -VmSetType VirtualMachineScaleSets -Count 2
+    New-AzAksNodePool -ResourceGroupName $rgName -ClusterName $kubeName -Name $usrNodeName -Mode User -OsType Windows -OsSKU Windows2022 -VmSize Standard_D2s_v3 -VmSetType VirtualMachineScaleSets -Count 2
 
     Write-Host "##[section]Finished creating AKS node pool : New-AzAksNodePool"
 

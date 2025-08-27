@@ -1,0 +1,95 @@
+{
+  "resourceType": "networkSecurityPerimeters/profiles",
+  "apiVersion": "2024-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.network"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityPerimeterProfile",
+      "description": "Gets the specified NSP profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified NSP profile.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkSecurityPerimeterProfile",
+      "description": "Deletes an NSP profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an NSP profile.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

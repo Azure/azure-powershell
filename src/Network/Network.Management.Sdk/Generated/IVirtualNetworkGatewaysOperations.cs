@@ -437,6 +437,70 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteListResult>> GetAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peer, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Resiliency Information for the gateway
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayResiliencyInformation,VirtualNetworkGatewaysGetResiliencyInformationHeaders>> GetResiliencyInformationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Route Sets Information for the gateway
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteSetsInformation,VirtualNetworkGatewaysGetRoutesInformationHeaders>> GetRoutesInformationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
         /// for P2S client of virtual network gateway in the specified resource group
         /// through Network resource provider.
@@ -782,6 +846,102 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='migrationParams'>
+        /// Parameters supplied to the Begin Prepare migration on basic vpn gateway
+        /// through Network resource provider.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokePrepareMigrationHeaders>> InvokePrepareMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokeExecuteMigrationHeaders>> InvokeExecuteMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokeCommitMigrationHeaders>> InvokeCommitMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokeAbortMigrationHeaders>> InvokeAbortMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates or updates a virtual network gateway in the specified resource
         /// group.
         /// </summary>
@@ -1104,6 +1264,70 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteListResult>> BeginGetAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string peer, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the resiliency information for an Express Route
+        /// Gateway, including the gateway&#39;s current resiliency score and
+        /// recommendations to further improve the score
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Resiliency Information for the gateway
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayResiliencyInformation,VirtualNetworkGatewaysGetResiliencyInformationHeaders>> BeginGetResiliencyInformationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </summary>
+        /// <remarks>
+        /// This operation retrieves the route set information for an Express Route
+        /// Gateway based on their resiliency
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Attempt to recalculate the Route Sets Information for the gateway
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteSetsInformation,VirtualNetworkGatewaysGetRoutesInformationHeaders>> BeginGetRoutesInformationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
         /// for P2S client of virtual network gateway in the specified resource group
         /// through Network resource provider.
@@ -1417,6 +1641,102 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger prepare migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='migrationParams'>
+        /// Parameters supplied to the Begin Prepare migration on basic vpn gateway
+        /// through Network resource provider.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokePrepareMigrationHeaders>> BeginInvokePrepareMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger execute migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokeExecuteMigrationHeaders>> BeginInvokeExecuteMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger commit migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokeCommitMigrationHeaders>> BeginInvokeCommitMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </summary>
+        /// <remarks>
+        /// Trigger abort migration for the virtual network gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the virtual network gateway.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualNetworkGatewaysInvokeAbortMigrationHeaders>> BeginInvokeAbortMigrationWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all virtual network gateways by resource group.

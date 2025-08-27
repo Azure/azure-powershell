@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/diagnosticSettings/{name}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSubscriptionDiagnosticSetting_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Log"}, NewOutputProperties=new string[] {"Log"}, ChangeDescription="The type of the property Log will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Description(@"Gets the active subscription diagnostic settings for the specified resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Generated]

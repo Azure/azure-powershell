@@ -2,9 +2,793 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Ambr</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Ambr#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Downlink</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uplink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Downlink</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uplink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Arp</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Arp#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PreemptCap</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PreemptVuln</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PriorityLevel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PreemptCap</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PreemptVuln</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PriorityLevel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AsyncOperationStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AsyncOperationStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AttachedDataNetwork</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AttachedDataNetwork#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AttachedDataNetworkListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AttachedDataNetworkListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AttachedDataNetworkPropertiesFormat</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AttachedDataNetworkPropertiesFormat#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.CertificateProvisioning</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.CertificateProvisioning#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Reason</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Reason</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.CommonSimPropertiesFormat</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.CommonSimPropertiesFormat#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeviceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntegratedCircuitCardIdentifier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InternationalMobileSubscriberIdentity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SimState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VendorKeyFingerprint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VendorName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntegratedCircuitCardIdentifier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InternationalMobileSubscriberIdentity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SimState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VendorKeyFingerprint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VendorName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetwork</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetwork#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllocationAndRetentionPriorityLevel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DefaultSessionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FiveQi</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaximumNumberOfBufferedPacket</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PreemptionCapability</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PreemptionVulnerability</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllocationAndRetentionPriorityLevel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DefaultSessionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FiveQi</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaximumNumberOfBufferedPacket</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PreemptionCapability</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PreemptionVulnerability</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkPropertiesFormat</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkPropertiesFormat#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.EncryptedSimPropertiesFormat</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.EncryptedSimPropertiesFormat#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeviceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntegratedCircuitCardIdentifier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InternationalMobileSubscriberIdentity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SimPolicyId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SimState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VendorKeyFingerprint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VendorName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EncryptedCredentials</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntegratedCircuitCardIdentifier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InternationalMobileSubscriberIdentity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SimPolicyId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SimState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VendorKeyFingerprint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VendorName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EncryptedCredentials</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.EncryptedSimUploadList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.EncryptedSimUploadList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AzureKeyIdentifier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EncryptedTransportKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SignedTransportKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VendorKeyFingerprint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzureKeyIdentifier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EncryptedTransportKey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SignedTransportKey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VendorKeyFingerprint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.HttpsServerCertificate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.HttpsServerCertificate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CertificateUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Installation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Installation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.InterfaceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.InterfaceProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Ipv4Address</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Ipv4Gateway</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Ipv4Subnet</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Ipv4Address</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Ipv4Gateway</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Ipv4Subnet</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.KeyVaultKey</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.KeyVaultKey#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>KeyUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>KeyUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.LocalDiagnosticsAccessConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.LocalDiagnosticsAccessConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AuthenticationType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AuthenticationType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ManagedServiceIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ManagedServiceIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetwork</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetwork#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicLandMobileNetworkIdentifierMcc</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicLandMobileNetworkIdentifierMnc</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicLandMobileNetworkIdentifierMcc</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicLandMobileNetworkIdentifierMnc</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetworkIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetworkIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetworkIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -102,477 +886,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetworkListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ManagedServiceIdentity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ManagedServiceIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ProxyResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.TrackedResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.TrackedResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.TrackedResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.TrackedResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.UserAssignedIdentity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.UserAssignedIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Ambr</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Ambr</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Downlink</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Uplink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Downlink</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Uplink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Arp</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Arp</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PreemptCap</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PreemptVuln</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PriorityLevel</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PreemptCap</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PreemptVuln</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PriorityLevel</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AsyncOperationStatus</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AsyncOperationStatus</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>EndTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PercentComplete</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>EndTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PercentComplete</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AttachedDataNetwork</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AttachedDataNetwork</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AttachedDataNetworkListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AttachedDataNetworkListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetworkListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -592,595 +908,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AttachedDataNetworkPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetworkPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.AttachedDataNetworkPropertiesFormat</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DnsAddress</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UserEquipmentAddressPoolPrefix</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UserEquipmentStaticAddressPoolPrefix</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DnsAddress</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UserEquipmentAddressPoolPrefix</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UserEquipmentStaticAddressPoolPrefix</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.CertificateProvisioning</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.CertificateProvisioning</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Reason</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>State</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Reason</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>State</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.CommonSimPropertiesFormat</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.CommonSimPropertiesFormat</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DeviceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IntegratedCircuitCardIdentifier</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>InternationalMobileSubscriberIdentity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SimState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VendorKeyFingerprint</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VendorName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DeviceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IntegratedCircuitCardIdentifier</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>InternationalMobileSubscriberIdentity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SimState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VendorKeyFingerprint</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VendorName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetwork</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetwork</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AdditionalAllowedSessionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AllocationAndRetentionPriorityLevel</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DefaultSessionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FiveQi</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MaximumNumberOfBufferedPacket</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PreemptionCapability</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PreemptionVulnerability</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AdditionalAllowedSessionType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AllocationAndRetentionPriorityLevel</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DefaultSessionType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FiveQi</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MaximumNumberOfBufferedPacket</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PreemptionCapability</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PreemptionVulnerability</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkPropertiesFormat</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkPropertiesFormat</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.EncryptedSimPropertiesFormat</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.EncryptedSimPropertiesFormat</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DeviceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IntegratedCircuitCardIdentifier</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>InternationalMobileSubscriberIdentity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SimPolicyId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SimState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VendorKeyFingerprint</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VendorName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EncryptedCredentials</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DeviceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IntegratedCircuitCardIdentifier</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>InternationalMobileSubscriberIdentity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SimPolicyId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SimState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VendorKeyFingerprint</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VendorName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EncryptedCredentials</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.EncryptedSimUploadList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.EncryptedSimUploadList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AzureKeyIdentifier</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EncryptedTransportKey</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SignedTransportKey</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VendorKeyFingerprint</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AzureKeyIdentifier</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EncryptedTransportKey</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SignedTransportKey</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VendorKeyFingerprint</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.HttpsServerCertificate</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.HttpsServerCertificate</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CertificateUrl</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CertificateUrl</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Installation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Installation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>State</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>State</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.InterfaceProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.InterfaceProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Ipv4Address</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Ipv4Gateway</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Ipv4Subnet</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Ipv4Address</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Ipv4Gateway</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Ipv4Subnet</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.KeyVaultKey</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.KeyVaultKey</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>KeyUrl</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>KeyUrl</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.LocalDiagnosticsAccessConfiguration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.LocalDiagnosticsAccessConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AuthenticationType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AuthenticationType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.MobileNetwork</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.MobileNetwork</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicLandMobileNetworkIdentifierMcc</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicLandMobileNetworkIdentifierMnc</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublicLandMobileNetworkIdentifierMcc</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublicLandMobileNetworkIdentifierMnc</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.MobileNetworkListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.MobileNetworkListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.MobileNetworkPropertiesFormat</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.MobileNetworkPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.MobileNetworkPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1206,9 +936,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.NaptConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.NaptConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.NaptConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.NaptConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1234,9 +964,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1262,9 +992,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1302,9 +1032,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.OperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.OperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.OperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.OperationList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1324,9 +1054,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlane</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlane</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlane</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlane#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1364,9 +1094,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneCollectDiagnosticsPackage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneCollectDiagnosticsPackage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneCollectDiagnosticsPackage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneCollectDiagnosticsPackage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1386,9 +1116,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1408,9 +1138,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlanePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlanePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlanePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlanePropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1460,9 +1190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneVersion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneVersion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneVersion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneVersion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1482,9 +1212,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneVersionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneVersionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneVersionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneVersionListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1504,9 +1234,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneVersionPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneVersionPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlaneVersionPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreControlPlaneVersionPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1526,9 +1256,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreDataPlane</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreDataPlane</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreDataPlane</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreDataPlane#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1566,9 +1296,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreDataPlaneListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreDataPlaneListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreDataPlaneListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreDataPlaneListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1588,9 +1318,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreDataPlanePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreDataPlanePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreDataPlanePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PacketCoreDataPlanePropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1610,9 +1340,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1644,9 +1374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleQosPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleQosPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleQosPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleQosPolicy#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1696,9 +1426,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PinholeTimeouts</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PinholeTimeouts</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PinholeTimeouts</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PinholeTimeouts#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1730,9 +1460,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Platform</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Platform</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Platform</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Platform#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1776,9 +1506,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PlmnId</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PlmnId</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PlmnId</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PlmnId#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1804,9 +1534,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PortRange</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PortRange</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PortRange</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PortRange#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1832,9 +1562,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PortReuseHoldTimes</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PortReuseHoldTimes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PortReuseHoldTimes</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PortReuseHoldTimes#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1860,9 +1590,67 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.QosPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.QosPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.QosPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.QosPolicy#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1900,9 +1688,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Service</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Service</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Service</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Service#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1970,23 +1780,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Direction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Port</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Protocol</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RemoteIPList</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TemplateName</Label>
@@ -1999,15 +1800,6 @@
                 <PropertyName>Direction</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Port</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Protocol</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RemoteIPList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>TemplateName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -2016,9 +1808,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2038,9 +1830,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServicePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServicePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServicePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServicePropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2066,9 +1858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Sim</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Sim</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Sim</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Sim#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2100,31 +1892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimDeleteList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimDeleteList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Sim</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Sim</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimGroup</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimGroup#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2162,9 +1932,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimGroupListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimGroupListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimGroupListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimGroupListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2184,9 +1954,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimGroupPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimGroupPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimGroupPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimGroupPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2206,9 +1976,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2228,9 +1998,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimNameAndEncryptedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimNameAndEncryptedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimNameAndEncryptedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimNameAndEncryptedProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2250,9 +2020,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimNameAndProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimNameAndProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimNameAndProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimNameAndProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2272,9 +2042,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPolicy#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2330,9 +2100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPolicyListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPolicyListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPolicyListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPolicyListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2352,9 +2122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPolicyPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPolicyPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPolicyPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPolicyPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2386,9 +2156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimPropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2462,9 +2232,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimStaticIPPropertiesStaticIP</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPPropertiesStaticIP</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SimStaticIPPropertiesStaticIP</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SimStaticIPPropertiesStaticIP#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2484,9 +2254,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Site</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Site</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Site</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Site#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2524,9 +2294,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2546,9 +2316,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SitePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SitePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SitePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SitePropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2568,9 +2338,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteProvisioning</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteProvisioning</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteProvisioning</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteProvisioning#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2590,9 +2360,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Slice</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Slice</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Slice</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Slice#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2642,9 +2412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2664,9 +2434,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SlicePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SlicePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SlicePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SlicePropertiesFormat#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2692,9 +2462,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Snssai</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Snssai</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.Snssai</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Snssai#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2720,9 +2490,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.TagsObjectTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.TagsObjectTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.TagsObjectTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.TagsObjectTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2735,6 +2557,120 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.TrackedResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.TrackedResourceTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.UserAssignedIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.UserAssignedIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

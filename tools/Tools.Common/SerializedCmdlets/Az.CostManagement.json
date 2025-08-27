@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.CostManagement",
-  "ModuleVersion": "0.4.0",
+  "ModuleVersion": "0.4.2",
   "Cmdlets": [
     {
       "VerbName": "Get",

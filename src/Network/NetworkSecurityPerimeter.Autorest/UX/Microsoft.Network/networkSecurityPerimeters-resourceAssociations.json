@@ -1,0 +1,95 @@
+{
+  "resourceType": "networkSecurityPerimeters/resourceAssociations",
+  "apiVersion": "2024-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.network"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityPerimeterAssociation",
+      "description": "Gets the specified NSP association by name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterassociation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified NSP association by name.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.associationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkSecurityPerimeterAssociation",
+      "description": "Deletes an NSP association resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterassociation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityPerimeterName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an NSP association resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.associationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

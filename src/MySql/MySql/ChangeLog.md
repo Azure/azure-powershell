@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+- Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-MySQLConnection
+- Introduced a Timeout value when running Test-AzMySqlFlexibleServerConnect with long running query
+
+## Version 1.4.0
+- Enhanced `Restore-AzMySqlFlexibleServer` functionality with GeoRestore support
+
 ## Version 1.3.0
 * Upgraded nuget package to signed package.
 

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client.SSHCertificates;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -29,12 +30,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class SshCredentialFactory : ISshCredentialFactory
     {
-
-        private readonly Dictionary<string, string> CloudToScope = new Dictionary<string, string>()
+        // kept for backward-compatibility
+        private readonly Dictionary<string, string> CloudToScope = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
         {
-            { "azurecloud", "https://pas.windows.net/CheckMyAccess/Linux/.default" },
-            { "azurechinacloud", "https://pas.chinacloudapi.cn/CheckMyAccess/Linux/.default" },
-            { "azureusgovernment", "https://pasff.usgovcloudapi.net/CheckMyAccess/Linux/.default" },
+            { EnvironmentName.AzureCloud, AzureEnvironmentConstants.AzureSshAuthScope },
+            { EnvironmentName.AzureChinaCloud, AzureEnvironmentConstants.ChinaSshAuthScope },
+            { EnvironmentName.AzureUSGovernment, AzureEnvironmentConstants.USGovernmentSshAuthScope },
         };
 
         private string CreateJwk(RSAParameters rsaKeyInfo, out string keyId)
@@ -69,12 +70,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             var publicClient = tokenCacheProvider.CreatePublicClient(context.Environment.ActiveDirectoryAuthority, context.Tenant.Id);
-            string cloudName = context.Environment.Name.ToLower();
-            string scope = CloudToScope.GetValueOrDefault(cloudName, null);
-            if (scope == null)
-            {
-                throw new Exception(string.Format("Unsupported cloud {0}. Supported clouds include AzureCloud,AzureChinaCloud,AzureUSGovernment.", cloudName));
-            }
+            string scope = GetAuthScope(context.Environment)
+                ?? throw new AzPSKeyNotFoundException(string.Format(Resources.ErrorSshAuthScopeNotSet, context.Environment.Name));
             List<string> scopes = new List<string>() { scope };
             var jwk = CreateJwk(rsaKeyInfo, out string keyId);
 
@@ -91,6 +88,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 ExpiresOn = accessToken.ExpiresOn,
             };
             return resultToken;
+        }
+
+        private string GetAuthScope(IAzureEnvironment environment)
+        {
+            return environment.GetProperty(AzureEnvironment.ExtendedEndpoint.AzureSshAuthScope)
+                ?? CloudToScope.GetValueOrDefault(environment.Name.ToLower(), null);
         }
     }
 }

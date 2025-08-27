@@ -691,6 +691,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid claims challenge format. It should be a valid base64 encoded string..
+        /// </summary>
+        internal static string InvalidClaimsChallenge {
+            get {
+                return ResourceManager.GetString("InvalidClaimsChallenge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Endpoint provided is invalid. Please check the value and retry again with the correct value..
         /// </summary>
         internal static string InvalidEndpointProvided {
@@ -727,7 +736,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compablity. The functions relate to context autosaving may be affected..
+        ///   Looks up a localized string similar to KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compatibility. The functions relate to context autosaving may be affected..
         /// </summary>
         internal static string KeyStoreLoadingError {
             get {
@@ -1087,7 +1096,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starting July 01, 2025, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314.
+        ///   Looks up a localized string similar to Starting {0}, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971.
         /// </summary>
         internal static string RopcDeprecationPublicCloud {
             get {
@@ -1096,7 +1105,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314.
+        ///   Looks up a localized string similar to Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971.
         /// </summary>
         internal static string RopcDeprecationSovereignClouds {
             get {
@@ -1267,7 +1276,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided service principal secret or certifcate password will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
+        ///   Looks up a localized string similar to The provided service principal secret or certificate password will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
         /// </summary>
         internal static string ServicePrincipalWarning {
             get {
