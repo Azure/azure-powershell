@@ -1,14 +1,14 @@
 ---
 Module Name: Az.FrontDoor
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: 91832aaa-dc11-4583-8239-adb7df531604
+Download Help Link: https://learn.microsoft.com/powershell/module/az.frontdoor
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.FrontDoor Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: FrontDoor cmdlets
 
 ## Az.FrontDoor Cmdlets
 ### [Disable-AzFrontDoorCustomDomainHttps](Disable-AzFrontDoorCustomDomainHttps.md)
@@ -129,8 +129,8 @@ Deletes Policy
 Update a new Front Door with a Front Door name under the specified subscription and resource group.
 
 ### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
-{{ Fill in the Synopsis }}
+Update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
-{{ Fill in the Synopsis }}
+Update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
