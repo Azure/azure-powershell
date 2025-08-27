@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [CmdletDeprecationWithVersion("14.6.0", "3.8.0")]
+    [CmdletDeprecationWithVersion("15.0.0", "4.0.0")]
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificateDeletion"), OutputType(typeof(void))]
     public class StopBatchCertificateDeletionCommand : BatchObjectModelCmdletBase
     {
