@@ -12,25 +12,10 @@ Update a new Rules Engine Configuration with the specified name within the speci
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Set-AzFrontDoorRulesEngine -FrontDoorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Rule <IRulesEngineRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Set-AzFrontDoorRulesEngine -FrontDoorName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Set-AzFrontDoorRulesEngine -FrontDoorName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,36 +93,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the Rules Engine which is unique within the Front Door.
 
@@ -188,7 +143,7 @@ A list of rules that define a particular Rules Engine Configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

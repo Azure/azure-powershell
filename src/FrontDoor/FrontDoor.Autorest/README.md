@@ -257,9 +257,8 @@ directive:
   - where:
       verb: Update
       subject: RulesEngine
-    hide: true
-    # set:
-    #   alias: Set-AzureFrontDoorRulesEngine
+    set:
+      verb: Set
 
   # Breaking change avoid rename
   # New-AzFrontDoorHeaderActionObject
