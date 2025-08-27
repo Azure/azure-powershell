@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.2
 * Added breaking change announcement for below cmdlets from fixed array to list.
   * Cmdlet `Get/New-AzStackHciArcSetting`
   * Cmdlet `Get/New/Update-AzStackHciCluster`

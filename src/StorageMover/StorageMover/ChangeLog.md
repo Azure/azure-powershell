@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Added breaking change announcement for `Get-AzStorageMoverAgent` and `Update-AzStorageMoverAgent` cmdlets from fixed array to list.
 * Added unexpanded parameter sets deprecated breaking change announcement for below cmdlets.
   * parameter sets Create for cmdlet `New-AzStorageMover`, `New-AzStorageMoverProject`, `New-AzStorageMoverJobDefinition`

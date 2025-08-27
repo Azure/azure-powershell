@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.1.0
 * Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
 * Added `MemorySizeInGB` parameter to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of instances with flexible memory
 * Added `MemorySizeInGB` field to the model of the managed instance so that it displays information about flexible memory instances that are returned by `Get-AzSqlInstance`.
