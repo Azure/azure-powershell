@@ -141,7 +141,6 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        [CmdletParameterBreakingChangeWithVersion("CurrentNodeCommunicationMode", ("14.6.0", "3.8.0", ChangeDescription = ChangeDesc))]
         public NodeCommunicationMode CurrentNodeCommunicationMode { get; }
 
         [Parameter]
