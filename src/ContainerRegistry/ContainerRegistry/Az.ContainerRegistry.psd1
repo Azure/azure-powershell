@@ -105,6 +105,8 @@ FunctionsToExport = 'Get-AzContainerRegistry', 'Get-AzContainerRegistryAgentPool
                'Test-AzContainerRegistryWebhook', 'Update-AzContainerRegistry', 
                'Update-AzContainerRegistryAgentPool', 
                'Update-AzContainerRegistryCredential', 
+               'Update-AzContainerRegistryExportPipeline', 
+               'Update-AzContainerRegistryImportPipeline', 
                'Update-AzContainerRegistryScopeMap', 
                'Update-AzContainerRegistryToken', 
                'Update-AzContainerRegistryWebhook'
