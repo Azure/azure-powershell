@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "name": {
-      "value": "pwsh-loadtesting-kv9k2t"
+      "value": "pwsh-loadtesting-kvlb8s"
     },
     "location": {
       "value": "westus2"
@@ -12,10 +12,10 @@
       "value": "Standard"
     },
     "mi1ObjectId": {
-      "value": "2ef7ed83-9d95-48d6-99a8-9b2eae7b87da"
+      "value": "63e05b3d-1f1d-42c1-b97b-0b1b5bcbdcb2"
     },
     "mi2ObjectId": {
-      "value": "667ca28a-4098-49ef-a19c-a41a9808bdcc"
+      "value": "63c1422e-f28c-4139-a79c-bfb671efbc07"
     },
     "tenant": {
       "value": "213e87ed-8e08-4eb4-a63c-c073058f7b00"

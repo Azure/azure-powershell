@@ -21,5 +21,5 @@ Create LoadTest resource.
 Delete a LoadTest resource.
 
 ### [Update-AzLoad](Update-AzLoad.md)
-Update LoadTest resource.
+Update a loadtest resource.
 

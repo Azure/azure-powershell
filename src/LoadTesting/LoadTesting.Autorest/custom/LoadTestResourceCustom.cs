@@ -10,10 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
     public partial class EncryptionPropertiesIdentity
     {
         partial void AfterToJson(ref Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonObject container){
-            if(string.IsNullOrEmpty(this.ResourceId))
+            if (string.Empty.Equals(this.ResourceId))
             {
                 container.Remove("resourceId");
-                // Don't add null value back - completely remove the field for SystemAssigned identity
+                container.Add("resourceId", Runtime.Json.XNull.Instance);
             }
         }
     }

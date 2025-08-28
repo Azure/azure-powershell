@@ -38,6 +38,10 @@ module-version: 0.1.0
 subject-prefix: ""
 inlining-threshold: 200
 
+# Disable transform IdentityType as GET+PUT can not replace patch
+flatten-userassignedidentity: false
+disable-transform-identity-type: true
+
 directive:
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
@@ -72,12 +76,6 @@ directive:
       parameter-name: ManagedServiceIdentityType
     set:
       parameter-name: IdentityType
-  
-  # Renaming user assigned identity parameter
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
 
   # Renaming encryption key parameter
   - where:

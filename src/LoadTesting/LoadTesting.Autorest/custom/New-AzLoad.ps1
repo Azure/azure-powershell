@@ -167,28 +167,69 @@ param(
 
     process {
         try {
-            # if encryption identity has a value, populate the encryption identity type and encryption identity resource id
+            if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+                $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
+
+                # calculate IdentityType
+                if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+                    $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
+                }
+                elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+                    $PSBoundParameters.Add("IdentityType", "UserAssigned")
+                }
+                elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+                    $PSBoundParameters.Add("IdentityType", "SystemAssigned")
+                }
+                else {
+                    $PSBoundParameters.Add("IdentityType", "None")
+                }
+
+                # If user input UserAssignedIdentity
+                if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                    $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.UserAssignedIdentity]::New()
+                    $PSBoundParameters.IdentityUserAssignedIdentity = @{}
+                    foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+                        $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+                    }
+        
+                    $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+                }
+        
+                # remove EnableSystemAssignedIdentity
+                if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+                    $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+                }
+            }
+
+           # if encryption identity has a value, populate the encryption identity type and encryption identity resource id
             # add the managed identity to the list of user assigned identities
             if ($PSBoundParameters.ContainsKey('EncryptionIdentity')) {
                 $null = $PSBoundParameters.Add("EncryptionIdentityResourceId", $PSBoundParameters['EncryptionIdentity'])
                 $null = $PSBoundParameters.Add("EncryptionIdentityType", 'UserAssigned')
                 $null = $PSBoundParameters.Remove('EncryptionIdentity')
-                $encryptionIdentityResourceId = $PSBoundParameters['EncryptionIdentityResourceId']
-
-                # Update the User Assigned Identities
-                if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-                    if ($null -eq $PSBoundParameters['UserAssignedIdentity']){
-                        $PSBoundParameters['UserAssignedIdentity'] = @()
+                
+                # Update the identity type
+                if($PSBoundParameters.ContainsKey('IdentityType')) {
+                    if($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'none') {
+                        $null = $PSBoundParameters.Add("IdentityType", 'UserAssigned')
                     }
-                    $currentIdentities = $PSBoundParameters['UserAssignedIdentity']
-                    if ($encryptionIdentityResourceId -notin $currentIdentities) {
-                        $PSBoundParameters['UserAssignedIdentity'] = $currentIdentities + @($encryptionIdentityResourceId)
+                    elseif($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'systemassigned') {
+                        $null = $PSBoundParameters.Add("IdentityType", 'SystemAssigned,UserAssigned')
                     }
                 }
                 else {
-                    $null = $PSBoundParameters.Add('UserAssignedIdentity', @($encryptionIdentityResourceId))
+                    $null = $PSBoundParameters.Add("IdentityType", 'UserAssigned')
                 }
 
+                # Update the User Assigned Identities
+                $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.UserAssignedIdentity]::New()
+                if ($PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
+                    $PSBoundParameters['IdentityUserAssignedIdentity'][$PSBoundParameters['EncryptionIdentityResourceId']] = $userIdentityObject
+                }
+                else {
+                    $null = $PSBoundParameters.Add("IdentityUserAssignedIdentity", @{ $PSBoundParameters['EncryptionIdentityResourceId'] = $userIdentityObject })
+                }
             }
             Az.LoadTesting.internal\New-AzLoad @PSBoundParameters
         }
