@@ -12,11 +12,42 @@ Creates or updates an IoT Connector FHIR destination resource with the specified
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
  -ResourceGroupName <String> -WorkspaceName <String> -FhirMappingContent <Hashtable>
- -FhirServiceResourceId <String> -Location <String>
- -ResourceIdentityResolutionType <IotIdentityResolutionType> [-SubscriptionId <String>] [-Etag <String>]
+ -FhirServiceResourceId <String> -Location <String> -ResourceIdentityResolutionType <String>
+ [-SubscriptionId <String>] [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityIotconnectorExpanded
+```
+New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String>
+ -IotconnectorInputObject <IHealthcareApisIdentity> -FhirMappingContent <Hashtable>
+ -FhirServiceResourceId <String> -Location <String> -ResourceIdentityResolutionType <String> [-Etag <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
+ -WorkspaceInputObject <IHealthcareApisIdentity> -FhirMappingContent <Hashtable>
+ -FhirServiceResourceId <String> -Location <String> -ResourceIdentityResolutionType <String> [-Etag <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
+ -ResourceGroupName <String> -WorkspaceName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
+ -ResourceGroupName <String> -WorkspaceName <String> -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -57,7 +88,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -76,7 +108,7 @@ An etag associated with the resource, used for optimistic concurrency when editi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityIotconnectorExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -106,7 +138,7 @@ The mapping.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityIotconnectorExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -121,7 +153,7 @@ Fully qualified resource id of the FHIR service to connect to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityIotconnectorExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -131,12 +163,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IotconnectorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
+Parameter Sets: CreateViaIdentityIotconnectorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IotConnectorName
 The name of IoT Connector resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -151,7 +228,7 @@ The resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityIotconnectorExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -181,7 +258,7 @@ The name of the resource group that contains the service instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -195,8 +272,8 @@ Accept wildcard characters: False
 Determines how resource identity is resolved on the destination.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityIotconnectorExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -211,7 +288,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -221,12 +298,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of workspace resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -272,9 +364,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotFhirDestination
 
 ## NOTES
 
