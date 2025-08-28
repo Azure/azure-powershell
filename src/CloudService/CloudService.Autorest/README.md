@@ -55,12 +55,6 @@ input-file:
 title: CloudService
 module-version: 0.1.0
 
-identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       subject: ^CloudServiceOperatingSystemOSFamily$
@@ -71,8 +65,20 @@ directive:
     set:
       subject: CloudServiceOSVersion
   - where:
-      variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$
-      subject: ^CloudService$|^RebuildCloudService$
+      variant: ^Rebuild$|^RebuildViaIdentity$|^RebuildViaJsonFilePathViaJsonFilePath$|^RebuildViaJsonStringViaJsonString$
+      subject: RebuildCloudService
+    remove: true
+  - where:
+      subject: ^RebuildCloudService$
+    set:
+      subject: Rebuild
+  - where:
+      variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$
+      subject: ^CloudService$
+    remove: true
+  - where:
+      variant: ^RebuildViaIdentityRoleInstance$
+      subject: ^RebuildCloudServiceRoleInstance$
     remove: true
 
   - where:
@@ -89,26 +95,21 @@ directive:
       verb: Invoke
 
   - where:
-      subject: ^RebuildCloudService$
-      variant: ^RebuildExpanded$|^RebuildViaIdentityExpanded$
-    set:
-      subject: Rebuild
-  - where:
       subject: ^RebuildCloudServiceRoleInstance$
       variant: ^Rebuild$|^RebuildViaIdentity$
     set:
       subject: RoleInstanceRebuild
 
   - where:
-      subject: ^CloudServiceUpdateDomain$
-      verb: Get
+      subject: ^CloudServicesUpdateDomain$
+      verb: Get|Update
     remove: true
   - where:
-      subject: ^WalkCloudServiceUpdateDomain$
-      variant: ^Walk$
+      subject: ^WalkCloudServicesUpdateDomain$
+      variant: ^Walk$|^WalkViaIdentity$|^WalkViaIdentityCloudService$|^WalkViaIdentityCloudServiceExpanded$|^WalkViaIdentityExpanded$|^WalkViaJsonFilePathViaJsonFilePath$|^WalkViaJsonStringViaJsonString$
     remove: true
   - where:
-      subject: ^WalkCloudServiceUpdateDomain$
+      subject: ^WalkCloudServicesUpdateDomain$
     set:
       subject: UpdateDomain
       verb: Set
@@ -119,7 +120,7 @@ directive:
     remove: true
   - where:
       subject: ^CloudServiceRoleInstance$
-      verb: Remove
+      verb: Remove|Update
     remove: true
   - where:
       variant: ^Delete$|^DeleteViaIdentity$
@@ -320,4 +321,15 @@ directive:
     transform: >-
       return "string"
 
+  - model-cmdlet:
+      - model-name: Extension
+        cmdlet-name: New-AzCloudServiceExtensionObject
+      - model-name: LoadBalancerConfiguration
+        cmdlet-name: New-AzCloudServiceLoadBalancerConfigurationObject
+      # - model-name: LoadBalancerFrontendIPConfiguration
+      #   cmdlet-name: New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject
+      - model-name: CloudServiceRoleProfileProperties
+        cmdlet-name: New-AzCloudServiceRoleProfilePropertiesObject
+      # - model-name: CloudServiceVaultSecretGroup
+      #   cmdlet-name: New-AzCloudServiceVaultSecretGroupObject
 ```
