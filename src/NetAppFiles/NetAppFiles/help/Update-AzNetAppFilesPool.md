@@ -16,7 +16,7 @@ Updates an Azure NetApp Files (ANF) pool according to the optional modifiers pro
 ```
 Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -AccountName <String> -Name <String>
  [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-CustomThroughput <Double>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -Accou
 ```
 Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
  [-CustomThroughput <Double>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] 
 ```
 Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
  [-CustomThroughput <Double>] [-Tag <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
 ```
 Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
  [-CustomThroughput <Double>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -198,21 +198,6 @@ The size of the ANF pool
 Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
