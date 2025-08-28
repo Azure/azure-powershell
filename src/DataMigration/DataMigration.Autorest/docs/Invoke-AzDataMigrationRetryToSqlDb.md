@@ -1,61 +1,70 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://learn.microsoft.com/powershell/module/az.datamigration/update-azdatamigrationsqlservice
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationretrytosqldb
 schema: 2.0.0
 ---
 
-# Update-AzDataMigrationSqlService
+# Invoke-AzDataMigrationRetryToSqlDb
 
 ## SYNOPSIS
-Update Database Migration Service.
+Retry on going migration for the database.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### RetryExpanded (Default)
 ```
-Update-AzDataMigrationSqlService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
+ -TargetDbName <String> -MigrationOperationId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Retry
 ```
-Update-AzDataMigrationSqlService -InputObject <IDataMigrationIdentity> [-Tag <Hashtable>]
+Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
+ -TargetDbName <String> -MigrationOperationInput <IMigrationOperationInput> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetryViaIdentity
+```
+Invoke-AzDataMigrationRetryToSqlDb -InputObject <IDataMigrationIdentity>
+ -MigrationOperationInput <IMigrationOperationInput> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetryViaIdentityExpanded
+```
+Invoke-AzDataMigrationRetryToSqlDb -InputObject <IDataMigrationIdentity> -MigrationOperationId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update Database Migration Service.
+Retry on going migration for the database.
 
 ## EXAMPLES
 
-### Example 1: Update tag of SQL Migration Service
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -Tag @{Tag="Service"}
+{{ Add code here }}
 ```
 
 ```output
-Location  Name    Type                                         ProvisioningState IntegrationRuntimeState
---------  ----    ----                                         ----------------- -----------------------
-eastus2   MySqlMS Microsoft.DataMigration/sqlMigrationServices Succeeded         Online
+{{ Add output here }}
 ```
 
-This command updates tag of SQL Migration Service.
+{{ Add description here }}
 
-### Example 2: Update tag of SQL Migration Service using InputObject
+### Example 2: {{ Add title here }}
 ```powershell
-$mySqlMS = Get-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
-Update-AzDataMigrationSqlService -InputObject $mySqlMS -Tag @{Tag="Service"}
+{{ Add code here }}
 ```
 
 ```output
-Location  Name    Type                                         ProvisioningState IntegrationRuntimeState
---------  ----    ----                                         ----------------- -----------------------
-eastus2   MySqlMS Microsoft.DataMigration/sqlMigrationServices Succeeded         Online
+{{ Add output here }}
 ```
 
-This command updates tag of SQL Migration Service using InputObject.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -96,7 +105,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: RetryViaIdentity, RetryViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -106,18 +115,34 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the SQL Migration Service.
+### -MigrationOperationId
+ID tracking migration operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: SqlMigrationServiceName
+Parameter Sets: RetryExpanded, RetryViaIdentityExpanded
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MigrationOperationInput
+Migration Operation Input
+To construct, see NOTES section for MIGRATIONOPERATIONINPUT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IMigrationOperationInput
+Parameter Sets: Retry, RetryViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -157,7 +182,22 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Retry, RetryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlDbInstanceName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: Retry, RetryExpanded
 Aliases:
 
 Required: True
@@ -172,7 +212,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Retry, RetryExpanded
 Aliases:
 
 Required: False
@@ -182,15 +222,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Dictionary of \<string\>
+### -TargetDbName
+The name of the target database.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Retry, RetryExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -233,11 +273,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IMigrationOperationInput
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ISqlMigrationService
+### System.Boolean
 
 ## NOTES
 
