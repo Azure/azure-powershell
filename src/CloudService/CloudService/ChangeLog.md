@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for below commands from array or object to list.
+* `Get-AzCloudService`
+* `Get-AzCloudServiceInstanceView`
+* `Get-AzCloudServiceNetworkInterface`
+* `Get-AzCloudServiceOSFamily`
+* `Get-AzCloudServicePublicIPAddress`
+* `Get-AzCloudServiceRoleInstance`
+* `Get-AzCloudServiceRoleInstanceView`
+* `New-AzCloudService`
+* `New-AzCloudServiceDiagnosticsExtension`
+* `New-AzCloudServiceExtensionObject`
+* `New-AzCloudServiceLoadBalancerConfigurationObject`
+* `New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject`
+* `New-AzCloudServiceRemoteDesktopExtensionObject`
+* `New-AzCloudServiceVaultSecretGroupObject`
+* `Switch-AzCloudService`
+* `Update-AzCloudService`
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
