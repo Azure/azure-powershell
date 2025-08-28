@@ -16,6 +16,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
+        [GenericBreakingChangeWithVersion("The following properties of the PSPoolSpecification class found under the PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
+
         public PSCloudJob Job { get; set; }
 
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
