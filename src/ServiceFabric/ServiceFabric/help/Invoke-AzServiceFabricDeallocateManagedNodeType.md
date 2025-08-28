@@ -1,25 +1,25 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/move-azservicefabricmanagednodetype
+online version:
 schema: 2.0.0
 ---
 
-# Move-AzServiceFabricManagedNodeType
+# Invoke-AzServiceFabricDeallocateManagedNodeType
 
 ## SYNOPSIS
-Redeploy specific nodes from the node type.
+Deallocate specific nodes from the node type.
 
 ## SYNTAX
 
 ```
-Move-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- -NodeName <String[]> [-ForceRedeploy] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzServiceFabricDeallocateManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String>
+ [-Name] <String> -NodeName <String[]> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Redeploy specific nodes from the node type. It will disabled the service fabric nodes before dedeploying the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not redeploy all the nodes at the same time. Use -ForceRedeploy force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
+Deallocate specific nodes from the node type. It will disable the service fabric nodes before deallocating.
 
 ## EXAMPLES
 
@@ -28,10 +28,10 @@ Redeploy specific nodes from the node type. It will disabled the service fabric 
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-Move-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
+Invoke-AzServiceFabricDeallocateManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
-Redeploy node 0 and 3 on the node type.
+Deallocate node 0 and 3 on the node type.
 
 ## PARAMETERS
 
@@ -39,7 +39,7 @@ Redeploy node 0 and 3 on the node type.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,24 +69,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ForceRedeploy
-Using this flag will force the node to redeploy even if service fabric is unable to disable the nodes.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +84,7 @@ Accept wildcard characters: False
 Specify the name of the node type.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: NodeTypeName
 
@@ -114,7 +99,7 @@ Accept wildcard characters: False
 List of node names for the operation.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -126,10 +111,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns $True if the command succeeds and $False if it fails. By default, this cmdlet does not return any output.
+{{ Fill PassThru Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +129,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -159,7 +144,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +159,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -190,7 +175,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

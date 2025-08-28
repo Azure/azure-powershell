@@ -88,17 +88,17 @@ function Test-NodeTypeOperations
 	$delete = Remove-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_1 -PassThru
 	Assert-True { $delete }
 
-	$disable = Disable-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
-	Assert-True { $disable }
+	$deallocate = Invoke-AzServiceFabricDeallocateManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
+	Assert-True { $deallocate }
 
-	$enable = Enable-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
-	Assert-True { $enable }
+	$start = Start-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
+	Assert-True { $start }
 
 	$reimage = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -Reimage -PassThru
 	Assert-True { $reimage }
 
-	$move = Move-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_4 -PassThru
-	Assert-True { $move }
+	$redeploy = Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_4 -PassThru
+	Assert-True { $redeploy }
 
 	$snt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt
 	$removeResponse = $snt | Remove-AzServiceFabricManagedNodeType -PassThru

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsLifecycle.Disable, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class DisableAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class EnableAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
         #region Params
 
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Deallocate node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Start node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
             {
                 try
                 {
                     var actionParams = new NodeTypeActionParameters(nodes: this.NodeName);
-                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginDeallocateWithHttpMessagesAsync(
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginStartWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,
                             this.Name,

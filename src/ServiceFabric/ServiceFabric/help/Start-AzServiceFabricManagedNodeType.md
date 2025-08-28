@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/enable-azservicefabricmanagednodetype
+online version:
 schema: 2.0.0
 ---
 
-# Enable-AzServiceFabricManagedNodeType
+# Start-AzServiceFabricManagedNodeType
 
 ## SYNOPSIS
 Start specific nodes from the node type.
@@ -13,13 +13,13 @@ Start specific nodes from the node type.
 ## SYNTAX
 
 ```
-Enable-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
+Start-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  -NodeName <String[]> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Start specific nodes from the node type. It will attempt to start the service fabric nodes.
+If the nodes are in a stopped or deallocated state, start the specific nodes from the node type.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ Start specific nodes from the node type. It will attempt to start the service fa
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-Enable-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
+Start-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
 Start node 0 and 3 on the node type.
@@ -39,7 +39,7 @@ Start node 0 and 3 on the node type.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Specify the name of the node type.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: NodeTypeName
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 List of node names for the operation.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -111,27 +111,12 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns $True if the command succeeds and $False if it fails. By default, this cmdlet does not return any output.
+{{ Fill PassThru Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -144,7 +129,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +144,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -175,7 +160,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

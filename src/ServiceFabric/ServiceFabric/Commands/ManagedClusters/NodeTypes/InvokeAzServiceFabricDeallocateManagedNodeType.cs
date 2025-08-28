@@ -19,8 +19,8 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Move, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class MoveAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "DeallocateManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class InvokeAzServiceFabricDeallocateManagedNodeType : ServiceFabricManagedCmdletBase
     {
         #region Params
 
@@ -50,10 +50,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public string[] NodeName { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the nodes to redeploy even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRedeploy { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -64,12 +60,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Redeploy node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Deallocate node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRedeploy.IsPresent);
-                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRedeployWithHttpMessagesAsync(
+                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName);
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginDeallocateWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,
                             this.Name,
