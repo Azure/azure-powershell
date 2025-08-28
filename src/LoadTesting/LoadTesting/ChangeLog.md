@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* The parameters of the `New-AzWorkloadsSapVirtualInstance` and `Update-AzWorkloadsSapVirtualInstance` cmdlets will be changed by new Managed Identity settings.
+    - Removed `-IdentityType` parameters.
+    - Changed `-UserAssignedIdentity` parameter type. The type of `UserAssignedIdentity` is simplified to a list of strings that is used to specify the user's assigned identity.
+    - Added `EnableSystemAssignedIdentity` to enable/disable system-assigned identities.
 
 ## Version 1.1.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
