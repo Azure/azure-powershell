@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Removes a WAF policy
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Remove the WAF policy called $policyName in $resourceGroupName.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Removes all WAF policy
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorWafPolicy
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Remove all WAF policy in $resourceGroupName.

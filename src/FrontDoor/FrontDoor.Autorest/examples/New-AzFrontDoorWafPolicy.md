@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create WAF policy
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $customRule1,$customRule2 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention -RedirectUrl "https://www.bing.com/" -CustomBlockResponseStatusCode 405 -CustomBlockResponseBody "<html><head><title>You are blocked!</title></head><body></body></html>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         PolicyMode PolicyEnabledState RedirectUrl
+----         ---------- ------------------ -----------
+{policyName} Prevention            Enabled https://www.bing.com/
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create WAF policy

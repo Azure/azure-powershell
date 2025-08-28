@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Address           : contoso1.azurewebsites.net
+HttpPort          : 80
+HttpsPort         : 443
+Priority          : 1
+Weight            : 50
+BackendHostHeader :
+EnabledState      : Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a PSBackend object for Front Door creation

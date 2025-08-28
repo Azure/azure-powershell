@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get an existing rules engine configuration and add another rules engine rule to it.
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine
+
+Name          RulesEngineRules
+----          ----------------
+myRulesEngine {rules1}
+
+$rulesEngineRule2 = New-AzFrontDoorRulesEngineRuleObject -Name rules2 -Priority 3 -Action $rulesEngineAction
+Set-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine -Rule $rulesEngineRule1, $rulesEngineRule2
+
+Name          RulesEngineRules
+----          ----------------
+myRulesEngine {rules1, rules2}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Get an existing rules engine configuration and add another rules engine rule to it.

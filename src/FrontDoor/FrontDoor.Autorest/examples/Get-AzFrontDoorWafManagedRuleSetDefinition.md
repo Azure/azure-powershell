@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorWafManagedRuleSetDefinition
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ProvisioningState RuleSetType                 RuleSetVersion RuleGroups
+----------------- -----------                 -------------- ----------
+Succeeded         DefaultRuleSet              1.0            {PROTOCOL-ATTACK, LFI, RFI, RCE...}
+Succeeded         Microsoft_BotManagerRuleSet 1.0            {BadBots, GoodBots, UnknownBots}
+Succeeded         DefaultRuleSet              preview-0.1    {LFI, RFI, RCE, PHP...}
+Succeeded         BotProtection               preview-0.1    {KnownBadBots}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Get WAF managed rule set definitions.

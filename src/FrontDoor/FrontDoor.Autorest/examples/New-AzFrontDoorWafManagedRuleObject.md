@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create ManagedRule Object for WAF policy creation
 ```powershell
-{{ Add code here }}
+$ruleOverride1 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log
+$ruleOverride2 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942251" -Action Log
+$override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride1,$ruleOverride2
+
+$ruleOverride3 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "941280" -Action Log
+$override2 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName XSS -ManagedRuleOverride $ruleOverride3
+
+New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1,$override2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RuleGroupOverrides RuleSetType    RuleSetVersion
+------------------ -----------    --------------
+{SQLI, XSS}        DefaultRuleSet preview-0.1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a ManagedRule Object

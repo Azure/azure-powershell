@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove Rules Engine from Front Door
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $rulesEngine.Name -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Remove rules engine configuration.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove Rules Engine from Front Door
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistentRulesEngine
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Remove-AzFrontDoorRulesEngine : Rules Engine with name 'nonexistentRulesEngine' in Front Door 'frontDoorName' in the resource group 'resourceGroupName' does not exist.
+At line:1 char:1
++ Remove-AzFrontDoorRulesEngine -ResourceGroupName resourceGroupName -Fro ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : CloseError: (:) [Remove-AzFrontDoorRulesEngine], PSArgumentException
++ FullyQualifiedErrorId : Microsoft.Azure.Commands.FrontDoor.Cmdlets.RemoveFrontDoorRulesEngine
 ```
 
-{{ Add description here }}
-
+Expected outcome when removing a nonexistent rules engine configuration.

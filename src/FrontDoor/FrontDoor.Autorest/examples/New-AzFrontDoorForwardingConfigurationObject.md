@@ -1,22 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a basic forwarding configuration object
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorForwardingConfigurationObject -BackendPoolId "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/frontDoors/myFrontDoor/backendPools/myBackendPool" -ForwardingProtocol "MatchRequest"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BackendPoolId        : /subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/frontDoors/myFrontDoor/backendPools/myBackendPool
+CacheConfiguration   : 
+CustomForwardingPath : 
+ForwardingProtocol   : MatchRequest
 ```
 
-{{ Add description here }}
+Create a basic forwarding configuration object that forwards requests to a backend pool using the same protocol as the incoming request.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a forwarding configuration object with cache and custom path
 ```powershell
-{{ Add code here }}
+$cacheConfig = New-AzFrontDoorCacheConfigurationObject -CacheDuration "0.12:00:00" -DynamicCompression "Enabled"
+New-AzFrontDoorForwardingConfigurationObject -BackendPoolId "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/frontDoors/myFrontDoor/backendPools/myBackendPool" -ForwardingProtocol "HttpsOnly" -CustomForwardingPath "/api/v2" -CacheConfiguration $cacheConfig
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BackendPoolId        : /subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/frontDoors/myFrontDoor/backendPools/myBackendPool
+CacheConfiguration   : Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CacheConfiguration
+CustomForwardingPath : /api/v2
+ForwardingProtocol   : HttpsOnly
 ```
 
-{{ Add description here }}
+Create a forwarding configuration object with caching enabled, custom forwarding path, and HTTPS-only forwarding protocol.
 

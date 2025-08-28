@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create RuleGroupOverride Object for WAF policy creation
 ```powershell
-{{ Add code here }}
+$ruleOverride1 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log
+$ruleOverride2 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942251" -Action Log
+
+New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride1,$ruleOverride2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RuleGroupName ManagedRuleOverrides
+------------- --------------------
+SQLI          {942250, 942251}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a RuleGroupOverride Object

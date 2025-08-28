@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a PSHealthProbeSetting object for Front Door creation
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Path              : /
+Protocol          : Http
+IntervalInSeconds : 30
+ResourceState     :
+HealthProbeMethod : Head
+EnabledState      : Enabled
+Id                :
+Name              : healthProbeSetting1
+Type              :
 ```
 
-{{ Add description here }}
+Note: HealthProbeMethod setting is not case sensitive.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a PSHealthProbeSetting object for Front Door creation

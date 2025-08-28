@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new PSRulesEngineMatchCondition object.
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable RequestHeader -Operator Equal -MatchValue allowoverride -Transform "LowerCase", "UpperCase"-Selector Rules-Engine-Route-Forward -NegateCondition $false
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RulesEngineMatchVariable : RequestHeader
+RulesEngineMatchValue    : {allowoverride}
+Selector                 : Rules-Engine-Route-Forward
+RulesEngineOperator      : Equal
+NegateCondition          : False
+Transform                : {Lowercase, Uppercase}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a new PSRulesEngineMatchCondition object.
