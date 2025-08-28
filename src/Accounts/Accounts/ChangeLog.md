@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `AuthenticationAssemblyLoadContext` project to deprecate .NET 6.0 and build on .NET 8.0.
 * Added Server-Side Pagination Support for `Invoke-AzRestMethod` command via `-Paginate` parameter.
 
 ## Version 5.2.0
