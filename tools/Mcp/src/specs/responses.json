@@ -57,6 +57,6 @@
     {
         "name": "partner-module-workflow",
         "type": "prompt",
-    "text": "@file:prompts/partner-module-workflow.md"
+        "text": "@file:prompts/partner-module-workflow.md"
     }
 ]

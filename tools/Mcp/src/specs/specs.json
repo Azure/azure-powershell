@@ -71,8 +71,7 @@
                 }
             ],
             "callbackName": "createTestsFromSpecs"
-        }
-        ,
+        },
         {
             "name": "list-spec-modules",
             "description": "List all top-level modules (service folders) under azure-rest-api-specs/specification.",
