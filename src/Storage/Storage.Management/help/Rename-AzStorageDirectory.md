@@ -28,7 +28,7 @@ Rename-AzStorageDirectory [-ShareClient] <ShareClient> [-SourcePath] <String> [[
  [-Confirm] [<CommonParameters>]
 ```
 
-### DirectoryObject
+### DirecotryObject
 ```
 Rename-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [[-DestinationPath] <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
@@ -232,7 +232,7 @@ Source directory instance
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareDirectoryClient
-Parameter Sets: DirectoryObject
+Parameter Sets: DirecotryObject
 Aliases:
 
 Required: True

@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the ListContainerItem class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
         /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">Resource Etag.
@@ -106,9 +110,9 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="enableNfsV3AllSquash">Enable NFSv3 all squash on blob container.
         /// </param>
-        public ListContainerItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), PublicAccess? publicAccess = default(PublicAccess?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string defaultEncryptionScope = default(string), bool? denyEncryptionScopeOverride = default(bool?), System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?), ImmutableStorageWithVersioning immutableStorageWithVersioning = default(ImmutableStorageWithVersioning), bool? enableNfsV3RootSquash = default(bool?), bool? enableNfsV3AllSquash = default(bool?))
+        public ListContainerItem(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), PublicAccess? publicAccess = default(PublicAccess?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string defaultEncryptionScope = default(string), bool? denyEncryptionScopeOverride = default(bool?), System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?), ImmutableStorageWithVersioning immutableStorageWithVersioning = default(ImmutableStorageWithVersioning), bool? enableNfsV3RootSquash = default(bool?), bool? enableNfsV3AllSquash = default(bool?))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, systemData, etag)
         {
             this.PublicAccess = publicAccess;
             this.LeaseStatus = leaseStatus;

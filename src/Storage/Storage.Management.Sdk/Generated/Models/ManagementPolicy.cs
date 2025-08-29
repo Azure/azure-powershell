@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// The Get Storage Account ManagementPolicies operation response.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ManagementPolicy : Resource
+    public partial class ManagementPolicy : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagementPolicy class.
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the ManagementPolicy class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -36,15 +36,19 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
         /// <param name="lastModifiedTime">Returns the date and time the ManagementPolicies was last modified.
         /// </param>
 
         /// <param name="policy">The Storage Account ManagementPolicy, in JSON format. See more details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </param>
-        public ManagementPolicy(string id = default(string), string name = default(string), string type = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), ManagementPolicySchema policy = default(ManagementPolicySchema))
+        public ManagementPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? lastModifiedTime = default(System.DateTime?), ManagementPolicySchema policy = default(ManagementPolicySchema))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.LastModifiedTime = lastModifiedTime;
             this.Policy = policy;
@@ -66,7 +70,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Gets or sets the Storage Account ManagementPolicy, in JSON format. See more
         /// details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.policy")]
         public ManagementPolicySchema Policy {get; set; }
