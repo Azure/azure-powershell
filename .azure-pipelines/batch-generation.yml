@@ -30,7 +30,7 @@ variables:
   MaxParallelTestLinuxJobs: 5
   MaxParallelTestMacJobs: 5
   WindowsAgentPoolName: pool-windows-2019
-  LinuxAgentPoolName: pool-ubuntu-2004
+  LinuxAgentPoolName: pool-ubuntu-2404
   MacOSAgentPoolName: 'Azure Pipelines'
   MacOSAgentPoolVMImage: macOS-latest
 
