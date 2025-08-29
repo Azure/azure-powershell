@@ -30,7 +30,7 @@ Start-AzPolicyRemediation -ResourceId <String> -PolicyAssignmentId <String>
 ```
 
 ## DESCRIPTION
-The **Start-AzPolicyRemediation** cmdlet creates a policy remediation for a particular policy assignment. All non-compliant resources at or below the remediation's scope will be remediated. Remediation is only supported for policies with the 'deployIfNotExists' effect.
+The **Start-AzPolicyRemediation** cmdlet creates a policy remediation for a particular policy assignment. All non-compliant resources at or below the remediation's scope will be remediated. Remediation is only supported for policies with the 'deployIfNotExists' and 'modify' effect.
 
 ## EXAMPLES
 
