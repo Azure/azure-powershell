@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of a sync group.
+    /// Properties of a sync group with support to MI.
     /// </summary>
     public partial class SyncGroupProperties
     {

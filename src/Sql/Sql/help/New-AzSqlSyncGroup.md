@@ -16,8 +16,8 @@ Creates an Azure SQL Database Sync Group.
 New-AzSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabaseServerName <String>
  -SyncDatabaseResourceGroupName <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
  [-ConflictResolutionPolicy <String>] [-SchemaFile <String>] [-UsePrivateLinkConnection] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-HubDatabaseAuthenticationType <String>] [-IdentityId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,33 @@ This command creates a sync group for an Azure SQL Database. "schema.json" is a 
 {"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable2"}],
 "MasterSyncMemberName":  null
 }
+
+### Example 2: Create a sync group for an Azure SQL Database using user-assigned managed identity authentication
+
+This command creates a sync group using user-assigned managed identity to authenticate to the hub database.
+
+```powershell
+New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup02" -ServerName "Server02" -DatabaseName "Database02" -Name "SyncGroup02" `
+-ConflictResolutionPolicy "HubWin" -IntervalInSeconds -1 `
+-SyncDatabaseServerName "Server02" -SyncDatabaseName "Database02" `
+-SyncDatabaseResourceGroupName "syncDatabaseResourceGroup02" `
+-HubDatabaseAuthenticationType "userAssigned" `
+-IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -Schema ".\schema.json" | Format-List
+```
+
+```output
+ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup02}/providers/Microsoft.Sql/servers/{Server02}/databases/{Database02}/syncGroups/{SyncGroup02}
+ResourceGroupName           : ResourceGroup02
+ServerName                  : Server02
+DatabaseName                : Database02
+SyncGroupName               : SyncGroup02
+SyncDatabaseId              : /subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup02}/providers/Microsoft.Sql/servers/{Server02}/databases/{Database02}
+IntervalInSeconds           : -1
+ConflictResolutionPolicy    : HubWin
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
+Schema                      :
+```
 
 ## PARAMETERS
 
@@ -244,6 +271,35 @@ Use a private link connection when connecting to the hub of this sync group.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubDatabaseAuthenticationType
+The Database Authentication type of the hub database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: password, userAssigned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+The identity ID of the hub database in case of UAMI Authentication.
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
