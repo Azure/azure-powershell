@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sftp\Sftp.csproj" />
-    <ProjectReference Include="..\Sftp.Helpers\Sftp.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>

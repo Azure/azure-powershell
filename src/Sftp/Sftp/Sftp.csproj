@@ -7,10 +7,6 @@
 	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
 	<ItemGroup>
-		<ProjectReference Include="..\Sftp.Helpers\Sftp.Helpers.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Update="Microsoft.Azure.PowerShell.Common" Version="1.3.110-preview" />
 		<PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.24.0" />
