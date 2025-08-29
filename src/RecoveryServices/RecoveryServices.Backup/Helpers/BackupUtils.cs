@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"southwestus", "centralus"},
             {"southcentralus2", "westcentralus"},
             {"southeastus3", "westus3"},
+            {"eastus3", "westus3"},
             {"southeastus5", "centralus"},
             {"southeastus", "westus3"}
         };
