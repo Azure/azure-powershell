@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.3.2
 * Upgraded API version to 2024-11-01 [#27067]
 
 ## Version 6.3.1
