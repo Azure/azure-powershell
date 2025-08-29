@@ -1916,7 +1916,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '7.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzAutoscaleSetting_CreateExpanded`
   - `-Profile`
     - The parameter : 'Profile' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -2562,6 +2562,8 @@ Preview modules are not included in this list. Read more about [module version t
   - Change description : The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '7.0.0'
+
+- Cmdlet breaking-change will happen to parameter set `InvokeAzNginxAnalysisConfiguration_Analysis`
 
 ### `New-AzNginxConfiguration`
 
