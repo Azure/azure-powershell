@@ -42,7 +42,7 @@ Gets the sizing recommendations.
 Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 
 ### [New-AzWorkloadsMonitor](New-AzWorkloadsMonitor.md)
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+Create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ### [New-AzWorkloadsProviderDB2InstanceObject](New-AzWorkloadsProviderDB2InstanceObject.md)
 Create an in-memory object for DB2ProviderInstanceProperties.
@@ -51,7 +51,7 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 Create an in-memory object for HanaDbProviderInstanceProperties.
 
 ### [New-AzWorkloadsProviderInstance](New-AzWorkloadsProviderInstance.md)
-Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ### [New-AzWorkloadsProviderPrometheusHaClusterInstanceObject](New-AzWorkloadsProviderPrometheusHaClusterInstanceObject.md)
 Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
@@ -66,7 +66,7 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 Create an in-memory object for MsSqlServerProviderInstanceProperties.
 
 ### [New-AzWorkloadsSapLandscapeMonitor](New-AzWorkloadsSapLandscapeMonitor.md)
-Creates a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 
 ### [New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject](New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject.md)
 Create an in-memory object for SapLandscapeMonitorMetricThresholds.
@@ -114,7 +114,10 @@ Stops the database instance of the SAP system.
 Stops the SAP Application, that is the Application server instances and Central Services instance.
 
 ### [Update-AzWorkloadsMonitor](Update-AzWorkloadsMonitor.md)
-Patches the Tags field of a SAP monitor for the specified subscription, resource group, and SAP monitor name.
+Update a SAP monitor for the specified subscription, resource group, and resource name.
+
+### [Update-AzWorkloadsProviderInstance](Update-AzWorkloadsProviderInstance.md)
+Update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ### [Update-AzWorkloadsSapApplicationInstance](Update-AzWorkloadsSapApplicationInstance.md)
 Puts the SAP Application Server Instance resource.

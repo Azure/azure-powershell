@@ -1,80 +1,68 @@
 ---
 external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderinstance
+online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadsproviderinstance
 schema: 2.0.0
 ---
 
-# New-AzWorkloadsProviderInstance
+# Update-AzWorkloadsProviderInstance
 
 ## SYNOPSIS
-Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-ProviderSetting <IProviderSpecificProperties>]
+Update-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-ProviderSetting <IProviderSpecificProperties>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityMonitorExpanded
+```
+Update-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
+ [-EnableSystemAssignedIdentity <Boolean>] [-ProviderSetting <IProviderSpecificProperties>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityExpanded
 ```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityMonitorExpanded
-```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
- [-EnableSystemAssignedIdentity] [-ProviderSetting <IProviderSpecificProperties>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-EnableSystemAssignedIdentity <Boolean>]
+ [-ProviderSetting <IProviderSpecificProperties>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## EXAMPLES
 
-### Example 1: Create a new provider
+### Example 1: {{ Add title here }}
 ```powershell
-$providerSetting = New-AzWorkloadsProviderSqlServerInstanceObject -Password '<password>' -Port 1433 -Username '<username>' -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
-        $providerSetting.ProviderType | Should -Be "MsSqlServer"
-        
-New-AzWorkloadsProviderInstance -MonitorName suha-0202-ams9 -Name sql-prov-1 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -ProviderSetting $providerSetting
+{{ Add code here }}
 ```
 
 ```output
-Name       ResourceGroupName ProvisioningState IdentityType
-----       ----------------- ----------------- ------------
-sql-prov-1 suha-0802-rg1     Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a new provider for a specific AMS instance
+{{ Add description here }}
 
-### Example 2: Create a new provider by Id
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzWorkloadsProviderInstance -MonitorName suha-160323-ams4 -Name suha-sql-3 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -ProviderSetting '{"sslPreference":"Disabled","providerType":"MsSqlServer","hostname":"10.1.14.5","sapSid":"X00","dbPort":"1433","dbUsername":"","dbPassword":""}'
+{{ Add code here }}
 ```
 
 ```output
-Name       ResourceGroupName ProvisioningState IdentityType
-----       ----------------- ----------------- ------------
-suha-sql-3 suha-0802-rg1     Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a new provider for a specific AMS instance by Arm Id
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -113,8 +101,8 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,33 +112,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -159,7 +132,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-Parameter Sets: CreateViaIdentityMonitorExpanded
+Parameter Sets: UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -174,7 +147,7 @@ Name of the SAP monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -189,7 +162,7 @@ Name of the provider instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded
 Aliases: ProviderInstanceName
 
 Required: True
@@ -219,7 +192,7 @@ Defines the provider specific properties.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderSpecificProperties
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -235,7 +208,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -250,7 +223,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -266,7 +239,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
