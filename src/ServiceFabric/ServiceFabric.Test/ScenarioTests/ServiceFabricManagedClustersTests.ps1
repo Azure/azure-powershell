@@ -94,7 +94,7 @@ function Test-NodeTypeOperations
 	$start = Start-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
 	Assert-True { $start }
 
-	$reimage = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -Reimage -PassThru
+	$reimage = Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -UpdateType ByUpgradeDomain -PassThru
 	Assert-True { $reimage }
 
 	$redeploy = Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_4 -PassThru

@@ -11,16 +11,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsLifecycle.Restart, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RestartAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ReimageManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class InvokeAzServiceFabricReimageManagedNodeType : ServiceFabricManagedCmdletBase
     {
         #region Params
 
@@ -53,8 +54,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string UpdateType { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
+            HelpMessage = "Using this flag will force the nodes to reimage even if service fabric is unable to disable the nodes.")]
+        public SwitchParameter ForceReimage { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -66,12 +67,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Restart node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Reimage node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, updateType: this.UpdateType, force: this.ForceRestart.IsPresent);
-                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
+                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, updateType: this.UpdateType, force: this.ForceReimage.IsPresent);
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginReimageWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,
                             this.Name,

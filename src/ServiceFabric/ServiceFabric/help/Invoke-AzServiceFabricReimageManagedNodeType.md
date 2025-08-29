@@ -5,22 +5,22 @@ online version:
 schema: 2.0.0
 ---
 
-# Invoke-AzServiceFabricRedeployManagedNodeType
+# Invoke-AzServiceFabricReimageManagedNodeType
 
 ## SYNOPSIS
-Redeploy specific nodes from the node type.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Invoke-AzServiceFabricRedeployManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String>
- [-Name] <String> -NodeName <String[]> [-UpdateType <String>] [-ForceRedeploy] [-PassThru] [-AsJob]
+Invoke-AzServiceFabricReimageManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String>
+ [-Name] <String> -NodeName <String[]> [-UpdateType <String>] [-ForceReimage] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Redeploy specific nodes from the node type. It will disable the service fabric nodes before, move them to another host node, then renable.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
@@ -29,10 +29,10 @@ Redeploy specific nodes from the node type. It will disable the service fabric n
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
+Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
-Redeploy node 0 and 3 on the node type.
+Reimage node 0 and 3 on the node type.
 
 ## PARAMETERS
 
@@ -40,7 +40,7 @@ Redeploy node 0 and 3 on the node type.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,11 +81,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceRedeploy
-Using this flag will force the nodes to redeploy even if service fabric is unable to disable the nodes.
+### -ForceReimage
+Using this flag will force the nodes to reimage even if service fabric is unable to disable the nodes.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Specify the name of the node type.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: NodeTypeName
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 List of node names for the operation.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,10 +172,11 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateType
-Specify the update type. Valid values are 'Default' and 'ByUpgradeDomain'.
+Specify the update type.
+Valid values are 'Default' and 'ByUpgradeDomain'.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +191,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -206,7 +207,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

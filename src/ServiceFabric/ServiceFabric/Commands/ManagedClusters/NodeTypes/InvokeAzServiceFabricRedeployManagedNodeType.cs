@@ -47,8 +47,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
-        [ValidateNotNullOrEmpty()]
         public string[] NodeName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specify the update type. Valid values are 'Default' and 'ByUpgradeDomain'.")]
+        public string UpdateType { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Using this flag will force the nodes to redeploy even if service fabric is unable to disable the nodes.")]
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRedeploy.IsPresent);
+                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, updateType: this.UpdateType, force: this.ForceRedeploy.IsPresent);
                     var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRedeployWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,
