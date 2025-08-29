@@ -361,6 +361,48 @@ function Test-AzureRmSignalRUpdate
     }
 }
 
+<#
+.SYNOPSIS
+Test custom certificate cmdlets for SignalR.
+#>
+function Test-AzureRmSignalRCustomCertificate {
+    $resourceGroupName = "azureclitest"
+    $signalrName = "signalrcliteststatic"
+    $location = "eastus"
+    $certificateName = "test-cert"
+    $keyVaultBaseUri = "https://azureclitestkv.vault.azure.net/"
+    $keyVaultSecretName = "azureclitest"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -Sku "Premium_P1" -UnitCount 1
+
+        # Add custom certificate
+        $cert = New-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -ResourceName $signalrName -Name $certificateName -KeyVaultBaseUri $keyVaultBaseUri -KeyVaultSecretName $keyVaultSecretName
+        Assert-NotNull $cert
+        Assert-AreEqual $certificateName $cert.Name
+        Assert-AreEqual $keyVaultBaseUri $cert.KeyVaultBaseUri
+        Assert-AreEqual $keyVaultSecretName $cert.KeyVaultSecretName
+
+        # Get custom certificate
+        $certGet = Get-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -ResourceName $signalrName -Name $certificateName
+        Assert-NotNull $certGet
+        Assert-AreEqual $certificateName $certGet.Name
+
+        # List all certificates
+        $certs = Get-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -ResourceName $signalrName
+        Assert-True { $certs | Where-Object { $_.Name -eq $certificateName } }
+
+        # Remove the certificate
+        Remove-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -ResourceName $signalrName -Name $certificateName -Force
+        $certsAfterRemove = Get-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -ResourceName $signalrName
+        Assert-False { $certsAfterRemove | Where-Object { $_.Name -eq $certificateName } }
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
 function New-Environment
 {
     param (
@@ -442,4 +484,4 @@ function Remove-Environment {
         [string] $resourceGroupName
     )
     Remove-AzResourceGroup -Name $resourceGroupName
-}
+}}

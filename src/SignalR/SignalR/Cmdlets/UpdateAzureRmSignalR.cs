@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRResource))]
-    public class UpdateAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
+    public class UpdateAzureRmSignalR : SignalRCmdletBase, IWithSignalRInputObject, IWithResourceId
     {
         private const int DefaultUnitCount = 1;
 
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [Parameter(
             Mandatory = false,
             HelpMessage = "The SignalR service SKU. Default to \"Standard_S1\".")]
-        [PSArgumentCompleter("Free_F1", "Standard_S1")]
+        [PSArgumentCompleter("Free_F1", "Standard_S1", "Premium_P1", "Premium_P2")]
         public string Sku { get; set; }
 
         [Parameter(
@@ -93,6 +94,16 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable or disable system-assigned identity. $true enables system-assigned identity, $false disables it. If not provided, no change happens on system-assigned identity.")]
+        public bool? EnableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set user-assigned identities. To remove all user-assigned identities, provide an empty array @(). If not provided, user-assigned identities remain unchanged.")]
+        public string[] UserAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run the cmdlet in background job.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -111,7 +122,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        this.LoadFromInputObject();
+                        this.LoadFromSignalRInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
@@ -138,6 +149,13 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 {
                     signalR.Cors = new SignalRCorsSettings(ParseAndCheckAllowedOrigins(AllowedOrigin));
                 }
+
+                // Update identity if parameters are provided
+                if (EnableSystemAssignedIdentity.HasValue || UserAssignedIdentity != null)
+                {
+                    signalR.Identity = UpdateManagedIdentity(signalR.Identity);
+                }
+
                 if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "update"))
                 {
                     var result = Client.SignalR.Update(ResourceGroupName, Name, signalR);
@@ -149,6 +167,52 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     WriteObject(new PSSignalRResource(signalR));
                 }
             });
+        }
+
+        private ManagedIdentity UpdateManagedIdentity(ManagedIdentity currentIdentity)
+        {
+            var hasSystemAssignedIdentity = currentIdentity != null && currentIdentity.Type != null && currentIdentity.Type.Equals(ManagedIdentityType.SystemAssigned, StringComparison.OrdinalIgnoreCase);
+            var hasUserAssignedIdentity = currentIdentity != null && currentIdentity.Type != null && currentIdentity.Type.Equals(ManagedIdentityType.UserAssigned, StringComparison.OrdinalIgnoreCase);
+
+            // Update system assigned identity
+            if (EnableSystemAssignedIdentity.HasValue)
+            {
+                hasSystemAssignedIdentity = EnableSystemAssignedIdentity.Value;
+            }
+
+            if (UserAssignedIdentity != null)
+            {
+                hasUserAssignedIdentity = UserAssignedIdentity.Length > 0;
+            }
+
+            if (hasSystemAssignedIdentity)
+            {
+                if (hasUserAssignedIdentity)
+                {
+                    throw new AzPSArgumentException("SignalR service doesn't support both system assigned and user assigned identities at the same time. Please specify either EnableSystemAssignedIdentity or UserAssignedIdentity, but not both.", $"{nameof(EnableSystemAssignedIdentity)}, {nameof(UserAssignedIdentity)}");
+                }
+                else
+                {
+                    if (currentIdentity?.Type == ManagedIdentityType.SystemAssigned)
+                    {
+                        // No change
+                        return currentIdentity;
+                    }
+                    return new ManagedIdentity(type: ManagedIdentityType.SystemAssigned);
+                }
+            }
+            else
+            {
+                if (hasUserAssignedIdentity)
+                {
+                    return new ManagedIdentity(type: ManagedIdentityType.UserAssigned, userAssignedIdentities: UserAssignedIdentity == null ? currentIdentity.UserAssignedIdentities : UserAssignedIdentity.ToDictionary(id => id, id => new UserAssignedIdentityProperty()));
+                }
+                else
+                {
+                    // Disable identity
+                    return null;
+                }
+            }
         }
 
         private void AddOrUpdateServiceMode(SignalRResource signalR, string ServiceMode)

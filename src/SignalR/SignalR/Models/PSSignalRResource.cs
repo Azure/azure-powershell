@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public PSServerlessUpstreamSettings Upstream { get; }
 
+        public PSManagedIdentity Identity { get; }
+
         public PSSignalRResource(SignalRResource signalR)
             : base(signalR)
         {
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             Version = signalR.Version;
             NetworkAcls = new PSSignalRNetworkAcls(signalR.NetworkAcLs);
             Upstream = new PSServerlessUpstreamSettings(signalR.Upstream);
+            Identity = signalR.Identity == null ? null : new PSManagedIdentity(signalR.Identity);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR" + "NetworkAcl", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRNetworkAcls))]
     public class UpdateAzureRmSignalRNetworkAcl : SignalRCmdletBase,
-IWithResourceId, IWithInputObject
+IWithResourceId, IWithSignalRInputObject
     {
         private const string ClientConnection = "ClientConnection";
         private const string ServerConnection = "ServerConnection";
@@ -116,7 +116,7 @@ IWithResourceId, IWithInputObject
                         this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        this.LoadFromInputObject();
+                        this.LoadFromSignalRInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);

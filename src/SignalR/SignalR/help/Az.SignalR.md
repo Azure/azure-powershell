@@ -14,6 +14,12 @@ Cmdlets to interact with the Azure SignalR service or Web PubSub service.
 ### [Get-AzSignalR](Get-AzSignalR.md)
 Get a specific SignalR service or all the SignalR services in a resource group or a subscription.
 
+### [Get-AzSignalRCustomCertificate](Get-AzSignalRCustomCertificate.md)
+{{ Fill in the Synopsis }}
+
+### [Get-AzSignalRCustomDomain](Get-AzSignalRCustomDomain.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzSignalRKey](Get-AzSignalRKey.md)
 Get the access keys of a SignalR service.
 
@@ -44,6 +50,12 @@ List resource usage quotas by location.
 ### [New-AzSignalR](New-AzSignalR.md)
 Create a SignalR service.
 
+### [New-AzSignalRCustomCertificate](New-AzSignalRCustomCertificate.md)
+Create or update a custom certificate for a SignalR service.
+
+### [New-AzSignalRCustomDomain](New-AzSignalRCustomDomain.md)
+Create or update a custom domain for a SignalR service.
+
 ### [New-AzSignalRKey](New-AzSignalRKey.md)
 Regenerate an access key for a SignalR service.
 
@@ -72,6 +84,12 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 ### [Remove-AzSignalR](Remove-AzSignalR.md)
 Remove a SignalR service.
 
+### [Remove-AzSignalRCustomCertificate](Remove-AzSignalRCustomCertificate.md)
+Remove a custom certificate from a SignalR service.
+
+### [Remove-AzSignalRCustomDomain](Remove-AzSignalRCustomDomain.md)
+Remove a custom domain from a SignalR service.
+
 ### [Remove-AzWebPubSub](Remove-AzWebPubSub.md)
 Operation to delete a resource.
 
@@ -94,13 +112,19 @@ Operation to restart a resource.
 Set the upstream settings of a SignalR service.
 
 ### [Test-AzSignalRName](Test-AzSignalRName.md)
-Check the availability of a name. Alias: Test-AzSignal.
+Check whether a name is available. Alias: Test-AzSignal.
 
 ### [Test-AzWebPubSubNameAvailability](Test-AzWebPubSubNameAvailability.md)
 Checks that the resource name is valid and is not already in use.
 
 ### [Update-AzSignalR](Update-AzSignalR.md)
 Update a SignalR service.
+
+### [Update-AzSignalRCustomCertificate](Update-AzSignalRCustomCertificate.md)
+{{ Fill in the Synopsis }}
+
+### [Update-AzSignalRCustomDomain](Update-AzSignalRCustomDomain.md)
+{{ Fill in the Synopsis }}
 
 ### [Update-AzSignalRNetworkAcl](Update-AzSignalRNetworkAcl.md)
 Update the Network ACL of a SignalR service.

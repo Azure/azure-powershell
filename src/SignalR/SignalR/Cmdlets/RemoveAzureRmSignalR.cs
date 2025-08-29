@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
+    public class RemoveAzureRmSignalR : SignalRCmdletBase, IWithSignalRInputObject, IWithResourceId
     {
         [Parameter(
             Mandatory = false,
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        this.LoadFromInputObject();
+                        this.LoadFromSignalRInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);

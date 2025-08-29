@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(bool))]
-    public class RestartAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
+    public class RestartAzureRmSignalR : SignalRCmdletBase, IWithSignalRInputObject, IWithResourceId
     {
         [Parameter(
             Mandatory = false,
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        this.LoadFromInputObject();
+                        this.LoadFromSignalRInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);

@@ -39,6 +39,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Management.Sdk", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SignalR", "..\..\generated\SignalR\SignalR.Autorest\Az.SignalR.csproj", "{E5C9CEA3-07E6-422A-8DF2-F3FA55A118AB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.mcp.json = .mcp.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,5 +129,8 @@ Global
 		{91F7CDFC-38C6-4206-8330-014187246C36} = {3AB1C037-53CB-47A9-B4D8-9CD7206FC794}
 		{DF707E64-B446-4990-B370-6711A1A37BBA} = {3AB1C037-53CB-47A9-B4D8-9CD7206FC794}
 		{6A99E1E4-75EC-4C44-803E-752A58A42475} = {61317C04-CCD9-43A1-A26E-64C9EE84B25D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B867E92A-5FA5-4C14-99E9-38880FBD59D9}
 	EndGlobalSection
 EndGlobal
