@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzNginxCertificate
 
 ## SYNOPSIS
-Create or update the NGINX certificates for given NGINX deployment
+Create the NGINX certificates for given NGINX deployment
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
  -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String>
@@ -19,8 +20,29 @@ New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupNam
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityNginxDeploymentExpanded
+```
+New-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String> [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update the NGINX certificates for given NGINX deployment
+Create the NGINX certificates for given NGINX deployment
 
 ## EXAMPLES
 
@@ -59,7 +81,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -90,7 +112,37 @@ The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -105,7 +157,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -120,7 +172,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -135,7 +187,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
@@ -160,6 +212,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NginxDeploymentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+Parameter Sets: CreateViaIdentityNginxDeploymentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -181,7 +248,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -196,7 +263,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -242,9 +309,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxCertificate
 
 ## NOTES
 

@@ -38,27 +38,24 @@ root-module-name: $(prefix).Nginx
 title: Nginx
 module-version: 0.1.0
 subject-prefix: Nginx
-nested-object-to-string: true
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+flatten-userassignedidentity: false
+disable-transform-identity-type: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update|Analysis)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
   - where:
       subject: Configuration|Certificate|Deployment
       verb: Set
     remove: true
+  - where:
+      subject: Deployment
+      variant: CreateExpanded|UpdateExpanded|UpdateViaIdentityExpanded
+    hide: true
   # ProvisioningState readonly
   - from: swagger-document
     where: $.definitions.ProvisioningState
@@ -82,7 +79,32 @@ directive:
           "name": "ProvisioningState"
         }
       }
-  # Required properties for deployment
+  # Required properties for 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}"].put.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/DeploymentNameParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NginxDeployment"
+            }
+          }
+        ]
   - from: swagger-document
     where: $.definitions.NginxDeploymentProperties
     transform: >-
@@ -175,6 +197,39 @@ directive:
       }
   # Required properties for Certificates
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}"].put.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/DeploymentNameParameter"
+          },
+          {
+            "in": "path",
+            "name": "certificateName",
+            "description": "The name of certificate",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "The certificate",
+            "schema": {
+              "$ref": "#/definitions/NginxCertificate"
+            }
+          }
+        ]
+  - from: swagger-document
     where: $.definitions.NginxCertificate
     transform: >-
       return {
@@ -234,75 +289,10 @@ directive:
         ]
       }
   - model-cmdlet:
-    - NginxConfigurationFile
-    - NginxPrivateIPAddress
-    - NginxPublicIPAddress
-    # - NginxNetworkProfile
+    - model-name: NginxConfigurationFile
+    - model-name: NginxPrivateIPAddress
+    - model-name: NginxPublicIPAddress
+    - model-name: NginxNetworkProfile
   - no-inline:
     - NginxNetworkProfile
-  - where:
-      verb: Get|Update|New
-      subject: Configuration
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - File
-          - ProtectedFile
-          - PackageProtectedFile
-        new-output-properties:
-          - File
-          - ProtectedFile
-          - PackageProtectedFile
-        change-description: The types of the properties File, ProtectedFile and PackageProtectedFile will be changed from fixed array to 'List'.
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-  - where:
-      verb: Get|Update|New
-      subject: Deployment
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateIPAddress
-          - PublicIPAddress
-          - AutoScaleSettingProfile
-        new-output-properties:
-          - PrivateIPAddress
-          - PublicIPAddress
-          - AutoScaleSettingProfile
-        change-description: The types of the properties PrivateIPAddress, ProtectedFile and AutoScaleSettingProfile will be changed from fixed array to 'List'.
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-  - where:
-      verb: Invoke
-      subject: AnalysisConfiguration
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - DataError
-        new-output-properties:
-          - DataError
-        change-description: The type of the property DataError will be changed from fixed array to 'List'.
-        deprecated-by-version: 7.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-  - where:
-      verb: Invoke
-      subject: AnalysisConfiguration
-      variant: ^Analysis$|^AnalysisViaIdentity$
-    set:
-      breaking-change:
-        change-description: The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed.
-        deprecated-by-version: 7.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-  - where:
-      parameter-name: IdentityType|IdentityUserAssignedIdentity
-    set:
-      breaking-change:
-        change-description: The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity.
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```

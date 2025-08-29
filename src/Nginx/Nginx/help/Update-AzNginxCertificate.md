@@ -1,54 +1,57 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxcertificate
+online version: https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzNginxCertificate
+# Update-AzNginxCertificate
 
 ## SYNOPSIS
-Deletes a certificate from the NGINX deployment
+Update the NGINX certificates for given NGINX deployment
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>]
+ [-KeyVirtualPath <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityNginxDeployment
+### UpdateViaIdentityNginxDeploymentExpanded
 ```
-Remove-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>] [-KeyVirtualPath <String>]
+ [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzNginxCertificate -InputObject <INginxIdentity> [-CertificateVirtualPath <String>]
+ [-KeyVaultSecretId <String>] [-KeyVirtualPath <String>] [-Location <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a certificate from the NGINX deployment
+Update the NGINX certificates for given NGINX deployment
 
 ## EXAMPLES
 
-### Example 1: Remove a certificate of NGINX deployment by name
+### Example 1: Create a certificate for a NGINX deployment
 ```powershell
-Remove-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg
+Update-AzNginxCertificate -DeploymentName nginx-test -Name cert-test -ResourceGroupName nginx-test-rg -CertificateVirtualPath /etc/nginx/test.cert -KeyVirtualPath /etc/nginx/test.key -KeyVaultSecretId https://tests-kv.vault.azure.net/secrets/newcert
 ```
 
-This command removes a certificate of NGINX deployment by name
-
-### Example 2: Remove a certificate of NGINX deployment by object
-```powershell
-Get-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg | Remove-AzNginxCertificate
+```output
+Location Name
+-------- ----
+         cert-test
 ```
 
-This command remove a certificate of NGINX deployment by object
+This command creates a certificate for a NGINX deployment.
 
 ## PARAMETERS
 
@@ -57,6 +60,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateVirtualPath
+.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +106,7 @@ The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -103,7 +121,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -113,12 +131,57 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -KeyVaultSecretId
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVirtualPath
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityNginxDeployment
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNginxDeploymentExpanded
 Aliases: CertificateName
 
 Required: True
@@ -133,7 +196,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-Parameter Sets: DeleteViaIdentityNginxDeployment
+Parameter Sets: UpdateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -158,28 +221,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -194,7 +242,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -244,9 +292,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxCertificate
 
 ## NOTES
 
 ## RELATED LINKS
-
