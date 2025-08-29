@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -60,6 +61,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Mandatory = true, HelpMessage = "The pool information for the job.")]
         [ValidateNotNullOrEmpty]
+        [GenericBreakingChangeWithVersion("The following properties of the PSPoolSpecification class found under the PSPoolInformation class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
         public PSPoolInformation PoolInformation { get; set; }
 
         [Parameter]

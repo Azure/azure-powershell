@@ -34,12 +34,13 @@ namespace Microsoft.Azure.Commands.Batch
         public string JobId { get; set; }
 
         [Parameter(
-            Position = 0, 
+            Position = 0,
             ParameterSetName = Constants.ParentObjectParameterSet,
             ValueFromPipeline = true,
             HelpMessage = "Specifies the job that contains tasks that this cmdlet gets. To obtain a **PSCloudJob** object, use the Get-AzBatchJob cmdlet."
         )]
         [ValidateNotNullOrEmpty]
+        [GenericBreakingChangeWithVersion("The following properties of the PSPoolSpecification class found under the PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
         public PSCloudJob Job { get; set; }
 
         protected override void ExecuteCmdletImpl()

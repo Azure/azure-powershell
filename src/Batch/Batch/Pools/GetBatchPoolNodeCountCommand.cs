@@ -31,9 +31,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, 
+        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet,
             ValueFromPipeline = true, Mandatory = false, HelpMessage = "The pool object for which to get node counts.")]
         [ValidateNotNullOrEmpty]
+        [GenericBreakingChangeWithVersion("The following properties of PSCloudPool are being deprecated: CurrentNodeCommunicationMode, TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
         public PSCloudPool Pool { get; set; }
 
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet), ValidateRange(1, defaultMaxCount)]

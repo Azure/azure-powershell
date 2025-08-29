@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Batch.Models;
 using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(Mandatory = true, HelpMessage = "Specifies details of the jobs to be created on this schedule.")]
         [ValidateNotNullOrEmpty]
+        [GenericBreakingChangeWithVersion("The following properties of the PSPoolSpecification class found under the PSJobSpecification class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
         public PSJobSpecification JobSpecification { get; set; }
 
         [Parameter]
