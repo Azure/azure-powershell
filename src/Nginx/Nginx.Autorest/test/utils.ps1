@@ -31,8 +31,6 @@ function Start-TestSleep {
     }
 }
 
-#$DebugPreference = "Continue"
-
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -60,8 +58,8 @@ function setupEnv() {
     $env.vnet = ("testvnet" + $testNumber)
     $env.subnet = "default"
     $env.userAssignedMI = ("testusermi" + $testNumber)
-    $env.keyvault = "testkv0721"
-    $env.kvgroup = "joyer-test"
+    $env.keyvault = "testkv0829"
+    $env.kvgroup = "nginx-test"
     $env.delegation = "NGINX.NGINXPLUS/nginxDeployments"
 
     Write-Host "setting up env for AzNginx testing"
@@ -75,16 +73,16 @@ function setupEnv() {
 
     # create key vault
     try {
+        # add Key Vault Administrator role
+        # $keyVaultId = $keyVault.ResourceId
+        # $roleDefinition = Get-AzRoleDefinition -Name "Key Vault Administrator"
+        # $userobjectId = (Get-AzAdUser -SignedIn).Id
+        # New-AzRoleAssignment -ObjectId $userobjectId -RoleDefinitionId $roleDefinition.Id -Scope $keyVaultId
         $keyvault = Get-AzKeyVault -Name $env.keyvault -ResourceGroupName $env.kvgroup -ErrorAction Stop
         Write-Host "Get created key vault"
     } catch {
         Write-Host "Creating Key Vault"
         $keyvault = New-AzKeyVault -Name $env.keyvault -ResourceGroupName $env.resourceGroup -Location $env.location
-        # add Key Vault Administrator role
-        # $keyVaultId = $keyVault.ResourceId
-        # $roleDefinition = Get-AzRoleDefinition -Name "Key Vault Administrator"
-        # $userobjectId = (Get-AzAdUser -SignedIn).Id
-        # $null = New-AzRoleAssignment -ObjectId $userobjectId -RoleDefinitionId $roleDefinition.Id -Scope $keyVaultId
         # create a self-signed certificate in key vault
         $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=nginxpwshtesting.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
         $certKV = Add-AzKeyVaultCertificate -VaultName $env.keyvault -Name $env.nginxCert -CertificatePolicy $Policy
@@ -128,13 +126,13 @@ function setupEnv() {
     # delegate the subnet to NGINX.NGINXPLUS/
     $subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.subnet -VirtualNetwork $virtualNetwork
     $subnet = Add-AzDelegation -Name "delegation" -ServiceName $env.delegation -Subnet $subnet
-    Set-AzVirtualNetwork -VirtualNetwork $virtualNetwork
+    $virtualNetwork = Set-AzVirtualNetwork -VirtualNetwork $virtualNetwork
 
     # create the nginxaas resource
     $env.PublicIPAddress = $publicIp.Id
     $subnetId = "/subscriptions/$($env.subscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.vnet)/subnets/$($env.subnet)"
     $IPConfiguration = New-AzNginxPublicIPAddressObject -Id $publicIp.Id
-    Write-Host "IPAddress: $IPConfiguration.Id SubnetId: $($subnetId)"
+    # Write-Host "IPAddress: $IPConfiguration.Id SubnetId: $($subnetId)"
     $networkProfile = New-AzNginxNetworkProfileObject -FrontEndIPConfiguration @{PublicIPAddress = @($IPConfiguration) } -NetworkInterfaceConfiguration @{SubnetId = $subnetId }
     $nginxDeployment = New-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup -Location $env.location -NetworkProfile $networkProfile -SkuName standardv2_Monthly_gmz7xq9ge3py -EnableSystemAssignedIdentity
     $nginxDeployment.ProvisioningState | Should -Be "Succeeded"

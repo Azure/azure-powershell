@@ -14,10 +14,10 @@ Create the NGINX deployment
 
 ### CreateExpanded (Default)
 ```
-New-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -Location <String>
+ -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-SubscriptionId <String>]
  [-AutoScaleSettingProfile <IScaleProfile[]>] [-EnableDiagnosticsSupport] [-EnableSystemAssignedIdentity]
- [-Location <String>] [-ManagedResourceGroup <String>] [-NetworkProfile <INginxNetworkProfile>]
- [-ScalingPropertyCapacity <Int32>] [-SkuName <String>] [-StorageAccountContainerName <String>]
+ [-ManagedResourceGroup <String>] [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>]
  [-StorageAccountName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -171,7 +171,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,7 +216,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxNetworkProfile
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -277,7 +277,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

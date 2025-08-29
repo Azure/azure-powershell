@@ -15,17 +15,16 @@ Create the NGINX certificates for given NGINX deployment
 ### CreateExpanded (Default)
 ```
 New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>]
- [-KeyVirtualPath <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String>
+ [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNginxDeploymentExpanded
 ```
 New-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
- [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>] [-KeyVirtualPath <String>]
- [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String> [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -85,7 +84,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,7 +160,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +175,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

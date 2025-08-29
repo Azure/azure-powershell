@@ -15,8 +15,8 @@ Create the NGINX certificates for given NGINX deployment
 ### CreateExpanded (Default)
 ```
 New-AzNginxCertificate -Name <String> -DeploymentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>]
- [-KeyVirtualPath <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -CertificateVirtualPath <String> -KeyVaultSecretId <String>
+ -KeyVirtualPath <String> [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,9 +37,9 @@ New-AzNginxCertificate -Name <String> -DeploymentName <String> -ResourceGroupNam
 ### CreateViaIdentityNginxDeploymentExpanded
 ```
 New-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
- [-CertificateVirtualPath <String>] [-KeyVaultSecretId <String>] [-KeyVirtualPath <String>]
- [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String> [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +85,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,7 +161,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +176,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
