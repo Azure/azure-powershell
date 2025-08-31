@@ -56,6 +56,7 @@ foreach ($subModule in $subModuleGroup) {
         $endTime = Get-Date
         $result.DurationSeconds = ($endTime - $startTime).TotalSeconds
         $results += $result
+        $result | ConvertTo-Json -Depth 5 | Write-Output
     }
 }
 

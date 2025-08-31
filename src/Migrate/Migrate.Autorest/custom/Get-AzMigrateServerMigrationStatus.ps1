@@ -594,7 +594,7 @@ function Get-AzMigrateServerMigrationStatus {
                 $resourceUtilizationTable = $resourceUtilizationTable | Format-Table -AutoSize | Out-String
                 $op = $output.Add($resourceUtilizationTable)
                 
-                # <To-do> Add Recomendation actions logic for expedite.
+                # <To-do> Add Recommendation actions logic for expedite.
 
                 Write-Host "Based on the resource utilization seen above following are suggestion you can take to expedite server $($ReplicationMigrationItem.MachineName) migration :" -ForegroundColor White
                 Write-Host "1. Pause replication for servers S2, S3, in delta sync who are migrating under appliance A1."

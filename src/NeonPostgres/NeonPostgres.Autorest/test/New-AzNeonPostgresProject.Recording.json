@@ -1,0 +1,137 @@
+{
+  "New-AzNeonPostgresProject+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/test-project?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/test-project?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"branch\": {\r\n      \"entityName\": \"sample-entity\",\r\n      \"parentId\": \"dawn-breeze-86932057\",\r\n      \"roleName\": \"neondb_owner\",\r\n      \"databaseName\": \"sampledb\"\r\n    },\r\n    \"regionId\": \"eastus2\",\r\n    \"pgVersion\": 17\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "252" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/b80760db-cef5-47f1-be0d-c75d86b42960" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "383b6f19-d0e0-47a4-9eef-1981301b2bbe" ],
+        "x-ms-correlation-request-id": [ "eb168471-9568-4329-95f8-54cd3fdf6d8c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T094942Z:eb168471-9568-4329-95f8-54cd3fdf6d8c" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FC388B0242084105BD3FF91C1B07B4A0 Ref B: MAA201060516019 Ref C: 2025-06-12T09:49:41Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:49:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1738" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/test-project\",\"name\":\"test-project\",\"type\":\"neon.postgres/organizations/projects\",\"systemData\":{\"createdBy\":\"Srinivas.Alluri@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-12T09:49:41.9850714Z\",\"lastModifiedBy\":\"Srinivas.Alluri@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-12T09:49:41.9850714Z\"},\"properties\":{\"regionId\":\"eastus2\",\"storage\":0,\"pgVersion\":17,\"historyRetention\":1,\"defaultEndpointSettings\":{\"autoscalingLimitMinCu\":0.25,\"autoscalingLimitMaxCu\":0.25},\"branch\":{\"projectId\":\"aged-voice-85424852\",\"parentId\":null,\"roleName\":null,\"databaseName\":null,\"roles\":null,\"databases\":null,\"endpoints\":null,\"attributes\":null,\"entityId\":\"br-royal-thunder-a8g2128f\",\"entityName\":\"main\",\"createdAt\":\"Jun 12, 2025 9:49 AM\",\"provisioningState\":null},\"roles\":[{\"branchId\":\"br-royal-thunder-a8g2128f\",\"permissions\":null,\"isSuperUser\":false,\"entityId\":null,\"entityName\":\"sampledb_owner\",\"createdAt\":\"Jun 12, 2025 9:49 AM\",\"provisioningState\":\"Succeeded\",\"attributes\":null}],\"databases\":[{\"branchId\":\"br-royal-thunder-a8g2128f\",\"ownerName\":\"sampledb_owner\",\"entityId\":null,\"entityName\":\"sampledb\",\"createdAt\":\"Jun 12, 2025 9:49 AM\",\"provisioningState\":\"Succeeded\",\"attributes\":null}],\"endpoints\":[{\"projectId\":\"aged-voice-85424852\",\"branchId\":\"br-royal-thunder-a8g2128f\",\"endpointType\":\"read_write\",\"entityId\":null,\"entityName\":null,\"createdAt\":\"Jun 12, 2025 9:49 AM\",\"provisioningState\":\"Succeeded\",\"attributes\":null}],\"entityId\":\"aged-voice-85424852\",\"entityName\":\"test-project\",\"createdAt\":\"Jun 12, 2025 9:49 AM\",\"provisioningState\":\"Succeeded\",\"attributes\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNeonPostgresProject+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/test-project?api-version=2025-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/test-project?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "31ebebd0-4c84-4830-8aad-28e7575b9be6" ],
+        "CommandName": [ "New-AzNeonPostgresProject" ],
+        "FullCommandName": [ "New-AzNeonPostgresProject_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/6fae0bb3-ad03-489e-a00f-a8dae66ea8c7" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "c88093cb-8696-4c0e-92c5-a61f53ff8d3d" ],
+        "x-ms-correlation-request-id": [ "301076b0-8374-4e56-948a-2ca5a475c8fd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T095015Z:301076b0-8374-4e56-948a-2ca5a475c8fd" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4202C86EC3864B2BAA9D8225B70C684A Ref B: MAA201060516019 Ref C: 2025-06-12T09:50:13Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:50:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "273" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceReadFailed\",\"message\":\"Project properties get failed for resource id /subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1 failed with error user has no access to projects\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNeonPostgresProject+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/test-project?api-version=2025-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/test-project?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "31ebebd0-4c84-4830-8aad-28e7575b9be6" ],
+        "CommandName": [ "New-AzNeonPostgresProject" ],
+        "FullCommandName": [ "New-AzNeonPostgresProject_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/b1fe561b-5043-4f65-a0d2-b56dd7bb87bb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "789ea22f-ee07-4cb1-93f1-1b3116bae3f7" ],
+        "x-ms-correlation-request-id": [ "889a3722-7d12-4a0d-98e0-67f937275c2b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T095015Z:889a3722-7d12-4a0d-98e0-67f937275c2b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A40FBF57E3E1450CA52189292AF25F26 Ref B: MAA201060516019 Ref C: 2025-06-12T09:50:15Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:50:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "273" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceReadFailed\",\"message\":\"Project properties get failed for resource id /subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1 failed with error user has no access to projects\"}}",
+      "isContentBase64": false
+    }
+  }
+}

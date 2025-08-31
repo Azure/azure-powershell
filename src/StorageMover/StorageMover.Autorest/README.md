@@ -101,13 +101,13 @@ directive:
       verb: Remove
       subject: Agent
     hide: true
-  # Remove paramater sets Create and CreateViaIdentity
+  # Remove parameter sets Create and CreateViaIdentity
   - where: 
       verb: New 
       subject: Endpoint 
       variant: ^Create$|^CreateViaIdentity$
     remove: true
-  # Remove paramater set Update and UpdateViaIdentity
+  # Remove parameter set Update and UpdateViaIdentity
   - where:
       verb: Update
       subject: Endpoint 
@@ -164,4 +164,78 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData');
+
+  - where:
+      verb: Get|Update
+      subject: Agent
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - UploadLimitScheduleWeeklyRecurrence
+        new-output-properties:
+          - UploadLimitScheduleWeeklyRecurrence
+        change-description: The type of the property UploadLimitScheduleWeeklyRecurrence will be changed from fixed array to 'List'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: New
+      subject: JobDefinition
+      variant: Create
+    set:
+      breaking-change:
+        change-description: The parameter set Create will be removed. Suggest to use CreateExpanded and CreateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: New
+      subject: Project
+      variant: Create
+    set:
+      breaking-change:
+        change-description: The parameter set Create will be removed. Suggest to use CreateExpanded and CreateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: StorageMover
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: Agent
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: JobDefinition
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: Project
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```

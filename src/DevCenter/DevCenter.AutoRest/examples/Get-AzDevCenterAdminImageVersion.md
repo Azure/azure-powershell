@@ -2,7 +2,7 @@
 ```powershell
 Get-AzDevCenterAdminImageVersion -ResourceGroupName testRg -DevCenterName Contoso -ImageName ContosoBaseImage -GalleryName StandardGallery
 ```
-This command lists the image verions for the image "ContosoBaseImage" under the gallery "StandardGallery". 
+This command lists the image versions for the image "ContosoBaseImage" under the gallery "StandardGallery". 
 
 ### Example 2: Get an image version
 ```powershell

@@ -11,6 +11,18 @@ Locale: en-US
 This topic displays the help topics for the Azure Compute Cmdlets.
 
 ## Az.Compute Cmdlets
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity](Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity.md)
+Adds a Rules Identity to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege](Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege.md)
+Adds a Rules Privilege to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesRole](Add-AzGalleryInVMAccessControlProfileVersionRulesRole.md)
+Adds a Rules Role to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment](Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment.md)
+Adds a Rules Role Assignment to a PSGalleryInVmAccessControlProfileVersion object.
+
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
 Adds a data disk to an image object.
 
@@ -58,6 +70,9 @@ Adding Run Command to VMSS instances
 
 ### [Add-AzVmssSecret](Add-AzVmssSecret.md)
 Adds a secret to a VMSS.
+
+### [Add-AzVmssSkuProfileVMSize](Add-AzVmssSkuProfileVMSize.md)
+Add a VM size into VMSS Sku Profile for VMSS Instance Mix.
 
 ### [Add-AzVmssSshPublicKey](Add-AzVmssSshPublicKey.md)
 Adds SSH public keys to the VMSS.
@@ -121,6 +136,12 @@ Get or list gallery image definitions.
 
 ### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
 Get or list gallery image versions.
+
+### [Get-AzGalleryInVMAccessControlProfile](Get-AzGalleryInVMAccessControlProfile.md)
+Gets the specified gallery inVMAccessControlProfile or a list of gallery inVMAccessControlProfiles from the specified gallery.
+
+### [Get-AzGalleryInVMAccessControlProfileVersion](Get-AzGalleryInVMAccessControlProfileVersion.md)
+Gets the specified version of a gallery inVMAccessControlProfile or a list of versions from the specified gallery inVMAccessControlProfile.
 
 ### [Get-AzHost](Get-AzHost.md)
 Get or list hosts.
@@ -248,9 +269,6 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
-### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
-Generates placement scores for Spot VM skus.
-
 ### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
 Generates placement scores for Spot VM skus.
 
@@ -313,6 +331,15 @@ Create a gallery image definition.
 
 ### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
 Create a gallery image version.
+
+### [New-AzGalleryInVMAccessControlProfile](New-AzGalleryInVMAccessControlProfile.md)
+Creates a new gallery inVMAccessControlProfile.
+
+### [New-AzGalleryInVMAccessControlProfileVersion](New-AzGalleryInVMAccessControlProfileVersion.md)
+Creates a new version of a gallery inVMAccessControlProfile.
+
+### [New-AzGalleryInVMAccessControlProfileVersionConfig](New-AzGalleryInVMAccessControlProfileVersionConfig.md)
+Creates a local PSGalleryInVmAccessControlProfileVersion object.
 
 ### [New-AzHost](New-AzHost.md)
 Creates a  host.
@@ -422,6 +449,24 @@ Delete a gallery image definition.
 ### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
 Delete a gallery image version.
 
+### [Remove-AzGalleryInVMAccessControlProfile](Remove-AzGalleryInVMAccessControlProfile.md)
+Removes a gallery inVMAccessControlProfile.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersion](Remove-AzGalleryInVMAccessControlProfileVersion.md)
+Removes a specific version of a gallery inVMAccessControlProfile.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity](Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity.md)
+Removes a Rules Identity from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege](Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege.md)
+Removes a Rules Privilege from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesRole](Remove-AzGalleryInVMAccessControlProfileVersionRulesRole.md)
+Removes a Rules Role from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment](Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment.md)
+Removes a Rules Role Assignment from a PSGalleryInVmAccessControlProfileVersion object.
+
 ### [Remove-AzHost](Remove-AzHost.md)
 Removes a host.
 
@@ -517,6 +562,9 @@ Removes a network interface configuration from a VMSS.
 
 ### [Remove-AzVmssRunCommand](Remove-AzVmssRunCommand.md)
 Remove VMSS RunCommand
+
+### [Remove-AzVmssSkuProfileVMSize](Remove-AzVmssSkuProfileVMSize.md)
+Remove a VM size from VMSS Sku Profile for VMSS Instance Mix.
 
 ### [Remove-AzVmssVMDataDisk](Remove-AzVmssVMDataDisk.md)
 Removes a data disk from a virtual machine scale set VM
@@ -635,6 +683,9 @@ Sets the operating system disk properties on a virtual machine.
 ### [Set-AzVMPlan](Set-AzVMPlan.md)
 Sets the Marketplace plan information on a virtual machine.
 
+### [Set-AzVMProxyAgentSetting](Set-AzVMProxyAgentSetting.md)
+Sets the Proxy Agent settings properties for a PSVirtualMachine object.
+
 ### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
 The operation to create or update the run command.
 
@@ -661,6 +712,9 @@ Sets the orchestration service state for the VMSS.
 
 ### [Set-AzVmssOsProfile](Set-AzVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
+
+### [Set-AzVmssProxyAgentSetting](Set-AzVmssProxyAgentSetting.md)
+Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 
 ### [Set-AzVmssRollingUpgradePolicy](Set-AzVmssRollingUpgradePolicy.md)
 Sets the VMSS rolling upgrade policy properties.
@@ -736,6 +790,12 @@ Update a gallery image definition.
 
 ### [Update-AzGalleryImageVersion](Update-AzGalleryImageVersion.md)
 Update a gallery image version.
+
+### [Update-AzGalleryInVMAccessControlProfile](Update-AzGalleryInVMAccessControlProfile.md)
+Updates a gallery inVMAccessControlProfile.
+
+### [Update-AzGalleryInVMAccessControlProfileVersion](Update-AzGalleryInVMAccessControlProfileVersion.md)
+Updates a specific version of a gallery inVMAccessControlProfile.
 
 ### [Update-AzHost](Update-AzHost.md)
 Updates the Dedicated Host.

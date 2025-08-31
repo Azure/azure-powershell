@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new custom domain within an endpoint.
+Create a new custom domain within an endpoint.
 .Description
-create a new custom domain within an endpoint.
+Create a new custom domain within an endpoint.
 .Example
 New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 -HostName 'testcm.dev.cdn.azure.cn'
 

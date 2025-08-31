@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (!rootResult.Result)
                 {
-                    this._Helper.WriteHost("The script found some configuration issues. Please run the Set-AzVMAEMExtension commandlet to update the configuration of the virtual machine!");
+                    this._Helper.WriteHost("The script found some configuration issues. Please run the Set-AzVMAEMExtension cmdlet to update the configuration of the virtual machine!");
                 }
 
                 this._Helper.WriteVerbose("TestAzureRmVMAEMExtension Done (" + rootResult.Result + ")");

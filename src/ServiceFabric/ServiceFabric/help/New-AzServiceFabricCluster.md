@@ -273,7 +273,7 @@ Azure key vault resource group name, if not given it will be defaulted to resour
 ```yaml
 Type: System.String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases: KeyVaultResouceGroupName
+Aliases: KeyVaultResourceGroupName
 
 Required: False
 Position: Named
@@ -428,7 +428,7 @@ Accept wildcard characters: False
 ```
 
 ### -Thumbprint
-The thumbprint for the certificate correspoinding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retreive the thumbprint.
+The thumbprint for the certificate corresponding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retrieve the thumbprint.
 
 ```yaml
 Type: System.String

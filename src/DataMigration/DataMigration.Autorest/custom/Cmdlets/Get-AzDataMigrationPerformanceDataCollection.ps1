@@ -137,7 +137,7 @@ function Get-AzDataMigrationPerformanceDataCollection
                     'staticQueryIntervalInSec'= $StaticQueryInterval
                     'numberOfIterations'= $NumberOfIterations
                     }
-                    # removing empty key,vallue pairs from $jsonHash
+                    # removing empty key,value pairs from $jsonHash
                     if($OutputFolder -eq "")
                     {
                         $jsonHash.Remove('outputfolder')

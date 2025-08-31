@@ -380,5 +380,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyComputedDisabledRules");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyComputedDisabledRules()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyComputedDisabledRules");
+        }
     }
 }

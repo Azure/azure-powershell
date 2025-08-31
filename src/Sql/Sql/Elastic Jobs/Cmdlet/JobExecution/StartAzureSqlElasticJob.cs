@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Generates the model from user input.
         /// </summary>
-        /// <param name="model">This is null since the job execuution doesn't exist yet</param>
+        /// <param name="model">This is null since the job execution doesn't exist yet</param>
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<AzureSqlElasticJobExecutionModel> ApplyUserInputToModel(IEnumerable<AzureSqlElasticJobExecutionModel> model)
         {

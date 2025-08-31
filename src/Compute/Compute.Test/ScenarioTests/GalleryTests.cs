@@ -85,5 +85,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("TestGen-BlockDeletionBeforeEndOfLife");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestInVMAccessControlProfileVersion()
+        {
+            TestRunner.RunTestScript("Test-InVMAccessControlProfileVersion");
+        }
+
     }
 }

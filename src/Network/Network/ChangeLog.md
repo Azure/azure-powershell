@@ -19,12 +19,12 @@
 --->
 
 ## Upcoming Release
-* Onboarded Application Gateway WAF Exceptions cmdlet.
-    - `New-AzApplicationGatewayFirewallPolicyException`  
 * Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
     - `New-AzApplicationGatewayBackendHttpSetting`
     - `Add-AzApplicationGatewayBackendHttpSetting`
     - `Set-AzApplicationGatewayBackendHttpSetting`
+
+## Version 7.19.1
 * Added a read-only property `ComputedDisabledRules` to `ApplicationGatewayFirewallPolicyManagedRuleSet`. This property shows which rules are effectively disabled, based on both user-defined WAF policy overrides and the default state of the rules in the managed ruleset.
     * Primary affected Cmdlet (returns the modified object directly):
         - `New-AzApplicationGatewayFirewallPolicyManagedRuleSet`
@@ -33,7 +33,23 @@
         - `Get-AzApplicationGatewayFirewallPolicy`
         - `Set-AzApplicationGatewayFirewallPolicy`
         - `New-AzApplicationGatewayFirewallPolicy`
+* Onboarded FileShares to Private Link Common Cmdlets
+* Updated Api version for StorageSync to Private Link Common Cmdlets
 
+
+## Version 7.19.0
+* Returned appgw and agc in waf policy
+* Updated cmdlet `New-AzFirewallPolicyApplicationRule` to use HTTPS as the default protocol when creating a new FQDN Tag application rule.
+* Added `EnableDnstapLogging` parameter to `New-AzFirewall`
+* Added cmdlet 'Set-AzNetworkManagerIpamPoolStaticCidr to enable updating an IPAM pool's static cidr address prefix space or description
+
+## Version 7.18.0
+* Added a new command which creates an object for CaptureSetting, and added properties 'FileCount', 'FileSizeInBytes', and 'SessionTimeLimitInSeconds', which helps to configure the capture setting for packet capture as well as support for it for the following cmdlets:
+	- `New-AzPacketCaptureSettingsConfig`
+* Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSetting' reference in Packet capture V2 command, as well as support for it for the following cmdlets:
+    - `New-AzNetworkWatcherPacketCaptureV2`
+* Onboarded Application Gateway WAF Exceptions cmdlet.
+    - `New-AzApplicationGatewayFirewallPolicyException`
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:

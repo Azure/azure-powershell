@@ -528,7 +528,7 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location $secondAdditionalRegionLocation `
                                 -Capacity $newAdditionalRegionCapacity -Sku $sku -Zone "1" -DisableGateway $false
 
-        # Set the ApiManagement service and Enable Msi idenity on the service
+        # Set the ApiManagement service and Enable Msi identity on the service
         $updatedService = Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity -UserAssignedIdentity $userIdentities -PassThru
         Assert-AreEqual $resourceGroupName $updatedService.ResourceGroupName
         Assert-AreEqual $apiManagementName $updatedService.Name

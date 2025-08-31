@@ -108,7 +108,7 @@ TASK <ICustomizationTask[]>: Tasks to apply.
   [RunAs <CustomizationTaskExecutionAccount?>]: What account to run the task as.
   [TimeoutInSecond <Int32?>]: Timeout, in seconds. Overrides any timeout provided on the task definition.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/test-azdevcenteruserdevboxcustomizationtaskaction
+https://learn.microsoft.com/powershell/module/az.devcenter/test-azdevcenteruserdevboxcustomizationtaskaction
 #>
 function Test-AzDevCenterUserDevBoxCustomizationTaskAction {
 [OutputType([System.Boolean])]

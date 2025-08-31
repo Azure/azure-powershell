@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid netwok mapping details..
+        ///   Looks up a localized string similar to Invalid network mapping details..
         /// </summary>
         internal static string InvalidNetworkMappingDetails {
             get {
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Protectectable Item&quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
+        ///   Looks up a localized string similar to Protectable Item&quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
         /// </summary>
         internal static string ProtectableItemNotFound {
             get {
@@ -1299,7 +1299,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsupported Replication Reprotect Scenerio..
+        ///   Looks up a localized string similar to Unsupported Replication Reprotect Scenario..
         /// </summary>
         internal static string UnsupportedReplicationReprotectScenerio {
             get {
