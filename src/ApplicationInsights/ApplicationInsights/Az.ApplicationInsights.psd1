@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.3.0'
+ModuleVersion = '2.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,17 +51,17 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 
                'ApplicationInsights.Autorest/bin/Az.ApplicationInsights.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 
@@ -131,7 +131,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ApplicationInsights'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','ApplicationInsights'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -143,7 +143,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded nuget package to signed package.'
+        ReleaseNotes = '* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -156,7 +156,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
