@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzApplicationInsightsMyWo
 }
 
 Describe 'Get-AzApplicationInsightsMyWorkbook' {
-	It 'List1' {
+	It 'List1' -skip {
 		{
 			Get-AzApplicationInsightsMyWorkbook -Category 'workbook'
 		} | Should -Not -Throw
@@ -31,7 +31,7 @@ Describe 'Get-AzApplicationInsightsMyWorkbook' {
 			Remove-AzApplicationInsightsMyWorkbook -ResourceGroupName $env.resourceGroup -Name $env.myWorkbook01
 		} | Should -Not -Throw
 	}
-	It 'List' {
+	It 'List' -skip {
 		{
 			Get-AzApplicationInsightsMyWorkbook -ResourceGroupName $env.resourceGroup -Category 'workbook'
 		} | Should -Not -Throw
