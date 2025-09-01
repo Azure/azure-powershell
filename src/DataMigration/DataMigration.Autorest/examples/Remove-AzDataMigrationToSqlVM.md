@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete the Database Migration resource.
 ```powershell
-{{ Add code here }}
+Remove-AzDataMigrationToSqlVM -ResourceGroupName myRG -SqlVirtualMachineName myVM
+ -TargetDbName myDB
 ```
 
-```output
-{{ Add output here }}
-```
+Delete the SQL DB Database Migration resource.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete the Database Migration resource even if it is in progress 
 ```powershell
-{{ Add code here }}
+Remove-AzDataMigrationToSqlVM -ResourceGroupName myRG -SqlVirtualMachineName myVM
+ -TargetDbName myDB -Force
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Forcibly deletes an ongoing Migration by adding the optional "Force" parameter

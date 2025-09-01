@@ -97,6 +97,8 @@ FunctionsToExport = 'Get-AzDataMigrationAssessment',
                'Remove-AzDataMigrationSqlService', 
                'Remove-AzDataMigrationSqlServiceNode', 
                'Remove-AzDataMigrationToSqlDb', 'Stop-AzDataMigrationToSqlDb', 
+               'Remove-AzDataMigrationToSqlManagedInstance',
+               'Remove-AzDataMigrationToSqlVM',
                'Stop-AzDataMigrationToSqlManagedInstance', 
                'Stop-AzDataMigrationToSqlVM', 'Update-AzDataMigrationSqlService'
 
@@ -113,6 +115,8 @@ CmdletsToExport = 'Get-AzDataMigrationProject', 'Get-AzDataMigrationService',
                'New-AzDataMigrationSyncSelectedDBObject', 
                'New-AzDataMigrationTask', 'Remove-AzDataMigrationProject', 
                'Remove-AzDataMigrationService', 'Remove-AzDataMigrationTask', 
+               'Remove-AzDataMigrationToSqlManagedInstance',
+               'Remove-AzDataMigrationToSqlVM',
                'Start-AzDataMigrationService', 'Stop-AzDataMigrationService', 
                'Stop-AzDataMigrationTask'
 
