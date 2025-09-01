@@ -420,11 +420,58 @@ Preview modules are not included in this list. Read more about [module version t
   - The cmdlet is being deprecated. There will be no replacement for it.
   - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
 
+### `Get-AzBatchJob`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The following properties of the PSPoolSpecification class found under the returned PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+  - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `Get-AzBatchJobSchedule`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The following properties of the PSPoolSpecification class found under the returned PSCloudJobSchedule class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+  - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `Get-AzBatchPool`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.Batch.Models.PSCloudPool' is changing
+  - The following properties in the output type are being deprecated : 'CurrentNodeCommunicationMode' 'TargetNodeCommunicationMode' 'ResourceTags' 'CertificateReferences' 'ApplicationLicenses' 'CloudServiceConfiguration'
+  - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `Get-AzBatchPoolNodeCount`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Pool`
+    - The following properties of PSCloudPool are being deprecated: CurrentNodeCommunicationMode, TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
 ### `Get-AzBatchRemoteDesktopProtocolFile`
 
 - Cmdlet breaking-change will happen to all parameter sets
   - The cmdlet 'Get-AzBatchRemoteLoginSettings' is replacing this cmdlet.
   - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `Get-AzBatchTask`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Job`
+    - The following properties of the PSPoolSpecification class found under the PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `Get-AzBatchTaskCount`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Job`
+    - The following properties of the PSPoolSpecification class found under the PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `Get-AzBatchTaskSlotCount`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Job`
+    - The following properties of the PSPoolSpecification class found under the PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
 
 ### `New-AzBatchCertificate`
 
@@ -432,23 +479,44 @@ Preview modules are not included in this list. Read more about [module version t
   - The cmdlet is being deprecated. There will be no replacement for it.
   - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
 
+### `New-AzBatchJob`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-PoolInformation`
+    - The following properties of the PSPoolSpecification class found under the PSPoolInformation class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `New-AzBatchJobSchedule`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-JobSpecification`
+    - The following properties of the PSPoolSpecification class found under the PSJobSpecification class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
 ### `New-AzBatchPool`
 
 - Parameter breaking-change will happen to all parameter sets
   - `-ApplicationLicenses`
-    - The parameter : 'ApplicationLicense' is changing.
+    - Parameter is being deprecated without being replaced
     - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
   - `-CertificateReferences`
-    - The parameter : 'CertificateReference' is changing.
+    - Parameter is being deprecated without being replaced
     - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
   - `-CloudServiceConfiguration`
-    - The parameter : 'CloudServiceConfiguration' is changing.
+    - Parameter is being deprecated without being replaced
     - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
   - `-ResourceTag`
-    - The parameter : 'ResourceTag' is changing.
+    - Parameter is being deprecated without being replaced
     - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
   - `-TargetNodeCommunicationMode`
-    - The parameter : 'TargetNodeCommunicationMode' is changing.
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `New-AzBatchTask`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Job`
+    - The following properties of the PSPoolSpecification class found under the PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
     - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
 
 ### `Remove-AzBatchCertificate`
@@ -456,6 +524,13 @@ Preview modules are not included in this list. Read more about [module version t
 - Cmdlet breaking-change will happen to all parameter sets
   - The cmdlet is being deprecated. There will be no replacement for it.
   - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
+
+### `Set-AzBatchPool`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Pool`
+    - The following properties of PSCloudPool are being deprecated: CurrentNodeCommunicationMode, TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration
+    - This change is expected to take effect from Az.Batch version: 4.0.0 and Az version: 15.0.0
 
 ### `Stop-AzBatchCertificateDeletion`
 
