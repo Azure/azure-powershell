@@ -24,50 +24,75 @@ namespace AzDev.Models.Inventory
 {
     internal class AutoRestProject : Project
     {
+        private static readonly Regex YamlBlockPattern = new Regex(@"(?ms)```\s*yaml(.*?)```", RegexOptions.Compiled);
+
         protected AutoRestProject(IFileSystem fs, string path) : base(fs, path)
         {
             _lazySwaggers = new Lazy<IEnumerable<SwaggerReference>>(LoadSwaggers);
-            _lazyReadmeText = new Lazy<string>(() => LoadReadme());
+            _lazyReadmeText = new Lazy<string>(LoadReadme);
+            _lazyAutoRestVersion = new Lazy<string>(DetectAutoRestVersion);
+            _lazyConfigs = new Lazy<IEnumerable<AutoRestYamlConfig>>(LoadYamlConfigs);
         }
-        internal AutoRestProject() {}
+        internal AutoRestProject() { }
         public IEnumerable<SwaggerReference> Swaggers => _lazySwaggers.Value;
         private Lazy<IEnumerable<SwaggerReference>> _lazySwaggers;
         private string ReadmeText => _lazyReadmeText.Value;
         private Lazy<string> _lazyReadmeText;
+        public string AutoRestVersion => _lazyAutoRestVersion.Value;
+        private Lazy<string> _lazyAutoRestVersion;
+        private IEnumerable<AutoRestYamlConfig> Configs => _lazyConfigs.Value;
+        private Lazy<IEnumerable<AutoRestYamlConfig>> _lazyConfigs;
 
         public new static AutoRestProject FromFileSystem(IFileSystem fs, string path)
         {
-            return new AutoRestProject(fs, path)
+            var proj = new AutoRestProject(fs, path)
             {
                 Type = ProjectType.AutoRestBased,
                 Name = fs.Path.GetFileName(path)
             };
+            // Populate SubType with detected AutoRest.PowerShell version (v3/v4/Invalid)
+            proj.SubType = proj.AutoRestVersion;
+            return proj;
         }
 
         private IEnumerable<SwaggerReference> LoadSwaggers()
         {
-            Regex yamlBlockPattern = new Regex(@"(?ms)```\s*yaml(.*?)```");
-            var matches = yamlBlockPattern.Matches(ReadmeText);
-            var yamlBlocks = new List<string>();
-            if (matches.Count == 0)
+            if (!Configs.Any())
             {
-                throw new Exception($"No YAML blocks found in README.md for [{Path}]");
+                return Enumerable.Empty<SwaggerReference>();
             }
-            else
+            return Configs.SelectMany(c =>
+                c.InputFile.Concat(c.Require).Concat(c.TryRequire)
+                    .Where(uri => !Conventions.IsAutorestInputButNotSwagger(uri))
+                    .Select(uri => new SwaggerReference(uri, c.Commit)));
+        }
+
+        private string DetectAutoRestVersion()
+        {
+            // Default: v4 if omitted
+            // If present, map 3.x -> v3, 4.x -> v4; otherwise Invalid
+            var configs = Configs;
+            if (!configs.Any())
             {
-                foreach (Match match in matches)
+                return "v4";
+            }
+
+            // Find a key that matches @autorest/powershell in use-extension
+            foreach (var c in configs)
+            {
+                if (c.UseExtension != null && c.UseExtension.Count > 0)
                 {
-                    yamlBlocks.Add(match.Groups[1].Value.Trim());
+                    var kvp = c.UseExtension.FirstOrDefault(k => k.Key.Replace("\"", string.Empty).Equals("@autorest/powershell", StringComparison.OrdinalIgnoreCase));
+                    if (!string.IsNullOrEmpty(kvp.Key))
+                    {
+                        var val = kvp.Value?.Trim();
+                        return Conventions.MapAutoRestPowerShellVersion(val);
+                    }
                 }
             }
 
-            var swaggers = new List<SwaggerReference>();
-            return yamlBlocks.Select(y => YamlHelper.Deserialize<AutoRestYamlConfig>(y))
-                .Where(c => c != null)
-                .SelectMany(c =>
-                    c.InputFile.Concat(c.Require).Concat(c.TryRequire)
-                        .Where(uri => !Conventions.IsAutorestInputButNotSwagger(uri))
-                        .Select(uri => new SwaggerReference(uri, c.Commit)));
+            // If no key found in any block, default is v4
+            return "v4";
         }
 
         private string LoadReadme()
@@ -84,6 +109,19 @@ namespace AzDev.Models.Inventory
                 }
             }
             throw new FileNotFoundException($"README.md not found in [{Path}]");
+        }
+
+        private IEnumerable<AutoRestYamlConfig> LoadYamlConfigs()
+        {
+            var matches = YamlBlockPattern.Matches(ReadmeText);
+            if (matches.Count == 0)
+            {
+                return Enumerable.Empty<AutoRestYamlConfig>();
+            }
+            return matches
+                .Select(m => m.Groups[1].Value.Trim())
+                .Select(y => YamlHelper.TryDeserialize<AutoRestYamlConfig>(y, out var c) ? c : null)
+                .Where(c => c != null)!;
         }
     }
 }
