@@ -8,15 +8,45 @@ schema: 2.0.0
 # New-AzKustoAttachedDatabaseConfiguration
 
 ## SYNOPSIS
-Creates or updates an attached database configuration.
+Create an attached database configuration.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzKustoAttachedDatabaseConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
+New-AzKustoAttachedDatabaseConfiguration -Name <String> -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClusterResourceId <String>] [-DatabaseName <String>]
- [-DatabaseNameOverride <String>] [-DatabaseNamePrefix <String>]
- [-DefaultPrincipalsModificationKind <DefaultPrincipalsModificationKind>] [-Location <String>]
+ [-DatabaseNameOverride <String>] [-DatabaseNamePrefix <String>] [-DefaultPrincipalsModificationKind <String>]
+ [-Location <String>] [-TableLevelSharingPropertyExternalTablesToExclude <String[]>]
+ [-TableLevelSharingPropertyExternalTablesToInclude <String[]>]
+ [-TableLevelSharingPropertyFunctionsToExclude <String[]>]
+ [-TableLevelSharingPropertyFunctionsToInclude <String[]>]
+ [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
+ [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
+ [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzKustoAttachedDatabaseConfiguration -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzKustoAttachedDatabaseConfiguration -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityClusterExpanded
+```
+New-AzKustoAttachedDatabaseConfiguration -Name <String> -ClusterInputObject <IKustoIdentity>
+ [-ClusterResourceId <String>] [-DatabaseName <String>] [-DatabaseNameOverride <String>]
+ [-DatabaseNamePrefix <String>] [-DefaultPrincipalsModificationKind <String>] [-Location <String>]
  [-TableLevelSharingPropertyExternalTablesToExclude <String[]>]
  [-TableLevelSharingPropertyExternalTablesToInclude <String[]>]
  [-TableLevelSharingPropertyFunctionsToExclude <String[]>]
@@ -29,7 +59,7 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName <String> -Name <String> -R
 ```
 
 ## DESCRIPTION
-Creates or updates an attached database configuration.
+Create an attached database configuration.
 
 ## EXAMPLES
 
@@ -64,12 +94,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -84,7 +129,7 @@ The resource id of the cluster where the databases you would like to attach resi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -99,7 +144,7 @@ The name of the database which you would like to attach, use * if you want to fo
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -115,7 +160,7 @@ Relevant only when attaching to a specific database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -131,7 +176,7 @@ When following an entire cluster, that prefix would be added to all of the datab
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -145,8 +190,8 @@ Accept wildcard characters: False
 The default principals modification kind
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DefaultPrincipalsModificationKind
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -172,12 +217,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -223,7 +298,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -238,7 +313,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -253,7 +328,7 @@ List of external tables to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -268,7 +343,7 @@ List of external tables to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -283,7 +358,7 @@ List of functions to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -298,7 +373,7 @@ List of functions to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -313,7 +388,7 @@ List of materialized views to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -328,7 +403,7 @@ List of materialized views to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -343,7 +418,7 @@ List of tables to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -358,7 +433,7 @@ List of tables to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -404,9 +479,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAttachedDatabaseConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IAttachedDatabaseConfiguration
 
 ## NOTES
 
