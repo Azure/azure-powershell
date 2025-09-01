@@ -441,9 +441,6 @@
   <data name="ScanIdParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
   </data>
-  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
-    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
-  </data>
   <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
     <value>Failed retrieving keys of storage '{0}'.</value>
   </data>
@@ -765,5 +762,17 @@
   </data>
   <data name="ForwardMigrationWithGeoDRInfo" xml:space="preserve">
     <value>Changing the service tier to Hyperscale also converts the geo-secondary replica to Hyperscale. For more information, see https://go.microsoft.com/fwlink/?linkid=2314103</value>
+  </data>
+  <data name="IdentityIdRequired" xml:space="preserve">
+    <value>IdentityId must be provided when HubDatabaseAuthenticationType is 'userAssigned'.</value>
+  </data>
+  <data name="DatabaseCredentialRequired" xml:space="preserve">
+    <value>DatabaseCredentials (username/password) must be provided when HubDatabaseAuthenticationType is 'password'.</value>
+  </data>
+  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
+    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
+  </data>
+  <data name="InvalidHubDatabaseAuthenticationType" xml:space="preserve">
+    <value>Invalid HubDatabaseAuthenticationType. Supported authentication types are 'userAssigned' and 'Password'</value>
   </data>
 </root>
