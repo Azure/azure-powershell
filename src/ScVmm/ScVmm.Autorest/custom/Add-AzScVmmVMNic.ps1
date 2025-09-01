@@ -274,11 +274,11 @@ function Add-AzScVmmVMNic {
             try {
               $vmObj = Az.ScVmm.internal\Get-AzScVmmVM -MachineId $machineObj.Id -ErrorAction Stop
               if ($null -eq $vmObj) {
-                throw "Failed to fetch Virtual Machine Object for Virtual Machine $vmName"
+                throw "Failed to fetch Virtual Machine Object using MachineId $($machineObj.Id) for Virtual Machine '$vmName'."
               }
             }
             catch {
-              throw "Failed to fetch Virtual Machine Object for VM '$vmName'. Exception: $($_.Exception.Message)"
+              throw "Failed to fetch Virtual Machine Object using MachineId $($machineObj.Id) for Virtual Machine '$vmName'. Exception: $($_.Exception.Message)"
             }
   
             $newNicObject = @()
