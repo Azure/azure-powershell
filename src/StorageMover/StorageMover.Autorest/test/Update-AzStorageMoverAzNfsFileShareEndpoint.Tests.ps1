@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageMoverAzNfsFil
 
 Describe 'Update-AzStorageMoverAzNfsFileShareEndpoint' {
     It 'UpdateExpanded' {
-        $endpointName = "testNfsFileShareEndpoint" + $end.RandomString
+        $endpointName = "testNfsFileShareEndpoint" + $env.RandomString
         $description = "Nfs fs endpoint description"
         $updateDescription = "update Nfs fs endpoint Description"
         $endpoint = New-AzStorageMoverAzNfsFileShareEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -StorageAccountResourceId $env.StoraccId -FileShareName "testfs" -Description $description

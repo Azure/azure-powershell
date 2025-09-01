@@ -1,14 +1,14 @@
 ---
 Module Name: Az.StorageMover
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: d6053d97-1a9b-4fc6-9bd2-09c5b23b34db
+Download Help Link: https://learn.microsoft.com/en-us/powershell/module/az.storagemover
+Help Version: 1.0.0.0
+Locale: en-us
 ---
 
 # Az.StorageMover Module
 ## Description
-{{ Fill in the Description }}
+The Az.StorageMover module provides cmdlets for managing Azure Storage Mover resources, enabling the orchestration and automation of data migration between on-premises and cloud storage endpoints.
 
 ## Az.StorageMover Cmdlets
 ### [Get-AzStorageMover](Get-AzStorageMover.md)
