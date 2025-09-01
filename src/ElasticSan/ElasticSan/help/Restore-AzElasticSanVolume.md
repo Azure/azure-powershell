@@ -1,38 +1,48 @@
 ---
 external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
-online version: https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
+online version: https://learn.microsoft.com/powershell/module/az.elasticsan/restore-azelasticsanvolume
 schema: 2.0.0
 ---
 
-# New-AzElasticSan
+# Restore-AzElasticSanVolume
 
 ## SYNOPSIS
-Create ElasticSan.
+Restore Soft Deleted Volumes.
+The volume name is obtained by using the API to list soft deleted volumes by volume group
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### Restore (Default)
 ```
-New-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -BaseSizeTiB <Int64>
- -ExtendedCapacitySizeTiB <Int64> -Location <String> -SkuName <String> [-AutoScalePolicyEnforcement <String>]
- [-AvailabilityZone <String[]>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>]
- [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>]
+Restore-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RestoreViaIdentityVolumegroup
+```
+Restore-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### RestoreViaIdentityElasticSan
 ```
-New-AzElasticSan -InputObject <IElasticSanIdentity> -BaseSizeTiB <Int64> -ExtendedCapacitySizeTiB <Int64>
- -Location <String> -SkuName <String> [-AutoScalePolicyEnforcement <String>] [-AvailabilityZone <String[]>]
- [-CapacityUnitScaleUpLimitTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzElasticSanVolume -Name <String> -VolumeGroupName <String>
+ -ElasticSanInputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RestoreViaIdentity
+```
+Restore-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create ElasticSan.
+Restore Soft Deleted Volumes.
+The volume name is obtained by using the API to list soft deleted volumes by volume group
 
 ## EXAMPLES
 
@@ -75,66 +85,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoScalePolicyEnforcement
-Enable or Disable scale up setting on Elastic San Appliance.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AvailabilityZone
-Logical zone for Elastic San resource; example: ["1"].
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BaseSizeTiB
-Base size of the Elastic San appliance in TiB.
-
-```yaml
-Type: System.Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CapacityUnitScaleUpLimitTiB
-Maximum scale up size on Elastic San appliance in TiB.
-
-```yaml
-Type: System.Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -151,30 +101,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtendedCapacitySizeTiB
-Extended size of the Elastic San appliance in TiB.
+### -ElasticSanInputObject
+Identity Parameter
 
 ```yaml
-Type: System.Int64
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+Parameter Sets: RestoreViaIdentityElasticSan
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IncreaseCapacityUnitByTiB
-Unit to increase Capacity Unit on Elastic San appliance in TiB.
+### -ElasticSanName
+The name of the ElasticSan.
 
 ```yaml
-Type: System.Int64
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Restore
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,7 +136,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: RestoreViaIdentity
 Aliases:
 
 Required: True
@@ -196,28 +146,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the ElasticSan.
+The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases: ElasticSanName
+Parameter Sets: Restore, RestoreViaIdentityVolumegroup, RestoreViaIdentityElasticSan
+Aliases: VolumeName
 
 Required: True
 Position: Named
@@ -241,62 +176,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-Allow or disallow public network access to ElasticSan.
-Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: Restore
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-The sku name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuTier
-The sku tier.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -308,7 +197,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: Restore
 Aliases:
 
 Required: False
@@ -318,30 +207,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
+### -VolumegroupInputObject
+Identity Parameter
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+Parameter Sets: RestoreViaIdentityVolumegroup
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -UnusedSizeTiB
-Unused size on Elastic San appliance in TiB.
+### -VolumeGroupName
+The name of the VolumeGroup.
 
 ```yaml
-Type: System.Int64
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Restore, RestoreViaIdentityElasticSan
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -388,7 +277,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume
 
 ## NOTES
 

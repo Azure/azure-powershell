@@ -15,14 +15,14 @@ Delete an Volume.
 ### Delete (Default)
 ```
 Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -VolumeGroupName <String> [-DeleteType <String>] [-DeleteSnapshot <String>]
+ [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityVolumegroup
 ```
-Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> [-DeleteType <String>]
  [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -30,15 +30,15 @@ Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIde
 ### DeleteViaIdentityElasticSan
 ```
 Remove-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DeleteType <String>] [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteType <String>] [-DeleteSnapshot <String>]
+ [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +90,23 @@ Accept wildcard characters: False
 Optional, used to delete snapshots under volume.
 Allowed value are only true or false.
 Default value is false.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteType
+Optional.
+Specifies that the delete operation should be a permanent delete for the soft deleted volume.
+The value of deleteType can only be 'permanent'.
 
 ```yaml
 Type: System.String

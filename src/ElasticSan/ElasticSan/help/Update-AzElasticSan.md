@@ -8,28 +8,30 @@ schema: 2.0.0
 # Update-AzElasticSan
 
 ## SYNOPSIS
-update a Elastic San.
+Update a Elastic San.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AutoScalePolicyEnforcement <String>] [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>]
+ [-ExtendedCapacitySizeTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>]
+ [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticSan -InputObject <IElasticSanIdentity> [-BaseSizeTiB <Int64>]
- [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzElasticSan -InputObject <IElasticSanIdentity> [-AutoScalePolicyEnforcement <String>]
+ [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
+ [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a Elastic San.
+Update a Elastic San.
 
 ## EXAMPLES
 
@@ -82,8 +84,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoScalePolicyEnforcement
+Enable or Disable scale up setting on Elastic San Appliance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BaseSizeTiB
 Base size of the Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityUnitScaleUpLimitTiB
+Maximum scale up size on Elastic San appliance in TiB.
 
 ```yaml
 Type: System.Int64
@@ -115,6 +147,21 @@ Accept wildcard characters: False
 
 ### -ExtendedCapacitySizeTiB
 Extended size of the Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncreaseCapacityUnitByTiB
+Unit to increase Capacity Unit on Elastic San appliance in TiB.
 
 ```yaml
 Type: System.Int64
@@ -225,6 +272,21 @@ Update tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UnusedSizeTiB
+Unused size on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

@@ -15,7 +15,8 @@ Create a Volume Group.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Encryption <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
+ [-SubscriptionId <String>] [-DeleteRetentionPolicyRetentionPeriodDay <Int32>]
+ [-DeleteRetentionPolicyState <String>] [-Encryption <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
  [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
  [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
@@ -24,22 +25,24 @@ New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGro
 
 ### CreateViaIdentityElasticSanExpanded
 ```
-New-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-EncryptionUserAssignedIdentity <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
+ [-Encryption <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
+ [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
+ [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-EncryptionUserAssignedIdentity <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
+ [-Encryption <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
+ [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
+ [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -246,6 +249,36 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteRetentionPolicyRetentionPeriodDay
+The number of days to retain the resources after deletion.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteRetentionPolicyState
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

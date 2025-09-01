@@ -1,6 +1,6 @@
 {
   "resourceType": "elasticSans/volumegroups/volumes",
-  "apiVersion": "2024-05-01",
+  "apiVersion": "2024-07-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.elasticsan"
   },
@@ -54,12 +54,12 @@
       ]
     },
     {
-      "name": "Remove-AzElasticSanVolume",
-      "description": "Delete an Volume.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
+      "name": "Restore-AzElasticSanVolume",
+      "description": "Restore Soft Deleted Volumes.\nThe volume name is obtained by using the API to list soft deleted volumes by volume group",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}/restore",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolume"
+          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/restore-azelasticsanvolume"
         },
         "parameterSets": [
           {
@@ -75,7 +75,7 @@
       },
       "examples": [
         {
-          "description": "Delete an Volume.",
+          "description": "Restore Soft Deleted Volumes. The volume name is obtained by using the API to list soft deleted volumes by volume group",
           "parameters": [
             {
               "name": "-ElasticSanName",

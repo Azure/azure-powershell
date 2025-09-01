@@ -1,17 +1,20 @@
 {
-  "BaseSizeTib": 1,
-  "Keyname": "eskey1",
-  "ElasticSanName2": "testelasticsan2ie4yf2ms",
+  "vnetResourceId1": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgv6hynri4/providers/Microsoft.Network/virtualNetworks/testvnetv6hynri4/subnets/subnet1v6hynri4",
+  "ElasticSanName3": "testelasticsan1",
   "ExtendedCapacitySizeTib": 6,
-  "RandomString": "ie4yf2ms",
-  "ElasticSanLocation": "eastus2euap",
-  "vnetResourceId1": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.Network/virtualNetworks/testvnetie4yf2ms/subnets/subnet1ie4yf2ms",
-  "KeyvaultUri": "https://testelasticsanvault1.vault.azure.net:443",
-  "Keyvaultname": "testelasticsanvault1",
-  "vnetResourceId2": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.Network/virtualNetworks/testvnetie4yf2ms/subnets/subnet2ie4yf2ms",
-  "Location": "eastus2euap",
+  "VolumeName": "testvolv6hynri4",
+  "VolumeGroupName": "testvolgroupv6hynri4",
   "SubscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
-  "diskSnapshotId": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.Compute/snapshots/weidisksnapshot",
+  "ElasticSanName2": "testelasticsan2v6hynri4",
+  "vnetResourceId2": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgv6hynri4/providers/Microsoft.Network/virtualNetworks/testvnetv6hynri4/subnets/subnet2v6hynri4",
+  "RandomString": "v6hynri4",
+  "Location": "eastus2euap",
+  "KeyvaultUri": "https://testelasticsanvault1.vault.azure.net:443",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "Keyname": "eskey1",
+  "BaseSizeTib": 1,
+  "ResourceGroupName2": "testelasticsanrg",
+  "ResourceGroupName": "testelasticsanrgv6hynri4",
   "Useridentity": {
     "ClientId": "e0e2f90a-c393-44b1-a7e6-932a3057420e",
     "Id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/testelasticsanrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/estestuserid1",
@@ -37,8 +40,12 @@
     "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "Type": "Microsoft.ManagedIdentity/userAssignedIdentities"
   },
-  "ElasticSanName3": "testelasticsan1",
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "ElasticSanTags": {
+    "tag1": "value1",
+    "tag2": "value2"
+  },
+  "ElasticSanLocation": "eastus2euap",
+  "ElasticSanName1": "testelasticsan1v6hynri4",
   "Useridentity2": {
     "ClientId": "63d92394-0053-4c93-aaea-7f4d6a6bb23d",
     "Id": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/testelasticsanrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/estestuserid2",
@@ -64,13 +71,6 @@
     "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "Type": "Microsoft.ManagedIdentity/userAssignedIdentities"
   },
-  "ResourceGroupName": "testelasticsanrgie4yf2ms",
-  "ElasticSanTags": {
-    "tag2": "value2",
-    "tag1": "value1"
-  },
-  "ResourceGroupName2": "testelasticsanrg",
-  "ElasticSanName1": "testelasticsan1ie4yf2ms",
-  "VolumeName": "testvolie4yf2ms",
-  "VolumeGroupName": "testvolgroupie4yf2ms"
+  "Keyvaultname": "testelasticsanvault1",
+  "diskSnapshotId": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.Compute/snapshots/weidisksnapshot"
 }
