@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability for module Az.DataTransfer
+* Added commands for flow management
 
 ## Version 0.1.0
 * First preview release for module Az.DataTransfer
