@@ -1,57 +1,71 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolume
+online version: https://learn.microsoft.com/powershell/module/az.elasticsan/restore-azelasticsanvolume
 schema: 2.0.0
 ---
 
-# Remove-AzElasticSanVolume
+# Restore-AzElasticSanVolume
 
 ## SYNOPSIS
-Delete an Volume.
+Restore Soft Deleted Volumes.
+The volume name is obtained by using the API to list soft deleted volumes by volume group
 
 ## SYNTAX
 
-### Delete (Default)
+### Restore (Default)
 ```
-Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-DeleteType <String>] [-DeleteSnapshot <String>]
- [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Restore-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentity
+```
+Restore-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentityElasticSan
+```
+Restore-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### RestoreViaIdentityVolumegroup
 ```
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteType <String>] [-DeleteSnapshot <String>]
- [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentityElasticSan
-```
-Remove-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- -VolumeGroupName <String> [-DeleteType <String>] [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityVolumegroup
-```
-Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> [-DeleteType <String>]
- [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete an Volume.
+Restore Soft Deleted Volumes.
+The volume name is obtained by using the API to list soft deleted volumes by volume group
 
 ## EXAMPLES
 
-### Example 1: Remove a volume 
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
+{{ Add code here }}
 ```
 
-This command removes a volume.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -86,46 +100,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeleteSnapshot
-Optional, used to delete snapshots under volume.
-Allowed value are only true or false.
-Default value is false.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeleteType
-Optional.
-Specifies that the delete operation should be a permanent delete for the soft deleted volume.
-The value of deleteType can only be 'permanent'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ElasticSanInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: DeleteViaIdentityElasticSan
+Parameter Sets: RestoreViaIdentityElasticSan
 Aliases:
 
 Required: True
@@ -140,27 +120,10 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Restore
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ForceDelete
-Optional, used to delete volume if active sessions present.
-Allowed value are only true or false.
-Default value is false.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -172,7 +135,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: RestoreViaIdentity
 Aliases:
 
 Required: True
@@ -187,7 +150,7 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
+Parameter Sets: Restore, RestoreViaIdentityElasticSan, RestoreViaIdentityVolumegroup
 Aliases: VolumeName
 
 Required: True
@@ -212,28 +175,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Restore
 Aliases:
 
 Required: True
@@ -248,7 +196,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Restore
 Aliases:
 
 Required: False
@@ -263,7 +211,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: DeleteViaIdentityVolumegroup
+Parameter Sets: RestoreViaIdentityVolumegroup
 Aliases:
 
 Required: True
@@ -278,7 +226,7 @@ The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityElasticSan
+Parameter Sets: Restore, RestoreViaIdentityElasticSan
 Aliases:
 
 Required: True
@@ -328,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume
 
 ## NOTES
 

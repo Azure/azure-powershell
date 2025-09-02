@@ -1,17 +1,17 @@
 {
-  "Get-AzElasticSanVolumeGroup+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumeGroups?api-version=2024-05-01+1": {
+  "Get-AzElasticSanVolumeGroup+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1ie4yf2ms/volumegroups?api-version=2024-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumeGroups?api-version=2024-05-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1ie4yf2ms/volumeGroups?api-version=2024-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "31b9cac9-cddb-40ed-b52e-39f188e55be8" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "d846b7fe-c6bc-4124-90de-13d52bce5c47" ],
         "CommandName": [ "Get-AzElasticSanVolumeGroup" ],
         "FullCommandName": [ "Get-AzElasticSanVolumeGroup_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.5", "Az.ElasticSan/0.3.0" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.0", "Az.ElasticSan/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9c589882-5892-4c58-8064-dcbc82d6ab6a" ],
+        "x-ms-request-id": [ "4da697d4-e3e4-42ae-924d-4b8b4f35f1f1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "1217974b-fca7-4026-82d8-db93fa8d7e24" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240918T061542Z:1217974b-fca7-4026-82d8-db93fa8d7e24" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=fb3258f2-574f-4e0f-bae5-3470b8f22903/eastus2euap/1db751fb-9ba4-49a5-90e7-4e81e02490ad" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1093" ],
+        "x-ms-correlation-request-id": [ "c4c8cbad-f91f-4897-a592-50c832673126" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250413T150512Z:c4c8cbad-f91f-4897-a592-50c832673126" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9553830DCA4C48BC8DFCE596A8F51F69 Ref B: MAA201060514039 Ref C: 2024-09-18T06:15:41Z" ],
-        "Date": [ "Wed, 18 Sep 2024 06:15:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F7E8D0344A394F008296A5BB12D489E4 Ref B: TYO201100115033 Ref C: 2025-04-13T15:05:12Z" ],
+        "Date": [ "Sun, 13 Apr 2025 15:05:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1142" ],
+        "Content-Length": [ "1211" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"enforceDataIntegrityCheckForIscsi\":true,\"provisioningState\":\"Succeeded\",\"networkAcls\":{\"virtualNetworkRules\":[{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.Network/virtualNetworks/testvnet6oa2ky8f/subnets/subnet16oa2ky8f\"},{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.Network/virtualNetworks/testvnet6oa2ky8f/subnets/subnet26oa2ky8f\"}]},\"protocolType\":\"iSCSI\",\"encryption\":\"EncryptionAtRestWithPlatformKey\"},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumeGroups/testvolgroup6oa2ky8f\",\"name\":\"testvolgroup6oa2ky8f\",\"type\":\"Microsoft.ElasticSan/elasticSans/volumeGroups\",\"systemData\":{\"createdAt\":\"2024-09-18T06:12:49.2573412Z\",\"createdBy\":\"example@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2024-09-18T06:15:17.1144725Z\",\"lastModifiedBy\":\"example@microsoft.com\",\"lastModifiedByType\":\"User\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"deleteRetentionPolicy\":{\"policyState\":\"Disabled\",\"retentionPeriodDays\":0},\"enforceDataIntegrityCheckForIscsi\":true,\"provisioningState\":\"Succeeded\",\"networkAcls\":{\"virtualNetworkRules\":[{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.Network/virtualNetworks/testvnetie4yf2ms/subnets/subnet1ie4yf2ms\"},{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.Network/virtualNetworks/testvnetie4yf2ms/subnets/subnet2ie4yf2ms\"}]},\"protocolType\":\"iSCSI\",\"encryption\":\"EncryptionAtRestWithPlatformKey\"},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1ie4yf2ms/volumeGroups/testvolgroupie4yf2ms\",\"name\":\"testvolgroupie4yf2ms\",\"type\":\"Microsoft.ElasticSan/elasticSans/volumeGroups\",\"systemData\":{\"createdAt\":\"2025-04-13T15:02:36.7772094Z\",\"createdBy\":\"emmazhu@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2025-04-13T15:04:46.4445222Z\",\"lastModifiedBy\":\"emmazhu@microsoft.com\",\"lastModifiedByType\":\"User\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzElasticSanVolumeGroup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f?api-version=2024-05-01+1": {
+  "Get-AzElasticSanVolumeGroup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1ie4yf2ms/volumegroups/testvolgroupie4yf2ms?api-version=2024-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f?api-version=2024-05-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1ie4yf2ms/volumegroups/testvolgroupie4yf2ms?api-version=2024-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "a8b1e0cf-1013-489e-b46c-7d69baf66f20" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "aea6beae-701c-4e8c-b855-3d176ef490fb" ],
         "CommandName": [ "Get-AzElasticSanVolumeGroup" ],
         "FullCommandName": [ "Get-AzElasticSanVolumeGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.5", "Az.ElasticSan/0.3.0" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.0", "Az.ElasticSan/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,22 +66,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a808e50d-1bdd-4bb8-90ea-765d366693bc" ],
+        "x-ms-request-id": [ "d7d50bda-e79a-45ea-98ee-4c6368cb0bdc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "1d5b4db4-dcd8-4aca-acac-5c01eecdbff8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240918T061543Z:1d5b4db4-dcd8-4aca-acac-5c01eecdbff8" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=fb3258f2-574f-4e0f-bae5-3470b8f22903/eastus2euap/6d0c8b62-31c6-4e98-86f2-ef03b3bfe423" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1092" ],
+        "x-ms-correlation-request-id": [ "f17cceee-a74f-41d0-9aa9-47d949800551" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250413T150513Z:f17cceee-a74f-41d0-9aa9-47d949800551" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 601C8BB62F5D40C2B26FAD6DF2151C23 Ref B: MAA201060514039 Ref C: 2024-09-18T06:15:42Z" ],
-        "Date": [ "Wed, 18 Sep 2024 06:15:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A06EC47C22A2405C98D9D52A060A6DB4 Ref B: TYO201100115033 Ref C: 2025-04-13T15:05:13Z" ],
+        "Date": [ "Sun, 13 Apr 2025 15:05:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1130" ],
+        "Content-Length": [ "1199" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"enforceDataIntegrityCheckForIscsi\":true,\"provisioningState\":\"Succeeded\",\"networkAcls\":{\"virtualNetworkRules\":[{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.Network/virtualNetworks/testvnet6oa2ky8f/subnets/subnet16oa2ky8f\"},{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.Network/virtualNetworks/testvnet6oa2ky8f/subnets/subnet26oa2ky8f\"}]},\"protocolType\":\"iSCSI\",\"encryption\":\"EncryptionAtRestWithPlatformKey\"},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumeGroups/testvolgroup6oa2ky8f\",\"name\":\"testvolgroup6oa2ky8f\",\"type\":\"Microsoft.ElasticSan/elasticSans/volumeGroups\",\"systemData\":{\"createdAt\":\"2024-09-18T06:12:49.2573412Z\",\"createdBy\":\"example@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2024-09-18T06:15:17.1144725Z\",\"lastModifiedBy\":\"example@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
+      "Content": "{\"properties\":{\"deleteRetentionPolicy\":{\"policyState\":\"Disabled\",\"retentionPeriodDays\":0},\"enforceDataIntegrityCheckForIscsi\":true,\"provisioningState\":\"Succeeded\",\"networkAcls\":{\"virtualNetworkRules\":[{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.Network/virtualNetworks/testvnetie4yf2ms/subnets/subnet1ie4yf2ms\"},{\"action\":\"Allow\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.Network/virtualNetworks/testvnetie4yf2ms/subnets/subnet2ie4yf2ms\"}]},\"protocolType\":\"iSCSI\",\"encryption\":\"EncryptionAtRestWithPlatformKey\"},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgie4yf2ms/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1ie4yf2ms/volumeGroups/testvolgroupie4yf2ms\",\"name\":\"testvolgroupie4yf2ms\",\"type\":\"Microsoft.ElasticSan/elasticSans/volumeGroups\",\"systemData\":{\"createdAt\":\"2025-04-13T15:02:36.7772094Z\",\"createdBy\":\"emmazhu@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2025-04-13T15:04:46.4445222Z\",\"lastModifiedBy\":\"emmazhu@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
       "isContentBase64": false
     }
   }
