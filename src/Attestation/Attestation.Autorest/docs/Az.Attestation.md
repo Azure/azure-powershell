@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Attestation
-Module Guid: 1c9a1ce2-e443-4ee1-aeac-5e962f9237d9
+Module Guid: 6c93856d-5326-410b-9138-922a62215196
 Download Help Link: https://learn.microsoft.com/powershell/module/az.attestation
 Help Version: 1.0.0.0
 Locale: en-US

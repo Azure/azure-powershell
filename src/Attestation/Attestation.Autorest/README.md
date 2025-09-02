@@ -82,36 +82,4 @@ directive:
       subject: AttestationProvider
       verb: New
     hide: true
-
-  - where:
-      verb: Get
-      subject: AttestationDefaultProvider
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        new-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        change-description: The types of the properties 'PrivateEndpointConnection' and 'Value' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|Update
-      subject: AttestationProvider
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        new-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        change-description: The types of the properties 'PrivateEndpointConnection' and 'Value' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```
