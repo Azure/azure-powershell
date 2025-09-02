@@ -16,116 +16,36 @@
 
 <#
 .Synopsis
-Create a Network Security Perimeter.
+Gets the list of service tags supported by NSP.
+These service tags can be used to list access rules in NSP.
 .Description
-Create a Network Security Perimeter.
+Gets the list of service tags supported by NSP.
+These service tags can be used to list access rules in NSP.
 .Example
-New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
+Get-AzNetworkSecurityPerimeterServiceTag -Location eastus2euap
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
-  [AccessRuleName <String>]: The name of the NSP access rule.
-  [AssociationName <String>]: The name of the NSP association.
-  [Id <String>]: Resource identity path
-  [LinkName <String>]: The name of the NSP link.
-  [LinkReferenceName <String>]: The name of the NSP linkReference.
-  [Location <String>]: The location of network security perimeter.
-  [LoggingConfigurationName <String>]: The name of the NSP logging configuration. Accepts 'instance' as name.
-  [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
-  [OperationId <String>]: The operation id of the async operation.
-  [ProfileName <String>]: The name of the NSP profile.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
-  [Location <String>]: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspServiceTagsResource
 .Link
-https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeter
+https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterservicetag
 #>
-function New-AzNetworkSecurityPerimeter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzNetworkSecurityPerimeterServiceTag {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspServiceTagsResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Alias('NetworkSecurityPerimeterName', 'SecurityPerimeterName', 'NSPName')]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [System.String]
-    # The name of the network security perimeter.
-    ${Name},
+    # The location of network security perimeter.
+    ${Location},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
+    [System.String[]]
     # The subscription credentials which uniquely identify the Microsoft Azure subscription.
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter]
-    # The Network Security Perimeter resource
-    ${Parameter},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -211,13 +131,9 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeter_Create';
-            CreateExpanded = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeter_CreateExpanded';
-            CreateViaIdentityExpanded = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeter_CreateViaIdentityExpanded';
-            CreateViaJsonFilePath = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeter_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeter_CreateViaJsonString';
+            List = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeterServiceTag_List';
         }
-        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
