@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// [OpenAPI] List=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityId}/getTimeline"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSentinelEntityTimeline_ListExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PreviewMessage("***********************************************************************\r\n* This cmdlet will undergo a breaking change in a future release.     *\r\n* At least one change applies to this cmdlet.                         *\r\n* See all possible breaking changes at: https://learn.microsoft.com/powershell/azure/breaking-changes-generated-modules *\r\n***********************************************************************", "2025/11/19")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Timeline for an entity.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]
