@@ -61,10 +61,10 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll',
                'NetworkSecurityPerimeter.Autorest/bin/Az.NetworkSecurityPerimeter.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Network.generated.format.ps1xml', 
@@ -83,6 +83,7 @@ FunctionsToExport = 'Get-AzNetworkSecurityPerimeter',
                'Get-AzNetworkSecurityPerimeterLinkReference', 
                'Get-AzNetworkSecurityPerimeterLoggingConfiguration', 
                'Get-AzNetworkSecurityPerimeterProfile', 
+               'Get-AzNetworkSecurityPerimeterServiceTag', 
                'New-AzNetworkSecurityPerimeter', 
                'New-AzNetworkSecurityPerimeterAccessRule', 
                'New-AzNetworkSecurityPerimeterAssociation', 
@@ -341,8 +342,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayFirewallDisabledRuleGroupConfig', 
                'New-AzApplicationGatewayFirewallExclusionConfig', 
                'New-AzApplicationGatewayFirewallMatchVariable', 
-               'New-AzApplicationGatewayFirewallPolicyException', 
                'New-AzApplicationGatewayFirewallPolicy', 
+               'New-AzApplicationGatewayFirewallPolicyException', 
                'New-AzApplicationGatewayFirewallPolicyExclusion', 
                'New-AzApplicationGatewayFirewallPolicyExclusionManagedRule', 
                'New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup', 
@@ -787,7 +788,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Network','VirtualNetwork'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Network', 'VirtualNetwork'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -819,7 +820,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

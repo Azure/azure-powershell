@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
+    - `Get-AzNetworkSecurityPerimeterServiceTag`
 * Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
     - `New-AzApplicationGatewayBackendHttpSetting`
     - `Add-AzApplicationGatewayBackendHttpSetting`
