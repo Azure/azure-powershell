@@ -1358,6 +1358,10 @@
       "_justification": "False positive, there are no cred in this file."
     },
     {
+      "file": "generated\\Resources\\MSGraph.Autorest\\exports\\New-AzADUser.ps1",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
       "file": "src\\RecoveryServices\\RecoveryServices.Backup.Providers\\Providers\\IaasVmPsBackupProvider.cs",
       "_justification": "False positive, there are no cred in this file."
     },
