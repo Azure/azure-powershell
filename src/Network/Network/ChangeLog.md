@@ -25,6 +25,7 @@
     - `New-AzApplicationGatewayBackendHttpSetting`
     - `Add-AzApplicationGatewayBackendHttpSetting`
     - `Set-AzApplicationGatewayBackendHttpSetting`
+* Onboarded Maps to Private Link Common Cmdlets
 
 ## Version 7.19.1
 * Added a read-only property `ComputedDisabledRules` to `ApplicationGatewayFirewallPolicyManagedRuleSet`. This property shows which rules are effectively disabled, based on both user-defined WAF policy overrides and the default state of the rules in the managed ruleset.
