@@ -44,27 +44,12 @@ Retry on going migration for the database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Retry SQL DB Database Migration
 ```powershell
-{{ Add code here }}
+Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName sqldb
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Retry SQL DB Database Migration
 
 ## PARAMETERS
 

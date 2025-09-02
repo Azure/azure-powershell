@@ -16,7 +16,47 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataMigrationToSqlVM
 
 Describe 'Remove-AzDataMigrationToSqlVM' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $filesharePassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationVm.FileSharePassword -AsPlainText -Force
+        $sourcePassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionPassword -AsPlainText -Force
+
+        # Create a SQL VM migration
+        $vmMigration = New-AzDataMigrationToSqlVM `
+            -ResourceGroupName $env.TestDeleteDatabaseMigrationVm.ResourceGroupName `
+            -SqlVirtualMachineName $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName `
+            -TargetDbName $env.TestDeleteDatabaseMigrationVm.TargetDbName `
+            -Scope $env.TestDeleteDatabaseMigrationVm.Scope `
+            -MigrationService $env.TestDeleteDatabaseMigrationVm.MigrationService `
+            -StorageAccountResourceId $env.TestDeleteDatabaseMigrationVm.TargetLocationStorageAccountResourceId `
+            -StorageAccountKey $env.TestDeleteDatabaseMigrationVm.TargetLocationAccountKey `
+            -FileSharePath $env.TestDeleteDatabaseMigrationVm.FileSharePath `
+            -FileShareUsername $env.TestDeleteDatabaseMigrationVm.FileShareUsername `
+            -FileSharePassword $filesharePassword `
+            -SourceSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionAuthentication `
+            -SourceSqlConnectionDataSource $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionDataSource `
+            -SourceSqlConnectionUserName $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionUserName `
+            -SourceSqlConnectionPassword $sourcePassword `
+            -SourceDatabaseName $env.TestDeleteDatabaseMigrationVm.SourceDatabaseName
+
+        Start-TestSleep -Seconds 5
+
+        # Delete the SQL VM migration
+        Remove-AzDataMigrationToSqlVM `
+            -ResourceGroupName $env.TestDeleteDatabaseMigrationVm.ResourceGroupName `
+            -SqlVirtualMachineName $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName `
+            -TargetDbName $env.TestDeleteDatabaseMigrationVm.TargetDbName `
+            -Force
+
+        Start-TestSleep -Seconds 5
+
+        # Validate deletion
+        $dbMig = Get-AzDataMigrationToSqlVM `
+            -ResourceGroupName $env.TestDeleteDatabaseMigrationVm.ResourceGroupName `
+            -SqlVirtualMachineName $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName `
+            -TargetDbName $env.TestDeleteDatabaseMigrationVm.TargetDbName `
+            -ErrorAction SilentlyContinue
+
+        $assert = ($dbMig -eq $null)
+        $assert | Should -Be $true
     }
 
     It 'DeleteViaIdentity' -skip {
