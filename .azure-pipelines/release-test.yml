@@ -30,7 +30,7 @@ parameters:
 
 variables:
   winAgentPoolName: pool-windows-2019
-  linuxAgentPoolName: pool-ubuntu-2404
+  linuxAgentPoolName: pool-ubuntu-2004
   macOsAgentPoolName: Azure Pipelines
   macOsAgentPoolVMImage: macOS-latest
 

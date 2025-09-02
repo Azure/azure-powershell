@@ -45,7 +45,7 @@ jobs:
 - ${{ each ToBranch in parameters.ToBranches }}:
     - job: Sync_${{ replace(ToBranch, '/', '_') }}
       displayName: "Sync To ${{ ToBranch }}"
-      pool: pool-ubuntu-2404
+      pool: pool-ubuntu-2004
 
       steps:
       - template: util/get-github-pat-steps.yml
