@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        [Parameter(Mandatory = true, HelpMessage = "List of node names for the operation.")]
+        [Parameter(Mandatory = false, HelpMessage = "List of node names for the operation.")]
         public string[] NodeName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specify the update type. Valid values are 'Default' and 'ByUpgradeDomain'.")]

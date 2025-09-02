@@ -14,7 +14,7 @@ Redeploy specific nodes from the node type.
 
 ```
 Invoke-AzServiceFabricRedeployManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String>
- [-Name] <String> -NodeName <String[]> [-UpdateType <String>] [-ForceRedeploy] [-PassThru] [-AsJob]
+ [-Name] <String> [-NodeName <String[]>] [-UpdateType <String>] [-ForceRedeploy] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -119,7 +119,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

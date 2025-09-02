@@ -71,6 +71,9 @@ Deallocate specific nodes from the node type.
 ### [Invoke-AzServiceFabricRedeployManagedNodeType](Invoke-AzServiceFabricRedeployManagedNodeType.md)
 Redeploy specific nodes from the node type.
 
+### [Invoke-AzServiceFabricReimageManagedNodeType](Invoke-AzServiceFabricReimageManagedNodeType.md)
+Reimage specific nodes from the node type.
+
 ### [New-AzServiceFabricApplication](New-AzServiceFabricApplication.md)
 Create new service fabric application under the specified resource group and cluster.
 
