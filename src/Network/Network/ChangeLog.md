@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
+    - `Get-AzNetworkSecurityPerimeterServiceTag`    
 * Onboarded Application Gateway WAF Exceptions cmdlet.
     - `New-AzApplicationGatewayFirewallPolicyException`  
 * Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
@@ -33,9 +35,6 @@
         - `Get-AzApplicationGatewayFirewallPolicy`
         - `Set-AzApplicationGatewayFirewallPolicy`
         - `New-AzApplicationGatewayFirewallPolicy`
-* Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
-    - `Get-AzNetworkSecurityPerimeterServiceTag`    
-
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
