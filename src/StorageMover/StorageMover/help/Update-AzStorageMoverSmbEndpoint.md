@@ -71,7 +71,7 @@ Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverNam
 ```
 
 ```output
-Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegorup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
 Name                         : myendpoint
 Property                     : {
                                  "endpointType": "SmbMount",

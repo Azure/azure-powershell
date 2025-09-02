@@ -1,6 +1,6 @@
 ### Example 1: Create an NFS endpoint
 ```powershell
-New-AzStorageMoverAzNfsFileShareEndpoint -Name "my-nfs-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -FileShareName "10.0.0.1" -Export "my-export" -Description "My NFS endpoint"
+New-AzStorageMoverAzNfsFileShareEndpoint -Name "my-nfs-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -FileShareName "10.0.0.1"  -Description "My NFS endpoint"
 ```
 
 ```output
