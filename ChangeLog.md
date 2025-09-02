@@ -1,3 +1,13 @@
+## 14.5.0 - October 2025
+#### Az.Network 7.20.0
+* Onboarded Maps to Private Link Common Cmdlets
+
+#### Az.RecoveryServices 7.8.1
+* Added Cross region restore support for new region - eastus3.
+
+#### Az.SecurityInsights 3.2.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## 14.4.0 - September 2025
 #### Az.Accounts 5.3.0
 * Updated 'AuthenticationAssemblyLoadContext' project to deprecate .NET 6.0 and build on .NET 8.0.
