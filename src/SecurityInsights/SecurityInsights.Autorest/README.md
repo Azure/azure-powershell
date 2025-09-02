@@ -343,4 +343,36 @@ directive:
       enum-value-name: Equals
     set:
       enum-value-name: Equal
+  - where:
+      verb: Get
+      subject: AutomationRule|Bookmark|DataConnector|Enrichment|EntityActivity|EntityInsight|EntityTimeline|Incident$|IncidentAlert|IncidentBookmark|IncidentEntity|Metadata|ThreatIntelligenceIndicatorMetric
+    set:
+      preview-announcement:
+        estimated-ga-date: 2025/11/19
+        preview-message: "***********************************************************************\\r\\n* This cmdlet will undergo a breaking change in a future release.     *\\r\\n* At least one change applies to this cmdlet.                         *\\r\\n* See all possible breaking changes at: https://learn.microsoft.com/powershell/azure/breaking-changes-generated-modules *\\r\\n***********************************************************************"
+  - where:
+      verb: New|Update
+      subject: AlertRule|AutomationRule|Bookmark|DataConnector|EntityQuery|Incident$
+    set:
+      preview-announcement:
+        estimated-ga-date: 2025/11/19
+        preview-message: "***********************************************************************\\r\\n* This cmdlet will undergo a breaking change in a future release.     *\\r\\n* At least one change applies to this cmdlet.                         *\\r\\n* See all possible breaking changes at: https://learn.microsoft.com/powershell/azure/breaking-changes-generated-modules *\\r\\n***********************************************************************"
+  - where:
+      verb: Get
+      subject: Enrichment
+      variant: GetViaIdentity|GetViaIdentity1
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/19
+  - where:
+      verb: New
+      subject: AutomationRule|Bookmark|BookmarkRelation|Incident$|IncidentComment|IncidentRelation|IncidentTeam|OnboardingState
+      variant: Create
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/19
 ```

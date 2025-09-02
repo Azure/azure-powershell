@@ -199,5 +199,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-DiskGrantAccessGetSASWithTL");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestDiskCreateImportSecure()
+        {
+            TestRunner.RunTestScript("Test-ConfVMImportSecure");
+        }
+
     }
 }
