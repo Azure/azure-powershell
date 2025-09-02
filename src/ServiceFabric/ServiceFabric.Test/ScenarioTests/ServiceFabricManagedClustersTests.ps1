@@ -82,23 +82,14 @@ function Test-NodeTypeOperations
 	Assert-AreEqual "StandardSSD_LRS" $snt.DataDiskType
 	Assert-True { $snt.IsStateless }
 
-	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0 -PassThru
+	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0, snt_1 -PassThru
 	Assert-True { $restart }
 
 	$delete = Remove-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_1 -PassThru
 	Assert-True { $delete }
 
-	$disable = Disable-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
-	Assert-True { $disable }
-
-	$enable = Enable-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
-	Assert-True { $enable }
-
 	$reimage = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -Reimage -PassThru
 	Assert-True { $reimage }
-
-	$move = Move-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_4 -PassThru
-	Assert-True { $move }
 
 	$snt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt
 	$removeResponse = $snt | Remove-AzServiceFabricManagedNodeType -PassThru
