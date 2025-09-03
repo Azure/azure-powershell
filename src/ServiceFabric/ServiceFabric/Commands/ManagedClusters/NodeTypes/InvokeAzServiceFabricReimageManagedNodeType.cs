@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Reimage node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Reimage node(s) {0}, from node type {1} on cluster {2} with update type {3}", (this.NodeName == null) ? String.Empty : string.Join(", ", this.NodeName), this.Name, this.ClusterName, this.UpdateType ?? "Default")))
             {
                 try
                 {
