@@ -33,32 +33,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string NextEligibleComputeTime { get; set; }
 
+        // Component list is included in the response
         public List<PSResiliencyRecommendationComponents> Components { get; set; }
 
-        public PSCircuitMetadataMap CircuitMetadata { get; set; }
-
-        public List<string> PrimaryConnectionIds { get; set; }
-
-        public List<string> SecondaryConnectionIds { get; set; }
+        // Removed optional properties not in the response
+        // public PSCircuitMetadataMap CircuitMetadata { get; set; }
+        // public List<string> PrimaryConnectionIds { get; set; }
+        // public List<string> SecondaryConnectionIds { get; set; }
 
         [JsonIgnore]
         public string ComponentsText =>
             JsonConvert.SerializeObject(Components, Formatting.Indented,
-                new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-
-        [JsonIgnore]
-        public string CircuitMetadataText =>
-            JsonConvert.SerializeObject(CircuitMetadata, Formatting.Indented,
-                new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-
-        [JsonIgnore]
-        public string PrimaryConnectionIdsText =>
-            JsonConvert.SerializeObject(PrimaryConnectionIds, Formatting.Indented,
-                new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-
-        [JsonIgnore]
-        public string SecondaryConnectionIdsText =>
-            JsonConvert.SerializeObject(SecondaryConnectionIds, Formatting.Indented,
                 new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
     }
 }

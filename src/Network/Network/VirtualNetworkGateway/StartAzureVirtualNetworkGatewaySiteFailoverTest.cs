@@ -1,11 +1,3 @@
-// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
-// Licensed under the Apache License, Version 2.0
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// ----------------------------------------------------------------------------------
-
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
@@ -37,32 +29,31 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of peering locations to run the test for.",
+            HelpMessage = "Peering location to run the test for.",
             ParameterSetName = ByName)]
-        public List<string> PeeringLocations { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string PeeringLocation { get; set; }  // Change to a single string
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,  // Make it optional
             HelpMessage = "Test type: SingleSiteFailover or MultiSiteFailover.",
             ParameterSetName = ByName)]
         [ValidateSet("SingleSiteFailover", "MultiSiteFailover", IgnoreCase = true)]
-        public string Type { get; set; }
+        public string Type { get; set; }  // Make Type optional
 
         public override void Execute()
         {
             base.Execute();
 
-            foreach (var peeringLocation in PeeringLocations)
-            {
-                var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
-                    .StartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(
-                        ResourceGroupName,
-                        VirtualNetworkGatewayName,
-                        peeringLocation
-                    ).GetAwaiter().GetResult();
+            // Since PeeringLocation is now a string, no need to loop
+            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
+                .StartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    VirtualNetworkGatewayName,
+                    PeeringLocation
+                ).GetAwaiter().GetResult();
 
-                WriteObject(response.Body);
-            }
+            WriteObject(response.Body);
         }
     }
 }

@@ -1,17 +1,3 @@
-// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
-// Licensed under the Apache License, Version 2.0 (the "License");
-// You may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// ----------------------------------------------------------------------------------
-
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Network.Models;
@@ -21,6 +7,9 @@ using Microsoft.Azure.Management.Network.Models;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
@@ -34,6 +23,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             HelpMessage = "The resource group name of the virtual network gateway.",
             ParameterSetName = GetByNameParameterSet)]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -43,12 +33,89 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkGatewayName { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Attempt to recalculate the Resiliency Information for the gateway.")]
+        public bool AttemptRefresh { get; set; } = false;
+
         public override void Execute()
         {
             base.Execute();
-            var resiliencyInfo = this.NetworkClient.NetworkManagementClient.VirtualNetworkGateways.GetResiliencyInformation(this.ResourceGroupName, this.VirtualNetworkGatewayName);
-            var psResiliencyInfo = NetworkResourceManagerProfile.Mapper.Map<PSGatewayResiliencyInformation>(resiliencyInfo);
-            WriteObject(psResiliencyInfo, true);
+
+            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
+                .GetResiliencyInformationWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    VirtualNetworkGatewayName,
+                    AttemptRefresh
+                ).GetAwaiter().GetResult();
+
+            GatewayResiliencyInformation resiliencyInfo = null;
+
+            if (response.Response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                resiliencyInfo = DeserializeJsonResponse(response.Response);
+            }
+            else if (response.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            {
+                var locationUrl = response.Response.Headers.Location?.ToString();
+                if (!string.IsNullOrEmpty(locationUrl))
+                {
+                    WriteVerbose("Operation accepted. Polling the Location URL until completion...");
+                    resiliencyInfo = PollAndParse(locationUrl);
+                }
+                else
+                {
+                    throw new InvalidOperationException("Location header is missing in 202 Accepted response.");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException($"Unexpected response status: {response.Response.StatusCode}");
+            }
+
+            if (resiliencyInfo == null)
+            {
+                return;
+            }
+
+            var formattedJson = JsonConvert.SerializeObject(resiliencyInfo, Formatting.Indented);
+            WriteObject(formattedJson);
+
+        }
+
+        private GatewayResiliencyInformation DeserializeJsonResponse(HttpResponseMessage responseMessage)
+        {
+            var json = responseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            json = json.Replace(" PM UTC", " PM");
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<GatewayResiliencyInformation>(json);
+        }
+
+        private GatewayResiliencyInformation PollAndParse(string locationUrl)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                while (true)
+                {
+                    System.Threading.Thread.Sleep(5000);
+
+                    var pollResponse = httpClient.GetAsync(locationUrl).GetAwaiter().GetResult();
+
+                    if (pollResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
+                    {
+                        continue;
+                    }
+                    else if (pollResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var json = pollResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                        json = json.Replace(" PM UTC", " PM");
+                        return Newtonsoft.Json.JsonConvert.DeserializeObject<GatewayResiliencyInformation>(json);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException($"Polling failed. Status code: {pollResponse.StatusCode}");
+                    }
+                }
+            }
         }
     }
 }
