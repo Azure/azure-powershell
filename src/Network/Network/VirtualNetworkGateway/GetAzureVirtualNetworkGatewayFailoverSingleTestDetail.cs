@@ -13,24 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+using System;
+using System.Net.Http;
 using System.Management.Automation;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using CNM = Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayFailoverSingleTestDetails", DefaultParameterSetName = "ByName"), OutputType(typeof(List<PSExpressRouteFailoverSingleTestDetails>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayFailoverSingleTestDetails", DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(List<PSExpressRouteFailoverSingleTestDetails>))]
     public class GetAzureVirtualNetworkGatewayFailoverSingleTestDetails : NetworkBaseCmdlet
     {
-        private const string ByName = "ByName";
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource group name of the virtual network gateway.",
-            ParameterSetName = ByName)]
+            ParameterSetName = GetByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -38,21 +39,21 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the virtual network gateway.",
-            ParameterSetName = ByName)]
+            ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkGatewayName { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "Peering location of the test.",
-            ParameterSetName = ByName)]
+            ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string PeeringLocation { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The unique Guid value which identifies the test.",
-            ParameterSetName = ByName)]
+            ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string FailoverTestId { get; set; }
 
@@ -60,17 +61,84 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         {
             base.Execute();
 
-            // Call the underlying SDK API (the method name may differ slightly depending on SDK version)
-            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways.GetFailoverSingleTestDetails(
-                ResourceGroupName,
-                VirtualNetworkGatewayName,
-                PeeringLocation,
-                FailoverTestId);
+            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
+                .GetFailoverSingleTestDetailsWithHttpMessagesAsync(
+                    resourceGroupName: ResourceGroupName,
+                    virtualNetworkGatewayName: VirtualNetworkGatewayName,
+                    peeringLocation: PeeringLocation,
+                    failoverTestId: FailoverTestId)
+                .GetAwaiter().GetResult();
 
-            // Map SDK model to PS model
-            var psResult = NetworkResourceManagerProfile.Mapper.Map<List<PSExpressRouteFailoverSingleTestDetails>>(response);
+            if (response.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            {
+                WriteVerbose("Operation accepted. Polling for results...");
+                var locationUrl = response.Response.Headers.Location?.ToString();
+                if (!string.IsNullOrEmpty(locationUrl))
+                {
+                    var testDetails = PollAndParse(locationUrl);
+                    var fullJson = JsonConvert.SerializeObject(new FailoverTestDetailsWrapper { Value = testDetails }, Formatting.Indented);
+                    WriteObject(fullJson);
+                }
+                else
+                {
+                    throw new InvalidOperationException("Location header missing in 202 Accepted response.");
+                }
+            }
+            else if (response.Response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var testDetails = DeserializeJsonResponse(response.Response);
+                var fullJson = JsonConvert.SerializeObject(new FailoverTestDetailsWrapper { Value = testDetails }, Formatting.Indented);
+                WriteObject(fullJson);
 
-            WriteObject(psResult, enumerateCollection: true);
+            }
+            else
+            {
+                throw new InvalidOperationException($"Unexpected response status: {response.Response.StatusCode}");
+            }
+        }
+
+        private class FailoverTestDetailsWrapper
+        {
+            [JsonProperty("value")]
+            public List<PSExpressRouteFailoverSingleTestDetails> Value { get; set; }
+        }
+
+        private List<PSExpressRouteFailoverSingleTestDetails> DeserializeJsonResponse(HttpResponseMessage responseMessage)
+        {
+            var json = responseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            WriteVerbose("Response JSON: " + json);
+
+            var wrapper = JsonConvert.DeserializeObject<FailoverTestDetailsWrapper>(json);
+            return wrapper?.Value ?? new List<PSExpressRouteFailoverSingleTestDetails>();
+        }
+
+         private List<PSExpressRouteFailoverSingleTestDetails> PollAndParse(string locationUrl)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                while (true)
+                {
+                    System.Threading.Thread.Sleep(5000); // wait before polling
+                    var pollResponse = httpClient.GetAsync(locationUrl).GetAwaiter().GetResult();
+
+                    WriteVerbose($"Polling response status code: {pollResponse.StatusCode}");
+
+                    if (pollResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
+                    {
+                        continue; // still processing
+                    }
+                    else if (pollResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var json = pollResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                        var response =  JsonConvert.DeserializeObject<FailoverTestDetailsWrapper>(json);
+                        return response.Value;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException($"Polling failed. Status code: {pollResponse.StatusCode}");
+                    }
+                }
+            }
         }
     }
 }

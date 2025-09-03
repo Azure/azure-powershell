@@ -3288,57 +3288,6 @@
       </ListControl>
     </View>
     <View>
-      <Name>PSExpressRouteFailoverSingleTestDetailsTable</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteFailoverSingleTestDetails</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Peering Location</Label>
-            <Width>20</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-            <Width>15</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Start Time (UTC)</Label>
-            <Width>25</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>End Time (UTC)</Label>
-            <Width>25</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Was Simulation Successful</Label>
-            <Width>20</Width>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PeeringLocation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTimeUtc</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EndTimeUtc</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>WasSimulationSuccessful</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSRouteTable</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSRouteTable</TypeName>
