@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '14.4.0'
+ModuleVersion = '14.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -181,7 +181,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; },
             @{ModuleName = 'Az.MySql'; RequiredVersion = '1.5.0'; }, 
             @{ModuleName = 'Az.NeonPostgres'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '0.25.0'; }, 
-            @{ModuleName = 'Az.Network'; RequiredVersion = '7.19.1'; }, 
+            @{ModuleName = 'Az.Network'; RequiredVersion = '7.20.0'; }, 
             @{ModuleName = 'Az.NetworkAnalytics'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.NetworkCloud'; RequiredVersion = '1.2.1'; }, 
             @{ModuleName = 'Az.NetworkFunction'; RequiredVersion = '0.2.0'; }, 
@@ -204,7 +204,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; },
             @{ModuleName = 'Az.Quantum'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Qumulo'; RequiredVersion = '0.1.3'; }, 
             @{ModuleName = 'Az.Quota'; RequiredVersion = '0.1.3'; }, 
-            @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '7.8.0'; }, 
+            @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '7.8.1'; }, 
             @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.11.0'; }, 
             @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.5.0'; }, 
             @{ModuleName = 'Az.Relay'; RequiredVersion = '2.1.2'; }, 
@@ -215,7 +215,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; },
             @{ModuleName = 'Az.ScVmm'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.Search'; RequiredVersion = '0.10.1'; }, 
             @{ModuleName = 'Az.Security'; RequiredVersion = '1.8.0'; }, 
-            @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '3.2.0'; }, 
+            @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '3.2.1'; }, 
             @{ModuleName = 'Az.SelfHelp'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '4.1.1'; }, 
             @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '3.7.0'; }, 
