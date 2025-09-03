@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         }
 
         // Wrapper class for the response containing a list of test details
-        public class PSExpressRouteFailoverTestResponse
+        private class PSExpressRouteFailoverTestResponse
         {
             [JsonProperty("value")]
             public List<PSExpressRouteFailoverTestDetails> Value { get; set; }
