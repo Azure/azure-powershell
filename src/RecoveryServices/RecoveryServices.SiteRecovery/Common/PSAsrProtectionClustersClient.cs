@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Resyncs / Repairs Cluster Replication.
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
         /// <returns>Job Response</returns>
         public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryClusterResynchronizeReplication(
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Switch the Azure Site Recovery protection entity replication direction.
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="input">Input for Switch</param>
         /// <returns>Job Response</returns>
         public PSSiteRecoveryLongRunningOperation StartSwitchClusterProtection(
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Cluster Unplanned Failover.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
         /// <param name="input">Input for Cluster Unplanned failover.</param>
         /// <returns>Job Response</returns>
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Cluster Test Failover.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
         /// <param name="input">Input for Cluster Test failover.</param>
         /// <returns>Job Response</returns>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Cluster Test Failover Cleanup.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
         /// <param name="input">Input for Cluster Test failover cleanup.</param>
         /// <returns>Job Response</returns>
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Start Cluster Apply Recovery Point.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
         /// <param name="input">Input for Cluster Apply recovery point.</param>
         /// <returns>Job Response</returns>
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Starts Cluster Commit Failover.
         /// </summary>
         /// <param name="fabricName">Fabric Name.</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
         /// <returns>Job Response</returns>
         public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryClusterCommitFailover(

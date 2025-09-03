@@ -40,7 +40,7 @@ Starts SVM peering and returns a command to be run on the external ONTAP to acce
 
 ### Example 1
 ```powershell
-Start-AzNetAppFilesAuthorizeExternalReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+Start-AzNetAppFilesAuthorizeExternalReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyDestinationAnfVolume"
 ```
 
 Starts SVM peering on ANF volume "MyDestinationAnfVolume"

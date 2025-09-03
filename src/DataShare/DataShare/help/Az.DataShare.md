@@ -42,7 +42,7 @@ Gets information about share subscription in data share account.
 Gets information about synchronization runs in share subscription.
 
 ### [Get-AzDataShareSubscriptionSynchronizationDetail](Get-AzDataShareSubscriptionSynchronizationDetail.md)
-Gets information about synchonization details for share subscription.
+Gets information about synchronization details for share subscription.
 
 ### [Get-AzDataShareSynchronization](Get-AzDataShareSynchronization.md)
 Gets information about synchronization setting for a share.

@@ -43,7 +43,7 @@ Get-AzMigrateLocalJob -ProjectID <String> -ResourceGroupID <String> [-Subscripti
 ```
 
 ## DESCRIPTION
-The Get-AzMigrateLocalJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateLocalJob cmdlet retrieves the status of an Azure Migrate job.
 
 ## EXAMPLES
 

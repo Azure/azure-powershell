@@ -19,24 +19,27 @@ Resets a lab virtual machine password.
 Resets a lab virtual machine password.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service virtual machine.
         ${ResourceId},
   
         [Parameter()]
         [System.String]
+        # The user name of the virtual machine.
         ${Username},
 
         [Parameter(Mandatory)]
         [SecureString]
+        # The password of the virtual machine.
         ${Password},
         
         [Parameter()]
@@ -112,12 +115,9 @@ function Reset-AzLabServicesVMPassword_ResourceId {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+        $HandleVMResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleVMResourceId.ps1'
+        $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
-        if ($PSBoundParameters.ContainsKey('Password')) {
-            $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
-            $PSBoundParameters['Password'] = $psTxt
-        }
         
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {
@@ -126,7 +126,7 @@ function Reset-AzLabServicesVMPassword_ResourceId {
        
             $PSBoundParameters.Remove("ResourceId") > $null
     
-            return Az.LabServices\Reset-AzLabServicesVMPassword @PSBoundParameters
+            return Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetExpanded @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid VM Resource Id." -ErrorAction Stop
         }

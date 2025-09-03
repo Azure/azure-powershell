@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzResourceManagementPrivateLink
 
 ## SYNOPSIS
-Deletes the Resource Manangement Private Link.
+Deletes the Resource Management Private Link.
 
 ## SYNTAX
 

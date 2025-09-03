@@ -510,7 +510,7 @@
     <value>IP version is undefined</value>
   </data>
   <data name="TestConfiguration" xml:space="preserve">
-    <value>No test configuraiton is provided</value>
+    <value>No test configuration is provided</value>
   </data>
   <data name="TestGroupParameters" xml:space="preserve">
     <value>Test group is missing one or more mandatory parameter</value>

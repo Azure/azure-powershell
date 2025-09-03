@@ -88,7 +88,35 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator Equal = @"Equals";');
-  - model-cmdlet:
-    - Condition
-    - Dimension
+  # - model-cmdlet:
+  #   - Condition
+  #   - Dimension
+  - where:
+      verb: Get|Update|New
+      subject: ScheduledQueryRule
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - ActionGroup
+          - CriterionAllOf
+          - Scope
+          - TargetResourceType
+        new-output-properties:
+          - ActionGroup
+          - CriterionAllOf
+          - Scope
+          - TargetResourceType
+        change-description: The types of the properties ActionGroup, CriterionAllOf, Scope and TargetResourceType will be changed from single object or fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: Dimension|Value
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```

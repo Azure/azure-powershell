@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Cmdlets
     /// [OpenAPI] GetTelemetryConfig=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/telemetryconfig"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzArcResourceBridgeTelemetryConfig_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.ParameterSetBreakingChange(new string[] {"GetViaIdentity"}, "15.0.0", "9.0.0", "2025/11/03")]
     [global::System.Management.Automation.OutputType(typeof(string))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Description(@"Gets the telemetry config.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Generated]

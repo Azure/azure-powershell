@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models
 
         /// <summary>Resource location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Location = value ?? null; }
 
         /// <summary>The list of logic app receivers that are part of this action group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.PropertyOrigin.Inlined)]
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroup Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ActionGroup()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceInternal)__azureResource).Type = value ?? null; }
 
         /// <summary>Azure resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.PropertyOrigin.Inherited)]

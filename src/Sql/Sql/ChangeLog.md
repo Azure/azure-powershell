@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 6.1.0
+* Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
+* Added `MemorySizeInGB` parameter to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of instances with flexible memory
+* Added `MemorySizeInGB` field to the model of the managed instance so that it displays information about flexible memory instances that are returned by `Get-AzSqlInstance`.
+
+## Version 6.0.5
+* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
+
 ## Version 6.0.4
 * Added server level action groups in enum of action groups to be able to be configured via auditing.
 

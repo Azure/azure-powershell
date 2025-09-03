@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
     public static class NsgProtocol
     {
+        /// <summary>
+        /// Protocol applies to HTTP.
+        /// </summary>
         public const string Http = "http";
+        /// <summary>
+        /// Protocol applies to HTTPS.
+        /// </summary>
         public const string Https = "https";
+        /// <summary>
+        /// Protocol applies to TCP.
+        /// </summary>
         public const string Tcp = "tcp";
+        /// <summary>
+        /// Protocol applies to UDP.
+        /// </summary>
         public const string Udp = "udp";
+        /// <summary>
+        /// Protocol applies to ICMP.
+        /// </summary>
         public const string Icmp = "icmp";
+        /// <summary>
+        /// Protocol applies to AH.
+        /// </summary>
         public const string Ah = "ah";
+        /// <summary>
+        /// Protocol applies to ESP.
+        /// </summary>
         public const string Esp = "esp";
     }
 }

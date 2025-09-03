@@ -39,7 +39,7 @@ Remove-AzSecurityAssessment -InputObject <PSSecurityAssessment> [-PassThru]
 ```
 
 ## DESCRIPTION
-Deletes a security assessment result from a subscription, usually used when a resoruce is deleted or when the assessment is not relevant for a specific resource anymore
+Deletes a security assessment result from a subscription, usually used when a resource is deleted or when the assessment is not relevant for a specific resource anymore
 
 ## EXAMPLES
 

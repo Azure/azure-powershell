@@ -13,7 +13,7 @@ List system scan ruleset versions in Data catalog
 ## SYNTAX
 
 ```
-Get-AzPurviewSystemScanRulesetVersion -Endpoint <String> [-DataSourceType <DataSourceType>]
+Get-AzPurviewSystemScanRulesetVersion -Endpoint <String> [-DataSourceType <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Get all versions of system scanruleset available for a data source
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset
 
 ## NOTES
 

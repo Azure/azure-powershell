@@ -43,13 +43,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-CreateVolumeFromSnapshot");
         }
-               
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreVolumeFromSnapshot()
         {
             TestRunner.RunTestScript("Test-RestoreVolumeFromSnapshot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSplitCloneFromParent()
+        {
+            TestRunner.RunTestScript("Test-SplitCloneFromParent");
         }
     }
 }

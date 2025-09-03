@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+- Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-PostGreConnection
+- Introduced a Timeout value when running Test-AzPostgreSqlFlexibleServerConnect with long running query
+
 ## Version 1.3.0
 * Added support for Geo-restore in `Restore-AzPostgreSqlFlexibleServer` cmdlets.
     - Automatically determined the paired region for the source server during geo-restore.
@@ -72,7 +76,7 @@
 * Added validateset for parameter StorageAutogrow (#12736)
 * Used 'master' and 'replica' to avoid confusion when created postgresql replica server (#12743)
 * Provided hint in doc to use Update-AzPostgreSqlServer & Update-AzPostgreSqlServerConfiguration as a candidate for each other (#12745)
-* Fix secure string decrytion issue in PowerShell 7 (#12956)
+* Fix secure string decryption issue in PowerShell 7 (#12956)
 
 ## Version 0.1.0
 * the first preview release

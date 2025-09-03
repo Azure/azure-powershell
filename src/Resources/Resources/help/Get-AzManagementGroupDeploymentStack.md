@@ -31,13 +31,13 @@ Get-AzManagementGroupDeploymentStack -ResourceId <String> [-Pre] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-Retrieve a mangement group scoped deployment stack.
+Retrieve a management group scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1: Retrieves the deployment stack MyMGStack in mangement group MyManagementGroup
+### Example 1: Retrieves the deployment stack MyMGStack in management group MyManagementGroup
 ```powershell
-Get-AzManagementGroupDeploymentStack -ManagementGroupId MyMangementGroup -Name MyMGStack
+Get-AzManagementGroupDeploymentStack -ManagementGroupId MyManagementGroup -Name MyMGStack
 ```
 
 Get a deployment stack named 'MyMGStack' under an MG named 'MyManagementGroup'.

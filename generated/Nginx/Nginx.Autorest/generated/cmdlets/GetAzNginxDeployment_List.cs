@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Nginx.NginxPlus/nginxDeployments"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNginxDeployment_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateIPAddress","PublicIPAddress","AutoScaleSettingProfile"}, NewOutputProperties=new string[] {"PrivateIPAddress","PublicIPAddress","AutoScaleSettingProfile"}, ChangeDescription="The types of the properties PrivateIPAddress, ProtectedFile and AutoScaleSettingProfile will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Description(@"List the NGINX deployments resources")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Generated]

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     public abstract class AzureSqlServerCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override AzureSqlServerAdapter InitModelAdapter()
