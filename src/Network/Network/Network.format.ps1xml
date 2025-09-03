@@ -3288,56 +3288,6 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteFailoverTestDetails</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteFailoverTestDetails</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>PeeringLocation</Label>
-                <PropertyName>PeeringLocation</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Status</Label>
-                <PropertyName>Status</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>StartTime</Label>
-                <PropertyName>StartTime</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>EndTime</Label>
-                <PropertyName>EndTime</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>TestType</Label>
-                <PropertyName>TestType</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>TestGuid</Label>
-                <PropertyName>TestGuid</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Circuits</Label>
-                <PropertyName>CircuitsText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Connections</Label>
-                <PropertyName>ConnectionsText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Issues</Label>
-                <PropertyName>IssuesText</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
       <Name>PSExpressRouteFailoverSingleTestDetailsTable</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteFailoverSingleTestDetails</TypeName>
