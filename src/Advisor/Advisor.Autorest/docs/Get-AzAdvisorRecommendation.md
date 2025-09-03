@@ -48,7 +48,7 @@ Obtains details of a cached recommendation.
 
 ### Example 1: List Recommendation by subscriptionId and resource group name
 ```powershell
- Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
+Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
 ```
 
 ```output
