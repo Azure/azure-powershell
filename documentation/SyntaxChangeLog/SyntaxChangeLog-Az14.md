@@ -1,3 +1,11 @@
+## 14.5.0 - October 2025
+#### Az.Network 7.20.0 
+* Added cmdlet `Set-AzNetworkManagerIpamPoolStaticCidr`
+#### Az.StorageMover 1.6.0 
+* Modified cmdlet `New-AzStorageMoverJobDefinition`
+   - Added parameter `-JobType`
+* Added cmdlet `New-AzStorageMoverAzNfsFileShareEndpoint`, `New-AzStorageMoverMultiCloudConnectorEndpoint`, `Update-AzStorageMoverAzNfsFileShareEndpoint`, `Update-AzStorageMoverMultiCloudConnectorEndpoint`
+
 ## 14.4.0 - September 2025
 #### Az.Accounts 5.3.0 
 * Modified cmdlet `Invoke-AzRestMethod`
@@ -673,6 +681,7 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
 
 
 
