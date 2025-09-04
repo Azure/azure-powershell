@@ -50,15 +50,23 @@ Get an analysis result summary of a firmware by name.
 ### Example 1: List all the analysis results summary for a firmware by analysis type CVE
 
 ```powershell
-Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type
+Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type CVE
 ```
 
 ```output
-Id                           : 
-Name                         : 
-Property                     : 
-ResourceGroupName            : 
-SummaryType                  :
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/00000000-0000-0000-0000-000000000000/summaries/cve
+Name                         : cve
+Property                     : {
+                                 "summaryType": "CommonVulnerabilitiesAndExposures",
+                                 "criticalCveCount": 0,
+                                 "highCveCount": 0,
+                                 "mediumCveCount": 0,
+                                 "lowCveCount": 0,
+                                 "unknownCveCount": 0
+                               }
+ProvisioningState            :
+ResourceGroupName            : FirmwareAnalysisRG
+SummaryType                  : CommonVulnerabilitiesAndExposures
 SystemDataCreatedAt          :
 SystemDataCreatedBy          :
 SystemDataCreatedByType      :
@@ -73,12 +81,25 @@ List all the analysis results summary for a firmware by analysis type CVE.
 ### Example 2: List all the analysis results summary for a firmware by analysis type Firmware
 
 ```powershell
-Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type
+Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type Firmware
 ```
 
 ```output
-Id                           : 
-Name                         : 
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RgName/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/00000000-0000-0000-0000-000000000000/summaries/firmware
+Name                         : firmware
+Property                     : {
+                                 "summaryType": "Firmware",
+                                 "extractedSize": 3935653,
+                                 "fileSize": 16777216,
+                                 "extractedFileCount": 57,
+                                 "componentCount": 1,
+                                 "binaryCount": 0,
+                                 "analysisTimeSeconds": 7,
+                                 "rootFileSystems": 0
+                               }
+ProvisioningState            :
+ResourceGroupName            : RgName
+SummaryType                  : Firmware
 Property                     :
 ResourceGroupName            : 
 SummaryType                  :
