@@ -54,11 +54,11 @@ Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName FirmwareAnalysisRG -Workspa
 ```
 
 ```output
-Id                           : /subscriptions/264e9200-2944-4334-9a02-721e6268b55f/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current
 MonthlyFirmwareUploadCount   : 1
 Name                         : current
 ProvisioningState            :
-ResourceGroupName            : FirmwareAnalysisRG
+ResourceGroupName            : rgName
 SystemDataCreatedAt          :
 SystemDataCreatedBy          :
 SystemDataCreatedByType      :
