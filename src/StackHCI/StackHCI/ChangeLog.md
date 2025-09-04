@@ -18,22 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added breaking change announcement for below cmdlets from fixed array to list.
-  * Cmdlet `Get/New-AzStackHciArcSetting`
-  * Cmdlet `Get/New/Update-AzStackHciCluster`
-  * Cmdlet `Get/New-AzStackHciDeploymentSetting`
-  * Cmdlet `Get/New-AzStackHciExtension`
-  * Cmdlet `Get/Set-AzStackHciUpdate`
-  * Cmdlet `Get/Set-AzStackHciUpdateRun`
-  * Cmdlet `Get/Set-AzStackHciUpdateSummary`
-  * Cmdlet `Test-AzStackHciEdgeDevice`
-  * Cmdlet `Invoke-AzStackHciConsentAndInstallDefaultExtension`
-  * Cmdlet `Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit`
-* The parameters of the 'New/Update-AzStackHciCluster' commands will be changed.
-  * 'IdentityType' will be removed. 'EnableSystemAssignedIdentity' will be used to enable/disable system-assigned identities.
-  * The type of 'UserAssignedIdentity' will be simplified to an array of strings that is used to specify the user's assigned identity.
-* The parameter set `Extend` and `ExtendViaIdentity` for cmdlet `Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit` will be removed.
-* The parameter set `Validate` and ValidateViaIdentity for cmdlet `Test-AzStackHciEdgeDevice` will be removed.
+
+## Version 2.6.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 2.6.1
 * Used fully qualified computer name and added warning for user to upgrade to solution.
