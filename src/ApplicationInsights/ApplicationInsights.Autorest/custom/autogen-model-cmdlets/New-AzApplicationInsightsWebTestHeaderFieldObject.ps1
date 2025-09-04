@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create a in-memory object for HeaderField
+Create an in-memory object for HeaderField.
 .Description
-Create a in-memory object for HeaderField
+Create an in-memory object for HeaderField.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField
 .Link
-https://learn.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestHeaderFieldObject
+https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-azapplicationinsightswebtestheaderfieldobject
 #>
 function New-AzApplicationInsightsWebTestHeaderFieldObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,10 +40,14 @@ function New-AzApplicationInsightsWebTestHeaderFieldObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField]::New()
 
-        $Object.Name = $Name
-        $Object.Value = $Value
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.Name = $Name
+        }
+        if ($PSBoundParameters.ContainsKey('Value')) {
+            $Object.Value = $Value
+        }
         return $Object
     }
 }
