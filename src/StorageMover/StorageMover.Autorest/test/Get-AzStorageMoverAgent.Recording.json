@@ -1,17 +1,17 @@
 {
-  "Get-AzStorageMoverAgent+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents?api-version=2024-07-01+1": {
+  "Get-AzStorageMoverAgent+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents?api-version=2025-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents?api-version=2024-07-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "d53f27b4-169c-40c4-981f-04232e4057a3" ],
+        "x-ms-client-request-id": [ "21b29715-e097-4cfb-b2cd-845089589196" ],
         "CommandName": [ "Get-AzStorageMoverAgent" ],
         "FullCommandName": [ "Get-AzStorageMoverAgent_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.StorageMover/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.2", "Az.StorageMover/1.5.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,41 +22,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/fcf780c5-63fe-48fa-834b-e323a0e0edc1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "b2413d04-2ca0-4213-92d7-70a32dcc6d76" ],
-        "x-ms-request-id": [ "2dea9a0c-1095-44da-91e5-68cb9fab5f80" ],
-        "x-ms-correlation-request-id": [ "80b9e7c1-9027-4ebc-8966-13d48405a9e1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045324Z:80b9e7c1-9027-4ebc-8966-13d48405a9e1" ],
+        "mise-correlation-id": [ "69225e93-1257-452a-86d0-f7124fb16d07" ],
+        "x-ms-request-id": [ "f5a677b2-f10a-4f1e-8d8e-cb39024413a2" ],
+        "x-ms-correlation-request-id": [ "2916aadf-8100-4cd0-bde9-7d4c88929f0b" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125049Z:2916aadf-8100-4cd0-bde9-7d4c88929f0b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1B5ADBEF043245848429349BF45E37D1 Ref B: MAA201060516019 Ref C: 2024-06-12T04:53:23Z" ],
-        "Date": [ "Wed, 12 Jun 2024 04:53:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4AFBE02F572040D5985FF2F939A606EE Ref B: PNQ231110906036 Ref C: 2025-08-29T12:50:49Z" ],
+        "Date": [ "Fri, 29 Aug 2025 12:50:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1042" ],
+        "Content-Length": [ "1011" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:49:38.379944Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-12T04:53:08.7365894Z\"},\"properties\":{\"agentVersion\":\"3.1.3195-PullRequest-debug_amd64:3.1.3195-PullRequest-debug_amd64\",\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"fe2895d1-f1e6-2445-b79a-3a3ca1f57ee2\",\"timeZone\":\"UTC\",\"localIPAddress\":\"192.168.161.105\",\"memoryInMB\":2156,\"numberOfCores\":8,\"uptimeInSeconds\":1520,\"lastStatusUpdate\":\"2024-06-12T04:53:05.0902393Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-28T12:18:08.5902303Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-08-29T12:50:26.9294241Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3913,\"numberOfCores\":1,\"uptimeInSeconds\":111014,\"lastStatusUpdate\":\"2025-08-29T12:50:24.2804374Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzStorageMoverAgent+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2024-07-01+1": {
+  "Get-AzStorageMoverAgent+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2024-07-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "e2e0af2e-565e-4eed-8265-1e62b9cd2b57" ],
+        "x-ms-client-request-id": [ "c417d304-10b5-45b2-a065-35a8f84d5a76" ],
         "CommandName": [ "Get-AzStorageMoverAgent" ],
         "FullCommandName": [ "Get-AzStorageMoverAgent_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.StorageMover/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.2", "Az.StorageMover/1.5.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -67,26 +68,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"01001c81-0000-3400-0000-666929b40000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"00005889-0000-3300-0000-68b1a2130000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/a93ae6b0-198c-4e51-a747-4994b2c525bb" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "d7f3441e-b6c6-495e-b4bf-20736e0bd51f" ],
-        "x-ms-request-id": [ "9a9702e1-d82b-4bce-b592-218ad4ce6600" ],
-        "x-ms-correlation-request-id": [ "946e1d30-cd82-4c32-b45e-aa652508a336" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045325Z:946e1d30-cd82-4c32-b45e-aa652508a336" ],
+        "mise-correlation-id": [ "b0d73992-49cd-4423-bb78-378cf6a85f5e" ],
+        "x-ms-request-id": [ "c9b2de6d-8612-4307-90a8-0e6394ba8e46" ],
+        "x-ms-correlation-request-id": [ "092cf365-e940-4046-a94f-9d7b56b362c6" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125050Z:092cf365-e940-4046-a94f-9d7b56b362c6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 587D8B238C4240668AA62903AC371A7C Ref B: MAA201060516019 Ref C: 2024-06-12T04:53:24Z" ],
-        "Date": [ "Wed, 12 Jun 2024 04:53:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8EE4F109854941808F37EAADA48B5661 Ref B: PNQ231110906036 Ref C: 2025-08-29T12:50:49Z" ],
+        "Date": [ "Fri, 29 Aug 2025 12:50:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1030" ],
+        "Content-Length": [ "999" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:49:38.379944Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-12T04:53:08.7365894Z\"},\"properties\":{\"agentVersion\":\"3.1.3195-PullRequest-debug_amd64:3.1.3195-PullRequest-debug_amd64\",\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"fe2895d1-f1e6-2445-b79a-3a3ca1f57ee2\",\"timeZone\":\"UTC\",\"localIPAddress\":\"192.168.161.105\",\"memoryInMB\":2156,\"numberOfCores\":8,\"uptimeInSeconds\":1520,\"lastStatusUpdate\":\"2024-06-12T04:53:05.0902393Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-28T12:18:08.5902303Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-08-29T12:50:26.9294241Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3913,\"numberOfCores\":1,\"uptimeInSeconds\":111014,\"lastStatusUpdate\":\"2025-08-29T12:50:24.2804374Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }
