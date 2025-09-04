@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmVMTemplate
 
 ## SYNOPSIS
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> -JsonString 
 ```
 
 ## DESCRIPTION
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 
 ## EXAMPLES
 
