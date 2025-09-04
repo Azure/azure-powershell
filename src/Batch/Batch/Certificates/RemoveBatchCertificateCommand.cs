@@ -17,9 +17,11 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+    [CmdletDeprecationWithVersion("15.0.0", "4.0.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificate", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveBatchCertificateCommand : BatchObjectModelCmdletBase
     {

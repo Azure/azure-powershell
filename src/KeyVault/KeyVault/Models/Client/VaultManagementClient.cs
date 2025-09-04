@@ -439,17 +439,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     throw new ArgumentNullException("parameters.SkuFamilyName");
                 if (parameters.TenantId == Guid.Empty)
                     throw new ArgumentException("parameters.TenantId");
+                ManagedHsmSkuName skuName = ManagedHsmSkuName.StandardB1;
                 if (!string.IsNullOrWhiteSpace(parameters.SkuName))
                 {
-                    if (Enum.TryParse(parameters.SkuName, true, out ManagedHsmSkuName skuName))
-                    {
-                        managedHsmSku.Name = skuName;
-                    }
-                    else
+                    if (!Enum.TryParse(parameters.SkuName, true, out skuName))
                     {
                         throw new InvalidEnumArgumentException("parameters.SkuName");
                     }
                 }
+                managedHsmSku = ManagedHsmSku.Create(skuName);
                 properties.TenantId = parameters.TenantId;
                 properties.InitialAdminObjectIds = parameters.Administrator;
                 properties.EnableSoftDelete = parameters.EnableSoftDelete;
@@ -649,10 +647,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 parameters: new ManagedHsm
                 {
                     Location = existingManagedHsm.Location,
-                    Sku = new ManagedHsmSku
-                    {
-                        Name = (ManagedHsmSkuName)Enum.Parse(typeof(ManagedHsmSkuName), existingManagedHsm.Sku)
-                    },
+                    Sku = ManagedHsmSku.Create((ManagedHsmSkuName)Enum.Parse(typeof(ManagedHsmSkuName), existingManagedHsm.Sku)),
                     Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
                     Properties = properties,
                     Identity = parameters.ManagedServiceIdentity
