@@ -95,13 +95,13 @@ function Create-KeyVault {
 
     # initialize parameters if needed
     if ([string]::IsNullOrEmpty($resourceGroupName)) {
-        $resourceGroupName = Get-ComputeTestResourceName 
+        $resourceGroupName = Get-ComputeTestResourceName
     }
     if ([string]::IsNullOrEmpty($location)) {
-        $location = Get-ComputeVMLocation 
+        $location = Get-ComputeVMLocation
     }
     if ([string]::IsNullOrEmpty($vaultName)) {
-        $vaultName = 'kv' + $resourceGroupName 
+        $vaultName = 'kv' + $resourceGroupName
     }
 
     # create vault
@@ -144,13 +144,13 @@ function Create-KeyVaultWithAclEncryptionIdentity {
 
     # initialize parameters if needed
     if ([string]::IsNullOrEmpty($resourceGroupName)) {
-        $resourceGroupName = Get-ComputeTestResourceName 
+        $resourceGroupName = Get-ComputeTestResourceName
     }
     if ([string]::IsNullOrEmpty($location)) {
-        $location = Get-ComputeVMLocation 
+        $location = Get-ComputeVMLocation
     }
     if ([string]::IsNullOrEmpty($vaultName)) {
-        $vaultName = 'kv' + $resourceGroupName 
+        $vaultName = 'kv' + $resourceGroupName
     }
 
     # create vault
@@ -188,13 +188,13 @@ function Create-VirtualMachine {
 
     # initialize parameters if needed
     if ([string]::IsNullOrEmpty($rgname)) {
-        $rgname = Get-ComputeTestResourceName 
+        $rgname = Get-ComputeTestResourceName
     }
     if ([string]::IsNullOrEmpty($vmname)) {
-        $vmname = 'vm' + $rgname 
+        $vmname = 'vm' + $rgname
     }
     if ([string]::IsNullOrEmpty($loc)) {
-        $loc = Get-ComputeVMLocation 
+        $loc = Get-ComputeVMLocation
     }
 
     # Common
@@ -300,13 +300,13 @@ function Create-VirtualMachineNoDataDisks {
 
     # initialize parameters if needed
     if ([string]::IsNullOrEmpty($rgname)) {
-        $rgname = Get-ComputeTestResourceName 
+        $rgname = Get-ComputeTestResourceName
     }
     if ([string]::IsNullOrEmpty($vmname)) {
-        $vmname = 'vm' + $rgname 
+        $vmname = 'vm' + $rgname
     }
     if ([string]::IsNullOrEmpty($loc)) {
-        $loc = Get-ComputeVMLocation 
+        $loc = Get-ComputeVMLocation
     }
 
     # Common
@@ -615,9 +615,9 @@ function Get-DefaultVMConfig {
 
 # Assert Output Contains
 function Assert-OutputContains {
-    param([string] $cmd, [string[]] $sstr)
+    param([ScriptBlock] $cmd, [string[]] $sstr)
 
-    $st = Write-Verbose ('Running Command : ' + $cmd)
+    $st = Write-Verbose ('Running Command : ' + $cmd.ToString())
     $output = & $cmd | Out-String
 
     $max_output_len = 1500
