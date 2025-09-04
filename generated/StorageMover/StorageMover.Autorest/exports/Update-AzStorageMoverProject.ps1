@@ -25,11 +25,11 @@ Properties not specified in the request body will be unchanged.
 Update-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "Update Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,7 +52,7 @@ PROJECT <IProjectUpdateParameters>: The Project resource.
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverproject
 #>
 function Update-AzStorageMoverProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -97,7 +97,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters]
     # The Project resource.
     # To construct, see NOTES section for PROJECT properties and create a hash table.
     ${Project},

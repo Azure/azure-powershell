@@ -10,7 +10,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support
     public partial struct EndpointType :
         System.IEquatable<EndpointType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType AzureMultiCloudConnector = @"AzureMultiCloudConnector";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType AzureStorageBlobContainer = @"AzureStorageBlobContainer";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType AzureStorageNfsFileShare = @"AzureStorageNfsFileShare";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType AzureStorageSmbFileShare = @"AzureStorageSmbFileShare";
 

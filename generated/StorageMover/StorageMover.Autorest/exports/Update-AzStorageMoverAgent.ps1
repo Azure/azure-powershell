@@ -24,11 +24,11 @@ $recurrence = New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday',
 Update-AzStorageMoverAgent -ResourceGroupName myresourcegroup -StorageMoverName mystoragemover -Name myagent -Description "Update description" -UploadLimitScheduleWeeklyRecurrence $recurrence
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ UPLOADLIMITSCHEDULEWEEKLYRECURRENCE <IUploadLimitWeeklyRecurrence[]>: The set of
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
 #>
 function Update-AzStorageMoverAgent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -111,7 +111,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters]
     # The Agent resource.
     # To construct, see NOTES section for AGENT properties and create a hash table.
     ${Agent},
@@ -127,7 +127,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]]
     # The set of weekly repeating recurrences of the WAN-link upload limit schedule.
     # To construct, see NOTES section for UPLOADLIMITSCHEDULEWEEKLYRECURRENCE properties and create a hash table.
     ${UploadLimitScheduleWeeklyRecurrence},

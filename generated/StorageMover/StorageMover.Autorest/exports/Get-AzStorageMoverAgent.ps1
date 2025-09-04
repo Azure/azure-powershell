@@ -27,7 +27,7 @@ Get-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myS
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveragent
 #>
 function Get-AzStorageMoverAgent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

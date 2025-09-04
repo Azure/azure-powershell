@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageMover
-Module Guid: ccf19870-3e0a-46b9-8739-0b5b083ebd23
+Module Guid: 92cb54af-1966-4478-817f-c608137647ca
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagemover
 Help Version: 1.0.0.0
 Locale: en-US

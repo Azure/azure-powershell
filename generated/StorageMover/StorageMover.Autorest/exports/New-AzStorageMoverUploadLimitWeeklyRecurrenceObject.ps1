@@ -23,12 +23,12 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence
 .Link
 https://learn.microsoft.com/powershell/module/Az.StorageMover/new-AzStorageMoverUploadLimitWeeklyRecurrenceObject
 #>
 function New-AzStorageMoverUploadLimitWeeklyRecurrenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

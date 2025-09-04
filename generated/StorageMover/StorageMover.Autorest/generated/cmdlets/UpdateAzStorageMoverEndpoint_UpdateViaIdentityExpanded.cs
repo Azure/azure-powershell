@@ -16,10 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStorageMoverEndpoint_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Updates properties for an Endpoint resource. Properties not specified in the request body will be unchanged.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}", ApiVersion = "2025-07-01")]
     public partial class UpdateAzStorageMoverEndpoint_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener
     {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The Endpoint resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateParameters _endpointBody = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.EndpointBaseUpdateParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseUpdateParameters _endpointBody = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.EndpointBaseUpdateParameters();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -69,6 +69,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType IdentityType { get => _endpointBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType)""); set => _endpointBody.IdentityType = value; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _endpointBody.IdentityUserAssignedIdentity ?? null /* object */; set => _endpointBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity _inputObject;
@@ -104,8 +134,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         ReadOnly = false,
         Description = @"The Endpoint resource, which contains information about file sources and targets.",
         SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateProperties Property { get => _endpointBody.Property ?? null /* object */; set => _endpointBody.Property = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseUpdateProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseUpdateProperties Property { get => _endpointBody.Property ?? null /* object */; set => _endpointBody.Property = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -140,12 +170,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -417,12 +447,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint> response)
         {
             using( NoSynchronizationContext )
             {
@@ -434,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
                 WriteObject((await response));
             }
         }

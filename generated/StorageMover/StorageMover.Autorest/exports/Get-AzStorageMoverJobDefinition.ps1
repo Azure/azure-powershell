@@ -27,7 +27,7 @@ Get-AzStorageMoverJobDefinition -ProjectName myProject -ResourceGroupName myReso
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition
 #>
 function Get-AzStorageMoverJobDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

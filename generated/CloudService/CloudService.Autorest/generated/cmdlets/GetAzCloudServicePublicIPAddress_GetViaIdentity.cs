@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] GetByCloudService=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudServicePublicIPAddress_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Zone","IPTag","PublicIPAddress","PublicIPPrefix","Subnet"}, NewOutputProperties=new string[] {"Zone","IPTag","PublicIPAddress","PublicIPPrefix","Subnet"}, ChangeDescription="The types of the properties 'Zone', 'IPTag', 'PublicIPAddress', 'PublicIPPrefix', and 'Subnet' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Get the specified public IP address in a cloud service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]

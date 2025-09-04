@@ -23,9 +23,9 @@ Creates or updates a Project resource, which is a logical grouping of related jo
 New-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +43,7 @@ PROJECT <IProject>: The Project resource.
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverproject
 #>
 function New-AzStorageMoverProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -75,7 +75,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject]
     # The Project resource.
     # To construct, see NOTES section for PROJECT properties and create a hash table.
     ${Project},
