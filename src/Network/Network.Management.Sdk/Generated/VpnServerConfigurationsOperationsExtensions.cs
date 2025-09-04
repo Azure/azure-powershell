@@ -228,6 +228,47 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// List all Radius servers with respective radius secrets from
+        /// VpnServerConfiguration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnServerConfigurationName'>
+        /// The name of the VpnServerConfiguration.
+        /// </param>
+        public static RadiusAuthServerListResult ListRadiusSecrets(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName)
+        {
+                return ((IVpnServerConfigurationsOperations)operations).ListRadiusSecretsAsync(resourceGroupName, vpnServerConfigurationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all Radius servers with respective radius secrets from
+        /// VpnServerConfiguration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnServerConfigurationName'>
+        /// The name of the VpnServerConfiguration.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RadiusAuthServerListResult> ListRadiusSecretsAsync(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListRadiusSecretsWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a VpnServerConfiguration resource if it doesn&#39;t exist else updates
         /// the existing VpnServerConfiguration.
         /// </summary>

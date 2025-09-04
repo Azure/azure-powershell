@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="extendedLocation">The extended location of type local virtual network gateway.
+        /// </param>
+
         /// <param name="zones">A list of availability zones denoting where the resource needs to come
         /// from.
         /// </param>
@@ -90,10 +93,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="autoscaleConfiguration">Properties to provide a custom autoscale configuration to this azure
         /// firewall.
         /// </param>
-        public AzureFirewall(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration))
+        public AzureFirewall(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration))
 
         : base(id, name, type, location, tags)
         {
+            this.ExtendedLocation = extendedLocation;
             this.Zones = zones;
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
@@ -118,6 +122,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the extended location of type local virtual network gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation {get; set; }
 
         /// <summary>
         /// Gets or sets a list of availability zones denoting where the resource needs
@@ -228,6 +238,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 
