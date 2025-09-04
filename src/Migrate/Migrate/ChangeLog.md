@@ -18,8 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed bugs in `New-AzMigrateLocalDiskMappingObject` to validate for non-512 physical sector size of VHD.
-* Fixed bugs in `New-AzMigrateLocalServerReplication` to validate for VHD as OS disk of Hyper-V Generation 2 VMs. 
+* Fixed bugs in `New-AzMigrateLocalDiskMappingObject`
+  - Only validate for non-512 physical sector size of VHD when `-PhysicalSectorSize` parameter is given
+* Fixed bugs in `New-AzMigrateLocalServerReplication`
+  - Only validate for non-512 physical sector size of VHD when `-PhysicalSectorSize` parameter is given
+  - Removed reserved words validation for source disk names as it is no longer required
+  - Added ARM id validation for input parameters
+* Fixed bugs in `Set-AzMigrateLocalServerReplication`
+  - Added ARM id validation for input parameters
+* Fixed bugs in `Get-AzMigrateLocalServerReplication`
+  - Added ARM id validation for input parameters
 
 ## Version 2.9.0
 * Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.

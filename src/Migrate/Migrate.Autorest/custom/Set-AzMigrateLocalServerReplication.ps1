@@ -152,6 +152,11 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('OsType')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
+
+        # Validate ARM ID format from inputs
+        if (!(Test-AzureResourceIdFormat -Data $TargetObjectID -Format $IdFormats.ProtectedItemArmIdTemplate)) {
+            throw "Invalid -TargetObjectID '$TargetObjectID'. A valid protected item ARM ID should follow the format '$($IdFormats.ProtectedItemArmIdTemplate)'."
+        }
         
         $ProtectedItemIdArray = $TargetObjectID.Split("/")
         $ResourceGroupName = $ProtectedItemIdArray[4]
@@ -196,17 +201,29 @@ function Set-AzMigrateLocalServerReplication {
 
         # Update target CPU core
         if ($HasTargetVMCPUCore) {
-            if ($TargetVMCPUCore -le 0) {
-                throw "Specify target CPU core greater than 0"    
+            if ($TargetVMCPUCore -lt 1 -or $TargetVMCPUCore -gt 64)
+            {
+                throw "Specify -TargetVMCPUCore between 1 and 64."
             }
-
             $customPropertiesUpdate.TargetCpuCore = $TargetVMCPUCore
         }
 
-        # Update VM Ram
+        # Update TargetVMRam
         if ($HasTargetVMRam) {
-            if ($TargetVMRam -le 0) {
-                throw "Specify target RAM greater than 0"    
+            if ($customProperties.HyperVGeneration -eq "1") {
+                # Between 512 MB and 1 TB
+                if ($TargetVMRam -lt 512 -or $TargetVMRam -gt 1048576)
+                {
+                    throw "Specify -TargetVMRAM between 512 and 1048576 MB (i.e., 1 TB) for Hyper-V Generation 1 VM."
+                }
+            }
+            else # Hyper-V Generation 2
+            {
+                # Between 32 MB and 12 TB
+                if ($TargetVMRam -lt 32 -or $TargetVMRam -gt 12582912)
+                {
+                    throw "Specify -TargetVMRAM between 32 and 12582912 MB (i.e., 12 TB) for Hyper-V Generation 2 VM."
+                }
             }
 
             $customPropertiesUpdate.TargetMemoryInMegaByte = $TargetVMRam

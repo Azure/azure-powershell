@@ -122,3 +122,12 @@ $ArcResourceBridgeValidationMessages = @{
     NotRunning = "Arc Resource Bridge is offline. To continue, bring the Arc Resource Bridge online. Wait a few minutes for the status to update and retry.";
     NoClusters = "There are no Azure Local clusters found in the selected resource group."
 }
+
+$IdFormats = @{
+    ResourceGroupArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}"
+    MachineArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
+    StoragePathArmIdTemplate    = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/storageContainers/{2}"
+    LogicalNetworkArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
+    MigrateProjectArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
+    ProtectedItemArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
+}
