@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             HelpMessage = "Indicates whether object replication metrics feature is enabled for the policy.",
             ParameterSetName = AccountObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
         public bool EnableMetric
         {
             get
