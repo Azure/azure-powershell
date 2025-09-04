@@ -18,6 +18,12 @@ Get-AzArcResourceBridgeUpgradeGraph -Name <String> -ResourceGroupName <String> [
  -UpgradeGraph <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityAppliance
+```
+Get-AzArcResourceBridgeUpgradeGraph -UpgradeGraph <String> -ApplianceInputObject <IArcResourceBridgeIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzArcResourceBridgeUpgradeGraph -InputObject <IArcResourceBridgeIdentity> [-DefaultProfile <PSObject>]
@@ -44,6 +50,21 @@ Gets the upgrade graph of an Appliance with a specified resource group and name 
 
 ## PARAMETERS
 
+### -ApplianceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
+Parameter Sets: GetViaIdentityAppliance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -62,7 +83,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
@@ -127,7 +147,7 @@ Upgrade graph version, ex - stable
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityAppliance
 Aliases:
 
 Required: True
@@ -146,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IUpgradeGraph
+### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IUpgradeGraph
 
 ## NOTES
 
