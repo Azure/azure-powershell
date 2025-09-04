@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="networkProfile">Network Profile containing configurations for Public and Private NIC.
         /// </param>
 
-        /// <param name="additionalNics">Details required for Additional Network Interface.
+        /// <param name="additionalNics">Details required for Additional Network Interface. This property is not
+        /// compatible with the NVA deployed in VNets.
         /// </param>
 
         /// <param name="internetIngressPublicIps">List of Resource Uri of Public IPs for Internet Ingress Scenario.
@@ -77,12 +78,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="deploymentType">The deployment type. PartnerManaged for the SaaS NVA
         /// </param>
 
-        /// <param name="delegation">The delegation for the Virtual Appliance
+        /// <param name="delegation">The delegation for the Virtual Appliance. Only appliable for SaaS NVA.
         /// </param>
 
         /// <param name="partnerManagedResource">The delegation for the Virtual Appliance
         /// </param>
-        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties))
+
+        /// <param name="nvaInterfaceConfigurations">The NVA in VNet interface configurations
+        /// </param>
+
+        /// <param name="privateIPAddress">A Internal Load Balancer&#39;s HA port frontend IP address. Can be used to set
+        /// routes &amp; UDR to load balance traffic between NVA instances
+        /// </param>
+        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), string privateIPAddress = default(string))
 
         {
             this.NvaSku = nvaSku;
@@ -104,6 +112,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.DeploymentType = deploymentType;
             this.Delegation = delegation;
             this.PartnerManagedResource = partnerManagedResource;
+            this.NvaInterfaceConfigurations = nvaInterfaceConfigurations;
+            this.PrivateIPAddress = privateIPAddress;
             CustomInit();
         }
 
@@ -177,7 +187,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public NetworkVirtualAppliancePropertiesFormatNetworkProfile NetworkProfile {get; set; }
 
         /// <summary>
-        /// Gets or sets details required for Additional Network Interface.
+        /// Gets or sets details required for Additional Network Interface. This
+        /// property is not compatible with the NVA deployed in VNets.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "additionalNics")]
         public System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> AdditionalNics {get; set; }
@@ -220,7 +231,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public string DeploymentType {get; private set; }
 
         /// <summary>
-        /// Gets or sets the delegation for the Virtual Appliance
+        /// Gets or sets the delegation for the Virtual Appliance. Only appliable for
+        /// SaaS NVA.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "delegation")]
         public DelegationProperties Delegation {get; set; }
@@ -230,6 +242,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "partnerManagedResource")]
         public PartnerManagedResourceProperties PartnerManagedResource {get; set; }
+
+        /// <summary>
+        /// Gets or sets the NVA in VNet interface configurations
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nvaInterfaceConfigurations")]
+        public System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> NvaInterfaceConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets a Internal Load Balancer&#39;s HA port frontend IP address. Can be used to
+        /// set routes &amp; UDR to load balance traffic between NVA instances
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateIpAddress")]
+        public string PrivateIPAddress {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -266,6 +291,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
+
+            if (this.NvaInterfaceConfigurations != null)
+            {
+                if (this.NvaInterfaceConfigurations.Count > 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxItems, "NvaInterfaceConfigurations", 3);
+                }
+                if (this.NvaInterfaceConfigurations.Count < 2)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinItems, "NvaInterfaceConfigurations", 2);
+                }
+                foreach (var element in this.NvaInterfaceConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
 
         }
     }
