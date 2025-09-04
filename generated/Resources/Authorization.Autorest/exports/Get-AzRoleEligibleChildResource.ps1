@@ -24,7 +24,7 @@ $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 Get-AzRoleEligibleChildResource -Scope $scope                              
 .Example
 $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$filter = "resoureType eq 'resourcegroup'"
+$filter = "resourceType eq 'resourcegroup'"
 Get-AzRoleEligibleChildResource -Scope $scope -Filter $filter
 
 .Inputs
