@@ -8,28 +8,33 @@ schema: 2.0.0
 # Remove-AzFirmwareAnalysisWorkspace
 
 ## SYNOPSIS
+
 The operation to delete a firmware analysis workspace.
 
 ## SYNTAX
 
 ### Delete (Default)
-```
+
+```powershell
 Remove-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
-```
+
+```powershell
 Remove-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 The operation to delete a firmware analysis workspace.
 
 ## EXAMPLES
 
-### Example 1: Delete a firmware analysis workspace.
+### Example 1: Delete a firmware analysis workspace
+
 ```powershell
 Remove-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName
 ```
@@ -39,6 +44,7 @@ Delete a firmware analysis workspace.
 ## PARAMETERS
 
 ### -AsJob
+
 Run the command as a job
 
 ```yaml
@@ -54,6 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -70,6 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+
 Identity Parameter
 
 ```yaml
@@ -85,6 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 The name of the firmware analysis workspace.
 
 ```yaml
@@ -100,6 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
+
 Run the command asynchronously
 
 ```yaml
@@ -115,6 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
+
 Returns true when the command succeeds
 
 ```yaml
@@ -130,6 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
@@ -146,6 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -162,6 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -177,6 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -193,6 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -206,4 +222,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -8,64 +8,73 @@ schema: 2.0.0
 # Get-AzFirmwareAnalysisUsageMetric
 
 ## SYNOPSIS
+
 Gets monthly usage information for a workspace.
 
 ## SYNTAX
 
 ### List (Default)
-```
+
+```powershell
 Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
-```
+
+```powershell
 Get-AzFirmwareAnalysisUsageMetric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
-```
+
+```powershell
 Get-AzFirmwareAnalysisUsageMetric -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
-```
+
+```powershell
 Get-AzFirmwareAnalysisUsageMetric -Name <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Gets monthly usage information for a workspace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get usage information for current a workspace named 'default'
+
 ```powershell
-{{ Add code here }}
+Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName FirmwareAnalysisRG -WorkspaceName default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/264e9200-2944-4334-9a02-721e6268b55f/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current
+MonthlyFirmwareUploadCount   : 1
+Name                         : current
+ProvisioningState            :
+ResourceGroupName            : FirmwareAnalysisRG
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TotalFirmwareCount           : 103
+Type                         : Microsoft.IoTFirmwareDefense/workspaces/usageMetrics
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This shows that there was only 1 firmware uploaded to this workspace this month, and there's a total of 103 firmwares in the workspace.
 
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -82,6 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+
 Identity Parameter
 
 ```yaml
@@ -97,6 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 The Firmware analysis summary name describing the type of summary.
 
 ```yaml
@@ -112,6 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
@@ -128,6 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -144,6 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceInputObject
+
 Identity Parameter
 
 ```yaml
@@ -159,6 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
+
 The name of the firmware analysis workspace.
 
 ```yaml
@@ -174,6 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -187,4 +203,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
