@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzVirtualNetworkGatewaySiteFailoverTest
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Starts a failover simulation on the virtual network gateway for the specified peering location.
 
 ## SYNTAX
 
@@ -19,16 +19,30 @@ Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName <String> -Virtu
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The `Start-AzVirtualNetworkGatewaySiteFailoverTest` cmdlet initiates a failover simulation on the virtual network gateway, specifically for the given **PeeringLocation**. This is useful for testing the gateway’s ability to failover and ensure network resiliency.
+
+You can specify the **Type** of the failover test, either:
+- `SingleSiteFailover`: A test to simulate a failover for a single site.
+- `MultiSiteFailover`: A test to simulate a failover for multiple sites.
+
+By default, the test will be performed using the `SingleSiteFailover` type unless specified otherwise. The failover test helps ensure that the virtual network gateway can handle failovers correctly and that any issues are identified proactively.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "EastUS"
 ```
 
-{{ Add example description here }}
+This example starts a failover simulation for the virtual network gateway "test_gateway" in the "test_rg" resource group for the peering location EastUS. By default, a SingleSiteFailover test will be performed.
+
+### Example 2
+```powershell
+PS C:\> Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "EastUS" -Type "MultiSiteFailover"
+```
+
+This example starts a failover simulation for the virtual network gateway "test_gateway" in the "test_rg" resource group for the EastUS peering location. The test type is set to MultiSiteFailover, meaning the test will simulate failover for multiple sites.
 
 ## PARAMETERS
 

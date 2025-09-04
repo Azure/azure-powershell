@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzVirtualNetworkGatewaySiteFailoverTest
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Stops the failover simulation on the virtual network gateway for the specified peering location.
 
 ## SYNTAX
 
@@ -20,16 +20,37 @@ Stop-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName <String> -Virtua
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The `Stop-AzVirtualNetworkGatewaySiteFailoverTest` cmdlet is used to stop a failover simulation that was previously initiated for the virtual network gateway. The test is identified by the **PeeringLocation** where the test was run.
+
+When stopping the test, you must provide whether the simulation was successful using the `-WasSimulationSuccessful` parameter, and you must also supply detailed information about the failover simulation using the `-Details` parameter. 
+
+This cmdlet allows you to conclude the failover test and capture any important information about the simulation results, including whether the test was successful or not.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $details = @(
+    [Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]@{
+        FailoverConnectionName = "test_failover_gateway_connection"
+        FailoverLocation = "eastus2"
+        IsVerified = $true
+    }
+)
+PS C:\> Stop-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_failover_rg" -VirtualNetworkGatewayName "test_failoverGw" -PeeringLocation "WestEurope" -Details $details -WasSimulationSuccessful $true
 ```
 
-{{ Add example description here }}
+This example demonstrates how to stop a failover simulation for a virtual network gateway. The cmdlet Stop-AzVirtualNetworkGatewaySiteFailoverTest is used with the following parameters:
+
+ResourceGroupName: Specifies the resource group ("test_failover_rg") that contains the virtual network gateway.
+
+VirtualNetworkGatewayName: Specifies the virtual network gateway ("test_failoverGw") for which the failover test is being stopped.
+
+PeeringLocation: Specifies the peering location ("WestEurope") where the failover test is being stopped.
+
+Details: The failover connection details are provided, including the name, location, and verification status.
+
+WasSimulationSuccessful: Indicates that the failover simulation was successful ($true).
 
 ## PARAMETERS
 

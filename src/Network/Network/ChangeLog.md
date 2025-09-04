@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetails` to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetails` to list all failover tests for a virtual network gateway.
+* Added cmdlet `Start-AzVirtualNetworkGatewaySiteFailoverTest` to initiate a site failover test on a virtual network gateway.
+* Added cmdlet `Stop-AzVirtualNetworkGatewaySiteFailoverTest` to stop an ongoing site failover test.
+* Added cmdlet `Get-AzVirtualNetworkGatewayResiliencyInformation` to retrieve resiliency information for a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayRoutesInformation` to get route information for a virtual network gateway.
 * Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
     - `Get-AzNetworkSecurityPerimeterServiceTag`
 * Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
@@ -26,12 +32,6 @@
     - `Add-AzApplicationGatewayBackendHttpSetting`
     - `Set-AzApplicationGatewayBackendHttpSetting`
 * Onboarded Maps to Private Link Common Cmdlets
-* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetails` to retrieve details of a single failover test on a virtual network gateway.
-* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetails` to list all failover tests for a virtual network gateway.
-* Added cmdlet `Start-AzVirtualNetworkGatewaySiteFailoverTest` to initiate a site failover test on a virtual network gateway.
-* Added cmdlet `Stop-AzVirtualNetworkGatewaySiteFailoverTest` to stop an ongoing site failover test.
-* Added cmdlet `Get-AzVirtualNetworkGatewayResiliencyInformation` to retrieve resiliency information for a virtual network gateway.
-* Added cmdlet `Get-AzVirtualNetworkGatewayRoutesInformation` to get route information for a virtual network gateway.
 
 ## Version 7.19.1
 * Added a read-only property `ComputedDisabledRules` to `ApplicationGatewayFirewallPolicyManagedRuleSet`. This property shows which rules are effectively disabled, based on both user-defined WAF policy overrides and the default state of the rules in the managed ruleset.

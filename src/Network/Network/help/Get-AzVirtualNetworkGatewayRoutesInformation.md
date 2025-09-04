@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVirtualNetworkGatewayRoutesInformation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves the route set information for an ExpressRoute Gateway, based on its resiliency.
 
 ## SYNTAX
 
@@ -19,16 +19,27 @@ Get-AzVirtualNetworkGatewayRoutesInformation -ResourceGroupName <String> -Virtua
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The `Get-AzVirtualNetworkGatewayRoutesInformation` cmdlet retrieves detailed route set information for an ExpressRoute Gateway. This operation provides insights into the routes configured for the gateway, including the associated resiliency metrics and their status.
+
+By default, the cmdlet retrieves the current route set information for the gateway. If you wish to refresh the data and recalculate the route set information (for example, after making changes to the gateway), you can use the `-AttemptRefresh` parameter. This triggers the recalculation of the routes information and ensures that the most up-to-date data is retrieved.
+
+The route set information can help evaluate the gateway's resiliency, availability, and its ability to handle different network traffic conditions.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzVirtualNetworkGatewayRoutesInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway"
 ```
 
-{{ Add example description here }}
+This example retrieves the route set information for the virtual network gateway named "test_gateway" in the resource group "test_rg". The command provides the current routing information, including details about the gateway’s resiliency and routes configuration.
+
+### Example 2
+```powershell
+PS C:\>  Get-AzVirtualNetworkGatewayRoutesInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -AttemptRefresh $true
+```
+
+This example retrieves the route set information for the "test_gateway" in the "test_rg" resource group. The -AttemptRefresh parameter is used to recalculate the route sets, ensuring that the most recent data is returned after any potential configuration changes or updates to the gateway’s routing information.
 
 ## PARAMETERS
 
