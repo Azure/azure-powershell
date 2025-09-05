@@ -26,7 +26,7 @@ Describe 'Get-AzRoleEligibleChildResource' {
         $scope = "/providers/Microsoft.Management/managementGroups/MG-1/"
         { 
             $scope = "/providers/Microsoft.Management/managementGroups/MG-1/"
-            $childResources = Get-AzRoleEligibleChildResource -Scope $scope -Filter "resoureType eq 'resourcegroup'"
+            $childResources = Get-AzRoleEligibleChildResource -Scope $scope -Filter "resourceType eq 'resourcegroup'"
         } | Should -Not -Throw
     }
 
