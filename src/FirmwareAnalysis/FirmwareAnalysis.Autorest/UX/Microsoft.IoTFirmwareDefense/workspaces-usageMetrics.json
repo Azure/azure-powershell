@@ -1,25 +1,24 @@
 {
-  "resourceType": "workspaces/firmwares/summaries",
+  "resourceType": "workspaces/usageMetrics",
   "apiVersion": "2025-08-02",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis"
   },
   "commands": [
     {
-      "name": "Get-AzFirmwareAnalysisSummary",
-      "description": "Get an analysis result summary of a firmware by name.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}",
+      "name": "Get-AzFirmwareAnalysisUsageMetric",
+      "description": "Gets monthly usage information for a workspace.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysissummary"
+          "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysisusagemetric"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-FirmwareId <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]",
-              "-Type <String>",
               "-WorkspaceName <String>"
             ]
           }
@@ -27,11 +26,11 @@
       },
       "examples": [
         {
-          "description": "Get an analysis result summary of a firmware by name.",
+          "description": "Gets monthly usage information for a workspace.",
           "parameters": [
             {
-              "name": "-FirmwareId",
-              "value": "[Path.firmwareId]"
+              "name": "-Name",
+              "value": "[Path.name]"
             },
             {
               "name": "-ResourceGroupName",
@@ -40,10 +39,6 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
-            },
-            {
-              "name": "-Type",
-              "value": "[Path.summaryType]"
             },
             {
               "name": "-WorkspaceName",

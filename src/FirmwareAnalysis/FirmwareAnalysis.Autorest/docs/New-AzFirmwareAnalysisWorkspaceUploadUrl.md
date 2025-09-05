@@ -8,57 +8,65 @@ schema: 2.0.0
 # New-AzFirmwareAnalysisWorkspaceUploadUrl
 
 ## SYNOPSIS
-The operation to get a url for file upload.
+
+Generate a URL for uploading a firmware image.
 
 ## SYNTAX
 
 ### GenerateExpanded (Default)
-```
+
+```powershell
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-FirmwareId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Generate
-```
+
+```powershell
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- -GenerateUploadUrl <IGenerateUploadUrlRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Body <IGenerateUploadUrlRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity
-```
+
+```powershell
 New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity>
- -GenerateUploadUrl <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Body <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded
-```
+
+```powershell
 New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaJsonFilePath
-```
+
+```powershell
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GenerateViaJsonString
-```
+
+```powershell
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to get a url for file upload.
+
+Generate a URL for uploading a firmware image.
 
 ## EXAMPLES
 
-### Example 1: Create a url for file upload.
+### Example 1: Create a url for file upload
+
 ```powershell
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -FirmwareId firmwareId
 ```
@@ -73,7 +81,24 @@ Create a url for file upload.
 
 ## PARAMETERS
 
+### -Body
+
+Properties for generating an upload URL
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
+Parameter Sets: Generate, GenerateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -90,6 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -FirmwareId
+
 A unique ID for the firmware to be uploaded.
 
 ```yaml
@@ -104,22 +130,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateUploadUrl
-Properties for generating an upload URL
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
-Parameter Sets: Generate, GenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
+
 Identity Parameter
 
 ```yaml
@@ -135,6 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
+
 Path of Json file supplied to the Generate operation
 
 ```yaml
@@ -150,6 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
+
 Json string supplied to the Generate operation
 
 ```yaml
@@ -165,6 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
@@ -181,6 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -197,6 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
+
 The name of the firmware analysis workspace.
 
 ```yaml
@@ -212,6 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -227,6 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -243,6 +262,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -258,4 +278,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

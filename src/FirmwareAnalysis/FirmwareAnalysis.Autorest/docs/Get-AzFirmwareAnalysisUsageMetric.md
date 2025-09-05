@@ -1,52 +1,75 @@
 ---
 external help file:
 Module Name: Az.FirmwareAnalysis
-online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/remove-azfirmwareanalysisfirmware
+online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysisusagemetric
 schema: 2.0.0
 ---
 
-# Remove-AzFirmwareAnalysisFirmware
+# Get-AzFirmwareAnalysisUsageMetric
 
 ## SYNOPSIS
 
-The operation to delete a firmware.
+Gets monthly usage information for a workspace.
 
 ## SYNTAX
 
-### Delete (Default)
+### List (Default)
 
 ```powershell
-Remove-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Get
 
 ```powershell
-Remove-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityWorkspace
+### GetViaIdentity
 
 ```powershell
-Remove-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+
+```powershell
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-The operation to delete a firmware.
+Gets monthly usage information for a workspace.
 
 ## EXAMPLES
 
-### Example 1: Delete a firmware analysis workspace
+### Example 1: Get usage information for current a workspace named 'default'
 
 ```powershell
-Remove-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName
+Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName FirmwareAnalysisRG -WorkspaceName default
 ```
 
-Delete a firmware analysis workspace.
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current
+MonthlyFirmwareUploadCount   : 1
+Name                         : current
+ProvisioningState            :
+ResourceGroupName            : rgName
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TotalFirmwareCount           : 103
+Type                         : Microsoft.IoTFirmwareDefense/workspaces/usageMetrics
+```
+
+This shows that there was only 1 firmware uploaded to this workspace this month, and there's a total of 103 firmwares in the workspace.
 
 ## PARAMETERS
 
@@ -67,29 +90,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-
-The id of the firmware.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityWorkspace
-Aliases: FirmwareId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -99,16 +106,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
+### -Name
 
-Returns true when the command succeeds
+The Firmware analysis summary name describing the type of summary.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,7 +129,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -138,8 +145,8 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -155,7 +162,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: DeleteViaIdentityWorkspace
+Parameter Sets: GetViaIdentityWorkspace
 Aliases:
 
 Required: True
@@ -171,43 +178,10 @@ The name of the firmware analysis workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric
 
 ## NOTES
 
