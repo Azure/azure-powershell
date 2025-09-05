@@ -8,19 +8,18 @@ schema: 2.0.0
 # Invoke-AzServiceFabricReimageManagedNodeType
 
 ## SYNOPSIS
-Reimage specific nodes from the node type.
+Reimage nodes from the node type.
 
 ## SYNTAX
 
 ```
 Invoke-AzServiceFabricReimageManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String>
  [-Name] <String> [-NodeName <String[]>] [-UpdateType <String>] [-ForceReimage] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Reimage specific nodes from the node type.
+Reimage nodes from the node type. The nodes will be disabled, reimaged, then renabled.
 
 ## EXAMPLES
 
@@ -32,7 +31,37 @@ $NodeTypeName = "nt1"
 Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
-Reimage node 0 and 3 on the node type.
+Reimage node 0 and 3 on the node type simultaneously.
+
+### Example 2
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3 -UpdateType ByUpgradeDomain
+```
+
+Reimage node 0 and 3 on the node type by upgrade domain.
+
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -UpdateType ByUpgradeDomain
+```
+
+Omitting the node names will reimage all nodes on the node type by upgrade domain.
+
+### Example 4
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName
+```
+
+Omitting the node names and update type will reimage all nodes on the node type by upgrade domain.
 
 ## PARAMETERS
 
@@ -133,21 +162,6 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

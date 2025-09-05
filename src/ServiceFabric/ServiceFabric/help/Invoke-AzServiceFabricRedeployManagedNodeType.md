@@ -8,19 +8,18 @@ schema: 2.0.0
 # Invoke-AzServiceFabricRedeployManagedNodeType
 
 ## SYNOPSIS
-Redeploy specific nodes from the node type.
+Redeploy nodes from the node type.
 
 ## SYNTAX
 
 ```
 Invoke-AzServiceFabricRedeployManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String>
  [-Name] <String> [-NodeName <String[]>] [-UpdateType <String>] [-ForceRedeploy] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Redeploy specific nodes from the node type. It will disable the service fabric nodes before, move them to another host node, then renable.
+Redeploy nodes from the node type. It will disable the service fabric nodes before, move them to another host node, then renable.
 
 ## EXAMPLES
 
@@ -32,7 +31,37 @@ $NodeTypeName = "nt1"
 Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
-Redeploy node 0 and 3 on the node type.
+Redeploy node 0 and 3 on the node type simultaneously.
+
+### Example 2
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3 -UpdateType ByUpgradeDomain
+```
+
+Redeploy node 0 and 3 on the node type by upgrade domain.
+
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -UpdateType ByUpgradeDomain
+```
+
+Omitting the node names will redeploy all nodes on the node type by upgrade domain.
+
+### Example 4
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$NodeTypeName = "nt1"
+Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName
+```
+
+Omitting the node names and update type will redeploy all nodes on the node type by upgrade domain.
 
 ## PARAMETERS
 
@@ -133,21 +162,6 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
