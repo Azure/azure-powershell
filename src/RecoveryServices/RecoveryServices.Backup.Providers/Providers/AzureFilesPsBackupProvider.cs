@@ -285,11 +285,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         // Create a minimal resource object with the source resource ID
                         if (!string.IsNullOrEmpty(sourceResourceId))
                         {
-                            storageAccountResource = new GenericResource
-                            {
-                                Id = sourceResourceId,
-                                Location = storageAccountLocation
-                            };
+                            storageAccountResource = new GenericResource(id: sourceResourceId, location: storageAccountLocation);
                         }
                     }
                 }

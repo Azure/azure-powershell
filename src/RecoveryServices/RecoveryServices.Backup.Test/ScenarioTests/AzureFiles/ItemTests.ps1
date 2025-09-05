@@ -601,3 +601,204 @@ function Test-AzureFSVaultRestore
 		#>
 	}
 }
+
+function Test-AzureFSRestoreWithDeletedStorageAccount
+	{
+		# Test-specific variables for isolation
+		$testResourceGroupName = "iannafs-pstest-sa-rg-" + (Get-Random -Maximum 9999)
+		$testVaultName = "ianna-afs-vault-" + (Get-Random -Maximum 9999)
+		$testSaName = "iannafssa" + (Get-Random -Maximum 9999)
+		$testTargetSaName = "iannafstarget" + (Get-Random -Maximum 9999)
+		$testFileShareName = "testshare"
+		$testPolicyName = "vaultstandardpolicy"
+		$testLocation = "eastasia"
+		$skuName = "Standard_LRS"
+	
+		try
+		{
+			Write-Host "Creating resource group: $testResourceGroupName"
+			$rg = New-AzResourceGroup -Name $testResourceGroupName -Location $testLocation
+			Assert-NotNull $rg
+			Assert-True { $rg.ResourceGroupName -eq $testResourceGroupName }
+		
+			Write-Host "Creating source storage account: $testSaName"
+			$sourceStorageAccount = New-AzStorageAccount `
+				-ResourceGroupName $testResourceGroupName `
+				-Name $testSaName `
+				-Location $testLocation 
+			
+			Assert-NotNull $sourceStorageAccount
+			Assert-True { $sourceStorageAccount.Name -eq $testSaName }
+		
+			Write-Host "Creating file share: $testFileShareName"
+			$storageContext = $sourceStorageAccount.Context
+			$fileShare = New-AzStorageShare -Name $testFileShareName -Context $storageContext
+			Assert-NotNull $fileShare
+			Assert-True { $fileShare.Name -eq $testFileShareName }
+		
+			Write-Host "Creating target storage account: $testTargetSaName"
+			$targetStorageAccount = New-AzStorageAccount `
+				-ResourceGroupName $testResourceGroupName `
+				-Name $testTargetSaName `
+				-Location $testLocation 
+
+			Assert-NotNull $targetStorageAccount
+			Assert-True { $targetStorageAccount.Name -eq $testTargetSaName }
+		
+			Write-Host "Creating Recovery Services vault: $testVaultName"
+			$vault = New-AzRecoveryServicesVault `
+				-Name $testVaultName `
+				-ResourceGroupName $testResourceGroupName `
+				-Location $testLocation
+			Assert-NotNull $vault
+			Assert-True { $vault.Name -eq $testVaultName }
+		
+			Write-Host "Creating backup policy with VaultStandard tier"
+			$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+			Assert-NotNull $schedulePolicy
+		
+			$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject `
+				-WorkloadType AzureFiles `
+				-BackupTier VaultStandard
+			Assert-NotNull $retentionPolicy
+		
+			$policy = New-AzRecoveryServicesBackupProtectionPolicy `
+				-VaultId $vault.ID `
+				-Name $testPolicyName `
+				-WorkloadType AzureFiles `
+				-RetentionPolicy $retentionPolicy `
+				-SchedulePolicy $schedulePolicy
+			Assert-NotNull $policy
+			Assert-True { $policy.Name -eq $testPolicyName }
+		
+			Write-Host "Enabling protection for file share"
+			$enableJob = Enable-AzRecoveryServicesBackupProtection `
+				-VaultId $vault.ID `
+				-Policy $policy `
+				-Name $testFileShareName `
+				-StorageAccountName $testSaName
+		
+			$enableJob = Wait-AzRecoveryServicesBackupJob -Job $enableJob -VaultId $vault.ID
+			Assert-True { $enableJob.Status -eq "Completed" }
+		
+			Write-Host "Getting protected item"
+			$container = Get-AzRecoveryServicesBackupContainer `
+				-VaultId $vault.ID `
+				-ContainerType AzureStorage `
+				-FriendlyName $testSaName
+			Assert-NotNull $container
+		
+			$item = Get-AzRecoveryServicesBackupItem `
+				-VaultId $vault.ID `
+				-Container $container `
+				-WorkloadType AzureFiles `
+				-Name $testFileShareName
+			Assert-NotNull $item
+			Assert-True { $item.ProtectionState -eq "Protected" -or $item.ProtectionState -eq "IRPending" }
+		
+			Write-Host "Triggering on-demand backup"
+			$backupJob = Backup-AzRecoveryServicesBackupItem `
+				-VaultId $vault.ID `
+				-Item $item
+		
+			$backupJob = Wait-AzRecoveryServicesBackupJob -Job $backupJob -VaultId $vault.ID
+			Assert-True { $backupJob.Status -eq "Completed" }
+			Write-Host "Backup completed successfully"
+		
+			Write-Host "Getting recovery point"
+			$backupStartTime = $backupJob.StartTime.AddMinutes(-1)
+			$backupEndTime = $backupJob.EndTime.AddMinutes(1)
+		
+			$recoveryPoints = Get-AzRecoveryServicesBackupRecoveryPoint `
+				-VaultId $vault.ID `
+				-Item $item `
+				-StartDate $backupStartTime `
+				-EndDate $backupEndTime
+		
+			Assert-NotNull $recoveryPoints
+			Assert-True { $recoveryPoints.Count -gt 0 }
+			$recoveryPoint = $recoveryPoints[0]
+			Write-Host "Recovery point obtained: $($recoveryPoint.RecoveryPointId)"
+		
+			Write-Host "Deleting source storage account: $testSaName"
+			Remove-AzStorageAccount `
+				-ResourceGroupName $testResourceGroupName `
+				-Name $testSaName `
+				-Force
+		
+			$deletedAccount = Get-AzStorageAccount `
+				-ResourceGroupName $testResourceGroupName `
+				-Name $testSaName `
+				-ErrorAction SilentlyContinue
+			Assert-Null $deletedAccount
+			Write-Host "Source storage account deleted successfully"
+		
+			Write-Host "Attempting restore with deleted source storage account"
+			$restoreJob = Restore-AzRecoveryServicesBackupItem `
+				-VaultId $vault.ID `
+				-VaultLocation $vault.Location `
+				-RecoveryPoint $recoveryPoint `
+				-TargetStorageAccountName $testTargetSaName `
+				-TargetFileShareName $testFileShareName `
+				-ResolveConflict Overwrite
+		
+			$restoreJob = Wait-AzRecoveryServicesBackupJob -Job $restoreJob -VaultId $vault.ID
+		
+			Assert-True { $restoreJob.Status -eq "Completed" }
+			Write-Host "Restore completed successfully despite source storage account deletion"
+		
+			Write-Host "Verifying restored file share in target storage account"
+			$targetContext = (Get-AzStorageAccount `
+				-ResourceGroupName $testResourceGroupName `
+				-Name $testTargetSaName).Context
+		
+			$restoredShare = Get-AzStorageShare `
+				-Name $testFileShareName `
+				-Context $targetContext `
+				-ErrorAction SilentlyContinue
+		
+			Assert-NotNull $restoredShare
+			Assert-True { $restoredShare.Name -eq $testFileShareName }
+			Write-Host "Test completed successfully - Restore works with deleted source storage account"
+		}
+		finally
+		{
+			# Cleanup
+			Write-Host "Cleaning up test resources"
+		
+			# Disable protection if item exists
+			if ($null -ne $item)
+			{
+				try
+				{
+					Disable-AzRecoveryServicesBackupProtection `
+						-Item $item `
+						-VaultId $vault.ID `
+						-RemoveRecoveryPoints `
+						-Force `
+						-ErrorAction SilentlyContinue
+				}
+				catch
+				{
+					Write-Host "Warning: Failed to disable protection - may already be disabled"
+				}
+			}
+		
+			# Delete resource group (will delete all contained resources)
+			if ($null -ne $testResourceGroupName)
+			{
+				try
+				{
+					Remove-AzResourceGroup `
+						-Name $testResourceGroupName `
+						-Force `
+						-ErrorAction SilentlyContinue
+					Write-Host "Test resource group deleted"
+				}
+				catch
+				{
+					Write-Host "Warning: Failed to delete resource group"
+				}
+			}
+		}
+	}
