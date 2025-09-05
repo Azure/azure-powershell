@@ -126,7 +126,7 @@ List of locations for azure virtual machines.
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases: Locaton
+Aliases: Location
 
 Required: False
 Position: Named

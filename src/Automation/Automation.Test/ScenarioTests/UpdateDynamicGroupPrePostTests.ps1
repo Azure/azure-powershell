@@ -361,7 +361,7 @@ $query1Scope = @(
     $azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName $rg `
                                        -AutomationAccountName $aa `
                                        -Scope $query1Scope `
-                                       -Locaton $query1Location `
+                                       -Location $query1Location `
                                        -FilterOperator $query1FilterOperator
 
    $AzureQueries = @($azq)
