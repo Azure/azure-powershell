@@ -133,6 +133,12 @@ function Get-AzMigrateLocalServerReplication {
     
     process {
         Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
+        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
+
+        $hasTargetObjectId = $PSBoundParameters.ContainsKey('TargetObjectID')
+        $hasDiscoveredMachineId = $PSBoundParameters.ContainsKey('DiscoveredMachineId')
+        $hasResourceGroupId = $PSBoundParameters.ContainsKey('ResourceGroupID')
+        $hasProjectId = $PSBoundParameters.ContainsKey('ProjectID')
 
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('TargetObjectID')
@@ -143,12 +149,26 @@ function Get-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('ResourceGroupID')
         $null = $PSBoundParameters.Remove('ProjectID')
         $null = $PSBoundParameters.Remove('MachineName')
+
+        # Validate ARM ID format from inputs
+        if ($hasTargetObjectId -and !(Test-AzureResourceIdFormat -Data $TargetObjectID -Format $IdFormats.ProtectedItemArmIdTemplate)) {
+            throw "Invalid -TargetObjectID '$TargetObjectID'. A valid protected item ARM ID should follow the format '$($IdFormats.ProtectedItemArmIdTemplate)'."
+        }
+
+        if ($hasDiscoveredMachineId -and !(Test-AzureResourceIdFormat -Data $DiscoveredMachineId -Format $IdFormats.MachineArmIdTemplate)) {
+            throw "Invalid -DiscoveredMachineId '$DiscoveredMachineId'. A valid machine ARM ID should follow the format '$($IdFormats.MachineArmIdTemplate)'."
+        }
+
+        if ($hasResourceGroupId -and !(Test-AzureResourceIdFormat -Data $ResourceGroupID -Format $IdFormats.ResourceGroupArmIdTemplate)) {
+            throw "Invalid -ResourceGroupID '$ResourceGroupID'. A valid resource group ARM ID should follow the format '$($IdFormats.ResourceGroupArmIdTemplate)'."
+        }
+
+        if ($hasProjectId -and !(Test-AzureResourceIdFormat -Data $ProjectID -Format $IdFormats.MigrateProjectArmIdTemplate)) {
+            throw "Invalid -ProjectID '$ProjectID'. A valid migrate project ARM ID should follow the format '$($IdFormats.MigrateProjectArmIdTemplate)'."
+        }
      
         if ($parameterSet -eq 'GetBySDSID') {
             $machineIdArray = $DiscoveredMachineId.Split("/")
-            if ($machineIdArray.Length -lt 11) {
-                throw "Invalid machine ARM ID '$DiscoveredMachineId'"
-            }
             $siteType = $machineIdArray[7]
             $siteName = $machineIdArray[8]
             $ResourceGroupName = $machineIdArray[4]
@@ -208,17 +228,8 @@ function Get-AzMigrateLocalServerReplication {
              # Retrieve ResourceGroupName, ProjectName if ListByID
             if ($parameterSet -eq 'ListByID') {
                 $resourceGroupIdArray = $ResourceGroupID.Split('/')
-                if ($resourceGroupIdArray.Length -lt 5) {
-                    throw "Invalid resource group Id '$ResourceGroupID'."
-                }
-
                 $ResourceGroupName = $resourceGroupIdArray[4]
-
                 $projectIdArray = $ProjectID.Split('/')
-                if ($projectIdArray.Length -lt 9) {
-                    throw "Invalid migrate project Id '$ProjectID'."
-                }
-
                 $ProjectName = $projectIdArray[8]
             }
 
@@ -255,10 +266,6 @@ function Get-AzMigrateLocalServerReplication {
                 $TargetObjectID = $InputObject.Id
             }
             $objectIdArray = $TargetObjectID.Split("/")
-            if ($objectIdArray.Length -lt 11) {
-                throw "Invalid target object ID '$TargetObjectID'."
-            }
-
             $ResourceGroupName = $objectIdArray[4]
             $VaultName = $objectIdArray[8]
             $ProtectedItemName = $objectIdArray[10]
