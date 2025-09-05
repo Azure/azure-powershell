@@ -53,8 +53,8 @@ function setupEnv() {
     $env.SapDatabseInstanceName = "PS6"
     $env.SoftStopTimeoutSecond = 100
     $env.SapProduct = "S4HANA"
-    $env.EnviornmentNonProd = "NonProd"
-    $env.EnviornmentProd = "Prod"
+    $env.EnvironmentNonProd = "NonProd"
+    $env.EnvironmentProd = "Prod"
     $env.DatabaseType = "HANA" 
     $env.DbVMSku = "Standard_E32ds_v4"
     $env.DeploymentType = "SingleServer"
