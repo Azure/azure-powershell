@@ -11,15 +11,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using System.Collections;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -78,18 +79,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         #region reimage params
-
+        public const String ChangeDesc = "Parameter is being deprecated without being replaced, use Invoke-AzServiceFabricReimageManagedNodeType cmdlet instead.";
+        [CmdletParameterBreakingChangeWithVersion("NodeName", "15.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
         public string[] NodeName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Reimage", "15.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
         public SwitchParameter Reimage { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ForceReimage", "15.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByName,
             HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
         [Parameter(Mandatory = false, ParameterSetName = ReimageById,
@@ -98,14 +102,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
         public SwitchParameter ForceReimage { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("PassThru", "15.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByName)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageById)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByObj)]
         public SwitchParameter PassThru { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
-        public SwitchParameter AsJob { get; set; }
-
         #endregion
 
         #region set params
@@ -133,6 +134,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.")]
         public string VmSize { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
+        public SwitchParameter AsJob { get; set; }
 
         #endregion
 
