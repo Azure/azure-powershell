@@ -34,7 +34,7 @@
   "SapCentralInstanceName": "ps1ascsvm-0",
   "WaaSTenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
   "SapIdSub2": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Workloads/sapVirtualInstances/PS1",
-  "EnviornmentProd": "Prod",
+  "EnvironmentProd": "Prod",
   "SapDatabseInstanceName": "PS1",
   "DbScaleMethod": "ScaleUp",
   "DbVMSku": "Standard_E32ds_v4",
@@ -51,5 +51,5 @@
   "DeploymentTypeThreeTier": "ThreeTier",
   "TestType": "TestType",
   "DbServerIdSub2": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Workloads/sapVirtualInstances/PS1/databaseInstances/PS1",
-  "EnviornmentNonProd": "NonProd"
+  "EnvironmentNonProd": "NonProd"
 }
