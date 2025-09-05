@@ -19,8 +19,8 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsLifecycle.Restart, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RestartAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "RedeployManagedNodeType", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class InvokeAzServiceFabricRedeployManagedNodeType : ServiceFabricManagedCmdletBase
     {
         #region Params
 
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string UpdateType { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
+            HelpMessage = "Using this flag will force the nodes to redeploy even if service fabric is unable to disable the nodes.")]
+        public SwitchParameter ForceRedeploy { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Restart node(s) {0}, from node type {1} on cluster {2} with update type {3}", (this.NodeName == null) ? String.Empty : string.Join(", ", this.NodeName), this.Name, this.ClusterName, this.UpdateType ?? "Default")))
+            if (ShouldProcess(target: this.Name, action: string.Format("Redeploy node(s) {0}, from node type {1} on cluster {2} with update type {3}", (this.NodeName == null)? String.Empty : string.Join(", ", this.NodeName), this.Name, this.ClusterName, this.UpdateType ?? "Default")))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, updateType: this.UpdateType, force: this.ForceRestart.IsPresent);
-                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRestartWithHttpMessagesAsync(
+                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, updateType: this.UpdateType, force: this.ForceRedeploy.IsPresent);
+                    var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRedeployWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,
                             this.Name,

@@ -82,13 +82,22 @@ function Test-NodeTypeOperations
 	Assert-AreEqual "StandardSSD_LRS" $snt.DataDiskType
 	Assert-True { $snt.IsStateless }
 
-	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0, snt_1 -PassThru
+	$redeploy = Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_4 -PassThru
+	Assert-True { $redeploy }
+
+	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0 -UpdateType Default -PassThru
 	Assert-True { $restart }
 
 	$delete = Remove-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_1 -PassThru
 	Assert-True { $delete }
 
-	$reimage = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -Reimage -PassThru
+	$deallocate = Invoke-AzServiceFabricDeallocateManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
+	Assert-True { $deallocate }
+
+	$start = Start-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
+	Assert-True { $start }
+
+	$reimage = Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -UpdateType ByUpgradeDomain -PassThru
 	Assert-True { $reimage }
 
 	$snt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt

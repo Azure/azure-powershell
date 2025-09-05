@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -79,17 +80,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region reimage params
 
+        [CmdletParameterBreakingChangeWithVersion("NodeName", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
         public string[] NodeName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Reimage", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
         public SwitchParameter Reimage { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ForceReimage", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByName,
             HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
         [Parameter(Mandatory = false, ParameterSetName = ReimageById,
@@ -98,6 +102,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
         public SwitchParameter ForceReimage { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("PassThru", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByName)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageById)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByObj)]
