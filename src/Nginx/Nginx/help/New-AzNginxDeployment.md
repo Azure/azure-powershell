@@ -16,11 +16,11 @@ Create the NGINX deployment
 ```
 New-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-AutoScaleSettingProfile <IScaleProfile[]>]
- [-EnableDiagnosticsSupport] [-EnableSystemAssignedIdentity] [-ManagedResourceGroup <String>]
- [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserProfilePreferredEmail <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AutoUpgradeProfileUpgradeChannel <String>] [-EnableDiagnosticsSupport] [-EnableSystemAssignedIdentity]
+ [-ManagedResourceGroup <String>] [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>]
+ [-StorageAccountName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -77,6 +77,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IScaleProfile[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoUpgradeProfileUpgradeChannel
+Channel used for autoupgrade.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

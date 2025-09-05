@@ -16,7 +16,8 @@ Create the NGINX certificates for given NGINX deployment
 ```
 New-AzNginxCertificate -Name <String> -DeploymentName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -CertificateVirtualPath <String> -KeyVaultSecretId <String>
- -KeyVirtualPath <String> [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -KeyVirtualPath <String> [-CertificateErrorCode <String>] [-CertificateErrorMessage <String>]
+ [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +38,8 @@ New-AzNginxCertificate -Name <String> -DeploymentName <String> -ResourceGroupNam
 ### CreateViaIdentityNginxDeploymentExpanded
 ```
 New-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
- -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String> [-Location <String>]
+ -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String>
+ [-CertificateErrorCode <String>] [-CertificateErrorMessage <String>] [-Location <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -68,6 +70,36 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateErrorCode
+.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateErrorMessage
+.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False

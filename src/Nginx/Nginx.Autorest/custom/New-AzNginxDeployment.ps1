@@ -101,6 +101,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # Channel used for autoupgrade.
+    ${AutoUpgradeProfileUpgradeChannel},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${EnableDiagnosticsSupport},

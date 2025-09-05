@@ -56,238 +56,43 @@ directive:
       subject: Deployment
       variant: CreateExpanded|UpdateExpanded|UpdateViaIdentityExpanded
     hide: true
-  # ProvisioningState readonly
+  # Required properties for deployment
   - from: swagger-document
-    where: $.definitions.ProvisioningState
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}"].put.parameters[4]
     transform: >-
       return {
-          "enum": [
-          "Accepted",
-          "Creating",
-          "Updating",
-          "Deleting",
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Deleted",
-          "NotSpecified"
-        ],
-        "type": "string",
-        "readOnly": true,
-        "x-ms-enum": {
-          "modelAsString": true,
-          "name": "ProvisioningState"
+        "in": "body",
+        "name": "body",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/NginxDeployment"
         }
       }
-  # Required properties for 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}"].put.parameters
-    transform: >-
-      return [
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/DeploymentNameParameter"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/NginxDeployment"
-            }
-          }
-        ]
   - from: swagger-document
     where: $.definitions.NginxDeploymentProperties
-    transform: >-
-      return {
-        "type": "object",
-        "properties": {
-          "provisioningState": {
-            "$ref": "#/definitions/ProvisioningState"
-          },
-          "nginxVersion": {
-            "type": "string",
-            "readOnly": true
-          },
-          "managedResourceGroup": {
-            "type": "string",
-            "description": "The managed resource group to deploy VNet injection related network resources."
-          },
-          "networkProfile": {
-            "$ref": "#/definitions/NginxNetworkProfile"
-          },
-          "ipAddress": {
-            "type": "string",
-            "description": "The IP address of the deployment.",
-            "readOnly": true
-          },
-          "enableDiagnosticsSupport": {
-            "type": "boolean"
-          },
-          "logging": {
-            "$ref": "#/definitions/NginxLogging"
-          },
-          "scalingProperties": {
-            "$ref": "#/definitions/NginxDeploymentScalingProperties"
-          },
-          "userProfile": {
-            "$ref": "#/definitions/NginxDeploymentUserProfile"
-          }
-        },
-        "required": [
-          "networkProfile"
-        ]
-      }
+    transform: $['required']= ['networkProfile']
   - from: swagger-document
     where: $.definitions.NginxDeployment
-    transform: >-
-      return {
-        "type": "object",
-        "x-ms-azure-resource": true,
-        "properties": {
-          "id": {
-            "type": "string",
-            "readOnly": true
-          },
-          "name": {
-            "type": "string",
-            "readOnly": true
-          },
-          "type": {
-            "type": "string",
-            "readOnly": true
-          },
-          "identity": {
-            "$ref": "#/definitions/IdentityProperties"
-          },
-          "properties": {
-            "$ref": "#/definitions/NginxDeploymentProperties"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "sku": {
-            "$ref": "#/definitions/ResourceSku",
-          },
-          "location": {
-            "type": "string",
-          },
-          "systemData": {
-            "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
-            "readOnly": true
-          }
-        },
-        "required": [
-          "properties",
-          "location",
-          "sku"
-        ]
-      }
+    transform: $['required'] = ['properties','location','sku']
   # Required properties for Certificates
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}"].put.parameters
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}"].put.parameters[5]
     transform: >-
-      return [
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
-          },
-          {
-            "$ref": "#/parameters/DeploymentNameParameter"
-          },
-          {
-            "in": "path",
-            "name": "certificateName",
-            "description": "The name of certificate",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "description": "The certificate",
-            "schema": {
-              "$ref": "#/definitions/NginxCertificate"
-            }
-          }
-        ]
+      return {
+        "in": "body",
+        "name": "body",
+        "required": true,
+        "description": "The certificate",
+        "schema": {
+          "$ref": "#/definitions/NginxCertificate"
+        }
+      }
   - from: swagger-document
     where: $.definitions.NginxCertificate
-    transform: >-
-      return {
-        "type": "object",
-        "x-ms-azure-resource": true,
-        "properties": {
-          "id": {
-            "type": "string",
-            "readOnly": true
-          },
-          "name": {
-            "type": "string",
-            "readOnly": true
-          },
-          "type": {
-            "type": "string",
-            "readOnly": true
-          },
-          "properties": {
-            "$ref": "#/definitions/NginxCertificateProperties"
-          },
-          "location": {
-            "type": "string"
-          },
-          "systemData": {
-            "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
-            "readOnly": true
-          }
-        },
-        "required": [
-          "properties"
-        ]
-      }
+    transform: $['required'] = ['properties']
   - from: swagger-document
     where: $.definitions.NginxCertificateProperties
-    transform: >-
-      return {
-        "type": "object",
-        "properties": {
-          "provisioningState": {
-            "$ref": "#/definitions/ProvisioningState"
-          },
-          "keyVirtualPath": {
-            "type": "string"
-          },
-          "certificateVirtualPath": {
-            "type": "string"
-          },
-          "keyVaultSecretId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "keyVirtualPath",
-          "certificateVirtualPath",
-          "keyVaultSecretId"
-        ]
-      }
+    transform: $['required'] = ['keyVirtualPath', 'certificateVirtualPath', 'keyVaultSecretId']
   - model-cmdlet:
     - model-name: NginxConfigurationFile
     - model-name: NginxPrivateIPAddress
