@@ -45,7 +45,7 @@
   "Get-AzRoleEligibleChildResource+[NoContext]+Get with filter+$GET+https://management.azure.com//providers/Microsoft.Management/managementGroups/MG-1//providers/Microsoft.Authorization/eligibleChildResources?$filter=resoureType eq %27resourcegroup%27\u0026api-version=2020-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//providers/Microsoft.Management/managementGroups/MG-1//providers/Microsoft.Authorization/eligibleChildResources?$filter=resourceType%20eq%20%27resourcegroup%27\u0026api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com//providers/Microsoft.Management/managementGroups/MG-1//providers/Microsoft.Authorization/eligibleChildResources?$filter=resoureType%20eq%20%27resourcegroup%27\u0026api-version=2020-10-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
