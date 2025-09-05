@@ -38,5 +38,3 @@
 * Comprehensive help documentation following Azure PowerShell standards
 * Extensive test suite covering all scenarios
 * Security features including secure key handling and short-lived certificates
-
-## Version 1.0.0
