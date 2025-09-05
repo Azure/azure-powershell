@@ -23,12 +23,12 @@ The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath
 #>
 function New-AzStackHCIVMStoragePath{
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -145,7 +145,6 @@ param(
       Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
     } 
     
-    
     try{
       Az.StackHCIVM.internal\New-AzStackHCIVMStoragePath -ErrorAction Stop @PSBoundParameters 
     } catch {
@@ -156,5 +155,5 @@ param(
           Write-Error $e.Exception.Message -ErrorAction Stop
       }
     }
- 
+
 }

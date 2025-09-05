@@ -22,7 +22,7 @@ The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogi
 #>
 
 function New-AzStackHCIVMLogicalNetwork {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork])]
   [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
