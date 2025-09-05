@@ -8,12 +8,11 @@ schema: 2.0.0
 # New-AzFirmwareAnalysisWorkspace
 
 ## SYNOPSIS
-
 The operation to create a firmware analysis workspace.
 
 ## SYNTAX
 
-```powershell
+```
 New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -21,13 +20,11 @@ New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> -Loca
 ```
 
 ## DESCRIPTION
-
 The operation to create a firmware analysis workspace.
 
 ## EXAMPLES
 
 ### Example 1: Create a new firmware analysis workspace
-
 ```powershell
 New-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name name -Location location
 ```
@@ -53,7 +50,237 @@ Create a new firmware analysis workspace.
 ## PARAMETERS
 
 ### -DefaultProfile
+```powershell
 
+```
+
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases: WorkspaceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+```powershell
+
+```
+
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+```powershell
+
+```
+
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+```powershell
+
+```
+
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+```powershell
+
+```
+
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+```powershell
+
+```
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace
+```powershell
+
+```
+
+## NOTES
+
+## RELATED LINKS
+
+## PARAMETERS
+
+### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -70,7 +297,6 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-
 The geo-location where the resource lives
 
 ```yaml
@@ -86,7 +312,6 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
 The name of the firmware analysis workspace.
 
 ```yaml
@@ -102,7 +327,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
@@ -119,7 +343,6 @@ Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-
 If the SKU supports scale out/in then the capacity integer should be included.
 If scale out/in is not possible for the resource this may be omitted.
 
@@ -136,7 +359,6 @@ Accept wildcard characters: False
 ```
 
 ### -SkuFamily
-
 If the service has different generations of hardware, for the same SKU, then that can be captured here.
 
 ```yaml
@@ -152,7 +374,6 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-
 The name of the SKU.
 E.g.
 P3.
@@ -171,7 +392,6 @@ Accept wildcard characters: False
 ```
 
 ### -SkuSize
-
 The SKU size.
 When the name field is the combination of tier and some other value, this would be the standalone code.
 
@@ -188,7 +408,6 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
@@ -204,7 +423,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -221,7 +439,6 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-
 Resource tags.
 
 ```yaml
@@ -237,7 +454,6 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -253,7 +469,6 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -270,7 +485,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -282,3 +496,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

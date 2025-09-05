@@ -1,6 +1,6 @@
 ---
 Module Name: Az.FirmwareAnalysis
-Module Guid: e097ff3f-acb2-48da-86fe-937d86006ea5
+Module Guid: 894ec779-3851-4ef4-89f4-975e8ecdeef9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.firmwareanalysis
 Help Version: 1.0.0.0
 Locale: en-US
@@ -38,8 +38,8 @@ Get an analysis result summary of a firmware by name.
 ### [Get-AzFirmwareAnalysisUsageMetric](Get-AzFirmwareAnalysisUsageMetric.md)
 Gets monthly usage information for a workspace.
 
-### [Get-AzFirmwareAnalysisWorkspace](Get-AzFirmwareAnalysisWorkspace.md)
-Get firmware analysis workspace.
+### [Get-AzFirmwareAnalysisUsageMetric](Get-AzFirmwareAnalysisUsageMetric.md)
+Gets monthly usage information for a workspace.
 
 ### [New-AzFirmwareAnalysisFirmware](New-AzFirmwareAnalysisFirmware.md)
 The operation to create a firmware.
@@ -50,11 +50,11 @@ The operation to create a firmware analysis workspace.
 ### [New-AzFirmwareAnalysisWorkspaceUploadUrl](New-AzFirmwareAnalysisWorkspaceUploadUrl.md)
 Generate a URL for uploading a firmware image.
 
-### [Remove-AzFirmwareAnalysisFirmware](Remove-AzFirmwareAnalysisFirmware.md)
-The operation to delete a firmware.
+### [New-AzFirmwareAnalysisWorkspaceUploadUrl](New-AzFirmwareAnalysisWorkspaceUploadUrl.md)
+Generate a URL for uploading a firmware image.
 
-### [Remove-AzFirmwareAnalysisWorkspace](Remove-AzFirmwareAnalysisWorkspace.md)
-The operation to delete a firmware analysis workspace.
+### [New-AzFirmwareAnalysisWorkspaceUploadUrl](New-AzFirmwareAnalysisWorkspaceUploadUrl.md)
+Generate a URL for uploading a firmware image.
 
 ### [Update-AzFirmwareAnalysisFirmware](Update-AzFirmwareAnalysisFirmware.md)
 The operation to update firmware.

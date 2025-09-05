@@ -5,93 +5,121 @@ online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysi
 schema: 2.0.0
 ---
 
-# Get-AzFirmwareAnalysisWorkspace
+# Get-AzFirmwareAnalysisUsageMetric
 
 ## SYNOPSIS
-Get firmware analysis workspace.
+Gets monthly usage information for a workspace.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzFirmwareAnalysisWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzFirmwareAnalysisWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+Get-AzFirmwareAnalysisUsageMetric -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get firmware analysis workspace.
+
+Gets monthly usage information for a workspace.
 
 ## EXAMPLES
 
-### Example 1: List all firmware analysis workspaces in the specified subscription.
+### List (Default)
 ```powershell
-Get-AzFirmwareAnalysisWorkspace -ResourceGroupName ResourceGroupName
+Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```powershell
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```powershell
+Get-AzFirmwareAnalysisUsageMetric -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```powershell
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Example 1: Get usage information for current a workspace named 'default'
+```powershell
+Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName FirmwareAnalysisRG -WorkspaceName default
 ```
 
 ```output
-Id                           : 
-Location                     : 
-Name                         : 
-ProvisioningState            : 
-ResourceGroupName            : 
-SystemDataCreatedAt          : 
-SystemDataCreatedBy          : 
-SystemDataCreatedByType      : 
-SystemDataLastModifiedAt     : 
-SystemDataLastModifiedBy     : 
-SystemDataLastModifiedByType : 
-Tag                          : {}
-Type                         : microsoft.iotfirmwaredefense/workspaces
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current
+MonthlyFirmwareUploadCount   : 1
+Name                         : current
+ProvisioningState            :
+ResourceGroupName            : rgName
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TotalFirmwareCount           : 103
+Type                         : Microsoft.IoTFirmwareDefense/workspaces/usageMetrics
 ```
 
-List all firmware analysis workspaces in the specified subscription.
-
-### Example 2: Get firmware analysis workspace from the specified subscription.
-```powershell
-Get-AzFirmwareAnalysisWorkspace -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName
-```
-
-```output
-Id                           : 
-Location                     : 
-Name                         : 
-ProvisioningState            : 
-ResourceGroupName            : 
-SystemDataCreatedAt          : 
-SystemDataCreatedBy          : 
-SystemDataCreatedByType      : 
-SystemDataLastModifiedAt     : 
-SystemDataLastModifiedBy     : 
-SystemDataLastModifiedByType : 
-Tag                          : {}
-Type                         : microsoft.iotfirmwaredefense/workspaces
-```
-
-Get firmware analysis workspace from the specified subscription.
+This shows that there was only 1 firmware uploaded to this workspace this month, and there's a total of 103 firmwares in the workspace.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### -InputObject
+
+powershell
+
+
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -121,12 +149,39 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the firmware analysis workspace.
+
+
+Type: System.String
+Parameter Sets: Get, GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### -ResourceGroupName
+
+powershell
+
+
+
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: WorkspaceName
+Parameter Sets: GetViaIdentityWorkspace, Get
+Aliases:
 
 Required: True
 Position: Named
@@ -141,7 +196,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -152,17 +207,223 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
 
-```yaml
+
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### -WorkspaceInputObject
+
+powershell
+
+
+
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+
+
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### CommonParameters
+
+powershell
+
+
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+
+powershell
+
+
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric
+
+powershell
+
+
+
+## NOTES
+
+## RELATED LINKS
+
+## PARAMETERS
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### -InputObject
+Identity Parameter
+
+yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+
+
+### -Name
+The Firmware analysis summary name describing the type of summary.
+
+yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+yaml
+Type: System.String[]
+Parameter Sets: Get, List
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+
+
+### -WorkspaceInputObject
+Identity Parameter
+
+yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+
+
+### -WorkspaceName
+The name of the firmware analysis workspace.
+
+yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -176,7 +437,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric
 
 ## NOTES
 
