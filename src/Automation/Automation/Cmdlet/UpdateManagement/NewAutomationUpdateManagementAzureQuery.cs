@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
 
         [Parameter(Mandatory = false, HelpMessage = "List of locations for azure virtual machines.")]
         [LocationCompleter("Microsoft.Compute/virtualMachines")]
-        [Alias("Locaton")]
+        [Alias("Location")]
         public string[] Location { get; set; }
 
         [Parameter(Mandatory = false,  HelpMessage = "Tag for azure virtual machines.")]
