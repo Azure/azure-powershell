@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         ReadOnly = false,
         Description = @"The name of the Virtual Instances for SAP solutions resource",
         SerializedName = @"sapVirtualInstanceName",
-        PossibleTypes = new[] { typeof(string) })]
+        PossibleTypes = new [] { typeof(string) })]
         [global::System.Management.Automation.Alias("SapVirtualInstanceName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         ReadOnly = false,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
-        PossibleTypes = new[] { typeof(string) })]
+        PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -287,11 +287,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                             WriteError(new global::System.Management.Automation.ErrorRecord(new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null));
                             return;
                         }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Progress:
+                        {
+                            var data = messageData();
+                            int progress = (int)data.Value;
+                            string activityMessage, statusDescription;
+                            global::System.Management.Automation.ProgressRecordType recordType;
+                            if (progress < 100)
+                            {
+                                activityMessage = "In progress";
+                                statusDescription = "Checking operation status";
+                                recordType = System.Management.Automation.ProgressRecordType.Processing;
+                            }
+                            else
+                            {
+                                activityMessage = "Completed";
+                                statusDescription = "Completed";
+                                recordType = System.Management.Automation.ProgressRecordType.Completed;
+                            }
+                            WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                            {
+                                PercentComplete = progress,
+                            RecordType = recordType
+                            });
+                            return ;
+                        }
                     case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.DelayBeforePolling:
                         {
+                            var data = messageData();
                             if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                             {
-                                var data = messageData();
                                 if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                                 {
                                     var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -301,6 +326,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                                     // do nothing more.
                                     data.Cancel();
                                     return;
+                                }
+                            }
+                            else
+                            {
+                                if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                                {
+                                    int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                    WriteDebug($"Delaying {delay} seconds before polling.");
+                                    for (var now = 0; now < delay; ++now)
+                                    {
+                                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                        {
+                                            PercentComplete = now * 100 / delay
+                                        });
+                                        await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                    }
                                 }
                             }
                             break;
