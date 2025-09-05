@@ -73,7 +73,7 @@ function setupEnv() {
     $vnetPara.parameters.networkSecurityGroups_myHSM_vnet_compute_NRMS_externalid.value = $env.vnetSecurityId
     Set-Content -Path .\test\deployment-templates\virtual-network\parameters.json -Value (ConvertTo-Json $vnetPara)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name $vnetName -ResourceGroupName $env.resourceGroup
-    $env.virtulaNetworkId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$vnetName"
+    $env.virtualNetworkId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$vnetName"
     Write-Host -ForegroundColor Green "Deploy virtual network completed."
 
     # Deploy virtual network gateway for test
