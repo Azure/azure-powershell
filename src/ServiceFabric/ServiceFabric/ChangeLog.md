@@ -23,7 +23,7 @@
     - `Invoke-AzServiceFabricRedeployManagedNodeType`
     - `Invoke-AzServiceFabricReimageManagedNodeType`
     - `Start-AzServiceFabricManagedNodeType`
-* Marked `NodeName` as non-required and addded parameter `-UpdateType` in `Restart-AzServiceFabricManagedNodeType` to allow UD by UD restarts of all nodes in node type.
+* Marked `NodeName` as non-required and added parameter `-UpdateType` in `Restart-AzServiceFabricManagedNodeType` to allow UD by UD restarts of all nodes in node type.
 
 ## Version 3.7.0
 * Updated SF to latest api preview version `2023-11-01-preview`

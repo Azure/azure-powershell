@@ -19,7 +19,7 @@ Invoke-AzServiceFabricRedeployManagedNodeType [-ResourceGroupName] <String> [-Cl
 ```
 
 ## DESCRIPTION
-Redeploy nodes from the node type. It will disable the service fabric nodes before, move them to another host node, then renable.
+Redeploy nodes from the node type. It will disable the service fabric nodes before, move them to another host node, then reenable.
 
 ## EXAMPLES
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns $True if the command succeeds and $False if it fails. By default, this cmdlet does not return any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
