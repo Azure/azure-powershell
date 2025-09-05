@@ -10,6 +10,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         private GatewayRouteSetsInformation DeserializeJsonResponse(HttpResponseMessage responseMessage)
         {
             var json = responseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            json = json.Replace(" PM UTC", " PM");
+            json = Regex.Replace(json, @"(\d{1,2}:\d{2} [APM]{2}) UTC", "$1");
             return JsonConvert.DeserializeObject<GatewayRouteSetsInformation>(json);
         }
 
@@ -104,6 +105,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
                     else if (pollResponse.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var json = pollResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                        json = Regex.Replace(json, @"(\d{1,2}:\d{2} [APM]{2}) UTC", "$1");
                         return JsonConvert.DeserializeObject<GatewayRouteSetsInformation>(json);
                     }
                     else

@@ -10,6 +10,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
@@ -85,8 +86,13 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         private GatewayResiliencyInformation DeserializeJsonResponse(HttpResponseMessage responseMessage)
         {
+            // Read the raw JSON response as string
             var json = responseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            json = json.Replace(" PM UTC", " PM");
+
+            // Use Regex to remove " UTC" after any AM/PM time pattern (e.g., "2:30 PM UTC", "10:15 AM UTC")
+            json = Regex.Replace(json, @"(\d{1,2}:\d{2} [APM]{2}) UTC", "$1");
+
+            // Deserialize the cleaned-up JSON
             return Newtonsoft.Json.JsonConvert.DeserializeObject<GatewayResiliencyInformation>(json);
         }
 
@@ -107,7 +113,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
                     else if (pollResponse.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var json = pollResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                        json = json.Replace(" PM UTC", " PM");
+                        json = Regex.Replace(json, @"(\d{1,2}:\d{2} [APM]{2}) UTC", "$1");
                         return Newtonsoft.Json.JsonConvert.DeserializeObject<GatewayResiliencyInformation>(json);
                     }
                     else
