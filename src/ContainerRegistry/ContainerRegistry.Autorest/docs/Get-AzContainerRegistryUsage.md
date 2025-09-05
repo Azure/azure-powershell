@@ -114,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryUsage
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryUsageListResult
 
 ## NOTES
 
