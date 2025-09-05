@@ -82,7 +82,7 @@ function setupEnv() {
     $vnetGatewa = Get-Content .\test\deployment-templates\virtual-network-gateway\parameters.json | ConvertFrom-Json
     $vnetGatewa.parameters.virtualNetworkGateways_GW_name.value = $vnetGatewayName
     $vnetGatewa.parameters.publicIPAddresses_GWIP_externalid.value = $env.publicIpAddressId
-    $vnetGatewa.parameters.virtualNetworks_myHSM_vnet_externalid.value = $env.virtulaNetworkId
+    $vnetGatewa.parameters.virtualNetworks_myHSM_vnet_externalid.value = $env.virtualNetworkId
     Set-Content -Path .\test\deployment-templates\virtual-network-gateway\parameters.json -Value (ConvertTo-Json $vnetGatewa)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network-gateway\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network-gateway\parameters.json -Name $vnetGatewayName -ResourceGroupName $env.resourceGroup
     $env.vnetGatewayId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworkGateways/$vnetGatewayName"
