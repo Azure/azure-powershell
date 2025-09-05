@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.2.0
 * Supported Enable Metrics when set object replication policy 
     - `Set-AzStorageObjectReplicationPolicy`
 

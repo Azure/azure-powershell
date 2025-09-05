@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Added  support for new api version 2025-07-01
 * Included new endpoint types supported in the api version
     * MultiCloudConnector
