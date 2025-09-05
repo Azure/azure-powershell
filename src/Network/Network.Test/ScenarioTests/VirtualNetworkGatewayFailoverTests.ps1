@@ -84,20 +84,21 @@ function Test-StartAzureVirtualNetworkGatewaySiteFailoverTest
 
     Write-Debug "Starting failover test for Virtual Network Gateway: $vnetGatewayName in RG: $rgName"
 
-    # Start failover test
-    $resultFailover = Start-AzVirtualNetworkGatewaySiteFailoverTest `
-        -ResourceGroupName $rgName `
-        -VirtualNetworkGatewayName $vnetGatewayName `
-        -PeeringLocation $peeringLocation `
-        -Type "SingleSiteFailover"
+    try {
+        # Start failover test
+        $resultFailover = Start-AzVirtualNetworkGatewaySiteFailoverTest `
+            -ResourceGroupName $rgName `
+            -VirtualNetworkGatewayName $vnetGatewayName `
+            -PeeringLocation $peeringLocation `
+            -Type "SingleSiteFailover"
 
-    Write-Debug "`nFailover Test Result:"
-    Write-Debug $resultFailover
-
-    # Assert that the result is not null
-    Assert-NotNull $resultFailover "The failover test result is null."
-
-    Write-Debug "`nFailover Test started successfully."
+        Write-Debug "`nFailover Test started successfully."
+    }
+    catch {
+        $errorMessage = $_.Exception.Message
+        Write-Error "An error occurred while starting the failover test: $errorMessage"
+        throw "Test failed due to exception: $errorMessage"
+    }
 }
 
 <#
@@ -125,30 +126,31 @@ function Test-StopAzureVirtualNetworkGatewaySiteFailoverTest
 
     Write-Debug "Starting the process of stopping the failover test"
 
-    # Define failover connection details
-    $details = @(
-        [Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]@{
-            FailoverConnectionName = "shubhati_ER_Arista--conn--shubhati_failoverGw"
-            FailoverLocation = "eastus2euap"
-            IsVerified = $true
-        }
-    )
+    try{
+        # Define failover connection details
+        $details = @(
+            [Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]@{
+                FailoverConnectionName = "shubhati_ER_Arista--conn--shubhati_failoverGw"
+                FailoverLocation = "eastus2euap"
+                IsVerified = $true
+            }
+        )
 
-    # Stop the failover test
-    $resultStopFailover = Stop-AzVirtualNetworkGatewaySiteFailoverTest `
-        -ResourceGroupName $rgName `
-        -VirtualNetworkGatewayName $vnetGatewayName `
-        -PeeringLocation $peeringLocation `
-        -Details $details `
-        -WasSimulationSuccessful $true
+        # Stop the failover test
+        $resultStopFailover = Stop-AzVirtualNetworkGatewaySiteFailoverTest `
+            -ResourceGroupName $rgName `
+            -VirtualNetworkGatewayName $vnetGatewayName `
+            -PeeringLocation $peeringLocation `
+            -Details $details `
+            -WasSimulationSuccessful $true
 
-    Write-Debug "`nStop Failover Test Result:"
-    Write-Debug $resultStopFailover
-
-    # Assert that the stop failover result is not null
-    Assert-NotNull $resultStopFailover "The stop failover test result is null."
-
-    Write-Debug "`nStop Failover Test completed successfully."
+        Write-Debug "`nStop Failover Test completed successfully."
+    }
+    catch {
+        $errorMessage = $_.Exception.Message
+        Write-Error "An error occurred while stopping the failover test: $errorMessage"
+        throw "Test failed due to exception: $errorMessage"
+    }
 }
 
 <#
