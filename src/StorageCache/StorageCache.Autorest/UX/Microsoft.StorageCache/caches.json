@@ -1,0 +1,237 @@
+{
+  "resourceType": "caches",
+  "apiVersion": "2025-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storagecache"
+  },
+  "commands": [
+    {
+      "name": "Clear-AzStorageCacheCach",
+      "description": "Tells a cache to write all dirty data to the Storage Target(s).\nDuring the flush, clients will see errors returned until the flush is complete.",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/clear-azstoragecachecach"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Tells a cache to write all dirty data to the Storage Target(s). During the flush, clients will see errors returned until the flush is complete.",
+          "parameters": [
+            {
+              "name": "-EName",
+              "value": "[Path.cacheName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Debug-AzStorageCacheCachInfo",
+      "description": "Tells a cache to write generate debug info for support to process.",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/debug-azstoragecachecachinfo"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CacheName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Tells a cache to write generate debug info for support to process.",
+          "parameters": [
+            {
+              "name": "-CacheName",
+              "value": "[Path.cacheName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzStorageCacheCach",
+      "description": "Returns a cache.",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecachecach"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns a cache.",
+          "parameters": [
+            {
+              "name": "-EName",
+              "value": "[Path.cacheName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageCacheCach",
+      "description": "Schedules a cache for deletion.",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecachecach"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Schedules a cache for deletion.",
+          "parameters": [
+            {
+              "name": "-EName",
+              "value": "[Path.cacheName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzStorageCacheCach",
+      "description": "Tells a Stopped state cache to transition to Active state.",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/start-azstoragecachecach"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Tells a Stopped state cache to transition to Active state.",
+          "parameters": [
+            {
+              "name": "-EName",
+              "value": "[Path.cacheName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzStorageCacheCach",
+      "description": "Tells an Active cache to transition to Stopped state.",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/stop-azstoragecachecach"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Tells an Active cache to transition to Stopped state.",
+          "parameters": [
+            {
+              "name": "-EName",
+              "value": "[Path.cacheName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
