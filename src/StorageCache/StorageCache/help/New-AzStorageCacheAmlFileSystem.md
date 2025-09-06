@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageCacheAmlFileSystem
 
 ## SYNOPSIS
-create an AML file system.
+Create an AML file system.
 
 ## SYNTAX
 
@@ -17,11 +17,13 @@ create an AML file system.
 New-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-EnableSystemAssignedIdentity] [-FilesystemSubnet <String>]
  [-KeyEncryptionKeyUrl <String>] [-MaintenanceWindowDayOfWeek <String>]
- [-MaintenanceWindowTimeOfDayUtc <String>] [-SettingContainer <String>] [-SettingImportPrefix <String>]
- [-SettingLoggingContainer <String>] [-SkuName <String>] [-SourceVaultId <String>]
- [-StorageCapacityTiB <Single>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MaintenanceWindowTimeOfDayUtc <String>] [-RootSquashSettingMode <String>]
+ [-RootSquashSettingNoSquashNidList <String>] [-RootSquashSettingSquashGid <Int64>]
+ [-RootSquashSettingSquashUid <Int64>] [-SettingContainer <String>] [-SettingImportPrefix <String>]
+ [-SettingImportPrefixesInitial <String[]>] [-SettingLoggingContainer <String>] [-SkuName <String>]
+ [-SourceVaultId <String>] [-StorageCapacityTiB <Single>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -42,15 +44,17 @@ New-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> [-Sub
 ```
 New-AzStorageCacheAmlFileSystem -InputObject <IStorageCacheIdentity> -Location <String>
  [-EnableSystemAssignedIdentity] [-FilesystemSubnet <String>] [-KeyEncryptionKeyUrl <String>]
- [-MaintenanceWindowDayOfWeek <String>] [-MaintenanceWindowTimeOfDayUtc <String>] [-SettingContainer <String>]
- [-SettingImportPrefix <String>] [-SettingLoggingContainer <String>] [-SkuName <String>]
- [-SourceVaultId <String>] [-StorageCapacityTiB <Single>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-MaintenanceWindowDayOfWeek <String>] [-MaintenanceWindowTimeOfDayUtc <String>]
+ [-RootSquashSettingMode <String>] [-RootSquashSettingNoSquashNidList <String>]
+ [-RootSquashSettingSquashGid <Int64>] [-RootSquashSettingSquashUid <Int64>] [-SettingContainer <String>]
+ [-SettingImportPrefix <String>] [-SettingImportPrefixesInitial <String[]>] [-SettingLoggingContainer <String>]
+ [-SkuName <String>] [-SourceVaultId <String>] [-StorageCapacityTiB <Single>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create an AML file system.
+Create an AML file system.
 
 ## EXAMPLES
 
@@ -297,6 +301,69 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RootSquashSettingMode
+Squash mode of the AML file system.
+'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+'None': No squashing of User and Group IDs is performed for any users on any systems.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingNoSquashNidList
+Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingSquashGid
+Group ID to squash to.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingSquashUid
+User ID to squash to.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SettingContainer
 Resource ID of storage container used for hydrating the namespace and archiving from the namespace.
 The resource provider must have permission to create SAS tokens on the storage account.
@@ -314,10 +381,29 @@ Accept wildcard characters: False
 ```
 
 ### -SettingImportPrefix
-Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace.
+This is only used during initial creation of the AML file system.
+It automatically creates an import job resource that can be deleted.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SettingImportPrefixesInitial
+Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace.
+This is only used during initial creation of the AML file system and has '/' as the default value.
+It automatically creates an import job resource that can be deleted.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

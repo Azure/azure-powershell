@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageCacheAmlFileSystem
 
 ## SYNOPSIS
-update an AML file system instance.
+Update an AML file system instance.
 
 ## SYNTAX
 
@@ -16,14 +16,18 @@ update an AML file system instance.
 ```
 Update-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-KeyEncryptionKeyUrl <String>] [-MaintenanceWindowDayOfWeek <String>]
- [-MaintenanceWindowTimeOfDayUtc <String>] [-SourceVaultId <String>] [-Tag <Hashtable>]
+ [-MaintenanceWindowTimeOfDayUtc <String>] [-RootSquashSettingMode <String>]
+ [-RootSquashSettingNoSquashNidList <String>] [-RootSquashSettingSquashGid <Int64>]
+ [-RootSquashSettingSquashUid <Int64>] [-SourceVaultId <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStorageCacheAmlFileSystem -InputObject <IStorageCacheIdentity> [-KeyEncryptionKeyUrl <String>]
- [-MaintenanceWindowDayOfWeek <String>] [-MaintenanceWindowTimeOfDayUtc <String>] [-SourceVaultId <String>]
+ [-MaintenanceWindowDayOfWeek <String>] [-MaintenanceWindowTimeOfDayUtc <String>]
+ [-RootSquashSettingMode <String>] [-RootSquashSettingNoSquashNidList <String>]
+ [-RootSquashSettingSquashGid <Int64>] [-RootSquashSettingSquashUid <Int64>] [-SourceVaultId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -42,7 +46,7 @@ Update-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-update an AML file system instance.
+Update an AML file system instance.
 
 ## EXAMPLES
 
@@ -224,6 +228,69 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingMode
+Squash mode of the AML file system.
+'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+'None': No squashing of User and Group IDs is performed for any users on any systems.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingNoSquashNidList
+Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingSquashGid
+Group ID to squash to.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingSquashUid
+User ID to squash to.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

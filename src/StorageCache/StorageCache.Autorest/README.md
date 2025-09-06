@@ -27,11 +27,13 @@ For information on how to develop for `Az.StorageCache`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: f3a04ddc23771fca8a99b179ea8eaa428c21fa2f
+commit: 213441b94d4801b488e57f22187bdc862c2d51b3
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
+  - $(repo)/specification/storagecache/resource-manager/readme.md
+
 input-file:
-  - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-05-01/amlfilesystem.json
+  - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2025-07-01/amlfilesystem.json
 
 module-version: 0.1.0
 title: StorageCache
@@ -95,4 +97,13 @@ directive:
           - ResourceGroupName
           - HealthState
           - SkuName
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+    remove: true
+
+  - where:
+      subject: .*PrimingJob$
+      variant: ^(Start|Stop|Resume|Pause)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
 ```
