@@ -213,7 +213,10 @@ namespace Microsoft.Azure.Management.Batch.Models
                 }
             }
 
-
+            if (this.ContainerConfiguration != null)
+            {
+                this.ContainerConfiguration.Validate();
+            }
 
 
             if (this.Extensions != null)

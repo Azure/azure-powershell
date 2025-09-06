@@ -301,6 +301,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -342,7 +345,7 @@ namespace Microsoft.Azure.Management.Batch
             this.PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
             this.Pool = new PoolOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2022-10-01";
+            this.ApiVersion = "2023-05-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

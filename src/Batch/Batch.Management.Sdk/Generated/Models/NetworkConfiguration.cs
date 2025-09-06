@@ -57,13 +57,20 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="publicIPAddressConfiguration">This property is only supported on Pools with the
         /// virtualMachineConfiguration property.
         /// </param>
-        public NetworkConfiguration(string subnetId = default(string), DynamicVNetAssignmentScope? dynamicVnetAssignmentScope = default(DynamicVNetAssignmentScope?), PoolEndpointConfiguration endpointConfiguration = default(PoolEndpointConfiguration), PublicIPAddressConfiguration publicIPAddressConfiguration = default(PublicIPAddressConfiguration))
+
+        /// <param name="enableAcceleratedNetworking">Accelerated networking enables single root I/O virtualization (SR-IOV) to a
+        /// VM, which may lead to improved networking performance. For more details,
+        /// see:
+        /// https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
+        /// </param>
+        public NetworkConfiguration(string subnetId = default(string), DynamicVNetAssignmentScope? dynamicVnetAssignmentScope = default(DynamicVNetAssignmentScope?), PoolEndpointConfiguration endpointConfiguration = default(PoolEndpointConfiguration), PublicIPAddressConfiguration publicIPAddressConfiguration = default(PublicIPAddressConfiguration), bool? enableAcceleratedNetworking = default(bool?))
 
         {
             this.SubnetId = subnetId;
             this.DynamicVnetAssignmentScope = dynamicVnetAssignmentScope;
             this.EndpointConfiguration = endpointConfiguration;
             this.PublicIPAddressConfiguration = publicIPAddressConfiguration;
+            this.EnableAcceleratedNetworking = enableAcceleratedNetworking;
             CustomInit();
         }
 
@@ -118,6 +125,15 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddressConfiguration")]
         public PublicIPAddressConfiguration PublicIPAddressConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets accelerated networking enables single root I/O virtualization
+        /// (SR-IOV) to a VM, which may lead to improved networking performance. For
+        /// more details, see:
+        /// https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableAcceleratedNetworking")]
+        public bool? EnableAcceleratedNetworking {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
