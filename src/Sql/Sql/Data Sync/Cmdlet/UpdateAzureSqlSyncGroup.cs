@@ -65,15 +65,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the Database Authentication type of the hub database
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "The database authentication type of the hub database. If not specified, defaults to 'SqlAuthentication' (username/password).")]
         [ValidateSet("password", "userAssigned", IgnoreCase = true)]
         public string HubDatabaseAuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the identity ID of the hub database in case of user assigned identity authentication
         /// </summary>
-        [Parameter(Mandatory = false)]
-        public string IdentityId { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the UAMI (User Assigned Managed Identity) to use for hub database authentication.")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -140,8 +140,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             }
             else if (this.HubDatabaseAuthenticationType.Equals("userAssigned", System.StringComparison.OrdinalIgnoreCase))
             {
-                if (!MyInvocation.BoundParameters.ContainsKey(nameof(IdentityId)) ||
-                    string.IsNullOrEmpty(this.IdentityId))
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
+                    string.IsNullOrEmpty(this.ResourceId))
                 {
                     newModel.Identity = new DataSyncParticipantIdentity
                     {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 }
                 else
                 {
-                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.IdentityId);
+                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId);
                 }
             }
             else

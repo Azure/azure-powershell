@@ -109,15 +109,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the Database Authentication type of the hub database
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The Database Authentication type of the hub database.")]
+        [Parameter(Mandatory = false, HelpMessage = "The database authentication type of the hub database. If not specified, defaults to 'SqlAuthentication' (username/password).")]
         [ValidateSet("password", "userAssigned", IgnoreCase = true)]
         public string HubDatabaseAuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the identity ID of the hub database in case of user assigned identity authentication
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The identity ID of the hub database in case of UAMI Authentication.")]
-        public string IdentityId { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the UAMI (User Assigned Managed Identity) to use for hub database authentication.")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 ServerName = this.ServerName,
                 DatabaseName = this.DatabaseName,
                 SyncGroupName = this.Name,
-                ConflictResolutionPolicy = this.ConflictResolutionPolicy != null ? this.ConflictResolutionPolicy.ToString() : null
+                ConflictResolutionPolicy = this.ConflictResolutionPolicy?.ToString()
             };
 
             if (!MyInvocation.BoundParameters.ContainsKey(nameof(HubDatabaseAuthenticationType)) ||
@@ -177,6 +177,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                         "DatabaseCredentials");
                 }
 
+                if(MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)))
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidParameterForAuthenticationType,
+                            nameof(ResourceId),
+                            "password"), nameof(ResourceId));
+                }
+
                 newModel.HubDatabaseUserName = this.DatabaseCredential.UserName;
                 newModel.HubDatabasePassword = this.DatabaseCredential.Password;
 
@@ -187,15 +196,24 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             }
             else if (this.HubDatabaseAuthenticationType.Equals("userAssigned", System.StringComparison.OrdinalIgnoreCase))
             {
-                if (!MyInvocation.BoundParameters.ContainsKey(nameof(IdentityId)) ||
-                    string.IsNullOrEmpty(this.IdentityId))
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
+                    string.IsNullOrEmpty(this.ResourceId))
                 {
                     throw new PSArgumentException(
-                        Microsoft.Azure.Commands.Sql.Properties.Resources.IdentityIdRequired,
-                        "IdentityId");
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.ResourceIdRequired,
+                        "ResourceId");
                 }
 
-                newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.IdentityId);
+                if (MyInvocation.BoundParameters.ContainsKey(nameof(DatabaseCredential)))
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidParameterForAuthenticationType,
+                            nameof(DatabaseCredential),
+                            "userAssigned"), nameof(DatabaseCredential));
+                }
+
+                newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId);
             }
             else
             {
