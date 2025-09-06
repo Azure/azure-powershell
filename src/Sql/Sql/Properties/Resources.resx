@@ -777,13 +777,20 @@
   </data>
   <data name="InvalidSoftDeleteRetentionDaysRange" xml:space="preserve">
     <value>SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true.</value>
+  </data>
   <data name="IdentityIdRequired" xml:space="preserve">
     <value>IdentityId must be provided when DatabaseAuthenticationType is 'userAssigned'.</value>
+  </data>
+  <data name="ResourceIdRequired" xml:space="preserve">
+    <value>ResourceID of UAMI must be provided when DatabaseAuthenticationType is 'userAssigned'.</value>
   </data>
   <data name="DatabaseCredentialRequired" xml:space="preserve">
     <value>DatabaseCredentials (username/password) must be provided when DatabaseAuthenticationType is 'password'.</value>
   </data>
   <data name="InvalidDatabaseAuthenticationType" xml:space="preserve">
     <value>Invalid DatabaseAuthenticationType. Supported authentication types are 'userAssigned' and 'password'</value>
+  </data>
+  <data name="InvalidParameterForAuthenticationType" xml:space="preserve">
+    <value>The parameter '{0}' cannot be specified when using '{1}' authentication.</value>
   </data>
 </root>

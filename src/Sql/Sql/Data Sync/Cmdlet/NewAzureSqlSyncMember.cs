@@ -173,15 +173,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         ///<summary>
         /// Gets or sets the Database Authentication type of the sync member database
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The Database Authentication type of the sync member database.")]
+        [Parameter(Mandatory = false, HelpMessage = "The database authentication type of the Member database. If not specified, defaults to 'SqlAuthentication' (username/password).")]
         [ValidateSet("password", "userAssigned", IgnoreCase = true)]
         public string MemberDatabaseAuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets the identity ID of the sync member database in case of user assigned identity authentication
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The identity ID of the sync member DB in case of UAMI Authentication")]
-        public string IdentityId { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the UAMI (User Assigned Managed Identity) to use for member database authentication.")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -258,6 +258,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                         throw new PSArgumentException(
                             Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseCredentialRequired, nameof(MemberDatabaseCredential));
                     }
+
+                    if (MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)))
+                    {
+                        throw new PSArgumentException(
+                            string.Format(
+                                Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidParameterForAuthenticationType,
+                                nameof(ResourceId), "password"), nameof(ResourceId));
+                    }
+
                     newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
                     newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
 
@@ -268,13 +277,22 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 }
                 else if (this.MemberDatabaseAuthenticationType.Equals("userAssigned", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (!MyInvocation.BoundParameters.ContainsKey(nameof(IdentityId)) ||
-                        string.IsNullOrEmpty(this.IdentityId))
+                    if (!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
+                        string.IsNullOrEmpty(this.ResourceId))
                     {
                         throw new PSArgumentException(
-                            Microsoft.Azure.Commands.Sql.Properties.Resources.IdentityIdRequired, nameof(IdentityId));
+                            Microsoft.Azure.Commands.Sql.Properties.Resources.ResourceIdRequired, nameof(ResourceId));
                     }
-                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.IdentityId);
+
+                    if (MyInvocation.BoundParameters.ContainsKey(nameof(MemberDatabaseCredential)))
+                    {
+                        throw new PSArgumentException(
+                            string.Format(
+                                Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidParameterForAuthenticationType,
+                                nameof(MemberDatabaseCredential), "userAssigned"), nameof(MemberDatabaseCredential));
+                    }
+
+                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId);
                 }
                 else
                 {

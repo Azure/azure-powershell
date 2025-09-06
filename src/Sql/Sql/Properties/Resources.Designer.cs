@@ -664,15 +664,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IdentityId must be provided when DatabaseAuthenticationType is &apos;userAssigned&apos;..
-        /// </summary>
-        internal static string IdentityIdRequired {
-            get {
-                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -752,6 +743,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidLongTermRetentionBackupResourceIdFormat {
             get {
                 return ResourceManager.GetString("InvalidLongTermRetentionBackupResourceIdFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; cannot be specified when using &apos;{1}&apos; authentication..
+        /// </summary>
+        internal static string InvalidParameterForAuthenticationType {
+            get {
+                return ResourceManager.GetString("InvalidParameterForAuthenticationType", resourceCulture);
             }
         }
         
@@ -1409,6 +1409,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveInstancePoolWarning {
             get {
                 return ResourceManager.GetString("RemoveInstancePoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResourceID of UAMI must be provided when DatabaseAuthenticationType is &apos;userAssigned&apos;..
+        /// </summary>
+        internal static string ResourceIdRequired {
+            get {
+                return ResourceManager.GetString("ResourceIdRequired", resourceCulture);
             }
         }
         
