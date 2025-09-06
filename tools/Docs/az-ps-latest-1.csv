@@ -29,7 +29,7 @@ pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ChangeAnalysis.0.2.0.zip;sourceType=sa]Az.ChangeAnalysis,0.2.0
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Chaos.0.1.2.zip;sourceType=sa]Az.Chaos,0.1.2
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudHsm.0.1.0.zip;sourceType=sa]Az.CloudHsm,0.1.0
-pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.1.0.zip;sourceType=sa]Az.CloudService,2.1.0
+pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.1.1.zip;sourceType=sa]Az.CloudService,2.1.1
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.16.0.zip;sourceType=sa]Az.CognitiveServices,1.16.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.6.0.zip;sourceType=sa]Az.Communication,0.6.0
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.10.3.0.zip;sourceType=sa]Az.Compute,10.3.0
