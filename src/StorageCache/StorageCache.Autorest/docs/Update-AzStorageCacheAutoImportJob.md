@@ -51,27 +51,12 @@ Update an auto import job instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an auto import job
 ```powershell
-{{ Add code here }}
+Update-AzStorageCacheAutoImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoimportjob' -ResourceGroupName 'myresourcegroup' -AutoImportPrefix @('/newpath1', '/newpath2')
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the specified auto import job with new auto import prefixes.
 
 ## PARAMETERS
 

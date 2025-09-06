@@ -52,27 +52,12 @@ Update an auto export job instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an auto export job
 ```powershell
-{{ Add code here }}
+Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoexportjob' -ResourceGroupName 'myresourcegroup' -AutoExportPrefix @('/newpath1')
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the specified auto export job with a new auto export prefix.
 
 ## PARAMETERS
 
