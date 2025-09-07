@@ -51,12 +51,12 @@ Update an import job instance.
 
 ## EXAMPLES
 
-### Example 1: Update an import job
+### Example 1: Update an import job administrative status
 ```powershell
-Update-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myimportjob' -ResourceGroupName 'myresourcegroup' -ImportPrefix @('/newpath1', '/newpath2')
+Update-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myimportjob' -ResourceGroupName 'myresourcegroup' -AdminStatus 'Cancel'
 ```
 
-Updates the specified import job with new import prefixes.
+Updates the administrative status of the specified import job.
 
 ## PARAMETERS
 

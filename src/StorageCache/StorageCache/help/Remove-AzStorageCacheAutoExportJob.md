@@ -37,12 +37,27 @@ Schedules an auto export job for deletion.
 
 ## EXAMPLES
 
-### Example 1: Remove an auto export job
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoexportjob' -ResourceGroupName 'myresourcegroup' -Confirm:$false
+{{ Add code here }}
 ```
 
-Removes the specified auto export job from the AML filesystem.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

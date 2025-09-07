@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an auto export job administrative status
 ```powershell
-{{ Add code here }}
+Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoexportjob' -ResourceGroupName 'myresourcegroup' -AdminStatus 'Disable'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the administrative status of the specified auto export job.
 
