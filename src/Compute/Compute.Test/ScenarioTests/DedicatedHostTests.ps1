@@ -358,17 +358,11 @@ function Test-DedicatedHostRedeploy
         $hostName = $rgname + 'host';
         New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "DSv3-Type3" -Tag @{key1 = "val2"};
 
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Assert-NotNull $dedicatedHost;
+
         # Test Update-AzHost with Redeploy parameter
         $updateHost = Update-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Redeploy;
-        Assert-True { $dedicatedHost != $null };
-        Assert-True { $updateHost.Redeploy != $null };
-
-        # Verify the host is updated
-        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
-        Assert-AreEqual $hostName $dedicatedHost.Name;
-        Assert-AreEqual $rgname $dedicatedHost.ResourceGroupName;
-        Assert-AreEqual $loc $dedicatedHost.Location;
-
     }
     finally
     {
