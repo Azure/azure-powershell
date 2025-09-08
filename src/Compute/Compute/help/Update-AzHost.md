@@ -15,15 +15,16 @@ Updates the Dedicated Host.
 ### DefaultParameter (Default)
 ```
 Update-AzHost [-ResourceGroupName] <String> [-HostGroupName] <String> [-Name] <String> [-Sku <String>]
- [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>] [-Redeploy <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>] [-Redeploy]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Update-AzHost [-Sku <String>] [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>]
- [-Redeploy <Boolean>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Redeploy] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,24 +60,9 @@ This command updates the given Sku of a host.
 Specifies whether the host should be replaced automatically in case of a failure. 
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -89,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -104,7 +90,7 @@ Accept wildcard characters: False
 Name of the Host Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -119,7 +105,7 @@ Accept wildcard characters: False
 Specifies the software license type that will be applied to the VMs deployed on the host. Possible values are: None, Windows_Server_Hybrid, and Windows_Server_Perpetual.  Default value is None.
 
 ```yaml
-Type: DedicatedHostLicenseTypes
+Type: Microsoft.Azure.Management.Compute.Models.DedicatedHostLicenseTypes
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, WindowsServerHybrid, WindowsServerPerpetual
@@ -135,7 +121,7 @@ Accept wildcard characters: False
 Specifies the name of the Host to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases: HostName
 
@@ -146,11 +132,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Redeploy
 Redeploy the dedicated host. The operation will complete successfully once the dedicated host has migrated to a new node and is running. To determine the health of VMs deployed on the dedicated host after the redeploy check the Resource Health Center in the Azure Portal. Please refer to https://docs.microsoft.com/azure/service-health/resource-health-overview for more details.
 
 ```yaml
-Type: Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -180,7 +181,7 @@ Accept wildcard characters: False
 Resource Id of the Host to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameter
 Aliases:
 
@@ -195,9 +196,24 @@ Accept wildcard characters: False
 The Sku Name that needs to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -211,7 +227,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
