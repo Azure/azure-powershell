@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.20.0
 * Onboarded Maps to Private Link Common Cmdlets
 
 ## Version 7.19.1
