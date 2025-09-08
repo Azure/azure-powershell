@@ -41,27 +41,50 @@ Returns an auto import job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all auto import jobs for an AML filesystem
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheAutoImportJob -AmlFilesystemName 'myamlfilesystem' -ResourceGroupName 'myresourcegroup'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AdminStatus          : Enabled
+AutoImportPrefix     : {/automount}
+ClientRequestId       :
+Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
+                       rageCache/amlFilesystems/myamlfilesystem/autoImportJobs/myautoimportjob1
+Location             : East US
+Name                 : myautoimportjob1
+ProvisioningState    : Succeeded
+State                : Running
+StatusMessage        : Auto import job is running successfully
+SystemDataCreatedAt  : 12/8/2024 2:30:15 PM
+SystemDataCreatedBy  : user@example.com
+SystemDataCreatedByType : User
+SystemDataLastModifiedAt : 12/8/2024 2:30:15 PM
+SystemDataLastModifiedBy : user@example.com
+SystemDataLastModifiedByType : User
+Type                 : Microsoft.StorageCache/amlFilesystems/autoImportJobs
+
+AdminStatus          : Disabled
+AutoImportPrefix     : {/batch}
+ClientRequestId       :
+Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
+                       rageCache/amlFilesystems/myamlfilesystem/autoImportJobs/myautoimportjob2
+Location             : East US
+Name                 : myautoimportjob2
+ProvisioningState    : Succeeded
+State                : Stopped
+StatusMessage        : Auto import job is disabled
+SystemDataCreatedAt  : 12/8/2024 3:00:10 PM
+SystemDataCreatedBy  : user@example.com
+SystemDataCreatedByType : User
+SystemDataLastModifiedAt : 12/8/2024 3:05:15 PM
+SystemDataLastModifiedBy : user@example.com
+SystemDataLastModifiedByType : User
+Type                 : Microsoft.StorageCache/amlFilesystems/autoImportJobs
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets all auto import jobs for the specified AML filesystem.
 
 ## PARAMETERS
 

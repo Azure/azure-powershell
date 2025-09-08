@@ -41,27 +41,58 @@ Returns an import job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all import jobs for an AML filesystem
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -ResourceGroupName 'myresourcegroup'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AdminStatus          : Completed
+ClientRequestId       :
+ConflictResolution    : OverwriteAlways
+FailureReason        :
+Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
+                       rageCache/amlFilesystems/myamlfilesystem/importJobs/myimportjob1
+ImportPrefixesSource :
+ImportPrefixes       : {/path1}
+Location             : East US
+MaximumError         : 0
+Name                 : myimportjob1
+ProvisioningState    : Succeeded
+State                : Completed
+StatusMessage        : Import job completed successfully
+SystemDataCreatedAt  : 12/8/2024 2:30:15 PM
+SystemDataCreatedBy  : user@example.com
+SystemDataCreatedByType : User
+SystemDataLastModifiedAt : 12/8/2024 2:35:20 PM
+SystemDataLastModifiedBy : user@example.com
+SystemDataLastModifiedByType : User
+Type                 : Microsoft.StorageCache/amlFilesystems/importJobs
+
+AdminStatus          : InProgress
+ClientRequestId       :
+ConflictResolution    : OverwriteIfDirty
+FailureReason        :
+Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
+                       rageCache/amlFilesystems/myamlfilesystem/importJobs/myimportjob2
+ImportPrefixesSource :
+ImportPrefixes       : {/path2}
+Location             : East US
+MaximumError         : 5
+Name                 : myimportjob2
+ProvisioningState    : Succeeded
+State                : InProgress
+StatusMessage        : Import job is running
+SystemDataCreatedAt  : 12/8/2024 3:00:10 PM
+SystemDataCreatedBy  : user@example.com
+SystemDataCreatedByType : User
+SystemDataLastModifiedAt : 12/8/2024 3:00:10 PM
+SystemDataLastModifiedBy : user@example.com
+SystemDataLastModifiedByType : User
+Type                 : Microsoft.StorageCache/amlFilesystems/importJobs
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets all import jobs for the specified AML filesystem.
 
 ## PARAMETERS
 
