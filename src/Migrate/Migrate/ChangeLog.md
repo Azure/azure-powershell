@@ -25,6 +25,7 @@
 * Removed `-TargetStoragePathId` parameter from command `New-AzMigrateLocalDiskMappingObject` until the feature to associate each disk to their own storage container path is supported.
 * Added `-SourceApplianceName` and `-TargetApplianceName` as required parameters to command `New-AzMigrateLocalServerReplication` to allow users to specify appliance pairs of their choosing.
 * Enhanced resource validations in `Initialize-AzMigrateLocalReplicationInfrastructure` and `New-AzMigrateLocalServerReplication`.
+* Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
 
 ## Version 2.8.0
 * Implemented the Get-AzMigrateServerMigrationStatus cmdlet to retrieve the replication status of servers in Azure Migrate.
