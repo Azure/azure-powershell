@@ -375,8 +375,7 @@ Accept wildcard characters: False
 
 ### -SkuName
 The name of the SKU.
-E.g.
-P3.
+For example, P3.
 It is typically a letter+number code
 
 ```yaml
