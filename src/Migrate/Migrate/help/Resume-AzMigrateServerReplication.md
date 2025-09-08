@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/resume-azmigrateserverreplication
 schema: 2.0.0
@@ -14,14 +14,15 @@ Starts the replication that has been suspended.
 
 ### ByIDVMwareCbt (Default)
 ```
-Resume-AzMigrateServerReplication -TargetObjectID <String> [-DeleteMigratedResource]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Resume-AzMigrateServerReplication -TargetObjectID <String> [-DeleteMigratedResource] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Resume-AzMigrateServerReplication -InputObject <IMigrationItem> [-DeleteMigratedResource]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Resume-AzMigrateServerReplication [-DeleteMigratedResource] [-SubscriptionId <String>]
+ -InputObject <IMigrationItem> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,4 +214,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
