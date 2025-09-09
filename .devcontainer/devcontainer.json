@@ -2,8 +2,8 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
 	"name": "C# (.NET)",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0",
+	// Use a Dockerfile for custom configuration
+	"dockerFile": "Dockerfile",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
@@ -24,7 +24,8 @@
 	// }
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install -g autorest",
+	// npm install -g autorest is now handled in the Dockerfile
+	"postCreateCommand": "",
 
 	// Configure tool-specific properties.
 	"customizations": {
