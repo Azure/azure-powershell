@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSentinelAlertRule_UpdateViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAlertRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Creates or updates the alert rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]

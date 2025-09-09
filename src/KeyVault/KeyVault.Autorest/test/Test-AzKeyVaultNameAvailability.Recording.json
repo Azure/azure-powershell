@@ -1,8 +1,8 @@
 {
-  "Test-AzKeyVaultNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2023-02-01+1": {
+  "Test-AzKeyVaultNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2024-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2024-11-01",
       "Content": "{\r\n  \"name\": \"bez-test-kv20230818\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,17 +17,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "31334577-b0b2-4b69-9558-0d3b21c98d67" ],
-        "x-ms-keyvault-service-version": [ "1.5.851.0" ],
-        "x-ms-request-id": [ "e1213972-4755-4feb-abc0-8cc84af89ff6" ],
+        "x-ms-client-request-id": [ "c5a54fb9-d702-4b3b-be1c-53261d7c4f5b" ],
+        "x-ms-keyvault-service-version": [ "2.2.261.0" ],
+        "x-ms-request-id": [ "cc7d1bb2-31e6-4754-ae54-4b90c933cf6d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "cf345d79-53b3-4721-8df4-af49f9a279a0" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T072931Z:cf345d79-53b3-4721-8df4-af49f9a279a0" ],
-        "Date": [ "Fri, 18 Aug 2023 07:29:31 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=a217809c-9dd2-41d4-b32a-7b16e0b588bf/australiaeast/4a742db8-a4ba-4658-9f16-73bc1839ed20" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "33138691-1807-48b6-9d08-1b18e2688fd5" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250812T001244Z:33138691-1807-48b6-9d08-1b18e2688fd5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 89D014DDC70546B9834A854E664A60CD Ref B: SYD03EDGE0907 Ref C: 2025-08-12T00:12:43Z" ],
+        "Date": [ "Tue, 12 Aug 2025 00:12:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
