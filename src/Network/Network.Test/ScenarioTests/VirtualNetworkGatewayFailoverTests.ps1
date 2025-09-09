@@ -173,7 +173,7 @@ function Test-CombinedAzureVirtualNetworkGatewayFailoverTestDetails
     Write-Debug "Fetching all failover tests for Virtual Network Gateway: $vnetGatewayName in RG: $rgName"
 
     # Fetch all failover tests
-    $resultAllTests = Get-AzVirtualNetworkGatewayFailoverAllTestsDetails `
+    $resultAllTests = Get-AzVirtualNetworkGatewayFailoverAllTestsDetail `
         -ResourceGroupName $rgName `
         -VirtualNetworkGatewayName $vnetGatewayName `
         -Type "SingleSiteFailover" `
@@ -194,7 +194,7 @@ function Test-CombinedAzureVirtualNetworkGatewayFailoverTestDetails
         Write-Debug "Fetching details for Failover Test ID: $testGuid at Peering Location: $peeringLocation"
 
         # Fetch details for a specific failover test using the TestGuid from the previous step
-        $resultSingleTest = Get-AzVirtualNetworkGatewayFailoverSingleTestDetails `
+        $resultSingleTest = Get-AzVirtualNetworkGatewayFailoverSingleTestDetail `
             -ResourceGroupName $rgName `
             -VirtualNetworkGatewayName $vnetGatewayName `
             -PeeringLocation $peeringLocation `

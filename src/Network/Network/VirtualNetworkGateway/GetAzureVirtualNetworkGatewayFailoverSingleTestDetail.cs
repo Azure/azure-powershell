@@ -23,8 +23,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayFailoverSingleTestDetails", DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(List<PSExpressRouteFailoverSingleTestDetails>))]
-    public class GetAzureVirtualNetworkGatewayFailoverSingleTestDetails : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayFailoverSingleTestDetail", DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(List<PSExpressRouteFailoverSingleTestDetails>))]
+    public class GetAzureVirtualNetworkGatewayFailoverSingleTestDetail : NetworkBaseCmdlet
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
 

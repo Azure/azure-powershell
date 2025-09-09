@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayFailoverAllTestsDetails", DefaultParameterSetName = "ByName"), OutputType(typeof(List<PSExpressRouteFailoverTestDetails>))]
-    public class GetAzureVirtualNetworkGatewayFailoverAllTestsDetails : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayFailoverAllTestsDetail", DefaultParameterSetName = "ByName"), OutputType(typeof(List<PSExpressRouteFailoverTestDetails>))]
+    public class GetAzureVirtualNetworkGatewayFailoverAllTestsDetail : NetworkBaseCmdlet
     {
        private const string GetByNameParameterSet = "GetByNameParameterSet";
 

@@ -19,8 +19,8 @@
 --->
 
 ## Upcoming Release
-* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetails` to retrieve details of a single failover test on a virtual network gateway.
-* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetails` to list all failover tests for a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetail` to list all failover tests for a virtual network gateway.
 * Added cmdlet `Start-AzVirtualNetworkGatewaySiteFailoverTest` to initiate a site failover test on a virtual network gateway.
 * Added cmdlet `Stop-AzVirtualNetworkGatewaySiteFailoverTest` to stop an ongoing site failover test.
 * Added cmdlet `Get-AzVirtualNetworkGatewayResiliencyInformation` to retrieve resiliency information for a virtual network gateway.

@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.network/update-
 schema: 2.0.0
 ---
 
-# Get-AzVirtualNetworkGatewayFailoverAllTestsDetails
+# Get-AzVirtualNetworkGatewayFailoverAllTestsDetail
 
 ## SYNOPSIS
 Retrieves the details of all failover tests for a specified virtual network gateway.
@@ -14,19 +14,19 @@ Retrieves the details of all failover tests for a specified virtual network gate
 
 ### ByName (Default)
 ```
-Get-AzVirtualNetworkGatewayFailoverAllTestsDetails [-DefaultProfile <IAzureContextContainer>]
+Get-AzVirtualNetworkGatewayFailoverAllTestsDetail [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
 ```
-Get-AzVirtualNetworkGatewayFailoverAllTestsDetails -ResourceGroupName <String>
+Get-AzVirtualNetworkGatewayFailoverAllTestsDetail -ResourceGroupName <String>
  -VirtualNetworkGatewayName <String> -Type <String> -FetchLatest <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The `Get-AzVirtualNetworkGatewayFailoverAllTestsDetails`cmdlet retrieves detailed information about the failover tests conducted on a specific virtual network gateway. These tests assess the resiliency of the gateway by simulating failovers to various peering locations.
+The `Get-AzVirtualNetworkGatewayFailoverAllTestsDetail`cmdlet retrieves detailed information about the failover tests conducted on a specific virtual network gateway. These tests assess the resiliency of the gateway by simulating failovers to various peering locations.
 This cmdlet requires the ResourceGroupName, VirtualNetworkGatewayName, and Type parameters to identify the virtual network gateway and the specific type of failover test you wish to inspect. The -Type parameter allows you to specify the type of failover test (e.g., "SingleSiteFailover").
 The -FetchLatest parameter, when set to true, ensures that only the most recent failover tests for each peering location are retrieved.
 Using this cmdlet, you can gain valuable insights into the status, start time, end time, and results of each failover test, helping you evaluate the gateway's resiliency and ensure its availability across different locations.
@@ -35,14 +35,14 @@ Using this cmdlet, you can gain valuable insights into the status, start time, e
 
 ### Example 1
 ```powershell
-Get-AzVirtualNetworkGatewayFailoverAllTestsDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "SingleSiteFailover" -FetchLatest $true
+Get-AzVirtualNetworkGatewayFailoverAllTestsDetail -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "SingleSiteFailover" -FetchLatest $true
 ```
 
 This example retrieves the details of all failover tests of type SingleSiteFailover for the virtual network gateway "test_gateway" in the resource group "test_rg". The -FetchLatest parameter is set to $true, ensuring only the most recent failover tests for each peering location are returned.
 
 ### Example 2
 ```powershell
-Get-AzVirtualNetworkGatewayFailoverAllTestsDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "MultiSiteFailover" -FetchLatest $false
+Get-AzVirtualNetworkGatewayFailoverAllTestsDetail -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "MultiSiteFailover" -FetchLatest $false
 ```
 
 This example retrieves all MultisiteFailover tests (not limited to the latest) for the virtual network gateway "test_gateway" in the resource group "test_rg". The -FetchLatest parameter is set to $false, so the cmdlet will return all available failover tests.

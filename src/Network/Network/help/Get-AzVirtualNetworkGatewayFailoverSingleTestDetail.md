@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.network/update-
 schema: 2.0.0
 ---
 
-# Get-AzVirtualNetworkGatewayFailoverSingleTestDetails
+# Get-AzVirtualNetworkGatewayFailoverSingleTestDetail
 
 ## SYNOPSIS
 Retrieves detailed information about a specific failover test for a virtual network gateway.
@@ -13,15 +13,15 @@ Retrieves detailed information about a specific failover test for a virtual netw
 ## SYNTAX
 
 ```
-Get-AzVirtualNetworkGatewayFailoverSingleTestDetails -ResourceGroupName <String>
+Get-AzVirtualNetworkGatewayFailoverSingleTestDetail -ResourceGroupName <String>
  -VirtualNetworkGatewayName <String> -PeeringLocation <String> -FailoverTestId <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The `Get-AzVirtualNetworkGatewayFailoverSingleTestDetails` cmdlet retrieves detailed information about a specific failover test performed on a virtual network gateway. This cmdlet allows you to identify a particular test using the FailoverTestId (a unique GUID), the PeeringLocation where the test was performed, and the ResourceGroupName and VirtualNetworkGatewayName to locate the specific gateway.
+The `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` cmdlet retrieves detailed information about a specific failover test performed on a virtual network gateway. This cmdlet allows you to identify a particular test using the FailoverTestId (a unique GUID), the PeeringLocation where the test was performed, and the ResourceGroupName and VirtualNetworkGatewayName to locate the specific gateway.
 
-You can obtain the FailoverTestId (or TestGuid) from the output of the Get-AzVirtualNetworkGatewayFailoverAllTestsDetails cmdlet, which provides a list of all failover tests conducted on the virtual network gateway.
+You can obtain the FailoverTestId (or TestGuid) from the output of the Get-AzVirtualNetworkGatewayFailoverAllTestsDetail cmdlet, which provides a list of all failover tests conducted on the virtual network gateway.
 
 This cmdlet is especially useful when you need to examine the results of a single failover test, such as the start time, end time, status, and other related test details. You can specify the failover test to retrieve by using the FailoverTestId and PeeringLocation.
 
@@ -30,7 +30,7 @@ This cmdlet is especially useful when you need to examine the results of a singl
 
 ### Example 1
 ```powershell
-Get-AzVirtualNetworkGatewayFailoverSingleTestDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "West US" -FailoverTestId "00000000-0000-0000-0000-000000000000"
+Get-AzVirtualNetworkGatewayFailoverSingleTestDetail -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "West US" -FailoverTestId "00000000-0000-0000-0000-000000000000"
 ```
 
 This example retrieves the details of a specific failover test with the FailoverTestId of 00000000-0000-0000-0000-000000000000 that was performed in the East US peering location on the virtual network gateway "test_gateway" in the resource group "test_rg".
