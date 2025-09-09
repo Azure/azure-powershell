@@ -18,10 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added breaking change announcement for `Get-AzStorageMoverAgent` and `Update-AzStorageMoverAgent` cmdlets from fixed array to list.
-* Added unexpanded parameter sets deprecated breaking change announcement for below cmdlets.
-  * parameter sets Create for cmdlet `New-AzStorageMover`, `New-AzStorageMoverProject`, `New-AzStorageMoverJobDefinition`
-  * parameter sets Update and UpdateViaIdentity for Cmdlet `Update-AzStorageMover`, `Update-AzStorageMoverAgent`, `Update-AzStorageMoverJobDefinition`,  `Update-AzStorageMoverProject`
+* Added  support for new api version 2025-07-01
+* Included new endpoint types supported in the api version
+    * MultiCloudConnector
+    * NFSFileShare
+
+## Version 1.5.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 1.5.0
 * Upgraded nuget package to signed package.

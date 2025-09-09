@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Public preview release of API version 2025-07-01-preview for Az.DeviceRegistry. New resources included:
     - Schema Registry
     - Schema 
