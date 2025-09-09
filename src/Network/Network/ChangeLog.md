@@ -25,6 +25,7 @@
 * Added cmdlet `Stop-AzVirtualNetworkGatewaySiteFailoverTest` to stop an ongoing site failover test.
 * Added cmdlet `Get-AzVirtualNetworkGatewayResiliencyInformation` to retrieve resiliency information for a virtual network gateway.
 * Added cmdlet `Get-AzVirtualNetworkGatewayRoutesInformation` to get route information for a virtual network gateway.
+* Onboarded Maps to Private Link Common Cmdlets
 
 ## Version 7.19.1
 * Added a read-only property `ComputedDisabledRules` to `ApplicationGatewayFirewallPolicyManagedRuleSet`. This property shows which rules are effectively disabled, based on both user-defined WAF policy overrides and the default state of the rules in the managed ruleset.
