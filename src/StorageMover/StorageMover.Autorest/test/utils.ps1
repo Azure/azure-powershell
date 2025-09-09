@@ -50,7 +50,7 @@ function setupEnv() {
     }
 
     $env.RandomString = (RandomString $false 8)
-    $env.ResourceGroupName = "teststoragemover"
+    $env.ResourceGroupName = "choudharysumovetest"
     $env.StorageMoverNameWithAgent = "testmoverpreview1"
     $env.AgentName = "testagent12"
     $env.Location = "eastus2euap"
@@ -67,9 +67,29 @@ function setupEnv() {
     $env.StorageAccountName = "storacc" + $env.RandomString
     $env.ContainerName = "container" + $env.RandomString
 
-    $storacc = New-AzStorageAccount -ResourceGroupName $env.ResourceGroupName -Name $env.StorageAccountName -SkuName Standard_LRS -Location $env.Location
+    $storacc = New-AzStorageAccount -ResourceGroupName $env.ResourceGroupName -Name $env.StorageAccountName -SkuName Standard_LRS -Location $env.Location -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false -RequireInfrastructureEncryption -EnableHttpsTrafficOnly $true -MinimumTlsVersion TLS1_2
     $env.StoraccId = $storacc.Id
-    $container = New-AzStorageContainer -Name $env.ContainerName -Context $storacc.Context
+    # Create storage context using Azure AD authentication instead of keys
+    $storageContext = New-AzStorageContext -StorageAccountName $env.StorageAccountName `
+        -UseConnectedAccount
+    
+    # Ensure current user has Storage Blob Data Contributor role
+    $currentUserId = (Get-AzContext).Account.Id
+    $roleAssignment = Get-AzRoleAssignment -SignInName $currentUserId `
+        -RoleDefinitionName "Storage Blob Data Contributor" `
+        -Scope $storacc.Id -ErrorAction SilentlyContinue
+    
+    if (-not $roleAssignment) {
+        Write-Host "Assigning Storage Blob Data Contributor role..." -ForegroundColor Yellow
+        New-AzRoleAssignment -SignInName $currentUserId `
+            -RoleDefinitionName "Storage Blob Data Contributor" `
+            -Scope $storacc.Id
+        
+        # Wait for role assignment to propagate
+        Start-TestSleep -Seconds 30
+    }
+    
+    $container = New-AzStorageContainer -Name $env.ContainerName -Context $storageContext
 
     $env.ContainerEndpointName = "containerEndpoint" + $env.RandomString
     $env.NfsEndpointName = "nfsEndpoint" + $env.RandomString
@@ -84,7 +104,8 @@ function setupEnv() {
     $env.JobDefinitionName = "testJob" + $env.RandomString
     $jobDefinition = New-AzStorageMoverJobDefinition -Name $env.JobDefinitionName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -AgentName $env.AgentName -CopyMode "Additive" -SourceName $env.NfsEndpointName -TargetName $env.ContainerEndpointName
 
-
+    $env.MultiCloudConnectorId = "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector"
+    $env.AwsS3BucketId = "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-bucket"
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {

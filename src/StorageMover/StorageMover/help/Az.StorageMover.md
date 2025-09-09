@@ -1,14 +1,14 @@
 ---
 Module Name: Az.StorageMover
 Module Guid: d6053d97-1a9b-4fc6-9bd2-09c5b23b34db
-Download Help Link: https://learn.microsoft.com/powershell/module/az.storagemover
+Download Help Link: https://learn.microsoft.com/en-us/powershell/module/az.storagemover
 Help Version: 1.0.0.0
-Locale: en-US
+Locale: en-us
 ---
 
 # Az.StorageMover Module
 ## Description
-Microsoft Azure PowerShell: StorageMover cmdlets
+The Az.StorageMover module provides cmdlets for managing Azure Storage Mover resources, enabling the orchestration and automation of data migration between on-premises and cloud storage endpoints.
 
 ## Az.StorageMover Cmdlets
 ### [Get-AzStorageMover](Get-AzStorageMover.md)
@@ -32,6 +32,9 @@ Gets a Project resource.
 ### [New-AzStorageMover](New-AzStorageMover.md)
 Create a top-level Storage Mover resource.
 
+### [New-AzStorageMoverAzNfsFileShareEndpoint](New-AzStorageMoverAzNfsFileShareEndpoint.md)
+Creates a Nfs file share endpoint resource, which represents a data transfer source or destination.
+
 ### [New-AzStorageMoverAzSmbFileShareEndpoint](New-AzStorageMoverAzSmbFileShareEndpoint.md)
 Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 
@@ -40,6 +43,9 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 
 ### [New-AzStorageMoverJobDefinition](New-AzStorageMoverJobDefinition.md)
 Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+
+### [New-AzStorageMoverMultiCloudConnectorEndpoint](New-AzStorageMoverMultiCloudConnectorEndpoint.md)
+Creates a multicloud connector endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverNfsEndpoint](New-AzStorageMoverNfsEndpoint.md)
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
@@ -81,6 +87,10 @@ Properties not specified in the request body will be unchanged.
 ### [Update-AzStorageMoverAgent](Update-AzStorageMoverAgent.md)
 Update an Agent resource.
 
+### [Update-AzStorageMoverAzNfsFileShareEndpoint](Update-AzStorageMoverAzNfsFileShareEndpoint.md)
+Updates properties for a Nfs File Share endpoint resource.
+Properties not specified in the request body will be unchanged.
+
 ### [Update-AzStorageMoverAzSmbFileShareEndpoint](Update-AzStorageMoverAzSmbFileShareEndpoint.md)
 Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
@@ -91,6 +101,10 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverJobDefinition](Update-AzStorageMoverJobDefinition.md)
 Update properties for a Job Definition resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverMultiCloudConnectorEndpoint](Update-AzStorageMoverMultiCloudConnectorEndpoint.md)
+Updates properties for a MultiCloudConnector endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverNfsEndpoint](Update-AzStorageMoverNfsEndpoint.md)

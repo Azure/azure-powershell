@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Enable Metrics when set object replication policy 
+    - `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.1.0
 * Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod

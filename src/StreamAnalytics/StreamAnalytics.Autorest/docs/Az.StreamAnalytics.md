@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StreamAnalytics
-Module Guid: f3678192-db41-439b-99e7-6fda95f6c601
+Module Guid: 0bc50685-2bb7-4f69-be05-f34cdf3f5917
 Download Help Link: https://learn.microsoft.com/powershell/module/az.streamanalytics
 Help Version: 1.0.0.0
 Locale: en-US

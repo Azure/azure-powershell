@@ -516,7 +516,7 @@ begin {
         # Check if Hybrid Compute machine resource exists or create a new one
 
         try {
-            $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+            $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction Stop
             if ($null -eq $machineObj) {
                 throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
             }
@@ -538,18 +538,32 @@ begin {
                 if ($null -eq $Location) {
                     throw "The parent Machine resource does not exist. Location is required while creating a new machine."
                 }
-                if ($Tag) {
-                    $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Location $Location -Tag $Tag -Kind $MACHINE_KIND_SCVMM
-                } else {
-                    $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Location $Location -Kind $MACHINE_KIND_SCVMM
+                try {
+                    if ($Tag) {
+                        $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name `
+                            -ResourceGroupName $ResourceGroupName `
+                            -SubscriptionId $SubscriptionId `
+                            -Location $Location -Tag $Tag -Kind $MACHINE_KIND_SCVMM `
+                            -ErrorAction Stop
+                    }
+                    else {
+                        $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name `
+                            -ResourceGroupName $ResourceGroupName `
+                            -SubscriptionId $SubscriptionId `
+                            -Location $Location -Kind $MACHINE_KIND_SCVMM `
+                            -ErrorAction Stop
+                    }
+                }
+                catch {
+                    throw "Machine creation failed for VM '$Name'. Exception: $($_.Exception.Message)"
                 }
 
                 if ($null -eq $machineObj) {
-                    throw "Failed to create the machine resource for the new virtual machine."
+                    throw "Failed to create the machine resource for the new virtual machine '$Name'."
                 }
             }
             else {
-                throw $_
+                throw
             }
         }
 

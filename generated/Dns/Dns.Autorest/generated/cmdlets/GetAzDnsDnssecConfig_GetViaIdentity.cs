@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/default"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDnsDnssecConfig_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"SigningKey"}, NewOutputProperties=new string[] {"SigningKey"}, ChangeDescription="The types of the properties 'SigningKey' will be changed from single object to 'List'.")]
     [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.PreviewMessage("DNSSEC support for Azure DNS Public Zones is in preview.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dns.Description(@"Gets the DNSSEC configuration.")]

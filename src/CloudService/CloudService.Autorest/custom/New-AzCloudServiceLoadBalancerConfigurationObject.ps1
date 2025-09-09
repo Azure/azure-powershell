@@ -21,6 +21,7 @@ Create a in-memory object for LoadBalancerConfiguration
 #>
 function New-AzCloudServiceLoadBalancerConfigurationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerConfiguration", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerConfiguration", DeprecatedOutputProperties = ("FrontendIPConfiguration Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ILoadBalancerFrontendIPConfiguration"), NewOutputProperties = ("FrontendIPConfiguration System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ILoadBalancerFrontendIPConfiguration]"))]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 

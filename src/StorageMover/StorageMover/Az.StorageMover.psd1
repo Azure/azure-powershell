@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.5.0'
+ModuleVersion = '1.5.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'StorageMover.Autorest/bin/Az.StorageMover.private.dll'
@@ -72,10 +72,13 @@ NestedModules = @('StorageMover.Autorest/Az.StorageMover.psm1')
 FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent', 
                'Get-AzStorageMoverEndpoint', 'Get-AzStorageMoverJobDefinition', 
                'Get-AzStorageMoverJobRun', 'Get-AzStorageMoverProject', 
-               'New-AzStorageMover', 'New-AzStorageMoverAzSmbFileShareEndpoint', 
+               'New-AzStorageMover', 'New-AzStorageMoverAzNfsFileShareEndpoint', 
+               'New-AzStorageMoverAzSmbFileShareEndpoint', 
                'New-AzStorageMoverAzStorageContainerEndpoint', 
-               'New-AzStorageMoverJobDefinition', 'New-AzStorageMoverNfsEndpoint', 
-               'New-AzStorageMoverProject', 'New-AzStorageMoverSmbEndpoint', 
+               'New-AzStorageMoverJobDefinition', 
+               'New-AzStorageMoverMultiCloudConnectorEndpoint', 
+               'New-AzStorageMoverNfsEndpoint', 'New-AzStorageMoverProject', 
+               'New-AzStorageMoverSmbEndpoint', 
                'New-AzStorageMoverUploadLimitWeeklyRecurrenceObject', 
                'Remove-AzStorageMover', 'Remove-AzStorageMoverEndpoint', 
                'Remove-AzStorageMoverJobDefinition', 
@@ -83,9 +86,11 @@ FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent',
                'Stop-AzStorageMoverJobDefinition', 
                'Unregister-AzStorageMoverAgent', 'Update-AzStorageMover', 
                'Update-AzStorageMoverAgent', 
+               'Update-AzStorageMoverAzNfsFileShareEndpoint', 
                'Update-AzStorageMoverAzSmbFileShareEndpoint', 
                'Update-AzStorageMoverAzStorageContainerEndpoint', 
                'Update-AzStorageMoverJobDefinition', 
+               'Update-AzStorageMoverMultiCloudConnectorEndpoint', 
                'Update-AzStorageMoverNfsEndpoint', 'Update-AzStorageMoverProject', 
                'Update-AzStorageMoverSmbEndpoint'
 
@@ -126,7 +131,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded nuget package to signed package.'
+        ReleaseNotes = '* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -15,23 +15,23 @@ Creates or updates the specified object replication policy in a Storage account.
 ### AccountName (Default)
 ```
 Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-PolicyId <String>] -SourceAccount <String> [-DestinationAccount <String>]
- -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicyId <String>] -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
+ -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PolicyObject
 ```
 Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -InputObject <PSObjectReplicationPolicy> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -InputObject <PSObjectReplicationPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Set-AzStorageObjectReplicationPolicy -StorageAccount <PSStorageAccount> [-PolicyId <String>]
- -SourceAccount <String> [-DestinationAccount <String>] -Rule <PSObjectReplicationPolicyRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
+ -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -Destinat
 
 $srcAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mysourceaccount"
 
-Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccount.Id  -Rule $rule1,$rule2
+Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccount.Id  -Rule $rule1,$rule2 -EnableMetric $true
 
 ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
 ----------------- ------------------ --------                             ----------- -------------   ------------------ -----   
@@ -67,7 +67,7 @@ myresourcegroup   mysourceaccount    56bfa11c-81ef-4f8d-b307-5e5386e16fba       
 ```
 
 This command sets object replication policy to both destination and source account.
-First create 2 object replication policy rules, and set policy to destination account with the 2 rules and source account resource Id. Then get the object replication policy from destination account and set to source account.
+First create 2 object replication policy rules, and set policy to destination account with the 2 rules and source account resource Id, and enable metrics. Then get the object replication policy from destination account and set to source account.
 Please note, when storage account has AllowCrossTenantReplication as false, SourceAccount and DestinationAccount should be account resource Id.
 
 ## PARAMETERS
@@ -92,6 +92,21 @@ Object Replication Policy DestinationAccount, if SourceAccount is account name i
 
 ```yaml
 Type: System.String
+Parameter Sets: AccountName, AccountObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableMetric
+Indicates whether object replication metrics feature is enabled for the policy.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: AccountName, AccountObject
 Aliases:
 

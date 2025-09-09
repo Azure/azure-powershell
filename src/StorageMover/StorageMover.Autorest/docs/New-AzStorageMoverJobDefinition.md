@@ -139,6 +139,8 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the Job Definition.
+OnPremToCloud is for migrating data from on-premises to cloud.
+CloudToCloud is for migrating data between cloud to cloud.
 
 ```yaml
 Type: System.String
@@ -176,6 +178,21 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobType
+The type of the Job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
