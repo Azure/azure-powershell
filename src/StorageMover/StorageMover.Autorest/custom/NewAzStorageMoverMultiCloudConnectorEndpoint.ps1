@@ -22,11 +22,11 @@ Creates a Multi-Cloud Connector endpoint resource, which represents a data trans
 .Example
 New-AzStorageMoverMultiCloudConnectorEndpoint -Name $endpointName -ResourceGroupName $rgname -StorageMoverName $storagemovername -MultiCloudConnectorId $multiCloudConnectorId -AwsS3BucketId $awsS3BucketId -Description "Description"
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ To create the parameters described below, construct a hash table containing the 
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovermulticloudconnectorendpoint
 #>
 function New-AzStorageMoverMultiCloudConnectorEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -130,8 +130,7 @@ function New-AzStorageMoverMultiCloudConnectorEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.AzureMultiCloudConnectorEndpointProperties]::New()
-        $Identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureMultiCloudConnectorEndpointProperties]::New()
         
         if ($PSBoundParameters.ContainsKey('MultiCloudConnectorId')) {
             $Properties.MultiCloudConnectorId = $MultiCloudConnectorId
@@ -149,8 +148,7 @@ function New-AzStorageMoverMultiCloudConnectorEndpoint {
         $Properties.EndpointType = "AzureMultiCloudConnector"
         $PSBoundParameters.Add("Property", $Properties)
 
-        $Identity = "SystemAssigned"
-        $PSBoundParameters.Add("IdentityType", $Identity)
+        $PSBoundParameters.Add("EnableSystemAssignedIdentity", $True)
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters
     }

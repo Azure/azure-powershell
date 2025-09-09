@@ -16,14 +16,15 @@ Create a Job Definition resource, which contains configuration for a single unit
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
  -StorageMoverName <String> -CopyMode <String> -SourceName <String> -TargetName <String>
- [-SubscriptionId <String>] [-AgentName <String>] [-Description <String>] [-SourceSubpath <String>]
- [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AgentName <String>] [-Description <String>] [-JobType <String>]
+ [-SourceSubpath <String>] [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProjectExpanded
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMoverIdentity> -CopyMode <String>
- -SourceName <String> -TargetName <String> [-AgentName <String>] [-Description <String>]
+ -SourceName <String> -TargetName <String> [-AgentName <String>] [-Description <String>] [-JobType <String>]
  [-SourceSubpath <String>] [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -32,8 +33,8 @@ New-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMove
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
  -StorageMoverInputObject <IStorageMoverIdentity> -CopyMode <String> -SourceName <String> -TargetName <String>
- [-AgentName <String>] [-Description <String>] [-SourceSubpath <String>] [-TargetSubpath <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AgentName <String>] [-Description <String>] [-JobType <String>] [-SourceSubpath <String>]
+ [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -154,6 +155,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JobType
+The type of the Job.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -178,21 +194,6 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JobType
-The type of the Job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
