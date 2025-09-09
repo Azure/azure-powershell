@@ -281,7 +281,7 @@ function setupEnv() {
         Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest"
         MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
         TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
-        TargetLocationAccountKey = "6ABnp1F5INXRXpW1oHHozv4Pb27cJ94l/bmfG4K1QwvUYJ6bp0dmTB25Gf03EA/nle0JJ3LXNMAC6L17tagY9g=="
+        TargetLocationAccountKey = "AccountKey"
         FileSharePath = "\\\\sampledomain.onmicrosoft.com\\SharedBackup\\tsuman"
         FileShareUsername = "domainUserName"
         FileSharePassword = "domainPassword"
