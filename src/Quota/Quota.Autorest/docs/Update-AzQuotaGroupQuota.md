@@ -59,27 +59,31 @@ Once the operation gets to terminal state - Succeeded | Failed, then the URI wil
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the display name of a GroupQuota
 ```powershell
-{{ Add code here }}
+Update-AzQuotaGroupQuota -ManagementGroupId "mg-demo" -Name "ComputeGroupQuota01" -DisplayName "Updated Compute Quota"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RequestId   Status     Name                 DisplayName
+---------   ------     ----                 -----------
+<guid>      Succeeded  ComputeGroupQuota01  Updated Compute Quota
 ```
 
-{{ Add description here }}
+This example updates the display name of the GroupQuota "ComputeGroupQuota01" in the management group "mg-demo".
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a GroupQuota using a JSON file
 ```powershell
-{{ Add code here }}
+Update-AzQuotaGroupQuota -ManagementGroupId "mg-demo" -Name "ComputeGroupQuota02" -JsonFilePath "../docs-data/update-groupquota.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RequestId   Status     Name                 DisplayName
+---------   ------     ----                 -----------
+<guid>      Succeeded  ComputeGroupQuota02  Quota Updated via JSON
 ```
 
-{{ Add description here }}
+This example updates the GroupQuota "ComputeGroupQuota02" in the management group "mg-demo" using the configuration specified in the JSON file.
 
 ## PARAMETERS
 

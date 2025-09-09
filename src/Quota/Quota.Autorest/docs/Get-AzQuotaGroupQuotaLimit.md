@@ -30,23 +30,11 @@ Get-AzQuotaGroupQuotaLimit -ManagementGroupId "mg-demo" -GroupQuotaName "Compute
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ---- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------
-<guid> ... ... ... ... ... ...
 ```
+
 
 This example gets the quota limits for the group quota "ComputeGroupQuota01" in the "eastus" region for the Microsoft.Compute resource provider.
 
-### Example 2: Get GroupQuota limits for a different quota group in westus
-```powershell
-Get-AzQuotaGroupQuotaLimit -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota02" -Location "westus" -ResourceProviderName "Microsoft.Compute"
-```
-
-```output
-Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
----- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------
-<guid> ... ... ... ... ... ...
-```
-
-This example gets the quota limits for the group quota "ComputeGroupQuota02" in the "westus" region for the Microsoft.Compute resource provider.
 
 ## PARAMETERS
 

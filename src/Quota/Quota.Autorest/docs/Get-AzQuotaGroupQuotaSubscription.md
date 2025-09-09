@@ -43,27 +43,28 @@ If the subscription is not a member of GroupQuota, it will return 404, else 200.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+
+### Example 1: List all subscriptions associated with a GroupQuota
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaSubscription -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+This example lists all subscriptions associated with the group quota "ComputeGroupQuota01" in the management group "mg-demo".
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the provisioning state for a specific subscription in a GroupQuota
+
 ```powershell
-{{ Add code here }}
+$subscriptionId = "0e745469-49f8-48c9-873b-24ca87143db1"
+Get-AzQuotaGroupQuotaSubscription -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -SubscriptionId $subscriptionId
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+This example gets the provisioning state for the subscription "0e745469-49f8-48c9-873b-24ca87143db1" in the group quota "ComputeGroupQuota01" under management group "mg-demo".
 
 ## PARAMETERS
 

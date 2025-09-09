@@ -37,27 +37,32 @@ All the remaining shareQuota in the GroupQuotas will be lost.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+
+### Example 1: Remove a GroupQuota by name
 ```powershell
-{{ Add code here }}
+$mgId = "mg-demo"
+$groupQuotaName = "ComputeGroupQuota01"
+Remove-AzQuotaGroupQuota -ManagementGroupId $mgId -Name $groupQuotaName -Confirm
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+<Empty>
 ```
 
-{{ Add description here }}
+This example deletes the group quota "$groupQuotaName" in the management group "$mgId".
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a GroupQuota and return success status
 ```powershell
-{{ Add code here }}
+$mgId = "mg-demo"
+$groupQuotaName = "ComputeGroupQuota02"
+Remove-AzQuotaGroupQuota -ManagementGroupId $mgId -Name $groupQuotaName -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+This example deletes the group quota "$groupQuotaName" in the management group "$mgId" and returns the success status.
 
 ## PARAMETERS
 

@@ -1,23 +1,16 @@
-### Example 1: List the quota limits of a scope
-```powershell
-Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus"
+# EXAMPLES
+
+## Example 1: Get quota information for a specific resource provider
 ```
-
-```output
-Name              NameLocalizedValue  Unit  ETag
-----              ------------------  ----  ----
-VirtualNetworks   Virtual Networks    Count
-CustomIpPrefixes  Custom Ip Prefixes  Count
-PublicIpPrefixes  Public Ip Prefixes  Count
-PublicIPAddresses Public IP Addresses Count
-......
+Get-AzQuota -ResourceProviderName "Microsoft.Compute" -Location "eastus"
 ```
+This command gets the quota information for the Microsoft.Compute resource provider in the eastus location.
 
-This command lists the quota limits of a scope.
-
-### Example 2: Get the quota limit of a resource
-```powershell
-Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -ResourceName VirtualNetworks
+## Example 2: Get quota information for all resource providers in a location
+```
+Get-AzQuota -Location "eastus"
+```
+This command gets the quota information for all resource providers in the eastus location.
 ```
 
 ```output

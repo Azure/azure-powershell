@@ -1,0 +1,7 @@
+{
+  "properties": {
+    "enforcementEnabled": "Enabled",
+    "location": "westus",
+    "resourceProviderName": "Microsoft.Compute"
+  }
+}

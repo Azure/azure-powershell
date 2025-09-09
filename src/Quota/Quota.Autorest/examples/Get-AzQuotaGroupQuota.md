@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
-```powershell
-{{ Add code here }}
+# EXAMPLES
+
+## Example 1: Get a specific GroupQuota by name
+```
+Get-AzQuotaGroupQuota -ManagementGroupId "mg-demo" -Name "ComputeGroupQuota01"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----                ------------------- ------------------- ----------------------- ------------------------ -----------
+ComputeGroupQuota01  
 ```
 
-{{ Add description here }}
+This example retrieves the GroupQuota named "ComputeGroupQuota01" for the management group "mg-demo".
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
+## Example 2: List all GroupQuotas in a management group
+```
+Get-AzQuotaGroupQuota -ManagementGroupId "mg-demo"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----                ------------------- ------------------- ----------------------- ------------------------ -----------
+premiumgroup                                                                                          jsonquota                                                                                             jsonstringquota                                                                                       standardgroup                                                                                         computegroupquota01                                                                                   computegroupquota02  
 ```
 
-{{ Add description here }}
+This example lists all GroupQuotas for the management group "mg-demo".
 

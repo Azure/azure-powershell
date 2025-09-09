@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
-```powershell
-{{ Add code here }}
+# EXAMPLES
+
+## Example 1: Get GroupQuota limits for a specific quota group in eastus
+```
+Get-AzQuotaGroupQuotaLimit -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+---- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This example gets the quota limits for the group quota "ComputeGroupQuota01" in the "eastus" region for the Microsoft.Compute resource provider.
 
