@@ -30,14 +30,14 @@ This cmdlet allows you to conclude the failover test and capture any important i
 
 ### Example 1
 ```powershell
-PS C:\> $details = @(
+$details = @(
     [Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]@{
         FailoverConnectionName = "test_failover_gateway_connection"
         FailoverLocation = "eastus2"
         IsVerified = $true
     }
 )
-PS C:\> Stop-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_failover_rg" -VirtualNetworkGatewayName "test_failoverGw" -PeeringLocation "WestEurope" -Details $details -WasSimulationSuccessful $true
+Stop-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_failover_rg" -VirtualNetworkGatewayName "test_failoverGw" -PeeringLocation "WestEurope" -Details $details -WasSimulationSuccessful $true
 ```
 
 This example demonstrates how to stop a failover simulation for a virtual network gateway. The cmdlet Stop-AzVirtualNetworkGatewaySiteFailoverTest is used with the following parameters:

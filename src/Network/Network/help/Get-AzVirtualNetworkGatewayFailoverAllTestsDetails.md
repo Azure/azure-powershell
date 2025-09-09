@@ -35,14 +35,14 @@ Using this cmdlet, you can gain valuable insights into the status, start time, e
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualNetworkGatewayFailoverAllTestsDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "SingleSiteFailover" -FetchLatest $true
+Get-AzVirtualNetworkGatewayFailoverAllTestsDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "SingleSiteFailover" -FetchLatest $true
 ```
 
 This example retrieves the details of all failover tests of type SingleSiteFailover for the virtual network gateway "test_gateway" in the resource group "test_rg". The -FetchLatest parameter is set to $true, ensuring only the most recent failover tests for each peering location are returned.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzVirtualNetworkGatewayFailoverAllTestsDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "MultiSiteFailover" -FetchLatest $false
+Get-AzVirtualNetworkGatewayFailoverAllTestsDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -Type "MultiSiteFailover" -FetchLatest $false
 ```
 
 This example retrieves all MultisiteFailover tests (not limited to the latest) for the virtual network gateway "test_gateway" in the resource group "test_rg". The -FetchLatest parameter is set to $false, so the cmdlet will return all available failover tests.

@@ -30,14 +30,14 @@ This cmdlet is essential for evaluating the robustness of your virtual network g
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualNetworkGatewayResiliencyInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway"
+Get-AzVirtualNetworkGatewayResiliencyInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway"
 ```
 
 This example retrieves the resiliency information for the virtual network gateway "test_gateway" in the resource group "test_rg". It does not attempt to refresh the data, providing the latest available information.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzVirtualNetworkGatewayResiliencyInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -AttemptRefresh $true
+Get-AzVirtualNetworkGatewayResiliencyInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -AttemptRefresh $true
 ```
 
 This example retrieves the resiliency information for the virtual network gateway "test_gateway" in the resource group "test_rg", and forces the system to recalculate the resiliency metrics by using the -AttemptRefresh parameter set to $true.

@@ -32,14 +32,14 @@ By default, the test will be performed using the `SingleSiteFailover` type unles
 
 ### Example 1
 ```powershell
-PS C:\> Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "EastUS"
+Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "EastUS"
 ```
 
 This example starts a failover simulation for the virtual network gateway "test_gateway" in the "test_rg" resource group for the peering location EastUS. By default, a SingleSiteFailover test will be performed.
 
 ### Example 2
 ```powershell
-PS C:\> Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "EastUS" -Type "MultiSiteFailover"
+Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "EastUS" -Type "MultiSiteFailover"
 ```
 
 This example starts a failover simulation for the virtual network gateway "test_gateway" in the "test_rg" resource group for the EastUS peering location. The test type is set to MultiSiteFailover, meaning the test will simulate failover for multiple sites.

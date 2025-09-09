@@ -30,7 +30,7 @@ This cmdlet is especially useful when you need to examine the results of a singl
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualNetworkGatewayFailoverSingleTestDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "West US" -FailoverTestId "00000000-0000-0000-0000-000000000000"
+Get-AzVirtualNetworkGatewayFailoverSingleTestDetails -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -PeeringLocation "West US" -FailoverTestId "00000000-0000-0000-0000-000000000000"
 ```
 
 This example retrieves the details of a specific failover test with the FailoverTestId of 00000000-0000-0000-0000-000000000000 that was performed in the East US peering location on the virtual network gateway "test_gateway" in the resource group "test_rg".

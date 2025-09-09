@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewaySiteFailoverTest", DefaultParameterSetName = "ByName"), OutputType(typeof(List<PSExpressRouteFailoverTestDetails>))]
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewaySiteFailoverTest", SupportsShouldProcess = true, DefaultParameterSetName = "ByName"), OutputType(typeof(List<PSExpressRouteFailoverTestDetails>))]
     public class StartAzureVirtualNetworkGatewaySiteFailoverTest : NetworkBaseCmdlet
     {
         private const string ByName = "ByName";
