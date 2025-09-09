@@ -1,8 +1,8 @@
 {
-  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g?api-version=2024-07-01+1": {
+  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz?api-version=2025-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz?api-version=2025-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"NfsMount\",\r\n    \"description\": \"Nfs endpoint description\",\r\n    \"host\": \"10.0.0.1\",\r\n    \"nfsVersion\": \"NFSv3\",\r\n    \"export\": \"/\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,33 +17,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000d7d3-0000-3400-0000-66692a830000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"0500326e-0000-3300-0000-68b1a2e00000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/3002e2d8-f35a-4eb2-b8fd-2d02fcafa1b8" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "988e0f88-8c6b-4e02-b967-c69a24bb518c" ],
-        "x-ms-request-id": [ "1981081c-37bc-46a3-ba76-193a8a2daf5e" ],
-        "x-ms-correlation-request-id": [ "01b22c00-25a1-454b-acc1-5eabf1032d70" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045635Z:01b22c00-25a1-454b-acc1-5eabf1032d70" ],
+        "mise-correlation-id": [ "adc05131-0172-46ee-96fc-0c58e57b842a" ],
+        "x-ms-request-id": [ "8ed60757-16af-486e-9ce1-db2aad9c97a6" ],
+        "x-ms-correlation-request-id": [ "6f2d96dd-2087-4e9a-8264-c422e48d1baa" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125352Z:6f2d96dd-2087-4e9a-8264-c422e48d1baa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D8518B910CA744038A1562BE0AF3B3F5 Ref B: MAA201060516019 Ref C: 2024-06-12T04:56:33Z" ],
-        "Date": [ "Wed, 12 Jun 2024 04:56:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3847B982EE7F448A9113BC61678CF066 Ref B: PNQ231110906036 Ref C: 2025-08-29T12:53:51Z" ],
+        "Date": [ "Fri, 29 Aug 2025 12:53:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "692" ],
+        "Content-Length": [ "697" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g\",\"name\":\"testNfsEndpoint2pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:56:34.4135767Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:34.4135767Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"Nfs endpoint description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz\",\"name\":\"testNfsEndpoint2gv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-29T12:53:52.2282389Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-29T12:53:52.2282389Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"Nfs endpoint description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g?api-version=2024-07-01+2": {
+  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz?api-version=2025-07-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz?api-version=2025-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"NfsMount\",\r\n    \"description\": \"update Nfs endpoint Description\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -58,42 +59,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000d8d3-0000-3400-0000-66692a850000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"0500386e-0000-3300-0000-68b1a2e10000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/ca144725-dcdd-41f6-9b19-b80f478bf467" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "44fbe2d5-1af1-4a8e-93b2-79dcf1f61207" ],
-        "x-ms-request-id": [ "62f5a979-2f07-4356-86f6-e45cb19efe10" ],
-        "x-ms-correlation-request-id": [ "823b5356-52cc-4d7f-b2c2-2cbdc45fd96f" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045638Z:823b5356-52cc-4d7f-b2c2-2cbdc45fd96f" ],
+        "mise-correlation-id": [ "a2fcbe3a-1d1d-4978-bcb7-650f54d5b992" ],
+        "x-ms-request-id": [ "34f75d72-cf7d-4b3f-ab41-aee0109574b6" ],
+        "x-ms-correlation-request-id": [ "5beff829-d520-4664-872c-c5804f7ee4ad" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125353Z:5beff829-d520-4664-872c-c5804f7ee4ad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EB3449B3DE5B409BA4202F0BBBE00272 Ref B: MAA201060516019 Ref C: 2024-06-12T04:56:35Z" ],
-        "Date": [ "Wed, 12 Jun 2024 04:56:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E8BA0BA992B44BCE98FB2847C2D2EF36 Ref B: PNQ231110906036 Ref C: 2025-08-29T12:53:52Z" ],
+        "Date": [ "Fri, 29 Aug 2025 12:53:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "699" ],
+        "Content-Length": [ "703" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g\",\"name\":\"testNfsEndpoint2pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:56:34.4135767Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:36.5754528Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"update Nfs endpoint Description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz\",\"name\":\"testNfsEndpoint2gv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-29T12:53:52.2282389Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-29T12:53:53.111934Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"update Nfs endpoint Description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g?api-version=2024-07-01+3": {
+  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz?api-version=2025-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g?api-version=2024-07-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "74" ],
-        "x-ms-client-request-id": [ "06bdce98-4c94-4248-b161-3dde78f6237a" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "51bc6a61-53cc-43ce-ab52-1cbc19591a4a" ],
         "CommandName": [ "Get-AzStorageMoverEndpoint" ],
         "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.StorageMover/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.2", "Az.StorageMover/1.5.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -104,25 +106,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000d8d3-0000-3400-0000-66692a850000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"0500386e-0000-3300-0000-68b1a2e10000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/26846514-18e9-4453-883f-783b9ab60ae1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "84d5c250-2d9e-4645-8b93-8a75a4ce5566" ],
-        "x-ms-correlation-request-id": [ "e59b2f4c-49e1-43f9-b0bf-1b0f3b8247e3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045639Z:e59b2f4c-49e1-43f9-b0bf-1b0f3b8247e3" ],
+        "x-ms-request-id": [ "2b141ecb-e5dd-4efb-9ba2-51ae171edd74" ],
+        "x-ms-correlation-request-id": [ "1710fa2a-ad2c-43cd-b681-4764b9c604ce" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125353Z:1710fa2a-ad2c-43cd-b681-4764b9c604ce" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AE466734795640059E22116E28F7C74A Ref B: MAA201060516019 Ref C: 2024-06-12T04:56:38Z" ],
-        "Date": [ "Wed, 12 Jun 2024 04:56:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F88D4BF093054F5799A77AFD4C15B3B2 Ref B: PNQ231110906036 Ref C: 2025-08-29T12:53:53Z" ],
+        "Date": [ "Fri, 29 Aug 2025 12:53:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "699" ],
+        "Content-Length": [ "703" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testNfsEndpoint2pul1qe2g\",\"name\":\"testNfsEndpoint2pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:56:34.4135767Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:36.5754528Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"update Nfs endpoint Description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsEndpoint2gv4kubhz\",\"name\":\"testNfsEndpoint2gv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-29T12:53:52.2282389Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-29T12:53:53.111934Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"update Nfs endpoint Description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

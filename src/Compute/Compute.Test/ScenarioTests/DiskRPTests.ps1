@@ -1864,3 +1864,44 @@ function Test-DiskGrantAccessGetSASWithTL
 		Clean-ResourceGroup $rgname;
 	}
 }
+
+<#
+.SYNOPSIS
+Test confidential vm securityMetadataUri during confidential VM OS disk creation from an unmanaged storage account.
+#>
+function Test-ConfVMImportSecure
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+    
+        $rgname="haagha-test-gdskaccess"; 
+
+        $accessuri="https://haaghagsdkaccess.blob.core.windows.net/disks/access.vhd"; 
+        $securityuri="https://haaghagsdkaccess.blob.core.windows.net/disks/securitydata.vhd"; 
+        $securitymetadatauri="https://haaghagsdkaccess.blob.core.windows.net/disks/securitymetadata.vhd";
+        $storageacctid = "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c/resourceGroups/haagha-test-gdskaccess/providers/Microsoft.Storage/storageAccounts/haaghagsdkaccess"
+        $securityTypeDSP = "ConfidentialVM_DiskEncryptedWithPlatformKey";
+        $diskName = "testDiskconfv2"
+
+        $diskConfig = New-AzDiskConfig -Location $loc -CreateOption ImportSecure -SourceUri $accessuri -SecurityDataUri $securityuri -SecurityMetadataUri $securitymetadatauri -StorageAccountId $storageacctid -HyperVGeneration V2
+        Set-AzDiskSecurityProfile -Disk $diskConfig -SecurityType $securityTypeDSP 
+        
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig -AsJob
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskName -Access 'Read' -DurationInSecond 60 -SecureVMGuestStateSAS;
+        Assert-NotNull $grantAccess.SecurityMetadataAccessSAS;
+        Assert-NotNull $grantAccess.SecurityDataAccessSAS;
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
