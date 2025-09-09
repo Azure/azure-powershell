@@ -13,7 +13,7 @@ The operation to create a firmware analysis workspace.
 
 ## SYNTAX
 
-```powershell
+```
 New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -28,7 +28,7 @@ The operation to create a firmware analysis workspace.
 
 ### Example 1: Create a new firmware analysis workspace
 
-```powershell
+```
 New-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name name -Location location
 ```
 

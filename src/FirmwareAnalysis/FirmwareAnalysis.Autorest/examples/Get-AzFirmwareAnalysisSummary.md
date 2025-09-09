@@ -15,28 +15,28 @@ Get an analysis result summary of a firmware by name.
 
 ### Get (Default)
 
-```powershell
+```
 Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -Type <String>
  -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 
-```powershell
+```
 Get-AzFirmwareAnalysisSummary -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityFirmware
 
-```powershell
+```
 Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Type <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
 
-```powershell
+```
 Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Type <String>
  -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -49,7 +49,7 @@ Get an analysis result summary of a firmware by name.
 
 ### Example 1: List all the analysis results summary for a firmware by analysis type CVE
 
-```powershell
+```
 Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type CVE
 ```
 
@@ -80,7 +80,7 @@ List all the analysis results summary for a firmware by analysis type CVE.
 
 ### Example 2: List all the analysis results summary for a firmware by analysis type Firmware
 
-```powershell
+```
 Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type Firmware
 ```
 

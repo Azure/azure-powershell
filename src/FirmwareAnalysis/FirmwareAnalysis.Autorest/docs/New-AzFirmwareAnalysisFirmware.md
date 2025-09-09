@@ -25,7 +25,7 @@ The operation to create a firmware.
 ## EXAMPLES
 
 ### Example 1: Create a new firmware using new guid
-```powershell
+```
 New-AzFirmwareAnalysisFirmware -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 
@@ -54,7 +54,7 @@ Version                      : version
 Create a new firmware using new guid.
 
 ### Example 2: Create a new firmware using a user specified firmwareId
-```powershell
+```
 New-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 
@@ -85,10 +85,7 @@ Create a new firmware using a user specified firmwareId.
 ## PARAMETERS
 
 ### -DefaultProfile
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -101,10 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -117,10 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -133,10 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileSize
-```powershell
-
-```
-
+```yaml
 Type: System.Int64
 Parameter Sets: (All)
 Aliases:
@@ -149,10 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: FirmwareId
@@ -165,10 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -Model
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -181,10 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -197,10 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -213,10 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -StatusMessage
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[]
 Parameter Sets: (All)
 Aliases:
@@ -229,10 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -245,10 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -Vendor
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -261,10 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -277,10 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -293,10 +254,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -309,10 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
@@ -325,9 +280,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-```powershell
-
-```
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

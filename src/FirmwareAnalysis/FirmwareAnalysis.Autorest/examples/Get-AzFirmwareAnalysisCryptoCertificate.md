@@ -13,7 +13,7 @@ Lists crypto certificate analysis results of a firmware.
 
 ## SYNTAX
 
-```powershell
+```
 Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId <String> -ResourceGroupName <String>
  -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Lists crypto certificate analysis results of a firmware.
 
 ### Example 1:  List all the crypto certificate analysis results for a firmware
 
-```powershell
+```
 Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 

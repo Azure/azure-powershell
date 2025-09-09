@@ -13,7 +13,7 @@ Lists crypto key analysis results of a firmware.
 
 ## SYNTAX
 
-```powershell
+```
 Get-AzFirmwareAnalysisCryptoKey -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Lists crypto key analysis results of a firmware.
 
 ### Example 1:  List all the crypto key analysis results for a firmware
 
-```powershell
+```
 Get-AzFirmwareAnalysisCryptoKey -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 

@@ -23,7 +23,7 @@ Lists CVE analysis results of a firmware.
 ## EXAMPLES
 
 ### Example 1:  List all the cve analysis results for a firmware
-```powershell
+```
 Get-AzFirmwareAnalysisCve -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 
@@ -63,10 +63,7 @@ List all the cve analysis results for a firmware.
 ## PARAMETERS
 
 ### -DefaultProfile
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -79,10 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -FirmwareId
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -95,10 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -111,10 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-```powershell
-
-```
-
+```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
@@ -127,10 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -143,9 +128,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-```powershell
-
-```
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

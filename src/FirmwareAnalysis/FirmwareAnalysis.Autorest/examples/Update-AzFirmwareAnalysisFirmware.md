@@ -15,7 +15,7 @@ The operation to update firmware.
 
 ### UpdateExpanded (Default)
 
-```powershell
+```
 Update-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>]
  [-Status <String>] [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>]
@@ -24,7 +24,7 @@ Update-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -Work
 
 ### UpdateViaIdentityExpanded
 
-```powershell
+```
 Update-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Description <String>]
  [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>]
  [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>]
@@ -33,7 +33,7 @@ Update-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Des
 
 ### UpdateViaIdentityWorkspaceExpanded
 
-```powershell
+```
 Update-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>]
  [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>]
@@ -48,7 +48,7 @@ The operation to update firmware.
 
 ### Example 1: Update a firmware
 
-```powershell
+```
 Update-AzFirmwareAnalysisFirmware -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 

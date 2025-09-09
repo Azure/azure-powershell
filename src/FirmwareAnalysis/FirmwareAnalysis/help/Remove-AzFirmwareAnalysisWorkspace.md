@@ -1,165 +1,77 @@
 ---
-external help file: Az.FirmwareAnalysis-help.xml
+external help file:
 Module Name: Az.FirmwareAnalysis
 online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/remove-azfirmwareanalysisworkspace
 schema: 2.0.0
 ---
 
-# New-AzFirmwareAnalysisWorkspaceUploadUrl
+# Remove-AzFirmwareAnalysisWorkspace
 
 ## SYNOPSIS
-Generate a URL for uploading a firmware image.
+The operation to delete a firmware analysis workspace.
 
 ## SYNTAX
 
-### GenerateExpanded (Default)
+### Delete (Default)
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-FirmwareId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GenerateViaJsonString
-```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GenerateViaJsonFilePath
+### DeleteViaIdentity
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Generate
-```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> -Body <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GenerateViaIdentityExpanded
+## DESCRIPTION
+The operation to delete a firmware analysis workspace.
+
+## EXAMPLES
+
+### Delete (Default)
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GenerateViaIdentity
+
+
+### DeleteViaIdentity
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity>
- -Body <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Generate a URL for uploading a firmware image.
+The operation to delete a firmware analysis workspace.
 
 ## EXAMPLES
 
-### GenerateExpanded (Default)
-```powershell
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-FirmwareId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+### Example 1: Delete a firmware analysis workspace
+```
+Remove-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName
 ```
 
-### Generate
-```powershell
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- -Body <IGenerateUploadUrlRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### GenerateViaIdentity
-```powershell
-New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity>
- -Body <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GenerateViaIdentityExpanded
-```powershell
-New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GenerateViaJsonFilePath
-```powershell
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### GenerateViaJsonString
-```powershell
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Example 1: Create a url for file upload
-```powershell
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -FirmwareId firmwareId
-```
-
-```output
-Url
----
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-Create a url for file upload.
+Delete a firmware analysis workspace.
 
 ## PARAMETERS
 
-### -Body
-
-
-Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
-Parameter Sets: Generate, GenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-
-
-### -DefaultProfile
-
-powershell
-
-
-
-Type: System.Management.Automation.PSObject
+### -AsJob
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
-Parameter Sets: Generate, GenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -172,54 +84,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirmwareId
-
-
-Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
-
 ### -InputObject
-
-powershell
-
-
-
-Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: GenerateViaIdentity, GenerateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-
-```yaml
-Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: GenerateViaIdentityExpanded, GenerateViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -229,40 +97,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-
-
-Type: System.String
-Parameter Sets: GenerateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
-
-### -JsonString
-
-powershell
-
-
-
-Type: System.String
-Parameter Sets: GenerateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
+### -Name
 ```yaml
 Type: System.String
-Parameter Sets: GenerateViaJsonFilePath
-Aliases:
+Parameter Sets: Delete
+Aliases: WorkspaceName
 
 Required: True
 Position: Named
@@ -271,15 +110,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Generate operation
-
+### -NoWait
 ```yaml
-Type: System.String
-Parameter Sets: GenerateViaJsonString
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -287,10 +137,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
-
+```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -298,16 +147,12 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
+```
 
 ### -SubscriptionId
-
-powershell
-
-
-
+```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -315,80 +160,9 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-
-```yaml
-Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaJsonString, GenerateViaJsonFilePath, Generate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
-
-```yaml
-Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaJsonString, GenerateViaJsonFilePath, Generate
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-
-
-Type: System.String
-Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
-
-### -Confirm
-
-powershell
-
-
-
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
-```yaml
-Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaJsonString, GenerateViaJsonFilePath, Generate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -402,8 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
@@ -413,13 +186,9 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
+```
 
 ### CommonParameters
-
-powershell
-
-
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -427,24 +196,16 @@ For more information, see [about_CommonParameters](http://go.microsoft.com/fwlin
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+```powershell
 
-powershell
-
-
-
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
-
-powershell
-
-
+```
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken
+### System.Boolean
+```powershell
 
-powershell
-
-
+```
 
 ## NOTES
 
@@ -452,26 +213,26 @@ powershell
 
 ## PARAMETERS
 
-### -Body
-Properties for generating an upload URL
+### -AsJob
+Run the command as a job
 
-yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
-Parameter Sets: Generate, GenerateViaIdentity
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
-
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
-yaml
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -481,29 +242,14 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
-
-### -FirmwareId
-A unique ID for the firmware to be uploaded.
-
-yaml
-Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
+```
 
 ### -InputObject
 Identity Parameter
 
-yaml
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: GenerateViaIdentity, GenerateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -511,45 +257,60 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
+```
 
+### -Name
+The name of the firmware analysis workspace.
 
-### -JsonFilePath
-Path of Json file supplied to the Generate operation
-
-yaml
+```yaml
 Type: System.String
-Parameter Sets: GenerateViaJsonFilePath
-Aliases:
+Parameter Sets: Delete
+Aliases: WorkspaceName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
+### -NoWait
+Run the command asynchronously
 
-### -JsonString
-Json string supplied to the Generate operation
-
-yaml
-Type: System.String
-Parameter Sets: GenerateViaJsonString
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
-yaml
+```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -557,15 +318,15 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
+```
 
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
-yaml
+```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -573,27 +334,12 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-
-
-### -WorkspaceName
-The name of the firmware analysis workspace.
-
-yaml
-Type: System.String
-Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
-yaml
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -603,23 +349,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
+```
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
-
-yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -640,12 +374,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
+

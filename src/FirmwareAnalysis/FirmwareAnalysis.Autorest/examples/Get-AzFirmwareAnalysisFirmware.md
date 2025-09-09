@@ -15,28 +15,28 @@ Get firmware.
 
 ### List (Default)
 
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
 
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -49,7 +49,7 @@ Get firmware.
 
 ### Example 1:  List all the firmwares inside a workspace
 
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName
 ```
 
@@ -79,7 +79,7 @@ List all the firmwares inside a workspace.
 
 ### Example 2:  Get a firmware inside a workspace
 
-```powershell
+```
  Get-AzFirmwareAnalysisFirmware -Id FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName 
 ```
 

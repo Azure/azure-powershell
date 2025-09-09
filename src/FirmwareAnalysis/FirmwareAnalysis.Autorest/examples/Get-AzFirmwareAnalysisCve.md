@@ -13,7 +13,7 @@ Lists CVE analysis results of a firmware.
 
 ## SYNTAX
 
-```powershell
+```
 Get-AzFirmwareAnalysisCve -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Lists CVE analysis results of a firmware.
 
 ### Example 1:  List all the cve analysis results for a firmware
 
-```powershell
+```
 Get-AzFirmwareAnalysisCve -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 

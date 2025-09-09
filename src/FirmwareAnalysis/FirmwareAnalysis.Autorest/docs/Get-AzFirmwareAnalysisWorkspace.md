@@ -41,24 +41,18 @@ Get firmware analysis workspace.
 ## EXAMPLES
 
 ### List (Default)
-```powershell
-
 ```
-
 Get-AzFirmwareAnalysisWorkspace [-SubscriptionId \<String[]\>] [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
 ```
 
 ### Get
-```powershell
-
 ```
-
 Get-AzFirmwareAnalysisWorkspace -Name \<String\> -ResourceGroupName \<String\> [-SubscriptionId \<String[]\>]
  [-DefaultProfile \<PSObject\>] [\<CommonParameters\>]
 ```
 
 ### GetViaIdentity
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -66,7 +60,7 @@ Get-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-Defau
 
 
 ### List1
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -78,7 +72,7 @@ Get firmware analysis workspace.
 ## EXAMPLES
 
 ### Example 1: List all firmware analysis workspaces in the specified subscription
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -ResourceGroupName ResourceGroupName
 ```
 
@@ -101,7 +95,7 @@ Type                         : microsoft.iotfirmwaredefense/workspaces
 List all firmware analysis workspaces in the specified subscription.
 
 ### Example 2: Get firmware analysis workspace from the specified subscription
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName
 ```
 
@@ -126,10 +120,7 @@ Get firmware analysis workspace from the specified subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -142,10 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
@@ -158,10 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Get
 Aliases: WorkspaceName
@@ -174,10 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Get, List1
 Aliases:
@@ -190,10 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-```powershell
-
-```
-
+```yaml
 Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
@@ -206,9 +185,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-```powershell
-
-```
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

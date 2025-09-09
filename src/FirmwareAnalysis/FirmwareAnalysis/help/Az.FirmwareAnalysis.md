@@ -38,8 +38,8 @@ Get an analysis result summary of a firmware by name.
 ### [Get-AzFirmwareAnalysisUsageMetric](Get-AzFirmwareAnalysisUsageMetric.md)
 Gets monthly usage information for a workspace.
 
-### [Get-AzFirmwareAnalysisUsageMetric](Get-AzFirmwareAnalysisUsageMetric.md)
-Gets monthly usage information for a workspace.
+### [Get-AzFirmwareAnalysisWorkspace](Get-AzFirmwareAnalysisWorkspace.md)
+Get firmware analysis workspace.
 
 ### [New-AzFirmwareAnalysisFirmware](New-AzFirmwareAnalysisFirmware.md)
 The operation to create a firmware.
@@ -50,11 +50,11 @@ The operation to create a firmware analysis workspace.
 ### [New-AzFirmwareAnalysisWorkspaceUploadUrl](New-AzFirmwareAnalysisWorkspaceUploadUrl.md)
 Generate a URL for uploading a firmware image.
 
-### [New-AzFirmwareAnalysisWorkspaceUploadUrl](New-AzFirmwareAnalysisWorkspaceUploadUrl.md)
-Generate a URL for uploading a firmware image.
+### [Remove-AzFirmwareAnalysisFirmware](Remove-AzFirmwareAnalysisFirmware.md)
+The operation to delete a firmware.
 
-### [New-AzFirmwareAnalysisWorkspaceUploadUrl](New-AzFirmwareAnalysisWorkspaceUploadUrl.md)
-Generate a URL for uploading a firmware image.
+### [Remove-AzFirmwareAnalysisWorkspace](Remove-AzFirmwareAnalysisWorkspace.md)
+The operation to delete a firmware analysis workspace.
 
 ### [Update-AzFirmwareAnalysisFirmware](Update-AzFirmwareAnalysisFirmware.md)
 The operation to update firmware.

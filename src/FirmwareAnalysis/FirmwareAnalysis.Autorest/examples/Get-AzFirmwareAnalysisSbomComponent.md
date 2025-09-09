@@ -13,7 +13,7 @@ Lists sbom analysis results of a firmware.
 
 ## SYNTAX
 
-```powershell
+```
 Get-AzFirmwareAnalysisSbomComponent -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Lists sbom analysis results of a firmware.
 
 ### Example 1: List all the sbom component analysis results for a firmware
 
-```powershell
+```
 Get-AzFirmwareAnalysisSbomComponent -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 

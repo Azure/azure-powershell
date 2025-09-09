@@ -28,14 +28,14 @@ Get-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-Sub
 
 ### GetViaIdentity
 
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -48,7 +48,7 @@ Get firmware analysis workspace.
 
 ### Example 1: List all firmware analysis workspaces in the specified subscription
 
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -ResourceGroupName ResourceGroupName
 ```
 
@@ -72,7 +72,7 @@ List all firmware analysis workspaces in the specified subscription.
 
 ### Example 2: Get firmware analysis workspace from the specified subscription
 
-```powershell
+```
 Get-AzFirmwareAnalysisWorkspace -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName
 ```
 

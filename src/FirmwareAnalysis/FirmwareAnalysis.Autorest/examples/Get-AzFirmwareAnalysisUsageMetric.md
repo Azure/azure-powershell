@@ -15,28 +15,28 @@ Gets monthly usage information for a workspace.
 
 ### List (Default)
 
-```powershell
+```
 Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 
-```powershell
+```
 Get-AzFirmwareAnalysisUsageMetric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 
-```powershell
+```
 Get-AzFirmwareAnalysisUsageMetric -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
 
-```powershell
+```
 Get-AzFirmwareAnalysisUsageMetric -Name <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -49,7 +49,7 @@ Gets monthly usage information for a workspace.
 
 ### Example 1: Get usage information for current a workspace named 'default'
 
-```powershell
+```
 Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName FirmwareAnalysisRG -WorkspaceName default
 ```
 

@@ -13,7 +13,7 @@ Lists binary hardening analysis results of a firmware.
 
 ## SYNTAX
 
-```powershell
+```
 Get-AzFirmwareAnalysisBinaryHardening -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Lists binary hardening analysis results of a firmware.
 
 ### Example 1:  List all the binary hardening analysis results for a firmware
 
-```powershell
+```
 Get-AzFirmwareAnalysisBinaryHardening -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 

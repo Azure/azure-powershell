@@ -58,7 +58,7 @@ Generate a URL for uploading a firmware image.
 ## EXAMPLES
 
 ### GenerateExpanded (Default)
-```powershell
+```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-FirmwareId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -67,7 +67,7 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceN
 
 
 ### Generate
-```powershell
+```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
  -Body <IGenerateUploadUrlRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -76,7 +76,7 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceN
 
 
 ### GenerateViaIdentity
-```powershell
+```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity>
  -Body <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -84,7 +84,7 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity
 
 
 ### GenerateViaIdentityExpanded
-```powershell
+```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -92,7 +92,7 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity
 
 
 ### GenerateViaJsonFilePath
-```powershell
+```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -101,7 +101,7 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceN
 
 
 ### GenerateViaJsonString
-```powershell
+```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -114,7 +114,7 @@ Generate a URL for uploading a firmware image.
 ## EXAMPLES
 
 ### Example 1: Create a url for file upload
-```powershell
+```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -FirmwareId firmwareId
 ```
 
@@ -129,10 +129,7 @@ Create a url for file upload.
 ## PARAMETERS
 
 ### -Body
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
 Parameter Sets: Generate, GenerateViaIdentity
 Aliases:
@@ -145,10 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -161,10 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -FirmwareId
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
 Aliases:
@@ -177,10 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
 Parameter Sets: GenerateViaIdentity, GenerateViaIdentityExpanded
 Aliases:
@@ -193,10 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: GenerateViaJsonFilePath
 Aliases:
@@ -209,10 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: GenerateViaJsonString
 Aliases:
@@ -225,10 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
@@ -241,10 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
@@ -257,10 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Generate, GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
@@ -273,10 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -289,10 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
@@ -305,9 +272,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-```powershell
-
-```
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

@@ -36,7 +36,7 @@ The operation to delete a firmware.
 ## EXAMPLES
 
 ### Delete (Default)
-```powershell
+```
 Remove-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -44,7 +44,7 @@ Remove-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -Work
 
 
 ### DeleteViaIdentity
-```powershell
+```
 Remove-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -52,7 +52,7 @@ Remove-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Def
 
 
 ### DeleteViaIdentityWorkspace
-```powershell
+```
 Remove-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -64,7 +64,7 @@ The operation to delete a firmware.
 ## EXAMPLES
 
 ### Example 1: Delete a firmware analysis workspace
-```powershell
+```
 Remove-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName
 ```
 
@@ -73,10 +73,7 @@ Delete a firmware analysis workspace.
 ## PARAMETERS
 
 ### -DefaultProfile
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -89,10 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityWorkspace
 Aliases: FirmwareId
@@ -105,10 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
@@ -121,10 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -137,10 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Delete
 Aliases:
@@ -153,10 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Delete
 Aliases:
@@ -169,10 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceInputObject
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
 Parameter Sets: DeleteViaIdentityWorkspace
 Aliases:
@@ -185,10 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Delete
 Aliases:
@@ -201,10 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -217,10 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
@@ -233,9 +203,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-```powershell
-
-```
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

@@ -13,7 +13,7 @@ The operation to create a firmware.
 
 ## SYNTAX
 
-```powershell
+```
 New-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
  [-SubscriptionId <String>] [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>]
  [-Status <String>] [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>]
@@ -28,7 +28,7 @@ The operation to create a firmware.
 
 ### Example 1: Create a new firmware using new guid
 
-```powershell
+```
 New-AzFirmwareAnalysisFirmware -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 
@@ -58,7 +58,7 @@ Create a new firmware using new guid.
 
 ### Example 2: Create a new firmware using a user specified firmwareId
 
-```powershell
+```
 New-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 

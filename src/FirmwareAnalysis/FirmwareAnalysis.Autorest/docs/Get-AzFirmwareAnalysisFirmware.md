@@ -42,7 +42,7 @@ Get firmware.
 ## EXAMPLES
 
 ### List (Default)
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -50,7 +50,7 @@ Get-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <Strin
 
 
 ### Get
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -58,7 +58,7 @@ Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -Workspa
 
 
 ### GetViaIdentity
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -66,7 +66,7 @@ Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Defaul
 
 
 ### GetViaIdentityWorkspace
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -78,7 +78,7 @@ Get firmware.
 ## EXAMPLES
 
 ### Example 1:  List all the firmwares inside a workspace
-```powershell
+```
 Get-AzFirmwareAnalysisFirmware -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName
 ```
 
@@ -107,7 +107,7 @@ Version                      :
 List all the firmwares inside a workspace.
 
 ### Example 2:  Get a firmware inside a workspace
-```powershell
+```
  Get-AzFirmwareAnalysisFirmware -Id FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName 
 ```
 
@@ -138,10 +138,7 @@ Get a firmware inside a workspace.
 ## PARAMETERS
 
 ### -DefaultProfile
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -154,10 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases: FirmwareId
@@ -170,10 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
@@ -186,10 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Get, List
 Aliases:
@@ -202,10 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-```powershell
-
-```
-
+```yaml
 Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
@@ -218,10 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceInputObject
-```powershell
-
-```
-
+```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
 Parameter Sets: GetViaIdentityWorkspace
 Aliases:
@@ -234,10 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: Get, List
 Aliases:
@@ -250,9 +229,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-```powershell
-
-```
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

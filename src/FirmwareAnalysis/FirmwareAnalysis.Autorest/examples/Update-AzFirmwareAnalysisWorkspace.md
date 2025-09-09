@@ -15,7 +15,7 @@ The operation to update a firmware analysis workspaces.
 
 ### UpdateExpanded (Default)
 
-```powershell
+```
 Update-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -23,7 +23,7 @@ Update-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-
 
 ### UpdateViaIdentityExpanded
 
-```powershell
+```
 Update-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -37,7 +37,7 @@ The operation to update a firmware analysis workspaces.
 
 ### Example 1: Update a firmware analysis workspace
 
-```powershell
+```
 Update-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName
 ```
 

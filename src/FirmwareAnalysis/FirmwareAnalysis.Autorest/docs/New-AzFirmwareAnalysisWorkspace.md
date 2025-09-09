@@ -25,7 +25,7 @@ The operation to create a firmware analysis workspace.
 ## EXAMPLES
 
 ### Example 1: Create a new firmware analysis workspace
-```powershell
+```
 New-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name name -Location location
 ```
 
@@ -50,10 +50,7 @@ Create a new firmware analysis workspace.
 ## PARAMETERS
 
 ### -DefaultProfile
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
@@ -66,10 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -82,10 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: WorkspaceName
@@ -98,10 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -114,10 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-```powershell
-
-```
-
+```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
@@ -130,10 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuFamily
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -146,10 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -162,10 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuSize
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -178,10 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -194,10 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-```powershell
-
-```
-
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -210,10 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-```powershell
-
-```
-
+```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
@@ -226,10 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -242,10 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-```powershell
-
-```
-
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
@@ -258,9 +219,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-```powershell
-
-```
 
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
