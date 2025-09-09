@@ -235,7 +235,61 @@ function setupEnv() {
         SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks"
         TargetDbName = "at_sqldbtrgt1"
-        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"
+        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"    
+    }
+
+    $DatabaseMigrationRetryTestVariables = @{
+        TargetDbName = "at_sqldbtrgt4"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
+        TargetSqlConnectionDataSource = "db.windows.net"
+        TargetSqlConnectionUserName = "username"
+        SourceSqlConnectionDataSource = "sampledomain.microsoft.com"
+        SourceSqlConnectionUserName = "user"
+        TargetSqlConnectionPassword = "password"
+        SqlDbInstanceName = "dmstestsqldb"
+        TargetSqlConnectionAuthentication = "SqlAuthentication"
+        ResourceGroupName = "tsum38RG"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionPassword = "password"
+        SourceDatabaseName = "AdventureWorks"
+    }
+
+    $DeleteDatabaseMigrationMITestVariablesDb = @{
+        ResourceGroupName = "DMSv2-TestRG"
+        ManagedInstanceName = "arvindp-sqlmi"
+        TargetDbName = "MiUnitTestStopblvr5sxzj6"
+        Kind = "SqlMi"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/DMSv2-TestRG/providers/Microsoft.Sql/managedInstances/arvindp-sqlmi"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
+        TargetLocationAccountKey = "accountKey"
+        FileSharePath = "\\\\sampledomain.onmicrosoft.com\\SharedBackup\\tsuman"
+        FileShareUsername = "domainUserName"
+        FileSharePassword = "domainPassword"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUsername = "domainUserName"
+        SourceSqlConnectionPassword = "domainPassword"
+        SourceDatabaseName = "AdventureWorks"
+    }
+
+    $DeleteDatabaseMigrationVmTestVariablesDb = @{
+        ResourceGroupName = "DMSv2-TestRG"
+        SqlVirtualMachineName = "arvindp-sqlvm"
+        TargetDbName = "VmUnitTestTargetDb"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
+        TargetLocationAccountKey = "6ABnp1F5INXRXpW1oHHozv4Pb27cJ94l/bmfG4K1QwvUYJ6bp0dmTB25Gf03EA/nle0JJ3LXNMAC6L17tagY9g=="
+        FileSharePath = "\\\\sampledomain.onmicrosoft.com\\SharedBackup\\tsuman"
+        FileShareUsername = "domainUserName"
+        FileSharePassword = "domainPassword"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUserName = "domainUserName"
+        SourceSqlConnectionPassword = "domainPassword"
+        SourceDatabaseName = "AdventureWorks"
     }
 
     $env.add("TestSqlMigrationService", $SqlMigrationServiceTestVariables) | Out-Null
@@ -254,6 +308,9 @@ function setupEnv() {
     $env.add("TestCutDatabaseMigrationMi", $CutDatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestCutDatabaseMigrationVm", $CutDatabaseMigrationTestVariablesVm) | Out-Null
     $env.add("TestDeleteDatabaseMigrationDb", $DeleteDatabaseMigrationTestVariablesDb) | Out-Null
+    $env.add("TestRetryDatabaseMigrationDb", $DatabaseMigrationRetryTestVariables) | Out-Null
+    $env.add("TestDeleteMiMigration", $DeleteDatabaseMigrationMITestVariablesDb ) | Out-Null
+    $env.add("TestDeleteDatabaseMigrationVm", $DeleteDatabaseMigrationVmTestVariablesDb) | Out-Null
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

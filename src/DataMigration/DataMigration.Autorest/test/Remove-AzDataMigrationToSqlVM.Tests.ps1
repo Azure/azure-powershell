@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataMigrationToSqlVM
 }
 
 Describe 'Remove-AzDataMigrationToSqlVM' {
-    It 'Delete' -skip {
+    It 'Delete' {
         $filesharePassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationVm.FileSharePassword -AsPlainText -Force
         $sourcePassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionPassword -AsPlainText -Force
 

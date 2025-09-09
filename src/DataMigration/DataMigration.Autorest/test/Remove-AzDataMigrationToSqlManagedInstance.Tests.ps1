@@ -15,10 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataMigrationToSqlMa
 }
 
 Describe 'Remove-AzDataMigrationToSqlManagedInstance' {
-    It 'Delete' -skip {
+    It 'Delete' {
         $filesharePassword = ConvertTo-SecureString $env.TestDeleteMiMigration.FileSharePassword -AsPlainText -Force
         $sourcePassword = ConvertTo-SecureString $env.TestDeleteMiMigration.SourceSqlConnectionPassword -AsPlainText -Force
-
+        $accountKey = $env.TestDeleteMiMigration.TargetLocationAccountKey
         # Create a Managed Instance migration
         $instance = New-AzDataMigrationToSqlManagedInstance `
             -ResourceGroupName $env.TestDeleteMiMigration.ResourceGroupName `
@@ -28,7 +28,9 @@ Describe 'Remove-AzDataMigrationToSqlManagedInstance' {
             -Scope $env.TestDeleteMiMigration.Scope `
             -MigrationService $env.TestDeleteMiMigration.MigrationService `
             -StorageAccountResourceId $env.TestDeleteMiMigration.TargetLocationStorageAccountResourceId `
-            -StorageAccountKey $env.TestDeleteMiMigration.TargetLocationAccountKey `
+            -AzureBlobAuthType "AccountKey" `
+            -AzureBlobAccountKey $accountKey `
+            -AzureBlobStorageAccountResourceId $env.TestDeleteMiMigration.TargetLocationStorageAccountResourceId `
             -FileSharePath $env.TestDeleteMiMigration.FileSharePath `
             -FileShareUsername $env.TestDeleteMiMigration.FileShareUsername `
             -FileSharePassword $filesharePassword `
