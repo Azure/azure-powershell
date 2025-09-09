@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "resourceType": "Compute",
+    "limit": 100,
+    "unit": "Count",
+    "displayName": "Demo Compute Quota",
+    "description": "Quota for Compute resources in mg-demo."
+  }
+}

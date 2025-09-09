@@ -24,7 +24,7 @@
 	// }
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install -g autorest",
+	"postCreateCommand": "npm install -g autorest && pwsh -c \"Install-Module -Name platyPS -Force -Scope CurrentUser\"",
 
 	// Configure tool-specific properties.
 	"customizations": {
