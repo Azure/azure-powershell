@@ -62,6 +62,9 @@ New-AzStorageCacheCach -EName "myCache" -ResourceGroupName "myResourceGroup"
 
 The HPC Cache service is being deprecated.
 
+## PARAMETERS
+
+### -AsJob
 Run the command as a job
 
 ```yaml
