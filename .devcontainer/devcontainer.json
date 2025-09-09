@@ -24,8 +24,7 @@
 	// }
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// npm install -g autorest is now handled in the Dockerfile
-	"postCreateCommand": "",
+	"postCreateCommand": "npm install -g autorest",
 
 	// Configure tool-specific properties.
 	"customizations": {

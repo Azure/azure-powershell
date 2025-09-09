@@ -8,8 +8,8 @@ FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/dotnet:1-8.0
 # Set working directory
 WORKDIR /workspace
 
-# Optionally install global npm packages
-RUN npm install -g autorest
+## Optionally install global npm packages
+# RUN npm install -g autorest
 
 # Set default user to root for pwsh compatibility
 USER root
