@@ -1,0 +1,39 @@
+{
+  "Invoke-AzDataMigrationRetryToSqlDb+[NoContext]+Retry+$PUT+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt4?api-version=2025-06-30+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt4?api-version=2025-06-30",
+      "Content": "{\r\n  \"properties\": {\r\n    \"scope\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\r\n    \"migrationService\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030\",\r\n    \"sourceSqlConnection\": {\r\n      \"dataSource\": \"sampledomain.microsoft.com\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"userName\": \"user\",\r\n      \"password\": \"password\"\r\n    },\r\n    \"sourceDatabaseName\": \"AdventureWorks\",\r\n    \"targetSqlConnection\": {\r\n      \"dataSource\": \"db.windows.net\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"userName\": \"username\",\r\n      \"password\": \"password\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "757" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "cfcef7a2-98ef-4611-831c-8e9f645722ac" ],
+        "x-ms-correlation-request-id": [ "cfcef7a2-98ef-4611-831c-8e9f645722ac" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250909T192452Z:cfcef7a2-98ef-4611-831c-8e9f645722ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A8A9ED26722D4FCD9BDF10BE1BCC3F3F Ref B: MAA201060514049 Ref C: 2025-09-09T19:24:51Z" ],
+        "Date": [ "Tue, 09 Sep 2025 19:24:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "214" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Sql/servers/dmstestsqldb\u0027 under resource group \u0027tsum38RG\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}
