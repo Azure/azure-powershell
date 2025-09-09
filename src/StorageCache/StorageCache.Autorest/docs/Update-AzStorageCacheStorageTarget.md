@@ -49,7 +49,7 @@ This operation is allowed at any time, but if the cache is down or unhealthy, th
 
 ### Example 1: Update storage target
 ```powershell
-Update-AzStorageCacheStorageTarget -CacheName "myCache" -ResourceGroupName "myResourceGroup"
+Update-AzStorageCacheStorageTarget -CacheName "myCache" -ResourceGroupName "myResourceGroup" -Name "myStorageTarget"
 ```
 
 The HPC Cache service is being deprecated.

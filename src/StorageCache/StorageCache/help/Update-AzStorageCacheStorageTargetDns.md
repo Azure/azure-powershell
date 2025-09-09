@@ -37,6 +37,11 @@ Tells a storage target to refresh its DNS information.
 
 ## EXAMPLES
 
+### Example 1: Refresh storage target DNS information
+```powershell
+Update-AzStorageCacheStorageTargetDns -CacheName "myCache" -ResourceGroupName "myResourceGroup" -StorageTargetName "myStorageTarget"
+```
+
 The HPC Cache service is being deprecated.
 
 ## PARAMETERS

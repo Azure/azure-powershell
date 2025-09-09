@@ -66,7 +66,7 @@ This operation is allowed at any time, but if the cache is down or unhealthy, th
 
 ### Example 1: Create a new storage target
 ```powershell
-New-AzStorageCacheStorageTarget -CacheName "myCache" -ResourceGroupName "myResourceGroup" -StorageTargetName "myTarget" -Junctions @(@{NamespacePath="/path1"; NfsExport="/export1"; TargetPath=""})
+New-AzStorageCacheStorageTarget -CacheName "myCache" -ResourceGroupName "myResourceGroup" -Name "myTarget"
 ```
 
 The HPC Cache service is being deprecated.
