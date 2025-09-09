@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCloudService_CreateViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Extension","LoadBalancerConfiguration","Secret","Role","Zone"}, NewOutputProperties=new string[] {"Extension","LoadBalancerConfiguration","Secret","Role","Zone"}, ChangeDescription="The types of the properties 'Extension', 'LoadBalancerConfiguration', 'Secret', 'Role', and 'Zone' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Create or update a cloud service. Please note some properties can be set only during cloud service creation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]
