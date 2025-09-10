@@ -29,10 +29,10 @@ pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ChangeAnalysis.0.2.0.zip;sourceType=sa]Az.ChangeAnalysis,0.2.0
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Chaos.0.1.2.zip;sourceType=sa]Az.Chaos,0.1.2
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudHsm.0.1.0.zip;sourceType=sa]Az.CloudHsm,0.1.0
-pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.1.0.zip;sourceType=sa]Az.CloudService,2.1.0
+pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.1.1.zip;sourceType=sa]Az.CloudService,2.1.1
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.16.0.zip;sourceType=sa]Az.CognitiveServices,1.16.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.6.0.zip;sourceType=sa]Az.Communication,0.6.0
-pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.10.3.0.zip;sourceType=sa]Az.Compute,10.3.0
+pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.10.4.0.zip;sourceType=sa]Az.Compute,10.4.0
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeFleet.0.1.1.zip;sourceType=sa]Az.ComputeFleet,0.1.1
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeSchedule.0.1.1.zip;sourceType=sa]Az.ComputeSchedule,0.1.1
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.1.1.zip;sourceType=sa]Az.ConfidentialLedger,1.1.1
@@ -118,7 +118,7 @@ pac116,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac117,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Marketplace.0.5.2.zip;sourceType=sa]Az.Marketplace,0.5.2
 pac118,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MarketplaceOrdering.2.2.0.zip;sourceType=sa]Az.MarketplaceOrdering,2.2.0
 pac119,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Mdp.0.1.2.zip;sourceType=sa]Az.Mdp,0.1.2
-pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.9.0.zip;sourceType=sa]Az.Migrate,2.9.0
+pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.10.0.zip;sourceType=sa]Az.Migrate,2.10.0
 pac121,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.3.0.zip;sourceType=sa]Az.MixedReality,0.3.0
 pac122,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MobileNetwork.0.5.0.zip;sourceType=sa]Az.MobileNetwork,0.5.0
 
