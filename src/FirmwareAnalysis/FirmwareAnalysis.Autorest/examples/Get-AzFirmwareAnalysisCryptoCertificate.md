@@ -14,8 +14,7 @@ Lists crypto certificate analysis results of a firmware.
 ## SYNTAX
 
 ```
-Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

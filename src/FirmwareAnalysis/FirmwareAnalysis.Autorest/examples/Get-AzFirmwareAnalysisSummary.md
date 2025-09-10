@@ -16,29 +16,25 @@ Get an analysis result summary of a firmware by name.
 ### Get (Default)
 
 ```
-Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -Type <String>
- -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -Type <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 
 ```
-Get-AzFirmwareAnalysisSummary -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzFirmwareAnalysisSummary -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityFirmware
 
 ```
-Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Type <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Type <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
 
 ```
-Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Type <String>
- -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Type <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

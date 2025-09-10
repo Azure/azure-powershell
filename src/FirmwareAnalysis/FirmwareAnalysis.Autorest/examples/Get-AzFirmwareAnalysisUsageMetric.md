@@ -16,29 +16,25 @@ Gets monthly usage information for a workspace.
 ### List (Default)
 
 ```
-Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 
 ```
-Get-AzFirmwareAnalysisUsageMetric -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 
 ```
-Get-AzFirmwareAnalysisUsageMetric -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
 
 ```
-Get-AzFirmwareAnalysisUsageMetric -Name <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisUsageMetric -Name <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

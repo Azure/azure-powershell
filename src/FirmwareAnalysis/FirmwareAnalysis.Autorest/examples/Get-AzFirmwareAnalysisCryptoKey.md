@@ -14,8 +14,7 @@ Lists crypto key analysis results of a firmware.
 ## SYNTAX
 
 ```
-Get-AzFirmwareAnalysisCryptoKey -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisCryptoKey -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

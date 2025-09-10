@@ -14,8 +14,7 @@ Lists password hash analysis results of a firmware.
 ## SYNTAX
 
 ```
-Get-AzFirmwareAnalysisPasswordHash -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisPasswordHash -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

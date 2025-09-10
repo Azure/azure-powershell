@@ -14,10 +14,7 @@ The operation to create a firmware.
 ## SYNTAX
 
 ```
-New-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
- [-SubscriptionId <String>] [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>]
- [-Status <String>] [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>] [-SubscriptionId <String>] [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>] [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

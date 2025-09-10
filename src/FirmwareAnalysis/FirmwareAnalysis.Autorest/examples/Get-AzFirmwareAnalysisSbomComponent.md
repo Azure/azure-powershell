@@ -14,8 +14,7 @@ Lists sbom analysis results of a firmware.
 ## SYNTAX
 
 ```
-Get-AzFirmwareAnalysisSbomComponent -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisSbomComponent -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

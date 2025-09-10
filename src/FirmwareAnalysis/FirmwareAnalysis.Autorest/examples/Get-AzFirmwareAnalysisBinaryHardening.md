@@ -14,8 +14,7 @@ Lists binary hardening analysis results of a firmware.
 ## SYNTAX
 
 ```
-Get-AzFirmwareAnalysisBinaryHardening -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisBinaryHardening -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -16,47 +16,37 @@ Generate a URL for uploading a firmware image.
 ### GenerateExpanded (Default)
 
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-FirmwareId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>] [-FirmwareId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Generate
 
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- -Body <IGenerateUploadUrlRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String> -Body <IGenerateUploadUrlRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity
 
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity>
- -Body <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> -Body <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded
 
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaJsonFilePath
 
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaJsonString
 
 ```
-New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

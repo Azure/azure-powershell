@@ -14,10 +14,7 @@ The operation to create a firmware analysis workspace.
 ## SYNTAX
 
 ```
-New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
