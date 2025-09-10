@@ -16,7 +16,7 @@ Stops the failover simulation on the virtual network gateway for the specified p
 Stop-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
  -PeeringLocation <String> -WasSimulationSuccessful <Boolean>
  -Detail <System.Collections.Generic.List`1[Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,21 +93,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
