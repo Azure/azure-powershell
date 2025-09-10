@@ -15,14 +15,14 @@ Stops the failover simulation on the virtual network gateway for the specified p
 ```
 Stop-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
  -PeeringLocation <String> -WasSimulationSuccessful <Boolean>
- -Details <System.Collections.Generic.List`1[Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]>
+ -Detail <System.Collections.Generic.List`1[Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The `Stop-AzVirtualNetworkGatewaySiteFailoverTest` cmdlet is used to stop a failover simulation that was previously initiated for the virtual network gateway. The test is identified by the **PeeringLocation** where the test was run.
 
-When stopping the test, you must provide whether the simulation was successful using the `-WasSimulationSuccessful` parameter, and you must also supply detailed information about the failover simulation using the `-Details` parameter. 
+When stopping the test, you must provide whether the simulation was successful using the `-WasSimulationSuccessful` parameter, and you must also supply detailed information about the failover simulation using the `-Detail` parameter. 
 
 This cmdlet allows you to conclude the failover test and capture any important information about the simulation results, including whether the test was successful or not.
 
