@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
 
 ## Version 10.3.0
 * Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 
