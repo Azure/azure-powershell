@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added preannoucement for removing Reimage parameters from `Set-AzServiceFabricManagedNodeType`.
+* Renamed Remove-AzServiceFabricManagedNodeType parameter sets to use "Remove" instead of "Delete" for consistency with cmdlet name.
 
 ## Version 3.7.0
 * Updated SF to latest api preview version `2023-11-01-preview`
