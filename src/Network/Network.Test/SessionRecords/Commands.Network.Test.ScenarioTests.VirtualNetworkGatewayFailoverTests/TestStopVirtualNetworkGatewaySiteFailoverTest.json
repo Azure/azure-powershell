@@ -96,7 +96,7 @@
           "258"
         ]
       },
-      "RequestBody": "{\r\n  \"peeringLocation\": \"London2\",\r\n  \"wasSimulationSuccessful\": true,\r\n  \"details\": [\r\n    {\r\n      \"failoverConnectionName\": \"shubhati_ER_Arista--conn--shubhati_failoverGw\",\r\n      \"failoverLocation\": \"eastus2euap\",\r\n      \"isVerified\": true\r\n    }\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"peeringLocation\": \"London2\",\r\n  \"wasSimulationSuccessful\": true,\r\n  \"detail\": [\r\n    {\r\n      \"failoverConnectionName\": \"shubhati_ER_Arista--conn--shubhati_failoverGw\",\r\n      \"failoverLocation\": \"eastus2euap\",\r\n      \"isVerified\": true\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"

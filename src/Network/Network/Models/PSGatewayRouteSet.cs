@@ -16,12 +16,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> Locations { get; set; }
 
-        public Dictionary<string, List<PSRouteSourceDetails>> Details { get; set; }
+        public Dictionary<string, List<PSRouteSourceDetails>> Detail { get; set; }
 
         [JsonIgnore]
         public string LocationsText => JsonConvert.SerializeObject(Locations, Formatting.Indented);
 
         [JsonIgnore]
-        public string DetailsText => JsonConvert.SerializeObject(Details, Formatting.Indented);
+        public string DetailsText => JsonConvert.SerializeObject(Detail, Formatting.Indented);
     }
 }

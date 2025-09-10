@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             Mandatory = true,
             HelpMessage = "Details of the failover simulation.",
             ParameterSetName = ByName)]
-        public List<FailoverConnectionDetails> Details { get; set; }
+        public List<FailoverConnectionDetails> Detail { get; set; }
 
         public override void Execute()
         {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             {
                 PeeringLocation = this.PeeringLocation,
                 WasSimulationSuccessful = this.WasSimulationSuccessful,
-                Details = this.Details
+                Detail = this.Detail
             };
 
             var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways

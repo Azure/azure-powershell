@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool WasSimulationSuccessful { get; set; }
 
-        public List<PSFailoverConnectionDetails> Details { get; set; }
+        public List<PSFailoverConnectionDetails> Detail { get; set; }
 
         [JsonIgnore]
-        public string DetailsText => JsonConvert.SerializeObject(Details, Formatting.Indented);
+        public string DetailsText => JsonConvert.SerializeObject(Detail, Formatting.Indented);
     }
 }

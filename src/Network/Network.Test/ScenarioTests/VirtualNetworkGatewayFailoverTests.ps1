@@ -128,7 +128,7 @@ function Test-StopAzureVirtualNetworkGatewaySiteFailoverTest
 
     try{
         # Define failover connection details
-        $details = @(
+        $detail = @(
             [Microsoft.Azure.Management.Network.Models.FailoverConnectionDetails]@{
                 FailoverConnectionName = "shubhati_ER_Arista--conn--shubhati_failoverGw"
                 FailoverLocation = "eastus2euap"
@@ -141,7 +141,7 @@ function Test-StopAzureVirtualNetworkGatewaySiteFailoverTest
             -ResourceGroupName $rgName `
             -VirtualNetworkGatewayName $vnetGatewayName `
             -PeeringLocation $peeringLocation `
-            -Details $details `
+            -Detail $detail `
             -WasSimulationSuccessful $true
 
         Write-Debug "`nStop Failover Test completed successfully."
