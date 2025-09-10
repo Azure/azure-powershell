@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             {
                 PeeringLocation = this.PeeringLocation,
                 WasSimulationSuccessful = this.WasSimulationSuccessful,
-                Detail = this.Detail
+                Details = this.Detail
             };
 
             var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
