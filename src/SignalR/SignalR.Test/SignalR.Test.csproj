@@ -11,10 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ScenarioTests\CustomCertTests.ps1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SignalR.Management.Sdk\SignalR.Management.Sdk.csproj" />
   </ItemGroup>
 

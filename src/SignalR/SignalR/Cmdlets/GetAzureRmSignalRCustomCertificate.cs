@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [ResourceNameCompleter(Constants.SignalRResourceType, nameof(ResourceGroupName))]
         public string SignalRName { get; set; }
 
-        [ResourceNameCompleter(Constants.SignalRCustomCertificateResourceType, nameof(ResourceGroupName), nameof(SignalRName))]
-        [Parameter(HelpMessage = "The name of the custom certificate")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupParameterSet, HelpMessage = "The name of the custom certificate")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The name of the custom certificate")]
+        [Parameter(Mandatory = false, ParameterSetName = SignalRObjectParameterSet, HelpMessage = "The name of the custom certificate")]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
 

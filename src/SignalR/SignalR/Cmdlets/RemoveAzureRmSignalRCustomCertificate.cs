@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ResourceGroupParameterSet, HelpMessage = "The custom certificate name.")]
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = SignalRObjectParameterSet, HelpMessage = "The custom certificate name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(Constants.SignalRCustomCertificateResourceType, nameof(ResourceGroupName), nameof(SignalRName))]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The SignalR custom certificate resource object.")]
@@ -86,10 +85,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 if (ShouldProcess($"SignalR custom certificate {ResourceGroupName}/{SignalRName}/{Name}", "remove"))
                 {
                     Microsoft.Azure.Management.SignalR.SignalRCustomCertificatesOperationsExtensions.Delete(Client.SignalRCustomCertificates, ResourceGroupName, SignalRName, Name);
-                    if (PassThru.IsPresent)
-                    {
-                        WriteObject(true);
-                    }
+                    WriteObject(true);
                 }
             });
         }

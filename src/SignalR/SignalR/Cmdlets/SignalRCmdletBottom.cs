@@ -18,8 +18,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Rest;
@@ -54,6 +56,21 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             catch (Rest.Azure.CloudException ex)
             {
                 throw new PSInvalidOperationException(ex.Body.Message, ex);
+            }
+            catch (Microsoft.Azure.Management.SignalR.Models.ErrorResponseException errorResponseException)
+            {
+                var completeErrorMessage = errorResponseException.Response.Content;
+                var statusCode = errorResponseException.Response.StatusCode;
+                var errorKind = default(ErrorKind);
+                if ((int)statusCode >= 400 && (int)statusCode < 500)
+                {
+                    errorKind = ErrorKind.UserError;
+                }
+                else if ((int)statusCode >= 500)
+                {
+                    errorKind = ErrorKind.ServiceError;
+                }
+                throw new AzPSCloudException(completeErrorMessage, errorKind, errorResponseException.Message, errorResponseException);
             }
         }
 

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ResourceGroupParameterSet, HelpMessage = "The custom domain resource name.")]
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = SignalRObjectParameterSet, HelpMessage = "The custom domain resource name.")]
         [ValidateNotNullOrEmpty()]
-        [ResourceNameCompleter(Constants.SignalRCustomDomainResourceType, nameof(ResourceGroupName), nameof(SignalRName))]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The SignalR custom domain resource object.")]
