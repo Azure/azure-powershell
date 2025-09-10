@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.FirmwareAnalysis-help.xml
 Module Name: Az.FirmwareAnalysis
 online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysisfirmware
 schema: 2.0.0
@@ -8,44 +8,41 @@ schema: 2.0.0
 # Get-AzFirmwareAnalysisFirmware
 
 ## SYNOPSIS
-
 Get firmware.
 
 ## SYNTAX
 
 ### List (Default)
-
 ```
-Get-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-
-```
-Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-
-```
-Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisFirmware -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
-
 ```
-Get-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 Get firmware.
 
 ## EXAMPLES
 
-### Example 1:  List all the firmwares inside a workspace
-
-```
+### Example 1:  List all the firmwares inside a workspace.
+```powershell
 Get-AzFirmwareAnalysisFirmware -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName
 ```
 
@@ -68,15 +65,14 @@ SystemDataLastModifiedBy     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 SystemDataLastModifiedByType : 
 Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
 Vendor                       : 
-Version                      : 
+Version                      :
 ```
 
 List all the firmwares inside a workspace.
 
-### Example 2:  Get a firmware inside a workspace
-
-```
- Get-AzFirmwareAnalysisFirmware -Id FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName 
+### Example 2:  Get a firmware inside a workspace.
+```powershell
+Get-AzFirmwareAnalysisFirmware -Id FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName
 ```
 
 ```output
@@ -98,7 +94,7 @@ SystemDataLastModifiedBy     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 SystemDataLastModifiedByType : 
 Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
 Vendor                       : 
-Version                      : 
+Version                      :
 ```
 
 Get a firmware inside a workspace.
@@ -106,7 +102,6 @@ Get a firmware inside a workspace.
 ## PARAMETERS
 
 ### -DefaultProfile
-
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -123,12 +118,11 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-
 The id of the firmware.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityWorkspace
+Parameter Sets: GetViaIdentityWorkspace, Get
 Aliases: FirmwareId
 
 Required: True
@@ -139,7 +133,6 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-
 Identity Parameter
 
 ```yaml
@@ -155,13 +148,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -172,13 +164,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -189,7 +180,6 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceInputObject
-
 Identity Parameter
 
 ```yaml
@@ -205,12 +195,11 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-
 The name of the firmware analysis workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -221,7 +210,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
