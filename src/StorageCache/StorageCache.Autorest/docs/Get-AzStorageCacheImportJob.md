@@ -41,58 +41,51 @@ Returns an import job.
 
 ## EXAMPLES
 
-### Example 1: Get all import jobs for an AML filesystem
+### Example 1: List all import jobs for an AML filesystem
 ```powershell
 Get-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -ResourceGroupName 'myresourcegroup'
 ```
 
 ```output
-AdminStatus          : Completed
-ClientRequestId       :
-ConflictResolution    : OverwriteAlways
-FailureReason        :
-Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
-                       rageCache/amlFilesystems/myamlfilesystem/importJobs/myimportjob1
-ImportPrefixesSource :
-ImportPrefixes       : {/path1}
-Location             : East US
-MaximumError         : 0
-Name                 : myimportjob1
-ProvisioningState    : Succeeded
-State                : Completed
-StatusMessage        : Import job completed successfully
-SystemDataCreatedAt  : 12/8/2024 2:30:15 PM
-SystemDataCreatedBy  : user@example.com
-SystemDataCreatedByType : User
-SystemDataLastModifiedAt : 12/8/2024 2:35:20 PM
-SystemDataLastModifiedBy : user@example.com
-SystemDataLastModifiedByType : User
-Type                 : Microsoft.StorageCache/amlFilesystems/importJobs
-
-AdminStatus          : InProgress
-ClientRequestId       :
-ConflictResolution    : OverwriteIfDirty
-FailureReason        :
-Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
-                       rageCache/amlFilesystems/myamlfilesystem/importJobs/myimportjob2
-ImportPrefixesSource :
-ImportPrefixes       : {/path2}
-Location             : East US
-MaximumError         : 5
-Name                 : myimportjob2
-ProvisioningState    : Succeeded
-State                : InProgress
-StatusMessage        : Import job is running
-SystemDataCreatedAt  : 12/8/2024 3:00:10 PM
-SystemDataCreatedBy  : user@example.com
-SystemDataCreatedByType : User
-SystemDataLastModifiedAt : 12/8/2024 3:00:10 PM
-SystemDataLastModifiedBy : user@example.com
-SystemDataLastModifiedByType : User
-Type                 : Microsoft.StorageCache/amlFilesystems/importJobs
+AdminStatus                  : Active
+AzureAsyncOperation          :
+ConflictResolutionMode       : Fail
+Id                           : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.StorageCache/amlFilesyst
+                               ems/myamlfilesystem/importJobs/myimportjob
+ImportPrefix                 : {/}
+Location                     : eastus
+MaximumError                 : 0
+Name                         : myimportjob
+ProvisioningState            : Succeeded
+ResourceGroupName            : myresourcegroup
+StatusBlobsImportedPerSecond : 0
+StatusBlobsWalkedPerSecond   : 0
+StatusImportedDirectory      :
+StatusImportedFile           :
+StatusImportedSymlink        :
+StatusLastCompletionTime     : 9/4/2025 4:38:00 AM
+StatusLastStartedTime        : 9/4/2025 4:37:54 AM
+StatusMessage                :
+StatusPreexistingDirectory   :
+StatusPreexistingFile        :
+StatusPreexistingSymlink     :
+StatusState                  : Completed
+StatusTotalBlobsImported     : 0
+StatusTotalBlobsWalked       : 0
+StatusTotalConflict          : 0
+StatusTotalError             : 0
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.StorageCache/amlFilesystems/importJobs
 ```
 
-Gets all import jobs for the specified AML filesystem.
+Lists all import jobs for the specified AML filesystem.
 
 ## PARAMETERS
 

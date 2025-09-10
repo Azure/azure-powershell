@@ -41,50 +41,48 @@ Returns an auto export job.
 
 ## EXAMPLES
 
-### Example 1: Get all auto export jobs for an AML filesystem
+### Example 1: List all auto export jobs for an AML filesystem
 ```powershell
 Get-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -ResourceGroupName 'myresourcegroup'
 ```
 
 ```output
-AdminStatus          : Enabled
-AutoExportPrefix     : {/export}
-ClientRequestId       :
-Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
-                       rageCache/amlFilesystems/myamlfilesystem/autoExportJobs/myautoexportjob1
-Location             : East US
-Name                 : myautoexportjob1
-ProvisioningState    : Succeeded
-State                : Running
-StatusMessage        : Auto export job is running successfully
-SystemDataCreatedAt  : 12/8/2024 2:30:15 PM
-SystemDataCreatedBy  : user@example.com
-SystemDataCreatedByType : User
-SystemDataLastModifiedAt : 12/8/2024 2:30:15 PM
-SystemDataLastModifiedBy : user@example.com
-SystemDataLastModifiedByType : User
-Type                 : Microsoft.StorageCache/amlFilesystems/autoExportJobs
-
-AdminStatus          : Disabled
-AutoExportPrefix     : {/backup}
-ClientRequestId       :
-Id                   : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sto
-                       rageCache/amlFilesystems/myamlfilesystem/autoExportJobs/myautoexportjob2
-Location             : East US
-Name                 : myautoexportjob2
-ProvisioningState    : Succeeded
-State                : Stopped
-StatusMessage        : Auto export job is disabled
-SystemDataCreatedAt  : 12/8/2024 3:00:10 PM
-SystemDataCreatedBy  : user@example.com
-SystemDataCreatedByType : User
-SystemDataLastModifiedAt : 12/8/2024 3:05:15 PM
-SystemDataLastModifiedBy : user@example.com
-SystemDataLastModifiedByType : User
-Type                 : Microsoft.StorageCache/amlFilesystems/autoExportJobs
+AdminStatus                                    : Enable
+AutoExportPrefix                               : {/path1}
+AzureAsyncOperation                            :
+Id                                             : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Storag
+                                                 eCache/amlFilesystems/myamlfilesystem/autoExportJobs/myautoexportjob
+Location                                       : eastus
+Name                                           : myautoexportjob
+ProvisioningState                              : Succeeded
+ResourceGroupName                              : myresourcegroup
+StatusCode                                     :
+StatusCurrentIterationFilesDiscovered          : 0
+StatusCurrentIterationFilesExported            : 0
+StatusCurrentIterationFilesFailed              : 0
+StatusCurrentIterationMiBDiscovered            : 0
+StatusCurrentIterationMiBExported              : 0
+StatusExportIterationCount                     : 0
+StatusLastCompletionTimeUtc                    :
+StatusLastStartedTimeUtc                       :
+StatusLastSuccessfulIterationCompletionTimeUtc :
+StatusMessage                                  :
+StatusState                                    : InProgress
+StatusTotalFilesExported                       : 0
+StatusTotalFilesFailed                         : 0
+StatusTotalMiBExported                         : 0
+SystemDataCreatedAt                            :
+SystemDataCreatedBy                            :
+SystemDataCreatedByType                        :
+SystemDataLastModifiedAt                       :
+SystemDataLastModifiedBy                       :
+SystemDataLastModifiedByType                   :
+Tag                                            : {
+                                                 }
+Type                                           : Microsoft.StorageCache/amlFilesystems/autoExportJobs
 ```
 
-Gets all auto export jobs for the specified AML filesystem.
+Lists all auto export jobs for the specified AML filesystem.
 
 ## PARAMETERS
 

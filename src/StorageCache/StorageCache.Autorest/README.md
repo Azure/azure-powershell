@@ -30,7 +30,6 @@ For information on how to develop for `Az.StorageCache`, see [how-to.md](how-to.
 commit: 213441b94d4801b488e57f22187bdc862c2d51b3
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/storagecache/resource-manager/readme.md
 
 input-file:
   - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2025-07-01/amlfilesystem.json
@@ -82,10 +81,6 @@ directive:
       parameter-name: OperationId
     set:
       parameter-name: Id
-
-  - where:
-      subject: AscOperation
-    hide: true
 
   - where:
       model-name: AmlFilesystem
