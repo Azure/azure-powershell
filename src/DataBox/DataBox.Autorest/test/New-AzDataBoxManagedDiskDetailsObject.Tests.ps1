@@ -15,7 +15,7 @@ Describe 'New-AzDataBoxManagedDiskDetailsObject' {
     It '__AllParameterSets' {
         $contactDetail = New-AzDataBoxContactDetailsObject -ContactName $env.ContactName -EmailList $env.EmailList -Phone $env.Phone
         $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 $env.StreetAddress1 -StateOrProvince $env.StateOrProvince -Country $env.Country -City $env.City -PostalCode $env.PostalCode -AddressType $env.AddressType 
-        $managedDiskAccount=New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId $env.ManagedDiskRg -StagingStorageAccountId $env.StagingStorageAccount -DataAccountType "ManagedDisk"
+        $managedDiskAccount = New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId $env.ManagedDiskRg -StagingStorageAccountId $env.StagingStorageAccount
         $managedDiskAccount.DataAccountType | Should -Be "ManagedDisk"
     }
 }
