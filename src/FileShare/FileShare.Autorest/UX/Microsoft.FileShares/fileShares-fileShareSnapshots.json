@@ -1,0 +1,95 @@
+{
+  "resourceType": "fileShares/fileShareSnapshots",
+  "apiVersion": "2025-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.fileshare"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFileShareSnapshot",
+      "description": "Get a FileShareSnapshot",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.fileshare/get-azfilesharesnapshot"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a FileShareSnapshot",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFileShareSnapshot",
+      "description": "Delete a FileShareSnapshot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.fileshare/remove-azfilesharesnapshot"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a FileShareSnapshot.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
