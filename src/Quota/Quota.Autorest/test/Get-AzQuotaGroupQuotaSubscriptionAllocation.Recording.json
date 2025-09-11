@@ -1,0 +1,44 @@
+{
+  "Get-AzQuotaGroupQuotaSubscriptionAllocation+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "74f4a655-2046-4bd8-8e68-7d7445e11a6e" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaSubscriptionAllocation" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaSubscriptionAllocation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 403,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "b3821cf6-1e17-4ca9-a418-0435fa7bb941" ],
+        "x-ms-correlation-request-id": [ "b3821cf6-1e17-4ca9-a418-0435fa7bb941" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T081337Z:b3821cf6-1e17-4ca9-a418-0435fa7bb941" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 28CAE65F26974A8C81C1EF746093B930 Ref B: MAA201060513045 Ref C: 2025-09-11T08:13:36Z" ],
+        "Date": [ "Thu, 11 Sep 2025 08:13:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "614" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027resilv@microsoft.com\u0027 with object id \u00272b39426f-84f6-41b3-9ad1-ee6021770dba\u0027 does not have authorization to perform action \u0027Microsoft.Quota/groupQuotas/resourceProviders/quotaAllocations/read\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -18,7 +18,7 @@ Describe 'Get-AzQuotaGroupQuotaSubscriptionRequest' {
     It 'List'  {
         { 
             $requestId = "abcd1234-5678-90ef-ghij-1234567890ab"
-            Get-AzQuotaGroupQuotaSubscriptionRequest -GroupQuotaName "ComputeGroupQuota01" -ManagementGroupId $($env.SubscriptionId) -RequestId $requestId
+            Get-AzQuotaGroupQuotaSubscriptionRequest -GroupQuotaName "ComputeGroupQuota01" -ManagementGroupId "$($env.SubscriptionId)" -RequestId $requestId
          } | Should -Not -Throw
     }
 

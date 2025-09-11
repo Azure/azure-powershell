@@ -19,7 +19,7 @@ Describe 'Get-AzQuotaGroupQuotaSubscriptionAllocationRequest' {
         {   
             $allocationId = "a1b2c3d4-e5f6-7890-abcd-1234567890ab"
             $subscriptionId = $($env.SubscriptionId)
-            Get-AzQuotaGroupQuotaSubscriptionAllocationRequest -AllocationId $allocationId -ManagementGroupId $($env.SubscriptionId) -GroupQuotaName "ComputeGroupQuota01" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId 
+            Get-AzQuotaGroupQuotaSubscriptionAllocationRequest -AllocationId $allocationId -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId 
         } | Should -Not -Throw
     }
 

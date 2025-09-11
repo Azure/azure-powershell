@@ -1,13 +1,13 @@
 {
-  "New-AzQuota+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15+1": {
+  "New-AzQuota+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "48f97be1-f8ec-4211-8d06-c71114a27f5e" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "10173406-2745-4666-923b-485bc70f738c" ],
         "CommandName": [ "Get-AzQuota" ],
         "FullCommandName": [ "Get-AzQuota_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,36 +24,36 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "f9tq8S9SNUexLIKPBlW4-A.0" ],
-        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=5b715b31-cfde-46eb-ae15-eab66b69eb18/southeastasia/80f993f3-af1b-4666-b2d4-be6a89b33f9e" ],
+        "MS-RequestId": [ "G_fRA5W2GU-TyLfTdeGM2g.0" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2b39426f-84f6-41b3-9ad1-ee6021770dba/southeastasia/65fe55e3-c259-4665-8c22-828e1f102500" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "e54d9d29-669c-4f39-9633-357bc826c710" ],
-        "x-ms-correlation-request-id": [ "e54d9d29-669c-4f39-9633-357bc826c710" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T070151Z:e54d9d29-669c-4f39-9633-357bc826c710" ],
+        "x-ms-request-id": [ "41b78577-5bb0-4702-ab8e-c5f39a06800e" ],
+        "x-ms-correlation-request-id": [ "41b78577-5bb0-4702-ab8e-c5f39a06800e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T081356Z:41b78577-5bb0-4702-ab8e-c5f39a06800e" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 54A4C9768BBB45CDBD81FB408C707A9A Ref B: MAA201060515049 Ref C: 2025-09-11T07:01:50Z" ],
-        "Date": [ "Thu, 11 Sep 2025 07:01:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A70846B0A34F4105BC94927389A578AF Ref B: MAA201060513045 Ref C: 2025-09-11T08:13:55Z" ],
+        "Date": [ "Thu, 11 Sep 2025 08:13:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "444" ],
+        "Content-Length": [ "442" ],
         "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"properties\":{\"limit\":{\"limitObjectType\":\"LimitValue\",\"limitType\":\"Independent\",\"value\":1000},\"name\":{\"value\":\"PublicIPAddresses\",\"localizedValue\":\"Public IP Addresses\"},\"properties\":{},\"unit\":\"Count\",\"isQuotaApplicable\":false},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses\",\"type\":\"Microsoft.Quota/Quotas\",\"name\":\"PublicIPAddresses\"}",
+      "Content": "{\"properties\":{\"limit\":{\"limitObjectType\":\"LimitValue\",\"limitType\":\"Independent\",\"value\":20},\"name\":{\"value\":\"PublicIPAddresses\",\"localizedValue\":\"Public IP Addresses\"},\"properties\":{},\"unit\":\"Count\",\"isQuotaApplicable\":false},\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses\",\"type\":\"Microsoft.Quota/Quotas\",\"name\":\"PublicIPAddresses\"}",
       "isContentBase64": false
     }
   },
-  "New-AzQuota+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15+2": {
+  "New-AzQuota+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15",
-      "Content": "{\n  \"properties\": {\n    \"name\": {\n      \"value\": \"PublicIPAddresses\"\n    },\n    \"limit\": {\n      \"limitObjectType\": \"LimitValue\",\n      \"value\": 1001\n    }\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Network/locations/eastus2/providers/Microsoft.Quota/quotas/PublicIPAddresses?api-version=2025-07-15",
+      "Content": "{\n  \"properties\": {\n    \"name\": {\n      \"value\": \"PublicIPAddresses\"\n    },\n    \"limit\": {\n      \"limitObjectType\": \"LimitValue\",\n      \"value\": 21\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "161" ]
+        "Content-Length": [ "159" ]
       }
     },
     "Response": {
@@ -62,16 +62,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=5b715b31-cfde-46eb-ae15-eab66b69eb18/southeastasia/f530dddd-c9e4-4f5d-b467-af54dbc570c5" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2b39426f-84f6-41b3-9ad1-ee6021770dba/southeastasia/9b594c22-807d-4bdf-b2fe-7beb41fdf684" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "2be782fd-d2ba-40b3-a010-aaf68b8d8749" ],
-        "x-ms-correlation-request-id": [ "2be782fd-d2ba-40b3-a010-aaf68b8d8749" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T070152Z:2be782fd-d2ba-40b3-a010-aaf68b8d8749" ],
+        "x-ms-request-id": [ "670cd028-c71a-4e94-8dda-ec04581eadcc" ],
+        "x-ms-correlation-request-id": [ "670cd028-c71a-4e94-8dda-ec04581eadcc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T081358Z:670cd028-c71a-4e94-8dda-ec04581eadcc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 520313FB48A24510B22E85717795797E Ref B: MAA201060515049 Ref C: 2025-09-11T07:01:51Z" ],
-        "Date": [ "Thu, 11 Sep 2025 07:01:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 246D310EE2854ECCB1E20AB25D87C5B1 Ref B: MAA201060513045 Ref C: 2025-09-11T08:13:57Z" ],
+        "Date": [ "Thu, 11 Sep 2025 08:13:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "103" ],

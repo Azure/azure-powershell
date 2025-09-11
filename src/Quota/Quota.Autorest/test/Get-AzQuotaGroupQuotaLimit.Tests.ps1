@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLimit'))
 
 Describe 'Get-AzQuotaGroupQuotaLimit' {
     It 'List' {
-        { Get-AzQuotaGroupQuotaLimit -ManagementGroupId $($env.SubscriptionId) -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" } | Should -Not -Throw
+        { Get-AzQuotaGroupQuotaLimit -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" } | Should -Not -Throw
     }
 }
