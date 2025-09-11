@@ -120,13 +120,13 @@ function Start-AzStackHCIVMVirtualMachine {
         ${ProxyUseDefaultCredentials}
 
     )       
-    if (($ResourceId -match $vmRegex) -or ($Name -and $ResourceGroupName -and $SubscriptionId)){
-        if ($ResourceId -match $vmRegex){
-            $SubscriptionId = $($Matches['subscriptionId'])
+    if (($resourceId -match $vmRegex) -or ($name -and $ResourceGroupName -and $subscriptionId)){
+        if ($resourceId -match $vmRegex){
+            $subscriptionId = $($Matches['subscriptionId'])
             $ResourceGroupName = $($Matches['resourceGroupName'])
-            $Name = $($Matches['machineName'])
+            $name = $($Matches['machineName'])
         }
-        $resourceUri = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.HybridCompute/machines/" + $Name
+        $resourceUri = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.HybridCompute/machines/" + $name
         $PSBoundParameters.Add("ResourceUri", $resourceUri)
         $null = $PSBoundParameters.Remove("SubscriptionId")
         $null = $PSBoundParameters.Remove("ResourceGroupName")
@@ -145,6 +145,6 @@ function Start-AzStackHCIVMVirtualMachine {
         }
           
         } else {             
-            Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
+            Write-Error "One or more input parameters are invalid. Resource ID is: $resourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionId"
         }    
 }   
