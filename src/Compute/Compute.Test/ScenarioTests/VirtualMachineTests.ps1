@@ -2129,20 +2129,20 @@ function Test-VMImageCmdletOutputFormat
     $sku = $imgRef.Skus;
     $ver = $imgRef.Version;
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr'" @('Id', 'Location', 'PublisherName');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr } @('Id', 'Location', 'PublisherName');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } " @('Id', 'Location', 'PublisherName');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } } @('Id', 'Location', 'PublisherName');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer " @('Id', 'Location', 'PublisherName', 'Offer');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer } @('Id', 'Location', 'PublisherName', 'Offer');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer | Get-AzVMImageSku } @('Publisher', 'Offer', 'Skus');
 
     # Updated Get-AzVmImage list output. No need to output sku when user inputed that. There are more valuable information to display.
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Location');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage } @('Version', 'Location');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
 
 # Test Image Cmdlet Output Format with EdgeZone
@@ -2159,15 +2159,15 @@ function Test-VMImageEdgeZoneCmdletOutputFormat
     $ver = "14393.4048.2011170655";
     $edgeZone = "microsoftlosangeles1";
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Select EdgeZone, Location " @('microsoftlosangeles1', 'westus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Select EdgeZone, Location } @('microsoftlosangeles1', 'westus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone'| Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Get-AzVMImageSku } @('Publisher', 'Offer', 'Skus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Location');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Get-AzVMImageSku | Get-AzVMImage } @('Version', 'Location');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -EdgeZone $edgeZone -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -EdgeZone $edgeZone -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
 
 function get_all_vm_locations
