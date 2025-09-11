@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Lists all the supported operations for the Azure Storage Mover REST API.
+List the operations for the provider
 .Description
-Lists all the supported operations for the Azure Storage Mover REST API.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example
