@@ -2636,9 +2636,9 @@ end {
 
 <#
 .Synopsis
-update the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 .Description
-update the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 .Example
 Update-AzScVmmAvailabilitySet -Name "test-avset" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000d" -Tag @{"key-1"="value-1"}
 
@@ -2895,9 +2895,9 @@ end {
 
 <#
 .Synopsis
-update the Clouds resource.
+Update the Clouds resource.
 .Description
-update the Clouds resource.
+Update the Clouds resource.
 .Example
 Update-AzScVmmCloud  -Name "test-cloud" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000d" -Tag @{"key-1"="value-1"}
 
@@ -3154,9 +3154,9 @@ end {
 
 <#
 .Synopsis
-update the VmmServers resource.
+Update the VmmServers resource.
 .Description
-update the VmmServers resource.
+Update the VmmServers resource.
 .Example
 Update-AzScVmmServer -Name "test-vmmserver-01" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Tag @{"key-1"="value-1"}
 
@@ -3413,9 +3413,9 @@ end {
 
 <#
 .Synopsis
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 .Description
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 .Example
 Update-AzScVmmVirtualNetwork -Name "test-vnet" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Tag @{"key-1"="value-1"}
 
@@ -3672,9 +3672,9 @@ end {
 
 <#
 .Synopsis
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 .Description
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 .Example
 Update-AzScVmmVMTemplate -Name "test-vmt" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Tag @{"key-1"="value-1"}
 
@@ -7384,9 +7384,9 @@ end {
 
 <#
 .Synopsis
-create a checkpoint in virtual machine.
+Create a checkpoint in virtual machine.
 .Description
-create a checkpoint in virtual machine.
+Create a checkpoint in virtual machine.
 .Example
 New-AzScVmmVMCheckpoint -Name "test-vm" -ResourceGroupName "test-rg-01" -CheckpointName "Test-01" -CheckpointDescription "Test-Desc-01"
 .Example
