@@ -24,17 +24,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Initializes a new instance of the PatchTrackedResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id represents the complete path to the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name associated with the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type represents the complete path of the form
-        /// Namespace/ResourceType/ResourceType/...
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="etag">Optional ETag.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="location">Resource location.
@@ -42,12 +44,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="tags">Resource tags.
         /// </param>
-        public PatchTrackedResource(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
-        : base(id, name, type, etag)
+        /// <param name="etag">Optional ETag.
+        /// </param>
+        public PatchTrackedResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string))
+
+        : base(id, name, type, systemData)
         {
             this.Location = location;
             this.Tags = tags;
+            this.Etag = etag;
             CustomInit();
         }
 
@@ -68,5 +74,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional ETag.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; set; }
     }
 }

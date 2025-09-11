@@ -8,8 +8,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
     using System.Linq;
 
     /// <summary>
-    /// ARM Resource.
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
     /// </summary>
+    /// <remarks>
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
+    /// </remarks>
     public partial class Resource : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
@@ -24,25 +29,27 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Initializes a new instance of the Resource class.
         /// </summary>
 
-        /// <param name="id">Resource Id represents the complete path to the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name associated with the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type represents the complete path of the form
-        /// Namespace/ResourceType/ResourceType/...
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="etag">Optional ETag.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        public Resource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
-            this.Etag = etag;
+            this.SystemData = systemData;
             CustomInit();
         }
 
@@ -53,28 +60,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
 
         /// <summary>
-        /// Gets resource Id represents the complete path to the resource.
+        /// Gets fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; private set; }
 
         /// <summary>
-        /// Gets resource name associated with the resource.
+        /// Gets the name of the resource
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; private set; }
 
         /// <summary>
-        /// Gets resource type represents the complete path of the form
-        /// Namespace/ResourceType/ResourceType/...
+        /// Gets the type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets or sets optional ETag.
+        /// Gets azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData {get; private set; }
     }
 }

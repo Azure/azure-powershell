@@ -204,5 +204,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             return proxyList;
         }
+
+        /// <summary>
+        /// Method to list soft deleted Azure Recovery Services Vaults by location
+        /// </summary>
+        /// <param name="location">Name of the Azure region</param>
+        /// <returns>list of soft deleted vaults.</returns>
+        public List<DeletedVault> GetSoftDeletedVaultsByLocation(string location)
+        {
+            return GetRecoveryServicesClient.DeletedVaults.ListBySubscriptionIdWithHttpMessagesAsync(
+                location, GetRequestHeaders()).Result.Body.ToList();
+        }
+
+        /// <summary>
+        /// Method to get a specific soft deleted Azure Recovery Services Vault
+        /// </summary>
+        /// <param name="location">Name of the Azure region</param>
+        /// <param name="deletedVaultName">Name of the deleted vault</param>
+        /// <returns>soft deleted vault object.</returns>
+        public DeletedVault GetSoftDeletedVault(string location, string deletedVaultName)
+        {
+            return GetRecoveryServicesClient.DeletedVaults.GetWithHttpMessagesAsync(
+                location, deletedVaultName, GetRequestHeaders()).Result.Body;
+        }
+
+        /// <summary>
+        /// Method to undelete a soft deleted Azure Recovery Services Vault
+        /// </summary>
+        /// <param name="location">Name of the Azure region</param>
+        /// <param name="deletedVaultName">Name of the deleted vault</param>
+        /// <param name="recoveryResourceGroupId">Recovery resource group ID</param>
+        /// <returns>undeleted vault object.</returns>
+        public DeletedVault UndeleteSoftDeletedVault(string location, string deletedVaultName, string recoveryResourceGroupId)
+        {
+            var properties = new DeletedVaultUndeleteInputProperties(recoveryResourceGroupId);
+            return GetRecoveryServicesClient.DeletedVaults.UndeleteWithHttpMessagesAsync(
+                location, deletedVaultName, properties, GetRequestHeaders()).Result.Body;
+        }
     }
 }
