@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzQuotaGroupQuota'))
 Describe 'Remove-AzQuotaGroupQuota' {
     It 'Delete' -skip {
         { 
-            $mgId = "admintest"
+            $mgId = $($env.SubscriptionId)
             $groupQuotaName = "ComputeGroupQuota01"
             Remove-AzQuotaGroupQuota -ManagementGroupId $mgId -Name $groupQuotaName -Confirm
         } | Should -Not -Throw

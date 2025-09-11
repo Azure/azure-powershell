@@ -20,7 +20,7 @@ Describe 'Get-AzQuotaGroupQuota' {
     }
 
     It 'Get' -skip {
-        { Get-AzQuotaGroupQuota -ManagementGroupId "admintest" } | Should -Not -Throw 
+        { Get-AzQuotaGroupQuota -ManagementGroupId $($env.SubscriptionId) } | Should -Not -Throw 
     }
 
     It 'GetViaIdentityManagementGroup' -skip {

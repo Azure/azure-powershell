@@ -20,6 +20,9 @@
 | Status | Test | Error |
 |--------|------|-------|
 | [ ] | New-AzQuota.Tests.ps1 CreateExpanded | New-AzQuota_CreateExpanded: Name PublicIPAddresses is not valid resource name. |
+| [ ] | All Group tests| fail because they the user id does not have authorisation to update group quota in test env |
+
+
 
 # Cleanup
 

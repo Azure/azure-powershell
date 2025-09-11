@@ -18,7 +18,7 @@ Describe 'Get-AzQuotaGroupQuotaLimitsRequest' {
     It 'Get' {
         { 
             $groupQuotaName = Get-AzQuotaGroupQuota | Select-Object -First 1 -ExpandProperty Name
-            Get-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "admintest" -GroupQuotaName $groupQuotaName
+            Get-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId $($env.SubscriptionId) -GroupQuotaName $groupQuotaName
         } | Should -Not -Throw
     }
 
