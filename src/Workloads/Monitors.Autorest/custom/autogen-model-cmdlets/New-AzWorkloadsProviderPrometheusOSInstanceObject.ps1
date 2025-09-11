@@ -16,65 +16,51 @@
 
 <#
 .Synopsis
-Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
+Create an in-memory object for PrometheusOSProviderInstanceProperties.
 .Description
-Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
+Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheushaclusterinstanceobject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsproviderprometheusosinstanceobject
 #>
-function New-AzWorkloadsProviderPrometheusHaClusterInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties')]
+function New-AzWorkloadsProviderPrometheusOSInstanceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Gets or sets the clusterName.")]
-        [string]
-        $ClusterName,
-        [Parameter(HelpMessage="Gets or sets the target machine name.")]
-        [string]
-        $Hostname,
         [Parameter(HelpMessage="URL of the Node Exporter endpoint.")]
         [string]
         $PrometheusUrl,
-        [Parameter(HelpMessage="Gets or sets the cluster sid.")]
+        [Parameter(HelpMessage="Gets or sets the SAP System Identifier.")]
         [string]
-        $Sid,
-        [Parameter(HelpMessage="Gets or sets the blob URI to SSL certificate for the HA cluster exporter.")]
+        $SapSid,
+        [Parameter(HelpMessage="Gets or sets the blob URI to SSL certificate for the prometheus node exporter.")]
         [string]
         $SslCertificateUri,
         [Parameter(HelpMessage="Gets or sets certificate preference if secure communication is enabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
+        [string]
         $SslPreference
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties]::New()
 
-        if ($PSBoundParameters.ContainsKey('ClusterName')) {
-            $Object.ClusterName = $ClusterName
-        }
-        if ($PSBoundParameters.ContainsKey('Hostname')) {
-            $Object.Hostname = $Hostname
-        }
         if ($PSBoundParameters.ContainsKey('PrometheusUrl')) {
             $Object.PrometheusUrl = $PrometheusUrl
         }
-        if ($PSBoundParameters.ContainsKey('Sid')) {
-            $Object.Sid = $Sid
+        if ($PSBoundParameters.ContainsKey('SapSid')) {
+            $Object.SapSid = $SapSid
         }
         if ($PSBoundParameters.ContainsKey('SslCertificateUri')) {
             $Object.SslCertificateUri = $SslCertificateUri
         }
-
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-
-        $Object.ProviderType = 'PrometheusHaCluster'
         return $Object
     }
 }
