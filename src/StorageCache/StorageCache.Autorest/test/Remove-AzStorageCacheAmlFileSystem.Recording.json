@@ -1,0 +1,168 @@
+{
+  "Remove-AzStorageCacheAmlFileSystem+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-1?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-1?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "d72889a5-8085-4ae5-8f58-59d6a59d96e3" ],
+        "CommandName": [ "Remove-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Remove-AzStorageCacheAmlFileSystem_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "4ff000dd-f4f0-41d2-b482-4d7a27e15cd8" ],
+        "x-ms-correlation-request-id": [ "4ff000dd-f4f0-41d2-b482-4d7a27e15cd8" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250910T211059Z:4ff000dd-f4f0-41d2-b482-4d7a27e15cd8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B865F2AD27E44CE4A4C3F0F155FF4CB2 Ref B: MNZ221060619017 Ref C: 2025-09-10T21:10:59Z" ],
+        "Date": [ "Wed, 10 Sep 2025 21:10:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStorageCacheAmlFileSystem+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-1?api-version=2025-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-1?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "be8b2927-7ef8-4c55-aa5d-4a858515bd54" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "101f8a6d-3855-4dba-bf00-bf9fb219e0ba" ],
+        "x-ms-correlation-request-id": [ "101f8a6d-3855-4dba-bf00-bf9fb219e0ba" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250910T211109Z:101f8a6d-3855-4dba-bf00-bf9fb219e0ba" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 41C95D43E28B4D619C8336CFB9053D3B Ref B: MNZ221060619017 Ref C: 2025-09-10T21:11:09Z" ],
+        "Date": [ "Wed, 10 Sep 2025 21:11:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "236" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.StorageCache/amlFilesystems/acctest43511-1\u0027 under resource group \u0027acctest43511\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStorageCacheAmlFileSystem+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-2?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-2?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "e2040585-19a3-4809-9c6f-45ff74f40479" ],
+        "CommandName": [ "Remove-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Remove-AzStorageCacheAmlFileSystem_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "f5f0b20e-8251-4f95-8d08-5edc13f8419d" ],
+        "x-ms-correlation-request-id": [ "f5f0b20e-8251-4f95-8d08-5edc13f8419d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250910T211109Z:f5f0b20e-8251-4f95-8d08-5edc13f8419d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 96E7EDAFFBC8436B9D2116226FB71F06 Ref B: MNZ221060619017 Ref C: 2025-09-10T21:11:09Z" ],
+        "Date": [ "Wed, 10 Sep 2025 21:11:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStorageCacheAmlFileSystem+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-2?api-version=2025-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511-2?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "34067e56-5526-41ef-b67e-4a28786f0605" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "c7dca64a-d169-48a4-85be-6d9e63e7e042" ],
+        "x-ms-correlation-request-id": [ "c7dca64a-d169-48a4-85be-6d9e63e7e042" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250910T211120Z:c7dca64a-d169-48a4-85be-6d9e63e7e042" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AAEE1B9043A54D42AE86B9015A7EF76A Ref B: MNZ221060619017 Ref C: 2025-09-10T21:11:19Z" ],
+        "Date": [ "Wed, 10 Sep 2025 21:11:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "236" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.StorageCache/amlFilesystems/acctest43511-2\u0027 under resource group \u0027acctest43511\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}
