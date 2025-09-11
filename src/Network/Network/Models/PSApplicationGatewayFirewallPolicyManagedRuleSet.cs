@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string RuleSetVersion { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
+        public string DisplayName { get; private set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public List<PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride> RuleGroupOverrides { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public List<PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup> ComputedDisabledRules { get; private set; }
