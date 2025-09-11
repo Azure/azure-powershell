@@ -46,7 +46,7 @@ This command gets the details of a given Database Migration to a SQL Virtual Mac
 
 ### Example 2: Get the expanded details of a given Database Migration to a SQL Virtual Machine
 ```powershell
-$vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
+$vmMigration = Get-AzDataMigrationToSqlVM -ResourceGroupName "MyResouceGroup" -SqlVirtualMachineName "MySqlVM" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
 $vmMigration.MigrationStatusDetail
 ```
 
