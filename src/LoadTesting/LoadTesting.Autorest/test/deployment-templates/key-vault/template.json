@@ -98,8 +98,8 @@
                         "applicationId": ""
                     },
                     {
-                        "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-                        "objectId": "b2ce67ee-5de9-4b0f-acd6-2f6465e7aa2f",
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "8e05aabd-d028-4d31-96d7-ef255e3a3e78",
                         "permissions": {
                             "keys": [
                                 "Get",
