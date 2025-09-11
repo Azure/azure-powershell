@@ -1,7 +1,7 @@
 ---
 external help file: Az.ScheduledQueryRule.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzScheduledQueryRuleConditionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azscheduledqueryruleconditionobject
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Create an in-memory object for Condition.
 ```
 New-AzScheduledQueryRuleConditionObject [-Dimension <IDimension[]>]
  [-FailingPeriodMinFailingPeriodsToAlert <Int64>] [-FailingPeriodNumberOfEvaluationPeriod <Int64>]
- [-MetricMeasureColumn <String>] [-MetricName <String>] [-Operator <ConditionOperator>] [-Query <String>]
- [-ResourceIdColumn <String>] [-Threshold <Double>] [-TimeAggregation <TimeAggregation>]
+ [-MetricMeasureColumn <String>] [-MetricName <String>] [-Operator <String>] [-Query <String>]
+ [-ResourceIdColumn <String>] [-Threshold <Double>] [-TimeAggregation <String>]
  [<CommonParameters>]
 ```
 
@@ -37,10 +37,9 @@ Create condition object
 
 ### -Dimension
 List of Dimensions conditions.
-To construct, see NOTES section for DIMENSION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IDimension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IDimension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +121,7 @@ The criteria operator.
 Relevant and required only for rules of the kind LogAlert.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +185,7 @@ Aggregation type.
 Relevant and required only for rules of the kind LogAlert.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.TimeAggregation
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition
 
 ## NOTES
 

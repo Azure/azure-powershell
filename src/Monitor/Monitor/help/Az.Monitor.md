@@ -253,7 +253,7 @@ Create an in-memory object for PlatformTelemetryDataSource.
 Create an in-memory object for PrometheusForwarderDataSource.
 
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
-Creates or updates a scheduled query rule.
+Create a scheduled query rule.
 
 ### [New-AzScheduledQueryRuleConditionObject](New-AzScheduledQueryRuleConditionObject.md)
 Create an in-memory object for Condition.
