@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Parameters EmailSendToSubscriptionAdministrator and EmailSendToSubscriptionCoAdministrator of cmdlet `New-AzAutoscaleNotificationObject` was unavailable after April 3, 2024 due to Azure classic administrator retirement.
 
 ## Version 6.0.3
 * Added breaking change announcement for below cmdlets from single object or fixed array to list.
