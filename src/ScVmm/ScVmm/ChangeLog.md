@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Suppressed expected MachineResourceNotFound exceptions from being printed on the console.
 
 ## Version 0.1.0

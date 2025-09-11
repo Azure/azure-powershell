@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.10.0
 * Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
 
 ## Version 2.9.0
