@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/07aed47b-60ad-4d6e-a07a-89b602418441/resourceGroups/sdk-tests-rg/providers/Microsoft.IoTFirmwareDefense/workspaces/default/generateUploadUrl?api-version=2025-08-02",
-      "Content": "{\n  \"firmwareId\": \"a1ef6b4e-2156-434a-9850-19d792087efd\"\n}",
+      "Content": "{\n  \"firmwareId\": \"9f665e30-f3cc-473e-b199-f1e3caccb1ed\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,26 +17,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6c885de3-382b-4ead-acf0-9c1c31df4d02/eastus2/75b57133-e07c-426d-99a8-9560e54f2444" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6c885de3-382b-4ead-acf0-9c1c31df4d02/eastus2/4fcf634c-473a-4c5d-b869-868e86cc3184" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-envoy-upstream-service-time": [ "115" ],
-        "x-ms-request-id": [ "65da7fd7-b91c-4b6f-9392-6779c58003c6" ],
-        "x-ms-correlation-request-id": [ "b5ecf76b-ccae-4d5b-a26f-e5c05b0384c6" ],
+        "x-envoy-upstream-service-time": [ "102" ],
+        "x-ms-request-id": [ "b9fa8372-1c70-4969-9c6e-07d8765988b9" ],
+        "x-ms-correlation-request-id": [ "992a0a86-976a-4be3-910b-590a967c7ae3" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250911T195830Z:b5ecf76b-ccae-4d5b-a26f-e5c05b0384c6" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250911T200739Z:992a0a86-976a-4be3-910b-590a967c7ae3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5CD629A3845C4DCE8AF813DDA8EA50F0 Ref B: BL2AA2011002023 Ref C: 2025-09-11T19:58:29Z" ],
-        "Date": [ "Thu, 11 Sep 2025 19:58:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4ABF171D4B704FE796F428F5B5C51064 Ref B: BL2AA2030101051 Ref C: 2025-09-11T20:07:38Z" ],
+        "Date": [ "Thu, 11 Sep 2025 20:07:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "472" ],
+        "Content-Length": [ "474" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"url\":\"https://storfistprodwus3upload.blob.core.windows.net/6948aa27-1cb7-4415-ae05-be0570834d2b/a1ef6b4e-2156-434a-9850-19d792087efd/c09b9acb-b2da-44f9-8680-c874dacb8c62?skoid=147381a7-ae3c-43ac-8425-b4b2025794da\u0026sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d\u0026skt=2025-09-11T19%3A58%3A30Z\u0026ske=2025-09-12T19%3A58%3A30Z\u0026sks=b\u0026skv=2025-05-05\u0026sv=2025-05-05\u0026st=2025-09-11T19%3A58%3A30Z\u0026se=2025-09-11T23%3A58%3A30Z\u0026sr=b\u0026sp=cw\u0026sig=CFoLaPjdNkW3wCKV0mc0sQS2%2BcqIqpb9wevHvwbjB1U%3D\"}",
+      "Content": "{\"url\":\"https://storfistprodwus3upload.blob.core.windows.net/6948aa27-1cb7-4415-ae05-be0570834d2b/9f665e30-f3cc-473e-b199-f1e3caccb1ed/132094e7-c54d-447a-9ff5-c2d7797bf656?skoid=147381a7-ae3c-43ac-8425-b4b2025794da\u0026sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d\u0026skt=2025-09-11T20%3A07%3A39Z\u0026ske=2025-09-12T20%3A07%3A39Z\u0026sks=b\u0026skv=2025-05-05\u0026sv=2025-05-05\u0026st=2025-09-11T20%3A07%3A39Z\u0026se=2025-09-12T00%3A07%3A39Z\u0026sr=b\u0026sp=cw\u0026sig=H9tIE9NQqljTbm%2Fsx%2FBKj2W1rhza2UnM0I9t5I9KEo0%3D\"}",
       "isContentBase64": false
     }
   }
