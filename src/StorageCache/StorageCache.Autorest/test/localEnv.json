@@ -1,0 +1,15 @@
+{
+  "storageAccountName": "azpssa0706",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "location": "eastus",
+  "storageCacheAmlFileSystemName": "azps-vdtj9u",
+  "resourceGroup": "azps_test_gp_storagecache",
+  "virtualNetworkName": "azps-virtual-network",
+  "managementIdentityName": "azps-management-identity",
+  "keyVaultName": "azps-keyvault-0704",
+  "storageCacheAmlFileSystemName2": "azps-28vojz",
+  "keyVaultKeyName": "az-kv-0703",
+  "blobContainerName2": "az-blob-login",
+  "SubscriptionId": "0a715a3b-8a16-43ba-a6bb-1e38ad050791",
+  "blobContainerName1": "az-blob"
+}
