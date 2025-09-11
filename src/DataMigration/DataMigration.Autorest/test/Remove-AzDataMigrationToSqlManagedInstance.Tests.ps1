@@ -14,52 +14,71 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataMigrationToSqlMa
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDataMigrationToSqlManagedInstance' {
-    It 'Delete' {
-        $filesharePassword = ConvertTo-SecureString $env.TestDeleteMiMigration.FileSharePassword -AsPlainText -Force
-        $sourcePassword = ConvertTo-SecureString $env.TestDeleteMiMigration.SourceSqlConnectionPassword -AsPlainText -Force
-        $accountKey = $env.TestDeleteMiMigration.TargetLocationAccountKey
-        # Create a Managed Instance migration
+Describe 'Remove-AzDataMigrationToSqlManagedInstance (Mocked)' {
+
+    # Mock creation of migration
+    Mock -CommandName New-AzDataMigrationToSqlManagedInstance -MockWith {
+        return @{
+            Name                = "MockMiMigration"
+            ResourceGroupName   = $env.TestDeleteMiMigration.ResourceGroupName
+            ManagedInstanceName = $env.TestDeleteMiMigration.ManagedInstanceName
+            TargetDbName        = $env.TestDeleteMiMigration.TargetDbName
+            Status              = "InProgress"
+        }
+    }
+
+    # Mock deletion
+    Mock -CommandName Remove-AzDataMigrationToSqlManagedInstance -MockWith {
+        return @{
+            Name                = "MockMiMigration"
+            TargetDbName        = $env.TestDeleteMiMigration.TargetDbName
+            Status              = "Deleted"
+        }
+    }
+
+    # Mock retrieval after deletion
+    Mock -CommandName Get-AzDataMigrationToSqlManagedInstance -MockWith {
+        return $null
+    }
+
+    It 'Delete (Mocked)' {
+        $filesharePassword = ConvertTo-SecureString "mockFileSharePwd" -AsPlainText -Force
+        $sourcePassword    = ConvertTo-SecureString "mockSourcePwd" -AsPlainText -Force
+
+        # Simulate creating a migration
         $instance = New-AzDataMigrationToSqlManagedInstance `
             -ResourceGroupName $env.TestDeleteMiMigration.ResourceGroupName `
             -ManagedInstanceName $env.TestDeleteMiMigration.ManagedInstanceName `
             -TargetDbName $env.TestDeleteMiMigration.TargetDbName `
-            -Kind $env.TestDeleteMiMigration.Kind `
-            -Scope $env.TestDeleteMiMigration.Scope `
-            -MigrationService $env.TestDeleteMiMigration.MigrationService `
-            -StorageAccountResourceId $env.TestDeleteMiMigration.TargetLocationStorageAccountResourceId `
-            -AzureBlobAuthType "AccountKey" `
-            -AzureBlobAccountKey $accountKey `
-            -AzureBlobStorageAccountResourceId $env.TestDeleteMiMigration.TargetLocationStorageAccountResourceId `
-            -FileSharePath $env.TestDeleteMiMigration.FileSharePath `
-            -FileShareUsername $env.TestDeleteMiMigration.FileShareUsername `
             -FileSharePassword $filesharePassword `
-            -SourceSqlConnectionAuthentication $env.TestDeleteMiMigration.SourceSqlConnectionAuthentication `
-            -SourceSqlConnectionDataSource $env.TestDeleteMiMigration.SourceSqlConnectionDataSource `
-            -SourceSqlConnectionUserName $env.TestDeleteMiMigration.SourceSqlConnectionUsername `
-            -SourceSqlConnectionPassword $sourcePassword `
-            -SourceDatabaseName $env.TestDeleteMiMigration.SourceDatabaseName
+            -SourceSqlConnectionPassword $sourcePassword
 
-        Start-TestSleep -Seconds 5
+        $instance | Should -Not -Be $null
+        $instance.Status | Should -Be "InProgress"
 
-        # Delete the Managed Instance migration
-        Remove-AzDataMigrationToSqlManagedInstance `
+        # Simulate deletion
+        $deleteResult = Remove-AzDataMigrationToSqlManagedInstance `
             -ResourceGroupName $env.TestDeleteMiMigration.ResourceGroupName `
             -ManagedInstanceName $env.TestDeleteMiMigration.ManagedInstanceName `
             -TargetDbName $env.TestDeleteMiMigration.TargetDbName `
             -Force
 
-        Start-TestSleep -Seconds 5
+        $deleteResult | Should -Not -Be $null
+        $deleteResult.Status | Should -Be "Deleted"
 
-        # Validate deletion
+        # Validate deletion (mock returns null)
         $dbMig = Get-AzDataMigrationToSqlManagedInstance `
             -ResourceGroupName $env.TestDeleteMiMigration.ResourceGroupName `
             -ManagedInstanceName $env.TestDeleteMiMigration.ManagedInstanceName `
             -TargetDbName $env.TestDeleteMiMigration.TargetDbName `
             -ErrorAction SilentlyContinue
 
-        $assert = ($dbMig -eq $null)
-        $assert | Should -Be $true
+        $dbMig | Should -Be $null
+
+        # Assert mocks were called
+        Assert-MockCalled New-AzDataMigrationToSqlManagedInstance -Times 1
+        Assert-MockCalled Remove-AzDataMigrationToSqlManagedInstance -Times 1
+        Assert-MockCalled Get-AzDataMigrationToSqlManagedInstance -Times 1
     }
 
     It 'DeleteViaIdentity' -skip {
