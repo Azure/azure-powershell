@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2Rhd2F0cm91LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9kYXdhdHJvdWhvYm8vYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage/versions/foo?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "50c33c76-32d9-45f9-8f30-e5f25871a41c"
+          "73773c1c-7de7-4b81-b63c-8c80072a81e9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.6.4"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.7.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,16 +33,19 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DD04291B133365\""
+          "W/\"0x8DDF175BC581D3B\""
         ],
         "x-ms-request-id": [
-          "e278a387-4941-4444-8620-ac830804064b"
+          "6d3e6b9d-5386-47f2-9a61-21543e6ad9b8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/westus2/35c177c1-5e34-445f-a907-aa13546c941e"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -51,22 +54,22 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "9dc84b1c-3aa9-4e5d-86a3-aa501c6b073d"
+          "d41bc9ff-4313-41f9-859a-9001e110c928"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20241113T212115Z:9dc84b1c-3aa9-4e5d-86a3-aa501c6b073d"
+          "WESTUS2:20250911T205653Z:d41bc9ff-4313-41f9-859a-9001e110c928"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 50BC030A0D25438888C52CD9081F78B2 Ref B: MNZ221060608045 Ref C: 2024-11-13T21:21:14Z"
+          "Ref A: 4EE067C151124A25B4383945CD9570A5 Ref B: MWH011020807054 Ref C: 2025-09-11T20:56:52Z"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:21:14 GMT"
+          "Thu, 11 Sep 2025 20:56:52 GMT"
         ],
         "Content-Length": [
-          "651"
+          "662"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -75,28 +78,28 @@
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:21:15 GMT"
+          "Thu, 11 Sep 2025 20:56:52 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DD04291B133365\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://dawatroustorage.blob.core.windows.net/app-createpoolwithapplicationp-8e8bd15c690b4b0dafdc70d909e9588a/foo?sv=2018-03-28&sr=b&sig=JYTsgkSDdbvhYemcVlQnrQmuKMvExB%2F1oJQrS5zjQ78%3D&st=2024-11-13T21%3A16%3A15Z&se=2024-11-14T01%3A21%3A15Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2024-11-14T01:21:15.095557Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DDF175BC581D3B\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://dotnotsdkstorage.blob.core.windows.net/app-createpoolwithapplicationp-a7f0e19f41d44e138d21342717baae0d/foo?sv=2018-03-28&sr=b&sig=lgXT%2FwcBoZht3z2ru2HKyA3NToWvDDlOgChYHApjexc%3D&st=2025-09-11T20%3A51%3A52Z&se=2025-09-12T00%3A56%3A52Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2025-09-12T00:56:52.9874553Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage/versions/foo/activate?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2Rhd2F0cm91LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9kYXdhdHJvdWhvYm8vYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvby9hY3RpdmF0ZT9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage/versions/foo/activate?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvby9hY3RpdmF0ZT9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "POST",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1d2826f3-ddd9-4d94-8dcd-d98a52fbbff1"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "1b4f1117-0e86-454e-81ee-3ad903ac9f97"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.6.4"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.7.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -114,10 +117,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DD04291BABBA8A\""
+          "W/\"0x8DDF175C5174BEB\""
         ],
         "x-ms-request-id": [
-          "9529fcfa-d4f2-41d4-99d0-852d16595473"
+          "9f0cf8c9-979b-458f-b501-eda8d950de95"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -125,29 +128,32 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/f064031d-b165-4001-aa8f-f94eb5fe0286"
+        ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
         ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "c735526b-691a-4604-8c8a-b48836ea6186"
+          "9174c6ac-fbe7-4cfc-ae5f-7d9be8dd2335"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20241113T212116Z:c735526b-691a-4604-8c8a-b48836ea6186"
+          "EASTUS2:20250911T205707Z:9174c6ac-fbe7-4cfc-ae5f-7d9be8dd2335"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: BAFC83D65D5A454F9DACE8834BBA74E4 Ref B: MNZ221060608045 Ref C: 2024-11-13T21:21:15Z"
+          "Ref A: FC2DEBD9B3394A6D855F9B154DCF895F Ref B: MWH011020807054 Ref C: 2025-09-11T20:57:07Z"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:21:15 GMT"
+          "Thu, 11 Sep 2025 20:57:07 GMT"
         ],
         "Content-Length": [
-          "718"
+          "728"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -156,28 +162,28 @@
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:21:16 GMT"
+          "Thu, 11 Sep 2025 20:57:07 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DD04291BABBA8A\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://dawatroustorage.blob.core.windows.net/app-createpoolwithapplicationp-8e8bd15c690b4b0dafdc70d909e9588a/foo?sv=2018-03-28&sr=b&sig=XtEeGHuabUpkEbeXL0p2gpFoQ5Lo0%2FKPXdZC8iQzEso%3D&st=2024-11-13T21%3A16%3A16Z&se=2024-11-14T01%3A21%3A16Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2024-11-14T01:21:16.1108972Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2024-11-13T21:21:16.0848028Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DDF175C5174BEB\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://dotnotsdkstorage.blob.core.windows.net/app-createpoolwithapplicationp-a7f0e19f41d44e138d21342717baae0d/foo?sv=2018-03-28&sr=b&sig=mtRXmLaWlCT2mxgoqOdu%2FKSP9F2wsHknL8g65tEBCkw%3D&st=2025-09-11T20%3A52%3A07Z&se=2025-09-12T00%3A57%3A07Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2025-09-12T00:57:07.6829576Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-09-11T20:57:07.6450632Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2Rhd2F0cm91LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9kYXdhdHJvdWhvYm8vYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage/versions/foo?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1d2826f3-ddd9-4d94-8dcd-d98a52fbbff1"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "1b4f1117-0e86-454e-81ee-3ad903ac9f97"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.6.4"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.7.0"
         ]
       },
       "RequestBody": "",
@@ -189,16 +195,19 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DD04291BABBA8A\""
+          "W/\"0x8DDF175C5174BEB\""
         ],
         "x-ms-request-id": [
-          "baf13e23-5f89-45e4-8607-7be5ab730e85"
+          "e902b553-7c1c-478b-89a7-ef59fd3854f2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/4718d130-e168-4942-8e18-37d2df97bea1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -207,22 +216,22 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "1cdfa81b-b9b2-41bc-8b56-2b57a211e992"
+          "348b6f20-d7cd-466f-9269-2c0f2aabd568"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20241113T212116Z:1cdfa81b-b9b2-41bc-8b56-2b57a211e992"
+          "EASTUS2:20250911T205707Z:348b6f20-d7cd-466f-9269-2c0f2aabd568"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: BCCF13C85EED4A2A920095EAE7478A91 Ref B: MNZ221060608045 Ref C: 2024-11-13T21:21:16Z"
+          "Ref A: C2BA5C6A1C7742128BBF7272535C77BC Ref B: MWH011020807054 Ref C: 2025-09-11T20:57:07Z"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:21:15 GMT"
+          "Thu, 11 Sep 2025 20:57:07 GMT"
         ],
         "Content-Length": [
-          "718"
+          "728"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -231,10 +240,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:21:16 GMT"
+          "Thu, 11 Sep 2025 20:57:07 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DD04291BABBA8A\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://dawatroustorage.blob.core.windows.net/app-createpoolwithapplicationp-8e8bd15c690b4b0dafdc70d909e9588a/foo?sv=2018-03-28&sr=b&sig=XtEeGHuabUpkEbeXL0p2gpFoQ5Lo0%2FKPXdZC8iQzEso%3D&st=2024-11-13T21%3A16%3A16Z&se=2024-11-14T01%3A21%3A16Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2024-11-14T01:21:16.2802511Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2024-11-13T21:21:16.0848028Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DDF175C5174BEB\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://dotnotsdkstorage.blob.core.windows.net/app-createpoolwithapplicationp-a7f0e19f41d44e138d21342717baae0d/foo?sv=2018-03-28&sr=b&sig=mtRXmLaWlCT2mxgoqOdu%2FKSP9F2wsHknL8g65tEBCkw%3D&st=2025-09-11T20%3A52%3A07Z&se=2025-09-12T00%3A57%3A07Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2025-09-12T00:57:07.8689142Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-09-11T20:57:07.6450632Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -242,22 +251,22 @@
       "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "POST",
       "RequestHeaders": {
-        "client-request-id": [
-          "8aef4021-d598-4b81-bea6-857b6de43391"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "6ddf68b0-c6ce-49b8-a86c-9ec24ec34300"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:21:16 GMT"
+          "Thu, 11 Sep 2025 20:57:08 GMT"
         ],
         "x-ms-client-request-id": [
-          "021a9c95-4807-4a9d-9642-8334e6ea0f21"
+          "18f06104-c0a9-4055-9522-463f6d0be95f"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
@@ -274,16 +283,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DD04291BFCA8D4"
+          "0x8DDF175C5FDD995"
         ],
         "Location": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/pools/testCreatePoolWithAppPackages"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "0c9b7d4d-12eb-4bfc-a29a-87103e807f7f"
+          "0232bc86-681b-44e0-82ca-0c2d1d05c294"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -295,34 +304,34 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/pools/testCreatePoolWithAppPackages"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:21:16 GMT"
+          "Thu, 11 Sep 2025 20:57:08 GMT"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:21:16 GMT"
+          "Thu, 11 Sep 2025 20:57:09 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2Rhd2F0cm91LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9kYXdhdHJvdWhvYm8vYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage/versions/foo?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "dceb1fb1-eba6-461c-9894-8704883f0781"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "d023f90d-dfbc-4f8f-a35d-57e7e6075112"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.6.4"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.7.0"
         ]
       },
       "RequestBody": "",
@@ -334,13 +343,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e9ba4535-76a4-4881-9eb5-cc1f5dd962e9"
+          "e2f7ce81-668c-406c-a8fb-68b09d768418"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/13cf38e9-84b2-4266-a58b-516f643597fc"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "799"
@@ -349,19 +361,19 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "0a564d2d-661a-4709-9718-e40f644c4bf7"
+          "f1a86ded-9c03-4e97-948e-ba5d144c3aac"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20241113T212117Z:0a564d2d-661a-4709-9718-e40f644c4bf7"
+          "EASTUS2:20250911T205709Z:f1a86ded-9c03-4e97-948e-ba5d144c3aac"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 1AEF2C67E2504C9CAA4B5FFA8B329F06 Ref B: MNZ221060608045 Ref C: 2024-11-13T21:21:16Z"
+          "Ref A: 322EF470718946FB963741A08CD91894 Ref B: MWH011020807054 Ref C: 2025-09-11T20:57:09Z"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:21:16 GMT"
+          "Thu, 11 Sep 2025 20:57:09 GMT"
         ],
         "Expires": [
           "-1"
@@ -374,21 +386,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/dawatrou-rg/providers/Microsoft.Batch/batchAccounts/dawatrouhobo/applications/createPoolWithApplicationPackage?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL2Rhd2F0cm91LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9kYXdhdHJvdWhvYm8vYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/createPoolWithApplicationPackage?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "afcd4b5d-affe-4bce-8c80-88227ff03df6"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "dc9f8f28-86c4-47b6-a0e3-777290bb65aa"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.6.4"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/3.7.0"
         ]
       },
       "RequestBody": "",
@@ -400,13 +412,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4627edff-2e3c-4e61-8d50-2d77e814af01"
+          "56059bbc-826c-4411-8ad6-6e1db3fc1735"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/10dc13f7-378f-4158-8580-cba2fb74b5f9"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "799"
@@ -415,19 +430,19 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "b0993cd0-38a0-4f1d-a8ec-c7a1a5d9b58e"
+          "ff43bfef-d1a8-4187-a633-708aafdb8dc1"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20241113T212117Z:b0993cd0-38a0-4f1d-a8ec-c7a1a5d9b58e"
+          "EASTUS2:20250911T205709Z:ff43bfef-d1a8-4187-a633-708aafdb8dc1"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 53CE7C87D52A44B480792C755407E5A4 Ref B: MNZ221060608045 Ref C: 2024-11-13T21:21:17Z"
+          "Ref A: 53B14347BD624A709F2950F84BCB9DBB Ref B: MWH011020807054 Ref C: 2025-09-11T20:57:09Z"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:21:16 GMT"
+          "Thu, 11 Sep 2025 20:57:09 GMT"
         ],
         "Expires": [
           "-1"
@@ -444,22 +459,22 @@
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RDcmVhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
-        "client-request-id": [
-          "a12435d8-06e6-4ec3-9af6-e2e1af253d54"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "5ba6b24b-ddc1-4053-bf2f-e5999cfd6b24"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:21:17 GMT"
+          "Thu, 11 Sep 2025 20:57:09 GMT"
         ],
         "x-ms-client-request-id": [
-          "4cc6c1a7-cf2a-4b2d-9d3d-741cd005f481"
+          "3605e26d-2fba-4a90-94a8-11bd0050ec17"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
@@ -476,7 +491,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "40c0e206-c02c-42d7-9bf6-e46d8e95deec"
+          "92f249ad-b707-4222-90da-87ec12630ab7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -488,7 +503,7 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:21:18 GMT"
+          "Thu, 11 Sep 2025 20:57:10 GMT"
         ]
       },
       "ResponseBody": "",
@@ -497,9 +512,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
-    "AZURE_BATCH_ACCOUNT": "dawatrouhobo",
-    "AZURE_BATCH_ENDPOINT": "https://dawatrouhobo.eastus2.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "dawatrou-rg"
+    "SubscriptionId": "94bd7ded-68b4-4ffa-82a5-37ac72caa2ec",
+    "AZURE_BATCH_ACCOUNT": "dotnotsdkbatchaccount2",
+    "AZURE_BATCH_ENDPOINT": "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "automation"
   }
 }
