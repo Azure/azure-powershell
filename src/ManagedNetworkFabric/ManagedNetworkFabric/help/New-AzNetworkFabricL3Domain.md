@@ -17,9 +17,10 @@ Create isolation domain resources for layer 3 connectivity between compute nodes
 New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -NetworkFabricId <String> [-AggregateRouteConfiguration <IAggregateRouteConfiguration>]
  [-Annotation <String>] [-ConnectedSubnetRoutePolicy <IConnectedSubnetRoutePolicy>]
- [-RedistributeConnectedSubnet <String>] [-RedistributeStaticRoute <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RedistributeConnectedSubnet <String>] [-RedistributeStaticRoute <String>]
+ [-RoutePrefixLimitHardLimit <Int32>] [-RoutePrefixLimitThreshold <Int32>]
+ [-StaticRoutePolicyExportRoutePolicy <IL3ExportRoutePolicy>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -45,8 +46,8 @@ Create isolation domain resources for layer 3 connectivity between compute nodes
 ```powershell
 $connectedSubnetRoutePolicy = @{
     ExportRoutePolicy = @(@{
-        ExportIpv4RoutePolicyId = "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
-        ExportIpv6RoutePolicyId = "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+        ExportIpv4RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+        ExportIpv6RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
     })
 }
 $aggregateRouteConfiguration = @{
@@ -279,6 +280,51 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutePrefixLimitHardLimit
+Hard limit for the routes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutePrefixLimitThreshold
+Threshold for the routes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticRoutePolicyExportRoutePolicy
+Array of ARM Resource ID of the RoutePolicies.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicy
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

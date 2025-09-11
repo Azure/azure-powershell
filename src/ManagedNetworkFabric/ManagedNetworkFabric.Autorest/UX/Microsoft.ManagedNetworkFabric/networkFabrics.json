@@ -1,6 +1,6 @@
 {
   "resourceType": "networkFabrics",
-  "apiVersion": "2023-06-15",
+  "apiVersion": "2024-06-15-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
   },
@@ -44,6 +44,82 @@
       ]
     },
     {
+      "name": "Invoke-AzNetworkFabricArmConfigurationDiff",
+      "description": "Post action: Triggers diff of NetworkFabric ARM Configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/armConfigurationDiff",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricarmconfigurationdiff"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Post action: Triggers diff of NetworkFabric ARM Configuration.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricCommitConfiguration",
+      "description": "Atomic commit of the given Network Fabric instance.\nSync commit of NFA resources at Fabric level.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitConfiguration",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabriccommitconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Atomic commit of the given Network Fabric instance. Sync commit of NFA resources at Fabric level.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Invoke-AzNetworkFabricDeprovision",
       "description": "Deprovisions the underlying resources in the given Network Fabric instance.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/deprovision",
@@ -64,6 +140,44 @@
       "examples": [
         {
           "description": "Deprovisions the underlying resources in the given Network Fabric instance.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricDeviceConfiguration",
+      "description": "Post action: Triggers view of network fabric configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/viewDeviceConfiguration",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricdeviceconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Post action: Triggers view of network fabric configuration.",
           "parameters": [
             {
               "name": "-NetworkFabricName",

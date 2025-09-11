@@ -18,8 +18,9 @@ New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> -Location
  -NetworkFabricId <String> [-SubscriptionId <String>]
  [-AggregateRouteConfiguration <IAggregateRouteConfiguration>] [-Annotation <String>]
  [-ConnectedSubnetRoutePolicy <IConnectedSubnetRoutePolicy>] [-RedistributeConnectedSubnet <String>]
- [-RedistributeStaticRoute <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RedistributeStaticRoute <String>] [-RoutePrefixLimitHardLimit <Int32>] [-RoutePrefixLimitThreshold <Int32>]
+ [-StaticRoutePolicyExportRoutePolicy <IL3ExportRoutePolicy>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -279,6 +280,51 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutePrefixLimitHardLimit
+Hard limit for the routes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutePrefixLimitThreshold
+Threshold for the routes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticRoutePolicyExportRoutePolicy
+Array of ARM Resource ID of the RoutePolicies.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3ExportRoutePolicy
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

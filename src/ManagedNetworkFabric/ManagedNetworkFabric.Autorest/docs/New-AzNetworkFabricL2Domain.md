@@ -15,8 +15,9 @@ Create layer 2 network connectivity between compute nodes within a rack and acro
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFabricL2Domain -Name <String> -ResourceGroupName <String> -Location <String>
- -NetworkFabricId <String> -VlanId <Int32> [-SubscriptionId <String>] [-Annotation <String>] [-Mtu <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -NetworkFabricId <String> -VlanId <Int32> [-SubscriptionId <String>] [-Annotation <String>]
+ [-ExtendedVlan <String>] [-Mtu <Int32>] [-NetworkToNetworkInterconnectId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -93,6 +94,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedVlan
+Extended VLAN status, default value is Disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -186,6 +202,21 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkToNetworkInterconnectId
+ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
