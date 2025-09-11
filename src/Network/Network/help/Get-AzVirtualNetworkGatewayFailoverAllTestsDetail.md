@@ -15,14 +15,14 @@ Retrieves the details of all failover tests for a specified virtual network gate
 ### ByName (Default)
 ```
 Get-AzVirtualNetworkGatewayFailoverAllTestsDetail [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
 ```
 Get-AzVirtualNetworkGatewayFailoverAllTestsDetail -ResourceGroupName <String>
  -VirtualNetworkGatewayName <String> -Type <String> -FetchLatest <Boolean>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,21 +73,6 @@ Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
