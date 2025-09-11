@@ -57,31 +57,27 @@ Once the operation gets to terminal state - Succeeded | Failed, then the URI wil
 
 ## EXAMPLES
 
-### Example 1: Create a new Compute GroupQuota with basic parameters
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzQuotaGroupQuota -ManagementGroupId "mg-demo" -Name "ComputeGroupQuota01" -DisplayName "Demo Compute Quota"
+{{ Add code here }}
 ```
 
 ```output
-Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt
-----                                 ------------------- ------------------- ----------------------- -------------------
-<guid>
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example creates a new GroupQuota named "ComputeGroupQuota01" for the management group "mg-demo" with the display name "Demo Compute Quota".
+{{ Add description here }}
 
-### Example 2: Create a new Compute GroupQuota using a JSON file
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzQuotaGroupQuota -ManagementGroupId "mg-demo" -Name "ComputeGroupQuota02" -JsonFilePath "../docs-data/compute-groupquota.json"
+{{ Add code here }}
 ```
 
 ```output
-Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt
-----                                 ------------------- ------------------- ----------------------- -------------------
-<guid>
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example creates a new GroupQuota named "ComputeGroupQuota02" for the management group "mg-demo" using the configuration specified in the JSON file located at "../docs-data/compute-groupquota.json".
+{{ Add description here }}
 
 ## PARAMETERS
 

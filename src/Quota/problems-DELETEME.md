@@ -15,6 +15,12 @@
 | [ ] | Get-AzQuotaGroupQuotaSubscriptionRequest | Unable to verify that the user that sent this request is the original caller of the asynchronous operation being polled. Please refer to https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/async-operations for more information. |
 | [ ] | Get-AzQuotaGroupQuotaUsage | Get-AzQuotaGroupQuotaUsage_List: Expected '{' or '['. Was String: Get. |
 
+# Tests
+
+| Status | Test | Error |
+|--------|------|-------|
+| [ ] | New-AzQuota.Tests.ps1 CreateExpanded | New-AzQuota_CreateExpanded: Name PublicIPAddresses is not valid resource name. |
+
 # Cleanup
 
 - [ ] mask 0e745469-49f8-48c9-873b-24ca87143db1

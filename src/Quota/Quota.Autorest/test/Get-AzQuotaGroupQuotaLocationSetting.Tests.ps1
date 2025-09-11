@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLocation
 }
 
 Describe 'Get-AzQuotaGroupQuotaLocationSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "admintest" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" } | Should -Not -Throw
     }
 
     It 'GetViaIdentityManagementGroup' -skip {

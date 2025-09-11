@@ -1,0 +1,44 @@
+{
+  "Get-AzQuotaGroupQuotaLimit+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/admintest/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/groupQuotaLimits/eastus?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/admintest/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/groupQuotaLimits/eastus?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "72e3df83-2b81-4d56-9864-6502b9db1b91" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaLimit" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaLimit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 403,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "4fa2a45c-3c65-4b0f-a273-707cab309e4a" ],
+        "x-ms-correlation-request-id": [ "4fa2a45c-3c65-4b0f-a273-707cab309e4a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T071624Z:4fa2a45c-3c65-4b0f-a273-707cab309e4a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B4EA82AC28EC4B0AB7A9B5DF228A2310 Ref B: MAA201060516021 Ref C: 2025-09-11T07:16:24Z" ],
+        "Date": [ "Thu, 11 Sep 2025 07:16:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027resilv@microsoft.com\u0027 with object id \u00275b715b31-cfde-46eb-ae15-eab66b69eb18\u0027 does not have authorization to perform action \u0027Microsoft.Quota/groupQuotas/resourceProviders/groupQuotaLimits/read\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/admintest/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/groupQuotaLimits/eastus\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuota'))
 }
 
 Describe 'Get-AzQuotaGroupQuota' {
-    It 'List' -skip {
-        { Get-AzQuotaGroupQuota -ManagementGroupId "mg-demo" } | Should -Not -Throw 
+    It 'List' -skip  {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    # It 'Get' -skip {
-    #     { throw [System.NotImplementedException] } | Should -Not -Throw
-    # }
+    It 'Get' -skip {
+        { Get-AzQuotaGroupQuota -ManagementGroupId "admintest" } | Should -Not -Throw 
+    }
 
-    # It 'GetViaIdentityManagementGroup' -skip {
-    #     { throw [System.NotImplementedException] } | Should -Not -Throw
-    # }
+    It 'GetViaIdentityManagementGroup' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-    # It 'GetViaIdentity' -skip {
-    #     { throw [System.NotImplementedException] } | Should -Not -Throw
-    # }
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }

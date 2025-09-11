@@ -2,7 +2,7 @@
 
 ## Example 1: Get GroupQuota limits for a specific quota group in eastus
 ```
-Get-AzQuotaGroupQuotaLimit -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute"
+Get-AzQuotaGroupQuotaLimit -ManagementGroupId "admintest" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute"
 ```
 
 ```output

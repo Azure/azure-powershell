@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzQuotaGroupQuotaLocation
 }
 
 Describe 'New-AzQuotaGroupQuotaLocationSetting' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            New-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "admintest" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -EnforcementEnabled "Enabled"
+         } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' -skip {

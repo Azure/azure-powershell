@@ -73,31 +73,27 @@ This API provides the finals status with the request details and status.
 
 ## EXAMPLES
 
-### Example 1: Update GroupQuota limits for a specific group quota
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -Value @(@{resourceName="standardDSv3Family"; limit=20; unit="Count"})
+{{ Add code here }}
 ```
 
 ```output
-RequestId   Status     GroupQuotaName         Location   ResourceProviderName   ResourceName        Limit   Unit
----------   ------     -------------         --------   -------------------   ------------        -----   ----
-<guid>      Succeeded  ComputeGroupQuota01    eastus     Microsoft.Compute      standardDSv3Family  20      Count
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example updates the quota limit for the family "standardDSv3Family" in the group quota "ComputeGroupQuota01" for the "eastus" region.
+{{ Add description here }}
 
-### Example 2: Update GroupQuota limits using a JSON file
+### Example 2: {{ Add title here }}
 ```powershell
-Update-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota02" -Location "westus" -ResourceProviderName "Microsoft.Compute" -JsonFilePath "../docs-data/groupquota-limits.json"
+{{ Add code here }}
 ```
 
 ```output
-RequestId   Status     GroupQuotaName         Location   ResourceProviderName   ResourceName        Limit   Unit
----------   ------     -------------         --------   -------------------   ------------        -----   ----
-<guid>      Succeeded  ComputeGroupQuota02    westus     Microsoft.Compute      standardDSv3Family  15      Count
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example updates the quota limit for the family "standardDSv3Family" in the group quota "ComputeGroupQuota02" for the "westus" region using the configuration specified in the JSON file.
+{{ Add description here }}
 
 ## PARAMETERS
 

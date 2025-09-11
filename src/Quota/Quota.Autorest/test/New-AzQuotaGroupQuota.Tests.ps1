@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzQuotaGroupQuota'))
 }
 
 Describe 'New-AzQuotaGroupQuota' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            New-AzQuotaGroupQuota -ManagementGroupId "admintest" -Name "ComputeGroupQuota01" -DisplayName "Demo Compute Quota"
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' -skip {

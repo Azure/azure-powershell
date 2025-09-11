@@ -24,40 +24,27 @@ Location is required paramter.
 
 ## EXAMPLES
 
-
-### Example 1: Get GroupQuota usage for a specific quota group in eastus
+### Example 1: {{ Add title here }}
 ```powershell
-$groupQuotaName = "ComputeGroupQuota01"
-$location = "eastus"
-$mgId = "mg-demo"
-$resourceProvider = "Microsoft.Compute"
-Get-AzQuotaGroupQuotaUsage -GroupQuotaName $groupQuotaName -Location $location -ManagementGroupId $mgId -ResourceProviderName $resourceProvider
+{{ Add code here }}
 ```
 
 ```output
-ResourceName         CurrentValue   Limit   Unit
-------------         ------------   -----   ----
-standardDSv3Family   8              10      Count
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example gets the usage and limits for the group quota "$groupQuotaName" in the "$location" region for the "$resourceProvider" resource provider.
+{{ Add description here }}
 
-### Example 2: Get GroupQuota usage for a different quota group in westus
+### Example 2: {{ Add title here }}
 ```powershell
-$groupQuotaName = "ComputeGroupQuota02"
-$location = "westus"
-$mgId = "mg-demo"
-$resourceProvider = "Microsoft.Compute"
-Get-AzQuotaGroupQuotaUsage -GroupQuotaName $groupQuotaName -Location $location -ManagementGroupId $mgId -ResourceProviderName $resourceProvider
+{{ Add code here }}
 ```
 
 ```output
-ResourceName         CurrentValue   Limit   Unit
-------------         ------------   -----   ----
-standardDSv3Family   5              8       Count
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example gets the usage and limits for the group quota "$groupQuotaName" in the "$location" region for the "$resourceProvider" resource provider.
+{{ Add description here }}
 
 ## PARAMETERS
 

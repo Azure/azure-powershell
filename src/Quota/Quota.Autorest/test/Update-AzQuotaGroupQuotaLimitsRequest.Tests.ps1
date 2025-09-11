@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaLimit
 }
 
 Describe 'Update-AzQuotaGroupQuotaLimitsRequest' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "admintest" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -Value @(@{resourceName="standardDSv3Family"; limit=20; unit="Count"}) } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {

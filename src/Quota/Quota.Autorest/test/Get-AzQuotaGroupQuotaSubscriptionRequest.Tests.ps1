@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
 }
 
 Describe 'Get-AzQuotaGroupQuotaSubscriptionRequest' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        { 
+            $requestId = "abcd1234-5678-90ef-ghij-1234567890ab"
+            Get-AzQuotaGroupQuotaSubscriptionRequest -GroupQuotaName "ComputeGroupQuota01" -ManagementGroupId "admintest" -RequestId $requestId
+         } | Should -Not -Throw
     }
 
     It 'GetViaIdentityManagementGroup' -skip {

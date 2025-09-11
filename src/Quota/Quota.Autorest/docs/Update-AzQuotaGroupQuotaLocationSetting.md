@@ -77,31 +77,27 @@ Ten delete the GroupQuota (Check the example - GroupQuotas_Delete).
 
 ## EXAMPLES
 
-### Example 1: Update GroupQuota enforcement for Compute in eastus
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -EnforcementEnabled "Enabled"
+{{ Add code here }}
 ```
 
 ```output
-Name                 Location   ResourceProviderName   EnforcementEnabled   Status
-----                 --------   -------------------   -------------------  ------
-ComputeGroupQuota01  eastus     Microsoft.Compute     Enabled              Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example updates GroupQuota enforcement for the group quota "ComputeGroupQuota01" in the "eastus" region for the Microsoft.Compute resource provider.
+{{ Add description here }}
 
-### Example 2: Update GroupQuota enforcement using a JSON file
+### Example 2: {{ Add title here }}
 ```powershell
-Update-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota02" -Location "westus" -ResourceProviderName "Microsoft.Compute" -JsonFilePath "../docs-data/update-groupquota-location.json"
+{{ Add code here }}
 ```
 
 ```output
-Name                 Location   ResourceProviderName   EnforcementEnabled   Status
-----                 --------   -------------------   -------------------  ------
-ComputeGroupQuota02  westus     Microsoft.Compute     Enabled              Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example updates GroupQuota enforcement for the group quota "ComputeGroupQuota02" in the "westus" region for the Microsoft.Compute resource provider using the configuration specified in the JSON file.
+{{ Add description here }}
 
 ## PARAMETERS
 

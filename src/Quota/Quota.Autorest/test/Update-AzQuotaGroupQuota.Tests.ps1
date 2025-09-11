@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuota'))
 }
 
 Describe 'Update-AzQuotaGroupQuota' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzQuotaGroupQuota -ManagementGroupId "admintest" -Name "ComputeGroupQuota01" -DisplayName "Updated Compute Quota"} | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {

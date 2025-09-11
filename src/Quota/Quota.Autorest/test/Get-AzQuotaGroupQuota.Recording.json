@@ -1,0 +1,45 @@
+{
+  "Get-AzQuotaGroupQuota+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/admintest/providers/Microsoft.Quota/groupQuotas?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/admintest/providers/Microsoft.Quota/groupQuotas?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "e44dbc14-6d1d-43ac-ac0f-3e3a1953f092" ],
+        "CommandName": [ "Get-AzQuotaGroupQuota" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuota_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "hjHcW_Gfxk6WI_v7QarAcQ.0" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "c0709890-7a7d-48ac-80a9-e32b24ae5f9f" ],
+        "x-ms-correlation-request-id": [ "c0709890-7a7d-48ac-80a9-e32b24ae5f9f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T070104Z:c0709890-7a7d-48ac-80a9-e32b24ae5f9f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C11F7E575B6642FC8605303B2B54FA9E Ref B: MAA201060515049 Ref C: 2025-09-11T07:01:03Z" ],
+        "Date": [ "Thu, 11 Sep 2025 07:01:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

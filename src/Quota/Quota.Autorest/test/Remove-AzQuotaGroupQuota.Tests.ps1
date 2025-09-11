@@ -16,7 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzQuotaGroupQuota'))
 
 Describe 'Remove-AzQuotaGroupQuota' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $mgId = "admintest"
+            $groupQuotaName = "ComputeGroupQuota01"
+            Remove-AzQuotaGroupQuota -ManagementGroupId $mgId -Name $groupQuotaName -Confirm
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentityManagementGroup' -skip {

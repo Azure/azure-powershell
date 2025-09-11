@@ -27,33 +27,27 @@ Only the Group quota allocated to the subscription can be allocated back to the 
 
 ## EXAMPLES
 
-
-### Example 1: Get all quota allocations for a subscription in a GroupQuota
+### Example 1: {{ Add title here }}
 ```powershell
-$subscriptionId = "0e745469-49f8-48c9-873b-24ca87143db1"
-Get-AzQuotaGroupQuotaSubscriptionAllocation -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId
+{{ Add code here }}
 ```
 
 ```output
-Name   SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
-----   ------------------- ------------------- ----------------------- ------------------------ ------------------------
-eastus
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example gets all quota allocations for the subscription "$subscriptionId" in the group quota "ComputeGroupQuota01" for the "eastus" region and Microsoft.Compute resource provider.
+{{ Add description here }}
 
-### Example 2: Get all quota allocations for all subscriptions in a GroupQuota
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzQuotaGroupQuotaSubscriptionAllocation -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute"
+{{ Add code here }}
 ```
 
 ```output
-Name   SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
-----   ------------------- ------------------- ----------------------- ------------------------ ------------------------
-eastus
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example gets all quota allocations for all subscriptions in the group quota "ComputeGroupQuota01" for the "eastus" region and Microsoft.Compute resource provider.
+{{ Add description here }}
 
 ## PARAMETERS
 

@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLimitsRe
 }
 
 Describe 'Get-AzQuotaGroupQuotaLimitsRequest' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $groupQuotaName = Get-AzQuotaGroupQuota | Select-Object -First 1 -ExpandProperty Name
+            Get-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "admintest" -GroupQuotaName $groupQuotaName
+        } | Should -Not -Throw
     }
 
     It 'List' -skip {

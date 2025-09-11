@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
 }
 
 Describe 'Get-AzQuotaGroupQuotaSubscriptionAllocation' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {   $subscriptionId = $($env.SubscriptionId)
+            Get-AzQuotaGroupQuotaSubscriptionAllocation -ManagementGroupId "admintest" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId 
+        } | Should -Not -Throw
     }
 }

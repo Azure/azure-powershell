@@ -43,31 +43,27 @@ The details on group quota can be access from the group quota APIs.
 
 ## EXAMPLES
 
-### Example 1: Get a specific GroupQuota by name
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzQuotaGroupQuota -ManagementGroupId "mg-demo" -Name "ComputeGroupQuota01"
+{{ Add code here }}
 ```
 
 ```output
-Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
-----                ------------------- ------------------- ----------------------- ------------------------ -----------
-ComputeGroupQuota01  
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example retrieves the GroupQuota named "ComputeGroupQuota01" for the management group "mg-demo".
+{{ Add description here }}
 
-### Example 2: List all GroupQuotas in a management group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzQuotaGroupQuota -ManagementGroupId "mg-demo"
+{{ Add code here }}
 ```
 
 ```output
-Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
-----                ------------------- ------------------- ----------------------- ------------------------ -----------
-premiumgroup                                                                                          jsonquota                                                                                             jsonstringquota                                                                                       standardgroup                                                                                         computegroupquota01                                                                                   computegroupquota02  
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example lists all GroupQuotas for the management group "mg-demo".
+{{ Add description here }}
 
 ## PARAMETERS
 

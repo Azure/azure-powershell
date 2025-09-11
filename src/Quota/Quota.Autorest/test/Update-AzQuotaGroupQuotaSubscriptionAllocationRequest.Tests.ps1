@@ -16,7 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaSubsc
 
 Describe 'Update-AzQuotaGroupQuotaSubscriptionAllocationRequest' {
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $subscriptionId = $($env.SubscriptionId)
+            $familyName = "standardDSv3Family"
+            Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -ManagementGroupId "admintest" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId -Value @(@{resourceName=$familyName; limit=10; unit="Count"})
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {

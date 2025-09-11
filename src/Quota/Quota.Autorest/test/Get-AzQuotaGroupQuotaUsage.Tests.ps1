@@ -16,6 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaUsage'))
 
 Describe 'Get-AzQuotaGroupQuotaUsage' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $groupQuotaName = "ComputeGroupQuota01"
+            $location = "eastus"
+            $mgId = "admintest"
+            $resourceProvider = "Microsoft.Compute"
+            Get-AzQuotaGroupQuotaUsage -GroupQuotaName $groupQuotaName -Location $location -ManagementGroupId $mgId -ResourceProviderName $resourceProvider
+         } | Should -Not -Throw
     }
 }

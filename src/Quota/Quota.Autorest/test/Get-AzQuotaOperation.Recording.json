@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "8c25b6ed-1d50-4bd2-9aaa-36747f3ead95" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "fe0ddafc-c2e6-42db-8e47-4cce585ef91a" ],
         "CommandName": [ "Get-AzQuotaOperation" ],
         "FullCommandName": [ "Get-AzQuotaOperation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,15 +24,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "mDSX9IxmfES8iQBkr_fzLw.0" ],
+        "MS-RequestId": [ "7YJ4KunG50-bW9uQUFK-9A.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "619c018b-4401-449b-908b-c76a65ad5592" ],
-        "x-ms-correlation-request-id": [ "619c018b-4401-449b-908b-c76a65ad5592" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250909T234806Z:619c018b-4401-449b-908b-c76a65ad5592" ],
+        "x-ms-request-id": [ "ecc2e9f1-c508-4c2e-becb-4c4dcc34cf1b" ],
+        "x-ms-correlation-request-id": [ "ecc2e9f1-c508-4c2e-becb-4c4dcc34cf1b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T070126Z:ecc2e9f1-c508-4c2e-becb-4c4dcc34cf1b" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 85EACD0B17AD4610911CC91636CE0372 Ref B: SYD03EDGE2007 Ref C: 2025-09-09T23:48:06Z" ],
-        "Date": [ "Tue, 09 Sep 2025 23:48:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4E30EEE4F3B34B9AA716D3E315F54444 Ref B: MAA201060515049 Ref C: 2025-09-11T07:01:25Z" ],
+        "Date": [ "Thu, 11 Sep 2025 07:01:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4690" ],
