@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticSanVolumeSnapshot
 
 ## SYNOPSIS
-create a Volume Snapshot.
+Create a Volume Snapshot.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticS
 ```
 
 ## DESCRIPTION
-create a Volume Snapshot.
+Create a Volume Snapshot.
 
 ## EXAMPLES
 
