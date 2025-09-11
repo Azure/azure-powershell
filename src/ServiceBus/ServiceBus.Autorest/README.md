@@ -28,23 +28,23 @@ For information on how to develop for `Az.ServiceBus`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 1e790cfc5ee4e7ff98f99dd19a3174c4dd58432b
+commit: c62eaed6d87c68cd4ab3c09c898b4e896873e791
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Queue.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/topics.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/namespace-preview.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/AuthorizationRules.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/CheckNameAvailability.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/DisasterRecoveryConfig.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/migrationconfigs.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/networksets.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/operations.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Rules.json
-  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/subscriptions.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/Queue.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/topics.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/namespace-preview.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/AuthorizationRules.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/CheckNameAvailability.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/DisasterRecoveryConfig.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/migrationconfigs.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/networksets.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/operations.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/Rules.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2025-05-01-preview/subscriptions.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 
