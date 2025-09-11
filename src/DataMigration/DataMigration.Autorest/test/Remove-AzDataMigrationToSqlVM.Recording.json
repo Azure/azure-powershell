@@ -3,13 +3,13 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/DMSv2-TestRG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/arvindp-sqlvm/providers/Microsoft.DataMigration/databaseMigrations/VmUnitTestTargetDb?api-version=2025-06-30",
-      "Content": "{\r\n  \"properties\": {\r\n    \"scope\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest\",\r\n    \"migrationService\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias\",\r\n    \"sourceSqlConnection\": {\r\n      \"dataSource\": \"sampledomain.onmicrosoft.com\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"userName\": \"domainUserName\",\r\n      \"password\": \"domainPassword\"\r\n    },\r\n    \"sourceDatabaseName\": \"AdventureWorks\",\r\n    \"backupConfiguration\": {\r\n      \"sourceLocation\": {\r\n        \"fileShare\": {\r\n          \"path\": \"\\\\\\\\\\\\\\\\sampledomain.onmicrosoft.com\\\\\\\\SharedBackup\\\\\\\\tsuman\",\r\n          \"username\": \"domainUserName\",\r\n          \"password\": \"domainPassword\"\r\n        }\r\n      },\r\n      \"targetLocation\": {\r\n        \"storageAccountResourceId\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest\",\r\n        \"accountKey\": \"6ABnp1F5INXRXpW1oHHozv4Pb27cJ94l/bmfG4K1QwvUYJ6bp0dmTB25Gf03EA/nle0JJ3LXNMAC6L17tagY9g==\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"scope\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest\",\r\n    \"migrationService\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias\",\r\n    \"sourceSqlConnection\": {\r\n      \"dataSource\": \"sampledomain.onmicrosoft.com\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"userName\": \"domainUserName\",\r\n      \"password\": \"domainPassword\"\r\n    },\r\n    \"sourceDatabaseName\": \"AdventureWorks\",\r\n    \"backupConfiguration\": {\r\n      \"sourceLocation\": {\r\n        \"fileShare\": {\r\n          \"path\": \"\\\\\\\\\\\\\\\\sampledomain.onmicrosoft.com\\\\\\\\SharedBackup\\\\\\\\tsuman\",\r\n          \"username\": \"domainUserName\",\r\n          \"password\": \"domainPassword\"\r\n        }\r\n      },\r\n      \"targetLocation\": {\r\n        \"storageAccountResourceId\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest\",\r\n        \"accountKey\": \"AccountKey\"\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1210" ]
+        "Content-Length": [ "1132" ]
       }
     },
     "Response": {
@@ -17,17 +17,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9b2594bf-9a4e-4f18-a7b9-76f571158e37" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=7c8f7688-0846-4126-aaff-e00130ad5ad6/eastus2/274eb429-451a-4d5d-82fe-9aacf6a066ec" ],
+        "x-ms-request-id": [ "ce0f6a18-ba1f-46d7-b09a-ecc802e0c157" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=7c8f7688-0846-4126-aaff-e00130ad5ad6/southeastasia/7da74858-4e01-45cf-a5f4-2cd4c9c5067b" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "ac8643c3-4f2c-4654-a82e-612ee4ccda48" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250909T192457Z:ac8643c3-4f2c-4654-a82e-612ee4ccda48" ],
+        "x-ms-correlation-request-id": [ "7313081b-6127-4a64-896a-254dc8e4c995" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T082215Z:7313081b-6127-4a64-896a-254dc8e4c995" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 96A2AFC6E7EF4BBC885F49ED78CE5234 Ref B: MAA201060514049 Ref C: 2025-09-09T19:24:57Z" ],
-        "Date": [ "Tue, 09 Sep 2025 19:24:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DC9F04D3E6AB45C8B4857437C0475872 Ref B: MAA201060514027 Ref C: 2025-09-11T08:22:14Z" ],
+        "Date": [ "Thu, 11 Sep 2025 08:22:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "133" ],
