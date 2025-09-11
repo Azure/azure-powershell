@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecoveryServices.Management.Sdk", "RecoveryServices.Management.Sdk.csproj", "{2EE7D802-225C-4CC2-C061-BE5BD4326CB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EE7D802-225C-4CC2-C061-BE5BD4326CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE7D802-225C-4CC2-C061-BE5BD4326CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE7D802-225C-4CC2-C061-BE5BD4326CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE7D802-225C-4CC2-C061-BE5BD4326CB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C03B258D-CDB7-40A7-A8C5-677908DA57EA}
+	EndGlobalSection
+EndGlobal

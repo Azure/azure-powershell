@@ -67,6 +67,7 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll',
                'Microsoft.Azure.PowerShell.RecoveryServices.Backup.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.RecoveryServices.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.RecoveryServices.SiteRecovery.Management.Sdk.dll', 
+               'Microsoft.Azure.PowerShell.RecoveryServices.Helper.dll',
                'System.Configuration.ConfigurationManager.dll', 
                'TimeZoneConverter.dll'
 
@@ -116,8 +117,8 @@ CmdletsToExport = 'Add-AzRecoveryServicesAsrReplicationProtectedItemDisk',
                'Get-AzRecoveryServicesAsrVaultContext', 
                'Get-AzRecoveryServicesAsrvCenter', 
                'Get-AzRecoveryServicesBackupContainer', 
-               'Get-AzRecoveryServicesBackupItem', 
-               'Get-AzRecoveryServicesBackupJob', 
+               'Get-AzRecoveryServicesBackupItem',
+               'Get-AzRecoveryServicesBackupJob',
                'Get-AzRecoveryServicesBackupJobDetail', 
                'Get-AzRecoveryServicesBackupManagementServer', 
                'Get-AzRecoveryServicesBackupProperty', 
@@ -218,7 +219,10 @@ CmdletsToExport = 'Add-AzRecoveryServicesAsrReplicationProtectedItemDisk',
                'Update-AzRecoveryServicesAsrvCenter', 
                'Update-AzRecoveryServicesVault', 
                'Wait-AzRecoveryServicesBackupJob', 
-               'Redo-AzRecoveryServicesBackupProtection'
+               'Redo-AzRecoveryServicesBackupProtection',
+               'Get-AzRecoveryServicesSoftDeletedVault',
+               'Get-AzRecoveryServicesSoftDeletedVaultBackupItem',
+               'Undo-AzRecoveryServicesVaultDeletion'
 
 # Variables to export from this module
 # VariablesToExport = @()
