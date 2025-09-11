@@ -19,14 +19,14 @@ Describe 'Remove-AzStorageCacheAmlFileSystem' {
         {
             # Remove AML filesystem using direct parameters
             # This removes the filesystem created in New-AzStorageCacheAmlFileSystem CreateExpanded test
-            $result = Remove-AzStorageCacheAmlFileSystem -Name "acctest43511-1" -ResourceGroupName "acctest43511" -PassThru
+            $result = Remove-AzStorageCacheAmlFileSystem -Name "acctest43511-2" -ResourceGroupName "acctest43511" -PassThru
             $result | Should -Be $true
             
             # Poll until the filesystem is completely deleted
             do {
                 Start-Sleep -Seconds 10
                 try {
-                    $filesystem = Get-AzStorageCacheAmlFileSystem -Name "acctest43511-1" -ResourceGroupName "acctest43511" -ErrorAction SilentlyContinue
+                    $filesystem = Get-AzStorageCacheAmlFileSystem -Name "acctest43511-2" -ResourceGroupName "acctest43511" -ErrorAction SilentlyContinue
                 } catch {
                     $filesystem = $null
                 }
@@ -41,7 +41,7 @@ Describe 'Remove-AzStorageCacheAmlFileSystem' {
             $identity = @{
                 SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
                 ResourceGroupName = "acctest43511"
-                AmlFilesystemName = "acctest43511-2"
+                AmlFilesystemName = "acctest43511-3"
             }
             $result = Remove-AzStorageCacheAmlFileSystem -InputObject $identity -PassThru
             $result | Should -Be $true
@@ -50,7 +50,7 @@ Describe 'Remove-AzStorageCacheAmlFileSystem' {
             do {
                 Start-Sleep -Seconds 10
                 try {
-                    $filesystem = Get-AzStorageCacheAmlFileSystem -Name "acctest43511-2" -ResourceGroupName "acctest43511" -ErrorAction SilentlyContinue
+                    $filesystem = Get-AzStorageCacheAmlFileSystem -Name "acctest43511-3" -ResourceGroupName "acctest43511" -ErrorAction SilentlyContinue
                 } catch {
                     $filesystem = $null
                 }
