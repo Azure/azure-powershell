@@ -67,7 +67,7 @@ List all the analysis results summary for a firmware by analysis type CVE.
 
 ### Example 2: List all the analysis results summary for a firmware by analysis type Firmware.
 ```powershell
-Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type CVE
+Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type Firmware
 ```
 
 ```output

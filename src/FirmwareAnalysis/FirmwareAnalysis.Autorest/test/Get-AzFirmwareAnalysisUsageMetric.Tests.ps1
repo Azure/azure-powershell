@@ -15,19 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFirmwareAnalysisUsageMe
 }
 
 Describe 'Get-AzFirmwareAnalysisUsageMetric' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $usage = Get-AzFirmwareAnalysisUsageMetric -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName -Name 'current'
+            $usage.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentityWorkspace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
