@@ -45,7 +45,7 @@ Removes a custom domain from a SignalR service. After removing the custom domain
 
 ## EXAMPLES
 
-### Example 1: Remove a custom domain by name
+### Example 1: Remove a custom domain by resource group name and SignalR service name
 ```powershell
 Remove-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myDomain"
 ```
@@ -55,7 +55,7 @@ This command removes the custom domain named "myDomain" from the SignalR service
 ### Example 2: Remove a custom domain using domain object
 ```powershell
 $domain = Get-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myDomain"
-Remove-AzSignalRCustomDomain -InputObject $domain
+$domain | Remove-AzSignalRCustomDomain
 ```
 
 This command removes a custom domain using an existing domain object.
@@ -66,6 +66,14 @@ Remove-AzSignalRCustomDomain -ResourceId "/subscriptions/{subscription-id}/resou
 ```
 
 This command removes a custom domain by its resource ID.
+
+### Example 4: Remove a custom domain using SignalR resource object
+```powershell
+$signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
+$signalr | Remove-AzSignalRCustomDomain -Name "myDomain"
+```
+
+This command removes a custom domain using a SignalR resource object as input.
 
 ## PARAMETERS
 

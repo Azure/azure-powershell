@@ -8,48 +8,80 @@ schema: 2.0.0
 # Update-AzSignalRCustomDomain
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a custom domain for a SignalR service.
 
 ## SYNTAX
 
 ### ResourceGroupParameterSet (Default)
 ```
-Update-AzSignalRCustomDomain [-ResourceGroupName <String>] -SignalRName <String> [-Name] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzSignalRCustomDomain [-ResourceGroupName <String>] -SignalRName <String> [-Name] <String>
+ [-DomainName <String>] [-CustomCertificateId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputSignalRObjectParameterSet
 ```
-Update-AzSignalRCustomDomain [-Name] <String> -SignalRResourceObject <PSSignalRResource> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzSignalRCustomDomain [-Name] <String> -SignalRResourceObject <PSSignalRResource> [-DomainName <String>]
+ [-CustomCertificateId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Update-AzSignalRCustomDomain -InputObject <PSCustomDomainResource> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzSignalRCustomDomain -InputObject <PSCustomDomainResource> [-DomainName <String>]
+ [-CustomCertificateId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Update-AzSignalRCustomDomain [-AsJob] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSignalRCustomDomain [-DomainName <String>] [-CustomCertificateId <String>] [-AsJob]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates an existing custom domain for a SignalR service. This cmdlet allows you to modify the domain name or the associated custom certificate of an existing custom domain configuration.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update the domain name of a custom domain by resource group and SignalR service name
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myDomain" -DomainName "newsignalr.contoso.com"
 ```
 
-{{ Add example description here }}
+This command updates the domain name of the custom domain "myDomain" for the SignalR service "mySignalR" to "newsignalr.contoso.com".
+
+### Example 2: Update the certificate of a custom domain
+```powershell
+$newCert = Get-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "newCertificate"
+Update-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myDomain" -CustomCertificateId $newCert.Id
+```
+
+This command updates the custom certificate used by the custom domain "myDomain" to a different certificate.
+
+### Example 3: Update a custom domain using a SignalR resource object
+```powershell
+$signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
+$signalr | Update-AzSignalRCustomDomain -Name "myDomain" -DomainName "updated.contoso.com"
+```
+
+This command updates a custom domain using a SignalR resource object as input.
+
+### Example 4: Update a custom domain using the custom domain resource object
+```powershell
+$domain = Get-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myDomain"
+$domain | Update-AzSignalRCustomDomain -DomainName "updated.contoso.com"
+```
+
+This command updates a custom domain by piping in the custom domain resource object.
+
+### Example 5: Update a custom domain by resource ID
+```powershell
+Update-AzSignalRCustomDomain -ResourceId "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.SignalRService/SignalR/mySignalR/customDomains/myDomain" -DomainName "updated.contoso.com"
+```
+
+This command updates a custom domain using its resource ID.
 
 ## PARAMETERS
 
@@ -68,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CustomCertificateId
+The custom certificate resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -75,6 +122,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DomainName
+The custom domain name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProgressAction
-{{ Fill ProgressAction Description }}
+Determines how PowerShell responds to progress updates generated by a script, cmdlet, or provider, such as the progress bars generated by the Write-Progress cmdlet. The Write-Progress cmdlet creates progress bars that show a command's status.
 
 ```yaml
 Type: System.Management.Automation.ActionPreference

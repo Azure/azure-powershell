@@ -15,10 +15,10 @@ Cmdlets to interact with the Azure SignalR service or Web PubSub service.
 Get a specific SignalR service or all the SignalR services in a resource group or a subscription.
 
 ### [Get-AzSignalRCustomCertificate](Get-AzSignalRCustomCertificate.md)
-{{ Fill in the Synopsis }}
+Get custom certificate(s) for a SignalR service.
 
 ### [Get-AzSignalRCustomDomain](Get-AzSignalRCustomDomain.md)
-{{ Fill in the Synopsis }}
+Get custom domain(s) for a SignalR service.
 
 ### [Get-AzSignalRKey](Get-AzSignalRKey.md)
 Get the access keys of a SignalR service.
@@ -51,10 +51,10 @@ List resource usage quotas by location.
 Create a SignalR service.
 
 ### [New-AzSignalRCustomCertificate](New-AzSignalRCustomCertificate.md)
-Create or update a custom certificate for a SignalR service.
+Create a custom certificate reference for a SignalR service.
 
 ### [New-AzSignalRCustomDomain](New-AzSignalRCustomDomain.md)
-Create or update a custom domain for a SignalR service.
+Create or replace a custom domain for a SignalR service.
 
 ### [New-AzSignalRKey](New-AzSignalRKey.md)
 Regenerate an access key for a SignalR service.
@@ -120,11 +120,8 @@ Checks that the resource name is valid and is not already in use.
 ### [Update-AzSignalR](Update-AzSignalR.md)
 Update a SignalR service.
 
-### [Update-AzSignalRCustomCertificate](Update-AzSignalRCustomCertificate.md)
-{{ Fill in the Synopsis }}
-
 ### [Update-AzSignalRCustomDomain](Update-AzSignalRCustomDomain.md)
-{{ Fill in the Synopsis }}
+Update a custom domain for a SignalR service.
 
 ### [Update-AzSignalRNetworkAcl](Update-AzSignalRNetworkAcl.md)
 Update the Network ACL of a SignalR service.

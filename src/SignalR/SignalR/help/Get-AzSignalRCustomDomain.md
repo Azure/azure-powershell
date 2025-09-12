@@ -14,42 +14,55 @@ Get custom domain(s) for a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Get-AzSignalRCustomDomain [-ResourceGroupName <String>] -SignalRName <String> [-AsJob]
+Get-AzSignalRCustomDomain [-ResourceGroupName <String>] -SignalRName <String> [-Name <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzSignalRCustomDomain -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzSignalRCustomDomain [-Name <String>] -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### InputSignalRObjectParameterSet
+```
+Get-AzSignalRCustomDomain [-Name <String>] -SignalRObject <PSSignalRResource> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves custom domains configured for a SignalR service. This can list all custom domains or get a specific domain by resource ID.
+Gets custom domains configured for a SignalR service. This can list all custom domains or get a specific domain.
 
 ## EXAMPLES
 
-### Example 1: Get all custom domains for a SignalR service
+### Example 1: Get a custom domain by resource group and SignalR service name
 ```powershell
 Get-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR"
 ```
 
-This command gets all custom domains configured for the SignalR service "mySignalR".
+This command get a custom domain configured for the SignalR service "mySignalR".
 
-### Example 2: Get a custom domain by resource ID
+### Example 2: Get a custom domain by a custom domain resource ID
 ```powershell
 Get-AzSignalRCustomDomain -ResourceId "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.SignalRService/SignalR/mySignalR/customDomains/myDomain"
 ```
 
 This command gets a specific custom domain by its resource ID.
 
-### Example 3: Get custom domains and display their properties
+### Example 3: Get a custom domain by SignalR resource object.
 ```powershell
-$domains = Get-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR"
-$domains | Format-Table Name, DomainName, CustomCertificateId, ProvisioningState
+$signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
+$signalr | Get-AzSignalRCustomDomain -Name "myDomain"
 ```
 
-This command gets all custom domains and displays their key properties in a table format.
+This command get a custom domain configured for the SignalR service represented by the `$signalr` object.
+
+### Example 4: List all custom domains for a SignalR service
+```powershell
+Get-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR"
+```
+
+Without specifying a domain name, this command lists all custom domains configured for the SignalR service "mySignalR".
 
 ## PARAMETERS
 
@@ -75,6 +88,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the custom domain
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -141,6 +169,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SignalRObject
+The SignalR resource object.
+
+```yaml
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Parameter Sets: InputSignalRObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

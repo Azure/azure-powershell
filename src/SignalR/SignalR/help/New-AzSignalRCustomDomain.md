@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSignalRCustomDomain
 
 ## SYNOPSIS
-Create or update a custom domain for a SignalR service.
+Create or replace a custom domain for a SignalR service.
 
 ## SYNTAX
 
@@ -27,11 +27,11 @@ New-AzSignalRCustomDomain [-Name] <String> -DomainName <String> -CustomCertifica
 ```
 
 ## DESCRIPTION
-Creates or updates a custom domain for a SignalR service. The custom domain allows clients to connect to the SignalR service using a custom domain name instead of the default Azure-provided domain. A custom certificate must be configured before creating the custom domain.
+Creates or replaces a custom domain for a SignalR service. A custom certificate must be configured before creating the custom domain.
 
 ## EXAMPLES
 
-### Example 1: Create a custom domain for SignalR service
+### Example 1: Create a custom domain by resource group and SignalR service name
 ```powershell
 $cert = Get-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myCertificate"
 New-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myDomain" -DomainName "signalr.contoso.com" -CustomCertificateId $cert.Id
@@ -39,18 +39,11 @@ New-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "myS
 
 This command creates a custom domain named "myDomain" for the SignalR service "mySignalR" using the specified certificate.
 
-### Example 2: Create a custom domain with direct certificate resource ID
-```powershell
-New-AzSignalRCustomDomain -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myDomain" -DomainName "signalr.contoso.com" -CustomCertificateId "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.SignalRService/SignalR/mySignalR/customCertificates/myCertificate"
-```
-
-This command creates a custom domain by directly specifying the custom certificate resource ID.
-
-### Example 3: Create a custom domain using SignalR resource object
+### Example 2: Create a custom domain using SignalR resource object
 ```powershell
 $signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
 $cert = Get-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myCertificate"
-New-AzSignalRCustomDomain -Name "myDomain" -SignalRObject $signalr -DomainName "signalr.contoso.com" -CustomCertificateId $cert.Id
+$signalr | New-AzSignalRCustomDomain -Name "myDomain" -DomainName "signalr.contoso.com" -CustomCertificateId $cert.Id
 ```
 
 This command creates a custom domain using a SignalR resource object as input.

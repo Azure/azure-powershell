@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSignalRCustomCertificate
 
 ## SYNOPSIS
-Create or update a custom certificate for a SignalR service.
+Create a custom certificate reference for a SignalR service.
 
 ## SYNTAX
 
@@ -29,11 +29,11 @@ New-AzSignalRCustomCertificate [-Name] <String> -KeyVaultBaseUri <String> -KeyVa
 ```
 
 ## DESCRIPTION
-Creates or updates a custom certificate for a SignalR service. The certificate is stored in Azure Key Vault and referenced by the SignalR service for custom domain configuration.
+Creates a custom certificate reference for a SignalR service. The certificate is stored in Azure Key Vault and referenced by the SignalR service for custom domain configuration.
 
 ## EXAMPLES
 
-### Example 1: Create a custom certificate for SignalR service
+### Example 1: Create a custom certificate by resource group and SignalR service name
 ```powershell
 New-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myCertificate" -KeyVaultBaseUri "https://myvault.vault.azure.net/" -KeyVaultSecretName "mycert"
 ```
@@ -50,7 +50,7 @@ This command creates a custom certificate with a specific certificate version fr
 ### Example 3: Create a custom certificate using SignalR resource object
 ```powershell
 $signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
-New-AzSignalRCustomCertificate -Name "myCertificate" -SignalRObject $signalr -KeyVaultBaseUri "https://myvault.vault.azure.net/" -KeyVaultSecretName "mycert"
+$signalr | New-AzSignalRCustomCertificate -Name "myCertificate" -KeyVaultBaseUri "https://myvault.vault.azure.net/" -KeyVaultSecretName "mycert"
 ```
 
 This command creates a custom certificate using a SignalR resource object as input.

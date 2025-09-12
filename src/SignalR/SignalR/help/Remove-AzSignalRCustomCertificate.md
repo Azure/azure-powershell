@@ -45,7 +45,7 @@ Removes a custom certificate from a SignalR service. Note that you cannot remove
 
 ## EXAMPLES
 
-### Example 1: Remove a custom certificate by name
+### Example 1: Remove a custom certificate by resource group name and SignalR service name
 ```powershell
 Remove-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myCertificate"
 ```
@@ -55,7 +55,7 @@ This command removes the custom certificate named "myCertificate" from the Signa
 ### Example 2: Remove a custom certificate using certificate object
 ```powershell
 $cert = Get-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "myCertificate"
-Remove-AzSignalRCustomCertificate -InputObject $cert
+$cert | Remove-AzSignalRCustomCertificate
 ```
 
 This command removes a custom certificate using an existing certificate object.
@@ -66,6 +66,14 @@ Remove-AzSignalRCustomCertificate -ResourceId "/subscriptions/{subscription-id}/
 ```
 
 This command removes a custom certificate by its resource ID.
+
+### Example 4: Remove a custom certificate using SignalR resource object and certificate name
+```powershell
+$signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
+$signalr | Remove-AzSignalRCustomCertificate -Name "myCertificate"
+```
+
+This command removes a custom certificate from a SignalR service represented by the `$signalr` object.
 
 ## PARAMETERS
 

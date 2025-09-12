@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 }
                 throw new AzPSCloudException(completeErrorMessage, errorKind, errorResponseException.Message, errorResponseException);
             }
+            catch (Exception e)
+            {
+                throw new AzPSException(e.Message, ErrorKind.InternalError, e);
+            }
         }
 
         protected T BuildClient<T>(string endpoint = null, Func<T, T> postBuild = null) where T : ServiceClient<T>

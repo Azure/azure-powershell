@@ -14,14 +14,20 @@ Get custom certificate(s) for a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Get-AzSignalRCustomCertificate [-ResourceGroupName <String>] -SignalRName <String> [-AsJob]
+Get-AzSignalRCustomCertificate [-ResourceGroupName <String>] -SignalRName <String> [-Name <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzSignalRCustomCertificate -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzSignalRCustomCertificate [-Name <String>] -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### InputSignalRObjectParameterSet
+```
+Get-AzSignalRCustomCertificate [-Name <String>] -SignalRObject <PSSignalRResource> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,27 +35,34 @@ Retrieves custom certificates configured for a SignalR service. This can list al
 
 ## EXAMPLES
 
-### Example 1: Get all custom certificates for a SignalR service
+### Example 1: Get a custom certificate by resource group and SignalR service name
 ```powershell
 Get-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR"
 ```
 
-This command gets all custom certificates configured for the SignalR service "mySignalR".
+This command get a custom certificate configured for the SignalR service "mySignalR".
 
-### Example 2: Get a custom certificate by resource ID
+### Example 2: Get a custom certificate by a custom certificate resource ID
 ```powershell
 Get-AzSignalRCustomCertificate -ResourceId "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.SignalRService/SignalR/mySignalR/customCertificates/myCertificate"
 ```
 
 This command gets a specific custom certificate by its resource ID.
 
-### Example 3: Get custom certificates and display their properties
+### Example 3: Get a custom certificate by SignalR resource object.
 ```powershell
-$certificates = Get-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR"
-$certificates | Format-Table Name, KeyVaultBaseUri, KeyVaultSecretName, ProvisioningState
+$signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
+$signalr | Get-AzSignalRCustomCertificate -Name "myCertificate"
 ```
 
-This command gets all custom certificates and displays their key properties in a table format.
+This command get a custom certificate configured for the SignalR service represented by the `$signalr` object.
+
+### Example 4: List all custom certificates for a SignalR service
+```powershell
+Get-AzSignalRCustomCertificate -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR"
+```
+
+Without specifying a certificate name, this command lists all custom certificates configured for the SignalR service "mySignalR".
 
 ## PARAMETERS
 
@@ -75,6 +88,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the custom certificate
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -141,6 +169,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SignalRObject
+The SignalR resource object.
+
+```yaml
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Parameter Sets: InputSignalRObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
