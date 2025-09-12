@@ -66,11 +66,12 @@ directive:
     remove: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentityWorkspace$|^Update$|^UpdateViaIdentity$
     remove: true
+  # Hide CreateViaIdentity for customization
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
+      variant: ^CreateViaIdentity$
+    hide: true
 
   # Rename the parameter name to follow Azure PowerShell best practice
   - where:
