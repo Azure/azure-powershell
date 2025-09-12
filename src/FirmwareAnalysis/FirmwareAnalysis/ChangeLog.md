@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.FirmwareAnalysis
 * Upgraded API support to include 2025-08-02
 * Added usage metric support via the Get-AzFirmwareAnalysisUsageMetric cmdlet
 
