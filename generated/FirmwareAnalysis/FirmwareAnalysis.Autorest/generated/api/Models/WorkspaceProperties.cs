@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Description = @"Provisioning state of the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
         string ProvisioningState { get;  }
 
     }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 
     {
         /// <summary>Provisioning state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
         string ProvisioningState { get; set; }
 
     }
