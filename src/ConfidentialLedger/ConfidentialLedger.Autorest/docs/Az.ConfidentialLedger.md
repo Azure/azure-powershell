@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ConfidentialLedger
-Module Guid: 2c3b46ee-4d07-486a-8677-2a7833ee933a
+Module Guid: d1e78d72-ae39-4c50-a692-a16ef7279c91
 Download Help Link: https://learn.microsoft.com/powershell/module/az.confidentialledger
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: ConfidentialLedger cmdlets
 Retrieves the properties of a Confidential Ledger.
 
 ### [New-AzConfidentialLedger](New-AzConfidentialLedger.md)
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 
 ### [New-AzConfidentialLedgerAADBasedSecurityPrincipalObject](New-AzConfidentialLedgerAADBasedSecurityPrincipalObject.md)
 Create an in-memory object for AADBasedSecurityPrincipal.
