@@ -14,8 +14,8 @@ Get a single workbook by its resourceName.
 
 ### List (Default)
 ```
-Get-AzApplicationInsightsWorkbook -Category <CategoryType> [-SubscriptionId <String[]>] [-CanFetchContent]
- [-Tag <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsWorkbook -Category <String> [-SubscriptionId <String[]>] [-CanFetchContent]
+ [-Tag <List<String>>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -32,9 +32,9 @@ Get-AzApplicationInsightsWorkbook -InputObject <IApplicationInsightsIdentity> [-
 
 ### List1
 ```
-Get-AzApplicationInsightsWorkbook -ResourceGroupName <String> -Category <CategoryType>
- [-SubscriptionId <String[]>] [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsWorkbook -ResourceGroupName <String> -Category <String> [-SubscriptionId <String[]>]
+ [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <List<String>>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Category of workbook to return.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.CategoryType
+Type: System.String
 Parameter Sets: List, List1
 Aliases:
 
@@ -162,7 +162,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -241,7 +240,7 @@ Accept wildcard characters: False
 Tags presents on each workbook returned.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: List, List1
 Aliases:
 
@@ -261,7 +260,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbook
 
 ## NOTES
 

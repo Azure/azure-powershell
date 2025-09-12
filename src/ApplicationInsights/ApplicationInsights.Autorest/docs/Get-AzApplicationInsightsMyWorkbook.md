@@ -14,8 +14,8 @@ Get a single private workbook by its resourceName.
 
 ### List1 (Default)
 ```
-Get-AzApplicationInsightsMyWorkbook -Category <CategoryType> [-SubscriptionId <String[]>] [-CanFetchContent]
- [-Tag <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsMyWorkbook -Category <String> [-SubscriptionId <String[]>] [-CanFetchContent]
+ [-Tag <List<String>>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -26,8 +26,8 @@ Get-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [
 
 ### List
 ```
-Get-AzApplicationInsightsMyWorkbook -ResourceGroupName <String> -Category <CategoryType>
- [-SubscriptionId <String[]>] [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <String[]>]
+Get-AzApplicationInsightsMyWorkbook -ResourceGroupName <String> -Category <String>
+ [-SubscriptionId <String[]>] [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <List<String>>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Category of workbook to return.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.CategoryType
+Type: System.String
 Parameter Sets: List, List1
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 Tags presents on each workbook returned.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: List, List1
 Aliases:
 
@@ -219,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook
 
 ## NOTES
 
