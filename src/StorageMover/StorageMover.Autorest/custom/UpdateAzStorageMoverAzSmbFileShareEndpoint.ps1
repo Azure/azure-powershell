@@ -148,7 +148,7 @@ function Update-AzStorageMoverAzSmbFileShareEndpoint {
 
     process {
         $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureStorageSmbFileShareEndpointUpdateProperties]::New()
-        $Properties.EndpointType = 'AzureStorageSmbFileShare'
+        # $Properties.EndpointType = 'AzureStorageSmbFileShare'
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description

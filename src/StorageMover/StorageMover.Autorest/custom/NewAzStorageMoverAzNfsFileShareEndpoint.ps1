@@ -146,7 +146,7 @@ function New-AzStorageMoverAzNfsFileShareEndpoint {
             $null = $PSBoundParameters.Remove("Description")
         }
 
-        $Properties.EndpointType = "AzureStorageNfsFileShare"
+        # $Properties.EndpointType = "AzureStorageNfsFileShare"
         $PSBoundParameters.Add("Property", $Properties)
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters

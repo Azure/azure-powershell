@@ -155,7 +155,7 @@ function New-AzStorageMoverNfsEndpoint {
             $null = $PSBoundParameters.Remove("Description")
         }
 
-        $Properties.EndpointType = "NfsMount"
+        # $Properties.EndpointType = "NfsMount"
         $PSBoundParameters.Add("Property", $Properties)
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters

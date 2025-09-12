@@ -147,7 +147,7 @@ function Update-AzStorageMoverAzStorageContainerEndpoint {
 
     process {
         $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureStorageBlobContainerEndpointUpdateProperties]::New()
-        $Properties.EndpointType = 'AzureStorageBlobContainer'
+        # $Properties.EndpointType = 'AzureStorageBlobContainer'
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description

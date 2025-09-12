@@ -40,6 +40,8 @@ module-version: 1.6.0
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)
+# flatten-userassignedidentity: false
+disable-transform-identity-type: true
 
 directive:
   - from: swagger-document 
