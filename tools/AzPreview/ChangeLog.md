@@ -1,3 +1,49 @@
+## 14.5.0 - October 2025
+#### Az.CloudService 2.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.Compute 10.4.0
+* Added 'SecureVMGuestStateSAS' parameter to 'Grant-AzSnapshotAccess'.
+
+#### Az.FirmwareAnalysis 1.0.0
+* General availability for module Az.FirmwareAnalysis
+* Upgraded API support to include 2025-08-02
+* Added usage metric support via the Get-AzFirmwareAnalysisUsageMetric cmdlet
+
+#### Az.Migrate 2.10.0
+* Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
+
+#### Az.Network 7.20.0
+* Added cmdlet 'Get-AzVirtualNetworkGatewayFailoverSingleTestDetail' to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet 'Get-AzVirtualNetworkGatewayFailoverAllTestsDetail' to list all failover tests for a virtual network gateway.
+* Added cmdlet 'Start-AzVirtualNetworkGatewaySiteFailoverTest' to initiate a site failover test on a virtual network gateway.
+* Added cmdlet 'Stop-AzVirtualNetworkGatewaySiteFailoverTest' to stop an ongoing site failover test.
+* Added cmdlet 'Get-AzVirtualNetworkGatewayResiliencyInformation' to retrieve resiliency information for a virtual network gateway.
+* Added cmdlet 'Get-AzVirtualNetworkGatewayRoutesInformation' to get route information for a virtual network gateway.
+* Onboarded Maps to Private Link Common Cmdlets
+
+#### Az.RecoveryServices 7.8.1
+* Added Cross region restore support for new region - eastus3.
+
+#### Az.ScVmm 0.1.1
+* Suppressed expected MachineResourceNotFound exceptions from being printed on the console.
+
+#### Az.SecurityInsights 3.2.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.ServiceFabric 3.8.0
+* Renamed Remove-AzServiceFabricManagedNodeType parameter sets to use 'Remove' instead of 'Delete' for consistency with cmdlet name.
+
+#### Az.Storage 9.2.0
+* Supported Enable Metrics when set object replication policy 
+    - 'Set-AzStorageObjectReplicationPolicy'
+
+#### Az.StorageMover 1.6.0
+* Added  support for new api version 2025-07-01
+* Included new endpoint types supported in the api version
+    * MultiCloudConnector
+    * NFSFileShare
+
 ## 14.4.0 - September 2025
 #### Az.Accounts 5.3.0
 * Updated 'AuthenticationAssemblyLoadContext' project to deprecate .NET 6.0 and build on .NET 8.0.
