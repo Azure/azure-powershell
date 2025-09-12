@@ -1,14 +1,14 @@
 ---
 external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
+online version: https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstanceinitdefinitionobject
 schema: 2.0.0
 ---
 
 # New-AzContainerInstanceInitDefinitionObject
 
 ## SYNOPSIS
-Create a in-memory object for InitContainerDefinition
+Create an in-memory object for InitContainerDefinition.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzContainerInstanceInitDefinitionObject -Name <String> [-Command <String[]>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for InitContainerDefinition
+Create an in-memory object for InitContainerDefinition.
 
 ## EXAMPLES
 
@@ -55,10 +55,9 @@ Accept wildcard characters: False
 
 ### -EnvironmentVariable
 The environment variables to set in the init container.
-To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IEnvironmentVariable[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IEnvironmentVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -101,10 +100,9 @@ Accept wildcard characters: False
 
 ### -VolumeMount
 The volume mounts available to the init container.
-To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeMount[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolumeMount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition
 
 ## NOTES
 
