@@ -1,0 +1,46 @@
+{
+  "Get-AzQuotaGroupQuotaLimit+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/groupQuotaLimits/eastus?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/groupQuotaLimits/eastus?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "5816d153-e53d-4a57-94fa-acb86503075e" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaLimit" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaLimit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "efd9637e-08e0-4802-af69-af16da6df589" ],
+        "x-ms-correlation-request-id": [ "efd9637e-08e0-4802-af69-af16da6df589" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20250912T044015Z:efd9637e-08e0-4802-af69-af16da6df589" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A874351FB307490A88178F1373D59EE1 Ref B: SYD03EDGE1414 Ref C: 2025-09-12T04:40:15Z" ],
+        "Date": [ "Fri, 12 Sep 2025 04:40:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"No groupQuota found for group: computegroupquota01, provider: microsoft.compute, location:eastus, resource: Not found. Please check, if groupQuota has been allocated for the resource at the location.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

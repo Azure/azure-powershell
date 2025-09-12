@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "value": [
+      {
+        "properties": {
+          "subscriptionId": "0e745469-49f8-48c9-873b-24ca87143db1",
+          "resourceName": "standardDSv3Family",
+          "limit": 5,
+          "unit": "Count"
+        }
+      }
+    ]
+  }
+}
