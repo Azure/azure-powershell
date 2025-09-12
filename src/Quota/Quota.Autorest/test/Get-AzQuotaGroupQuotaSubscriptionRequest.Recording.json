@@ -1,13 +1,13 @@
 {
-  "Get-AzQuotaGroupQuotaSubscriptionRequest+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/subscriptionRequests/abcd1234-5678-90ef-ghij-1234567890ab?api-version=2025-07-15+1": {
+  "Get-AzQuotaGroupQuotaSubscriptionRequest+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/subscriptionRequests/abcd1234-5678-90ef-ghij-1234567890ab?api-version=2025-07-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/subscriptionRequests/abcd1234-5678-90ef-ghij-1234567890ab?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/subscriptionRequests/abcd1234-5678-90ef-ghij-1234567890ab?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "34fef429-3cc1-43f8-b1c0-8ec9a5e3115c" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "d911288a-1498-41d9-90d9-cf76317551e9" ],
         "CommandName": [ "Get-AzQuotaGroupQuotaSubscriptionRequest" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuotaSubscriptionRequest_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,14 +24,14 @@
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
         "x-ms-ratelimit-remaining-tenant-resource-requests": [ "2199" ],
-        "x-ms-request-id": [ "244ce34a-b082-439d-83c5-ecd45ab44355" ],
-        "x-ms-correlation-request-id": [ "244ce34a-b082-439d-83c5-ecd45ab44355" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T081341Z:244ce34a-b082-439d-83c5-ecd45ab44355" ],
+        "x-ms-request-id": [ "97f1d4cd-0483-4f6b-9fef-622394a12769" ],
+        "x-ms-correlation-request-id": [ "97f1d4cd-0483-4f6b-9fef-622394a12769" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20250912T044030Z:97f1d4cd-0483-4f6b-9fef-622394a12769" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CE5C7358D5D144AB9B1E8BB3E28CE312 Ref B: MAA201060513045 Ref C: 2025-09-11T08:13:40Z" ],
-        "Date": [ "Thu, 11 Sep 2025 08:13:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: ECD6AA26CAE64AA49BB3509E0C878737 Ref B: SYD03EDGE1414 Ref C: 2025-09-12T04:40:29Z" ],
+        "Date": [ "Fri, 12 Sep 2025 04:40:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "302" ],

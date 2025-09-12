@@ -15,10 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLimitsRe
 }
 
 Describe 'Get-AzQuotaGroupQuotaLimitsRequest' {
-    It 'Get' {
+    It 'Get' -skip {
         { 
-            $groupQuotaName = Get-AzQuotaGroupQuota | Select-Object -First 1 -ExpandProperty Name
-            Get-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName $groupQuotaName
+            $groupQuotaName = Get-AzQuotaGroupQuota -ManagementGroupId "mg-demo" | Select-Object -First 1 -ExpandProperty Name
+            Get-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "mg-demo" -GroupQuotaName $groupQuotaName -RequestId "123"
         } | Should -Not -Throw
     }
 

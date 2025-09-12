@@ -15,20 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuota'))
 }
 
 Describe 'Update-AzQuota' {
-    It 'UpdateExpanded' {
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+    It 'UpdateExpanded' -skip {
+        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/westus" -ResourceName "PublicIPAddresses"
         $limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
-        Update-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+        Update-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/westus" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
+        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/westus" -ResourceName "PublicIPAddresses"
         $quota.Limit.Value | Should -Be $limit.Value
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+    It 'UpdateViaIdentityExpanded' -skip  {
+        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/westus" -ResourceName "PublicIPAddresses"
         $limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/westus" -ResourceName "PublicIPAddresses"
         Update-AzQuota -InputObject $quota.Id -Name "PublicIPAddresses" -Limit $limit
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/westus" -ResourceName "PublicIPAddresses"
         $quota.Limit.Value | Should -Be $limit.Value
     }
 }

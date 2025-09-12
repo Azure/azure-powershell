@@ -18,9 +18,9 @@ Describe 'Remove-AzQuotaGroupQuotaSubscription' {
     It 'Delete' {
         { 
             $groupQuotaName = "ComputeGroupQuota01"
-            $mgId = $($env.SubscriptionId)
+            $mgId = "mg-demo" 
             $subscriptionId = $($env.SubscriptionId)
-            Remove-AzQuotaGroupQuotaSubscription -GroupQuotaName $groupQuotaName -ManagementGroupId $mgId -SubscriptionId $subscriptionId -Confirm } | Should -Not -Throw
+            Remove-AzQuotaGroupQuotaSubscription -GroupQuotaName $groupQuotaName -ManagementGroupId $mgId -SubscriptionId $subscriptionId -Confirm:$false } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentityManagementGroup' -skip {

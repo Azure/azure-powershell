@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzQuotaGroupQuota'))
 Describe 'New-AzQuotaGroupQuota' {
     It 'CreateExpanded' {
         { 
-            New-AzQuotaGroupQuota -ManagementGroupId "$($env.SubscriptionId)" -Name "ComputeGroupQuota01" -DisplayName "Demo Compute Quota"
+            New-AzQuotaGroupQuota -ManagementGroupId "mg-demo"  -Name "ComputeGroupQuota01" -DisplayName "Demo Compute Quota"
         } | Should -Not -Throw
     }
 

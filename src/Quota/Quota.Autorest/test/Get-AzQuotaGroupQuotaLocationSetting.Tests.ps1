@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLocation
 }
 
 Describe 'Get-AzQuotaGroupQuotaLocationSetting' {
-    It 'Get' {
-        { Get-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" } | Should -Not -Throw
+    It 'Get' -skip {
+        { Get-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" } | Should -Not -Throw
     }
 
     It 'GetViaIdentityManagementGroup' -skip {

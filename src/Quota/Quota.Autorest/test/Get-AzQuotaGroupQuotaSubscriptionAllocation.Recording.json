@@ -1,13 +1,13 @@
 {
-  "Get-AzQuotaGroupQuotaSubscriptionAllocation+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus?api-version=2025-07-15+1": {
+  "Get-AzQuotaGroupQuotaSubscriptionAllocation+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus?api-version=2025-07-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "74f4a655-2046-4bd8-8e68-7d7445e11a6e" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "85a4cb9e-c338-4dc0-8fa5-695812f81a90" ],
         "CommandName": [ "Get-AzQuotaGroupQuotaSubscriptionAllocation" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuotaSubscriptionAllocation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -18,26 +18,28 @@
       }
     },
     "Response": {
-      "StatusCode": 403,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "b3821cf6-1e17-4ca9-a418-0435fa7bb941" ],
-        "x-ms-correlation-request-id": [ "b3821cf6-1e17-4ca9-a418-0435fa7bb941" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T081337Z:b3821cf6-1e17-4ca9-a418-0435fa7bb941" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "089884ac-b81c-4ccd-85f2-79fce93d7dd8" ],
+        "x-ms-correlation-request-id": [ "089884ac-b81c-4ccd-85f2-79fce93d7dd8" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250912T044024Z:089884ac-b81c-4ccd-85f2-79fce93d7dd8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 28CAE65F26974A8C81C1EF746093B930 Ref B: MAA201060513045 Ref C: 2025-09-11T08:13:36Z" ],
-        "Date": [ "Thu, 11 Sep 2025 08:13:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6A8754B608204F428EFF0ACE5008D523 Ref B: SYD03EDGE1414 Ref C: 2025-09-12T04:40:24Z" ],
+        "Date": [ "Fri, 12 Sep 2025 04:40:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "614" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "164" ],
+        "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027resilv@microsoft.com\u0027 with object id \u00272b39426f-84f6-41b3-9ad1-ee6021770dba\u0027 does not have authorization to perform action \u0027Microsoft.Quota/groupQuotas/resourceProviders/quotaAllocations/read\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/0e745469-49f8-48c9-873b-24ca87143db1/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/resourceProviders/Microsoft.Compute/quotaAllocations/eastus\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
+      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"No GroupQuota found for GroupId: computegroupquota01, MgId: mg-demo, TenantId: 213e87ed-8e08-4eb4-a63c-c073058f7b00.\"}}",
       "isContentBase64": false
     }
   }

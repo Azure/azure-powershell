@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "904055a6-18df-4d74-807d-c3cbf8ae2562" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "6fdffae8-5312-4670-811a-e97316a6f409" ],
         "CommandName": [ "Get-AzQuotaRequestStatus" ],
         "FullCommandName": [ "Get-AzQuotaRequestStatus_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,65 +24,21 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "eywlKUSzFUCYMY7yBz4OWw.0" ],
-        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2b39426f-84f6-41b3-9ad1-ee6021770dba/southeastasia/b2fca559-b00a-44db-bffa-83666793d099" ],
+        "MS-RequestId": [ "YC0j_JZ1DUWjAe7kJcC0rw.0" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2b39426f-84f6-41b3-9ad1-ee6021770dba/australiasoutheast/aa7ff504-cb4a-4cca-b2d5-9c506c7d7c66" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "c619746c-0672-4c0e-81d0-215d0387587c" ],
-        "x-ms-correlation-request-id": [ "c619746c-0672-4c0e-81d0-215d0387587c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T081348Z:c619746c-0672-4c0e-81d0-215d0387587c" ],
+        "x-ms-request-id": [ "f5de7d41-b2ec-4169-b556-2046d93a7f69" ],
+        "x-ms-correlation-request-id": [ "f5de7d41-b2ec-4169-b556-2046d93a7f69" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20250912T044038Z:f5de7d41-b2ec-4169-b556-2046d93a7f69" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AAC731AC4A8E4C4EB80D06321B9DB92D Ref B: MAA201060513045 Ref C: 2025-09-11T08:13:47Z" ],
-        "Date": [ "Thu, 11 Sep 2025 08:13:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8F95932993464201A1DDF16FCF4BB21C Ref B: SYD03EDGE1414 Ref C: 2025-09-12T04:40:37Z" ],
+        "Date": [ "Fri, 12 Sep 2025 04:40:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
         "Content-Type": [ "application/json" ]
       },
       "Content": "{\"value\":[]}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzQuotaRequestStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/6cf5716a-3df8-421a-8457-719e10381dbc?api-version=2025-07-15+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/6cf5716a-3df8-421a-8457-719e10381dbc?api-version=2025-07-15",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "f7a100f1-959b-47b8-b090-ba0a15467c40" ],
-        "CommandName": [ "Get-AzQuotaRequestStatus" ],
-        "FullCommandName": [ "Get-AzQuotaRequestStatus_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 404,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2b39426f-84f6-41b3-9ad1-ee6021770dba/southeastasia/69023bb3-5cd1-412a-bc23-b1d9889b0f49" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "73dfbe95-2afd-4480-85c0-0cc763dfa9ec" ],
-        "x-ms-correlation-request-id": [ "73dfbe95-2afd-4480-85c0-0cc763dfa9ec" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T081349Z:73dfbe95-2afd-4480-85c0-0cc763dfa9ec" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 78403251E3D34A908288EFF56D0DE940 Ref B: MAA201060513045 Ref C: 2025-09-11T08:13:48Z" ],
-        "Date": [ "Thu, 11 Sep 2025 08:13:49 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "176" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"Requested entity [\\\"0e745469-49f8-48c9-873b-24ca87143db1.microsoft.network\\\"]/6cf5716a-3df8-421a-8457-719e10381dbc was not found\"}}",
       "isContentBase64": false
     }
   }

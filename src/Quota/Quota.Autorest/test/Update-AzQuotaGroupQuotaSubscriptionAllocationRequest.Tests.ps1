@@ -19,7 +19,7 @@ Describe 'Update-AzQuotaGroupQuotaSubscriptionAllocationRequest' {
         { 
             $subscriptionId = $($env.SubscriptionId)
             $familyName = "standardDSv3Family"
-            Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId -Value @(@{resourceName=$familyName; limit=10; unit="Count"})
+            Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId -Value @(@{resourceName=$familyName; limit=10; unit="Count"})
         } | Should -Not -Throw
     }
 

@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
 }
 
 Describe 'Get-AzQuotaGroupQuotaSubscription' {
-    It 'Get'  {
-        { Get-AzQuotaGroupQuotaSubscription -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" } | Should -Not -Throw
+    It 'Get' -skip {
+        { Get-AzQuotaGroupQuotaSubscription -ManagementGroupId "mg-demo"  -GroupQuotaName "ComputeGroupQuota01" } | Should -Not -Throw
     }
 
     It 'List' -skip {

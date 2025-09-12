@@ -1,0 +1,46 @@
+{
+  "Remove-AzQuotaGroupQuotaSubscription+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "62f4e57d-3382-4e31-a435-476734182180" ],
+        "CommandName": [ "Remove-AzQuotaGroupQuotaSubscription" ],
+        "FullCommandName": [ "Remove-AzQuotaGroupQuotaSubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "199" ],
+        "x-ms-request-id": [ "22555dc3-3336-454b-981b-d380acc4cf9b" ],
+        "x-ms-correlation-request-id": [ "22555dc3-3336-454b-981b-d380acc4cf9b" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250912T044205Z:22555dc3-3336-454b-981b-d380acc4cf9b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7824A5733FB5435BBCE2D8FEDD3D9C03 Ref B: SYD03EDGE1414 Ref C: 2025-09-12T04:42:04Z" ],
+        "Date": [ "Fri, 12 Sep 2025 04:42:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "164" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"No GroupQuota found for GroupId: ComputeGroupQuota01, MgId: mg-demo, TenantId: 213e87ed-8e08-4eb4-a63c-c073058f7b00.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

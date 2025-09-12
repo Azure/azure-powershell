@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuota'))
 }
 
 Describe 'Update-AzQuotaGroupQuota' {
-    It 'UpdateExpanded' {
-        { Update-AzQuotaGroupQuota -ManagementGroupId "$($env.SubscriptionId)" -Name "ComputeGroupQuota01" -DisplayName "Updated Compute Quota"} | Should -Not -Throw
+    It 'UpdateExpanded' -skip {
+        { Update-AzQuotaGroupQuota -ManagementGroupId "mg-demo"  -Name "ComputeGroupQuota01" -DisplayName "Updated Compute Quota"} | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {

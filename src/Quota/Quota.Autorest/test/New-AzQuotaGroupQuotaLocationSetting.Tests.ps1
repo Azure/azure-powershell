@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzQuotaGroupQuotaLocation
 Describe 'New-AzQuotaGroupQuotaLocationSetting' {
     It 'CreateExpanded' {
         { 
-            New-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -EnforcementEnabled "Enabled"
+            New-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mg-demo"  -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -EnforcementEnabled "Enabled"
          } | Should -Not -Throw
     }
 

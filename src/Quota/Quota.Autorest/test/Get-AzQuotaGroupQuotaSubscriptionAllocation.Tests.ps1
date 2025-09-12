@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
 Describe 'Get-AzQuotaGroupQuotaSubscriptionAllocation' {
     It 'List' {
         {   $subscriptionId = $($env.SubscriptionId)
-            Get-AzQuotaGroupQuotaSubscriptionAllocation -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId 
+            Get-AzQuotaGroupQuotaSubscriptionAllocation -ManagementGroupId "mg-demo"  -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -SubscriptionId $subscriptionId 
         } | Should -Not -Throw
     }
 }

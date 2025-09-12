@@ -19,7 +19,7 @@ Describe 'Get-AzQuotaGroupQuotaUsage' {
         { 
             $groupQuotaName = "ComputeGroupQuota01"
             $location = "eastus"
-            $mgId = $($env.SubscriptionId)
+            $mgId = "mg-demo" 
             $resourceProvider = "Microsoft.Compute"
             Get-AzQuotaGroupQuotaUsage -GroupQuotaName $groupQuotaName -Location $location -ManagementGroupId $mgId -ResourceProviderName $resourceProvider
          } | Should -Not -Throw

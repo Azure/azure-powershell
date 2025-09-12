@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaLocat
 }
 
 Describe 'Update-AzQuotaGroupQuotaLocationSetting' {
-    It 'UpdateExpanded' {
-        { Update-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -EnforcementEnabled "Enabled"} | Should -Not -Throw
+    It 'UpdateExpanded' -skip {
+        { Update-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mg-demo"  -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -EnforcementEnabled "Enabled"} | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {

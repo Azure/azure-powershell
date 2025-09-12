@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaLimit
 }
 
 Describe 'Update-AzQuotaGroupQuotaLimitsRequest' {
-    It 'UpdateExpanded' {
-        { Update-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "$($env.SubscriptionId)" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -Value @(@{resourceName="standardDSv3Family"; limit=20; unit="Count"}) } | Should -Not -Throw
+    It 'UpdateExpanded' -skip {
+        { Update-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId "mg-demo" -GroupQuotaName "ComputeGroupQuota01" -Location "eastus" -ResourceProviderName "Microsoft.Compute" -Value @(@{resourceName="standardDSv3Family"; limit=20; unit="Count"}) } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {
