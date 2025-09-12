@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// if the maximum retry count is 3, Batch tries the task up to 4 times (one
         /// initial try and 3 retries). If the maximum retry count is 0, the Batch
         /// service does not retry the task. If the maximum retry count is -1, the
-        /// Batch service retries the task without limit. Default is 0.
+        /// Batch service retries the task without limit. Default is 0
         /// </param>
 
         /// <param name="waitForSuccess">If true and the start task fails on a compute node, the Batch service
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// example, if the maximum retry count is 3, Batch tries the task up to 4
         /// times (one initial try and 3 retries). If the maximum retry count is 0, the
         /// Batch service does not retry the task. If the maximum retry count is -1,
-        /// the Batch service retries the task without limit. Default is 0.
+        /// the Batch service retries the task without limit. Default is 0
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "maxTaskRetryCount")]
         public int? MaxTaskRetryCount {get; set; }

@@ -21,9 +21,9 @@ license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 1
 # title: BatchManagementClient
 
-commit: d6fcc46341f274b8af42a4cdcfa14e1f8d472619
+commit: 408db257fe67fc66d8c66c10881be8d414d5e5f3
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/batch/resource-manager/Microsoft.Batch/stable/2023-05-01/BatchManagement.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/batch/resource-manager/Microsoft.Batch/stable/2023-11-01/BatchManagement.json
 
 output-folder: Generated
 

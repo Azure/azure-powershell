@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// image. If omitted, the default is &#39;latest&#39;.
         /// </param>
 
-        /// <param name="id">This property is mutually exclusive with other properties. The Shared Image
-        /// Gallery image must have replicas in the same region as the Azure Batch
-        /// account. For information about the firewall settings for the Batch node
-        /// agent to communicate with the Batch service see
+        /// <param name="id">This property is mutually exclusive with other properties. The Azure
+        /// Compute Gallery Image must have replicas in the same region as the Azure
+        /// Batch account. For information about the firewall settings for the Batch
+        /// node agent to communicate with the Batch service see
         /// https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
         /// </param>
         public ImageReference(string publisher = default(string), string offer = default(string), string sku = default(string), string version = default(string), string id = default(string))
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <summary>
         /// Gets or sets this property is mutually exclusive with other properties. The
-        /// Shared Image Gallery image must have replicas in the same region as the
+        /// Azure Compute Gallery Image must have replicas in the same region as the
         /// Azure Batch account. For information about the firewall settings for the
         /// Batch node agent to communicate with the Batch service see
         /// https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
