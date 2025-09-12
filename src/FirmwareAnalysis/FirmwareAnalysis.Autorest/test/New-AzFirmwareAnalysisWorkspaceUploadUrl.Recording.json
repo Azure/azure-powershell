@@ -36,7 +36,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"url\":\"https://storfistprodwus3upload.blob.core.windows.net/6948aa27-1cb7-4415-ae05-be0570834d2b/9f665e30-f3cc-473e-b199-f1e3caccb1ed/132094e7-c54d-447a-9ff5-c2d7797bf656?skoid=147381a7-ae3c-43ac-8425-b4b2025794da\u0026sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d\u0026skt=2025-09-11T20%3A07%3A39Z\u0026ske=2025-09-12T20%3A07%3A39Z\u0026sks=b\u0026skv=2025-05-05\u0026sv=2025-05-05\u0026st=2025-09-11T20%3A07%3A39Z\u0026se=2025-09-12T00%3A07%3A39Z\u0026sr=b\u0026sp=cw\u0026sig=H9tIE9NQqljTbm%2Fsx%2FBKj2W1rhza2UnM0I9t5I9KEo0%3D\"}",
+      "Content": "{\"url\":\"https://storfistprodwus3upload.blob.core.windows.net/6948aa27-1cb7-4415-ae05-be0570834d2b/9f665e30-f3cc-473e-b199-f1e3caccb1ed/132094e7-c54d-447a-9ff5-c2d7797bf656?REDACTED_DATA\"}",
       "isContentBase64": false
     }
   }
