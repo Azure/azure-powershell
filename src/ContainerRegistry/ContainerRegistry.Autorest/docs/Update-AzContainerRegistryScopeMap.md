@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerRegistryScopeMap
 
 ## SYNOPSIS
-Updates a scope map with the specified parameters.
+Update a scope map with the specified parameters.
 
 ## SYNTAX
 
@@ -26,8 +26,29 @@ Update-AzContainerRegistryScopeMap -InputObject <IContainerRegistryIdentity> [-A
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityRegistryExpanded
+```
+Update-AzContainerRegistryScopeMap -Name <String> -RegistryInputObject <IContainerRegistryIdentity>
+ [-Action <String[]>] [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzContainerRegistryScopeMap -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzContainerRegistryScopeMap -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates a scope map with the specified parameters.
+Update a scope map with the specified parameters.
 
 ## EXAMPLES
 
@@ -53,7 +74,7 @@ repositories/repository-name/pull, repositories/repository-name/delete
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -99,7 +120,7 @@ The user friendly description of the scope map.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -111,7 +132,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
@@ -125,12 +145,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the scope map.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ScopeMapName
 
 Required: True
@@ -155,12 +205,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: UpdateViaIdentityRegistryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -176,7 +241,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -192,7 +257,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -242,7 +307,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IScopeMap
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IScopeMap
 
 ## NOTES
 
