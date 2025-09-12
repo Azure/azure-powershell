@@ -48,11 +48,11 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    $recommendationId = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9"
-    $recommendationName = "c50a2e0a-26e6-4c21-f796-3fd64569b4d9"
-    $recommendationResourceId = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s"
-    $resourceUri = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f"
-    $resourceGroup = "automanagehcrprg"
+    $recommendationId = "/subscriptions/45bc121f-54a8-4e7d-ac12-7033247f9f2c/resourcegroups/rg-arv-extractor-dev-cac/providers/microsoft.web/sites/func-j6lptrkb6izaw/providers/Microsoft.Advisor/recommendations/f228b427-bbff-3b0b-3561-33c0ca8580c1"
+    $recommendationName = "f228b427-bbff-3b0b-3561-33c0ca8580c1"
+    $recommendationResourceId = "/subscriptions/45bc121f-54a8-4e7d-ac12-7033247f9f2c/resourcegroups/rg-arv-extractor-dev-cac/providers/microsoft.web/sites/func-j6lptrkb6izaw"
+    $resourceUri = "/subscriptions/45bc121f-54a8-4e7d-ac12-7033247f9f2c"
+    $resourceGroup = "rg-arv-extractor-dev-cac"
 
     $null = $env.Add('recommendationName',$recommendationName)
     $null = $env.Add('recommendationResourceId',$recommendationResourceId)
