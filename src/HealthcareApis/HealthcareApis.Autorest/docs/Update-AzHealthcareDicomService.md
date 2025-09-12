@@ -8,27 +8,36 @@ schema: 2.0.0
 # Update-AzHealthcareDicomService
 
 ## SYNOPSIS
-Patch DICOM Service details.
+Update a DICOM Service resource with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzHealthcareDicomService -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-IdentityType <ServiceManagedIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Etag <String>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzHealthcareDicomService -InputObject <IHealthcareApisIdentity>
- [-IdentityType <ServiceManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Etag <String>] [-PublicNetworkAccess <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityWorkspaceExpanded
+```
+Update-AzHealthcareDicomService -Name <String> -WorkspaceInputObject <IHealthcareApisIdentity>
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Etag <String>] [-PublicNetworkAccess <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Patch DICOM Service details.
+Update a DICOM Service resource with the specified parameters.
 
 ## EXAMPLES
 
@@ -91,11 +100,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of identity being specified, currently SystemAssigned and None are allowed.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -106,13 +115,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+### -Etag
+An etag associated with the resource, used for optimistic concurrency when editing it.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +132,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
@@ -144,7 +150,7 @@ The name of DICOM Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityWorkspaceExpanded
 Aliases: DicomServiceName
 
 Required: True
@@ -159,6 +165,21 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,6 +232,37 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
+Parameter Sets: UpdateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -269,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IDicomService
 
 ## NOTES
 
