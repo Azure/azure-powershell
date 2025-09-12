@@ -48,7 +48,7 @@ In this directory, run AutoRest:
 ``` yaml
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
-  "@autorest/powershell": "3.x"
+  "@autorest/powershell": "4.x"
 
 directive:
   - suppress: XmsResourceInPutResponse
@@ -126,6 +126,7 @@ directive:
   - remove-operation: WebApps_GetProductionSiteDeploymentStatus
   - remove-operation: WebApps_GetSlotSiteDeploymentStatusSlot
   - remove-operation: Workflows_RegenerateAccessKey
+  - remove-operation: StorageAccounts_Update
   - from: WebApps.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.200
     transform: delete $.schema

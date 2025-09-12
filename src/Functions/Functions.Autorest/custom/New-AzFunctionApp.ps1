@@ -1,6 +1,5 @@
-
 function New-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
     [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="Consumption")]
     param(
@@ -144,7 +143,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
@@ -167,7 +166,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
+        [String]
         ${IdentityType},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Specifies the list of user identities associated with the function app.
@@ -302,14 +301,15 @@ function New-AzFunctionApp {
         $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
         $environmentForContainerApp = $PsCmdlet.ParameterSetName -eq "EnvironmentForContainerApp"
 
-        $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-        $siteConfig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.SiteConfig
-        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site
+        $appSettings = New-Object -TypeName 'System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair]'
+        $siteConfig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Site
 
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
 
         $runtimeJsonDefinition = $null
+
         ValidateFunctionName -Name $Name @params
 
         if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp))
@@ -514,8 +514,8 @@ function New-AzFunctionApp {
 
         # Validate storage account and get connection string
         $connectionString = GetConnectionString -StorageAccountName $StorageAccountName @params
-        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionString))
-        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionString))
+            $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionString))
+            $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionString))
 
         if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp))
         {

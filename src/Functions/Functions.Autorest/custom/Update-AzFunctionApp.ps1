@@ -1,6 +1,5 @@
-
 function Update-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Updates a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -21,7 +20,7 @@ function Update-AzFunctionApp {
         ${Name},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -49,7 +48,7 @@ function Update-AzFunctionApp {
 
         [Parameter(HelpMessage='Resource tags.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
@@ -62,7 +61,7 @@ function Update-AzFunctionApp {
             ")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityUpdateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
+        [String]
         ${IdentityType},
 
         [Parameter(HelpMessage="Specifies the list of user identities associated with the function app.
@@ -135,11 +134,13 @@ function Update-AzFunctionApp {
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
         $paramsToRemove = @(
             "PlanName",
-            "ApplicationInsightsName",
+            "ApplicationInsightsName"
             "ApplicationInsightsKey"
-            "IdentityType",
-            "IdentityID",
+            "IdentityType"
+            "IdentityID"
             "Tag"
+            "Force"
+            "InputObject"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -157,11 +158,6 @@ function Update-AzFunctionApp {
 
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {
-            if ($PSBoundParameters.ContainsKey("InputObject"))
-            {
-                $PSBoundParameters.Remove("InputObject")  | Out-Null
-            }
-
             $Name = $InputObject.Name
             
             $PSBoundParameters.Add("Name", $Name)  | Out-Null
@@ -176,9 +172,9 @@ function Update-AzFunctionApp {
             $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName @params
         }
 
-        $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.SiteConfig
-        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site
+        $appSettings = New-Object -TypeName 'System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair]'
+        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Site
 
         # Identity information
         if ($IdentityType)
@@ -332,12 +328,6 @@ function Update-AzFunctionApp {
                 {
                     if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Update function app '$Name'?", "Updating function app"))
                     {
-                        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
-                        if ($PSBoundParameters.ContainsKey("Force"))
-                        {
-                            $PSBoundParameters.Remove("Force")  | Out-Null
-                        }
-
                         Az.Functions.internal\Set-AzFunctionApp @PSBoundParameters
                     }
                 }

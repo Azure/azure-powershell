@@ -1,5 +1,5 @@
 function Get-AzFunctionAppPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Get function apps plans in a subscription.')]
     [CmdletBinding(DefaultParameterSetName='GetAll')]
     param(

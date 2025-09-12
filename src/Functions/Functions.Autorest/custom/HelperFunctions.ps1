@@ -185,7 +185,7 @@ function NewAppSetting
         $Value
     )
 
-    $setting = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.NameValuePair
+    $setting = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.NameValuePair
     $setting.Name = $Name
     $setting.Value = $Value
 
@@ -744,7 +744,7 @@ function ValidateFunctionName
         $HttpPipelinePrepend
     )
 
-    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site @PSBoundParameters
+    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site -Name $Name @PSBoundParameters
 
     if (-not $result.NameAvailable)
     {
@@ -1366,7 +1366,7 @@ function NewResourceTag
         $Tag
     )
 
-    $resourceTag = [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ResourceTags]::new()
+    $resourceTag = [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ResourceTags]::new()
 
     foreach ($tagName in $Tag.Keys)
     {
@@ -1486,14 +1486,14 @@ function NewAppSettingObject
     )
 
     # Create StringDictionaryProperties (hash table) with the app settings
-    $properties = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.StringDictionaryProperties
+    $properties = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.StringDictionaryProperties
 
     foreach ($keyName in $currentAppSettings.Keys)
     {
         $properties.Add($keyName, $currentAppSettings[$keyName])
     }
 
-    $appSettings = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.StringDictionary
+    $appSettings = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.StringDictionary
     $appSettings.Property = $properties
 
     return $appSettings
@@ -1660,11 +1660,11 @@ function NewIdentityUserAssignedIdentity
     )
 
     # If creating user assigned identities, only alphanumeric characters (0-9, a-z, A-Z), the underscore (_) and the hyphen (-) are supported.
-    $msiUserAssignedIdentities = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ManagedServiceIdentityUserAssignedIdentities
+    $msiUserAssignedIdentities = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ManagedServiceIdentityUserAssignedIdentities
 
     foreach ($id in $IdentityID)
     {
-        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ManagedServiceIdentityUserAssignedIdentities
+        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ManagedServiceIdentityUserAssignedIdentities
         $msiUserAssignedIdentities.Add($id, $functionAppUserAssignedIdentitiesValue)
     }
 
