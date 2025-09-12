@@ -103,7 +103,7 @@
     },
     {
       "name": "Start-AzStorageMoverJobDefinition",
-      "description": "Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.",
+      "description": "Start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob",
       "help": {
         "learnMore": {
@@ -123,7 +123,7 @@
       },
       "examples": [
         {
-          "description": "Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.",
+          "description": "start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.",
           "parameters": [
             {
               "name": "-JobDefinitionName",
