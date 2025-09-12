@@ -19,6 +19,13 @@ Remove-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroup
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityNginxDeployment
+```
+Remove-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -94,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
@@ -113,13 +119,28 @@ The name of certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityNginxDeployment
 Aliases: CertificateName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NginxDeploymentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+Parameter Sets: DeleteViaIdentityNginxDeployment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
