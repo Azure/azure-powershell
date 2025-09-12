@@ -42,14 +42,6 @@ subject-prefix: $(service-name)
 
 inlining-threshold: 100
 
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document
     where: $.definitions.EncryptionV2
@@ -74,12 +66,11 @@ directive:
     remove: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-  # Hide CreateViaIdentity for customization
   - where:
-      variant: ^CreateViaIdentity$
-    hide: true
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
 
   # Rename the parameter name to follow Azure PowerShell best practice
   - where:
@@ -281,4 +272,8 @@ directive:
           - ManagedResourceGroupId
         labels:
           ManagedResourceGroupId: Managed Resource Group ID
+
+  - model-cmdlet:
+      - model-name: WorkspaceProviderAuthorization
+        cmdlet-name: New-AzDatabricksWorkspaceProviderAuthorizationObject
 ```

@@ -16,7 +16,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'AzDatabricksAccessConnector'
 Describe 'AzDatabricksAccessConnector' {
     It 'CreateExpanded' {
         {
-            $config = New-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorName1 -Location $env.location -IdentityType 'SystemAssigned'
+            $config = New-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorName1 -Location $env.location -EnableSystemAssignedIdentity
             $config.Name | Should -Be $env.accessConnectorName1
         } | Should -Not -Throw
     }

@@ -15,21 +15,34 @@ Update vNet Peering for workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-AllowForwardedTraffic <Boolean>] [-AllowGatewayTransit <Boolean>]
- [-AllowVirtualNetworkAccess <Boolean>] [-DatabricksAddressSpacePrefix <String[]>]
- [-DatabricksVirtualNetworkId <String>] [-RemoteAddressSpacePrefix <String[]>]
- [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway <Boolean>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVirtualNetworkAccess]
+ [-DatabricksAddressSpacePrefix <String[]>] [-DatabricksVirtualNetworkId <String>]
+ [-RemoteAddressSpacePrefix <String[]>] [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDatabricksVNetPeering -InputObject <IDatabricksIdentity> [-AllowForwardedTraffic <Boolean>]
- [-AllowGatewayTransit <Boolean>] [-AllowVirtualNetworkAccess <Boolean>]
- [-DatabricksAddressSpacePrefix <String[]>] [-DatabricksVirtualNetworkId <String>]
- [-RemoteAddressSpacePrefix <String[]>] [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway <Boolean>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzDatabricksVNetPeering -InputObject <IDatabricksIdentity> [-AllowForwardedTraffic]
+ [-AllowGatewayTransit] [-AllowVirtualNetworkAccess] [-DatabricksAddressSpacePrefix <String[]>]
+ [-DatabricksVirtualNetworkId <String>] [-RemoteAddressSpacePrefix <String[]>]
+ [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,12 +79,11 @@ This command updates AllowForwardedTraffic of vnet peering by object.
 ## PARAMETERS
 
 ### -AllowForwardedTraffic
-[System.Management.Automation.SwitchParameter]
 Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
 
 ```yaml
-Type: System.Boolean
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -82,12 +94,11 @@ Accept wildcard characters: False
 ```
 
 ### -AllowGatewayTransit
-[System.Management.Automation.SwitchParameter]
 If gateway links can be used in remote virtual networking to link to this virtual network.
 
 ```yaml
-Type: System.Boolean
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -98,12 +109,11 @@ Accept wildcard characters: False
 ```
 
 ### -AllowVirtualNetworkAccess
-[System.Management.Automation.SwitchParameter]
 Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 
 ```yaml
-Type: System.Boolean
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -133,7 +143,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,7 +158,7 @@ The Id of the databricks virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -175,8 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity parameter.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -190,13 +199,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the VNetPeering.
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: PeeringName
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the workspace vNet peering.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Aliases:
 
 Required: True
 Position: Named
@@ -225,7 +264,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -240,7 +279,7 @@ The Id of the remote virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -256,7 +295,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -268,10 +307,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -282,15 +322,14 @@ Accept wildcard characters: False
 ```
 
 ### -UseRemoteGateway
-[System.Management.Automation.SwitchParameter]
 If remote gateways can be used on this virtual network.
 If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit.
 Only one peering can have this flag set to true.
 This flag cannot be set if virtual network already has a gateway.
 
 ```yaml
-Type: System.Boolean
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -305,7 +344,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -355,7 +394,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering
 
 ## NOTES
 
