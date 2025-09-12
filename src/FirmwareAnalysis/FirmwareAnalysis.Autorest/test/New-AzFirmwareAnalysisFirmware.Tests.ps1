@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFirmwareAnalysisFirmwar
 Describe 'New-AzFirmwareAnalysisFirmware' {
     It 'CreateExpanded' {
         { 
-            $config = New-AzFirmwareAnalysisFirmware -Id 'e0a16256-d186-4d4f-87fc-24bd0dab91cf' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default' -Description 'description' -FileSize 1  -FileName 'file' -Vendor 'vendor' -Model 'model' -Version 'version'
+            $config = New-AzFirmwareAnalysisFirmware -Id $env.FirmwareId -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName -Description 'description' -FileSize 1  -FileName 'file' -Vendor 'vendor' -Model 'model' -Version 'version'
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
