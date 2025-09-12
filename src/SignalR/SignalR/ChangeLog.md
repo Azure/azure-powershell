@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for managing custom domains:
+    - New-AzSignalRCustomDomain: create or update a custom domain for SignalR
+    - Get-AzSignalRCustomDomain: get custom domain(s) for SignalR
+    - Remove-AzSignalRCustomDomain: remove a custom domain from SignalR
+    - Update-AzSignalRCustomDomain: update a custom domain of SignalR
+* Added cmdlets for managing custom certificates:
+    - New-AzSignalRCustomCertificate: create or update a custom certificate for SignalR
+    - Get-AzSignalRCustomCertificate: get custom certificate(s) for SignalR
+    - Remove-AzSignalRCustomCertificate: remove a custom certificate from SignalR
+    - Update-AzSignalRCustomCertificate: update a custom certificate of SignalR
+* Added support for managed identity to SignalR resource create and update cmdlets:
+    - New-AzSignalR: now supports -EnableSystemAssignedIdentity and -UserAssignedIdentity parameters
+    - Update-AzSignalR: now supports -EnableSystemAssignedIdentity and -UserAssignedIdentity parameters
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.

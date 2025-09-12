@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// </summary>
 
         /// <param name="name">The name of the SKU. Required.
-        /// Allowed values: Standard_S1, Free_F1
+        /// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
         /// </param>
 
         /// <param name="tier">Optional tier of this particular SKU. &#39;Standard&#39; or &#39;Free&#39;.
@@ -38,10 +38,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="family">Not used. Retained for future use.
         /// </param>
 
-        /// <param name="capacity">Optional, integer. The unit count of the resource. 1 by default.
+        /// <param name="capacity">Optional, integer. The unit count of the resource.
+        /// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
         /// If present, following values are allowed:
-        /// Free: 1
-        /// Standard: 1,2,5,10,20,50,100
+        /// Free_F1: 1;
+        /// Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+        /// Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+        /// Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
         /// </param>
         public ResourceSku(string name, string tier = default(string), string size = default(string), string family = default(string), int? capacity = default(int?))
 
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
         /// <summary>
         /// Gets or sets the name of the SKU. Required.
-        /// Allowed values: Standard_S1, Free_F1
+        /// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }
@@ -87,11 +90,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public string Family {get; private set; }
 
         /// <summary>
-        /// Gets or sets optional, integer. The unit count of the resource. 1 by
-        /// default.
+        /// Gets or sets optional, integer. The unit count of the resource.
+        /// 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
         /// If present, following values are allowed:
-        /// Free: 1
-        /// Standard: 1,2,5,10,20,50,100
+        /// Free_F1: 1;
+        /// Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+        /// Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+        /// Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "capacity")]
         public int? Capacity {get; set; }
