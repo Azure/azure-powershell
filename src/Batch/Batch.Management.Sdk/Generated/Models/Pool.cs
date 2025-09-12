@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// to remove the start task from the pool.
         /// </param>
 
+        /// <param name="upgradePolicy">Describes an upgrade policy - automatic, manual, or rolling.
+        /// </param>
+
         /// <param name="displayName">The display name need not be unique and can contain any Unicode characters
         /// up to a maximum length of 1024.
         /// </param>
@@ -173,7 +176,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Batch account was created with the poolAllocationMode property set to
         /// &#39;UserSubscription&#39;.
         /// </param>
-        public Pool(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), BatchPoolIdentity identity = default(BatchPoolIdentity), AllocationState? allocationState = default(AllocationState?), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), ScaleSettings scaleSettings = default(ScaleSettings), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), StartTask startTask = default(StartTask), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?), System.Collections.Generic.IDictionary<string, string> resourceTags = default(System.Collections.Generic.IDictionary<string, string>))
+        public Pool(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), BatchPoolIdentity identity = default(BatchPoolIdentity), AllocationState? allocationState = default(AllocationState?), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), ScaleSettings scaleSettings = default(ScaleSettings), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), StartTask startTask = default(StartTask), UpgradePolicy upgradePolicy = default(UpgradePolicy), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?), System.Collections.Generic.IDictionary<string, string> resourceTags = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(id, name, type, etag)
         {
@@ -183,6 +186,7 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.ScaleSettings = scaleSettings;
             this.NetworkConfiguration = networkConfiguration;
             this.StartTask = startTask;
+            this.UpgradePolicy = upgradePolicy;
             this.DisplayName = displayName;
             this.LastModified = lastModified;
             this.CreationTime = creationTime;
@@ -257,6 +261,12 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTask")]
         public StartTask StartTask {get; set; }
+
+        /// <summary>
+        /// Gets or sets describes an upgrade policy - automatic, manual, or rolling.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.upgradePolicy")]
+        public UpgradePolicy UpgradePolicy {get; set; }
 
         /// <summary>
         /// Gets or sets the display name need not be unique and can contain any
@@ -467,6 +477,10 @@ namespace Microsoft.Azure.Management.Batch.Models
             if (this.StartTask != null)
             {
                 this.StartTask.Validate();
+            }
+            if (this.UpgradePolicy != null)
+            {
+                this.UpgradePolicy.Validate();
             }
 
 
