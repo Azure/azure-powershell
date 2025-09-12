@@ -41,7 +41,7 @@ Create Azure Databricks Access Connector.
 
 ### Example 1: Creates or updates azure databricks accessConnector.
 ```powershell
-New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
+New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -EnableSystemAssignedIdentity
 ```
 
 ```output
