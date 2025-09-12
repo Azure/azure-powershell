@@ -206,5 +206,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConfVMImportSecure");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestDiskSnapshotInstantAccess()
+        {
+            TestRunner.RunTestScript("Test-DiskSnapshotInstantAccess");
+        }
+
     }
 }

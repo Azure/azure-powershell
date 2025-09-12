@@ -82,5 +82,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     via the CopyStart operation.
         public double? CompletionPercent { get; set; }
         public string DataAccessAuthMode { get; set; }
+
+        /// <summary>
+        /// Gets the state of snapshot which determines the access availability
+        /// of the snapshot. Possible values include: 'Unknown', 'Pending',
+        /// 'Available', 'InstantAccess', 'AvailableWithInstantAccess'
+        /// </summary>
+        public string SnapshotAccessState { get; private set; }
+
     }
 }

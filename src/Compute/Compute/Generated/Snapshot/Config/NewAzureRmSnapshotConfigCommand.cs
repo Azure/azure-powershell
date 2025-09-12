@@ -199,6 +199,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Enhanced", "None")]
         public string TierOption { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "For snapshots created from Premium SSD v2 or Ultra disk, this property determines the time in minutes the snapshot is retained for instant access to enable faster restore.")]
+        public int InstantAccessDurationMinutes { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Snapshot", "New"))
@@ -297,6 +303,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.ProvisionedBandwidthCopySpeed = this.TierOption;
+            }
+
+            if (this.IsParameterBound(c => c.InstantAccessDurationMinutes))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.InstantAccessDurationMinutes = this.InstantAccessDurationMinutes;
             }
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
