@@ -1168,7 +1168,7 @@ Set-AzResource -ResourceGroupName <resource group> -Name <resource> -ResourceTyp
 ### `Set-AzStorageFileContent`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The ContentHash properties will be removed from the uploaded Azure file when file size > 1TB, or upload with Oauth credencial, or with -DisAllowTrailingDot.
+  - The ContentHash properties will be removed from the uploaded Azure file when file size > 1TB, or upload with Oauth credential, or with -DisAllowTrailingDot.
   - This change is expected to take effect from Az.Storage version: 9.0.0 and Az version: 14.0.0
 
 

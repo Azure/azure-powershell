@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.3.2
+* Upgraded API version to 2024-11-01 [#27067]
+
 ## Version 6.3.1
 * Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.

@@ -31,7 +31,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter is an array of JWK values. Bydefault, the order of the JWK values within the array does not implyan order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, ifdesired.
+POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter is an array of JWK values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, if desired.
   Kty <String>: The "kty" (key type) parameter identifies the cryptographic algorithm         family used with the key, such as "RSA" or "EC". "kty" values should         either be registered in the IANA "JSON Web Key Types" registry         established by [JWA] or be a value that contains a Collision-         Resistant Name.  The "kty" value is a case-sensitive string.
   [Alg <String>]: The "alg" (algorithm) parameter identifies the algorithm intended for         use with the key.  The values used should either be registered in the         IANA "JSON Web Signature and Encryption Algorithms" registry         established by [JWA] or be a value that contains a Collision-         Resistant Name.
   [Crv <String>]: The "crv" (curve) parameter identifies the curve type
@@ -54,6 +54,7 @@ https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationpr
 #>
 function New-AzAttestationProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
+[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider", DeprecatedOutputProperties = ("PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection"), NewOutputProperties = ("PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]"))]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -89,7 +90,7 @@ param(
     [System.String]
     # Specifies the set of trusted signing keys for issuance policy in a single certificate file.
     # The value of the "keys" parameter is an array of JWK values.
-    # Bydefault, the order of the JWK values within the array does not implyan order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, ifdesired.
+    # By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, if desired.
     # To construct, see NOTES section for POLICYSIGNINGCERTIFICATEKEY properties and create a hash table.
     ${PolicySigningCertificateKeyPath},
 

@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>Nginx</PsModuleName>
     <PsRootModuleName>Nginx</PsRootModuleName>
+    <PsModuleFolder>Nginx.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Nginx</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

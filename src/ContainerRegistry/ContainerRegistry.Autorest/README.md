@@ -324,3 +324,94 @@ directive:
   set:
     preview-announcement:
       preview-message: This is a preview version of ContainerRegistry. Let us know if you run into any issues.
+
+- where:
+    verb: New|Update
+    subject: Registry
+  set:
+    breaking-change:
+      deprecated-output-properties:
+        - NetworkRuleSetIPRule
+        - PrivateEndpointConnection
+        - DataEndpointHostName
+        - IdentityType
+        - IdentityUserAssignedIdentity
+      new-output-properties:
+        - NetworkRuleSetIPRule
+        - PrivateEndpointConnection
+        - DataEndpointHostName
+        - IdentityType
+        - IdentityUserAssignedIdentity
+      change-description: (1) The types of the properties 'NetworkRuleSetIPRule', 'PrivateEndpointConnection' and 'DataEndpointHostName' will be changed from single object to 'List'. (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+      deprecated-by-version: 9.0.0
+      deprecated-by-azversion: 15.0.0
+      change-effective-date: 2025/11/03
+
+- where:
+    verb: Get|New|Update
+    subject: ScopeMap|Webhook
+  set:
+    breaking-change:
+      deprecated-output-properties:
+        - Action
+      new-output-properties:
+        - Action
+      change-description: The types of the properties 'Action' will be changed from single object to 'List'.
+      deprecated-by-version: 9.0.0
+      deprecated-by-azversion: 15.0.0
+      change-effective-date: 2025/11/03
+
+- where:
+    verb: Update
+    subject: RegistryCredentials
+    variant: Regenerate
+  set:
+    breaking-change:
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+- where:
+    verb: Get|New
+    subject: ExportPipeline|ImportPipeline
+  set:
+    breaking-change:
+      deprecated-output-properties:
+        - Option
+        - IdentityType
+        - IdentityUserAssignedIdentity
+      new-output-properties:
+        - Option
+        - IdentityType
+        - IdentityUserAssignedIdentity
+      change-description: (1) The types of the properties 'NetworkRuleSetIPRule', 'PrivateEndpointConnection' and 'DataEndpointHostName' will be changed from single object to 'List'. (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+      deprecated-by-version: 9.0.0
+      deprecated-by-azversion: 15.0.0
+      change-effective-date: 2025/11/03
+
+- where:
+    verb: Get|New|Update
+    subject: Token
+  set:
+    breaking-change:
+      deprecated-output-properties:
+        - CredentialsCertificate
+        - CredentialsPassword
+      new-output-properties:
+        - CredentialsCertificate
+        - CredentialsPassword
+      change-description: The types of the properties 'CredentialsCertificate' and 'CredentialsPassword' will be changed from single object to 'List'.
+      deprecated-by-version: 9.0.0
+      deprecated-by-azversion: 15.0.0
+      change-effective-date: 2025/11/03
+
+- where:
+    verb: Import
+    subject: RegistryImage
+    variant: Import
+  set:
+    breaking-change:
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+```

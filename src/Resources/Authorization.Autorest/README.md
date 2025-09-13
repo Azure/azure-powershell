@@ -58,6 +58,30 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - where:
+      verb: Get|Update
+      subject: RoleManagementPolicy
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - EffectiveRule[]
+          - Rule[]
+        new-output-properties:
+          - List[EffectiveRule]
+          - List[Rule]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: Rule
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
   # Swaager bug: The scope should be readonly according to the server response.
   - from: swagger-document
     where: $.definitions.RoleManagementPolicyProperties.properties.scope

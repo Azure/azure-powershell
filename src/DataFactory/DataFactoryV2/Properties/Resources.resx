@@ -279,7 +279,7 @@ For data factory naming restrictions, please see http://msdn.microsoft.com/en-us
     <value>Json is not valid. Details: '{0}'</value>
   </data>
   <data name="ContinueRegenerateAuthKey" xml:space="preserve">
-    <value>Continuing execution will renegerate the authentication key '{0}' of integration runtime {1}. This operation will invalidate the existing authentication key.
+    <value>Continuing execution will regenerate the authentication key '{0}' of integration runtime {1}. This operation will invalidate the existing authentication key.
 Are you sure you want to continue?</value>
   </data>
   <data name="IntegrationRuntimeArgumentInvalid" xml:space="preserve">
@@ -295,7 +295,7 @@ Are you sure you want to continue?</value>
     <value>Removing the integration runtime '{0}' in the data factory '{1}'.</value>
   </data>
   <data name="RegenerateAuthKey" xml:space="preserve">
-    <value>Renegerate the authentication key '{0}' of integration runtime {1}.</value>
+    <value>Regenerate the authentication key '{0}' of integration runtime {1}.</value>
   </data>
   <data name="IntegrationRuntimeExists" xml:space="preserve">
     <value>An integration runtime with the name {0} in the data factory {1} exists. 
@@ -333,10 +333,10 @@ Are you sure you want to continue?</value>
     <value>Both VNetId and Subnet must be set.</value>
   </data>
   <data name="IntegrationRuntimeWrongType" xml:space="preserve">
-    <value>The value for pramater 'Type' is different with existing integration runtime with name {0}.</value>
+    <value>The value for parameter 'Type' is different with existing integration runtime with name {0}.</value>
   </data>
   <data name="NeedIntegrationRuntimeType" xml:space="preserve">
-    <value>Pramater 'Type' must be provided when creating new integration runtime.</value>
+    <value>Parameter 'Type' must be provided when creating new integration runtime.</value>
   </data>
   <data name="TriggerExists" xml:space="preserve">
     <value>A trigger with the name {0} in the data factory {1} exists. 
@@ -404,7 +404,7 @@ Are you sure you want to continue?</value>
     <value>'AuthKey' can not be used together with 'SharedIntegrationRuntimeResourceId'.</value>
   </data>
   <data name="InvalidLinkedDataFactoryName" xml:space="preserve">
-    <value>The linked data factory name is invlaid.</value>
+    <value>The linked data factory name is invalid.</value>
   </data>
   <data name="LinksSwitchMissing" xml:space="preserve">
     <value>LinkedDataFactoryName parameter is working together with '-Links' switch parameter.</value>

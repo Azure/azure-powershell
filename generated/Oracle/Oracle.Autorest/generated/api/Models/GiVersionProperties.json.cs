@@ -100,10 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
-            }
+            AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

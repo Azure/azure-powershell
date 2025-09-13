@@ -131,6 +131,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.")]
         public Hashtable PlacementProperty { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.")]
+        public string VmSize { get; set; }
+
         #endregion
 
 
@@ -206,7 +209,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    currentNodeType.VmInstanceCount = this.InstanceCount.Value;
+                    currentNodeType.VMInstanceCount = this.InstanceCount.Value;
                 }
             }
 
@@ -228,6 +231,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.PlacementProperty != null)
             {
                 currentNodeType.PlacementProperties = this.PlacementProperty.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+            }
+
+            if (!string.IsNullOrEmpty(this.VmSize))
+            { 
+                currentNodeType.VMSize = this.VmSize;
             }
 
             return currentNodeType;

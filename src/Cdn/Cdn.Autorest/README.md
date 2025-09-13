@@ -69,7 +69,7 @@ directive:
     - ResponseBasedOriginErrorDetectionParameters
     # Both CDN and AFDX
     - HealthProbeParameters
-  # Generate memory object as parameter of the cmelet.
+  # Generate memory object as parameter of the cmdlet.
   - model-cmdlet:
     - model-name: ResourceReference
       cmdlet-name: New-AzCdnResourceReferenceObject
@@ -224,7 +224,7 @@ directive:
       cmdlet-name: New-AzCdnLoadParametersObject
     - model-name: MigrationEndpointMapping
       cmdlet-name: New-AzCdnMigrationEndpointMappingObject
-    # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
+    # AFDX profile LogScrubbing, need to rename the memory objects, not sure how to rename a memory object currently.
     - model-name: ProfileLogScrubbing
       cmdlet-name: New-AzFrontDoorCdnProfileLogScrubbingObject
     - model-name: ProfileScrubbingRules
@@ -278,7 +278,7 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Remove some cmdlets' ViaIdentity which are inconvinient to call
+  # Remove some cmdlets' ViaIdentity which are inconvenient to call
   - where:
       variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: ^NameAvailability$|^EndpointNameAvailability$
@@ -344,6 +344,12 @@ directive:
     hide: true
   - where:
       subject: KeyGroupUpdate
+    hide: true
+    
+  # Hide New-AzFrontDoorCdnRoute to customize
+  - where:
+      subject: Route 
+      verb: New
     hide: true
 
   # Rename
@@ -487,4 +493,38 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
+
+  - where:
+      subjectPrefix: Cdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileSku
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
 ```

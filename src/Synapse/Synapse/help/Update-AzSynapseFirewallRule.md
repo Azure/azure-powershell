@@ -27,7 +27,7 @@ Update-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> -Name <String
 ```
 
 ## DESCRIPTION
-The **Update-AzSynapseFirewallRule** cmdlet modifys an Azure Synapse Analytics Firewall Rule.
+The **Update-AzSynapseFirewallRule** cmdlet modifies an Azure Synapse Analytics Firewall Rule.
 
 ## EXAMPLES
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The firerwall rule name for the workspace.
+The firewall rule name for the workspace.
 
 ```yaml
 Type: System.String

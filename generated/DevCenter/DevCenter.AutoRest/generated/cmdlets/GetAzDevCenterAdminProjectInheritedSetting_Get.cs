@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] GetInheritedSettings=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/getInheritedSettings"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDevCenterAdminProjectInheritedSetting_Get", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Get-AzDevCenterAdminProjectInheritedSetting", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IInheritedSettingsForProject))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Gets applicable inherited settings for this project.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

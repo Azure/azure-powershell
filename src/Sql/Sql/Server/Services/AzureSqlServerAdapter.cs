@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 
         /// <summary>
         /// Convert a <see cref="System.Security.SecureString"/> to a plain-text string representation.
-        /// This should only be used in a proetected context, and must be done in the same logon and process context
+        /// This should only be used in a protected context, and must be done in the same logon and process context
         /// in which the <see cref="System.Security.SecureString"/> was constructed.
         /// </summary>
         /// <param name="secureString">The encrypted <see cref="System.Security.SecureString"/>.</param>

@@ -21,12 +21,13 @@ Create an in-memory object for TeradataDataSource.
 Create an in-memory object for TeradataDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.TeradataDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewTeradataDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewteradatadatasourceobject
 #>
 function New-AzPurviewTeradataDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.TeradataDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,15 +39,11 @@ function New-AzPurviewTeradataDataSourceObject {
         $CollectionType,
         [Parameter()]
         [string]
-        $Host,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $Host
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.TeradataDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -56,9 +53,6 @@ function New-AzPurviewTeradataDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('Host')) {
             $Object.Host = $Host
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

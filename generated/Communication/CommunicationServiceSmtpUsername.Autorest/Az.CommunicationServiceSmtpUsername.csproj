@@ -3,6 +3,7 @@
     <PsModuleName>CommunicationServiceSmtpUsername</PsModuleName>
     <PsRootModuleName>Communication</PsRootModuleName>
     <PsModuleFolder>CommunicationServiceSmtpUsername.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

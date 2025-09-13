@@ -20,12 +20,16 @@ Patch properties of the provided Kubernetes cluster feature.
 .Description
 Patch properties of the provided Kubernetes cluster feature.
 .Example
+$tagUpdatedHash = @{
+    tag = "tag"
+}
+
 Update-AzNetworkCloudKubernetesClusterFeature -FeatureName featureName -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -SubscriptionId subscriptionId -Tag $tagUpdatedHash
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesClusterFeature
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesClusterFeature
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -62,7 +66,7 @@ OPTION <IStringKeyValuePair[]>: The configured options for the feature.
 https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudkubernetesclusterfeature
 #>
 function Update-AzNetworkCloudKubernetesClusterFeature {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesClusterFeature])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesClusterFeature])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -100,16 +104,31 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # The ETag of the transformation.
+    # Omit this value to always overwrite the current resource.
+    # Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+    ${IfMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+    # Other values will result in error from server as they are not supported.
+    ${IfNoneMatch},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStringKeyValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IStringKeyValuePair[]]
     # The configured options for the feature.
     # To construct, see NOTES section for OPTION properties and create a hash table.
     ${Option},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesClusterFeaturePatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesClusterFeaturePatchParametersTags]))]
     [System.Collections.Hashtable]
     # The Azure resource tags that will replace the existing ones.
     ${Tag},

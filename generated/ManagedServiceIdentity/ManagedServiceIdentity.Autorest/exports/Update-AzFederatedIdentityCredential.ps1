@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a federated identity credential under the specified user assigned identity.
+Update a federated identity credential under the specified user assigned identity.
 .Description
-update a federated identity credential under the specified user assigned identity.
+Update a federated identity credential under the specified user assigned identity.
 .Example
 Update-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"

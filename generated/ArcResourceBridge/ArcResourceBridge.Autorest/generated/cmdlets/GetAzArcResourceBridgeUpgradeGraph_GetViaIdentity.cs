@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Cmdlets
     /// [OpenAPI] GetUpgradeGraph=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/upgradeGraphs/{upgradeGraph}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzArcResourceBridgeUpgradeGraph_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IUpgradeGraph", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Kubeconfig","SupportedVersion"}, NewOutputProperties=new string[] {"Kubeconfig","SupportedVersion"}, ChangeDescription="The types of the properties 'Kubeconfig' and 'SupportedVersion' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IUpgradeGraph))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Description(@"Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Generated]

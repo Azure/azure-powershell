@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 .Description
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 .Example
 New-AzLabServicesLabPlan `
 	-LabPlanName "testplan" `
@@ -38,12 +38,12 @@ New-AzLabServicesLabPlan `
 	-DefaultConnectionProfileWebSshAccess None
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslabplan
 #>
 function New-AzLabServicesLabPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -68,99 +68,99 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String[]]
     # The allowed regions for the lab creator to use when creating labs using this lab plan.
     ${AllowedRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
     ${DefaultAutoShutdownProfileDisconnectDelay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
     ${DefaultAutoShutdownProfileIdleDelay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
     ${DefaultAutoShutdownProfileNoConnectDelay},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether shutdown on disconnect is enabled
     ${DefaultAutoShutdownProfileShutdownOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("None", "UserAbsence", "LowUsage")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode]
+    [System.String]
     # Whether a VM will get shutdown when it has idled for a period of time.
     ${DefaultAutoShutdownProfileShutdownOnIdle},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
     ${DefaultAutoShutdownProfileShutdownWhenNotConnected},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over RDP.
     ${DefaultConnectionProfileClientRdpAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over SSH.
     ${DefaultConnectionProfileClientSshAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over RDP.
     ${DefaultConnectionProfileWebRdpAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over SSH.
     ${DefaultConnectionProfileWebSshAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The external subnet resource id
     ${DefaultNetworkProfileSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Base Url of the lms instance this lab plan can link lab rosters against.
     ${LinkedLmsInstance},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Resource ID of the Shared Image Gallery attached to this lab plan.
@@ -168,36 +168,48 @@ param(
     # Shared images from the gallery can be made available to use when creating new labs.
     ${SharedGalleryId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support contact email address.
     ${SupportInfoEmail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support instructions.
     ${SupportInfoInstruction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support contact phone number.
     ${SupportInfoPhone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support web address.
     ${SupportInfoUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -267,6 +279,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -287,10 +308,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.LabServices.private\New-AzLabServicesLabPlan_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.LabServices.private\New-AzLabServicesLabPlan_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.LabServices.private\New-AzLabServicesLabPlan_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -304,6 +325,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

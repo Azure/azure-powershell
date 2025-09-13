@@ -21,12 +21,13 @@ Create an in-memory object for AzureStorageMsiScan.
 Create an in-memory object for AzureStorageMsiScan.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragemsiscanobject
 #>
 function New-AzPurviewAzureStorageMsiScanObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageMsiScan')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,20 +44,16 @@ function New-AzPurviewAzureStorageMsiScanObject {
         [string]
         $ScanRulesetName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $ScanRulesetType,
         [Parameter()]
         [int]
-        $Worker,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-        $Kind
+        $Worker
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageMsiScan]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -75,9 +72,6 @@ function New-AzPurviewAzureStorageMsiScanObject {
         }
         if ($PSBoundParameters.ContainsKey('Worker')) {
             $Object.Worker = $Worker
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettings __logFileSettings = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFileSettings();
 
         /// <summary>Internal Acessors for Text</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsText Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal.Text { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)__logFileSettings).Text; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)__logFileSettings).Text = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsText Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal.Text { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)__logFileSettings).Text; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)__logFileSettings).Text = value ?? null /* model class */; }
 
         /// <summary>Text settings</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PropertyOrigin.Inherited)]

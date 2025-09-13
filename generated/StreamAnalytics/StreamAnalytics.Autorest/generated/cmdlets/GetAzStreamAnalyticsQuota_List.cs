@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
     /// [OpenAPI] ListQuotas=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/locations/{location}/quotas"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStreamAnalyticsQuota_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ISubscriptionQuota", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"ISubscriptionQuota"}, NewOutputProperties=new string[] {"ISubscriptionQuotasListResult"}, ChangeDescription="The type of property Quota will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ISubscriptionQuota))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Description(@"Retrieves the subscription's current quota information in a particular region.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Generated]
