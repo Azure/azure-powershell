@@ -66,7 +66,7 @@ Describe 'Invoke-AzDataMigrationRetryToSqlDb (Mocked)' {
             -ResourceGroupName $env.TestRetryDatabaseMigrationDb.ResourceGroupName `
             -SqlDbInstanceName $env.TestRetryDatabaseMigrationDb.SqlDbInstanceName `
             -TargetDbName $env.TestRetryDatabaseMigrationDb.TargetDbName `
-            -MigrationoperationId $env.TestRetryDatabaseMigrationDb.MigrationoperationId
+            -MigrationOperationId $env.TestRetryDatabaseMigrationDb.MigrationOperationId
 
         $retryResult | Should -Not -Be $null
         $retryResult.Status | Should -Be "RetryStarted"

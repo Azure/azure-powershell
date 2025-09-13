@@ -1,6 +1,6 @@
-### Example 1: Retry SQL DB Database Migration
+### Example 1: Retry an ongoing SQL DB migration
 ```powershell
-Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName sqldb -MigrationoperationId migrationoperationId
+Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName sqldb -MigrationOperationId migrationOperationId
 ```
 
-Retry SQL DB Database Migration
+This command retries the specified failed migration to a SQL database.

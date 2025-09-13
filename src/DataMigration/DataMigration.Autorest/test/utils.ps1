@@ -254,7 +254,7 @@ function setupEnv() {
         TargetSqlConnectionUserName = "amakum"
         TargetSqlConnectionAuthentication = "SQLAuthentication"
         TargetSqlConnectionPassword = "targetpwd"
-        MigrationoperationId = "47ca6f55-b313-4c82-8a0e-89146d94ad19"
+        MigrationOperationId = "47ca6f55-b313-4c82-8a0e-89146d94ad19"
     }
 
     $DeleteDatabaseMigrationMITestVariablesDb = @{
