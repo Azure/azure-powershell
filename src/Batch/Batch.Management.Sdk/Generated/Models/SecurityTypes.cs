@@ -18,7 +18,16 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Trusted launch protects against advanced and persistent attack techniques.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "trustedLaunch")]
-        TrustedLaunch
+        TrustedLaunch,
+        /// <summary>
+        /// Azure confidential computing offers confidential VMs are for tenants with
+        /// high security and confidentiality requirements. These VMs provide a strong,
+        /// hardware-enforced boundary to help meet your security needs. You can use
+        /// confidential VMs for migrations without making changes to your code, with
+        /// the platform protecting your VM&#39;s state from being read or modified.
+        /// </summary>
+        [System.Runtime.Serialization.EnumMember(Value = "confidentialVM")]
+        ConfidentialVM
     }
     internal static class SecurityTypesEnumExtension
     {
@@ -32,6 +41,8 @@ namespace Microsoft.Azure.Management.Batch.Models
             {
                 case SecurityTypes.TrustedLaunch:
                     return "trustedLaunch";
+                case SecurityTypes.ConfidentialVM:
+                    return "confidentialVM";
             }
             return null;
         }
@@ -41,6 +52,8 @@ namespace Microsoft.Azure.Management.Batch.Models
             {
                 case "trustedLaunch":
                     return SecurityTypes.TrustedLaunch;
+                case "confidentialVM":
+                    return SecurityTypes.ConfidentialVM;
             }
             return null;
         }

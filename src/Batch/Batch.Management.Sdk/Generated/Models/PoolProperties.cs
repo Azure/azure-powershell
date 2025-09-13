@@ -48,24 +48,13 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="allocationStateTransitionTime">The time at which the pool entered its current allocation state.
         /// </param>
 
-        /// <param name="vmSize">For information about available sizes of virtual machines for Cloud
-        /// Services pools (pools created with cloudServiceConfiguration), see Sizes
-        /// for Cloud Services
-        /// (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-        /// Batch supports all Cloud Services VM sizes except ExtraSmall. For
-        /// information about available VM sizes for pools using images from the
-        /// Virtual Machines Marketplace (pools created with
-        /// virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-        /// or Sizes for Virtual Machines (Windows)
-        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+        /// <param name="vmSize">For information about available VM sizes, see Sizes for Virtual Machines in
+        /// Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview).
         /// Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
         /// storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
         /// </param>
 
-        /// <param name="deploymentConfiguration">Using CloudServiceConfiguration specifies that the nodes should be creating
-        /// using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses
-        /// Azure Virtual Machines (IaaS).
+        /// <param name="deploymentConfiguration">Deployment configuration properties.
         /// </param>
 
         /// <param name="currentDedicatedNodes">The number of dedicated compute nodes currently in the pool.
@@ -247,27 +236,17 @@ namespace Microsoft.Azure.Management.Batch.Models
         public System.DateTime? AllocationStateTransitionTime {get; private set; }
 
         /// <summary>
-        /// Gets or sets for information about available sizes of virtual machines for
-        /// Cloud Services pools (pools created with cloudServiceConfiguration), see
-        /// Sizes for Cloud Services
-        /// (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-        /// Batch supports all Cloud Services VM sizes except ExtraSmall. For
-        /// information about available VM sizes for pools using images from the
-        /// Virtual Machines Marketplace (pools created with
-        /// virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-        /// or Sizes for Virtual Machines (Windows)
-        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-        /// Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+        /// Gets or sets for information about available VM sizes, see Sizes for
+        /// Virtual Machines in Azure
+        /// (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch
+        /// supports all Azure VM sizes except STANDARD_A0 and those with premium
         /// storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSize")]
         public string VMSize {get; set; }
 
         /// <summary>
-        /// Gets or sets using CloudServiceConfiguration specifies that the nodes
-        /// should be creating using Azure Cloud Services (PaaS), while
-        /// VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+        /// Gets or sets deployment configuration properties.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "deploymentConfiguration")]
         public DeploymentConfiguration DeploymentConfiguration {get; set; }
