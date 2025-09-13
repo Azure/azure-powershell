@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName", "VpnServerConfigurationName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
