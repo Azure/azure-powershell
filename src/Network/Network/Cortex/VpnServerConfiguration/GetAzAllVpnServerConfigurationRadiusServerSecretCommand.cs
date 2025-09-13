@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
     using System.Collections.Generic;
     using System.Management.Automation;
