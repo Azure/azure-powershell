@@ -24,7 +24,12 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Batch Service through private endpoint resource.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Disabled")]
-        Disabled
+        Disabled,
+        /// <summary>
+        /// Secures connectivity to Azure Batch through NSP configuration.
+        /// </summary>
+        [System.Runtime.Serialization.EnumMember(Value = "SecuredByPerimeter")]
+        SecuredByPerimeter
     }
     internal static class PublicNetworkAccessTypeEnumExtension
     {
@@ -40,6 +45,8 @@ namespace Microsoft.Azure.Management.Batch.Models
                     return "Enabled";
                 case PublicNetworkAccessType.Disabled:
                     return "Disabled";
+                case PublicNetworkAccessType.SecuredByPerimeter:
+                    return "SecuredByPerimeter";
             }
             return null;
         }
@@ -51,6 +58,8 @@ namespace Microsoft.Azure.Management.Batch.Models
                     return PublicNetworkAccessType.Enabled;
                 case "Disabled":
                     return PublicNetworkAccessType.Disabled;
+                case "SecuredByPerimeter":
+                    return PublicNetworkAccessType.SecuredByPerimeter;
             }
             return null;
         }

@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/test?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/test?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL3Rlc3Q/YXBpLXZlcnNpb249MjAyMy0wNS0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -85,7 +85,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/test?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/test?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL3Rlc3Q/YXBpLXZlcnNpb249MjAyMy0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -163,7 +163,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/test?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/test?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL2F1dG9tYXRpb24vcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL2RvdG5vdHNka2JhdGNoYWNjb3VudDIvYXBwbGljYXRpb25zL3Rlc3Q/YXBpLXZlcnNpb249MjAyMy0wNS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {

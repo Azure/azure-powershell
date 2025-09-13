@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="automaticOSUpgradePolicy">The configuration parameters used for performing automatic OS upgrade.
         /// </param>
 
-        /// <param name="rollingUpgradePolicy">This property is only supported on Pools with the
-        /// virtualMachineConfiguration property.
+        /// <param name="rollingUpgradePolicy">The configuration parameters used while performing a rolling upgrade.
         /// </param>
         public UpgradePolicy(UpgradeMode mode, AutomaticOSUpgradePolicy automaticOSUpgradePolicy = default(AutomaticOSUpgradePolicy), RollingUpgradePolicy rollingUpgradePolicy = default(RollingUpgradePolicy))
 
@@ -74,8 +73,8 @@ namespace Microsoft.Azure.Management.Batch.Models
         public AutomaticOSUpgradePolicy AutomaticOSUpgradePolicy {get; set; }
 
         /// <summary>
-        /// Gets or sets this property is only supported on Pools with the
-        /// virtualMachineConfiguration property.
+        /// Gets or sets the configuration parameters used while performing a rolling
+        /// upgrade.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rollingUpgradePolicy")]
         public RollingUpgradePolicy RollingUpgradePolicy {get; set; }

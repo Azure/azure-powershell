@@ -145,7 +145,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -226,7 +226,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -385,7 +385,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -460,7 +460,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -535,7 +535,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -610,7 +610,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -685,7 +685,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -760,7 +760,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -898,7 +898,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437/listKeys?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437/listKeys?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "POST",
       "RequestHeaders": {
@@ -970,7 +970,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437/listKeys?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437/listKeys?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "POST",
       "RequestHeaders": {
@@ -1042,7 +1042,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437/regenerateKeys?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437/regenerateKeys?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3L3JlZ2VuZXJhdGVLZXlzP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "POST",
       "RequestHeaders": {
@@ -1120,7 +1120,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps3698/providers/Microsoft.Batch/batchAccounts/ps8437?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMzY5OC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM4NDM3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
