@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the ContainerConfiguration class.
         /// </summary>
 
+        /// <param name="type">The container technology to be used.
+        /// Possible values include: &#39;DockerCompatible&#39;, &#39;CriCompatible&#39;</param>
+
         /// <param name="containerImageNames">This is the full image reference, as would be specified to &#34;docker pull&#34;.
         /// An image will be sourced from the default Docker registry unless the image
         /// is fully qualified with an alternative registry.
@@ -35,19 +38,13 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="containerRegistries">If any images must be downloaded from a private registry which requires
         /// credentials, then those credentials must be provided here.
         /// </param>
-        public ContainerConfiguration(System.Collections.Generic.IList<string> containerImageNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ContainerRegistry> containerRegistries = default(System.Collections.Generic.IList<ContainerRegistry>))
+        public ContainerConfiguration(string type, System.Collections.Generic.IList<string> containerImageNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ContainerRegistry> containerRegistries = default(System.Collections.Generic.IList<ContainerRegistry>))
 
         {
+            this.Type = type;
             this.ContainerImageNames = containerImageNames;
             this.ContainerRegistries = containerRegistries;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for ContainerConfiguration class.
-        /// </summary>
-        static ContainerConfiguration()
-        {
-            Type = "DockerCompatible";
         }
 
         /// <summary>
@@ -55,6 +52,12 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the container technology to be used. Possible values include: &#39;DockerCompatible&#39;, &#39;CriCompatible&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
+        public string Type {get; set; }
 
         /// <summary>
         /// Gets or sets this is the full image reference, as would be specified to
@@ -71,9 +74,20 @@ namespace Microsoft.Azure.Management.Batch.Models
         [Newtonsoft.Json.JsonProperty(PropertyName = "containerRegistries")]
         public System.Collections.Generic.IList<ContainerRegistry> ContainerRegistries {get; set; }
         /// <summary>
-        /// Gets or sets the container technology to be used.
+        /// Validate the object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public static string Type {get; private set; }
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Type == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Type");
+            }
+
+
+
+        }
     }
 }
