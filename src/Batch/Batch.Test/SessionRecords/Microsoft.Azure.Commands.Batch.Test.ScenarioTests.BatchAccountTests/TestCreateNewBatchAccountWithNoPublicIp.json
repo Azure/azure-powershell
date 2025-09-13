@@ -145,7 +145,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps2289/providers/Microsoft.Batch/batchAccounts/ps5017?api-version=2024-02-01",
+      "RequestUri": "/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/ps2289/providers/Microsoft.Batch/batchAccounts/ps5017?api-version=2024-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTRiZDdkZWQtNjhiNC00ZmZhLTgyYTUtMzdhYzcyY2FhMmVjL3Jlc291cmNlR3JvdXBzL3BzMjI4OS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM1MDE3P2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {

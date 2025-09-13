@@ -23,10 +23,16 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="storageAccountType">The storage account type for use in creating data disks or OS disk.
         /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;</param>
-        public ManagedDisk(StorageAccountType? storageAccountType = default(StorageAccountType?))
+
+        /// <param name="securityProfile">Specifies the security profile settings for the managed disk. **Note**: It
+        /// can only be set for Confidential VMs and is required when using
+        /// Confidential VMs.
+        /// </param>
+        public ManagedDisk(StorageAccountType? storageAccountType = default(StorageAccountType?), VMDiskSecurityProfile securityProfile = default(VMDiskSecurityProfile))
 
         {
             this.StorageAccountType = storageAccountType;
+            this.SecurityProfile = securityProfile;
             CustomInit();
         }
 
@@ -42,5 +48,13 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageAccountType")]
         public StorageAccountType? StorageAccountType {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the security profile settings for the managed disk.
+        /// **Note**: It can only be set for Confidential VMs and is required when
+        /// using Confidential VMs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "securityProfile")]
+        public VMDiskSecurityProfile SecurityProfile {get; set; }
     }
 }

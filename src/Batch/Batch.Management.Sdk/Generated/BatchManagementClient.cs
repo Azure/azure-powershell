@@ -98,6 +98,10 @@ namespace Microsoft.Azure.Management.Batch
         /// </summary>
         public virtual IPoolOperations Pool { get; private set; }
         /// <summary>
+        /// Gets the INetworkSecurityPerimeterOperations
+        /// </summary>
+        public virtual INetworkSecurityPerimeterOperations NetworkSecurityPerimeter { get; private set; }
+        /// <summary>
         /// Initializes a new instance of the BatchManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -344,8 +348,9 @@ namespace Microsoft.Azure.Management.Batch
             this.PrivateLinkResource = new PrivateLinkResourceOperations(this);
             this.PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
             this.Pool = new PoolOperations(this);
+            this.NetworkSecurityPerimeter = new NetworkSecurityPerimeterOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-02-01";
+            this.ApiVersion = "2024-07-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

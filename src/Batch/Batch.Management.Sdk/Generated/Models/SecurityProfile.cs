@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="securityType">Specifies the SecurityType of the virtual machine. It has to be set to any
         /// specified value to enable UefiSettings.
-        /// Possible values include: &#39;trustedLaunch&#39;</param>
+        /// Possible values include: &#39;trustedLaunch&#39;, &#39;confidentialVM&#39;</param>
 
         /// <param name="encryptionAtHost">This property can be used by user in the request to enable or disable the
         /// Host Encryption for the virtual machine or virtual machine scale set. This
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <summary>
         /// Gets or sets specifies the SecurityType of the virtual machine. It has to
-        /// be set to any specified value to enable UefiSettings. Possible values include: &#39;trustedLaunch&#39;
+        /// be set to any specified value to enable UefiSettings. Possible values include: &#39;trustedLaunch&#39;, &#39;confidentialVM&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityType")]
         public SecurityTypes? SecurityType {get; set; }

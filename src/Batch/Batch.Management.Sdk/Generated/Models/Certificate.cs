@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about a certificate.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Certificate : ProxyResource
+    public partial class Certificate : AzureProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Certificate class.
@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </param>
 
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
+        /// </param>
+
+        /// <param name="tags">The tags of the resource.
         /// </param>
 
         /// <param name="thumbprintAlgorithm">This must match the first portion of the certificate name. Currently
@@ -65,9 +68,9 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="deleteCertificateError">This is only returned when the certificate provisioningState is &#39;Failed&#39;.
         /// </param>
-        public Certificate(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), CertificateProvisioningState? provisioningState = default(CertificateProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), CertificateProvisioningState? previousProvisioningState = default(CertificateProvisioningState?), System.DateTime? previousProvisioningStateTransitionTime = default(System.DateTime?), string publicData = default(string), DeleteCertificateError deleteCertificateError = default(DeleteCertificateError))
+        public Certificate(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), CertificateProvisioningState? provisioningState = default(CertificateProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), CertificateProvisioningState? previousProvisioningState = default(CertificateProvisioningState?), System.DateTime? previousProvisioningStateTransitionTime = default(System.DateTime?), string publicData = default(string), DeleteCertificateError deleteCertificateError = default(DeleteCertificateError))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, etag, tags)
         {
             this.ThumbprintAlgorithm = thumbprintAlgorithm;
             this.Thumbprint = thumbprint;
