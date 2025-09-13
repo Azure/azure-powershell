@@ -281,6 +281,12 @@ param
       $authTypes = $expected.VpnClientConfiguration.VpnAuthenticationTypes
       Assert-NotNull $authTypes
       Assert-AreEqual 3 @($authTypes).Count
+      
+      # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+      $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+      Assert-AreEqual 1 $vngRadiusAuthServers.Count
+      Assert-AreEqual "1.2.3.4" $vngRadiusAuthServers[0].RadiusServerAddress
+      Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
 
       $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
       $vpnProfilePackageUrl = New-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
@@ -767,11 +773,25 @@ function Test-VirtualNetworkGatewayRadius
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerAddress $radiusServer2.RadiusServerAddress
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer2.RadiusServerScore
 		 
+        # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+        $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual 2 $vngRadiusAuthServers.Count
+        Assert-AreEqual "10.1.0.1" $vngRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
+        Assert-AreEqual "10.1.0.1" $vngRadiusAuthServers[1].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[1].RadiusServerSecret
+
 		# Update gateway to singular radius
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerAddress 10.1.0.2 -RadiusServerSecret $radiuspd
         $actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-Null  $actual.VpnClientConfiguration.RadiusServers
         Assert-AreEqual $actual.VpnClientConfiguration.RadiusServerAddress 10.1.0.2
+        
+        # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+        $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual 1 $vngRadiusAuthServers.Count
+        Assert-AreEqual "10.1.0.2" $vngRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
 
 		# Update gateway radius settings
         $radiusServers = @($radiusServer3, $radiusServer1)
@@ -782,7 +802,7 @@ function Test-VirtualNetworkGatewayRadius
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerAddress $radiusServer3.RadiusServerAddress
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerScore $radiusServer3.RadiusServerScore
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerAddress $radiusServer1.RadiusServerAddress
-		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer1.RadiusServerScore
+		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer1.RadiusServerScoret
 	}
     finally
     {

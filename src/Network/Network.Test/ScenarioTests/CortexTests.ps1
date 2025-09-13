@@ -1095,6 +1095,12 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual "PolicyGroup2" $VpnServerConfig2.ConfigurationPolicyGroups[0].Name
 		Assert-AreEqual 0 $VpnServerConfig2.ConfigurationPolicyGroups[0].Priority
 
+        # Get AllVpnServerConfigurationRadiusServerSecret from VpnServerConfiguration
+        $vpnServerConfigRadiusAuthServers = Get-AllVpnServerConfigurationRadiusServerSecret -ResourceGroupName $rgname -Name $VpnServerConfiguration2Name
+        Assert-AreEqual 1 $vpnServerConfigRadiusAuthServers.Count
+        Assert-AreEqual "TestRadiusServer1" $vpnServerConfigRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "TestRadiusServerPassword" $vpnServerConfigRadiusAuthServers[0].RadiusServerSecret
+
 		# Delete VpnServerConfiguration2 child PolicyGroup2 using Remove-AzVpnServerConfigurationPolicyGroup		
 		$delete = Remove-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Force -PassThru
 		Assert-AreEqual $True $delete
