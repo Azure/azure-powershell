@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.8.1
 * Added Cross region restore support for new region - eastus3.
 
 
