@@ -1,64 +1,66 @@
 ---
 external help file: Az.DataMigration-help.xml
 Module Name: Az.DataMigration
-online version: https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqlmanagedinstance
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqlmanagedinstance
 schema: 2.0.0
 ---
 
-# Get-AzDataMigrationToSqlManagedInstance
+# Remove-AzDataMigrationToSqlManagedInstance
 
 ## SYNOPSIS
-Retrieve the specified database migration for a given SQL Managed Instance.
+Delete Database Migration resource.
 
 ## SYNTAX
 
-### Get (Default)
+### Delete (Default)
 ```
-Get-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -TargetDbName <String> [-Expand <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Remove-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -TargetDbName <String> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzDataMigrationToSqlManagedInstance -InputObject <IDataMigrationIdentity> [-Expand <String>]
- [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+Remove-AzDataMigrationToSqlManagedInstance -InputObject <IDataMigrationIdentity> [-Force]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieve the specified database migration for a given SQL Managed Instance.
+Delete Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Get the details of a given Database Migration to a SQL Managed Instance
+### Example 1: Delete the SQL MI Database Migration resource.
 ```powershell
-Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase"
+Remove-AzDataMigrationToSqlManagedInstance -ResourceGroupName myRG -managedInstanceName sqlmi -TargetDbName myDB
 ```
 
-```output
-Name               Type                                       Kind  ProvisioningState MigrationStatus
-----               ----                                       ----  ----------------- ---------------
-MyDatabase         Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         Succeeded
-```
+Delete the SQL DB Database Migration resource.
 
-This command gets the details of a given Database Migration to a SQL Managed Instance.
-
-### Example 2: Get the expanded details of a given Database Migration to a SQL Managed Instance
+### Example 2: Delete the SQL MI Database Migration resource even if it is in progress
 ```powershell
-$miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
-$miMigration.MigrationStatusDetail
+Remove-AzDataMigrationToSqlManagedInstance -ResourceGroupName myRG -managedInstanceName sqlmi -TargetDbName myDB -Force
 ```
 
-```output
-BlobContainerName                    CompleteRestoreErrorMessage CurrentRestoringFilename          FileUploadBlockingError 
------------------                    --------------------------- ------------------------          ----------------------- 
-2673894b-451c-41cv-ae2b-58a8eefe3546                             AdventureWorks.bak
-```
-
-This command gets the expanded details of a given Database Migration to a SQL Managed Instance.
+Forcibly deletes an ongoing Migration to SQL MI by adding the optional "Force" parameter
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -76,11 +78,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Expand
-Complete migration details be included in the response.
+### -Force
+Optional force delete boolean.
+If this is provided as true, migration will be deleted even if active.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +100,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -112,7 +115,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -122,13 +125,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationOperationId
-Optional migration operation ID.
-If this is provided, then details of migration operation for that ID are retrieved.
-If not provided (default), then details related to most recent or current operation are retrieved.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +161,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -174,8 +175,8 @@ Accept wildcard characters: False
 Subscription ID that identifies an Azure subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -190,10 +191,41 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
