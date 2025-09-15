@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added  support for new api version 2025-07-01
+* Included new endpoint types supported in the api version
+    * MultiCloudConnector
+    * NFSFileShare
 
 ## Version 1.5.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

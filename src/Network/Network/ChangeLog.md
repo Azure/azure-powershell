@@ -25,6 +25,14 @@
     - `New-AzApplicationGatewayBackendHttpSetting`
     - `Add-AzApplicationGatewayBackendHttpSetting`
     - `Set-AzApplicationGatewayBackendHttpSetting`
+
+## Version 7.20.0
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetail` to list all failover tests for a virtual network gateway.
+* Added cmdlet `Start-AzVirtualNetworkGatewaySiteFailoverTest` to initiate a site failover test on a virtual network gateway.
+* Added cmdlet `Stop-AzVirtualNetworkGatewaySiteFailoverTest` to stop an ongoing site failover test.
+* Added cmdlet `Get-AzVirtualNetworkGatewayResiliencyInformation` to retrieve resiliency information for a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayRoutesInformation` to get route information for a virtual network gateway.
 * Onboarded Maps to Private Link Common Cmdlets
 
 ## Version 7.19.1
@@ -38,7 +46,6 @@
         - `New-AzApplicationGatewayFirewallPolicy`
 * Onboarded FileShares to Private Link Common Cmdlets
 * Updated Api version for StorageSync to Private Link Common Cmdlets
-
 
 ## Version 7.19.0
 * Returned appgw and agc in waf policy
