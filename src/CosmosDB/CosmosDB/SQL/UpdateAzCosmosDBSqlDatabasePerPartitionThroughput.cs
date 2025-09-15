@@ -85,16 +85,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
                 else
                 {
-                    if(this.SourcePhysicalPartitionThroughputObject == null || this.TargetPhysicalPartitionThroughputObject == null)
+                    if(this.TargetPhysicalPartitionThroughputObject == null)
                     {
-                        throw new ArgumentException("SourcePhysicalPartitionThroughputObject and TargetPhysicalPartitionThroughputObject cannot be null if 'EqualDistributionPolicy' is absent.");
+                        throw new ArgumentException("TargetPhysicalPartitionThroughputObject cannot be null if 'EqualDistributionPolicy' is absent.");
                     }
 
-                    foreach (var item in this.SourcePhysicalPartitionThroughputObject)
-                    {
-                        //NullorEmpty
-                        PhysicalPartitionThroughputInfoResource source = new PhysicalPartitionThroughputInfoResource(item.Id, item.Throughput);
-                        sourcePartitionInfos.Add(source);
+                    if(this.SourcePhysicalPartitionThroughputObject != null){
+                        foreach (var item in this.SourcePhysicalPartitionThroughputObject)
+                        {
+                            //NullorEmpty
+                            PhysicalPartitionThroughputInfoResource source = new PhysicalPartitionThroughputInfoResource(item.Id, item.Throughput);
+                            sourcePartitionInfos.Add(source);
+                        }
                     }
 
                     foreach (var item in this.TargetPhysicalPartitionThroughputObject)
