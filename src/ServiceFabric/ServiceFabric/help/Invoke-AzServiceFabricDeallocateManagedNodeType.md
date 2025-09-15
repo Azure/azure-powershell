@@ -1,25 +1,25 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/restart-azservicefabricmanagednodetype
+online version:
 schema: 2.0.0
 ---
 
-# Restart-AzServiceFabricManagedNodeType
+# Invoke-AzServiceFabricDeallocateManagedNodeType
 
 ## SYNOPSIS
-Restart nodes from the node type.
+Deallocate specific nodes from the node type.
 
 ## SYNTAX
 
 ```
-Restart-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- [-NodeName <String[]>] [-UpdateType <String>] [-ForceRestart] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzServiceFabricDeallocateManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String>
+ [-Name] <String> -NodeName <String[]> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restart nodes from the node type. It will disabled the service fabric nodes before restarting the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not restart all the nodes at the same time. Use -ForceRestart force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
+Deallocate specific nodes from the node type. It will disable the service fabric nodes before deallocating.
 
 ## EXAMPLES
 
@@ -28,40 +28,10 @@ Restart nodes from the node type. It will disabled the service fabric nodes befo
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-Restart-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
+Invoke-AzServiceFabricDeallocateManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
-Restart node 0 and 3 on the node type simultaneously.
-
-### Example 2
-```powershell
-$rgName = "testRG"
-$clusterName = "testCluster"
-$NodeTypeName = "nt1"
-Restart-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3 -UpdateType ByUpgradeDomain
-```
-
-Restart node 0 and 3 on the node type by upgrade domain.
-
-### Example 3
-```powershell
-$rgName = "testRG"
-$clusterName = "testCluster"
-$NodeTypeName = "nt1"
-Restart-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -UpdateType ByUpgradeDomain
-```
-
-Omitting the node names will restart all nodes on the node type by upgrade domain.
-
-### Example 4
-```powershell
-$rgName = "testRG"
-$clusterName = "testCluster"
-$NodeTypeName = "nt1"
-Restart-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName
-```
-
-Omitting the node names and update type will restart all nodes on the node type by upgrade domain.
+Deallocate node 0 and 3 on the node type.
 
 ## PARAMETERS
 
@@ -110,21 +80,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceRestart
-Using this flag will force the node to restart even if service fabric is unable to disable the nodes.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specify the name of the node type.
 
@@ -148,7 +103,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,21 +137,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -UpdateType
-Specify the update type. Valid values are 'Default' and 'ByUpgradeDomain'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
