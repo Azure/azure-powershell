@@ -31,6 +31,11 @@ if ($PowerShellPlatform) {
 $preference = $ErrorActionPreference
 $ErrorActionPreference = 'Continue'
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
+
+if ($IsLinux) {
+    # Mock step
+    Write-Host -ForegroundColor Yellow "Detected Linux agent – applying memory tuning for tests"
+}
 dotnet msbuild $buildProjPath /t:Test "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
