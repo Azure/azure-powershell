@@ -46,8 +46,7 @@ Retry on going migration for the database.
 
 ### Example 1: Retry SQL DB Database Migration
 ```powershell
-$sqlDBMigration = Get-AzDataMigrationToSqlDb -ResourceGroupName "myRG" -SqlDbInstanceName "mySqlDb" -TargetDbName "mydb1"
-Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName sqldb -MigrationOperationId $sqlDBMigration.MigrationOperationId
+Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName sqldb -MigrationOperationId migrationOperationId
 ```
 
 Retry SQL DB Database Migration
