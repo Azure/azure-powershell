@@ -145,7 +145,7 @@ function New-AzStorageMoverMultiCloudConnectorEndpoint {
             $null = $PSBoundParameters.Remove("Description")
         }
 
-        # $Properties.EndpointType = "AzureMultiCloudConnector"
+        $Properties.EndpointType = "AzureMultiCloudConnector"
         $PSBoundParameters.Add("Property", $Properties)
 
         $Identity = "SystemAssigned"
