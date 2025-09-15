@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "value": [
+      {
+        "properties": {
+          "resourceName": "standardDSv3Family",
+          "limit": 15,
+          "unit": "Count"
+        }
+      }
+    ]
+  }
+}
