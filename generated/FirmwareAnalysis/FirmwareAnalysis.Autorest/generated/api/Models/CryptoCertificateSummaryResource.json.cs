@@ -66,13 +66,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties(json);
-            {_totalCertificate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("totalCertificates"), out var __jsonTotalCertificates) ? (long?)__jsonTotalCertificates : _totalCertificate;}
-            {_pairedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("pairedKeys"), out var __jsonPairedKeys) ? (long?)__jsonPairedKeys : _pairedKey;}
-            {_expired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("expired"), out var __jsonExpired) ? (long?)__jsonExpired : _expired;}
-            {_expiringSoon = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("expiringSoon"), out var __jsonExpiringSoon) ? (long?)__jsonExpiringSoon : _expiringSoon;}
-            {_weakSignature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("weakSignature"), out var __jsonWeakSignature) ? (long?)__jsonWeakSignature : _weakSignature;}
-            {_selfSigned = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("selfSigned"), out var __jsonSelfSigned) ? (long?)__jsonSelfSigned : _selfSigned;}
-            {_shortKeySize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("shortKeySize"), out var __jsonShortKeySize) ? (long?)__jsonShortKeySize : _shortKeySize;}
+            {_totalCertificateCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("totalCertificateCount"), out var __jsonTotalCertificateCount) ? (long?)__jsonTotalCertificateCount : _totalCertificateCount;}
+            {_pairedKeyCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("pairedKeyCount"), out var __jsonPairedKeyCount) ? (long?)__jsonPairedKeyCount : _pairedKeyCount;}
+            {_expiredCertificateCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("expiredCertificateCount"), out var __jsonExpiredCertificateCount) ? (long?)__jsonExpiredCertificateCount : _expiredCertificateCount;}
+            {_expiringSoonCertificateCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("expiringSoonCertificateCount"), out var __jsonExpiringSoonCertificateCount) ? (long?)__jsonExpiringSoonCertificateCount : _expiringSoonCertificateCount;}
+            {_weakSignatureCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("weakSignatureCount"), out var __jsonWeakSignatureCount) ? (long?)__jsonWeakSignatureCount : _weakSignatureCount;}
+            {_selfSignedCertificateCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("selfSignedCertificateCount"), out var __jsonSelfSignedCertificateCount) ? (long?)__jsonSelfSignedCertificateCount : _selfSignedCertificateCount;}
+            {_shortKeySizeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("shortKeySizeCount"), out var __jsonShortKeySizeCount) ? (long?)__jsonShortKeySizeCount : _shortKeySizeCount;}
             AfterFromJson(json);
         }
 
@@ -108,13 +108,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return container;
             }
             __summaryResourceProperties?.ToJson(container, serializationMode);
-            AddIf( null != this._totalCertificate ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._totalCertificate) : null, "totalCertificates" ,container.Add );
-            AddIf( null != this._pairedKey ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._pairedKey) : null, "pairedKeys" ,container.Add );
-            AddIf( null != this._expired ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._expired) : null, "expired" ,container.Add );
-            AddIf( null != this._expiringSoon ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._expiringSoon) : null, "expiringSoon" ,container.Add );
-            AddIf( null != this._weakSignature ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._weakSignature) : null, "weakSignature" ,container.Add );
-            AddIf( null != this._selfSigned ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._selfSigned) : null, "selfSigned" ,container.Add );
-            AddIf( null != this._shortKeySize ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._shortKeySize) : null, "shortKeySize" ,container.Add );
+            AddIf( null != this._totalCertificateCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._totalCertificateCount) : null, "totalCertificateCount" ,container.Add );
+            AddIf( null != this._pairedKeyCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._pairedKeyCount) : null, "pairedKeyCount" ,container.Add );
+            AddIf( null != this._expiredCertificateCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._expiredCertificateCount) : null, "expiredCertificateCount" ,container.Add );
+            AddIf( null != this._expiringSoonCertificateCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._expiringSoonCertificateCount) : null, "expiringSoonCertificateCount" ,container.Add );
+            AddIf( null != this._weakSignatureCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._weakSignatureCount) : null, "weakSignatureCount" ,container.Add );
+            AddIf( null != this._selfSignedCertificateCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._selfSignedCertificateCount) : null, "selfSignedCertificateCount" ,container.Add );
+            AddIf( null != this._shortKeySizeCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._shortKeySizeCount) : null, "shortKeySizeCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
