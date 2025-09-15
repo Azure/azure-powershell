@@ -27,6 +27,7 @@ For information on how to develop for `Az.DataBox`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: b64fe48e383ae6d6841fad0538f05dc82130ebb0
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Functions service.
 
 ---
-## Status
-[![Az.Functions](https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions "Az.Functions")](https://www.powershellgallery.com/packages/Az.Functions/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -65,7 +62,7 @@ directive:
 ```
 
 ``` yaml
-branch: main
+branch: b64fe48e383ae6d6841fad0538f05dc82130ebb0
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
