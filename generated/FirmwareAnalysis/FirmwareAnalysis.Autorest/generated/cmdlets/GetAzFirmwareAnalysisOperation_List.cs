@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Lists the operations for this resource provider</summary>
+    /// <summary>List the operations for the provider</summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/providers/Microsoft.IoTFirmwareDefense/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFirmwareAnalysisOperation_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IOperation))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Lists the operations for this resource provider")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/providers/Microsoft.IoTFirmwareDefense/operations", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/providers/Microsoft.IoTFirmwareDefense/operations", ApiVersion = "2025-08-02")]
     public partial class GetAzFirmwareAnalysisOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext
