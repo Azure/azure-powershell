@@ -1,3 +1,23 @@
+## 14.5.0 - October 2025
+#### Az.Compute 10.4.0 
+* Modified cmdlet `Grant-AzSnapshotAccess`
+   - Added parameter `-SecureVMGuestStateSAS`
+#### Az.Migrate 2.10.0 
+* Modified cmdlet `Get-AzMigrateServerMigrationStatus`
+   - Added parameter `-Expedite`
+#### Az.ServiceFabric 3.8.0 
+* Modified cmdlet `Restart-AzServiceFabricManagedNodeType`
+   - Added parameter `-UpdateType`
+   - Parameter `-NodeName` ValidateNotNullOrEmpty changed from `True` to `False`
+* Added cmdlet `Invoke-AzServiceFabricDeallocateManagedNodeType`, `Invoke-AzServiceFabricRedeployManagedNodeType`, `Invoke-AzServiceFabricReimageManagedNodeType`, `Start-AzServiceFabricManagedNodeType`
+#### Az.Storage 9.2.0 
+* Modified cmdlet `Set-AzStorageObjectReplicationPolicy`
+   - Added parameter `-EnableMetric`
+#### Az.StorageMover 1.6.0 
+* Modified cmdlet `New-AzStorageMoverJobDefinition`
+   - Added parameter `-JobType`
+* Added cmdlet `New-AzStorageMoverAzNfsFileShareEndpoint`, `New-AzStorageMoverMultiCloudConnectorEndpoint`, `Update-AzStorageMoverAzNfsFileShareEndpoint`, `Update-AzStorageMoverMultiCloudConnectorEndpoint`
+
 ## 14.4.0 - September 2025
 #### Az.Accounts 5.3.0 
 * Modified cmdlet `Invoke-AzRestMethod`
@@ -673,6 +693,7 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
 
 
 
