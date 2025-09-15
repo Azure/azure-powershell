@@ -35,6 +35,7 @@ function Update-AzDatabricksVNetPeering {
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
         [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+        [Alias('PeeringName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [System.String]
         # The name of the workspace vNet peering.
