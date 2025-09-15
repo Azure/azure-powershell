@@ -31,19 +31,7 @@ if ($PowerShellPlatform) {
 $preference = $ErrorActionPreference
 $ErrorActionPreference = 'Continue'
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
-
-$buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
-
-if ($IsLinux) {
-    # Applying various parrelism/heap restriction behaviours to prevent OOM issues on Ubuntu 2404
-    Write-Host -ForegroundColor Yellow "Detected Linux agent – applying memory tuning for tests"
-    $env:DOTNET_gcServer = "0"
-    $env:DOTNET_gcHeapCount = "2"
-    $buildArgs += ";RunConfiguration.MaxCpuCount=2"
-}
-
-dotnet msbuild $buildProjPath /t:Test $buildArgs
-
+dotnet msbuild $buildProjPath /t:Test "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
 # Test AutoGen Modules With PowerShell Core
