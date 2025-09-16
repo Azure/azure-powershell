@@ -176,9 +176,13 @@ function Test-ApplicationGatewayCRUD
 
 		$probe02 = New-AzApplicationGatewayProbeConfig -Name $probe02Name -Match $match2 -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
 
-		$poolSetting02 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Probe $probe02 -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01
+		$poolSetting02 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Probe $probe02 -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01 -ValidateCertChainAndExpiry $true -ValidateSni $true
 		Assert-Null $poolSetting02.connectionDraining
 		Assert-NotNull $poolSetting02.Probe
+		
+		# Verify new certificate validation properties
+		Assert-AreEqual $true $poolSetting02.ValidateCertChainAndExpiry
+		Assert-AreEqual $true $poolSetting02.ValidateSni
 		
 		# Test setting and removing connectiondraining
 		Set-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $False -DrainTimeoutInSec 3600
@@ -223,6 +227,10 @@ function Test-ApplicationGatewayCRUD
 		Compare-ConnectionDraining $poolSetting01 $getgw.BackendHttpSettingsCollection[0]
 		Compare-ConnectionDraining $poolSetting02 $getgw.BackendHttpSettingsCollection[1]
 		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
+		
+		# Verify new certificate validation properties are preserved after creation
+		Assert-AreEqual $true $getgw.BackendHttpSettingsCollection[1].ValidateCertChainAndExpiry
+		Assert-AreEqual $true $getgw.BackendHttpSettingsCollection[1].ValidateSni
 
 		<#
 		Tested on Azure Portal CloudShell against a V2 gateway and got the same error that this test gets when listing gateways...
@@ -348,9 +356,13 @@ function Test-ApplicationGatewayCRUD
 		# Remove URL path map
 		$getgw = Remove-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $getgw -Name $urlPathMapName
 
-		# Modify BackendHttpSettings to remove probe and request timeout
-		$getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting03Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+		# Modify BackendHttpSettings to remove probe and request timeout, and test new cert validation properties
+		$getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting03Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -ValidateCertChainAndExpiry $false -ValidateSni $false
 		$poolSetting = Get-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting03Name
+		
+		# Verify the new properties can be updated
+		Assert-AreEqual $false $poolSetting.ValidateCertChainAndExpiry
+		Assert-AreEqual $false $poolSetting.ValidateSni
 
 		# Modify listener to remove hostname. Hostname is used to have multi-site.
 		$fp = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $getgw -Name $frontendPort03Name 
