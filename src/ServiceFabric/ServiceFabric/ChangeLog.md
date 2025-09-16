@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added preannoucement for removing Reimage parameters from `Set-AzServiceFabricManagedNodeType`.
 * Added new cmdlets for managed node types:
     - `Invoke-AzServiceFabricDeallocateManagedNodeType`
     - `Invoke-AzServiceFabricRedeployManagedNodeType`
