@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "When enabled, verifies if the Common Name of the certificate provided by the backend server matches the Server Name Indication (SNI) value. Default value is true.")]
-        public bool? ValidateSNI { get; set; }
+        public bool? ValidateSni { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -229,14 +229,14 @@ namespace Microsoft.Azure.Commands.Network
                 backendHttpSettings.ValidateCertChainAndExpiry = true;
             }
             
-            if (this.ValidateSNI.HasValue)
+            if (this.ValidateSni.HasValue)
             {
-                backendHttpSettings.ValidateSNI = this.ValidateSNI.Value;
+                backendHttpSettings.ValidateSni = this.ValidateSni.Value;
             }
             else
             {
                 // Default value is true according to the API specification
-                backendHttpSettings.ValidateSNI = true;
+                backendHttpSettings.ValidateSni = true;
             }
 
             if (this.SniName != null)

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? ValidateCertChainAndExpiry { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public bool? ValidateSNI { get; set; }
+        public bool? ValidateSni { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string SniName { get; set; }
 

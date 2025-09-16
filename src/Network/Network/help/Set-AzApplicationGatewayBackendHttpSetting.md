@@ -21,7 +21,7 @@ Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway <PSApplicationGat
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
  [-HostName <String>] [-AffinityCookieName <String>] [-Path <String>]
  [-DedicatedBackendConnection <Boolean>] [-ValidateCertChainAndExpiry <Boolean>] 
- [-ValidateSNI <Boolean>]
+ [-ValidateSni <Boolean>]
  [-SniName <String>] 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -330,7 +330,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ValidateSNI
+### -ValidateSni
 When enabled, verifies if the Common Name of the certificate provided by the backend server matches the Server Name Indication (SNI) value. Default value is true.
 
 ```yaml
