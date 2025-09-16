@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSCloudServiceConfiguration
+    public partial class PSVMDiskSecurityProfile
     {
         
-        internal Microsoft.Azure.Batch.CloudServiceConfiguration omObject;
+        internal Microsoft.Azure.Batch.VMDiskSecurityProfile omObject;
         
-        public PSCloudServiceConfiguration(string osFamily, string osVersion = null)
+        public PSVMDiskSecurityProfile()
         {
-            this.omObject = new Microsoft.Azure.Batch.CloudServiceConfiguration(osFamily, osVersion);
+            this.omObject = new Microsoft.Azure.Batch.VMDiskSecurityProfile();
         }
         
-        internal PSCloudServiceConfiguration(Microsoft.Azure.Batch.CloudServiceConfiguration omObject)
+        internal PSVMDiskSecurityProfile(Microsoft.Azure.Batch.VMDiskSecurityProfile omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +48,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string OSFamily
+        public string SecurityEncryptionType
         {
             get
             {
-                return this.omObject.OSFamily;
+                return this.omObject.SecurityEncryptionType;
             }
             set
             {
-                this.omObject.OSFamily = value;
-            }
-        }
-        
-        public string OSVersion
-        {
-            get
-            {
-                return this.omObject.OSVersion;
-            }
-            set
-            {
-                this.omObject.OSVersion = value;
+                this.omObject.SecurityEncryptionType = value;
             }
         }
     }

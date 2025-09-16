@@ -91,7 +91,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     Visibility = Azure.Batch.Common.CertificateVisibility.StartTask
                 }
             };
-            cmdlet.CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*");
             cmdlet.DisplayName = "display name";
             cmdlet.InterComputeNodeCommunicationEnabled = true;
             cmdlet.TaskSlotsPerNode = 4;
@@ -138,14 +137,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify the request parameters match the cmdlet parameters
-            Assert.Equal(cmdlet.ApplicationLicenses[0], requestParameters.ApplicationLicenses[0]);
-            Assert.Equal(cmdlet.ApplicationLicenses[1], requestParameters.ApplicationLicenses[1]);
             Assert.Equal(cmdlet.CertificateReferences.Length, requestParameters.CertificateReferences.Count);
             Assert.Equal(cmdlet.CertificateReferences[0].StoreName, requestParameters.CertificateReferences[0].StoreName);
             Assert.Equal(cmdlet.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
             Assert.Equal(cmdlet.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
-            Assert.Equal(cmdlet.CloudServiceConfiguration.OSFamily, requestParameters.CloudServiceConfiguration.OsFamily);
-            Assert.Equal(cmdlet.CloudServiceConfiguration.OSVersion, requestParameters.CloudServiceConfiguration.OsVersion);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Version, requestParameters.VirtualMachineConfiguration.ImageReference.Version);
             Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
             Assert.Equal(cmdlet.InterComputeNodeCommunicationEnabled, requestParameters.EnableInterNodeCommunication);
             Assert.Equal(cmdlet.TaskSlotsPerNode, requestParameters.TaskSlotsPerNode);
@@ -263,7 +259,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             cmdlet.Id = "testPool";
-            cmdlet.CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*");
+            cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.TargetDedicatedComputeNodes = 3;
 
             PSUserAccount adminUser = new PSUserAccount("admin", "password1", Azure.Batch.Common.ElevationLevel.Admin);

@@ -34,15 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudPool omObject;
         
-        private IList<System.String> applicationLicenses;
-        
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
         private PSAutoScaleRun autoScaleRun;
         
         private IList<PSCertificateReference> certificateReferences;
-        
-        private PSCloudServiceConfiguration cloudServiceConfiguration;
         
         private PSBatchPoolIdentity identity;
         
@@ -90,41 +86,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.AllocationStateTransitionTime;
-            }
-        }
-        
-        public IList<System.String> ApplicationLicenses
-        {
-            get
-            {
-                if (((this.applicationLicenses == null) 
-                            && (this.omObject.ApplicationLicenses != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.ApplicationLicenses.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.applicationLicenses = list;
-                }
-                return this.applicationLicenses;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.ApplicationLicenses = null;
-                }
-                else
-                {
-                    this.omObject.ApplicationLicenses = new List<System.String>();
-                }
-                this.applicationLicenses = value;
             }
         }
         
@@ -247,31 +208,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSCloudServiceConfiguration CloudServiceConfiguration
-        {
-            get
-            {
-                if (((this.cloudServiceConfiguration == null) 
-                            && (this.omObject.CloudServiceConfiguration != null)))
-                {
-                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
-                }
-                return this.cloudServiceConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CloudServiceConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.CloudServiceConfiguration = value.omObject;
-                }
-                this.cloudServiceConfiguration = value;
-            }
-        }
-        
         public System.DateTime? CreationTime
         {
             get
@@ -346,18 +282,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.identity = new PSBatchPoolIdentity(this.omObject.Identity);
                 }
                 return this.identity;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.Identity = null;
-                }
-                else
-                {
-                    this.omObject.Identity = value.omObject;
-                }
-                this.identity = value;
             }
         }
         

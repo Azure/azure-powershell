@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSJobNetworkConfiguration
+    public partial class PSContainerHostBatchBindMountEntry
     {
         
-        internal Microsoft.Azure.Batch.JobNetworkConfiguration omObject;
+        internal Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry omObject;
         
-        public PSJobNetworkConfiguration(string subnetId, System.Nullable<bool> skipWithdrawFromVNet = null)
+        public PSContainerHostBatchBindMountEntry()
         {
-            this.omObject = new Microsoft.Azure.Batch.JobNetworkConfiguration(subnetId, skipWithdrawFromVNet);
+            this.omObject = new Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry();
         }
         
-        internal PSJobNetworkConfiguration(Microsoft.Azure.Batch.JobNetworkConfiguration omObject)
+        internal PSContainerHostBatchBindMountEntry(Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry omObject)
         {
             if ((omObject == null))
             {
@@ -48,27 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.Boolean? SkipWithdrawFromVNet
+        public System.Boolean? IsReadOnly
         {
             get
             {
-                return this.omObject.SkipWithdrawFromVNet;
+                return this.omObject.IsReadOnly;
             }
             set
             {
-                this.omObject.SkipWithdrawFromVNet = value;
+                this.omObject.IsReadOnly = value;
             }
         }
         
-        public string SubnetId
+        public string Source
         {
             get
             {
-                return this.omObject.SubnetId;
+                return this.omObject.Source;
             }
             set
             {
-                this.omObject.SubnetId = value;
+                this.omObject.Source = value;
             }
         }
     }

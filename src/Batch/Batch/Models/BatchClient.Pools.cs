@@ -152,11 +152,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
             }
 
-            if (parameters.CloudServiceConfiguration != null)
-            {
-                pool.CloudServiceConfiguration = parameters.CloudServiceConfiguration.omObject;
-            }
-
             if (parameters.VirtualMachineConfiguration != null)
             {
                 Utils.Utils.VirtualMachineConfigurationSyncCollections(parameters.VirtualMachineConfiguration);
@@ -180,11 +175,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (parameters.UserAccounts != null)
             {
                 pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);
-            }
-
-            if (parameters.ApplicationLicenses != null)
-            {
-                pool.ApplicationLicenses = parameters.ApplicationLicenses;
             }
 
             pool.TargetNodeCommunicationMode = (NodeCommunicationMode)parameters.TargetCommunicationMode;

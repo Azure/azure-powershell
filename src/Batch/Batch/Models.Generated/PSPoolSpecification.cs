@@ -34,13 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.PoolSpecification omObject;
         
-        private IList<System.String> applicationLicenses;
-        
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
         private IList<PSCertificateReference> certificateReferences;
-        
-        private PSCloudServiceConfiguration cloudServiceConfiguration;
         
         private IDictionary metadata;
         
@@ -72,41 +68,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
-        }
-        
-        public IList<System.String> ApplicationLicenses
-        {
-            get
-            {
-                if (((this.applicationLicenses == null) 
-                            && (this.omObject.ApplicationLicenses != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.ApplicationLicenses.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.applicationLicenses = list;
-                }
-                return this.applicationLicenses;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.ApplicationLicenses = null;
-                }
-                else
-                {
-                    this.omObject.ApplicationLicenses = new List<System.String>();
-                }
-                this.applicationLicenses = value;
-            }
         }
         
         public IList<PSApplicationPackageReference> ApplicationPackageReferences
@@ -212,31 +173,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.CertificateReferences = new List<Microsoft.Azure.Batch.CertificateReference>();
                 }
                 this.certificateReferences = value;
-            }
-        }
-        
-        public PSCloudServiceConfiguration CloudServiceConfiguration
-        {
-            get
-            {
-                if (((this.cloudServiceConfiguration == null) 
-                            && (this.omObject.CloudServiceConfiguration != null)))
-                {
-                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
-                }
-                return this.cloudServiceConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CloudServiceConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.CloudServiceConfiguration = value.omObject;
-                }
-                this.cloudServiceConfiguration = value;
             }
         }
         

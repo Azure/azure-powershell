@@ -54,11 +54,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
 
         /// <summary>
-        /// Pool configuration settings for a pool based on the Azure cloud service platform
-        /// </summary>
-        public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
-
-        /// <summary>
         /// The timeout for allocating compute nodes to the pool.
         /// </summary>
         public TimeSpan? ResizeTimeout { get; set; }

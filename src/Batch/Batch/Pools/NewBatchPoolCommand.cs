@@ -169,7 +169,6 @@ namespace Microsoft.Azure.Commands.Batch
                 CertificateReferences = this.CertificateReferences,
                 ApplicationPackageReferences = this.ApplicationPackageReferences,
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
-                CloudServiceConfiguration = this.CloudServiceConfiguration,
                 NetworkConfiguration = this.NetworkConfiguration,
                 UserAccounts = this.UserAccount,
                 ApplicationLicenses = this.ApplicationLicenses,
