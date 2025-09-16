@@ -52,17 +52,21 @@ DotNetFrameworkVersion = '4.7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'CloudService.Autorest/bin/Az.CloudService.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
+FormatsToProcess = 'CloudService.Autorest/Az.CloudService.format.ps1xml'
 FormatsToProcess = 'CloudService.Autorest/Az.CloudService.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
@@ -116,6 +120,7 @@ PrivateData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
         Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'CloudService'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'CloudService'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -140,6 +145,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
+} # End of PrivateData hashtable
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

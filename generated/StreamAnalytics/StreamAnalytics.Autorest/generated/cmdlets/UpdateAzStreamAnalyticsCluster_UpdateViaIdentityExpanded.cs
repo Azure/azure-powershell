@@ -112,6 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.ParameterBreakingChange("Location", "15.0.0", "3.0.0", "2025/11", ChangeDescription="The parameter Location will be removed.")]
         public string Location { get => _clusterBody.Location ?? null; set => _clusterBody.Location = value; }
 
         /// <summary>

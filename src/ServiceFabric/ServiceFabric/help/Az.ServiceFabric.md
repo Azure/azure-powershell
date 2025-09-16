@@ -65,6 +65,15 @@ Get the managed node type resource details.
 ### [Get-AzServiceFabricService](Get-AzServiceFabricService.md)
 Get Service Fabric service details under the specified application and cluster. Only supports ARM deployed services.
 
+### [Invoke-AzServiceFabricDeallocateManagedNodeType](Invoke-AzServiceFabricDeallocateManagedNodeType.md)
+Deallocate specific nodes from the node type.
+
+### [Invoke-AzServiceFabricRedeployManagedNodeType](Invoke-AzServiceFabricRedeployManagedNodeType.md)
+Redeploy specific nodes from the node type.
+
+### [Invoke-AzServiceFabricReimageManagedNodeType](Invoke-AzServiceFabricReimageManagedNodeType.md)
+Reimage specific nodes from the node type.
+
 ### [New-AzServiceFabricApplication](New-AzServiceFabricApplication.md)
 Create new service fabric application under the specified resource group and cluster.
 
@@ -172,6 +181,9 @@ Add or update one or multiple Service Fabric settings to the cluster.
 
 ### [Set-AzServiceFabricUpgradeType](Set-AzServiceFabricUpgradeType.md)
 Change the Service Fabric upgrade type of the cluster.
+
+### [Start-AzServiceFabricManagedNodeType](Start-AzServiceFabricManagedNodeType.md)
+Start specific nodes from the node type.
 
 ### [Update-AzServiceFabricApplication](Update-AzServiceFabricApplication.md)
 Update a service fabric application. This allows to update the application parameters and/or upgrade the application type version which will trigger an application upgrade. Only supports ARM deployed applications.

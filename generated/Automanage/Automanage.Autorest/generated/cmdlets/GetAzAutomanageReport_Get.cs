@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzAutomanageReport_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AdditionalInfo","Detail","Resource"}, NewOutputProperties=new string[] {"AdditionalInfo","Detail","Resource"}, ChangeDescription="The types of the properties 'AdditionalInfo', 'Detail' and 'Resource' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Automanage.Description(@"Get information about a report associated with a configuration profile assignment run")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Automanage.Generated]
