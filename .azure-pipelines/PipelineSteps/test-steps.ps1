@@ -39,7 +39,7 @@ if ($IsLinux) {
     Write-Host -ForegroundColor Yellow "Detected Linux agent. Applying memory tuning for tests"
     $env:DOTNET_gcServer = "0"
     $env:DOTNET_gcHeapCount = "2"
-    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"
+    $env:MSBUILDCLIOPTIONSOVERRIDE = "-m:1"
 }
 
 dotnet msbuild $buildProjPath /t:Test $buildArgs
