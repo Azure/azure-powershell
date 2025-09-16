@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
 
 ## Version 6.1.0
-* Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
 * Added `MemorySizeInGB` parameter to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of instances with flexible memory
 * Added `MemorySizeInGB` field to the model of the managed instance so that it displays information about flexible memory instances that are returned by `Get-AzSqlInstance`.
 * Added support for User Assigned Managed Identity (UAMI) authentication in Data Sync cmdlets (`New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember`, `Update-AzSqlSyncMember`)
