@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
 * Added support for Import, AutoExport and AutoImport HSM Jobs
 
 ## Version 0.2.0
