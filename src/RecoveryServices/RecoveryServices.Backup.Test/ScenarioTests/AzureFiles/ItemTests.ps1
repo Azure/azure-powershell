@@ -604,47 +604,68 @@ function Test-AzureFSVaultRestore
 
 function Test-AzureFSRestoreWithDeletedStorageAccount
 	{
+		# # Pre-requisites: run these commands in Azure Cloud Shell
+		# # SubscriptionId MUST MATCH the one defined in testcredentials.json
+		# Set-AzContext -SubscriptionId "38304e13-357e-405e-9e9a-220351dcce8c"
+		# # Resources MUST MATCH the ones defined below in order for the tests to work
+		# $testResourceGroupName = "iannafs-pstest-sa-rg-0" 
+		# $testVaultName = "ianna-afs-vault-0" 
+		# $testSaName = "iannafssa0" 
+		# $testTargetSaName = "iannafstarget0" 
+		# $testFileShareName = "testshare"
+		# $testPolicyName = "vaultstandardpolicy"
+		# $testLocation = "eastus"
+		# $skuName = "Standard_LRS"
+		# $tags = @{                                                                    
+		# 	"ManagerAlias" = "nilsha"
+		# 	"Workload" = "AFS"
+		# 	"TestType" = "Powershell Test"
+		# 	"Owner" = "nilsha"
+		# 	"Purpose" = "Powershell Test"
+		# 	"DeleteBy" = "12-2025"
+		# }
+		# Write-Host "Creating resource group: $testResourceGroupName"
+		# $rg = New-AzResourceGroup -Name $testResourceGroupName -Location $testLocation -Tag $tags
+		
+		# Write-Host "Creating source storage account: $testSaName"
+		# $sourceStorageAccount = New-AzStorageAccount `
+		# 	-ResourceGroupName $testResourceGroupName `
+		# 	-Name $testSaName `
+		# 	-Location $testLocation `
+		# 	-AllowBlobPublicAccess $false `
+		# 	-SkuName $skuName
+		
+		# Write-Host "Creating file share: $testFileShareName"
+		# $storageContext = $sourceStorageAccount.Context
+		# $fileShare = New-AzStorageShare -Name $testFileShareName -Context $storageContext
+		
+		# Write-Host "Creating target storage account: $testTargetSaName"
+		# $targetStorageAccount = New-AzStorageAccount `
+		# 	-ResourceGroupName $testResourceGroupName `
+		# 	-Name $testTargetSaName `
+		# 	-Location $testLocation `
+		# 	-AllowBlobPublicAccess $false `
+		# 	-SkuName $skuName
+
 		# Test-specific variables for isolation
-		$testResourceGroupName = "iannafs-pstest-sa-rg-" + (Get-Random -Maximum 9999)
-		$testVaultName = "ianna-afs-vault-" + (Get-Random -Maximum 9999)
-		$testSaName = "iannafssa" + (Get-Random -Maximum 9999)
-		$testTargetSaName = "iannafstarget" + (Get-Random -Maximum 9999)
+		$testResourceGroupName = "iannafs-pstest-sa-rg-1" 
+		$testVaultName = "ianna-afs-vault-1" 
+		$testSaName = "iannafssa1" 
+		$testTargetSaName = "iannafstarget1" 
 		$testFileShareName = "testshare"
 		$testPolicyName = "vaultstandardpolicy"
-		$testLocation = "eastasia"
-		$skuName = "Standard_LRS"
+		$testLocation = "eastus"
+		$tags = @{                                                                    
+			"ManagerAlias" = "nilsha"
+			"Workload" = "AFS"
+			"TestType" = "Powershell Test"
+			"Owner" = "nilsha"
+			"Purpose" = "Powershell Test"
+			"DeleteBy" = "12-2025"
+		}
 	
 		try
 		{
-			Write-Host "Creating resource group: $testResourceGroupName"
-			$rg = New-AzResourceGroup -Name $testResourceGroupName -Location $testLocation
-			Assert-NotNull $rg
-			Assert-True { $rg.ResourceGroupName -eq $testResourceGroupName }
-		
-			Write-Host "Creating source storage account: $testSaName"
-			$sourceStorageAccount = New-AzStorageAccount `
-				-ResourceGroupName $testResourceGroupName `
-				-Name $testSaName `
-				-Location $testLocation 
-			
-			Assert-NotNull $sourceStorageAccount
-			Assert-True { $sourceStorageAccount.Name -eq $testSaName }
-		
-			Write-Host "Creating file share: $testFileShareName"
-			$storageContext = $sourceStorageAccount.Context
-			$fileShare = New-AzStorageShare -Name $testFileShareName -Context $storageContext
-			Assert-NotNull $fileShare
-			Assert-True { $fileShare.Name -eq $testFileShareName }
-		
-			Write-Host "Creating target storage account: $testTargetSaName"
-			$targetStorageAccount = New-AzStorageAccount `
-				-ResourceGroupName $testResourceGroupName `
-				-Name $testTargetSaName `
-				-Location $testLocation 
-
-			Assert-NotNull $targetStorageAccount
-			Assert-True { $targetStorageAccount.Name -eq $testTargetSaName }
-		
 			Write-Host "Creating Recovery Services vault: $testVaultName"
 			$vault = New-AzRecoveryServicesVault `
 				-Name $testVaultName `
@@ -676,7 +697,7 @@ function Test-AzureFSRestoreWithDeletedStorageAccount
 				-VaultId $vault.ID `
 				-Policy $policy `
 				-Name $testFileShareName `
-				-StorageAccountName $testSaName
+				-StorageAccountName $testSaName 
 		
 			$enableJob = Wait-AzRecoveryServicesBackupJob -Job $enableJob -VaultId $vault.ID
 			Assert-True { $enableJob.Status -eq "Completed" }
@@ -719,12 +740,14 @@ function Test-AzureFSRestoreWithDeletedStorageAccount
 			Assert-True { $recoveryPoints.Count -gt 0 }
 			$recoveryPoint = $recoveryPoints[0]
 			Write-Host "Recovery point obtained: $($recoveryPoint.RecoveryPointId)"
-		
+
+			Get-AzResourceLock -ResourceGroupName $testResourceGroupName -ResourceType Microsoft.Storage/storageAccounts -ResourceName $testSaName |
+				ForEach-Object { Remove-AzResourceLock -LockId $_.LockId -Force }
+
 			Write-Host "Deleting source storage account: $testSaName"
 			Remove-AzStorageAccount `
 				-ResourceGroupName $testResourceGroupName `
-				-Name $testSaName `
-				-Force
+				-Name $testSaName 
 		
 			$deletedAccount = Get-AzStorageAccount `
 				-ResourceGroupName $testResourceGroupName `
@@ -763,42 +786,37 @@ function Test-AzureFSRestoreWithDeletedStorageAccount
 		}
 		finally
 		{
-			# Cleanup
-			Write-Host "Cleaning up test resources"
-		
-			# Disable protection if item exists
-			if ($null -ne $item)
-			{
-				try
-				{
-					Disable-AzRecoveryServicesBackupProtection `
-						-Item $item `
-						-VaultId $vault.ID `
-						-RemoveRecoveryPoints `
-						-Force `
-						-ErrorAction SilentlyContinue
-				}
-				catch
-				{
-					Write-Host "Warning: Failed to disable protection - may already be disabled"
-				}
-			}
-		
-			# Delete resource group (will delete all contained resources)
-			if ($null -ne $testResourceGroupName)
-			{
-				try
-				{
-					Remove-AzResourceGroup `
-						-Name $testResourceGroupName `
-						-Force `
-						-ErrorAction SilentlyContinue
-					Write-Host "Test resource group deleted"
-				}
-				catch
-				{
-					Write-Host "Warning: Failed to delete resource group"
-				}
-			}
+			# # Cleanup
+			# Write-Host "Cleaning up test resources"
+
+			# # Disable protection if item exists
+			# if ($null -ne $item)
+			# {
+			# 	try
+			# 	{
+			# 		Cleanup-Vault $vault $item $container
+			# 	}
+			# 	catch
+			# 	{
+			# 		Write-Host "Warning: Failed to disable protection - may already be disabled"
+			# 	}
+			# }
+
+			# # Delete resource group (will delete all contained resources)
+			# if ($null -ne $testResourceGroupName)
+			# {
+			# 	try
+			# 	{
+			# 		Remove-AzResourceGroup `
+			# 			-Name $testResourceGroupName `
+			# 			-Force `
+			# 			-ErrorAction SilentlyContinue
+			# 		Write-Host "Test resource group deleted"
+			# 	}
+			# 	catch
+			# 	{
+			# 		Write-Host "Warning: Failed to delete resource group"
+			# 	}
+			# }
 		}
 	}
