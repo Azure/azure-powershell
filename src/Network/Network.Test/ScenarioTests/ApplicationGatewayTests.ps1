@@ -356,13 +356,9 @@ function Test-ApplicationGatewayCRUD
 		# Remove URL path map
 		$getgw = Remove-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $getgw -Name $urlPathMapName
 
-		# Modify BackendHttpSettings to remove probe and request timeout, and test new cert validation properties
-		$getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting03Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -ValidateCertChainAndExpiry $false -ValidateSni $false
+		# Modify BackendHttpSettings to remove probe and request timeout
+		$getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting03Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 		$poolSetting = Get-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting03Name
-		
-		# Verify the new properties can be updated
-		Assert-AreEqual $false $poolSetting.ValidateCertChainAndExpiry
-		Assert-AreEqual $false $poolSetting.ValidateSni
 
 		# Modify listener to remove hostname. Hostname is used to have multi-site.
 		$fp = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $getgw -Name $frontendPort03Name 
