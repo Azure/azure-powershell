@@ -30,6 +30,12 @@ Get-AzHealthcareDicomService -InputObject <IHealthcareApisIdentity> [-DefaultPro
  [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkspace
+```
+Get-AzHealthcareDicomService -Name <String> -WorkspaceInputObject <IHealthcareApisIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the properties of the specified DICOM Service.
 
@@ -81,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
@@ -100,7 +105,7 @@ The name of DICOM Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases: DicomServiceName
 
 Required: True
@@ -140,6 +145,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of workspace resource.
 
@@ -164,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IDicomService
 
 ## NOTES
 
