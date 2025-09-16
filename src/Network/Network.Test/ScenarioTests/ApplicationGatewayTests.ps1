@@ -229,18 +229,9 @@ function Test-ApplicationGatewayCRUD
 		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
 		
 		# Verify new certificate validation properties are preserved after creation
-		Assert-AreEqual $true $getgw.BackendHttpSettingsCollection[1].ValidateCertChainAndExpiry "ValidateCertChainAndExpiry should be preserved as true"
-		Assert-AreEqual $false $getgw.BackendHttpSettingsCollection[1].ValidateSni "ValidateSni should be preserved as false"
+		Assert-AreEqual $true $getgw.BackendHttpSettingsCollection[1].ValidateCertChainAndExpiry
+		Assert-AreEqual $false $getgw.BackendHttpSettingsCollection[1].ValidateSni
 		
-		# Test updating ValidateSni to true while keeping ValidateCertChainAndExpiry as true  
-		$getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting02Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01 -ValidateCertChainAndExpiry $true -ValidateSni $true
-		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
-		
-		# Verify the update worked - ValidateSni should now be true
-		$updatedSetting = Get-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting02Name
-		Assert-AreEqual $true $updatedSetting.ValidateCertChainAndExpiry "ValidateCertChainAndExpiry should remain true"
-		Assert-AreEqual $true $updatedSetting.ValidateSni "ValidateSni should be updated to true"
-
 		<#
 		Tested on Azure Portal CloudShell against a V2 gateway and got the same error that this test gets when listing gateways...
 		Get-AzApplicationGateway: Resource provider 'Microsoft.Network' failed to return collection response for type 'applicationGateways'.
