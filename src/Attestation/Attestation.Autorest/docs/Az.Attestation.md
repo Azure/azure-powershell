@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Attestation
-Module Guid: 9938f620-cd87-4a11-9ff9-3e33101974cc
+Module Guid: 6c93856d-5326-410b-9138-922a62215196
 Download Help Link: https://learn.microsoft.com/powershell/module/az.attestation
 Help Version: 1.0.0.0
 Locale: en-US
@@ -24,5 +24,5 @@ Creates a new Attestation Provider.
 Delete Attestation Service.
 
 ### [Update-AzAttestationProvider](Update-AzAttestationProvider.md)
-Updates the Attestation Provider.
+Update the Attestation Provider.
 
