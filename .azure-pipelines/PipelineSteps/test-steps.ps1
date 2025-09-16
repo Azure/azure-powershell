@@ -40,6 +40,7 @@ if ($IsLinux) {
     $env:DOTNET_gcServer = "0"
     $env:DOTNET_gcHeapCount = "2"
     $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"
+    $env:DOTNET_GCHeapHardLimitPercent = "75"
 }
 
 dotnet msbuild $buildProjPath /t:Test $buildArgs
