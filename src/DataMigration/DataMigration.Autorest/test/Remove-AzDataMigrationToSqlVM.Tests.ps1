@@ -15,78 +15,46 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataMigrationToSqlVM
 }
 
 Describe 'Remove-AzDataMigrationToSqlVM' {
-    BeforeAll {
-        # Mock dependencies
-        Mock -CommandName New-AzDataMigrationToSqlVM -MockWith {
-            return @{
-                Name                = "MockedSqlVmMigration"
-                TargetDbName        = $env.TestDeleteDatabaseMigrationVm.TargetDbName
-                SqlVirtualMachineName = $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName
-                Status              = "InProgress"
-            }
-        }
+    It 'Delete' {
+       $sourcePassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionPassword -AsPlainText -Force
 
-        Mock -CommandName Remove-AzDataMigrationToSqlVM -MockWith {
-            return @{
-                Removed       = $true
-                TargetDbName  = $env.TestDeleteDatabaseMigrationVm.TargetDbName
-            }
-        }
-
-        Mock -CommandName Get-AzDataMigrationToSqlVM -MockWith {
-            return $null  # Simulate that the migration was deleted
-        }
-
-        Mock -CommandName Start-TestSleep -MockWith { }  # no-op
-    }
-
-    It 'Delete should remove a SQL VM migration' {
-        $filesharePassword = ConvertTo-SecureString "dummyFileSharePassword" -AsPlainText -Force
-        $sourcePassword    = ConvertTo-SecureString "dummySourcePassword" -AsPlainText -Force
-
-        # Create migration (mocked)
+        # Create a SQL VM migration
         $vmMigration = New-AzDataMigrationToSqlVM `
-            -ResourceGroupName $env.TestDeleteDatabaseMigrationVm.ResourceGroupName `
-            -SqlVirtualMachineName $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName `
-            -TargetDbName $env.TestDeleteDatabaseMigrationVm.TargetDbName `
-            -Scope $env.TestDeleteDatabaseMigrationVm.Scope `
-            -MigrationService $env.TestDeleteDatabaseMigrationVm.MigrationService `
-            -StorageAccountResourceId $env.TestDeleteDatabaseMigrationVm.TargetLocationStorageAccountResourceId `
-            -StorageAccountKey $env.TestDeleteDatabaseMigrationVm.TargetLocationAccountKey `
-            -FileSharePath $env.TestDeleteDatabaseMigrationVm.FileSharePath `
-            -FileShareUsername $env.TestDeleteDatabaseMigrationVm.FileShareUsername `
-            -FileSharePassword $filesharePassword `
-            -SourceSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionAuthentication `
-            -SourceSqlConnectionDataSource $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionDataSource `
-            -SourceSqlConnectionUserName $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionUserName `
-            -SourceSqlConnectionPassword $sourcePassword `
-            -SourceDatabaseName $env.TestDeleteDatabaseMigrationVm.SourceDatabaseName
+        -ResourceGroupName $env.TestDeleteDatabaseMigrationVm.ResourceGroupName `
+        -SqlVirtualMachineName $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName `
+        -TargetDbName $env.TestDeleteDatabaseMigrationVm.TargetDbName `
+        -Kind $env.TestDeleteDatabaseMigrationVm.Kind `
+        -Scope $env.TestDeleteDatabaseMigrationVm.Scope `
+        -MigrationService $env.TestDeleteDatabaseMigrationVm.MigrationService `
+        -AzureBlobStorageAccountResourceId $env.TestDeleteDatabaseMigrationVm.AzureBlobStorageAccountResourceId `
+        -AzureBlobAccountKey $env.TestDeleteDatabaseMigrationVm.AzureBlobAccountKey `
+        -AzureBlobContainerName $env.TestDeleteDatabaseMigrationVm.AzureBlobContainerName `
+        -SourceSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionAuthentication `
+        -SourceSqlConnectionDataSource $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionDataSource `
+        -SourceSqlConnectionUserName $env.TestDeleteDatabaseMigrationVm.SourceSqlConnectionUserName `
+        -SourceSqlConnectionPassword $sourcePassword `
+        -SourceDatabaseName $env.TestDeleteDatabaseMigrationVm.SourceDatabaseName
 
-        $vmMigration | Should -Not -Be $null
-        $vmMigration.Name | Should -Be "MockedSqlVmMigration"
+        Start-TestSleep -Seconds 5
 
-        # Remove migration (mocked)
-        $removeResult = Remove-AzDataMigrationToSqlVM `
+        # Delete the SQL VM migration
+        Remove-AzDataMigrationToSqlVM `
             -ResourceGroupName $env.TestDeleteDatabaseMigrationVm.ResourceGroupName `
             -SqlVirtualMachineName $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName `
             -TargetDbName $env.TestDeleteDatabaseMigrationVm.TargetDbName `
             -Force
 
-        $removeResult.Removed | Should -Be $true
+        Start-TestSleep -Seconds 5
 
-        # Validate deletion (mocked Get returns $null)
+        # Validate deletion
         $dbMig = Get-AzDataMigrationToSqlVM `
             -ResourceGroupName $env.TestDeleteDatabaseMigrationVm.ResourceGroupName `
             -SqlVirtualMachineName $env.TestDeleteDatabaseMigrationVm.SqlVirtualMachineName `
             -TargetDbName $env.TestDeleteDatabaseMigrationVm.TargetDbName `
             -ErrorAction SilentlyContinue
 
-        $dbMig | Should -Be $null
-
-        # Verify mocks called
-        Assert-MockCalled New-AzDataMigrationToSqlVM -Exactly 1
-        Assert-MockCalled Remove-AzDataMigrationToSqlVM -Exactly 1
-        Assert-MockCalled Get-AzDataMigrationToSqlVM -Exactly 1
+        $assert =  ($dbMig.MigrationStatus -eq "Delete")
+        $assert | Should -Be $true
     }
 
     It 'DeleteViaIdentity' -skip {
