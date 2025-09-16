@@ -98,12 +98,14 @@ function setupEnv() {
             ResourceGroupName = $resourceGroupNameWindowsPremium
             Location = $location
             SkuName = "Standard_GRS"
+            AllowBlobPublicAccess = $false
         },
         @{
             Name = $storageAccountLinux
             ResourceGroupName = $resourceGroupNameLinuxPremium
             Location = $location
             SkuName = "Standard_GRS"
+            AllowBlobPublicAccess = $false
         }
     )
 
