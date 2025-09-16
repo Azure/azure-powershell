@@ -208,7 +208,9 @@ CmdletsToExport = 'Add-AzRmStorageContainerLegalHold',
                'Update-AzStorageBlobServiceProperty', 
                'Update-AzStorageEncryptionScope', 
                'Update-AzStorageFileServiceProperty', 
-               'Update-AzStorageServiceProperty'
+               'Update-AzStorageServiceProperty',
+               'New-AzStorageFileSymbolicLink',
+               'Get-AzStorageFileSymbolicLink'
 
 # Variables to export from this module
 # VariablesToExport = @()
