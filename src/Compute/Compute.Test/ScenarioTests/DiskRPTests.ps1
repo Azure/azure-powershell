@@ -1935,10 +1935,10 @@ function Test-DiskSnapshotInstantAccess
 
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig
 
-        $disk = Get-AzDisk -ResourceGroupName $$rgname -DiskName $diskName
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName
         $snapshotConfig = New-AzSnapshotConfig -SourceUri $disk.Id  -Location $location  -CreateOption Copy -InstantAccessDurationMinutes 300 -Incremental Premium_LRS
 
-        New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $rgName
+        New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $rgname
 
         $snapshotGet = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName
 
