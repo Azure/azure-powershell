@@ -117,9 +117,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).FirmwareId = (string) content.GetValueForProperty("FirmwareId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).FirmwareId, global::System.Convert.ToString);
             }
-            if (content.Contains("SummaryName"))
+            if (content.Contains("SummaryType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryName = (string) content.GetValueForProperty("SummaryName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -158,9 +162,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).FirmwareId = (string) content.GetValueForProperty("FirmwareId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).FirmwareId, global::System.Convert.ToString);
             }
-            if (content.Contains("SummaryName"))
+            if (content.Contains("SummaryType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryName = (string) content.GetValueForProperty("SummaryName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).SummaryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentityInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
