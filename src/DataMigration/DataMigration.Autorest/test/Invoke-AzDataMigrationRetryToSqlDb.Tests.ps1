@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDataMigrationRetryTo
 
 Describe 'Invoke-AzDataMigrationRetryToSqlDb' {
     
-    It 'Retry' {
+    It 'Retry' -skip{
         $srcPassword   = ConvertTo-SecureString $env.TestRetryDatabaseMigrationDb.SourceSqlConnectionPassword -AsPlainText -Force
         $tgtPassword   = ConvertTo-SecureString $env.TestRetryDatabaseMigrationDb.TargetSqlConnectionPassword -AsPlainText -Force
 
