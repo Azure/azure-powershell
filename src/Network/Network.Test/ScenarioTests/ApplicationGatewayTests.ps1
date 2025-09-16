@@ -176,14 +176,14 @@ function Test-ApplicationGatewayCRUD
 
 		$probe02 = New-AzApplicationGatewayProbeConfig -Name $probe02Name -Match $match2 -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
 
-		$poolSetting02 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Probe $probe02 -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01 -ValidateCertChainAndExpiry $true -ValidateSni $true
+		$poolSetting02 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Probe $probe02 -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01 -ValidateCertChainAndExpiry $true -ValidateSni $false
 		Assert-Null $poolSetting02.connectionDraining
 		Assert-NotNull $poolSetting02.Probe
 		
-		# Verify new certificate validation properties
+		# Verify new certificate validation properties - test both true and false scenarios
 		Assert-AreEqual $true $poolSetting02.ValidateCertChainAndExpiry
-		Assert-AreEqual $true $poolSetting02.ValidateSni
-		
+		Assert-AreEqual $false $poolSetting02.ValidateSni
+
 		# Test setting and removing connectiondraining
 		Set-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $False -DrainTimeoutInSec 3600
 		$connectionDraining02 = Get-AzApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02
@@ -229,8 +229,17 @@ function Test-ApplicationGatewayCRUD
 		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
 		
 		# Verify new certificate validation properties are preserved after creation
-		Assert-AreEqual $true $getgw.BackendHttpSettingsCollection[1].ValidateCertChainAndExpiry
-		Assert-AreEqual $true $getgw.BackendHttpSettingsCollection[1].ValidateSni
+		Assert-AreEqual $true $getgw.BackendHttpSettingsCollection[1].ValidateCertChainAndExpiry "ValidateCertChainAndExpiry should be preserved as true"
+		Assert-AreEqual $false $getgw.BackendHttpSettingsCollection[1].ValidateSni "ValidateSni should be preserved as false"
+		
+		# Test updating ValidateSni to true while keeping ValidateCertChainAndExpiry as true  
+		$getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting02Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01 -ValidateCertChainAndExpiry $true -ValidateSni $true
+		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
+		
+		# Verify the update worked - ValidateSni should now be true
+		$updatedSetting = Get-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $poolSetting02Name
+		Assert-AreEqual $true $updatedSetting.ValidateCertChainAndExpiry "ValidateCertChainAndExpiry should remain true"
+		Assert-AreEqual $true $updatedSetting.ValidateSni "ValidateSni should be updated to true"
 
 		<#
 		Tested on Azure Portal CloudShell against a V2 gateway and got the same error that this test gets when listing gateways...
