@@ -1915,27 +1915,35 @@ function Test-DiskSnapshotInstantAccess
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = "eastus2euap";
+    $location = "eastus2euap";
 
     try
     {
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-    
-        $rgname="haagha-test-gdskaccess"; 
-
         $diskName = "haagha-premiumv2test"
         $snapshotName = "snapshotTest"
 
-        $disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
+        New-AzResourceGroup -Name $rgname -Location $location -Force;
+                
+        $diskConfig = New-AzDiskConfig `
+          -Location $location `
+          -DiskSizeGB 1024 `
+          -DiskIOPSReadWrite 10000 `
+          -DiskMBpsReadWrite 500 `
+          -AccountType PremiumV2_LRS `
+          -CreateOption Empty `
+          -Zone $zone
 
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig
+
+        $disk = Get-AzDisk -ResourceGroupName $$rgname -DiskName $diskName
         $snapshotConfig = New-AzSnapshotConfig -SourceUri $disk.Id  -Location $location  -CreateOption Copy -InstantAccessDurationMinutes 300 -Incremental Premium_LRS
 
-        New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName
+        New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $rgName
 
-        $snapshotGet = Get-AzSnapshot -ResourceGroupName "ResourceGroupName1" -SnapshotName "SnapshotName1"
+        $snapshotGet = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName
+
         Asset-NotNull = $snapshotGet.CreationData.InstantAccessDurationMinutes
         Asset-NotNull = $snapshotGet.SnapshotAccessState
-
     }
     finally
     {
