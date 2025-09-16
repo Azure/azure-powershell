@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string getChannelIntegrityKey = this.GetCurrentVaultChannelIntegrityKey();
 
             // Making sure we can generate the file, once the SDK and portal are inter-operable
-            // upload certificate and fetch of ACIK can be made parallel to improvve the performace.
+            // upload certificate and fetch of ACIK can be made parallel to improve the performance.
 
             // Upload certificate
             VaultCertificateResponse uploadCertificate = this.UpdateVaultCertificate(
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Changes the Vault context
         /// </summary>
-        /// <param name="resourceGroupName">Name of the resouce group</param>
+        /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <returns>credential object</returns>
         public long? getVaultAuthType(string resourceGroupName, string vaultName)

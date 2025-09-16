@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// When this option is specified, The contiane will be registered
+        /// When this option is specified, The container will be registered
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsgs.Item.Container,
             ParameterSetName = ReRegisterParamSet, ValueFromPipelineByPropertyName = true)]

@@ -41,7 +41,7 @@ Gets a Storage Mover resource.
 
 ## EXAMPLES
 
-### Example 1: Get all Storage movers in a subcription
+### Example 1: Get all Storage movers in a subscription
 ```powershell
 Get-AzStorageMover
 ```
@@ -225,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover
 
 ## NOTES
 

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -79,17 +80,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region reimage params
 
+        [CmdletParameterBreakingChangeWithVersion("NodeName", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
         public string[] NodeName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Reimage", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
         [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
         public SwitchParameter Reimage { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ForceReimage", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByName,
             HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
         [Parameter(Mandatory = false, ParameterSetName = ReimageById,
@@ -98,6 +102,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
         public SwitchParameter ForceReimage { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("PassThru", "15.0.0", "15.0.0", ChangeDescription = "Reimage operations should be performed with Invoke-AzServiceFabricReimageManagedNodeType instead.")]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByName)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageById)]
         [Parameter(Mandatory = false, ParameterSetName = ReimageByObj)]
@@ -130,6 +135,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.")]
         public Hashtable PlacementProperty { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.")]
+        public string VmSize { get; set; }
 
         #endregion
 
@@ -206,7 +214,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    currentNodeType.VmInstanceCount = this.InstanceCount.Value;
+                    currentNodeType.VMInstanceCount = this.InstanceCount.Value;
                 }
             }
 
@@ -228,6 +236,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.PlacementProperty != null)
             {
                 currentNodeType.PlacementProperties = this.PlacementProperty.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+            }
+
+            if (!string.IsNullOrEmpty(this.VmSize))
+            { 
+                currentNodeType.VMSize = this.VmSize;
             }
 
             return currentNodeType;

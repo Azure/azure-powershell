@@ -21,7 +21,7 @@
 ## Upcoming Release
 
 ## Version 0.5.0
-* Added new optiona parameter -SkuModel to New-AzDataBoxJob cmdlet.
+* Added new optional parameter -SkuModel to New-AzDataBoxJob cmdlet.
     - This parameter is required only at the time of order creation for the new 120TB and 525TB SKUs.
 * All cmdlets will now use 2025-02-01 DataBoxRP API calls.
 
@@ -39,7 +39,7 @@
 * Added support for customer disk job creation
 
 ## Version 0.2.0
-* Switched folowing cmdlets to generated
+* Switched following cmdlets to generated
     - Get-AzDataBoxCredential
     - Get-AzDataBoxJob
     - New-AzDataBoxJob

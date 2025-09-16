@@ -14,16 +14,36 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class DiskType
     {
         /// <summary>
-        /// Standard HDD locally redundant storage. Best for backup, non-critical, and infrequent access.
+        /// Standard HDD locally redundant storage. Best for backup, non-critical, and
+        /// infrequent access.
         /// </summary>
         public const string StandardLRS = "Standard_LRS";
         /// <summary>
-        /// Standard SSD locally redundant storage. Best for web servers, lightly used enterprise applications and dev/test.
+        /// Standard SSD locally redundant storage. Best for web servers, lightly used
+        /// enterprise applications and dev/test.
         /// </summary>
         public const string StandardSSDLRS = "StandardSSD_LRS";
         /// <summary>
-        /// Premium SSD locally redundant storage. Best for production and performance sensitive workloads.
+        /// Premium SSD locally redundant storage. Best for production and performance
+        /// sensitive workloads.
         /// </summary>
         public const string PremiumLRS = "Premium_LRS";
+        /// <summary>
+        /// Premium SSD V2 locally redundant storage. Best for production and
+        /// performance sensitive workloads that consistently require low latency and
+        /// high IOPS and throughput.
+        /// </summary>
+        public const string PremiumV2LRS = "PremiumV2_LRS";
+        /// <summary>
+        /// Standard SSD zone redundant storage. Best for web servers, lightly used
+        /// enterprise applications and dev/test that need storage resiliency against
+        /// zone failures.
+        /// </summary>
+        public const string StandardSSDZRS = "StandardSSD_ZRS";
+        /// <summary>
+        /// Premium SSD zone redundant storage. Best for production workloads that need
+        /// storage resiliency against zone failures.
+        /// </summary>
+        public const string PremiumZRS = "Premium_ZRS";
     }
 }

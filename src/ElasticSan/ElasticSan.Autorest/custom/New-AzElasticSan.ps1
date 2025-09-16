@@ -97,13 +97,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
-    # Base size of the Elastic San appliance in TiB. Default vaule is 20.
+    # Base size of the Elastic San appliance in TiB. Default value is 20.
     ${BaseSizeTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
-    # Extended size of the Elastic San appliance in TiB. Default vaule is 0.
+    # Extended size of the Elastic San appliance in TiB. Default value is 0.
     ${ExtendedCapacitySizeTiB},
 
     [Parameter()]

@@ -82,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_cloudAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("cloudAccountId"), out var __jsonCloudAccountId) ? (string)__jsonCloudAccountId : (string)_cloudAccountId;}
             {_cloudAccountState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("cloudAccountState"), out var __jsonCloudAccountState) ? (string)__jsonCloudAccountState : (string)_cloudAccountState;}
             {_termUnit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("termUnit"), out var __jsonTermUnit) ? (string)__jsonTermUnit : (string)_termUnit;}
+            {_azureSubscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("azureSubscriptionIds"), out var __jsonAzureSubscriptionIds) ? If( __jsonAzureSubscriptionIds as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _azureSubscriptionId;}
+            {_addSubscriptionOperationState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("addSubscriptionOperationState"), out var __jsonAddSubscriptionOperationState) ? (string)__jsonAddSubscriptionOperationState : (string)_addSubscriptionOperationState;}
+            {_lastOperationStatusDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("lastOperationStatusDetail"), out var __jsonLastOperationStatusDetail) ? (string)__jsonLastOperationStatusDetail : (string)_lastOperationStatusDetail;}
             AfterFromJson(json);
         }
 
@@ -131,6 +134,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeUpdate))
             {
                 AddIf( null != (((object)this._intent)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._intent.ToString()) : null, "intent" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._azureSubscriptionId)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._azureSubscriptionId )
+                    {
+                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    }
+                    container.Add("azureSubscriptionIds",__w);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._addSubscriptionOperationState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._addSubscriptionOperationState.ToString()) : null, "addSubscriptionOperationState" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._lastOperationStatusDetail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._lastOperationStatusDetail.ToString()) : null, "lastOperationStatusDetail" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

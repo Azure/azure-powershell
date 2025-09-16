@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -437,6 +441,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

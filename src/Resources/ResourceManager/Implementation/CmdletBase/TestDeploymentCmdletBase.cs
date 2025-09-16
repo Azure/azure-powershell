@@ -35,7 +35,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         public void WriteOutput(TemplateValidationInfo validationInfo)
         {
-            if (validationInfo.Errors.Count == 0 && !SuppressDiagnostics.IsPresent)
+            if (validationInfo.Errors.Count > 0)
+            {
+                WriteObject(validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList());
+            }
+            else if (!SuppressDiagnostics.IsPresent && validationInfo.Diagnostics.Count > 0)
             {
                 var builder = new ColoredStringBuilder();
 
@@ -44,10 +48,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>(), new List<PSWhatIfChange>());
 
                 WriteWarning(builder.ToString());
-            }
-            else
-            {
-                WriteObject(validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList());
             }
         }
 

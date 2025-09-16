@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "displayName": "My schema",
+    "description": "This is a sample schema",
+    "schemaType": "MessageSchema",
+    "format": "JsonSchema/draft-07",
+    "tags": {
+      "sampleKey": "sampleValue"
+    }
+  }
+}

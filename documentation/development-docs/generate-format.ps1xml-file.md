@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 // code omitted for brevity 
 ```
 
-PowerShell uses these properties for the cmdlet table formated output:
+PowerShell uses these properties for the cmdlet table formatted output:
 
 ```PowerShell
 PS C:\> Get-AzSubscription | Format-Table

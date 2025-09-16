@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new Event Hub as a nested resource within a Namespace.
+Update a new Event Hub as a nested resource within a Namespace.
 .Description
-update a new Event Hub as a nested resource within a Namespace.
+Update a new Event Hub as a nested resource within a Namespace.
 .Example
 Set-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 .Example
@@ -182,7 +182,7 @@ param(
     [System.Int64]
     # The minimum time a message will remain ineligible for compaction in the log.
     # This value is used when cleanupPolicy is Compact or DeleteOrCompact.
-    ${RetentionDescriptionMinCompactionLagInMin},
+    ${RetentionDescriptionMinCompactionLagTimeInMinute},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]

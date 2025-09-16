@@ -16,12 +16,12 @@ function Test-CreateBasicCluster
 {
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.WaitTimeBetweenUD"="00:00:10"; "testName"="Test-Create-BasicCluster"}
 
-	$tags = @{"test"="tag"}
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
 		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
@@ -52,17 +52,17 @@ function Test-CreateBasicCluster
 
 function Test-NodeTypeOperations
 {
-	#$resourceGroupName = "sfmcps-rg-" + (getAssetname)
-	#$clusterName = "sfmcps-" + (getAssetname)
-	$resourceGroupName = "sfmcps-rg-node-ops"
-	$clusterName = "sfmcps-node-ops"
+	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$clusterTags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-NodeTypeOperations"}
+
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Automatic -UpgradeCadence Wave1 -Location $location `
-		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $clusterTags -Verbose
 	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual "WaitingForNodes" $cluster.ClusterState
 	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
@@ -82,13 +82,22 @@ function Test-NodeTypeOperations
 	Assert-AreEqual "StandardSSD_LRS" $snt.DataDiskType
 	Assert-True { $snt.IsStateless }
 
-	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0, snt_1 -PassThru
+	$redeploy = Invoke-AzServiceFabricRedeployManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_4 -PassThru
+	Assert-True { $redeploy }
+
+	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0 -UpdateType Default -PassThru
 	Assert-True { $restart }
 
 	$delete = Remove-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_1 -PassThru
 	Assert-True { $delete }
 
-	$reimage = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -Reimage -PassThru
+	$deallocate = Invoke-AzServiceFabricDeallocateManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
+	Assert-True { $deallocate }
+
+	$start = Start-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_2 -PassThru
+	Assert-True { $start }
+
+	$reimage = Invoke-AzServiceFabricReimageManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_3 -UpdateType ByUpgradeDomain -PassThru
 	Assert-True { $reimage }
 
 	$snt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt
@@ -99,19 +108,53 @@ function Test-NodeTypeOperations
 	Assert-True { $removeResponse }
 }
 
-function Test-CertAndExtension
+function Test-NodeTypeVmSizeChange
 {
-	#$resourceGroupName = "sfmcps-rg-" + (getAssetname)
-	#$clusterName = "sfmcps-" + (getAssetname)
-	$resourceGroupName = "sfmcps-rg-tcl1"
-	$clusterName = "sfmcps-test-cluster1"
+	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-NodeTypeVmSizeChange"}
+
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+
+	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Automatic -UpgradeCadence Wave1 -Location $location `
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+	Assert-AreEqual "WaitingForNodes" $cluster.ClusterState
+	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
+	Assert-AreEqual "Wave1" $cluster.ClusterUpgradeCadence
+
+	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary -DiskType Premium_LRS -VmSize Standard_DS2
+
+	$pnt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt
+	Assert-AreEqual "Premium_LRS" $pnt.DataDiskType
+	Assert-AreEqual "Standard_DS2" $pnt.VmSize
+
+	$swapSize = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -VmSize Standard_DS3_v2
+	Assert-True { $swapSize }
+
+	$pnt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt
+	Assert-AreEqual "Premium_LRS" $pnt.DataDiskType
+	Assert-AreEqual "Standard_DS3_v2" $pnt.VmSize
+
+	$removeResponse = Remove-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+}
+
+function Test-CertAndExtension
+{
+	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	$clusterName = "sfmcps-" + (getAssetname)
+	$location = "southcentralus"
+	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-CertAndExtension"}
+
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
-		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
+		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
 	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual "WaitingForNodes" $cluster.ClusterState
 
@@ -154,12 +197,12 @@ function Test-AddNetworkSecurityRule
 {
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force (-join ((33..126) | Get-Random -Count 16 | % {[char]$_})))
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+	$tags = @{"SFRP.EnableDiagnosticMI"="true"; "SFRP.DisableDefaultOutboundAccess"="true"; "SFRP.UseUnmonitoredAutoClusterUpgradePolicy"="True"; "testName"="Test-AddNetworkSecurityRule"}
 
-	$tags = @{"test"="tag"}
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
 		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Tag $tags -Verbose

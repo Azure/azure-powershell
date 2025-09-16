@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             else
             {
-                // List all cache in given resource group if avaliable otherwise all cache in given subscription
+                // List all cache in given resource group if available otherwise all cache in given subscription
                 IPage<RedisResource> response = CacheClient.ListCaches(ResourceGroupName);
                 List<RedisCacheAttributes> list = new List<RedisCacheAttributes>();
                 foreach (RedisResource resource in response)

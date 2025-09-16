@@ -15,7 +15,8 @@ Gets the CosmosDB MongoDB User Definition.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBUserDefinition -ResourceGroupName <String> -AccountName <String> [-Id <String>]
- [-DatabaseName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DatabaseName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

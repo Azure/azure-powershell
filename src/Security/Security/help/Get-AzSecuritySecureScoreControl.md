@@ -25,7 +25,7 @@ Get-AzSecuritySecureScoreControl -Name <String> [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-The Get-AzSecuritySecureScoreControl comlet gets security secure score controls and their results on a subscription.
+The Get-AzSecuritySecureScoreControl cmdlet gets security secure score controls and their results on a subscription.
 
 ## EXAMPLES
 

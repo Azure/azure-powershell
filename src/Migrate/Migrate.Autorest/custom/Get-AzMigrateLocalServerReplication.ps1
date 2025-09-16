@@ -22,7 +22,7 @@ The Get-AzMigrateLocalServerReplication cmdlet retrieves the object for the repl
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserverreplication
 #>
 function Get-AzMigrateLocalServerReplication {
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
