@@ -39,9 +39,10 @@ if ($IsLinux) {
     Write-Host -ForegroundColor Yellow "Detected Linux agent - applying memory tuning for tests"
     $env:DOTNET_gcServer = "0"
     $env:DOTNET_gcHeapCount = "2"
+    $buildArgs += ";RunConfiguration.MaxCpuCount=2"
 }
 
-dotnet msbuild $buildProjPath /t:Test $buildArgs
+dotnet msbuild $buildProjPath /t:Test $buildArgs /v:diag
 
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
