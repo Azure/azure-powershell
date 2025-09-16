@@ -843,17 +843,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a NodeFileGetPropertiesResponse object
-        /// </summary>
-        public static AzureOperationResponse<Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders> CreateGetRemoteDesktOperationResponse()
-        {
-            var response = new AzureOperationResponse<Stream, ProxyModels.ComputeNodeGetRemoteDesktopHeaders>();
-            response.Headers = new ProxyModels.ComputeNodeGetRemoteDesktopHeaders();
-            response.Body = new MemoryStream();
-            return response;
-        }
-
-        /// <summary>
         /// Builds a NodeFileGetPropertiesFromTaskResponse object
         /// </summary>
         public static AzureOperationHeaderResponse<ProxyModels.FileGetPropertiesFromTaskHeaders> CreateNodeFileGetPropertiesByTaskResponse()

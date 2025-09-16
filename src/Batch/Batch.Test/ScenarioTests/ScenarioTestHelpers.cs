@@ -38,6 +38,7 @@ using BatchAccountCreateParameters = Microsoft.Azure.Management.Batch.Models.Bat
 using BatchAccountKeys = Microsoft.Azure.Management.Batch.Models.BatchAccountKeys;
 using ApplicationPackage = Microsoft.Azure.Management.Batch.Models.ApplicationPackage;
 using System.Security.Policy;
+using System.Management.Automation;
 
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
@@ -215,12 +216,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 psUpgradePolicy = new PSUpgradePolicy(upgradePolicy);
             }
 
-            PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
-           
+            PSVirtualMachineConfiguration virtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
+
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "standard_d1_v2",
-                CloudServiceConfiguration = paasConfiguration,
+                VirtualMachineConfiguration = virtualMachineConfiguration,
                 TargetDedicatedComputeNodes = targetDedicated,
                 TargetLowPriorityComputeNodes = targetLowPriority,
                 CertificateReferences = certReferences,
@@ -510,7 +511,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             DateTime timeout = DateTime.Now.AddMinutes(10);
 
-            while (job.State != JobState.Completed && DateTime.Now < timeout)
+            while (job.State != Azure.Batch.Common.JobState.Completed && DateTime.Now < timeout)
             {
                 job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
 
