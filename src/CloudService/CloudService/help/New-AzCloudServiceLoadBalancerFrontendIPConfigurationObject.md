@@ -29,27 +29,25 @@ Create an in-memory object for LoadBalancerFrontendIPConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create load balancer frontend IP configuration object
 ```powershell
-{{ Add code here }}
+$publicIP = Get-AzPublicIpAddress -ResourceGroupName 'ContosoOrg' -Name 'ContosoPublicIP'
+$feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
+$loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command creates load balancer frontend IP configuration object which is used for creating or updating a cloud service.
+For more details see New-AzCloudService.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create load balancer frontend IP configuration object with Private ID address
 ```powershell
-{{ Add code here }}
+# Create role profile object
+$subnet = New-AzVirtualNetworkSubnetConfig -Name "WebTier" -AddressPrefix "10.0.0.0/24" -WarningAction SilentlyContinue 
+$feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -privateIPAddress '10.0.0.6' -subnetId $Subnet.Id
+$loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates load balancer frontend IP configuration object with a Private IP address
 
 ## PARAMETERS
 
