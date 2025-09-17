@@ -28,6 +28,80 @@ Register-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -Functi
  [-WhatIf] [<CommonParameters>]
 ```
 
+### RegisterViaIdentityBuild
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -BuildInputObject <IWebsitesIdentity> -FunctionAppName <String>
+ -StaticSiteUserProvidedFunctionEnvelope <IStaticSiteUserProvidedFunctionAppArmResource> [-Forced]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaIdentityBuildExpanded
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -BuildInputObject <IWebsitesIdentity> -FunctionAppName <String>
+ [-Forced] [-FunctionAppRegion <String>] [-FunctionAppResourceId <String>] [-Kind <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaIdentityStaticSite
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -FunctionAppName <String>
+ -StaticSiteInputObject <IWebsitesIdentity>
+ -StaticSiteUserProvidedFunctionEnvelope <IStaticSiteUserProvidedFunctionAppArmResource> [-Forced]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaIdentityStaticSite1
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String>
+ -StaticSite1InputObject <IWebsitesIdentity>
+ -StaticSiteUserProvidedFunctionEnvelope <IStaticSiteUserProvidedFunctionAppArmResource> [-Forced]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaIdentityStaticSiteExpanded
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -FunctionAppName <String>
+ -StaticSiteInputObject <IWebsitesIdentity> [-Forced] [-FunctionAppRegion <String>]
+ [-FunctionAppResourceId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaIdentityStaticSiteExpanded1
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String>
+ -StaticSiteInputObject <IWebsitesIdentity> [-Forced] [-FunctionAppRegion <String>]
+ [-FunctionAppResourceId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaJsonFilePath
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -FunctionAppName <String>
+ -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-Forced]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaJsonFilePath1
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String> -Name <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-Forced]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaJsonString
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -FunctionAppName <String>
+ -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-Forced]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegisterViaJsonString1
+```
+Register-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String> -Name <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-Forced]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Description for Register a user provided function app with a static site build
 
@@ -78,6 +152,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BuildInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: RegisterViaIdentityBuild, RegisterViaIdentityBuildExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -99,7 +188,7 @@ The stage site identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegisterExpanded
+Parameter Sets: RegisterExpanded, RegisterViaIdentityStaticSite, RegisterViaIdentityStaticSiteExpanded, RegisterViaJsonFilePath, RegisterViaJsonString
 Aliases:
 
 Required: True
@@ -145,7 +234,7 @@ The region of the function app registered with the static site
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegisterExpanded, RegisterExpanded1, RegisterViaIdentityBuildExpanded, RegisterViaIdentityStaticSiteExpanded, RegisterViaIdentityStaticSiteExpanded1
 Aliases:
 
 Required: False
@@ -160,10 +249,40 @@ The resource id of the function app registered with the static site
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegisterExpanded, RegisterExpanded1, RegisterViaIdentityBuildExpanded, RegisterViaIdentityStaticSiteExpanded, RegisterViaIdentityStaticSiteExpanded1
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Register operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegisterViaJsonFilePath, RegisterViaJsonFilePath1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Register operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegisterViaJsonString, RegisterViaJsonString1
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,7 +294,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegisterExpanded, RegisterExpanded1, RegisterViaIdentityBuildExpanded, RegisterViaIdentityStaticSiteExpanded, RegisterViaIdentityStaticSiteExpanded1
 Aliases:
 
 Required: False
@@ -190,7 +309,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegisterExpanded, RegisterExpanded1, RegisterViaJsonFilePath, RegisterViaJsonFilePath1, RegisterViaJsonString, RegisterViaJsonString1
 Aliases:
 
 Required: True
@@ -220,13 +339,58 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegisterExpanded, RegisterExpanded1, RegisterViaJsonFilePath, RegisterViaJsonFilePath1, RegisterViaJsonString, RegisterViaJsonString1
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticSite1InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: RegisterViaIdentityStaticSite1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -StaticSiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: RegisterViaIdentityStaticSite, RegisterViaIdentityStaticSiteExpanded, RegisterViaIdentityStaticSiteExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -StaticSiteUserProvidedFunctionEnvelope
+Static Site User Provided Function App ARM resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserProvidedFunctionAppArmResource
+Parameter Sets: RegisterViaIdentityBuild, RegisterViaIdentityStaticSite, RegisterViaIdentityStaticSite1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -237,7 +401,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegisterExpanded, RegisterExpanded1, RegisterViaJsonFilePath, RegisterViaJsonFilePath1, RegisterViaJsonString, RegisterViaJsonString1
 Aliases:
 
 Required: False
@@ -283,9 +447,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserProvidedFunctionAppArmResource
+
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserProvidedFunctionAppArmResource
 
 ## NOTES
 
