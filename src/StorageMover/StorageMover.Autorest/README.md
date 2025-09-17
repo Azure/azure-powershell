@@ -57,6 +57,9 @@ directive:
           ],
           "default": 0
         }
+  - from: swagger-document
+    where: $.definitions.EndpointBaseUpdateProperties.properties.endpointType
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true

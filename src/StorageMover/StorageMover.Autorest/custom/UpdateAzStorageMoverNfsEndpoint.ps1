@@ -147,7 +147,6 @@ function Update-AzStorageMoverNfsEndpoint {
 
     process {
         $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.NfsMountEndpointUpdateProperties]::New()
-        $Properties.EndpointType = 'NfsMount'
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description

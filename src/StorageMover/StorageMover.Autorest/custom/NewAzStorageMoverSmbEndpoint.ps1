@@ -163,7 +163,6 @@ function New-AzStorageMoverSmbEndpoint {
             $null = $PSBoundParameters.Remove("Description")
         }
 
-        $Properties.EndpointType = "SmbMount"
         $PSBoundParameters.Add("Property", $Properties)
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters

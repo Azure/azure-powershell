@@ -147,7 +147,6 @@ function Update-AzStorageMoverMultiCloudConnectorEndpoint {
 
     process {
         $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureMultiCloudConnectorEndpointUpdateProperties]::New()
-        $Properties.EndpointType = 'AzureMultiCloudConnector'
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
