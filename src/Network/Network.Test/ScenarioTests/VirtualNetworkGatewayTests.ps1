@@ -280,8 +280,7 @@ param
       Assert-NotNull $expected.VpnClientConfiguration
       $authTypes = $expected.VpnClientConfiguration.VpnAuthenticationTypes
       Assert-NotNull $authTypes
-      Assert-AreEqual 3 @($authTypes).Count
-      
+      Assert-AreEqual 3 @($authTypes).Count      
       $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
       $vpnProfilePackageUrl = New-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
       Assert-NotNull $vpnProfilePackageUrl
