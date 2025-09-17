@@ -1096,7 +1096,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual 0 $VpnServerConfig2.ConfigurationPolicyGroups[0].Priority
 
         # Get AllVpnServerConfigurationRadiusServerSecret from VpnServerConfiguration
-        $vpnServerConfigRadiusAuthServers = Get-AllVpnServerConfigurationRadiusServerSecret -ResourceGroupName $rgname -Name $VpnServerConfiguration2Name
+        $vpnServerConfigRadiusAuthServers = Get-AzAllVpnServerConfigurationRadiusServerSecret -ResourceGroupName $rgname -Name $VpnServerConfiguration2Name
         Assert-AreEqual 1 $vpnServerConfigRadiusAuthServers.Count
         Assert-AreEqual "TestRadiusServer1" $vpnServerConfigRadiusAuthServers[0].RadiusServerAddress
         Assert-AreEqual "TestRadiusServerPassword" $vpnServerConfigRadiusAuthServers[0].RadiusServerSecret
@@ -1133,14 +1133,14 @@ function Test-CortexExpressRouteCRUD
         Assert-AreEqual "TestRadiusServer3" $VpnServerConfig2Get.RadiusServerAddress
 
 		# Update existing VpnServerConfigurationMultiAuth using Update-AzVpnServerConfiguration
-		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius 
+		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd
 		$vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
 		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
 		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
 		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
 		Assert-AreEqual 1 @($authenticationTypes).Count
 
-		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius,Certificate,AAD -VpnClientRootCertificateFilesList $listOfCerts -AadAudience $aadAudience -AadIssuer $aadIssuer -AadTenant $aadTenant
+		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius,Certificate,AAD -VpnClientRootCertificateFilesList $listOfCerts -AadAudience $aadAudience -AadIssuer $aadIssuer -AadTenant $aadTenant -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd
 		$vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
 		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
 		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
@@ -1149,7 +1149,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual 3 @($authenticationTypes).Count
 
 		# Update existing VpnServerConfiguration2MultiAuth to use OpenVPN and IkeV2 with only AAD should fail
-		Assert-ThrowsContains { Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
+		Assert-ThrowsContains { Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd} "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
 		$protocols = $vpnServerConfig2MultiAuth.VpnProtocols
 		Assert-AreEqual 1 @($protocols).Count
 		Assert-AreEqual "OpenVPN" $protocols[0]

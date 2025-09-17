@@ -754,7 +754,7 @@ function Test-VirtualNetworkGatewayRadius
 		$subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
 		# Create the IP config
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
 		# Create & Get virtualnetworkgateway
@@ -771,7 +771,7 @@ function Test-VirtualNetworkGatewayRadius
         Assert-AreEqual 2 $vngRadiusAuthServers.Count
         Assert-AreEqual "10.1.0.1" $vngRadiusAuthServers[0].RadiusServerAddress
         Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
-        Assert-AreEqual "10.1.0.1" $vngRadiusAuthServers[1].RadiusServerAddress
+        Assert-AreEqual "10.1.0.2" $vngRadiusAuthServers[1].RadiusServerAddress
         Assert-AreEqual "radiuspd" $vngRadiusAuthServers[1].RadiusServerSecret
 
 		# Update gateway to singular radius
@@ -796,6 +796,14 @@ function Test-VirtualNetworkGatewayRadius
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerScore $radiusServer3.RadiusServerScore
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerAddress $radiusServer1.RadiusServerAddress
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer1.RadiusServerScore
+
+        # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+        $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual 2 $vngRadiusAuthServers.Count
+        Assert-AreEqual "10.1.0.3" $vngRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
+        Assert-AreEqual "10.1.0.1" $vngRadiusAuthServers[1].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[1].RadiusServerSecret
 	}
     finally
     {
