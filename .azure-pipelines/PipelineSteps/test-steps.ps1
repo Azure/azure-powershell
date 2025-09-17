@@ -42,9 +42,10 @@ if ($IsLinux) {
     $env:DOTNET_gcHeapCount = "1"                  # Only 1 heap
     $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"       # Single MSBuild node
     $env:MSBUILDDISABLENODEREUSE = "1"            # Prevent node reuse
-    $env:DOTNET_GCHeapHardLimit = "4026531840"     # ~3.75 GB
+    $env:DOTNET_GCHeapHardLimit = "3489660928" 
 
-    bash -c "ulimit -v 5505024; dotnet msbuild $buildProjPath /t:Test $buildArgs"
+    Write-Host "GCHeapHardLimit = $env:DOTNET_GCHeapHardLimit"
+    bash -c "ulimit -v 6291456; dotnet msbuild $buildProjPath /t:Test $buildArgs"
 } else {
     dotnet msbuild $buildProjPath /t:Test $buildArgs
 }
