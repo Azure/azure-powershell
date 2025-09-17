@@ -37,7 +37,6 @@ $buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 if ($IsLinux) {
     Write-Host -ForegroundColor Yellow "Detected Linux agent. Applying memory tuning for tests"
 
-    bash -c "ulimit -v 2097152" 
     # GC and MSBuild tuning
     $env:DOTNET_gcServer = "0"                          # Use workstation GC
     $env:DOTNET_gcHeapCount = "2"                       # Limit GC heap count
@@ -46,16 +45,17 @@ if ($IsLinux) {
     $env:DOTNET_GCHeapHardLimitPercent = "75"           # Heap limit as percent
     $env:DOTNET_GCHeapHardLimit = "1610612736"          # ~1.5 GB hard limit
     $env:DOTNET_GCHeapAffinitizeMask = "0x3"            # Bind heaps to CPUs
-
+    
     # GC logging    
     $env:COMPlus_LogEnable = "1"
     $env:COMPlus_LogLevel = "6"
     $env:COMPlus_LogFacility = "0x0001"
     bash -c "while true; do date; free -h; sleep 10; done &"
+    bash -c "ulimit -v 2097152; dotnet msbuild $buildProjPath /t:Test $buildArgs" 
+} else {
+    dotnet msbuild $buildProjPath /t:Test $buildArgs
 }
 
-# @TODO: remove /v:diag from final PR
-dotnet msbuild $buildProjPath /t:Test $buildArgs /v:diag
 
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
