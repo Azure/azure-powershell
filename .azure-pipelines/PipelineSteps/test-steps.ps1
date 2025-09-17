@@ -43,15 +43,6 @@ if ($IsLinux) {
     $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"       # Single MSBuild node
     $env:MSBUILDDISABLENODEREUSE = "1"            # Prevent node reuse
 
-    # GC heap: give enough room for initialization (~3 GB)
-    $env:DOTNET_GCHeapHardLimit = "3221225472"    # 3 GB
-    $env:DOTNET_GCHeapAffinitizeMask = "0x1"      # Only 1 CPU
-
-    # Optional GC logging
-    $env:COMPlus_LogEnable = "1"
-    $env:COMPlus_LogLevel = "6"
-    $env:COMPlus_LogFacility = "0x0001"
-
     # Limit process memory to slightly more than heap (~3.5–4 GB)
     bash -c "ulimit -v 4194304; dotnet msbuild $buildProjPath /t:Test $buildArgs"
 } else {
