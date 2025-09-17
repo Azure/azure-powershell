@@ -37,9 +37,9 @@ $buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 if ($IsLinux) {
     Write-Host "Detected Linux agent. Applying memory tuning for tests"
 
-    $env:DOTNET_gcServer = "0"                     # Workstation GC
+    # $env:DOTNET_gcServer = "0"                     # Workstation GC
     $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"       # Single MSBuild node
-    $env:MSBUILDDISABLENODEREUSE = "1"             # Prevent node reuse
+    # $env:MSBUILDDISABLENODEREUSE = "1"             # Prevent node reuse
 
     # ---- DIAGNOSTIC LOGGING ----
     Write-Host "---- DIAGNOSTIC: Testhost / CoreCLR Memory Check ----"
@@ -60,7 +60,7 @@ if ($IsLinux) {
     # ----------------------------
 
     # Limit total process memory via ulimit (6 GB here)
-    bash -c "ulimit -v 6291456; dotnet msbuild $buildProjPath /t:Test $buildArgs"
+    bash -c "ulimit -v 7340032; dotnet msbuild $buildProjPath /t:Test $buildArgs"
 } else {
     dotnet msbuild $buildProjPath /t:Test $buildArgs
 }
