@@ -1,62 +1,48 @@
 ---
-external help file: Az.DataMigration-help.xml
+external help file:
 Module Name: Az.DataMigration
-online version: https://learn.microsoft.com/powershell/module/az.datamigration/update-azdatamigrationsqlservice
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqlvm
 schema: 2.0.0
 ---
 
-# Update-AzDataMigrationSqlService
+# Remove-AzDataMigrationToSqlVM
 
 ## SYNOPSIS
-Update Database Migration Service.
+Delete Database Migration resource.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzDataMigrationSqlService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String>
+ -TargetDbName <String> [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzDataMigrationSqlService -InputObject <IDataMigrationIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzDataMigrationToSqlVM -InputObject <IDataMigrationIdentity> [-Force] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update Database Migration Service.
+Delete Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Update tag of SQL Migration Service
+### Example 1: Delete the Database Migration resource.
 ```powershell
-Update-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -Tag @{Tag="Service"}
+Remove-AzDataMigrationToSqlVM -ResourceGroupName myRG -SqlVirtualMachineName myVM -TargetDbName myDB
 ```
 
-```output
-Location  Name    Type                                         ProvisioningState IntegrationRuntimeState
---------  ----    ----                                         ----------------- -----------------------
-eastus2   MySqlMS Microsoft.DataMigration/sqlMigrationServices Succeeded         Online
-```
+Delete the SQL DB Database Migration resource.
 
-This command updates tag of SQL Migration Service.
-
-### Example 2: Update tag of SQL Migration Service using InputObject
+### Example 2: Delete the Database Migration resource even if it is in progress 
 ```powershell
-$mySqlMS = Get-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
-Update-AzDataMigrationSqlService -InputObject $mySqlMS -Tag @{Tag="Service"}
+Remove-AzDataMigrationToSqlVM -ResourceGroupName myRG -SqlVirtualMachineName myVM -TargetDbName myDB -Force
 ```
 
-```output
-Location  Name    Type                                         ProvisioningState IntegrationRuntimeState
---------  ----    ----                                         ----------------- -----------------------
-eastus2   MySqlMS Microsoft.DataMigration/sqlMigrationServices Succeeded         Online
-```
-
-This command updates tag of SQL Migration Service using InputObject.
+Forcibly deletes an ongoing Migration by adding the optional "Force" parameter
 
 ## PARAMETERS
 
@@ -91,34 +77,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Optional force delete boolean.
+If this is provided as true, migration will be deleted even if active.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the SQL Migration Service.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: SqlMigrationServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -158,7 +145,22 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlVirtualMachineName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -173,7 +175,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -183,15 +185,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Dictionary of \<string\>
+### -TargetDbName
+The name of the target database.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -238,8 +240,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ISqlMigrationService
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlVM
 
 ## NOTES
 
 ## RELATED LINKS
+
