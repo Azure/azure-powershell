@@ -12,14 +12,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for ZonePlacementPolicyType.
+    /// Defines values for OrchestrationServiceOperationStatus.
     /// </summary>
-    public static class ZonePlacementPolicyType
+    public static class OrchestrationServiceOperationStatus
     {
-        public const string Any = "Any";
         /// <summary>
-        /// Automatic zone placement in a Virtual Machine Scale Set.
+        /// InProgress orchestration service operation status.
         /// </summary>
-        public const string Auto = "Auto";
+        public const string InProgress = "InProgress";
+        /// <summary>
+        /// Completed orchestration service operation status.
+        /// </summary>
+        public const string Completed = "Completed";
     }
 }

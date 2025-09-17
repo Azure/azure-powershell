@@ -12,14 +12,19 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for ZonePlacementPolicyType.
+    /// Defines values for ReservationType.
     /// </summary>
-    public static class ZonePlacementPolicyType
+    public static class ReservationType
     {
-        public const string Any = "Any";
         /// <summary>
-        /// Automatic zone placement in a Virtual Machine Scale Set.
+        /// To consume on demand allocated capacity reservation when a capacity
+        /// reservation group is provided.
         /// </summary>
-        public const string Auto = "Auto";
+        public const string Targeted = "Targeted";
+        /// <summary>
+        /// To consume scheduled allocated block capacity reservation when a
+        /// capacity reservation group is provided.
+        /// </summary>
+        public const string Block = "Block";
     }
 }
