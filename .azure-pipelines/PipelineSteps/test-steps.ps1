@@ -37,6 +37,7 @@ $buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 if ($IsLinux) {
     Write-Host -ForegroundColor Yellow "Detected Linux agent. Applying memory tuning for tests"
 
+    bash -c "ulimit -v 2097152" 
     # GC and MSBuild tuning
     $env:DOTNET_gcServer = "0"                          # Use workstation GC
     $env:DOTNET_gcHeapCount = "2"                       # Limit GC heap count
