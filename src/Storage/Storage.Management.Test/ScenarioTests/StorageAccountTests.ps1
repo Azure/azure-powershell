@@ -2684,8 +2684,8 @@ function Test-StorageAccountDNSEndpointType
 }
 
 <#
-.SYNOPSIS
-Test StorageAccountDNSEndpointType
+.SYNOPSISret
+Test StorageAccountEnableSmbOauth
 .DESCRIPTION
 SmokeTest
 #>
