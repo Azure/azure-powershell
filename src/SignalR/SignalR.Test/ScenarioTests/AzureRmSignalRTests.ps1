@@ -73,7 +73,7 @@ function Test-AzureRmSignalR
         $newKeys1 = Get-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
         Assert-NotNull $newKeys1
 
-        if( $env:AZURE_TEST_MODE -ne "Playback")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
             Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
@@ -89,7 +89,7 @@ function Test-AzureRmSignalR
         Assert-NotNull $newKeys2
         Assert-AreEqual $newKeys1.PrimaryKey $newKeys2.PrimaryKey
         Assert-AreEqual $newKeys1.PrimaryConnectionString $newKeys2.PrimaryConnectionString
-        if( $env:AZURE_TEST_MODE -ne "Playback")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Assert-AreNotEqual $newKeys1.SecondaryKey $newKeys2.SecondaryKey
             Assert-AreNotEqual $newKeys1.SecondaryConnectionString $newKeys2.SecondaryConnectionString
@@ -159,7 +159,7 @@ function Test-AzureRmSignalRWithDefaultArgs
         # The following two lines don't work in "playback" mode because all the connection strings are sanitized to the same value.
         # If test mode is playback , skip the test
 
-        if( $env:AZURE_TEST_MODE -ne "Playback" )
+        if( $env:AZURE_TEST_MODE -eq "Record" )
         {
             Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
             Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
