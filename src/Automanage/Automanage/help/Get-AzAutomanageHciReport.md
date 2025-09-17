@@ -25,6 +25,18 @@ Get-AzAutomanageHciReport -ClusterName <String> -Name <String> -ResourceGroupNam
  [<CommonParameters>]
 ```
 
+### GetViaIdentityConfigurationProfileAssignment
+```
+Get-AzAutomanageHciReport -Name <String> -ConfigurationProfileAssignmentInputObject <IAutomanageIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityCluster
+```
+Get-AzAutomanageHciReport -Name <String> -ClusterInputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzAutomanageHciReport -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
@@ -71,6 +83,21 @@ This command gets information about a report associated with a configuration pro
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Arc machine.
 
@@ -83,6 +110,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationProfileAssignmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: GetViaIdentityConfigurationProfileAssignment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -104,7 +146,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
@@ -123,7 +164,7 @@ The report name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityConfigurationProfileAssignment, GetViaIdentityCluster
 Aliases:
 
 Required: True
@@ -173,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport
 
 ## NOTES
 
