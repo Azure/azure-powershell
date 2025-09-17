@@ -28,7 +28,7 @@ Update-AzDataMigrationSqlService -InputObject $mySqlMS -Tag @{Tag="Service"}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ISqlMigrationService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.datamigration/update-azdatamigrationsqlservice
 #>
 function Update-AzDataMigrationSqlService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ISqlMigrationService])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -83,7 +83,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ISqlMigrationServiceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ISqlMigrationServiceUpdateTags]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},

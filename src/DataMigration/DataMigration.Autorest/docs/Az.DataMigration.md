@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataMigration
-Module Guid: 896e3fc9-6d5a-4964-aa07-5febb86eb489
+Module Guid: 1d736641-5a49-4e87-bb36-d9a05603afe7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datamigration
 Help Version: 1.0.0.0
 Locale: en-US

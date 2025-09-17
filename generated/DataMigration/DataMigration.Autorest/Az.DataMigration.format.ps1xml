@@ -408,9 +408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.AuthenticationKeys</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.AuthenticationKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.AuthenticationKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.AuthenticationKeys</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -436,9 +436,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.AzureBlob</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.AzureBlob</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.AzureBlob</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.AzureBlob</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -476,9 +476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.CopyProgressDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.CopyProgressDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.CopyProgressDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.CopyProgressDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -558,9 +558,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -598,9 +598,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -656,9 +656,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationBaseListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationBaseListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationBaseListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationBaseListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -678,9 +678,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationBaseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationBaseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationBaseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationBaseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -748,9 +748,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationCosmosDbMongo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationCosmosDbMongo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationCosmosDbMongo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationCosmosDbMongo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -806,9 +806,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationCosmosDbMongoListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationCosmosDbMongoListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationCosmosDbMongoListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationCosmosDbMongoListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -828,9 +828,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -850,9 +850,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -950,9 +950,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesCosmosDbMongo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesCosmosDbMongo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesCosmosDbMongo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesCosmosDbMongo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1032,9 +1032,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesSqlDb</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesSqlDb</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesSqlDb</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesSqlDb</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1168,9 +1168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesSqlMi</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesSqlMi</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesSqlMi</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesSqlMi</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1298,9 +1298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesSqlVM</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesSqlVM</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationPropertiesSqlVM</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationPropertiesSqlVM</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1428,9 +1428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlDb</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationSqlDb</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlDb</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationSqlDb</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1468,9 +1468,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlMi</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationSqlMi</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlMi</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationSqlMi</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1508,9 +1508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlVM</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationSqlVM</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DatabaseMigrationSqlVM</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DatabaseMigrationSqlVM</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1548,9 +1548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DeleteNode</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DeleteNode</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.DeleteNode</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.DeleteNode</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1576,9 +1576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ErrorInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ErrorInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ErrorInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ErrorInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1604,9 +1604,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IntegrationRuntimeMonitoringData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IntegrationRuntimeMonitoringData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IntegrationRuntimeMonitoringData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IntegrationRuntimeMonitoringData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1626,9 +1626,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationOperationInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationOperationInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationOperationInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationOperationInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1648,9 +1648,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationService</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationService</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationService</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationService</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1712,9 +1712,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationServiceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationServiceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationServiceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationServiceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1734,9 +1734,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationServiceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationServiceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1762,9 +1762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationServiceUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationServiceUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationServiceUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationServiceUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1784,9 +1784,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationStatusDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationStatusDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MigrationStatusDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MigrationStatusDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1860,9 +1860,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MongoConnectionInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MongoConnectionInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MongoConnectionInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MongoConnectionInformation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1906,9 +1906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MongoMigrationCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MongoMigrationCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MongoMigrationCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MongoMigrationCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1946,9 +1946,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MongoMigrationProgressDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MongoMigrationProgressDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.MongoMigrationProgressDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.MongoMigrationProgressDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1992,9 +1992,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.NodeMonitoringData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.NodeMonitoringData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.NodeMonitoringData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.NodeMonitoringData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2056,9 +2056,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OfflineConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OfflineConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OfflineConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OfflineConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2084,9 +2084,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2106,9 +2106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OperationsDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OperationsDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OperationsDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OperationsDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2140,9 +2140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OperationsDisplayDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OperationsDisplayDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.OperationsDisplayDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.OperationsDisplayDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2180,9 +2180,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.ProxyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2202,9 +2202,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.RegenAuthKeys</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.RegenAuthKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.RegenAuthKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.RegenAuthKeys</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2236,9 +2236,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SourceLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SourceLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SourceLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SourceLocation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2258,9 +2258,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlBackupFileInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlBackupFileInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlBackupFileInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlBackupFileInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2322,9 +2322,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlBackupSetInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlBackupSetInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlBackupSetInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlBackupSetInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2398,9 +2398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlConnectionInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlConnectionInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlConnectionInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlConnectionInformation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2444,9 +2444,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlDbMigrationStatusDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlDbMigrationStatusDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlDbMigrationStatusDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlDbMigrationStatusDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2472,9 +2472,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlDbOfflineConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlDbOfflineConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlDbOfflineConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlDbOfflineConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2494,9 +2494,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlFileShare</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlFileShare</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlFileShare</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlFileShare</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2522,9 +2522,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2544,9 +2544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationService</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationService</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationService</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationService</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2584,9 +2584,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationServiceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationServiceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2612,9 +2612,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationServiceUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationServiceUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SqlMigrationServiceUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SqlMigrationServiceUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2634,9 +2634,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SystemDataAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SystemDataAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.SystemDataAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.SystemDataAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2686,9 +2686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.TargetLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.TargetLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.TargetLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.TargetLocation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2714,9 +2714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.TrackedResourceAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.TrackedResourceAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.TrackedResourceAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.TrackedResourceAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
