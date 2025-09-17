@@ -131,7 +131,7 @@ function New-AzStorageMoverAzNfsFileShareEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureStorageSmbFileShareEndpointProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureStorageNfsFileShareEndpointProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('FileShareName')) {
             $Properties.FileShareName = $FileShareName
