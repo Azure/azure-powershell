@@ -30,7 +30,7 @@ https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksv
 #>
 function Update-AzDatabricksVNetPeering {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering])]
-    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]

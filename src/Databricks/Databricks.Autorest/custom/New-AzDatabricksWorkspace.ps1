@@ -52,7 +52,7 @@ https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabrickswork
 #>
 function New-AzDatabricksWorkspace {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [Alias('WorkspaceName')]
