@@ -72,8 +72,13 @@ function Test-AzureRmSignalR
         Assert-True { $ret }
         $newKeys1 = Get-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
         Assert-NotNull $newKeys1
-        Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
-        Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
+
+        if( $env:AZURE_TEST_MODE -ne "Playback")
+        {
+            Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
+            Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
+        }
+
         Assert-AreEqual $keys.SecondaryKey $newKeys1.SecondaryKey
         Assert-AreEqual $keys.SecondaryConnectionString $newKeys1.SecondaryConnectionString
 
@@ -84,9 +89,11 @@ function Test-AzureRmSignalR
         Assert-NotNull $newKeys2
         Assert-AreEqual $newKeys1.PrimaryKey $newKeys2.PrimaryKey
         Assert-AreEqual $newKeys1.PrimaryConnectionString $newKeys2.PrimaryConnectionString
-        Assert-AreNotEqual $newKeys1.SecondaryKey $newKeys2.SecondaryKey
-        Assert-AreNotEqual $newKeys1.SecondaryConnectionString $newKeys2.SecondaryConnectionString
-
+        if( $env:AZURE_TEST_MODE -ne "Playback")
+        {
+            Assert-AreNotEqual $newKeys1.SecondaryKey $newKeys2.SecondaryKey
+            Assert-AreNotEqual $newKeys1.SecondaryConnectionString $newKeys2.SecondaryConnectionString
+        }
         Remove-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
 
         Get-AzSignalR -ResourceGroupName $resourceGroupName | Remove-AzSignalR
@@ -148,8 +155,16 @@ function Test-AzureRmSignalRWithDefaultArgs
         Assert-True { $ret }
         $newKeys1 = Get-AzSignalRKey -Name $signalrName
         Assert-NotNull $newKeys1
-        Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
-        Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
+
+        # The following two lines don't work in "playback" mode because all the connection strings are sanitized to the same value.
+        # If test mode is playback , skip the test
+
+        if( $env:AZURE_TEST_MODE -ne "Playback" )
+        {
+            Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
+            Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
+        }
+
         Assert-AreEqual $keys.SecondaryKey $newKeys1.SecondaryKey
         Assert-AreEqual $keys.SecondaryConnectionString $newKeys1.SecondaryConnectionString
 
@@ -307,7 +322,7 @@ function Test-AzureRmSignalRSetUpstream
 
         # Test set multiple upstream Template
         $upstream = Set-AzSignalRUpstream  -ResourceId $signalr.Id `
-            -Template @{UrlTemplate = 'http://host-connections4.com'; HubPattern = 'chat'; EventPattern = 'broadcast' }, @{UrlTemplate = 'http://host-connections5.com'; HubPattern = 'chat'; CategoryPattern = 'broadcast' } 
+            -Template @{UrlTemplate = 'http://host-connections4.com'; HubPattern = 'chat'; EventPattern = 'broadcast' }, @{UrlTemplate = 'http://host-connections5.com'; HubPattern = 'chat'; CategoryPattern = 'broadcast' }
         Assert-AreEqual 'http://host-connections4.com' $upstream.Templates[0].UrlTemplate
         Assert-AreEqual 'chat' $upstream.Templates[0].HubPattern
         Assert-AreEqual 'broadcast' $upstream.Templates[0].EventPattern
@@ -384,9 +399,9 @@ function Test-AzureRmSignalRCustomCertificateAndCustomDomain
 
     try
     {
-       $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -Sku Premium_P1 -UserAssignedIdentity /subscriptions/90c9cfa9-ec88-4677-a8ce-5c74405ef60a/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/signalr_identity -Location southeastasia
-       
-       # ====== Add cert =====
+        $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -Sku Premium_P1 -UserAssignedIdentity /subscriptions/90c9cfa9-ec88-4677-a8ce-5c74405ef60a/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/signalr_identity -Location southeastasia
+
+        # ====== Add cert =====
 
         # Add custom certificate via resource group parameter set
         $cert1 = New-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -SignalRName $signalrName -Name "cert1" -KeyVaultBaseUri $keyVaultBaseUri -KeyVaultSecretName $keyVaultSecretName
