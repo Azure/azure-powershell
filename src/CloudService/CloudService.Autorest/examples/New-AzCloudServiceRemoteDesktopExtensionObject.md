@@ -1,22 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create remote desktop extension object
+
 ```powershell
-{{ Add code here }}
+$credential = Get-Credential
+$expiration = (Get-Date).AddYears(1)
+$extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command creates remote desktop extension object which is used for creating or updating a cloud service. For more details see New-AzCloudService.

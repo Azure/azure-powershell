@@ -1,22 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create vault secret group object
+
 ```powershell
-{{ Add code here }}
+$keyVault = Get-AzKeyVault -VaultName 'ContosoKeyVault'
+$certificate = Get-AzKeyVaultCertificate -VaultName 'ContosoKeyVault' -Name 'ContosoCert'
+$secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command creates vault secret group object which is used for creating or updating a cloud service. For more details see New-AzCloudService.
