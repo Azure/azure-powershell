@@ -35,15 +35,20 @@ $buildProjPath = Join-Path $RepoRoot 'build.proj'
 $buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 
 if ($IsLinux) {
-    # Applying various parallelism/heap restriction behaviors to prevent OOM issues on Ubuntu 24.04
     Write-Host -ForegroundColor Yellow "Detected Linux agent. Applying memory tuning for tests"
-    $env:DOTNET_gcServer = "0"
-    $env:DOTNET_gcHeapCount = "2"
-    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"
-    $env:DOTNET_GCHeapHardLimitPercent = "75"
+
+    # GC and MSBuild tuning
+    $env:DOTNET_gcServer = "0"                          # Use workstation GC
+    $env:DOTNET_gcHeapCount = "2"                       # Limit GC heap count
+    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"            # Disable MSBuild parallelism
+    $env:MSBUILDDISABLENODEREUSE = "1"                  # Prevent node reuse
+    $env:DOTNET_GCHeapHardLimitPercent = "75"           # Heap limit as percent
+    $env:DOTNET_GCHeapHardLimit = "1610612736"          # ~1.5 GB hard limit
+    $env:DOTNET_GCHeapAffinitizeMask = "0x3"            # Bind heaps to CPUs
 }
 
-dotnet msbuild $buildProjPath /t:Test $buildArgs
+# @TODO: remove /v:diag from final PR
+dotnet msbuild $buildProjPath /t:Test $buildArgs /v:diag
 
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
