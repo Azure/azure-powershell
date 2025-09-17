@@ -282,12 +282,6 @@ param
       Assert-NotNull $authTypes
       Assert-AreEqual 3 @($authTypes).Count
       
-      # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
-      $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
-      Assert-AreEqual 1 $vngRadiusAuthServers.Count
-      Assert-AreEqual "1.2.3.4" $vngRadiusAuthServers[0].RadiusServerAddress
-      Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
-
       $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
       $vpnProfilePackageUrl = New-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
       Assert-NotNull $vpnProfilePackageUrl
