@@ -40,18 +40,17 @@ if ($IsLinux) {
     # GC and MSBuild tuning
     $env:DOTNET_gcServer = "0"                          # Use workstation GC
     $env:DOTNET_gcHeapCount = "2"                       # Limit GC heap count
-    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"            # Disable MSBuild parallelism
+    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:2"            # Disable MSBuild parallelism
     $env:MSBUILDDISABLENODEREUSE = "1"                  # Prevent node reuse
-    $env:DOTNET_GCHeapHardLimitPercent = "75"           # Heap limit as percent
-    $env:DOTNET_GCHeapHardLimit = "1610612736"          # ~1.5 GB hard limit
-    $env:DOTNET_GCHeapAffinitizeMask = "0x3"            # Bind heaps to CPUs
+    $env:DOTNET_GCHeapHardLimit = "5368709120"
+    $env:DOTNET_GCHeapAffinitizeMask = "0x3"            
     
-    # GC logging    
+    # @TODO: remove before merging: GC logging    
     $env:COMPlus_LogEnable = "1"
     $env:COMPlus_LogLevel = "6"
     $env:COMPlus_LogFacility = "0x0001"
     bash -c "while true; do date; free -h; sleep 10; done &"
-    bash -c "ulimit -v 2097152; dotnet msbuild $buildProjPath /t:Test $buildArgs" 
+    bash -c "ulimit -v 6291456; dotnet msbuild $buildProjPath /t:Test $buildArgs" 
 } else {
     dotnet msbuild $buildProjPath /t:Test $buildArgs
 }
