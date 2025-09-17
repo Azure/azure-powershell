@@ -1,14 +1,14 @@
 ---
 external help file: Az.CloudService-help.xml
 Module Name: Az.CloudService
-online version: https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicevaultsecretgroupobject
+online version: https://learn.microsoft.com/powershell/module/Az.CloudService/new-azcloudservicevaultsecretgroupobject
 schema: 2.0.0
 ---
 
 # New-AzCloudServiceVaultSecretGroupObject
 
 ## SYNOPSIS
-Create a in-memory object for Vault Secret Group
+Create an in-memory object for CloudServiceVaultSecretGroup.
 
 ## SYNTAX
 
@@ -18,19 +18,31 @@ New-AzCloudServiceVaultSecretGroupObject [-Id <String>] [-CertificateUrl <String
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Secret Group
+Create an in-memory object for CloudServiceVaultSecretGroup.
 
 ## EXAMPLES
 
-### Example 1: Create vault secret group object
+### Example 1: {{ Add title here }}
 ```powershell
-$keyVault = Get-AzKeyVault -VaultName 'ContosoKeyVault'
-$certificate = Get-AzKeyVaultCertificate -VaultName 'ContosoKeyVault' -Name 'ContosoCert'
-$secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
+{{ Add code here }}
 ```
 
-This command creates vault secret group object which is used for creating or updating a cloud service.
-For more details see New-AzCloudService.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -71,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultSecretGroup
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup
 
 ## NOTES
 

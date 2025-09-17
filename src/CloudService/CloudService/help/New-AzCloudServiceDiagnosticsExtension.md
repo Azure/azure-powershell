@@ -25,15 +25,27 @@ Create a in-memory object for Diagnostics Extension
 
 ## EXAMPLES
 
-### Example 1: Create diagnostics extension object
+### Example 1: {{ Add title here }}
 ```powershell
-$storageAccountKey = Get-AzStorageAccountKey -ResourceGroupName "ContosOrg" -Name "ContosSA"
-$configFile = "<WAD configuration file path>"
-$extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true
+{{ Add code here }}
 ```
 
-This command creates diagnostics extension object which is used for creating or updating a cloud service.
-For more details see New-AzCloudService.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -195,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension
 
 ## NOTES
 

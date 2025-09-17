@@ -23,15 +23,27 @@ Create a in-memory object for Remote Desktop Extension
 
 ## EXAMPLES
 
-### Example 1: Create remote desktop extension object
+### Example 1: {{ Add title here }}
 ```powershell
-$credential = Get-Credential
-$expiration = (Get-Date).AddYears(1)
-$extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
+{{ Add code here }}
 ```
 
-This command creates remote desktop extension object which is used for creating or updating a cloud service.
-For more details see New-AzCloudService.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -132,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension
 
 ## NOTES
 

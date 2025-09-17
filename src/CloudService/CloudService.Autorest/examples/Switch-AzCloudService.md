@@ -1,15 +1,22 @@
-### Example 1: Switch cloud service using name
+### Example 1: {{ Add title here }}
 ```powershell
-Switch-AzCloudService -ResourceGroupName "BRGThree" -CloudServiceName BService -SubscriptionId 1133e0eb-b53c-1234-b478-2eac8f04afca
+{{ Add code here }}
 ```
 
-Above command invokes the vipswap operation on the Cloud service with name 'BService' and will perform the operation once the user confirms the action on the confirmation prompt. 'BService' with be swapped with its swappable cloud service.   
-
-### Example 2: Switch cloud service using cloud service object
-```powershell
-$cs = Get-AzCloudService -ResourceGroupName "BRGThree" -CloudServiceName BService -SubscriptionId 1133e0eb-b53c-1234-b478-2eac8f04afca
-Switch-AzCloudService -CloudService $cs
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Above command invokes the vipswap operation on the Cloud service with name 'BService' and will perform the operation once the user confirms the action on the confirmation prompt. 'BService' with be swapped with its swappable cloud service. 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

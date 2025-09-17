@@ -25,6 +25,12 @@ Restart-AzCloudServiceRoleInstance -InputObject <ICloudServiceIdentity> [-Defaul
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RestartViaIdentityRoleInstance
+```
+Restart-AzCloudServiceRoleInstance -CloudServiceName <String> -RoleInstanceInputObject <ICloudServiceIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Reboot Role Instance asynchronous operation requests a reboot of a role instance in the cloud service.
 
@@ -59,7 +65,7 @@ Name of the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartViaIdentityRoleInstance
 Aliases:
 
 Required: True
@@ -87,7 +93,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
@@ -143,6 +148,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoleInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+Parameter Sets: RestartViaIdentityRoleInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
