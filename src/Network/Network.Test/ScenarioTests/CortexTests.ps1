@@ -1087,7 +1087,7 @@ function Test-CortexExpressRouteCRUD
 		$policyGroup2.PolicyMembers[0] = $policyGroupMember2
 
 		# Update existing VpnServerConfiguration2(adding child PolicyGroup2) using Update-AzVpnServerConfiguration
-		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1" -ConfigurationPolicyGroup $policyGroup2
+		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1" -RadiusServerSecret $Secure_String_Pwd -ConfigurationPolicyGroup $policyGroup2
 		$VpnServerConfig2 = Get-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName
 		Assert-AreEqual $VpnServerConfiguration2Name $VpnServerConfig2.Name
 		Assert-AreEqual "TestRadiusServer1" $VpnServerConfig2.RadiusServerAddress
@@ -1124,11 +1124,11 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $true $getPolicyGroup2.IsDefault
 		Assert-AreEqual 2 $getPolicyGroup2.Priority
 
-		Update-AzVpnServerConfiguration -ResourceId  $VpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2"			
+		Update-AzVpnServerConfiguration -ResourceId  $VpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2" -RadiusServerSecret $Secure_String_Pwd	
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
 		Assert-AreEqual "TestRadiusServer2" $VpnServerConfig2Get.RadiusServerAddress
 						
-		Update-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3"
+		Update-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3" -RadiusServerSecret $Secure_String_Pwd
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
         Assert-AreEqual "TestRadiusServer3" $VpnServerConfig2Get.RadiusServerAddress
 
