@@ -401,6 +401,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies if managed identities can access SMB shares using OAuth.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbOAuth
+        {
+            get
+            {
+                return enableSmbOAuth.Value;
+            }
+            set
+            {
+                enableSmbOAuth = value;
+            }
+        }
+        private bool? enableSmbOAuth = null;
+
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Allow or disallow anonymous access to all blobs or containers in the storage account.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
@@ -868,6 +886,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                         }
                         updateParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
+                    }
+                    if (this.enableSmbOAuth != null)
+                    {
+                        if (updateParameters.AzureFilesIdentityBasedAuthentication == null)
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                        }
+                        updateParameters.AzureFilesIdentityBasedAuthentication.SmbOAuthSettings = new SmbOAuthSettings
+                        {
+                            IsSmbOAuthEnabled = this.enableSmbOAuth.Value
+                        };
                     }
                     if (this.EnableLargeFileShare.IsPresent)
                     {
