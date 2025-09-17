@@ -48,5 +48,9 @@ namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
         public void TestAzureRmSignalRUpdate() =>
         TestRunner.RunTestScript("Test-AzureRmSignalRUpdate");
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureRmSignalRCustomCertificateAndCustomDomain() =>
+            TestRunner.RunTestScript("Test-AzureRmSignalRCustomCertificateAndCustomDomain");
     }
 }

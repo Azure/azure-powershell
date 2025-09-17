@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
@@ -82,6 +83,16 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable system-assigned identity for the SignalR service.")]
+        public SwitchParameter EnableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource IDs of user-assigned identities to assign to the SignalR service.")]
+        public string[] UserAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run the cmdlet in background job.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -121,13 +132,15 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
                     IList<SignalRFeature> features = ServiceMode == null ? null : new List<SignalRFeature> { new SignalRFeature(flag: FeatureFlags.ServiceMode, value: ServiceMode) };
                     SignalRCorsSettings cors = AllowedOrigin == null ? null : new SignalRCorsSettings(allowedOrigins: origins);
+                    ManagedIdentity identity = CreateManagedIdentity();
 
                     var parameters = new SignalRResource(
                         location: Location,
                         tags: Tag,
                         sku: new ResourceSku(name: Sku, capacity: UnitCount),
                         features: features,
-                        cors: cors);
+                        cors: cors,
+                        identity: identity);
 
                     Client.SignalR.CreateOrUpdate(ResourceGroupName, Name, parameters);
 
@@ -135,6 +148,43 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     WriteObject(new PSSignalRResource(signalr));
                 }
             });
+        }
+
+        private ManagedIdentity CreateManagedIdentity()
+        {
+            if (!EnableSystemAssignedIdentity.IsPresent && (UserAssignedIdentity == null || UserAssignedIdentity.Length == 0))
+            {
+                return null;
+            }
+
+            // SignalR doesn't support both system assigned and user assigned identities at the same time
+            if (EnableSystemAssignedIdentity.IsPresent && UserAssignedIdentity != null && UserAssignedIdentity.Length > 0)
+            {
+                throw new AzPSArgumentException("SignalR service doesn't support both system assigned and user assigned identities at the same time. Please specify either EnableSystemAssignedIdentity or UserAssignedIdentity, but not both.", $"{nameof(EnableSystemAssignedIdentity)}, {nameof(UserAssignedIdentity)}");
+            }
+
+            string identityType;
+            IDictionary<string, UserAssignedIdentityProperty> userAssignedIdentities = null;
+
+            if (EnableSystemAssignedIdentity.IsPresent)
+            {
+                identityType = ManagedIdentityType.SystemAssigned;
+            }
+            else if (UserAssignedIdentity != null && UserAssignedIdentity.Length > 0)
+            {
+                identityType = ManagedIdentityType.UserAssigned;
+                userAssignedIdentities = new Dictionary<string, UserAssignedIdentityProperty>();
+                foreach (var identityId in UserAssignedIdentity)
+                {
+                    userAssignedIdentities[identityId] = new UserAssignedIdentityProperty();
+                }
+            }
+            else
+            {
+                identityType = ManagedIdentityType.None;
+            }
+
+            return new ManagedIdentity(type: identityType, userAssignedIdentities: userAssignedIdentities);
         }
     }
 }

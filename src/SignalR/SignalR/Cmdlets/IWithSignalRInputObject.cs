@@ -17,14 +17,14 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    public interface IWithInputObject : IWithResourceGroupAndName
+    public interface IWithSignalRInputObject : IWithResourceGroupAndName
     {
         PSSignalRResource InputObject { get; }
     }
 
-    public static class IWithInputObjectExtensions
+    public static class IWithSignalRInputObjectExtensions
     {
-        public static void LoadFromInputObject(this IWithInputObject cmdlet)
+        public static void LoadFromSignalRInputObject(this IWithSignalRInputObject cmdlet)
         {
             var resourceId = new ResourceIdentifier(cmdlet.InputObject.Id);
             cmdlet.ResourceGroupName = resourceId.ResourceGroupName;
