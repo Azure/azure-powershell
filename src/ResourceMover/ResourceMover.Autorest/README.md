@@ -62,80 +62,206 @@ input-file:
   - $(aks)/resourcemovercollection.json
 module-version: 1.0.0
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^Discard$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$|^Bulk$|^BulkViaIdentity$|^BulkViaIdentityExpanded$  
+      variant: ^(Create|Update|Discard)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+
+  - where:
+      variant: ^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentityMoveCollectionExpanded$|^DiscardViaIdentityExpanded$
+    remove: true
+
+  - where:
+      variant: ^(Bulk|Commit|Initiate|Prepare)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+
+  - where:
+      variant: ^BulkViaIdentityExpanded$|^CommitViaIdentityExpanded$|^InitiateViaIdentityExpanded$|^PrepareViaIdentityExpanded$
+    remove: true
+
+  - where:
+      variant: ^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$
+    remove: true
+
   - where:
       subject: OperationsDiscovery
     remove: true
+
   - where:      
-      variant: DiscardExpanded
+      variant: ^Discard
       subject: MoveCollection 
       verb: Remove
     set:
       verb: Invoke      
+
   - where:      
-      variant: DiscardExpanded
+      variant: ^Discard
       subject: MoveCollection 
       verb: Invoke
     set:
       subject: Discard
+
   - where:      
-      variant: CreateExpanded 
       subject: MoveResource
       verb: New
     set:
       verb: Add
+
   - where:      
-      variant: PrepareExpanded            
+      variant: ^Prepare         
     set:
       subject: Prepare
+
   - where:      
-      variant: InitiateExpanded            
+      variant: ^Initiate          
     set:
       subject: InitiateMove
+
   - where:      
-      variant: CommitExpanded            
+      variant: ^Commit        
     set:
       subject: Commit
+
   - where:
-      variant: BulkExpanded
+      variant: ^Bulk
     set:
       subject: BulkRemove
+
   - where:
       verb: Add
       subject: MoveResource
     set:
       alias:
         - Update-AzResourceMoverMoveResource
+
   - where:
       verb: Get
       subject: MoveCollectionRequired
     set:
       subject: RequiredForResources
+
   - where:
       model-name: MoveResource
     set:
        suppress-format: true
+
   - where:
       model-name: OperationStatus
     set:
        suppress-format: true  
+
   - where:
       model-name: UnresolvedDependency
     set:
        suppress-format: true
+       
   - no-inline:
     - ResourceSettings
-  - from: ResourceMover.cs
-    where: $
-    transform: $ = $.replace(/throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException\(_response\);/g,"await onDefault\(_response,_response.Content.ReadAsStringAsync\(\).ContinueWith\( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson\(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse\(body.Result\)\) \)\);");
+  
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/DiscardRequest"
+          }
+        }
+      ]
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CommitRequest"
+          }
+        }
+      ]
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/ResourceMoveRequest"
+          }
+        }
+      ]
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/PrepareRequest"
+          }
+        }
+      ]
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}"].put
