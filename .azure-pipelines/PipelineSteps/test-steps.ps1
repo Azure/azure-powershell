@@ -45,11 +45,14 @@ if ($IsLinux) {
     $env:DOTNET_GCHeapHardLimit = "5368709120"
     $env:DOTNET_GCHeapAffinitizeMask = "0x3"            
     
-    # @TODO: remove before merging: GC logging    
+    # @TODO: remove before merging: GC logging  ///  
     $env:COMPlus_LogEnable = "1"
     $env:COMPlus_LogLevel = "6"
     $env:COMPlus_LogFacility = "0x0001"
-    bash -c "while true; do date; free -h; sleep 10; done &"
+    # ///
+    # @TODO: remove before merging: memory output: ///
+    # bash -c "while true; do date; free -h; sleep 10; done &"
+    # ///
     bash -c "ulimit -v 6291456; dotnet msbuild $buildProjPath /t:Test $buildArgs" 
 } else {
     dotnet msbuild $buildProjPath /t:Test $buildArgs
