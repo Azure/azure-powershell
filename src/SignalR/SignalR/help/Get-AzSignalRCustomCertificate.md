@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.signalr/get-azsignalrcustomcertificate
 schema: 2.0.0
 ---
 
