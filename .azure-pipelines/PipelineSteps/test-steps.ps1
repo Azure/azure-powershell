@@ -51,7 +51,7 @@ if ($IsLinux) {
     $env:COMPlus_LogEnable = "1"
     $env:COMPlus_LogLevel = "6"
     $env:COMPlus_LogFacility = "0x0001"
-
+    bash -c "while true; do date; free -h; sleep 10; done &"
 }
 
 # @TODO: remove /v:diag from final PR
