@@ -37,7 +37,7 @@ Describe 'AzDatabricksVNetPeering' {
 
     It 'UpdateExpanded' -Skip {
         { 
-            $config = Update-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1 -AllowForwardedTraffic $True
+            $config = Update-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1 -AllowForwardedTraffic
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
@@ -45,7 +45,7 @@ Describe 'AzDatabricksVNetPeering' {
     It 'UpdateViaIdentityExpanded' -Skip {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
-            $config = Update-AzDatabricksVNetPeering -InputObject $config -AllowForwardedTraffic $True
+            $config = Update-AzDatabricksVNetPeering -InputObject $config -AllowForwardedTraffic
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
