@@ -46,6 +46,12 @@ if ($IsLinux) {
     $env:DOTNET_GCHeapHardLimitPercent = "75"           # Heap limit as percent
     $env:DOTNET_GCHeapHardLimit = "1610612736"          # ~1.5 GB hard limit
     $env:DOTNET_GCHeapAffinitizeMask = "0x3"            # Bind heaps to CPUs
+
+    # GC logging    
+    $env:COMPlus_LogEnable = "1"
+    $env:COMPlus_LogLevel = "6"
+    $env:COMPlus_LogFacility = "0x0001"
+
 }
 
 # @TODO: remove /v:diag from final PR
