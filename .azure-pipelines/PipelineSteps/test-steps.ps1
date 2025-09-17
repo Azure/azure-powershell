@@ -40,7 +40,7 @@ if ($IsLinux) {
     # GC and MSBuild tuning
     $env:DOTNET_gcServer = "0"                          # Use workstation GC
     $env:DOTNET_gcHeapCount = "2"                       # Limit GC heap count
-    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:2"            # Disable MSBuild parallelism
+    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"            # Disable MSBuild parallelism
     $env:MSBUILDDISABLENODEREUSE = "1"                  # Prevent node reuse
     $env:DOTNET_GCHeapHardLimit = "5368709120"
     $env:DOTNET_GCHeapAffinitizeMask = "0x3"            
