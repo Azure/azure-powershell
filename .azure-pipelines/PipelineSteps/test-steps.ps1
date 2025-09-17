@@ -41,26 +41,9 @@ if ($IsLinux) {
     $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"       # Single MSBuild node
     # $env:MSBUILDDISABLENODEREUSE = "1"             # Prevent node reuse
 
-    # ---- DIAGNOSTIC LOGGING ----
-    Write-Host "---- DIAGNOSTIC: Testhost / CoreCLR Memory Check ----"
-
-    Write-Host "`n[Top 10 memory-consuming processes]"
-    bash -c "ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -10"
-
-    Write-Host "`n[All dotnet testhost processes]"
-    bash -c "ps -ef | grep -i testhost | grep -v grep"
-
-    Write-Host "`n[Free / total memory snapshot]"
-    bash -c "free -h"
-
-    Write-Host "`n[Virtual memory limits]"
-    bash -c "ulimit -a"
-
-    Write-Host "---- END DIAGNOSTIC ----`n"
-    # ----------------------------
-
     # Limit total process memory via ulimit (6 GB here)
-    bash -c "ulimit -v 7340032; dotnet msbuild $buildProjPath /t:Test $buildArgs"
+    # bash -c "ulimit -v 7340032; dotnet msbuild $buildProjPath /t:Test $buildArgs"
+    dotnet msbuild $buildProjPath /t:Test $buildArgs
 } else {
     dotnet msbuild $buildProjPath /t:Test $buildArgs
 }
