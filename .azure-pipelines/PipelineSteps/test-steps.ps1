@@ -35,25 +35,25 @@ $buildProjPath = Join-Path $RepoRoot 'build.proj'
 $buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 
 if ($IsLinux) {
-    Write-Host -ForegroundColor Yellow "Detected Linux agent. Applying memory tuning for tests"
+    Write-Host "Detected Linux agent. Applying memory tuning for tests"
 
     # GC and MSBuild tuning
-    $env:DOTNET_gcServer = "0"                          # Use workstation GC
-    $env:DOTNET_gcHeapCount = "2"                       # Limit GC heap count
-    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"            # Disable MSBuild parallelism
-    $env:MSBUILDDISABLENODEREUSE = "1"                  # Prevent node reuse
-    $env:DOTNET_GCHeapHardLimit = "5368709120"
-    $env:DOTNET_GCHeapAffinitizeMask = "0x3"            
-    
-    # @TODO: remove before merging: GC logging  ///  
+    $env:DOTNET_gcServer = "0"                     # Workstation GC
+    $env:DOTNET_gcHeapCount = "1"                  # Only 1 heap
+    $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"       # Single MSBuild node
+    $env:MSBUILDDISABLENODEREUSE = "1"            # Prevent node reuse
+
+    # GC heap: give enough room for initialization (~3 GB)
+    $env:DOTNET_GCHeapHardLimit = "3221225472"    # 3 GB
+    $env:DOTNET_GCHeapAffinitizeMask = "0x1"      # Only 1 CPU
+
+    # Optional GC logging
     $env:COMPlus_LogEnable = "1"
     $env:COMPlus_LogLevel = "6"
     $env:COMPlus_LogFacility = "0x0001"
-    # ///
-    # @TODO: remove before merging: memory output: ///
-    # bash -c "while true; do date; free -h; sleep 10; done &"
-    # ///
-    bash -c "ulimit -v 6291456; dotnet msbuild $buildProjPath /t:Test $buildArgs" 
+
+    # Limit process memory to slightly more than heap (~3.5–4 GB)
+    bash -c "ulimit -v 4194304; dotnet msbuild $buildProjPath /t:Test $buildArgs"
 } else {
     dotnet msbuild $buildProjPath /t:Test $buildArgs
 }
