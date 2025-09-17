@@ -131,3 +131,15 @@ $IdFormats = @{
     MigrateProjectArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
     ProtectedItemArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
 }
+
+$TargetVMCPUCores = @{
+    Min = 1
+    Max = 64
+}
+
+$TargetVMRamInMB = @{
+    Gen1Min = 512
+    Gen1Max = 1048576 # 1 TB
+    Gen2Min = 32
+    Gen2Max = 12582912 # 12 TB
+}

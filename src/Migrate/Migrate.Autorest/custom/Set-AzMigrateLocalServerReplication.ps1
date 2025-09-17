@@ -158,11 +158,13 @@ function Set-AzMigrateLocalServerReplication {
             throw "Invalid -TargetObjectID '$TargetObjectID'. A valid protected item ARM ID should follow the format '$($IdFormats.ProtectedItemArmIdTemplate)'."
         }
         
+        # $TargetObjectID is in the format of
+        # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
         $ProtectedItemIdArray = $TargetObjectID.Split("/")
-        $ResourceGroupName = $ProtectedItemIdArray[4]
-        $VaultName = $ProtectedItemIdArray[8]
-        $MachineName = $ProtectedItemIdArray[10]
-      
+        $ResourceGroupName = $ProtectedItemIdArray[4] # {1}
+        $VaultName = $ProtectedItemIdArray[8] # {2}
+        $MachineName = $ProtectedItemIdArray[10] # {3}
+
         # Get existing Protected Item
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("VaultName", $VaultName)
@@ -201,9 +203,9 @@ function Set-AzMigrateLocalServerReplication {
 
         # Update target CPU core
         if ($HasTargetVMCPUCore) {
-            if ($TargetVMCPUCore -lt 1 -or $TargetVMCPUCore -gt 64)
+            if ($TargetVMCPUCore -lt $TargetVMCPUCores.Min -or $TargetVMCPUCore -gt $TargetVMCPUCores.Max)
             {
-                throw "Specify -TargetVMCPUCore between 1 and 64."
+                throw "Specify -TargetVMCPUCore between $($TargetVMCPUCores.Min) and $($TargetVMCPUCores.Max)."
             }
             $customPropertiesUpdate.TargetCpuCore = $TargetVMCPUCore
         }
@@ -212,17 +214,17 @@ function Set-AzMigrateLocalServerReplication {
         if ($HasTargetVMRam) {
             if ($customProperties.HyperVGeneration -eq "1") {
                 # Between 512 MB and 1 TB
-                if ($TargetVMRam -lt 512 -or $TargetVMRam -gt 1048576)
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen1Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen1Max)
                 {
-                    throw "Specify -TargetVMRAM between 512 and 1048576 MB (i.e., 1 TB) for Hyper-V Generation 1 VM."
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen1Min) and $($TargetVMRamInMB.Gen1Max) MB (i.e., 1 TB) for Hyper-V Generation 1 VM."
                 }
             }
             else # Hyper-V Generation 2
             {
                 # Between 32 MB and 12 TB
-                if ($TargetVMRam -lt 32 -or $TargetVMRam -gt 12582912)
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen2Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen2Max)
                 {
-                    throw "Specify -TargetVMRAM between 32 and 12582912 MB (i.e., 12 TB) for Hyper-V Generation 2 VM."
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen2Min) and $($TargetVMRamInMB.Gen2Max) MB (i.e., 12 TB) for Hyper-V Generation 2 VM."
                 }
             }
 

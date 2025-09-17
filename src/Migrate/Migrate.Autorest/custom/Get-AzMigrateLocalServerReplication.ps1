@@ -168,11 +168,13 @@ function Get-AzMigrateLocalServerReplication {
         }
      
         if ($parameterSet -eq 'GetBySDSID') {
+            # $DiscoveredMachineId is in the format of
+            # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
             $machineIdArray = $DiscoveredMachineId.Split("/")
-            $siteType = $machineIdArray[7]
-            $siteName = $machineIdArray[8]
-            $ResourceGroupName = $machineIdArray[4]
-            $ProtectedItemName = $machineIdArray[10]
+            $ResourceGroupName = $machineIdArray[4] # {1}
+            $siteType = $machineIdArray[7] # {2}
+            $siteName = $machineIdArray[8] # {3}
+            $ProtectedItemName = $machineIdArray[10] # {4}
 
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('SiteName', $siteName)
@@ -227,10 +229,14 @@ function Get-AzMigrateLocalServerReplication {
         if (($parameterSet -match 'List') -or ($parameterSet -eq 'GetByMachineName')) {
              # Retrieve ResourceGroupName, ProjectName if ListByID
             if ($parameterSet -eq 'ListByID') {
+                # $ResourceGroupID is in the format of "/subscriptions/{0}/resourceGroups/{1}"
                 $resourceGroupIdArray = $ResourceGroupID.Split('/')
-                $ResourceGroupName = $resourceGroupIdArray[4]
+                $ResourceGroupName = $resourceGroupIdArray[4] # {1}
+
+                # ProjecyID is in the format of
+                # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
                 $projectIdArray = $ProjectID.Split('/')
-                $ProjectName = $projectIdArray[8]
+                $ProjectName = $projectIdArray[8] # {2}
             }
 
             $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
@@ -265,10 +271,13 @@ function Get-AzMigrateLocalServerReplication {
             if ($parameterSet -eq 'GetByInputObject') {
                 $TargetObjectID = $InputObject.Id
             }
+
+            # $TargetObjectID is in the format of
+            # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
             $objectIdArray = $TargetObjectID.Split("/")
-            $ResourceGroupName = $objectIdArray[4]
-            $VaultName = $objectIdArray[8]
-            $ProtectedItemName = $objectIdArray[10]
+            $ResourceGroupName = $objectIdArray[4] # {1}
+            $VaultName = $objectIdArray[8] # {2}
+            $ProtectedItemName = $objectIdArray[10] # {3}
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $null = $PSBoundParameters.Add("Name", $ProtectedItemName)
