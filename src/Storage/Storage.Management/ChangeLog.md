@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported enabling SMB Oauth on Storage accounts 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 * Supported Enable Metrics when set object replication policy 
     - `Set-AzStorageObjectReplicationPolicy`
 

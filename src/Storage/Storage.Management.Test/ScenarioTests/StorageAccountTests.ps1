@@ -2682,3 +2682,53 @@ function Test-StorageAccountDNSEndpointType
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test StorageAccountDNSEndpointType
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountEnableSmbOauth
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stoname2 = 'sto2' + $rgname
+        $stotype = 'Standard_LRS'
+        $loc = 'centraluseuap';
+        $kind = 'StorageV2' 
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EnableSmbOAuth $true
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname 
+        Assert-AreEqual $account.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $true
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableSmbOAuth $false
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname
+        Assert-AreEqual $account.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $false
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.AzureFilesIdentityBasedAuth $null 
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -EnableSmbOAuth $true
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $true
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
