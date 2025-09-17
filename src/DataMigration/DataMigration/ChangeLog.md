@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.15.1
 * Upgraded Data Migration API to stable version `2025-06-30`.
 * Added support for retrying database migrations and for deleting SQL VM and SQL MI Database Migration Services.
 * Added cmdlets:
