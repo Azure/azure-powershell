@@ -37,14 +37,11 @@ $buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 if ($IsLinux) {
     Write-Host "Detected Linux agent. Applying memory tuning for tests"
 
-    # GC and MSBuild tuning
     $env:DOTNET_gcServer = "0"                     # Workstation GC
-    $env:DOTNET_gcHeapCount = "1"                  # Only 1 heap
     $env:DOTNET_MSBUILD_CLI_OPTIONS = "-m:1"       # Single MSBuild node
-    $env:MSBUILDDISABLENODEREUSE = "1"            # Prevent node reuse
-    $env:DOTNET_GCHeapHardLimit = "3489660928" 
+    $env:MSBUILDDISABLENODEREUSE = "1"             # Prevent node reuse
 
-    Write-Host "GCHeapHardLimit = $env:DOTNET_GCHeapHardLimit"
+    # Limit total process memory via ulimit (6 GB here)
     bash -c "ulimit -v 6291456; dotnet msbuild $buildProjPath /t:Test $buildArgs"
 } else {
     dotnet msbuild $buildProjPath /t:Test $buildArgs
