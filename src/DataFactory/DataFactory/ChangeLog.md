@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for Databricks Job Activity.
-* Added more support for QuickBooks connection properties.
+* Added support for Salesforce V2 partitionOption feature.
+* Added Support MI In Lakehouse And Warehouse connection.
 
 ## Version 1.19.4
 * Added support for Databricks Job Activity.
