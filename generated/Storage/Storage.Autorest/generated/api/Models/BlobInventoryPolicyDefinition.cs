@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyFilter Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyDefinitionInternal.Filter { get => (this._filter = this._filter ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicyFilter()); set { {_filter = value;} } }
 
         /// <summary>Internal Acessors for FilterCreationTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryCreationTime Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyDefinitionInternal.FilterCreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyFilterInternal)Filter).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyFilterInternal)Filter).CreationTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryCreationTime Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyDefinitionInternal.FilterCreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyFilterInternal)Filter).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyFilterInternal)Filter).CreationTime = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="ObjectType" /> property.</summary>
         private string _objectType;

@@ -33,58 +33,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for FinishTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.FinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.FinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).FinishTime = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectFailedCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectFailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectFailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectFailedCount = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectsOperatedOnCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectsOperatedOnCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectsOperatedOnCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsOperatedOnCount = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectsSucceededCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectsSucceededCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectsSucceededCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsSucceededCount = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectsTargetedCount</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectsTargetedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.ObjectsTargetedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).ObjectsTargetedCount = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageTaskReportProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RunResult</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.RunResult { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunResult; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunResult = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.RunResult { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunResult; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunResult = value ?? null; }
 
         /// <summary>Internal Acessors for RunStatusEnum</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.RunStatusEnum { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.RunStatusEnum { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusEnum = value ?? null; }
 
         /// <summary>Internal Acessors for RunStatusError</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.RunStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.RunStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).RunStatusError = value ?? null; }
 
         /// <summary>Internal Acessors for StartTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StartTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StartTime = value ?? null; }
 
         /// <summary>Internal Acessors for StorageAccountId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.StorageAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.StorageAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).StorageAccountId = value ?? null; }
 
         /// <summary>Internal Acessors for SummaryReportPath</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.SummaryReportPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.SummaryReportPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).SummaryReportPath = value ?? null; }
 
         /// <summary>Internal Acessors for TaskAssignmentId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.TaskAssignmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.TaskAssignmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskAssignmentId = value ?? null; }
 
         /// <summary>Internal Acessors for TaskId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.TaskId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.TaskId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskId = value ?? null; }
 
         /// <summary>Internal Acessors for TaskVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.TaskVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstanceInternal.TaskVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportPropertiesInternal)Property).TaskVersion = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]

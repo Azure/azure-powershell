@@ -45,19 +45,90 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Gets the blob endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string InternetEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob; }
+        public string InternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob; }
 
         /// <summary>Gets the dfs endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string InternetEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df; }
+        public string InternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df; }
 
         /// <summary>Gets the file endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string InternetEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File; }
+        public string InternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File; }
 
         /// <summary>Gets the web endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string InternetEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web; }
+        public string InternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web; }
+
+        /// <summary>Backing field for <see cref="Ipv6Endpoint" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6Endpoints _ipv6Endpoint;
+
+        /// <summary>Gets the IPv6 storage endpoints.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6Endpoints Ipv6Endpoint { get => (this._ipv6Endpoint = this._ipv6Endpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountIpv6Endpoints()); set => this._ipv6Endpoint = value; }
+
+        /// <summary>Gets the blob endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Blob; }
+
+        /// <summary>Gets the dfs endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Df; }
+
+        /// <summary>Gets the file endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).File; }
+
+        /// <summary>Gets the queue endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Queue; }
+
+        /// <summary>Gets the table endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Table; }
+
+        /// <summary>Gets the web endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Web; }
+
+        /// <summary>Gets the blob endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsInternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointBlob; }
+
+        /// <summary>Gets the dfs endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsInternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointDf; }
+
+        /// <summary>Gets the file endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsInternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointFile; }
+
+        /// <summary>Gets the web endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsInternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointWeb; }
+
+        /// <summary>Gets the blob endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsMicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointBlob; }
+
+        /// <summary>Gets the dfs endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsMicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointDf; }
+
+        /// <summary>Gets the file endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsMicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointFile; }
+
+        /// <summary>Gets the queue endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsMicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointQueue; }
+
+        /// <summary>Gets the table endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsMicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointTable; }
+
+        /// <summary>Gets the web endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string Ipv6EndpointsMicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointWeb; }
 
         /// <summary>Internal Acessors for Blob</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Blob { get => this._blob; set { {_blob = value;} } }
@@ -71,38 +142,95 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for InternetEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpoint { get => (this._internetEndpoint = this._internetEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpoints()); set { {_internetEndpoint = value;} } }
 
-        /// <summary>Internal Acessors for InternetEndpointBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob = value; }
+        /// <summary>Internal Acessors for InternetEndpointsBlob</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob = value ?? null; }
 
-        /// <summary>Internal Acessors for InternetEndpointDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df = value; }
+        /// <summary>Internal Acessors for InternetEndpointsDf</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df = value ?? null; }
 
-        /// <summary>Internal Acessors for InternetEndpointFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File = value; }
+        /// <summary>Internal Acessors for InternetEndpointsFile</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File = value ?? null; }
 
-        /// <summary>Internal Acessors for InternetEndpointWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web = value; }
+        /// <summary>Internal Acessors for InternetEndpointsWeb</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6Endpoint</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6Endpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6Endpoint { get => (this._ipv6Endpoint = this._ipv6Endpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountIpv6Endpoints()); set { {_ipv6Endpoint = value;} } }
+
+        /// <summary>Internal Acessors for Ipv6EndpointBlob</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Blob = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointDf</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Df = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointFile</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).File = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointInternetEndpoint</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointInternetEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpoint = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointMicrosoftEndpoint</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointMicrosoftEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpoint = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointQueue</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Queue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Queue = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointTable</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Table; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Table = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointWeb</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).Web = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsInternetEndpointsBlob</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsInternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointBlob = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsInternetEndpointsDf</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsInternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointDf = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsInternetEndpointsFile</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsInternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointFile = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsInternetEndpointsWeb</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsInternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).InternetEndpointWeb = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsMicrosoftEndpointsBlob</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsMicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointBlob = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsMicrosoftEndpointsDf</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsMicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointDf = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsMicrosoftEndpointsFile</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsMicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointFile = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsMicrosoftEndpointsQueue</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsMicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointQueue = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsMicrosoftEndpointsTable</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsMicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointTable = value ?? null; }
+
+        /// <summary>Internal Acessors for Ipv6EndpointsMicrosoftEndpointsWeb</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Ipv6EndpointsMicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6EndpointsInternal)Ipv6Endpoint).MicrosoftEndpointWeb = value ?? null; }
 
         /// <summary>Internal Acessors for MicrosoftEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpoint { get => (this._microsoftEndpoint = this._microsoftEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpoints()); set { {_microsoftEndpoint = value;} } }
 
-        /// <summary>Internal Acessors for MicrosoftEndpointBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob = value; }
+        /// <summary>Internal Acessors for MicrosoftEndpointsBlob</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob = value ?? null; }
 
-        /// <summary>Internal Acessors for MicrosoftEndpointDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df = value; }
+        /// <summary>Internal Acessors for MicrosoftEndpointsDf</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df = value ?? null; }
 
-        /// <summary>Internal Acessors for MicrosoftEndpointFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File = value; }
+        /// <summary>Internal Acessors for MicrosoftEndpointsFile</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File = value ?? null; }
 
-        /// <summary>Internal Acessors for MicrosoftEndpointQueue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue = value; }
+        /// <summary>Internal Acessors for MicrosoftEndpointsQueue</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue = value ?? null; }
 
-        /// <summary>Internal Acessors for MicrosoftEndpointTable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table = value; }
+        /// <summary>Internal Acessors for MicrosoftEndpointsTable</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table = value ?? null; }
 
-        /// <summary>Internal Acessors for MicrosoftEndpointWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web = value; }
+        /// <summary>Internal Acessors for MicrosoftEndpointsWeb</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web = value ?? null; }
 
         /// <summary>Internal Acessors for Queue</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Queue { get => this._queue; set { {_queue = value;} } }
@@ -122,27 +250,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Gets the blob endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string MicrosoftEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob; }
+        public string MicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob; }
 
         /// <summary>Gets the dfs endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string MicrosoftEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df; }
+        public string MicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df; }
 
         /// <summary>Gets the file endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string MicrosoftEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File; }
+        public string MicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File; }
 
         /// <summary>Gets the queue endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string MicrosoftEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue; }
+        public string MicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue; }
 
         /// <summary>Gets the table endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string MicrosoftEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table; }
+        public string MicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table; }
 
         /// <summary>Gets the web endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string MicrosoftEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web; }
+        public string MicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web; }
 
         /// <summary>Backing field for <see cref="Queue" /> property.</summary>
         private string _queue;
@@ -218,7 +346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the blob endpoint.",
         SerializedName = @"blob",
         PossibleTypes = new [] { typeof(string) })]
-        string InternetEndpointBlob { get;  }
+        string InternetEndpointsBlob { get;  }
         /// <summary>Gets the dfs endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -229,7 +357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the dfs endpoint.",
         SerializedName = @"dfs",
         PossibleTypes = new [] { typeof(string) })]
-        string InternetEndpointDf { get;  }
+        string InternetEndpointsDf { get;  }
         /// <summary>Gets the file endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -240,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the file endpoint.",
         SerializedName = @"file",
         PossibleTypes = new [] { typeof(string) })]
-        string InternetEndpointFile { get;  }
+        string InternetEndpointsFile { get;  }
         /// <summary>Gets the web endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -251,7 +379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the web endpoint.",
         SerializedName = @"web",
         PossibleTypes = new [] { typeof(string) })]
-        string InternetEndpointWeb { get;  }
+        string InternetEndpointsWeb { get;  }
         /// <summary>Gets the blob endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -262,7 +390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the blob endpoint.",
         SerializedName = @"blob",
         PossibleTypes = new [] { typeof(string) })]
-        string MicrosoftEndpointBlob { get;  }
+        string Ipv6EndpointBlob { get;  }
         /// <summary>Gets the dfs endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -273,7 +401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the dfs endpoint.",
         SerializedName = @"dfs",
         PossibleTypes = new [] { typeof(string) })]
-        string MicrosoftEndpointDf { get;  }
+        string Ipv6EndpointDf { get;  }
         /// <summary>Gets the file endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -284,7 +412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the file endpoint.",
         SerializedName = @"file",
         PossibleTypes = new [] { typeof(string) })]
-        string MicrosoftEndpointFile { get;  }
+        string Ipv6EndpointFile { get;  }
         /// <summary>Gets the queue endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -295,7 +423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the queue endpoint.",
         SerializedName = @"queue",
         PossibleTypes = new [] { typeof(string) })]
-        string MicrosoftEndpointQueue { get;  }
+        string Ipv6EndpointQueue { get;  }
         /// <summary>Gets the table endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -306,7 +434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the table endpoint.",
         SerializedName = @"table",
         PossibleTypes = new [] { typeof(string) })]
-        string MicrosoftEndpointTable { get;  }
+        string Ipv6EndpointTable { get;  }
         /// <summary>Gets the web endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -317,7 +445,183 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the web endpoint.",
         SerializedName = @"web",
         PossibleTypes = new [] { typeof(string) })]
-        string MicrosoftEndpointWeb { get;  }
+        string Ipv6EndpointWeb { get;  }
+        /// <summary>Gets the blob endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the blob endpoint.",
+        SerializedName = @"blob",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsInternetEndpointsBlob { get;  }
+        /// <summary>Gets the dfs endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the dfs endpoint.",
+        SerializedName = @"dfs",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsInternetEndpointsDf { get;  }
+        /// <summary>Gets the file endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the file endpoint.",
+        SerializedName = @"file",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsInternetEndpointsFile { get;  }
+        /// <summary>Gets the web endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the web endpoint.",
+        SerializedName = @"web",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsInternetEndpointsWeb { get;  }
+        /// <summary>Gets the blob endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the blob endpoint.",
+        SerializedName = @"blob",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsMicrosoftEndpointsBlob { get;  }
+        /// <summary>Gets the dfs endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the dfs endpoint.",
+        SerializedName = @"dfs",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsMicrosoftEndpointsDf { get;  }
+        /// <summary>Gets the file endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the file endpoint.",
+        SerializedName = @"file",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsMicrosoftEndpointsFile { get;  }
+        /// <summary>Gets the queue endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the queue endpoint.",
+        SerializedName = @"queue",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsMicrosoftEndpointsQueue { get;  }
+        /// <summary>Gets the table endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the table endpoint.",
+        SerializedName = @"table",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsMicrosoftEndpointsTable { get;  }
+        /// <summary>Gets the web endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the web endpoint.",
+        SerializedName = @"web",
+        PossibleTypes = new [] { typeof(string) })]
+        string Ipv6EndpointsMicrosoftEndpointsWeb { get;  }
+        /// <summary>Gets the blob endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the blob endpoint.",
+        SerializedName = @"blob",
+        PossibleTypes = new [] { typeof(string) })]
+        string MicrosoftEndpointsBlob { get;  }
+        /// <summary>Gets the dfs endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the dfs endpoint.",
+        SerializedName = @"dfs",
+        PossibleTypes = new [] { typeof(string) })]
+        string MicrosoftEndpointsDf { get;  }
+        /// <summary>Gets the file endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the file endpoint.",
+        SerializedName = @"file",
+        PossibleTypes = new [] { typeof(string) })]
+        string MicrosoftEndpointsFile { get;  }
+        /// <summary>Gets the queue endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the queue endpoint.",
+        SerializedName = @"queue",
+        PossibleTypes = new [] { typeof(string) })]
+        string MicrosoftEndpointsQueue { get;  }
+        /// <summary>Gets the table endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the table endpoint.",
+        SerializedName = @"table",
+        PossibleTypes = new [] { typeof(string) })]
+        string MicrosoftEndpointsTable { get;  }
+        /// <summary>Gets the web endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Gets the web endpoint.",
+        SerializedName = @"web",
+        PossibleTypes = new [] { typeof(string) })]
+        string MicrosoftEndpointsWeb { get;  }
         /// <summary>Gets the queue endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -366,27 +670,65 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Gets the internet routing storage endpoints</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints InternetEndpoint { get; set; }
         /// <summary>Gets the blob endpoint.</summary>
-        string InternetEndpointBlob { get; set; }
+        string InternetEndpointsBlob { get; set; }
         /// <summary>Gets the dfs endpoint.</summary>
-        string InternetEndpointDf { get; set; }
+        string InternetEndpointsDf { get; set; }
         /// <summary>Gets the file endpoint.</summary>
-        string InternetEndpointFile { get; set; }
+        string InternetEndpointsFile { get; set; }
         /// <summary>Gets the web endpoint.</summary>
-        string InternetEndpointWeb { get; set; }
+        string InternetEndpointsWeb { get; set; }
+        /// <summary>Gets the IPv6 storage endpoints.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6Endpoints Ipv6Endpoint { get; set; }
+        /// <summary>Gets the blob endpoint.</summary>
+        string Ipv6EndpointBlob { get; set; }
+        /// <summary>Gets the dfs endpoint.</summary>
+        string Ipv6EndpointDf { get; set; }
+        /// <summary>Gets the file endpoint.</summary>
+        string Ipv6EndpointFile { get; set; }
+        /// <summary>Gets the internet routing storage endpoints</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Ipv6EndpointInternetEndpoint { get; set; }
+        /// <summary>Gets the microsoft routing storage endpoints.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Ipv6EndpointMicrosoftEndpoint { get; set; }
+        /// <summary>Gets the queue endpoint.</summary>
+        string Ipv6EndpointQueue { get; set; }
+        /// <summary>Gets the table endpoint.</summary>
+        string Ipv6EndpointTable { get; set; }
+        /// <summary>Gets the web endpoint.</summary>
+        string Ipv6EndpointWeb { get; set; }
+        /// <summary>Gets the blob endpoint.</summary>
+        string Ipv6EndpointsInternetEndpointsBlob { get; set; }
+        /// <summary>Gets the dfs endpoint.</summary>
+        string Ipv6EndpointsInternetEndpointsDf { get; set; }
+        /// <summary>Gets the file endpoint.</summary>
+        string Ipv6EndpointsInternetEndpointsFile { get; set; }
+        /// <summary>Gets the web endpoint.</summary>
+        string Ipv6EndpointsInternetEndpointsWeb { get; set; }
+        /// <summary>Gets the blob endpoint.</summary>
+        string Ipv6EndpointsMicrosoftEndpointsBlob { get; set; }
+        /// <summary>Gets the dfs endpoint.</summary>
+        string Ipv6EndpointsMicrosoftEndpointsDf { get; set; }
+        /// <summary>Gets the file endpoint.</summary>
+        string Ipv6EndpointsMicrosoftEndpointsFile { get; set; }
+        /// <summary>Gets the queue endpoint.</summary>
+        string Ipv6EndpointsMicrosoftEndpointsQueue { get; set; }
+        /// <summary>Gets the table endpoint.</summary>
+        string Ipv6EndpointsMicrosoftEndpointsTable { get; set; }
+        /// <summary>Gets the web endpoint.</summary>
+        string Ipv6EndpointsMicrosoftEndpointsWeb { get; set; }
         /// <summary>Gets the microsoft routing storage endpoints.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints MicrosoftEndpoint { get; set; }
         /// <summary>Gets the blob endpoint.</summary>
-        string MicrosoftEndpointBlob { get; set; }
+        string MicrosoftEndpointsBlob { get; set; }
         /// <summary>Gets the dfs endpoint.</summary>
-        string MicrosoftEndpointDf { get; set; }
+        string MicrosoftEndpointsDf { get; set; }
         /// <summary>Gets the file endpoint.</summary>
-        string MicrosoftEndpointFile { get; set; }
+        string MicrosoftEndpointsFile { get; set; }
         /// <summary>Gets the queue endpoint.</summary>
-        string MicrosoftEndpointQueue { get; set; }
+        string MicrosoftEndpointsQueue { get; set; }
         /// <summary>Gets the table endpoint.</summary>
-        string MicrosoftEndpointTable { get; set; }
+        string MicrosoftEndpointsTable { get; set; }
         /// <summary>Gets the web endpoint.</summary>
-        string MicrosoftEndpointWeb { get; set; }
+        string MicrosoftEndpointsWeb { get; set; }
         /// <summary>Gets the queue endpoint.</summary>
         string Queue { get; set; }
         /// <summary>Gets the table endpoint.</summary>

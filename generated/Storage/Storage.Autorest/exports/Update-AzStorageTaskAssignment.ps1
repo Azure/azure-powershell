@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update storage task assignment properties
+Update storage task assignment properties
 .Description
-update storage task assignment properties
+Update storage task assignment properties
 .Example
 $start = Get-Date -Year 2024 -Month 8 -Day 7 -Hour 1 -Minute 30
 $end = Get-Date -Year 2024 -Month 12 -Day 25 -Hour 2 -Minute 45

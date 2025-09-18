@@ -26,6 +26,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for Parameter</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatusInternal.Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreParameters()); set { {_parameter = value;} } }
 
+        /// <summary>Internal Acessors for ParameterBlobRange</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreRange> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatusInternal.ParameterBlobRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).BlobRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).BlobRange = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for ParameterTimeToRestore</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatusInternal.ParameterTimeToRestore { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).TimeToRestore; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).TimeToRestore = value ?? default(global::System.DateTime); }
+
         /// <summary>Internal Acessors for RestoreId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatusInternal.RestoreId { get => this._restoreId; set { {_restoreId = value;} } }
 
@@ -41,11 +47,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Blob ranges to restore.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreRange> ParameterBlobRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).BlobRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).BlobRange = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreRange> ParameterBlobRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).BlobRange; }
 
         /// <summary>Restore blob to the specified time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public global::System.DateTime? ParameterTimeToRestore { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).TimeToRestore; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).TimeToRestore = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? ParameterTimeToRestore { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParametersInternal)Parameter).TimeToRestore; }
 
         /// <summary>Backing field for <see cref="RestoreId" /> property.</summary>
         private string _restoreId;

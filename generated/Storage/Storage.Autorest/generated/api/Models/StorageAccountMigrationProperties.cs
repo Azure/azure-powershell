@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
-    /// <summary>The properties of a storage account’s ongoing or enqueued migration.</summary>
+    /// <summary>The properties of a storage account's ongoing or enqueued migration.</summary>
     public partial class StorageAccountMigrationProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationProperties,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         }
     }
-    /// The properties of a storage account’s ongoing or enqueued migration.
+    /// The properties of a storage account's ongoing or enqueued migration.
     public partial interface IStorageAccountMigrationProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string TargetSkuName { get; set; }
 
     }
-    /// The properties of a storage account’s ongoing or enqueued migration.
+    /// The properties of a storage account's ongoing or enqueued migration.
     internal partial interface IStorageAccountMigrationPropertiesInternal
 
     {

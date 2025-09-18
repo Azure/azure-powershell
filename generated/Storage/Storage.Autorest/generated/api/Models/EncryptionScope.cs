@@ -40,31 +40,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public global::System.DateTime? KeyVaultPropertyLastKeyRotationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyLastKeyRotationTimestamp; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyCurrentVersionedKeyIdentifier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.KeyVaultPropertyCurrentVersionedKeyIdentifier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyCurrentVersionedKeyIdentifier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyCurrentVersionedKeyIdentifier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.KeyVaultPropertyCurrentVersionedKeyIdentifier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyCurrentVersionedKeyIdentifier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyCurrentVersionedKeyIdentifier = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyLastKeyRotationTimestamp</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.KeyVaultPropertyLastKeyRotationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyLastKeyRotationTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyLastKeyRotationTimestamp = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.KeyVaultPropertyLastKeyRotationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyLastKeyRotationTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultPropertyLastKeyRotationTimestamp = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionScopeProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PropertyCreationTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.PropertyCreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).CreationTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.PropertyCreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).CreationTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for PropertyKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.PropertyKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.PropertyKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).KeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PropertyLastModifiedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.PropertyLastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).LastModifiedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeInternal.PropertyLastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopePropertiesInternal)Property).LastModifiedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
