@@ -2219,7 +2219,7 @@ function Test-InvokeAzureFirewallPacketCapture {
         $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
     
         # Create the firewall packet capture parameters
-        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 
         # Invoke a firewall packet capture
         $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
