@@ -853,7 +853,7 @@ function Test-VirtualNetworkGatewayOpenVPN
 		$subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
 		# Create the IP config
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get OpenVPN virtualnetworkgateway
@@ -1453,7 +1453,7 @@ param
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
-      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       $samplePublicCertData = "MIIC8TCCAdmgAwIBAgIQEqoni9yN+Y5Jdmfm9iieSzANBgkqhkiG9w0BAQsFADAbMRkwFwYDVQQDDBBCVlRNdWx0aXBvb2xSb290MB4XDTIyMDMwODIxMjM0M1oXDTIzMDMwODIxNDM0M1owGzEZMBcGA1UEAwwQQlZUTXVsdGlwb29sUm9vdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMNgZH9pjOkayYfPbd1HnFosUtpRluaP0tFsb8MKOSlah5LNIjxT0SEY1r3RpdV9JSlyEe75leWRXrUqiSEUATza8tLW3kyBY8C7fO2ppBFbpALYdnTSnO2MzA5R6oqDKENCinfvL+nExSP48CRDYTtqPajFsBtCA0g55dKiEll9Ov/QRhWbWhehDbDULKd0JMuycbS6P8UFYii7HPKDTbWj8wBETvkc2HO8FOQCMQ14PNAhXuBXVZkuPrlyNpaEqWwGXNNm4SLKiWt9Yat2LYnUvdx/8J1N3Qt7K7S///fHmYMfNH+A+xOeAKhS+IwFRlVbycZ001f0252yvfBmhPUCAwEAAaMxMC8wDgYDVR0PAQH/BAQDAgIEMB0GA1UdDgQWBBRGU/KC4/phW9thGt5yAli1sWxNwTANBgkqhkiG9w0BAQsFAAOCAQEAlO1P/4FKu0n+BRRT9dKx+nTZtIDhFg1GauI9bYvBsc7Wm1opA/+CCXNo5ChNWvrSmDxGInVrGmHwlaB0PEL5W0u5W65UIZlb8ew0vzPmm+Dn/D/9DiqbSt+6yP6RBd6w26og2eh/daMIR90T2ehMsShzlgjmiTeola6EXA15lokfEOaNroj/wFWs26Yz9pvlL+R/nu+QPrnvQQWz/sSYuabmlOzF6rwS2vTae0Q8Y3JvWpEmGeCUMvFYDaK+Wqy1SmMyFLK1QOFz2e/D0PIk1eljoq16p2gd0h6iwsqKstEBXULi0BF9ZhFLBZ1d0ispMdp00huccSektXZiVBpBdQ=="

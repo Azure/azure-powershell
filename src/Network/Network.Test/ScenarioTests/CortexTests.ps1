@@ -1642,7 +1642,7 @@ function Test-VpnConnectionPacketCapture
 		$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.10"
 
 		$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
-		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddress.Count
+		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddresses.Count
 		$vpnConnection = New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
 		Assert-AreEqual 1 $vpnConnection.VpnLinkConnections.Count
      }
