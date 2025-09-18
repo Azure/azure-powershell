@@ -101,31 +101,13 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        [Alias("CertificateReference")]
-        [CmdletParameterBreakingChangeWithVersion("CertificateReference", "15.0.0", "4.0.0", ChangeDescription = ChangeDesc)]
-        public PSCertificateReference[] CertificateReferences { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
         [Alias("ApplicationPackageReference")]
         public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        [Alias("ApplicationLicense")]
-        [CmdletParameterBreakingChangeWithVersion("ApplicationLicense", "15.0.0", "4.0.0", ChangeDescription = ChangeDesc)]
-        public List<string> ApplicationLicenses { get; set; }
 
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
         [Parameter(ParameterSetName = VirtualMachineTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
-
-        [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
-        [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
-        [ValidateNotNullOrEmpty]
-        [CmdletParameterBreakingChangeWithVersion("CloudServiceConfiguration", "15.0.0", "4.0.0", ChangeDescription = ChangeDesc)]
-        public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -138,16 +120,6 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         [ValidateNotNullOrEmpty]
         public PSUserAccount[] UserAccount { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public NodeCommunicationMode CurrentNodeCommunicationMode { get; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Default", "Classic", "Simplified")]
-        [CmdletParameterBreakingChangeWithVersion("TargetNodeCommunicationMode", "15.0.0", "4.0.0", ChangeDescription = ChangeDesc)]
-        public NodeCommunicationMode TargetNodeCommunicationMode { get; set; }
 
         protected override void ExecuteCmdletImpl()
         {
@@ -166,15 +138,11 @@ namespace Microsoft.Azure.Commands.Batch
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
-                CertificateReferences = this.CertificateReferences,
                 ApplicationPackageReferences = this.ApplicationPackageReferences,
                 VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
                 NetworkConfiguration = this.NetworkConfiguration,
                 UserAccounts = this.UserAccount,
-                ApplicationLicenses = this.ApplicationLicenses,
-                MountConfiguration = this.MountConfiguration,
-                TargetCommunicationMode = this.TargetNodeCommunicationMode,
-                ResourceTags = this.ResourceTag,
+                MountConfiguration = this.MountConfiguration
             };
 
             if (ShouldProcess("AzureBatchPool"))

@@ -36,15 +36,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
-        private IList<PSCertificateReference> certificateReferences;
-        
         private IDictionary metadata;
         
         private IList<PSMountConfiguration> mountConfiguration;
         
         private PSNetworkConfiguration networkConfiguration;
-        
-        private IDictionary resourceTags;
         
         private PSStartTask startTask;
         
@@ -138,41 +134,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.AutoScaleFormula = value;
-            }
-        }
-        
-        public IList<PSCertificateReference> CertificateReferences
-        {
-            get
-            {
-                if (((this.certificateReferences == null) 
-                            && (this.omObject.CertificateReferences != null)))
-                {
-                    List<PSCertificateReference> list;
-                    list = new List<PSCertificateReference>();
-                    IEnumerator<Microsoft.Azure.Batch.CertificateReference> enumerator;
-                    enumerator = this.omObject.CertificateReferences.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSCertificateReference(enumerator.Current));
-                    }
-                    this.certificateReferences = list;
-                }
-                return this.certificateReferences;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CertificateReferences = null;
-                }
-                else
-                {
-                    this.omObject.CertificateReferences = new List<Microsoft.Azure.Batch.CertificateReference>();
-                }
-                this.certificateReferences = value;
             }
         }
         
@@ -307,41 +268,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IDictionary ResourceTags
-        {
-            get
-            {
-                if (((this.resourceTags == null) 
-                            && (this.omObject.ResourceTags != null)))
-                {
-                    Dictionary<string, string> dict;
-                    dict = new Dictionary<string, string>();
-                    IEnumerator<KeyValuePair<System.String, System.String>> enumerator;
-                    enumerator = this.omObject.ResourceTags.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        dict.Add(enumerator.Current.Key, enumerator.Current.Value);
-                    }
-                    this.resourceTags = dict;
-                }
-                return this.resourceTags;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.ResourceTags = null;
-                }
-                else
-                {
-                    this.omObject.ResourceTags = new Dictionary<System.String, System.String>();
-                }
-                this.resourceTags = value;
-            }
-        }
-        
         public PSStartTask StartTask
         {
             get
@@ -388,18 +314,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.TargetLowPriorityComputeNodes = value;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.NodeCommunicationMode? TargetNodeCommunicationMode
-        {
-            get
-            {
-                return this.omObject.TargetNodeCommunicationMode;
-            }
-            set
-            {
-                this.omObject.TargetNodeCommunicationMode = value;
             }
         }
         

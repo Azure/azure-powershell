@@ -99,11 +99,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public IDictionary Metadata { get; set; }
 
         /// <summary>
-        /// The user-specified tags associated with the pool.
-        /// </summary>
-        public IDictionary ResourceTags { get; set; }
-
-        /// <summary>
         /// Specifies whether the pool permits direct communication between compute nodes.
         /// </summary>
         public bool InterComputeNodeCommunicationEnabled { get; set; }
@@ -112,11 +107,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The start task the compute nodes in the pool will run.
         /// </summary>
         public PSStartTask StartTask { get; set; }
-
-        /// <summary>
-        /// Certificate references for the pool.
-        /// </summary>
-        public PSCertificateReference[] CertificateReferences { get; set; }
 
         /// <summary>
         /// Application package references for the pool.
@@ -142,11 +132,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The list of application licenses the Batch service will make available on each compute node in the pool.
         /// </summary>
         public List<string> ApplicationLicenses { get; set; }
-
-        /// <summary>
-        /// The desired node communication mode for the pool.
-        /// </summary>
-        public NodeCommunicationMode TargetCommunicationMode { get; set; }
-
     }
 }
