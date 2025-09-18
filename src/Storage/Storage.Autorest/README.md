@@ -43,12 +43,7 @@ module-version: 5.9.1
 title: Storage
 subject-prefix: $(service-name)
 nested-object-to-string: true
-identity-correction-for-post: true
-
-# Pin to an old version to workaround a regression issue of generator. link to the issue - blabla
-use-extension:
-  "@autorest/powershell": "4.0.734"
- 
+identity-correction-for-post: true 
 
 directive:
   - where:
@@ -111,7 +106,7 @@ directive:
     set:
       property-name: StorageAccountLimitMaxProvisionedIops
   - where:
-      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
+      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
     remove: true
   - where:
       parameter-name: ParameterEndBy
@@ -168,6 +163,10 @@ directive:
       $["operationId"] = "StorageTaskAssignmentInstancesReport_Get"
   - where: 
       model-name: StorageTaskReportInstance
+    set:
+      suppress-format: true
+  - where:
+      model-name: ^SkuInformation$
     set:
       suppress-format: true
 ```
