@@ -142,7 +142,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
-                FederatedClientId = model.FederatedClientId
+                FederatedClientId = model.FederatedClientId,
+                RetentionDays = model.RetentionDays,
+                CreateMode = model.CreateMode,
             });
 
             return CreateServerModelFromResponse(resp);
@@ -193,6 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
             server.KeyId = resp.KeyId;
             server.FederatedClientId = resp.FederatedClientId;
+            server.RetentionDays = resp.RetentionDays;
 
             return server;
         }
@@ -408,6 +411,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             }
 
             return tenantIdGuid;
+        }
+        /// <summary>
+        /// Gets a deleted server in a resource group
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the deleted server</param>
+        /// <param name="subscriptionId">The subscription id of the server.</param>
+        /// <returns>The deleted server information</returns>
+        public Management.Sql.Models.DeletedServer GetDeletedServer(string resourceGroupName, string serverName, string subscriptionId = null)
+        {
+            return Communicator.GetDeleted(resourceGroupName, serverName, subscriptionId);
         }
     }
 }

@@ -20,8 +20,9 @@ New-AzSqlServer -ServerName <String> [-SqlAdministratorCredentials <PSCredential
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
- [-FederatedClientId <Guid>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-FederatedClientId <Guid>] [-EnableSoftDeleteRetention <Boolean>] [-SoftDeleteRetentionDays <Int32>]
+ [-CreateMode <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +49,8 @@ This command creates a version 12 Azure SQL Database server.
 
 ### Example 2: Create a new Azure SQL Database server with External (Microsoft Entra ID) Administrator, Microsoft Entra-only Authentication and no SqlAdministratorCredentials
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication
 ResourceGroupName        : resourcegroup01
@@ -132,6 +135,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CreateMode
+Specifies the create mode for the server, valid values for this parameter are "Normal" and "Restore".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -152,6 +170,21 @@ Enable Active Directory Only Authentication on the server.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSoftDeleteRetention
+Specifies whether or not soft-delete retention is enabled for the server.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -283,6 +316,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
 When disabled, only connections made through Private Links can reach this server.
@@ -350,6 +398,21 @@ Specify 2.0 to create a version 11 server, or 12.0 to create a version 12 server
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionDays
+Specifies the soft-delete retention days for the server.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
