@@ -26,15 +26,16 @@
 * Removed command `Remove-AzBatchCertificate`.
 * Removed command `Stop-AzBatchCertificateDeletion`.
 
+* Removed parameter `CloudServiceConfiguration` from `New-AzBatchPool` command.
 * Removed parameter `CertificateReferences` from `New-AzBatchPool` command.
 * Removed parameter `TargetNodeCommunication` from `New-AzBatchPool` command.
 * Removed parameter `CurrentNodeCommunication` from `New-AzBatchPool` command.
 * Removed parameter `ResourceTag` from `New-AzBatchPool` command.
 * Removed parameter `ApplicationLicenses` from `New-AzBatchPool` command.
 
-* Removed properties `CertificateReferences`, `TargetNodeCommunication`, `CurrentNodeCommunication`, `ResourceTag`, and `ApplicationLicenses` from `PsCloudPool` model.
+* Removed properties `CloudServiceConfiguration`, `CertificateReferences`, `TargetNodeCommunication`, `CurrentNodeCommunication`, `ResourceTag`, and `ApplicationLicenses` from `PsCloudPool` model.
 * Removed property `CertificateReferences` from `PsComputeNode` model.
-* Removed properties `CertificateReferences`, `TargetNodeCommunication`, `CurrentNodeCommunication`, and `ResourceTag` from `PsPoolSpecification` model.
+* Removed properties `CloudServiceConfiguration`, `CertificateReferences`, `TargetNodeCommunication`, `CurrentNodeCommunication`, `ResourceTag`, and `ApplicationLicenses` from `PsPoolSpecification` model.
 
 * Added new enum values `Deallocated` and `Deallocating` to `PSNodeCounts` model.
 * Added properties `CommunityGalleryImageId` and `SharedGalleryImageId` to `PSImageReference` model.
