@@ -39,10 +39,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
     /// </summary>
     public static class BatchTestHelpers
     {
-        internal static readonly string TestCertificateFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/BatchTestCert01.cer");
-        internal const string TestCertificateAlgorithm = "sha1";
-        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Fake password")]
-        internal const string TestCertificatePassword = "Passw0rd";
         internal static readonly int DefaultQuotaCount = 20;
 
         /// <summary>
@@ -335,44 +331,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 }
             });
             return interceptor;
-        }
-
-        /// <summary>
-        /// Builds a CertificateGetResponse object
-        /// </summary>
-        public static AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders> CreateCertificateGetResponse(string thumbprint)
-        {
-            var response = new AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders>();
-            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-
-            ProxyModels.Certificate cert = new ProxyModels.Certificate();
-            cert.Thumbprint = thumbprint;
-
-            response.Body = cert;
-
-            return response;
-        }
-
-        /// <summary>
-        /// Builds a CertificateListResponse object
-        /// </summary>
-        public static AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders> CreateCertificateListResponse(IEnumerable<string> certThumbprints)
-        {
-            var response = new AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>();
-            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-
-            List<ProxyModels.Certificate> certs = new List<ProxyModels.Certificate>();
-
-            foreach (string t in certThumbprints)
-            {
-                ProxyModels.Certificate cert = new ProxyModels.Certificate();
-                cert.Thumbprint = t;
-                certs.Add(cert);
-            }
-
-            response.Body = new MockPagedEnumerable<ProxyModels.Certificate>(certs);
-
-            return response;
         }
 
         /// <summary>

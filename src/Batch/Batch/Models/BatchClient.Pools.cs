@@ -128,25 +128,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
             }
 
-            if (parameters.ResourceTags != null)
-            {
-                pool.ResourceTags = new Dictionary<string, string>();
-
-                foreach (DictionaryEntry m in parameters.ResourceTags)
-                {
-                    pool.ResourceTags.Add(m.Key.ToString(), m.Value?.ToString());
-                }
-            }
-
-            if (parameters.CertificateReferences != null)
-            {
-                pool.CertificateReferences = new List<CertificateReference>();
-                foreach (PSCertificateReference c in parameters.CertificateReferences)
-                {
-                    pool.CertificateReferences.Add(c.omObject);
-                }
-            }
-
             if (parameters.ApplicationPackageReferences != null)
             {
                 pool.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
@@ -176,8 +157,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);
             }
-
-            pool.TargetNodeCommunicationMode = (NodeCommunicationMode)parameters.TargetCommunicationMode;
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);
