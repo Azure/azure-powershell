@@ -60,8 +60,7 @@ RequiredAssemblies = 'Microsoft.AspNetCore.WebUtilities.dll',
                'Microsoft.Azure.Batch.dll', 
                'Microsoft.Azure.PowerShell.Batch.Management.Sdk.dll', 
                'Microsoft.Extensions.Primitives.dll', 
-               'Microsoft.Net.Http.Headers.dll', 
-               'Microsoft.WindowsAzure.Storage.dll', 
+               'Microsoft.Net.Http.Headers.dll',
                'System.Runtime.CompilerServices.Unsafe.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -92,8 +91,7 @@ CmdletsToExport = 'Disable-AzBatchAutoScale', 'Disable-AzBatchComputeNodeSchedul
                'Get-AzBatchJobSchedule', 'Get-AzBatchLocationQuota', 
                'Get-AzBatchNodeFile', 'Get-AzBatchNodeFileContent', 
                'Get-AzBatchPool', 'Get-AzBatchPoolNodeCount', 
-               'Get-AzBatchPoolUsageMetric', 
-               'Get-AzBatchRemoteDesktopProtocolFile', 
+               'Get-AzBatchPoolUsageMetric',
                'Get-AzBatchRemoteLoginSetting', 'Get-AzBatchSubtask', 
                'Get-AzBatchSupportedImage', 
                'Get-AzBatchSupportedVirtualMachineSku', 'Get-AzBatchTask', 

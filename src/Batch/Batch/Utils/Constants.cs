@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchSubtask = "AzureBatchSubtask";
         public const string AzureBatchNodeFile = "AzureBatchNodeFile";
         public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
-        public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
         public const string AzureBatchRemoteLoginSettings = "AzureBatchRemoteLoginSettings";
         public const string AzureBatchAutoScale = "AzureBatchAutoScale";
         public const string AzureBatchPoolOSVersion = "AzureBatchPoolOSVersion";

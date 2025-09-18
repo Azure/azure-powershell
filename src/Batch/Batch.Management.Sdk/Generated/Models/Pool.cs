@@ -161,14 +161,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="currentNodeCommunicationMode">Determines how a pool communicates with the Batch service.
         /// Possible values include: &#39;Default&#39;, &#39;Classic&#39;, &#39;Simplified&#39;</param>
-
-        /// <param name="resourceTags">The user-defined tags to be associated with the Azure Batch Pool. When
-        /// specified, these tags are propagated to the backing Azure resources
-        /// associated with the pool. This property can only be specified when the
-        /// Batch account was created with the poolAllocationMode property set to
-        /// &#39;UserSubscription&#39;.
-        /// </param>
-        public Pool(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), BatchPoolIdentity identity = default(BatchPoolIdentity), AllocationState? allocationState = default(AllocationState?), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), ScaleSettings scaleSettings = default(ScaleSettings), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), StartTask startTask = default(StartTask), UpgradePolicy upgradePolicy = default(UpgradePolicy), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?), System.Collections.Generic.IDictionary<string, string> resourceTags = default(System.Collections.Generic.IDictionary<string, string>))
+        public Pool(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), BatchPoolIdentity identity = default(BatchPoolIdentity), AllocationState? allocationState = default(AllocationState?), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), ScaleSettings scaleSettings = default(ScaleSettings), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), StartTask startTask = default(StartTask), UpgradePolicy upgradePolicy = default(UpgradePolicy), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?))
 
         : base(id, name, type, etag, tags)
         {
@@ -201,7 +194,6 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.MountConfiguration = mountConfiguration;
             this.TargetNodeCommunicationMode = targetNodeCommunicationMode;
             this.CurrentNodeCommunicationMode = currentNodeCommunicationMode;
-            this.ResourceTags = resourceTags;
             CustomInit();
         }
 
@@ -422,15 +414,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.currentNodeCommunicationMode")]
         public NodeCommunicationMode? CurrentNodeCommunicationMode {get; private set; }
 
-        /// <summary>
-        /// Gets or sets the user-defined tags to be associated with the Azure Batch
-        /// Pool. When specified, these tags are propagated to the backing Azure
-        /// resources associated with the pool. This property can only be specified
-        /// when the Batch account was created with the poolAllocationMode property set
-        /// to &#39;UserSubscription&#39;.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceTags")]
-        public System.Collections.Generic.IDictionary<string, string> ResourceTags {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

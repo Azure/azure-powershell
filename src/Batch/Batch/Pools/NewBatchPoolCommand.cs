@@ -84,11 +84,6 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("ResourceTag", "15.0.0", "4.0.0", ChangeDescription = ChangeDesc)]
-        [Parameter(Mandatory = false, HelpMessage = "The user  defined tags to be associated with the Azure Batch Pool.When specified, these tags are propagated to the backing Azure resources associated with the pool.This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.")]
-        [ValidateNotNullOrEmpty]
-        public IDictionary ResourceTag { get; set; }
-
         [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }

@@ -83,7 +83,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.InterComputeNodeCommunicationEnabled = true;
             cmdlet.TaskSlotsPerNode = 4;
             cmdlet.Metadata = new Dictionary<string, string> { { "meta1", "value1" } };
-            cmdlet.ResourceTag = new Dictionary<string, string> { { "resource1", "value1" } };
             cmdlet.ResizeTimeout = TimeSpan.FromMinutes(20);
             cmdlet.StartTask = new PSStartTask("cmd /c echo start task");
             cmdlet.TargetDedicatedComputeNodes = 3;

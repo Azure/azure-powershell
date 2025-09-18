@@ -83,9 +83,6 @@ Gets Batch node counts per node state grouped by pool id.
 ### [Get-AzBatchPoolUsageMetric](Get-AzBatchPoolUsageMetric.md)
 Gets pool usage metrics for a Batch account.
 
-### [Get-AzBatchRemoteDesktopProtocolFile](Get-AzBatchRemoteDesktopProtocolFile.md)
-Gets an RDP file from a compute node.
-
 ### [Get-AzBatchRemoteLoginSetting](Get-AzBatchRemoteLoginSetting.md)
 Gets remote logon settings for a compute node.
 
