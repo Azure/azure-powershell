@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFirmwareAnalysisFirmwar
 Describe 'New-AzFirmwareAnalysisFirmwareFilesystemDownloadUrl' {
     It 'Generate' -skip {
         { 
-            $config = New-AzFirmwareAnalysisFirmwareFilesystemDownloadUrl -FirmwareId '7795b9a8-97bb-ba4b-b21a-8dc6ae2dabb9' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default'
+            $config = New-AzFirmwareAnalysisFirmwareFilesystemDownloadUrl -FirmwareId $env.Firmware -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

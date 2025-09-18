@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the managed HSM instance.")]
-        [PSArgumentCompleter("StandardB1", "CustomB32")]
+        [PSArgumentCompleter("StandardB1", "CustomB32", "CustomB6", "CustomC42", "CustomC10")]
         public string Sku { get; set; }
 
         [Parameter(Mandatory = true,

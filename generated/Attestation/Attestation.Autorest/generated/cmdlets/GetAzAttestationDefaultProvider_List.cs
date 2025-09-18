@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Cmdlets
     /// [OpenAPI] ListDefault=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/defaultProviders"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzAttestationDefaultProvider_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateEndpointConnection","Value"}, NewOutputProperties=new string[] {"PrivateEndpointConnection","Value"}, ChangeDescription="The types of the properties 'PrivateEndpointConnection' and 'Value' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Attestation.Description(@"Get the default provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Attestation.Generated]

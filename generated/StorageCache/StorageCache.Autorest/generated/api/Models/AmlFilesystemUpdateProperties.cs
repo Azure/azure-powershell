@@ -51,6 +51,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// <summary>Internal Acessors for MaintenanceWindow</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdatePropertiesMaintenanceWindow Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdatePropertiesInternal.MaintenanceWindow { get => (this._maintenanceWindow = this._maintenanceWindow ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemUpdatePropertiesMaintenanceWindow()); set { {_maintenanceWindow = value;} } }
 
+        /// <summary>Internal Acessors for RootSquashSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdatePropertiesInternal.RootSquashSetting { get => (this._rootSquashSetting = this._rootSquashSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettings()); set { {_rootSquashSetting = value;} } }
+
+        /// <summary>Internal Acessors for RootSquashSettingStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdatePropertiesInternal.RootSquashSettingStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).Status = value ?? null; }
+
+        /// <summary>Backing field for <see cref="RootSquashSetting" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings _rootSquashSetting;
+
+        /// <summary>Specifies root squash settings of the AML file system.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings RootSquashSetting { get => (this._rootSquashSetting = this._rootSquashSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettings()); set => this._rootSquashSetting = value; }
+
+        /// <summary>
+        /// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all
+        /// users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the
+        /// root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
+        public string RootSquashSettingMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).Mode = value ?? null; }
+
+        /// <summary>Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
+        public string RootSquashSettingNoSquashNidList { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).NoSquashNidList; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).NoSquashNidList = value ?? null; }
+
+        /// <summary>Group ID to squash to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
+        public long? RootSquashSettingSquashGid { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).SquashGid; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).SquashGid = value ?? default(long); }
+
+        /// <summary>User ID to squash to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
+        public long? RootSquashSettingSquashUid { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).SquashUid; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).SquashUid = value ?? default(long); }
+
+        /// <summary>AML file system squash status.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
+        public string RootSquashSettingStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettingsInternal)RootSquashSetting).Status; }
+
         /// <summary>Resource Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
         public string SourceVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemEncryptionSettingsInternal)EncryptionSetting).SourceVaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemEncryptionSettingsInternal)EncryptionSetting).SourceVaultId = value ?? null; }
@@ -99,6 +136,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         SerializedName = @"timeOfDayUTC",
         PossibleTypes = new [] { typeof(string) })]
         string MaintenanceWindowTimeOfDayUtc { get; set; }
+        /// <summary>
+        /// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all
+        /// users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the
+        /// root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+        string RootSquashSettingMode { get; set; }
+        /// <summary>Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.",
+        SerializedName = @"noSquashNidLists",
+        PossibleTypes = new [] { typeof(string) })]
+        string RootSquashSettingNoSquashNidList { get; set; }
+        /// <summary>Group ID to squash to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Group ID to squash to.",
+        SerializedName = @"squashGID",
+        PossibleTypes = new [] { typeof(long) })]
+        long? RootSquashSettingSquashGid { get; set; }
+        /// <summary>User ID to squash to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"User ID to squash to.",
+        SerializedName = @"squashUID",
+        PossibleTypes = new [] { typeof(long) })]
+        long? RootSquashSettingSquashUid { get; set; }
+        /// <summary>AML file system squash status.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"AML file system squash status.",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        string RootSquashSettingStatus { get;  }
         /// <summary>Resource Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
@@ -131,6 +228,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         string MaintenanceWindowDayOfWeek { get; set; }
         /// <summary>The time of day (in UTC) to start the maintenance window.</summary>
         string MaintenanceWindowTimeOfDayUtc { get; set; }
+        /// <summary>Specifies root squash settings of the AML file system.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings RootSquashSetting { get; set; }
+        /// <summary>
+        /// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all
+        /// users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the
+        /// root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+        string RootSquashSettingMode { get; set; }
+        /// <summary>Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.</summary>
+        string RootSquashSettingNoSquashNidList { get; set; }
+        /// <summary>Group ID to squash to.</summary>
+        long? RootSquashSettingSquashGid { get; set; }
+        /// <summary>User ID to squash to.</summary>
+        long? RootSquashSettingSquashUid { get; set; }
+        /// <summary>AML file system squash status.</summary>
+        string RootSquashSettingStatus { get; set; }
         /// <summary>Resource Id.</summary>
         string SourceVaultId { get; set; }
 

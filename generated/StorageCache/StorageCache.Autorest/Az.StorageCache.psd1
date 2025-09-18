@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.StorageCache.private.dll'
   FormatsToProcess = './Az.StorageCache.format.ps1xml'
-  FunctionsToExport = 'Get-AzStorageCacheAmlFileSystem', 'Get-AzStorageCacheAmlFileSystemSubnetRequiredSize', 'Invoke-AzStorageCacheAmlFileSystemArchive', 'New-AzStorageCacheAmlFileSystem', 'Remove-AzStorageCacheAmlFileSystem', 'Stop-AzStorageCacheAmlFilesystemArchive', 'Test-AzStorageCacheAmlFileSystemSubnet', 'Update-AzStorageCacheAmlFileSystem'
+  FunctionsToExport = 'Get-AzStorageCacheAmlFileSystem', 'Get-AzStorageCacheAmlFileSystemSubnetRequiredSize', 'Get-AzStorageCacheAutoExportJob', 'Get-AzStorageCacheAutoImportJob', 'Get-AzStorageCacheImportJob', 'Invoke-AzStorageCacheAmlFileSystemArchive', 'New-AzStorageCacheAmlFileSystem', 'New-AzStorageCacheAutoExportJob', 'New-AzStorageCacheAutoImportJob', 'New-AzStorageCacheImportJob', 'Remove-AzStorageCacheAmlFileSystem', 'Remove-AzStorageCacheAutoExportJob', 'Remove-AzStorageCacheAutoImportJob', 'Remove-AzStorageCacheImportJob', 'Stop-AzStorageCacheAmlFilesystemArchive', 'Test-AzStorageCacheAmlFileSystemSubnet', 'Update-AzStorageCacheAmlFileSystem', 'Update-AzStorageCacheAutoExportJob', 'Update-AzStorageCacheAutoImportJob', 'Update-AzStorageCacheImportJob'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'StorageCache'

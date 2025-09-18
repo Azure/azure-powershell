@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.25.0
+* Updated to api-version 2025-06-01
+* Added `Flexible` to `ServiceLevel` for `New-AzNetAppFilesPool`
+* Added `CustomThroughput` to `New-AzNetAppFilesPool` and `Update-AzNetAppFilesPool`
+* Added `AcceptGrowCapacityPoolForShortTermCloneSplit` to `New-AzNetAppFilesVolume`
+* Added `Split-AZNetAppFilesCloneFromParent` cmdlet to split a clone from its parent volume
+
 ## Version 0.24.1
 * Updated to api-version 2025-03-01
 

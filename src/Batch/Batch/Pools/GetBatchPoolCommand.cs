@@ -16,10 +16,12 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPool", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCloudPool))]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSCloudPool), "15.0.0", "4.0.0", DeprecatedOutputProperties = new string[] {"CurrentNodeCommunicationMode", "TargetNodeCommunicationMode", "ResourceTags", "CertificateReferences", "ApplicationLicenses", "CloudServiceConfiguration"})]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPool", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudPool))]
     public class GetBatchPoolCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;

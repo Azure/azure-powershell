@@ -15,8 +15,9 @@ Create a SignalR service.
 ```
 New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
  [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-ServiceMode <String>] [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceMode <String>] [-AllowedOrigin <String[]>] [-EnableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +50,54 @@ HostName                                 Location       ExternalIp      Sku     
 --------                                 --------       ----------      ---         --------- ----------------- -------
 mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
 ```
+
+### Example 3: Create a SignalR service with system-assigned managed identity
+```powershell
+New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr3 -Location eastus -EnableSystemAssignedIdentity
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr3.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+The SignalR service is created with a system-assigned managed identity enabled. You can view the identity details in the `Identity` property of the output object.
+
+### Example 4: Create a SignalR service with user-assigned managed identity
+```powershell
+# First create a user-assigned managed identity
+$userIdentity = New-AzUserAssignedIdentity -ResourceGroupName myResourceGroup1 -Name myUserIdentity -Location eastus
+
+# Create SignalR service with the user-assigned identity
+New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr4 -Location eastus -UserAssignedIdentity $userIdentity.Id
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr4.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+The SignalR service is created with the specified user-assigned managed identity. The identity can be used to access other Azure resources on behalf of the SignalR service.
+
+### Example 5: Create a SignalR service with multiple user-assigned managed identities
+```powershell
+# Create multiple user-assigned managed identities
+$identity1 = New-AzUserAssignedIdentity -ResourceGroupName myResourceGroup1 -Name myUserIdentity1 -Location eastus
+$identity2 = New-AzUserAssignedIdentity -ResourceGroupName myResourceGroup1 -Name myUserIdentity2 -Location eastus
+
+# Create SignalR service with multiple user-assigned identities
+New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr5 -Location eastus -UserAssignedIdentity $identity1.Id, $identity2.Id
+```
+
+```output
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr5.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+The SignalR service is created with multiple user-assigned managed identities. Note that SignalR does not support both system-assigned and user-assigned identities simultaneously.
 
 ## PARAMETERS
 
@@ -97,6 +146,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Enable system-assigned identity for the SignalR service.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The SignalR service location. The resource group location will be used if not specified.
 
@@ -122,6 +186,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -198,6 +277,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: 1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The resource IDs of user-assigned identities to assign to the SignalR service.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
