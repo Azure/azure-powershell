@@ -107,6 +107,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Indicates if scale set associated with the node type can be composed of multiple placement groups.")]
         public SwitchParameter MultiplePlacementGroup { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Setting this to true allows stateless node types to scale out without equal distribution across zones.")]
+        public SwitchParameter ZoneBalance { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.")]
+        public SwitchParameter EnableOverProvisioning { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.")]
+        public string[] Zones { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -187,6 +196,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.MultiplePlacementGroup.IsPresent)
             {
                 newNodeType.MultiplePlacementGroups = this.MultiplePlacementGroup.IsPresent;
+            }
+
+            if (this.Zones != null && this.Zones.Length > 0)
+            {
+                newNodeType.Zones = this.Zones.ToList();
+            }
+
+            if (this.ZoneBalance.IsPresent)
+            {
+                newNodeType.ZoneBalance = this.ZoneBalance.IsPresent;
+            }
+
+            if (this.EnableOverProvisioning.IsPresent)
+            {
+                newNodeType.EnableOverProvisioning = this.EnableOverProvisioning.IsPresent;
             }
 
             return newNodeType;

@@ -135,6 +135,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.")]
         public string VmSize { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Setting this to true allows stateless node types to scale out without equal distribution across zones.")]
+        public bool? ZoneBalance { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.")]
+        public bool? EnableOverProvisioning { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.")]
+        public string[] Zones { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -240,6 +249,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (!string.IsNullOrEmpty(this.VmSize))
             { 
                 currentNodeType.VMSize = this.VmSize;
+            }
+
+            if (this.ZoneBalance.HasValue)
+            {
+                currentNodeType.ZoneBalance = this.ZoneBalance.Value;
+            }
+
+            if (this.EnableOverProvisioning.HasValue)
+            {
+                currentNodeType.EnableOverProvisioning = this.EnableOverProvisioning.Value;
+            }
+
+            if (this.Zones != null && this.Zones.Length > 0)
+            {
+                currentNodeType.Zones = this.Zones.ToList();
             }
 
             return currentNodeType;
