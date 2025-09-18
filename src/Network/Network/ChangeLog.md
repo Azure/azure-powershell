@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall
+    - `Invoke-AzFirewallPacketCaptureOperation`
+* Updated cmdlet to add the mandatory property of 'Operation' and made all other properties not mandatory for Azure Firewall Packet Capture Parameters. Updated corresponding cmdlets.
+    - `New-AzFirewallPacketCaptureParameter`
 * Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
     - `Get-AzNetworkSecurityPerimeterServiceTag`
 * Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
