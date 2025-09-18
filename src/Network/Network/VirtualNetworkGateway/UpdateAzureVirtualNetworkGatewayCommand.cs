@@ -282,21 +282,24 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkGateway.Name));
             }
 
-            // Fetch Radius server secrets using new Post API and backfill before calling PUT.
-            var radiusAuthServers = (List<RadiusAuthServer>)this.VirtualNetworkGatewayClient.ListRadiusSecrets(VirtualNetworkGateway.ResourceGroupName, VirtualNetworkGateway.Name).Value;
-
-            if (this.VirtualNetworkGateway.VpnClientConfiguration != null && radiusAuthServers != null && radiusAuthServers.Any())
+            // For VPN VirtualNetworkGateway with P2SVpnClientConfiguration set, fetch Radius server secrets using new Post API and backfill before calling PUT.
+            if (this.VirtualNetworkGateway.VpnClientConfiguration != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
             {
-                if (!string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress) && string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret))
-                {
-                    this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress).RadiusServerSecret ?? "";
-                }
+                var radiusAuthServers = (List<RadiusAuthServer>)this.VirtualNetworkGatewayClient.ListRadiusSecrets(VirtualNetworkGateway.ResourceGroupName, VirtualNetworkGateway.Name).Value;
 
-                if (this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers != null && this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers.Any())
+                if (radiusAuthServers != null && radiusAuthServers.Any())
                 {
-                    foreach (var radiusServer in this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers)
+                    if (!string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress) && string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret))
                     {
-                        radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret;
+                        this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress).RadiusServerSecret ?? "";
+                    }
+
+                    if (this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers != null && this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers.Any())
+                    {
+                        foreach (var radiusServer in this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers)
+                        {
+                            radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret ?? "";
+                        }
                     }
                 }
             }

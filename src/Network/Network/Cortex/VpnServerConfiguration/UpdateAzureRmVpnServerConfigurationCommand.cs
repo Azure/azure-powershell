@@ -289,20 +289,22 @@ namespace Microsoft.Azure.Commands.Network
 
             // Fetch Radius server secrets using new Post API and backfill before calling PUT.
             var radiusAuthServers = new List<RadiusAuthServer>();
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null && vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius) && (radiusAuthServers != null && radiusAuthServers.Any()))
+            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null && vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
             {
                 radiusAuthServers = (List<RadiusAuthServer>)this.VpnServerConfigurationClient.ListRadiusSecrets(vpnServerConfigurationToUpdate.ResourceGroupName, vpnServerConfigurationToUpdate.Name).Value;
-
-                if (!string.IsNullOrWhiteSpace(vpnServerConfigurationToUpdate.RadiusServerAddress) && string.IsNullOrWhiteSpace(vpnServerConfigurationToUpdate.RadiusServerSecret))
+                if (radiusAuthServers != null && radiusAuthServers.Any())
                 {
-                    vpnServerConfigurationToUpdate.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == vpnServerConfigurationToUpdate.RadiusServerAddress).RadiusServerSecret ?? "";
-                }
-
-                if (vpnServerConfigurationToUpdate.RadiusServers != null && vpnServerConfigurationToUpdate.RadiusServers.Any())
-                {
-                    foreach (var radiusServer in vpnServerConfigurationToUpdate.RadiusServers)
+                    if (!string.IsNullOrWhiteSpace(vpnServerConfigurationToUpdate.RadiusServerAddress) && string.IsNullOrWhiteSpace(vpnServerConfigurationToUpdate.RadiusServerSecret))
                     {
-                        radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret;
+                        vpnServerConfigurationToUpdate.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == vpnServerConfigurationToUpdate.RadiusServerAddress).RadiusServerSecret ?? "";
+                    }
+
+                    if (vpnServerConfigurationToUpdate.RadiusServers != null && vpnServerConfigurationToUpdate.RadiusServers.Any())
+                    {
+                        foreach (var radiusServer in vpnServerConfigurationToUpdate.RadiusServers)
+                        {
+                            radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret ?? "";
+                        }
                     }
                 }
             }
