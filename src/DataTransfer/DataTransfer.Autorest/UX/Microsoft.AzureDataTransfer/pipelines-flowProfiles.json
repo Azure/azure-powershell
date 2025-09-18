@@ -1,22 +1,23 @@
 {
-  "resourceType": "connections",
+  "resourceType": "pipelines/flowProfiles",
   "apiVersion": "2025-05-30-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datatransfer"
   },
   "commands": [
     {
-      "name": "Get-AzDataTransferConnection",
-      "description": "Gets connection resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+      "name": "Get-AzDataTransferFlowProfile",
+      "description": "Retrieves the specified FlowProfile resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferconnection"
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferflowprofile"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
+              "-PipelineName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -25,11 +26,15 @@
       },
       "examples": [
         {
-          "description": "Gets connection resource.",
+          "description": "Retrieves the specified FlowProfile resource.",
           "parameters": [
             {
               "name": "-Name",
-              "value": "[Path.connectionName]"
+              "value": "[Path.flowProfileName]"
+            },
+            {
+              "name": "-PipelineName",
+              "value": "[Path.pipelineName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -44,17 +49,18 @@
       ]
     },
     {
-      "name": "Remove-AzDataTransferConnection",
-      "description": "Deletes the connection resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+      "name": "Remove-AzDataTransferFlowProfile",
+      "description": "Deletes the specified FlowProfile resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferconnection"
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferflowprofile"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
+              "-PipelineName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -63,11 +69,15 @@
       },
       "examples": [
         {
-          "description": "Deletes the connection resource.",
+          "description": "Deletes the specified FlowProfile resource.",
           "parameters": [
             {
               "name": "-Name",
-              "value": "[Path.connectionName]"
+              "value": "[Path.flowProfileName]"
+            },
+            {
+              "name": "-PipelineName",
+              "value": "[Path.pipelineName]"
             },
             {
               "name": "-ResourceGroupName",

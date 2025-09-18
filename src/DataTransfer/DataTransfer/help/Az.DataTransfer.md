@@ -12,10 +12,10 @@ Microsoft Azure PowerShell: DataTransfer cmdlets
 
 ## Az.DataTransfer Cmdlets
 ### [Approve-AzDataTransferConnection](Approve-AzDataTransferConnection.md)
-Approves the specified connection request in a pipeline.
+Approves a pending connection request associated with the specified Pipeline.
 
 ### [Deny-AzDataTransferConnection](Deny-AzDataTransferConnection.md)
-Rejects the specified connection request in a pipeline.
+Rejects a pending connection request associated with the specified Pipeline.
 
 ### [Disable-AzDataTransferConnection](Disable-AzDataTransferConnection.md)
 Disables Azure Data Transfer connections.
@@ -41,11 +41,17 @@ Enables Azure Data Transfer flow types.
 ### [Enable-AzDataTransferPipeline](Enable-AzDataTransferPipeline.md)
 Enables an Azure Data Transfer pipeline.
 
+### [Get-AzDataTransferAzureDataTransferFlowProfile](Get-AzDataTransferAzureDataTransferFlowProfile.md)
+Retrieves a list of FlowProfile resources associated with a specified pipeline.
+
 ### [Get-AzDataTransferConnection](Get-AzDataTransferConnection.md)
 Gets connection resource.
 
 ### [Get-AzDataTransferFlow](Get-AzDataTransferFlow.md)
 Gets flow resource.
+
+### [Get-AzDataTransferFlowProfile](Get-AzDataTransferFlowProfile.md)
+Retrieves the specified FlowProfile resource.
 
 ### [Get-AzDataTransferPendingConnection](Get-AzDataTransferPendingConnection.md)
 Lists all pending remote connections that are linkable to this connection.
@@ -54,7 +60,7 @@ Lists all pending remote connections that are linkable to this connection.
 Lists all remote flows that have not yet been linked to local flows
 
 ### [Get-AzDataTransferPipeline](Get-AzDataTransferPipeline.md)
-Gets pipeline resource.
+Retrieves the specified Pipeline resource.
 
 ### [Invoke-AzDataTransferLinkPendingConnection](Invoke-AzDataTransferLinkPendingConnection.md)
 Links the connection to its pending connection.
@@ -68,15 +74,24 @@ Create the connection resource.
 ### [New-AzDataTransferFlow](New-AzDataTransferFlow.md)
 Create the flow resource.
 
+### [New-AzDataTransferFlowProfile](New-AzDataTransferFlowProfile.md)
+Create a new FlowProfile or create an existing one.
+
 ### [Remove-AzDataTransferConnection](Remove-AzDataTransferConnection.md)
 Deletes the connection resource.
 
 ### [Remove-AzDataTransferFlow](Remove-AzDataTransferFlow.md)
 Deletes the flow resource.
 
+### [Remove-AzDataTransferFlowProfile](Remove-AzDataTransferFlowProfile.md)
+Deletes the specified FlowProfile resource.
+
 ### [Update-AzDataTransferConnection](Update-AzDataTransferConnection.md)
 Update the connection resource.
 
 ### [Update-AzDataTransferFlow](Update-AzDataTransferFlow.md)
 Update the flow resource.
+
+### [Update-AzDataTransferFlowProfile](Update-AzDataTransferFlowProfile.md)
+Applies partial update to an existing FlowProfile resource.
 
