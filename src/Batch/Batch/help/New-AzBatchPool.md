@@ -13,20 +13,7 @@ Creates a pool in the Batch service.
 
 ## SYNTAX
 
-### CloudServiceAndTargetDedicated (Default)
-```
-New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>] [-ResizeTimeout <TimeSpan>]
- [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>] [-TaskSlotsPerNode <Int32>]
- [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
- [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
- [-StartTask <PSStartTask>]  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
- [-NetworkConfiguration <PSNetworkConfiguration>]
- [-MountConfiguration <PSMountConfiguration[]>] [-UserAccount <PSUserAccount[]>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### VirtualMachineAndTargetDedicated
+### VirtualMachineAndTargetDedicated (Default)
 ```
 New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>] [-ResizeTimeout <TimeSpan>]
  [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>] [-TaskSlotsPerNode <Int32>]
@@ -37,19 +24,6 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
  [-NetworkConfiguration <PSNetworkConfiguration>] [-MountConfiguration <PSMountConfiguration[]>]
  [-UserAccount <PSUserAccount[]>]  -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CloudServiceAndAutoScale
-```
-New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
- [-AutoScaleEvaluationInterval <TimeSpan>] [-AutoScaleFormula <String>] [-TaskSlotsPerNode <Int32>]
- [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
- [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
- [-StartTask <PSStartTask>]  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
- [-NetworkConfiguration <PSNetworkConfiguration>]
- [-MountConfiguration <PSMountConfiguration[]>] [-UserAccount <PSUserAccount[]>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### VirtualMachineAndAutoScale
@@ -131,7 +105,7 @@ The default value is 15 minutes, and the minimum value is 5 minutes.
 
 ```yaml
 Type: System.Nullable`1[System.TimeSpan]
-Parameter Sets: CloudServiceAndAutoScale, VirtualMachineAndAutoScale
+Parameter Sets: VirtualMachineAndAutoScale
 Aliases:
 
 Required: False
@@ -146,7 +120,7 @@ Specifies the formula for automatically scaling the pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: CloudServiceAndAutoScale, VirtualMachineAndAutoScale
+Parameter Sets: VirtualMachineAndAutoScale
 Aliases:
 
 Required: False
@@ -284,7 +258,7 @@ Specifies the time-out for allocating compute nodes to the pool.
 
 ```yaml
 Type: System.Nullable`1[System.TimeSpan]
-Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
+Parameter Sets: VirtualMachineAndTargetDedicated
 Aliases:
 
 Required: False
@@ -315,7 +289,7 @@ Specifies the target number of dedicated compute nodes to allocate to the pool.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
+Parameter Sets: VirtualMachineAndTargetDedicated
 Aliases: TargetDedicated
 
 Required: False
@@ -330,7 +304,7 @@ Specifies the target number of low-priority compute nodes to allocate to the poo
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
+Parameter Sets: VirtualMachineAndTargetDedicated
 Aliases:
 
 Required: False
