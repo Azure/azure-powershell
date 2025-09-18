@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an AuthorizationRule for a Namespace.
+Create an AuthorizationRule for a Namespace.
 .Description
-create an AuthorizationRule for a Namespace.
+Create an AuthorizationRule for a Namespace.
 .Example
 {{ Add code here }}
 .Example

@@ -1,6 +1,6 @@
 {
   "resourceType": "organizations",
-  "apiVersion": "2024-08-01-preview",
+  "apiVersion": "2025-03-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.neonpostgres"
   },

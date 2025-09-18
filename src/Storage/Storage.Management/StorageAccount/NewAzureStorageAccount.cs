@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault. If specify this paramter without \"-IdentityType\", will use system assigned identity.")]
+            HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault. If specify this parameter without \"-IdentityType\", will use system assigned identity.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Set the new Storage Account Identity type, the identity is for use with key management services like Azure KeyVault.")]
         [ValidateSet(AccountIdentityType.systemAssigned,
             AccountIdentityType.userAssigned,
             AccountIdentityType.systemAssignedUserAssigned,
@@ -428,6 +428,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbOAuth
+        {
+            get
+            {
+                return enableSmbOAuth.Value;
+            }
+            set
+            {
+                enableSmbOAuth = value;
+            }
+        }
+        private bool? enableSmbOAuth = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.",
             ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
         [PSArgumentCompleter("User", "Computer")]
@@ -616,7 +633,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Disabled. " +
-            "Disabled state disablesthe policy. " +
+            "Disabled state disables the policy. " +
             "Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. " +
             "A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states." +
             "This property can only be specified with '-EnableAccountLevelImmutability'.")]
@@ -769,6 +786,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 createParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
             }
+
+            if (this.enableSmbOAuth != null)
+            {
+                if (createParameters.AzureFilesIdentityBasedAuthentication == null)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication
+                    {
+                        DirectoryServiceOptions = DirectoryServiceOptions.None
+                    };
+                }
+                createParameters.AzureFilesIdentityBasedAuthentication.SmbOAuthSettings = new SmbOAuthSettings(this.enableSmbOAuth.Value);
+            }
+
             if (this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;

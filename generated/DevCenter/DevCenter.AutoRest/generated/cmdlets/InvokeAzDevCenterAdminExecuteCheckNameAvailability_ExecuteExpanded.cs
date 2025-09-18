@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] Execute=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/checkNameAvailability"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzDevCenterAdminExecuteCheckNameAvailability_ExecuteExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Invoke-AzDevCenterAdminExecuteCheckNameAvailability", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ICheckNameAvailabilityResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Check the availability of name for resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

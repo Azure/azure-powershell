@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
 
             bool fullDetails = this.DetailedOutput.IsPresent;
 
-            // Get metricDefintions and filter the response to return metricDefinitions for only the specified metric names
+            // Get metricDefinitions and filter the response to return metricDefinitions for only the specified metric names
             var records = this.MonitorManagementClient.MetricDefinitions.List(resourceUri: this.ResourceId, metricnamespace: this.MetricNamespace);
 
             if (this.MetricName != null && this.MetricName.Count() > 0)

@@ -1,0 +1,137 @@
+{
+  "New-AzNeonPostgresBranch+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/test-ps-branch?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/test-ps-branch?api-version=2025-03-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/beb0d228-315d-47ca-b790-0e1b4c4f5232" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "1f24d5b1-ec97-487e-a3e4-06904347ba3b" ],
+        "x-ms-correlation-request-id": [ "7f0d5a20-e7ab-44bb-bb8b-a00fcd21f399" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T094905Z:7f0d5a20-e7ab-44bb-bb8b-a00fcd21f399" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 06B939315B81443C938717A0A65091FB Ref B: MAA201060516019 Ref C: 2025-06-12T09:49:03Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:49:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1142" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/test-ps-branch\",\"name\":\"test-ps-branch\",\"type\":\"neon.postgres/organizations/projects/branches\",\"systemData\":{\"createdBy\":\"Srinivas.Alluri@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-12T09:49:04.8319282Z\",\"lastModifiedBy\":\"Srinivas.Alluri@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-12T09:49:04.8319282Z\"},\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"parentId\":\"br-damp-bird-a82olmcu\",\"roleName\":null,\"databaseName\":null,\"roles\":null,\"databases\":null,\"endpoints\":null,\"attributes\":[{\"name\":\"logicalSize\",\"value\":\"\"},{\"name\":\"cpuUsedSec\",\"value\":\"0\"},{\"name\":\"computeTimeSeconds\",\"value\":\"0\"},{\"name\":\"activeTimeSeconds\",\"value\":\"0\"},{\"name\":\"writtenDataBytes\",\"value\":\"0\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"false\"}],\"entityId\":\"br-purple-hat-a8rbxup3\",\"entityName\":\"test-ps-branch\",\"createdAt\":\"Jun 12, 2025 9:49 AM\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNeonPostgresBranch+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/test-ps-branch?api-version=2025-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/test-ps-branch?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "17a0788d-b5c9-475e-a7f1-c7b39e204351" ],
+        "CommandName": [ "New-AzNeonPostgresBranch" ],
+        "FullCommandName": [ "New-AzNeonPostgresBranch_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/34507177-21e9-4f99-a992-1aa736034789" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "7b3288d8-57a3-4e4d-b470-f1d69abd868a" ],
+        "x-ms-correlation-request-id": [ "0b316bea-d8da-4742-9341-3f508f1fad3f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T094937Z:0b316bea-d8da-4742-9341-3f508f1fad3f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8EA0F78E3504488C9658A42907356C4D Ref B: MAA201060516019 Ref C: 2025-06-12T09:49:36Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:49:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "105" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceReadFailed\",\"message\":\"Branch retrieval failed with error FetchProjectBranch\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNeonPostgresBranch+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/test-ps-branch?api-version=2025-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/test-ps-branch?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "17a0788d-b5c9-475e-a7f1-c7b39e204351" ],
+        "CommandName": [ "New-AzNeonPostgresBranch" ],
+        "FullCommandName": [ "New-AzNeonPostgresBranch_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=9cf8ccaf-273c-4fe7-ae5a-2498a0f5d4c5/southindia/d59c4ef0-776b-4d1a-8ab4-404e8732dda9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "192d48c2-9d39-43aa-a420-a5afacc09b28" ],
+        "x-ms-correlation-request-id": [ "3fbe8f09-6b1d-4a86-8145-707b3f4aad65" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T094938Z:3fbe8f09-6b1d-4a86-8145-707b3f4aad65" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E38EA0CEA72149A297AC197A91A2D868 Ref B: MAA201060516019 Ref C: 2025-06-12T09:49:37Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:49:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "105" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceReadFailed\",\"message\":\"Branch retrieval failed with error FetchProjectBranch\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -82,7 +82,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string ifMatch = null,
             string ifNoneMatch = null,
             string securityPostureId = null,
-            string[] securityPostureExcludeExtension = null
+            string[] securityPostureExcludeExtension = null,
+            bool? enableProxyAgent = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     var vmss = new VirtualMachineScaleSet
                     {
                         Zones = zones,
-                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
+                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationType.EdgeZone),
                         UpgradePolicy = new UpgradePolicy
                         {
                             Mode = upgradeMode ?? UpgradeMode.Manual,
@@ -108,13 +109,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
-                            ? new SecurityProfile
+                            SecurityProfile = new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
                                 UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                                 SecurityType = securityType,
-                            } : null,
+                                ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings(enableProxyAgent) : null
+                            },
                             OsProfile = new VirtualMachineScaleSetOSProfile
                             {
                                 ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
@@ -250,7 +251,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string ifMatch = null,
             string ifNoneMatch = null,
             string securityPostureId = null,
-            string[] securityPostureExcludeExtension = null
+            string[] securityPostureExcludeExtension = null,
+            bool? enableProxyAgent = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -266,7 +268,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             }
                         },
                         Zones = zones,
-                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
+                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationType.EdgeZone),
                         Sku = new Azure.Management.Compute.Models.Sku()
                         {
                             Capacity = instanceCount,
@@ -278,13 +280,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
-                            ? new SecurityProfile
+                            SecurityProfile = new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
                                 UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                                 SecurityType = securityType,
-                            } : null,
+                                ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings(enableProxyAgent) : null
+                            },
                             OsProfile = new VirtualMachineScaleSetOSProfile
                             {
                                 ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),

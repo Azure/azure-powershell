@@ -43,8 +43,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = Constants.PowerShellClientId;
             var authority = parameters.Environment.ActiveDirectoryAuthority;
+            var claimsChallenge = deviceCodeParameters.ClaimsChallenge;
 
-            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+            var requestContext = new TokenRequestContext(scopes, claims: claimsChallenge, isCaeEnabled: true);
             DeviceCodeCredentialOptions options = new DeviceCodeCredentialOptions()
             {
                 DeviceCodeCallback = DeviceCodeFunc,

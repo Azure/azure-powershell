@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else
             {
-                // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
+                // List all accounts in given resource group if available otherwise all accounts in the subscription
                 WriteObject(DataLakeAnalyticsClient.ListAccounts(ResourceGroupName, null, null, null)
                     .Select(element => new PSDataLakeAnalyticsAccountBasic(element))
                     .ToList(), true);

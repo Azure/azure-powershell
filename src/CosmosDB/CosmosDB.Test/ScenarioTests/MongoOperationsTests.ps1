@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test MongoDB CRUD cmdlets using Name paramter set
+Test MongoDB CRUD cmdlets using Name parameter set
 #>
 function Test-MongoOperationsCmdlets
 {
@@ -706,7 +706,7 @@ Try {
 
 <#
 .SYNOPSIS
-Test MongoDB CRUD cmdlets using Parent Object and InputObject paramter set
+Test MongoDB CRUD cmdlets using Parent Object and InputObject parameter set
 #>
 function Test-MongoOperationsCmdletsUsingInputObject
 {
@@ -851,7 +851,7 @@ Try {
 
 <#
 .SYNOPSIS
-Test MongoDB Throughput cmdlets using all paramter sets
+Test MongoDB Throughput cmdlets using all parameter sets
 #>
 function Test-MongoThroughputCmdlets
 {
@@ -1007,7 +1007,7 @@ function Test-MongoMigrateThroughputCmdlets
 
 <#
 .SYNOPSIS
-Test MongoDB RBAC cmdlets using Name paramter set
+Test MongoDB RBAC cmdlets using Name parameter set
 #>
 function Test-MongoRBACCmdlets
 {

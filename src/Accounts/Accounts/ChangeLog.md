@@ -20,6 +20,18 @@
 
 ## Upcoming Release
 
+## Version 5.3.0
+* Updated `AuthenticationAssemblyLoadContext` project to deprecate .NET 6.0 and build on .NET 8.0.
+* Added Server-Side Pagination Support for `Invoke-AzRestMethod` command via `-Paginate` parameter.
+
+## Version 5.2.0
+* Fixed an issue where `Clear-AzContext` does not clear the token cache when broker is enabled.
+* Added new parameter `-ClaimsChallenge` to `Connect-AzAccount` to support claims challenge authentication for MFA.
+* Refined the error message when a cmdlet fails because of policy violations about Multi-Factor Authentication (MFA) to provide more actionable guidance.
+
+## Version 5.1.1
+* Updated the date in the message about multi-factor authentication (MFA). For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
+
 ## Version 5.1.0
 * Enabled setting the authentication scope for SSH cmdlets by `Set-AzEnvironment -SshAuthScope <String>`.
 
@@ -35,7 +47,7 @@
 * Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
 
 ## Version 4.2.0
-* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
+* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
 * Fixed token in auxiliary authentication header.
 * Collected authentication method for telemetry in end process of cmdlet.
 

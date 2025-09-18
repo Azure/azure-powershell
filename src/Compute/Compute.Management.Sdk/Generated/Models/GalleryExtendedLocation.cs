@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryExtendedLocation class.
         /// </summary>
-        /// <param name="type">Possible values include: 'EdgeZone',
-        /// 'Unknown'</param>
+        /// <param name="type">It is type of the extended location. Possible
+        /// values include: 'EdgeZone', 'Unknown'</param>
         public GalleryExtendedLocation(string name = default(string), string type = default(string))
         {
             Name = name;
@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'EdgeZone', 'Unknown'
+        /// Gets or sets it is type of the extended location. Possible values
+        /// include: 'EdgeZone', 'Unknown'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

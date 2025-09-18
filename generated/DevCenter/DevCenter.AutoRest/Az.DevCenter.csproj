@@ -3,6 +3,7 @@
     <PsModuleName>DevCenter</PsModuleName>
     <PsRootModuleName>DevCenter</PsRootModuleName>
     <PsModuleFolder>DevCenter.AutoRest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.DevCenter</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

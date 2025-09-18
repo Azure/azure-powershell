@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
 
-                // Avaliable endpoint services
+                // Available endpoint services
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSEndpointServiceResult, MNM.EndpointServiceResult>();
 
@@ -920,6 +920,54 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.LoadBalancerHealthPerRulePerBackendAddress, CNM.PSLoadBalancerHealthPerRulePerBackendAddress>();
 
+                // ExpressRouteFailoverSingleTestDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverSingleTestDetails, MNM.ExpressRouteFailoverSingleTestDetails>();
+
+                // ExpressRouteFailoverSingleTestDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverSingleTestDetails, CNM.PSExpressRouteFailoverSingleTestDetails>();
+
+                // ExpressRouteFailoverRedundantRoute
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverRedundantRoute, MNM.ExpressRouteFailoverRedundantRoute>();
+
+                // ExpressRouteFailoverRedundantRoute
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverRedundantRoute, CNM.PSExpressRouteFailoverRedundantRoute>();
+
+                // FailoverConnectionDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSFailoverConnectionDetails, MNM.FailoverConnectionDetails>();
+
+                // FailoverConnectionDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.FailoverConnectionDetails, CNM.PSFailoverConnectionDetails>();
+
+                // ExpressRouteFailoverTestDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverTestDetails, MNM.ExpressRouteFailoverTestDetails>();
+
+                // ExpressRouteFailoverTestDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverTestDetails, CNM.PSExpressRouteFailoverTestDetails>();
+
+                // ExpressRouteFailoverCircuitResourceDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverCircuitResourceDetails, MNM.ExpressRouteFailoverCircuitResourceDetails>();
+
+                // ExpressRouteFailoverCircuitResourceDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverCircuitResourceDetails, CNM.PSExpressRouteFailoverCircuitResourceDetails>();
+
+                // ExpressRouteFailoverConnectionResourceDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverConnectionResourceDetails, MNM.ExpressRouteFailoverConnectionResourceDetails>();
+
+                // ExpressRouteFailoverConnectionResourceDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverConnectionResourceDetails, CNM.PSExpressRouteFailoverConnectionResourceDetails>();
+
                 // NatRulePortMapping
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNatRulePortMapping, MNM.NatRulePortMapping>();
@@ -973,7 +1021,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkSecurityGroup, CNM.PSNetworkSecurityGroup>();
 
-                // NetworkSecrityRule
+                // NetworkSecurityRule
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSSecurityRule, MNM.SecurityRule>()
                     .AfterMap((src, dest) =>
@@ -1155,7 +1203,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteCircuitRoutesTable, CNM.PSExpressRouteCircuitRoutesTable>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitRoutesTableSummary, CNM.PSExpressRouteCircuitRoutesTableSummary>();
 
-                // ExoressRouteCircuitAuthorization
+                // ExpressRouteCircuitAuthorization
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCircuitAuthorization, MNM.ExpressRouteCircuitAuthorization>();
 
@@ -1469,6 +1517,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule, MNM.WebApplicationFirewallScrubbingRules>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRules, MNM.ManagedRulesDefinition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet, MNM.ManagedRuleSet>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup, MNM.ManagedRuleSetRuleGroup>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride, MNM.ManagedRuleGroupOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride, MNM.ManagedRuleOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusion, MNM.ApplicationGatewayFirewallExclusion>();
@@ -1573,6 +1622,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.WebApplicationFirewallScrubbingRules, CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule>();
                 cfg.CreateMap<MNM.ManagedRulesDefinition, CNM.PSApplicationGatewayFirewallPolicyManagedRules>();
                 cfg.CreateMap<MNM.ManagedRuleSet, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet>();
+                cfg.CreateMap<MNM.ManagedRuleSetRuleGroup, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup>();
                 cfg.CreateMap<MNM.ManagedRuleGroupOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride>();
                 cfg.CreateMap<MNM.ManagedRuleOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallExclusion, CNM.PSApplicationGatewayFirewallPolicyExclusion>();
@@ -1957,6 +2007,7 @@ namespace Microsoft.Azure.Commands.Network
                             { "Network.DNS.EnableProxy", src.DNSEnableProxy },
                             { "Network.DNS.Servers", src.DNSServer?.Aggregate((result, item) => result + "," + item) },
                             { "Network.AdditionalLogs.EnableFatFlowLogging", src.EnableFatFlowLogging },
+                            { "Network.AdditionalLogs.EnableDnstapLogging", src.EnableDnstapLogging },
                             { "Network.Logging.EnableUDPLogOptimization", src.EnableUDPLogOptimization },
                             { "Network.RouteServerInfo.RouteServerID", src.RouteServerId },
                         }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
@@ -2040,6 +2091,7 @@ namespace Microsoft.Azure.Commands.Network
                     dest.AllowActiveFTP = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.FTP.AllowActiveFTP", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.DNSEnableProxy = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.EnableProxy", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.EnableFatFlowLogging = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.AdditionalLogs.EnableFatFlowLogging", StringComparison.OrdinalIgnoreCase)).Value;
+                    dest.EnableDnstapLogging = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.AdditionalLogs.EnableDnstapLogging", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.EnableUDPLogOptimization = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.Logging.EnableUDPLogOptimization", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.RouteServerId = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.RouteServerInfo.RouteServerID", StringComparison.OrdinalIgnoreCase)).Value;
                     try

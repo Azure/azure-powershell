@@ -16,10 +16,12 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobSchedule", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCloudJobSchedule))]
+    [GenericBreakingChangeWithVersion("The following properties of the PSPoolSpecification class found under the returned PSCloudJobSchedule class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobSchedule", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJobSchedule))]
     public class GetBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;

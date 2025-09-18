@@ -23,7 +23,7 @@ Triggers the execution of a runtime protection scan to detect and remediate dete
 Invoke-AzNetworkCloudScanClusterRuntime -ResourceGroupName resourceGroupName -ClusterName clusterName -SubscriptionId subscriptionId -ScanActivity "Scan"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterScanRuntimeParameters
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
@@ -101,7 +101,7 @@ param(
     [Parameter(ParameterSetName='Scan', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ScanViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterScanRuntimeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters]
     # ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime operation.
     # To construct, see NOTES section for CLUSTERSCANRUNTIMEPARAMETER properties and create a hash table.
     ${ClusterScanRuntimeParameter},

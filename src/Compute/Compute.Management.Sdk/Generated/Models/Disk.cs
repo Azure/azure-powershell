@@ -42,15 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="managedBy">A relative URI containing the ID of the VM
-        /// that has the disk attached.</param>
-        /// <param name="managedByExtended">List of relative URIs containing
-        /// the IDs of the VMs that have the disk attached. maxShares should be
-        /// set to a value greater than one for disks to allow attaching them
-        /// to multiple VMs.</param>
-        /// <param name="zones">The Logical zone list for Disk.</param>
-        /// <param name="extendedLocation">The extended location where the disk
-        /// will be created. Extended location cannot be changed.</param>
         /// <param name="timeCreated">The time when the disk was
         /// created.</param>
         /// <param name="osType">The Operating System type. Possible values
@@ -106,8 +97,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="shareInfo">Details of the list of all VMs that have
         /// the disk attached. maxShares should be set to a value greater than
         /// one for disks to allow attaching them to multiple VMs.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
+        /// <param name="networkAccessPolicy">Policy for accessing the disk via
+        /// network. Possible values include: 'AllowAll', 'AllowPrivate',
+        /// 'DenyAll'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="burstingEnabledTime">Latest time when bursting was
@@ -128,10 +120,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="completionPercent">Percentage complete for the
         /// background copy when a resource is created via the CopyStart
         /// operation.</param>
-        /// <param name="publicNetworkAccess">Possible values include:
-        /// 'Enabled', 'Disabled'</param>
-        /// <param name="dataAccessAuthMode">Possible values include:
-        /// 'AzureActiveDirectory', 'None'</param>
+        /// <param name="publicNetworkAccess">Policy for controlling export on
+        /// the disk. Possible values include: 'Enabled', 'Disabled'</param>
+        /// <param name="dataAccessAuthMode">Additional authentication
+        /// requirements when exporting or uploading to a disk or snapshot.
+        /// Possible values include: 'AzureActiveDirectory', 'None'</param>
         /// <param name="optimizedForFrequentAttach">Setting this property to
         /// true improves reliability and performance of data disks that are
         /// frequently (more than 5 times a day) by detached from one virtual
@@ -144,14 +137,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk was last attached or detached from a VM or the time when the
         /// VM to which the disk was attached was deallocated or
         /// started.</param>
-        public Disk(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), IList<string> managedByExtended = default(IList<string>), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), string diskState = default(string), Encryption encryption = default(Encryption), int? maxShares = default(int?), IList<ShareInfoElement> shareInfo = default(IList<ShareInfoElement>), string networkAccessPolicy = default(string), string diskAccessId = default(string), System.DateTime? burstingEnabledTime = default(System.DateTime?), string tier = default(string), bool? burstingEnabled = default(bool?), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), double? completionPercent = default(double?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), System.DateTime? lastOwnershipUpdateTime = default(System.DateTime?))
+        /// <param name="availabilityPolicy">Determines how platform treats
+        /// disk failures</param>
+        /// <param name="managedBy">A relative URI containing the ID of the VM
+        /// that has the disk attached.</param>
+        /// <param name="managedByExtended">List of relative URIs containing
+        /// the IDs of the VMs that have the disk attached. maxShares should be
+        /// set to a value greater than one for disks to allow attaching them
+        /// to multiple VMs.</param>
+        /// <param name="sku">The disks sku name. Can be Standard_LRS,
+        /// Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS,
+        /// StandardSSD_ZRS, or PremiumV2_LRS.</param>
+        /// <param name="zones">The Logical zone list for Disk.</param>
+        /// <param name="extendedLocation">The extended location where the disk
+        /// will be created. Extended location cannot be changed.</param>
+        public Disk(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), long? diskIOPSReadOnly = default(long?), long? diskMBpsReadOnly = default(long?), string diskState = default(string), Encryption encryption = default(Encryption), int? maxShares = default(int?), IList<ShareInfoElement> shareInfo = default(IList<ShareInfoElement>), string networkAccessPolicy = default(string), string diskAccessId = default(string), System.DateTime? burstingEnabledTime = default(System.DateTime?), string tier = default(string), bool? burstingEnabled = default(bool?), PropertyUpdatesInProgress propertyUpdatesInProgress = default(PropertyUpdatesInProgress), bool? supportsHibernation = default(bool?), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), double? completionPercent = default(double?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), bool? optimizedForFrequentAttach = default(bool?), System.DateTime? lastOwnershipUpdateTime = default(System.DateTime?), AvailabilityPolicy availabilityPolicy = default(AvailabilityPolicy), string managedBy = default(string), IList<string> managedByExtended = default(IList<string>), DiskSku sku = default(DiskSku), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation))
             : base(location, id, name, type, tags)
         {
-            ManagedBy = managedBy;
-            ManagedByExtended = managedByExtended;
-            Sku = sku;
-            Zones = zones;
-            ExtendedLocation = extendedLocation;
             TimeCreated = timeCreated;
             OsType = osType;
             HyperVGeneration = hyperVGeneration;
@@ -184,6 +186,12 @@ namespace Microsoft.Azure.Management.Compute.Models
             DataAccessAuthMode = dataAccessAuthMode;
             OptimizedForFrequentAttach = optimizedForFrequentAttach;
             LastOwnershipUpdateTime = lastOwnershipUpdateTime;
+            AvailabilityPolicy = availabilityPolicy;
+            ManagedBy = managedBy;
+            ManagedByExtended = managedByExtended;
+            Sku = sku;
+            Zones = zones;
+            ExtendedLocation = extendedLocation;
             CustomInit();
         }
 
@@ -191,39 +199,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets a relative URI containing the ID of the VM that has the disk
-        /// attached.
-        /// </summary>
-        [JsonProperty(PropertyName = "managedBy")]
-        public string ManagedBy { get; private set; }
-
-        /// <summary>
-        /// Gets list of relative URIs containing the IDs of the VMs that have
-        /// the disk attached. maxShares should be set to a value greater than
-        /// one for disks to allow attaching them to multiple VMs.
-        /// </summary>
-        [JsonProperty(PropertyName = "managedByExtended")]
-        public IList<string> ManagedByExtended { get; private set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public DiskSku Sku { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Logical zone list for Disk.
-        /// </summary>
-        [JsonProperty(PropertyName = "zones")]
-        public IList<string> Zones { get; set; }
-
-        /// <summary>
-        /// Gets or sets the extended location where the disk will be created.
-        /// Extended location cannot be changed.
-        /// </summary>
-        [JsonProperty(PropertyName = "extendedLocation")]
-        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
         /// Gets the time when the disk was created.
@@ -337,12 +312,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         public long? DiskMBpsReadOnly { get; set; }
 
         /// <summary>
-        /// Gets or sets the state of the disk. Possible values include:
-        /// 'Unattached', 'Attached', 'Reserved', 'Frozen', 'ActiveSAS',
-        /// 'ActiveSASFrozen', 'ReadyToUpload', 'ActiveUpload'
+        /// Gets the state of the disk. Possible values include: 'Unattached',
+        /// 'Attached', 'Reserved', 'Frozen', 'ActiveSAS', 'ActiveSASFrozen',
+        /// 'ReadyToUpload', 'ActiveUpload'
         /// </summary>
         [JsonProperty(PropertyName = "properties.diskState")]
-        public string DiskState { get; set; }
+        public string DiskState { get; private set; }
 
         /// <summary>
         /// Gets or sets encryption property can be used to encrypt data at
@@ -368,8 +343,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<ShareInfoElement> ShareInfo { get; private set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
+        /// Gets or sets policy for accessing the disk via network. Possible
+        /// values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
@@ -431,14 +406,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         public double? CompletionPercent { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// Gets or sets policy for controlling export on the disk. Possible
+        /// values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AzureActiveDirectory',
-        /// 'None'
+        /// Gets or sets additional authentication requirements when exporting
+        /// or uploading to a disk or snapshot. Possible values include:
+        /// 'AzureActiveDirectory', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataAccessAuthMode")]
         public string DataAccessAuthMode { get; set; }
@@ -462,6 +439,48 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.LastOwnershipUpdateTime")]
         public System.DateTime? LastOwnershipUpdateTime { get; private set; }
+
+        /// <summary>
+        /// Gets or sets determines how platform treats disk failures
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.availabilityPolicy")]
+        public AvailabilityPolicy AvailabilityPolicy { get; set; }
+
+        /// <summary>
+        /// Gets a relative URI containing the ID of the VM that has the disk
+        /// attached.
+        /// </summary>
+        [JsonProperty(PropertyName = "managedBy")]
+        public string ManagedBy { get; private set; }
+
+        /// <summary>
+        /// Gets list of relative URIs containing the IDs of the VMs that have
+        /// the disk attached. maxShares should be set to a value greater than
+        /// one for disks to allow attaching them to multiple VMs.
+        /// </summary>
+        [JsonProperty(PropertyName = "managedByExtended")]
+        public IList<string> ManagedByExtended { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the disks sku name. Can be Standard_LRS, Premium_LRS,
+        /// StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or
+        /// PremiumV2_LRS.
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public DiskSku Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Logical zone list for Disk.
+        /// </summary>
+        [JsonProperty(PropertyName = "zones")]
+        public IList<string> Zones { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extended location where the disk will be created.
+        /// Extended location cannot be changed.
+        /// </summary>
+        [JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
         /// Validate the object.

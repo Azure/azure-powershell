@@ -187,19 +187,19 @@
     <value>Reject PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
   </data>
   <data name="RemoveConsumerGroup" xml:space="preserve">
-    <value>Deleting ConsumerGrop:{0} from Eventhub:{1}</value>
+    <value>Deleting ConsumerGroup:{0} from Eventhub:{1}</value>
   </data>
   <data name="RemoveEventHubAuthorizationRule" xml:space="preserve">
-    <value>Removeing AtuhorizationRule:{0} from EventHub:{1} of Namespace: {2}</value>
+    <value>Removing AuthorizationRule:{0} from EventHub:{1} of Namespace: {2}</value>
   </data>
   <data name="RemoveEventhubcluster" xml:space="preserve">
-    <value>Deleteing Eventhub Cluster {1} from ResourceGroup {0}</value>
+    <value>Deleting Eventhub Cluster {1} from ResourceGroup {0}</value>
   </data>
   <data name="RemoveEventHubSchemaGroup" xml:space="preserve">
     <value>Removing Schema Group named:{0} of Namespace: {1}</value>
   </data>
   <data name="RemoveNamespaceAuthorizationRule" xml:space="preserve">
-    <value>Removing AtuhorizationRule:{0} of Namespace: {1}</value>
+    <value>Removing AuthorizationRule:{0} of Namespace: {1}</value>
   </data>
   <data name="RemoveNamespacePrivateEndpoints" xml:space="preserve">
     <value>Remove PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>

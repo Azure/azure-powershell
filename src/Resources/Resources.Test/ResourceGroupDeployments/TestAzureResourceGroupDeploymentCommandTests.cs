@@ -195,7 +195,8 @@ Diagnostics (3):
             PSObject expectedObject = new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: expectedToken));
 
             commandRuntimeMock.Verify(f => f.WriteObject(expectedObject, true), Times.Never());
-            commandRuntimeMock.Verify(f => f.WriteObject(new List<PSResourceManagerError>()), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteWarning(It.IsAny<string>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
         }
 
         [Fact]
@@ -227,6 +228,35 @@ Diagnostics (3):
             actualParameters.ValidationLevel.Should().Be(ValidationLevel.ProviderNoRbac);
 
             Assert.NotNull(actualParameters.TemplateParameterObject);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidatesPSResourceGroupDeploymentWithUserTemplateNoDiagnosticsNoErrors()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateFile
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+
+            TemplateValidationInfo expectedResults = new(new DeploymentValidateResult());
+
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expectedResults)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.TemplateFile = expectedParameters.TemplateFile;
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+
+            commandRuntimeMock.Verify(f => f.WriteWarning(It.IsAny<string>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
         }
     }
 }

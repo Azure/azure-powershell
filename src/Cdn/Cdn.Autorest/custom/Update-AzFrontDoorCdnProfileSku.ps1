@@ -176,14 +176,14 @@ function Update-AzFrontDoorCdnProfileSku {
                     Set-AzContext -Subscription ${SubscriptionId}
                 }
 
-                # Validate the waf policy whether located in the same subscritpion as the profile.
+                # Validate the waf policy whether located in the same subscription as the profile.
                 $contextNew = Get-AzContext
                 if ($contextNew.Subscription.Id -ne $changeToWafPolicySubId)
                 {
-                    throw "The subscritpion of existing or created Premium WAF policy should be in the same subscription as the profile's."
+                    throw "The subscription of existing or created Premium WAF policy should be in the same subscription as the profile's."
                 }
 
-                # 2. Validate whether the policy already exists in the subsrciption
+                # 2. Validate whether the policy already exists in the subscription
                 try {
                     Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -ErrorAction Stop | Out-Null
                 } catch {

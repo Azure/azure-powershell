@@ -23,7 +23,7 @@ param(
                 }
 
             } else {
-                Write-Error "Invalid Key specified in IpPool object. Accpeted values are 'Start', 'End', and 'Type'." -ErrorAction Stop
+                Write-Error "Invalid Key specified in IpPool object. Accepted values are 'Start', 'End', and 'Type'." -ErrorAction Stop
             }
         }
     }
@@ -54,7 +54,7 @@ param(
                 }
 
             } else {
-                Write-Error "Invalid Key specified in IpPool object. Accpeted values are 'AddressPrefix', 'Name', and 'NextHopIPAddress'." -ErrorAction Stop
+                Write-Error "Invalid Key specified in IpPool object. Accepted values are 'AddressPrefix', 'Name', and 'NextHopIPAddress'." -ErrorAction Stop
             }
         }
     }
