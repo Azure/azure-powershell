@@ -28,14 +28,14 @@ For information on how to develop for `Az.Storage`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 2219e4e4e0409bcb88a2b82e8febe1a3baecaf18
+commit: 04b87408ba3b8afed159b3d3059bd1594c7f2dd3
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storage.json
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/file.json
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storageTaskAssignments.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storage.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/file.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storageTaskAssignments.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
@@ -72,6 +72,12 @@ directive:
       parameter-name: StorageAccountMigrationDetailTargetSkuName
     set:
       parameter-name: TargetSku
+  - where:
+      verb: Get
+      subject: ^StorageTaskAssignment$
+      parameter-name: Top
+    set:
+      alias: Maxpagesize
   - where:
       subject: ^FileServiceUsage$
       parameter-name: AccountName
