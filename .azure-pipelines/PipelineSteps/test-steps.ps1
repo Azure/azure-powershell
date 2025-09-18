@@ -35,13 +35,24 @@ $buildProjPath = Join-Path $RepoRoot 'build.proj'
 $buildArgs = "/p:Configuration=$Configuration;TestFramework=$TestFramework"
 
 if ($IsLinux) {
-    # Applying various parallelism/heap restriction behaviors to prevent OOM issues on Ubuntu 24.04
-    Write-Host -ForegroundColor Yellow "Detected Linux agent - applying memory tuning for tests"
-    $env:DOTNET_gcServer = "0"
-    $env:DOTNET_gcHeapCount = "2"
+    Write-Host "Detected Linux agent. Applying memory tuning for tests"
+
+   # ---- DIAGNOSTIC LOGGING ----
+    Write-Host "=== Disk layout (lsblk) ==="
+    bash -c "lsblk -o NAME,SIZE,TYPE,MOUNTPOINT"
+
+    Write-Host "`n=== Filesystem usage (df -h) ==="
+    bash -c "df -h"
+
+    Write-Host "`n=== Memory snapshot (free -h) ==="
+    bash -c "free -h"
+    # ----------------------------
+
+    dotnet msbuild $buildProjPath /t:Test $buildArgs
+} else {
+    dotnet msbuild $buildProjPath /t:Test $buildArgs
 }
 
-dotnet msbuild $buildProjPath /t:Test $buildArgs
 
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
