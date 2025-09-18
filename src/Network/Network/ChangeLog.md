@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+- Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
 * Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall
     - `Invoke-AzFirewallPacketCaptureOperation`
 * Updated cmdlet to add the mandatory property of 'Operation' and made all other properties not mandatory for Azure Firewall Packet Capture Parameters. Updated corresponding cmdlets.
