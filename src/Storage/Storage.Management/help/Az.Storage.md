@@ -185,6 +185,9 @@ Gets a list of file shares.
 ### [Get-AzStorageShareStoredAccessPolicy](Get-AzStorageShareStoredAccessPolicy.md)
 Gets stored access policies for a Storage share.
 
+### [Get-AzStorageSku](Get-AzStorageSku.md)
+Lists the available SKUs supported by Microsoft.Storage for given subscription.
+
 ### [Get-AzStorageTable](Get-AzStorageTable.md)
 Lists the storage tables.
 
