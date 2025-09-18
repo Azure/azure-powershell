@@ -19,9 +19,11 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.22
 
 ## Version 3.2.2
 * Fixed an error when remove artifact throw `ArgumentNullException`
+
 ## Version 3.2.1
 * Fixed an error of not correctly setting the cmdlet context
 
