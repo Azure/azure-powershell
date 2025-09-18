@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported listing Storage SKU
+    - `Get-AzStorageSku`
 * Supported enabling SMB Oauth on Storage accounts 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
