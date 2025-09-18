@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet, ValueFromPipeline = true)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        [GenericBreakingChangeWithVersion("The following properties of the PSPoolSpecification class found under the PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
         public PSCloudJob Job { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true, HelpMessage = "The id of the task to add.")]

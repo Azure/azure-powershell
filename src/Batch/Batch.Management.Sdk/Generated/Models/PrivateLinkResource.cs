@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about a private link resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateLinkResource : ProxyResource
+    public partial class PrivateLinkResource : AzureProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateLinkResource class.
@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
         /// </param>
 
+        /// <param name="tags">The tags of the resource.
+        /// </param>
+
         /// <param name="groupId">The group id is used to establish the private link connection.
         /// </param>
 
@@ -46,9 +49,9 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="requiredZoneNames">The list of required zone names for the private DNS resource name
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, etag, tags)
         {
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;

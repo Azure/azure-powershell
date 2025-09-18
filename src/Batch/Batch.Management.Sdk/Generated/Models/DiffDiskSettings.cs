@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// disk provisioning. For more information on Ephemeral OS disk size
         /// requirements, please refer to Ephemeral OS disk size requirements for
         /// Windows VMs at
-        /// https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements
+        /// https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements
         /// and Linux VMs at
-        /// https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+        /// https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
         /// Possible values include: &#39;CacheDisk&#39;</param>
         public DiffDiskSettings(DiffDiskPlacement? placement = default(DiffDiskPlacement?))
 
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// for Ephemeral OS disk provisioning. For more information on Ephemeral OS
         /// disk size requirements, please refer to Ephemeral OS disk size requirements
         /// for Windows VMs at
-        /// https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements
+        /// https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements
         /// and Linux VMs at
-        /// https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. Possible values include: &#39;CacheDisk&#39;
+        /// https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. Possible values include: &#39;CacheDisk&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "placement")]
         public DiffDiskPlacement? Placement {get; set; }
