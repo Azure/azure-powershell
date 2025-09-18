@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '9.1.0'
+ModuleVersion = '9.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -74,10 +74,10 @@ RequiredAssemblies = 'Azure.Data.Tables.dll', 'Azure.Storage.Blobs.dll',
                'System.IO.Hashing.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Storage.Autorest/Az.Storage.format.ps1xml', 
@@ -235,7 +235,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Storage', 'StorageAccount'
+        Tags = 'Azure','ResourceManager','ARM','Storage','StorageAccount'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -247,15 +247,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+        ReleaseNotes = '* Supported listing Storage SKU
+    - ''Get-AzStorageSku''
+* Supported enabling SMB Oauth on Storage accounts 
     - ''New-AzStorageAccount''
     - ''Set-AzStorageAccount''
-* Supported Storage task assignment
-    - ''New-AzStorageTaskAssignment''
-    - ''Update-AzStorageTaskAssignment''
-    - ''Get-AzStorageTaskAssignment''
-    - ''Remove-AzStorageTaskAssignment''
-    - ''Get-AzStorageTaskAssignmentinstancesReport'''
+* Supported Enable Metrics when set object replication policy 
+    - ''Set-AzStorageObjectReplicationPolicy'''
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -268,7 +266,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

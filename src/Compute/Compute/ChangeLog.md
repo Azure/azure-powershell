@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 10.4.0
 * Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
 * Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
 
