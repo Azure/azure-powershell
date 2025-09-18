@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 if (oe.IsAuthorizationDeniedException() || oe.IsNotFoundException())
                 {
-                    // When AD lookup fails due to insufficient permissions or not found,
-                    // fall back to cached principal type instead of immediately using "Unknown"
+                    // fall back to cached principal type from response,
+                    // then finally fall back to "Unknown"
                     adObject = new PSADObject() { Id = assignment.PrincipalId, Type = assignment.PrincipalType ?? UnknownType};
                 }
                 //Swallow exceptions when displaying active directive object

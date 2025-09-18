@@ -201,11 +201,6 @@
 #### Az.Relay 2.1.2
 * Update the outputs of breaking change announcements.
 
-#### Az.Resources 8.1.1
-* Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions
-    - When Active Directory lookup fails due to insufficient permissions, the cmdlets now fall back to cached principal type instead of immediately using "Unknown" type
-    - Fixed issue [#28583]
-
 #### Az.Resources 8.1.0
 * Added functionality for cmdlet 'GetAzureResourceGroup'[#27865]
 * Added breaking change announcement for below cmdlets from array to list.
