@@ -28,7 +28,6 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -265,6 +264,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.")]
         public string SecurityDataUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.")]
+        [PSArgumentCompleter("TrustedLaunchSupported", "TrustedLaunchAndConfidentialVMSupported")]
+        public string SupportedSecurityOption { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -519,7 +525,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportedCapabilities = vSupportedCapabilities,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
                 DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
-                OptimizedForFrequentAttach = this.IsParameterBound(c => c.OptimizedForFrequentAttach) ? OptimizedForFrequentAttach : null
+                OptimizedForFrequentAttach = this.IsParameterBound(c => c.OptimizedForFrequentAttach) ? OptimizedForFrequentAttach : null,
+                SupportedSecurityOption = this.IsParameterBound(c => c.SupportedSecurityOption) ? SupportedSecurityOption : null
             };
 
             WriteObject(vDisk);

@@ -26,7 +26,7 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
  [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-SecurityMetadataUri <String>]
- [-SecurityDataUri <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SecurityDataUri <String>] [-SupportedSecurityOption <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -86,6 +86,14 @@ New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskCo
 Create a disk from a Shared Gallery Image Version.  Id is the id of the shared gallery image version. Lun is needed only if the source is a data disk.
 
 ### Example 4
+```powershell
+$diskconfig = New-AzDiskConfig -Location 'Central US' -SkuName 'Standard_LRS' -OsType 'Windows' -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -OptimizedForFrequentAttach $true
+New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
+```
+
+Create a disk with OptimizedForFrequentAttach as true, to improves reliability and performance of the data disks that will be frequently (more than 5 times a day) detached from one virtual machine and attached to another.
+
+### Example 5
 ```powershell
 $diskconfig = New-AzDiskConfig -Location 'Central US' -SkuName 'Standard_LRS' -OsType 'Windows' -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -OptimizedForFrequentAttach $true
 New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
@@ -631,6 +639,22 @@ Accept wildcard characters: False
 
 ### -StorageAccountId
 Specifies the storage account ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SupportedSecurityOption
+Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.
+Possible values include: 'TrustedLaunchSupported', 'TrustedLaunchAndConfidentialVMSupported'
 
 ```yaml
 Type: System.String

@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
+* Added new parameter `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 
 ## Version 10.3.0
 * Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 
