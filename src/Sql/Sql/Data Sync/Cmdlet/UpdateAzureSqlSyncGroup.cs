@@ -63,6 +63,19 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public bool UsePrivateLinkConnection { get; set; }
 
         /// <summary>
+        /// Gets or sets the Database Authentication type of the hub database
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The database authentication type of the hub database. If not specified, defaults to 'SqlAuthentication' (username/password).")]
+        [ValidateSet("password", "userAssigned", IgnoreCase = true)]
+        public string HubDatabaseAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity ID of the hub database in case of user assigned identity authentication
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the UAMI (User Assigned Managed Identity) to use for hub database authentication.")]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -91,17 +104,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 newModel.UsePrivateLinkConnection = this.UsePrivateLinkConnection;
             }
-
-            if (MyInvocation.BoundParameters.ContainsKey("DatabaseCredential"))
-            {
-                newModel.HubDatabaseUserName = this.DatabaseCredential.UserName;
-                newModel.HubDatabasePassword = this.DatabaseCredential.Password;
-            }
-            else
-            {
-                newModel.HubDatabaseUserName = null;
-                newModel.HubDatabasePassword = null;
-            }
             
             // if schema file is specified
             if (MyInvocation.BoundParameters.ContainsKey("SchemaFile"))
@@ -116,6 +118,48 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                     throw new PSArgumentException(ex.Response.ToString(), "SchemaFile");
                 }
             }
+
+            if (!MyInvocation.BoundParameters.ContainsKey(nameof(HubDatabaseAuthenticationType)) ||
+                this.HubDatabaseAuthenticationType.Equals("password", System.StringComparison.OrdinalIgnoreCase))
+            {
+                if (MyInvocation.BoundParameters.ContainsKey(nameof(DatabaseCredential)))
+                {
+                    newModel.HubDatabaseUserName = this.DatabaseCredential.UserName;
+                    newModel.HubDatabasePassword = this.DatabaseCredential.Password;
+                }
+                else
+                {
+                    newModel.HubDatabaseUserName = null;
+                    newModel.HubDatabasePassword = null;
+                }
+
+                newModel.Identity = new DataSyncParticipantIdentity
+                {
+                    Type = "None"
+                };
+            }
+            else if (this.HubDatabaseAuthenticationType.Equals("userAssigned", System.StringComparison.OrdinalIgnoreCase))
+            {
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
+                    string.IsNullOrEmpty(this.ResourceId))
+                {
+                    newModel.Identity = new DataSyncParticipantIdentity
+                    {
+                        Type = "UserAssigned"
+                    };
+                }
+                else
+                {
+                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId);
+                }
+            }
+            else
+            {
+                throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidDatabaseAuthenticationType,
+                        "HubDatabaseAuthenticationType");
+            }
+
 
             return model;
         }
