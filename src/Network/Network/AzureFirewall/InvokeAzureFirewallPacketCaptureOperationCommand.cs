@@ -12,23 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
-using System.Linq;
-using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecationWithVersionAttribute("Az: 15.0.0","Az.Network: 8.0.0")]
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCapture", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureParameters))]
-    public class InvokeAzureFirewallPacketCaptureCommand : AzureFirewallBaseCmdlet
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCaptureOperation", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureResponse))]
+    public class InvokeAzureFirewallPacketCaptureOperationCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -48,8 +46,6 @@ namespace Microsoft.Azure.Commands.Network
         
         public override void Execute()
         {
-            Parameter.Operation = "Start";
-
             base.Execute();
 
             if (!this.IsAzureFirewallPresent(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name))
@@ -62,9 +58,15 @@ namespace Microsoft.Azure.Commands.Network
             
 
             // Execute the PUT AzureFirewall call
-            var headers = this.AzureFirewallClient.PacketCapture(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwParamsModel);
+            var azureFirewallPacketCaptureResponse = this.AzureFirewallClient.PacketCaptureOperation(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwParamsModel);
 
-            WriteObject(headers);
+            var resp = new PSAzureFirewallPacketCaptureResponse();
+            if (azureFirewallPacketCaptureResponse != null)
+            {
+                resp = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPacketCaptureResponse>(azureFirewallPacketCaptureResponse);
+            }
+
+            WriteObject(resp);
         }
     }
 }
