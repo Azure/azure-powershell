@@ -471,12 +471,6 @@ This command updates a Storage account by setting EnableSmbOAuth to true, then s
 ### Example 23: Update a Storage account with zone placement policy
 ```powershell
 $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "myaccount" -Zone 1 -ZonePlacementPolicy "Any"
-
-$account.Zone
-1
-
-$account.ZonePlacementPolicy
-Any
 ```
 
 This command updates a Storage account by setting Zone to 1 and ZonePlacementPolicy to Any, then shows the updated account related properties.
