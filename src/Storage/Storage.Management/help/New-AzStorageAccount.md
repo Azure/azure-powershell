@@ -29,8 +29,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
  [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
- [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [<CommonParameters>]
+ [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -50,7 +51,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>]
  [-EdgeZone <String>] [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability]
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
- [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -74,7 +76,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>]
  [-EdgeZone <String>] [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability]
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
- [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -399,6 +402,32 @@ True
 ```
 
 This command creates a Storage account that enables SMB Oauth, and then shows the IsSmbOAuthEnabled property of the created account. 
+
+### Example 20: Create a Storage account with Zone
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName yifanz1 -Name testzonep5 -SkuName Premium_LRS -Location centraluseuap -Kind FileStorage -Zone 1 
+
+$account.Zone
+```
+
+```output
+1
+```
+
+This command creates a Storage account that has Zone property as 1, and then shows the Zone property of the created account.
+
+### Example 21: Create a Storage account with Zone placement policy
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName yifanz1 -Name testzonep5 -SkuName Premium_LRS -Location centraluseuap -Kind FileStorage -ZonePlacementPolicy None
+
+$account.ZonePlacementPolicy
+```
+
+```output
+None
+```
+
+This command creates a Storage account that has zone placement policy as None, and then shows the ZonePlacementPolicy property of the created account.
 
 ## PARAMETERS
 
@@ -1138,6 +1167,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.
 
@@ -1326,6 +1370,36 @@ Indicates whether to enable indirect CName validation.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Describes the available zones for the product where storage account resource can be created.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZonePlacementPolicy
+The availability zone pinning policy for the storage account.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
