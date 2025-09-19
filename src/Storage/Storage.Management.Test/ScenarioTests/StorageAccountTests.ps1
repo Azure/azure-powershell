@@ -2684,7 +2684,7 @@ function Test-StorageAccountDNSEndpointType
 }
 
 <#
-.SYNOPSISret
+.SYNOPSIS
 Test StorageAccountEnableSmbOauth
 .DESCRIPTION
 SmokeTest
@@ -2725,6 +2725,63 @@ function Test-StorageAccountEnableSmbOauth
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountZonePlacement
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountZonePlacement
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stoname2 = 'sto2' + $rgname
+        $stoname3 = 'sto3' + $rgname
+        $stotype = 'Premium_LRS'
+        $loc = 'centraluseuap';
+        $kind = 'FileStorage' 
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -Kind $kind -Zone 1 
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname 
+        Assert-AreEqual $account.Zone[0] "1"
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype -Kind $kind
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Zone 1 -ZonePlacementPolicy "Any"
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.Zone[0] "1"
+        Assert-AreEqual $account2.ZonePlacementPolicy "Any"
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3 -Location $loc -SkuName $stotype -Kind $kind -ZonePlacementPolicy "None"
+        $account3 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3
+        Assert-AreEqual $account3.StorageAccountName $stoname3
+        Assert-AreEqual $account3.ZonePlacementPolicy "None"
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3 -ZonePlacementPolicy "Any"
+        $account3 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3
+        Assert-AreEqual $account3.StorageAccountName $stoname3
+        Assert-AreEqual $account3.ZonePlacementPolicy "Any"
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname3
     }
     finally
     {
