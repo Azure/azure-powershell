@@ -1,8 +1,8 @@
 {
-  "Update-AzStorageMoverAgent+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01+1": {
+  "Update-AzStorageMoverAgent+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"uploadLimitSchedule\": {\r\n      \"weeklyRecurrences\": [\r\n        {\r\n          \"startTime\": {\r\n            \"hour\": 1,\r\n            \"minute\": 30\r\n          },\r\n          \"endTime\": {\r\n            \"hour\": 5,\r\n            \"minute\": 0\r\n          },\r\n          \"days\": [ \"Monday\", \"Tuesday\", \"Friday\" ],\r\n          \"limitInMbps\": 100\r\n        }\r\n      ]\r\n    },\r\n    \"description\": \"update agent description\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,43 +17,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000cd89-0000-3300-0000-68b1a2d10000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/10369912-9843-463e-be0b-f61591c535f7" ],
+        "ETag": [ "\"650078c3-0000-3300-0000-68cd2d050000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/31a66f90-199d-4fc5-9300-03b28106ad9e" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "801656d5-0cf0-441e-9104-f751c3a61776" ],
-        "x-ms-request-id": [ "682c526d-83f2-4a14-8b1f-0a752b19d0ac" ],
-        "x-ms-correlation-request-id": [ "a5a837ff-5a5d-4b2f-b8cd-178e4de8939c" ],
+        "mise-correlation-id": [ "19745cb9-d364-4f95-a563-134094e68e69" ],
+        "x-ms-request-id": [ "827eb853-1f87-4cb9-a1b3-38e2e2ce78f1" ],
+        "x-ms-correlation-request-id": [ "b6e50496-050a-4d93-9092-e79757b08f83" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125337Z:a5a837ff-5a5d-4b2f-b8cd-178e4de8939c" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101429Z:b6e50496-050a-4d93-9092-e79757b08f83" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1D8EB58A76254BFD83A46E05C8F954BF Ref B: PNQ231110906036 Ref C: 2025-08-29T12:53:37Z" ],
-        "Date": [ "Fri, 29 Aug 2025 12:53:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 054536D1DBAD48CC8555AA7AD6899D99 Ref B: MAA201060515011 Ref C: 2025-09-19T10:14:28Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:14:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1192" ],
+        "Content-Length": [ "1184" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-28T12:18:08.5902303Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-29T12:53:37.4150494Z\"},\"properties\":{\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\",\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3913,\"numberOfCores\":1,\"uptimeInSeconds\":111194,\"lastStatusUpdate\":\"2025-08-29T12:53:24.4691624Z\",\"uploadLimitSchedule\":{\"weeklyRecurrences\":[{\"limitInMbps\":100,\"days\":[\"Monday\",\"Tuesday\",\"Friday\"],\"startTime\":{\"hour\":1,\"minute\":30},\"endTime\":{\"hour\":5,\"minute\":0}}]},\"description\":\"update agent description\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T09:43:31.2634499Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-19T10:14:28.7122627Z\"},\"properties\":{\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\",\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3918,\"numberOfCores\":1,\"uptimeInSeconds\":693050,\"lastStatusUpdate\":\"2025-09-19T10:14:10.9575623Z\",\"uploadLimitSchedule\":{\"weeklyRecurrences\":[{\"limitInMbps\":100,\"days\":[\"Monday\",\"Tuesday\",\"Friday\"],\"startTime\":{\"hour\":1,\"minute\":30},\"endTime\":{\"hour\":5,\"minute\":0}}]},\"description\":\"update agent description\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageMoverAgent+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01+2": {
+  "Update-AzStorageMoverAgent+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01",
+      "RequestUri": "https://centraluseuap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "70" ],
-        "x-ms-client-request-id": [ "024d5589-0107-4635-b059-cbe988724fd9" ],
+        "x-ms-client-request-id": [ "8662cef7-0faf-465d-aa2b-0c38b4bf50f3" ],
         "CommandName": [ "Get-AzStorageMoverAgent" ],
         "FullCommandName": [ "Get-AzStorageMoverAgent_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.2", "Az.StorageMover/1.5.0" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.3", "Az.StorageMover/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,27 +64,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000cd89-0000-3300-0000-68b1a2d10000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/5d97f413-88d7-444f-b226-ce79970e8b14" ],
+        "ETag": [ "\"650078c3-0000-3300-0000-68cd2d050000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/5ae01911-154a-43f3-b827-38cbf94c0c5b" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "4496020c-38e9-4534-a50a-e12620da3ca9" ],
-        "x-ms-request-id": [ "6be9729e-511e-4338-b74e-e8784b67c346" ],
-        "x-ms-correlation-request-id": [ "6ab0e850-c14f-494b-b267-3d662b7bf4ff" ],
+        "mise-correlation-id": [ "bc36dad9-962c-4c89-932a-f0f72dee43b1" ],
+        "x-ms-request-id": [ "fd17f214-f05c-48fb-bed6-bd1a1637a1a4" ],
+        "x-ms-correlation-request-id": [ "6b0468c9-98ec-4d79-ad55-31c2bc254644" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125338Z:6ab0e850-c14f-494b-b267-3d662b7bf4ff" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101430Z:6b0468c9-98ec-4d79-ad55-31c2bc254644" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B72A36E021444BF785334CF8CA3A1B0C Ref B: PNQ231110906036 Ref C: 2025-08-29T12:53:38Z" ],
-        "Date": [ "Fri, 29 Aug 2025 12:53:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 50D82AAC052C45FAB20FD0338482A2C5 Ref B: MAA201060515011 Ref C: 2025-09-19T10:14:29Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:14:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1192" ],
+        "Content-Length": [ "1184" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-28T12:18:08.5902303Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-29T12:53:37.4150494Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"uploadLimitSchedule\":{\"weeklyRecurrences\":[{\"limitInMbps\":100,\"days\":[\"Monday\",\"Tuesday\",\"Friday\"],\"startTime\":{\"hour\":1,\"minute\":30},\"endTime\":{\"hour\":5,\"minute\":0}}]},\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3913,\"numberOfCores\":1,\"uptimeInSeconds\":111194,\"lastStatusUpdate\":\"2025-08-29T12:53:24.4691624Z\",\"agentStatus\":\"Online\",\"description\":\"update agent description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T09:43:31.2634499Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-19T10:14:28.7122627Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"uploadLimitSchedule\":{\"weeklyRecurrences\":[{\"limitInMbps\":100,\"days\":[\"Monday\",\"Tuesday\",\"Friday\"],\"startTime\":{\"hour\":1,\"minute\":30},\"endTime\":{\"hour\":5,\"minute\":0}}]},\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3918,\"numberOfCores\":1,\"uptimeInSeconds\":693050,\"lastStatusUpdate\":\"2025-09-19T10:14:10.9575623Z\",\"agentStatus\":\"Online\",\"description\":\"update agent description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

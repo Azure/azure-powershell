@@ -50,7 +50,7 @@ function setupEnv() {
     }
 
     $env.RandomString = (RandomString $false 8)
-    $env.ResourceGroupName = "choudharysumovetest"
+    $env.ResourceGroupName = "choudharysutest"
     $env.StorageMoverNameWithAgent = "testmoverpreview1"
     $env.AgentName = "testagent12"
     $env.Location = "eastus2euap"
