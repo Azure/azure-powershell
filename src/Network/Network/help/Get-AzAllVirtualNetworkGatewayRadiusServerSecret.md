@@ -29,14 +29,14 @@ Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName resourceGrou
 
 ```output
 RadiusServerAddress : 1.1.1.1
-RadiusServerSecret  : abc123
+RadiusServerSecret  : ****
 
 RadiusServerAddress : 2.2.2.2
-RadiusServerSecret  : mnop1234
+RadiusServerSecret  : ****
 ```
 
 For the Azure virtual network gateway named gatewayname in resource group resourceGroup, retrieves the list of Radius servers and corresponding radius secrets set on VpnClientConfiguration.
-The Azure virtual network gateway in this case has two radius servers set(1.1.1.1,2.2.2.2), and it returns set corresponding radius secrets as well (abc123, mnop1234)
+The Azure virtual network gateway in this case has two radius servers set(1.1.1.1,2.2.2.2), and it returns set corresponding radius secrets as well.
 
 ## PARAMETERS
 
