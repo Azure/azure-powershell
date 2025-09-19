@@ -169,8 +169,10 @@ function New-AzMigrateLocalServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonSettings.ps1'
+        Import-Module $helperPath
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AZLocalCommonHelper.ps1'
+        Import-Module $helperPath
 
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
