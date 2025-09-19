@@ -95,11 +95,14 @@ Create a disk with OptimizedForFrequentAttach as true, to improves reliability a
 
 ### Example 5
 ```powershell
-$diskconfig = New-AzDiskConfig -Location 'Central US' -SkuName 'Standard_LRS' -OsType 'Windows' -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -OptimizedForFrequentAttach $true
+$accountType = <Account Type>
+$sourceUri = <Source URI of the blob>
+$storageAccountId = <Storage Account ID>
+$diskConfig = New-AzDiskConfig -AccountType $accountType -CreateOption Import -SourceUri $sourceUri -StorageAccountId $storageAccountId -SupportedSecurityOption 'TrustedLaunchSupported'
 New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
 ```
 
-Create a disk with OptimizedForFrequentAttach as true, to improves reliability and performance of the data disks that will be frequently (more than 5 times a day) detached from one virtual machine and attached to another.
+Creation of managed disk using CreateOption of Import, with SupportedSecuirtyOption as TrustedLaunchSupported
 
 ## PARAMETERS
 
