@@ -50,19 +50,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string Location { get; set; }
 
         /// <summary>
-        /// Overriding to add warning message
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            if (this.ServerName == "")
-            {
-                throw new PSArgumentException("Missing ServerName");
-            }
-
-            base.ExecuteCmdlet();
-        }
-
-        /// <summary>
         /// Check to see if the server already exists as a live server or if there's a deleted server to restore.
         /// </summary>
         /// <returns>Null if ready to restore. Otherwise throws exception</returns>
@@ -85,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             }
             catch (CloudException ex)
             {
-                if (ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                if (ex.Response?.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     // Unexpected exception encountered
                     throw;
@@ -99,10 +86,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 var deletedServer = ModelAdapter.GetDeletedServer(this.ResourceGroupName, this.ServerName);
                 if (deletedServer == null)
                 {
-                    throw new PSArgumentException(
-                        string.Format("No deleted server named '{0}' found in resource group '{1}' that can be restored.",
-                        this.ServerName, this.ResourceGroupName),
-                        "ServerName");
+                   throw new PSArgumentException(
+                       string.Format(Properties.Resources.DeletedServerNotFound,
+                       this.ServerName, this.ResourceGroupName),
+                       "ServerName");
                 }
 
                 // Deleted server exists and can be restored
@@ -110,10 +97,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             }
             catch (CloudException ex)
             {
-                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     throw new PSArgumentException(
-                        string.Format("No deleted server named '{0}' found in resource group '{1}' that can be restored.", 
+                        string.Format(Properties.Resources.DeletedServerNotFound, 
                         this.ServerName, this.ResourceGroupName),
                         "ServerName");
                 }

@@ -1,34 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.sql/restore-azsqlserver
 schema: 2.0.0
 ---
 
 # Restore-AzSqlServer
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Restores a deleted Azure SQL Database server that is still within its soft-delete retention period
 
 ## SYNTAX
 
 ```
 Restore-AzSqlServer -ServerName <String> -Location <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Restore-AzSqlServer** cmdlet restores a deleted Azure SQL Database server that is still within its soft-delete retention period
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Restore-AzSqlServer -ResourceGroupName "resourcegroup01" -ServerName "server01" -Location "CentralUS"
 ```
 
-{{ Add example description here }}
+```output
+ResourceGroupName             : resourcegroup01
+ServerName                    : server01
+Location                      : centralus
+SqlAdministratorLogin         : SqlAdminUser
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             : 
+SoftDeleteRetentionDays       : 7
+```
 
 ## PARAMETERS
 
@@ -36,7 +54,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +69,7 @@ Accept wildcard characters: False
 The location in which to create the server
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -62,26 +80,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +100,7 @@ Accept wildcard characters: False
 SQL Database server name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -111,7 +115,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -127,7 +131,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -152,3 +156,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlServer](./Get-AzSqlServer.md)
+
+[New-AzSqlServer](./New-AzSqlServer.md)
+
+[Set-AzSqlServer](./Set-AzSqlServer.md)
+
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

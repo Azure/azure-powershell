@@ -448,6 +448,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No deleted server named &apos;{0}&apos; found in resource group &apos;{1}&apos; that can be restored..
+        /// </summary>
+        internal static string DeletedServerNotFound {
+            get {
+                return ResourceManager.GetString("DeletedServerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
         internal static string DeprecatedCmdletUsageWarning {
@@ -779,6 +788,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ManagedInstanceLinkAlreadyExists {
             get {
                 return ResourceManager.GetString("ManagedInstanceLinkAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EnableSoftDeleteRetention must be provided when SoftDeleteRetentionDays is set to a value greater than 0..
+        /// </summary>
+        internal static string MissingEnableSoftDeleteRetention {
+            get {
+                return ResourceManager.GetString("MissingEnableSoftDeleteRetention", resourceCulture);
             }
         }
         

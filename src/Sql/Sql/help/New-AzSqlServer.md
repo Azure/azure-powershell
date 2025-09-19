@@ -21,8 +21,8 @@ New-AzSqlServer -ServerName <String> [-SqlAdministratorCredentials <PSCredential
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-FederatedClientId <Guid>] [-EnableSoftDeleteRetention <Boolean>] [-SoftDeleteRetentionDays <Int32>]
- [-CreateMode <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,8 +49,6 @@ This command creates a version 12 Azure SQL Database server.
 
 ### Example 2: Create a new Azure SQL Database server with External (Microsoft Entra ID) Administrator, Microsoft Entra-only Authentication and no SqlAdministratorCredentials
 <!-- Skip: Output cannot be splitted from code -->
-
-
 ```powershell
 New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication
 ResourceGroupName        : resourcegroup01
@@ -103,6 +101,60 @@ PrimaryUserAssignedIdentityId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
 
 This command creates a version 12 Azure SQL Database server with TDE CMK enabled.
 
+### Example 4: Create a new Azure SQL Database server with soft delete retention enabled with default retention days
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDeleteRetention $true
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : server01
+Location                      : centralus
+SqlAdministratorLogin         : ramtest
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             :
+SoftDeleteRetentionDays       : 7
+```
+
+This command creates a version 12 Azure SQL Database server with soft-delete retention enabled (default 7 days).
+
+### Example 5: Create a new Azure SQL Database server with soft delete retention enabled with 30 retention days
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDeleteRetention $true -SoftDeleteRetentionDays 30
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : server01
+Location                      : centralus
+SqlAdministratorLogin         : ramtest
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             :
+SoftDeleteRetentionDays       : 30
+```
+
+This command creates a version 12 Azure SQL Database server with soft-delete retention set to 30 days.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -125,21 +177,6 @@ Generate and assign a Microsoft Entra identity for this server for use with key 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CreateMode
-Specifies the create mode for the server, valid values for this parameter are "Normal" and "Restore".
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -308,21 +345,6 @@ The primary User Managed Identity(UMI) id.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

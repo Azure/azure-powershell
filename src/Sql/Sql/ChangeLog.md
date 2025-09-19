@@ -18,13 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated `New-AzSqlInstance` to support retention
-    - Added `EnableSoftDeleteRetention` parameter to `New-AzSqlInstance` to enable the creation of instances with retention period enabled
-    - Added `SoftDeleteRetentionInDays` parameter to `New-AzSqlInstance` to enable the creation of instances with custom retention period
-* Updated `Set-AzSqlInstance` to support retention
-    - Added `EnableSoftDeleteRetention` parameter to `Set-AzSqlInstance` to enable/disable retention period on existing instances
-    - Added `SoftDeleteRetentionInDays` parameter to `Set-AzSqlInstance` to enable the update of retention period on existing instances
-* Added `Restore-AzSqlServer` cmdlet to restore a deleted Azure Sql servers within the retention period
+* Updated `New-AzSqlServer` to support soft-delete retention
+    - Added `EnableSoftDeleteRetention` parameter to `New-AzSqlServer` to enable creation of a server with soft-delete retention
+    - Added `SoftDeleteRetentionDays` parameter to `New-AzSqlServer` to set the soft-delete retention period (in days)
+* Updated `Set-AzSqlServer` to support soft-delete retention
+    - Added `EnableSoftDeleteRetention` parameter to `Set-AzSqlServer` to enable or disable soft-delete retention on an existing server
+    - Added `SoftDeleteRetentionDays` parameter to `Set-AzSqlServer` to update the soft-delete retention period (in days) on an existing server
+* Added `Restore-AzSqlServer` cmdlet to restore a deleted Azure SQL server within the retention period
 
 ## Version 6.1.0
 * Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
