@@ -19,9 +19,7 @@
 -->
 
 ## Upcoming Release
-* Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions
-    - When Active Directory lookup fails due to insufficient permissions, the cmdlets now fall back to cached principal type instead of immediately using "Unknown" type
-    - Fixed issue [#28583]
+* Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions [#28583]
 
 ## Version 8.1.0
 * Added functionality for cmdlet `GetAzureResourceGroup`[#27865]
