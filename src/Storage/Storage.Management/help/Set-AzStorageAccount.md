@@ -468,7 +468,7 @@ True
 
 This command updates a Storage account by setting EnableSmbOAuth to true, then shows the updated account related properties.
 
-### Example 23: Update a Storage account by enabling SMB Oauth
+### Example 23: Update a Storage account with zone placement policy
 ```powershell
 $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "myaccount" -Zone 1 -ZonePlacementPolicy "Any"
 
