@@ -134,7 +134,7 @@ function Get-AzMigrateLocalServerReplication {
     process {
         $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonSettings.ps1'
         Import-Module $helperPath
-        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AZLocalCommonHelper.ps1'
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonHelper.ps1'
         Import-Module $helperPath
 
         $hasTargetObjectId = $PSBoundParameters.ContainsKey('TargetObjectID')
