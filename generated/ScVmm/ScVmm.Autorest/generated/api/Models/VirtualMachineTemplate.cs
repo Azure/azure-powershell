@@ -111,85 +111,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         public int? MemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).MemoryMb; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for ComputerName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.ComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ComputerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ComputerName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.ComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ComputerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ComputerName = value ?? null; }
 
         /// <summary>Internal Acessors for CpuCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.CpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).CpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).CpuCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.CpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).CpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).CpuCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for Disk</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk> Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.Disk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Disk; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Disk = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk> Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.Disk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Disk; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Disk = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for DynamicMemoryEnabled</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.DynamicMemoryEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryEnabled = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.DynamicMemoryEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryEnabled = value ?? null; }
 
         /// <summary>Internal Acessors for DynamicMemoryMaxMb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.DynamicMemoryMaxMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMaxMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMaxMb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.DynamicMemoryMaxMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMaxMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMaxMb = value ?? default(int); }
 
         /// <summary>Internal Acessors for DynamicMemoryMinMb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.DynamicMemoryMinMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMinMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMinMb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.DynamicMemoryMinMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMinMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).DynamicMemoryMinMb = value ?? default(int); }
 
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ExtendedLocation()); set { {_extendedLocation = value;} } }
 
         /// <summary>Internal Acessors for Generation</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.Generation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Generation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Generation = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.Generation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Generation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).Generation = value ?? default(int); }
 
         /// <summary>Internal Acessors for IsCustomizable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.IsCustomizable { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsCustomizable; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsCustomizable = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.IsCustomizable { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsCustomizable; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsCustomizable = value ?? null; }
 
         /// <summary>Internal Acessors for IsHighlyAvailable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.IsHighlyAvailable { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsHighlyAvailable; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsHighlyAvailable = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.IsHighlyAvailable { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsHighlyAvailable; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).IsHighlyAvailable = value ?? null; }
 
         /// <summary>Internal Acessors for LimitCpuForMigration</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.LimitCpuForMigration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).LimitCpuForMigration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).LimitCpuForMigration = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.LimitCpuForMigration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).LimitCpuForMigration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).LimitCpuForMigration = value ?? null; }
 
         /// <summary>Internal Acessors for MemoryMb</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.MemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).MemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).MemoryMb = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.MemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).MemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).MemoryMb = value ?? default(int); }
 
         /// <summary>Internal Acessors for NetworkInterface</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface> Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.NetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).NetworkInterface = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface> Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.NetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).NetworkInterface = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OSName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.OSName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.OSName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSName = value ?? null; }
 
         /// <summary>Internal Acessors for OSType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.OSType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.OSType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).OSType = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.VirtualMachineTemplateProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplatePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inherited)]

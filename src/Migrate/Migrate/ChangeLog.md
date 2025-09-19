@@ -28,6 +28,7 @@
   - Added ARM id validation for input parameters
 * Fixed bugs in `Get-AzMigrateLocalServerReplication`
   - Added ARM id validation for input parameters
+* Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
 
 ## Version 2.9.0
 * Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.

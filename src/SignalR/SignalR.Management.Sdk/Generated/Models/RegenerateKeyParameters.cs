@@ -24,9 +24,8 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the RegenerateKeyParameters class.
         /// </summary>
 
-        /// <param name="keyType">The keyType to regenerate. Must be either &#39;primary&#39; or
-        /// &#39;secondary&#39;(case-insensitive).
-        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
+        /// <param name="keyType">The type of access key.
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;, &#39;Salt&#39;</param>
         public RegenerateKeyParameters(string keyType = default(string))
 
         {
@@ -41,8 +40,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets the keyType to regenerate. Must be either &#39;primary&#39; or
-        /// &#39;secondary&#39;(case-insensitive). Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;
+        /// Gets or sets the type of access key. Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;, &#39;Salt&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "keyType")]
         public string KeyType {get; set; }

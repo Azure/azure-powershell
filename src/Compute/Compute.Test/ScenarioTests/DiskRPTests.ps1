@@ -1905,3 +1905,49 @@ function Test-ConfVMImportSecure
         Clean-ResourceGroup $rgname;
     }
 }
+
+
+<#
+.SYNOPSIS
+Test confidential vm securityMetadataUri during confidential VM OS disk creation from an unmanaged storage account.
+#>
+function Test-DiskSnapshotInstantAccess
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $location = "eastus2euap";
+
+    try
+    {
+        $diskName = "haagha-premiumv2test"
+        $snapshotName = "snapshotTest"
+
+        New-AzResourceGroup -Name $rgname -Location $location -Force;
+                
+        $diskConfig = New-AzDiskConfig `
+          -Location $location `
+          -DiskSizeGB 1024 `
+          -DiskIOPSReadWrite 10000 `
+          -DiskMBpsReadWrite 500 `
+          -AccountType PremiumV2_LRS `
+          -CreateOption Empty `
+          -Zone $zone
+
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName
+        $snapshotConfig = New-AzSnapshotConfig -SourceUri $disk.Id  -Location $location  -CreateOption Copy -InstantAccessDurationMinutes 300 -Incremental Premium_LRS
+
+        New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $rgname
+
+        $snapshotGet = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName
+
+        Asset-NotNull = $snapshotGet.CreationData.InstantAccessDurationMinutes
+        Asset-NotNull = $snapshotGet.SnapshotAccessState
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
