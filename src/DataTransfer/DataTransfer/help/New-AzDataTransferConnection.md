@@ -15,12 +15,12 @@ Create the connection resource.
 ### CreateExpanded (Default)
 ```
 New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-Direction <String>] [-FlowType <String[]>] [-IdentityType <String>]
- [-Justification <String>] [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>]
- [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
- [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Location <String> [-ApiHostname <String>] [-Direction <String>] [-FlowProfileList <IFlowProfileMetadata[]>]
+ [-FlowType <String[]>] [-IdentityType <String>] [-Justification <String>] [-Pin <String>]
+ [-PipelineName <String>] [-PrimaryContact <String>] [-RemoteSubscriptionId <String>] [-RequirementId <String>]
+ [-Schema <ISchema[]>] [-SchemaUri <String[]>] [-SecondaryContact <String[]>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -193,6 +193,21 @@ This example creates a new connection named `Connection03` in the resource group
 
 ## PARAMETERS
 
+### -ApiHostname
+Hostname specific to API Flows
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -239,8 +254,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FlowProfileList
+Provides a list of FlowProfiles .
+
+```yaml
+Type: ADT.Models.IFlowProfileMetadata[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FlowType
-The flow types being requested for this connection
+The flow types being requested for this connection.
+This FlowType property has reached end of life support starting version 2025-05-30-preview.
+Please create a FlowProfile resource instead.
 
 ```yaml
 Type: System.String[]
@@ -451,7 +483,9 @@ Accept wildcard characters: False
 ```
 
 ### -Schema
-The schemas for this connection
+The schemas for this connection.
+The schemas property has reached end of life support starting version 2025-05-30-preview.
+Please create and use a FlowProfile resource instead.
 
 ```yaml
 Type: ADT.Models.ISchema[]
@@ -466,7 +500,9 @@ Accept wildcard characters: False
 ```
 
 ### -SchemaUri
-The schema URIs for this connection
+The schema URIs for this connection.
+The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+Please create and use a FlowProfile resource instead.
 
 ```yaml
 Type: System.String[]

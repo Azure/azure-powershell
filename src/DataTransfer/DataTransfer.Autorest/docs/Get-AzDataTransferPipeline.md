@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataTransferPipeline
 
 ## SYNOPSIS
-Gets pipeline resource.
+Retrieves the specified Pipeline resource.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzDataTransferPipeline -ResourceGroupName <String> [-SubscriptionId <String[
 ```
 
 ## DESCRIPTION
-Gets pipeline resource.
+Retrieves the specified Pipeline resource.
 
 ## EXAMPLES
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name for the pipeline to perform the operation on.
+The name of the pipeline on which to operate.
 
 ```yaml
 Type: System.String
