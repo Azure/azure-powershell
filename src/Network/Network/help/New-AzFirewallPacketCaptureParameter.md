@@ -13,27 +13,42 @@ Create a Packet Capture Parameter for Azure Firewall
 ## SYNTAX
 
 ```
-New-AzFirewallPacketCaptureParameter -DurationInSeconds <UInt32> -NumberOfPacketsToCapture <UInt32>
- -SasUrl <String> -FileName <String> [-Protocol <String>] [-Flag <String[]>]
- -Filter <PSAzureFirewallPacketCaptureRule[]> [-DefaultProfile <IAzureContextContainer>]
+New-AzFirewallPacketCaptureParameter [-DurationInSeconds <UInt32>] [-NumberOfPacketsToCapture <UInt32>]
+ [-SasUrl <String>] [-FileName <String>] [-Protocol <String>] [-Flag <String[]>]
+ [-Filter <PSAzureFirewallPacketCaptureRule[]>] -Operation <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a Packet Capture Parameter for Azure Firewall
+Create a Packet Capture Parameter for Azure Firewall. The operation parameter is mandatory. All other parameters are only mandatory for Start operations and can be omitted for Status and Stop packet capture operations
 
 ## EXAMPLES
 
-### Example 1: Configuring Azure Firewall Packet Capture with Advanced Rules and Parameters
-```
+### Example 1: Configuring Azure Firewall Packet Capture with Advanced Rules and Parameters for start operation
+```powershell
 $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
 $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
-
 # Create the firewall packet capture parameters
-New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPacketsToCapture 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+$Params = New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPacketsToCapture 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 ```
 
-This creates the parameter for packet capture request with a set of rules.
+This creates the parameters used for starting a packet capture on the azure firewall
+
+### Example 2: Configuring Azure Firewall Packet Capture for status operation
+```powershell
+# Create the firewall packet capture parameters to check Status operation
+$Params = New-AzFirewallPacketCaptureParameter -Operation "Status" 
+```
+
+This creates the parameters used for getting the status of a packet capture operation on the azure firewall
+
+### Example 3: Configuring Azure Firewall Packet Capture for stop operation
+```powershell
+# Create the firewall packet capture parameters to check Status operation
+$Params = New-AzFirewallPacketCaptureParameter -Operation "Stop" 
+```
+
+This creates the parameters used for stopping a packet capture operation on the azure firewall 
 
 ## PARAMETERS
 
@@ -56,11 +71,11 @@ Accept wildcard characters: False
 The intended durations of packet capture in seconds
 
 ```yaml
-Type: System.UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -75,7 +90,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,7 +105,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPacketCaptureRule[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,9 +131,25 @@ Accept wildcard characters: False
 The intended number of packets to capture
 
 ```yaml
-Type: System.UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Operation
+The packet capture operation to run
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Start, Status, Stop
 
 Required: True
 Position: Named
@@ -151,7 +182,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -48,7 +48,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="radiusServerSecret">The radius secret property of the VirtualNetworkGateway resource for vpn
-        /// client connection.
+        /// client connection. We will no longer return radiusServerSecret in
+        /// VirtualNetworkGateway Create/Update/Get/List/UpdateTags APIs response.
+        /// Please use VirtualNetworkGateway ListRadiusSecrets API to fetch radius
+        /// server secrets.
         /// </param>
 
         /// <param name="radiusServers">The radiusServers property for multiple radius server configuration.
@@ -140,7 +143,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the radius secret property of the VirtualNetworkGateway
-        /// resource for vpn client connection.
+        /// resource for vpn client connection. We will no longer return
+        /// radiusServerSecret in VirtualNetworkGateway
+        /// Create/Update/Get/List/UpdateTags APIs response. Please use
+        /// VirtualNetworkGateway ListRadiusSecrets API to fetch radius server secrets.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "radiusServerSecret")]
         public string RadiusServerSecret {get; set; }
