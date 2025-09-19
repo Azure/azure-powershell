@@ -420,7 +420,7 @@ This command creates a Storage account that has Zone property as 1, and then sho
 ```powershell
 $account = New-AzStorageAccount -ResourceGroupName yifanz1 -Name testzonep5 -SkuName Premium_LRS -Location centraluseuap -Kind FileStorage -ZonePlacementPolicy None
 
-$account.ZonePLacementPolicy
+$account.ZonePlacementPolicy
 ```
 
 ```output
