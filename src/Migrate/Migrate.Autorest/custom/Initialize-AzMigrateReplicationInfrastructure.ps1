@@ -134,7 +134,8 @@ function Initialize-AzMigrateReplicationInfrastructure {
         Import-Module Az.Resources
         Import-Module Az.Storage
         Import-Module Az.RecoveryServices
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonSettings.ps1'
+        Import-Module $helperPath
         
         # Validate user specified target region
         $TargetRegion = $TargetRegion.ToLower()
