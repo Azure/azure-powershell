@@ -12,14 +12,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for ZonePlacementPolicyType.
+    /// Defines values for ScriptShellTypes.
     /// </summary>
-    public static class ZonePlacementPolicyType
+    public static class ScriptShellTypes
     {
-        public const string Any = "Any";
         /// <summary>
-        /// Automatic zone placement in a Virtual Machine Scale Set.
+        /// Default script shell type.
         /// </summary>
-        public const string Auto = "Auto";
+        public const string Default = "Default";
+        /// <summary>
+        /// Powershell7 script shell type.
+        /// </summary>
+        public const string Powershell7 = "Powershell7";
     }
 }

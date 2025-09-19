@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -45,13 +47,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="deleteOption">Specify what happens to the public IP
         /// when the VM is deleted. Possible values include: 'Delete',
         /// 'Detach'</param>
-        public VirtualMachineScaleSetUpdatePublicIPAddressConfiguration(string name = default(string), int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), SubResource publicIPPrefix = default(SubResource), string deleteOption = default(string))
+        /// <param name="tags">Resource tags applied to the publicIP address
+        /// created by this PublicIPAddressConfiguration</param>
+        public VirtualMachineScaleSetUpdatePublicIPAddressConfiguration(string name = default(string), int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), SubResource publicIPPrefix = default(SubResource), string deleteOption = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Name = name;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             DnsSettings = dnsSettings;
             PublicIPPrefix = publicIPPrefix;
             DeleteOption = deleteOption;
+            Tags = tags;
             CustomInit();
         }
 
@@ -92,6 +97,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.deleteOption")]
         public string DeleteOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags applied to the publicIP address created
+        /// by this PublicIPAddressConfiguration
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Validate the object.
