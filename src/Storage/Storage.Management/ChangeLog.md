@@ -28,6 +28,9 @@
     - `Set-AzStorageAccount`
 * Supported Enable Metrics when set object replication policy 
     - `Set-AzStorageObjectReplicationPolicy`
+* Supported create and get symbolic link in NFS File Share
+    - `New-AzStorageFileSymbolicLink`
+    - `Get-AzStorageFileSymbolicLink`
 
 ## Version 9.1.0
 * Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
