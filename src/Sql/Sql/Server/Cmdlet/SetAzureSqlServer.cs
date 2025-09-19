@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0 to 35. If set to 0, soft-delete retention is disabled.")]
         [PSArgumentCompleter("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35")]
-        public int? RetentionDays { get; set; }
+        public int? SoftDeleteRetentionDays { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -147,6 +147,19 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            // SoftDeleteRetentionDays depends on EnableSoftDeleteRetention; if days are provided but soft-delete is not enabled, fail early.
+            if (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays > 0 && !this.EnableSoftDeleteRetention)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingEnableSoftDeleteRetention, "EnableSoftDeleteRetention");
+            }
+
+            base.ExecuteCmdlet();
+        }
         /// <summary>
         /// Get the server to update
         /// </summary>
@@ -185,7 +198,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
-            updateData[0].RetentionDays = this.EnableSoftDeleteRetention ? (this.RetentionDays ?? 7) : (int?)null;
+            updateData[0].SoftDeleteRetentionDays = this.EnableSoftDeleteRetention ? (this.SoftDeleteRetentionDays ?? 7) : this.SoftDeleteRetentionDays ==0 ? 0 : (int?)null;
 
             return updateData;
         }

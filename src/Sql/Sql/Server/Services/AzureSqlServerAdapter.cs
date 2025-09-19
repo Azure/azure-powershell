@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
                 FederatedClientId = model.FederatedClientId,
-                RetentionDays = model.RetentionDays,
+                RetentionDays = model.SoftDeleteRetentionDays,
                 CreateMode = model.CreateMode,
             });
 
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
             server.KeyId = resp.KeyId;
             server.FederatedClientId = resp.FederatedClientId;
-            server.RetentionDays = resp.RetentionDays;
+            server.SoftDeleteRetentionDays = resp.RetentionDays;
 
             return server;
         }

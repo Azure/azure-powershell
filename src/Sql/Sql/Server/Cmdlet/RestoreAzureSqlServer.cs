@@ -99,10 +99,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 var deletedServer = ModelAdapter.GetDeletedServer(this.ResourceGroupName, this.ServerName);
                 if (deletedServer == null)
                 {
-                    throw new PSArgumentException(
-                        string.Format("No deleted server named '{0}' found in resource group '{1}' that can be restored.",
-                        this.ServerName, this.ResourceGroupName),
-                        "ServerName");
+                   throw new PSArgumentException(
+                       string.Format("No deleted server named '{0}' found in resource group '{1}' that can be restored.",
+                       this.ServerName, this.ResourceGroupName),
+                       "ServerName");
                 }
 
                 // Deleted server exists and can be restored

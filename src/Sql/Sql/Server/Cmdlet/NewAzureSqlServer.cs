@@ -194,6 +194,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
             }
 
+            // SoftDeleteRetentionDays depends on EnableSoftDeleteRetention; if days are provided but soft-delete is not enabled, fail early.
+            if (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays > 0 && !this.EnableSoftDeleteRetention)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingEnableSoftDeleteRetention, "EnableSoftDeleteRetention");
+            }
+
             base.ExecuteCmdlet();
         }
 
@@ -260,7 +266,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
                 },
-                RetentionDays = (this.EnableSoftDeleteRetention && !this.SoftDeleteRetentionDays.HasValue) ? 7 : this.SoftDeleteRetentionDays
+                SoftDeleteRetentionDays = (this.EnableSoftDeleteRetention && !this.SoftDeleteRetentionDays.HasValue) ? 7 : this.SoftDeleteRetentionDays
             });
             return newEntity;
         }

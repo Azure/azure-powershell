@@ -103,6 +103,60 @@ PrimaryUserAssignedIdentityId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
 
 This command creates a version 12 Azure SQL Database server with TDE CMK enabled.
 
+### Example 4: Create a new Azure SQL Database server with soft delete retention enabled with default retention days
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDeleteRetention $true
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : server01
+Location                      : centralus
+SqlAdministratorLogin         : ramtest
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             :
+SoftDeleteRetentionDays       : 7
+```
+
+This command creates a version 12 Azure SQL Database server with soft-delete retention enabled (default 7 days).
+
+### Example 5: Create a new Azure SQL Database server with soft delete retention enabled with 30 retention days
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDeleteRetention $true -SoftDeleteRetentionDays 30
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : server01
+Location                      : centralus
+SqlAdministratorLogin         : ramtest
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             :
+SoftDeleteRetentionDays       : 30
+```
+
+This command creates a version 12 Azure SQL Database server with soft-delete retention set to 30 days.
+
 ## PARAMETERS
 
 ### -AsJob

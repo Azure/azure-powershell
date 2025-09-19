@@ -670,6 +670,9 @@
   <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
     <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
   </data>
+  <data name="MissingEnableSoftDeleteRetention" xml:space="preserve">
+    <value>EnableSoftDeleteRetention must be provided when SoftDeleteRetentionDays is set to a value greater than 0.</value>
+  </data>
   <data name="RemoveAzureSqlServerOutboundFirewallRuleDescription" xml:space="preserve">
     <value>Permanently removing allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'.</value>
   </data>

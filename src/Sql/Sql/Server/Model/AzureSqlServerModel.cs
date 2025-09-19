@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// <summary>
         /// Gets or sets a value for the soft-delete retention days for the server
         /// </summary>
-        public int? RetentionDays { get; set; }
+        public int? SoftDeleteRetentionDays { get; set; }
 
         /// <summary>
         /// Sets a value for the create mode for the server
