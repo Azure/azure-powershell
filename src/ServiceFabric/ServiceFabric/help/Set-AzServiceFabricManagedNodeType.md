@@ -25,8 +25,8 @@ Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] 
  [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
  [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-Capacity <Hashtable>]
  [-PlacementProperty <Hashtable>] [-VmSize <String>] [-ZoneBalance <Boolean>]
- [-EnableOverProvisioning <Boolean>] [-Zones <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableOverProvisioning <Boolean>] [-Zone <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ReimageByName
@@ -406,9 +406,23 @@ Accept wildcard characters: False
 ### -VmSize
 The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.
 
-
 ```yaml
 Type: System.String
+Parameter Sets: WithParamsByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: WithParamsByName
 Aliases:
 
@@ -424,21 +438,6 @@ Setting this to true allows stateless node types to scale out without equal dist
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: WithParamsByName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Zones
-Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
-
-```yaml
-Type: System.String[]
 Parameter Sets: WithParamsByName
 Aliases:
 

@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public bool? EnableOverProvisioning { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.")]
-        public string[] Zones { get; set; }
+        public List<string> Zone { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
@@ -261,9 +262,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentNodeType.EnableOverProvisioning = this.EnableOverProvisioning.Value;
             }
 
-            if (this.Zones != null && this.Zones.Length > 0)
+            if (this.Zone != null && this.Zone.Count > 0)
             {
-                currentNodeType.Zones = this.Zones.ToList();
+                currentNodeType.Zones = this.Zone;
             }
 
             return currentNodeType;

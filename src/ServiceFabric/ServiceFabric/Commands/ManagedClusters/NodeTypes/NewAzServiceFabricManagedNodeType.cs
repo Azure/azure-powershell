@@ -13,6 +13,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public SwitchParameter EnableOverProvisioning { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.")]
-        public string[] Zones { get; set; }
+        public List<string> Zone { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
@@ -198,9 +199,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 newNodeType.MultiplePlacementGroups = this.MultiplePlacementGroup.IsPresent;
             }
 
-            if (this.Zones != null && this.Zones.Length > 0)
+            if (this.Zone != null && this.Zone.Count > 0)
             {
-                newNodeType.Zones = this.Zones.ToList();
+                newNodeType.Zones = this.Zone;
             }
 
             if (this.ZoneBalance.IsPresent)

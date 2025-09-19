@@ -18,8 +18,9 @@ New-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] 
  [-ApplicationEndPort <Int32>] [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-VmSize <String>]
  [-VmImagePublisher <String>] [-VmImageOffer <String>] [-VmImageSku <String>] [-VmImageVersion <String>]
  [-Capacity <Hashtable>] [-PlacementProperty <Hashtable>] [-VmUserAssignedIdentity <String[]>] [-IsStateless]
- [-MultiplePlacementGroup] [-ZoneBalance] [-EnableOverProvisioning] [-Zones <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MultiplePlacementGroup] [-ZoneBalance] [-EnableOverProvisioning]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -443,11 +444,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ZoneBalance
-Setting this to true allows stateless node types to scale out without equal distribution across zones.
+### -Zone
+Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -458,11 +459,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Zones
-Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
+### -ZoneBalance
+Setting this to true allows stateless node types to scale out without equal distribution across zones.
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -76,7 +76,7 @@ function Test-NodeTypeUpdate
 	Assert-AreEqual "Wave1" $cluster.ClusterUpgradeCadence
 
 	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary -DiskType Premium_LRS -VmSize "Standard_DS2" -AsJob
-	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -InstanceCount 6 -Zones @("1", "2") -ZoneBalance -EnableOverProvisioning -IsStateless -AsJob
+	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -InstanceCount 6 -Zone @("1", "2") -ZoneBalance -EnableOverProvisioning -IsStateless -AsJob
 
 	#wait for nodetypes
 	WaitForAllJob
@@ -92,7 +92,7 @@ function Test-NodeTypeUpdate
 	Assert-True { $snt.EnableOverProvisioning }
 	Assert-True { $snt.ZoneBalance }
 
-	$snt = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -Zones @("1", "2", "3")
+	$snt = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -Zone @("1", "2", "3")
 	Assert-AreEqual 3 $snt.Zones.Count
 
 	$snt = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -ZoneBalance $false -EnableOverProvisioning $false
