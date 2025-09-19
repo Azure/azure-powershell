@@ -28,6 +28,7 @@
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
 * Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.
+* Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
 
 ## Version 10.2.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
@@ -51,8 +52,8 @@
 
 ## Version 10.0.0
 * Added new properties `Architecture`, `HyperVGeneration`, and `ImageDeprecationStatus` to be returned in `Get-AzVMImage` ListVMImage parameter set.
-* Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set.
-* Added new parameters `EnableAutomaticZoneRebalance`, `AutomaticZoneRebalanceStrategy` and `AutomaticZoneRebalanceBehavior` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Rebalancing.
+* Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set. 
+* Added new parameters `EnableAutomaticZoneRebalance`, `AutomaticZoneRebalanceStrategy` and `AutomaticZoneRebalanceBehavior` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Rebalancing. 
 
 ## Version 9.3.0
 * Added new cmdlets `Add-AzVmssSkuProfileVMSize` and `Remove-AzVmssSkuProfileVMSize` to add and remove VM sizes to and from the VMSS SkuProfile.

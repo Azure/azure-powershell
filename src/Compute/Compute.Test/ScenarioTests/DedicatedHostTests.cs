@@ -51,5 +51,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DedicatedHostUpdateAndSize");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDedicatedHostRedeploy()
+        {
+            TestRunner.RunTestScript("Test-DedicatedHostRedeploy");
+        }
     }
 }
