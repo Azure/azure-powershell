@@ -19,9 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageDiscovery", "StorageDiscovery\StorageDiscovery.csproj", "{E9E742E3-F685-4352-98F0-2E7371AE69B1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StorageDiscovery.Autorest", "StorageDiscovery.Autorest", "{A3A293A0-CC6B-7EBD-D75E-757575894D50}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageDiscovery", "..\..\generated\StorageDiscovery\StorageDiscovery.Autorest\Az.StorageDiscovery.csproj", "{70595303-31C3-4C27-B382-4DA985505546}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageDiscovery", "StorageDiscovery.Autorest\Az.StorageDiscovery.csproj", "{39642BFC-E2C0-4640-AC5C-976870AD4471}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,18 +115,18 @@ Global
 		{E9E742E3-F685-4352-98F0-2E7371AE69B1}.Release|x64.Build.0 = Release|Any CPU
 		{E9E742E3-F685-4352-98F0-2E7371AE69B1}.Release|x86.ActiveCfg = Release|Any CPU
 		{E9E742E3-F685-4352-98F0-2E7371AE69B1}.Release|x86.Build.0 = Release|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Debug|x64.Build.0 = Debug|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Debug|x86.Build.0 = Debug|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Release|x64.ActiveCfg = Release|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Release|x64.Build.0 = Release|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Release|x86.ActiveCfg = Release|Any CPU
-		{70595303-31C3-4C27-B382-4DA985505546}.Release|x86.Build.0 = Release|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Debug|x64.Build.0 = Debug|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Debug|x86.Build.0 = Debug|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Release|x64.ActiveCfg = Release|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Release|x64.Build.0 = Release|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Release|x86.ActiveCfg = Release|Any CPU
+		{39642BFC-E2C0-4640-AC5C-976870AD4471}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +138,5 @@ Global
 		{F93560A3-FC63-4E06-A715-597F0A478740} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
 		{2F9DA2FC-0924-49B4-A517-C67A143D7913} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
 		{74E15915-CE18-42BE-B242-150C35CB4F96} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
-		{70595303-31C3-4C27-B382-4DA985505546} = {A3A293A0-CC6B-7EBD-D75E-757575894D50}
 	EndGlobalSection
 EndGlobal

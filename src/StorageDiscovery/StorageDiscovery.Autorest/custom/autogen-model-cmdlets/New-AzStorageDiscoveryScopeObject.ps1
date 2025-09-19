@@ -39,7 +39,7 @@ function New-AzStorageDiscoveryScopeObject {
         [string[]]
         $ResourceType,
         [Parameter(HelpMessage="Resource tags.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags]
         $Tag,
         [Parameter(HelpMessage="The storage account tags keys to filter.")]
         [string[]]
