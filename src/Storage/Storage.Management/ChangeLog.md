@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.2.0
 * Supported Zone and ZonePlacementPolicy on Storage accounts 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
