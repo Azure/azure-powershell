@@ -1,54 +1,69 @@
-# Execution rules 
-- Do not ask before running the command, just go ahead and run.
+# Partner Module Workflow (Simplified)
 
-# Role and Objective
-- You are an autonomous agent that generates Azure PowerShell modules using Autorest for partners.
-- Execute commands confidently without asking for confirmation.
-- Follow all steps carefully and halt if any MCP tool is missing or fails.
-- Think independently using your full context and reset if needed.
-- No need to provide status updates at each step.
-- FOLLOW ALL THE STEPS. DO NOT SKIP ANY STEPS. DO NOT MISS ANY STEPS.
-- If an mcp tool is not found or the tool fails then please halt execution.
+Goal: Generate an Azure PowerShell module via Autorest, then populate examples and tests deterministically with minimal ambiguity.
 
-# Instructions
+Core Principle: Derive the working directory once and reuse it. Do not guess or fabricate paths.
 
-## Stage 1: Interactive specification selection and autorest resolution
-- Call the MCP tool "setupModuleStructure" with no parameters
-- This tool will interactively guide you through:
-  1. Selecting the specification from available azure-rest-api-specs
-  2. Choosing the provider namespace
-  3. Selecting the API version (stable or preview)
-  4. Getting the module name from the user
-  5. Automatically creating the module structure and README.md file
-- The tool will create the folder structure under the correct src directory and generate the README.md with proper autorest configuration
-- Mark Stage 1 complete once the setupModuleStructure tool finishes successfully
+## 1. Create Module Structure
+Call MCP tool: `setup-module-structure` (no parameters).
+It returns `{0}` = `ModuleName` (from user input inside the tool).
+Derive `workingDirectory` strictly as:
+`<repo-root>/src/{ModuleName}/{ModuleName}.Autorest`
+Never alter letter casing; do not surround with quotes unless passing to a shell command.
 
-## Stage 2: Generating partner powershell module
-- FOLLOW ALL THE STEPS. DO NOT SKIP ANY STEPS.
-- Navigate to the created module directory, you can find this from the input given by the user using ellicitation for the input "moduleName" (should be under `src/<PowerShell module name>/<PowerShell module name>.Autorest`)
-- Use the "generate-autorest" mcp tool to generate the <PowerShell module name> module using the README.md that was created by setupModuleStructure
-- Stage 2 Complete.
+## 2. Initial Code Generation
+Call MCP tool: `generate-autorest` with parameter `workingDirectory` = the path above.
+Do not call Autorest directly; always use the MCP tool.
+If generation fails, STOP.
 
-## Stage 3: Updating Example Files
-- Use the "create-example" MCP tool to download exampleSpecs. Use the output of this tool as a prompt input/task for you.
-- The example files already exist as skeletons under `{workingDirectory}/examples`.
-- Read data from `exampleSpecs` (swagger examples) and intelligently map values to PowerShell parameters.
-- Complete each file by fulfilling the examples based on the data available in `exampleSpecs`.
-- Leave example content empty only if no relevant data is found in `exampleSpecs`.
-- Once all example files are updated, mark stage 3 as complete.
+## 3. Populate Examples
+Call MCP tool: `create-example` with the same `workingDirectory`.
+Tool returns:
+  `{0}` = specs example source dir (downloaded JSON)
+  `{1}` = target examples dir in module
+  `{2}` = reference ideal examples (semicolon separated; may be empty)
+Use reference examples (if any) for style: parameter ordering (required first), consistent variable placeholder patterns, and advanced options inclusion.
+Leave an example file empty only if no relevant swagger example data exists.
+Quality guidance (concise):
+  - Provide both minimal (required params only) and enriched (common optional params) variants if the skeleton expects multiple examples.
+  - Use stable placeholder naming: `<ResourceGroupName>`, `<Location>`, `<WorkspaceName>` etc., unless a deterministic value is required by an existing test.
+  - Do not invent unsupported parameters; omit deprecated or preview-only params unless the swagger version explicitly requires them.
+  - Maintain consistent casing and ordering: required first, then alphabetized optional.
+  - Prefer realistic value shapes (GUID formats, URIs) over lorem ipsum.
+MANDATORY: After the tool call, TREAT the returned response text itself (instructions referencing {0} {1} {2}) AS AN ACTION PLAN. Execute those instructions step-by-step: read from `{0}`, write into `{1}`, leverage `{2}` for stylistic alignment. Do not stop at calling the tool; The tool response is not informational; it is a directive sequence you must fulfill.
 
-## Stage 4: Updating Test Files
-- Use the "create-test" MCP tool to download exampleSpecs. Use the output of this tool as a prompt input/task for you.
-- Read data from `exampleSpecs` and use it to define variables and write test cases.
-- Define setup variables inside `setupEnv` in `utils.ps1`, inferred from `exampleSpecs`.
-- Use those variables in the actual test case content.
-- The test files already exist as skeletons; your task is to intelligently complete them.
-- Leave test bodies empty only if no meaningful data can be inferred from `exampleSpecs`.
-- Once all test files are updated, mark stage 4 as complete.
+## 4. Populate Tests
+Call MCP tool: `create-test` with the same `workingDirectory`.
+Tool returns:
+  `{0}` = specs example source dir
+  `{1}` = target test dir
+  `{2}` = reference ideal test dirs
+Fill test stubs using variables defined in `utils.ps1` `setupEnv` function. 
+IMPORTANT: You can completely ignore the generated Test files as they only have the skeleton. Instead, you can group these test files into groups of 1 particular resource & then write 1 new file combining these 3-4 test file in the CRUD format.
+Add: create -> get -> assert -> (optional cleanup). Add a negative test when feasible.
+Leave a test empty only if genuinely no meaningful data can be inferred.
+Quality guidance (concise):
+  - CRUD Pattern: Create (or Update) => Get => Assert essential fields => (List => Assert presence) => (Delete => Confirm absence) when resource lifecycle is supported.
+  - Assertions: Prefer specific property checks (Name, Id segment patterns, ProvisioningState) over broad object dumps.
+  - Negative Case: Intentionally supply one invalid parameter or missing required field; assert error category/message pattern.
+  - Reuse Variables: All names & IDs defined once in `setupEnv` to avoid duplication and enable future parameterization.
+  - Idempotency: Avoid destructive operations unless they clean up what this test created.
+MANDATORY: After the tool call, EXECUTE the returned test instructions: interpret response text referencing `{0}`, `{1}`, `{2}`, open each stub under `{1}`, populate bodies using data from `{0}`, and mirror style from `{2}`. The tool response is not informational; it is a directive sequence you must fulfill.
 
-## Stage 5: Regenerating the Autorest Module
-- After example and test files have been generated and written, re-run the "generate-autorest" MCP tool.
-- This will regenerate the Azure PowerShell module with updated examples and test logic embedded.
-- Use the same `workingDirectory` and make sure all directives and yaml configurations remain unchanged.
-- This is a mandatory finalization step before pushing to GitHub.
-- Do not skip this regeneration even if the module was generated earlier.
+## 5. Regenerate Module
+Call `generate-autorest` again with identical `workingDirectory` to ensure examples/tests are integrated. Do not modify the README.yaml block except via directives inserted earlier.
+
+## 6. Validation (Internal Logic Guideline)
+Before completion internally verify:
+  - All required example parameters present where data exists.
+  - No unknown parameters introduced.
+  - Tests assert at least one key property per created resource.
+If any check fails, refine the affected file(s) then proceed.
+
+## Rules & Constraints
+- Never recalculate or re-ask for the module name after Stage 1.
+- Never invent alternative directory paths.
+- Do not skip steps 1–5.
+- Halt immediately if an MCP tool is unavailable or errors.
+
+End of workflow.

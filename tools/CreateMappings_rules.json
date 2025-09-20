@@ -979,5 +979,45 @@
   {
     "module": "DependencyMap",
     "alias": "DependencyMap"
+  },
+  {
+    "alias": "YashMaps",
+    "module": "YashMaps"
+  },
+  {
+    "alias": "YashMaps2",
+    "module": "YashMaps2"
+  },
+  {
+    "alias": "TestArizeAI",
+    "module": "TestArizeAI"
+  },
+  {
+    "alias": "TestData",
+    "module": "TestData"
+  },
+  {
+    "alias": "YashMaps3",
+    "module": "YashMaps3"
+  },
+  {
+    "alias": "YashMaps4",
+    "module": "YashMaps4"
+  },
+  {
+    "alias": "YashMaps5",
+    "module": "YashMaps5"
+  },
+  {
+    "alias": "YashMaps6",
+    "module": "YashMaps6"
+  },
+  {
+    "alias": "TestPinecone",
+    "module": "TestPinecone"
+  },
+  {
+    "module": "YashMaps7",
+    "alias": "YashMaps7"
   }
 ]

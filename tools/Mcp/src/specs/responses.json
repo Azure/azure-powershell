@@ -22,12 +22,12 @@
     {
         "name": "create-example",
         "type": "tool",
-        "text": "Read examples from specs under {0}. Fulfill examples under {1}. You are expert in Azure-PowerShell and Autorest.PowerShell. Leave example as empty if you don't find any matches. You know how to map data from {0} to {1}"
+        "text": "Read examples from specs under {0}. Fulfill examples under {1}. Also leverage high-quality reference examples located in directories: {2} (semicolon-separated). When generating, mirror parameter naming, structure, and advanced option usage patterns seen in those reference examples when applicable. Produce minimal yet complete runnable examples; omit unknown or deprecated params. Leave example empty only if no relevant mapping exists."
     },
     {
         "name": "create-test",
         "type": "tool",
-        "text": "Read examples from specs are under {0}. Implement empty test stubs under {1}. Test stubs are named as '.Test.ps1'. Define variables in function 'setupEnv' in 'utils.ps1' under {1}, and use these variables for test cases. Value of these variables are from {0}. Leave test cases as empty if you don't find any matches. You are expert in Azure-PowerShell and Autorest.PowerShell, You know how to map data from {0} to {1}. "
+        "text": "Read examples from specs under {0}. Implement test stubs under {1}. Reference high-quality existing tests from directories: {2} (semicolon-separated) to replicate assertion style, variable patterns, and setup/teardown conventions. Test stubs are named '.Test.ps1'. Populate 'setupEnv' in 'utils.ps1' with variables derived from {0} examples; reuse them across tests. For each CRUD operation: (1) Create/Update then Get and assert key properties, (2) List and validate presence, (3) Clean up if destructive. Add one negative test if feasible (invalid parameter) asserting specific error type/message. Leave a stub empty only if absolutely no relevant example data exists."
     },
     {
         "name": "setup-module-structure",

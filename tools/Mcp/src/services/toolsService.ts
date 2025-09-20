@@ -161,14 +161,16 @@ export class ToolsService {
                 console.error(`Error eliciting input for example ${name}:`, error);
             }
         }
-        return [exampleSpecsPath, examplePath];
+        const idealExamplePaths = utils.getIdealModuleExamplePaths();
+        return [exampleSpecsPath, examplePath, idealExamplePaths];
     }
 
     createTestsFromSpecs = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
         const workingDirectory = z.string().parse(Object.values(args)[0]);
         const testPath = path.join(workingDirectory, "test");
         const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
-        return [exampleSpecsPath, testPath];
+        const idealTestPaths = utils.getIdealModuleTestPaths();
+        return [exampleSpecsPath, testPath, idealTestPaths];
     }
 
     setupModuleStructure = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
@@ -271,7 +273,7 @@ export class ToolsService {
             });
 
             const moduleNameResponse = await this._server!.elicitInput({
-                message: `Configuration resolved:\n- Service: ${selectedService}\n- Provider: ${selectedProvider}\n- Version: ${selectedVersion} (${selectedStability})\n- Service Name: ${resolved.serviceName}\n- Commit ID: ${resolved.commitId}\n- Service Specs: ${resolved.serviceSpecs}\n- Swagger File: ${resolved.swaggerFileSpecs}`,
+                message: `What would you like call the powershell module? \n\n Configuration resolved:\n- Service: ${selectedService}\n- Provider: ${selectedProvider}\n- Version: ${selectedVersion} (${selectedStability})\n- Service Name: ${resolved.serviceName}\n- Commit ID: ${resolved.commitId}\n- Service Specs: ${resolved.serviceSpecs}\n- Swagger File: ${resolved.swaggerFileSpecs}`,
                 requestedSchema: {
                     type: "object",
                     properties: {

@@ -3,6 +3,7 @@ import yaml from "js-yaml";
 import { yamlContent } from '../types.js';
 import { execSync } from 'child_process';
 import path from 'path';
+import { Dirent } from 'fs';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const REST_API_SPECS_OWNER = 'Azure';
@@ -367,6 +368,50 @@ export async function writeFileIfNotExists(filePath: string, content: string): P
     } catch (error) {
         console.error(`Error writing file ${filePath}:`, error);
         throw error;
+    }
+}
+
+export function getIdealModuleExamplePaths(): string {
+    const idealModulesRoot = path.join(process.cwd(), 'src', 'ideal-modules');
+    try {
+        if (!fs.existsSync(idealModulesRoot)) {
+            return '';
+        }
+        const modules: Dirent[] = fs.readdirSync(idealModulesRoot, { withFileTypes: true });
+        const exampleDirs: string[] = [];
+        for (const mod of modules) {
+            if (!mod.isDirectory()) continue;
+            const candidate = path.join(idealModulesRoot, mod.name, 'examples');
+            if (fs.existsSync(candidate)) {
+                exampleDirs.push(candidate);
+            }
+        }
+        return exampleDirs.join(';');
+    } catch (err) {
+        console.error('Error collecting ideal module example paths:', err);
+        return '';
+    }
+}
+
+export function getIdealModuleTestPaths(): string {
+    const idealModulesRoot = path.join(process.cwd(), 'src', 'ideal-modules');
+    try {
+        if (!fs.existsSync(idealModulesRoot)) {
+            return '';
+        }
+        const modules: Dirent[] = fs.readdirSync(idealModulesRoot, { withFileTypes: true });
+        const testDirs: string[] = [];
+        for (const mod of modules) {
+            if (!mod.isDirectory()) continue;
+            const candidate = path.join(idealModulesRoot, mod.name, 'tests');
+            if (fs.existsSync(candidate)) {
+                testDirs.push(candidate);
+            }
+        }
+        return testDirs.join(';');
+    } catch (err) {
+        console.error('Error collecting ideal module test paths:', err);
+        return '';
     }
 }
 
