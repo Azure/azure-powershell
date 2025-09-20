@@ -783,6 +783,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EnableSoftDeleteRetention must be provided when SoftDeleteRetentionDays is set to a value greater than 0..
+        /// </summary>
+        internal static string MissingEnableSoftDeleteRetention {
+            get {
+                return ResourceManager.GetString("MissingEnableSoftDeleteRetention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication..
         /// </summary>
         internal static string MissingExternalAdmin {

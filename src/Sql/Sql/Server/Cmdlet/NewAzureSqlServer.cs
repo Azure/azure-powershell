@@ -159,6 +159,27 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Soft-delete retention days for the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies whether or not soft-delete retention is enabled for the server.")]
+        public bool EnableSoftDeleteRetention { get; set; } = false;
+
+        /// <summary>
+        /// Soft-delete retention days for the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the soft-delete retention days for the server.")]
+        public int? SoftDeleteRetentionDays { get; set; }
+
+        /// <summary>
+        /// Soft-delete retention days for the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the create mode for the server, valid values for this parameter are \"Normal\" and \"Restore\".")]
+        public string CreateMode { get; set; } = "Normal";
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -171,6 +192,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             if (!this.EnableActiveDirectoryOnlyAuthentication.IsPresent && this.SqlAdministratorCredentials == null)
             {
                 throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
+            }
+
+            // SoftDeleteRetentionDays depends on EnableSoftDeleteRetention; if days are provided but soft-delete is not enabled, fail early.
+            if (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays > 0 && !this.EnableSoftDeleteRetention)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingEnableSoftDeleteRetention, "EnableSoftDeleteRetention");
             }
 
             base.ExecuteCmdlet();
@@ -238,7 +265,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                     AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
-                }              
+                },
+                SoftDeleteRetentionDays = (this.EnableSoftDeleteRetention && !this.SoftDeleteRetentionDays.HasValue) ? 7 : this.SoftDeleteRetentionDays
             });
             return newEntity;
         }
