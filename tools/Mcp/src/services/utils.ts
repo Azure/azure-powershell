@@ -82,9 +82,6 @@ export async function getSwaggerContentFromUrl(swaggerUrl: string): Promise<any>
     }
 }
 
-/**
- * GitHub helper: get latest commit SHA for azure-rest-api-specs main branch
- */
 export async function getSpecsHeadCommitSha(branch: string = 'main'): Promise<string> {
     const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/branches/${branch}`;
     const res = await fetch(url);
@@ -95,9 +92,6 @@ export async function getSpecsHeadCommitSha(branch: string = 'main'): Promise<st
     return data?.commit?.sha as string;
 }
 
-/**
- * List top-level service directories under specification/
- */
 export async function listSpecModules(): Promise<string[]> {
     const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/specification`;
     const res = await fetch(url);
@@ -111,9 +105,6 @@ export async function listSpecModules(): Promise<string[]> {
         .sort((a: string, b: string) => a.localeCompare(b));
 }
 
-/**
- * Given a service (spec folder), list provider namespaces under resource-manager.
- */
 export async function listProvidersForService(service: string): Promise<string[]> {
     const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/specification/${service}/resource-manager`;
     const res = await fetch(url);
@@ -128,10 +119,6 @@ export async function listProvidersForService(service: string): Promise<string[]
         .sort((a: string, b: string) => a.localeCompare(b));
 }
 
-/**
- * For service + provider, list API version directories under stable/ and preview/.
- * Returns map: { stable: string[], preview: string[] }
- */
 export async function listApiVersions(service: string, provider: string): Promise<{ stable: string[]; preview: string[] }> {
     const base = `specification/${service}/resource-manager/${provider}`;
     const folders = ['stable', 'preview'] as const;
@@ -153,10 +140,6 @@ export async function listApiVersions(service: string, provider: string): Promis
     return result;
 }
 
-/**
- * For a given service/provider/version, find likely swagger files (.json) under that version path.
- * Returns array of repo-relative file paths (starting with specification/...).
- */
 export async function listSwaggerFiles(service: string, provider: string, stability: 'stable'|'preview', version: string): Promise<string[]> {
     const dir = `specification/${service}/resource-manager/${provider}/${stability}/${version}`;
     const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/${dir}`;
@@ -173,9 +156,6 @@ export async function listSwaggerFiles(service: string, provider: string, stabil
     return ordered;
 }
 
-/**
- * Resolve the four Autorest inputs given service, provider, and version path.
- */
 export async function resolveAutorestInputs(params: {
     service: string;
     provider: string;

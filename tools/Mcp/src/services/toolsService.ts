@@ -5,12 +5,6 @@ import path from 'path';
 import { get, RequestOptions } from 'http';
 import { toolParameterSchema } from '../types.js';
 import { CodegenServer } from '../CodegenServer.js';
-import {
-    listSpecModules,
-    listProvidersForService,
-    listApiVersions,
-    resolveAutorestInputs
-} from './utils.js';
 
 export class ToolsService {
     private static _instance: ToolsService;
@@ -180,7 +174,7 @@ export class ToolsService {
     setupModuleStructure = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
         try {
             // List available services with dropdown
-            const modules = await listSpecModules();
+            const modules = await utils.listSpecModules();
             const serviceResponse = await this._server!.elicitInput({
                 message: `Select an Azure service from the dropdown below:`,
                 requestedSchema: {
@@ -202,7 +196,7 @@ export class ToolsService {
             }
 
             // List providers for the selected service with dropdown
-            const providers = await listProvidersForService(selectedService);
+            const providers = await utils.listProvidersForService(selectedService);
             if (providers.length === 0) {
                 throw new Error(`No providers found for service '${selectedService}'`);
             }
@@ -228,7 +222,7 @@ export class ToolsService {
             }
 
             // List API versions with dropdown combining version and stability
-            const apiVersions = await listApiVersions(selectedService, selectedProvider);
+            const apiVersions = await utils.listApiVersions(selectedService, selectedProvider);
             const allVersions = [
                 ...apiVersions.stable.map(v => ({ version: v, stability: 'stable' as const })),
                 ...apiVersions.preview.map(v => ({ version: v, stability: 'preview' as const }))
@@ -269,7 +263,7 @@ export class ToolsService {
             const selectedStability = versionMatch[2] as 'stable' | 'preview';
 
             // Resolve Readme placeholder values based on Responses
-            const resolved = await resolveAutorestInputs({
+            const resolved = await utils.resolveAutorestInputs({
                 service: selectedService,
                 provider: selectedProvider,
                 stability: selectedStability,
