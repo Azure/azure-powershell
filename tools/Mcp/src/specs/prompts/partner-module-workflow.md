@@ -25,7 +25,7 @@
 
 ## Stage 2: Generating partner powershell module
 - FOLLOW ALL THE STEPS. DO NOT SKIP ANY STEPS.
-- Navigate to the newly created module directory (should be under `src/<PowerShell module name>/<PowerShell module name>.Autorest`)
+- Navigate to the created module directory, you can find this from the input given by the user using ellicitation for the input "moduleName" (should be under `src/<PowerShell module name>/<PowerShell module name>.Autorest`)
 - Use the "generate-autorest" mcp tool to generate the <PowerShell module name> module using the README.md that was created by setupModuleStructure
 - Stage 2 Complete.
 

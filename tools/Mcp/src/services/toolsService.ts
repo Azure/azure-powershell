@@ -316,18 +316,7 @@ export class ToolsService {
             // Write README.md file
             await utils.writeFileIfNotExists(readmePath, readmeContent);
 
-            return [
-                selectedService,
-                selectedProvider,
-                selectedVersion,
-                selectedStability,
-                resolved.serviceName,
-                resolved.commitId,
-                resolved.serviceSpecs,
-                resolved.swaggerFileSpecs,
-                moduleName,
-                autorestPath
-            ];
+            return [moduleName];
 
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : String(error);
