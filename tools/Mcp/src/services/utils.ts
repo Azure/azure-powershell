@@ -364,6 +364,32 @@ export function unflattenJsonObject(keyValuePairs: Array<{ key: string; value: a
     return result;
 }
 
+export async function createDirectoryIfNotExists(dirPath: string): Promise<void> {
+    try {
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+            console.log(`Created directory: ${dirPath}`);
+        }
+    } catch (error) {
+        console.error(`Error creating directory ${dirPath}:`, error);
+        throw error;
+    }
+}
+
+export async function writeFileIfNotExists(filePath: string, content: string): Promise<void> {
+    try {
+        if (!fs.existsSync(filePath)) {
+            fs.writeFileSync(filePath, content, 'utf8');
+            console.log(`Created file: ${filePath}`);
+        } else {
+            console.log(`File already exists: ${filePath}`);
+        }
+    } catch (error) {
+        console.error(`Error writing file ${filePath}:`, error);
+        throw error;
+    }
+}
+
 
 
 

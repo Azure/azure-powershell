@@ -48,17 +48,8 @@ export class ToolsService {
             case "createTestsFromSpecs":
                 func = this.createTestsFromSpecs<Args>;
                 break;
-            case "listSpecModules":
-                func = this.toolListSpecModules<Args>;
-                break;
-            case "listProvidersForService":
-                func = this.toolListProvidersForService<Args>;
-                break;
-            case "listApiVersions":
-                func = this.toolListApiVersions<Args>;
-                break;
-            case "resolveAutorestInputs":
-                func = this.toolResolveAutorestInputs<Args>;
+            case "setupModuleStructure":
+                func = this.setupModuleStructure<Args>;
                 break;
             default:
                 throw new Error(`Tool ${name} not found`);
@@ -186,31 +177,167 @@ export class ToolsService {
         return [exampleSpecsPath, testPath];
     }
 
-    toolListSpecModules = async <Args extends ZodRawShape>(_args: Args): Promise<string[]> => {
-        const modules = await listSpecModules();
-        return [JSON.stringify(modules)];
-    }
+    setupModuleStructure = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
+        try {
+            // List available services with dropdown
+            const modules = await listSpecModules();
+            const serviceResponse = await this._server!.elicitInput({
+                message: `Select an Azure service from the dropdown below:`,
+                requestedSchema: {
+                    type: "object",
+                    properties: {
+                        service: {
+                            type: "string",
+                            description: "Select a service from the dropdown",
+                            enum: modules
+                        }
+                    },
+                    required: ["service"]
+                }
+            });
 
-    toolListProvidersForService = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
-        const service = z.string().parse(Object.values(args)[0]);
-        const providers = await listProvidersForService(service);
-        return [service, JSON.stringify(providers)];
-    }
+            const selectedService = serviceResponse.content?.service as string;
+            if (!selectedService) {
+                throw new Error("No service selected");
+            }
 
-    toolListApiVersions = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
-        const service = z.string().parse(Object.values(args)[0]);
-        const provider = z.string().parse(Object.values(args)[1]);
-        const res = await listApiVersions(service, provider);
-        return [service, provider, JSON.stringify(res.stable), JSON.stringify(res.preview)];
-    }
+            // List providers for the selected service with dropdown
+            const providers = await listProvidersForService(selectedService);
+            if (providers.length === 0) {
+                throw new Error(`No providers found for service '${selectedService}'`);
+            }
 
-    toolResolveAutorestInputs = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
-        const service = z.string().parse(Object.values(args)[0]);
-        const provider = z.string().parse(Object.values(args)[1]);
-        const stability = z.enum(['stable','preview']).parse(Object.values(args)[2]);
-        const version = z.string().parse(Object.values(args)[3]);
-        const swaggerPath = Object.values(args)[4] ? z.string().parse(Object.values(args)[4]) : undefined;
-        const resolved = await resolveAutorestInputs({ service, provider, stability, version, swaggerPath });
-        return [resolved.serviceName, resolved.commitId, resolved.serviceSpecs, resolved.swaggerFileSpecs];
+            const providerResponse = await this._server!.elicitInput({
+                message: `Select a provider for ${selectedService} from the dropdown below:`,
+                requestedSchema: {
+                    type: "object",
+                    properties: {
+                        provider: {
+                            type: "string",
+                            description: "Select a provider from the dropdown",
+                            enum: providers
+                        }
+                    },
+                    required: ["provider"]
+                }
+            });
+
+            const selectedProvider = providerResponse.content?.provider as string;
+            if (!selectedProvider) {
+                throw new Error("No provider selected");
+            }
+
+            // List API versions with dropdown combining version and stability
+            const apiVersions = await listApiVersions(selectedService, selectedProvider);
+            const allVersions = [
+                ...apiVersions.stable.map(v => ({ version: v, stability: 'stable' as const })),
+                ...apiVersions.preview.map(v => ({ version: v, stability: 'preview' as const }))
+            ];
+
+            if (allVersions.length === 0) {
+                throw new Error(`No API versions found for ${selectedService}/${selectedProvider}`);
+            }
+
+            const versionOptions = allVersions.map(v => `${v.version} (${v.stability})`);
+            
+            const versionResponse = await this._server!.elicitInput({
+                message: `Select an API version for ${selectedService}/${selectedProvider} from the dropdown below:`,
+                requestedSchema: {
+                    type: "object",
+                    properties: {
+                        versionWithStability: {
+                            type: "string",
+                            description: "Select an API version with stability level",
+                            enum: versionOptions
+                        }
+                    },
+                    required: ["versionWithStability"]
+                }
+            });
+
+            const selectedVersionWithStability = versionResponse.content?.versionWithStability as string;
+            if (!selectedVersionWithStability) {
+                throw new Error("Version not selected");
+            }
+
+            const versionMatch = selectedVersionWithStability.match(/^(.+) \((stable|preview)\)$/);
+            if (!versionMatch) {
+                throw new Error("Invalid version format selected");
+            }
+            
+            const selectedVersion = versionMatch[1];
+            const selectedStability = versionMatch[2] as 'stable' | 'preview';
+
+            // Resolve Readme placeholder values based on Responses
+            const resolved = await resolveAutorestInputs({
+                service: selectedService,
+                provider: selectedProvider,
+                stability: selectedStability,
+                version: selectedVersion
+            });
+
+            const moduleNameResponse = await this._server!.elicitInput({
+                message: `Configuration resolved:\n- Service: ${selectedService}\n- Provider: ${selectedProvider}\n- Version: ${selectedVersion} (${selectedStability})\n- Service Name: ${resolved.serviceName}\n- Commit ID: ${resolved.commitId}\n- Service Specs: ${resolved.serviceSpecs}\n- Swagger File: ${resolved.swaggerFileSpecs}`,
+                requestedSchema: {
+                    type: "object",
+                    properties: {
+                        moduleName: {
+                            type: "string",
+                            description: "Enter the PowerShell module name (e.g., 'HybridConnectivity')"
+                        }
+                    },
+                    required: ["moduleName"]
+                }
+            });
+
+            const moduleName = moduleNameResponse.content?.moduleName as string;
+            if (!moduleName) {
+                throw new Error("No module name provided");
+            }
+
+            // Create folder structure and README.md
+            const mcpPath = process.cwd(); // Current working directory is tools/Mcp
+            const azurePowerShellRoot = path.resolve(mcpPath, '..', '..'); // Go up two levels to azure-powershell root
+            const srcPath = path.join(azurePowerShellRoot, 'src');
+            const modulePath = path.join(srcPath, moduleName);
+            const autorestPath = path.join(modulePath, `${moduleName}.Autorest`);
+            const readmePath = path.join(autorestPath, 'README.md');
+
+            await utils.createDirectoryIfNotExists(modulePath);
+            await utils.createDirectoryIfNotExists(autorestPath);
+
+            let readmeContent = this._server!.getResponseTemplate('autorest-readme-template');
+            if (!readmeContent) {
+                throw new Error('README template not found in server responses');
+            }
+            
+            // Replace placeholders
+            readmeContent = readmeContent
+                .replace('{commitId}', resolved.commitId)
+                .replace('{serviceSpecs}', resolved.serviceSpecs)
+                .replace(/\{serviceSpecs\}/g, resolved.serviceSpecs)
+                .replace('{swaggerFileSpecs}', resolved.swaggerFileSpecs)
+                .replace(/\{moduleName\}/g, moduleName);
+
+            // Write README.md file
+            await utils.writeFileIfNotExists(readmePath, readmeContent);
+
+            return [
+                selectedService,
+                selectedProvider,
+                selectedVersion,
+                selectedStability,
+                resolved.serviceName,
+                resolved.commitId,
+                resolved.serviceSpecs,
+                resolved.swaggerFileSpecs,
+                moduleName,
+                autorestPath
+            ];
+
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : String(error);
+            return [`Error during setup: ${errorMessage}`];
+        }
     }
 }

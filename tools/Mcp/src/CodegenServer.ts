@@ -1,9 +1,10 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { responseSchema, toolParameterSchema, toolSchema, promptSchema } from "./types.js";
+import { responseSchema, toolParameterSchema, toolSchema, promptSchema, resourceSchema } from "./types.js";
 import { ToolsService } from "./services/toolsService.js";
 import { PromptsService } from "./services/promptsService.js";
+import { ResourcesService } from "./services/resourcesService.js";
 import { readFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -37,6 +38,7 @@ export class CodegenServer {
         this.initResponses();
         this.initTools();
         this.initPrompts();
+        this.initResources();
     }
 
     // dummy method for sending sampling request
@@ -74,6 +76,9 @@ export class CodegenServer {
         await this._mcp.connect(transport);
     }
 
+    public getResponseTemplate(name: string): string | undefined {
+        return this._responses.get(name);
+    }
 
     initTools() {
         const toolsService = ToolsService.getInstance().setServer(this);
@@ -105,6 +110,21 @@ export class CodegenServer {
         }
     }
 
+    initResources() {
+        const resourcesService = ResourcesService.getInstance().setServer(this);
+        const resourcesSchemas = (specs.resources || []) as resourceSchema[];
+        for (const schema of resourcesSchemas) {
+            const parameter = resourcesService.createResourceParametersFromSchema(schema.parameters || []);
+            const callback = resourcesService.getResources(schema.callbackName, this._responses.get(schema.name));
+            this._mcp.resource(
+                schema.name,
+                schema.description,
+                parameter,
+                (args: any) => callback(args)
+            );
+        }
+    }
+
     initResponses() {
         (responses as responseSchema[])?.forEach((response: responseSchema) => {
             let text = response.text;
@@ -120,4 +140,6 @@ export class CodegenServer {
             this._responses.set(response.name, text);
         });
     }
+
+
 }

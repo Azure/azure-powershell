@@ -30,26 +30,6 @@
         "text": "Read examples from specs are under {0}. Implement empty test stubs under {1}. Test stubs are named as '.Test.ps1'. Define variables in function 'setupEnv' in 'utils.ps1' under {1}, and use these variables for test cases. Value of these variables are from {0}. Leave test cases as empty if you don't find any matches. You are expert in Azure-PowerShell and Autorest.PowerShell, You know how to map data from {0} to {1}. "
     },
     {
-        "name": "list-spec-modules",
-        "type": "tool",
-        "text": "Available modules under azure-rest-api-specs/specification: {0}"
-    },
-    {
-        "name": "list-providers",
-        "type": "tool",
-        "text": "Providers for service {0}: {1}"
-    },
-    {
-        "name": "list-api-versions",
-        "type": "tool",
-        "text": "API versions for {0}/{1} — Stable: {2} | Preview: {3}"
-    },
-    {
-        "name": "resolve-autorest-inputs",
-        "type": "tool",
-        "text": "Resolved inputs — serviceName: {0}, commitId: {1}, serviceSpecs: {2}, swaggerFileSpecs: {3}"
-    },
-    {
         "name": "create-greeting",
         "type": "prompt",
         "text": "Please generate a greeting in {1} style to {0}."
@@ -58,5 +38,10 @@
         "name": "partner-module-workflow",
         "type": "prompt",
         "text": "@file:prompts/partner-module-workflow.md"
+    },
+    {
+        "name": "autorest-readme-template",
+        "type": "resource",
+        "text": "@file:autorest-readme-template.md"
     }
 ]
