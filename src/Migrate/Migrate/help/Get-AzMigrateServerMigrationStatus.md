@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateservermigrationstatus
 schema: 2.0.0
@@ -14,35 +14,27 @@ Retrieves the details of the replicating server status.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetByMachineName
-```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetHealthByMachineName
-```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-Health] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetByPrioritiseServer
-```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-Expedite] [-DefaultProfile <PSObject>]
+Get-AzMigrateServerMigrationStatus -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByApplianceName
 ```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -ApplianceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerMigrationStatus -ApplianceName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByMachineName
+```
+Get-AzMigrateServerMigrationStatus -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetHealthByMachineName
+```
+Get-AzMigrateServerMigrationStatus -Health -MachineName <String> -ProjectName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,15 +44,14 @@ The Get-AzMigrateServerMigrationStatus cmdlet retrieves the replication status f
 
 ### Example 1: List status by project name.
 ```powershell
-Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg"
+Get-AzMigrateServerMigrationStatus -ResourceGroupName cbtpvtrg -ProjectName migpvt
 ```
 
 ```output
-Appliance     Server          State                         Progress TimeElapsed TimeRemaining UploadSpeed Health LastSync             Datastore        ESXiHost
----------     ------          -----                         -------- ----------- ------------- ----------- ------ --------             ---------        --------
-nosbm-test-ds el41-r5w12r1-3  InitialReplication InProgress 48 %     3 hr 48 min 12 hr 37 min  1230 Mbps   Normal -                    IDCLAB-T100_10TB idclab-vcen65.corp.microsoft.com_10.150.84.28
-nosbm-test-ds el41-r5w2k8r2-1 DeltaReplication Completed    -        -           -             -           Normal 9/4/2025, 3:04:45 PM IDCLAB-T100_10TB idclab-vcen65.corp.microsoft.com_10.150.84.28
-nosbm-test-ds dsinha-cbt-test DeltaReplication Completed    -        -           -             -           Normal 9/4/2025, 2:58:21 PM IDCLAB-T100_10TB idclab-vcen65.corp.microsoft.com_10.150.84.28
+Appliance Server      State                      Progress TimeElapsed TimeRemaining UploadSpeed Health LastSync               Datastore
+--------- ------      -----                      -------- ----------- ------------- ----------- ------ --------               ---------
+migpvt    CVM-Win2019 DeltaReplication Completed -        -           -             -           Normal 12/7/2023, 11:18:07 AM Shared_1TB, datastore1
+migpvt    CVM-Win2022 DeltaReplication Completed -        -           -             -           Normal 12/7/2023, 10:41:42 AM datastore1
 
 
 
@@ -73,101 +64,43 @@ Get by project name.
 
 ### Example 2: List status by machine name.
 ```powershell
-Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm"
+Get-AzMigrateServerMigrationStatus -ProjectName "migpvt-ecyproj" -ResourceGroupName "cbtprivatestamprg" -MachineName "CVM-Win2019"
 ```
 
 ```output
-Server Rhel8-Vm is currently healthy.
+Server CVM-Win2019 is currently healthy.
 
-Appliance    Server   State                      Progress TimeElapsed TimeRemaining UploadSpeed LastSync              ESXiHost                                               Datastore
----------    ------   -----                      -------- ----------- ------------- ----------- --------              --------                                               ---------
-cbtresyncgql Rhel8-Vm DeltaReplication Completed -        -           -             -           7/14/2025, 9:51:05 PM idclab-vcen8.fareast.corp.microsoft.com_10.150.102.181 IDCLAB-B161-3TB
+Appliance Server      State                      Progress TimeElapsed TimeRemaining UploadSpeed LastSync               Datastore
+--------- ------      -----                      -------- ----------- ------------- ----------- --------               ---------
+migpvt    CVM-Win2019 DeltaReplication Completed -        -           -             -           12/7/2023, 11:18:07 AM Shared_1TB, datastore1
 
 
 
-Disk Level Operation Status:
-
-Disk     State                      Progress TimeElapsed TimeRemaining UploadSpeed Datastore
-----     -----                      -------- ----------- ------------- ----------- ---------
-Rhel8-Vm DeltaReplication Completed -        -           -             -           IDCLAB-B161-3TB
+Disk        State                      Progress TimeElapsed TimeRemaining UploadSpeed Datastore
+----        -----                      -------- ----------- ------------- ----------- ---------
+TestVM      DeltaReplication Completed -        -           -             -           Shared_1TB
+CVM-Win2019 DeltaReplication Completed -        -           -             -           datastore1
 ```
 
 Get by machine name.
 
-### Example 3: List status by appliance name.
+### Example 2: List status by appliance name.
 ```powershell
-Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -ApplianceName "cbtresyncgql"
+Get-AzMigrateServerMigrationStatus -ProjectName "migpvt-ecyproj" -ResourceGroupName "cbtprivatestamprg" -ApplianceName "migpvt"
 ```
 
 ```output
-Server          State                         Progress TimeElapsed TimeRemaining UploadSpeed Health LastSync             Datastore        ESXiHost
-------          -----                         -------- ----------- ------------- ----------- ------ --------             ---------        --------
-el41-r5w12r1-3  InitialReplication InProgress 48 %     3 hr 48 min 12 hr 37 min  1230 Mbps   Normal -                    IDCLAB-T100_10TB idclab-vcen65.corp.microsoft.com_10.150.84.28
-el41-r5w2k8r2-1 DeltaReplication Completed    -        -           -             -           Normal 9/4/2025, 3:04:45 PM IDCLAB-T100_10TB idclab-vcen65.corp.microsoft.com_10.150.84.28
-dsinha-cbt-test DeltaReplication Completed    -        -           -             -           Normal 9/4/2025, 2:58:21 PM IDCLAB-T100_10TB idclab-vcen65.corp.microsoft.com_10.150.84.28
+Server      State                      Progress TimeElapsed TimeRemaining UploadSpeed Health LastSync               Datastore
+------      -----                      -------- ----------- ------------- ----------- ------ --------               ---------
+CVM-Win2019 DeltaReplication Completed -        -           -             -           Normal 12/7/2023, 11:18:07 AM Shared_1TB, datastore1
+CVM-Win2022 DeltaReplication Completed -        -           -             -           Normal 12/7/2023, 10:41:42 AM datastore1
 
-
-To check expedite the operation of a server use the command
-Get-AzMigrateServerMigrationStatus  -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Expedite
 
 To resolve the health issue use the command
 Get-AzMigrateServerMigrationStatus -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Health
 ```
 
 Get by appliance name.
-
-### Example 4: Expedite replication for a server.
-```powershell
-Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm" -Expedite
-```
-
-```output
-Server Information:
-
-Appliance    Server   State                      Progress TimeElapsed TimeRemaining UploadSpeed LastSync              ESXiHost                                               Datastore
----------    ------   -----                      -------- ----------- ------------- ----------- --------              --------                                               ---------
-cbtresyncgql Rhel8-Vm DeltaReplication Completed -        -           -             -           7/14/2025, 9:51:05 PM idclab-vcen8.fareast.corp.microsoft.com_10.150.102.181 IDCLAB-B161-3TB
-
-
-
-Disk Level Operation Status:
-
-Disk     State                      Progress TimeElapsed TimeRemaining UploadSpeed Datastore
-----     -----                      -------- ----------- ------------- ----------- ---------
-Rhel8-Vm DeltaReplication Completed -        -           -             -           IDCLAB-B161-3TB
-
-
-Resource Sharing:
-
-The following VMs share at least one resource (Appliance, ESXi Host, or Datastore) with VM 'Rhel8-Vm'. The 'SharedResourceType' and 'SharedResourceName' columns indicate which resource is shared.
-
-Appliance    Server                          SharedResourceType             State                      TimeRemaining ESXiHost                                               Datastore
----------    ------                          ------------------             -----                      ------------- --------                                               ---------
-cbtresyncgql wave-selfhost-vm8               Appliance                      DeltaReplication Completed -             idclab-vcen8.fareast.corp.microsoft.com_10.150.102.191 Shared_1TB
-cbtresyncgql el41-r5w12r2-1                  Appliance                      DeltaReplication Completed -             idclab-vcen65.corp.microsoft.com_10.150.84.28          IDCLAB-T100_10TB
-cbtresyncgql el41-r5w2k8r2-1                 Appliance                      DeltaReplication Completed -             idclab-vcen65.corp.microsoft.com_10.150.84.28          IDCLAB-T100_10TB
-cbtresyncgql el41-r5w12r1-2                  Appliance                      DeltaReplication Completed -             idclab-vcen65.corp.microsoft.com_10.150.84.28          IDCLAB-T100_10TB
-cbtresyncgql ubuntu22-liverserver-bios-nolvm Appliance, ESXiHost, Datastore DeltaReplication Completed -             idclab-vcen8.fareast.corp.microsoft.com_10.150.102.181 IDCLAB-B161-3TB
-
-
-Resource utilization information for migration operations:
-
-Resource                                                         Capacity  Utilization for server migrations Total utilization Status
---------                                                         --------  --------------------------------- ----------------- ------
-Appliance RAM Sum : Primary and scale out appliances             32768 MB  1808 MB                           7014 MB           Underutilized
-Appliance CPU Sum : Primary and scale out appliances             4 Cores   -                                 99%               At capacity
-Network bandwidth Sum : Primary and scale out appliances         1192 MBps -                                 -                 Underutilized
-ESXi host NFC buffer                                             32 MB     8 MB                              -                 Underutilized
-Parallel Disks Replicated Sum : Primary and scale out appliances 58        3                                 -                 Underutilized
-Datastore 'IDCLAB-B161-3TB' Snapshot Count                       15        2                                 -                 Underutilized
-
-
-Based on the resource utilization seen above, here are suggestions to expedite server Rhel8-Vm migration:
-
-1. CPU is At capacity. Pause or stop other migrations under this appliance, or increase CPU resources if possible.
-```
-
-Expedite replication for a specific server.
 
 ## PARAMETERS
 
@@ -195,21 +128,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Expedite
-Specifies whether to expedite the operation of a replicating server.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetByPrioritiseServer
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -247,11 +165,12 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-Specifies the display name of the replicating machine.
+[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+ Specifies the display name of the replicating machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByMachineName, GetHealthByMachineName, GetByPrioritiseServer
+Parameter Sets: GetByMachineName, GetHealthByMachineName
 Aliases:
 
 Required: True
@@ -262,7 +181,8 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Specifies the Azure Migrate project  in the current subscription.
+[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+ Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
@@ -277,7 +197,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+ Specifies the Resource Group of the Azure Migrate Project in the current subscription.
 
 ```yaml
 Type: System.String
@@ -333,3 +254,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 schema: 2.0.0
@@ -14,30 +14,29 @@ Updates the target properties for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Set-AzMigrateServerReplication -TargetObjectID <String> [-TargetVMName <String>] [-TargetDiskName <String>]
- [-TargetVMSize <String>] [-TargetNetworkId <String>] [-TestNetworkId <String>]
- [-TargetResourceGroupID <String>] [-NicToUpdate <IVMwareCbtNicInput[]>]
- [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-SqlServerLicenseType <String>] [-LinuxLicenseType <String>]
+Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
+ [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
+ [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
  [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
- [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
- [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Set-AzMigrateServerReplication [-TargetVMName <String>] [-TargetDiskName <String>] [-TargetVMSize <String>]
- [-TargetNetworkId <String>] [-TestNetworkId <String>] [-TargetResourceGroupID <String>]
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-SqlServerLicenseType <String>]
- [-LinuxLicenseType <String>] [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
- [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
- [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
+Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
+ [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] -InputObject <IMigrationItem>
+ [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
+ [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
+ [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -509,3 +508,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
