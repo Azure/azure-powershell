@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StorageMover",
-  "ModuleVersion": "1.5.1",
+  "ModuleVersion": "1.6.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -14,9 +14,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -968,11 +968,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
+              "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
               "AgentStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.AgentStatus]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "LastStatusUpdate": "System.Nullable`1[System.DateTime]",
@@ -1824,11 +1824,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -2666,12 +2670,14 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "SourceTargetMapValue": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[]",
               "CopyMode": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode",
               "LatestJobRunStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus]",
+              "JobType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "AgentName": "System.String",
               "AgentResourceId": "System.String",
@@ -3560,9 +3566,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRun",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRun, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobRun",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobRun, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SourceProperty": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAny",
               "JobDefinitionProperty": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAny",
@@ -4509,9 +4515,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -5352,9 +5358,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -5399,9 +5405,9 @@
         {
           "Name": "StorageMover",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -5708,9 +5714,9 @@
               "ParameterMetadata": {
                 "Name": "StorageMover",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
                     "Description": "System.String"
@@ -6133,6 +6139,428 @@
     },
     {
       "VerbName": "New",
+      "NounName": "AzStorageMoverAzNfsFileShareEndpoint",
+      "Name": "New-AzStorageMoverAzNfsFileShareEndpoint",
+      "ClassName": "New-AzStorageMoverAzNfsFileShareEndpoint",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "CreateExpanded",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
+            }
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [
+            "EndpointName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageMoverName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SubscriptionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageAccountResourceId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FileShareName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Description",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRMContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSObject",
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Break",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelineAppend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelinePrepend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Proxy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Uri",
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyCredential",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyUseDefaultCredentials",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "EndpointName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageMoverName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageAccountResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FileShareName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
       "NounName": "AzStorageMoverAzSmbFileShareEndpoint",
       "Name": "New-AzStorageMoverAzSmbFileShareEndpoint",
       "ClassName": "New-AzStorageMoverAzSmbFileShareEndpoint",
@@ -6143,11 +6571,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -6564,11 +6996,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -6982,12 +7418,14 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "SourceTargetMapValue": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[]",
               "CopyMode": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode",
               "LatestJobRunStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus]",
+              "JobType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "AgentName": "System.String",
               "AgentResourceId": "System.String",
@@ -7059,12 +7497,14 @@
         {
           "Name": "JobDefinition",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "SourceTargetMapValue": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[]",
               "CopyMode": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode",
               "LatestJobRunStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus]",
+              "JobType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "AgentName": "System.String",
               "AgentResourceId": "System.String",
@@ -7123,6 +7563,15 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JobType",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7446,12 +7895,14 @@
               "ParameterMetadata": {
                 "Name": "JobDefinition",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
+                    "SourceTargetMapValue": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[]",
                     "CopyMode": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode",
                     "LatestJobRunStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus]",
+                    "JobType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]",
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
                     "AgentName": "System.String",
                     "AgentResourceId": "System.String",
@@ -7762,6 +8213,21 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "JobType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "SourceSubpath",
                 "Type": {
                   "Namespace": "System",
@@ -8003,6 +8469,428 @@
     },
     {
       "VerbName": "New",
+      "NounName": "AzStorageMoverMultiCloudConnectorEndpoint",
+      "Name": "New-AzStorageMoverMultiCloudConnectorEndpoint",
+      "ClassName": "New-AzStorageMoverMultiCloudConnectorEndpoint",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "CreateExpanded",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
+            }
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [
+            "EndpointName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageMoverName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SubscriptionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MultiCloudConnectorId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AWSS3BucketId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Description",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRMContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSObject",
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Break",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelineAppend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelinePrepend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Proxy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Uri",
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyCredential",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyUseDefaultCredentials",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "EndpointName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageMoverName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MultiCloudConnectorId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AWSS3BucketId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
       "NounName": "AzStorageMoverNfsEndpoint",
       "Name": "New-AzStorageMoverNfsEndpoint",
       "ClassName": "New-AzStorageMoverNfsEndpoint",
@@ -8013,11 +8901,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -8455,9 +9347,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -8511,9 +9403,9 @@
         {
           "Name": "Project",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -8817,9 +9709,9 @@
               "ParameterMetadata": {
                 "Name": "Project",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
                     "Description": "System.String"
@@ -9252,11 +10144,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -9718,12 +10614,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "EndTime": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.ITime",
-              "StartTime": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.ITime",
+              "EndTime": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ITime",
+              "StartTime": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ITime",
               "Day": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek[]",
               "EndTimeHour": "System.Int32",
               "LimitInMbps": "System.Int32",
@@ -9750,7 +10646,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
               },
               {
                 "Name": "ToJson",
@@ -9774,7 +10670,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -9784,7 +10680,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
               },
               {
                 "Name": "FromJsonString",
@@ -9794,7 +10690,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
               },
               {
                 "Name": "ToJsonString",
@@ -15585,9 +16481,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -15652,11 +16548,11 @@
         {
           "Name": "StorageMover",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParametersTags",
+              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParametersTags",
               "Description": "System.String"
             }
           },
@@ -16030,11 +16926,11 @@
               "ParameterMetadata": {
                 "Name": "StorageMover",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Tag": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParametersTags",
+                    "Tag": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParametersTags",
                     "Description": "System.String"
                   }
                 },
@@ -16399,11 +17295,11 @@
               "ParameterMetadata": {
                 "Name": "StorageMover",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Tag": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParametersTags",
+                    "Tag": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParametersTags",
                     "Description": "System.String"
                   }
                 },
@@ -16693,11 +17589,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
+              "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
               "AgentStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.AgentStatus]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "LastStatusUpdate": "System.Nullable`1[System.DateTime]",
@@ -16782,11 +17678,11 @@
         {
           "Name": "Agent",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
+              "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
               "Description": "System.String"
             }
           },
@@ -16804,10 +17700,10 @@
         {
           "Name": "UploadLimitScheduleWeeklyRecurrence",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -16979,10 +17875,10 @@
               "ParameterMetadata": {
                 "Name": "UploadLimitScheduleWeeklyRecurrence",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -17192,11 +18088,11 @@
               "ParameterMetadata": {
                 "Name": "Agent",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
+                    "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
                     "Description": "System.String"
                   }
                 },
@@ -17386,10 +18282,10 @@
               "ParameterMetadata": {
                 "Name": "UploadLimitScheduleWeeklyRecurrence",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -17562,11 +18458,11 @@
               "ParameterMetadata": {
                 "Name": "Agent",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
+                    "UploadLimitScheduleWeeklyRecurrence": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
                     "Description": "System.String"
                   }
                 },
@@ -17846,6 +18742,724 @@
     },
     {
       "VerbName": "Update",
+      "NounName": "AzStorageMoverAzNfsFileShareEndpoint",
+      "Name": "Update-AzStorageMoverAzNfsFileShareEndpoint",
+      "ClassName": "Update-AzStorageMoverAzNfsFileShareEndpoint",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "UpdateExpanded",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
+            }
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [
+            "EndpointName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageMoverName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SubscriptionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InputObject",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "AgentName": "System.String",
+              "EndpointName": "System.String",
+              "Id": "System.String",
+              "JobDefinitionName": "System.String",
+              "JobRunName": "System.String",
+              "ProjectName": "System.String",
+              "ResourceGroupName": "System.String",
+              "StorageMoverName": "System.String",
+              "SubscriptionId": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Description",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRMContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSObject",
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Break",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelineAppend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelinePrepend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Proxy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Uri",
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyCredential",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyUseDefaultCredentials",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "UpdateExpanded",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "EndpointName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageMoverName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "UpdateViaIdentityExpanded",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "AgentName": "System.String",
+                    "EndpointName": "System.String",
+                    "Id": "System.String",
+                    "JobDefinitionName": "System.String",
+                    "JobRunName": "System.String",
+                    "ProjectName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "StorageMoverName": "System.String",
+                    "SubscriptionId": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Update",
       "NounName": "AzStorageMoverAzSmbFileShareEndpoint",
       "Name": "Update-AzStorageMoverAzSmbFileShareEndpoint",
       "ClassName": "Update-AzStorageMoverAzSmbFileShareEndpoint",
@@ -17856,11 +19470,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -18573,11 +20191,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -19287,12 +20909,14 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "SourceTargetMapValue": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[]",
               "CopyMode": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode",
               "LatestJobRunStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus]",
+              "JobType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "AgentName": "System.String",
               "AgentResourceId": "System.String",
@@ -19384,9 +21008,9 @@
         {
           "Name": "JobDefinition",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinitionUpdateParameters",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinitionUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CopyMode": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode]",
               "AgentName": "System.String",
@@ -19847,9 +21471,9 @@
               "ParameterMetadata": {
                 "Name": "JobDefinition",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinitionUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinitionUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CopyMode": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode]",
                     "AgentName": "System.String",
@@ -20232,9 +21856,9 @@
               "ParameterMetadata": {
                 "Name": "JobDefinition",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinitionUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinitionUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CopyMode": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode]",
                     "AgentName": "System.String",
@@ -20517,6 +22141,724 @@
     },
     {
       "VerbName": "Update",
+      "NounName": "AzStorageMoverMultiCloudConnectorEndpoint",
+      "Name": "Update-AzStorageMoverMultiCloudConnectorEndpoint",
+      "ClassName": "Update-AzStorageMoverMultiCloudConnectorEndpoint",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "UpdateExpanded",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
+            }
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [
+            "EndpointName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageMoverName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SubscriptionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InputObject",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "AgentName": "System.String",
+              "EndpointName": "System.String",
+              "Id": "System.String",
+              "JobDefinitionName": "System.String",
+              "JobRunName": "System.String",
+              "ProjectName": "System.String",
+              "ResourceGroupName": "System.String",
+              "StorageMoverName": "System.String",
+              "SubscriptionId": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Description",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRMContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSObject",
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Break",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelineAppend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelinePrepend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Proxy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Uri",
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyCredential",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyUseDefaultCredentials",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "UpdateExpanded",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "EndpointName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageMoverName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "UpdateViaIdentityExpanded",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "AgentName": "System.String",
+                    "EndpointName": "System.String",
+                    "Id": "System.String",
+                    "JobDefinitionName": "System.String",
+                    "JobRunName": "System.String",
+                    "ProjectName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "StorageMoverName": "System.String",
+                    "SubscriptionId": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Update",
       "NounName": "AzStorageMoverNfsEndpoint",
       "Name": "Update-AzStorageMoverNfsEndpoint",
       "ClassName": "Update-AzStorageMoverNfsEndpoint",
@@ -20527,11 +22869,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -21241,9 +23587,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProject, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
               "Description": "System.String"
@@ -21317,9 +23663,9 @@
         {
           "Name": "Project",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Description": "System.String"
             }
@@ -21700,9 +24046,9 @@
               "ParameterMetadata": {
                 "Name": "Project",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Description": "System.String"
                   }
@@ -22053,9 +24399,9 @@
               "ParameterMetadata": {
                 "Name": "Project",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IProjectUpdateParameters, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Description": "System.String"
                   }
@@ -22346,11 +24692,15 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+              "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+              "IdentityPrincipalId": "System.String",
+              "IdentityTenantId": "System.String"
             }
           },
           "ParameterSets": [
@@ -23469,16 +25819,19 @@
       "Name": "System.Delegate",
       "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence"
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IUploadLimitWeeklyRecurrence, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "LimitInMbps": "System.Int32"
+      }
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.AgentStatus]": {
       "Namespace": "System",
@@ -23574,10 +25927,10 @@
         "System.Int64"
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseProperties, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseProperties, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EndpointType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType",
         "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState]",
@@ -23648,6 +26001,104 @@
           "ReturnType": "System.Type"
         }
       ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IUserAssignedIdentities, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ManagedServiceIdentityType"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap[], Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ISourceTargetMap, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "AwsS3BucketId": "System.String",
+        "AzureStorageAccountResourceId": "System.String",
+        "AzureStorageBlobContainerName": "System.String",
+        "SourceEndpointPropertiesName": "System.String",
+        "SourceEndpointResourceId": "System.String",
+        "TargetEndpointPropertiesName": "System.String",
+        "TargetEndpointResourceId": "System.String"
+      }
     },
     "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support",
@@ -23787,6 +26238,79 @@
         }
       ]
     },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
     "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAny": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAny",
@@ -23865,10 +26389,10 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.ITime": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.ITime",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.ITime, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ITime": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ITime",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.ITime, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Hour": "System.Int32",
         "Minute": "System.Nullable`1[System.Int32]"
@@ -23990,10 +26514,10 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParametersTags": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParametersTags",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParametersTags, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParametersTags": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParametersTags",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParametersTags, Az.StorageMover.private, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode]": {
       "Namespace": "System",
