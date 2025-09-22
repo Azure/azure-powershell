@@ -48,7 +48,7 @@ The **New-AzStorageFileSymbolicLink** cmdlet creates a symbolic link to a file i
 ### Example 1: Create a symbolic link with all optional parameters
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName "myaccount" -EnableFileBackupRequestIntent
-New-AzStorageFileSymbolicLink -ShareName $shareName -Path "links/testlink" -LinkText "config/app.conf" -Metadata @{ "meta1"="value1";"meta2"="value2"} -FileCreatedOn "2025-09-01T00:00:00Z" -FileLastWrittenOn "2025-09-15T12:00:00Z" -Owner "1000" -Group "1000" -Context $ctx
+New-AzStorageFileSymbolicLink -ShareName "nfsshare" -Path "links/testlink" -LinkText "config/app.conf" -Metadata @{ "meta1"="value1";"meta2"="value2"} -FileCreatedOn "2025-09-01T00:00:00Z" -FileLastWrittenOn "2025-09-15T12:00:00Z" -Owner "1000" -Group "1000" -Context $ctx
 ```
 
 This command creates a symbolic link with all available optional parametersThe symbolic link points to a relative path "config/app.conf".
@@ -56,7 +56,7 @@ This command creates a symbolic link with all available optional parametersThe s
 ### Example 2: Create a symbolic link using ShareClient object
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName "myaccount" -EnableFileBackupRequestIntent
-$shareClient = Get-AzStorageShare -Name $shareName -Context $ctx
+$shareClient = Get-AzStorageShare -Name "nfsshare" -Context $ctx
 $shareClient | New-AzStorageFileSymbolicLink -Path "dir1/app-link" -LinkText "config/app.conf"
 ```
 
@@ -65,7 +65,7 @@ This command creates a symbolic link using a ShareClient object obtained from Ge
 ### Example 3: Create a symbolic link using directory client
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName "myaccount" -EnableFileBackupRequestIntent
-$dirClient = Get-AzStorageFile -ShareName $shareName -Path "testdir" -Context $ctx
+$dirClient = Get-AzStorageFile -ShareName "nfsshare" -Path "testdir" -Context $ctx
 $dirClient | New-AzStorageFileSymbolicLink -Path "testlink" -LinkText "app/main.exe"
 ```
 

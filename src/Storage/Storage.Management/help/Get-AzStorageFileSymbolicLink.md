@@ -96,7 +96,7 @@ This command gets the properties of a symbolic link named "mylink" in the "links
 ### Example 2: Get multiple symbolic links in a directory
 ```powershell
 $files = Get-AzStorageFile -ShareName "nfsshare" -Path "linkdir" -Context $ctx | Get-AzStorageFile -ExcludeExtendedInfo
-$symLinkFiles = $files | ? {$_.FileProperties.PosixProperties.FileType -eq "SymLink"}
+$symLinkFiles = $files | Where-Object {$_.FileProperties.PosixProperties.FileType.ToString() -eq "SymLink"}
 foreach ($file in $symLinkFiles) {
     $symlink = Get-AzStorageFileSymbolicLink -ShareName "nfsshare"  -Path "linkdir/$($file.Name)" -Context $ctx
     Write-Output "$($file.Name) -> $([System.Web.HttpUtility]::UrlDecode($symlink.ShareFileSymbolicLinkInfo.LinkText))"
