@@ -39,7 +39,7 @@ Tool returns:
   `{1}` = target test dir
   `{2}` = reference ideal test dirs
 Fill test stubs using variables defined in `utils.ps1` `setupEnv` function. 
-IMPORTANT: You can completely ignore the generated Test files as they only have the skeleton. Instead, you can group these test files into groups of 1 particular resource & then write 1 new file combining these 3-4 test file in the CRUD format.
+IMPORTANT: You can completely ignore the generated Test files, do not fill these as they only have the skeleton. Instead, you can group these test files into groups of a particular resource & then write  new file for each group combining these 3-4 test file in the CRUD format.
 Add: create -> get -> assert -> (optional cleanup). Add a negative test when feasible.
 Leave a test empty only if genuinely no meaningful data can be inferred.
 Quality guidance (concise):
