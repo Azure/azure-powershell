@@ -6,8 +6,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
     using Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.PowerShell;
 
     /// <summary>Resource tags.</summary>
-    [System.ComponentModel.TypeConverter(typeof(TagsTypeConverter))]
-    public partial class Tags
+    [System.ComponentModel.TypeConverter(typeof(TrackedResourceTagsTypeConverter))]
+    public partial class TrackedResourceTags
     {
 
         /// <summary>
@@ -61,75 +61,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.TrackedResourceTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new Tags(content);
+            return new TrackedResourceTags(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.TrackedResourceTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new Tags(content);
+            return new TrackedResourceTags(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="Tags" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="TrackedResourceTags" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="Tags" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonNode.Parse(jsonText));
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal Tags(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal Tags(global::System.Management.Automation.PSObject content)
-        {
-            bool returnNow = false;
-            BeforeDeserializePSObject(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializePSObject(content);
-        }
+        /// <returns>an instance of the <see cref="TrackedResourceTags" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -147,10 +109,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             }
             return ToJsonString();
         }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.TrackedResourceTags"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal TrackedResourceTags(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
+            AfterDeserializeDictionary(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.TrackedResourceTags"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        internal TrackedResourceTags(global::System.Management.Automation.PSObject content)
+        {
+            bool returnNow = false;
+            BeforeDeserializePSObject(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
+            AfterDeserializePSObject(content);
+        }
     }
     /// Resource tags.
-    [System.ComponentModel.TypeConverter(typeof(TagsTypeConverter))]
-    public partial interface ITags
+    [System.ComponentModel.TypeConverter(typeof(TrackedResourceTagsTypeConverter))]
+    public partial interface ITrackedResourceTags
 
     {
 
