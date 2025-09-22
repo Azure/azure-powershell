@@ -79,7 +79,7 @@ pac77,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac78,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventGrid.2.2.0.zip;sourceType=sa]Az.EventGrid,2.2.0
 pac79,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventHub.5.4.0.zip;sourceType=sa]Az.EventHub,5.4.0
 pac80,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fabric.1.0.0.zip;sourceType=sa]Az.Fabric,1.0.0
-pac81,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FirmwareAnalysis.0.1.4.zip;sourceType=sa]Az.FirmwareAnalysis,0.1.4
+pac81,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FirmwareAnalysis.1.0.0.zip;sourceType=sa]Az.FirmwareAnalysis,1.0.0
 pac82,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fleet.0.2.2.zip;sourceType=sa]Az.Fleet,0.2.2
 pac83,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FluidRelay.0.2.0.zip;sourceType=sa]Az.FluidRelay,0.2.0
 pac84,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FrontDoor.1.13.0.zip;sourceType=sa]Az.FrontDoor,1.13.0

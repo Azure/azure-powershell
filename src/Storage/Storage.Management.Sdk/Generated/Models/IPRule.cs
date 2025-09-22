@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the IPRule class.
         /// </summary>
 
-        /// <param name="ipAddressOrRange">Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+        /// <param name="ipAddressOrRange">Specifies the IP or IP range in CIDR format.
         /// </param>
 
         /// <param name="action">The action of IP ACL rule.
@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
         /// <summary>
-        /// Gets or sets specifies the IP or IP range in CIDR format. Only IPV4 address
-        /// is allowed.
+        /// Gets or sets specifies the IP or IP range in CIDR format.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public string IPAddressOrRange {get; set; }
