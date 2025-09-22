@@ -22,8 +22,7 @@ Create an API Key of an Application Insights component.
 https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 #>
 function New-AzApplicationInsightsApiKey {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentApiKey", DeprecatedOutputProperties = ("LinkedReadProperty and LinkedWriteProperty System.String[]"), NewOutputProperties = ("LinkedReadProperty and LinkedWriteProperty System.Collections.Generic.List`1[System.String]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentApiKey])]
     [CmdletBinding(DefaultParameterSetName='ComponentNameParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName="ComponentNameParameterSet")]
@@ -56,7 +55,7 @@ function New-AzApplicationInsightsApiKey {
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [ValidateSet("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("ReadTelemetry", "WriteAnnotations", "AuthenticateSDKControlChannel")]
         [System.String[]]
         # The read access rights of this API Key.
         ${Permissions},
@@ -66,7 +65,8 @@ function New-AzApplicationInsightsApiKey {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]
