@@ -57,27 +57,12 @@ Removes a content from Front Door.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove-AzFrontDoorContent purges cached contents in a Front Door
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoorContent -ResourceGroupName $ResourceGroupName -Name $FrontDoorName -ContentPath "/*"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove-AzFrontDoorContent purges cached contents in a Front Door
 
 ## PARAMETERS
 

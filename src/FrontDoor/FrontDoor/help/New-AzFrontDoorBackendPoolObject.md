@@ -23,27 +23,25 @@ Create an in-memory object for BackendPool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Backends                : {Microsoft.Azure.Commands.FrontDoor.Models.PSBackend}
+LoadBalancingSettingRef : /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers
+                          /Microsoft.Network/frontDoors/frontdoor5/LoadBalancingSettings/loadBalancingSetting1
+HealthProbeSettingRef   : /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers
+                          /Microsoft.Network/frontDoors/frontdoor5/HealthProbeSettings/healthProbeSetting1
+EnabledState            : Enabled
+ResourceState           :
+Id                      :
+Name                    : backendpool1
+Type                    :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a PSBackendPool object for Front Door creation
 
 ## PARAMETERS
 

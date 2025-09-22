@@ -35,27 +35,51 @@ Update policy with specified rule set name within a resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates an existing WAF policy custom status code.
 ```powershell
-{{ Add code here }}
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
-{{ Add description here }}
+Update an existing WAF policy custom status code.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an existing WAF policy mode.
 ```powershell
-{{ Add code here }}
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Detection            Enabled                           403 https://www.bing.com/
 ```
 
-{{ Add description here }}
+Update an existing WAF policy mode.
+
+### Example 3: Update an existing WAF policy enabled state and mode.
+```powershell
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
+```
+
+```output
+Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----          ---------- ------------------ ----------------------------- -----------
+{policyName}  Detection           Disabled                           403 https://www.bing.com/
+```
+
+Update an existing WAF policy enabled state and mode.
+
+### Example 4: Update all WAF policies in $resourceGroupName
+```powershell
+Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Mode Detection -EnabledState Disabled
+```
+
+Update all WAF policies in $resourceGroupName
 
 ## PARAMETERS
 

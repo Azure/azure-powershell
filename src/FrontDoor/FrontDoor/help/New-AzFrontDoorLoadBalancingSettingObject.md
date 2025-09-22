@@ -23,27 +23,22 @@ Create an in-memory object for LoadBalancingSettingsModel.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a PSLoadBalancingSetting object for Front Door creation
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SampleSize                    : 4
+AdditionalLatencyMilliseconds : 0
+SuccessfulSamplesRequired     : 2
+ResourceState                 :
+Id                            :
+Name                          : loadbalancingsetting1
+Type                          :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a PSLoadBalancingSetting object for Front Door creation
 
 ## PARAMETERS
 

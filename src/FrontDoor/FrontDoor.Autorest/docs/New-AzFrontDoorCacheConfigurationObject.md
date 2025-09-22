@@ -22,27 +22,18 @@ Create an in-memory object for CacheConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a cache configuration object
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCacheConfigurationObject -CacheDuration "0.12:00:00" -DynamicCompression "Enabled" -QueryParameterStripDirective "StripAllExcept"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CacheDuration                : 0.12:00:00
+DynamicCompression          : Enabled
+QueryParameterStripDirective : StripAllExcept
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a cache configuration object.
 
 ## PARAMETERS
 

@@ -22,27 +22,12 @@ Create an in-memory object for WebApplicationFirewallScrubbingRules.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create LogScrubbingRule object for LogScrubbingSetting
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This object is a parameter for LogscrubbingSetting
 
 ## PARAMETERS
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.FrontDoor
-Module Guid: b429505a-2933-4a7b-8415-99b0406398b7
+Module Guid: b45ba7ed-deb6-4cfe-a02e-34af4e8e4233
 Download Help Link: https://learn.microsoft.com/powershell/module/az.frontdoor
 Help Version: 1.0.0.0
 Locale: en-US

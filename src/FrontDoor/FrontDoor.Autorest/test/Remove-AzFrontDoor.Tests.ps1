@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoor'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoor' {
+Describe 'Remove-AzFrontDoor' -Tag 'LiveOnly' {
     It 'Delete'  {
         {
             $frontDoorName = 'testps-fd-' + (RandomString -allChars $false -len 4)

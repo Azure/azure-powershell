@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorCustomDomai
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Enable-AzFrontDoorCustomDomainHttps' {
+Describe 'Enable-AzFrontDoorCustomDomainHttps' -Tag 'LiveOnly' {
     It 'EnableExpanded' {
         # need to clean dns zone record before running this test
         $PrefixName = "pwshv4test-2"

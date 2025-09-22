@@ -25,27 +25,33 @@ Create an in-memory object for FrontendEndpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a PSFrontendEndpoint Object for Front Door creation
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+HostName                         : frontendendpoint1
+SessionAffinityEnabledState      : Disabled
+SessionAffinityTtlSeconds        : 0
+WebApplicationFirewallPolicyLink :
+Backends                         :
+CustomHttpsProvisioningState     :
+CustomHttpsProvisioningSubstate  :
+CertificateSource                :
+MinimumTlsVersion                : 1.2
+Vault                            :
+SecretName                       :
+SecretVersion                    :
+CertificateType                  :
+ResourceState                    :
+Id                               :
+Name                             : frontendendpoint1
+Type                             :
+ProtocolType                     : ServerNameIndication
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a PSFrontendEndpoint Object for Front Door creation
 
 ## PARAMETERS
 

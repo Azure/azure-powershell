@@ -29,27 +29,51 @@ Create an in-memory object for RoutingRule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a PSRoutingRuleObject for Front Door creation with a forwarding rule
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoorName -ResourceGroupName $rgname -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
+                               viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
+AcceptedProtocols            : {Http, Https}
+PatternsToMatch              : {/*}
+HealthProbeSettings          :
+RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
+EnabledState                 : Enabled
+ResourceState                :
+Id                           :
+Name                         : {routingRuleName}
+Type                         :
 ```
 
-{{ Add description here }}
+Create a PSRoutingRuleObject for Front Door creation with a forwarding rule
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a PSRoutingRuleObject for Front Door creation with a redirect rule
 ```powershell
-{{ Add code here }}
+$customHost = "www.contoso.com"
+$customPath = "/images/contoso.png"
+$queryString = "field1=value1&field2=value2"
+$destinationFragment = "section-header-2"
+New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoorName -ResourceGroupName $rgname -FrontendEndpointName "frontendEndpoint1" -CustomHost $customHost -CustomPath $customPath -CustomQueryString $queryString -CustomFragment $destinationFragment
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
+                               viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
+AcceptedProtocols            : {Http, Https}
+PatternsToMatch              : {/*}
+HealthProbeSettings          :
+RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectConfiguration
+EnabledState                 : Enabled
+ResourceState                :
+Id                           :
+Name                         : {routingRuleName}
+Type                         :
 ```
 
-{{ Add description here }}
+Create a PSRoutingRuleObject for Front Door creation
 
 ## PARAMETERS
 

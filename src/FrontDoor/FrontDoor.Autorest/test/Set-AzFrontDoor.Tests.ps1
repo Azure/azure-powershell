@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzFrontDoor'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzFrontDoor' {
+Describe 'Set-AzFrontDoor' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         $FDName = 'testps-fd-' + (RandomString -allChars $false -len 4)
         $tags = @{"tag1" = "value1"; "tag2" = "value2"}

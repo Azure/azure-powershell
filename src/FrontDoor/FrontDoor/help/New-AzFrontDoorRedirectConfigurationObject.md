@@ -23,27 +23,21 @@ Create an in-memory object for RedirectConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a redirect configuration object with all parameters
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorRedirectConfigurationObject -RedirectType "PermanentRedirect" -RedirectProtocol "HttpsOnly" -CustomHost "www.example.com" -CustomPath "/newpath" -CustomQueryString "source=frontdoor&campaign=redirect" -CustomFragment "section1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CustomFragment   : section1
+CustomHost       : www.example.com
+CustomPath       : /newpath
+CustomQueryString : source=frontdoor&campaign=redirect
+RedirectProtocol : HttpsOnly
+RedirectType     : PermanentRedirect
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a comprehensive redirect configuration object that permanently redirects requests to HTTPS protocol with custom host, path, query string, and fragment.
 
 ## PARAMETERS
 

@@ -41,27 +41,33 @@ Retrieve protection policy with specified name within a resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
-{{ Add description here }}
+Get a WAF policy called $policyName in $resourceGroupName
 
-### Example 2: {{ Add title here }}
+### Example 2
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention           Disabled
+{policyName} Detection             Enabled                           403 https://www.bing.com/
+{policyName} Detection             Enabled                           404
 ```
 
-{{ Add description here }}
+Get all WAF policy in $resourceGroupName
 
 ## PARAMETERS
 

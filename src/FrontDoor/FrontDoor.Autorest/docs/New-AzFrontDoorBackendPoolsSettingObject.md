@@ -22,27 +22,35 @@ Create an in-memory object for BackendPoolsSettings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create BackendPoolsSettings object using defaults
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorBackendPoolsSettingObject
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EnforceCertificateNameCheck : Enabled
+SendRecvTimeoutInSeconds      : 30
+Id                          :
+Name                        :
+Type                        :
 ```
 
-{{ Add description here }}
+Create BackendPoolsSettings object using defaults
 
-### Example 2: {{ Add title here }}
+### Example 2: Create BackendPoolsSettings object with user specified values
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EnforceCertificateNameCheck : Enabled
+SendRecvTimeoutInSeconds      : 60
+Id                          :
+Name                        :
+Type                        :
 ```
 
-{{ Add description here }}
+Create BackendPoolsSettings object with user specified values
 
 ## PARAMETERS
 

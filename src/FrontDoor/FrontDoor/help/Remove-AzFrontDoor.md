@@ -30,27 +30,33 @@ Deletes an existing Front Door with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove "frontdoor1" in resource group "rg1" under the current subscription.
 ```powershell
-{{ Add code here }}
+Remove-AzFrontDoor -Name "frontdoor1" -ResourceGroupName "rg1"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Remove "frontdoor1" in resource group "rg1" under the current subscription.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove all FrontDoors in resource group "rg1" under the current subscription.
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoor -ResourceGroupName "rg1" | Remove-AzFrontDoor
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Remove all FrontDoors in resource group "rg1" under the current subscription.
+
+### Example 3: Remove all FrontDoors under the current subscription.
+```powershell
+Get-AzFrontDoor | Remove-AzFrontDoor
 ```
 
-{{ Add description here }}
+Remove all FrontDoors under the current subscription.
+
+### Example 4: Remove all FrontDoors with name "frontdoor1" under the current subscription.
+```powershell
+Remove-AzFrontDoor -Name "frontdoor1" | Remove-AzFrontDoor
+```
+
+Remove all FrontDoors with name "frontdoor1" under the current subscription.
 
 ## PARAMETERS
 

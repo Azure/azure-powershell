@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorWafPolicy'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorWafPolicy' {
+Describe 'New-AzFrontDoorWafPolicy' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         $wafName = 'testpsWaf' + (RandomString -allChars $false -len 4)
         $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"

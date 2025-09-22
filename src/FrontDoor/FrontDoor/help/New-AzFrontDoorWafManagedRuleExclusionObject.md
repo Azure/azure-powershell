@@ -22,27 +22,18 @@ Create an in-memory object for ManagedRuleExclusion.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+MatchVariable       SelectorMatchOperator Selector
+-------------       --------------------- --------
+QueryStringArgNames Equals                ParameterName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
 
 ## PARAMETERS
 

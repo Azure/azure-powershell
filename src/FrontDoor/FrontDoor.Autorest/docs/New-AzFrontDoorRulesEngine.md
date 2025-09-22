@@ -38,27 +38,18 @@ Create a new Rules Engine Configuration with the specified name within the speci
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new rules engine configuration for specified front door.
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine -Rule $rulesEngineRule1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          RulesEngineRules
+----          ----------------
+myRulesEngine {rules1}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a new rules engine configuration for specified front door.
 
 ## PARAMETERS
 
