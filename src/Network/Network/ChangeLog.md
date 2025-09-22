@@ -19,6 +19,19 @@
 --->
 
 ## Upcoming Release
+- Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
+* Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall
+    - `Invoke-AzFirewallPacketCaptureOperation`
+* Updated cmdlet to add the mandatory property of 'Operation' and made all other properties not mandatory for Azure Firewall Packet Capture Parameters. Updated corresponding cmdlets.
+    - `New-AzFirewallPacketCaptureParameter`
+* Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
+    - `Get-AzNetworkSecurityPerimeterServiceTag`
+* Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
+    - `New-AzApplicationGatewayBackendHttpSetting`
+    - `Add-AzApplicationGatewayBackendHttpSetting`
+    - `Set-AzApplicationGatewayBackendHttpSetting`
+* Added cmdlet 'Get-AzAllVirtualNetworkGatewayRadiusServerSecret' to fetch list of VirtualNetworkGateway VpnClientConfiguration Radius servers and corresponding radius secrets.
+* Added cmdlet 'Get-AzAllVpnServerConfigurationRadiusServerSecret ' to fetch list of VirtualWan VpnServerConfiguration Radius servers and corresponding radius secrets.
 
 ## Version 7.20.0
 * Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` to retrieve details of a single failover test on a virtual network gateway.
@@ -53,7 +66,7 @@
 * Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSetting' reference in Packet capture V2 command, as well as support for it for the following cmdlets:
     - `New-AzNetworkWatcherPacketCaptureV2`
 * Onboarded Application Gateway WAF Exceptions cmdlet.
-    - `New-AzApplicationGatewayFirewallPolicyException` 
+    - `New-AzApplicationGatewayFirewallPolicyException`
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
