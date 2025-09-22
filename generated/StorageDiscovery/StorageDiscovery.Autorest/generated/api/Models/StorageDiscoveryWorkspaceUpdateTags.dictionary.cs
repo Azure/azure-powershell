@@ -5,7 +5,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Extensions;
 
-    public partial class Tags :
+    public partial class StorageDiscoveryWorkspaceUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IAssociativeArray<string>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,string> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,string>();
@@ -68,6 +68,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryWorkspaceUpdateTags source) => source.__additionalProperties;
     }
 }
