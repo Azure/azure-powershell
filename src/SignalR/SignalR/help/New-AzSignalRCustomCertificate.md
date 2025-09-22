@@ -16,7 +16,7 @@ Create a custom certificate reference for a SignalR service.
 ```
 New-AzSignalRCustomCertificate [-ResourceGroupName <String>] -SignalRName <String> [-Name] <String>
  -KeyVaultBaseUri <String> -KeyVaultSecretName <String> [-KeyVaultSecretVersion <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzSignalRCustomCertificate [-ResourceGroupName <String>] -SignalRName <Strin
 ```
 New-AzSignalRCustomCertificate [-Name] <String> -KeyVaultBaseUri <String> -KeyVaultSecretName <String>
  [-KeyVaultSecretVersion <String>] -SignalRObject <PSSignalRResource> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -142,21 +142,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
