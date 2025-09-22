@@ -1,15 +1,15 @@
 {
-  "New-AzStorageMoverAzNfsFileShareEndpoint+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsFileShareEndpointgv4kubhz?api-version=2025-07-01+1": {
+  "New-AzStorageMoverAzNfsFileShareEndpoint+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testNfsFileShareEndpointy8nedf6x?api-version=2025-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsFileShareEndpointgv4kubhz?api-version=2025-07-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureStorageNfsFileShare\",\r\n    \"description\": \"NFS endpoint description\",\r\n    \"storageAccountResourceId\": \"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.Storage/storageAccounts/storaccgv4kubhz\",\r\n    \"fileShareName\": \"testfs\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testNfsFileShareEndpointy8nedf6x?api-version=2025-07-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureStorageNfsFileShare\",\r\n    \"description\": \"NFS endpoint description\",\r\n    \"storageAccountResourceId\": \"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.Storage/storageAccounts/storaccy8nedf6x\",\r\n    \"fileShareName\": \"testfs\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "339" ]
+        "Content-Length": [ "335" ]
       }
     },
     "Response": {
@@ -17,43 +17,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0500486b-0000-3300-0000-68b1a2390000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/782070eb-6b6b-4fbf-8a64-cb7d71484b89" ],
+        "ETag": [ "\"1f006b7a-0000-3300-0000-68cd2c960000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/94fbc787-e774-4e6c-bb8a-0a508a0ea24a" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "7a2b6335-3f67-4a0f-ba3e-7ba7206ac639" ],
-        "x-ms-request-id": [ "ecfa96a8-6fa3-4536-a869-32db8464d665" ],
-        "x-ms-correlation-request-id": [ "7f9ec46d-434b-414e-b3b2-64881d149ba9" ],
+        "mise-correlation-id": [ "8cca66c5-6519-4fbd-83a3-17369d2467b7" ],
+        "x-ms-request-id": [ "480d8131-5231-4330-8aab-f80db2c8cbd0" ],
+        "x-ms-correlation-request-id": [ "d44d6d90-a6be-4941-84e0-15fe5362900c" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125105Z:7f9ec46d-434b-414e-b3b2-64881d149ba9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101238Z:d44d6d90-a6be-4941-84e0-15fe5362900c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F6308F09475F49AA831491DD854E8C2C Ref B: PNQ231110906036 Ref C: 2025-08-29T12:51:05Z" ],
-        "Date": [ "Fri, 29 Aug 2025 12:51:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0AE4DC3B475B4AC8B73EB4BAABCB7188 Ref B: MAA201060515011 Ref C: 2025-09-19T10:12:37Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:12:37 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "878" ],
+        "Content-Length": [ "870" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsFileShareEndpointgv4kubhz\",\"name\":\"testNfsFileShareEndpointgv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-29T12:51:05.3734059Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-29T12:51:05.3734059Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.Storage/storageAccounts/storaccgv4kubhz\",\"fileShareName\":\"testfs\",\"endpointType\":\"AzureStorageNfsFileShare\",\"description\":\"NFS endpoint description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testNfsFileShareEndpointy8nedf6x\",\"name\":\"testNfsFileShareEndpointy8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T10:12:38.0059706Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-19T10:12:38.0059706Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.Storage/storageAccounts/storaccy8nedf6x\",\"fileShareName\":\"testfs\",\"endpointType\":\"AzureStorageNfsFileShare\",\"description\":\"NFS endpoint description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzStorageMoverAzNfsFileShareEndpoint+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsFileShareEndpointgv4kubhz?api-version=2025-07-01+2": {
+  "New-AzStorageMoverAzNfsFileShareEndpoint+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testNfsFileShareEndpointy8nedf6x?api-version=2025-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsFileShareEndpointgv4kubhz?api-version=2025-07-01",
+      "RequestUri": "https://centraluseuap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testNfsFileShareEndpointy8nedf6x?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "7ea59de0-6451-4483-aa89-7c510e4ab182" ],
+        "x-ms-client-request-id": [ "3f454507-6a7b-4080-9524-6e581ffe08fd" ],
         "CommandName": [ "Get-AzStorageMoverEndpoint" ],
         "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.2", "Az.StorageMover/1.5.0" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.3", "Az.StorageMover/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,26 +64,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0500486b-0000-3300-0000-68b1a2390000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/eastus2euap/9d106c89-9ec6-4176-8ed4-b4e2606153ec" ],
+        "ETag": [ "\"1f006b7a-0000-3300-0000-68cd2c960000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/3ebe9e64-c965-4dfb-864f-466dbd7f1a03" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "330aebb6-d876-4e53-b5b8-2e15b69e0139" ],
-        "x-ms-correlation-request-id": [ "1afeccc7-8aac-4b6c-9041-09c4947d6859" ],
+        "x-ms-request-id": [ "a3d7513d-afe5-4dde-ad4f-53e0fbbff4dd" ],
+        "x-ms-correlation-request-id": [ "274eecbd-74fb-4220-8b43-39b7e52533b6" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250829T125106Z:1afeccc7-8aac-4b6c-9041-09c4947d6859" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1097" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101238Z:274eecbd-74fb-4220-8b43-39b7e52533b6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D023E5D2D47844E69E5BBA919274F62B Ref B: PNQ231110906036 Ref C: 2025-08-29T12:51:05Z" ],
-        "Date": [ "Fri, 29 Aug 2025 12:51:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 22BD399A3BC4474A84228ACF4759CEA9 Ref B: MAA201060515011 Ref C: 2025-09-19T10:12:38Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:12:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "878" ],
+        "Content-Length": [ "870" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/testNfsFileShareEndpointgv4kubhz\",\"name\":\"testNfsFileShareEndpointgv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-29T12:51:05.3734059Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-29T12:51:05.3734059Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.Storage/storageAccounts/storaccgv4kubhz\",\"fileShareName\":\"testfs\",\"endpointType\":\"AzureStorageNfsFileShare\",\"description\":\"NFS endpoint description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testNfsFileShareEndpointy8nedf6x\",\"name\":\"testNfsFileShareEndpointy8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T10:12:38.0059706Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-19T10:12:38.0059706Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.Storage/storageAccounts/storaccy8nedf6x\",\"fileShareName\":\"testfs\",\"endpointType\":\"AzureStorageNfsFileShare\",\"description\":\"NFS endpoint description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

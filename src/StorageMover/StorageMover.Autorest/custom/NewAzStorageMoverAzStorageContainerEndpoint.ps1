@@ -147,6 +147,8 @@ function New-AzStorageMoverAzStorageContainerEndpoint {
         }
 
         $PSBoundParameters.Add("Property", $Properties)
+        $Identity = "SystemAssigned"
+        $PSBoundParameters.Add("IdentityType", $Identity)
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters
     }
