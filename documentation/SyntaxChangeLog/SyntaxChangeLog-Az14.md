@@ -1,3 +1,51 @@
+## 14.5.0 - October 2025
+#### Az.Compute 10.3.0 
+* Modified cmdlet `Grant-AzSnapshotAccess`
+   - Added parameter `-SecureVMGuestStateSAS`
+* Modified cmdlet `New-AzSnapshotConfig`
+   - Added parameter `-InstantAccessDurationMinutes`
+#### Az.Migrate 2.9.0 
+* Modified cmdlet `Get-AzMigrateServerMigrationStatus`
+   - Added parameter `-Expedite`
+#### Az.Network 7.20.0 
+* Modified cmdlet `Add-AzApplicationGatewayBackendHttpSetting`
+   - Added parameters `-DedicatedBackendConnection`, `-ValidateCertChainAndExpiry`, `-ValidateSNI`, `-SniName`
+* Modified cmdlet `New-AzApplicationGatewayBackendHttpSetting`
+   - Added parameters `-DedicatedBackendConnection`, `-ValidateCertChainAndExpiry`, `-ValidateSNI`, `-SniName`
+* Modified cmdlet `New-AzFirewallPacketCaptureParameter`
+   - Added parameter `-Operation`
+   - Changed the type of parameter `-DurationInSeconds` from `UInt32` to `Nullable`1[System.UInt32]`
+   - Changed the type of parameter `-NumberOfPacketsToCapture` from `UInt32` to `Nullable`1[System.UInt32]`
+* Modified cmdlet `Set-AzApplicationGatewayBackendHttpSetting`
+   - Added parameters `-DedicatedBackendConnection`, `-ValidateCertChainAndExpiry`, `-ValidateSNI`, `-SniName`
+* Added cmdlet `Get-AzAllVirtualNetworkGatewayRadiusServerSecret`, `Get-AzAllVpnServerConfigurationRadiusServerSecret`, `Invoke-AzFirewallPacketCaptureOperation`, `Get-AzNetworkSecurityPerimeterServiceTag`
+#### Az.ServiceFabric 3.7.0 
+* Modified cmdlet `Restart-AzServiceFabricManagedNodeType`
+   - Added parameter `-UpdateType`
+   - Parameter `-NodeName` ValidateNotNullOrEmpty changed from `True` to `False`
+* Added cmdlet `Invoke-AzServiceFabricDeallocateManagedNodeType`, `Invoke-AzServiceFabricRedeployManagedNodeType`, `Invoke-AzServiceFabricReimageManagedNodeType`, `Start-AzServiceFabricManagedNodeType`
+#### Az.SignalR 2.2.0 
+* Modified cmdlet `New-AzSignalR`
+   - Added parameters `-EnableSystemAssignedIdentity`, `-UserAssignedIdentity`
+* Modified cmdlet `Update-AzSignalR`
+   - Added parameters `-EnableSystemAssignedIdentity`, `-UserAssignedIdentity`
+* Added cmdlet `Get-AzSignalRCustomCertificate`, `Get-AzSignalRCustomDomain`, `New-AzSignalRCustomCertificate`, `New-AzSignalRCustomDomain`, `Remove-AzSignalRCustomCertificate`, `Remove-AzSignalRCustomDomain`, `Update-AzSignalRCustomDomain`
+#### Az.Storage 9.2.0 
+* Modified cmdlet `New-AzStorageAccount`
+   - Added parameters `-EnableSmbOAuth`, `-Zone`, `-ZonePlacementPolicy`
+* Modified cmdlet `Set-AzStorageAccount`
+   - Added parameters `-EnableSmbOAuth`, `-Zone`, `-ZonePlacementPolicy`
+* Modified cmdlet `Set-AzStorageObjectReplicationPolicy`
+   - Added parameter `-EnableMetric`
+* Modified cmdlet `Get-AzStorageTaskAssignment`
+   - Removed parameter `-Maxpagesize`
+   - Added parameter `-Top`
+* Added cmdlet `Get-AzStorageSku`
+#### Az.StorageMover 1.6.0 
+* Modified cmdlet `New-AzStorageMoverJobDefinition`
+   - Added parameter `-JobType`
+* Added cmdlet `New-AzStorageMoverAzNfsFileShareEndpoint`, `New-AzStorageMoverMultiCloudConnectorEndpoint`, `Update-AzStorageMoverAzNfsFileShareEndpoint`, `Update-AzStorageMoverMultiCloudConnectorEndpoint`
+
 ## 14.4.0 - September 2025
 #### Az.Accounts 5.3.0 
 * Modified cmdlet `Invoke-AzRestMethod`
@@ -673,6 +721,7 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
 
 
 

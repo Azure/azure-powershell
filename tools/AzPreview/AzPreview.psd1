@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '14.4.0'
+ModuleVersion = '14.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -220,7 +220,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; },
             @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '4.1.1'; }, 
             @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '3.7.0'; }, 
             @{ModuleName = 'Az.ServiceLinker'; RequiredVersion = '0.3.0'; }, 
-            @{ModuleName = 'Az.SignalR'; RequiredVersion = '2.1.0'; }, 
+            @{ModuleName = 'Az.Sftp'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.SignalR'; RequiredVersion = '2.2.0'; }, 
             @{ModuleName = 'Az.Sphere'; RequiredVersion = '0.1.3'; }, 
             @{ModuleName = 'Az.SpringCloud'; RequiredVersion = '0.4.0'; }, 
             @{ModuleName = 'Az.Sql'; RequiredVersion = '6.1.0'; }, 
@@ -229,11 +230,11 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; },
             @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.2'; }, 
             @{ModuleName = 'Az.StackHCIVM'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.StandbyPool'; RequiredVersion = '0.3.0'; }, 
-            @{ModuleName = 'Az.Storage'; RequiredVersion = '9.1.0'; }, 
+            @{ModuleName = 'Az.Storage'; RequiredVersion = '9.2.0'; }, 
             @{ModuleName = 'Az.StorageAction'; RequiredVersion = '1.0.0'; }, 
-            @{ModuleName = 'Az.StorageCache'; RequiredVersion = '0.2.0'; }, 
-            @{ModuleName = 'Az.StorageDiscovery'; RequiredVersion = '0.1.0'; }, 
-            @{ModuleName = 'Az.StorageMover'; RequiredVersion = '1.5.1'; }, 
+            @{ModuleName = 'Az.StorageCache'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.StorageDiscovery'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.StorageMover'; RequiredVersion = '1.6.0'; }, 
             @{ModuleName = 'Az.StorageSync'; RequiredVersion = '2.5.2'; }, 
             @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '2.1.1'; }, 
             @{ModuleName = 'Az.Subscription'; RequiredVersion = '0.12.0'; }, 

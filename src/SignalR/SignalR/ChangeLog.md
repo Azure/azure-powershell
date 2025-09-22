@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added cmdlets for managing custom domains:
     - New-AzSignalRCustomDomain: create or update a custom domain for SignalR
     - Get-AzSignalRCustomDomain: get custom domain(s) for SignalR

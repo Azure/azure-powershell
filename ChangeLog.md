@@ -1,3 +1,54 @@
+## 14.5.0 - October 2025
+#### Az.FirmwareAnalysis 1.0.0
+* General availability for module Az.FirmwareAnalysis
+* Upgraded API support to include 2025-08-02
+* Added usage metric support via the Get-AzFirmwareAnalysisUsageMetric cmdlet
+
+#### Az.Network 7.20.0
+* Added cmdlet 'Get-AzVirtualNetworkGatewayFailoverSingleTestDetail' to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet 'Get-AzVirtualNetworkGatewayFailoverAllTestsDetail' to list all failover tests for a virtual network gateway.
+* Added cmdlet 'Start-AzVirtualNetworkGatewaySiteFailoverTest' to initiate a site failover test on a virtual network gateway.
+* Added cmdlet 'Stop-AzVirtualNetworkGatewaySiteFailoverTest' to stop an ongoing site failover test.
+* Added cmdlet 'Get-AzVirtualNetworkGatewayResiliencyInformation' to retrieve resiliency information for a virtual network gateway.
+* Added cmdlet 'Get-AzVirtualNetworkGatewayRoutesInformation' to get route information for a virtual network gateway.
+* Onboarded Maps to Private Link Common Cmdlets
+
+#### Az.SignalR 2.2.0
+* Added cmdlets for managing custom domains:
+    - New-AzSignalRCustomDomain: create or update a custom domain for SignalR
+    - Get-AzSignalRCustomDomain: get custom domain(s) for SignalR
+    - Remove-AzSignalRCustomDomain: remove a custom domain from SignalR
+    - Update-AzSignalRCustomDomain: update a custom domain of SignalR
+* Added cmdlets for managing custom certificates:
+    - New-AzSignalRCustomCertificate: create or update a custom certificate for SignalR
+    - Get-AzSignalRCustomCertificate: get custom certificate(s) for SignalR
+    - Remove-AzSignalRCustomCertificate: remove a custom certificate from SignalR
+    - Update-AzSignalRCustomCertificate: update a custom certificate of SignalR
+* Added support for managed identity to SignalR resource create and update cmdlets:
+    - New-AzSignalR: now supports -EnableSystemAssignedIdentity and -UserAssignedIdentity parameters
+    - Update-AzSignalR: now supports -EnableSystemAssignedIdentity and -UserAssignedIdentity parameters
+
+#### Az.Storage 9.2.0
+* Supported Zone and ZonePlacementPolicy on Storage accounts 
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported listing Storage SKU
+    - 'Get-AzStorageSku'
+* Supported enabling SMB Oauth on Storage accounts 
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported Enable Metrics when set object replication policy 
+    - 'Set-AzStorageObjectReplicationPolicy'
+
+#### Az.StorageDiscovery 1.0.0
+* General availability for module Az.StorageDiscovery
+
+#### Az.StorageMover 1.6.0
+* Added  support for new api version 2025-07-01
+* Included new endpoint types supported in the api version
+    * MultiCloudConnector
+    * NFSFileShare
+
 ## 14.4.0 - September 2025
 #### Az.Accounts 5.3.0
 * Updated 'AuthenticationAssemblyLoadContext' project to deprecate .NET 6.0 and build on .NET 8.0.
