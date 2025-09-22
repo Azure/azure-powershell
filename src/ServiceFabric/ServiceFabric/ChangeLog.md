@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added parameters `-EnableAutoOsUpgrde` and `-AllowRdpAccess` to `New-AzServiceFabricManagedCluster` and `Set-AzServiceFabricManagedCluster`.
+* Added parameters `-EnableAutoOsUpgrade` and `-AllowRdpAccess` to `New-AzServiceFabricManagedCluster` and `Set-AzServiceFabricManagedCluster`.
 * Added parameters `-ZoneBalance`, `-AllowOverProvisioning`, and `-Zone` to `New-AzServiceFabricManagedNodeType` and `Set-AzServiceFabricManagedNodeType`.
 * Added preannoucement for removing Reimage parameters from `Set-AzServiceFabricManagedNodeType`.
 * Added new cmdlets for managed node types:
