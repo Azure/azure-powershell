@@ -55,7 +55,7 @@ pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataFactory.1.19.4.zip;sourceType=sa]Az.DataFactory,1.19.4
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.1.0.zip;sourceType=sa]Az.DataLakeAnalytics,1.1.0
 pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeStore.1.5.0.zip;sourceType=sa]Az.DataLakeStore,1.5.0
-pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataMigration.0.15.0.zip;sourceType=sa]Az.DataMigration,0.15.0
+pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataMigration.1.0.0.zip;sourceType=sa]Az.DataMigration,1.0.0
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.7.0.zip;sourceType=sa]Az.DataProtection,2.7.0
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.1.1.zip;sourceType=sa]Az.DataShare,1.1.1
 pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataTransfer.1.0.0.zip;sourceType=sa]Az.DataTransfer,1.0.0
