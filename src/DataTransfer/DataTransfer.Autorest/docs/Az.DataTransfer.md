@@ -83,9 +83,6 @@ Deletes the connection resource.
 ### [Remove-AzDataTransferFlow](Remove-AzDataTransferFlow.md)
 Deletes the flow resource.
 
-### [Remove-AzDataTransferFlowProfile](Remove-AzDataTransferFlowProfile.md)
-Deletes the specified FlowProfile resource.
-
 ### [Update-AzDataTransferConnection](Update-AzDataTransferConnection.md)
 Update the connection resource.
 

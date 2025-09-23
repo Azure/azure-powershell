@@ -69,27 +69,48 @@ Applies partial update to an existing FlowProfile resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update FlowProfile status and description
 ```powershell
-{{ Add code here }}
+Update-AzDataTransferFlowProfile -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowProfileName "files-flowprofile" -Status "Disabled" -Description "Updated FlowProfile - temporarily disabled for maintenance"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : files-flowprofile
+ResourceGroupName  : ResourceGroup01
+Location           : EastUS
+Pipeline          : Pipeline01
+ReplicationScenario: Files
+Status            : Disabled
+Description       : Updated FlowProfile - temporarily disabled for maintenance
+FlowProfileId     : /subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/files-flowprofile
+ModifiedTime      : 2025-09-23T11:15:30Z
 ```
 
-{{ Add description here }}
+Updates the status and description of an existing FlowProfile.
+This is useful for maintenance scenarios or when you need to modify basic properties.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add MIME filters and antivirus protection to an existing FlowProfile
 ```powershell
-{{ Add code here }}
+$mimeFilters = @("application/pdf", "image/jpeg", "image/png", "application/zip")
+Update-AzDataTransferFlowProfile -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowProfileName "files-flowprofile" -MimeFilter $mimeFilters -AntiviruAvSolution @("Defender") -Status "Enabled"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : files-flowprofile
+ResourceGroupName  : ResourceGroup01
+Location           : EastUS
+Pipeline          : Pipeline01
+ReplicationScenario: Files
+Status            : Enabled
+Description       : Updated FlowProfile - temporarily disabled for maintenance
+MimeFilter        : {application/pdf, image/jpeg, image/png, application/zip}
+AntiviruAvSolution: {Defender}
+FlowProfileId     : /subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/files-flowprofile
+ModifiedTime      : 2025-09-23T11:20:45Z
 ```
 
-{{ Add description here }}
+Enhances an existing FlowProfile by adding MIME type filtering and antivirus protection while re-enabling it.
+This demonstrates how to add security features to existing configurations.
 
 ## PARAMETERS
 

@@ -250,4 +250,10 @@ directive:
       verb: Invoke
       subject: ^ExecutePipelineAction
     hide: true
+
+  ## Hide remove FlowProfile command
+  - where:
+      verb: Remove
+      subject: ^FlowProfile
+    hide: true
 ```

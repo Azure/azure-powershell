@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Remove-AzDataTransferFlowProfile",
-      "description": "Deletes the specified FlowProfile resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferflowprofile"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-PipelineName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Deletes the specified FlowProfile resource.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.flowProfileName]"
-            },
-            {
-              "name": "-PipelineName",
-              "value": "[Path.pipelineName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }
