@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
         public DateTime? ValidUntil { get; set; }
 
         /// <summary>
-        /// Azure AD principal used for certificate generation
+        /// Microsoft Entra principal used for certificate generation
         /// </summary>
         public string Principal { get; set; }
 

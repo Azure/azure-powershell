@@ -43,7 +43,7 @@ Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -LocalUser <String> [-Pr
 ## DESCRIPTION
 Start interactive SFTP session to an Azure Storage Account.
 Users can login using Microsoft Entra issued certificates or using local user credentials. We recommend login using Microsoft Entra issued certificates when possible.
-The target storage account must have SFTP enabled and hierarchical namespace (HNS) enabled. For Azure AD authentication, your Azure AD identity must have appropriate RBAC permissions such as Storage Blob Data Contributor or Storage Blob Data Owner.
+The target storage account must have SFTP enabled and hierarchical namespace (HNS) enabled. For Microsoft Entra authentication, your Microsoft Entra identity must have appropriate RBAC permissions such as Storage Blob Data Contributor or Storage Blob Data Owner.
 
 ## EXAMPLES
 
@@ -106,7 +106,7 @@ Connect-AzSftp -StorageAccount "mystorageaccount" -PrivateKeyFile "C:\keys\id_rs
 
 ### Example 10: Troubleshoot authentication issues
 ```powershell
-# Check Azure AD authentication status
+# Check Microsoft Entra authentication status
 Get-AzContext
 
 # Test certificate generation explicitly
