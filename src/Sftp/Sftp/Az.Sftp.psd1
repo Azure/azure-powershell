@@ -109,7 +109,7 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Initial release of Az.Sftp module providing Azure Storage SFTP support
 * Connect-AzSftp: Establish SFTP connections to Azure Storage accounts with multiple authentication modes
-* New-AzSftpCertificate: Generate SSH certificates using Azure AD credentials for SFTP authentication
+* New-AzSftpCertificate: Generate SSH certificates using Microsoft Entra credentials for SFTP authentication
 * Support for automatic certificate generation, certificate-based authentication, and key-based authentication
 * Cross-platform support for Windows, Linux, and macOS
 * Integration with Azure PowerShell authentication context'

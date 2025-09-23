@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSftpCertificate
 
 ## SYNOPSIS
-Generate SSH certificates for SFTP authentication using Azure AD credentials.
+Generate SSH certificates for SFTP authentication using Microsoft Entra credentials.
 
 ## SYNTAX
 
@@ -37,19 +37,19 @@ New-AzSftpCertificate [-CertificatePath <String>] -LocalUser <String> [-PrivateK
 ```
 
 ## DESCRIPTION
-The New-AzSftpCertificate cmdlet generates SSH certificates for SFTP authentication using your current Azure AD credentials. This cmdlet provides the same authentication methods and parameter sets as the Az.Ssh module, ensuring consistency across Azure PowerShell modules.
+The New-AzSftpCertificate cmdlet generates SSH certificates for SFTP authentication using your current Microsoft Entra credentials. This cmdlet provides the same authentication methods and parameter sets as the Az.Ssh module, ensuring consistency across Azure PowerShell modules.
 
 The cmdlet supports four authentication modes that align with the SSH module:
 
-**Default Mode (Azure AD Authentication)**: When no specific key files are provided, the cmdlet automatically generates a new SSH key pair and creates a certificate signed by Azure AD's trusted CA. This is the simplest approach for getting started with SFTP authentication.
+**Default Mode (Microsoft Entra Authentication)**: When no specific key files are provided, the cmdlet automatically generates a new SSH key pair and creates a certificate signed by Microsoft Entra's trusted CA. This is the simplest approach for getting started with SFTP authentication.
 
-**FromPublicKey Mode**: When a public key file is provided, the cmdlet generates a certificate for that specific key using Azure AD credentials. This is useful when you already have SSH public keys and want to use them for Azure Storage SFTP access.
+**FromPublicKey Mode**: When a public key file is provided, the cmdlet generates a certificate for that specific key using Microsoft Entra credentials. This is useful when you already have SSH public keys and want to use them for Azure Storage SFTP access.
 
-**FromPrivateKey Mode**: When a private key file is provided, the cmdlet generates the corresponding public key and creates a certificate using Azure AD credentials. This is helpful when you have existing private keys and want to create certificates for them.
+**FromPrivateKey Mode**: When a private key file is provided, the cmdlet generates the corresponding public key and creates a certificate using Microsoft Entra credentials. This is helpful when you have existing private keys and want to create certificates for them.
 
 **LocalUser Mode**: When a local user is specified, the cmdlet generates a certificate suitable for local user authentication on storage accounts. This can be combined with existing private keys or generate new ones, matching the SSH module's local user certificate capabilities.
 
-The generated certificates are typically valid for 1 hour and can be used with any SFTP client that supports SSH certificate authentication. The certificates are signed by Azure AD's trusted CA and will be accepted by Azure Storage accounts where your Azure AD identity has appropriate permissions.
+The generated certificates are typically valid for 1 hour and can be used with any SFTP client that supports SSH certificate authentication. The certificates are signed by Microsoft Entra's trusted CA and will be accepted by Azure Storage accounts where your Microsoft Entra identity has appropriate permissions.
 
 You must be signed in to Azure with an account that has appropriate RBAC permissions (such as Storage Blob Data Contributor or Storage Blob Data Owner) on the target storage accounts.
 
@@ -60,7 +60,7 @@ You must be signed in to Azure with an account that has appropriate RBAC permiss
 New-AzSftpCertificate
 ```
 
-This command generates a new SSH key pair and creates a certificate signed by Azure AD. The key pair and certificate are saved in the system temp directory with auto-generated filenames. This is the simplest way to get started with SFTP authentication.
+This command generates a new SSH key pair and creates a certificate signed by Microsoft Entra. The key pair and certificate are saved in the system temp directory with auto-generated filenames. This is the simplest way to get started with SFTP authentication.
 
 ### Example 2: Generate certificate with custom path
 ```powershell
@@ -74,7 +74,7 @@ This command generates a new SSH key pair and creates a certificate, saving the 
 New-AzSftpCertificate -PrivateKeyFile "C:\keys\id_rsa" -CertificatePath "C:\certs\id_rsa.cert"
 ```
 
-This command generates a certificate from an existing SSH private key. The cmdlet will automatically derive the public key from the private key and create a certificate signed by Azure AD. This is useful when you have existing private keys and want to create certificates for them.
+This command generates a certificate from an existing SSH private key. The cmdlet will automatically derive the public key from the private key and create a certificate signed by Microsoft Entra. This is useful when you have existing private keys and want to create certificates for them.
 
 ### Example 4: Generate certificate from existing public key
 ```powershell

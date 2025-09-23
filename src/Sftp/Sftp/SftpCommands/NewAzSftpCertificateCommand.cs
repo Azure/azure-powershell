@@ -23,7 +23,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
 namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 {
     /// <summary>
-    /// Generate SSH certificate for SFTP authentication using Azure AD
+    /// Generate SSH certificate for SFTP authentication using Microsoft Entra
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzSftpCertificate", DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSCertificateInfo))]
@@ -43,12 +43,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
         [Alias("OutputFile", "o")]
         public string CertificatePath { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FromPublicKeyParameterSet, HelpMessage = "Path to existing SSH public key file for which to generate a certificate using Azure AD.")]
+        [Parameter(Mandatory = true, ParameterSetName = FromPublicKeyParameterSet, HelpMessage = "Path to existing SSH public key file for which to generate a certificate using Microsoft Entra.")]
         [ValidateNotNullOrEmpty]
         [Alias("p")]
         public string PublicKeyFile { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FromPrivateKeyParameterSet, HelpMessage = "Path to existing SSH private key file. The corresponding public key will be used to generate a certificate using Azure AD.")]
+        [Parameter(Mandatory = true, ParameterSetName = FromPrivateKeyParameterSet, HelpMessage = "Path to existing SSH private key file. The corresponding public key will be used to generate a certificate using Microsoft Entra.")]
         [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Path to existing SSH private key file. If provided, uses the corresponding public key for certificate generation.")]
         [Parameter(Mandatory = false, ParameterSetName = LocalUserParameterSet, HelpMessage = "Path to existing SSH private key file for local user certificate generation.")]
         [ValidateNotNullOrEmpty]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 
             string target = !string.IsNullOrEmpty(LocalUser) 
                 ? $"SSH certificate for local user '{LocalUser}'" 
-                : "SSH certificate for Azure AD authentication";
+                : "SSH certificate for Microsoft Entra authentication";
 
             if (!ShouldProcess(target, 
                               $"Do you want to create {target}?",
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 // Check for cancellation before authentication
                 CmdletCancellationToken.ThrowIfCancellationRequested();
 
-                // Use different authentication method for local user vs Azure AD
+                // Use different authentication method for local user vs Microsoft Entra
                 string certFile;
                 string username;
                 
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 }
                 else
                 {
-                    // Standard Azure AD authentication
+                    // Standard Microsoft Entra authentication
                     var (cf, un) = FileUtils.GetAndWriteCertificate(
                         DefaultContext, actualPublicKeyFile, CertificatePath, SshClientFolder, CmdletCancellationToken);
                     certFile = cf;

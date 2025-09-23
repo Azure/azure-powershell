@@ -16,4 +16,4 @@ Starts an interactive SFTP session to an Azure Storage Account.
 Users can login using Microsoft Entra accounts, or local user accounts via standard SSH authentication. Use Microsoft Entra account login for the best security and convenience.
 
 ### [New-AzSftpCertificate](New-AzSftpCertificate.md)
-Generate SSH certificates for SFTP authentication using Azure AD credentials.
+Generate SSH certificates for SFTP authentication using Microsoft Entra credentials.
