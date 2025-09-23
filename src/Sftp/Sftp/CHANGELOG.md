@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Initial release of Az.Sftp module
-* Added `New-AzSftpCertificate` cmdlet for generating SSH certificates using Azure AD credentials
+* Added `New-AzSftpCertificate` cmdlet for generating SSH certificates using Microsoft Entra credentials
     - Automatic SSH key pair generation
     - Certificate generation for existing public keys
     - Support for custom certificate paths

@@ -2,7 +2,7 @@
 This module provides PowerShell cmdlets for securely connecting to Azure Storage accounts using SFTP (SSH File Transfer Protocol).
 
 ## Overview
-Az.Sftp enables you to establish secure SFTP connections to Azure Storage accounts with hierarchical namespace enabled. The module supports multiple authentication modes including automatic Azure AD certificate generation.
+Az.Sftp enables you to establish secure SFTP connections to Azure Storage accounts with hierarchical namespace enabled. The module supports multiple authentication modes including automatic Microsoft Entra certificate generation.
 
 ## Requirements
 - Azure Storage account with SFTP enabled
@@ -20,7 +20,7 @@ Install-Module -Name Az.Sftp
 # Connect to Azure
 Connect-AzAccount
 
-# Connect to storage account using Azure AD authentication
+# Connect to storage account using Microsoft Entra authentication
 Connect-AzSftp -StorageAccount "mystorageaccount"
 ```
 

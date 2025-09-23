@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
         public int? Port { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Path to SSH certificate file for authentication. If not provided, a certificate will be generated automatically.")]
-        [Parameter(Mandatory = true, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Path to SSH certificate file for authentication. Must be generated with New-AzSftpCertificate or compatible Azure AD certificate.")]
+        [Parameter(Mandatory = true, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Path to SSH certificate file for authentication. Must be generated with New-AzSftpCertificate or compatible Microsoft Entra certificate.")]
         [ValidateNotNullOrEmpty]
         public string CertificateFile { get; set; }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
         [ValidateNotNullOrEmpty]
         public string PublicKeyFile { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = LocalUserAuthParameterSet, HelpMessage = "Username for a local user configured on the storage account. When specified, uses local user authentication instead of Azure AD.")]
+        [Parameter(Mandatory = true, ParameterSetName = LocalUserAuthParameterSet, HelpMessage = "Username for a local user configured on the storage account. When specified, uses local user authentication instead of Microsoft Entra.")]
         [ValidateNotNullOrEmpty]
         public string LocalUser { get; set; }
 
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             switch (ParameterSetName)
             {
                 case DefaultParameterSet:
-                    // Azure AD authentication (automatic certificate generation)
+                    // Microsoft Entra authentication (automatic certificate generation)
                     if (string.IsNullOrEmpty(CertificateFile) && string.IsNullOrEmpty(PublicKeyFile) && string.IsNullOrEmpty(PrivateKeyFile))
                     {
-                        WriteVerbose("Fully managed mode: No credentials provided, using Azure AD authentication");
+                        WriteVerbose("Fully managed mode: No credentials provided, using Microsoft Entra authentication");
                         autoGenerateCert = true;
                         deleteCert = true;
                         deleteKeys = true;
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     }
                     else
                     {
-                        WriteVerbose("Using provided keys for Azure AD certificate generation");
+                        WriteVerbose("Using provided keys for Microsoft Entra certificate generation");
                         autoGenerateCert = true;
                         deleteCert = true;
                     }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     }
 
                     Host.UI.WriteLine(ConsoleColor.Blue, Host.UI.RawUI.BackgroundColor,
-                                    autoGenerateCert ? "Generating temporary credentials using Azure AD authentication..."
+                                    autoGenerateCert ? "Generating temporary credentials using Microsoft Entra authentication..."
                                                     : "Using provided certificate for authentication...");
                     break;
 
