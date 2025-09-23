@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.21.0
 - Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
 * Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall
     - `Invoke-AzFirewallPacketCaptureOperation`
