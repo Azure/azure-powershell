@@ -3887,6 +3887,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - nazang
+            - mooshc
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
