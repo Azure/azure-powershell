@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability for module Az.DataMigration
 * Upgraded Data Migration API to stable version `2025-06-30`.
 * Added support for retrying database migrations and for deleting SQL VM and SQL MI Database Migration Services.
