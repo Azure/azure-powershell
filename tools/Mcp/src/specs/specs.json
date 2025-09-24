@@ -71,6 +71,12 @@
                 }
             ],
             "callbackName": "createTestsFromSpecs"
+        },
+        {
+            "name": "setup-module-structure",
+            "description": "Setup Azure PowerShell module structure by selecting service, provider, and API version through interactive dropdowns",
+            "parameters": [],
+            "callbackName": "setupModuleStructure"
         }
     ],
     "prompts": [
