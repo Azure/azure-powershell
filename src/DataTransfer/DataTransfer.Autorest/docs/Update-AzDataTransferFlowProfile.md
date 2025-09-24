@@ -15,7 +15,7 @@ Applies partial update to an existing FlowProfile resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzDataTransferFlowProfile -Name <String> -PipelineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AntiviruAvSolution <String[]>] [-ArchiveMaximumCompressionRatioLimit <Double>]
+ [-SubscriptionId <String>] [-AntivirusAvSolution <String[]>] [-ArchiveMaximumCompressionRatioLimit <Double>]
  [-ArchiveMaximumDepthLimit <Int64>] [-ArchiveMaximumExpansionSizeLimit <Int64>]
  [-ArchiveMinimumSizeForExpansion <Int64>] [-DataSizeMaximum <Int64>] [-DataSizeMinimum <Int64>]
  [-Description <String>] [-IdentityType <String>] [-MimeFilter <IMimeTypeFilter[]>] [-MimeFilterType <String>]
@@ -26,7 +26,7 @@ Update-AzDataTransferFlowProfile -Name <String> -PipelineName <String> -Resource
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataTransferFlowProfile -InputObject <IDataTransferIdentity> [-AntiviruAvSolution <String[]>]
+Update-AzDataTransferFlowProfile -InputObject <IDataTransferIdentity> [-AntivirusAvSolution <String[]>]
  [-ArchiveMaximumCompressionRatioLimit <Double>] [-ArchiveMaximumDepthLimit <Int64>]
  [-ArchiveMaximumExpansionSizeLimit <Int64>] [-ArchiveMinimumSizeForExpansion <Int64>]
  [-DataSizeMaximum <Int64>] [-DataSizeMinimum <Int64>] [-Description <String>] [-IdentityType <String>]
@@ -39,7 +39,7 @@ Update-AzDataTransferFlowProfile -InputObject <IDataTransferIdentity> [-Antiviru
 ### UpdateViaIdentityPipelineExpanded
 ```
 Update-AzDataTransferFlowProfile -Name <String> -PipelineInputObject <IDataTransferIdentity>
- [-AntiviruAvSolution <String[]>] [-ArchiveMaximumCompressionRatioLimit <Double>]
+ [-AntivirusAvSolution <String[]>] [-ArchiveMaximumCompressionRatioLimit <Double>]
  [-ArchiveMaximumDepthLimit <Int64>] [-ArchiveMaximumExpansionSizeLimit <Int64>]
  [-ArchiveMinimumSizeForExpansion <Int64>] [-DataSizeMaximum <Int64>] [-DataSizeMinimum <Int64>]
  [-Description <String>] [-IdentityType <String>] [-MimeFilter <IMimeTypeFilter[]>] [-MimeFilterType <String>]
@@ -112,7 +112,7 @@ This demonstrates how to add security features to existing configurations.
 
 ## PARAMETERS
 
-### -AntiviruAvSolution
+### -AntivirusAvSolution
 Optional.
 The list of antiviruses to be used as a scanning solution for replicating data.
 

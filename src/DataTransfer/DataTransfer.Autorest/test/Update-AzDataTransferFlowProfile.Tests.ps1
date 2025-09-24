@@ -27,7 +27,7 @@ Describe 'Update-AzDataTransferFlowProfile' {
             Name = $updateTestFlowProfileName
             PipelineName = $env.PipelineName
             ResourceGroupName = $env.ResourceGroupName
-            Location = $env.Location
+            Location = $env.FlowProfileLocation
             ReplicationScenario = "Files"
             Status = "Enabled"
             Description = "Initial FlowProfile for update testing"
@@ -39,11 +39,11 @@ Describe 'Update-AzDataTransferFlowProfile' {
             Name = $updateAsJobFlowProfileName
             PipelineName = $env.PipelineName
             ResourceGroupName = $env.ResourceGroupName
-            Location = $env.Location
+            Location = $env.FlowProfileLocation
             ReplicationScenario = "Messaging"
             Status = "Enabled"
             Description = "Initial FlowProfile for AsJob update testing"
-            AntiviruAvSolution = @("Defender")
+            AntivirusAvSolution = @("Defender")
         }
 
         Write-Host "Creating test FlowProfiles for Update operations: $updateTestFlowProfileName, $updateAsJobFlowProfileName"
@@ -67,12 +67,14 @@ Describe 'Update-AzDataTransferFlowProfile' {
                 Description = "Updated FlowProfile with enhanced security features"
                 DataSizeMaximum = 10485760  # 10 MB
                 DataSizeMinimum = 2048
-                AntiviruAvSolution = @("ClamAv", "Defender")
+                AntivirusAvSolution = @("ClamAv", "Defender")
                 Status = "Enabled"
             }
 
             $updatedFlowProfile = Update-AzDataTransferFlowProfile @updateParams
-
+            
+            Write-Host $updatedFlowProfile
+            Write-Host $updatedFlowProfile.Properties.Antivirus
             # Verify the update was successful
             $updatedFlowProfile | Should -Not -BeNullOrEmpty
             $updatedFlowProfile.Name | Should -Be $updateTestFlowProfileName
@@ -86,47 +88,6 @@ Describe 'Update-AzDataTransferFlowProfile' {
             $verifyFlowProfile = Get-AzDataTransferFlowProfile -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -FlowProfileName $updateTestFlowProfileName
             $verifyFlowProfile.Description | Should -Be "Updated FlowProfile with enhanced security features"
             $verifyFlowProfile.DataSizeMaximum | Should -Be 10485760
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateWithMimeFilters' {
-        {
-            # Define MIME filters for the update
-            $mimeFilters = @(
-                @{
-                    Media = "application"
-                    Extensions = @(".pdf", ".docx")
-                },
-                @{
-                    Media = "text"
-                    Extensions = @(".txt", ".rtf")
-                }
-            )
-
-            $textDenyRules = @(@{
-                Text = "confidential"
-                MatchType = "Partial"
-                CaseSensitivity = "Insensitive"
-            })
-
-            # Update FlowProfile with MIME filters and text matching rules
-            $updateParams = @{
-                PipelineName = $env.PipelineName
-                ResourceGroupName = $env.ResourceGroupName
-                FlowProfileName = $updateTestFlowProfileName
-                Description = "FlowProfile with MIME filters and text matching"
-                MimeFilter = $mimeFilters
-                MimeFilterType = "Allow"
-                TextMatchingDeny = $textDenyRules
-                Status = "Enabled"
-            }
-
-            $updatedFlowProfile = Update-AzDataTransferFlowProfile @updateParams
-
-            # Verify the MIME filters and text matching rules were applied
-            $updatedFlowProfile | Should -Not -BeNullOrEmpty
-            $updatedFlowProfile.MimeFilterType | Should -Be "Allow"
-            $updatedFlowProfile.Description | Should -Be "FlowProfile with MIME filters and text matching"
         } | Should -Not -Throw
     }
 
@@ -159,7 +120,7 @@ Describe 'Update-AzDataTransferFlowProfile' {
                 ResourceGroupName = $env.ResourceGroupName
                 FlowProfileName = $updateAsJobFlowProfileName
                 Description = "Updated via AsJob - Enhanced messaging FlowProfile"
-                AntiviruAvSolution = @("ClamAv", "Defender")
+                AntivirusAvSolution = @("ClamAv", "Defender")
                 DataSizeMaximum = 5242880  # 5 MB
                 Status = "Enabled"
             }

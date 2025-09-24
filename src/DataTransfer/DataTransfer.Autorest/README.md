@@ -277,7 +277,7 @@ directive:
       subject: FlowProfile
 
   - where:
-      verb: New
+      verb: New|Update
       subject: ^FlowProfile
       parameter-name: AntiviruAvSolution
     set:

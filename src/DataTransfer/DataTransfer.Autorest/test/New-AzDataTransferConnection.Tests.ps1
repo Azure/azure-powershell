@@ -126,7 +126,7 @@ Describe 'New-AzDataTransferConnection' {
             Name = "test-fp-basic-$testRunId"
             PipelineName = $env.PipelineName
             ResourceGroupName = $env.ResourceGroupName
-            Location = $env.Location
+            Location = $env.FlowProfileLocation
             ReplicationScenario = "Files"
             Status = "Enabled"
             Description = "Basic test FlowProfile for connection testing"
@@ -136,11 +136,11 @@ Describe 'New-AzDataTransferConnection' {
             Name = "test-fp-messaging-$testRunId"
             PipelineName = $env.PipelineName
             ResourceGroupName = $env.ResourceGroupName
-            Location = $env.Location
+            Location = $env.FlowProfileLocation
             ReplicationScenario = "Messaging"
             Status = "Enabled"
             Description = "Messaging test FlowProfile for connection testing"
-            AntiviruAvSolution = @("Defender")
+            AntivirusAvSolution = @("Defender")
         }
 
         Write-Host "Creating test FlowProfiles for connection tests..."

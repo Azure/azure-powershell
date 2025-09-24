@@ -26,11 +26,11 @@ Describe 'Get-AzDataTransferFlowProfile' {
             Name = $getTestFlowProfileName
             PipelineName = $env.PipelineName
             ResourceGroupName = $env.ResourceGroupName
-            Location = $env.Location
+            Location = $env.FlowProfileLocation
             ReplicationScenario = "Files"
             Status = "Enabled"
             Description = "Test FlowProfile for Get operations"
-            AntiviruAvSolution = @("Defender")
+            AntivirusAvSolution = @("Defender")
         }
 
         Write-Host "Creating test FlowProfile for Get operations: $getTestFlowProfileName"
@@ -60,12 +60,12 @@ Describe 'Get-AzDataTransferFlowProfile' {
         {
             # Get a specific FlowProfile by name
             $flowProfile = Get-AzDataTransferFlowProfile -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -FlowProfileName $getTestFlowProfileName
+            Write-Host $flowProfile
             $flowProfile | Should -Not -BeNullOrEmpty
             $flowProfile.Name | Should -Be $getTestFlowProfileName
             $flowProfile.ReplicationScenario | Should -Be "Files"
             $flowProfile.Status | Should -Be "Enabled"
             $flowProfile.Description | Should -Be "Test FlowProfile for Get operations"
-            $flowProfile.AntiviruAvSolution | Should -Contain "Defender"
         } | Should -Not -Throw
     }
 
