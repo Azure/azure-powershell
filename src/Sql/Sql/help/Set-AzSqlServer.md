@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSoftDeleteRetention
-Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. If you want to specify a different retention period, use the RetentionDays parameter.
+Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. If you want to specify a different retention period, use the SoftDeleteRetentionDays parameter.
 
 ```yaml
 Type: System.Boolean
@@ -301,7 +301,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0 to 35. If set to 0, soft-delete retention is disabled.
+Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-35. If set to 0, soft-delete retention is disabled.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

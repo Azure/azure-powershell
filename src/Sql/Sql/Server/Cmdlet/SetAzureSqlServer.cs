@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified). To set a custom retention period use -SoftDeleteRetentionDays.")]
         [PSArgumentCompleter("true", "false")]
-        public bool EnableSoftDeleteRetention { get; set; } = false;
+        public bool EnableSoftDeleteRetention { get; set; }
 
         /// <summary>
         /// Value for soft-delete retention days for the server.

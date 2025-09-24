@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             }
 
             // SoftDeleteRetentionDays depends on EnableSoftDeleteRetention; if days are provided but soft-delete is not enabled, fail early.
-            if (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays > 0 && !this.EnableSoftDeleteRetention)
+            if (this.SoftDeleteRetentionDays.HasValue && !this.EnableSoftDeleteRetention)
             {
                 throw new PSArgumentException(Properties.Resources.MissingEnableSoftDeleteRetention, "EnableSoftDeleteRetention");
             }

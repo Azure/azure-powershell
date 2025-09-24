@@ -58,8 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             // First check if a live server already exists
             try
             {
-                bool serverExists = ModelAdapter.ListServers().Any(s =>
-                    string.Equals(s.ResourceGroupName, this.ResourceGroupName, StringComparison.OrdinalIgnoreCase) &&
+                bool serverExists = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName).Any(s =>
                     string.Equals(s.ServerName, this.ServerName, StringComparison.OrdinalIgnoreCase));
 
                 if (serverExists)
@@ -83,8 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             // Now check if there's a deleted server to restore
             try
             {
-                var deletedServer = ModelAdapter.GetDeletedServer(this.ResourceGroupName, this.ServerName);
-                if (deletedServer == null)
+                if (ModelAdapter.GetDeletedServer(this.Location, this.ServerName) == null)
                 {
                    throw new PSArgumentException(
                        string.Format(Properties.Resources.DeletedServerNotFound,
@@ -117,20 +115,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerModel> model)
         {
-            if (!Sql.Services.Util.ValidateServerName(this.ServerName))
+            return new List<Model.AzureSqlServerModel>
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.ServerNameInvalid, this.ServerName), "ServerName");
-            }
-
-            List<Model.AzureSqlServerModel> newEntity = new List<Model.AzureSqlServerModel>();
-            newEntity.Add(new Model.AzureSqlServerModel()
-            {
-                Location = this.Location,
-                ResourceGroupName = this.ResourceGroupName,
-                ServerName = this.ServerName,
-                CreateMode = "Restore"
-            });
-            return newEntity;
+                new Model.AzureSqlServerModel
+                {
+                    Location = this.Location,
+                    ResourceGroupName = this.ResourceGroupName,
+                    ServerName = this.ServerName,
+                    CreateMode = "Restore"
+                }
+            };
         }
 
         /// <summary>

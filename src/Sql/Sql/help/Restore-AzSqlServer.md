@@ -44,7 +44,7 @@ RestrictOutboundNetworkAccess : Disabled
 Administrators                :
 PrimaryUserAssignedIdentityId :
 KeyId                         :
-FederatedClientId             : 
+FederatedClientId             :
 SoftDeleteRetentionDays       : 7
 ```
 
