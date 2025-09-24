@@ -12,7 +12,7 @@ Get the storage task properties
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzStorageActionTask [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzStorageActionTask -InputObject <IStorageActionIdentity> [-DefaultProfile <
  [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzStorageActionTask -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -154,7 +154,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
