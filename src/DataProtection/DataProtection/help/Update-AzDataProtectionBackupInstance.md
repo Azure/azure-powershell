@@ -249,7 +249,7 @@ Accept wildcard characters: False
 
 ### -VaultedBackupContainer
 List of containers to be backed up inside the VaultStore.
-Use this parameter for DatasourceType AzureBlob.
+Use this parameter for DatasourceType AzureBlob and AzureDataLakeStorage.
 
 ```yaml
 Type: System.String[]

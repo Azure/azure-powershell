@@ -115,7 +115,7 @@ The fifth command initializes the backup instance.ype AzureDatabaseForMySQL to i
 
 ### -BackupConfiguration
 Backup configuration for backup.
-Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
+Use this parameter to configure protection for AzureKubernetesService, AzureBlob and AzureDataLakeStorage.
 To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyId
-Policy Id to be assiciated to Datasource
+Policy Id to be associated to Datasource
 
 ```yaml
 Type: System.String
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotResourceGroupId
-Sanpshot Resource Group
+Snapshot Resource Group
 
 ```yaml
 Type: System.String
