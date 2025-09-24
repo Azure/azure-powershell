@@ -410,6 +410,27 @@ Function Write-ErrorLog{
     }
 }
 
+function Test-ComputerNameHasDnsSuffix {
+    [CmdletBinding()]
+    [OutputType([bool])]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $ComputerName
+    )
+
+    if ([string]::IsNullOrWhiteSpace($ComputerName)) { return $false }
+
+    # A fully qualified computer name contains at least one dot
+    if ($ComputerName -match "\.") {
+        Write-Output "$ComputerName is a Fully Qualified Computer Name (FQDN)."
+        return $true
+    }
+    else {
+        Write-Output "$ComputerName is NOT a Fully Qualified Computer Name (FQDN)."
+        return $false   
+    }
+}
+
 Function Write-NodeEventLog{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
@@ -5549,7 +5570,16 @@ function Get-SetupLoggingDetails
 
     if($isManagementNode)
     {
-        $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
+        if (Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName)
+        {
+            $ComputerNameWithDNSSuffix = $ComputerName
+        }
+        else
+        {
+            $DNSSuffix = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters').Domain
+            $ComputerNameWithDNSSuffix = $ComputerName + '.' + $DNSSuffix
+        }
+        
         $nodeSessionParams.Add('ComputerName', $ComputerNameWithDNSSuffix)
 
         if($null -ne $Credential)
