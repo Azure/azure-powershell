@@ -1905,3 +1905,36 @@ function Test-ConfVMImportSecure
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test SupportedSecurityOption Parameter during creation of managed disk using CreateOption of Import
+#>
+function Test-SupportedSecurityOption 
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+
+    try{
+    	New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $sourceUri = "https://teststorage.blob.core.windows.net/vhds/test.vhd"
+        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        $storageAccountId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Storage/storageAccounts/teststorage"
+
+        $diskConfig = New-AzDiskConfig -Location $loc -AccountType 'Premium_LRS' -CreateOption Import -SourceUri $sourceUri -StorageAccountId $storageAccountId -SupportedSecurityOption "TrustedLaunchSupported"
+		$diskname = "disk" + $rgname;
+		New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual $disk.SupportedSecurityOption "TrustedLaunchSupported";
+
+        $updateconfig = New-AzDiskUpdateConfig -SupportedSecurityOption "TrustedLaunchAndConfidentialVMSupported";
+        $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual $disk.SupportedSecurityOption "TrustedLaunchAndConfidentialVMSupported";
+    }
+
+    finally
+    {
+    	# Cleanup
+		Clean-ResourceGroup $rgname
+    }
+}
