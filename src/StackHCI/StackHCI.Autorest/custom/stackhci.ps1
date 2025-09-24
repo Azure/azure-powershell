@@ -460,7 +460,17 @@ Function Write-NodeEventLog{
         if($IsManagementNode)
         {
             Write-VerboseLog ("Connecting from management node")
-            $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
+
+            if (Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName)
+            {
+                $ComputerNameWithDNSSuffix = $ComputerName
+            }
+            else
+            {
+                $DNSSuffix = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters').Domain
+                $ComputerNameWithDNSSuffix = $ComputerName + '.' + $DNSSuffix
+            }
+
             if($Null -eq $Credentials)
             {
                 $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
@@ -593,6 +603,11 @@ function Confirm-UserAcknowledgmentUpgradeToSolution {
 #If the Arc agent is installed AND its status is Connected AND resourceName is present, it validates that subscriptionId and resourceGroup match the expected values.
 #It ignores machines that are not Connected, have no resourceName, or lack the agent. Throws only when a Connected node is registered to a different scope.
 $CheckNodeArcRegistrationStateScriptBlock = {
+    param (
+        [string]$SubscriptionId,
+        [string]$ArcResourceGroupName,
+        [string]$ClusterNode
+    )
     if(Test-Path -Path "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe")
     {
         $arcAgentStatus = Invoke-Expression -Command "& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' show -j"
@@ -603,9 +618,8 @@ $CheckNodeArcRegistrationStateScriptBlock = {
         # Throw an error if the node is Arc enabled to a different resource group or subscription id
         # Agent can be is "Connected"  or disconnected state. If the resource name property on the agent is empty, that means, it is cleanly disconnected , and just the exe exists
         # If the resourceName exists and agent is in "Disconnected" state, indicates agent has temporary connectivity issues to the cloud
-        if(-not ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) -And (($arcAgentStatusParsed.subscriptionId -ne $Using:SubscriptionId) -or ($arcAgentStatusParsed.resourceGroup -ne $Using:ArcResourceGroupName)))
-        {
-            $differentResourceExceptionMessage = "{0}:  Subscription Id: {1}, Resource Group: {2}" -f $Using:clusterNode, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
+        if (-not ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) -and (($arcAgentStatusParsed.subscriptionId -ne $SubscriptionId) -or ($arcAgentStatusParsed.resourceGroup -ne $ArcResourceGroupName))) {
+            $differentResourceExceptionMessage = "{0}:  Subscription Id: {1}, Resource Group: {2}" -f $ClusterNode, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
             throw $differentResourceExceptionMessage
         }
     }
@@ -2087,7 +2101,10 @@ function Verify-NodesArcRegistrationState{
 
         try
         {
-            Invoke-Command -Session $nodeSession -ScriptBlock $CheckNodeArcRegistrationStateScriptBlock -ErrorAction Stop
+            Invoke-Command -Session $nodeSession `
+                -ScriptBlock $CheckNodeArcRegistrationStateScriptBlock `
+                -ArgumentList $SubscriptionId, $ArcResourceGroupName, $clusterNode `
+                -ErrorAction Stop
         }
         catch 
         {
@@ -4028,7 +4045,7 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
                     identity = @{ type = "SystemAssigned" }
                     tags     = $Tag
                 }
-                $payload = ConvertTo-Json -InputObject $properties
+                $payload = $properties | ConvertTo-Json -Depth 10
                 $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
                 Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
                 Write-VerboseLog ("ResourceIdWithApi: $resourceIdWithAPI")
@@ -5579,7 +5596,7 @@ function Get-SetupLoggingDetails
             $DNSSuffix = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters').Domain
             $ComputerNameWithDNSSuffix = $ComputerName + '.' + $DNSSuffix
         }
-        
+
         $nodeSessionParams.Add('ComputerName', $ComputerNameWithDNSSuffix)
 
         if($null -ne $Credential)
