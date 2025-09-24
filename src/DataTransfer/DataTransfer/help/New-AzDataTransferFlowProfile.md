@@ -15,7 +15,7 @@ Create a new FlowProfile or create an existing one.
 ### CreateExpanded (Default)
 ```
 New-AzDataTransferFlowProfile -Name <String> -PipelineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Location <String> [-AntiviruAvSolution <String[]>]
+ [-SubscriptionId <String>] -Location <String> [-AntivirusAvSolution <String[]>]
  [-ArchiveMaximumCompressionRatioLimit <Double>] [-ArchiveMaximumDepthLimit <Int64>]
  [-ArchiveMaximumExpansionSizeLimit <Int64>] [-ArchiveMinimumSizeForExpansion <Int64>]
  [-DataSizeMaximum <Int64>] [-DataSizeMinimum <Int64>] [-Description <String>] [-IdentityType <String>]
@@ -109,7 +109,7 @@ Creates an API-focused FlowProfile with MIME type filtering and text pattern mat
 
 ## PARAMETERS
 
-### -AntiviruAvSolution
+### -AntivirusAvSolution
 Optional.
 The list of antiviruses to be used as a scanning solution for replicating data.
 

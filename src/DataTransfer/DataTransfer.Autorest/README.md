@@ -119,6 +119,19 @@ directive:
   - remove-operation: ListFlowsByPipeline_List
   # - remove-operation: Pipelines_ExecuteAction
 
+  # Switch to Private RP for testing
+  - from: swagger-document
+    where: $.paths
+    transform: |
+      for (const path in $) {
+        if (path.includes('/providers/Microsoft.AzureDataTransfer/')) {
+          const newPath = path.replace('/providers/Microsoft.AzureDataTransfer/', '/providers/Private.AzureDataTransfer/');
+          $[newPath] = $[path];
+          delete $[path];
+        }
+      }
+      return $;
+
   - where:
       parameter-name: Pipeline
     set:
@@ -256,4 +269,17 @@ directive:
       verb: Remove
       subject: ^FlowProfile
     hide: true
+
+  - where:
+      verb: Get
+      subject: ^AzureDataTransferFlowProfile
+    set:
+      subject: FlowProfile
+
+  - where:
+      verb: New
+      subject: ^FlowProfile
+      parameter-name: AntiviruAvSolution
+    set:
+      parameter-name: AntivirusAvSolution
 ```

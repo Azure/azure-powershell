@@ -8,7 +8,7 @@
     {
       "name": "Disable-AzDataTransferFlow",
       "description": "Disables the specified flow",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/disable-azdatatransferflow"
@@ -51,7 +51,7 @@
     {
       "name": "Enable-AzDataTransferFlow",
       "description": "Enables the specified flow.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/enable-azdatatransferflow"
@@ -94,7 +94,7 @@
     {
       "name": "Get-AzDataTransferFlow",
       "description": "Gets flow resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferflow"
@@ -137,7 +137,7 @@
     {
       "name": "Remove-AzDataTransferFlow",
       "description": "Deletes the flow resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferflow"

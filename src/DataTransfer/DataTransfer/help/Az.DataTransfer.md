@@ -41,9 +41,6 @@ Enables Azure Data Transfer flow types.
 ### [Enable-AzDataTransferPipeline](Enable-AzDataTransferPipeline.md)
 Enables an Azure Data Transfer pipeline.
 
-### [Get-AzDataTransferAzureDataTransferFlowProfile](Get-AzDataTransferAzureDataTransferFlowProfile.md)
-Retrieves a list of FlowProfile resources associated with a specified pipeline.
-
 ### [Get-AzDataTransferConnection](Get-AzDataTransferConnection.md)
 Gets connection resource.
 
