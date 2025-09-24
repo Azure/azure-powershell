@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.1.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # Only list helper or external assemblies here; the main cmdlets DLL is listed as a nested module below
