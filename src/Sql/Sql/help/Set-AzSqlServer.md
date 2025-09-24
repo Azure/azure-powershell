@@ -19,7 +19,8 @@ Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>
  [-RestrictOutboundNetworkAccess <String>] [-MinimalTlsVersion <String>]
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>] [-FederatedClientId <Guid>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
- [-EnableSoftDeleteRetention <Boolean>] [-SoftDeleteRetentionDays <Int32>] [-Force]
+ [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>]
+ [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -60,7 +61,7 @@ Set-AzSqlServer -AssignIdentity -ResourceGroupName 'ResourceGroup01' -ServerName
 
 ### Example 3: Enable soft-delete retention for the server (default 7 days)
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDeleteRetention $true
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $true
 ```
 
 ```output
@@ -84,6 +85,33 @@ SoftDeleteRetentionDays       : 7
 ```
 
 This command enables soft-delete retention on the Azure SQL Server named server01 (default 7 days). To specify the retention period in days, add the -SoftDeleteRetentionDays parameter.
+
+### Example 4: Disable soft-delete retention for the server
+```powershell
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $false -SoftDeleteRetentionDays 0
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+Location                      : centralus
+SqlAdministratorLogin         : SqlAdminUser
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : Server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             :
+SoftDeleteRetentionDays       : 0
+```
+
+This command disables soft-delete retention on the Azure SQL Server named server01.
 
 ## PARAMETERS
 
@@ -117,7 +145,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSoftDeleteRetention
+### -EnableSoftDelete
 Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. If you want to specify a different retention period, use the SoftDeleteRetentionDays parameter.
 
 ```yaml

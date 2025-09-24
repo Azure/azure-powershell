@@ -157,5 +157,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RestoreDeletedServer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerDisableSoftDelete()
+        {
+            TestRunner.RunTestScript("Test-ServerDisableSoftDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateServerWithSoftDeleteDisabled()
+        {
+            TestRunner.RunTestScript("Test-CreateServerWithSoftDeleteDisabled");
+        }
     }
 }

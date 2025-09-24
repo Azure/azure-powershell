@@ -19,10 +19,10 @@
 -->
 ## Upcoming Release
 * Updated `New-AzSqlServer` to support soft-delete retention
-    - Added `EnableSoftDeleteRetention` parameter to `New-AzSqlServer` to enable creation of a server with soft-delete retention
+    - Added `EnableSoftDelete` parameter to `New-AzSqlServer` to enable creation of a server with soft-delete retention
     - Added `SoftDeleteRetentionDays` parameter to `New-AzSqlServer` to set the soft-delete retention period (in days)
 * Updated `Set-AzSqlServer` to support soft-delete retention
-    - Added `EnableSoftDeleteRetention` parameter to `Set-AzSqlServer` to enable or disable soft-delete retention on an existing server
+    - Added `EnableSoftDelete` parameter to `Set-AzSqlServer` to enable or disable soft-delete retention on an existing server
     - Added `SoftDeleteRetentionDays` parameter to `Set-AzSqlServer` to update the soft-delete retention period (in days) on an existing server
 * Added `Restore-AzSqlServer` cmdlet to restore a deleted Azure SQL server within the retention period
 

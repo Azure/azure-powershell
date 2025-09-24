@@ -20,7 +20,7 @@ New-AzSqlServer -ServerName <String> [-SqlAdministratorCredentials <PSCredential
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
- [-FederatedClientId <Guid>] [-EnableSoftDeleteRetention <Boolean>] [-SoftDeleteRetentionDays <Int32>]
+ [-FederatedClientId <Guid>] [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -103,7 +103,7 @@ This command creates a version 12 Azure SQL Database server with TDE CMK enabled
 
 ### Example 4: Create a new Azure SQL Database server with soft delete retention enabled with default retention days
 ```powershell
-New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDeleteRetention $true
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDelete $true
 ```
 
 ```output
@@ -130,7 +130,7 @@ This command creates a version 12 Azure SQL Database server with soft-delete ret
 
 ### Example 5: Create a new Azure SQL Database server with soft delete retention enabled with 30 retention days
 ```powershell
-New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDeleteRetention $true -SoftDeleteRetentionDays 30
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDelete $true -SoftDeleteRetentionDays 30
 ```
 
 ```output
@@ -217,7 +217,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSoftDeleteRetention
+### -EnableSoftDelete
 Specifies whether or not soft-delete retention is enabled for the server.
 
 ```yaml
@@ -431,7 +431,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Specifies the soft-delete retention days for the server.
+Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-35. Specify 0 to disable the SoftDelete
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -530,11 +530,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
-
 ## NOTES
 
 ## RELATED LINKS

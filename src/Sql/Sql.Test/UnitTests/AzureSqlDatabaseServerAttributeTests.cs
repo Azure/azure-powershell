@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlAdministratorCredentials", isMandatory: false, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "Tags", isMandatory: false, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerVersion", isMandatory: false, valueFromPipelineByName: false);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "EnableSoftDeleteRetention", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "EnableSoftDelete", isMandatory: false, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SoftDeleteRetentionDays", isMandatory: false, valueFromPipelineByName: false);
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlAdministratorPassword", isMandatory: false, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "Tags", isMandatory: false, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerVersion", isMandatory: false, valueFromPipelineByName: false);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "EnableSoftDeleteRetention", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "EnableSoftDelete", isMandatory: false, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SoftDeleteRetentionDays", isMandatory: false, valueFromPipelineByName: false);
         }
 
