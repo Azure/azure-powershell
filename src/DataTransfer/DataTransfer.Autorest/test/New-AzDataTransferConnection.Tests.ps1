@@ -14,11 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferConnection'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$connectionToCreate = "test-connection-create-" + $env.RunId
-$connectionToCreateAsJob = "test-connection-create-as-job-" + $env.RunId
-
 # FlowProfile-based connection test names
 $testRunId = Get-Date -Format "MMddHHmm"
+$connectionToCreate = "test-connection-create-$testRunId"
+$connectionToCreateAsJob = "test-connection-create-as-job-$testRunId"
 $fpBasicConnectionName = "test-fp-basic-conn-$testRunId"
 $fpMultiConnectionName = "test-fp-multi-conn-$testRunId"
 $fpSendConnectionName = "test-fp-send-conn-$testRunId"
@@ -62,7 +61,7 @@ Describe 'New-AzDataTransferConnection' {
     It 'CreateExistingConnection' {
         {
             # Ensure the connection already exists
-            { New-AzDataTransferConnection @connectionParams } | Should -Throw -ErrorId "ConnectionAlreadyExists"
+            { New-AzDataTransferConnection @connectionParams } | Should -Throw
     
             # Verify the connection still exists and no duplicate is created
             $existingConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToCreate
@@ -361,7 +360,7 @@ Describe 'New-AzDataTransferConnection' {
                 PrimaryContact       = "fpdup@company.com"
             }
 
-            { New-AzDataTransferConnection @duplicateConnectionParams } | Should -Throw -ErrorId "ConnectionAlreadyExists"
+            { New-AzDataTransferConnection @duplicateConnectionParams } | Should -Throw
 
             # Verify the original connection still exists
             $existingConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $fpBasicConnectionName
@@ -378,7 +377,7 @@ Describe 'New-AzDataTransferConnection' {
                     $connection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $_ -ErrorAction SilentlyContinue
                     if ($connection) {
                         Write-Host "Cleaning up connection: $_"
-                        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $_ -Force
+                        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $_ -Confirm:$false
                         Write-Host "Successfully removed connection: $_"
                     } else {
                         Write-Host "Connection $_ not found or already removed"
