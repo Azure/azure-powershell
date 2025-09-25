@@ -665,6 +665,7 @@ $registerArcScript = {
     {
         #Setup Directory
         $LogsDirectory = $env:ArcLogsDirectory
+        $useStableAgentVersionFromEnv = $env:UseStableAgentVersion
         if([string]::IsNullOrEmpty($LogsDirectory))
         {
             $LogsDirectory = $env:windir + '\Tasks\ArcForServers'
@@ -675,7 +676,11 @@ $registerArcScript = {
             New-Item -ItemType Directory -Path $LogsDirectory -Force | Out-Null
         }
         # Params for Enable-AzureStackHCIArcIntegration 
-        $AgentInstaller_WebLink                  = 'https://aka.ms/AzureConnectedMachineAgent'
+        $AgentInstaller_WebLink                  =  if ($useStableAgentVersionFromEnv -eq 'True') {
+                                                        'https://aka.ms/hciarcagent'
+                                                    } else {
+                                                        'https://aka.ms/AzureConnectedMachineAgent'
+                                                    }
         $AgentInstaller_Name                     =  $env:windir  + '\Temp' + '\AzureConnectedMachineAgent.msi'
         $AgentInstaller_LogFile                  =  $LogsDirectory +'\ConnectedMachineAgentInstallationLog.txt'
         $AgentExecutable_Path                    =  $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
@@ -725,6 +730,7 @@ $registerArcScript = {
             New-EventLog -LogName Application -Source 'HCI Registration' -ErrorAction SilentlyContinue
         }
         Write-Information 'Triggering Arc For Servers registration cmdlet'
+        Write-Information ('Link to download Azure Connected Machine Agent if needed: ' + $AgentInstaller_WebLink)
         $arcStatus = Get-AzureStackHCIArcIntegration
 
         $enableAzureStackHCIArcIntegrationRetrySleepTimeSeconds = 10
@@ -2391,7 +2397,9 @@ param(
     [Switch] $IsWAC,
     [string] $Environment,
     [Object] $ArcResource,
-    [Object] $HCIResource
+    [Object] $HCIResource,
+    [Parameter(Mandatory = $false)]
+    [Switch] $useStableAgentVersion
     )
 
     if($IsManagementNode)
@@ -2545,18 +2553,19 @@ param(
                 $actionArgument = ($currentAction -split '\r?\n')[0]
                 #Checks the 'Value' in the string for the environment variable. Currently, we only have one environment variable. May need to revisit if we add more.
                 $indexValue = $actionArgument.IndexOf("-Value")
+                $useStableAgentVersionValue = if ($using:useStableAgentVersion) { '$true' } else { '$false' }
 
                 if ($indexValue -eq -1){
-                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command $using:registerArcScript"
+                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\UseStableAgentVersion -Value $useStableAgentVersionValue;$using:registerArcScript"
                 }
                 else {
                     $logsdirectory = $actionArgument.substring($indexValue + 7)
                     $logsdirectory = $logsdirectory.substring(0, $logsdirectory.Length - 2)
-                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $logsdirectory; $using:registerArcScript"
+                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $logsdirectory; Set-Item -Path Env:\UseStableAgentVersion -Value $useStableAgentVersionValue; $using:registerArcScript"
                 }
             }
             else {
-                $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $using:ArcLogDir; $using:registerArcScript"
+                $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $using:ArcLogDir; Set-Item -Path Env:\UseStableAgentVersion -Value $useStableAgentVersionValue; $using:registerArcScript"
 
             }
             
@@ -3466,6 +3475,9 @@ $global:HCILogsDirectory
 
     .PARAMETER LogsDirectory
     Specifies the Path where the log files are to be saved. Has to be an absolute Path. Default value would be: C:\ProgramData\AzureStackHCI
+     
+    .PARAMETER useStableAgentVersion
+    Specifies whether to use the stable HCI Arc agent for server registration. When set to true, uses the stable HCI Arc agent. When set to false or not specified, uses the default Azure Connected Machine Agent.
 
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
@@ -3500,6 +3512,13 @@ $global:HCILogsDirectory
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
+
+     .EXAMPLE
+    Invoking with stable Arc agent version
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region eastus -useStableAgentVersion
+    Result: Success
+    ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1
+    PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1/overview
 #>
 function Register-AzStackHCI{
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
@@ -3562,7 +3581,9 @@ param(
         }
         return $true
     })]
-    [string] $LogsDirectory
+    [string] $LogsDirectory,
+    [Parameter(Mandatory = $false)]
+    [Switch] $useStableAgentVersion
     )
     
     if([string]::IsNullOrEmpty($ComputerName))
@@ -4576,7 +4597,7 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
 
                     try
                     {
-                        $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres -HCIResource $resource
+                        $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres -HCIResource $resource -useStableAgentVersion:$useStableAgentVersion
                     }
                     catch
                     {
