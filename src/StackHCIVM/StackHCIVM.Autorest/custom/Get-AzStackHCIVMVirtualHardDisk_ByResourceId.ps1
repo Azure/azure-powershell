@@ -20,12 +20,12 @@ Gets a virtual hard disk
 Gets a virtual hard disk 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
 #>
 function Get-AzStackHCIVMVirtualHardDisk_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk])]
 [CmdletBinding( PositionalBinding=$false)]
 
 param(

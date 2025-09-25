@@ -156,7 +156,7 @@ function New-AzStackHCIVMVirtualMachine {
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
-      # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process. VM Agent is provisioned by default. Please pass -ProvisionVMAgent:$false to disable. 
+      # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process. VM Agent is provsioned by default. Please pass -ProvisionVMAgent:$false to disable. 
       ${ProvisionVMAgent},
 
       [Parameter()]
@@ -661,7 +661,8 @@ function New-AzStackHCIVMVirtualMachine {
     $PSBoundParameters.Add('AdminUsername', $AdminUsername)
   }
   if ($AdminPassword){
-    $PSBoundParameters.Add('AdminPassword', $AdminPassword)
+    $SecureAdminPassword = ConvertTo-SecureString -String $AdminPassword -AsPlainText -Force
+    $PSBoundParameters.Add('AdminPassword', $SecureAdminPassword)
   }
   if ($DynamicMemoryMaximumMemory){
     $PSBoundParameters.Add('DynamicMemoryMaximumMemory', $DynamicMemoryMaximumMemory)
@@ -675,7 +676,7 @@ function New-AzStackHCIVMVirtualMachine {
   if ($EnableTpm.IsPresent){
     $PSBoundParameters.Add('EnableTpm', $EnableTpm)
   }
-  if($SecureBootEnabled.IsPresent){
+  IF($SecureBootEnabled.IsPresent){
     $PSBoundParameters.Add('SecureBootEnabled', $SecureBootEnabled)
   }
   $null = $PSBoundParameters.Remove("Name")
@@ -688,7 +689,6 @@ function New-AzStackHCIVMVirtualMachine {
   $null = $PSBoundParameters.Remove("Location") 
   $null = $PSBoundParameters.Remove("OSType")
   $null = $PSBoundParameters.Remove("IdentityType")
- 
   try{
     Az.StackHCIVM.internal\New-AzStackHCIVMVirtualMachine -ErrorAction Stop @PSBoundParameters 
   } catch {
