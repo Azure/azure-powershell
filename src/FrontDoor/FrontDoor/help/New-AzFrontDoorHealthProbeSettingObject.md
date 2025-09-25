@@ -1,29 +1,29 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorhealthprobesettingobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorhealthprobesettingobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorHealthProbeSettingObject
 
 ## SYNOPSIS
-Create a PSHealthProbeSetting object for Front Door creation
+Create an in-memory object for HealthProbeSettingsModel.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorHealthProbeSettingObject -Name <String> [-Path <String>] [-Protocol <PSProtocol>]
- [-IntervalInSeconds <Int32>] [-HealthProbeMethod <String>] [-EnabledState <PSEnabledState>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorHealthProbeSettingObject [-EnabledState <String>] [-HealthProbeMethod <String>]
+ [-IntervalInSeconds <Int32>] [-Name <String>] [-Path <String>] [-Protocol <String>] [-Id <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a PSHealthProbeSetting object for Front Door creation
+Create an in-memory object for HealthProbeSettingsModel.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a PSHealthProbeSetting object for Front Door creation
 ```powershell
 New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
 ```
@@ -46,29 +46,14 @@ Create a PSHealthProbeSetting object for Front Door creation
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnabledState
-Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
+Whether to enable health probes to be made against backends defined under backendPools.
+Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -92,9 +77,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IntervalInSeconds
 The number of seconds between health probes.
-Default value is 30
 
 ```yaml
 Type: System.Int32
@@ -109,14 +108,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Health probe setting name.
+Resource name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,7 +124,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path to use for the health probe.
-Default is /
+Default is /.
 
 ```yaml
 Type: System.String
@@ -140,14 +139,12 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Protocol scheme to use for this probe
-Default value is HTTP
+Protocol scheme to use for this probe.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
 
 Required: False
 Position: Named
@@ -161,13 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HealthProbeSettingsModel
+
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoor](./New-AzFrontDoor.md)
-[Set-AzFrontDoor](./Set-AzFrontDoor.md)
