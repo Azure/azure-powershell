@@ -25,7 +25,7 @@ The **Restore-AzSqlServer** cmdlet restores a deleted Azure SQL Database server 
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzSqlServer -ResourceGroupName "resourcegroup01" -ServerName "server01" -Location "CentralUS"
+Restore-AzSqlServer -ResourceGroupName "resourcegroup01" -ServerName "server01" -Location "CentralUS"
 ```
 
 ```output

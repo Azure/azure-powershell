@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Value for soft-delete retention days for the server.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-35. A value of 0 disables soft-delete retention. If EnableSoftDeleteRetention is set without an explicit value, the default retention is 7 days.")]
+            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-35. A value of 0 disables soft-delete retention. If EnableSoftDelete is set without an explicit value, the default retention is 7 days.")]
         [ValidateRange(0, 35)]
         public int? SoftDeleteRetentionDays { get; set; }
 
