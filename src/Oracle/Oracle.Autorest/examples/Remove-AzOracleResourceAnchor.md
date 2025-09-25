@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Resource Anchor
 ```powershell
-{{ Add code here }}
+Remove-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor -Force -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Deletes a Resource Anchor by name and resource group. For more information, execute `Get-Help Remove-AzOracleResourceAnchor`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Resource Anchor by piping from Get
 ```powershell
-{{ Add code here }}
+Get-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor | Remove-AzOracleResourceAnchor -Force -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
+Gets a Resource Anchor and deletes it by piping the object to `Remove-AzOracleResourceAnchor`. For more information, execute `Get-Help Remove-AzOracleResourceAnchor`.
