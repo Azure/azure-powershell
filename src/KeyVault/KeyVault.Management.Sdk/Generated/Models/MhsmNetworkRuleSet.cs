@@ -35,14 +35,18 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <param name="ipRules">The list of IP address rules.
         /// </param>
 
+        /// <param name="serviceTags">The list of service tags.
+        /// </param>
+
         /// <param name="virtualNetworkRules">The list of virtual network rules.
         /// </param>
-        public MhsmNetworkRuleSet(string bypass = default(string), string defaultAction = default(string), System.Collections.Generic.IList<MhsmipRule> ipRules = default(System.Collections.Generic.IList<MhsmipRule>), System.Collections.Generic.IList<MhsmVirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<MhsmVirtualNetworkRule>))
+        public MhsmNetworkRuleSet(string bypass = default(string), string defaultAction = default(string), System.Collections.Generic.IList<MhsmipRule> ipRules = default(System.Collections.Generic.IList<MhsmipRule>), System.Collections.Generic.IList<MhsmServiceTagRule> serviceTags = default(System.Collections.Generic.IList<MhsmServiceTagRule>), System.Collections.Generic.IList<MhsmVirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<MhsmVirtualNetworkRule>))
 
         {
             this.Bypass = bypass;
             this.DefaultAction = defaultAction;
             this.IPRules = ipRules;
+            this.ServiceTags = serviceTags;
             this.VirtualNetworkRules = virtualNetworkRules;
             CustomInit();
         }
@@ -74,6 +78,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipRules")]
         public System.Collections.Generic.IList<MhsmipRule> IPRules {get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of service tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceTags")]
+        public System.Collections.Generic.IList<MhsmServiceTagRule> ServiceTags {get; set; }
 
         /// <summary>
         /// Gets or sets the list of virtual network rules.
