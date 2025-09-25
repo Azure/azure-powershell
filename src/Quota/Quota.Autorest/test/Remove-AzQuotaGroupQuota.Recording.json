@@ -1,0 +1,42 @@
+{
+  "Remove-AzQuotaGroupQuota+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/ComputeGroupQuota01?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "1f0aa821-1f64-414b-bbc9-d88b14c2ce82" ],
+        "CommandName": [ "Remove-AzQuotaGroupQuota" ],
+        "FullCommandName": [ "Remove-AzQuotaGroupQuota_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "985eHaxxAEipUEHqzVLL7A.0" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "199" ],
+        "x-ms-request-id": [ "f99ca06d-0d89-4103-802e-d07fd1163df5" ],
+        "x-ms-correlation-request-id": [ "f99ca06d-0d89-4103-802e-d07fd1163df5" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250912T044201Z:f99ca06d-0d89-4103-802e-d07fd1163df5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FDB2FAE76A9F49AC8511E3D5984C4360 Ref B: SYD03EDGE1414 Ref C: 2025-09-12T04:42:00Z" ],
+        "Date": [ "Fri, 12 Sep 2025 04:42:00 GMT" ]
+      },
+      "ContentHeaders": {
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

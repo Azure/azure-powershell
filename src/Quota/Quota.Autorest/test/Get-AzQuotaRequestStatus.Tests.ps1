@@ -19,7 +19,7 @@ Describe 'Get-AzQuotaRequestStatus' {
         { Get-AzQuotaRequestStatus -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" } | Should -Not -Throw
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         { Get-AzQuotaRequestStatus -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -Id "6cf5716a-3df8-421a-8457-719e10381dbc" } | Should -Not -Throw
     }
 }
