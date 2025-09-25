@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Modified the Cluster Registration to use Managed Service Identity instead of AAD App based registration for new OS versions.
 
 ## Version 2.6.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
