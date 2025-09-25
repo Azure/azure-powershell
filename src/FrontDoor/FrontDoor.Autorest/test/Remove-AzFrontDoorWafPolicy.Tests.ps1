@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorWafPolicy')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorWafPolicy' -Tag 'LiveOnly' {
+Describe 'Remove-AzFrontDoorWafPolicy' {
     It 'Delete' {
         {
             $wafName = 'testpsWaf' + (RandomString -allChars $false -len 4)

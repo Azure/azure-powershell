@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorWafPolicy')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorWafPolicy' -Tag 'LiveOnly' {
+Describe 'Update-AzFrontDoorWafPolicy' {
     It 'UpdateExpanded' {
         $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
         $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType "MatchRule" -MatchCondition $matchCondition1 -Action "Log" -Priority 2
