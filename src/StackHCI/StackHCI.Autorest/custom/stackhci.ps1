@@ -2717,7 +2717,7 @@ param(
             # Default extension not deleted completely
             if($extension.Properties.managedBy -eq "Azure")
             {
-                Write-VerboseLog ("Mandatory extension: {0} is not deleted" -f $extensions.Name)
+                Write-VerboseLog ("Mandatory extension: {0} is not deleted" -f $extension.Name)
                 continue
             }
 
