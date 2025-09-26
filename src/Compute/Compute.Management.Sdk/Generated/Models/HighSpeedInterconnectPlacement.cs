@@ -12,14 +12,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for ZonePlacementPolicyType.
+    /// Defines values for HighSpeedInterconnectPlacement.
     /// </summary>
-    public static class ZonePlacementPolicyType
+    public static class HighSpeedInterconnectPlacement
     {
-        public const string Any = "Any";
         /// <summary>
-        /// Automatic zone placement in a Virtual Machine Scale Set.
+        /// No high speed interconnect placement
         /// </summary>
-        public const string Auto = "Auto";
+        public const string None = "None";
+        /// <summary>
+        /// Trunk high speed interconnect placement
+        /// </summary>
+        public const string Trunk = "Trunk";
     }
 }
