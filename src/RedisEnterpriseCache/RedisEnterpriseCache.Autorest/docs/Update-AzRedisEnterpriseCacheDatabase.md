@@ -15,19 +15,19 @@ Updates an existing Redis Enterprise database
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
- [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>]
- [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AccessKeysAuthentication <String>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <String>] [-ClientProtocol <String>] [-EvictionPolicy <String>]
+ [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
- [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
- [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>]
- [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AccessKeysAuthentication <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <String>]
+ [-ClientProtocol <String>] [-EvictionPolicy <String>] [-RdbPersistenceEnabled]
+ [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +70,7 @@ This property can be Enabled/Disabled to allow or deny access with the current a
 Can be updated even after database is created.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Allowed values: 1s, always
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ Specifies whether redis clients can connect using TLS-encrypted or plaintext red
 Allowed values: Encrypted, Plaintext
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Redis eviction policy.
 Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 Allowed values: 1h, 6h, 12h
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +326,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase
 
 ## NOTES
 

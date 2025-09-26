@@ -8,42 +8,50 @@ schema: 2.0.0
 # Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup
 
 ## SYNOPSIS
-Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
+Forcibly reforce an existing database on the specified cluster, and rejoins it to an existing replication group.
 **IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
 
 ## SYNTAX
 
-### ForceViaIdentity (Default)
+### ForceViaIdentityExpanded (Default)
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Force
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -Parameter <IForceLinkParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ForceExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### ForceViaIdentityExpanded
+### ForceViaIdentityRedisEnterpriseExpanded
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -DatabaseName <String>
+ -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> -GroupNickname <String>
+ -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ForceViaJsonFilePath
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ForceViaJsonString
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
+Forcibly reforce an existing database on the specified cluster, and rejoins it to an existing replication group.
 **IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
 
 ## EXAMPLES
@@ -80,7 +88,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, ForceViaJsonFilePath, ForceViaJsonString
 Aliases:
 
 Required: True
@@ -95,7 +103,7 @@ The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, ForceViaIdentityRedisEnterpriseExpanded, ForceViaJsonFilePath, ForceViaJsonString
 Aliases:
 
 Required: True
@@ -127,7 +135,7 @@ This should match the existing replication group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded, ForceViaIdentityRedisEnterpriseExpanded
 Aliases:
 
 Required: True
@@ -139,11 +147,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentity, ForceViaIdentityExpanded
+Parameter Sets: ForceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -153,14 +160,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Force operation
+
+```yaml
+Type: System.String
+Parameter Sets: ForceViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Force operation
+
+```yaml
+Type: System.String
+Parameter Sets: ForceViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LinkedDatabase
 The resource IDs of the databases that are expected to be linked and included in the replication group.
 This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
-To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]
-Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ILinkedDatabase[]
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded, ForceViaIdentityRedisEnterpriseExpanded
 Aliases:
 
 Required: True
@@ -185,13 +221,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters for reconfiguring active geo-replication, of an existing database that was previously unlinked from a replication group.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters
-Parameter Sets: Force, ForceViaIdentity
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedisEnterpriseInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
+Parameter Sets: ForceViaIdentityRedisEnterpriseExpanded
 Aliases:
 
 Required: True
@@ -207,7 +257,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, ForceViaJsonFilePath, ForceViaJsonString
 Aliases:
 
 Required: True
@@ -222,7 +272,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, ForceViaJsonFilePath, ForceViaJsonString
 Aliases:
 
 Required: False
@@ -267,8 +317,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 

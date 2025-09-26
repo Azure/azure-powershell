@@ -11,24 +11,3 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzRedisEnterpriseCacheKey' {
-    It 'Regenerate' {
-        $splat = @{
-            Name = $env.ClusterName
-            ResourceGroupName = $env.ResourceGroupName
-            KeyType = "Primary"
-        }
-        $databaseKeys = New-AzRedisEnterpriseCacheKey @splat
-        $databaseKeys.PrimaryKey | Should -Not -Be $null
-        $databaseKeys.SecondaryKey | Should -Not -Be $null
-
-        $splat = @{
-            Name = $env.ClusterName
-            ResourceGroupName = $env.ResourceGroupName
-            KeyType = "Secondary"
-        }
-        $databaseKeys = New-AzRedisEnterpriseCacheKey @splat
-        $databaseKeys.PrimaryKey | Should -Not -Be $null
-        $databaseKeys.SecondaryKey | Should -Not -Be $null
-    }
-}

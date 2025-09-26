@@ -40,7 +40,7 @@ Location Name    Type                            Zone Database
 East US  MyCache Microsoft.Cache/redisEnterprise      {}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
 #>
 function New-AzRedisEnterpriseCache {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster])]
     [CmdletBinding(DefaultParameterSetName='CreateClusterWithDatabase', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -79,9 +79,9 @@ function New-AzRedisEnterpriseCache {
 
         [Parameter(Mandatory)]
         [Alias('SkuName')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Enterprise_E1", "Enterprise_E5", "Enterprise_E10", "Enterprise_E20", "Enterprise_E50", "Enterprise_E100", "Enterprise_E200", "Enterprise_E400", "EnterpriseFlash_F300", "EnterpriseFlash_F700", "EnterpriseFlash_F1500", "Balanced_B0", "Balanced_B1", "Balanced_B3", "Balanced_B5", "Balanced_B10", "Balanced_B20", "Balanced_B50", "Balanced_B100", "Balanced_B150", "Balanced_B250", "Balanced_B350", "Balanced_B500", "Balanced_B700", "Balanced_B1000", "MemoryOptimized_M10", "MemoryOptimized_M20", "MemoryOptimized_M50", "MemoryOptimized_M100", "MemoryOptimized_M150", "MemoryOptimized_M250", "MemoryOptimized_M350", "MemoryOptimized_M500", "MemoryOptimized_M700", "MemoryOptimized_M1000", "MemoryOptimized_M1500", "MemoryOptimized_M2000", "ComputeOptimized_X3", "ComputeOptimized_X5", "ComputeOptimized_X10", "ComputeOptimized_X20", "ComputeOptimized_X50", "ComputeOptimized_X100", "ComputeOptimized_X150", "ComputeOptimized_X250", "ComputeOptimized_X350", "ComputeOptimized_X500", "ComputeOptimized_X700", "FlashOptimized_A250", "FlashOptimized_A500", "FlashOptimized_A700", "FlashOptimized_A1000", "FlashOptimized_A1500", "FlashOptimized_A2000", "FlashOptimized_A4500")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName]
+        [System.String]
         # The type of RedisEnterprise cluster to deploy.
         # Accepted values: Balanced_B0, Balanced_B1, Balanced_B10, Balanced_B100, Balanced_B1000, Balanced_B150, Balanced_B20, Balanced_B250, Balanced_B3, Balanced_B350, Balanced_B5, Balanced_B50, Balanced_B500, Balanced_B700, ComputeOptimized_X10, ComputeOptimized_X100, ComputeOptimized_X150, ComputeOptimized_X20, ComputeOptimized_X250, ComputeOptimized_X3, ComputeOptimized_X350, ComputeOptimized_X5, ComputeOptimized_X50, ComputeOptimized_X500, ComputeOptimized_X700, EnterpriseFlash_F1500, EnterpriseFlash_F300, EnterpriseFlash_F700, Enterprise_E1, Enterprise_E10, Enterprise_E100, Enterprise_E20, Enterprise_E200, Enterprise_E400, Enterprise_E5, Enterprise_E50, FlashOptimized_A1000, FlashOptimized_A1500, FlashOptimized_A2000, FlashOptimized_A250, FlashOptimized_A4500, FlashOptimized_A500, FlashOptimized_A700, MemoryOptimized_M10, MemoryOptimized_M100, MemoryOptimized_M1000, MemoryOptimized_M150, MemoryOptimized_M1500, MemoryOptimized_M20, MemoryOptimized_M2000, MemoryOptimized_M250, MemoryOptimized_M350, MemoryOptimized_M50, MemoryOptimized_M500, MemoryOptimized_M700
         ${Sku},
@@ -96,9 +96,9 @@ function New-AzRedisEnterpriseCache {
         ${Capacity},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion]
+        [System.String]
         # The minimum TLS version for the cluster to support - default is 1.2
         # Allowed values: 1.0, 1.1, 1.2
         ${MinimumTlsVersion},
@@ -111,22 +111,22 @@ function New-AzRedisEnterpriseCache {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Cluster resource tags.
         ${Tag},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule[]]
         # Optional set of redis modules to enable in this database - modules can only be added at create time.
         # To construct, see NOTES section for MODULE properties and create a hash table.
         ${Module},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Encrypted", "Plaintext")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
+        [System.String]
         # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols - default is Encrypted
         # Allowed values: Encrypted, Plaintext
         ${ClientProtocol},
@@ -139,9 +139,9 @@ function New-AzRedisEnterpriseCache {
         ${Port},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("AllKeysLFU", "AllKeysLRU", "AllKeysRandom", "VolatileLRU", "VolatileLFU", "VolatileTTL", "VolatileRandom", "NoEviction")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
+        [System.String]
         # Redis eviction policy - default is VolatileLRU
         # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
@@ -155,24 +155,24 @@ function New-AzRedisEnterpriseCache {
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ILinkedDatabase[]]
         # List of database resources to link with this database
         # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
         ${LinkedDatabase},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("EnterpriseCluster", "OSSCluster", "NoCluster")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
+        [System.String]
         # Clustering policy - default is OSSCluster
         # Specified at create time.
         # Allowed values: EnterpriseCluster, OSSCluster
         ${ClusteringPolicy},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication]
+        [System.String]
         # This property can be Enabled/Disabled to allow or deny access with the current access keys.
         # Can be updated even after database is created.
         ${AccessKeysAuthentication},
@@ -184,32 +184,32 @@ function New-AzRedisEnterpriseCache {
         ${CustomerManagedKeyEncryptionKeyUrl},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.HighAvailability])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.HighAvailability]
+        [System.String]
         # Enabled by default. Can only be updated from disabled to enabled.
         # If highAvailability is disabled, the data set is not replicated.
         # This affects the availability SLA, and increases the risk of data loss.
         ${HighAvailability},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType]
-        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        ${IdentityType},
+        [System.Management.Automation.SwitchParameter]
+        # Determines whether to enable a system-assigned identity for the resource.
+        ${EnableSystemAssignedIdentity},
 
         [Parameter()]
+        [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api40.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
+        [System.String[]]
+        # The array of user assigned identities associated with the resource.
+        # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        ${UserAssignedIdentity},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.CmkIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("systemAssignedIdentity", "userAssignedIdentity")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.CmkIdentityType]
+        [System.String]
         # Only userAssignedIdentity is supported in this API version; other types may be supported in the future
         ${KeyEncryptionKeyIdentityType},
 
@@ -228,9 +228,9 @@ function New-AzRedisEnterpriseCache {
         ${AofPersistenceEnabled},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("1s", "always")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which data is written to disk if AOF persistence is enabled.
         # Allowed values: 1s, always
         ${AofPersistenceFrequency},
@@ -244,9 +244,9 @@ function New-AzRedisEnterpriseCache {
         ${RdbPersistenceEnabled},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("1h", "6h", "12h")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
         # Allowed values: 1h, 6h, 12h
         ${RdbPersistenceFrequency},
@@ -355,8 +355,8 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("MinimumTlsVersion")
         $null = $PSBoundParameters.Remove("Zone")
         $null = $PSBoundParameters.Remove("Tag")
-        $null = $PSBoundParameters.Remove("IdentityType")
-        $null = $PSBoundParameters.Remove("IdentityUserAssignedIdentity")
+        $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+        $null = $PSBoundParameters.Remove("UserAssignedIdentity")
         $null = $PSBoundParameters.Remove("CustomerManagedKeyEncryptionKeyUrl")
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityType")
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
