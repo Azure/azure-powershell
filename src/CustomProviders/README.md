@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the CustomProviders service.
 
 ---
-## Status
-[![Az.CustomProviders](https://img.shields.io/powershellgallery/v/Az.CustomProviders.svg?style=flat-square&label=Az.CustomProviders "Az.CustomProviders")](https://www.powershellgallery.com/packages/Az.CustomProviders/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the CustomProviders service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -35,6 +32,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 0202b86915d236c7a625c64215374b056b75ae25
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
