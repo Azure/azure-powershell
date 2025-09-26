@@ -37,14 +37,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
         {
             if (ParameterSetName.Equals(ByManifestParameterSet))
             {
-                if (this.ShouldProcess(string.Format("Delete manitest {0}@{1} under {2}", this.RepositoryName, this.Manifest, this.RegistryName)))
+                if (this.ShouldProcess(string.Format("Delete manifest {0}@{1} under {2}", this.RepositoryName, this.Manifest, this.RegistryName)))
                 {
                     WriteObject(this.RegistryDataPlaneClient.RemoveManifest(this.RepositoryName, this.Manifest));
                 }  
             }
             else if (ParameterSetName.Equals(ByTagParameterSet))
             {
-                if (this.ShouldProcess(string.Format("Delete manitest for {0}：{1} under {2}", this.RepositoryName, this.Tag, this.RegistryName)))
+                if (this.ShouldProcess(string.Format("Delete manifest for {0}：{1} under {2}", this.RepositoryName, this.Tag, this.RegistryName)))
                 {
                     WriteObject(this.RegistryDataPlaneClient.RemoveManifestByTag(this.RepositoryName, this.Tag));
                 }

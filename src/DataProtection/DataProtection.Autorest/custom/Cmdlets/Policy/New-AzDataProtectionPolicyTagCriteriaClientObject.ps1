@@ -70,7 +70,7 @@
                 {
                     if($dayOfMonth.ToLower() -ne "last")
                     {
-                        thow "Day of month should either be between 1 and 28 or it should be last"
+                        throw "Day of month should either be between 1 and 28 or it should be last"
                     }
                     $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.Day]::new()
                     $day.IsLast = $true

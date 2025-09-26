@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionBandwidth">Expected bandwidth in MBPS.
         /// </param>
 
-        /// <param name="sharedKey">SharedKey for the vpn connection.
+        /// <param name="sharedKey">Deprecated: SharedKey for the vpn connection. This is no more used.
         /// </param>
 
         /// <param name="enableBgp">EnableBgp flag.
@@ -204,7 +204,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? ConnectionBandwidth {get; set; }
 
         /// <summary>
-        /// Gets or sets sharedKey for the vpn connection.
+        /// Gets or sets deprecated: SharedKey for the vpn connection. This is no more
+        /// used.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sharedKey")]
         public string SharedKey {get; set; }

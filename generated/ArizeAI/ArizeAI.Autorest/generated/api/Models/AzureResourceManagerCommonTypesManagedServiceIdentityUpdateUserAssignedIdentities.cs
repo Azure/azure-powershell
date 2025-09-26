@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
     /// The identities assigned to this resource by the user.
     public partial interface IAzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentities :
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IUserAssignedIdentity>
     {
 
     }

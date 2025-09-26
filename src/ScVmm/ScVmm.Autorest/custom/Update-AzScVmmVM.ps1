@@ -240,12 +240,18 @@ begin {
 
         # Custom Code Begin
 
-        # Check if Hybrid Comnpute machine resource exists or create a new one
+        # Check if Hybrid Compute machine resource exists or create a new one
 
-        $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-        if ($null -eq $machineObj) {
-            throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+        try {
+            $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction Stop
+            if ($null -eq $machineObj) {
+                throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+            }
         }
+        catch {
+            throw "Failed to get VM '$Name' in Resource Group '$ResourceGroupName' (SubscriptionId '$SubscriptionId'). Exception: $($_.Exception.Message)"
+        }
+
         if ($Tag) {
             $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Tag $Tag
             if ($null -eq $machineObj) {

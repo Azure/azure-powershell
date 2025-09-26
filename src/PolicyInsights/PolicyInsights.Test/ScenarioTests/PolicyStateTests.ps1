@@ -44,7 +44,7 @@ function Get-AzureRmPolicyState-ManagementGroupScope-Paging {
   $managementGroupName = Get-TestManagementGroupName
   $from = Get-TestQueryIntervalStart
 
-  # Apply filters\selection to recude the session recording size
+  # Apply filters\selection to reduce the session recording size
   $policyStates = Get-AzPolicyState -ManagementGroupName $managementGroupName -Top 1001 -From $from -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
   Assert-True { $policyStates.Count -eq 1001 }
 
@@ -70,7 +70,7 @@ Get multiple pages of policy states at subscription scope
 function Get-AzureRmPolicyState-SubscriptionScope-Paging {
   $from = Get-TestQueryIntervalStart
 
-  # Apply filters\selection to recude the session recording size
+  # Apply filters\selection to reduce the session recording size
   $policyStates = Get-AzPolicyState -Top 1001 -From $from -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
   Assert-True { $policyStates.Count -eq 1001 }
 
@@ -166,7 +166,7 @@ Get multiple pages of policy states for policy set definition
 function Get-AzureRmPolicyState-PolicySetDefinitionScope-Paging {
   $policySetDefinitionName = Get-TestPolicySetDefinitionName
 
-  # Apply selection to recude session recording size
+  # Apply selection to reduce session recording size
   $policyStates = Get-AzPolicyState -All -PolicySetDefinitionName $policySetDefinitionName -Top 1001 -Select "Timestamp"
   Assert-True { $policyStates.Count -eq 1001 }
 
@@ -203,7 +203,7 @@ Get multiple pages of policy states for policy definition
 function Get-AzureRmPolicyState-PolicyDefinitionScope-Paging {
   $policyDefinitionName = Get-TestAuditPolicyDefinitionName
 
-  # Apply selection to recude session recording size
+  # Apply selection to reduce session recording size
   $policyStates = Get-AzPolicyState -All -PolicyDefinitionName $policyDefinitionName -Top 1001 -Select "Timestamp"
   Assert-True { $policyStates.Count -eq 1001 }
 
@@ -240,7 +240,7 @@ Get multiple pages of policy states for policy assignment
 function Get-AzureRmPolicyState-PolicyAssignmentScope-Paging {
   $policyAssignmentName = Get-TestSubscriptionAuditAssignmentName
 
-  # Apply selection to recude session recording size
+  # Apply selection to reduce session recording size
   $policyStates = Get-AzPolicyState -All -PolicyAssignmentName $policyAssignmentName -Top 1001 -Select "Timestamp"
   Assert-True { $policyStates.Count -eq 1001 }
 

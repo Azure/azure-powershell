@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenterdata
+Module Name: Az.DevCenter
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoperation
 schema: 2.0.0
 ---

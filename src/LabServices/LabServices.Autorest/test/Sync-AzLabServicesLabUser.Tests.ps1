@@ -19,6 +19,6 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Sync-AzLabServicesLabUser' {
     It 'Sync-AzLabServicesLabUser' {
-        {Sync-AzLabServicesLabUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName} | Should -Throw
+        {Sync-AzLabServicesLabUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName} | Should -Throw
     }
 }

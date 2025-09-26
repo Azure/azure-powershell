@@ -21,6 +21,18 @@
 ## Upcoming Release
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions [#28583]
+
+## Version 8.1.0
+* Added functionality for cmdlet `GetAzureResourceGroup`[#27865]
+* Added breaking change announcement for below cmdlets from array to list.
+  - `Get-AzRoleManagementPolicy`
+  - `Update-AzRoleManagementPolicy`
+* Added support for exporting resource group templates as Bicep files
+    - Added `OutputFormat` parameter to `Export-AzResourceGroup` cmdlet
+    - Supported values: `Json` (default), `Bicep`
+
+## Version 8.0.1
 * Fixed empty warning output issue for cmdlet `Test-AzResourceGroupDeployment` [#27888]
 
 ## Version 8.0.0

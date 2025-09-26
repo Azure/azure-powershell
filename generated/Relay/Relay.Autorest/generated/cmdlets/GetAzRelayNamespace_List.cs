@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzRelayNamespace_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.CmdletBreakingChange("15.0.0", "9.0.0", "2025/11/03", ChangeDescription="The type of property 'PrivateEndpointConnection' will be changed to 'List'.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateEndpointConnection"}, NewOutputProperties=new string[] {"List[PrivateEndpointConnection]"})]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"Lists all the available namespaces within the subscription regardless of the resourceGroups.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]

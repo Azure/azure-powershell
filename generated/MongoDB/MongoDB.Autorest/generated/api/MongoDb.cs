@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string organizationName, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource body, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string organizationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string organizationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string organizationName, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource body, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsDelete(string subscriptionId, string resourceGroupName, string organizationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -984,7 +984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1216,7 +1216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsGet(string subscriptionId, string resourceGroupName, string organizationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1257,7 +1257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1308,7 +1308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1361,7 +1361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsGetWithResult(string subscriptionId, string resourceGroupName, string organizationName, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1540,7 +1540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1580,7 +1580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1629,7 +1629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult> OrganizationsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1679,7 +1679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult> OrganizationsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1853,7 +1853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1891,7 +1891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1937,7 +1937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult> OrganizationsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1983,7 +1983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceListResult> OrganizationsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2155,7 +2155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsUpdate(string subscriptionId, string resourceGroupName, string organizationName, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2202,7 +2202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2259,7 +2259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2319,7 +2319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string organizationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2365,7 +2365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string organizationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2412,7 +2412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource> OrganizationsUpdateWithResult(string subscriptionId, string resourceGroupName, string organizationName, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-11-18-preview";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

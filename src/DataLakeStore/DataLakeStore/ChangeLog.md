@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Added a new cmdlet GetAzureDataLakeStoreDeletedItemWithtoken to support pagination in  GetAzureDataLakeStoreDeletedItem
+
 ## Version 1.4.0
 * Upgraded nuget package to signed package.
 

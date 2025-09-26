@@ -34,7 +34,7 @@ Deletes the Dashboard.
 Remove-AzPortalDashboard -ResourceGroupName my-rg -DashboardName dashbase02
 ```
 
-Remove a Dashbaord using resource group name and dashboard name.
+Remove a Dashboard using resource group name and dashboard name.
 
 ### Example 2: Remove a Dashboard using the pipeline
 ```powershell

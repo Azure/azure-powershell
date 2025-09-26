@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             IValidationResult validationResult = validation.Validate(file);
 
             // Verify
-            AssertExtension.ValidationResultIsSuccess(validationResult, "File with UNC path relative parth length equal to max path length triggers an error.");
+            AssertExtension.ValidationResultIsSuccess(validationResult, "File with UNC path relative path length equal to max path length triggers an error.");
         }
 
     }

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Insights/autoscalesettings"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzAutoscaleSetting_List1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Notification","Profile"}, NewOutputProperties=new string[] {"Notification","Profile"}, ChangeDescription="The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Description(@"Lists the autoscale settings for a subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Generated]
