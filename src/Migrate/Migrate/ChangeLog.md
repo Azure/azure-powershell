@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bugs in `New-AzMigrateLocalDiskMappingObject`
+  - Only validate for non-512 physical sector size of VHD when `-PhysicalSectorSize` parameter is given
+* Fixed bugs in `New-AzMigrateLocalServerReplication`
+  - Only validate for non-512 physical sector size of VHD when `-PhysicalSectorSize` parameter is given
+  - Removed reserved words validation for source disk names as it is no longer required
+  - Added ARM id validation for input parameters
+* Fixed bugs in `Set-AzMigrateLocalServerReplication`
+  - Added ARM id validation for input parameters
+* Fixed bugs in `Get-AzMigrateLocalServerReplication`
+  - Added ARM id validation for input parameters
+* Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
+
+## Version 2.9.0
+* Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.
 * Fixed bugs in `New-AzMigrateServerReplication` caused by deprecation of `Get-AzVmSize -location`
 * Removed `-TargetStoragePathId` parameter from command `New-AzMigrateLocalDiskMappingObject` until the feature to associate each disk to their own storage container path is supported.
 * Added `-SourceApplianceName` and `-TargetApplianceName` as required parameters to command `New-AzMigrateLocalServerReplication` to allow users to specify appliance pairs of their choosing.

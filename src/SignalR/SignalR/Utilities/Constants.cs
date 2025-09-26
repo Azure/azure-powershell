@@ -17,5 +17,7 @@ namespace Microsoft.Azure.Commands.SignalR
     internal class Constants
     {
         public const string SignalRResourceType = "Microsoft.SignalRService/SignalR";
+        public const string SignalRCustomDomainResourceType = "Microsoft.SignalRService/SignalR/customDomains";
+        public const string SignalRCustomCertificateResourceType = "Microsoft.SignalRService/SignalR/customCertificates";
     }
 }

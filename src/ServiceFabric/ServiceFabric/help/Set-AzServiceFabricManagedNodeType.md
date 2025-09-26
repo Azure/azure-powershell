@@ -15,37 +15,38 @@ Sets node type resource properties or run reimage actions on specific nodes of t
 ### ByObj (Default)
 ```
 Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### WithParamsByName
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- [-AsJob] [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
+ [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
  [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-Capacity <Hashtable>]
- [-PlacementProperty <Hashtable>] [-VmSize <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PlacementProperty <Hashtable>] [-VmSize <String>] [-ZoneBalance <Boolean>]
+ [-EnableOverProvisioning <Boolean>] [-Zone <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ReimageByName
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  -NodeName <String[]> [-Reimage] [-ForceReimage] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### WithParamsById
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+[-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ReimageById
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]> [-Reimage] [-ForceReimage]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,7 +54,7 @@ Set-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]> [
 ```
 Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> -NodeName <String[]> [-Reimage]
  [-ForceReimage] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,6 +207,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableOverProvisioning
+Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: WithParamsByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EphemeralEndPort
 Ephemeral end port of a range of ports.
 
@@ -342,21 +358,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Reimage
 Specify to reimage nodes on the node type.
 
@@ -405,9 +406,38 @@ Accept wildcard characters: False
 ### -VmSize
 The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.
 
-
 ```yaml
 Type: System.String
+Parameter Sets: WithParamsByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: WithParamsByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneBalance
+Setting this to true allows stateless node types to scale out without equal distribution across zones.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: WithParamsByName
 Aliases:
 

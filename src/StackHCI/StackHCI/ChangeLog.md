@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 2.6.1
 * Used fully qualified computer name and added warning for user to upgrade to solution.
 
 ## Version 2.6.0
