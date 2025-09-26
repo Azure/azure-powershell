@@ -29,22 +29,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public global::System.DateTime? LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime; }
 
         /// <summary>Internal Acessors for LastModifiedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Policy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.Policy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.Policy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]

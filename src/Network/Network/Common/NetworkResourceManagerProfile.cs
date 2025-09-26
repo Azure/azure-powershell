@@ -1957,6 +1957,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VpnServerConfigRadiusClientRootCertificate, CNM.PSClientCertificate>();
                 cfg.CreateMap<MNM.AadAuthenticationParameters, CNM.PSAadAuthenticationParameters>();
                 cfg.CreateMap<MNM.P2SVpnConnectionHealthRequest, CNM.PSP2SVpnConnectionHealthRequest>();
+                cfg.CreateMap<MNM.RadiusAuthServer, CNM.PSRadiusAuthServer>();
 
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSP2SVpnGateway, MNM.P2SVpnGateway>();
@@ -1979,6 +1980,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSClientCertificate, MNM.VpnServerConfigRadiusClientRootCertificate>();
                 cfg.CreateMap<CNM.PSAadAuthenticationParameters, MNM.AadAuthenticationParameters>();
                 cfg.CreateMap<CNM.PSP2SVpnConnectionHealthRequest, MNM.P2SVpnConnectionHealthRequest>();
+                cfg.CreateMap<CNM.PSRadiusAuthServer, MNM.RadiusAuthServer>();
 
                 // SecurityPartnerProviders
                 // CNM to MNM
@@ -2049,6 +2051,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureRule, MNM.AzureFirewallPacketCaptureRule>();
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureParameters, MNM.FirewallPacketCaptureParameters>();
                 cfg.CreateMap<CNM.PSAzureFirewallAutoscaleConfiguration, MNM.AzureFirewallAutoscaleConfiguration>();
+                cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureResponse, MNM.AzureFirewallPacketCaptureResponse>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>()

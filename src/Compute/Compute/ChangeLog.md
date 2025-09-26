@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
 * Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
 * Added new parameter `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 

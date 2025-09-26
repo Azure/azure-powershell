@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed runbook_type: `PowerShell72` [#24779][#23967]
 
 ## Version 1.11.1
 * Fixed Bug: Start-AzAutomationRunbook throws object reference error when the automation account is not available in the subscription 

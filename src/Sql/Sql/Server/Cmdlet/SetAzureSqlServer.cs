@@ -126,11 +126,46 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string IdentityType { get; set; }
 
         /// <summary>
+        /// Boolean for enabling Soft Delete Retention for server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified). To set a custom retention period use -SoftDeleteRetentionDays.")]
+        [PSArgumentCompleter("true", "false")]
+        public bool EnableSoftDelete { get; set; }
+
+        /// <summary>
+        /// Value for soft-delete retention days for the server.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-35. A value of 0 disables soft-delete retention. If EnableSoftDelete is set without an explicit value, the default retention is 7 days.")]
+        [ValidateRange(0, 35)]
+        public int? SoftDeleteRetentionDays { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            // if the user specified a retention days value, then they must also enable soft delete
+            if (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays > 0 && !this.EnableSoftDelete)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingEnableSoftDelete, "EnableSoftDelete");
+            }
+
+            // if the user specified 0 retention days, then they must not enable soft delete
+            if (this.EnableSoftDelete && this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays == 0)
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDays, "SoftDeleteRetentionDays");
+            }
+
+            base.ExecuteCmdlet();
+        }
         /// <summary>
         /// Get the server to update
         /// </summary>
@@ -169,6 +204,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
+            if (this.EnableSoftDelete)
+            {
+                // If enabling soft-delete retention, use the explicitly provided value or default to 7 days if none provided.
+                updateData[0].SoftDeleteRetentionDays = this.SoftDeleteRetentionDays ?? 7;
+            }
+            else
+            {
+                // If not enabling, only explicitly set retention to 0 when the caller provided 0.
+                // Otherwise, leave as null so the service preserves the existing retention setting.
+                updateData[0].SoftDeleteRetentionDays = (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays.Value == 0) ? 0 : (int?)null;
+            }
 
             return updateData;
         }

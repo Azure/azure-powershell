@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageDiscoveryWork
 }
 
 Describe 'Update-AzStorageDiscoveryWorkspace' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            $updatedScope = New-AzStorageDiscoveryScopeObject -DisplayName "updatedScope" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "updatedKey" -Tag @{"updatedTag1" = "updatedValue1"; "updatedTag2" = "updatedValue2"}
+            Update-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName1 -ResourceGroupName $env.resourceGroup -Description "updated storage discovery workspace description" -Sku Premium -Scope $updatedScope
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {

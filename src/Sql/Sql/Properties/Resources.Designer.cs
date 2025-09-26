@@ -448,6 +448,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No deleted server named &apos;{0}&apos; found in resource group &apos;{1}&apos; that can be restored..
+        /// </summary>
+        internal static string DeletedServerNotFound {
+            get {
+                return ResourceManager.GetString("DeletedServerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
         internal static string DeprecatedCmdletUsageWarning {
@@ -729,6 +738,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration: SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false..
+        /// </summary>
+        internal static string InvalidSoftDeleteRetentionDays {
+            get {
+                return ResourceManager.GetString("InvalidSoftDeleteRetentionDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please set a valid tenant id in the AzureEnvironment..
         /// </summary>
         internal static string InvalidTenantId {
@@ -779,6 +797,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ManagedInstanceLinkAlreadyExists {
             get {
                 return ResourceManager.GetString("ManagedInstanceLinkAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration: SoftDeleteRetentionDays can only be set to a value greater than 0 if EnableSoftDelete is set to true..
+        /// </summary>
+        internal static string MissingEnableSoftDelete {
+            get {
+                return ResourceManager.GetString("MissingEnableSoftDelete", resourceCulture);
             }
         }
         
