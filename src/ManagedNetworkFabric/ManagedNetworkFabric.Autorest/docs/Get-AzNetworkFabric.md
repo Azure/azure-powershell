@@ -12,7 +12,7 @@ Get Network Fabric resource details.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzNetworkFabric [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzNetworkFabric -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -142,7 +142,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

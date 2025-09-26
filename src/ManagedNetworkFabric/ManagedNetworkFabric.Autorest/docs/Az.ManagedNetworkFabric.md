@@ -74,8 +74,30 @@ Retrieves details of this Network Tap.
 ### [Get-AzNetworkFabricTapRule](Get-AzNetworkFabricTapRule.md)
 Get Network Tap Rule resource details.
 
+### [Invoke-AzNetworkFabricArmConfigurationDiff](Invoke-AzNetworkFabricArmConfigurationDiff.md)
+Post action: Triggers diff of NetworkFabric ARM Configuration.
+
+### [Invoke-AzNetworkFabricCommitBatchStatus](Invoke-AzNetworkFabricCommitBatchStatus.md)
+Post action: Returns a status of commit batch operation.
+
+### [Invoke-AzNetworkFabricCommitConfiguration](Invoke-AzNetworkFabricCommitConfiguration.md)
+Atomic commit of the given Network Fabric instance.
+Sync commit of NFA resources at Fabric level.
+
 ### [Invoke-AzNetworkFabricDeprovision](Invoke-AzNetworkFabricDeprovision.md)
 Deprovisions the underlying resources in the given Network Fabric instance.
+
+### [Invoke-AzNetworkFabricDeviceConfiguration](Invoke-AzNetworkFabricDeviceConfiguration.md)
+Post action: Triggers view of network fabric configuration.
+
+### [Invoke-AzNetworkFabricDeviceUpgrade](Invoke-AzNetworkFabricDeviceUpgrade.md)
+Upgrades the version of the Network Device.
+
+### [Invoke-AzNetworkFabricExternalNetworkAdministrativeState](Invoke-AzNetworkFabricExternalNetworkAdministrativeState.md)
+Executes update operation to enable or disable administrative State for externalNetwork.
+
+### [Invoke-AzNetworkFabricExternalNetworkBfdAdministrativeState](Invoke-AzNetworkFabricExternalNetworkBfdAdministrativeState.md)
+BFD administrative state for either static or bgp for internalNetwork.
 
 ### [Invoke-AzNetworkFabricInterfaceUpdateAdminState](Invoke-AzNetworkFabricInterfaceUpdateAdminState.md)
 Update the admin state of the Network Interface.
@@ -86,11 +108,17 @@ Enables isolation domain across the fabric or on specified racks.
 ### [Invoke-AzNetworkFabricL3DomainUpdateAdminState](Invoke-AzNetworkFabricL3DomainUpdateAdminState.md)
 Enables racks for this Isolation Domain.
 
+### [Invoke-AzNetworkFabricNniBfdAdministrativeState](Invoke-AzNetworkFabricNniBfdAdministrativeState.md)
+Update the Admin State.
+
 ### [Invoke-AzNetworkFabricProvision](Invoke-AzNetworkFabricProvision.md)
 Provisions the underlying resources in the given Network Fabric instance.
 
 ### [Invoke-AzNetworkFabricTapUpdateAdminState](Invoke-AzNetworkFabricTapUpdateAdminState.md)
 Implements the operation to the underlying resources.
+
+### [Lock-AzNetworkFabric](Lock-AzNetworkFabric.md)
+Post action: Triggers network fabric lock operation.
 
 ### [New-AzNetworkFabric](New-AzNetworkFabric.md)
 Create Network Fabric resource.
@@ -146,6 +174,9 @@ Delete Network Fabric resource.
 ### [Remove-AzNetworkFabricAcl](Remove-AzNetworkFabricAcl.md)
 Implements Access Control List DELETE method.
 
+### [Remove-AzNetworkFabricCommitBatch](Remove-AzNetworkFabricCommitBatch.md)
+Post action: Discards a Batch operation in progress.
+
 ### [Remove-AzNetworkFabricController](Remove-AzNetworkFabricController.md)
 Deletes the Network Fabric Controller resource.
 
@@ -188,12 +219,66 @@ Deletes Network Tap.
 ### [Remove-AzNetworkFabricTapRule](Remove-AzNetworkFabricTapRule.md)
 Delete Network Tap Rule resource.
 
+### [Restart-AzNetworkFabricDevice](Restart-AzNetworkFabricDevice.md)
+Reboot the Network Device.
+
+### [Start-AzNetworkFabricNetworkDeviceRoCommand](Start-AzNetworkFabricNetworkDeviceRoCommand.md)
+Run the RO Command on the Network Device.
+
+### [Start-AzNetworkFabricNetworkDeviceRwCommand](Start-AzNetworkFabricNetworkDeviceRwCommand.md)
+Run the RW Command on the Network Device.
+
+### [Update-AzNetworkFabric](Update-AzNetworkFabric.md)
+Update Network Fabric resource.
+
+### [Update-AzNetworkFabricAccessControlList](Update-AzNetworkFabricAccessControlList.md)
+API to update certain properties of the Access Control List resource.
+
+### [Update-AzNetworkFabricController](Update-AzNetworkFabricController.md)
+Update are currently not supported for the Network Fabric Controller resource.
+
 ### [Update-AzNetworkFabricDevice](Update-AzNetworkFabricDevice.md)
 Update certain properties of the Network Device resource.
+
+### [Update-AzNetworkFabricExternalNetwork](Update-AzNetworkFabricExternalNetwork.md)
+API to update certain properties of the ExternalNetworks resource.
+
+### [Update-AzNetworkFabricInternalNetwork](Update-AzNetworkFabricInternalNetwork.md)
+Update a InternalNetworks.
 
 ### [Update-AzNetworkFabricInternetGateway](Update-AzNetworkFabricInternetGateway.md)
 Execute patch on Network Fabric Service Internet Gateway.
 
+### [Update-AzNetworkFabricInternetGatewayRule](Update-AzNetworkFabricInternetGatewayRule.md)
+API to update certain properties of the Internet Gateway Rule resource.
+
+### [Update-AzNetworkFabricIPCommunity](Update-AzNetworkFabricIPCommunity.md)
+API to update certain properties of the IP Community resource.
+
+### [Update-AzNetworkFabricIPExtendedCommunity](Update-AzNetworkFabricIPExtendedCommunity.md)
+API to update certain properties of the IP Extended Community resource.
+
+### [Update-AzNetworkFabricIPPrefix](Update-AzNetworkFabricIPPrefix.md)
+API to update certain properties of the IP Prefix resource.
+
+### [Update-AzNetworkFabricL2IsolationDomain](Update-AzNetworkFabricL2IsolationDomain.md)
+API to update certain properties of the L2 Isolation Domain resource.
+
+### [Update-AzNetworkFabricL3IsolationDomain](Update-AzNetworkFabricL3IsolationDomain.md)
+API to update certain properties of the L3 Isolation Domain resource.
+
 ### [Update-AzNetworkFabricNeighborGroup](Update-AzNetworkFabricNeighborGroup.md)
 Update the Neighbor Group.
+
+### [Update-AzNetworkFabricNetworkDeviceAdministrativeState](Update-AzNetworkFabricNetworkDeviceAdministrativeState.md)
+Update the Administrative state of the Network Device.
+
+### [Update-AzNetworkFabricNetworkTap](Update-AzNetworkFabricNetworkTap.md)
+API to update certain properties of the Network Tap resource.
+
+### [Update-AzNetworkFabricNetworkTapRule](Update-AzNetworkFabricNetworkTapRule.md)
+Update certain properties of the Network Tap Rule resource.
+
+### [Update-AzNetworkFabricRoutePolicy](Update-AzNetworkFabricRoutePolicy.md)
+API to update certain properties of the Route Policy resource.
 
