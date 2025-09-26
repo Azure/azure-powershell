@@ -8,7 +8,7 @@
     {
       "name": "Get-AzDataTransferConnection",
       "description": "Gets connection resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferconnection"
@@ -46,7 +46,7 @@
     {
       "name": "Remove-AzDataTransferConnection",
       "description": "Deletes the connection resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferconnection"

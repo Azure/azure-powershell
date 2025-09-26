@@ -1,23 +1,22 @@
 {
-  "resourceType": "pipelines/flowProfiles",
+  "resourceType": "pipelines",
   "apiVersion": "2025-05-30-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datatransfer"
   },
   "commands": [
     {
-      "name": "Get-AzDataTransferFlowProfile",
-      "description": "Retrieves the specified FlowProfile resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}",
+      "name": "Get-AzDataTransferPipeline",
+      "description": "Retrieves the specified Pipeline resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferflowprofile"
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferpipeline"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
-              "-PipelineName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -26,14 +25,10 @@
       },
       "examples": [
         {
-          "description": "Retrieves the specified FlowProfile resource.",
+          "description": "Retrieves the specified Pipeline resource.",
           "parameters": [
             {
               "name": "-Name",
-              "value": "[Path.flowProfileName]"
-            },
-            {
-              "name": "-PipelineName",
               "value": "[Path.pipelineName]"
             },
             {
