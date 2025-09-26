@@ -1,6 +1,6 @@
 ---
 Module Name: Az.RedisEnterpriseCache
-Module Guid: 426e71c0-51ff-4612-94ca-1963374abccd
+Module Guid: bd2e5e87-81f1-459f-9f55-4daaf5d3d27e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.redisenterprisecache
 Help Version: 1.0.0.0
 Locale: en-US
@@ -39,7 +39,7 @@ Imports a database file to target database.
 Flushes all the keys in this database and also from its linked databases.
 
 ### [Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup](Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup.md)
-Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
+Forcibly reforce an existing database on the specified cluster, and rejoins it to an existing replication group.
 **IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
 
 ### [Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink](Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink.md)
@@ -49,7 +49,7 @@ Forcibly removes the link to the specified database resource.
 Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheAccessPolicyAssignment](New-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
-Creates/Updates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
@@ -67,7 +67,7 @@ Deletes a single access policy assignment.
 Deletes a single database in a Redis Enterprise cache.
 
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
-Updates an existing Redis Enterprise cluster
+Update an existing (overwrite/reupdate  with potential downtime) cache cluster
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
 Updates an existing Redis Enterprise database
