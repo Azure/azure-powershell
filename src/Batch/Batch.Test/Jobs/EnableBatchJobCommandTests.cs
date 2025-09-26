@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.Id = "testJob";
 
-            // Don't go to the service on an Enable CloudJob call
+            // Don't go to the service on an Enable BatchJob call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobEnableOptions, AzureOperationHeaderResponse<JobEnableHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
