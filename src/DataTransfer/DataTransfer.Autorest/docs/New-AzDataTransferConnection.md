@@ -15,7 +15,8 @@ Create the connection resource.
 ### CreateExpanded (Default)
 ```
 New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Direction <String>] [-FlowType <String[]>] [-IdentityType <String>]
+ [-SubscriptionId <String>] [-ApiHostname <String>] [-Direction <String>]
+ [-FlowProfileList <IFlowProfileMetadata[]>] [-FlowType <String[]>] [-IdentityType <String>]
  [-Justification <String>] [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>]
  [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
  [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
@@ -190,7 +191,96 @@ Type                         : microsoft.azuredatatransfer/connections
 
 This example creates a new connection named `Connection03` in the resource group `ResourceGroup01` with additional parameters such as primary and secondary contacts and resource tags.
 
+### Example 4: Create a connection using FlowProfile
+```powershell
+# First, create or reference existing FlowProfiles
+$basicFlowProfile = @{
+    Name = "files-flowprofile"
+    Pipeline = "Pipeline01"
+    FlowProfileId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/files-flowprofile"
+    ReplicationScenario = "Files"
+    Status = "Enabled"
+    Description = "Basic FlowProfile for file transfers"
+}
+
+$messagingFlowProfile = @{
+    Name = "messaging-flowprofile"
+    Pipeline = "Pipeline01"
+    FlowProfileId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/messaging-flowprofile"
+    ReplicationScenario = "Messaging"
+    Status = "Enabled"
+    Description = "Messaging FlowProfile with antivirus protection"
+}
+
+# Create connection with FlowProfiles
+New-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -PipelineName Pipeline01 -Name Connection04 -Location "EastUS" -Direction "Receive" -FlowProfileList @($basicFlowProfile, $messagingFlowProfile) -RequirementId "FP-2025-001" -Justification "Modern connection using FlowProfile architecture for enhanced security and flexibility" -RemoteSubscriptionId "11111111-1111-1111-1111-111111111111" -PrimaryContact "dataowner@company.com" -SecondaryContact @("security@company.com", "operations@company.com") -Tag @{Environment="Production"; DataClassification="Sensitive"} -Confirm:$false
+```
+
+```output
+Approver                     : 
+DateSubmitted                : 
+Direction                    : Receive
+FlowProfileList              : {files-flowprofile, messaging-flowprofile}
+ForceDisabledStatus          : 
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection04
+IdentityPrincipalId          : 
+IdentityTenantId             : 
+IdentityType                 : None
+IdentityUserAssignedIdentity : {}
+Justification                : Modern connection using FlowProfile architecture for enhanced security and flexibility
+LinkStatus                   : Unlinked
+LinkedConnectionId           : 
+Location                     : EastUS
+Name                         : Connection04
+Pin                          : 
+Pipeline                     : Pipeline01
+Policy                       : 
+PrimaryContact               : dataowner@company.com
+ProvisioningState            : Succeeded
+RemoteSubscriptionId         : 11111111-1111-1111-1111-111111111111
+RequirementId                : FP-2025-001
+ResourceGroupName            : ResourceGroup01
+Schema                       : 
+SchemaUri                    : 
+SecondaryContact             : {security@company.com, operations@company.com}
+Status                       : InReview
+StatusReason                 : 
+SystemDataCreatedAt          : 9/23/2025 2:15:45 PM
+SystemDataCreatedBy          : test@test.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 9/23/2025 2:15:45 PM
+SystemDataLastModifiedBy     : test@test.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "Environment": "Production",
+                                 "DataClassification": "Sensitive",
+                                 "creationTime": "2025-09-23T14:15:42.1234567Z",
+                                 "vteam": "Experience"
+                               }
+Type                         : microsoft.azuredatatransfer/connections
+```
+
+This example demonstrates the modern approach using FlowProfiles instead of the legacy FlowType parameter.
+It creates a connection named `Connection04` that supports multiple FlowProfiles (`files-flowprofile` and `messaging-flowprofile`), providing enhanced flexibility for different data transfer scenarios.
+The FlowProfile approach offers better security controls, MIME filtering, and antivirus protection capabilities compared to the traditional FlowType method.
+Note that FlowProfiles must be created first using `New-AzDataTransferFlowProfile` before they can be referenced in connections.
+
 ## PARAMETERS
+
+### -ApiHostname
+Hostname specific to API Flows
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -238,8 +328,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FlowProfileList
+Provides a list of FlowProfiles .
+
+```yaml
+Type: ADT.Models.IFlowProfileMetadata[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FlowType
-The flow types being requested for this connection
+The flow types being requested for this connection.
+This FlowType property has reached end of life support starting version 2025-05-30-preview.
+Please create a FlowProfile resource instead.
 
 ```yaml
 Type: System.String[]
@@ -450,7 +557,9 @@ Accept wildcard characters: False
 ```
 
 ### -Schema
-The schemas for this connection
+The schemas for this connection.
+The schemas property has reached end of life support starting version 2025-05-30-preview.
+Please create and use a FlowProfile resource instead.
 
 ```yaml
 Type: ADT.Models.ISchema[]
@@ -465,7 +574,9 @@ Accept wildcard characters: False
 ```
 
 ### -SchemaUri
-The schema URIs for this connection
+The schema URIs for this connection.
+The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+Please create and use a FlowProfile resource instead.
 
 ```yaml
 Type: System.String[]

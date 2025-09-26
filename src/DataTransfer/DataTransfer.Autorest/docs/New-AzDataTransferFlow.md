@@ -16,21 +16,25 @@ Create the flow resource.
 ```
 New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ApiFlowOptionApiMode <String>] [-ApiFlowOptionAudienceOverride <String>]
- [-ApiFlowOptionCname <String>] [-ApiFlowOptionIdentityTranslation <String>]
- [-ApiFlowOptionRemoteCallingModeClientId <String>] [-ApiFlowOptionRemoteEndpoint <String>]
- [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>] [-ConnectionLocation <String>]
- [-ConnectionSubscriptionName <String>] [-ConsumerGroup <String>] [-CustomerManagedKeyVaultUri <String>]
- [-DataType <String>] [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EventHubId <String>] [-FlowType <String>] [-IdentityType <String>] [-MessagingOptionBillingTier <String>]
- [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-PlanVersion <String>] [-PropertiesConnectionName <String>]
- [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
- [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
- [-ServiceBusQueueId <String>] [-SourceAddress <String[]>] [-Status <String>] [-StorageAccountId <String>]
- [-StorageAccountName <String>] [-StorageContainerName <String>] [-StorageTableName <String>]
- [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ApiFlowOptionAuthentication <IAuthentication[]>] [-ApiFlowOptionCname <String>]
+ [-ApiFlowOptionIdentityTranslation <String>] [-ApiFlowOptionRemoteCallingModeClientId <String>]
+ [-ApiFlowOptionRemoteEndpoint <String>] [-ApiFlowOptionSenderClientId <String>] [-ConnectionId <String>]
+ [-ConnectionLocation <String>] [-ConnectionSubscriptionName <String>] [-ConsumerGroup <String>]
+ [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-DestinationEndpoint <String[]>]
+ [-DestinationEndpointPort <Int64[]>] [-EventHubId <String>] [-FlowDataType <String>]
+ [-FlowProfileDescription <String>] [-FlowProfileId <String>] [-FlowProfileName <String>]
+ [-FlowProfilePipeline <String>] [-FlowProfileReplicationScenario <String>] [-FlowProfileStatus <String>]
+ [-FlowType <String>] [-IdentityType <String>] [-MessagingOptionBillingTier <String>]
+ [-MessagingOptionPerformancePriority <String>] [-Passphrase <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-PropertiesConnectionName <String>] [-RemoteEndpointSettingAuthentication <IAuthentication[]>]
+ [-RemoteEndpointSettingEndpoint <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
+ [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
+ [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddress <String[]>]
+ [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
+ [-StorageContainerName <String>] [-StorageTableName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
+ [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -211,6 +215,87 @@ Type                                   : microsoft.azuredatatransfer/connections
 
 This example creates a new flow named `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01` with additional parameters Status and resource tags.
 
+### Example 3: Create a new flow using FlowProfile parameters
+```powershell
+New-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName BasicReceiveConnection01 -Name BasicRecvBlobFiles01 -Location "CentralUS" -Status "Enabled" -FlowDataType "Blob" -FlowProfilePipeline "Pipeline01" -FlowProfileName "BasicFlowProfile01" -FlowProfileReplicationScenario "Files" -FlowProfileStatus "Enabled" -FlowProfileId "000000000000-0000-0000-00000000" -FlowProfileDescription "Basic flow profile for file replication" -Confirm:$false
+```
+
+```output
+ApiFlowOptionApiMode                   : 
+ApiFlowOptionAudienceOverride          : 
+ApiFlowOptionCname                     : 
+ApiFlowOptionIdentityTranslation       : 
+ApiFlowOptionRemoteCallingModeClientId : 
+ApiFlowOptionRemoteEndpoint            : 
+ApiFlowOptionSenderClientId            : 
+ConnectionId                           : 
+ConnectionLocation                     : 
+ConnectionName                         : BasicReceiveConnection01
+ConnectionSubscriptionName             : 
+ConsumerGroup                          : 
+CustomerManagedKeyVaultUri             : 
+DataType                               : 
+DestinationEndpoint                    : 
+DestinationEndpointPort                : 
+EventHubId                             : 
+FlowId                                 : 
+FlowType                               : 
+ForceDisabledStatus                    : 
+Id                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/BasicReceiveConnection01/flows/BasicRecvBlobFiles01
+IdentityPrincipalId                    : 
+IdentityTenantId                       : 
+IdentityType                           : None
+IdentityUserAssignedIdentity           : {}
+KeyVaultUri                            : 
+LinkStatus                             : Unlinked
+LinkedFlowId                           : 
+Location                               : CentralUS
+MessagingOptionBillingTier             : 
+Name                                   : BasicRecvBlobFiles01
+Passphrase                             : 
+PlanName                               : 
+PlanProduct                            : 
+PlanPromotionCode                      : 
+PlanPublisher                          : 
+PlanVersion                            : 
+Policy                                 : 
+ProvisioningState                      : Succeeded
+ResourceGroupName                      : ResourceGroup01
+SchemaConnectionId                     : 
+SchemaContent                          : 
+SchemaDirection                        : 
+SchemaId                               : 
+SchemaName                             : 
+SchemaStatus                           : 
+SchemaType                             : 
+SchemaUri                              : 
+ServiceBusQueueId                      : 
+SourceAddressSourceAddresses           : 
+Status                                 : Enabled
+StorageAccountId                       : 
+StorageAccountName                     : 
+StorageContainerName                   : 
+StorageTableName                       : 
+StreamId                               : 
+StreamLatency                          : 
+StreamProtocol                         : 
+SystemDataCreatedAt                    : 6/11/2099 7:15:30 AM
+SystemDataCreatedBy                    : test@test.com
+SystemDataCreatedByType                : User
+SystemDataLastModifiedAt               : 6/11/2099 7:15:30 AM
+SystemDataLastModifiedBy               : test@test.com
+SystemDataLastModifiedByType           : User
+Tag                                    : {
+                                           "creationTime": "2099-06-11T07:15:27.2345678Z",
+                                           "vteam": "Experience"
+                                         }
+Type                                   : microsoft.azuredatatransfer/connections/flows
+```
+
+This example creates a new flow named `BasicRecvBlobFiles01` using FlowProfile parameters.
+The flow is created on a basic receive connection and uses an existing FlowProfile for file replication scenario.
+FlowProfile parameters allow for standardized flow configuration and reuse of predefined flow settings.
+
 ## PARAMETERS
 
 ### -ApiFlowOptionApiMode
@@ -229,10 +314,29 @@ Accept wildcard characters: False
 ```
 
 ### -ApiFlowOptionAudienceOverride
-Optional field to override the audience of the remote endpoint
+Optional field to override the audience of the remote endpoint.
+The property has reached end of life support starting version 2025-05-30-preview.
+Please create and use the authentication property instead.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApiFlowOptionAuthentication
+Optional and for advanced used only.
+A list of authentication methods to use when accessing the Azure Data Transfer API Flow.
+If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+
+```yaml
+Type: ADT.Models.IAuthentication[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -259,7 +363,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApiFlowOptionIdentityTranslation
-Flag for if Azure Data Transfer API Flow should extract the user token
+Determines which identity to use for extracting the user token for Azure Data Transfer API Flow.
+The property has reached end of life support starting version 2025-05-30-preview.
+Please create and use the authentication property instead.
 
 ```yaml
 Type: System.String
@@ -274,7 +380,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApiFlowOptionRemoteCallingModeClientId
-Remote stub app registration Client ID
+Remote stub app registration Client ID.
+The property has reached end of life support starting version 2025-05-30-preview.
+Please create and use the authentication property instead.
 
 ```yaml
 Type: System.String
@@ -289,7 +397,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApiFlowOptionRemoteEndpoint
-Remote host to which communication needs to be made
+Remote host to which communication needs to be made.
+The property has reached end of life support starting version 2025-05-30-preview.
+Please create and use the remoteEndpointSettings.endpoint property instead.
 
 ```yaml
 Type: System.String
@@ -304,7 +414,9 @@ Accept wildcard characters: False
 ```
 
 ### -ApiFlowOptionSenderClientId
-Sender's app user assigned Manage Identity client ID
+Sender's app user assigned Manage Identity client ID.
+The property has reached end of life support starting version 2025-05-30-preview.
+Please create and use the authentication property instead.
 
 ```yaml
 Type: System.String
@@ -425,6 +537,8 @@ Accept wildcard characters: False
 
 ### -DataType
 Type of data to transfer via the flow.
+The property has reached end of life support starting version 2025-05-30-preview.
+Please create and use a FlowProfile resource instead.
 
 ```yaml
 Type: System.String
@@ -499,8 +613,118 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FlowDataType
+The Flow's data class.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlowProfileDescription
+A description of the FlowProfile and its rulesets.
+The description should describe the flowprofile's purpose and rulesets applied.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlowProfileId
+A guid represented as a string for the FlowProfile resource, assigned by the system.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlowProfileName
+The name of the FlowProfile.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlowProfilePipeline
+The name of the parent Pipeline Azure resource associated with this FlowProfile.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlowProfileReplicationScenario
+The data replication scenario handled by this FlowProfile.
+Please note, that this value cannot be updated after creation.
+See the FlowProfilePatchProperties to see updateable properties.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlowProfileStatus
+The operational status of the FlowProfile.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FlowType
-The flow type for this flow
+The flow type for this flow.
+The property has reached end of life support starting version 2025-05-30-preview.
+Please create and use a FlowProfile resource instead.
 
 ```yaml
 Type: System.String
@@ -576,6 +800,23 @@ Accept wildcard characters: False
 
 ### -MessagingOptionBillingTier
 Billing tier for this messaging flow
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MessagingOptionPerformancePriority
+Field indicating whether to enable guaranteed delivery on the flow or not.
+The default disabled option chooses speed over consistency.
+When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
 
 ```yaml
 Type: System.String
@@ -716,6 +957,38 @@ Accept wildcard characters: False
 
 ### -PropertiesConnectionName
 Name of the connection
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteEndpointSettingAuthentication
+Optional and for advanced used only.
+A list of authentication methods to use when accessing the remote endpoint.
+If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+
+```yaml
+Type: ADT.Models.IAuthentication[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteEndpointSettingEndpoint
+The remote endpoint uri all API calls.
 
 ```yaml
 Type: System.String
