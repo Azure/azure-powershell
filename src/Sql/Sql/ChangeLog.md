@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved parameter validation for the EnableSoftDelete and SoftDeleteRetentionDays parameters.
 * Updated `New-AzSqlServer` to support soft-delete retention
     - Added `EnableSoftDelete` parameter to `New-AzSqlServer` to enable creation of a server with soft-delete retention
     - Added `SoftDeleteRetentionDays` parameter to `New-AzSqlServer` to set the soft-delete retention period (in days)

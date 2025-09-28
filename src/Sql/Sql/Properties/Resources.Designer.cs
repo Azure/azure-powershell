@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No deleted server named &apos;{0}&apos; found in resource group &apos;{1}&apos; that can be restored..
+        ///   Looks up a localized string similar to No deleted server named &apos;{0}&apos; found in location &apos;{1}&apos; that can be restored..
         /// </summary>
         internal static string DeletedServerNotFound {
             get {
@@ -738,11 +738,20 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid configuration: SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false..
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false..
         /// </summary>
-        internal static string InvalidSoftDeleteRetentionDays {
+        internal static string InvalidSoftDeleteRetentionDaysForDisablingSoftDelete {
             get {
-                return ResourceManager.GetString("InvalidSoftDeleteRetentionDays", resourceCulture);
+                return ResourceManager.GetString("InvalidSoftDeleteRetentionDaysForDisablingSoftDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true..
+        /// </summary>
+        internal static string InvalidSoftDeleteRetentionDaysRange {
+            get {
+                return ResourceManager.GetString("InvalidSoftDeleteRetentionDaysRange", resourceCulture);
             }
         }
         
@@ -801,7 +810,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid configuration: SoftDeleteRetentionDays can only be set to a value greater than 0 if EnableSoftDelete is set to true..
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays parameter can only be specified if EnableSoftDelete is explicitly specified..
         /// </summary>
         internal static string MissingEnableSoftDelete {
             get {

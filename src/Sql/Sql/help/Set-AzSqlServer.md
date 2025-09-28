@@ -84,7 +84,7 @@ FederatedClientId             :
 SoftDeleteRetentionDays       : 7
 ```
 
-This command enables soft-delete retention on the Azure SQL Server named server01 (default 7 days). To specify the retention period in days, add the -SoftDeleteRetentionDays parameter.
+This command enables soft-delete retention on the Azure SQL Server named server01, with a default retention period of 7 days. To customize the retention duration, use the SoftDeleteRetentionDays parameter.
 
 ### Example 4: Disable soft-delete retention for the server
 ```powershell
