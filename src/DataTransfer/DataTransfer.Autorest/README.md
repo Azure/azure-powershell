@@ -263,10 +263,14 @@ directive:
     set:
       subject: FlowProfile
 
+  # Fix the AntiviruAvSolution parameter name to correct spelling
   - where:
-      verb: New|Update
-      subject: ^FlowProfile
       parameter-name: AntiviruAvSolution
     set:
       parameter-name: AntivirusAvSolution
+
+  - where:
+      property-name: AntiviruAvSolution
+    set:
+      property-name: AntivirusAvSolution
 ```
