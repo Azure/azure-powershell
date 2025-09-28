@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup
 
 ## SYNOPSIS
-Forcibly reforce an existing database on the specified cluster, and rejoins it to an existing replication group.
+Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
 **IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
 
 ## SYNTAX
@@ -51,7 +51,7 @@ Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -DatabaseName <
 ```
 
 ## DESCRIPTION
-Forcibly reforce an existing database on the specified cluster, and rejoins it to an existing replication group.
+Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
 **IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
 
 ## EXAMPLES

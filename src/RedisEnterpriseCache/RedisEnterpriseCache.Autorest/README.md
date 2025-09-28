@@ -275,4 +275,7 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/Module.Instance.SetProxyConfiguration\(/g, 'Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Module.Instance.SetProxyConfiguration(');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/Forcibly reforce an existing database/g, 'Forcibly recreates an existing database');
 ```
