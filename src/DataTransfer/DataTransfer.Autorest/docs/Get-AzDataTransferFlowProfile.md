@@ -86,21 +86,46 @@ Get-AzDataTransferFlowProfile -PipelineName "Pipeline01" -ResourceGroupName "Res
 ```
 
 ```output
-Name                 : api-flowprofile
-ResourceGroupName    : ResourceGroup01
-Location             : EastUS
-Pipeline            : Pipeline01
-ReplicationScenario  : Api
-Status              : Enabled
-Description         : API FlowProfile with advanced security
-MimeFilter          : {application/json, application/xml, text/plain}
-TextMatchingPattern : {*.log, *.txt, *.json}
-FlowProfileId       : /subscriptions/12345678-1234-1234-1234-123456789abc/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/api-flowprofile
-CreatedTime         : 2025-09-23T10:30:15Z
-ModifiedTime        : 2025-09-23T10:30:15Z
+AntivirusAvSolution                 : {Defender}
+ArchiveMaximumCompressionRatioLimit : 
+ArchiveMaximumDepthLimit            : 
+ArchiveMaximumExpansionSizeLimit    : 
+ArchiveMinimumSizeForExpansion      : 
+DataSizeMaximum                     : 
+DataSizeMinimum                     : 
+Description                         : API FlowProfile with advanced security
+FlowProfileId                       : 12345678-1234-1234-1234-123456789012
+Id                                  : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/api-flowprofile
+IdentityPrincipalId                 : 
+IdentityTenantId                    : 
+IdentityType                        : None
+IdentityUserAssignedIdentity        : {}
+Location                            : EastUS
+MimeFilter                          : 
+MimeFilterType                      : 
+Name                                : api-flowprofile
+ProvisioningState                   : Succeeded
+ReplicationScenario                 : Api
+ResourceGroupName                   : ResourceGroup01
+Status                              : Enabled
+SystemDataCreatedAt                 : 1/15/2024 10:30:00 AM
+SystemDataCreatedBy                 : user@example.com
+SystemDataCreatedByType             : User
+SystemDataLastModifiedAt            : 1/15/2024 10:30:00 AM
+SystemDataLastModifiedBy            : user@example.com
+SystemDataLastModifiedByType        : User
+Tag                                 : {
+                                        "environment": "production",
+                                        "department": "IT"
+                                      }
+TextMatchingDeny                    : 
+Type                                : microsoft.azuredatatransfer/pipelines/flowprofiles
+XmlFilterDefaultNamespace           : 
+XmlFilterReference                  : 
+XmlFilterSchema                     : 
 ```
 
-Retrieves detailed information about a specific FlowProfile, including advanced configuration such as MIME filters, text matching patterns, and timestamps.
+Retrieves detailed information about a specific FlowProfile, including advanced configuration such as Antivirus configuration.
 
 ## PARAMETERS
 
