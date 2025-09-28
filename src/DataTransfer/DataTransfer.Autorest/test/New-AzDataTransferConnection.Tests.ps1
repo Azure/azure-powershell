@@ -15,13 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferConnection'
 }
 
 # FlowProfile-based connection test names
-$testRunId = Get-Date -Format "MMddHHmm"
+$testRunId = "09281619"
 $connectionToCreate = "test-connection-create-$testRunId"
 $connectionToCreateAsJob = "test-connection-create-as-job-$testRunId"
-$fpBasicConnectionName = "test-fp-basic-conn-$testRunId"
-$fpMultiConnectionName = "test-fp-multi-conn-$testRunId"
-$fpSendConnectionName = "test-fp-send-conn-$testRunId"
-$fpAsJobConnectionName = "test-fp-asjob-conn-$testRunId"
+$fpBasicConnectionName = "test-rcv-basic-fp-conn-$testRunId"
+$fpMultiConnectionName = "test-multi-fp-conn-$testRunId"
+$fpSendConnectionName = "test-send-basic-fp-conn-$testRunId"
+$fpAsJobConnectionName = "test-asjob-fp-conn-$testRunId"
+
+$testRunIdFp = "09280826"
+$basicFlowProfileName = "test-basic-fp-$testRunIdFp"
+$messagingFlowProfileName = "test-messaging-fp-$testRunIdFp"
+$asJobFlowProfileName = "test-asjob-fp-$testRunIdFp"
 
 Write-Host "Connection names - FlowType: $connectionToCreate, $connectionToCreateAsJob"
 Write-Host "FlowProfile Connection names - Basic: $fpBasicConnectionName, Multi: $fpMultiConnectionName, Send: $fpSendConnectionName, AsJob: $fpAsJobConnectionName"
@@ -118,41 +123,6 @@ Describe 'New-AzDataTransferConnection' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    # Helper function to create test FlowProfiles for connection tests
-    BeforeAll {
-        # Create test FlowProfiles needed for FlowProfile-based connection tests
-        $basicTestFlowProfile = @{
-            Name = "test-fp-basic-$testRunId"
-            PipelineName = $env.PipelineName
-            ResourceGroupName = $env.ResourceGroupName
-            Location = $env.FlowProfileLocation
-            ReplicationScenario = "Files"
-            Status = "Enabled"
-            Description = "Basic test FlowProfile for connection testing"
-        }
-
-        $messagingTestFlowProfile = @{
-            Name = "test-fp-messaging-$testRunId"
-            PipelineName = $env.PipelineName
-            ResourceGroupName = $env.ResourceGroupName
-            Location = $env.FlowProfileLocation
-            ReplicationScenario = "Messaging"
-            Status = "Enabled"
-            Description = "Messaging test FlowProfile for connection testing"
-            AntivirusAvSolution = @("Defender")
-        }
-
-        Write-Host "Creating test FlowProfiles for connection tests..."
-        try {
-            $null = New-AzDataTransferFlowProfile @basicTestFlowProfile
-            $null = New-AzDataTransferFlowProfile @messagingTestFlowProfile
-            Write-Host "Test FlowProfiles created successfully"
-        }
-        catch {
-            Write-Warning "Failed to create test FlowProfiles: $($_.Exception.Message)"
-        }
-    }
-
     # Helper function to create FlowProfile metadata for connections
     function New-TestFlowProfileMetadata {
         param(
@@ -200,7 +170,7 @@ Describe 'New-AzDataTransferConnection' {
     It 'CreateConnectionWithSingleFlowProfile' {
         {
             # Create FlowProfile metadata for the connection
-            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName "test-fp-basic-$testRunId" -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
+            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName $basicFlowProfileName -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
 
             $fpConnectionParams = @{
                 Name                 = $fpBasicConnectionName
@@ -229,15 +199,15 @@ Describe 'New-AzDataTransferConnection' {
             $createdConnection.RequirementId | Should -Be "FP-BASIC-$testRunId"
             $createdConnection.FlowProfileList | Should -Not -BeNullOrEmpty
             $createdConnection.FlowProfileList.Count | Should -Be 1
-            $createdConnection.FlowProfileList[0].Name | Should -Be "test-fp-basic-$testRunId"
+            $createdConnection.FlowProfileList[0].Name | Should -Be $basicFlowProfileName
         } | Should -Not -Throw
     }
 
     It 'CreateConnectionWithMultipleFlowProfiles' {
         {
             # Create multiple FlowProfile metadata objects
-            $basicFlowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName "test-fp-basic-$testRunId" -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
-            $messagingFlowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName "test-fp-messaging-$testRunId" -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
+            $basicFlowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName $basicFlowProfileName -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
+            $messagingFlowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName $messagingFlowProfileName -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
 
             $fpMultiConnectionParams = @{
                 Name                 = $fpMultiConnectionName
@@ -265,15 +235,15 @@ Describe 'New-AzDataTransferConnection' {
             
             # Verify FlowProfile names
             $fpNames = $createdConnection.FlowProfileList | ForEach-Object { $_.Name }
-            $fpNames | Should -Contain "test-fp-basic-$testRunId"
-            $fpNames | Should -Contain "test-fp-messaging-$testRunId"
+            $fpNames | Should -Contain $basicFlowProfileName
+            $fpNames | Should -Contain $messagingFlowProfileName
         } | Should -Not -Throw
     }
 
     It 'CreateSendConnectionWithFlowProfile' {
         {
             # Create FlowProfile metadata for send connection
-            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName "test-fp-basic-$testRunId" -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
+            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName $basicFlowProfileName -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
 
             $fpSendConnectionParams = @{
                 Name                 = $fpSendConnectionName
@@ -305,7 +275,7 @@ Describe 'New-AzDataTransferConnection' {
     It 'CreateConnectionWithFlowProfileAsJob' {
         {
             # Create FlowProfile metadata for AsJob connection
-            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName "test-fp-messaging-$testRunId" -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
+            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName $asJobFlowProfileName -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
 
             $fpAsJobConnectionParams = @{
                 Name                 = $fpAsJobConnectionName
@@ -338,14 +308,14 @@ Describe 'New-AzDataTransferConnection' {
             $createdConnection.Direction | Should -Be "Receive"
             $createdConnection.FlowProfileList | Should -Not -BeNullOrEmpty
             $createdConnection.FlowProfileList.Count | Should -Be 1
-            $createdConnection.FlowProfileList[0].Name | Should -Be "test-fp-messaging-$testRunId"
+            $createdConnection.FlowProfileList[0].Name | Should -Be $asJobFlowProfileName
         } | Should -Not -Throw
     }
 
     It 'CreateExistingConnectionWithFlowProfile' {
         {
             # Try to create a connection that already exists (should throw)
-            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName "test-fp-basic-$testRunId" -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
+            $flowProfileMetadata = New-TestFlowProfileMetadata -FlowProfileName $basicFlowProfileName -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName
 
             $duplicateConnectionParams = @{
                 Name                 = $fpBasicConnectionName  # This should already exist from previous test

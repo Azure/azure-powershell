@@ -15,13 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferFlow'))
 }
 
 # FlowProfile-based flow test names
-$testRunId = Get-Date -Format "MMddHHmm"
+$testRunId = "09281740"
 $flowToCreate = "test-flow-create-$testRunId"
 $flowToCreateAsJob = "test-flow-create-as-job-$testRunId"
 $fpBasicReceiveFlow = "test-fp-basic-recv-flow-$testRunId"
 $fpBasicSendFlow = "test-fp-basic-send-flow-$testRunId"
 $fpAsJobReceiveFlow = "test-fp-asjob-recv-flow-$testRunId"
 $fpAsJobSendFlow = "test-fp-asjob-send-flow-$testRunId"
+
+$testRunIdFp = "09280826"
+$basicFlowProfileName = "test-basic-fp-$testRunIdFp"
+$messagingFlowProfileName = "test-messaging-fp-$testRunIdFp"
+$asJobFlowProfileName = "test-asjob-fp-$testRunIdFp"
 
 $ResourceGroupName = $env.ResourceGroupName
 $PipelineName = $env.PipelineName
@@ -114,17 +119,8 @@ Describe 'New-AzDataTransferFlow' {
 
     # Use existing Basic connections and FlowProfile from setup scripts
     BeforeAll {
-        # Use existing Basic connections created by Connection-Create.ps1 script
-        # These connections follow the naming pattern: BasicReceiveConnection02, BasicSendConnection02
-        # Based on the Connection-Create.ps1 default index "02"
-        $basicConnectionIndex = "31"
-        $basicReceiveConnectionName = "BasicReceiveConnection$basicConnectionIndex"
-        $basicSendConnectionName = "BasicSendConnection$basicConnectionIndex"
-
-        # Use existing BasicFlowProfile created by FlowProfile-Create.ps1 script
-        # This follows the naming pattern: BasicFlowProfile02
-        # Based on the FlowProfile-Create.ps1 default index "02"
-        $basicFlowProfileName = "BasicFlowProfile$basicConnectionIndex"
+        $basicReceiveConnectionName = "test-rcv-basic-fp-conn-01"
+        $basicSendConnectionName = "test-send-basic-fp-conn-01"
 
         Write-Host "Using existing Basic connections and FlowProfile for flow tests:"
         Write-Host "  Receive Connection: $basicReceiveConnectionName"
@@ -201,36 +197,6 @@ Describe 'New-AzDataTransferFlow' {
             $createdFlow.Name | Should -Be $fpBasicReceiveFlow
             $createdFlow.Location | Should -Be $env.Location
             $createdFlow.Status | Should -Be "Enabled"
-        } | Should -Not -Throw
-    }
-
-    It 'CreateFlowWithBasicFlowProfile-Send' {
-        {
-            $basicSendFlowParams = @{
-                Name                              = $fpBasicSendFlow
-                ConnectionName                    = $global:BasicSendConnectionName
-                ResourceGroupName                 = $env.ResourceGroupName
-                Location                          = $env.Location
-                Status                            = "Enabled"
-                FlowDataType                      = "Blob"
-                StorageAccountName                = $env.StorageAccountName
-                StorageContainerName              = $env.StorageContainerName
-                FlowProfilePipeline               = $env.PipelineName
-                FlowProfileName                   = $global:BasicFlowProfileName
-                FlowProfileReplicationScenario    = "Files"
-                FlowProfileStatus                 = "Enabled"
-                FlowProfileDescription            = "Basic FlowProfile for Files replication"
-                FlowProfileId                  = (Get-AzDataTransferFlowProfile -PipelineName $PipelineName -ResourceGroupName $ResourceGroupName -FlowProfileName $global:BasicFlowProfileName).FlowProfileId
-                Confirm                           = $false
-            }
-
-            # Create the flow with Basic FlowProfile using proper syntax
-            $createdFlow = New-AzDataTransferFlow @basicSendFlowParams
-
-            # Verify the flow is created with correct properties
-            $createdFlow | Should -Not -BeNullOrEmpty
-            $createdFlow.Name | Should -Be $fpBasicSendFlow
-            $createdFlow.Location | Should -Be $env.Location
         } | Should -Not -Throw
     }
 

@@ -16,14 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferFlowProfile
 
 # Test FlowProfile names - using unique identifiers to avoid conflicts
 $testRunId = Get-Date -Format "MMddHHmm"
+$testRunId = "09280826"
 $basicFlowProfileName = "test-basic-fp-$testRunId"
 $messagingFlowProfileName = "test-messaging-fp-$testRunId"
-$apiFlowProfileName = "test-api-fp-$testRunId"
-$complexFlowProfileName = "test-complex-fp-$testRunId"
-$advancedFlowProfileName = "test-advanced-fp-$testRunId"
 $asJobFlowProfileName = "test-asjob-fp-$testRunId"
 
-Write-Host "FlowProfile test names - Basic: $basicFlowProfileName, Messaging: $messagingFlowProfileName, API: $apiFlowProfileName, Complex: $complexFlowProfileName, Advanced: $advancedFlowProfileName, AsJob: $asJobFlowProfileName"
+Write-Host "FlowProfile test names - Basic: $basicFlowProfileName, Messaging: $messagingFlowProfileName, AsJob: $asJobFlowProfileName"
 
 Describe 'New-AzDataTransferFlowProfile' {
     

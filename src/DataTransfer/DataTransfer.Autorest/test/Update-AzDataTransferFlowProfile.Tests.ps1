@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataTransferFlowProf
 }
 
 # Create test FlowProfile names for update tests
-$testRunId = Get-Date -Format "MMddHHmm"
+$testRunId = "01"
 $updateTestFlowProfileName = "test-update-fp-$testRunId"
 $updateAsJobFlowProfileName = "test-update-asjob-fp-$testRunId"
 
@@ -73,16 +73,14 @@ Describe 'Update-AzDataTransferFlowProfile' {
 
             $updatedFlowProfile = Update-AzDataTransferFlowProfile @updateParams
             
-            Write-Host $updatedFlowProfile
-            Write-Host $updatedFlowProfile.Properties.Antivirus
             # Verify the update was successful
             $updatedFlowProfile | Should -Not -BeNullOrEmpty
             $updatedFlowProfile.Name | Should -Be $updateTestFlowProfileName
             $updatedFlowProfile.Description | Should -Be "Updated FlowProfile with enhanced security features"
             $updatedFlowProfile.DataSizeMaximum | Should -Be 10485760
             $updatedFlowProfile.DataSizeMinimum | Should -Be 2048
-            $updatedFlowProfile.AntiviruAvSolution | Should -Contain "ClamAv"
-            $updatedFlowProfile.AntiviruAvSolution | Should -Contain "Defender"
+            $updatedFlowProfile.AntivirusAvSolution | Should -Contain "ClamAv"
+            $updatedFlowProfile.AntivirusAvSolution | Should -Contain "Defender"
 
             # Verify by getting the FlowProfile again
             $verifyFlowProfile = Get-AzDataTransferFlowProfile -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -FlowProfileName $updateTestFlowProfileName
@@ -140,8 +138,8 @@ Describe 'Update-AzDataTransferFlowProfile' {
             $updatedFlowProfile | Should -Not -BeNullOrEmpty
             $updatedFlowProfile.Description | Should -Be "Updated via AsJob - Enhanced messaging FlowProfile"
             $updatedFlowProfile.DataSizeMaximum | Should -Be 5242880
-            $updatedFlowProfile.AntiviruAvSolution | Should -Contain "ClamAv"
-            $updatedFlowProfile.AntiviruAvSolution | Should -Contain "Defender"
+            $updatedFlowProfile.AntivirusAvSolution | Should -Contain "ClamAv"
+            $updatedFlowProfile.AntivirusAvSolution | Should -Contain "Defender"
         } | Should -Not -Throw
     }
 

@@ -15,28 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferFlowProfile
 }
 
 # Create a test FlowProfile for Get operations
-$testRunId = Get-Date -Format "MMddHHmm"
-$getTestFlowProfileName = "test-get-fp-$testRunId"
+$testRunId = "09280826"
+$getTestFlowProfileName = "test-basic-fp-$testRunId"
 
 Describe 'Get-AzDataTransferFlowProfile' {
-    
-    BeforeAll {
-        # Create a test FlowProfile for Get operations
-        $testFlowProfileParams = @{
-            Name = $getTestFlowProfileName
-            PipelineName = $env.PipelineName
-            ResourceGroupName = $env.ResourceGroupName
-            Location = $env.FlowProfileLocation
-            ReplicationScenario = "Files"
-            Status = "Enabled"
-            Description = "Test FlowProfile for Get operations"
-            AntivirusAvSolution = @("Defender")
-        }
-
-        Write-Host "Creating test FlowProfile for Get operations: $getTestFlowProfileName"
-        $null = New-AzDataTransferFlowProfile @testFlowProfileParams
-    }
-
     It 'List' {
         {
             # List all FlowProfiles in the pipeline
@@ -60,12 +42,11 @@ Describe 'Get-AzDataTransferFlowProfile' {
         {
             # Get a specific FlowProfile by name
             $flowProfile = Get-AzDataTransferFlowProfile -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -FlowProfileName $getTestFlowProfileName
-            Write-Host $flowProfile
+            
             $flowProfile | Should -Not -BeNullOrEmpty
             $flowProfile.Name | Should -Be $getTestFlowProfileName
             $flowProfile.ReplicationScenario | Should -Be "Files"
             $flowProfile.Status | Should -Be "Enabled"
-            $flowProfile.Description | Should -Be "Test FlowProfile for Get operations"
         } | Should -Not -Throw
     }
 

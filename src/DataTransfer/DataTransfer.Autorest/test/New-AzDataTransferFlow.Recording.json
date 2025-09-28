@@ -1,8 +1,143 @@
 {
-  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow+$PUT+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2?api-version=2025-05-21+1": {
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01?api-version=2025-05-30-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d0738fdd-70cc-424d-8b56-8806fcc7aed1" ],
+        "CommandName": [ "Get-AzDataTransferConnection" ],
+        "FullCommandName": [ "Get-AzDataTransferConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"380127fb-0000-0100-0000-68d924400000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7898c3cd-4c56-49b9-bbbf-c9bf6a12ee7c" ],
+        "x-ms-correlation-request-id": [ "fbd43afa-5245-4ad5-9025-607be6a748cc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1100" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121110Z:fbd43afa-5245-4ad5-9025-607be6a748cc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 53934D17B0DC406BA3181E983230B8A8 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:10:59Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:11:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1444" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01\",\"name\":\"test-rcv-basic-fp-conn-01\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T11:13:22.0613987Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T11:13:22.6590143Z\",\"lastModifiedBy\":\"6e135f4a-4afc-4899-b453-26151edd13fb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-28T12:04:16.9401162Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"provisioningState\":\"Failed\",\"pipeline\":\"corptest\",\"direction\":\"Receive\",\"justification\":\"Basic receive connection using single FlowProfile for testing\",\"flowProfileList\":[{\"pipeline\":\"corptest\",\"name\":\"test-basic-fp-09280826\",\"replicationScenario\":\"Files\",\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication testing\"}],\"requirementId\":\"FP-BASIC-01\",\"remoteSubscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"primaryContact\":\"fptest@company.com\",\"status\":\"Approved\",\"statusReason\":\"Approved for bug bash testing\",\"linkStatus\":\"Linked\",\"pin\":\"67A3!Vc\",\"linkedConnectionId\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-basic-fp-conn-01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-basic-fp-conn-01?api-version=2025-05-30-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-basic-fp-conn-01?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "6e0ea40b-4018-4bc1-a365-591cca9241ae" ],
+        "CommandName": [ "Get-AzDataTransferConnection" ],
+        "FullCommandName": [ "Get-AzDataTransferConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"380142de-0000-0100-0000-68d921f90000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "52e85982-80bf-41a6-a396-53aa236e31fd" ],
+        "x-ms-correlation-request-id": [ "a9ff90fd-644c-4010-8645-4eb49bcf950e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121111Z:a9ff90fd-644c-4010-8645-4eb49bcf950e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 351DBD362BB84DA8B754BCB906E518A2 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:11:11Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:11:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1236" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-basic-fp-conn-01\",\"name\":\"test-send-basic-fp-conn-01\",\"type\":\"microsoft.azuredatatransfer/connections\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T11:54:22.7860634Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T11:54:24.3477198Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T11:54:24.3477198Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"pipeline\":\"corptest\",\"direction\":\"Send\",\"justification\":\"Send connection using FlowProfile for outbound data transfer testing\",\"status\":\"Approved\",\"flowProfileList\":[{\"pipeline\":\"corptest\",\"name\":\"test-basic-fp-09280826\",\"replicationScenario\":\"Files\",\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication testing\"}],\"requirementId\":\"FP-SEND-09281619\",\"remoteSubscriptionId\":\"389ff96a-b137-405b-a3c8-4d22514708b5\",\"pin\":\"67A3!Vc\",\"primaryContact\":\"fpsend@company.com\",\"dateSubmitted\":\"2025-09-28T11:54:32.4757116Z\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826?api-version=2025-05-30-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "6d5aa1c3-2f07-4967-921f-f223bdcd52d9" ],
+        "CommandName": [ "Get-AzDataTransferFlowProfile" ],
+        "FullCommandName": [ "Get-AzDataTransferFlowProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"84052a5a-0000-0800-0000-68d8a3e50000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c954648e-de42-4017-88e0-b3bdb3f25a11" ],
+        "x-ms-correlation-request-id": [ "66e156c8-45a5-4bd5-85de-e06dee38e3d7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121112Z:66e156c8-45a5-4bd5-85de-e06dee38e3d7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6427D6563D1A45C281218B32F3832C86 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:11:11Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:11:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "838" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826\",\"name\":\"test-basic-fp-09280826\",\"type\":\"microsoft.azuredatatransfer/pipelines/flowprofiles\",\"location\":\"eastus2\",\"tags\":{\"creationTime\":\"2025-09-28T02:56:27.9743017Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T02:56:29.5607845Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T02:56:29.5607845Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"replicationScenario\":\"Files\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication testing\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow+$PUT+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740?api-version=2025-05-30-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2?api-version=2025-05-21",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740?api-version=2025-05-30-preview",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"storageAccountName\": \"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\r\n    \"storageContainerName\": \"armstrong-test-container\",\r\n    \"flowType\": \"Mission\",\r\n    \"dataType\": \"Blob\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,47 +152,49 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"f701b1bc-0000-0100-0000-6853c8b10000\"" ],
+        "ETag": [ "\"3800cd2f-0000-0100-0000-68d925e50000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/827558f6-89c7-4728-92fc-ad63a9974303" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/d288b1c9-293d-48c9-b436-74f73a198446" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "1b833448-f897-407b-b71e-44dd44fd5617" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6a129203-f69e-4946-a25b-88d132800723*401614E25CDA9D28FF71B8422F6427B4E9EBBE6E1BF94FEF8BE2CA82140D8089?api-version=2025-05-21\u0026t=638859181315433277\u0026c=MIIHhzCCBm-gAwIBAgITHgbLpY5CrldwCElOhgAABsuljjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwNDE5MTE1MzU0WhcNMjUxMDE2MTE1MzU0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALpNvED-4jjWd9x4kx_GTi05d5dwOEyeLAbBQgCxpIIQfxMZWKMWgS98VkI5brDtLvFdyuzybnfFHGKXjzX0Tj_kDiX7rHe9Ecp8UcmhtBK-MMBjWeaJBvCR7SK6SCTtvlyaeZ8FB9_gMk6nIHRJcpUpoTRpMEm5Tzfq_qkq5o093Zyt04pRQ8_rII3zDeLTzrJ0E30TItRO5v_bcDpGzVN1kqxAD3qqSwl7E6632VEw3ARXsFSfyEf_oI3rMlWSevpbQjij6GVLSsMeGh2AETpkcpBigizsUpq0TKdogZnKCWhwvc27sB1pMsNS046hLTlK4GGDFvm0Qh05CAQVZbkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSLyDV7hmU843tJz-SpbILF-RdstDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAJny-giVyoS3RqKgNXSK1U5qjdx9go51dviqdGdycQ30FUQO8CDwSYqO_nnARWj5r3zOn_edK4to4pV3YcoLBcREsliXcmAzyrpOrc65uMnNd2TjLMvpc9lYmdugUhk2dY1aSbA6_khW4SOzpqplSojNWmSth6b9i0BPSfd67s_5Io8ov-ftTODImzzkcramAlGDr1WyyadbidiJbnzESwGoOBjDj7US4P9ZIIEJcgI3NyKsK4QzJb5U8ryYyyjqz4cV5V5AQ2v9OVECxR461ARHqwMAj8sJPeZYx6LgHApSzCtb3ky_y14iQDT5g8_k6w0g68zy-bCLuRbyF_O6Hgo\u0026s=U9OrIJ1mQC8thVL6eYFHWuzRb2aIjD1RjOvEvoTOXaCKg3ujsKPk1BofPQp-Unw_oQuO8TZyWEmXj57yr0c6jWi42LKMsM1Seb3MB1Hh6QIyom-B90XU-vTKpa0xQrvo7JDbnrOpWDy74AvR1f1hs8EbtDZg5773Rnk0l0ArsxAoWatRftj72VAUso_rzVvP8UrqNGPFLciormVvlJnTTLXTyTA7WHCRa4szHcZPg0H25icxixIJqlBE7u951Umsu5QDWp-t7q-IXTef6_bU_WtoZQeaO_xLBaXfELl1cr2MSIo-b8WMkKGKntr1QFNmE98dYXjjoVKKOjTBO0XDEA\u0026h=BKUgvM48NoP2brcPMd_E-gW5bnXHltbyE9RUb5LDe6E" ],
-        "x-ms-request-id": [ "6a129203-f69e-4946-a25b-88d132800723" ],
-        "x-ms-correlation-request-id": [ "f027828a-caa5-42c5-a536-e47305497824" ],
+        "mise-correlation-id": [ "e631c2d9-d35c-48f5-96fe-89ca1a84a6ca" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/36bd5e01-30b8-4430-9ca7-3d585d4e8d1d*472B059C9940B1872AF6835B0CC8992CC1540D0AABE9F611FEEE435A83B0557B?api-version=2025-05-30-preview\u0026t=638946582771841408\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=Me5wgrHgCxz6LJRuwxg8cuF8yHLMj-Wu1-At3CvmCb-hObWT3lv2M1yaTLCLc-5qXqD3NGucMnecXDrEjfi1ku3Jj4kvqy7bfu6woZcScCE_Tu1pZW7YBDbcYLlkeHb29Cu8_r_rqk3U6RTdexd9ap3m42O303qe6-D7dMkuLi4STHYqlH6Wv0QzeRSmlSWEc5W3g4y3C-W4OhE3d1yyjTjjEJHhVSMcpgqJelKTXJgNCn3wcBnaP7jQnbg19dRsWGYHVH130MXJZycOkA05yz6Fc3nJqfKdlank4wPlvxe4fqmEywlkzGYsE0xhsJwlKXon5nKwUSfz3UMzwxSIdg\u0026h=NbKHi5ASeEMjHsw02VGQvXnqesb5yo2s_mkuIEwOlPQ" ],
+        "x-ms-request-id": [ "36bd5e01-30b8-4430-9ca7-3d585d4e8d1d" ],
+        "x-ms-correlation-request-id": [ "b46a817d-126c-4e63-b2ef-7eeaf49dec60" ],
         "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082211Z:f027828a-caa5-42c5-a536-e47305497824" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121117Z:b46a817d-126c-4e63-b2ef-7eeaf49dec60" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0CCACC2F2C5444879C324EC82EBE66EF Ref B: PNQ231110909031 Ref C: 2025-06-19T08:22:04Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:22:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CBF87570FD5B420191DBB6CAB155FBFB Ref B: PNQ231110909023 Ref C: 2025-09-28T12:11:12Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:11:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "897" ],
+        "Content-Length": [ "905" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2\",\"name\":\"test-flow-create-id-2\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-06-19T08:22:05.6792932Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-19T08:22:08.6995862Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-19T08:22:08.6995862Z\"},\"properties\":{\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Accepted\"}}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740\",\"name\":\"test-flow-create-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:11:13.2111105Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:11:14.2152153Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:11:14.2152153Z\"},\"properties\":{\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6a129203-f69e-4946-a25b-88d132800723*401614E25CDA9D28FF71B8422F6427B4E9EBBE6E1BF94FEF8BE2CA82140D8089?api-version=2025-05-21\u0026t=638859181315433277\u0026c=MIIHhzCCBm-gAwIBAgITHgbLpY5CrldwCElOhgAABsuljjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwNDE5MTE1MzU0WhcNMjUxMDE2MTE1MzU0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALpNvED-4jjWd9x4kx_GTi05d5dwOEyeLAbBQgCxpIIQfxMZWKMWgS98VkI5brDtLvFdyuzybnfFHGKXjzX0Tj_kDiX7rHe9Ecp8UcmhtBK-MMBjWeaJBvCR7SK6SCTtvlyaeZ8FB9_gMk6nIHRJcpUpoTRpMEm5Tzfq_qkq5o093Zyt04pRQ8_rII3zDeLTzrJ0E30TItRO5v_bcDpGzVN1kqxAD3qqSwl7E6632VEw3ARXsFSfyEf_oI3rMlWSevpbQjij6GVLSsMeGh2AETpkcpBigizsUpq0TKdogZnKCWhwvc27sB1pMsNS046hLTlK4GGDFvm0Qh05CAQVZbkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSLyDV7hmU843tJz-SpbILF-RdstDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAJny-giVyoS3RqKgNXSK1U5qjdx9go51dviqdGdycQ30FUQO8CDwSYqO_nnARWj5r3zOn_edK4to4pV3YcoLBcREsliXcmAzyrpOrc65uMnNd2TjLMvpc9lYmdugUhk2dY1aSbA6_khW4SOzpqplSojNWmSth6b9i0BPSfd67s_5Io8ov-ftTODImzzkcramAlGDr1WyyadbidiJbnzESwGoOBjDj7US4P9ZIIEJcgI3NyKsK4QzJb5U8ryYyyjqz4cV5V5AQ2v9OVECxR461ARHqwMAj8sJPeZYx6LgHApSzCtb3ky_y14iQDT5g8_k6w0g68zy-bCLuRbyF_O6Hgo\u0026s=U9OrIJ1mQC8thVL6eYFHWuzRb2aIjD1RjOvEvoTOXaCKg3ujsKPk1BofPQp-Unw_oQuO8TZyWEmXj57yr0c6jWi42LKMsM1Seb3MB1Hh6QIyom-B90XU-vTKpa0xQrvo7JDbnrOpWDy74AvR1f1hs8EbtDZg5773Rnk0l0ArsxAoWatRftj72VAUso_rzVvP8UrqNGPFLciormVvlJnTTLXTyTA7WHCRa4szHcZPg0H25icxixIJqlBE7u951Umsu5QDWp-t7q-IXTef6_bU_WtoZQeaO_xLBaXfELl1cr2MSIo-b8WMkKGKntr1QFNmE98dYXjjoVKKOjTBO0XDEA\u0026h=BKUgvM48NoP2brcPMd_E-gW5bnXHltbyE9RUb5LDe6E+2": {
+  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/36bd5e01-30b8-4430-9ca7-3d585d4e8d1d*472B059C9940B1872AF6835B0CC8992CC1540D0AABE9F611FEEE435A83B0557B?api-version=2025-05-30-preview\u0026t=638946582771841408\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=Me5wgrHgCxz6LJRuwxg8cuF8yHLMj-Wu1-At3CvmCb-hObWT3lv2M1yaTLCLc-5qXqD3NGucMnecXDrEjfi1ku3Jj4kvqy7bfu6woZcScCE_Tu1pZW7YBDbcYLlkeHb29Cu8_r_rqk3U6RTdexd9ap3m42O303qe6-D7dMkuLi4STHYqlH6Wv0QzeRSmlSWEc5W3g4y3C-W4OhE3d1yyjTjjEJHhVSMcpgqJelKTXJgNCn3wcBnaP7jQnbg19dRsWGYHVH130MXJZycOkA05yz6Fc3nJqfKdlank4wPlvxe4fqmEywlkzGYsE0xhsJwlKXon5nKwUSfz3UMzwxSIdg\u0026h=NbKHi5ASeEMjHsw02VGQvXnqesb5yo2s_mkuIEwOlPQ+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6a129203-f69e-4946-a25b-88d132800723*401614E25CDA9D28FF71B8422F6427B4E9EBBE6E1BF94FEF8BE2CA82140D8089?api-version=2025-05-21\u0026t=638859181315433277\u0026c=MIIHhzCCBm-gAwIBAgITHgbLpY5CrldwCElOhgAABsuljjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwNDE5MTE1MzU0WhcNMjUxMDE2MTE1MzU0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALpNvED-4jjWd9x4kx_GTi05d5dwOEyeLAbBQgCxpIIQfxMZWKMWgS98VkI5brDtLvFdyuzybnfFHGKXjzX0Tj_kDiX7rHe9Ecp8UcmhtBK-MMBjWeaJBvCR7SK6SCTtvlyaeZ8FB9_gMk6nIHRJcpUpoTRpMEm5Tzfq_qkq5o093Zyt04pRQ8_rII3zDeLTzrJ0E30TItRO5v_bcDpGzVN1kqxAD3qqSwl7E6632VEw3ARXsFSfyEf_oI3rMlWSevpbQjij6GVLSsMeGh2AETpkcpBigizsUpq0TKdogZnKCWhwvc27sB1pMsNS046hLTlK4GGDFvm0Qh05CAQVZbkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSLyDV7hmU843tJz-SpbILF-RdstDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAJny-giVyoS3RqKgNXSK1U5qjdx9go51dviqdGdycQ30FUQO8CDwSYqO_nnARWj5r3zOn_edK4to4pV3YcoLBcREsliXcmAzyrpOrc65uMnNd2TjLMvpc9lYmdugUhk2dY1aSbA6_khW4SOzpqplSojNWmSth6b9i0BPSfd67s_5Io8ov-ftTODImzzkcramAlGDr1WyyadbidiJbnzESwGoOBjDj7US4P9ZIIEJcgI3NyKsK4QzJb5U8ryYyyjqz4cV5V5AQ2v9OVECxR461ARHqwMAj8sJPeZYx6LgHApSzCtb3ky_y14iQDT5g8_k6w0g68zy-bCLuRbyF_O6Hgo\u0026s=U9OrIJ1mQC8thVL6eYFHWuzRb2aIjD1RjOvEvoTOXaCKg3ujsKPk1BofPQp-Unw_oQuO8TZyWEmXj57yr0c6jWi42LKMsM1Seb3MB1Hh6QIyom-B90XU-vTKpa0xQrvo7JDbnrOpWDy74AvR1f1hs8EbtDZg5773Rnk0l0ArsxAoWatRftj72VAUso_rzVvP8UrqNGPFLciormVvlJnTTLXTyTA7WHCRa4szHcZPg0H25icxixIJqlBE7u951Umsu5QDWp-t7q-IXTef6_bU_WtoZQeaO_xLBaXfELl1cr2MSIo-b8WMkKGKntr1QFNmE98dYXjjoVKKOjTBO0XDEA\u0026h=BKUgvM48NoP2brcPMd_E-gW5bnXHltbyE9RUb5LDe6E",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/36bd5e01-30b8-4430-9ca7-3d585d4e8d1d*472B059C9940B1872AF6835B0CC8992CC1540D0AABE9F611FEEE435A83B0557B?api-version=2025-05-30-preview\u0026t=638946582771841408\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=Me5wgrHgCxz6LJRuwxg8cuF8yHLMj-Wu1-At3CvmCb-hObWT3lv2M1yaTLCLc-5qXqD3NGucMnecXDrEjfi1ku3Jj4kvqy7bfu6woZcScCE_Tu1pZW7YBDbcYLlkeHb29Cu8_r_rqk3U6RTdexd9ap3m42O303qe6-D7dMkuLi4STHYqlH6Wv0QzeRSmlSWEc5W3g4y3C-W4OhE3d1yyjTjjEJHhVSMcpgqJelKTXJgNCn3wcBnaP7jQnbg19dRsWGYHVH130MXJZycOkA05yz6Fc3nJqfKdlank4wPlvxe4fqmEywlkzGYsE0xhsJwlKXon5nKwUSfz3UMzwxSIdg\u0026h=NbKHi5ASeEMjHsw02VGQvXnqesb5yo2s_mkuIEwOlPQ",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "132" ],
-        "x-ms-client-request-id": [ "bfd0df42-74ac-4d25-8c75-7cf714592a4e" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "d66c637c-37ba-4c23-8c82-8d65f36a903f" ],
         "CommandName": [ "New-AzDataTransferFlow" ],
         "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -67,42 +204,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"030120f8-0000-0200-0000-6853c8b70000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/f2d6cf83-4c1f-4f75-96c5-c855ed8e3941" ],
-        "x-ms-request-id": [ "1053d898-af94-4234-81dd-98fb7f7670c0" ],
-        "x-ms-correlation-request-id": [ "f98f0ca2-28a6-4516-bf04-87bf934822a8" ],
+        "ETag": [ "\"4100f0e4-0000-0100-0000-68d925eb0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/bd6677b2-4a57-43bd-bf87-5413f23961bf" ],
+        "x-ms-request-id": [ "75204da0-b85a-455b-9281-a0b27c26ad55" ],
+        "x-ms-correlation-request-id": [ "e94be3a7-7062-4c09-8592-f6edefe53915" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082242Z:f98f0ca2-28a6-4516-bf04-87bf934822a8" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121147Z:e94be3a7-7062-4c09-8592-f6edefe53915" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F8090293DF76415B9B21868F5171AE43 Ref B: PNQ231110909031 Ref C: 2025-06-19T08:22:41Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:22:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 61D15BBA85AB4B7B8E9E1FE59FA5B779 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:11:47Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:11:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "622" ],
+        "Content-Length": [ "626" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6a129203-f69e-4946-a25b-88d132800723*401614E25CDA9D28FF71B8422F6427B4E9EBBE6E1BF94FEF8BE2CA82140D8089\",\"name\":\"6a129203-f69e-4946-a25b-88d132800723*401614E25CDA9D28FF71B8422F6427B4E9EBBE6E1BF94FEF8BE2CA82140D8089\",\"resourceId\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2\",\"status\":\"Succeeded\",\"startTime\":\"2025-06-19T08:22:09.5016354Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/36bd5e01-30b8-4430-9ca7-3d585d4e8d1d*472B059C9940B1872AF6835B0CC8992CC1540D0AABE9F611FEEE435A83B0557B\",\"name\":\"36bd5e01-30b8-4430-9ca7-3d585d4e8d1d*472B059C9940B1872AF6835B0CC8992CC1540D0AABE9F611FEEE435A83B0557B\",\"resourceId\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740\",\"status\":\"Succeeded\",\"startTime\":\"2025-09-28T12:11:16.7457333Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2?api-version=2025-05-21+3": {
+  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740?api-version=2025-05-30-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2?api-version=2025-05-21",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740?api-version=2025-05-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "133" ],
-        "x-ms-client-request-id": [ "bfd0df42-74ac-4d25-8c75-7cf714592a4e" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "d66c637c-37ba-4c23-8c82-8d65f36a903f" ],
         "CommandName": [ "New-AzDataTransferFlow" ],
         "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -112,32 +249,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"a2003308-0000-0200-0000-6853c8b70000\"" ],
+        "ETag": [ "\"38001030-0000-0100-0000-68d925eb0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "da6a47eb-0cef-458b-8f9f-fa00bcc2ed81" ],
-        "x-ms-correlation-request-id": [ "15bb8921-4750-4b86-ad13-3829537b8339" ],
+        "x-ms-request-id": [ "bcd24256-2452-4b20-af5f-57f93653e368" ],
+        "x-ms-correlation-request-id": [ "5b404ef9-ecb9-4755-8da6-8d2148fcda72" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082242Z:15bb8921-4750-4b86-ad13-3829537b8339" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250928T121148Z:5b404ef9-ecb9-4755-8da6-8d2148fcda72" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FB5F2747417F4152924FF8B4F9F2DEF9 Ref B: PNQ231110909031 Ref C: 2025-06-19T08:22:42Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:22:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CD4D638E13E0417CB2133E21BF1920C0 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:11:48Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:11:48 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "968" ],
+        "Content-Length": [ "976" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2\",\"name\":\"test-flow-create-id-2\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-06-19T08:22:05.6792932Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-19T08:22:08.6995862Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-19T08:22:08.6995862Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740\",\"name\":\"test-flow-create-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:11:13.2111105Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:11:14.2152153Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:11:14.2152153Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$PUT+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21+1": {
+  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$PUT+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"storageAccountName\": \"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\r\n    \"storageContainerName\": \"armstrong-test-container\",\r\n    \"flowType\": \"Mission\",\r\n    \"dataType\": \"Blob\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -152,47 +289,49 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"f70104c2-0000-0100-0000-6853c8d80000\"" ],
+        "ETag": [ "\"38006a31-0000-0100-0000-68d926090000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/de141c79-0a11-47bc-8609-75c16b88be4c" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/9457f643-f51a-40e8-951b-fa9db6349090" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "9c62404b-8694-427f-94a8-b06b584c248d" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/c482bdc1-7729-4f3c-a841-ffc660f42328*B5C875675882332FEE6A370C70F0C0B4B590F6A9E9DE1D853D75AA010B233869?api-version=2025-05-21\u0026t=638859181701955545\u0026c=MIIHhzCCBm-gAwIBAgITHgbLpY5CrldwCElOhgAABsuljjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwNDE5MTE1MzU0WhcNMjUxMDE2MTE1MzU0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALpNvED-4jjWd9x4kx_GTi05d5dwOEyeLAbBQgCxpIIQfxMZWKMWgS98VkI5brDtLvFdyuzybnfFHGKXjzX0Tj_kDiX7rHe9Ecp8UcmhtBK-MMBjWeaJBvCR7SK6SCTtvlyaeZ8FB9_gMk6nIHRJcpUpoTRpMEm5Tzfq_qkq5o093Zyt04pRQ8_rII3zDeLTzrJ0E30TItRO5v_bcDpGzVN1kqxAD3qqSwl7E6632VEw3ARXsFSfyEf_oI3rMlWSevpbQjij6GVLSsMeGh2AETpkcpBigizsUpq0TKdogZnKCWhwvc27sB1pMsNS046hLTlK4GGDFvm0Qh05CAQVZbkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSLyDV7hmU843tJz-SpbILF-RdstDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAJny-giVyoS3RqKgNXSK1U5qjdx9go51dviqdGdycQ30FUQO8CDwSYqO_nnARWj5r3zOn_edK4to4pV3YcoLBcREsliXcmAzyrpOrc65uMnNd2TjLMvpc9lYmdugUhk2dY1aSbA6_khW4SOzpqplSojNWmSth6b9i0BPSfd67s_5Io8ov-ftTODImzzkcramAlGDr1WyyadbidiJbnzESwGoOBjDj7US4P9ZIIEJcgI3NyKsK4QzJb5U8ryYyyjqz4cV5V5AQ2v9OVECxR461ARHqwMAj8sJPeZYx6LgHApSzCtb3ky_y14iQDT5g8_k6w0g68zy-bCLuRbyF_O6Hgo\u0026s=iC41xkWQ_jZ7A_lgbVOEu5ezqqtjdbXkznjJbPBzSKa6zAAmDFqSoKypYWfrEbiJ0-Hy1Pz5dWX7lcPMopcZ4cJSvgHAVEJnikfv2lL0m0Sid811Ylby50Q7IxCxfD4sC6gSbMRogCag-D8uxrR4ofiE1FXz7WNZCb79J5rP3w3lDFYhQoQlHSJIFkzP6m8vwSDC6dtrPjgamOtFa21Z0SIITnh0TykshwFNjJ3FET8020my_ELVydTcXBJMH71xZYdi6_hMs27YVKQlVBKNeGfS8J9bOX_-WOIEKjo1ZqkZP_ffroBFLWUKdGCYOEj4vckTk9ZXV0lnK_QLLRb6wQ\u0026h=TzKhJdfnPeuFfPXlEjpegdxjhfszB0KUQ3tK5ddnRS4" ],
-        "x-ms-request-id": [ "c482bdc1-7729-4f3c-a841-ffc660f42328" ],
-        "x-ms-correlation-request-id": [ "05aa53f2-9fe1-4aba-82d5-babcfcecb937" ],
+        "mise-correlation-id": [ "c0fd4def-63fa-41d9-9da6-57b3e0706b1d" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/92fc9d9f-8156-40a0-ba3d-138850b39747*3525E1CC1C012B3541FC1D2FA1FE959FDB2A527EF4F37DB29127FB7D284E107B?api-version=2025-05-30-preview\u0026t=638946583137645647\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=te0II_0asVE3tpB4rPMFj2jwU6pSkGb2s-GzhXYeuC6u5awXD9SxjXqm_YZwGpP5K9FfLSV5Ci3TuFicDC3ioPj70XNLbMNlzAY_E_0X7POtzbSUM0-HB_4eILlRx7rykKqocEeYRvhmMzyOMAJEQVVlxAM_HV9Cxhpkym5g2IHjYElkVx9TmHTaN8Odj-yFBiiPBRZ7rrvSNFdh5UzbUPqgNI6w3MyGDQbCucmbF0x4Yt9HnYi-IH3boXGXw69t10b2VSyQe8XzNK-_leJoLBkwqzFQfYtiaFPKLtHo8eNvXNOBjJfzIbWKGDm8fyDOa9AbbkbLkmsOOwoMsIl15w\u0026h=NLe9kd46EZTqiSzYShmZfhoE8_NmNhP_1a3lRbiRub4" ],
+        "x-ms-request-id": [ "92fc9d9f-8156-40a0-ba3d-138850b39747" ],
+        "x-ms-correlation-request-id": [ "4cecef5c-c786-4aa2-9e5b-ce83d949debb" ],
         "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082250Z:05aa53f2-9fe1-4aba-82d5-babcfcecb937" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121153Z:4cecef5c-c786-4aa2-9e5b-ce83d949debb" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 60E53C873C8848A5AA5397B96544420D Ref B: PNQ231110909031 Ref C: 2025-06-19T08:22:43Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:22:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 68CC49D4855540D59E44AC3FB90D7E56 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:11:49Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:11:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "911" ],
+        "Content-Length": [ "919" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2\",\"name\":\"test-flow-create-as-job-id-2\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-06-19T08:22:44.0166240Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-19T08:22:47.3048593Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-19T08:22:47.3048593Z\"},\"properties\":{\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Accepted\"}}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740\",\"name\":\"test-flow-create-as-job-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:11:49.3529524Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:11:50.3580463Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:11:50.3580463Z\"},\"properties\":{\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/c482bdc1-7729-4f3c-a841-ffc660f42328*B5C875675882332FEE6A370C70F0C0B4B590F6A9E9DE1D853D75AA010B233869?api-version=2025-05-21\u0026t=638859181701955545\u0026c=MIIHhzCCBm-gAwIBAgITHgbLpY5CrldwCElOhgAABsuljjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwNDE5MTE1MzU0WhcNMjUxMDE2MTE1MzU0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALpNvED-4jjWd9x4kx_GTi05d5dwOEyeLAbBQgCxpIIQfxMZWKMWgS98VkI5brDtLvFdyuzybnfFHGKXjzX0Tj_kDiX7rHe9Ecp8UcmhtBK-MMBjWeaJBvCR7SK6SCTtvlyaeZ8FB9_gMk6nIHRJcpUpoTRpMEm5Tzfq_qkq5o093Zyt04pRQ8_rII3zDeLTzrJ0E30TItRO5v_bcDpGzVN1kqxAD3qqSwl7E6632VEw3ARXsFSfyEf_oI3rMlWSevpbQjij6GVLSsMeGh2AETpkcpBigizsUpq0TKdogZnKCWhwvc27sB1pMsNS046hLTlK4GGDFvm0Qh05CAQVZbkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSLyDV7hmU843tJz-SpbILF-RdstDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAJny-giVyoS3RqKgNXSK1U5qjdx9go51dviqdGdycQ30FUQO8CDwSYqO_nnARWj5r3zOn_edK4to4pV3YcoLBcREsliXcmAzyrpOrc65uMnNd2TjLMvpc9lYmdugUhk2dY1aSbA6_khW4SOzpqplSojNWmSth6b9i0BPSfd67s_5Io8ov-ftTODImzzkcramAlGDr1WyyadbidiJbnzESwGoOBjDj7US4P9ZIIEJcgI3NyKsK4QzJb5U8ryYyyjqz4cV5V5AQ2v9OVECxR461ARHqwMAj8sJPeZYx6LgHApSzCtb3ky_y14iQDT5g8_k6w0g68zy-bCLuRbyF_O6Hgo\u0026s=iC41xkWQ_jZ7A_lgbVOEu5ezqqtjdbXkznjJbPBzSKa6zAAmDFqSoKypYWfrEbiJ0-Hy1Pz5dWX7lcPMopcZ4cJSvgHAVEJnikfv2lL0m0Sid811Ylby50Q7IxCxfD4sC6gSbMRogCag-D8uxrR4ofiE1FXz7WNZCb79J5rP3w3lDFYhQoQlHSJIFkzP6m8vwSDC6dtrPjgamOtFa21Z0SIITnh0TykshwFNjJ3FET8020my_ELVydTcXBJMH71xZYdi6_hMs27YVKQlVBKNeGfS8J9bOX_-WOIEKjo1ZqkZP_ffroBFLWUKdGCYOEj4vckTk9ZXV0lnK_QLLRb6wQ\u0026h=TzKhJdfnPeuFfPXlEjpegdxjhfszB0KUQ3tK5ddnRS4+2": {
+  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/92fc9d9f-8156-40a0-ba3d-138850b39747*3525E1CC1C012B3541FC1D2FA1FE959FDB2A527EF4F37DB29127FB7D284E107B?api-version=2025-05-30-preview\u0026t=638946583137645647\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=te0II_0asVE3tpB4rPMFj2jwU6pSkGb2s-GzhXYeuC6u5awXD9SxjXqm_YZwGpP5K9FfLSV5Ci3TuFicDC3ioPj70XNLbMNlzAY_E_0X7POtzbSUM0-HB_4eILlRx7rykKqocEeYRvhmMzyOMAJEQVVlxAM_HV9Cxhpkym5g2IHjYElkVx9TmHTaN8Odj-yFBiiPBRZ7rrvSNFdh5UzbUPqgNI6w3MyGDQbCucmbF0x4Yt9HnYi-IH3boXGXw69t10b2VSyQe8XzNK-_leJoLBkwqzFQfYtiaFPKLtHo8eNvXNOBjJfzIbWKGDm8fyDOa9AbbkbLkmsOOwoMsIl15w\u0026h=NLe9kd46EZTqiSzYShmZfhoE8_NmNhP_1a3lRbiRub4+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/c482bdc1-7729-4f3c-a841-ffc660f42328*B5C875675882332FEE6A370C70F0C0B4B590F6A9E9DE1D853D75AA010B233869?api-version=2025-05-21\u0026t=638859181701955545\u0026c=MIIHhzCCBm-gAwIBAgITHgbLpY5CrldwCElOhgAABsuljjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwNDE5MTE1MzU0WhcNMjUxMDE2MTE1MzU0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALpNvED-4jjWd9x4kx_GTi05d5dwOEyeLAbBQgCxpIIQfxMZWKMWgS98VkI5brDtLvFdyuzybnfFHGKXjzX0Tj_kDiX7rHe9Ecp8UcmhtBK-MMBjWeaJBvCR7SK6SCTtvlyaeZ8FB9_gMk6nIHRJcpUpoTRpMEm5Tzfq_qkq5o093Zyt04pRQ8_rII3zDeLTzrJ0E30TItRO5v_bcDpGzVN1kqxAD3qqSwl7E6632VEw3ARXsFSfyEf_oI3rMlWSevpbQjij6GVLSsMeGh2AETpkcpBigizsUpq0TKdogZnKCWhwvc27sB1pMsNS046hLTlK4GGDFvm0Qh05CAQVZbkCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSLyDV7hmU843tJz-SpbILF-RdstDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAJny-giVyoS3RqKgNXSK1U5qjdx9go51dviqdGdycQ30FUQO8CDwSYqO_nnARWj5r3zOn_edK4to4pV3YcoLBcREsliXcmAzyrpOrc65uMnNd2TjLMvpc9lYmdugUhk2dY1aSbA6_khW4SOzpqplSojNWmSth6b9i0BPSfd67s_5Io8ov-ftTODImzzkcramAlGDr1WyyadbidiJbnzESwGoOBjDj7US4P9ZIIEJcgI3NyKsK4QzJb5U8ryYyyjqz4cV5V5AQ2v9OVECxR461ARHqwMAj8sJPeZYx6LgHApSzCtb3ky_y14iQDT5g8_k6w0g68zy-bCLuRbyF_O6Hgo\u0026s=iC41xkWQ_jZ7A_lgbVOEu5ezqqtjdbXkznjJbPBzSKa6zAAmDFqSoKypYWfrEbiJ0-Hy1Pz5dWX7lcPMopcZ4cJSvgHAVEJnikfv2lL0m0Sid811Ylby50Q7IxCxfD4sC6gSbMRogCag-D8uxrR4ofiE1FXz7WNZCb79J5rP3w3lDFYhQoQlHSJIFkzP6m8vwSDC6dtrPjgamOtFa21Z0SIITnh0TykshwFNjJ3FET8020my_ELVydTcXBJMH71xZYdi6_hMs27YVKQlVBKNeGfS8J9bOX_-WOIEKjo1ZqkZP_ffroBFLWUKdGCYOEj4vckTk9ZXV0lnK_QLLRb6wQ\u0026h=TzKhJdfnPeuFfPXlEjpegdxjhfszB0KUQ3tK5ddnRS4",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/92fc9d9f-8156-40a0-ba3d-138850b39747*3525E1CC1C012B3541FC1D2FA1FE959FDB2A527EF4F37DB29127FB7D284E107B?api-version=2025-05-30-preview\u0026t=638946583137645647\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=te0II_0asVE3tpB4rPMFj2jwU6pSkGb2s-GzhXYeuC6u5awXD9SxjXqm_YZwGpP5K9FfLSV5Ci3TuFicDC3ioPj70XNLbMNlzAY_E_0X7POtzbSUM0-HB_4eILlRx7rykKqocEeYRvhmMzyOMAJEQVVlxAM_HV9Cxhpkym5g2IHjYElkVx9TmHTaN8Odj-yFBiiPBRZ7rrvSNFdh5UzbUPqgNI6w3MyGDQbCucmbF0x4Yt9HnYi-IH3boXGXw69t10b2VSyQe8XzNK-_leJoLBkwqzFQfYtiaFPKLtHo8eNvXNOBjJfzIbWKGDm8fyDOa9AbbkbLkmsOOwoMsIl15w\u0026h=NLe9kd46EZTqiSzYShmZfhoE8_NmNhP_1a3lRbiRub4",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "135" ],
-        "x-ms-client-request-id": [ "737d2ed3-a0dd-4322-a19e-d99958700c09" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "d7970b27-a9c7-4f20-ab73-0300242e6127" ],
         "CommandName": [ "New-AzDataTransferFlow" ],
         "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
         "ParameterSetName": [ "" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -202,42 +341,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"3702f3d5-0000-0800-0000-6853c8df0000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/928e8736-43d7-477c-b847-f99a7a80411b" ],
-        "x-ms-request-id": [ "c41002bf-28de-4107-a02b-5b580a1a2e04" ],
-        "x-ms-correlation-request-id": [ "6698eed7-b501-48dd-83c0-84cf5cd64d7d" ],
+        "ETag": [ "\"1101238f-0000-0200-0000-68d926110000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/b4f406c2-f6fe-4015-a81e-ee2da21f9a91" ],
+        "x-ms-request-id": [ "a912d04b-93d7-45d9-bf0d-92e695d3bafa" ],
+        "x-ms-correlation-request-id": [ "515858b3-d1db-452d-91e1-44db07da7dc0" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082320Z:6698eed7-b501-48dd-83c0-84cf5cd64d7d" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121224Z:515858b3-d1db-452d-91e1-44db07da7dc0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A238DD0CC2D145AD97C9B6BD118AE415 Ref B: PNQ231110909031 Ref C: 2025-06-19T08:23:20Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:23:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 46AB61926D4442088155D599D02D323A Ref B: PNQ231110909023 Ref C: 2025-09-28T12:12:24Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:12:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "629" ],
+        "Content-Length": [ "632" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/c482bdc1-7729-4f3c-a841-ffc660f42328*B5C875675882332FEE6A370C70F0C0B4B590F6A9E9DE1D853D75AA010B233869\",\"name\":\"c482bdc1-7729-4f3c-a841-ffc660f42328*B5C875675882332FEE6A370C70F0C0B4B590F6A9E9DE1D853D75AA010B233869\",\"resourceId\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2\",\"status\":\"Succeeded\",\"startTime\":\"2025-06-19T08:22:48.2557268Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/92fc9d9f-8156-40a0-ba3d-138850b39747*3525E1CC1C012B3541FC1D2FA1FE959FDB2A527EF4F37DB29127FB7D284E107B\",\"name\":\"92fc9d9f-8156-40a0-ba3d-138850b39747*3525E1CC1C012B3541FC1D2FA1FE959FDB2A527EF4F37DB29127FB7D284E107B\",\"resourceId\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740\",\"status\":\"Succeeded\",\"startTime\":\"2025-09-28T12:11:53.273042Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21+3": {
+  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "136" ],
-        "x-ms-client-request-id": [ "737d2ed3-a0dd-4322-a19e-d99958700c09" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "d7970b27-a9c7-4f20-ab73-0300242e6127" ],
         "CommandName": [ "New-AzDataTransferFlow" ],
         "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
         "ParameterSetName": [ "" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -247,41 +386,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"78019b01-0000-0800-0000-6853c8df0000\"" ],
+        "ETag": [ "\"5b03e88a-0000-0200-0000-68d926110000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "a2d1bea8-d34c-4115-abfe-e0f43bd9e702" ],
-        "x-ms-correlation-request-id": [ "6af374b8-349c-4745-9e47-c2ecbee21c88" ],
+        "x-ms-request-id": [ "ceb81228-dba0-4e68-9688-19b1cc6ed9d4" ],
+        "x-ms-correlation-request-id": [ "25ffb51c-ce15-4a62-b55a-667552ddbb52" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082321Z:6af374b8-349c-4745-9e47-c2ecbee21c88" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20250928T121225Z:25ffb51c-ce15-4a62-b55a-667552ddbb52" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 138B5AE2FD8D49719415E29C844B66BF Ref B: PNQ231110909031 Ref C: 2025-06-19T08:23:20Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:23:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 08E084984FCD4D4D8BB4E7A2672C5593 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:12:24Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:12:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "982" ],
+        "Content-Length": [ "990" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2\",\"name\":\"test-flow-create-as-job-id-2\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-06-19T08:22:44.0166240Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-19T08:22:47.3048593Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-19T08:22:47.3048593Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740\",\"name\":\"test-flow-create-as-job-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:11:49.3529524Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:11:50.3580463Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:11:50.3580463Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21+4": {
+  "New-AzDataTransferFlow+[NoContext]+CreateNewFlow AsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "137" ],
-        "x-ms-client-request-id": [ "79b01d3c-f362-45a4-885e-a16901a46ad9" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "35810b56-d32e-4257-96c8-2f0c5ff3cd3a" ],
         "CommandName": [ "Get-AzDataTransferFlow" ],
         "FullCommandName": [ "Get-AzDataTransferFlow_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -292,41 +431,450 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"78019b01-0000-0800-0000-6853c8df0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "ETag": [ "\"5b03e88a-0000-0200-0000-68d926110000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "de2f1efb-43e0-4282-a825-b264b9e22ee7" ],
-        "x-ms-correlation-request-id": [ "c120a558-a2a0-4dad-b97d-77981b069e2f" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082321Z:c120a558-a2a0-4dad-b97d-77981b069e2f" ],
+        "x-ms-request-id": [ "b320fdb5-e075-49ca-b916-28ec12df0d2b" ],
+        "x-ms-correlation-request-id": [ "020dfaf8-be86-4f19-9014-9106488ecedc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121225Z:020dfaf8-be86-4f19-9014-9106488ecedc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8999B7D85122415685C4B5897371428C Ref B: PNQ231110909031 Ref C: 2025-06-19T08:23:21Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:23:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 47A89C195D9843A1B6D609F064F34E26 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:12:25Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:12:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "982" ],
+        "Content-Length": [ "990" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2\",\"name\":\"test-flow-create-as-job-id-2\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-06-19T08:22:44.0166240Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-19T08:22:47.3048593Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-19T08:22:47.3048593Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740\",\"name\":\"test-flow-create-as-job-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:11:49.3529524Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:11:50.3580463Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:11:50.3580463Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2?api-version=2025-05-21+1": {
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithBasicFlowProfile-Receive+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826?api-version=2025-05-30-preview+1": {
     "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-id-2?api-version=2025-05-21",
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826?api-version=2025-05-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "138" ],
-        "x-ms-client-request-id": [ "c449a623-16f2-4751-a79f-a3f1e4992dcf" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "880519d1-4917-45f1-81aa-860e198ac6e7" ],
+        "CommandName": [ "Get-AzDataTransferFlowProfile" ],
+        "FullCommandName": [ "Get-AzDataTransferFlowProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"84052a5a-0000-0800-0000-68d8a3e50000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ac601f5b-b267-429d-9aee-cafb19b0db15" ],
+        "x-ms-correlation-request-id": [ "1c937d24-0838-4e44-b709-33946fcff743" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121226Z:1c937d24-0838-4e44-b709-33946fcff743" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7D670BE712804AB6BC37DEF82C139D34 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:12:26Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:12:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "838" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826\",\"name\":\"test-basic-fp-09280826\",\"type\":\"microsoft.azuredatatransfer/pipelines/flowprofiles\",\"location\":\"eastus2\",\"tags\":{\"creationTime\":\"2025-09-28T02:56:27.9743017Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T02:56:29.5607845Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T02:56:29.5607845Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"replicationScenario\":\"Files\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication testing\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithBasicFlowProfile-Receive+$PUT+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740?api-version=2025-05-30-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740?api-version=2025-05-30-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"flowProfile\": {\r\n      \"pipeline\": \"corptest\",\r\n      \"name\": \"test-basic-fp-09280826\",\r\n      \"replicationScenario\": \"Files\",\r\n      \"flowProfileId\": \"0683c597-735d-49de-93db-8ed5cbfa4e31\",\r\n      \"status\": \"Enabled\",\r\n      \"description\": \"Basic FlowProfile for Files replication\"\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"storageAccountName\": \"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\r\n    \"storageContainerName\": \"armstrong-test-container\",\r\n    \"flowDataType\": \"Blob\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "631" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3800b532-0000-0100-0000-68d9262c0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/4d3ef39b-698a-4d69-bef6-563571c405ee" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "9d1e9a81-d4aa-4062-9f0c-599aa329dbc8" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6d77beb7-6c75-4ed2-b2e3-ac88aff786bc*BDB1C1ADE3FF8445EACD0290559DAF0473CC0FCFC2CCBFA669F359AB3E198F58?api-version=2025-05-30-preview\u0026t=638946583486885500\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=G7Zcxo_IIOxeWF8BJQwhvJHICLje9A7R_ED2t3cNx0NrWXI2xhOj_qr9opvGaJ2GagrnOd9AQ-MTNsLBas7Amxm0zkJYPgfeNoSaEea9uNOeHectWcdaJ3Tr6VPGuT5Kv59WQsUKqcPql0ODtNgvRasndRR6hL27xgj41YkBZ1eMr4F-SKXsgII0QmU0_Bt3eOB3nIEsgS75CwPP6degP5f2OLNifdGkZj5cTt5CtmJdHnKmNcsnR2qQkV68dOM2ZwoN27S6q-NSxwKlC7ta-H3weR7geSjwloFYSxrkvmIWu68YwjXAuno41dRCI0dzfd-ZIur-eQCR6xs1CvaYBw\u0026h=J2AuT7_ycCoSv0g_OmIF8DRNfEr9IafaOtXEOe4lmN0" ],
+        "x-ms-request-id": [ "6d77beb7-6c75-4ed2-b2e3-ac88aff786bc" ],
+        "x-ms-correlation-request-id": [ "9d16bf59-6a3f-4162-84de-7117bd19298d" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121228Z:9d16bf59-6a3f-4162-84de-7117bd19298d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5E547D32B95C4626B4EDD7F8D382C016 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:12:26Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:12:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1152" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740\",\"name\":\"test-fp-basic-recv-flow-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:12:26.9463574Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:12:27.5166116Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:12:27.5166116Z\"},\"properties\":{\"flowProfile\":{\"pipeline\":\"corptest\",\"name\":\"test-basic-fp-09280826\",\"replicationScenario\":\"Files\",\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication\"},\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowDataType\":\"Blob\",\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithBasicFlowProfile-Receive+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6d77beb7-6c75-4ed2-b2e3-ac88aff786bc*BDB1C1ADE3FF8445EACD0290559DAF0473CC0FCFC2CCBFA669F359AB3E198F58?api-version=2025-05-30-preview\u0026t=638946583486885500\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=G7Zcxo_IIOxeWF8BJQwhvJHICLje9A7R_ED2t3cNx0NrWXI2xhOj_qr9opvGaJ2GagrnOd9AQ-MTNsLBas7Amxm0zkJYPgfeNoSaEea9uNOeHectWcdaJ3Tr6VPGuT5Kv59WQsUKqcPql0ODtNgvRasndRR6hL27xgj41YkBZ1eMr4F-SKXsgII0QmU0_Bt3eOB3nIEsgS75CwPP6degP5f2OLNifdGkZj5cTt5CtmJdHnKmNcsnR2qQkV68dOM2ZwoN27S6q-NSxwKlC7ta-H3weR7geSjwloFYSxrkvmIWu68YwjXAuno41dRCI0dzfd-ZIur-eQCR6xs1CvaYBw\u0026h=J2AuT7_ycCoSv0g_OmIF8DRNfEr9IafaOtXEOe4lmN0+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6d77beb7-6c75-4ed2-b2e3-ac88aff786bc*BDB1C1ADE3FF8445EACD0290559DAF0473CC0FCFC2CCBFA669F359AB3E198F58?api-version=2025-05-30-preview\u0026t=638946583486885500\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=G7Zcxo_IIOxeWF8BJQwhvJHICLje9A7R_ED2t3cNx0NrWXI2xhOj_qr9opvGaJ2GagrnOd9AQ-MTNsLBas7Amxm0zkJYPgfeNoSaEea9uNOeHectWcdaJ3Tr6VPGuT5Kv59WQsUKqcPql0ODtNgvRasndRR6hL27xgj41YkBZ1eMr4F-SKXsgII0QmU0_Bt3eOB3nIEsgS75CwPP6degP5f2OLNifdGkZj5cTt5CtmJdHnKmNcsnR2qQkV68dOM2ZwoN27S6q-NSxwKlC7ta-H3weR7geSjwloFYSxrkvmIWu68YwjXAuno41dRCI0dzfd-ZIur-eQCR6xs1CvaYBw\u0026h=J2AuT7_ycCoSv0g_OmIF8DRNfEr9IafaOtXEOe4lmN0",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "d0f9a710-61cd-4043-9e58-9b81ed9564c3" ],
+        "CommandName": [ "New-AzDataTransferFlow" ],
+        "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b500bf2d-0000-0800-0000-68d926330000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/ebc4a89a-ab0a-471f-b873-fd38a64bec60" ],
+        "x-ms-request-id": [ "78b2773f-c0e1-430c-b844-a1fc4dafeac7" ],
+        "x-ms-correlation-request-id": [ "3c0e328b-c772-42df-85e6-f29cdf4bde39" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121259Z:3c0e328b-c772-42df-85e6-f29cdf4bde39" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BE549C2CA78941F293C9C6A6A97F73E3 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:12:59Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:12:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "634" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6d77beb7-6c75-4ed2-b2e3-ac88aff786bc*BDB1C1ADE3FF8445EACD0290559DAF0473CC0FCFC2CCBFA669F359AB3E198F58\",\"name\":\"6d77beb7-6c75-4ed2-b2e3-ac88aff786bc*BDB1C1ADE3FF8445EACD0290559DAF0473CC0FCFC2CCBFA669F359AB3E198F58\",\"resourceId\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740\",\"status\":\"Succeeded\",\"startTime\":\"2025-09-28T12:12:28.2323059Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithBasicFlowProfile-Receive+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740?api-version=2025-05-30-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "d0f9a710-61cd-4043-9e58-9b81ed9564c3" ],
+        "CommandName": [ "New-AzDataTransferFlow" ],
+        "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3101237e-0000-0800-0000-68d926330000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "faed9187-bb37-49da-b08e-696f74d5d598" ],
+        "x-ms-correlation-request-id": [ "ed6a745a-7b28-4b1c-b5b7-9a84a3b16af2" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250928T121301Z:ed6a745a-7b28-4b1c-b5b7-9a84a3b16af2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 298889A9F3C343A38DD7C8CD221222FF Ref B: PNQ231110909023 Ref C: 2025-09-28T12:12:59Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740\",\"name\":\"test-fp-basic-recv-flow-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:12:26.9463574Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:12:27.5166116Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:12:27.5166116Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"keyVaultUri\":\"\",\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowProfile\":{\"pipeline\":\"corptest\",\"name\":\"test-basic-fp-09280826\",\"replicationScenario\":\"Files\",\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication\"},\"flowDataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithFlowProfileAsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826?api-version=2025-05-30-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "a8392a31-e945-4bbb-a14c-ef10534e02c4" ],
+        "CommandName": [ "Get-AzDataTransferFlowProfile" ],
+        "FullCommandName": [ "Get-AzDataTransferFlowProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"84052a5a-0000-0800-0000-68d8a3e50000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d460de27-145f-46c9-b413-8e2f4cfe4ac6" ],
+        "x-ms-correlation-request-id": [ "065ede10-0761-4938-b0d8-0172c66eed5b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121302Z:065ede10-0761-4938-b0d8-0172c66eed5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 428CE4C74FFA4D1DACDBDDB22F2C429B Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:01Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "838" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/pipelines/corptest/flowProfiles/test-basic-fp-09280826\",\"name\":\"test-basic-fp-09280826\",\"type\":\"microsoft.azuredatatransfer/pipelines/flowprofiles\",\"location\":\"eastus2\",\"tags\":{\"creationTime\":\"2025-09-28T02:56:27.9743017Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T02:56:29.5607845Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T02:56:29.5607845Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"replicationScenario\":\"Files\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication testing\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithFlowProfileAsJob+$PUT+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"flowProfile\": {\r\n      \"pipeline\": \"corptest\",\r\n      \"name\": \"test-basic-fp-09280826\",\r\n      \"replicationScenario\": \"Files\",\r\n      \"flowProfileId\": \"0683c597-735d-49de-93db-8ed5cbfa4e31\",\r\n      \"status\": \"Enabled\",\r\n      \"description\": \"Basic FlowProfile for Files replication\"\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"storageAccountName\": \"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\r\n    \"storageContainerName\": \"armstrong-test-container\",\r\n    \"flowDataType\": \"Blob\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "631" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3800e134-0000-0100-0000-68d926510000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/c9e2f090-10b0-4cbd-b4c8-9967ea51839d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "e9210cac-a70c-4430-af7b-014de8a5a8b1" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6e3a0aa6-b9b6-4cbd-a912-1a5fd9ec875c*13B718D9DD022AB528D15007E03433C50A8169BF88101D7EB2679E4B0AA602EE?api-version=2025-05-30-preview\u0026t=638946583852048218\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=k-rRYWJrFTEiUpH666QDsB2eE53jn6BGF3bnmxzIH26dzasT--QeH9BJ_-kS2BCyb3YHyrSLzdtW-vnZXbMCPR2ybIqI8gl13J4D5W1ACSehcbFRivfEv3ouiBTGsvW9ueMHSi89VEZw_o-G8cKbvsBEcIgzophlPUKAWiEGF1n-ma4J7NzKSpmX8FDw8ZmHI5u8V2j0ZrP7Q_5NJPuMRMjjjORGGxXYyG3Lcgwt6tMgsXx2yM7jwe1Ae3vOZKzEz7UJvthzEabvBJ14bUAEmgjINNAKnszcp_BhUYpGWJRa7XtHE5jWxluc7zO2RPt7JK2am48j7tZPYW3J5gjtEA\u0026h=pYnb1zAaClUccGBc47xzW_S4UjNHIuXWfZcOF1Si1us" ],
+        "x-ms-request-id": [ "6e3a0aa6-b9b6-4cbd-a912-1a5fd9ec875c" ],
+        "x-ms-correlation-request-id": [ "f0a9eb7f-e6c6-409c-aac9-f33d03bbffa4" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121305Z:f0a9eb7f-e6c6-409c-aac9-f33d03bbffa4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 99F645E283674A038E8F09F9DAC9325B Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:02Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1152" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740\",\"name\":\"test-fp-asjob-recv-flow-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:13:02.9300685Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:13:03.7672946Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:13:03.7672946Z\"},\"properties\":{\"flowProfile\":{\"pipeline\":\"corptest\",\"name\":\"test-basic-fp-09280826\",\"replicationScenario\":\"Files\",\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication\"},\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowDataType\":\"Blob\",\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithFlowProfileAsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6e3a0aa6-b9b6-4cbd-a912-1a5fd9ec875c*13B718D9DD022AB528D15007E03433C50A8169BF88101D7EB2679E4B0AA602EE?api-version=2025-05-30-preview\u0026t=638946583852048218\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=k-rRYWJrFTEiUpH666QDsB2eE53jn6BGF3bnmxzIH26dzasT--QeH9BJ_-kS2BCyb3YHyrSLzdtW-vnZXbMCPR2ybIqI8gl13J4D5W1ACSehcbFRivfEv3ouiBTGsvW9ueMHSi89VEZw_o-G8cKbvsBEcIgzophlPUKAWiEGF1n-ma4J7NzKSpmX8FDw8ZmHI5u8V2j0ZrP7Q_5NJPuMRMjjjORGGxXYyG3Lcgwt6tMgsXx2yM7jwe1Ae3vOZKzEz7UJvthzEabvBJ14bUAEmgjINNAKnszcp_BhUYpGWJRa7XtHE5jWxluc7zO2RPt7JK2am48j7tZPYW3J5gjtEA\u0026h=pYnb1zAaClUccGBc47xzW_S4UjNHIuXWfZcOF1Si1us+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6e3a0aa6-b9b6-4cbd-a912-1a5fd9ec875c*13B718D9DD022AB528D15007E03433C50A8169BF88101D7EB2679E4B0AA602EE?api-version=2025-05-30-preview\u0026t=638946583852048218\u0026c=MIIHhjCCBm6gAwIBAgITHgdzZdlIIkUuAR-erwAAB3Nl2TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUwOTIwMTIxMTA4WhcNMjUxMjE5MTIxMTA4WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMJdx5gosJyiN09QgNkBcW6TBOydzmy8Gen7NusoPSddWPhbbVgJyEb-OsP6w5MIoqFiNltOJtjj8M72k7AglYsZweT_CNnxgiRS1jChhObN18KpLDw5gSiZgXaJuHpRGVeg9YPLEHR8Y3G3AidB-impyg7MoDOu6uiG5OP6QJO1dAId9x6Dj8udEEuoBxP_ZB306r3gSTpYQb3E4wCujsyYi2J6o4iiIjevkuwjg-CesD1N0r_Mh9AupLsoVgAQFUJLCkvgGZEfn2fFeymo5bHas5b17aSF-ZDNkKx9iAyn7H0FeUlEY7yN3IaFhs8-X8-yNXd3aUCBBp7BH6UUQckCAwEAAaOCBHMwggRvMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAcsGCCsGAQUFBwEBBIIBvTCCAbkwYwYIKwYBBQUHMAKGV2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwHQYDVR0OBBYEFHLLdLURrEo5afGWQTdSs7bPgphnMA4GA1UdDwEB_wQEAwIFoDCCASYGA1UdHwSCAR0wggEZMIIBFaCCARGgggENhj9odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmyGMWh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFPFGaMbxw_ArLX2LauGy-b41_NFBMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAwMsjoPnTGo4sN08FWnj3jpNBu8dIwc6qJJ1IPjE5T6PAsyMosFXPrHRxdOlVD_jZdSm2MO_7mHJkBl-bD_Y5lRxAgRyUZURhFy2UPNxwQZcFFuqPR1UtQyTZxiEiY7G8HUe-fP6i8vV9M7yoUqlDhaa7c1HJTmhAJuAcwP8_P3CBrr9MYOEq1OrnbCf-EPjyDKbvVCTHWdH_k-9M49iY0zx8LU8QWgB6ShmKZzdmhF57u84pB8KqJLI5pCLnWEdODmgdLzectDFxzpusQMgg3Rp8S5s9Ohx-l7iS4PTD25HncPTDROv-xNGQi4E70FIz7o9ifdgss0d_LS1MzVjYtw\u0026s=k-rRYWJrFTEiUpH666QDsB2eE53jn6BGF3bnmxzIH26dzasT--QeH9BJ_-kS2BCyb3YHyrSLzdtW-vnZXbMCPR2ybIqI8gl13J4D5W1ACSehcbFRivfEv3ouiBTGsvW9ueMHSi89VEZw_o-G8cKbvsBEcIgzophlPUKAWiEGF1n-ma4J7NzKSpmX8FDw8ZmHI5u8V2j0ZrP7Q_5NJPuMRMjjjORGGxXYyG3Lcgwt6tMgsXx2yM7jwe1Ae3vOZKzEz7UJvthzEabvBJ14bUAEmgjINNAKnszcp_BhUYpGWJRa7XtHE5jWxluc7zO2RPt7JK2am48j7tZPYW3J5gjtEA\u0026h=pYnb1zAaClUccGBc47xzW_S4UjNHIuXWfZcOF1Si1us",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "62a9a486-2c1d-4772-a21b-0434875f08a3" ],
+        "CommandName": [ "New-AzDataTransferFlow" ],
+        "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
+        "ParameterSetName": [ "" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b500b22e-0000-0800-0000-68d926590000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/0b351423-4956-4e80-8047-1547d762a335" ],
+        "x-ms-request-id": [ "eaffd53e-7b55-4a99-bea8-bae9e4affdb7" ],
+        "x-ms-correlation-request-id": [ "07feef7d-6604-4998-8a79-b426904b1a62" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121335Z:07feef7d-6604-4998-8a79-b426904b1a62" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1957FF79B65B44BE959E4DB5B7249B4E Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:35Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "634" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/providers/Microsoft.AzureDataTransfer/locations/EASTUS/operationStatuses/6e3a0aa6-b9b6-4cbd-a912-1a5fd9ec875c*13B718D9DD022AB528D15007E03433C50A8169BF88101D7EB2679E4B0AA602EE\",\"name\":\"6e3a0aa6-b9b6-4cbd-a912-1a5fd9ec875c*13B718D9DD022AB528D15007E03433C50A8169BF88101D7EB2679E4B0AA602EE\",\"resourceId\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740\",\"status\":\"Succeeded\",\"startTime\":\"2025-09-28T12:13:04.7125368Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithFlowProfileAsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "62a9a486-2c1d-4772-a21b-0434875f08a3" ],
+        "CommandName": [ "New-AzDataTransferFlow" ],
+        "FullCommandName": [ "New-AzDataTransferFlow_CreateExpanded" ],
+        "ParameterSetName": [ "" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3101657e-0000-0800-0000-68d926580000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "185168d9-8e61-4f86-978b-5456b6c4e1a7" ],
+        "x-ms-correlation-request-id": [ "a4a7c841-c424-4cee-853c-19ace6b07194" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250928T121336Z:a4a7c841-c424-4cee-853c-19ace6b07194" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FCE8E05D29444BB68B8BB2D2F4443913 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:36Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740\",\"name\":\"test-fp-asjob-recv-flow-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:13:02.9300685Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:13:03.7672946Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:13:03.7672946Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"keyVaultUri\":\"\",\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowProfile\":{\"pipeline\":\"corptest\",\"name\":\"test-basic-fp-09280826\",\"replicationScenario\":\"Files\",\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication\"},\"flowDataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+CreateFlowWithFlowProfileAsJob+$GET+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "97496cd8-eaaf-4804-9608-15863bdf1ab3" ],
+        "CommandName": [ "Get-AzDataTransferFlow" ],
+        "FullCommandName": [ "Get-AzDataTransferFlow_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3101657e-0000-0800-0000-68d926580000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a5068e4d-df79-4236-8c04-a25a13d7dc60" ],
+        "x-ms-correlation-request-id": [ "8acf076f-c704-4a44-a5ef-0c1d3726be92" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121337Z:8acf076f-c704-4a44-a5ef-0c1d3726be92" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FC200322CEF4027B549ADA45EE9CD4C Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:36Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740\",\"name\":\"test-fp-asjob-recv-flow-09281740\",\"type\":\"microsoft.azuredatatransfer/connections/flows\",\"location\":\"eastus\",\"tags\":{\"creationTime\":\"2025-09-28T12:13:02.9300685Z\",\"vteam\":\"Experience\"},\"systemData\":{\"createdBy\":\"faikh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-28T12:13:03.7672946Z\",\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-28T12:13:03.7672946Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"keyVaultUri\":\"\",\"linkStatus\":\"Unlinked\",\"status\":\"Enabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowProfile\":{\"pipeline\":\"corptest\",\"name\":\"test-basic-fp-09280826\",\"replicationScenario\":\"Files\",\"flowProfileId\":\"0683c597-735d-49de-93db-8ed5cbfa4e31\",\"status\":\"Enabled\",\"description\":\"Basic FlowProfile for Files replication\"},\"flowDataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740?api-version=2025-05-30-preview+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-09281740?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "43ee1e13-9397-4a0a-8334-c7c09d821a99" ],
         "CommandName": [ "Remove-AzDataTransferFlow" ],
         "FullCommandName": [ "Remove-AzDataTransferFlow_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -340,18 +888,18 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "0851a6d4-bd76-4e53-b07e-4b6d2870c3bb" ],
+        "mise-correlation-id": [ "3da46eab-e5e2-4c09-a4e5-a01c2d361f5d" ],
         "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/c622250b-bd39-4757-9ed4-1894fdaae1ee" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/d439ef3a-55b5-43d7-b4c2-709ca43188eb" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "4d5c47e3-1201-45db-854d-31819bfb1f6b" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082328Z:4d5c47e3-1201-45db-854d-31819bfb1f6b" ],
+        "x-ms-correlation-request-id": [ "d5c6e1cb-b773-4c1a-9e0d-3b6f9756a617" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121338Z:d5c6e1cb-b773-4c1a-9e0d-3b6f9756a617" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0563FD4AC5104F379A42A7307D2A1AE8 Ref B: PNQ231110909031 Ref C: 2025-06-19T08:23:21Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:23:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3A453EF2E0744BD080C1E17F86117C5B Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:37Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:37 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -361,19 +909,19 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21+2": {
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview+7": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-id-2?api-version=2025-05-21",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-linked-connection-1/flows/test-flow-create-as-job-09281740?api-version=2025-05-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "139" ],
-        "x-ms-client-request-id": [ "1a33f4a6-8335-4358-a9a6-0d6aef08c21a" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "f5ade926-8b6d-4b7f-89af-e677439f503f" ],
         "CommandName": [ "Remove-AzDataTransferFlow" ],
         "FullCommandName": [ "Remove-AzDataTransferFlow_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.1", "Az.DataTransfer/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -387,18 +935,153 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "6abfc54e-c386-4350-b47a-93e884919444" ],
+        "mise-correlation-id": [ "32b0cb4e-600d-4384-b7f5-ce99a138b5fa" ],
         "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/southindia/94956f2a-a45f-4824-97c7-c534318ad2fb" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "800" ],
-        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "12000" ],
-        "x-ms-correlation-request-id": [ "3c92f35a-2a3a-4b8c-be2d-c80c7f5ccb0c" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20250619T082334Z:3c92f35a-2a3a-4b8c-be2d-c80c7f5ccb0c" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/f2779431-2160-4c81-9d08-ab16109832d3" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "95ff4a22-6c45-43f6-85a5-03a9eae7a2fd" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121340Z:95ff4a22-6c45-43f6-85a5-03a9eae7a2fd" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FDB120715357412FA0BBC2ABF2F52491 Ref B: PNQ231110909031 Ref C: 2025-06-19T08:23:28Z" ],
-        "Date": [ "Thu, 19 Jun 2025 08:23:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3D580F2FD17E43D2AF18A51A3474A55D Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:38Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740?api-version=2025-05-30-preview+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-basic-recv-flow-09281740?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "7dcad467-ed70-4f72-bad9-149c154fd12b" ],
+        "CommandName": [ "Remove-AzDataTransferFlow" ],
+        "FullCommandName": [ "Remove-AzDataTransferFlow_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "9578a67e-400b-4e9c-abee-ba1e8a5bd291" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/530b2e1f-1597-47ae-8de2-c2cd905b89f8" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "71273bd2-28da-40c5-bc90-50f4f20165f8" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121341Z:71273bd2-28da-40c5-bc90-50f4f20165f8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C42BCCB6FD3649BEB725DBFCB67ADC7F Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:40Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-basic-fp-conn-01/flows/test-fp-basic-send-flow-09281740?api-version=2025-05-30-preview+9": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-send-basic-fp-conn-01/flows/test-fp-basic-send-flow-09281740?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "d23a1354-9e02-4392-916b-934077a80577" ],
+        "CommandName": [ "Remove-AzDataTransferFlow" ],
+        "FullCommandName": [ "Remove-AzDataTransferFlow_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-request-id": [ "f796c7cf-0412-42ab-b42a-b69c37bdfbe9" ],
+        "x-ms-correlation-request-id": [ "f796c7cf-0412-42ab-b42a-b69c37bdfbe9" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121342Z:f796c7cf-0412-42ab-b42a-b69c37bdfbe9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EE5BE4DDF6F448EC8D95C87B81D3CB63 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:42Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataTransferFlow+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview+10": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Microsoft.AzureDataTransfer/connections/test-rcv-basic-fp-conn-01/flows/test-fp-asjob-recv-flow-09281740?api-version=2025-05-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "b9351b0b-cbdc-40fb-a955-7072f959d16f" ],
+        "CommandName": [ "Remove-AzDataTransferFlow" ],
+        "FullCommandName": [ "Remove-AzDataTransferFlow_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "0849cb4a-e0b7-4870-85ad-fce1fe132f6d" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=25c4012c-910e-4311-aa96-70b00356df96/eastus2euap/cd16a424-316b-475b-83e0-3321af6f1145" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "798" ],
+        "x-ms-correlation-request-id": [ "2a405437-0125-4fd8-8508-7827b805d53e" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250928T121343Z:2a405437-0125-4fd8-8508-7827b805d53e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97D736F6888E43C6A38441380AED1EB9 Ref B: PNQ231110909023 Ref C: 2025-09-28T12:13:42Z" ],
+        "Date": [ "Sun, 28 Sep 2025 12:13:42 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

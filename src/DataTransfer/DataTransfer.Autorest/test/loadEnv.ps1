@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 $envFile = 'env.json'
 if ($TestMode -eq 'live') {
-    $envFile = 'localEnv.json'
+    $envFile = 'env.json'
 }
 
 if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
