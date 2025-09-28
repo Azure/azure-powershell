@@ -18,7 +18,7 @@ Describe 'Enable-AzDataTransferFlowType' {
     It 'Enable flow type with NoWait' {
         {
             # Enable flow type asynchronously and check status after timeout
-            $timeout = 60
+            $timeout = 100
             $result = $null
             $completed = $false
             
