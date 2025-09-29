@@ -202,8 +202,8 @@ namespace Microsoft.Azure.Commands.Network
             MNM.ConnectionAuthenticationType.PSK,
             MNM.ConnectionAuthenticationType.Certificate,
             IgnoreCase = true)]
-            
         public string AuthenticationType { get; set; }
+        
         [Parameter(
          Mandatory = false,
          ValueFromPipelineByPropertyName = true,
