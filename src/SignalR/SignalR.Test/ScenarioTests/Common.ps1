@@ -74,3 +74,19 @@ function Get-ProviderLocation([string]$provider)
 
 	return "East US"
 }
+
+<#
+.SYNOPSIS
+Gets the current test mode, either "Record" or "Playback"
+#>
+function GetTestMode()
+{
+	if( $env:AZURE_TEST_MODE -eq "Record" )
+	{
+		return "Record"
+	}
+	else
+	{
+		return "Playback"
+	}
+}

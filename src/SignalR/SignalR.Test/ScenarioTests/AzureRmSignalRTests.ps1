@@ -73,7 +73,7 @@ function Test-AzureRmSignalR
         $newKeys1 = Get-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
         Assert-NotNull $newKeys1
 
-        if( $env:AZURE_TEST_MODE -eq "Record")
+        if( GetTestMode -eq "Record")
         {
             Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
             Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
@@ -89,7 +89,7 @@ function Test-AzureRmSignalR
         Assert-NotNull $newKeys2
         Assert-AreEqual $newKeys1.PrimaryKey $newKeys2.PrimaryKey
         Assert-AreEqual $newKeys1.PrimaryConnectionString $newKeys2.PrimaryConnectionString
-        if( $env:AZURE_TEST_MODE -eq "Record")
+        if( GetTestMode -eq "Record")
         {
             Assert-AreNotEqual $newKeys1.SecondaryKey $newKeys2.SecondaryKey
             Assert-AreNotEqual $newKeys1.SecondaryConnectionString $newKeys2.SecondaryConnectionString
@@ -159,7 +159,7 @@ function Test-AzureRmSignalRWithDefaultArgs
         # The following two lines don't work in "playback" mode because all the connection strings are sanitized to the same value.
         # If test mode is playback , skip the test
 
-        if( $env:AZURE_TEST_MODE -eq "Record" )
+        if( GetTestMode -eq "Record" )
         {
             Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
             Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
@@ -541,6 +541,136 @@ function Test-AzureRmSignalRCustomCertificateAndCustomDomain
     {
         $signalr | Get-AzSignalRCustomDomain | Remove-AzSignalRCustomDomain
         $signalr | Get-AzSignalRCustomCertificate | Remove-AzSignalRCustomCertificate
+    }
+}
+
+<#
+.SYNOPSIS
+Test replica cmdlets for SignalR.
+#>
+function Test-AzSignalRReplica
+{
+    $location = Get-ProviderLocation "Microsoft.SignalRService/SignalR"
+    $nameSuffix = "replica-test"
+    $resourceGroupName = "powershellsignalrreplicatest"
+    $signalrName =  "powershellsignalrreplicatest1"
+    $replicaName1 = "replica1-11111"
+    $replicaName2 = "replica2-22222"
+
+    try
+    {
+        # Setup - Create resource group and SignalR service (Premium required for replicas)
+        # New-AzResourceGroup -Name $resourceGroupName -Location $location   # Don't create resource group in the test, otherwise it would be cleaned up by "ResourceCleanerDelegatingHandler" in Azure PowerShell test framwork. Setup the resource group in advance.
+        $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -Sku "Premium_P1" -Location $location
+
+        # Test Create replica using SignalR object parameter set
+        $replica1 = $signalr | New-AzSignalRReplica -Name $replicaName1 -Location "West US 2" -UnitCount 2
+        Assert-NotNull $replica1
+        Assert-AreEqual $replicaName1 $replica1.Name
+        Assert-LocationEqual "West US 2" $replica1.Location
+        Assert-AreEqual 2 $replica1.Sku.Capacity
+
+        # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        $replica2 = $signalr | New-AzSignalRReplica -Name $replicaName2 -Location "East US 2"
+        Assert-NotNull $replica2
+        Assert-AreEqual $replicaName2 $replica2.Name
+        Assert-AreEqual 1 $replica2.Sku.Capacity
+
+        # Test Get replica using SignalR object parameter set
+        $retrievedReplica = $signalr | Get-AzSignalRReplica -Name $replicaName1
+        Assert-NotNull $retrievedReplica
+        Assert-AreEqual $replicaName1 $retrievedReplica.Name
+
+        # Test List all replicas using SignalR object parameter set
+        $replicas = $signalr | Get-AzSignalRReplica
+        Assert-NotNull $replicas
+        Assert-AreEqual 2 $replicas.Count
+
+        # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        # Test Update replica using InputObject parameter set
+        $updatedReplica = $replica1 | Update-AzSignalRReplica -RegionEndpointEnabled "Disabled"
+        Assert-AreEqual "Disabled" $updatedReplica.RegionEndpointEnabled
+
+        # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        # Test Stop replica using InputObject parameter set
+        $result = $replica1 | Stop-AzSignalRReplica -PassThru
+        Assert-True { $result }
+
+        # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        # Test Start replica using InputObject parameter set
+        $stoppedReplica = Get-AzSignalRReplica -ResourceGroupName $resourceGroupName -SignalRName $signalrName -Name $replicaName1
+        $result = $stoppedReplica | Start-AzSignalRReplica -PassThru
+        Assert-True { $result }
+
+        # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        # Test Restart replica using InputObject parameter set
+        $result = $replica2 | Restart-AzSignalRReplica -PassThru
+        Assert-True { $result }
+
+         # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        # Test Remove replica using InputObject parameter set
+        $result = $replica1 | Remove-AzSignalRReplica -PassThru
+        Assert-True { $result }
+
+        # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        # Test Remove replica using SignalR object parameter set
+        $result = $signalr | Remove-AzSignalRReplica -Name $replicaName2 -PassThru
+        Assert-True { $result }
+
+        # Replica may be in "updating" internally, wait until update finishes.
+        if( GetTestMode -eq "Record")
+        {
+            Start-Sleep -Seconds 120
+        }
+
+        # Verify replicas are removed
+        $replicas = Get-AzSignalRReplica -ResourceGroupName $resourceGroupName -SignalRName $signalrName
+        Assert-AreEqual 0 $replicas.Count
+
+    } finally
+    {
+        # Cleanup - Remove any remaining resources
+        try {
+            # Get-AzSignalRReplica -ResourceGroupName $resourceGroupName -SignalRName $signalrName | Remove-AzSignalRReplica
+        } catch {
+            # Ignore cleanup errors
+        }
+        # Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
 
