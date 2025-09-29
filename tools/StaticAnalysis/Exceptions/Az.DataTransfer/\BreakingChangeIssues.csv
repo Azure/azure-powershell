@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.DataTransfer","Disable-AzDataTransferConnection","Disable-AzDataTransferConnection","0","3000","The type of property 'Property' of type 'ADT.Models.IReadPipelineConnection' has changed from 'ADT.Models.IReadPipelineConnectionProperties' to 'ADT.Models.IPipelineConnectionProperties'.","Change the type of property 'Property' back to 'ADT.Models.IReadPipelineConnectionProperties'."
