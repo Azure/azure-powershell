@@ -26,6 +26,13 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<ADT.Models.IReadPipelineConnection> Connection { get => this._connection; }
 
+        /// <summary>Backing field for <see cref="DisabledDataClass" /> property.</summary>
+        private System.Collections.Generic.List<string> _disabledDataClass;
+
+        /// <summary>The DataClasses that are disabled for this pipeline</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> DisabledDataClass { get => this._disabledDataClass; set => this._disabledDataClass = value; }
+
         /// <summary>Backing field for <see cref="DisabledFlowType" /> property.</summary>
         private System.Collections.Generic.List<string> _disabledFlowType;
 
@@ -43,14 +50,20 @@ namespace ADT.Models
         /// <summary>Backing field for <see cref="FlowType" /> property.</summary>
         private System.Collections.Generic.List<string> _flowType;
 
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> FlowType { get => this._flowType; set => this._flowType = value; }
 
         /// <summary>Backing field for <see cref="Policy" /> property.</summary>
         private System.Collections.Generic.List<string> _policy;
 
-        /// <summary>The policies for this pipeline</summary>
+        /// <summary>
+        /// The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Policy { get => this._policy; set => this._policy = value; }
 
@@ -117,6 +130,18 @@ namespace ADT.Models
         SerializedName = @"connections",
         PossibleTypes = new [] { typeof(ADT.Models.IReadPipelineConnection) })]
         System.Collections.Generic.List<ADT.Models.IReadPipelineConnection> Connection { get;  }
+        /// <summary>The DataClasses that are disabled for this pipeline</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The DataClasses that are disabled for this pipeline",
+        SerializedName = @"disabledDataClass",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+        System.Collections.Generic.List<string> DisabledDataClass { get; set; }
         /// <summary>The flow types that are disabled for this pipeline</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -140,26 +165,32 @@ namespace ADT.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The flow types allowed for this pipeline",
+        Description = @"The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"flowTypes",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> FlowType { get; set; }
-        /// <summary>The policies for this pipeline</summary>
+        /// <summary>
+        /// The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The policies for this pipeline",
+        Description = @"The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"policies",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Policy { get; set; }
@@ -239,15 +270,24 @@ namespace ADT.Models
     {
         /// <summary>Connections associated with pipeline</summary>
         System.Collections.Generic.List<ADT.Models.IReadPipelineConnection> Connection { get; set; }
+        /// <summary>The DataClasses that are disabled for this pipeline</summary>
+        [global::ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+        System.Collections.Generic.List<string> DisabledDataClass { get; set; }
         /// <summary>The flow types that are disabled for this pipeline</summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> DisabledFlowType { get; set; }
         /// <summary>Display name of this pipeline</summary>
         string DisplayName { get; set; }
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> FlowType { get; set; }
-        /// <summary>The policies for this pipeline</summary>
+        /// <summary>
+        /// The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         System.Collections.Generic.List<string> Policy { get; set; }
         /// <summary>Provisioning state of the pipeline</summary>
         [global::ADT.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Accepted")]

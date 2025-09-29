@@ -10,15 +10,15 @@ namespace ADT.Cmdlets
     using ADT.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Approves the specified connection request in a pipeline.</summary>
+    /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
     /// <remarks>
     /// [OpenAPI] ApproveConnection=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Approve, @"AzDataTransferConnection_ApproveViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IConnection))]
-    [global::ADT.Description(@"Approves the specified connection request in a pipeline.")]
+    [global::ADT.Description(@"Approves a pending connection request associated with the specified Pipeline.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection", ApiVersion = "2025-05-30-preview")]
     public partial class ApproveAzDataTransferConnection_ApproveViaIdentity : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext

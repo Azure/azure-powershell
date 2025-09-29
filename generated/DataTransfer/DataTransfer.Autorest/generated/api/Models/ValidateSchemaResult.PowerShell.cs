@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using ADT.Runtime.PowerShell;
 
-    /// <summary>Result of the schema validation.</summary>
+    /// <summary>
+    /// Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview.
+    /// Please manage schemas with a FlowProfile resource instead.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ValidateSchemaResultTypeConverter))]
     public partial class ValidateSchemaResult
     {
@@ -158,7 +161,8 @@ namespace ADT.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// Result of the schema validation.
+    /// Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview.
+    /// Please manage schemas with a FlowProfile resource instead.
     [System.ComponentModel.TypeConverter(typeof(ValidateSchemaResultTypeConverter))]
     public partial interface IValidateSchemaResult
 

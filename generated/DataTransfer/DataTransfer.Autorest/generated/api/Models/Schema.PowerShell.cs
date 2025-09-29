@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using ADT.Runtime.PowerShell;
 
-    /// <summary>The schema object.</summary>
+    /// <summary>
+    /// The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas
+    /// with a FlowProfile resource instead.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(SchemaTypeConverter))]
     public partial class Schema
     {
@@ -206,7 +209,8 @@ namespace ADT.Models
             return ToJsonString();
         }
     }
-    /// The schema object.
+    /// The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas
+    /// with a FlowProfile resource instead.
     [System.ComponentModel.TypeConverter(typeof(SchemaTypeConverter))]
     public partial interface ISchema
 

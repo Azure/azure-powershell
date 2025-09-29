@@ -13,6 +13,9 @@ namespace ADT.Models
         ADT.Models.IApiFlowOptionsInternal
     {
 
+        /// <summary>Internal Acessors for RemoteEndpointSetting</summary>
+        ADT.Models.IRemoteEndpointSettings ADT.Models.IApiFlowOptionsInternal.RemoteEndpointSetting { get => (this._remoteEndpointSetting = this._remoteEndpointSetting ?? new ADT.Models.RemoteEndpointSettings()); set { {_remoteEndpointSetting = value;} } }
+
         /// <summary>Backing field for <see cref="ApiMode" /> property.</summary>
         private string _apiMode;
 
@@ -25,9 +28,22 @@ namespace ADT.Models
         /// <summary>Backing field for <see cref="AudienceOverride" /> property.</summary>
         private string _audienceOverride;
 
-        /// <summary>Optional field to override the audience of the remote endpoint</summary>
+        /// <summary>
+        /// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting
+        /// version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string AudienceOverride { get => this._audienceOverride; set => this._audienceOverride = value; }
+
+        /// <summary>Backing field for <see cref="Authentication" /> property.</summary>
+        private System.Collections.Generic.List<ADT.Models.IAuthentication> _authentication;
+
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API
+        /// Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<ADT.Models.IAuthentication> Authentication { get => this._authentication; set => this._authentication = value; }
 
         /// <summary>Backing field for <see cref="Cname" /> property.</summary>
         private string _cname;
@@ -39,28 +55,58 @@ namespace ADT.Models
         /// <summary>Backing field for <see cref="IdentityTranslation" /> property.</summary>
         private string _identityTranslation;
 
-        /// <summary>Flag for if Azure Data Transfer API Flow should extract the user token</summary>
+        /// <summary>
+        /// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached
+        /// end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string IdentityTranslation { get => this._identityTranslation; set => this._identityTranslation = value; }
 
         /// <summary>Backing field for <see cref="RemoteCallingModeClientId" /> property.</summary>
         private string _remoteCallingModeClientId;
 
-        /// <summary>Remote stub app registration Client ID</summary>
+        /// <summary>
+        /// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string RemoteCallingModeClientId { get => this._remoteCallingModeClientId; set => this._remoteCallingModeClientId = value; }
 
         /// <summary>Backing field for <see cref="RemoteEndpoint" /> property.</summary>
         private string _remoteEndpoint;
 
-        /// <summary>Remote host to which communication needs to be made</summary>
+        /// <summary>
+        /// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the remoteEndpointSettings.endpoint property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string RemoteEndpoint { get => this._remoteEndpoint; set => this._remoteEndpoint = value; }
+
+        /// <summary>Backing field for <see cref="RemoteEndpointSetting" /> property.</summary>
+        private ADT.Models.IRemoteEndpointSettings _remoteEndpointSetting;
+
+        /// <summary>Defines the destination remote endpoint for the API calls.</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Owned)]
+        internal ADT.Models.IRemoteEndpointSettings RemoteEndpointSetting { get => (this._remoteEndpointSetting = this._remoteEndpointSetting ?? new ADT.Models.RemoteEndpointSettings()); set => this._remoteEndpointSetting = value; }
+
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not
+        /// provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<ADT.Models.IAuthentication> RemoteEndpointSettingAuthentication { get => ((ADT.Models.IRemoteEndpointSettingsInternal)RemoteEndpointSetting).Authentication; set => ((ADT.Models.IRemoteEndpointSettingsInternal)RemoteEndpointSetting).Authentication = value ?? null /* arrayOf */; }
+
+        /// <summary>The remote endpoint uri all API calls.</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string RemoteEndpointSettingEndpoint { get => ((ADT.Models.IRemoteEndpointSettingsInternal)RemoteEndpointSetting).Endpoint; set => ((ADT.Models.IRemoteEndpointSettingsInternal)RemoteEndpointSetting).Endpoint = value ?? null; }
 
         /// <summary>Backing field for <see cref="SenderClientId" /> property.</summary>
         private string _senderClientId;
 
-        /// <summary>Sender's app user assigned Manage Identity client ID</summary>
+        /// <summary>
+        /// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string SenderClientId { get => this._senderClientId; set => this._senderClientId = value; }
 
@@ -88,17 +134,34 @@ namespace ADT.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("SDK", "Endpoint")]
         string ApiMode { get; set; }
-        /// <summary>Optional field to override the audience of the remote endpoint</summary>
+        /// <summary>
+        /// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting
+        /// version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Optional field to override the audience of the remote endpoint",
+        Description = @"Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"audienceOverride",
         PossibleTypes = new [] { typeof(string) })]
         string AudienceOverride { get; set; }
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API
+        /// Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.",
+        SerializedName = @"authentication",
+        PossibleTypes = new [] { typeof(ADT.Models.IAuthentication) })]
+        System.Collections.Generic.List<ADT.Models.IAuthentication> Authentication { get; set; }
         /// <summary>Unique CNAME to represent the Azure Data Transfer API Flow instance</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -110,48 +173,85 @@ namespace ADT.Models
         SerializedName = @"cname",
         PossibleTypes = new [] { typeof(string) })]
         string Cname { get; set; }
-        /// <summary>Flag for if Azure Data Transfer API Flow should extract the user token</summary>
+        /// <summary>
+        /// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached
+        /// end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Flag for if Azure Data Transfer API Flow should extract the user token",
+        Description = @"Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"identityTranslation",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("UserIdentity", "ServiceIdentity")]
         string IdentityTranslation { get; set; }
-        /// <summary>Remote stub app registration Client ID</summary>
+        /// <summary>
+        /// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Remote stub app registration Client ID",
+        Description = @"Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"remoteCallingModeClientId",
         PossibleTypes = new [] { typeof(string) })]
         string RemoteCallingModeClientId { get; set; }
-        /// <summary>Remote host to which communication needs to be made</summary>
+        /// <summary>
+        /// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the remoteEndpointSettings.endpoint property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Remote host to which communication needs to be made",
+        Description = @"Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.",
         SerializedName = @"remoteEndpoint",
         PossibleTypes = new [] { typeof(string) })]
         string RemoteEndpoint { get; set; }
-        /// <summary>Sender's app user assigned Manage Identity client ID</summary>
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not
+        /// provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Sender's app user assigned Manage Identity client ID",
+        Description = @"Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.",
+        SerializedName = @"authentication",
+        PossibleTypes = new [] { typeof(ADT.Models.IAuthentication) })]
+        System.Collections.Generic.List<ADT.Models.IAuthentication> RemoteEndpointSettingAuthentication { get; set; }
+        /// <summary>The remote endpoint uri all API calls.</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The remote endpoint uri all API calls.",
+        SerializedName = @"endpoint",
+        PossibleTypes = new [] { typeof(string) })]
+        string RemoteEndpointSettingEndpoint { get; set; }
+        /// <summary>
+        /// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"senderClientId",
         PossibleTypes = new [] { typeof(string) })]
         string SenderClientId { get; set; }
@@ -166,18 +266,47 @@ namespace ADT.Models
         /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("SDK", "Endpoint")]
         string ApiMode { get; set; }
-        /// <summary>Optional field to override the audience of the remote endpoint</summary>
+        /// <summary>
+        /// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting
+        /// version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         string AudienceOverride { get; set; }
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API
+        /// Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        System.Collections.Generic.List<ADT.Models.IAuthentication> Authentication { get; set; }
         /// <summary>Unique CNAME to represent the Azure Data Transfer API Flow instance</summary>
         string Cname { get; set; }
-        /// <summary>Flag for if Azure Data Transfer API Flow should extract the user token</summary>
+        /// <summary>
+        /// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached
+        /// end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("UserIdentity", "ServiceIdentity")]
         string IdentityTranslation { get; set; }
-        /// <summary>Remote stub app registration Client ID</summary>
+        /// <summary>
+        /// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         string RemoteCallingModeClientId { get; set; }
-        /// <summary>Remote host to which communication needs to be made</summary>
+        /// <summary>
+        /// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the remoteEndpointSettings.endpoint property instead.
+        /// </summary>
         string RemoteEndpoint { get; set; }
-        /// <summary>Sender's app user assigned Manage Identity client ID</summary>
+        /// <summary>Defines the destination remote endpoint for the API calls.</summary>
+        ADT.Models.IRemoteEndpointSettings RemoteEndpointSetting { get; set; }
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not
+        /// provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        System.Collections.Generic.List<ADT.Models.IAuthentication> RemoteEndpointSettingAuthentication { get; set; }
+        /// <summary>The remote endpoint uri all API calls.</summary>
+        string RemoteEndpointSettingEndpoint { get; set; }
+        /// <summary>
+        /// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         string SenderClientId { get; set; }
 
     }

@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>Result of the schema validation.</summary>
+    /// <summary>
+    /// Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview.
+    /// Please manage schemas with a FlowProfile resource instead.
+    /// </summary>
     public partial class ValidateSchemaResult
     {
 

@@ -14,6 +14,394 @@ namespace ADT
     public partial class DataTransfer
     {
 
+        /// <summary>Retrieves a list of FlowProfile resources associated with a specified pipeline.</summary>
+        /// <param name="body">The request body</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfiles(ADT.Models.IListFlowProfilesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.AzureDataTransfer/listFlowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Post, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AzureDataTransferListFlowProfiles_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves a list of FlowProfile resources associated with a specified pipeline.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request body</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfilesViaIdentity(global::System.String viaIdentity, ADT.Models.IListFlowProfilesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.AzureDataTransfer$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.AzureDataTransfer'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.AzureDataTransfer/listFlowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Post, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AzureDataTransferListFlowProfiles_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves a list of FlowProfile resources associated with a specified pipeline.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request body</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IListFlowProfilesRequest body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.AzureDataTransfer$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.AzureDataTransfer'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.AzureDataTransfer/listFlowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Post, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AzureDataTransferListFlowProfilesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves a list of FlowProfile resources associated with a specified pipeline.</summary>
+        /// <param name="jsonString">Json string supplied to the AzureDataTransferListFlowProfiles operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfilesViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.AzureDataTransfer/listFlowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Post, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AzureDataTransferListFlowProfiles_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves a list of FlowProfile resources associated with a specified pipeline.</summary>
+        /// <param name="jsonString">Json string supplied to the AzureDataTransferListFlowProfiles operation</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesViaJsonStringWithResult(global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.AzureDataTransfer/listFlowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Post, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AzureDataTransferListFlowProfilesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves a list of FlowProfile resources associated with a specified pipeline.</summary>
+        /// <param name="body">The request body</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesWithResult(ADT.Models.IListFlowProfilesRequest body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.AzureDataTransfer/listFlowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Post, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AzureDataTransferListFlowProfilesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "AzureDataTransferListFlowProfilesWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesWithResult_Call(global::System.Net.Http.HttpRequestMessage request, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => If( ADT.Runtime.Json.JsonArray.Parse(body.Result) as ADT.Runtime.Json.JsonArray, out var __y) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__y, (__x)=>(ADT.Models.IFlowProfileMetadata) (ADT.Models.FlowProfileMetadata.FromJson(__x) )) ))() : null);
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new ADT.Runtime.RestException<ADT.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AzureDataTransferListFlowProfiles" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfiles_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => If( ADT.Runtime.Json.JsonArray.Parse(body.Result) as ADT.Runtime.Json.JsonArray, out var __y) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__y, (__x)=>(ADT.Models.IFlowProfileMetadata) (ADT.Models.FlowProfileMetadata.FromJson(__x) )) ))() : null));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="AzureDataTransferListFlowProfiles" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfiles_Validate(ADT.Models.IListFlowProfilesRequest body, ADT.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>update the connection resource.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -30,7 +418,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string connectionName, ADT.Models.IConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -77,7 +465,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, ADT.Models.IConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -134,7 +522,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IConnection body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -194,7 +582,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string connectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -240,7 +628,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string connectionName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -287,7 +675,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string connectionName, ADT.Models.IConnection body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -661,7 +1049,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsDelete(string subscriptionId, string resourceGroupName, string connectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -703,7 +1091,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -935,7 +1323,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsGet(string subscriptionId, string resourceGroupName, string connectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -976,7 +1364,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1027,7 +1415,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1080,7 +1468,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string connectionName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1262,7 +1650,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsLink(string subscriptionId, string resourceGroupName, string connectionName, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1310,7 +1698,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsLinkViaIdentity(global::System.String viaIdentity, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1368,7 +1756,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsLinkViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1429,7 +1817,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsLinkViaJsonString(string subscriptionId, string resourceGroupName, string connectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1476,7 +1864,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsLinkViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string connectionName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1524,7 +1912,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsLinkWithResult(string subscriptionId, string resourceGroupName, string connectionName, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1897,7 +2285,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1937,7 +2325,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1986,7 +2374,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult> ConnectionsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2036,7 +2424,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult> ConnectionsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2210,7 +2598,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2248,7 +2636,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2294,7 +2682,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult> ConnectionsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2340,7 +2728,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnectionListResult> ConnectionsListBySubscriptionWithResult(string subscriptionId, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2512,7 +2900,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsUpdate(string subscriptionId, string resourceGroupName, string connectionName, ADT.Models.IConnectionsPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2559,7 +2947,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsUpdateViaIdentity(global::System.String viaIdentity, ADT.Models.IConnectionsPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2616,7 +3004,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsUpdateViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IConnectionsPatch body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2676,7 +3064,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectionsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string connectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2722,7 +3110,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string connectionName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2769,7 +3157,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> ConnectionsUpdateWithResult(string subscriptionId, string resourceGroupName, string connectionName, ADT.Models.IConnectionsPatch body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3128,6 +3516,2290 @@ namespace ADT
             }
         }
 
+        /// <summary>update a new FlowProfile or update an existing one.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="body">The FlowProfile resource definition to create or update.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesCreateOrUpdate(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Models.IFlowProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Put, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a new FlowProfile or update an existing one.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The FlowProfile resource definition to create or update.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesCreateOrUpdateViaIdentity(global::System.String viaIdentity, ADT.Models.IFlowProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles/(?<flowProfileName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                var flowProfileName = _match.Groups["flowProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles/"
+                        + flowProfileName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Put, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a new FlowProfile or update an existing one.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The FlowProfile resource definition to create or update.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IFlowProfile body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles/(?<flowProfileName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                var flowProfileName = _match.Groups["flowProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles/"
+                        + flowProfileName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Put, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a new FlowProfile or update an existing one.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="jsonString">Json string supplied to the FlowProfilesCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Put, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a new FlowProfile or update an existing one.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="jsonString">Json string supplied to the FlowProfilesCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Put, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a new FlowProfile or update an existing one.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="body">The FlowProfile resource definition to create or update.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Models.IFlowProfile body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Put, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "FlowProfilesCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(ADT.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), ADT.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( ADT.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is ADT.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<ADT.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<ADT.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new ADT.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), ADT.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfile.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new ADT.Runtime.RestException<ADT.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FlowProfilesCreateOrUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(ADT.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), ADT.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( ADT.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is ADT.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<ADT.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<ADT.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new ADT.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), ADT.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfile.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlowProfilesCreateOrUpdate" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="body">The FlowProfile resource definition to create or update.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Models.IFlowProfile body, ADT.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(pipelineName),pipelineName);
+                await eventListener.AssertMinimumLength(nameof(pipelineName),pipelineName,3);
+                await eventListener.AssertMaximumLength(nameof(pipelineName),pipelineName,64);
+                await eventListener.AssertRegEx(nameof(pipelineName), pipelineName, @"^[a-zA-Z0-9-]{3,64}$");
+                await eventListener.AssertNotNull(nameof(flowProfileName),flowProfileName);
+                await eventListener.AssertMinimumLength(nameof(flowProfileName),flowProfileName,3);
+                await eventListener.AssertMaximumLength(nameof(flowProfileName),flowProfileName,64);
+                await eventListener.AssertRegEx(nameof(flowProfileName), flowProfileName, @"^[a-zA-Z0-9-]{3,64}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes the specified FlowProfile resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesDelete(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Delete, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes the specified FlowProfile resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles/(?<flowProfileName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                var flowProfileName = _match.Groups["flowProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles/"
+                        + flowProfileName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Delete, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FlowProfilesDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(ADT.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), ADT.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( ADT.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is ADT.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<ADT.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<ADT.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new ADT.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), ADT.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlowProfilesDelete" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesDelete_Validate(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(pipelineName),pipelineName);
+                await eventListener.AssertMinimumLength(nameof(pipelineName),pipelineName,3);
+                await eventListener.AssertMaximumLength(nameof(pipelineName),pipelineName,64);
+                await eventListener.AssertRegEx(nameof(pipelineName), pipelineName, @"^[a-zA-Z0-9-]{3,64}$");
+                await eventListener.AssertNotNull(nameof(flowProfileName),flowProfileName);
+                await eventListener.AssertMinimumLength(nameof(flowProfileName),flowProfileName,3);
+                await eventListener.AssertMaximumLength(nameof(flowProfileName),flowProfileName,64);
+                await eventListener.AssertRegEx(nameof(flowProfileName), flowProfileName, @"^[a-zA-Z0-9-]{3,64}$");
+            }
+        }
+
+        /// <summary>Retrieves the specified FlowProfile resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesGet(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves the specified FlowProfile resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles/(?<flowProfileName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                var flowProfileName = _match.Groups["flowProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles/"
+                        + flowProfileName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves the specified FlowProfile resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesGetViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles/(?<flowProfileName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                var flowProfileName = _match.Groups["flowProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles/"
+                        + flowProfileName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieves the specified FlowProfile resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesGetWithResult(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FlowProfilesGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfile.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new ADT.Runtime.RestException<ADT.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FlowProfilesGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfile.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlowProfilesGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesGet_Validate(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(pipelineName),pipelineName);
+                await eventListener.AssertMinimumLength(nameof(pipelineName),pipelineName,3);
+                await eventListener.AssertMaximumLength(nameof(pipelineName),pipelineName,64);
+                await eventListener.AssertRegEx(nameof(pipelineName), pipelineName, @"^[a-zA-Z0-9-]{3,64}$");
+                await eventListener.AssertNotNull(nameof(flowProfileName),flowProfileName);
+                await eventListener.AssertMinimumLength(nameof(flowProfileName),flowProfileName,3);
+                await eventListener.AssertMaximumLength(nameof(flowProfileName),flowProfileName,64);
+                await eventListener.AssertRegEx(nameof(flowProfileName), flowProfileName, @"^[a-zA-Z0-9-]{3,64}$");
+            }
+        }
+
+        /// <summary>Lists all FlowProfiles under a given Pipeline.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesListByPipeline(string subscriptionId, string resourceGroupName, string pipelineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesListByPipeline_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all FlowProfiles under a given Pipeline.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesListByPipelineViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesListByPipeline_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all FlowProfiles under a given Pipeline.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult>" /> that will be complete when handling
+        /// of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult> FlowProfilesListByPipelineViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesListByPipelineWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all FlowProfiles under a given Pipeline.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult>" /> that will be complete when handling
+        /// of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult> FlowProfilesListByPipelineWithResult(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Get, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesListByPipelineWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "FlowProfilesListByPipelineWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult>" /> that will be complete when handling
+        /// of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult> FlowProfilesListByPipelineWithResult_Call(global::System.Net.Http.HttpRequestMessage request, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfileListResult.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new ADT.Runtime.RestException<ADT.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FlowProfilesListByPipeline" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesListByPipeline_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfileListResult.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlowProfilesListByPipeline" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesListByPipeline_Validate(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(pipelineName),pipelineName);
+                await eventListener.AssertMinimumLength(nameof(pipelineName),pipelineName,3);
+                await eventListener.AssertMaximumLength(nameof(pipelineName),pipelineName,64);
+                await eventListener.AssertRegEx(nameof(pipelineName), pipelineName, @"^[a-zA-Z0-9-]{3,64}$");
+            }
+        }
+
+        /// <summary>Applies partial update to an existing FlowProfile resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="body">The FlowProfile patch definition containing the properties to update.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesUpdate(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Models.IFlowProfilePatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Patch, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Applies partial update to an existing FlowProfile resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The FlowProfile patch definition containing the properties to update.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesUpdateViaIdentity(global::System.String viaIdentity, ADT.Models.IFlowProfilePatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles/(?<flowProfileName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                var flowProfileName = _match.Groups["flowProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles/"
+                        + flowProfileName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Patch, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Applies partial update to an existing FlowProfile resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The FlowProfile patch definition containing the properties to update.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesUpdateViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IFlowProfilePatch body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.AzureDataTransfer/pipelines/(?<pipelineName>[^/]+)/flowProfiles/(?<flowProfileName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/flowProfiles/{flowProfileName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var pipelineName = _match.Groups["pipelineName"].Value;
+                var flowProfileName = _match.Groups["flowProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + pipelineName
+                        + "/flowProfiles/"
+                        + flowProfileName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Patch, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Applies partial update to an existing FlowProfile resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="jsonString">Json string supplied to the FlowProfilesUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FlowProfilesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Patch, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FlowProfilesUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Applies partial update to an existing FlowProfile resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="jsonString">Json string supplied to the FlowProfilesUpdate operation</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Patch, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Applies partial update to an existing FlowProfile resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="body">The FlowProfile patch definition containing the properties to update.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesUpdateWithResult(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Models.IFlowProfilePatch body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.AzureDataTransfer/pipelines/"
+                        + global::System.Uri.EscapeDataString(pipelineName)
+                        + "/flowProfiles/"
+                        + global::System.Uri.EscapeDataString(flowProfileName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(ADT.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(ADT.Runtime.Method.Patch, _url);
+                await eventListener.Signal(ADT.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(ADT.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(ADT.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FlowProfilesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FlowProfilesUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>" /> that will be complete when handling of the
+        /// response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile> FlowProfilesUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(ADT.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), ADT.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( ADT.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is ADT.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<ADT.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<ADT.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new ADT.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), ADT.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfile.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new ADT.Runtime.RestException<ADT.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FlowProfilesUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(ADT.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(ADT.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(ADT.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), ADT.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( ADT.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is ADT.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<ADT.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<ADT.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new ADT.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), ADT.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(ADT.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(ADT.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfile.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.ErrorResponse.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(ADT.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="FlowProfilesUpdate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="flowProfileName">The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and
+        /// contain only alphanumeric characters or hyphens.</param>
+        /// <param name="body">The FlowProfile patch definition containing the properties to update.</param>
+        /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FlowProfilesUpdate_Validate(string subscriptionId, string resourceGroupName, string pipelineName, string flowProfileName, ADT.Models.IFlowProfilePatch body, ADT.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(pipelineName),pipelineName);
+                await eventListener.AssertMinimumLength(nameof(pipelineName),pipelineName,3);
+                await eventListener.AssertMaximumLength(nameof(pipelineName),pipelineName,64);
+                await eventListener.AssertRegEx(nameof(pipelineName), pipelineName, @"^[a-zA-Z0-9-]{3,64}$");
+                await eventListener.AssertNotNull(nameof(flowProfileName),flowProfileName);
+                await eventListener.AssertMinimumLength(nameof(flowProfileName),flowProfileName,3);
+                await eventListener.AssertMaximumLength(nameof(flowProfileName),flowProfileName,64);
+                await eventListener.AssertRegEx(nameof(flowProfileName), flowProfileName, @"^[a-zA-Z0-9-]{3,64}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>update the flow resource.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3145,7 +5817,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsCreateOrUpdate(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Models.IFlow body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3194,7 +5866,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsCreateOrUpdateViaIdentity(global::System.String viaIdentity, ADT.Models.IFlow body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3254,7 +5926,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IFlow body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3318,7 +5990,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3367,7 +6039,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3417,7 +6089,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Models.IFlow body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3797,7 +6469,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsDelete(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3841,7 +6513,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4082,7 +6754,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsDisable(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4126,7 +6798,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsDisableViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4181,7 +6853,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsDisableViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4239,7 +6911,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsDisableWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4614,7 +7286,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsEnable(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4658,7 +7330,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsEnableViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4713,7 +7385,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsEnableViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4771,7 +7443,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsEnableWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5146,7 +7818,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsGet(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5189,7 +7861,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5243,7 +7915,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsGetViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5300,7 +7972,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsGetWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5490,7 +8162,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsLink(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5540,7 +8212,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsLinkViaIdentity(global::System.String viaIdentity, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5601,7 +8273,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsLinkViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5666,7 +8338,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsLinkViaJsonString(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5716,7 +8388,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsLinkViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5767,7 +8439,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsLinkWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6148,7 +8820,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsListByConnection(string subscriptionId, string resourceGroupName, string connectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6190,7 +8862,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsListByConnectionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6242,7 +8914,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlowListResult> FlowsListByConnectionViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6296,7 +8968,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlowListResult> FlowsListByConnectionWithResult(string subscriptionId, string resourceGroupName, string connectionName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6480,7 +9152,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsUpdate(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Models.IFlowsPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6529,7 +9201,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsUpdateViaIdentity(global::System.String viaIdentity, ADT.Models.IFlowsPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6589,7 +9261,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsUpdateViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IFlowsPatch body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6653,7 +9325,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task FlowsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlow>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6702,7 +9374,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6752,7 +9424,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IFlow> FlowsUpdateWithResult(string subscriptionId, string resourceGroupName, string connectionName, string flowName, ADT.Models.IFlowsPatch body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7132,7 +9804,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ListPendingConnectionsList(string subscriptionId, string resourceGroupName, string connectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPendingConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7174,7 +9846,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ListPendingConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPendingConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7226,7 +9898,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPendingConnectionListResult> ListPendingConnectionsListViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7280,7 +9952,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPendingConnectionListResult> ListPendingConnectionsListWithResult(string subscriptionId, string resourceGroupName, string connectionName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7463,7 +10135,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ListPendingFlowsList(string subscriptionId, string resourceGroupName, string connectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPendingFlowListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7505,7 +10177,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task ListPendingFlowsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPendingFlowListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7557,7 +10229,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPendingFlowListResult> ListPendingFlowsListViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7611,7 +10283,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPendingFlowListResult> ListPendingFlowsListWithResult(string subscriptionId, string resourceGroupName, string connectionName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7778,11 +10450,11 @@ namespace ADT
             }
         }
 
-        /// <summary>Approves the specified connection request in a pipeline.</summary>
+        /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Connection body</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The request body containing the connection to approve.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -7794,7 +10466,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesApproveConnection(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7828,9 +10500,9 @@ namespace ADT
             }
         }
 
-        /// <summary>Approves the specified connection request in a pipeline.</summary>
+        /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Connection body</param>
+        /// <param name="body">The request body containing the connection to approve.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -7842,7 +10514,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesApproveConnectionViaIdentity(global::System.String viaIdentity, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7888,9 +10560,9 @@ namespace ADT
             }
         }
 
-        /// <summary>Approves the specified connection request in a pipeline.</summary>
+        /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Connection body</param>
+        /// <param name="body">The request body containing the connection to approve.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
@@ -7900,7 +10572,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> PipelinesApproveConnectionViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7946,10 +10618,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Approves the specified connection request in a pipeline.</summary>
+        /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="jsonString">Json string supplied to the PipelinesApproveConnection operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7961,7 +10633,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesApproveConnectionViaJsonString(string subscriptionId, string resourceGroupName, string pipelineName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7995,10 +10667,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Approves the specified connection request in a pipeline.</summary>
+        /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="jsonString">Json string supplied to the PipelinesApproveConnection operation</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8008,7 +10680,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> PipelinesApproveConnectionViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string pipelineName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8042,11 +10714,11 @@ namespace ADT
             }
         }
 
-        /// <summary>Approves the specified connection request in a pipeline.</summary>
+        /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Connection body</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The request body containing the connection to approve.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
@@ -8056,7 +10728,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> PipelinesApproveConnectionWithResult(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8394,8 +11066,8 @@ namespace ADT
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Connection body</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The request body containing the connection to approve.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -8418,11 +11090,11 @@ namespace ADT
             }
         }
 
-        /// <summary>Executes a privileged action for a pipeline.</summary>
+        /// <summary>Executes a privileged or administrative action on the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Action to execute</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The action to be executed on the Pipeline.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -8434,7 +11106,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesExecuteAction(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Models.IAction body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipeline>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8468,9 +11140,9 @@ namespace ADT
             }
         }
 
-        /// <summary>Executes a privileged action for a pipeline.</summary>
+        /// <summary>Executes a privileged or administrative action on the specified Pipeline.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Action to execute</param>
+        /// <param name="body">The action to be executed on the Pipeline.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -8482,7 +11154,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesExecuteActionViaIdentity(global::System.String viaIdentity, ADT.Models.IAction body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipeline>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8528,9 +11200,9 @@ namespace ADT
             }
         }
 
-        /// <summary>Executes a privileged action for a pipeline.</summary>
+        /// <summary>Executes a privileged or administrative action on the specified Pipeline.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Action to execute</param>
+        /// <param name="body">The action to be executed on the Pipeline.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
@@ -8540,7 +11212,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipeline> PipelinesExecuteActionViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IAction body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8586,10 +11258,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Executes a privileged action for a pipeline.</summary>
+        /// <summary>Executes a privileged or administrative action on the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="jsonString">Json string supplied to the PipelinesExecuteAction operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8601,7 +11273,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesExecuteActionViaJsonString(string subscriptionId, string resourceGroupName, string pipelineName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipeline>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8635,10 +11307,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Executes a privileged action for a pipeline.</summary>
+        /// <summary>Executes a privileged or administrative action on the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="jsonString">Json string supplied to the PipelinesExecuteAction operation</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8648,7 +11320,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipeline> PipelinesExecuteActionViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string pipelineName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8682,11 +11354,11 @@ namespace ADT
             }
         }
 
-        /// <summary>Executes a privileged action for a pipeline.</summary>
+        /// <summary>Executes a privileged or administrative action on the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Action to execute</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The action to be executed on the Pipeline.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
@@ -8696,7 +11368,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipeline> PipelinesExecuteActionWithResult(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Models.IAction body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9032,8 +11704,8 @@ namespace ADT
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Action to execute</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The action to be executed on the Pipeline.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -9056,10 +11728,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipeline resource.</summary>
+        /// <summary>Retrieves the specified Pipeline resource.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -9070,7 +11742,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesGet(string subscriptionId, string resourceGroupName, string pipelineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipeline>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9099,7 +11771,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipeline resource.</summary>
+        /// <summary>Retrieves the specified Pipeline resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9111,7 +11783,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipeline>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9152,7 +11824,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipeline resource.</summary>
+        /// <summary>Retrieves the specified Pipeline resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -9162,7 +11834,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipeline> PipelinesGetViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9203,10 +11875,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipeline resource.</summary>
+        /// <summary>Retrieves the specified Pipeline resource.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -9215,7 +11887,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipeline> PipelinesGetWithResult(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9360,7 +12032,7 @@ namespace ADT
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -9381,7 +12053,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a resource group.</summary>
+        /// <summary>Lists all Pipeline resources within the specified resource group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9394,7 +12066,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9422,7 +12094,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a resource group.</summary>
+        /// <summary>Lists all Pipeline resources within the specified resource group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9434,7 +12106,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9473,7 +12145,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a resource group.</summary>
+        /// <summary>Lists all Pipeline resources within the specified resource group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -9483,7 +12155,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult> PipelinesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9522,7 +12194,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a resource group.</summary>
+        /// <summary>Lists all Pipeline resources within the specified resource group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9533,7 +12205,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult> PipelinesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9695,7 +12367,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a subscription.</summary>
+        /// <summary>Lists all Pipeline resources within the current subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9707,7 +12379,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9733,7 +12405,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a subscription.</summary>
+        /// <summary>Lists all Pipeline resources within the current subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9745,7 +12417,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9781,7 +12453,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a subscription.</summary>
+        /// <summary>Lists all Pipeline resources within the current subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -9791,7 +12463,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult> PipelinesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9827,7 +12499,7 @@ namespace ADT
             }
         }
 
-        /// <summary>Gets pipelines in a subscription.</summary>
+        /// <summary>Lists all Pipeline resources within the current subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -9837,7 +12509,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IPipelineListResult> PipelinesListBySubscriptionWithResult(string subscriptionId, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9993,11 +12665,11 @@ namespace ADT
             }
         }
 
-        /// <summary>Rejects the specified connection request in a pipeline.</summary>
+        /// <summary>Rejects a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Connection body</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The request body containing the connection to reject.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10009,7 +12681,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesRejectConnection(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10043,9 +12715,9 @@ namespace ADT
             }
         }
 
-        /// <summary>Rejects the specified connection request in a pipeline.</summary>
+        /// <summary>Rejects a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Connection body</param>
+        /// <param name="body">The request body containing the connection to reject.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10057,7 +12729,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesRejectConnectionViaIdentity(global::System.String viaIdentity, ADT.Models.IResourceBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10103,9 +12775,9 @@ namespace ADT
             }
         }
 
-        /// <summary>Rejects the specified connection request in a pipeline.</summary>
+        /// <summary>Rejects a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Connection body</param>
+        /// <param name="body">The request body containing the connection to reject.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
@@ -10115,7 +12787,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> PipelinesRejectConnectionViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10161,10 +12833,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Rejects the specified connection request in a pipeline.</summary>
+        /// <summary>Rejects a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="jsonString">Json string supplied to the PipelinesRejectConnection operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10176,7 +12848,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task PipelinesRejectConnectionViaJsonString(string subscriptionId, string resourceGroupName, string pipelineName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10210,10 +12882,10 @@ namespace ADT
             }
         }
 
-        /// <summary>Rejects the specified connection request in a pipeline.</summary>
+        /// <summary>Rejects a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
         /// <param name="jsonString">Json string supplied to the PipelinesRejectConnection operation</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10223,7 +12895,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> PipelinesRejectConnectionViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string pipelineName, global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10257,11 +12929,11 @@ namespace ADT
             }
         }
 
-        /// <summary>Rejects the specified connection request in a pipeline.</summary>
+        /// <summary>Rejects a pending connection request associated with the specified Pipeline.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Connection body</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The request body containing the connection to reject.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
@@ -10271,7 +12943,7 @@ namespace ADT
         /// </returns>
         public async global::System.Threading.Tasks.Task<ADT.Models.IConnection> PipelinesRejectConnectionWithResult(string subscriptionId, string resourceGroupName, string pipelineName, ADT.Models.IResourceBody body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-05-21";
+            var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10609,8 +13281,8 @@ namespace ADT
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="pipelineName">The name for the pipeline to perform the operation on.</param>
-        /// <param name="body">Connection body</param>
+        /// <param name="pipelineName">The name of the pipeline on which to operate.</param>
+        /// <param name="body">The request body containing the connection to reject.</param>
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.

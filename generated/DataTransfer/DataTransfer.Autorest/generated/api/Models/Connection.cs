@@ -82,6 +82,10 @@ namespace ADT.Models
         /// <summary>Internal Acessors for Type</summary>
         string ADT.Models.IResourceInternal.Type { get => ((ADT.Models.IResourceInternal)__trackedResource).Type; set => ((ADT.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
+        /// <summary>Hostname specific to API Flows</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string ApiHostname { get => ((ADT.Models.IConnectionPropertiesInternal)Property).ApiHostname; set => ((ADT.Models.IConnectionPropertiesInternal)Property).ApiHostname = value ?? null; }
+
         /// <summary>Approver of this connection request</summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string Approver { get => ((ADT.Models.IConnectionPropertiesInternal)Property).Approver; }
@@ -94,7 +98,14 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string Direction { get => ((ADT.Models.IConnectionPropertiesInternal)Property).Direction; set => ((ADT.Models.IConnectionPropertiesInternal)Property).Direction = value ?? null; }
 
-        /// <summary>The flow types being requested for this connection</summary>
+        /// <summary>Provides a list of FlowProfiles .</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata> FlowProfileList { get => ((ADT.Models.IConnectionPropertiesInternal)Property).FlowProfileList; set => ((ADT.Models.IConnectionPropertiesInternal)Property).FlowProfileList = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The flow types being requested for this connection. This FlowType property has reached end of life support starting version
+        /// 2025-05-30-preview. Please create a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> FlowType { get => ((ADT.Models.IConnectionPropertiesInternal)Property).FlowType; set => ((ADT.Models.IConnectionPropertiesInternal)Property).FlowType = value ?? null /* arrayOf */; }
 
@@ -169,7 +180,10 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string Pipeline { get => ((ADT.Models.IConnectionPropertiesInternal)Property).Pipeline; set => ((ADT.Models.IConnectionPropertiesInternal)Property).Pipeline = value ?? null; }
 
-        /// <summary>The policies for this connection</summary>
+        /// <summary>
+        /// The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> Policy { get => ((ADT.Models.IConnectionPropertiesInternal)Property).Policy; set => ((ADT.Models.IConnectionPropertiesInternal)Property).Policy = value ?? null /* arrayOf */; }
 
@@ -200,11 +214,17 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>The schemas for this connection</summary>
+        /// <summary>
+        /// The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<ADT.Models.ISchema> Schema { get => ((ADT.Models.IConnectionPropertiesInternal)Property).Schema; set => ((ADT.Models.IConnectionPropertiesInternal)Property).Schema = value ?? null /* arrayOf */; }
 
-        /// <summary>The schema URIs for this connection</summary>
+        /// <summary>
+        /// The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> SchemaUri { get => ((ADT.Models.IConnectionPropertiesInternal)Property).SchemaUri; set => ((ADT.Models.IConnectionPropertiesInternal)Property).SchemaUri = value ?? null /* arrayOf */; }
 
@@ -283,6 +303,17 @@ namespace ADT.Models
         ADT.Runtime.IJsonSerializable,
         ADT.Models.ITrackedResource
     {
+        /// <summary>Hostname specific to API Flows</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Hostname specific to API Flows",
+        SerializedName = @"apiHostname",
+        PossibleTypes = new [] { typeof(string) })]
+        string ApiHostname { get; set; }
         /// <summary>Approver of this connection request</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -317,14 +348,28 @@ namespace ADT.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Send", "Receive")]
         string Direction { get; set; }
-        /// <summary>The flow types being requested for this connection</summary>
+        /// <summary>Provides a list of FlowProfiles .</summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The flow types being requested for this connection",
+        Description = @"Provides a list of FlowProfiles .",
+        SerializedName = @"flowProfileList",
+        PossibleTypes = new [] { typeof(ADT.Models.IFlowProfileMetadata) })]
+        System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata> FlowProfileList { get; set; }
+        /// <summary>
+        /// The flow types being requested for this connection. This FlowType property has reached end of life support starting version
+        /// 2025-05-30-preview. Please create a FlowProfile resource instead.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead.",
         SerializedName = @"flowTypes",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
@@ -339,7 +384,7 @@ namespace ADT.Models
         Description = @"Force disablement status of the current connection",
         SerializedName = @"forceDisabledStatus",
         PossibleTypes = new [] { typeof(string) })]
-        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled")]
+        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled", "PipelineForceDisabled")]
         System.Collections.Generic.List<string> ForceDisabledStatus { get;  }
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
@@ -452,14 +497,17 @@ namespace ADT.Models
         SerializedName = @"pipeline",
         PossibleTypes = new [] { typeof(string) })]
         string Pipeline { get; set; }
-        /// <summary>The policies for this connection</summary>
+        /// <summary>
+        /// The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The policies for this connection",
+        Description = @"The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"policies",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Policy { get; set; }
@@ -508,25 +556,31 @@ namespace ADT.Models
         SerializedName = @"requirementId",
         PossibleTypes = new [] { typeof(string) })]
         string RequirementId { get; set; }
-        /// <summary>The schemas for this connection</summary>
+        /// <summary>
+        /// The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The schemas for this connection",
+        Description = @"The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"schemas",
         PossibleTypes = new [] { typeof(ADT.Models.ISchema) })]
         System.Collections.Generic.List<ADT.Models.ISchema> Schema { get; set; }
-        /// <summary>The schema URIs for this connection</summary>
+        /// <summary>
+        /// The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The schema URIs for this connection",
+        Description = @"The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"schemaUris",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> SchemaUri { get; set; }
@@ -570,6 +624,8 @@ namespace ADT.Models
     internal partial interface IConnectionInternal :
         ADT.Models.ITrackedResourceInternal
     {
+        /// <summary>Hostname specific to API Flows</summary>
+        string ApiHostname { get; set; }
         /// <summary>Approver of this connection request</summary>
         string Approver { get; set; }
         /// <summary>The timestamp that this connection request was submitted at</summary>
@@ -577,11 +633,16 @@ namespace ADT.Models
         /// <summary>Direction of data movement</summary>
         [global::ADT.PSArgumentCompleterAttribute("Send", "Receive")]
         string Direction { get; set; }
-        /// <summary>The flow types being requested for this connection</summary>
+        /// <summary>Provides a list of FlowProfiles .</summary>
+        System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata> FlowProfileList { get; set; }
+        /// <summary>
+        /// The flow types being requested for this connection. This FlowType property has reached end of life support starting version
+        /// 2025-05-30-preview. Please create a FlowProfile resource instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> FlowType { get; set; }
         /// <summary>Force disablement status of the current connection</summary>
-        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled")]
+        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled", "PipelineForceDisabled")]
         System.Collections.Generic.List<string> ForceDisabledStatus { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
         ADT.Models.IManagedServiceIdentity Identity { get; set; }
@@ -615,7 +676,10 @@ namespace ADT.Models
         string Pin { get; set; }
         /// <summary>Pipeline to use to transfer data</summary>
         string Pipeline { get; set; }
-        /// <summary>The policies for this connection</summary>
+        /// <summary>
+        /// The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         System.Collections.Generic.List<string> Policy { get; set; }
         /// <summary>The primary contact for this connection request</summary>
         string PrimaryContact { get; set; }
@@ -628,9 +692,15 @@ namespace ADT.Models
         string RemoteSubscriptionId { get; set; }
         /// <summary>Requirement ID of the connection</summary>
         string RequirementId { get; set; }
-        /// <summary>The schemas for this connection</summary>
+        /// <summary>
+        /// The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         System.Collections.Generic.List<ADT.Models.ISchema> Schema { get; set; }
-        /// <summary>The schema URIs for this connection</summary>
+        /// <summary>
+        /// The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         System.Collections.Generic.List<string> SchemaUri { get; set; }
         /// <summary>The secondary contacts for this connection request</summary>
         System.Collections.Generic.List<string> SecondaryContact { get; set; }

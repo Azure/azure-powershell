@@ -76,6 +76,7 @@ namespace ADT.Models
                 return;
             }
             {_billingTier = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("billingTier"), out var __jsonBillingTier) ? (string)__jsonBillingTier : (string)_billingTier;}
+            {_performancePriority = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("performancePriority"), out var __jsonPerformancePriority) ? (string)__jsonPerformancePriority : (string)_performancePriority;}
             AfterFromJson(json);
         }
 
@@ -99,6 +100,7 @@ namespace ADT.Models
                 return container;
             }
             AddIf( null != (((object)this._billingTier)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._billingTier.ToString()) : null, "billingTier" ,container.Add );
+            AddIf( null != (((object)this._performancePriority)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._performancePriority.ToString()) : null, "performancePriority" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

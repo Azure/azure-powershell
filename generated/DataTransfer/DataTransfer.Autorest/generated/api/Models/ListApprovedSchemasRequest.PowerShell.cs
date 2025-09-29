@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using ADT.Runtime.PowerShell;
 
-    /// <summary>The request used to list approved schemas within the resource provider.</summary>
+    /// <summary>
+    /// The request used to list approved schemas within the resource provider. ListApprovedSchemaRequest has reached end of life
+    /// support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ListApprovedSchemasRequestTypeConverter))]
     public partial class ListApprovedSchemasRequest
     {
@@ -158,7 +161,8 @@ namespace ADT.Models
             return ToJsonString();
         }
     }
-    /// The request used to list approved schemas within the resource provider.
+    /// The request used to list approved schemas within the resource provider. ListApprovedSchemaRequest has reached end of life
+    /// support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead.
     [System.ComponentModel.TypeConverter(typeof(ListApprovedSchemasRequestTypeConverter))]
     public partial interface IListApprovedSchemasRequest
 

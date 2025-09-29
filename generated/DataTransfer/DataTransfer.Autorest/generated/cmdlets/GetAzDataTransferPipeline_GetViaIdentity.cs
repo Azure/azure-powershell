@@ -10,15 +10,15 @@ namespace ADT.Cmdlets
     using ADT.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Gets pipeline resource.</summary>
+    /// <summary>Retrieves the specified Pipeline resource.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataTransferPipeline_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IPipeline))]
-    [global::ADT.Description(@"Gets pipeline resource.")]
+    [global::ADT.Description(@"Retrieves the specified Pipeline resource.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}", ApiVersion = "2025-05-30-preview")]
     public partial class GetAzDataTransferPipeline_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext

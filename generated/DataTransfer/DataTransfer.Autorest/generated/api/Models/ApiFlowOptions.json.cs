@@ -65,6 +65,7 @@ namespace ADT.Models
             {
                 return;
             }
+            {_remoteEndpointSetting = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("remoteEndpointSettings"), out var __jsonRemoteEndpointSettings) ? ADT.Models.RemoteEndpointSettings.FromJson(__jsonRemoteEndpointSettings) : _remoteEndpointSetting;}
             {_remoteEndpoint = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("remoteEndpoint"), out var __jsonRemoteEndpoint) ? (string)__jsonRemoteEndpoint : (string)_remoteEndpoint;}
             {_cname = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("cname"), out var __jsonCname) ? (string)__jsonCname : (string)_cname;}
             {_apiMode = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("apiMode"), out var __jsonApiMode) ? (string)__jsonApiMode : (string)_apiMode;}
@@ -72,6 +73,7 @@ namespace ADT.Models
             {_senderClientId = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("senderClientId"), out var __jsonSenderClientId) ? (string)__jsonSenderClientId : (string)_senderClientId;}
             {_remoteCallingModeClientId = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("remoteCallingModeClientId"), out var __jsonRemoteCallingModeClientId) ? (string)__jsonRemoteCallingModeClientId : (string)_remoteCallingModeClientId;}
             {_audienceOverride = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("audienceOverride"), out var __jsonAudienceOverride) ? (string)__jsonAudienceOverride : (string)_audienceOverride;}
+            {_authentication = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("authentication"), out var __jsonAuthentication) ? If( __jsonAuthentication as ADT.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.IAuthentication>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(ADT.Models.IAuthentication) (ADT.Models.Authentication.FromJson(__u) )) ))() : null : _authentication;}
             AfterFromJson(json);
         }
 
@@ -104,6 +106,7 @@ namespace ADT.Models
             {
                 return container;
             }
+            AddIf( null != this._remoteEndpointSetting ? (ADT.Runtime.Json.JsonNode) this._remoteEndpointSetting.ToJson(null,serializationMode) : null, "remoteEndpointSettings" ,container.Add );
             AddIf( null != (((object)this._remoteEndpoint)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._remoteEndpoint.ToString()) : null, "remoteEndpoint" ,container.Add );
             AddIf( null != (((object)this._cname)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._cname.ToString()) : null, "cname" ,container.Add );
             AddIf( null != (((object)this._apiMode)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._apiMode.ToString()) : null, "apiMode" ,container.Add );
@@ -111,6 +114,15 @@ namespace ADT.Models
             AddIf( null != (((object)this._senderClientId)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._senderClientId.ToString()) : null, "senderClientId" ,container.Add );
             AddIf( null != (((object)this._remoteCallingModeClientId)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._remoteCallingModeClientId.ToString()) : null, "remoteCallingModeClientId" ,container.Add );
             AddIf( null != (((object)this._audienceOverride)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._audienceOverride.ToString()) : null, "audienceOverride" ,container.Add );
+            if (null != this._authentication)
+            {
+                var __w = new ADT.Runtime.Json.XNodeArray();
+                foreach( var __x in this._authentication )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("authentication",__w);
+            }
             AfterToJson(ref container);
             return container;
         }

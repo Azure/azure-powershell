@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using ADT.Runtime.PowerShell;
 
-    /// <summary>The schemas list result.</summary>
+    /// <summary>
+    /// The schemas list result. SchemaListResults has reached end of life support starting version 2025-05-30-preview. Please
+    /// manage schemas with a FlowProfile resource instead.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(SchemasListResultTypeConverter))]
     public partial class SchemasListResult
     {
@@ -150,7 +153,8 @@ namespace ADT.Models
             return ToJsonString();
         }
     }
-    /// The schemas list result.
+    /// The schemas list result. SchemaListResults has reached end of life support starting version 2025-05-30-preview. Please
+    /// manage schemas with a FlowProfile resource instead.
     [System.ComponentModel.TypeConverter(typeof(SchemasListResultTypeConverter))]
     public partial interface ISchemasListResult
 

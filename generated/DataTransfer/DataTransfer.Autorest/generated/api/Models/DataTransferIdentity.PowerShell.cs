@@ -95,6 +95,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IDataTransferIdentityInternal)this).FlowName = (string) content.GetValueForProperty("FlowName",((ADT.Models.IDataTransferIdentityInternal)this).FlowName, global::System.Convert.ToString);
             }
+            if (content.Contains("FlowProfileName"))
+            {
+                ((ADT.Models.IDataTransferIdentityInternal)this).FlowProfileName = (string) content.GetValueForProperty("FlowProfileName",((ADT.Models.IDataTransferIdentityInternal)this).FlowProfileName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((ADT.Models.IDataTransferIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((ADT.Models.IDataTransferIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -135,6 +139,10 @@ namespace ADT.Models
             if (content.Contains("FlowName"))
             {
                 ((ADT.Models.IDataTransferIdentityInternal)this).FlowName = (string) content.GetValueForProperty("FlowName",((ADT.Models.IDataTransferIdentityInternal)this).FlowName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FlowProfileName"))
+            {
+                ((ADT.Models.IDataTransferIdentityInternal)this).FlowProfileName = (string) content.GetValueForProperty("FlowProfileName",((ADT.Models.IDataTransferIdentityInternal)this).FlowProfileName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

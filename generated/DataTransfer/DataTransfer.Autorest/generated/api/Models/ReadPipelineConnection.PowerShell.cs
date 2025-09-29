@@ -7,6 +7,7 @@ namespace ADT.Models
 {
     using ADT.Runtime.PowerShell;
 
+    /// <summary>The ReadPipelineconnection.</summary>
     [System.ComponentModel.TypeConverter(typeof(ReadPipelineConnectionTypeConverter))]
     public partial class ReadPipelineConnection
     {
@@ -130,7 +131,7 @@ namespace ADT.Models
             }
             if (content.Contains("Property"))
             {
-                ((ADT.Models.IReadPipelineConnectionInternal)this).Property = (ADT.Models.IReadPipelineConnectionProperties) content.GetValueForProperty("Property",((ADT.Models.IReadPipelineConnectionInternal)this).Property, ADT.Models.ReadPipelineConnectionPropertiesTypeConverter.ConvertFrom);
+                ((ADT.Models.IReadPipelineConnectionInternal)this).Property = (ADT.Models.IPipelineConnectionProperties) content.GetValueForProperty("Property",((ADT.Models.IReadPipelineConnectionInternal)this).Property, ADT.Models.PipelineConnectionPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -201,7 +202,7 @@ namespace ADT.Models
             }
             if (content.Contains("Property"))
             {
-                ((ADT.Models.IReadPipelineConnectionInternal)this).Property = (ADT.Models.IReadPipelineConnectionProperties) content.GetValueForProperty("Property",((ADT.Models.IReadPipelineConnectionInternal)this).Property, ADT.Models.ReadPipelineConnectionPropertiesTypeConverter.ConvertFrom);
+                ((ADT.Models.IReadPipelineConnectionInternal)this).Property = (ADT.Models.IPipelineConnectionProperties) content.GetValueForProperty("Property",((ADT.Models.IReadPipelineConnectionInternal)this).Property, ADT.Models.PipelineConnectionPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -249,6 +250,7 @@ namespace ADT.Models
             return ToJsonString();
         }
     }
+    /// The ReadPipelineconnection.
     [System.ComponentModel.TypeConverter(typeof(ReadPipelineConnectionTypeConverter))]
     public partial interface IReadPipelineConnection
 

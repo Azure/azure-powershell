@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Executes a privileged action for a pipeline.
+Executes a privileged or administrative action on the specified Pipeline.
 .Description
-Executes a privileged action for a pipeline.
+Executes a privileged or administrative action on the specified Pipeline.
 .Example
 {{ Add code here }}
 .Example
@@ -44,8 +44,9 @@ ACTION <IAction>: The action to be executed.
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -61,7 +62,7 @@ param(
     [Parameter(ParameterSetName='ExecuteViaJsonString', Mandatory)]
     [ADT.Category('Path')]
     [System.String]
-    # The name for the pipeline to perform the operation on.
+    # The name of the pipeline on which to operate.
     ${PipelineName},
 
     [Parameter(ParameterSetName='Execute', Mandatory)]

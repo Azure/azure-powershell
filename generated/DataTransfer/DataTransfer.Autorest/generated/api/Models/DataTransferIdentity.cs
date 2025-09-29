@@ -26,6 +26,16 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string FlowName { get => this._flowName; set => this._flowName = value; }
 
+        /// <summary>Backing field for <see cref="FlowProfileName" /> property.</summary>
+        private string _flowProfileName;
+
+        /// <summary>
+        /// The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters
+        /// or hyphens.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Owned)]
+        public string FlowProfileName { get => this._flowProfileName; set => this._flowProfileName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -36,7 +46,7 @@ namespace ADT.Models
         /// <summary>Backing field for <see cref="PipelineName" /> property.</summary>
         private string _pipelineName;
 
-        /// <summary>The name for the pipeline to perform the operation on.</summary>
+        /// <summary>The name of the pipeline on which to operate.</summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string PipelineName { get => this._pipelineName; set => this._pipelineName = value; }
 
@@ -85,6 +95,20 @@ namespace ADT.Models
         SerializedName = @"flowName",
         PossibleTypes = new [] { typeof(string) })]
         string FlowName { get; set; }
+        /// <summary>
+        /// The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters
+        /// or hyphens.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.",
+        SerializedName = @"flowProfileName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FlowProfileName { get; set; }
         /// <summary>Resource identity path</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -96,14 +120,14 @@ namespace ADT.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The name for the pipeline to perform the operation on.</summary>
+        /// <summary>The name of the pipeline on which to operate.</summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name for the pipeline to perform the operation on.",
+        Description = @"The name of the pipeline on which to operate.",
         SerializedName = @"pipelineName",
         PossibleTypes = new [] { typeof(string) })]
         string PipelineName { get; set; }
@@ -138,9 +162,14 @@ namespace ADT.Models
         string ConnectionName { get; set; }
         /// <summary>The name for the flow to perform the operation on.</summary>
         string FlowName { get; set; }
+        /// <summary>
+        /// The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters
+        /// or hyphens.
+        /// </summary>
+        string FlowProfileName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The name for the pipeline to perform the operation on.</summary>
+        /// <summary>The name of the pipeline on which to operate.</summary>
         string PipelineName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }

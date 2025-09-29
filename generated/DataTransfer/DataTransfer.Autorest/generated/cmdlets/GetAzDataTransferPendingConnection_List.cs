@@ -18,7 +18,7 @@ namespace ADT.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IPendingConnection))]
     [global::ADT.Description(@"Lists all pending remote connections that are linkable to this connection.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingConnections", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/listPendingConnections", ApiVersion = "2025-05-30-preview")]
     public partial class GetAzDataTransferPendingConnection_List : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext

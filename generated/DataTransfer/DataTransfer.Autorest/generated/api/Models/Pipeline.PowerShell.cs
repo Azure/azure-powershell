@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using ADT.Runtime.PowerShell;
 
-    /// <summary>The pipeline resource definition.</summary>
+    /// <summary>
+    /// The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are
+    /// managed.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(PipelineTypeConverter))]
     public partial class Pipeline
     {
@@ -193,6 +196,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IPipelineInternal)this).DisabledFlowType = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledFlowType",((ADT.Models.IPipelineInternal)this).DisabledFlowType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("DisabledDataClass"))
+            {
+                ((ADT.Models.IPipelineInternal)this).DisabledDataClass = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledDataClass",((ADT.Models.IPipelineInternal)this).DisabledDataClass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("QuarantineDownloadStorageAccount"))
             {
                 ((ADT.Models.IPipelineInternal)this).QuarantineDownloadStorageAccount = (string) content.GetValueForProperty("QuarantineDownloadStorageAccount",((ADT.Models.IPipelineInternal)this).QuarantineDownloadStorageAccount, global::System.Convert.ToString);
@@ -326,6 +333,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IPipelineInternal)this).DisabledFlowType = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledFlowType",((ADT.Models.IPipelineInternal)this).DisabledFlowType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("DisabledDataClass"))
+            {
+                ((ADT.Models.IPipelineInternal)this).DisabledDataClass = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledDataClass",((ADT.Models.IPipelineInternal)this).DisabledDataClass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("QuarantineDownloadStorageAccount"))
             {
                 ((ADT.Models.IPipelineInternal)this).QuarantineDownloadStorageAccount = (string) content.GetValueForProperty("QuarantineDownloadStorageAccount",((ADT.Models.IPipelineInternal)this).QuarantineDownloadStorageAccount, global::System.Convert.ToString);
@@ -374,7 +385,8 @@ namespace ADT.Models
             return ToJsonString();
         }
     }
-    /// The pipeline resource definition.
+    /// The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are
+    /// managed.
     [System.ComponentModel.TypeConverter(typeof(PipelineTypeConverter))]
     public partial interface IPipeline
 

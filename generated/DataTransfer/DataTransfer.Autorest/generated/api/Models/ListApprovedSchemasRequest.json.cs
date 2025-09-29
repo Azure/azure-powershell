@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>The request used to list approved schemas within the resource provider.</summary>
+    /// <summary>
+    /// The request used to list approved schemas within the resource provider. ListApprovedSchemaRequest has reached end of life
+    /// support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead.
+    /// </summary>
     public partial class ListApprovedSchemasRequest
     {
 

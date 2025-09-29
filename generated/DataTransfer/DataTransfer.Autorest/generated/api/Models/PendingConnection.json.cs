@@ -86,17 +86,19 @@ namespace ADT.Models
             {_linkStatus = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("linkStatus"), out var __jsonLinkStatus) ? (string)__jsonLinkStatus : (string)_linkStatus;}
             {_linkedConnectionId = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("linkedConnectionId"), out var __jsonLinkedConnectionId) ? (string)__jsonLinkedConnectionId : (string)_linkedConnectionId;}
             {_flowType = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("flowTypes"), out var __jsonFlowTypes) ? If( __jsonFlowTypes as ADT.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is ADT.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _flowType;}
+            {_flowProfileList = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("flowProfileList"), out var __jsonFlowProfileList) ? If( __jsonFlowProfileList as ADT.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(ADT.Models.IFlowProfileMetadata) (ADT.Models.FlowProfileMetadata.FromJson(__k) )) ))() : null : _flowProfileList;}
             {_requirementId = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("requirementId"), out var __jsonRequirementId) ? (string)__jsonRequirementId : (string)_requirementId;}
             {_remoteSubscriptionId = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("remoteSubscriptionId"), out var __jsonRemoteSubscriptionId) ? (string)__jsonRemoteSubscriptionId : (string)_remoteSubscriptionId;}
             {_approver = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("approver"), out var __jsonApprover) ? (string)__jsonApprover : (string)_approver;}
             {_pin = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("pin"), out var __jsonPin) ? (string)__jsonPin : (string)_pin;}
             {_dateSubmitted = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("dateSubmitted"), out var __jsonDateSubmitted) ? global::System.DateTime.TryParse((string)__jsonDateSubmitted, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonDateSubmittedValue) ? __jsonDateSubmittedValue : _dateSubmitted : _dateSubmitted;}
             {_primaryContact = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("primaryContact"), out var __jsonPrimaryContact) ? (string)__jsonPrimaryContact : (string)_primaryContact;}
-            {_secondaryContact = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("secondaryContacts"), out var __jsonSecondaryContacts) ? If( __jsonSecondaryContacts as ADT.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is ADT.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _secondaryContact;}
+            {_secondaryContact = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("secondaryContacts"), out var __jsonSecondaryContacts) ? If( __jsonSecondaryContacts as ADT.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is ADT.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _secondaryContact;}
             {_provisioningState = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
-            {_policy = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("policies"), out var __jsonPolicies) ? If( __jsonPolicies as ADT.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is ADT.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _policy;}
-            {_schema = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("schemas"), out var __jsonSchemas) ? If( __jsonSchemas as ADT.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.ISchema>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(ADT.Models.ISchema) (ADT.Models.Schema.FromJson(__a) )) ))() : null : _schema;}
-            {_schemaUri = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("schemaUris"), out var __jsonSchemaUris) ? If( __jsonSchemaUris as ADT.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___w, (___v)=>(string) (___v is ADT.Runtime.Json.JsonString ___u ? (string)(___u.ToString()) : null)) ))() : null : _schemaUri;}
+            {_policy = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("policies"), out var __jsonPolicies) ? If( __jsonPolicies as ADT.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(string) (__a is ADT.Runtime.Json.JsonString ___z ? (string)(___z.ToString()) : null)) ))() : null : _policy;}
+            {_schema = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("schemas"), out var __jsonSchemas) ? If( __jsonSchemas as ADT.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.ISchema>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___w, (___v)=>(ADT.Models.ISchema) (ADT.Models.Schema.FromJson(___v) )) ))() : null : _schema;}
+            {_schemaUri = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("schemaUris"), out var __jsonSchemaUris) ? If( __jsonSchemaUris as ADT.Runtime.Json.JsonArray, out var ___r) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___r, (___q)=>(string) (___q is ADT.Runtime.Json.JsonString ___p ? (string)(___p.ToString()) : null)) ))() : null : _schemaUri;}
+            {_apiHostname = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("apiHostname"), out var __jsonApiHostname) ? (string)__jsonApiHostname : (string)_apiHostname;}
             {_tag = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? ADT.Models.PendingConnectionTags.FromJson(__jsonTags) : _tag;}
             {_location = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
             {_id = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
@@ -172,6 +174,15 @@ namespace ADT.Models
                 }
                 container.Add("flowTypes",__r);
             }
+            if (null != this._flowProfileList)
+            {
+                var __m = new ADT.Runtime.Json.XNodeArray();
+                foreach( var __n in this._flowProfileList )
+                {
+                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                }
+                container.Add("flowProfileList",__m);
+            }
             AddIf( null != (((object)this._requirementId)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._requirementId.ToString()) : null, "requirementId" ,container.Add );
             AddIf( null != (((object)this._remoteSubscriptionId)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._remoteSubscriptionId.ToString()) : null, "remoteSubscriptionId" ,container.Add );
             if (serializationMode.HasFlag(ADT.Runtime.SerializationMode.IncludeRead))
@@ -186,12 +197,12 @@ namespace ADT.Models
             AddIf( null != (((object)this._primaryContact)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._primaryContact.ToString()) : null, "primaryContact" ,container.Add );
             if (null != this._secondaryContact)
             {
-                var __m = new ADT.Runtime.Json.XNodeArray();
-                foreach( var __n in this._secondaryContact )
+                var __h = new ADT.Runtime.Json.XNodeArray();
+                foreach( var __i in this._secondaryContact )
                 {
-                    AddIf(null != (((object)__n)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                    AddIf(null != (((object)__i)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
                 }
-                container.Add("secondaryContacts",__m);
+                container.Add("secondaryContacts",__h);
             }
             if (serializationMode.HasFlag(ADT.Runtime.SerializationMode.IncludeRead))
             {
@@ -199,31 +210,32 @@ namespace ADT.Models
             }
             if (null != this._policy)
             {
-                var __h = new ADT.Runtime.Json.XNodeArray();
-                foreach( var __i in this._policy )
+                var __c = new ADT.Runtime.Json.XNodeArray();
+                foreach( var __d in this._policy )
                 {
-                    AddIf(null != (((object)__i)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
+                    AddIf(null != (((object)__d)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(__d.ToString()) : null ,__c.Add);
                 }
-                container.Add("policies",__h);
+                container.Add("policies",__c);
             }
             if (null != this._schema)
             {
-                var __c = new ADT.Runtime.Json.XNodeArray();
-                foreach( var __d in this._schema )
+                var ___x = new ADT.Runtime.Json.XNodeArray();
+                foreach( var ___y in this._schema )
                 {
-                    AddIf(__d?.ToJson(null, serializationMode) ,__c.Add);
+                    AddIf(___y?.ToJson(null, serializationMode) ,___x.Add);
                 }
-                container.Add("schemas",__c);
+                container.Add("schemas",___x);
             }
             if (null != this._schemaUri)
             {
-                var ___x = new ADT.Runtime.Json.XNodeArray();
-                foreach( var ___y in this._schemaUri )
+                var ___s = new ADT.Runtime.Json.XNodeArray();
+                foreach( var ___t in this._schemaUri )
                 {
-                    AddIf(null != (((object)___y)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(___y.ToString()) : null ,___x.Add);
+                    AddIf(null != (((object)___t)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(___t.ToString()) : null ,___s.Add);
                 }
-                container.Add("schemaUris",___x);
+                container.Add("schemaUris",___s);
             }
+            AddIf( null != (((object)this._apiHostname)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._apiHostname.ToString()) : null, "apiHostname" ,container.Add );
             AddIf( null != this._tag ? (ADT.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             if (serializationMode.HasFlag(ADT.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(ADT.Runtime.SerializationMode.IncludeCreate))
             {

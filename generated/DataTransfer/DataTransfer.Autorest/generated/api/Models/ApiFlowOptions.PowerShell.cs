@@ -76,6 +76,10 @@ namespace ADT.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("RemoteEndpointSetting"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSetting = (ADT.Models.IRemoteEndpointSettings) content.GetValueForProperty("RemoteEndpointSetting",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSetting, ADT.Models.RemoteEndpointSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("RemoteEndpoint"))
             {
                 ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpoint = (string) content.GetValueForProperty("RemoteEndpoint",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpoint, global::System.Convert.ToString);
@@ -103,6 +107,18 @@ namespace ADT.Models
             if (content.Contains("AudienceOverride"))
             {
                 ((ADT.Models.IApiFlowOptionsInternal)this).AudienceOverride = (string) content.GetValueForProperty("AudienceOverride",((ADT.Models.IApiFlowOptionsInternal)this).AudienceOverride, global::System.Convert.ToString);
+            }
+            if (content.Contains("Authentication"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).Authentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("Authentication",((ADT.Models.IApiFlowOptionsInternal)this).Authentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RemoteEndpointSettingEndpoint"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingEndpoint = (string) content.GetValueForProperty("RemoteEndpointSettingEndpoint",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteEndpointSettingAuthentication"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingAuthentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("RemoteEndpointSettingAuthentication",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingAuthentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -121,6 +137,10 @@ namespace ADT.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("RemoteEndpointSetting"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSetting = (ADT.Models.IRemoteEndpointSettings) content.GetValueForProperty("RemoteEndpointSetting",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSetting, ADT.Models.RemoteEndpointSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("RemoteEndpoint"))
             {
                 ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpoint = (string) content.GetValueForProperty("RemoteEndpoint",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpoint, global::System.Convert.ToString);
@@ -148,6 +168,18 @@ namespace ADT.Models
             if (content.Contains("AudienceOverride"))
             {
                 ((ADT.Models.IApiFlowOptionsInternal)this).AudienceOverride = (string) content.GetValueForProperty("AudienceOverride",((ADT.Models.IApiFlowOptionsInternal)this).AudienceOverride, global::System.Convert.ToString);
+            }
+            if (content.Contains("Authentication"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).Authentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("Authentication",((ADT.Models.IApiFlowOptionsInternal)this).Authentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RemoteEndpointSettingEndpoint"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingEndpoint = (string) content.GetValueForProperty("RemoteEndpointSettingEndpoint",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteEndpointSettingAuthentication"))
+            {
+                ((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingAuthentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("RemoteEndpointSettingAuthentication",((ADT.Models.IApiFlowOptionsInternal)this).RemoteEndpointSettingAuthentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>The schema object.</summary>
+    /// <summary>
+    /// The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas
+    /// with a FlowProfile resource instead.
+    /// </summary>
     public partial class Schema :
         ADT.Models.ISchema,
         ADT.Models.ISchemaInternal
@@ -75,7 +78,8 @@ namespace ADT.Models
 
         }
     }
-    /// The schema object.
+    /// The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas
+    /// with a FlowProfile resource instead.
     public partial interface ISchema :
         ADT.Runtime.IJsonSerializable
     {
@@ -172,7 +176,8 @@ namespace ADT.Models
         string Uri { get; set; }
 
     }
-    /// The schema object.
+    /// The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas
+    /// with a FlowProfile resource instead.
     internal partial interface ISchemaInternal
 
     {

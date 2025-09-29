@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>The schemas list result.</summary>
+    /// <summary>
+    /// The schemas list result. SchemaListResults has reached end of life support starting version 2025-05-30-preview. Please
+    /// manage schemas with a FlowProfile resource instead.
+    /// </summary>
     public partial class SchemasListResult :
         ADT.Models.ISchemasListResult,
         ADT.Models.ISchemasListResultInternal
@@ -26,7 +29,8 @@ namespace ADT.Models
 
         }
     }
-    /// The schemas list result.
+    /// The schemas list result. SchemaListResults has reached end of life support starting version 2025-05-30-preview. Please
+    /// manage schemas with a FlowProfile resource instead.
     public partial interface ISchemasListResult :
         ADT.Runtime.IJsonSerializable
     {
@@ -43,7 +47,8 @@ namespace ADT.Models
         System.Collections.Generic.List<ADT.Models.ISchema> Value { get; set; }
 
     }
-    /// The schemas list result.
+    /// The schemas list result. SchemaListResults has reached end of life support starting version 2025-05-30-preview. Please
+    /// manage schemas with a FlowProfile resource instead.
     internal partial interface ISchemasListResultInternal
 
     {

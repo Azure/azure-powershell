@@ -10,15 +10,15 @@ namespace ADT.Cmdlets
     using ADT.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Gets pipeline resource.</summary>
+    /// <summary>Retrieves the specified Pipeline resource.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataTransferPipeline_Get")]
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IPipeline))]
-    [global::ADT.Description(@"Gets pipeline resource.")]
+    [global::ADT.Description(@"Retrieves the specified Pipeline resource.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}", ApiVersion = "2025-05-30-preview")]
     public partial class GetAzDataTransferPipeline_Get : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext
@@ -99,12 +99,12 @@ namespace ADT.Cmdlets
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>The name for the pipeline to perform the operation on.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name for the pipeline to perform the operation on.")]
+        /// <summary>The name of the pipeline on which to operate.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the pipeline on which to operate.")]
         [ADT.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name for the pipeline to perform the operation on.",
+        Description = @"The name of the pipeline on which to operate.",
         SerializedName = @"pipelineName",
         PossibleTypes = new [] { typeof(string) })]
         [global::System.Management.Automation.Alias("PipelineName")]

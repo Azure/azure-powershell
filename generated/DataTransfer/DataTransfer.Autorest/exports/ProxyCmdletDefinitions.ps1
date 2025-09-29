@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Approves the specified connection request in a pipeline.
+Approves a pending connection request associated with the specified Pipeline.
 .Description
-Approves the specified connection request in a pipeline.
+Approves a pending connection request associated with the specified Pipeline.
 .Example
 $connectionToApprove = Get-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01
 Approve-AzDataTransferConnection -PipelineName Pipeline01 -ResourceGroupName ResourceGroup01 -ConnectionId $connectionToApprove.Id -StatusReason "Approved for processing" -Confirm:$false
@@ -41,8 +41,9 @@ CONNECTION <IResourceBody>: The resource to reference.
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -58,7 +59,7 @@ param(
     [Parameter(ParameterSetName='ApproveViaJsonString', Mandatory)]
     [ADT.Category('Path')]
     [System.String]
-    # The name for the pipeline to perform the operation on.
+    # The name of the pipeline on which to operate.
     ${PipelineName},
 
     [Parameter(ParameterSetName='Approve', Mandatory)]
@@ -287,9 +288,9 @@ end {
 
 <#
 .Synopsis
-Rejects the specified connection request in a pipeline.
+Rejects a pending connection request associated with the specified Pipeline.
 .Description
-Rejects the specified connection request in a pipeline.
+Rejects a pending connection request associated with the specified Pipeline.
 .Example
 $connectionToDeny = Get-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01
 Deny-AzDataTransferConnection -PipelineName Pipeline01 -ResourceGroupName ResourceGroup01 -ConnectionId $connectionToDeny.Id -StatusReason "Not Authorized for processing" -Confirm:$false
@@ -312,8 +313,9 @@ CONNECTION <IResourceBody>: The resource to reference.
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -329,7 +331,7 @@ param(
     [Parameter(ParameterSetName='RejectViaJsonString', Mandatory)]
     [ADT.Category('Path')]
     [System.String]
-    # The name for the pipeline to perform the operation on.
+    # The name of the pipeline on which to operate.
     ${PipelineName},
 
     [Parameter(ParameterSetName='Reject', Mandatory)]
@@ -576,16 +578,18 @@ To create the parameters described below, construct a hash table containing the 
 CONNECTIONINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -816,16 +820,18 @@ To create the parameters described below, construct a hash table containing the 
 CONNECTIONINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -1060,8 +1066,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -1253,6 +1260,273 @@ end {
 
 <#
 .Synopsis
+Retrieves the specified FlowProfile resource.
+.Description
+Retrieves the specified FlowProfile resource.
+.Example
+Get-AzDataTransferFlowProfile -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01"
+.Example
+Get-AzDataTransferFlowProfile -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowProfileName "api-flowprofile"
+
+.Inputs
+ADT.Models.IDataTransferIdentity
+.Inputs
+ADT.Models.IListFlowProfilesRequest
+.Outputs
+ADT.Models.IFlowProfile
+.Outputs
+ADT.Models.IFlowProfileMetadata
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IListFlowProfilesRequest>: Defines the required request body for retrieving FlowProfile information for a provided pipeline.
+  [Pipeline <String>]: The name of the pipeline for which to retrieve associated FlowProfiles.
+
+INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
+  [ConnectionName <String>]: The name for the connection to perform the operation on.
+  [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
+  [Id <String>]: Resource identity path
+  [PipelineName <String>]: The name of the pipeline on which to operate.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+PIPELINEINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
+  [ConnectionName <String>]: The name for the connection to perform the operation on.
+  [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
+  [Id <String>]: Resource identity path
+  [PipelineName <String>]: The name of the pipeline on which to operate.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferflowprofile
+#>
+function Get-AzDataTransferFlowProfile {
+[OutputType([ADT.Models.IFlowProfile], [ADT.Models.IFlowProfileMetadata])]
+[CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPipeline', Mandatory)]
+    [Alias('FlowProfileName')]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the FlowProfile resource to operate on.
+    # Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='ListExpanded')]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the pipeline on which to operate.
+    ${PipelineName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List1')]
+    [ADT.Category('Path')]
+    [ADT.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [ADT.Category('Path')]
+    [ADT.Models.IDataTransferIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPipeline', Mandatory, ValueFromPipeline)]
+    [ADT.Category('Path')]
+    [ADT.Models.IDataTransferIdentity]
+    # Identity Parameter
+    ${PipelineInputObject},
+
+    [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
+    [ADT.Category('Body')]
+    [ADT.Models.IListFlowProfilesRequest]
+    # Defines the required request body for retrieving FlowProfile information for a provided pipeline.
+    ${Body},
+
+    [Parameter(ParameterSetName='ListViaJsonFilePath', Mandatory)]
+    [ADT.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the List operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ListViaJsonString', Mandatory)]
+    [ADT.Category('Body')]
+    [System.String]
+    # Json string supplied to the List operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [ADT.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [ADT.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [ADT.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('ADT.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [ADT.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_Get';
+            GetViaIdentity = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_GetViaIdentity';
+            GetViaIdentityPipeline = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_GetViaIdentityPipeline';
+            List = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_List';
+            List1 = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_List1';
+            ListExpanded = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_ListExpanded';
+            ListViaJsonFilePath = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_ListViaJsonFilePath';
+            ListViaJsonString = 'Az.DataTransfer.private\Get-AzDataTransferFlowProfile_ListViaJsonString';
+        }
+        if (('Get', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [ADT.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [ADT.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [ADT.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [ADT.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets flow resource.
 .Description
 Gets flow resource.
@@ -1273,16 +1547,18 @@ To create the parameters described below, construct a hash table containing the 
 CONNECTIONINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -1856,9 +2132,9 @@ end {
 
 <#
 .Synopsis
-Gets pipeline resource.
+Retrieves the specified Pipeline resource.
 .Description
-Gets pipeline resource.
+Retrieves the specified Pipeline resource.
 .Example
 $pipeline01 = Get-AzDataTransferPipeline -ResourceGroupName ResourceGroup01 -Name Pipeline01
 .Example
@@ -1878,8 +2154,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -1893,7 +2170,7 @@ param(
     [Alias('PipelineName')]
     [ADT.Category('Path')]
     [System.String]
-    # The name for the pipeline to perform the operation on.
+    # The name of the pipeline on which to operate.
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2096,8 +2373,9 @@ CONNECTION <IResourceBody>: The resource to reference.
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -2363,8 +2641,9 @@ To create the parameters described below, construct a hash table containing the 
 CONNECTIONINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
@@ -2375,8 +2654,9 @@ FLOW <IResourceBody>: The resource to reference.
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -2654,6 +2934,28 @@ data processing" -RemoteSubscriptionId 11111111-1111-1111-1111-111111111111 -Con
 New-AzDataTransferConnection -ResourceGroupName ResourceGroup02 -PipelineName Pipeline01 -Name Connection02 -Location "WestUS" -Direction "Send" -PIN "ABCDEFG" -FlowType "Mission" -Justification "Required for data processing" -Confirm:$false
 .Example
 New-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection03 -PipelineName Pipeline01 -Location "EastUS" -Direction "Receive" -FlowType "Mission"  -RequirementId 123 -Justification "Required for data export" -PrimaryContact "user@example.com" -SecondaryContact "admin@example.com" -Tag @{Environment="Production"} -Confirm:$false
+.Example
+# First, create or reference existing FlowProfiles
+$basicFlowProfile = @{
+    Name = "files-flowprofile"
+    Pipeline = "Pipeline01"
+    FlowProfileId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/files-flowprofile"
+    ReplicationScenario = "Files"
+    Status = "Enabled"
+    Description = "Basic FlowProfile for file transfers"
+}
+
+$messagingFlowProfile = @{
+    Name = "messaging-flowprofile"
+    Pipeline = "Pipeline01"
+    FlowProfileId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/messaging-flowprofile"
+    ReplicationScenario = "Messaging"
+    Status = "Enabled"
+    Description = "Messaging FlowProfile with antivirus protection"
+}
+
+# Create connection with FlowProfiles
+New-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -PipelineName Pipeline01 -Name Connection04 -Location "EastUS" -Direction "Receive" -FlowProfileList @($basicFlowProfile, $messagingFlowProfile) -RequirementId "FP-2025-001" -Justification "Modern connection using FlowProfile architecture for enhanced security and flexibility" -RemoteSubscriptionId "11111111-1111-1111-1111-111111111111" -PrimaryContact "dataowner@company.com" -SecondaryContact @("security@company.com", "operations@company.com") -Tag @{Environment="Production"; DataClassification="Sensitive"} -Confirm:$false
 
 .Outputs
 ADT.Models.IConnection
@@ -2662,7 +2964,15 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SCHEMA <ISchema[]>: The schemas for this connection
+FLOWPROFILELIST <IFlowProfileMetadata[]>: Provides a list of FlowProfiles .
+  Description <String>: A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.
+  FlowProfileId <String>: A guid represented as a string for the FlowProfile resource, assigned by the system.
+  Name <String>: The name of the FlowProfile.
+  Pipeline <String>: The name of the parent Pipeline Azure resource associated with this FlowProfile.
+  ReplicationScenario <String>: The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
+  Status <String>: The operational status of the FlowProfile.
+
+SCHEMA <ISchema[]>: The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
   [ConnectionId <String>]: Connection ID associated with this schema
   [Content <String>]: Content of the schema
   [Direction <String>]: The direction of the schema.
@@ -2707,6 +3017,12 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # Hostname specific to API Flows
+    ${ApiHostname},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.PSArgumentCompleterAttribute("Send", "Receive")]
     [ADT.Category('Body')]
     [System.String]
@@ -2715,10 +3031,19 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IFlowProfileMetadata[]]
+    # Provides a list of FlowProfiles .
+    ${FlowProfileList},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
     [ADT.Category('Body')]
     [System.String[]]
-    # The flow types being requested for this connection
+    # The flow types being requested for this connection.
+    # This FlowType property has reached end of life support starting version 2025-05-30-preview.
+    # Please create a FlowProfile resource instead.
     ${FlowType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2768,14 +3093,18 @@ param(
     [AllowEmptyCollection()]
     [ADT.Category('Body')]
     [ADT.Models.ISchema[]]
-    # The schemas for this connection
+    # The schemas for this connection.
+    # The schemas property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${Schema},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [ADT.Category('Body')]
     [System.String[]]
-    # The schema URIs for this connection
+    # The schema URIs for this connection.
+    # The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${SchemaUri},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2975,6 +3304,393 @@ end {
 
 <#
 .Synopsis
+Create a new FlowProfile or create an existing one.
+.Description
+Create a new FlowProfile or create an existing one.
+.Example
+New-AzDataTransferFlowProfile -Name "files-flowprofile" -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -Location "EastUS" -ReplicationScenario "Files" -Status "Enabled" -Description "Basic FlowProfile for standard file transfers"
+.Example
+New-AzDataTransferFlowProfile -Name "messaging-flowprofile" -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -Location "EastUS" -ReplicationScenario "Messaging" -Status "Enabled" -Description "Messaging FlowProfile with antivirus scanning" -AntivirusAvSolution @("Defender")
+
+.Outputs
+ADT.Models.IFlowProfile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+MIMEFILTER <IMimeTypeFilter[]>: Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+  [Extension <List<String>>]: A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
+  [Media <String>]: The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
+
+TEXTMATCHINGDENY <ITextMatch[]>: A list of text patterns to block, each with matching rules and case sensitivity options.
+  CaseSensitivity <String>: Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
+  MatchType <String>: Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
+  Text <String>: The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
+.Link
+https://learn.microsoft.com/powershell/module/az.datatransfer/new-azdatatransferflowprofile
+#>
+function New-AzDataTransferFlowProfile {
+[OutputType([ADT.Models.IFlowProfile])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('FlowProfileName')]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the FlowProfile resource to operate on.
+    # Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the pipeline on which to operate.
+    ${PipelineName},
+
+    [Parameter(Mandatory)]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [ADT.Category('Path')]
+    [ADT.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [ADT.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.PSArgumentCompleterAttribute("Defender", "ClamAv")]
+    [ADT.Category('Body')]
+    [System.String[]]
+    # Optional.
+    # The list of antiviruses to be used as a scanning solution for replicating data.
+    ${AntivirusAvSolution},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.Double]
+    # Optional.
+    # Provides the multiplication value for an archive in total based on the initial object being validated.
+    # This value takes the root object size and multiplies it by this value to create a maximum.
+    # Once this maximum is exceeded, the archive is failed.
+    # Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+    ${ArchiveMaximumCompressionRatioLimit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # The maximum depth of nested archives that can be expanded.
+    # Limits how many layers of embedded archives will be processed.
+    # Archives exceeding the max limit will be denied for replication.
+    ${ArchiveMaximumDepthLimit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach.
+    # Archives exceeding the max limit will be denied for replication.
+    ${ArchiveMaximumExpansionSizeLimit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # Default is 0.
+    # The minimum archive file size (in bytes) required to trigger expansion during replication.
+    # Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+    ${ArchiveMinimumSizeForExpansion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # Specifies the maximum allowed size (in bytes) for files to be replicated.
+    # Any file size greater than maximum will be denied replication.
+    ${DataSizeMaximum},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # Default is 0.
+    # Specifies the minimum required size (in bytes) for a file to be eligible for replication.
+    # Any file size less than minimum will be denied replication.
+    ${DataSizeMinimum},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # A user-defined description of the FlowProfile.
+    ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IMimeTypeFilter[]]
+    # Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered.
+    # For more detail, please refer to the MimeTypeFiler model.
+    ${MimeFilter},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Allow", "Deny")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Specifies whether the filter is an allow list or deny list.
+    # For more detail, please refer to the FilterType model.
+    ${MimeFilterType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Messaging", "API", "Stream", "Files", "SoftwareArtifacts", "Complex")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The data replication scenario handled by this FlowProfile.
+    # Please not, that this value cannot be updated after creation.
+    ${ReplicationScenario},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Obsolete", "Enabled")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The operational status of the FlowProfile.
+    ${Status},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [ADT.Runtime.Info(PossibleTypes=([ADT.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.ITextMatch[]]
+    # A list of text patterns to block, each with matching rules and case sensitivity options.
+    ${TextMatchingDeny},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [ADT.Runtime.Info(PossibleTypes=([ADT.Models.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The default XML namespace used for schema validation.
+    ${XmlFilterDefaultNamespace},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Inline")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Defines the method for referencing the xml schema.
+    ${XmlFilterReference},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The inline XSD schema to be used for validation.
+    ${XmlFilterSchema},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [ADT.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [ADT.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [ADT.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [ADT.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [ADT.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('ADT.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [ADT.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.DataTransfer.private\New-AzDataTransferFlowProfile_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DataTransfer.private\New-AzDataTransferFlowProfile_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DataTransfer.private\New-AzDataTransferFlowProfile_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [ADT.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [ADT.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [ADT.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [ADT.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create the flow resource.
 .Description
 Create the flow resource.
@@ -2982,9 +3698,35 @@ Create the flow resource.
 New-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Location "EastUS" -FlowType "Mission" -DataType "Blob" -StorageAccountName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Storage/storageAccounts/storageAccount01" -StorageContainerName "teststorage" -Confirm:$false
 .Example
 New-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Location "EastUS" -FlowType "Mission" -DataType "Blob" -StorageAccountName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Storage/storageAccounts/storageAccount01" -StorageContainerName "teststorage" -Status Enabled -Tag @{Environment="Production"} -Confirm:$false
+.Example
+New-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName BasicReceiveConnection01 -Name BasicRecvBlobFiles01 -Location "CentralUS" -Status "Enabled" -FlowDataType "Blob" -FlowProfilePipeline "Pipeline01" -FlowProfileName "BasicFlowProfile01" -FlowProfileReplicationScenario "Files" -FlowProfileStatus "Enabled" -FlowProfileId "000000000000-0000-0000-00000000" -FlowProfileDescription "Basic flow profile for file replication" -Confirm:$false
 
 .Outputs
 ADT.Models.IFlow
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APIFLOWOPTIONAUTHENTICATION <IAuthentication[]>: Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+  [ApplicationId <List<String>>]: List of applicationIds allowed to authorize to this flow. This is used as an alternative to the RBAC authorization check.
+  [Audience <String>]: Audience of the identity of the remote endpoint service. By default, remoteEndpointSettings.endpoint will be used if a value is not provided.
+  [Authority <String>]: The full URL endpoint used to acquire tokens, typically combining the instance and tenant ID to target a specific authentication context.
+  [ClientIdOverride <String>]: The Flow can use an Entra app identity that is provided by the Flow user to obtain the token to call the remote endpoint. This field specifies the user provided app's clientId.
+  [IdentityTranslation <String>]: Determines which identity to use for extracting the user token for Azure Data Transfer API Flow.
+  [Instance <String>]: The identity provider's token service instance.
+  [TenantId <String>]: A unique identifier representing the tenant of the identity provider's token service.
+  [Type <String>]: Type of authentication mechanism. JWT by default.
+
+REMOTEENDPOINTSETTINGAUTHENTICATION <IAuthentication[]>: Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+  [ApplicationId <List<String>>]: List of applicationIds allowed to authorize to this flow. This is used as an alternative to the RBAC authorization check.
+  [Audience <String>]: Audience of the identity of the remote endpoint service. By default, remoteEndpointSettings.endpoint will be used if a value is not provided.
+  [Authority <String>]: The full URL endpoint used to acquire tokens, typically combining the instance and tenant ID to target a specific authentication context.
+  [ClientIdOverride <String>]: The Flow can use an Entra app identity that is provided by the Flow user to obtain the token to call the remote endpoint. This field specifies the user provided app's clientId.
+  [IdentityTranslation <String>]: Determines which identity to use for extracting the user token for Azure Data Transfer API Flow.
+  [Instance <String>]: The identity provider's token service instance.
+  [TenantId <String>]: A unique identifier representing the tenant of the identity provider's token service.
+  [Type <String>]: Type of authentication mechanism. JWT by default.
 .Link
 https://learn.microsoft.com/powershell/module/az.datatransfer/new-azdatatransferflow
 #>
@@ -3036,8 +3778,19 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Optional field to override the audience of the remote endpoint
+    # Optional field to override the audience of the remote endpoint.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionAudienceOverride},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IAuthentication[]]
+    # Optional and for advanced used only.
+    # A list of authentication methods to use when accessing the Azure Data Transfer API Flow.
+    # If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+    ${ApiFlowOptionAuthentication},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
@@ -3049,25 +3802,33 @@ param(
     [ADT.PSArgumentCompleterAttribute("UserIdentity", "ServiceIdentity")]
     [ADT.Category('Body')]
     [System.String]
-    # Flag for if Azure Data Transfer API Flow should extract the user token
+    # Determines which identity to use for extracting the user token for Azure Data Transfer API Flow.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionIdentityTranslation},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Remote stub app registration Client ID
+    # Remote stub app registration Client ID.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionRemoteCallingModeClientId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Remote host to which communication needs to be made
+    # Remote host to which communication needs to be made.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the remoteEndpointSettings.endpoint property instead.
     ${ApiFlowOptionRemoteEndpoint},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Sender's app user assigned Manage Identity client ID
+    # Sender's app user assigned Manage Identity client ID.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionSenderClientId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -3105,6 +3866,8 @@ param(
     [ADT.Category('Body')]
     [System.String]
     # Type of data to transfer via the flow.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${DataType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -3128,10 +3891,60 @@ param(
     ${EventHubId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The Flow's data class.
+    ${FlowDataType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # A description of the FlowProfile and its rulesets.
+    # The description should describe the flowprofile's purpose and rulesets applied.
+    ${FlowProfileDescription},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # A guid represented as a string for the FlowProfile resource, assigned by the system.
+    ${FlowProfileId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The name of the FlowProfile.
+    ${FlowProfileName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The name of the parent Pipeline Azure resource associated with this FlowProfile.
+    ${FlowProfilePipeline},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Messaging", "API", "Stream", "Files", "SoftwareArtifacts", "Complex")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The data replication scenario handled by this FlowProfile.
+    # Please note, that this value cannot be updated after creation.
+    # See the FlowProfilePatchProperties to see updateable properties.
+    ${FlowProfileReplicationScenario},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Obsolete", "Enabled")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The operational status of the FlowProfile.
+    ${FlowProfileStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
     [ADT.Category('Body')]
     [System.String]
-    # The flow type for this flow
+    # The flow type for this flow.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${FlowType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -3147,6 +3960,15 @@ param(
     [System.String]
     # Billing tier for this messaging flow
     ${MessagingOptionBillingTier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Field indicating whether to enable guaranteed delivery on the flow or not.
+    # The default disabled option chooses speed over consistency.
+    # When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+    ${MessagingOptionPerformancePriority},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
@@ -3194,6 +4016,21 @@ param(
     [System.String]
     # Name of the connection
     ${PropertiesConnectionName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IAuthentication[]]
+    # Optional and for advanced used only.
+    # A list of authentication methods to use when accessing the remote endpoint.
+    # If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+    ${RemoteEndpointSettingAuthentication},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The remote endpoint uri all API calls.
+    ${RemoteEndpointSettingEndpoint},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
@@ -3519,8 +4356,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -3745,16 +4583,18 @@ To create the parameters described below, construct a hash table containing the 
 CONNECTIONINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -3991,8 +4831,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
@@ -4237,6 +5078,458 @@ end {
 
 <#
 .Synopsis
+Applies partial update to an existing FlowProfile resource.
+.Description
+Applies partial update to an existing FlowProfile resource.
+.Example
+Update-AzDataTransferFlowProfile -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowProfileName "files-flowprofile" -Status "Disabled" -Description "Updated FlowProfile - temporarily disabled for maintenance"
+.Example
+Update-AzDataTransferFlowProfile -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowProfileName "files-flowprofile" -AntivirusAvSolution @("Defender") -Status "Enabled"
+
+.Inputs
+ADT.Models.IDataTransferIdentity
+.Outputs
+ADT.Models.IFlowProfile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
+  [ConnectionName <String>]: The name for the connection to perform the operation on.
+  [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
+  [Id <String>]: Resource identity path
+  [PipelineName <String>]: The name of the pipeline on which to operate.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MIMEFILTER <IMimeTypeFilter[]>: Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
+  [Extension <List<String>>]: A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
+  [Media <String>]: The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
+
+PIPELINEINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
+  [ConnectionName <String>]: The name for the connection to perform the operation on.
+  [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
+  [Id <String>]: Resource identity path
+  [PipelineName <String>]: The name of the pipeline on which to operate.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+TEXTMATCHINGDENY <ITextMatch[]>: A list of text patterns to block, each with matching rules and case sensitivity options.
+  CaseSensitivity <String>: Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
+  MatchType <String>: Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
+  Text <String>: The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
+.Link
+https://learn.microsoft.com/powershell/module/az.datatransfer/update-azdatatransferflowprofile
+#>
+function Update-AzDataTransferFlowProfile {
+[OutputType([ADT.Models.IFlowProfile])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('FlowProfileName')]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the FlowProfile resource to operate on.
+    # Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the pipeline on which to operate.
+    ${PipelineName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [ADT.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [ADT.Category('Path')]
+    [ADT.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [ADT.Category('Path')]
+    [ADT.Models.IDataTransferIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded', Mandatory, ValueFromPipeline)]
+    [ADT.Category('Path')]
+    [ADT.Models.IDataTransferIdentity]
+    # Identity Parameter
+    ${PipelineInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.PSArgumentCompleterAttribute("Defender", "ClamAv")]
+    [ADT.Category('Body')]
+    [System.String[]]
+    # Optional.
+    # The list of antiviruses to be used as a scanning solution for replicating data.
+    ${AntivirusAvSolution},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.Double]
+    # Optional.
+    # Provides the multiplication value for an archive in total based on the initial object being validated.
+    # This value takes the root object size and multiplies it by this value to create a maximum.
+    # Once this maximum is exceeded, the archive is failed.
+    # Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
+    ${ArchiveMaximumCompressionRatioLimit},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # The maximum depth of nested archives that can be expanded.
+    # Limits how many layers of embedded archives will be processed.
+    # Archives exceeding the max limit will be denied for replication.
+    ${ArchiveMaximumDepthLimit},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach.
+    # Archives exceeding the max limit will be denied for replication.
+    ${ArchiveMaximumExpansionSizeLimit},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # Default is 0.
+    # The minimum archive file size (in bytes) required to trigger expansion during replication.
+    # Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
+    ${ArchiveMinimumSizeForExpansion},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # Specifies the maximum allowed size (in bytes) for files to be replicated.
+    # Any file size greater than maximum will be denied replication.
+    ${DataSizeMaximum},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.Int64]
+    # Optional.
+    # Default is 0.
+    # Specifies the minimum required size (in bytes) for a file to be eligible for replication.
+    # Any file size less than minimum will be denied replication.
+    ${DataSizeMinimum},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # A description of the FlowProfile that defines the replication scenario.
+    ${Description},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IMimeTypeFilter[]]
+    # Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered.
+    # For more detail, please refer to the MimeTypeFiler model.
+    ${MimeFilter},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Allow", "Deny")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Specifies whether the filter is an allow list or deny list.
+    # For more detail, please refer to the FilterType model.
+    ${MimeFilterType},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Obsolete", "Enabled")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The operational status of the FlowProfile.
+    ${Status},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [ADT.Runtime.Info(PossibleTypes=([ADT.Models.IFlowProfilePatchTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.ITextMatch[]]
+    # A list of text patterns to block, each with matching rules and case sensitivity options.
+    ${TextMatchingDeny},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [ADT.Runtime.Info(PossibleTypes=([ADT.Models.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The default XML namespace used for schema validation.
+    ${XmlFilterDefaultNamespace},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Inline")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Defines the method for referencing the xml schema.
+    ${XmlFilterReference},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPipelineExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The inline XSD schema to be used for validation.
+    ${XmlFilterSchema},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [ADT.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [ADT.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [ADT.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [ADT.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [ADT.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [ADT.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('ADT.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [ADT.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DataTransfer.private\Update-AzDataTransferFlowProfile_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.DataTransfer.private\Update-AzDataTransferFlowProfile_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPipelineExpanded = 'Az.DataTransfer.private\Update-AzDataTransferFlowProfile_UpdateViaIdentityPipelineExpanded';
+            UpdateViaJsonFilePath = 'Az.DataTransfer.private\Update-AzDataTransferFlowProfile_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DataTransfer.private\Update-AzDataTransferFlowProfile_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [ADT.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [ADT.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [ADT.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [ADT.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update the flow resource.
 .Description
 Update the flow resource.
@@ -4255,16 +5548,18 @@ To create the parameters described below, construct a hash table containing the 
 CONNECTIONINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link

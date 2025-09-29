@@ -26,6 +26,28 @@ data processing" -RemoteSubscriptionId 11111111-1111-1111-1111-111111111111 -Con
 New-AzDataTransferConnection -ResourceGroupName ResourceGroup02 -PipelineName Pipeline01 -Name Connection02 -Location "WestUS" -Direction "Send" -PIN "ABCDEFG" -FlowType "Mission" -Justification "Required for data processing" -Confirm:$false
 .Example
 New-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection03 -PipelineName Pipeline01 -Location "EastUS" -Direction "Receive" -FlowType "Mission"  -RequirementId 123 -Justification "Required for data export" -PrimaryContact "user@example.com" -SecondaryContact "admin@example.com" -Tag @{Environment="Production"} -Confirm:$false
+.Example
+# First, create or reference existing FlowProfiles
+$basicFlowProfile = @{
+    Name = "files-flowprofile"
+    Pipeline = "Pipeline01"
+    FlowProfileId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/files-flowprofile"
+    ReplicationScenario = "Files"
+    Status = "Enabled"
+    Description = "Basic FlowProfile for file transfers"
+}
+
+$messagingFlowProfile = @{
+    Name = "messaging-flowprofile"
+    Pipeline = "Pipeline01"
+    FlowProfileId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/pipelines/Pipeline01/flowProfiles/messaging-flowprofile"
+    ReplicationScenario = "Messaging"
+    Status = "Enabled"
+    Description = "Messaging FlowProfile with antivirus protection"
+}
+
+# Create connection with FlowProfiles
+New-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -PipelineName Pipeline01 -Name Connection04 -Location "EastUS" -Direction "Receive" -FlowProfileList @($basicFlowProfile, $messagingFlowProfile) -RequirementId "FP-2025-001" -Justification "Modern connection using FlowProfile architecture for enhanced security and flexibility" -RemoteSubscriptionId "11111111-1111-1111-1111-111111111111" -PrimaryContact "dataowner@company.com" -SecondaryContact @("security@company.com", "operations@company.com") -Tag @{Environment="Production"; DataClassification="Sensitive"} -Confirm:$false
 
 .Outputs
 ADT.Models.IConnection
@@ -34,7 +56,15 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SCHEMA <ISchema[]>: The schemas for this connection
+FLOWPROFILELIST <IFlowProfileMetadata[]>: Provides a list of FlowProfiles .
+  Description <String>: A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.
+  FlowProfileId <String>: A guid represented as a string for the FlowProfile resource, assigned by the system.
+  Name <String>: The name of the FlowProfile.
+  Pipeline <String>: The name of the parent Pipeline Azure resource associated with this FlowProfile.
+  ReplicationScenario <String>: The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
+  Status <String>: The operational status of the FlowProfile.
+
+SCHEMA <ISchema[]>: The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
   [ConnectionId <String>]: Connection ID associated with this schema
   [Content <String>]: Content of the schema
   [Direction <String>]: The direction of the schema.
@@ -79,6 +109,12 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # Hostname specific to API Flows
+    ${ApiHostname},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.PSArgumentCompleterAttribute("Send", "Receive")]
     [ADT.Category('Body')]
     [System.String]
@@ -87,10 +123,19 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IFlowProfileMetadata[]]
+    # Provides a list of FlowProfiles .
+    ${FlowProfileList},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
     [ADT.Category('Body')]
     [System.String[]]
-    # The flow types being requested for this connection
+    # The flow types being requested for this connection.
+    # This FlowType property has reached end of life support starting version 2025-05-30-preview.
+    # Please create a FlowProfile resource instead.
     ${FlowType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -140,14 +185,18 @@ param(
     [AllowEmptyCollection()]
     [ADT.Category('Body')]
     [ADT.Models.ISchema[]]
-    # The schemas for this connection
+    # The schemas for this connection.
+    # The schemas property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${Schema},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [ADT.Category('Body')]
     [System.String[]]
-    # The schema URIs for this connection
+    # The schema URIs for this connection.
+    # The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${SchemaUri},
 
     [Parameter(ParameterSetName='CreateExpanded')]

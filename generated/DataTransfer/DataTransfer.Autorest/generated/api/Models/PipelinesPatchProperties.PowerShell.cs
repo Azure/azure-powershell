@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using ADT.Runtime.PowerShell;
 
-    /// <summary>Properties of pipelines patch body.</summary>
+    /// <summary>
+    /// Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview.
+    /// Please create and use the FlowProfile resource instead.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(PipelinesPatchPropertiesTypeConverter))]
     public partial class PipelinesPatchProperties
     {
@@ -150,7 +153,8 @@ namespace ADT.Models
             return ToJsonString();
         }
     }
-    /// Properties of pipelines patch body.
+    /// Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview.
+    /// Please create and use the FlowProfile resource instead.
     [System.ComponentModel.TypeConverter(typeof(PipelinesPatchPropertiesTypeConverter))]
     public partial interface IPipelinesPatchProperties
 

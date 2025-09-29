@@ -10,15 +10,15 @@ namespace ADT.Cmdlets
     using ADT.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Rejects the specified connection request in a pipeline.</summary>
+    /// <summary>Rejects a pending connection request associated with the specified Pipeline.</summary>
     /// <remarks>
     /// [OpenAPI] RejectConnection=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Deny, @"AzDataTransferConnection_RejectViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IConnection))]
-    [global::ADT.Description(@"Rejects the specified connection request in a pipeline.")]
+    [global::ADT.Description(@"Rejects a pending connection request associated with the specified Pipeline.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection", ApiVersion = "2025-05-30-preview")]
     public partial class DenyAzDataTransferConnection_RejectViaIdentity : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext
