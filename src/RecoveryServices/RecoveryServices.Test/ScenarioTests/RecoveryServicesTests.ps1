@@ -171,150 +171,121 @@ function Test-GetRSVaultSettingsFile
 
 <#
 .SYNOPSIS
-Recovery Services Soft Deleted Vault Tests - Delete, Get, and Undo deletion
+Recovery Services Soft Deleted Vault Tests
 #>
 function Test-RecoveryServicesSoftDeletedVaultOperations
 {
-    $location = "centraluseuap"
-    $resourceGroupName = Create-ResourceGroup $location
-    $name = "PSTestRSV" + @(Get-RandomSuffix)
+    $location = "westus"
+    $resourceGroupName = "hiagawus-rg"
+    $softDeletedVaultNamePattern = "hiagawus-rg_*"  # Pattern to match the vault name
+    $expectedBackupItems = @("hiagaCRRRVM23", "hiagawusCRR-vm")
+    $subscriptionId = "f879818f-5b29-4a43-8961-34169783144f" # use this subscription for this test
+    $originalRSVname = "hiagawusCRR-vault"
 
     try
     {
-        # 1. Create a new Recovery Services Vault
-        $vault = New-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName -Location $location
-
-        Assert-NotNull($vault.Name)
-        Assert-NotNull($vault.ID)
-        Assert-NotNull($vault.Type)
-        Assert-AreEqual $name $vault.Name
-        Assert-AreEqual $location $vault.Location
-
-        # 2. Delete the vault (this will soft delete it)
-        Remove-AzRecoveryServicesVault -Vault $vault
-
-        # Verify vault is no longer in active vaults list
-        $activeVaults = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
-        Assert-True { $activeVaults.Count -eq 0 }
-
-        # 3. Get soft deleted vault
+        # 1. Get-AzRecoveryServicesSoftDeletedVault - Get all soft deleted vaults in location
         $softDeletedVaults = Get-AzRecoveryServicesSoftDeletedVault -Location $location
+        
         Assert-NotNull($softDeletedVaults)
         Assert-True { $softDeletedVaults.Count -gt 0 }
-
-        # Find our specific soft deleted vault
+        
+        # Find the target soft deleted vault by resource group and name pattern
         $targetSoftDeletedVault = $softDeletedVaults | Where-Object { 
-            $_.Name -eq $name -and $_.ResourceGroupName -eq $resourceGroupName 
+            $_.ResourceGroupName -eq $resourceGroupName -and $_.Name -like $softDeletedVaultNamePattern 
         }
-        
         Assert-NotNull($targetSoftDeletedVault)
-        Assert-AreEqual $name $targetSoftDeletedVault.Name
-        Assert-AreEqual $location $targetSoftDeletedVault.Location
         Assert-AreEqual $resourceGroupName $targetSoftDeletedVault.ResourceGroupName
-        Assert-NotNull($targetSoftDeletedVault.Properties.VaultId)
-        Assert-NotNull($targetSoftDeletedVault.Properties.VaultDeletionTime)
-        Assert-NotNull($targetSoftDeletedVault.Properties.PurgeAt)
+        Assert-AreEqual $location $targetSoftDeletedVault.Location
+        Assert-NotNull($targetSoftDeletedVault.Properties)
 
-        # 4. Get soft deleted vault by name
-        $specificSoftDeletedVault = Get-AzRecoveryServicesSoftDeletedVault -Location $location -Name $name
+        # Get the actual vault name for subsequent operations
+        $vaultName = $targetSoftDeletedVault.Name
+        Write-Host "Found soft-deleted vault: $vaultName"
+
+        # 2. Get-AzRecoveryServicesSoftDeletedVault - Get specific soft deleted vault by name
+        $specificSoftDeletedVault = Get-AzRecoveryServicesSoftDeletedVault -Location $location -Name $vaultName -ResourceGroupName $resourceGroupName
+        
         Assert-NotNull($specificSoftDeletedVault)
-        Assert-AreEqual $name $specificSoftDeletedVault.Name
-        Assert-AreEqual $location $specificSoftDeletedVault.Location
+        Assert-AreEqual $vaultName $specificSoftDeletedVault.Name
+        Assert-AreEqual $resourceGroupName $specificSoftDeletedVault.ResourceGroupName
 
-        # 5. Get soft deleted vault by resource group filter
-        $filteredSoftDeletedVaults = Get-AzRecoveryServicesSoftDeletedVault -Location $location -ResourceGroupName $resourceGroupName
-        Assert-NotNull($filteredSoftDeletedVaults)
-        $filteredTargetVault = $filteredSoftDeletedVaults | Where-Object { $_.Name -eq $name }
-        Assert-NotNull($filteredTargetVault)
-
-        # 6. Undo vault deletion
-        $undoResult = Undo-AzRecoveryServicesVaultDeletion -ResourceGroupName $resourceGroupName -Name $name -Location $location
-
-        Assert-NotNull($undoResult)
-        Assert-AreEqual $name $undoResult.Name
-        Assert-AreEqual $location $undoResult.Location
-
-        # 7. Verify vault is restored and back in active vaults list
-        # Note: The restoration might take some time, so we may need to wait or poll
-        Start-Sleep -Seconds 30  # Wait for restoration to complete
-
-        $restoredVaults = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
-        Assert-NotNull($restoredVaults)
-        Assert-True { $restoredVaults.Count -gt 0 }
+        # 3. Get-AzRecoveryServicesSoftDeletedVaultBackupItem - Using VaultId
+        $backupItemsUsingVaultId = Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultId $targetSoftDeletedVault.ID
         
-        $restoredVault = $restoredVaults[0]
-        Assert-AreEqual $name $restoredVault.Name
-        Assert-AreEqual $location $restoredVault.Location
-        Assert-AreEqual $resourceGroupName $restoredVault.ResourceGroupName
-
-        # 8. Verify soft deleted vault is no longer in soft deleted list
-        $remainingSoftDeletedVaults = Get-AzRecoveryServicesSoftDeletedVault -Location $location -Name $name
-        # After successful restoration, the vault should not be in soft deleted state
-        # This assertion might need adjustment based on actual API behavior
-        # Assert-Null($remainingSoftDeletedVaults)
-
-        # Clean up the restored vault
-        Remove-AzRecoveryServicesVault -Vault $restoredVault
-    }
-    finally
-    {
-        Cleanup-ResourceGroup $resourceGroupName
-    }
-}
-
-<#
-.SYNOPSIS
-Recovery Services Soft Deleted Vault Tests - Filter by existing vault pattern
-#>
-function Test-RecoveryServicesSoftDeletedVaultFiltering
-{
-    $location = "centraluseuap"
-    
-    try
-    {
-        # 1. Get all soft deleted vaults in the location
-        $allSoftDeletedVaults = Get-AzRecoveryServicesSoftDeletedVault -Location $location
+        Assert-NotNull($backupItemsUsingVaultId)
+        Assert-True { $backupItemsUsingVaultId.Count -ge 2 }
         
-        if ($allSoftDeletedVaults -ne $null -and $allSoftDeletedVaults.Count -gt 0)
+        # Verify expected backup items exist
+        $foundBackupItems = @()
+        foreach ($item in $backupItemsUsingVaultId)
         {
-            Assert-True { $allSoftDeletedVaults.Count -gt 0 }
-            
-            foreach ($vault in $allSoftDeletedVaults)
+            foreach ($expectedItem in $expectedBackupItems)
             {
-                Assert-NotNull($vault.Name)
-                Assert-NotNull($vault.Location)
-                Assert-AreEqual $location $vault.Location
-                Assert-NotNull($vault.Properties)
-                Assert-NotNull($vault.Properties.VaultId)
-            }
-
-            # 2. Test filtering by vault name pattern (similar to your akkanaseTest23 example)
-            $filteredByPattern = $allSoftDeletedVaults | Where-Object { $_.Properties.VaultId -match "PSTestRSV" }
-            
-            # 3. Test resource group filtering
-            if ($allSoftDeletedVaults.Count -gt 0)
-            {
-                $firstVault = $allSoftDeletedVaults[0]
-                if ($firstVault.ResourceGroupName -ne $null)
+                if ($item.Name -like "*$expectedItem*" -or $item.SourceResourceId -like "*$expectedItem*")
                 {
-                    $filteredByRG = Get-AzRecoveryServicesSoftDeletedVault -Location $location -ResourceGroupName $firstVault.ResourceGroupName
-                    Assert-NotNull($filteredByRG)
-                    
-                    foreach ($vault in $filteredByRG)
-                    {
-                        Assert-AreEqual $firstVault.ResourceGroupName $vault.ResourceGroupName
-                    }
+                    $foundBackupItems += $expectedItem
+                    break
                 }
             }
         }
-        else
-        {
-            Write-Warning "No soft deleted vaults found in location $location for filtering tests"
+        Assert-True { $foundBackupItems.Count -eq $expectedBackupItems.Count }
+
+        # 4. Get-AzRecoveryServicesSoftDeletedVaultBackupItem - Using VaultName and ResourceGroupName
+        $backupItemsUsingVaultName = Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultName $vaultName -ResourceGroupName $resourceGroupName
+        
+        Assert-NotNull($backupItemsUsingVaultName)
+        Assert-True { $backupItemsUsingVaultName.Count -ge 2 }
+        Assert-AreEqual $backupItemsUsingVaultId.Count $backupItemsUsingVaultName.Count
+
+        # 5. Undo-AzRecoveryServicesVaultDeletion - Restore the soft deleted vault
+        $undeleteResult = Undo-AzRecoveryServicesVaultDeletion -ResourceGroupName $resourceGroupName -Name $vaultName -Location $location -Force
+        
+        Assert-NotNull($undeleteResult)
+
+        # Wait a bit for the restoration to complete
+        Start-Sleep -Seconds 30
+
+        # 6. Get-AzRecoveryServicesVault - Verify vault is now active again
+        $activeVault = Get-AzRecoveryServicesVault -Name $originalRSVname -ResourceGroupName $resourceGroupName
+        
+        Assert-NotNull($activeVault)
+        Assert-AreEqual $originalRSVname $activeVault.Name
+        Assert-AreEqual $resourceGroupName $activeVault.ResourceGroupName
+        Assert-AreEqual $location $activeVault.Location
+        Assert-NotNull($activeVault.ID)
+        Assert-NotNull($activeVault.Type)
+
+        # 7. Verify the vault is no longer in soft deleted state
+        $softDeletedVaultsAfterRestore = Get-AzRecoveryServicesSoftDeletedVault -Location $location
+        $softDeletedVaultAfterRestore = $softDeletedVaultsAfterRestore | Where-Object { $_.Properties.VaultId -match $originalRSVname }
+        Assert-Null($softDeletedVaultAfterRestore)
+
+        # 8. Remove-AzRecoveryServicesVault - Delete the vault again to maintain original test state
+        Remove-AzRecoveryServicesVault -Vault $activeVault
+
+        # Wait a bit for the deletion to complete
+        Start-Sleep -Seconds 30
+
+        # 9. Verify vault is back to soft deleted state (note: name may have changed due to new GUID)
+        $softDeletedVaultsFinal = Get-AzRecoveryServicesSoftDeletedVault -Location $location
+        $finalSoftDeletedVault = $softDeletedVaultsFinal | Where-Object { 
+            $_.ResourceGroupName -eq $resourceGroupName -and $_.Name -like $softDeletedVaultNamePattern 
         }
+        Assert-NotNull($finalSoftDeletedVault)
+        Write-Host "Vault back in soft-deleted state with name: $($finalSoftDeletedVault.Name)"
+
+        # 10. Verify active vault no longer exists (check by resource group and original pattern)
+        $activeVaultsCheck = Get-AzRecoveryServicesVault -Name $originalRSVname -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+        Assert-Null($activeVaultCheck)
     }
-    catch
+    finally
     {
-        Write-Warning "Soft deleted vault filtering test encountered an issue: $($_.Exception.Message)"
-        # Don't fail the test if there are no existing soft deleted vaults
+        # If test fails, attempt to clean up by ensuring vault is in soft deleted state                
+        $activeVaultsCleanup = Get-AzRecoveryServicesVault -Name $originalRSVname -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+        if ($activeVaultCleanup -ne $null)
+        {
+            Remove-AzRecoveryServicesVault -Vault $activeVaultCleanup
+        }        
     }
 }

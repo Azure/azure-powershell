@@ -15,8 +15,8 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.RecoveryServices.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Undeletes a soft deleted Azure Recovery Services Vault.
     /// </summary>
     [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultDeletion", SupportsShouldProcess = true)]
-    [OutputType(typeof(ARSSoftDeletedVault))]
+    [OutputType(typeof(Object))] // chck: ServeClientModel.OperationStatus
     public class UndoAzRecoveryServicesVaultDeletion : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                     WriteVerbose($"Undelete operation completed for vault '{this.Name}'");
                     
-                    this.WriteObject(new ARSSoftDeletedVault(undeleteResult));
+                    this.WriteObject(new ARSSoftDeletedVault(undeleteResult)); // chck with Rishav what should be the output type here.
                 }
                 catch (Exception exception)
                 {

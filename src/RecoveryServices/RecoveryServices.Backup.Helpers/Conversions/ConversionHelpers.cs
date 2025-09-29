@@ -1371,7 +1371,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Instance.WriteWarning($"Failed to set soft deleted common properties: {ex.Message}");
+                Logger.Instance.WriteDebug($"Warning: Failed to set soft deleted common properties: {ex.Message}");
             }
         }
 

@@ -149,6 +149,12 @@ This command constructs the recovery configuration of a backed up item such as S
 ### [Get-AzRecoveryServicesResourceGuardMapping](Get-AzRecoveryServicesResourceGuardMapping.md)
 Gets the resource guard mapping added to the recovery services vault.
 
+### [Get-AzRecoveryServicesSoftDeletedVault](Get-AzRecoveryServicesSoftDeletedVault.md)
+Gets soft-deleted Recovery Services vaults in a specified location.
+
+### [Get-AzRecoveryServicesSoftDeletedVaultBackupItem](Get-AzRecoveryServicesSoftDeletedVaultBackupItem.md)
+Gets backup items from soft-deleted Recovery Services vault.
+
 ### [Get-AzRecoveryServicesVault](Get-AzRecoveryServicesVault.md)
 Gets a list of Recovery Services vaults.
 
@@ -374,6 +380,9 @@ Undeletes a previously soft-deleted backup container in a recovery services vaul
 
 ### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
 If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever
+
+### [Undo-AzRecoveryServicesVaultDeletion](Undo-AzRecoveryServicesVaultDeletion.md)
+Undeletes a soft-deleted Recovery Services vault.
 
 ### [Unregister-AzRecoveryServicesBackupContainer](Unregister-AzRecoveryServicesBackupContainer.md)
 Unregisters a Windows Server or other container from the vault.
