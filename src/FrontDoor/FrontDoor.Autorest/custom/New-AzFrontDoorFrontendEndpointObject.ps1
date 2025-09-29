@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpoint
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendendpointobject
 #>
 function New-AzFrontDoorFrontendEndpointObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpoint')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

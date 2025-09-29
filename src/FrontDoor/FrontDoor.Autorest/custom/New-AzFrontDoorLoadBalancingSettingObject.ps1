@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorloadbalancingsettingobject
 #>
 function New-AzFrontDoorLoadBalancingSettingObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
