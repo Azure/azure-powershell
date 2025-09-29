@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified). To set a custom retention period use -SoftDeleteRetentionDays.")]
         [PSArgumentCompleter("true", "false")]
-        public bool EnableSoftDelete { get; set; }
+        public bool? EnableSoftDelete { get; set; }
 
         /// <summary>
         /// Value for soft-delete retention days for the server.
@@ -152,18 +152,28 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            // if the user specified a retention days value, then they must also enable soft delete
-            if (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays > 0 && !this.EnableSoftDelete)
+            if (SoftDeleteRetentionDays.HasValue)
             {
-                throw new PSArgumentException(Properties.Resources.MissingEnableSoftDelete, "EnableSoftDelete");
+                if (EnableSoftDelete == true)
+                {
+                    if (SoftDeleteRetentionDays.Value < 1 || SoftDeleteRetentionDays.Value > 35)
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysRange, "SoftDeleteRetentionDays");
+                    }
+                }
+                else if (EnableSoftDelete == false)
+                {
+                    if (SoftDeleteRetentionDays.Value != 0)
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysForDisablingSoftDelete, "SoftDeleteRetentionDays");
+                    }
+                }
+                else
+                {
+                    throw new PSArgumentException(Properties.Resources.MissingEnableSoftDelete, "EnableSoftDelete");
+                }
             }
-
-            // if the user specified 0 retention days, then they must not enable soft delete
-            if (this.EnableSoftDelete && this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays == 0)
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDays, "SoftDeleteRetentionDays");
-            }
-
+            
             base.ExecuteCmdlet();
         }
         /// <summary>
@@ -204,16 +214,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
-            if (this.EnableSoftDelete)
+            if (this.EnableSoftDelete == true)
             {
                 // If enabling soft-delete retention, use the explicitly provided value or default to 7 days if none provided.
                 updateData[0].SoftDeleteRetentionDays = this.SoftDeleteRetentionDays ?? 7;
             }
+            else if (this.EnableSoftDelete == false)
+            {
+                // if disabling soft-delete retention, set retention to 0 days.
+                updateData[0].SoftDeleteRetentionDays = 0;
+            }
             else
             {
-                // If not enabling, only explicitly set retention to 0 when the caller provided 0.
-                // Otherwise, leave as null so the service preserves the existing retention setting.
-                updateData[0].SoftDeleteRetentionDays = (this.SoftDeleteRetentionDays.HasValue && this.SoftDeleteRetentionDays.Value == 0) ? 0 : (int?)null;
+                // If EnableSoftDelete is not specified, retain existing retention value.
+                updateData[0].SoftDeleteRetentionDays = (int?)null;
             }
 
             return updateData;

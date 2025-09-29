@@ -693,7 +693,7 @@ function Test-CreateServerWithDefaultSoftDeleteRetentionEnabled
 	}
 	finally
 	{
-		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -EnableSoftDelete $False
 		Remove-ResourceGroupForTest $rg
 	}
 }
@@ -731,7 +731,7 @@ function Test-CreateServerWithCustomSoftDeleteRetentionEnabled
 	}
 	finally
 	{
-		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -EnableSoftDelete $False
 		Remove-ResourceGroupForTest $rg
 	}
 }
@@ -768,7 +768,7 @@ function Test-UpdateServerWithSoftDeleteRetentionEnabled
 	}
 	finally
 	{
-		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SoftDeleteRetentionDays 0
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -EnableSoftDelete $False
 		Remove-ResourceGroupForTest $rg
 	}
 }
@@ -798,7 +798,7 @@ function Test-RestoreDeletedServer
 	}
 	finally
 	{
-		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SoftDeleteRetentionDays 0
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -EnableSoftDelete $False
 		Remove-ResourceGroupForTest $rg
 	}
 }
