@@ -15,6 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferPendingFlow
 }
 
 Describe 'Get-AzDataTransferPendingFlow' {
+    $sendFlowParams = @{
+        ResourceGroupName     = $env.ResourceGroupName
+        ConnectionName        = $env.ConnectionLinkedSend
+        Name                  = "pending-flow-" + $env.RunId
+        Location              = $env.Location
+        FlowType              = "Mission"
+        DataType              = "Blob"
+        StorageAccountName    = $env.StorageAccountName
+        StorageContainerName  = $env.StorageContainerName
+    }
+    $createdSendFlow =  New-AzDataTransferFlow @sendFlowParams
+
     It 'List' {
         {
             $pendingFlows = Get-AzDataTransferPendingFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked

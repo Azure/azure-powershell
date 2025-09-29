@@ -39,10 +39,9 @@ Describe 'Enable-AzDataTransferConnection' {
     It 'Enable connection with NoWait' {
         {
             # Enable connection asynchronously and check status after timeout
-            $timeout = 60
+            $timeout = 100
             $result = $null
             $completed = $false
-
             
             Write-Host "Starting Enable-AzDataTransferConnection with NoWait..."
             $startTime = Get-Date

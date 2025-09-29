@@ -53,6 +53,6 @@ Describe 'Update-AzDataTransferFlow' {
 
     AfterAll {
         # Clean up the created flow
-        Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate -Confirm:$false
+        # Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate -Confirm:$false
     }
 }

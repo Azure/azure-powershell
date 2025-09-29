@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added commands for FlowProfile creation and management
+* Updated commands for using FlowProfiles in Flow/Connection creation
 
 ## Version 1.0.0
 * General availability for module Az.DataTransfer

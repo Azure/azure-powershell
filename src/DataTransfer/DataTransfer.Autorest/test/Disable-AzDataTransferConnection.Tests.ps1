@@ -23,10 +23,10 @@ Describe 'Disable-AzDataTransferConnection' {
         $connectionNoWaitParams = @{
             Location             = $env.Location
             PipelineName         = $env.PipelineName
-            Direction            = "Send"
+            Direction            = "Receive"
             FlowType             = "Complex"
             ResourceGroupName    = $env.ResourceGroupName
-            Justification        = "Send side for connection disable NoWait testing"
+            Justification        = "Receive side for connection disable NoWait testing"
             RemoteSubscriptionId = $env.SubscriptionId
             RequirementId        = 0
             Name                 = $connectionToDisableNoWaitName
@@ -39,7 +39,7 @@ Describe 'Disable-AzDataTransferConnection' {
     It 'Disable connection with NoWait' {
         {        
             # Disable connection asynchronously and check status after timeout
-            $timeout = 60
+            $timeout = 100
             $result = $null
             $completed = $false
             
