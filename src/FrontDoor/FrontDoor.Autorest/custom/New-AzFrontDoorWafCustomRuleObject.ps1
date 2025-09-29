@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRule
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafcustomruleobject
 #>
 function New-AzFrontDoorWafCustomRuleObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

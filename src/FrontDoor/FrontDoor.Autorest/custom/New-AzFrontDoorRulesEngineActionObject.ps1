@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorrulesengineactionobject
 #>
 function New-AzFrontDoorRulesEngineActionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction')]
     [CmdletBinding(DefaultParameterSetName= 'ForwardingParameterSet')]
     [CmdletBinding(PositionalBinding=$false)]

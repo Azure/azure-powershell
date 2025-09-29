@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HealthProbeSettingsModel
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorhealthprobesettingobject
 #>
 function New-AzFrontDoorHealthProbeSettingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HealthProbeSettingsModel')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

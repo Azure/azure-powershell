@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolssettingsobject
 #>
 function New-AzFrontDoorBackendPoolsSettingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

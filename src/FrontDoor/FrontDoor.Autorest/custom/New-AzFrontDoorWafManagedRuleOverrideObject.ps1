@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleOverride
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleoverrideobject
 #>
 function New-AzFrontDoorWafManagedRuleOverrideObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleOverride')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

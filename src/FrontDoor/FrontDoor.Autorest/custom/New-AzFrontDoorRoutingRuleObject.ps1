@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorroutingruleobject
 #>
 function New-AzFrontDoorRoutingRuleObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule')]
     [CmdletBinding(DefaultParameterSetName= 'ForwardingParameterSet')]
     [CmdletBinding(PositionalBinding=$false)]

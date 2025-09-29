@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineMatchCondition
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorrulesenginematchconditionobject
 #>
 function New-AzFrontDoorRulesEngineMatchConditionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineMatchCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
