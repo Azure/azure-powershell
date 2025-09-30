@@ -23,9 +23,9 @@ Creates or updates a top-level Storage Mover resource.
 New-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Location eastus -Description "Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ STORAGEMOVER <IStorageMover>: The Storage Mover resource, which is a container f
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
 #>
 function New-AzStorageMover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -72,7 +72,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover]
     # The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
     # To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
     ${StorageMover},

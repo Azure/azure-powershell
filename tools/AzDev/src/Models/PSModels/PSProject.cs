@@ -22,12 +22,14 @@ namespace AzDev.Models.PSModels
         public string Path { get; set; }
         public ProjectType Type { get; set; }
         public string TypeDeductionReason { get; set; }
+        public string SubType { get; set; }
         internal PSProject(Project p)
         {
             Name = p.Name;
             Path = p.Path;
             Type = p.Type;
             TypeDeductionReason = p.TypeDeductionReason;
+            SubType = p.SubType;
         }
         internal PSProject() { }
         public override string ToString() => Name;
