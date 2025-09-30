@@ -16,39 +16,51 @@ Call MCP tool: `generate-autorest` with parameter `workingDirectory` = the path 
 Do not call Autorest directly; always use the MCP tool.
 If generation fails, STOP.
 
-## 3. Populate Examples
+## 3. Populate Examples (Help-Driven Parameters)
 Call MCP tool: `create-example` with the same `workingDirectory`.
 Tool returns:
   `{0}` = specs example source dir (downloaded JSON)
   `{1}` = target examples dir in module
   `{2}` = reference ideal examples (semicolon separated; may be empty)
-Use reference examples (if any) for style: parameter ordering (required first), consistent variable placeholder patterns, and advanced options inclusion.
-Leave an example file empty only if no relevant swagger example data exists.
-Quality guidance (concise):
-  - Provide both minimal (required params only) and enriched (common optional params) variants if the skeleton expects multiple examples.
-  - Use stable placeholder naming: `<ResourceGroupName>`, `<Location>`, `<WorkspaceName>` etc., unless a deterministic value is required by an existing test.
-  - Do not invent unsupported parameters; omit deprecated or preview-only params unless the swagger version explicitly requires them.
-  - Maintain consistent casing and ordering: required first, then alphabetized optional.
-  - Prefer realistic value shapes (GUID formats, URIs) over lorem ipsum.
-MANDATORY: After the tool call, TREAT the returned response text itself (instructions referencing {0} {1} {2}) AS AN ACTION PLAN. Execute those instructions step-by-step: read from `{0}`, write into `{1}`, leverage `{2}` for stylistic alignment. Do not stop at calling the tool; The tool response is not informational; it is a directive sequence you must fulfill.
 
-## 4. Populate Tests
+Parameter Source of Truth: Discard any swagger fields not documented in help.
+Derive the help directory as: `helpDir = <repo-root>/src/{ModuleName}/help/`.
+READ-ONLY: Do NOT copy, duplicate, or move help markdown files into the `.Autorest` or `examples` folder. They are only inspected to determine the allowed parameter set. Generating or pasting full help content into examples is prohibited.
+For each cmdlet example you generate:
+  1. Open the help markdown file: `helpDir/<CmdletName>.md`.
+  2. Examine the allowed parameters from (a) syntax code fences ``` blocks containing the cmdlet invocation) and (b) `### -ParameterName` headings.
+  3. Required ordering: parameters that appear in the first syntax signature first (in the order shown), followed by remaining optional parameters alphabetically.
+  4. Ignore `CommonParameters` heading and any swagger example properties not in the allowed set.
+  5. Use (or create if missing) only the example script files expected under `{1}`; never replicate help file text.
+
+Example Construction Rules:
+  - Minimal yet runnable. If swagger example provides values for disallowed params, omit them silently.
+  - Provide enriched variants only if distinct meaningful optional parameters remain after filtering.
+  - Use stable placeholders: `<ResourceGroupName>`, `<Location>`, etc.
+  - Never invent parameters or reuse removed swagger names under new casing.
+  - Leave the example file empty if no swagger fields map to documented parameters.
+
+MANDATORY EXECUTION: Treat the tool's response (with placeholders) as an action plan—read from `{0}`, consult (but do not copy) help files in `helpDir`, then generate/update ONLY the example scripts under `{1}` (respecting any existing skeleton), mirroring stylistic patterns from `{2}`.
+
+## 4. Populate Tests (Help-Driven Parameters)
 Call MCP tool: `create-test` with the same `workingDirectory`.
 Tool returns:
   `{0}` = specs example source dir
   `{1}` = target test dir
   `{2}` = reference ideal test dirs
-Fill test stubs using variables defined in `utils.ps1` `setupEnv` function. 
-IMPORTANT: You can completely ignore the generated Test files, do not fill these as they only have the skeleton. Instead, you can group these test files into groups of a particular resource & then write  new file for each group combining these 3-4 test file in the CRUD format.
-Add: create -> get -> assert -> (optional cleanup). Add a negative test when feasible.
-Leave a test empty only if genuinely no meaningful data can be inferred.
-Quality guidance (concise):
-  - CRUD Pattern: Create (or Update) => Get => Assert essential fields => (List => Assert presence) => (Delete => Confirm absence) when resource lifecycle is supported.
-  - Assertions: Prefer specific property checks (Name, Id segment patterns, ProvisioningState) over broad object dumps.
-  - Negative Case: Intentionally supply one invalid parameter or missing required field; assert error category/message pattern.
-  - Reuse Variables: All names & IDs defined once in `setupEnv` to avoid duplication and enable future parameterization.
-  - Idempotency: Avoid destructive operations unless they clean up what this test created.
-MANDATORY: After the tool call, EXECUTE the returned test instructions: interpret response text referencing `{0}`, `{1}`, `{2}`, open each stub under `{1}`, populate bodies using data from `{0}`, and mirror style from `{2}`. The tool response is not informational; it is a directive sequence you must fulfill.
+Do NOT modify any pre-generated stub files. Instead CREATE NEW files: one per top-level resource (or logical resource group) named `<ResourceName>.Crud.Tests.ps1`.
+Each file covers (omit phases not supported):
+  1. Create (New-* or equivalent)
+  2. Get (Get-*) with property assertions
+  3. List (Get-* plural) asserting presence
+  4. Update/Set (if supported) asserting only changed fields
+  5. Delete/Remove (cleanup) asserting absence (or expected NotFound)
+  6. Negative (invalid parameter or missing required) expecting specific error pattern
+Parameter Filtering: Apply the SAME help-driven filtering used for examples. Do not call cmdlets with parameters absent from their help markdown.
+Variable Reuse: Define all common names/IDs once in `utils.ps1` `setupEnv`; reference them in test files.
+Assertions: Prefer targeted property checks (Name, Id pattern, ProvisioningState) over full object dumps.
+Idempotency: Ensure cleanup for resources created; avoid deleting shared or pre-existing resources.
+MANDATORY: After the tool call, treat response text as an execution plan: read from `{0}`, create new files under `{1}`, mirror style from `{2}`, and enforce help-based parameter filtering.
 
 ## 5. Regenerate Module
 Call `generate-autorest` again with identical `workingDirectory` to ensure examples/tests are integrated. Do not modify the README.yaml block except via directives inserted earlier.

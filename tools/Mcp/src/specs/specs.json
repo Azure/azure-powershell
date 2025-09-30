@@ -81,15 +81,6 @@
     ],
     "prompts": [
         {
-            "name": "create-greeting",
-            "description": "Generate a customized greeting message",
-            "parameters": [
-                {"name": "name", "description": "Name of the person to greet", "type": "string"},
-                {"name": "style", "description": "The style of greeting, such a formal, excited, or casual. If not specified casual will be used", "type": "string", "optional": true}
-            ],
-            "callbackName": "createGreetingPrompt"
-        },
-        {
             "name": "partner-module-workflow",
             "description": "Full autonomous workflow instructions to generate a partner Azure PowerShell module via Autorest.",
             "parameters": [],

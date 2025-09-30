@@ -138,29 +138,7 @@ export class ToolsService {
         const workingDirectory = z.string().parse(Object.values(args)[0]);
         const examplePath = path.join(workingDirectory, "examples");
         const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
-        const exampleSpecs = await utils.getExampleJsonContent(exampleSpecsPath);
-        for (const {name, content} of exampleSpecs) {
-            const example = await utils.flattenJsonObject(content['parameters']);
-            try {
-                const response = await this._server!.elicitInput({
-                    "message": `Please review example data for ${name}: ${example.map(({key: k, value:v}) => `  \n${k}: ${v}`)}`,
-                    "requestedSchema": {
-                        "type": "object",
-                        "properties": {
-                            "skipAll": {
-                                "type": "boolean",
-                                "description": "If true, skip the review of all examples and proceed to the next step."
-                            }
-                        },
-                    }
-                });
-                if (response.content && response.content['skipAll'] === true) {
-                    break;
-                }
-            } catch (error) {
-                console.error(`Error eliciting input for example ${name}:`, error);
-            }
-        }
+        // Interactive elicitation removed previously; also parameter export removed (simplified workflow).
         const idealExamplePaths = utils.getIdealModuleExamplePaths();
         return [exampleSpecsPath, examplePath, idealExamplePaths];
     }
