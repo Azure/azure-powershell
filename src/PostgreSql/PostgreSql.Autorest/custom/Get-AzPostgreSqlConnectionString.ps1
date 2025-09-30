@@ -36,7 +36,7 @@ function Get-AzPostgreSqlConnectionString {
 
         [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = 'The server for the connection string')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer]
         ${InputObject},
 
         [Parameter(Mandatory, HelpMessage = 'Client connection provider.')]

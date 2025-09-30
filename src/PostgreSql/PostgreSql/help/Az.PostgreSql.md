@@ -54,7 +54,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 Creates a new server.
 
 ### [New-AzPostgreSqlFlexibleServerDatabase](New-AzPostgreSqlFlexibleServerDatabase.md)
-Creates a new database or updates an existing database.
+Create a new database or create an existing database.
 
 ### [New-AzPostgreSqlFlexibleServerFirewallRule](New-AzPostgreSqlFlexibleServerFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
@@ -66,7 +66,7 @@ Creates a new replica from an existing database.
 Creates a new server.
 
 ### [New-AzPostgreSqlVirtualNetworkRule](New-AzPostgreSqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+Create an existing virtual network rule.
 
 ### [Remove-AzPostgreSqlFirewallRule](Remove-AzPostgreSqlFirewallRule.md)
 Deletes a server firewall rule.
@@ -123,6 +123,9 @@ Use Update-AzPostSqlFlexibleServerConfiguration instead if you want update serve
 Updates a configuration of a server.
 Use Update-AzPostgreSqlFlexibleServer instead if you want update AdministratorLoginPassword, sku, etc.
 
+### [Update-AzPostgreSqlFlexibleServerDatabase](Update-AzPostgreSqlFlexibleServerDatabase.md)
+Update a new database or update an existing database.
+
 ### [Update-AzPostgreSqlFlexibleServerFirewallRule](Update-AzPostgreSqlFlexibleServerFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
@@ -132,5 +135,5 @@ The request body can contain one to many of the properties present in the normal
 Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzPostgreSqlVirtualNetworkRule](Update-AzPostgreSqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+Update an existing virtual network rule.
 
