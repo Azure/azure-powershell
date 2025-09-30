@@ -1103,6 +1103,52 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// Scales out one or more virtual machines in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='parameters'>
+            /// The input object for ScaleOut API.
+            /// </param>
+            public static VirtualMachineScaleSetsScaleOutHeaders ScaleOut(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VMScaleSetScaleOutInput parameters)
+            {
+                return operations.ScaleOutAsync(resourceGroupName, vmScaleSetName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Scales out one or more virtual machines in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='parameters'>
+            /// The input object for ScaleOut API.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetsScaleOutHeaders> ScaleOutAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VMScaleSetScaleOutInput parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ScaleOutWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
             /// Changes ServiceState property for a given service
             /// </summary>
             /// <param name='operations'>
@@ -1962,6 +2008,52 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task BeginRestartAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, IList<string> instanceIds = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Scales out one or more virtual machines in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='parameters'>
+            /// The input object for ScaleOut API.
+            /// </param>
+            public static VirtualMachineScaleSetsScaleOutHeaders BeginScaleOut(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VMScaleSetScaleOutInput parameters)
+            {
+                return operations.BeginScaleOutAsync(resourceGroupName, vmScaleSetName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Scales out one or more virtual machines in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='parameters'>
+            /// The input object for ScaleOut API.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetsScaleOutHeaders> BeginScaleOutAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VMScaleSetScaleOutInput parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginScaleOutWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>

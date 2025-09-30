@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Azure Compute resource management API.",
-    "version": "2024-11-01",
+    "version": "2025-04-01",
     "description": "Compute Client",
     "x-typespec-generated": [
       {
@@ -1226,7 +1226,7 @@
           {
             "name": "commandId",
             "in": "path",
-            "description": "The command id.",
+            "description": "Specifies a commandId of predefined built-in script. Command IDs available for Linux are listed at https://aka.ms/RunCommandManagedLinux#available-commands, Windows at https://aka.ms/RunCommandManagedWindows#available-commands.",
             "required": true,
             "type": "string"
           },
@@ -2548,7 +2548,7 @@
         "tags": [
           "CapacityReservations"
         ],
-        "description": "The operation to delete a capacity reservation. This operation is allowed only when all the associated resources are disassociated from the capacity reservation. Please refer to https://aka.ms/CapacityReservation for more details.",
+        "description": "The operation to delete a capacity reservation. This operation is allowed only when all the associated resources are disassociated from the capacity reservation. Please refer to https://aka.ms/CapacityReservation for more details. Note: Block capacity reservations cannot be deleted after it has been successfully allocated until the schedule end time.",
         "parameters": [
           {
             "$ref": "./types.json#/parameters/ApiVersionParameter"
@@ -6121,6 +6121,71 @@
             }
           }
         }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/scaleOut": {
+      "post": {
+        "operationId": "VirtualMachineScaleSets_ScaleOut",
+        "tags": [
+          "VirtualMachineScaleSets"
+        ],
+        "description": "Scales out one or more virtual machines in a VM scale set.",
+        "parameters": [
+          {
+            "$ref": "./types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "vmScaleSetName",
+            "in": "path",
+            "description": "The name of the VM scale set.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "description": "The input object for ScaleOut API.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VMScaleSetScaleOutInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request has succeeded."
+          },
+          "202": {
+            "description": "Resource operation accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "./common.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState": {
@@ -10034,6 +10099,16 @@
         }
       }
     },
+    "AllInstancesDown": {
+      "type": "object",
+      "description": "Specifies if Scheduled Events should be auto-approved when all instances are down.",
+      "properties": {
+        "automaticallyApprove": {
+          "type": "boolean",
+          "description": "Specifies if Scheduled Events should be auto-approved when all instances are down.\nits default value is true"
+        }
+      }
+    },
     "AllocationStrategy": {
       "type": "string",
       "description": "Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.",
@@ -10497,7 +10572,7 @@
         },
         "sku": {
           "$ref": "#/definitions/Sku",
-          "description": "SKU of the resource for which capacity needs be reserved. The SKU name and capacity is required to be set. Currently VM Skus with the capability called 'CapacityReservationSupported' set to true are supported. Refer to List Microsoft.Compute SKUs in a region (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for supported values."
+          "description": "SKU of the resource for which capacity needs be reserved. The SKU name and capacity is required to be set.  For Block capacity reservations, sku.capacity can only accept values 1, 2, 4, 8, 16, 32, 64. Currently VM Skus with the capability called 'CapacityReservationSupported' set to true are supported. When 'CapacityReservationSupported' is true, the SKU capability also specifies the 'SupportedCapacityReservationTypes', which lists the types of capacity reservations (such as Targeted or Block) that the SKU supports. Refer to List Microsoft.Compute SKUs in a region (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for supported values."
         },
         "zones": {
           "type": "array",
@@ -10630,7 +10705,11 @@
         },
         "sharingProfile": {
           "$ref": "#/definitions/ResourceSharingProfile",
-          "description": "Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. Pls. keep in mind the capacity reservation group resource generally can be shared across subscriptions belonging to a single azure AAD tenant or cross AAD tenant if there is a trust relationship established between the AAD tenants. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details."
+          "description": "Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details."
+        },
+        "reservationType": {
+          "$ref": "#/definitions/ReservationType",
+          "description": "Indicates the type of capacity reservation. Allowed values are 'Block' for block capacity reservations and 'Targeted' for reservations that enable a VM to consume a specific capacity reservation when a capacity reservation group is provided. The reservation type is immutable and cannot be changed after it is assigned."
         }
       }
     },
@@ -10775,12 +10854,16 @@
           "format": "date-time",
           "description": "Specifies the time at which the Capacity Reservation resource was created. Minimum api-version: 2021-11-01.",
           "readOnly": true
+        },
+        "scheduleProfile": {
+          "$ref": "#/definitions/ScheduleProfile",
+          "description": "Defines the schedule for Block-type capacity reservations. Specifies the schedule during which capacity reservation is active and VM or VMSS resource can be allocated using reservation. This property is required and only supported when the capacity reservation group type is 'Block'. The scheduleProfile, start, and end fields are immutable after creation. Minimum API version: 2025-04-01. Please refer to https://aka.ms/blockcapacityreservation for more details."
         }
       }
     },
     "CapacityReservationUpdate": {
       "type": "object",
-      "description": "Specifies information about the capacity reservation. Only tags and sku.capacity can be updated.",
+      "description": "Specifies information about the capacity reservation. sku.capacity cannot be updated for Block Capacity Reservation. Tags can be update for all Capacity Reservation Types.",
       "properties": {
         "properties": {
           "$ref": "#/definitions/CapacityReservationProperties",
@@ -10789,7 +10872,7 @@
         },
         "sku": {
           "$ref": "#/definitions/Sku",
-          "description": "SKU of the resource for which capacity needs be reserved. The SKU name and capacity is required to be set. Currently VM Skus with the capability called 'CapacityReservationSupported' set to true are supported. Refer to List Microsoft.Compute SKUs in a region (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for supported values."
+          "description": "SKU of the resource for which capacity needs be reserved. The SKU name and capacity is required to be set. Currently VM Skus with the capability called 'CapacityReservationSupported' set to true are supported. When 'CapacityReservationSupported' is true, the SKU capability also specifies the 'SupportedCapacityReservationTypes', which lists the types of capacity reservations (such as Targeted or Block) that the SKU supports. Refer to List Microsoft.Compute SKUs in a region (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for supported values. **Note:** The SKU name and capacity cannot be updated for Block capacity reservations."
         }
       },
       "allOf": [
@@ -11714,6 +11797,10 @@
         "enable": {
           "type": "boolean",
           "description": "Specifies if event grid and resource graph is enabled for Scheduled event related configurations."
+        },
+        "scheduledEventsApiVersion": {
+          "type": "string",
+          "description": "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered."
         }
       }
     },
@@ -11845,6 +11932,30 @@
           "$ref": "#/definitions/VMSizeProperties",
           "description": "Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-07-01. This feature is still in preview mode and is not supported for VirtualMachineScaleSet. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details."
         }
+      }
+    },
+    "HighSpeedInterconnectPlacement": {
+      "type": "string",
+      "description": "Specifies the high speed interconnect placement for the virtual machine scale set.",
+      "enum": [
+        "None",
+        "Trunk"
+      ],
+      "x-ms-enum": {
+        "name": "HighSpeedInterconnectPlacement",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "None",
+            "value": "None",
+            "description": "No high speed interconnect placement"
+          },
+          {
+            "name": "Trunk",
+            "value": "Trunk",
+            "description": "Trunk high speed interconnect placement"
+          }
+        ]
       }
     },
     "HostEndpointSettings": {
@@ -12724,6 +12835,22 @@
         }
       ]
     },
+    "MaxInstancePercentPerZonePolicy": {
+      "type": "object",
+      "description": "The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set."
+        },
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Limit on the number of instances in each zone as a percentage of the total capacity of the virtual machine scale set.",
+          "maximum": 100
+        }
+      }
+    },
     "MigrateToVirtualMachineScaleSetInput": {
       "type": "object",
       "description": "Describes the Virtual Machine Scale Set to migrate from Availability Set.",
@@ -13182,7 +13309,8 @@
       "type": "string",
       "description": "The name of the service.",
       "enum": [
-        "AutomaticRepairs"
+        "AutomaticRepairs",
+        "AutomaticZoneRebalancing"
       ],
       "x-ms-enum": {
         "name": "OrchestrationServiceNames",
@@ -13191,6 +13319,35 @@
           {
             "name": "AutomaticRepairs",
             "value": "AutomaticRepairs"
+          },
+          {
+            "name": "AutomaticZoneRebalancing",
+            "value": "AutomaticZoneRebalancing",
+            "description": "AutomaticZoneRebalancing orchestration service."
+          }
+        ]
+      }
+    },
+    "OrchestrationServiceOperationStatus": {
+      "type": "string",
+      "description": "The latest operation status of the service.",
+      "enum": [
+        "InProgress",
+        "Completed"
+      ],
+      "x-ms-enum": {
+        "name": "OrchestrationServiceOperationStatus",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "InProgress",
+            "value": "InProgress",
+            "description": "InProgress orchestration service operation status."
+          },
+          {
+            "name": "Completed",
+            "value": "Completed",
+            "description": "Completed orchestration service operation status."
           }
         ]
       }
@@ -13274,6 +13431,17 @@
         "serviceState": {
           "$ref": "#/definitions/OrchestrationServiceState",
           "description": "The current state of the service.",
+          "readOnly": true
+        },
+        "latestOperationStatus": {
+          "$ref": "#/definitions/OrchestrationServiceOperationStatus",
+          "description": "The latest operation status of the service. Minimum API version for this property is 2025-04-01.",
+          "readOnly": true
+        },
+        "lastStatusChangeTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last UTC time when the operation status changed. Minimum API version for this property is 2025-04-01.",
           "readOnly": true
         }
       }
@@ -13452,22 +13620,22 @@
     },
     "Placement": {
       "type": "object",
-      "description": "Describes the user-defined constraints for virtual machine hardware placement.",
+      "description": "Describes the user-defined constraints for resource hardware placement.",
       "properties": {
         "zonePlacementPolicy": {
           "$ref": "#/definitions/ZonePlacementPolicyType",
-          "description": "Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation."
+          "description": "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation."
         },
         "includeZones": {
           "type": "array",
-          "description": "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.",
+          "description": "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any'/'Auto', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.",
           "items": {
             "type": "string"
           }
         },
         "excludeZones": {
           "type": "array",
-          "description": "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.",
+          "description": "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any'/'Auto', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.",
           "items": {
             "type": "string"
           }
@@ -13679,6 +13847,10 @@
         "imds": {
           "$ref": "#/definitions/HostEndpointSettings",
           "description": "Specifies the IMDS endpoint settings while creating the virtual machine or virtual machine scale set. Minimum api-version: 2024-03-01."
+        },
+        "addProxyAgentExtension": {
+          "type": "boolean",
+          "description": "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os."
         }
       }
     },
@@ -13881,6 +14053,30 @@
         }
       ]
     },
+    "ReservationType": {
+      "type": "string",
+      "description": "Indicates the type of capacity reservation. Allowed values are 'Block' for block capacity reservations and 'Targeted' for reservations that enable a VM to consume a specific capacity reservation when a capacity reservation group is provided. The reservation type is immutable and cannot be changed after it is assigned.",
+      "enum": [
+        "Targeted",
+        "Block"
+      ],
+      "x-ms-enum": {
+        "name": "ReservationType",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Targeted",
+            "value": "Targeted",
+            "description": "To consume on demand allocated capacity reservation when a capacity reservation group is provided."
+          },
+          {
+            "name": "Block",
+            "value": "Block",
+            "description": "To consume scheduled allocated block capacity reservation when a capacity reservation group is provided."
+          }
+        ]
+      }
+    },
     "ResiliencyPolicy": {
       "type": "object",
       "description": "Describes an resiliency policy - AutomaticZoneRebalancingPolicy, ResilientVMCreationPolicy and/or ResilientVMDeletionPolicy.",
@@ -13896,6 +14092,10 @@
         "automaticZoneRebalancingPolicy": {
           "$ref": "#/definitions/AutomaticZoneRebalancingPolicy",
           "description": "The configuration parameters used while performing automatic AZ balancing."
+        },
+        "zoneAllocationPolicy": {
+          "$ref": "#/definitions/ZoneAllocationPolicy",
+          "description": "The configuration parameters used while performing zone allocation."
         }
       }
     },
@@ -13996,7 +14196,7 @@
       "properties": {
         "subscriptionIds": {
           "type": "array",
-          "description": "Specifies an array of subscription resource IDs that capacity reservation group is shared with. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.",
+          "description": "Specifies an array of subscription resource IDs that capacity reservation group is shared with. Block Capacity Reservations does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.",
           "items": {
             "$ref": "./common.json#/definitions/SubResource"
           }
@@ -14733,7 +14933,7 @@
       "properties": {
         "commandId": {
           "type": "string",
-          "description": "The run command id."
+          "description": "Specifies a commandId of predefined built-in script. Command IDs available for Linux are listed at https://aka.ms/RunCommandManagedLinux#available-commands, Windows at https://aka.ms/RunCommandManagedWindows#available-commands."
         },
         "script": {
           "type": "array",
@@ -14870,6 +15070,20 @@
         }
       }
     },
+    "ScheduleProfile": {
+      "type": "object",
+      "description": "Defines the schedule for Block-type capacity reservations. Specifies the schedule during which capacity reservation is active and VM or VMSS resource can be allocated using reservation. This property is required and only supported when the capacity reservation group type is 'Block'. The scheduleProfile, start, and end fields are immutable after creation. Minimum API version: 2025-04-01. Please refer to https://aka.ms/blockcapacityreservation for more details.",
+      "properties": {
+        "start": {
+          "type": "string",
+          "description": "The required start date for block capacity reservations. Must be today or within 56 days in the future. For same-day scheduling, requests must be submitted before 11:30 AM UTC. Example: 2025-06-27."
+        },
+        "end": {
+          "type": "string",
+          "description": "The required end date for block capacity reservations. Must be after the start date, with a duration of either 1–14 whole days or 3–26 whole weeks. Example: 2025-06-28."
+        }
+      }
+    },
     "ScheduledEventsAdditionalPublishingTargets": {
       "type": "object",
       "properties": {
@@ -14894,6 +15108,10 @@
         "scheduledEventsAdditionalPublishingTargets": {
           "$ref": "#/definitions/ScheduledEventsAdditionalPublishingTargets",
           "description": "The configuration parameters used while publishing scheduledEventsAdditionalPublishingTargets."
+        },
+        "allInstancesDown": {
+          "$ref": "#/definitions/AllInstancesDown",
+          "description": "The configuration parameters used while creating AllInstancesDown scheduled event setting creation."
         }
       }
     },
@@ -14908,6 +15126,30 @@
           "$ref": "#/definitions/OSImageNotificationProfile",
           "description": "Specifies OS Image Scheduled Event related configurations."
         }
+      }
+    },
+    "ScriptShellTypes": {
+      "type": "string",
+      "description": "Script shell types.",
+      "enum": [
+        "Default",
+        "Powershell7"
+      ],
+      "x-ms-enum": {
+        "name": "ScriptShellTypes",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Default",
+            "value": "Default",
+            "description": "Default script shell type."
+          },
+          {
+            "name": "Powershell7",
+            "value": "Powershell7",
+            "description": "Powershell7 script shell type."
+          }
+        ]
       }
     },
     "SecurityEncryptionTypes": {
@@ -15885,6 +16127,34 @@
         }
       }
     },
+    "VMScaleSetScaleOutInput": {
+      "type": "object",
+      "description": "The input for ScaleOut",
+      "properties": {
+        "capacity": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Specifies the number of virtual machines in the scale set."
+        },
+        "properties": {
+          "$ref": "#/definitions/VMScaleSetScaleOutInputProperties",
+          "description": "The input properties for ScaleOut"
+        }
+      },
+      "required": [
+        "capacity"
+      ]
+    },
+    "VMScaleSetScaleOutInputProperties": {
+      "type": "object",
+      "description": "The input properties for ScaleOut",
+      "properties": {
+        "zone": {
+          "type": "string",
+          "description": "The zone in which the scale out is requested for the virtual machine scale set."
+        }
+      }
+    },
     "VMSizeProperties": {
       "type": "object",
       "description": "Specifies VM Size Property settings on the virtual machine.",
@@ -16810,6 +17080,13 @@
           "$ref": "#/definitions/VirtualMachineNetworkInterfaceConfigurationProperties",
           "description": "Describes a virtual machine network profile's IP configuration.",
           "x-ms-client-flatten": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags applied to the networkInterface address created by this NetworkInterfaceConfiguration",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       },
       "required": [
@@ -17138,6 +17415,13 @@
         "sku": {
           "$ref": "#/definitions/PublicIPAddressSku",
           "description": "Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible."
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags applied to the publicIP address created by this PublicIPAddressConfiguration",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       },
       "required": [
@@ -17358,7 +17642,7 @@
     },
     "VirtualMachineRunCommandScriptSource": {
       "type": "object",
-      "description": "Describes the script sources for run command. Use only one of script, scriptUri, commandId.",
+      "description": "Describes the script sources for run command. Use only one of these script sources: script, scriptUri, commandId, galleryScriptReferenceId.",
       "properties": {
         "script": {
           "type": "string",
@@ -17370,11 +17654,19 @@
         },
         "commandId": {
           "type": "string",
-          "description": "Specifies a commandId of predefined built-in script."
+          "description": "Specifies a commandId of predefined built-in script. Command IDs available for Linux are listed at https://aka.ms/RunCommandManagedLinux#available-commands, Windows at https://aka.ms/RunCommandManagedWindows#available-commands."
         },
         "scriptUriManagedIdentity": {
           "$ref": "#/definitions/RunCommandManagedIdentity",
           "description": "User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged."
+        },
+        "scriptShell": {
+          "$ref": "#/definitions/ScriptShellTypes",
+          "description": "Optional. Specify which shell to use for running the script. These values must match those expected by the extension. Currently supported only for Windows VMs, script uses Powershell 7 when specified. Powershell 7 must be already installed on the machine to use Powershell7 parameter value."
+        },
+        "galleryScriptReferenceId": {
+          "type": "string",
+          "description": "The resource ID of a Gallery Script version that needs to be executed. Example ID looks like /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Compute/galleries/{galleryName}/scripts/{scriptName}/versions/{version}."
         }
       }
     },
@@ -17451,6 +17743,10 @@
           "type": "string",
           "description": "Etag is property returned in Create/Update/Get response of the VMSS, so that customer can supply it in the header to ensure optimistic updates",
           "readOnly": true
+        },
+        "placement": {
+          "$ref": "#/definitions/Placement",
+          "description": "Placement section specifies the user-defined constraints for virtual machine scale set hardware placement. This property cannot be changed once VMSS is provisioned. Minimum api-version: 2025-04-01."
         }
       },
       "allOf": [
@@ -17979,6 +18275,13 @@
           "$ref": "#/definitions/VirtualMachineScaleSetNetworkConfigurationProperties",
           "description": "Describes a virtual machine scale set network profile's IP configuration.",
           "x-ms-client-flatten": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags applied to the networkInterface address created by this NetworkInterfaceConfiguration",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       },
       "required": [
@@ -18286,6 +18589,10 @@
         "skuProfile": {
           "$ref": "#/definitions/SkuProfile",
           "description": "Specifies the sku profile for the virtual machine scale set."
+        },
+        "highSpeedInterconnectPlacement": {
+          "$ref": "#/definitions/HighSpeedInterconnectPlacement",
+          "description": "Specifies the high speed interconnect placement for the virtual machine scale set."
         }
       }
     },
@@ -18305,6 +18612,13 @@
         "sku": {
           "$ref": "#/definitions/PublicIPAddressSku",
           "description": "Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible."
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags applied to the publicIP address created by this PublicIPAddressConfiguration",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       },
       "required": [
@@ -18610,6 +18924,13 @@
           "$ref": "#/definitions/VirtualMachineScaleSetUpdateNetworkConfigurationProperties",
           "description": "Describes a virtual machine scale set updatable network profile's IP configuration.Use this object for updating network profile's IP Configuration.",
           "x-ms-client-flatten": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags applied to the networkInterface address created by this NetworkInterfaceConfiguration",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -18837,6 +19158,13 @@
           "$ref": "#/definitions/VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties",
           "description": "Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration",
           "x-ms-client-flatten": true
+        },
+        "tags": {
+          "type": "object",
+          "description": "Resource tags applied to the publicIP address created by this PublicIPAddressConfiguration",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -20598,6 +20926,20 @@
           "type": "string",
           "format": "date-time",
           "description": "This is used to install patches that were published on or before this given max published date."
+        },
+        "patchNameMasksToInclude": {
+          "type": "array",
+          "description": "This is used to include patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are not supported.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "patchNameMasksToExclude": {
+          "type": "array",
+          "description": "This is used to exclude patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are not supported.",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -20718,11 +21060,27 @@
         ]
       }
     },
+    "ZoneAllocationPolicy": {
+      "type": "object",
+      "description": "The configuration parameters for zone allocation of a virtual machine scale set.",
+      "properties": {
+        "maxZoneCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used."
+        },
+        "maxInstancePercentPerZonePolicy": {
+          "$ref": "#/definitions/MaxInstancePercentPerZonePolicy",
+          "description": "The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set."
+        }
+      }
+    },
     "ZonePlacementPolicyType": {
       "type": "string",
-      "description": "Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.",
+      "description": "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.",
       "enum": [
-        "Any"
+        "Any",
+        "Auto"
       ],
       "x-ms-enum": {
         "name": "ZonePlacementPolicyType",
@@ -20731,6 +21089,11 @@
           {
             "name": "Any",
             "value": "Any"
+          },
+          {
+            "name": "Auto",
+            "value": "Auto",
+            "description": "Automatic zone placement in a Virtual Machine Scale Set."
           }
         ]
       }

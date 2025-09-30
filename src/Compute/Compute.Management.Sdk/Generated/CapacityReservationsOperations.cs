@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "capacityReservationGroupName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "capacityReservationName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -544,7 +544,8 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details.
+        /// details. Note: Block capacity reservations cannot be deleted after it has
+        /// been successfully allocated until the schedule end time.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -643,7 +644,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 parameters.Validate();
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -902,7 +903,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1065,7 +1066,8 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details.
+        /// details. Note: Block capacity reservations cannot be deleted after it has
+        /// been successfully allocated until the schedule end time.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1123,7 +1125,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "capacityReservationName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

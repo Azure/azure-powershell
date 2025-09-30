@@ -36,11 +36,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// parameters used while performing resilient VM deletion.</param>
         /// <param name="automaticZoneRebalancingPolicy">The configuration
         /// parameters used while performing automatic AZ balancing.</param>
-        public ResiliencyPolicy(ResilientVMCreationPolicy resilientVMCreationPolicy = default(ResilientVMCreationPolicy), ResilientVMDeletionPolicy resilientVMDeletionPolicy = default(ResilientVMDeletionPolicy), AutomaticZoneRebalancingPolicy automaticZoneRebalancingPolicy = default(AutomaticZoneRebalancingPolicy))
+        /// <param name="zoneAllocationPolicy">The configuration parameters
+        /// used while performing zone allocation.</param>
+        public ResiliencyPolicy(ResilientVMCreationPolicy resilientVMCreationPolicy = default(ResilientVMCreationPolicy), ResilientVMDeletionPolicy resilientVMDeletionPolicy = default(ResilientVMDeletionPolicy), AutomaticZoneRebalancingPolicy automaticZoneRebalancingPolicy = default(AutomaticZoneRebalancingPolicy), ZoneAllocationPolicy zoneAllocationPolicy = default(ZoneAllocationPolicy))
         {
             ResilientVMCreationPolicy = resilientVMCreationPolicy;
             ResilientVMDeletionPolicy = resilientVMDeletionPolicy;
             AutomaticZoneRebalancingPolicy = automaticZoneRebalancingPolicy;
+            ZoneAllocationPolicy = zoneAllocationPolicy;
             CustomInit();
         }
 
@@ -70,5 +73,25 @@ namespace Microsoft.Azure.Management.Compute.Models
         [JsonProperty(PropertyName = "automaticZoneRebalancingPolicy")]
         public AutomaticZoneRebalancingPolicy AutomaticZoneRebalancingPolicy { get; set; }
 
+        /// <summary>
+        /// Gets or sets the configuration parameters used while performing
+        /// zone allocation.
+        /// </summary>
+        [JsonProperty(PropertyName = "zoneAllocationPolicy")]
+        public ZoneAllocationPolicy ZoneAllocationPolicy { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (ZoneAllocationPolicy != null)
+            {
+                ZoneAllocationPolicy.Validate();
+            }
+        }
     }
 }

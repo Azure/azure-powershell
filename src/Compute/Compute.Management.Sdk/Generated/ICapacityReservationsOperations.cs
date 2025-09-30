@@ -155,7 +155,9 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is
         /// allowed only when all the associated resources are disassociated
         /// from the capacity reservation. Please refer to
-        /// https://aka.ms/CapacityReservation for more details.
+        /// https://aka.ms/CapacityReservation for more details. Note: Block
+        /// capacity reservations cannot be deleted after it has been
+        /// successfully allocated until the schedule end time.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -248,7 +250,9 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is
         /// allowed only when all the associated resources are disassociated
         /// from the capacity reservation. Please refer to
-        /// https://aka.ms/CapacityReservation for more details.
+        /// https://aka.ms/CapacityReservation for more details. Note: Block
+        /// capacity reservations cannot be deleted after it has been
+        /// successfully allocated until the schedule end time.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

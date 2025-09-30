@@ -46,13 +46,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="imds">Specifies the IMDS endpoint settings while
         /// creating the virtual machine or virtual machine scale set. Minimum
         /// api-version: 2024-03-01.</param>
-        public ProxyAgentSettings(bool? enabled = default(bool?), string mode = default(string), int? keyIncarnationId = default(int?), HostEndpointSettings wireServer = default(HostEndpointSettings), HostEndpointSettings imds = default(HostEndpointSettings))
+        /// <param name="addProxyAgentExtension">Specify whether to implicitly
+        /// install the ProxyAgent Extension. This option is currently
+        /// applicable only for Linux Os.</param>
+        public ProxyAgentSettings(bool? enabled = default(bool?), string mode = default(string), int? keyIncarnationId = default(int?), HostEndpointSettings wireServer = default(HostEndpointSettings), HostEndpointSettings imds = default(HostEndpointSettings), bool? addProxyAgentExtension = default(bool?))
         {
             Enabled = enabled;
             Mode = mode;
             KeyIncarnationId = keyIncarnationId;
             WireServer = wireServer;
             Imds = imds;
+            AddProxyAgentExtension = addProxyAgentExtension;
             CustomInit();
         }
 
@@ -100,6 +104,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "imds")]
         public HostEndpointSettings Imds { get; set; }
+
+        /// <summary>
+        /// Gets or sets specify whether to implicitly install the ProxyAgent
+        /// Extension. This option is currently applicable only for Linux Os.
+        /// </summary>
+        [JsonProperty(PropertyName = "addProxyAgentExtension")]
+        public bool? AddProxyAgentExtension { get; set; }
 
     }
 }
