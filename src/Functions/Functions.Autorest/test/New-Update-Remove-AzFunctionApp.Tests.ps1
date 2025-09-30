@@ -13,54 +13,75 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E' {
 
-    It "Validate New-AzFunctionAppPlan, Update-AzFunctionApp and Remove-AzFunctionApp" {
+    BeforeAll {
 
-        # Update-AzFunctionApp is an important scenario to validate given that in the update operation 
-        # will copy the exiting function app configuration to create a new one.
+        $appName = $env.functionNamePowerShell
+        Write-Verbose "App name: $appName" -Verbose
 
-        $functionName = $env.functionNamePowerShell
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $planName = $env.planNameWorkerTypeWindows
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        $storageAccountName = $env.storageAccountWindows
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+        $identityInfo = $env.identityInfo
+        Write-Verbose "Identity info: $($identityInfo | Out-String)" -Verbose
+
+        $newApplInsights = $env.newApplInsights
+        Write-Verbose "New Application Insights: $($newApplInsights | Out-String)" -Verbose
+
         $location = "centralus"
+        Write-Verbose "Location: $location" -Verbose
+
         $tags = @{
             "MyTag1" = "MyTag1Value1"
             "MyTag2" = "MyTag1Value2"
         }
+        Write-Verbose "Tags: $($tags | Out-String)" -Verbose
+    }
+
+    It "Validate New-AzFunctionAppPlan, Update-AzFunctionApp and Remove-AzFunctionApp" {
 
         try
         {
             Write-Verbose "Create function app with a SystemAssigned managed identity" -Verbose
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                              -PlanName $env.planNameWorkerTypeWindows `
-                              -StorageAccount $env.storageAccountWindows  `
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName `
                               -Runtime PowerShell `
                               -RuntimeVersion "7.2" `
                               -FunctionsVersion 4 `
                               -IdentityType SystemAssigned `
                               -Tag $tags
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionApp retrieved. Validating properties" -Verbose
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.IdentityType | Should -Be "SystemAssigned"
-            
-            # Validate tags
+
             foreach ($tagName in $tags.Keys)
             {
-                $functionApp.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
+                $functionApp.Tag.AdditionalProperties[$tagName] | Should -Be $tags[$tagName]
             }
 
-            # Update function app plan
             Write-Verbose "Create premium function app plan" -Verbose
             $planName = $env.functionAppPlanName
+            Write-Verbose "Updated planName: $planName" -Verbose
             New-AzFunctionAppPlan -Name $planName `
-                                  -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                                  -ResourceGroupName $resourceGroupName `
                                   -WorkerType "Windows" `
                                   -MinimumWorkerCount 1 `
                                   -MaximumWorkerCount 10 `
                                   -Location $location `
                                   -Sku EP1
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
+            Write-Verbose "Plan retrieved. Validating properties" -Verbose
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be "EP1"
@@ -68,63 +89,42 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $plan.Name | Should -Be $planName
 
             Write-Verbose "Update function app plan hosting plan" -Verbose
-            Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -PlanName $planName -Force
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -PlanName $planName -Force
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
-            $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
-            $functionApp.IdentityType | Should -Be "SystemAssigned"
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionApp after plan update. Validate plan name" -Verbose
             $functionApp.AppServicePlan | Should -Be $planName
-            
-            # Validate tags
-            foreach ($tagName in $tags.Keys)
-            {
-                $functionApp.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
-            }
 
-            # Remove the managed identity from the function app - run Update-AzFunctionApp
-            Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
             # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
             # Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
-            Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -IdentityType None -Force
-            
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
-            $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
-            $functionApp.IdentityType | Should -Be $null
-            $functionApp.AppServicePlan | Should -Be $planName
+            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
 
-            # Update application Insights
+            Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
+
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionApp after identity removal. Validate IdentityType" -Verbose
+            $functionApp.IdentityType | Should -Be $null
+
             Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
-            $newApplInsights = $env.newApplInsights
-            # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
-            # Update-AzFunctionApp -InputObject $functionApp -ApplicationInsightsName $newApplInsights.Name -Force
-            Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ApplicationInsightsName $newApplInsights.Name -Force
+            $applicationInsightsName = $newApplInsights.Name
+            Write-Verbose "New ApplicationInsights name: $applicationInsightsName" -Verbose
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ApplicationInsightsName $applicationInsightsName -Force
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
-            $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
-            $functionApp.IdentityType | Should -Be $null
-            $functionApp.AppServicePlan | Should -Be $planName
-
-            # Validate tags
-            foreach ($tagName in $tags.Keys)
-            {
-                $functionApp.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
-            }
-
-            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionAppSetting after update. Validate ApplicationInsights" -Verbose
             $applicationSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] | Should -Be $newApplInsights.InstrumentationKey
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
-            if ($functionApp)
-            {
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            Write-Verbose "FunctionApp for cleanup." -Verbose
+            if ($functionApp) {
                 Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
             }
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            Write-Verbose "Plan for cleanup." -Verbose
             if ($plan)
             {
                 Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
@@ -134,18 +134,16 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
     It "Validate New-AzFunctionApp -AsJob, Update-AzFunctionApp -AsJob and Remove-AzFunctionApp" {
 
-        $functionName = $env.functionNamePowerShell
-
         try
         {
             Write-Verbose "Creating function app -AsJob" -Verbose
-            $functionAppJob = New-AzFunctionApp -Name $functionName `
-                                                -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                                                -PlanName $env.planNameWorkerTypeWindows `
-                                                -StorageAccount $env.storageAccountWindows `
+            $functionAppJob = New-AzFunctionApp -Name $appName `
+                                                -ResourceGroupName $resourceGroupName `
+                                                -PlanName $planName `
+                                                -StorageAccount $storageAccountName `
                                                 -OSType "Windows" `
                                                 -Runtime "PowerShell" `
-                                                -RuntimeVersion 7.2 `
+                                                -RuntimeVersion 7.4 `
                                                 -FunctionsVersion 4 `
                                                 -AsJob
 
@@ -154,34 +152,35 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $result.State | Should -Be "Completed"
             $result | Remove-Job -ErrorAction SilentlyContinue
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
-            $functionApp.AppServicePlan | Should -Be $env.planNameWorkerTypeWindows
+            $functionApp.AppServicePlan | Should -Be $planName
 
             Write-Verbose "Update function app -> enable a SystemAssigned managed identity" -Verbose
-            $updateFunctionAppJob = Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -IdentityType SystemAssigned -Force -AsJob
+            $updateFunctionAppJob = Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType SystemAssigned -Force -AsJob
             $result = WaitForJobToComplete -JobId $updateFunctionAppJob.Id
             $result.State | Should -Be "Completed"
             $result | Remove-Job -ErrorAction SilentlyContinue
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
-            $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
+            Write-Verbose "Run: Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName" -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionApp after identity enable. Validate IdentityType" -Verbose
             $functionApp.IdentityType | Should -Be "SystemAssigned"
-            $functionApp.AppServicePlan | Should -Be $env.planNameWorkerTypeWindows
 
             Write-Verbose "Remove function app" -Verbose
-            Remove-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force
+            Write-Verbose "Run: Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force" -Verbose
+            Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp | Should -Be $null
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
+                Write-Verbose "Cleaning up function app" -Verbose
                 Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
             }
         }
@@ -189,50 +188,47 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
     It "Create a function app and then use Update-AzFunctionApp to enable a UserAssigned managed identity for the app" {
 
-        $functionName = $env.functionNamePowerShell
-        $identityInfo = $env.identityInfo
-
         try
         {
             Write-Verbose "Creating function app" -Verbose
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                              -PlanName $env.planNameWorkerTypeWindows `
-                              -StorageAccount $env.storageAccountWindows `
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName `
                               -OSType "Windows" `
                               -Runtime "PowerShell" `
-                              -RuntimeVersion 7.2 `
+                              -RuntimeVersion 7.4 `
                               -FunctionsVersion 4
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
-            $functionApp.AppServicePlan | Should -Be $env.planNameWorkerTypeWindows
+            $functionApp.AppServicePlan | Should -Be $planName
 
             Write-Verbose "Update function app -> enable a UserAssigned managed identity for the app" -Verbose
-            Update-AzFunctionApp -Name $functionName `
-                                 -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+            $identityInfo = $env.identityInfo
+            Write-Verbose "Identity id: $($identityInfo.Id)" -Verbose
+            Update-AzFunctionApp -Name $appName `
+                                 -ResourceGroupName $resourceGroupName `
                                  -IdentityType UserAssigned `
                                  -IdentityID $identityInfo.Id `
                                  -Force
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
-            $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.IdentityType | Should -Be "UserAssigned"
 
             $userAssignedIdentity = $functionApp.IdentityUserAssignedIdentity.AdditionalProperties
             $userAssignedIdentity.ContainsKey($identityInfo.Id) | Should -Be $true
 
             Write-Verbose "Remove function app" -Verbose
-            Remove-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force
+            Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             $functionApp | Should -Be $null
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
                 Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
