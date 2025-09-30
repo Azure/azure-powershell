@@ -606,6 +606,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describes the available zones for the product where storage account resource can be created")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The availability zone pinning policy for the storage account.")]
+        [PSArgumentCompleter("None", "Any")]
+        [ValidateNotNullOrEmpty]
+        public string ZonePlacementPolicy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -975,6 +988,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.AllowedCopyScope != null)
                     {
                         updateParameters.AllowedCopyScope = this.AllowedCopyScope;
+                    }
+                    if (this.Zone != null)
+                    {
+                        updateParameters.Zones = new List<string>(this.Zone);
+                    }
+                    if (this.ZonePlacementPolicy != null)
+                    {
+                        updateParameters.Placement = new Placement(this.ZonePlacementPolicy);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

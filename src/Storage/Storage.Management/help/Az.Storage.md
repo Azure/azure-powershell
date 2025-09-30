@@ -155,6 +155,9 @@ Gets service properties for Azure Storage File services.
 ### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
 Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
 
+### [Get-AzStorageFileSymbolicLink](Get-AzStorageFileSymbolicLink.md)
+Gets the value of a symbolic link. Only works in NFS file share.
+
 ### [Get-AzStorageLocalUser](Get-AzStorageLocalUser.md)
 Gets a specified local user or lists all local users in a storage account.
 
@@ -184,6 +187,9 @@ Gets a list of file shares.
 
 ### [Get-AzStorageShareStoredAccessPolicy](Get-AzStorageShareStoredAccessPolicy.md)
 Gets stored access policies for a Storage share.
+
+### [Get-AzStorageSku](Get-AzStorageSku.md)
+Lists the available SKUs supported by Microsoft.Storage for given subscription.
 
 ### [Get-AzStorageTable](Get-AzStorageTable.md)
 Lists the storage tables.
@@ -280,6 +286,9 @@ Creates a hard link to a file in same share. Only works in NFS file share.
 
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
+
+### [New-AzStorageFileSymbolicLink](New-AzStorageFileSymbolicLink.md)
+Creates a symbolic link to a specified file. Only works in NFS file share.
 
 ### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
 Creates a permission scope object, which can be used in Set-AzStorageLocalUser.

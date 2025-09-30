@@ -316,3 +316,80 @@ function ValidateReplication {
         Write-Warning $VmReplicationValidationMessages.OsTypeNotSupported
     }
 }
+
+function Test-AzureResourceIdFormat {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $Data,
+        
+        [Parameter(Mandatory = $true)]
+        [string] $Format
+    )
+
+    try {
+        if ([string]::IsNullOrWhiteSpace($Data)) {
+            return $false
+        }
+
+        # Find where format string starts (after first /)
+        $firstTokenEnd = $Format.IndexOf("/", 1)
+        if ($firstTokenEnd -eq -1) {
+            return $false
+        }
+
+        $formatPrefix = $Format.Substring(0, $firstTokenEnd)
+        $matchIndex = $Data.ToLower().IndexOf($formatPrefix.ToLower())
+
+        if ($matchIndex -eq -1) {
+            return $false
+        }
+
+        $processData = $Data.Substring($matchIndex)
+        $processFormat = $Format
+        $tokens = @()
+        
+        $counter = 0
+        while ($true) {
+            $markerPattern = "{$counter}"
+            $markerStartIndex = $processFormat.IndexOf($markerPattern)
+
+            if ($markerStartIndex -eq -1) {
+                break
+            }
+
+            $markerEndIndex = $processData.IndexOf("/", $markerStartIndex)
+
+            if ($markerEndIndex -eq -1) {
+                $token = $processData.Substring($markerStartIndex)
+                if ([string]::IsNullOrWhiteSpace($token)) {
+                    return $false
+                }
+                $tokens += $token
+            }
+            else {
+                $token = $processData.Substring($markerStartIndex, $markerEndIndex - $markerStartIndex)
+                if ([string]::IsNullOrWhiteSpace($token)) {
+                    return $false
+                }
+                $tokens += $token
+                $processData = $processData.Substring($markerEndIndex)
+                $processFormat = $processFormat.Substring($markerStartIndex + $markerPattern.Length)
+            }
+
+            $counter++
+        }
+
+        # Verify format matches with the extracted tokens
+        $formatWithTokens = $Format
+        for ($i = 0; $i -lt $tokens.Count; $i++) {
+            $formatWithTokens = $formatWithTokens -replace "\{$i\}", $tokens[$i]
+        }
+
+        return $Data.ToLower() -like $formatWithTokens.ToLower()
+    }
+    catch
+    {
+        return $false
+    }
+}

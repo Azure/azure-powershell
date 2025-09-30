@@ -309,5 +309,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StorageAccountEnableSmbOauth");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountZonePlacement()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountZonePlacement");
+        }
     }
 }

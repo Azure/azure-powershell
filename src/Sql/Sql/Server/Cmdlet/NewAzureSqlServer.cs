@@ -159,6 +159,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Boolean Value for enabling Soft Delete Retention for server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified). To set a custom retention period use -SoftDeleteRetentionDays.")]
+        [PSArgumentCompleter("true", "false")]
+        public bool? EnableSoftDelete { get; set; }
+
+        /// <summary>
+        /// Soft-delete retention days for the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-35. A value of 0 disables soft-delete retention. If EnableSoftDelete is set without an explicit value, the default retention is 7 days.")]
+        [ValidateRange(0, 35)]
+        public int? SoftDeleteRetentionDays { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -173,6 +189,27 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
             }
 
+            if (SoftDeleteRetentionDays.HasValue)
+            {
+                if (EnableSoftDelete == true)
+                {
+                    if (SoftDeleteRetentionDays.Value < 1 || SoftDeleteRetentionDays.Value > 35)
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysRange, "SoftDeleteRetentionDays");
+                    }
+                }
+                else if (EnableSoftDelete == false)
+                {
+                    if (SoftDeleteRetentionDays.Value != 0)
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysForDisablingSoftDelete, "SoftDeleteRetentionDays");
+                    }
+                }
+                else
+                {
+                    throw new PSArgumentException(Properties.Resources.MissingEnableSoftDelete, "EnableSoftDelete");
+                }
+            }
             base.ExecuteCmdlet();
         }
 
@@ -216,6 +253,23 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(string.Format(Properties.Resources.ServerNameInvalid, this.ServerName), "ServerName");
             }
 
+            int? softDeleteRetentionDays;
+            if (this.EnableSoftDelete == true)
+            {
+                // If enabling soft-delete retention, use the explicitly provided value or default to 7 days if none provided.
+                softDeleteRetentionDays = this.SoftDeleteRetentionDays ?? 7;
+            }
+            else if (this.EnableSoftDelete == false)
+            {
+                // If disabling, explicitly set retention to 0.
+                softDeleteRetentionDays = 0;
+            }
+            else
+            {
+                softDeleteRetentionDays = (int?)null;
+            }
+
+
             List<Model.AzureSqlServerModel> newEntity = new List<Model.AzureSqlServerModel>();
             newEntity.Add(new Model.AzureSqlServerModel()
             {
@@ -238,7 +292,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                     AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
-                }              
+                },
+
+                SoftDeleteRetentionDays = softDeleteRetentionDays
             });
             return newEntity;
         }
