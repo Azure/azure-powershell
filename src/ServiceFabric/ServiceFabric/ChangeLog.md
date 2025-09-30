@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Change from `Basic` to `Standard` SKUs for loadbalancers and public IP addresses for `New-AzServiceFabricCluster` and `Add-AzServiceFabricNodeType` as `Basic` SKUs are being deprecated.
 * Added parameters `-EnableAutoOsUpgrade` and `-AllowRdpAccess` to `New-AzServiceFabricManagedCluster` and `Set-AzServiceFabricManagedCluster`.
 * Added parameters `-ZoneBalance`, `-AllowOverProvisioning`, and `-Zone` to `New-AzServiceFabricManagedNodeType` and `Set-AzServiceFabricManagedNodeType`.
 * Added preannoucement for removing Reimage parameters from `Set-AzServiceFabricManagedNodeType`.
