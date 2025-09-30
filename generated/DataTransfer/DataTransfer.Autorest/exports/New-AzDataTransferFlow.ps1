@@ -23,9 +23,35 @@ Create the flow resource.
 New-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Location "EastUS" -FlowType "Mission" -DataType "Blob" -StorageAccountName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Storage/storageAccounts/storageAccount01" -StorageContainerName "teststorage" -Confirm:$false
 .Example
 New-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Location "EastUS" -FlowType "Mission" -DataType "Blob" -StorageAccountName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Storage/storageAccounts/storageAccount01" -StorageContainerName "teststorage" -Status Enabled -Tag @{Environment="Production"} -Confirm:$false
+.Example
+New-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName BasicReceiveConnection01 -Name BasicRecvBlobFiles01 -Location "CentralUS" -Status "Enabled" -FlowDataType "Blob" -FlowProfilePipeline "Pipeline01" -FlowProfileName "BasicFlowProfile01" -FlowProfileReplicationScenario "Files" -FlowProfileStatus "Enabled" -FlowProfileId "000000000000-0000-0000-00000000" -FlowProfileDescription "Basic flow profile for file replication" -Confirm:$false
 
 .Outputs
 ADT.Models.IFlow
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APIFLOWOPTIONAUTHENTICATION <IAuthentication[]>: Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+  [ApplicationId <List<String>>]: List of applicationIds allowed to authorize to this flow. This is used as an alternative to the RBAC authorization check.
+  [Audience <String>]: Audience of the identity of the remote endpoint service. By default, remoteEndpointSettings.endpoint will be used if a value is not provided.
+  [Authority <String>]: The full URL endpoint used to acquire tokens, typically combining the instance and tenant ID to target a specific authentication context.
+  [ClientIdOverride <String>]: The Flow can use an Entra app identity that is provided by the Flow user to obtain the token to call the remote endpoint. This field specifies the user provided app's clientId.
+  [IdentityTranslation <String>]: Determines which identity to use for extracting the user token for Azure Data Transfer API Flow.
+  [Instance <String>]: The identity provider's token service instance.
+  [TenantId <String>]: A unique identifier representing the tenant of the identity provider's token service.
+  [Type <String>]: Type of authentication mechanism. JWT by default.
+
+REMOTEENDPOINTSETTINGAUTHENTICATION <IAuthentication[]>: Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+  [ApplicationId <List<String>>]: List of applicationIds allowed to authorize to this flow. This is used as an alternative to the RBAC authorization check.
+  [Audience <String>]: Audience of the identity of the remote endpoint service. By default, remoteEndpointSettings.endpoint will be used if a value is not provided.
+  [Authority <String>]: The full URL endpoint used to acquire tokens, typically combining the instance and tenant ID to target a specific authentication context.
+  [ClientIdOverride <String>]: The Flow can use an Entra app identity that is provided by the Flow user to obtain the token to call the remote endpoint. This field specifies the user provided app's clientId.
+  [IdentityTranslation <String>]: Determines which identity to use for extracting the user token for Azure Data Transfer API Flow.
+  [Instance <String>]: The identity provider's token service instance.
+  [TenantId <String>]: A unique identifier representing the tenant of the identity provider's token service.
+  [Type <String>]: Type of authentication mechanism. JWT by default.
 .Link
 https://learn.microsoft.com/powershell/module/az.datatransfer/new-azdatatransferflow
 #>
@@ -77,8 +103,19 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Optional field to override the audience of the remote endpoint
+    # Optional field to override the audience of the remote endpoint.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionAudienceOverride},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IAuthentication[]]
+    # Optional and for advanced used only.
+    # A list of authentication methods to use when accessing the Azure Data Transfer API Flow.
+    # If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+    ${ApiFlowOptionAuthentication},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
@@ -90,25 +127,33 @@ param(
     [ADT.PSArgumentCompleterAttribute("UserIdentity", "ServiceIdentity")]
     [ADT.Category('Body')]
     [System.String]
-    # Flag for if Azure Data Transfer API Flow should extract the user token
+    # Determines which identity to use for extracting the user token for Azure Data Transfer API Flow.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionIdentityTranslation},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Remote stub app registration Client ID
+    # Remote stub app registration Client ID.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionRemoteCallingModeClientId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Remote host to which communication needs to be made
+    # Remote host to which communication needs to be made.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the remoteEndpointSettings.endpoint property instead.
     ${ApiFlowOptionRemoteEndpoint},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
     [System.String]
-    # Sender's app user assigned Manage Identity client ID
+    # Sender's app user assigned Manage Identity client ID.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use the authentication property instead.
     ${ApiFlowOptionSenderClientId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -146,6 +191,8 @@ param(
     [ADT.Category('Body')]
     [System.String]
     # Type of data to transfer via the flow.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${DataType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -169,10 +216,60 @@ param(
     ${EventHubId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The Flow's data class.
+    ${FlowDataType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # A description of the FlowProfile and its rulesets.
+    # The description should describe the flowprofile's purpose and rulesets applied.
+    ${FlowProfileDescription},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # A guid represented as a string for the FlowProfile resource, assigned by the system.
+    ${FlowProfileId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The name of the FlowProfile.
+    ${FlowProfileName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The name of the parent Pipeline Azure resource associated with this FlowProfile.
+    ${FlowProfilePipeline},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Messaging", "API", "Stream", "Files", "SoftwareArtifacts", "Complex")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The data replication scenario handled by this FlowProfile.
+    # Please note, that this value cannot be updated after creation.
+    # See the FlowProfilePatchProperties to see updateable properties.
+    ${FlowProfileReplicationScenario},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Obsolete", "Enabled")]
+    [ADT.Category('Body')]
+    [System.String]
+    # The operational status of the FlowProfile.
+    ${FlowProfileStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
     [ADT.Category('Body')]
     [System.String]
-    # The flow type for this flow
+    # The flow type for this flow.
+    # The property has reached end of life support starting version 2025-05-30-preview.
+    # Please create and use a FlowProfile resource instead.
     ${FlowType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -188,6 +285,15 @@ param(
     [System.String]
     # Billing tier for this messaging flow
     ${MessagingOptionBillingTier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [ADT.Category('Body')]
+    [System.String]
+    # Field indicating whether to enable guaranteed delivery on the flow or not.
+    # The default disabled option chooses speed over consistency.
+    # When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+    ${MessagingOptionPerformancePriority},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]
@@ -235,6 +341,21 @@ param(
     [System.String]
     # Name of the connection
     ${PropertiesConnectionName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ADT.Category('Body')]
+    [ADT.Models.IAuthentication[]]
+    # Optional and for advanced used only.
+    # A list of authentication methods to use when accessing the remote endpoint.
+    # If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+    ${RemoteEndpointSettingAuthentication},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ADT.Category('Body')]
+    [System.String]
+    # The remote endpoint uri all API calls.
+    ${RemoteEndpointSettingEndpoint},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ADT.Category('Body')]

@@ -109,6 +109,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IMessagingOptionsInternal)this).BillingTier = (string) content.GetValueForProperty("BillingTier",((ADT.Models.IMessagingOptionsInternal)this).BillingTier, global::System.Convert.ToString);
             }
+            if (content.Contains("PerformancePriority"))
+            {
+                ((ADT.Models.IMessagingOptionsInternal)this).PerformancePriority = (string) content.GetValueForProperty("PerformancePriority",((ADT.Models.IMessagingOptionsInternal)this).PerformancePriority, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,6 +133,10 @@ namespace ADT.Models
             if (content.Contains("BillingTier"))
             {
                 ((ADT.Models.IMessagingOptionsInternal)this).BillingTier = (string) content.GetValueForProperty("BillingTier",((ADT.Models.IMessagingOptionsInternal)this).BillingTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("PerformancePriority"))
+            {
+                ((ADT.Models.IMessagingOptionsInternal)this).PerformancePriority = (string) content.GetValueForProperty("PerformancePriority",((ADT.Models.IMessagingOptionsInternal)this).PerformancePriority, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -18,7 +18,7 @@ namespace ADT.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IConnection))]
     [global::ADT.Description(@"Links the connection to its pending connection.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link", ApiVersion = "2025-05-30-preview")]
     public partial class InvokeAzDataTransferLinkPendingConnection_LinkViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext

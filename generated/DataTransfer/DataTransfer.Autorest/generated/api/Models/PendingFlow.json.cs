@@ -76,6 +76,7 @@ namespace ADT.Models
                 return;
             }
             {_connection = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("connection"), out var __jsonConnection) ? ADT.Models.SelectedResource.FromJson(__jsonConnection) : _connection;}
+            {_flowProfile = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("flowProfile"), out var __jsonFlowProfile) ? ADT.Models.FlowProfileMetadata.FromJson(__jsonFlowProfile) : _flowProfile;}
             {_schema = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("schema"), out var __jsonSchema) ? ADT.Models.Schema.FromJson(__jsonSchema) : _schema;}
             {_messagingOption = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("messagingOptions"), out var __jsonMessagingOptions) ? ADT.Models.MessagingOptions.FromJson(__jsonMessagingOptions) : _messagingOption;}
             {_apiFlowOption = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("apiFlowOptions"), out var __jsonApiFlowOptions) ? ADT.Models.ApiFlowOptions.FromJson(__jsonApiFlowOptions) : _apiFlowOption;}
@@ -94,6 +95,7 @@ namespace ADT.Models
             {_storageContainerName = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("storageContainerName"), out var __jsonStorageContainerName) ? (string)__jsonStorageContainerName : (string)_storageContainerName;}
             {_storageTableName = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("storageTableName"), out var __jsonStorageTableName) ? (string)__jsonStorageTableName : (string)_storageTableName;}
             {_serviceBusQueueId = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("serviceBusQueueId"), out var __jsonServiceBusQueueId) ? (string)__jsonServiceBusQueueId : (string)_serviceBusQueueId;}
+            {_flowDataType = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("flowDataType"), out var __jsonFlowDataType) ? (string)__jsonFlowDataType : (string)_flowDataType;}
             {_flowType = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("flowType"), out var __jsonFlowType) ? (string)__jsonFlowType : (string)_flowType;}
             {_dataType = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("dataType"), out var __jsonDataType) ? (string)__jsonDataType : (string)_dataType;}
             {_provisioningState = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
@@ -135,6 +137,7 @@ namespace ADT.Models
                 return container;
             }
             AddIf( null != this._connection ? (ADT.Runtime.Json.JsonNode) this._connection.ToJson(null,serializationMode) : null, "connection" ,container.Add );
+            AddIf( null != this._flowProfile ? (ADT.Runtime.Json.JsonNode) this._flowProfile.ToJson(null,serializationMode) : null, "flowProfile" ,container.Add );
             AddIf( null != this._schema ? (ADT.Runtime.Json.JsonNode) this._schema.ToJson(null,serializationMode) : null, "schema" ,container.Add );
             AddIf( null != this._messagingOption ? (ADT.Runtime.Json.JsonNode) this._messagingOption.ToJson(null,serializationMode) : null, "messagingOptions" ,container.Add );
             AddIf( null != this._apiFlowOption ? (ADT.Runtime.Json.JsonNode) this._apiFlowOption.ToJson(null,serializationMode) : null, "apiFlowOptions" ,container.Add );
@@ -182,6 +185,7 @@ namespace ADT.Models
             AddIf( null != (((object)this._storageContainerName)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._storageContainerName.ToString()) : null, "storageContainerName" ,container.Add );
             AddIf( null != (((object)this._storageTableName)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._storageTableName.ToString()) : null, "storageTableName" ,container.Add );
             AddIf( null != (((object)this._serviceBusQueueId)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._serviceBusQueueId.ToString()) : null, "serviceBusQueueId" ,container.Add );
+            AddIf( null != (((object)this._flowDataType)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._flowDataType.ToString()) : null, "flowDataType" ,container.Add );
             AddIf( null != (((object)this._flowType)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._flowType.ToString()) : null, "flowType" ,container.Add );
             AddIf( null != (((object)this._dataType)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._dataType.ToString()) : null, "dataType" ,container.Add );
             if (serializationMode.HasFlag(ADT.Runtime.SerializationMode.IncludeRead))

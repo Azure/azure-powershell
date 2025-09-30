@@ -112,6 +112,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IConnectionPropertiesInternal)this).FlowType = (System.Collections.Generic.List<string>) content.GetValueForProperty("FlowType",((ADT.Models.IConnectionPropertiesInternal)this).FlowType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("FlowProfileList"))
+            {
+                ((ADT.Models.IConnectionPropertiesInternal)this).FlowProfileList = (System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>) content.GetValueForProperty("FlowProfileList",((ADT.Models.IConnectionPropertiesInternal)this).FlowProfileList, __y => TypeConverterExtensions.SelectToList<ADT.Models.IFlowProfileMetadata>(__y, ADT.Models.FlowProfileMetadataTypeConverter.ConvertFrom));
+            }
             if (content.Contains("RequirementId"))
             {
                 ((ADT.Models.IConnectionPropertiesInternal)this).RequirementId = (string) content.GetValueForProperty("RequirementId",((ADT.Models.IConnectionPropertiesInternal)this).RequirementId, global::System.Convert.ToString);
@@ -155,6 +159,10 @@ namespace ADT.Models
             if (content.Contains("SchemaUri"))
             {
                 ((ADT.Models.IConnectionPropertiesInternal)this).SchemaUri = (System.Collections.Generic.List<string>) content.GetValueForProperty("SchemaUri",((ADT.Models.IConnectionPropertiesInternal)this).SchemaUri, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ApiHostname"))
+            {
+                ((ADT.Models.IConnectionPropertiesInternal)this).ApiHostname = (string) content.GetValueForProperty("ApiHostname",((ADT.Models.IConnectionPropertiesInternal)this).ApiHostname, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -209,6 +217,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IConnectionPropertiesInternal)this).FlowType = (System.Collections.Generic.List<string>) content.GetValueForProperty("FlowType",((ADT.Models.IConnectionPropertiesInternal)this).FlowType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("FlowProfileList"))
+            {
+                ((ADT.Models.IConnectionPropertiesInternal)this).FlowProfileList = (System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>) content.GetValueForProperty("FlowProfileList",((ADT.Models.IConnectionPropertiesInternal)this).FlowProfileList, __y => TypeConverterExtensions.SelectToList<ADT.Models.IFlowProfileMetadata>(__y, ADT.Models.FlowProfileMetadataTypeConverter.ConvertFrom));
+            }
             if (content.Contains("RequirementId"))
             {
                 ((ADT.Models.IConnectionPropertiesInternal)this).RequirementId = (string) content.GetValueForProperty("RequirementId",((ADT.Models.IConnectionPropertiesInternal)this).RequirementId, global::System.Convert.ToString);
@@ -252,6 +264,10 @@ namespace ADT.Models
             if (content.Contains("SchemaUri"))
             {
                 ((ADT.Models.IConnectionPropertiesInternal)this).SchemaUri = (System.Collections.Generic.List<string>) content.GetValueForProperty("SchemaUri",((ADT.Models.IConnectionPropertiesInternal)this).SchemaUri, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ApiHostname"))
+            {
+                ((ADT.Models.IConnectionPropertiesInternal)this).ApiHostname = (string) content.GetValueForProperty("ApiHostname",((ADT.Models.IConnectionPropertiesInternal)this).ApiHostname, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

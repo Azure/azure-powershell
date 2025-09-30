@@ -137,6 +137,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IPipelinePropertiesInternal)this).DisabledFlowType = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledFlowType",((ADT.Models.IPipelinePropertiesInternal)this).DisabledFlowType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("DisabledDataClass"))
+            {
+                ((ADT.Models.IPipelinePropertiesInternal)this).DisabledDataClass = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledDataClass",((ADT.Models.IPipelinePropertiesInternal)this).DisabledDataClass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("QuarantineDownloadStorageAccount"))
             {
                 ((ADT.Models.IPipelinePropertiesInternal)this).QuarantineDownloadStorageAccount = (string) content.GetValueForProperty("QuarantineDownloadStorageAccount",((ADT.Models.IPipelinePropertiesInternal)this).QuarantineDownloadStorageAccount, global::System.Convert.ToString);
@@ -197,6 +201,10 @@ namespace ADT.Models
             if (content.Contains("DisabledFlowType"))
             {
                 ((ADT.Models.IPipelinePropertiesInternal)this).DisabledFlowType = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledFlowType",((ADT.Models.IPipelinePropertiesInternal)this).DisabledFlowType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DisabledDataClass"))
+            {
+                ((ADT.Models.IPipelinePropertiesInternal)this).DisabledDataClass = (System.Collections.Generic.List<string>) content.GetValueForProperty("DisabledDataClass",((ADT.Models.IPipelinePropertiesInternal)this).DisabledDataClass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("QuarantineDownloadStorageAccount"))
             {

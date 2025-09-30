@@ -36,8 +36,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataTransferIdentity>: Identity Parameter
   [ConnectionName <String>]: The name for the connection to perform the operation on.
   [FlowName <String>]: The name for the flow to perform the operation on.
+  [FlowProfileName <String>]: The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   [Id <String>]: Resource identity path
-  [PipelineName <String>]: The name for the pipeline to perform the operation on.
+  [PipelineName <String>]: The name of the pipeline on which to operate.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link

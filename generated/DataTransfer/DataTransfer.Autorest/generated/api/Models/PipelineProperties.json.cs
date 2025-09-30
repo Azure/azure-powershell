@@ -83,6 +83,7 @@ namespace ADT.Models
             {_policy = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("policies"), out var __jsonPolicies) ? If( __jsonPolicies as ADT.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is ADT.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _policy;}
             {_flowType = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("flowTypes"), out var __jsonFlowTypes) ? If( __jsonFlowTypes as ADT.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is ADT.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _flowType;}
             {_disabledFlowType = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("disabledFlowTypes"), out var __jsonDisabledFlowTypes) ? If( __jsonDisabledFlowTypes as ADT.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(string) (__a is ADT.Runtime.Json.JsonString ___z ? (string)(___z.ToString()) : null)) ))() : null : _disabledFlowType;}
+            {_disabledDataClass = If( json?.PropertyT<ADT.Runtime.Json.JsonArray>("disabledDataClass"), out var __jsonDisabledDataClass) ? If( __jsonDisabledDataClass as ADT.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___w, (___v)=>(string) (___v is ADT.Runtime.Json.JsonString ___u ? (string)(___u.ToString()) : null)) ))() : null : _disabledDataClass;}
             {_quarantineDownloadStorageAccount = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("quarantineDownloadStorageAccount"), out var __jsonQuarantineDownloadStorageAccount) ? (string)__jsonQuarantineDownloadStorageAccount : (string)_quarantineDownloadStorageAccount;}
             {_quarantineDownloadStorageContainer = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("quarantineDownloadStorageContainer"), out var __jsonQuarantineDownloadStorageContainer) ? (string)__jsonQuarantineDownloadStorageContainer : (string)_quarantineDownloadStorageContainer;}
             {_status = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
@@ -161,6 +162,15 @@ namespace ADT.Models
                     AddIf(null != (((object)__d)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(__d.ToString()) : null ,__c.Add);
                 }
                 container.Add("disabledFlowTypes",__c);
+            }
+            if (null != this._disabledDataClass)
+            {
+                var ___x = new ADT.Runtime.Json.XNodeArray();
+                foreach( var ___y in this._disabledDataClass )
+                {
+                    AddIf(null != (((object)___y)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(___y.ToString()) : null ,___x.Add);
+                }
+                container.Add("disabledDataClass",___x);
             }
             AddIf( null != (((object)this._quarantineDownloadStorageAccount)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._quarantineDownloadStorageAccount.ToString()) : null, "quarantineDownloadStorageAccount" ,container.Add );
             AddIf( null != (((object)this._quarantineDownloadStorageContainer)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._quarantineDownloadStorageContainer.ToString()) : null, "quarantineDownloadStorageContainer" ,container.Add );

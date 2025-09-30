@@ -7,6 +7,7 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
+    /// <summary>The ReadPipelineconnection.</summary>
     public partial class ReadPipelineConnection :
         ADT.Models.IReadPipelineConnection,
         ADT.Models.IReadPipelineConnectionInternal
@@ -62,11 +63,11 @@ namespace ADT.Models
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private ADT.Models.IReadPipelineConnectionProperties _property;
+        private ADT.Models.IPipelineConnectionProperties _property;
 
         /// <summary>Connection properties inside pipeline</summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
-        public ADT.Models.IReadPipelineConnectionProperties Property { get => (this._property = this._property ?? new ADT.Models.ReadPipelineConnectionProperties()); set => this._property = value; }
+        public ADT.Models.IPipelineConnectionProperties Property { get => (this._property = this._property ?? new ADT.Models.PipelineConnectionProperties()); set => this._property = value; }
 
         /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
         private ADT.Models.ISystemData _systemData;
@@ -112,6 +113,7 @@ namespace ADT.Models
 
         }
     }
+    /// The ReadPipelineconnection.
     public partial interface IReadPipelineConnection :
         ADT.Runtime.IJsonSerializable,
         ADT.Runtime.IAssociativeArray<global::System.Object>
@@ -169,8 +171,8 @@ namespace ADT.Models
         Update = true,
         Description = @"Connection properties inside pipeline",
         SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(ADT.Models.IReadPipelineConnectionProperties) })]
-        ADT.Models.IReadPipelineConnectionProperties Property { get; set; }
+        PossibleTypes = new [] { typeof(ADT.Models.IPipelineConnectionProperties) })]
+        ADT.Models.IPipelineConnectionProperties Property { get; set; }
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -252,6 +254,7 @@ namespace ADT.Models
         string Type { get; set; }
 
     }
+    /// The ReadPipelineconnection.
     internal partial interface IReadPipelineConnectionInternal
 
     {
@@ -264,7 +267,7 @@ namespace ADT.Models
         /// <summary>Connection name inside pipeline</summary>
         string Name { get; set; }
         /// <summary>Connection properties inside pipeline</summary>
-        ADT.Models.IReadPipelineConnectionProperties Property { get; set; }
+        ADT.Models.IPipelineConnectionProperties Property { get; set; }
         /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
         ADT.Models.ISystemData SystemData { get; set; }
         /// <summary>The timestamp of resource creation (UTC).</summary>

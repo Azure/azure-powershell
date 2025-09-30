@@ -18,7 +18,7 @@ namespace ADT.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IConnection))]
     [global::ADT.Description(@"create the connection resource.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}", ApiVersion = "2025-05-30-preview")]
     public partial class NewAzDataTransferConnection_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext
@@ -42,6 +42,17 @@ namespace ADT.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Hostname specific to API Flows</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Hostname specific to API Flows")]
+        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Hostname specific to API Flows",
+        SerializedName = @"apiHostname",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ApiHostname { get => _connectionBody.ApiHostname ?? null; set => _connectionBody.ApiHostname = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -84,14 +95,29 @@ namespace ADT.Cmdlets
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
-        /// <summary>The flow types being requested for this connection</summary>
+        /// <summary>Provides a list of FlowProfiles .</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flow types being requested for this connection")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Provides a list of FlowProfiles .")]
         [global::ADT.Category(global::ADT.ParameterCategory.Body)]
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The flow types being requested for this connection",
+        Description = @"Provides a list of FlowProfiles .",
+        SerializedName = @"flowProfileList",
+        PossibleTypes = new [] { typeof(ADT.Models.IFlowProfileMetadata) })]
+        public ADT.Models.IFlowProfileMetadata[] FlowProfileList { get => _connectionBody.FlowProfileList?.ToArray() ?? null /* fixedArrayOf */; set => _connectionBody.FlowProfileList = (value != null ? new System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>(value) : null); }
+
+        /// <summary>
+        /// The flow types being requested for this connection. This FlowType property has reached end of life support starting version
+        /// 2025-05-30-preview. Please create a FlowProfile resource instead.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead.")]
+        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead.",
         SerializedName = @"flowTypes",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
@@ -206,14 +232,17 @@ namespace ADT.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string PipelineName { get => _connectionBody.Pipeline ?? null; set => _connectionBody.Pipeline = value; }
 
-        /// <summary>The policies for this connection</summary>
+        /// <summary>
+        /// The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policies for this connection")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.")]
         [global::ADT.Category(global::ADT.ParameterCategory.Body)]
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The policies for this connection",
+        Description = @"The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"policies",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.DoNotExport]
@@ -282,26 +311,32 @@ namespace ADT.Cmdlets
         [global::ADT.Category(global::ADT.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>The schemas for this connection</summary>
+        /// <summary>
+        /// The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The schemas for this connection")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.")]
         [global::ADT.Category(global::ADT.ParameterCategory.Body)]
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The schemas for this connection",
+        Description = @"The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"schemas",
         PossibleTypes = new [] { typeof(ADT.Models.ISchema) })]
         public ADT.Models.ISchema[] Schema { get => _connectionBody.Schema?.ToArray() ?? null /* fixedArrayOf */; set => _connectionBody.Schema = (value != null ? new System.Collections.Generic.List<ADT.Models.ISchema>(value) : null); }
 
-        /// <summary>The schema URIs for this connection</summary>
+        /// <summary>
+        /// The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The schema URIs for this connection")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.")]
         [global::ADT.Category(global::ADT.ParameterCategory.Body)]
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The schema URIs for this connection",
+        Description = @"The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"schemaUris",
         PossibleTypes = new [] { typeof(string) })]
         public string[] SchemaUri { get => _connectionBody.SchemaUri?.ToArray() ?? null /* fixedArrayOf */; set => _connectionBody.SchemaUri = (value != null ? new System.Collections.Generic.List<string>(value) : null); }

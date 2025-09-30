@@ -10,16 +10,16 @@ namespace ADT.Cmdlets
     using ADT.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Executes a privileged action for a pipeline.</summary>
+    /// <summary>Executes a privileged or administrative action on the specified Pipeline.</summary>
     /// <remarks>
     /// [OpenAPI] ExecuteAction=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction"
     /// </remarks>
     [global::ADT.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzDataTransferExecutePipelineAction_ExecuteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IPipeline))]
-    [global::ADT.Description(@"Executes a privileged action for a pipeline.")]
+    [global::ADT.Description(@"Executes a privileged or administrative action on the specified Pipeline.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction", ApiVersion = "2025-05-30-preview")]
     public partial class InvokeAzDataTransferExecutePipelineAction_ExecuteViaIdentity : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext

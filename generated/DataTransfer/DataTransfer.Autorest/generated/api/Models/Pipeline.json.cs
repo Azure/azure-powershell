@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>The pipeline resource definition.</summary>
+    /// <summary>
+    /// The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are
+    /// managed.
+    /// </summary>
     public partial class Pipeline
     {
 

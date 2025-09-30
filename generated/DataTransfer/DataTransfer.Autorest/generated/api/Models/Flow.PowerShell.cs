@@ -209,6 +209,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).Connection = (ADT.Models.ISelectedResource) content.GetValueForProperty("Connection",((ADT.Models.IFlowInternal)this).Connection, ADT.Models.SelectedResourceTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Profile"))
+            {
+                ((ADT.Models.IFlowInternal)this).Profile = (ADT.Models.IFlowProfileMetadata) content.GetValueForProperty("Profile",((ADT.Models.IFlowInternal)this).Profile, ADT.Models.FlowProfileMetadataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ApiFlowOption"))
             {
                 ((ADT.Models.IFlowInternal)this).ApiFlowOption = (ADT.Models.IApiFlowOptions) content.GetValueForProperty("ApiFlowOption",((ADT.Models.IFlowInternal)this).ApiFlowOption, ADT.Models.ApiFlowOptionsTypeConverter.ConvertFrom);
@@ -257,6 +261,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).ServiceBusQueueId = (string) content.GetValueForProperty("ServiceBusQueueId",((ADT.Models.IFlowInternal)this).ServiceBusQueueId, global::System.Convert.ToString);
             }
+            if (content.Contains("FlowDataType"))
+            {
+                ((ADT.Models.IFlowInternal)this).FlowDataType = (string) content.GetValueForProperty("FlowDataType",((ADT.Models.IFlowInternal)this).FlowDataType, global::System.Convert.ToString);
+            }
             if (content.Contains("Policy"))
             {
                 ((ADT.Models.IFlowInternal)this).Policy = (System.Collections.Generic.List<string>) content.GetValueForProperty("Policy",((ADT.Models.IFlowInternal)this).Policy, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -292,6 +300,10 @@ namespace ADT.Models
             if (content.Contains("ConsumerGroup"))
             {
                 ((ADT.Models.IFlowInternal)this).ConsumerGroup = (string) content.GetValueForProperty("ConsumerGroup",((ADT.Models.IFlowInternal)this).ConsumerGroup, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileStatus"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileStatus = (string) content.GetValueForProperty("ProfileStatus",((ADT.Models.IFlowInternal)this).ProfileStatus, global::System.Convert.ToString);
             }
             if (content.Contains("SchemaId"))
             {
@@ -345,6 +357,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).ApiFlowOptionAudienceOverride = (string) content.GetValueForProperty("ApiFlowOptionAudienceOverride",((ADT.Models.IFlowInternal)this).ApiFlowOptionAudienceOverride, global::System.Convert.ToString);
             }
+            if (content.Contains("ApiFlowOptionAuthentication"))
+            {
+                ((ADT.Models.IFlowInternal)this).ApiFlowOptionAuthentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("ApiFlowOptionAuthentication",((ADT.Models.IFlowInternal)this).ApiFlowOptionAuthentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("SourceAddressSourceAddresses"))
             {
                 ((ADT.Models.IFlowInternal)this).SourceAddressSourceAddresses = (System.Collections.Generic.List<string>) content.GetValueForProperty("SourceAddressSourceAddresses",((ADT.Models.IFlowInternal)this).SourceAddressSourceAddresses, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -381,9 +397,37 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).ConnectionSubscriptionName = (string) content.GetValueForProperty("ConnectionSubscriptionName",((ADT.Models.IFlowInternal)this).ConnectionSubscriptionName, global::System.Convert.ToString);
             }
+            if (content.Contains("ProfilePipeline"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfilePipeline = (string) content.GetValueForProperty("ProfilePipeline",((ADT.Models.IFlowInternal)this).ProfilePipeline, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileName"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((ADT.Models.IFlowInternal)this).ProfileName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileReplicationScenario"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileReplicationScenario = (string) content.GetValueForProperty("ProfileReplicationScenario",((ADT.Models.IFlowInternal)this).ProfileReplicationScenario, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileId"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileId = (string) content.GetValueForProperty("ProfileId",((ADT.Models.IFlowInternal)this).ProfileId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileDescription"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileDescription = (string) content.GetValueForProperty("ProfileDescription",((ADT.Models.IFlowInternal)this).ProfileDescription, global::System.Convert.ToString);
+            }
             if (content.Contains("MessagingOptionBillingTier"))
             {
                 ((ADT.Models.IFlowInternal)this).MessagingOptionBillingTier = (string) content.GetValueForProperty("MessagingOptionBillingTier",((ADT.Models.IFlowInternal)this).MessagingOptionBillingTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("MessagingOptionPerformancePriority"))
+            {
+                ((ADT.Models.IFlowInternal)this).MessagingOptionPerformancePriority = (string) content.GetValueForProperty("MessagingOptionPerformancePriority",((ADT.Models.IFlowInternal)this).MessagingOptionPerformancePriority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApiFlowOptionRemoteEndpointSetting"))
+            {
+                ((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteEndpointSetting = (ADT.Models.IRemoteEndpointSettings) content.GetValueForProperty("ApiFlowOptionRemoteEndpointSetting",((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteEndpointSetting, ADT.Models.RemoteEndpointSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("ApiFlowOptionSenderClientId"))
             {
@@ -392,6 +436,14 @@ namespace ADT.Models
             if (content.Contains("ApiFlowOptionRemoteCallingModeClientId"))
             {
                 ((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteCallingModeClientId = (string) content.GetValueForProperty("ApiFlowOptionRemoteCallingModeClientId",((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteCallingModeClientId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteEndpointSettingEndpoint"))
+            {
+                ((ADT.Models.IFlowInternal)this).RemoteEndpointSettingEndpoint = (string) content.GetValueForProperty("RemoteEndpointSettingEndpoint",((ADT.Models.IFlowInternal)this).RemoteEndpointSettingEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteEndpointSettingAuthentication"))
+            {
+                ((ADT.Models.IFlowInternal)this).RemoteEndpointSettingAuthentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("RemoteEndpointSettingAuthentication",((ADT.Models.IFlowInternal)this).RemoteEndpointSettingAuthentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -522,6 +574,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).Connection = (ADT.Models.ISelectedResource) content.GetValueForProperty("Connection",((ADT.Models.IFlowInternal)this).Connection, ADT.Models.SelectedResourceTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Profile"))
+            {
+                ((ADT.Models.IFlowInternal)this).Profile = (ADT.Models.IFlowProfileMetadata) content.GetValueForProperty("Profile",((ADT.Models.IFlowInternal)this).Profile, ADT.Models.FlowProfileMetadataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ApiFlowOption"))
             {
                 ((ADT.Models.IFlowInternal)this).ApiFlowOption = (ADT.Models.IApiFlowOptions) content.GetValueForProperty("ApiFlowOption",((ADT.Models.IFlowInternal)this).ApiFlowOption, ADT.Models.ApiFlowOptionsTypeConverter.ConvertFrom);
@@ -570,6 +626,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).ServiceBusQueueId = (string) content.GetValueForProperty("ServiceBusQueueId",((ADT.Models.IFlowInternal)this).ServiceBusQueueId, global::System.Convert.ToString);
             }
+            if (content.Contains("FlowDataType"))
+            {
+                ((ADT.Models.IFlowInternal)this).FlowDataType = (string) content.GetValueForProperty("FlowDataType",((ADT.Models.IFlowInternal)this).FlowDataType, global::System.Convert.ToString);
+            }
             if (content.Contains("Policy"))
             {
                 ((ADT.Models.IFlowInternal)this).Policy = (System.Collections.Generic.List<string>) content.GetValueForProperty("Policy",((ADT.Models.IFlowInternal)this).Policy, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -605,6 +665,10 @@ namespace ADT.Models
             if (content.Contains("ConsumerGroup"))
             {
                 ((ADT.Models.IFlowInternal)this).ConsumerGroup = (string) content.GetValueForProperty("ConsumerGroup",((ADT.Models.IFlowInternal)this).ConsumerGroup, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileStatus"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileStatus = (string) content.GetValueForProperty("ProfileStatus",((ADT.Models.IFlowInternal)this).ProfileStatus, global::System.Convert.ToString);
             }
             if (content.Contains("SchemaId"))
             {
@@ -658,6 +722,10 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).ApiFlowOptionAudienceOverride = (string) content.GetValueForProperty("ApiFlowOptionAudienceOverride",((ADT.Models.IFlowInternal)this).ApiFlowOptionAudienceOverride, global::System.Convert.ToString);
             }
+            if (content.Contains("ApiFlowOptionAuthentication"))
+            {
+                ((ADT.Models.IFlowInternal)this).ApiFlowOptionAuthentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("ApiFlowOptionAuthentication",((ADT.Models.IFlowInternal)this).ApiFlowOptionAuthentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
+            }
             if (content.Contains("SourceAddressSourceAddresses"))
             {
                 ((ADT.Models.IFlowInternal)this).SourceAddressSourceAddresses = (System.Collections.Generic.List<string>) content.GetValueForProperty("SourceAddressSourceAddresses",((ADT.Models.IFlowInternal)this).SourceAddressSourceAddresses, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -694,9 +762,37 @@ namespace ADT.Models
             {
                 ((ADT.Models.IFlowInternal)this).ConnectionSubscriptionName = (string) content.GetValueForProperty("ConnectionSubscriptionName",((ADT.Models.IFlowInternal)this).ConnectionSubscriptionName, global::System.Convert.ToString);
             }
+            if (content.Contains("ProfilePipeline"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfilePipeline = (string) content.GetValueForProperty("ProfilePipeline",((ADT.Models.IFlowInternal)this).ProfilePipeline, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileName"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((ADT.Models.IFlowInternal)this).ProfileName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileReplicationScenario"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileReplicationScenario = (string) content.GetValueForProperty("ProfileReplicationScenario",((ADT.Models.IFlowInternal)this).ProfileReplicationScenario, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileId"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileId = (string) content.GetValueForProperty("ProfileId",((ADT.Models.IFlowInternal)this).ProfileId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileDescription"))
+            {
+                ((ADT.Models.IFlowInternal)this).ProfileDescription = (string) content.GetValueForProperty("ProfileDescription",((ADT.Models.IFlowInternal)this).ProfileDescription, global::System.Convert.ToString);
+            }
             if (content.Contains("MessagingOptionBillingTier"))
             {
                 ((ADT.Models.IFlowInternal)this).MessagingOptionBillingTier = (string) content.GetValueForProperty("MessagingOptionBillingTier",((ADT.Models.IFlowInternal)this).MessagingOptionBillingTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("MessagingOptionPerformancePriority"))
+            {
+                ((ADT.Models.IFlowInternal)this).MessagingOptionPerformancePriority = (string) content.GetValueForProperty("MessagingOptionPerformancePriority",((ADT.Models.IFlowInternal)this).MessagingOptionPerformancePriority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApiFlowOptionRemoteEndpointSetting"))
+            {
+                ((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteEndpointSetting = (ADT.Models.IRemoteEndpointSettings) content.GetValueForProperty("ApiFlowOptionRemoteEndpointSetting",((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteEndpointSetting, ADT.Models.RemoteEndpointSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("ApiFlowOptionSenderClientId"))
             {
@@ -705,6 +801,14 @@ namespace ADT.Models
             if (content.Contains("ApiFlowOptionRemoteCallingModeClientId"))
             {
                 ((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteCallingModeClientId = (string) content.GetValueForProperty("ApiFlowOptionRemoteCallingModeClientId",((ADT.Models.IFlowInternal)this).ApiFlowOptionRemoteCallingModeClientId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteEndpointSettingEndpoint"))
+            {
+                ((ADT.Models.IFlowInternal)this).RemoteEndpointSettingEndpoint = (string) content.GetValueForProperty("RemoteEndpointSettingEndpoint",((ADT.Models.IFlowInternal)this).RemoteEndpointSettingEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteEndpointSettingAuthentication"))
+            {
+                ((ADT.Models.IFlowInternal)this).RemoteEndpointSettingAuthentication = (System.Collections.Generic.List<ADT.Models.IAuthentication>) content.GetValueForProperty("RemoteEndpointSettingAuthentication",((ADT.Models.IFlowInternal)this).RemoteEndpointSettingAuthentication, __y => TypeConverterExtensions.SelectToList<ADT.Models.IAuthentication>(__y, ADT.Models.AuthenticationTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

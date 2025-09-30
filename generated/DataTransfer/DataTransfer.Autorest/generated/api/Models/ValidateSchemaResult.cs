@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>Result of the schema validation.</summary>
+    /// <summary>
+    /// Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview.
+    /// Please manage schemas with a FlowProfile resource instead.
+    /// </summary>
     public partial class ValidateSchemaResult :
         ADT.Models.IValidateSchemaResult,
         ADT.Models.IValidateSchemaResultInternal
@@ -36,7 +39,8 @@ namespace ADT.Models
 
         }
     }
-    /// Result of the schema validation.
+    /// Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview.
+    /// Please manage schemas with a FlowProfile resource instead.
     public partial interface IValidateSchemaResult :
         ADT.Runtime.IJsonSerializable
     {
@@ -65,7 +69,8 @@ namespace ADT.Models
         string Status { get;  }
 
     }
-    /// Result of the schema validation.
+    /// Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview.
+    /// Please manage schemas with a FlowProfile resource instead.
     internal partial interface IValidateSchemaResultInternal
 
     {

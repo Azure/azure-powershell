@@ -20,6 +20,16 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public string BillingTier { get => this._billingTier; set => this._billingTier = value; }
 
+        /// <summary>Backing field for <see cref="PerformancePriority" /> property.</summary>
+        private string _performancePriority;
+
+        /// <summary>
+        /// Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over
+        /// consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Owned)]
+        public string PerformancePriority { get => this._performancePriority; set => this._performancePriority = value; }
+
         /// <summary>Creates an new <see cref="MessagingOptions" /> instance.</summary>
         public MessagingOptions()
         {
@@ -42,6 +52,21 @@ namespace ADT.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("BlobTransport", "Standard", "Premium")]
         string BillingTier { get; set; }
+        /// <summary>
+        /// Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over
+        /// consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions",
+        SerializedName = @"performancePriority",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PerformancePriority { get; set; }
 
     }
     /// The option associated with messaging flows.
@@ -51,6 +76,12 @@ namespace ADT.Models
         /// <summary>Billing tier for this messaging flow</summary>
         [global::ADT.PSArgumentCompleterAttribute("BlobTransport", "Standard", "Premium")]
         string BillingTier { get; set; }
+        /// <summary>
+        /// Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over
+        /// consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+        /// </summary>
+        [global::ADT.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PerformancePriority { get; set; }
 
     }
 }

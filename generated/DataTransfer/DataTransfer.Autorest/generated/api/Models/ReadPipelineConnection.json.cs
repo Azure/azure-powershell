@@ -7,6 +7,7 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
+    /// <summary>The ReadPipelineconnection.</summary>
     public partial class ReadPipelineConnection
     {
 
@@ -82,7 +83,7 @@ namespace ADT.Models
             {_type = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             {_location = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
             {_etag = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}
-            {_property = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? ADT.Models.ReadPipelineConnectionProperties.FromJson(__jsonProperties) : _property;}
+            {_property = If( json?.PropertyT<ADT.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? ADT.Models.PipelineConnectionProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 

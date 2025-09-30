@@ -88,6 +88,98 @@
       </TableControl>
     </View>
     <View>
+      <Name>ADT.Models.ArchiveRuleset</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.ArchiveRuleset#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaximumCompressionRatioLimit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaximumDepthLimit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaximumExpansionSizeLimit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinimumSizeForExpansion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaximumCompressionRatioLimit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaximumDepthLimit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaximumExpansionSizeLimit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinimumSizeForExpansion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.Authentication</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.Authentication#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Audience</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Authority</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientIdOverride</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityTranslation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Instance</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Audience</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Authority</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientIdOverride</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityTranslation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Instance</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>ADT.Models.Connection</Name>
       <ViewSelectedBy>
         <TypeName>ADT.Models.Connection#Multiple</TypeName>
@@ -187,6 +279,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ApiHostname</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Approver</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -232,6 +327,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ApiHostname</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Approver</PropertyName>
               </TableColumnItem>
@@ -302,6 +400,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>ADT.Models.DataSizeRuleset</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.DataSizeRuleset#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Maximum</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Minimum</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Maximum</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Minimum</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>ADT.Models.DataTransferIdentity</Name>
       <ViewSelectedBy>
         <TypeName>ADT.Models.DataTransferIdentity#Multiple</TypeName>
@@ -313,6 +439,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FlowName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FlowProfileName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PipelineName</Label>
@@ -332,6 +461,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FlowName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FlowProfileName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PipelineName</PropertyName>
@@ -474,6 +606,252 @@
       </TableControl>
     </View>
     <View>
+      <Name>ADT.Models.FlowProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.FlowProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.FlowProfileListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.FlowProfileListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.FlowProfileMetadata</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.FlowProfileMetadata#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FlowProfileId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Pipeline</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReplicationScenario</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FlowProfileId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Pipeline</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReplicationScenario</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.FlowProfilePatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.FlowProfilePatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.FlowProfilePatchTags</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.FlowProfilePatchTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.FlowProfileProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.FlowProfileProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FlowProfileId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReplicationScenario</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FlowProfileId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReplicationScenario</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>ADT.Models.FlowProperties</Name>
       <ViewSelectedBy>
         <TypeName>ADT.Models.FlowProperties#Multiple</TypeName>
@@ -491,6 +869,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EventHubId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FlowDataType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FlowId</Label>
@@ -555,6 +936,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EventHubId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FlowDataType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FlowId</PropertyName>
@@ -654,6 +1038,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>ADT.Models.InternalMetadataProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.InternalMetadataProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>StatusSetBy</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>StatusSetBy</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>ADT.Models.ListApprovedSchemasRequest</Name>
       <ViewSelectedBy>
         <TypeName>ADT.Models.ListApprovedSchemasRequest#Multiple</TypeName>
@@ -673,6 +1079,28 @@
               <TableColumnItem>
                 <PropertyName>Direction</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Pipeline</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.ListFlowProfilesRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.ListFlowProfilesRequest#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Pipeline</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Pipeline</PropertyName>
               </TableColumnItem>
@@ -719,12 +1147,68 @@
           <TableColumnHeader>
             <Label>BillingTier</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PerformancePriority</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>BillingTier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PerformancePriority</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.MimeTypeFilter</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.MimeTypeFilter#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Media</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Media</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.OperationStatusProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.OperationStatusProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -738,6 +1222,9 @@
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>ApiHostname</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Approver</Label>
           </TableColumnHeader>
@@ -793,6 +1280,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ApiHostname</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Approver</PropertyName>
               </TableColumnItem>
@@ -916,6 +1406,9 @@
             <Label>EventHubId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>FlowDataType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>FlowId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -990,6 +1483,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EventHubId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FlowDataType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FlowId</PropertyName>
@@ -1310,56 +1806,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>ADT.Models.ReadInternalMetadataProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>ADT.Models.ReadInternalMetadataProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>StatusSetBy</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>StatusSetBy</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>ADT.Models.ReadOperationStatusProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>ADT.Models.ReadOperationStatusProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>ADT.Models.ReadPipelineConnection</Name>
       <ViewSelectedBy>
         <TypeName>ADT.Models.ReadPipelineConnection#Multiple</TypeName>
@@ -1387,6 +1833,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.RemoteEndpointSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.RemoteEndpointSettings#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Endpoint</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Endpoint</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1626,6 +2094,40 @@
       </TableControl>
     </View>
     <View>
+      <Name>ADT.Models.TextMatch</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.TextMatch#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CaseSensitivity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MatchType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Text</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CaseSensitivity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MatchType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Text</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>ADT.Models.TrackedResource</Name>
       <ViewSelectedBy>
         <TypeName>ADT.Models.TrackedResource#Multiple</TypeName>
@@ -1761,6 +2263,40 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ADT.Models.XmlFilterRuleset</Name>
+      <ViewSelectedBy>
+        <TypeName>ADT.Models.XmlFilterRuleset#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DefaultNamespace</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Reference</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Schema</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DefaultNamespace</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Reference</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Schema</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

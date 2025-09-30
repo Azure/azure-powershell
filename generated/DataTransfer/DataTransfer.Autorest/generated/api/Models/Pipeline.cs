@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>The pipeline resource definition.</summary>
+    /// <summary>
+    /// The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are
+    /// managed.
+    /// </summary>
     public partial class Pipeline :
         ADT.Models.IPipeline,
         ADT.Models.IPipelineInternal,
@@ -68,6 +71,10 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<ADT.Models.IReadPipelineConnection> Connection { get => ((ADT.Models.IPipelinePropertiesInternal)Property).Connection; }
 
+        /// <summary>The DataClasses that are disabled for this pipeline</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> DisabledDataClass { get => ((ADT.Models.IPipelinePropertiesInternal)Property).DisabledDataClass; set => ((ADT.Models.IPipelinePropertiesInternal)Property).DisabledDataClass = value ?? null /* arrayOf */; }
+
         /// <summary>The flow types that are disabled for this pipeline</summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> DisabledFlowType { get => ((ADT.Models.IPipelinePropertiesInternal)Property).DisabledFlowType; set => ((ADT.Models.IPipelinePropertiesInternal)Property).DisabledFlowType = value ?? null /* arrayOf */; }
@@ -76,7 +83,10 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string DisplayName { get => ((ADT.Models.IPipelinePropertiesInternal)Property).DisplayName; set => ((ADT.Models.IPipelinePropertiesInternal)Property).DisplayName = value ?? null; }
 
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> FlowType { get => ((ADT.Models.IPipelinePropertiesInternal)Property).FlowType; set => ((ADT.Models.IPipelinePropertiesInternal)Property).FlowType = value ?? null /* arrayOf */; }
 
@@ -127,14 +137,17 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inherited)]
         public string Name { get => ((ADT.Models.IResourceInternal)__trackedResource).Name; }
 
-        /// <summary>The policies for this pipeline</summary>
+        /// <summary>
+        /// The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> Policy { get => ((ADT.Models.IPipelinePropertiesInternal)Property).Policy; set => ((ADT.Models.IPipelinePropertiesInternal)Property).Policy = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private ADT.Models.IPipelineProperties _property;
 
-        /// <summary>Properties of pipeline</summary>
+        /// <summary>The set of configurable properties for the Pipeline resource.</summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         internal ADT.Models.IPipelineProperties Property { get => (this._property = this._property ?? new ADT.Models.PipelineProperties()); set => this._property = value; }
 
@@ -224,7 +237,8 @@ namespace ADT.Models
             await eventListener.AssertObjectIsValid(nameof(__trackedResource), __trackedResource);
         }
     }
-    /// The pipeline resource definition.
+    /// The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are
+    /// managed.
     public partial interface IPipeline :
         ADT.Runtime.IJsonSerializable,
         ADT.Models.ITrackedResource
@@ -240,6 +254,18 @@ namespace ADT.Models
         SerializedName = @"connections",
         PossibleTypes = new [] { typeof(ADT.Models.IReadPipelineConnection) })]
         System.Collections.Generic.List<ADT.Models.IReadPipelineConnection> Connection { get;  }
+        /// <summary>The DataClasses that are disabled for this pipeline</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The DataClasses that are disabled for this pipeline",
+        SerializedName = @"disabledDataClass",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+        System.Collections.Generic.List<string> DisabledDataClass { get; set; }
         /// <summary>The flow types that are disabled for this pipeline</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -263,14 +289,17 @@ namespace ADT.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The flow types allowed for this pipeline",
+        Description = @"The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"flowTypes",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
@@ -330,14 +359,17 @@ namespace ADT.Models
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(ADT.Models.IUserAssignedIdentities) })]
         ADT.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
-        /// <summary>The policies for this pipeline</summary>
+        /// <summary>
+        /// The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The policies for this pipeline",
+        Description = @"The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"policies",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Policy { get; set; }
@@ -411,18 +443,25 @@ namespace ADT.Models
         System.Collections.Generic.List<ADT.Models.ISubscriber> Subscriber { get; set; }
 
     }
-    /// The pipeline resource definition.
+    /// The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are
+    /// managed.
     internal partial interface IPipelineInternal :
         ADT.Models.ITrackedResourceInternal
     {
         /// <summary>Connections associated with pipeline</summary>
         System.Collections.Generic.List<ADT.Models.IReadPipelineConnection> Connection { get; set; }
+        /// <summary>The DataClasses that are disabled for this pipeline</summary>
+        [global::ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+        System.Collections.Generic.List<string> DisabledDataClass { get; set; }
         /// <summary>The flow types that are disabled for this pipeline</summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> DisabledFlowType { get; set; }
         /// <summary>Display name of this pipeline</summary>
         string DisplayName { get; set; }
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> FlowType { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
@@ -446,9 +485,12 @@ namespace ADT.Models
         /// The dictionary values can be empty objects ({}) in requests.
         /// </summary>
         ADT.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
-        /// <summary>The policies for this pipeline</summary>
+        /// <summary>
+        /// The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         System.Collections.Generic.List<string> Policy { get; set; }
-        /// <summary>Properties of pipeline</summary>
+        /// <summary>The set of configurable properties for the Pipeline resource.</summary>
         ADT.Models.IPipelineProperties Property { get; set; }
         /// <summary>Provisioning state of the pipeline</summary>
         [global::ADT.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Accepted")]

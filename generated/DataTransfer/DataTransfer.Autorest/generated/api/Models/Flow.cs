@@ -19,6 +19,9 @@ namespace ADT.Models
         /// <summary>Internal Acessors for ApiFlowOption</summary>
         ADT.Models.IApiFlowOptions ADT.Models.IFlowInternal.ApiFlowOption { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOption; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOption = value ?? null /* model class */; }
 
+        /// <summary>Internal Acessors for ApiFlowOptionRemoteEndpointSetting</summary>
+        ADT.Models.IRemoteEndpointSettings ADT.Models.IFlowInternal.ApiFlowOptionRemoteEndpointSetting { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionRemoteEndpointSetting; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionRemoteEndpointSetting = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for Connection</summary>
         ADT.Models.ISelectedResource ADT.Models.IFlowInternal.Connection { get => ((ADT.Models.IFlowPropertiesInternal)Property).Connection; set => ((ADT.Models.IFlowPropertiesInternal)Property).Connection = value ?? null /* model class */; }
 
@@ -48,6 +51,9 @@ namespace ADT.Models
 
         /// <summary>Internal Acessors for Plan</summary>
         ADT.Models.IPlan ADT.Models.IFlowInternal.Plan { get => (this._plan = this._plan ?? new ADT.Models.Plan()); set { {_plan = value;} } }
+
+        /// <summary>Internal Acessors for Profile</summary>
+        ADT.Models.IFlowProfileMetadata ADT.Models.IFlowInternal.Profile { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfile; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         ADT.Models.IFlowProperties ADT.Models.IFlowInternal.Property { get => (this._property = this._property ?? new ADT.Models.FlowProperties()); set { {_property = value;} } }
@@ -97,27 +103,49 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ApiFlowOptionApiMode { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionApiMode; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionApiMode = value ?? null; }
 
-        /// <summary>Optional field to override the audience of the remote endpoint</summary>
+        /// <summary>
+        /// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting
+        /// version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ApiFlowOptionAudienceOverride { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionAudienceOverride; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionAudienceOverride = value ?? null; }
+
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API
+        /// Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<ADT.Models.IAuthentication> ApiFlowOptionAuthentication { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionAuthentication; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionAuthentication = value ?? null /* arrayOf */; }
 
         /// <summary>Unique CNAME to represent the Azure Data Transfer API Flow instance</summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ApiFlowOptionCname { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionCname; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionCname = value ?? null; }
 
-        /// <summary>Flag for if Azure Data Transfer API Flow should extract the user token</summary>
+        /// <summary>
+        /// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached
+        /// end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ApiFlowOptionIdentityTranslation { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionIdentityTranslation; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionIdentityTranslation = value ?? null; }
 
-        /// <summary>Remote stub app registration Client ID</summary>
+        /// <summary>
+        /// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ApiFlowOptionRemoteCallingModeClientId { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionRemoteCallingModeClientId; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionRemoteCallingModeClientId = value ?? null; }
 
-        /// <summary>Remote host to which communication needs to be made</summary>
+        /// <summary>
+        /// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the remoteEndpointSettings.endpoint property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ApiFlowOptionRemoteEndpoint { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionRemoteEndpoint; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionRemoteEndpoint = value ?? null; }
 
-        /// <summary>Sender's app user assigned Manage Identity client ID</summary>
+        /// <summary>
+        /// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ApiFlowOptionSenderClientId { get => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionSenderClientId; set => ((ADT.Models.IFlowPropertiesInternal)Property).ApiFlowOptionSenderClientId = value ?? null; }
 
@@ -145,7 +173,10 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string CustomerManagedKeyVaultUri { get => ((ADT.Models.IFlowPropertiesInternal)Property).CustomerManagedKeyVaultUri; set => ((ADT.Models.IFlowPropertiesInternal)Property).CustomerManagedKeyVaultUri = value ?? null; }
 
-        /// <summary>Type of data to transfer via the flow.</summary>
+        /// <summary>
+        /// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string DataType { get => ((ADT.Models.IFlowPropertiesInternal)Property).DataType; set => ((ADT.Models.IFlowPropertiesInternal)Property).DataType = value ?? null; }
 
@@ -161,11 +192,18 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string EventHubId { get => ((ADT.Models.IFlowPropertiesInternal)Property).EventHubId; set => ((ADT.Models.IFlowPropertiesInternal)Property).EventHubId = value ?? null; }
 
+        /// <summary>The Flow's data class.</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string FlowDataType { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowDataType; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowDataType = value ?? null; }
+
         /// <summary>Dataflow GUID associated with this flow</summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string FlowId { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowId; }
 
-        /// <summary>The flow type for this flow</summary>
+        /// <summary>
+        /// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please
+        /// create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string FlowType { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowType; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowType = value ?? null; }
 
@@ -232,6 +270,13 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string MessagingOptionBillingTier { get => ((ADT.Models.IFlowPropertiesInternal)Property).MessagingOptionBillingTier; set => ((ADT.Models.IFlowPropertiesInternal)Property).MessagingOptionBillingTier = value ?? null; }
 
+        /// <summary>
+        /// Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over
+        /// consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string MessagingOptionPerformancePriority { get => ((ADT.Models.IFlowPropertiesInternal)Property).MessagingOptionPerformancePriority; set => ((ADT.Models.IFlowPropertiesInternal)Property).MessagingOptionPerformancePriority = value ?? null; }
+
         /// <summary>The name of the resource</summary>
         [ADT.Origin(ADT.PropertyOrigin.Inherited)]
         public string Name { get => ((ADT.Models.IResourceInternal)__trackedResource).Name; }
@@ -272,9 +317,46 @@ namespace ADT.Models
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string PlanVersion { get => ((ADT.Models.IPlanInternal)Plan).Version; set => ((ADT.Models.IPlanInternal)Plan).Version = value ?? null; }
 
-        /// <summary>The policies for this flow</summary>
+        /// <summary>
+        /// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create
+        /// and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> Policy { get => ((ADT.Models.IFlowPropertiesInternal)Property).Policy; set => ((ADT.Models.IFlowPropertiesInternal)Property).Policy = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets
+        /// applied.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string ProfileDescription { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileDescription; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileDescription = value ?? null; }
+
+        /// <summary>
+        /// A guid represented as a string for the FlowProfile resource, assigned by the system.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string ProfileId { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileId; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileId = value ?? null; }
+
+        /// <summary>The name of the FlowProfile.</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string ProfileName { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileName; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileName = value ?? null; }
+
+        /// <summary>
+        /// The name of the parent Pipeline Azure resource associated with this FlowProfile.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string ProfilePipeline { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfilePipeline; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfilePipeline = value ?? null; }
+
+        /// <summary>
+        /// The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation.
+        /// See the FlowProfilePatchProperties to see updateable properties.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string ProfileReplicationScenario { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileReplicationScenario; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileReplicationScenario = value ?? null; }
+
+        /// <summary>The operational status of the FlowProfile.</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string ProfileStatus { get => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileStatus; set => ((ADT.Models.IFlowPropertiesInternal)Property).FlowProfileStatus = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private ADT.Models.IFlowProperties _property;
@@ -286,6 +368,17 @@ namespace ADT.Models
         /// <summary>Provisioning state of the flow</summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public string ProvisioningState { get => ((ADT.Models.IFlowPropertiesInternal)Property).ProvisioningState; }
+
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not
+        /// provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<ADT.Models.IAuthentication> RemoteEndpointSettingAuthentication { get => ((ADT.Models.IFlowPropertiesInternal)Property).RemoteEndpointSettingAuthentication; set => ((ADT.Models.IFlowPropertiesInternal)Property).RemoteEndpointSettingAuthentication = value ?? null /* arrayOf */; }
+
+        /// <summary>The remote endpoint uri all API calls.</summary>
+        [ADT.Origin(ADT.PropertyOrigin.Inlined)]
+        public string RemoteEndpointSettingEndpoint { get => ((ADT.Models.IFlowPropertiesInternal)Property).RemoteEndpointSettingEndpoint; set => ((ADT.Models.IFlowPropertiesInternal)Property).RemoteEndpointSettingEndpoint = value ?? null; }
 
         /// <summary>Gets the resource group name</summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
@@ -440,17 +533,34 @@ namespace ADT.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("SDK", "Endpoint")]
         string ApiFlowOptionApiMode { get; set; }
-        /// <summary>Optional field to override the audience of the remote endpoint</summary>
+        /// <summary>
+        /// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting
+        /// version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Optional field to override the audience of the remote endpoint",
+        Description = @"Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"audienceOverride",
         PossibleTypes = new [] { typeof(string) })]
         string ApiFlowOptionAudienceOverride { get; set; }
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API
+        /// Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.",
+        SerializedName = @"authentication",
+        PossibleTypes = new [] { typeof(ADT.Models.IAuthentication) })]
+        System.Collections.Generic.List<ADT.Models.IAuthentication> ApiFlowOptionAuthentication { get; set; }
         /// <summary>Unique CNAME to represent the Azure Data Transfer API Flow instance</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -462,48 +572,60 @@ namespace ADT.Models
         SerializedName = @"cname",
         PossibleTypes = new [] { typeof(string) })]
         string ApiFlowOptionCname { get; set; }
-        /// <summary>Flag for if Azure Data Transfer API Flow should extract the user token</summary>
+        /// <summary>
+        /// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached
+        /// end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Flag for if Azure Data Transfer API Flow should extract the user token",
+        Description = @"Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"identityTranslation",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("UserIdentity", "ServiceIdentity")]
         string ApiFlowOptionIdentityTranslation { get; set; }
-        /// <summary>Remote stub app registration Client ID</summary>
+        /// <summary>
+        /// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Remote stub app registration Client ID",
+        Description = @"Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"remoteCallingModeClientId",
         PossibleTypes = new [] { typeof(string) })]
         string ApiFlowOptionRemoteCallingModeClientId { get; set; }
-        /// <summary>Remote host to which communication needs to be made</summary>
+        /// <summary>
+        /// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the remoteEndpointSettings.endpoint property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Remote host to which communication needs to be made",
+        Description = @"Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.",
         SerializedName = @"remoteEndpoint",
         PossibleTypes = new [] { typeof(string) })]
         string ApiFlowOptionRemoteEndpoint { get; set; }
-        /// <summary>Sender's app user assigned Manage Identity client ID</summary>
+        /// <summary>
+        /// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Sender's app user assigned Manage Identity client ID",
+        Description = @"Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.",
         SerializedName = @"senderClientId",
         PossibleTypes = new [] { typeof(string) })]
         string ApiFlowOptionSenderClientId { get; set; }
@@ -573,14 +695,17 @@ namespace ADT.Models
         SerializedName = @"customerManagedKeyVaultUri",
         PossibleTypes = new [] { typeof(string) })]
         string CustomerManagedKeyVaultUri { get; set; }
-        /// <summary>Type of data to transfer via the flow.</summary>
+        /// <summary>
+        /// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Type of data to transfer via the flow.",
+        Description = @"Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"dataType",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Blob", "Table")]
@@ -618,6 +743,18 @@ namespace ADT.Models
         SerializedName = @"eventHubId",
         PossibleTypes = new [] { typeof(string) })]
         string EventHubId { get; set; }
+        /// <summary>The Flow's data class.</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The Flow's data class.",
+        SerializedName = @"flowDataType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+        string FlowDataType { get; set; }
         /// <summary>Dataflow GUID associated with this flow</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -629,14 +766,17 @@ namespace ADT.Models
         SerializedName = @"flowId",
         PossibleTypes = new [] { typeof(string) })]
         string FlowId { get;  }
-        /// <summary>The flow type for this flow</summary>
+        /// <summary>
+        /// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please
+        /// create and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The flow type for this flow",
+        Description = @"The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"flowType",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
@@ -651,7 +791,7 @@ namespace ADT.Models
         Description = @"Force disablement status of the current flow",
         SerializedName = @"forceDisabledStatus",
         PossibleTypes = new [] { typeof(string) })]
-        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled")]
+        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled", "PipelineForceDisabled")]
         System.Collections.Generic.List<string> ForceDisabledStatus { get;  }
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
@@ -754,6 +894,21 @@ namespace ADT.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("BlobTransport", "Standard", "Premium")]
         string MessagingOptionBillingTier { get; set; }
+        /// <summary>
+        /// Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over
+        /// consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions",
+        SerializedName = @"performancePriority",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string MessagingOptionPerformancePriority { get; set; }
         /// <summary>The passphrase used for SRT streams</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -825,17 +980,98 @@ namespace ADT.Models
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string PlanVersion { get; set; }
-        /// <summary>The policies for this flow</summary>
+        /// <summary>
+        /// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create
+        /// and use a FlowProfile resource instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The policies for this flow",
+        Description = @"The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.",
         SerializedName = @"policies",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Policy { get; set; }
+        /// <summary>
+        /// A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets
+        /// applied.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProfileDescription { get; set; }
+        /// <summary>
+        /// A guid represented as a string for the FlowProfile resource, assigned by the system.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A guid represented as a string for the FlowProfile resource, assigned by the system.",
+        SerializedName = @"flowProfileId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProfileId { get; set; }
+        /// <summary>The name of the FlowProfile.</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the FlowProfile.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProfileName { get; set; }
+        /// <summary>
+        /// The name of the parent Pipeline Azure resource associated with this FlowProfile.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the parent Pipeline Azure resource associated with this FlowProfile.",
+        SerializedName = @"pipeline",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProfilePipeline { get; set; }
+        /// <summary>
+        /// The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation.
+        /// See the FlowProfilePatchProperties to see updateable properties.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.",
+        SerializedName = @"replicationScenario",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("Messaging", "API", "Stream", "Files", "SoftwareArtifacts", "Complex")]
+        string ProfileReplicationScenario { get; set; }
+        /// <summary>The operational status of the FlowProfile.</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The operational status of the FlowProfile.",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("Obsolete", "Enabled")]
+        string ProfileStatus { get; set; }
         /// <summary>Provisioning state of the flow</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -848,6 +1084,31 @@ namespace ADT.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Accepted")]
         string ProvisioningState { get;  }
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not
+        /// provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.",
+        SerializedName = @"authentication",
+        PossibleTypes = new [] { typeof(ADT.Models.IAuthentication) })]
+        System.Collections.Generic.List<ADT.Models.IAuthentication> RemoteEndpointSettingAuthentication { get; set; }
+        /// <summary>The remote endpoint uri all API calls.</summary>
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The remote endpoint uri all API calls.",
+        SerializedName = @"endpoint",
+        PossibleTypes = new [] { typeof(string) })]
+        string RemoteEndpointSettingEndpoint { get; set; }
         /// <summary>Connection ID associated with this schema</summary>
         [ADT.Runtime.Info(
         Required = false,
@@ -1064,18 +1325,40 @@ namespace ADT.Models
         /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("SDK", "Endpoint")]
         string ApiFlowOptionApiMode { get; set; }
-        /// <summary>Optional field to override the audience of the remote endpoint</summary>
+        /// <summary>
+        /// Optional field to override the audience of the remote endpoint. The property has reached end of life support starting
+        /// version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         string ApiFlowOptionAudienceOverride { get; set; }
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the Azure Data Transfer API
+        /// Flow. If not provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        System.Collections.Generic.List<ADT.Models.IAuthentication> ApiFlowOptionAuthentication { get; set; }
         /// <summary>Unique CNAME to represent the Azure Data Transfer API Flow instance</summary>
         string ApiFlowOptionCname { get; set; }
-        /// <summary>Flag for if Azure Data Transfer API Flow should extract the user token</summary>
+        /// <summary>
+        /// Determines which identity to use for extracting the user token for Azure Data Transfer API Flow. The property has reached
+        /// end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("UserIdentity", "ServiceIdentity")]
         string ApiFlowOptionIdentityTranslation { get; set; }
-        /// <summary>Remote stub app registration Client ID</summary>
+        /// <summary>
+        /// Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         string ApiFlowOptionRemoteCallingModeClientId { get; set; }
-        /// <summary>Remote host to which communication needs to be made</summary>
+        /// <summary>
+        /// Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the remoteEndpointSettings.endpoint property instead.
+        /// </summary>
         string ApiFlowOptionRemoteEndpoint { get; set; }
-        /// <summary>Sender's app user assigned Manage Identity client ID</summary>
+        /// <summary>Defines the destination remote endpoint for the API calls.</summary>
+        ADT.Models.IRemoteEndpointSettings ApiFlowOptionRemoteEndpointSetting { get; set; }
+        /// <summary>
+        /// Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the authentication property instead.
+        /// </summary>
         string ApiFlowOptionSenderClientId { get; set; }
         /// <summary>The connection associated with this flow</summary>
         ADT.Models.ISelectedResource Connection { get; set; }
@@ -1091,7 +1374,10 @@ namespace ADT.Models
         string ConsumerGroup { get; set; }
         /// <summary>The URI to the customer managed key for this flow</summary>
         string CustomerManagedKeyVaultUri { get; set; }
-        /// <summary>Type of data to transfer via the flow.</summary>
+        /// <summary>
+        /// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use a FlowProfile resource instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("Blob", "Table")]
         string DataType { get; set; }
         /// <summary>The destination endpoints of the stream</summary>
@@ -1100,13 +1386,19 @@ namespace ADT.Models
         System.Collections.Generic.List<long> DestinationEndpointPort { get; set; }
         /// <summary>Event Hub ID</summary>
         string EventHubId { get; set; }
+        /// <summary>The Flow's data class.</summary>
+        [global::ADT.PSArgumentCompleterAttribute("ServiceBus", "EventHub", "ApiEndpoint", "ApiSDK", "Video", "Blob", "Table")]
+        string FlowDataType { get; set; }
         /// <summary>Dataflow GUID associated with this flow</summary>
         string FlowId { get; set; }
-        /// <summary>The flow type for this flow</summary>
+        /// <summary>
+        /// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please
+        /// create and use a FlowProfile resource instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         string FlowType { get; set; }
         /// <summary>Force disablement status of the current flow</summary>
-        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled")]
+        [global::ADT.PSArgumentCompleterAttribute("ConnectionForceDisabled", "FlowTypeForceDisabled", "PipelineForceDisabled")]
         System.Collections.Generic.List<string> ForceDisabledStatus { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
         ADT.Models.IManagedServiceIdentity Identity { get; set; }
@@ -1141,6 +1433,12 @@ namespace ADT.Models
         /// <summary>Billing tier for this messaging flow</summary>
         [global::ADT.PSArgumentCompleterAttribute("BlobTransport", "Standard", "Premium")]
         string MessagingOptionBillingTier { get; set; }
+        /// <summary>
+        /// Field indicating whether to enable guaranteed delivery on the flow or not. The default disabled option chooses speed over
+        /// consistency. When enabled, messages are delivered with minimal delay, but delivery is not guaranteed under all conditions
+        /// </summary>
+        [global::ADT.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string MessagingOptionPerformancePriority { get; set; }
         /// <summary>The passphrase used for SRT streams</summary>
         string Passphrase { get; set; }
         /// <summary>Details of the resource plan.</summary>
@@ -1160,14 +1458,53 @@ namespace ADT.Models
         string PlanPublisher { get; set; }
         /// <summary>The version of the desired product/artifact.</summary>
         string PlanVersion { get; set; }
-        /// <summary>The policies for this flow</summary>
+        /// <summary>
+        /// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create
+        /// and use a FlowProfile resource instead.
+        /// </summary>
         System.Collections.Generic.List<string> Policy { get; set; }
+        /// <summary>Type of FlowProfile to use for transfer via the flow.</summary>
+        ADT.Models.IFlowProfileMetadata Profile { get; set; }
+        /// <summary>
+        /// A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets
+        /// applied.
+        /// </summary>
+        string ProfileDescription { get; set; }
+        /// <summary>
+        /// A guid represented as a string for the FlowProfile resource, assigned by the system.
+        /// </summary>
+        string ProfileId { get; set; }
+        /// <summary>The name of the FlowProfile.</summary>
+        string ProfileName { get; set; }
+        /// <summary>
+        /// The name of the parent Pipeline Azure resource associated with this FlowProfile.
+        /// </summary>
+        string ProfilePipeline { get; set; }
+        /// <summary>
+        /// The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation.
+        /// See the FlowProfilePatchProperties to see updateable properties.
+        /// </summary>
+        [global::ADT.PSArgumentCompleterAttribute("Messaging", "API", "Stream", "Files", "SoftwareArtifacts", "Complex")]
+        string ProfileReplicationScenario { get; set; }
+        /// <summary>The operational status of the FlowProfile.</summary>
+        [global::ADT.PSArgumentCompleterAttribute("Obsolete", "Enabled")]
+        string ProfileStatus { get; set; }
         /// <summary>Properties of flow</summary>
         ADT.Models.IFlowProperties Property { get; set; }
         /// <summary>Provisioning state of the flow</summary>
         [global::ADT.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Accepted")]
         string ProvisioningState { get; set; }
-        /// <summary>The selected schema for this flow</summary>
+        /// <summary>
+        /// Optional and for advanced used only. A list of authentication methods to use when accessing the remote endpoint. If not
+        /// provided, the default S2S authentication using Entra (API Flow Managed Identity) and RBAC will be applied.
+        /// </summary>
+        System.Collections.Generic.List<ADT.Models.IAuthentication> RemoteEndpointSettingAuthentication { get; set; }
+        /// <summary>The remote endpoint uri all API calls.</summary>
+        string RemoteEndpointSettingEndpoint { get; set; }
+        /// <summary>
+        /// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please
+        /// create and use a FlowProfile resource instead.
+        /// </summary>
         ADT.Models.ISchema Schema { get; set; }
         /// <summary>Connection ID associated with this schema</summary>
         string SchemaConnectionId { get; set; }

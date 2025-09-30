@@ -18,7 +18,7 @@ namespace ADT.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IFlow))]
     [global::ADT.Description(@"Links the specified flow.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/link", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/link", ApiVersion = "2025-05-30-preview")]
     public partial class InvokeAzDataTransferLinkPendingFlow_LinkViaIdentity : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext

@@ -10,15 +10,15 @@ namespace ADT.Cmdlets
     using ADT.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Approves the specified connection request in a pipeline.</summary>
+    /// <summary>Approves a pending connection request associated with the specified Pipeline.</summary>
     /// <remarks>
     /// [OpenAPI] ApproveConnection=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Approve, @"AzDataTransferConnection_ApproveExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(ADT.Models.IConnection))]
-    [global::ADT.Description(@"Approves the specified connection request in a pipeline.")]
+    [global::ADT.Description(@"Approves a pending connection request associated with the specified Pipeline.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection", ApiVersion = "2025-05-21")]
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/approveConnection", ApiVersion = "2025-05-30-preview")]
     public partial class ApproveAzDataTransferConnection_ApproveExpanded : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext
@@ -122,12 +122,12 @@ namespace ADT.Cmdlets
         /// <summary>Backing field for <see cref="PipelineName" /> property.</summary>
         private string _pipelineName;
 
-        /// <summary>The name for the pipeline to perform the operation on.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name for the pipeline to perform the operation on.")]
+        /// <summary>The name of the pipeline on which to operate.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the pipeline on which to operate.")]
         [ADT.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name for the pipeline to perform the operation on.",
+        Description = @"The name of the pipeline on which to operate.",
         SerializedName = @"pipelineName",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.Category(global::ADT.ParameterCategory.Path)]

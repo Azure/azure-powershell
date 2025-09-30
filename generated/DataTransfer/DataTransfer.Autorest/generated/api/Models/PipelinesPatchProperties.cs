@@ -7,7 +7,10 @@ namespace ADT.Models
 {
     using static ADT.Runtime.Extensions;
 
-    /// <summary>Properties of pipelines patch body.</summary>
+    /// <summary>
+    /// Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview.
+    /// Please create and use the FlowProfile resource instead.
+    /// </summary>
     public partial class PipelinesPatchProperties :
         ADT.Models.IPipelinesPatchProperties,
         ADT.Models.IPipelinesPatchPropertiesInternal
@@ -16,7 +19,10 @@ namespace ADT.Models
         /// <summary>Backing field for <see cref="FlowType" /> property.</summary>
         private System.Collections.Generic.List<string> _flowType;
 
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the FlowProfile property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> FlowType { get => this._flowType; set => this._flowType = value; }
 
@@ -26,29 +32,37 @@ namespace ADT.Models
 
         }
     }
-    /// Properties of pipelines patch body.
+    /// Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview.
+    /// Please create and use the FlowProfile resource instead.
     public partial interface IPipelinesPatchProperties :
         ADT.Runtime.IJsonSerializable
     {
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the FlowProfile property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The flow types allowed for this pipeline",
+        Description = @"The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead.",
         SerializedName = @"flowTypes",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> FlowType { get; set; }
 
     }
-    /// Properties of pipelines patch body.
+    /// Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview.
+    /// Please create and use the FlowProfile resource instead.
     internal partial interface IPipelinesPatchPropertiesInternal
 
     {
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the FlowProfile property instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> FlowType { get; set; }
 

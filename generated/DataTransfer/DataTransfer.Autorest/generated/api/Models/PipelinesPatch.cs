@@ -25,7 +25,10 @@ namespace ADT.Models
         /// <summary>Internal Acessors for Property</summary>
         ADT.Models.IPipelinesPatchProperties ADT.Models.IPipelinesPatchInternal.Property { get => (this._property = this._property ?? new ADT.Models.PipelinesPatchProperties()); set { {_property = value;} } }
 
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the FlowProfile property instead.
+        /// </summary>
         [ADT.Origin(ADT.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> FlowType { get => ((ADT.Models.IPipelinesPatchPropertiesInternal)Property).FlowType; set => ((ADT.Models.IPipelinesPatchPropertiesInternal)Property).FlowType = value ?? null /* arrayOf */; }
 
@@ -86,14 +89,17 @@ namespace ADT.Models
     public partial interface IPipelinesPatch :
         ADT.Runtime.IJsonSerializable
     {
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the FlowProfile property instead.
+        /// </summary>
         [ADT.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The flow types allowed for this pipeline",
+        Description = @"The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead.",
         SerializedName = @"flowTypes",
         PossibleTypes = new [] { typeof(string) })]
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
@@ -170,7 +176,10 @@ namespace ADT.Models
     internal partial interface IPipelinesPatchInternal
 
     {
-        /// <summary>The flow types allowed for this pipeline</summary>
+        /// <summary>
+        /// The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview.
+        /// Please create and use the FlowProfile property instead.
+        /// </summary>
         [global::ADT.PSArgumentCompleterAttribute("Unknown", "Complex", "DevSecOps", "Messaging", "Mission", "MicrosoftInternal", "BasicFiles", "Data", "Standard", "StreamingVideo", "Opaque", "MissionOpaqueXML", "DiskImages", "API")]
         System.Collections.Generic.List<string> FlowType { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>

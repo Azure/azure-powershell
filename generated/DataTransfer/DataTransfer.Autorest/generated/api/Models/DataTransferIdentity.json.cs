@@ -69,6 +69,7 @@ namespace ADT.Models
             {_connectionName = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("connectionName"), out var __jsonConnectionName) ? (string)__jsonConnectionName : (string)_connectionName;}
             {_pipelineName = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("pipelineName"), out var __jsonPipelineName) ? (string)__jsonPipelineName : (string)_pipelineName;}
             {_flowName = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("flowName"), out var __jsonFlowName) ? (string)__jsonFlowName : (string)_flowName;}
+            {_flowProfileName = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("flowProfileName"), out var __jsonFlowProfileName) ? (string)__jsonFlowProfileName : (string)_flowProfileName;}
             {_id = If( json?.PropertyT<ADT.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -107,6 +108,7 @@ namespace ADT.Models
             AddIf( null != (((object)this._connectionName)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._connectionName.ToString()) : null, "connectionName" ,container.Add );
             AddIf( null != (((object)this._pipelineName)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._pipelineName.ToString()) : null, "pipelineName" ,container.Add );
             AddIf( null != (((object)this._flowName)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._flowName.ToString()) : null, "flowName" ,container.Add );
+            AddIf( null != (((object)this._flowProfileName)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._flowProfileName.ToString()) : null, "flowProfileName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (ADT.Runtime.Json.JsonNode) new ADT.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
