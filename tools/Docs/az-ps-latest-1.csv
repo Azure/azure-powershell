@@ -58,7 +58,7 @@ pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataMigration.0.15.0.zip;sourceType=sa]Az.DataMigration,0.15.0
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.7.0.zip;sourceType=sa]Az.DataProtection,2.7.0
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.1.1.zip;sourceType=sa]Az.DataShare,1.1.1
-pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataTransfer.1.0.0.zip;sourceType=sa]Az.DataTransfer,1.0.0
+pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataTransfer.2.0.0.zip;sourceType=sa]Az.DataTransfer,2.0.0
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.4.0.zip;sourceType=sa]Az.DedicatedHsm,0.4.0
 pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DependencyMap.0.1.0.zip;sourceType=sa]Az.DependencyMap,0.1.0
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.5.4.1.zip;sourceType=sa]Az.DesktopVirtualization,5.4.1
