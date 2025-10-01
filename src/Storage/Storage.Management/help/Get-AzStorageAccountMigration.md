@@ -47,6 +47,34 @@ Type                                : Microsoft.Storage/storageAccounts/accountM
 
 This command gets the migration status of the storage account myaccount under resource group myresourcegroup.
 
+### Example 2: Get multiple Storage account migrations at once
+```powershell
+# Log in to Azure 
+ Write-Host "Logging into Azure..." 
+ Connect-AzAccount 
+
+# Define the CSV file path 
+ $csvFilePath = "path\to\your\input.csv"
+
+# Read the CSV file 
+ Write-Host "Reading CSV file..." 
+ $storageAccounts = Import-Csv -Path $csvFilePath 
+
+# Iterate through each storage account in the CSV file 
+ foreach ($account in $storageAccounts) { 
+     $storageAccountName = $account.'storageAccount' 
+     $resourceGroupName = $account.'resourceGroup' 
+     $targetSku = $account.'targetSku' 
+
+	# Get the storage account migration status 
+	Get-AzStorageAccountMigration -AccountName $storageAccountName -ResourceGroupName $resourceGroupName  | ft ResourceGroupName,@{Name="StorageAccountName"; Expression={$storageAccountName}},DetailMigrationStatus,DetailTargetSkuName
+ }
+```
+This script gets the migration for the accounts listed in a CSV file with these example columns:  
+storageAccount,resourceGroup,targetSku 
+mystorageaccount1,myresourcegroup1,Standard_ZRS 
+mystorageaccount2,myresourcegroup2,Standard_ZRS
+
 ## PARAMETERS
 
 ### -AccountName
