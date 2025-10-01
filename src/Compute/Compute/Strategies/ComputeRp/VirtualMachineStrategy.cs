@@ -85,7 +85,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] includeZone = null,
             string[] excludeZone = null,
             bool? alignRegionalDisksToVMZone = null,
-            bool? enableProxyAgent = null
+            bool? enableProxyAgent = null,
+            bool? addProxyAgentExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -163,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             EncryptionAtHost = encryptionAtHostPresent,
                             UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                             SecurityType = securityType,
-                            ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings(enableProxyAgent) : null,
+                            ProxyAgentSettings = (enableProxyAgent == true || addProxyAgentExtension == true) ? new ProxyAgentSettings(enableProxyAgent) { AddProxyAgentExtension = addProxyAgentExtension } : null,
                         },
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {
