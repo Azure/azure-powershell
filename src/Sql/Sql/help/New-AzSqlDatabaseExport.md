@@ -63,7 +63,7 @@ $storageAccountName = "storageaccount1"
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroup = "RG01"
 $managedIdentityResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-managed-identity"
-$pw = ConvertTo-SecureString "AdministratorPassword" -AsPlainText -Force
+$pw = ConvertTo-SecureString "******" -AsPlainText -Force
 New-AzSqlDatabaseExport `
     -ResourceGroupName $resourceGroup `
     -ServerName $sqlServerName `
@@ -103,17 +103,7 @@ Accept wildcard characters: False
 ### -AdministratorLoginPassword
 Specifies the password of the SQL administrator.
 
-This is mandatory. When using `-AuthenticationType ManagedIdentity` a dummy value must be provided, for example:
-
-```
-$administratorPassword = ConvertTo-SecureString "AdministratorPassword" -AsPlainText -Force
-
-New-AzSqlDatabaseExport `
-    #...
-    -AdministratorLoginPassword $administratorPassword `
-    #...
-```
-
+This is mandatory. When using `-AuthenticationType ManagedIdentity` a dummy value must be provided.
 ```yaml
 Type: System.Security.SecureString
 Parameter Sets: (All)
@@ -285,14 +275,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageUri
-Specifies the blob link, as a URL, to the .bacpac file.
-
-For example:
-
-```
--StorageUri "https://your-storage-account.blob.core.windows.net/your-container/your-file-name.bacpac" `
-```
-
+Specifies the blob link, as a URL, to the .bacpac file. For example: `-StorageUri "https://your-storage-account.blob.core.windows.net/your-container/your-file-name.bacpac"`
 ```yaml
 Type: System.Uri
 Parameter Sets: (All)
