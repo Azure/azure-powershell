@@ -14,19 +14,13 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Rest.Azure.OData;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public PolicyBase TargetPolicy { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = ParamHelpMsgs.Item.SuspendBackupOption)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.SuspendBackupOption)]
         public SwitchParameter RetainRecoveryPointsAsPerPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]

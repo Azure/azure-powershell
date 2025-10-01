@@ -15,8 +15,7 @@ Reconfigures backup protection for a protected item to another Recovery Services
 ```
 Redo-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-TargetVaultId] <String>
  [-TargetPolicy] <PolicyBase> [-RetainRecoveryPointsAsPerPolicy] [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-SecureToken <SecureString>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,21 +110,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-Specifies how progress is displayed during the operation. Accepts values such as 'SilentlyContinue', 'Continue', or 'Stop'.
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RetainRecoveryPointsAsPerPolicy
 If this option is used, all the recovery points for this item will expire as per the retention policy.
 
@@ -135,7 +119,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
