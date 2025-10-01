@@ -42,16 +42,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public static string GetContainerNameFromItem(ItemBase item)
         {
+            // container name format for SQL and AFS
+            // StorageContainer;Storage;rgname;afsname
+            // VMAppContainer;Compute;RGName;vmanme
             return item.ContainerName;
         }
 
         public static JobBase UnregisterContainer(ItemBase item, string vaultName, string resourceGroupName, ServiceClientAdapter serviceClientAdapter, RSBackupVaultCmdletBase rsBackupVaultCmdletBase)
         {
             string containerName = GetContainerNameFromItem(item);
-            // chck: verify if this is the correct format for SQL and AFS workloads
-            // StorageContainer;Storage;rgname;afsname
-            // VMAppContainer;Compute;RGName;vmanme
-
+            
             Logger.Instance.WriteDebug("Unregistering Azure Storage container: " + containerName);
             try
             {
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         Logger.Instance.WriteDebug("proItemName: " + ((AzureWorkloadProtectableItem)itemModel).Name +
                             ", proItemContainerName: " + ((AzureWorkloadProtectableItem)itemModel).ContainerName);
 
-                        return (string.Compare(((AzureWorkloadProtectableItem)itemModel).Name, item.Name,true) == 0
+                        return (string.Compare(((AzureWorkloadProtectableItem)itemModel).Name, item.Name, true) == 0
                         && string.Compare(((AzureWorkloadProtectableItem)itemModel).ContainerName, item.ContainerName, true) == 0);
                     }).ToList();
                 }
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     return null;
                 }
 
-                if(itemModels!= null && itemModels.Count > 0)
+                if(itemModels != null && itemModels.Count > 0)
                 {
                     return itemModels[0];
                 }

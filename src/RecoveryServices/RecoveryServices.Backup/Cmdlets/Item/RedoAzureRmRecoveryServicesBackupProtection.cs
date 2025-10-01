@@ -66,8 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 base.ExecuteCmdlet();
                 PsBackupProviderManager providerManager;
                 JobBase jobObj = null;
-                                
-                // chck with nandini, source vault is default and can we name targetvault ? 
+                
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
@@ -149,7 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // Step 3: Configure backup in target vault
                 WriteVerbose("Configuring backup in target vault now");
-                // chck : switch context to the target vault's subscription
+                // TODO : switch context to the target vault's subscription
 
                 // Create provider manager for target vault with workload-specific parameters
                 Dictionary<Enum, object> targetProviderParams = new Dictionary<Enum, object>()
@@ -190,7 +189,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     // For AzureFiles: extract file share name and storage account name
                     AzureFileShareItem afsItem = (AzureFileShareItem)Item;
-                    string fileShareName = afsItem.FriendlyName; // do we need name here?
+                    string fileShareName = afsItem.FriendlyName;
                     string storageAccountName = BackupUtils.GetStorageAccountNameFromContainerName(afsItem.ContainerName);
                     
                     targetProviderParams.Add(ItemParams.ItemName, fileShareName);
