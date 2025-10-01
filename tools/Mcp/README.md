@@ -1,42 +1,64 @@
 # Azure PowerShell Codegen MCP Server
 
-A Model Context Protocol (MCP) server that provides tools for generating and managing Azure PowerShell modules using AutoRest. This server helps automate common tasks in the Azure PowerShell code generation process, including handling polymorphism, model directives, and code generation.
+A Model Context Protocol (MCP) server that provides tools for generating and managing Azure PowerShell modules using AutoRest. It now also orchestrates help‑driven example generation, CRUD test scaffolding, and an opinionated partner workflow to keep outputs deterministic and consistent.
 
 ## Overview
 
 This MCP server is designed to work with Azure PowerShell module development workflows. It provides specialized tools for:
 
-- **AutoRest Code Generation**: Generate PowerShell modules from OpenAPI specifications
+- **Module Scaffolding**: Interactive selection of service → provider → API version and creation of the `<ModuleName>.Autorest` structure
+- **AutoRest Code Generation**: Generate PowerShell modules from OpenAPI specifications (reset/generate/build sequence)
+- **Example Generation**: Create example scripts from swagger example JSON while filtering strictly to parameters documented in help markdown
+- **Test Generation**: Produce per‑resource CRUD test files (idempotent, includes negative test) using the same help‑driven parameter filtering
+- **Help‑Driven Parameter Filtering**: Only parameters present in the generated help (`/src/<Module>/help/*.md`) are allowed in examples/tests
 - **Model Management**: Handle model directives like `no-inline` and `model-cmdlet`
-- **Polymorphism Support**: Automatically detect and configure polymorphic types
-- **YAML Configuration**: Parse and manipulate AutoRest configuration files
+- **Polymorphism Support**: Automatically detect and configure parent/child discriminator relationships
+- **YAML Configuration Utilities**: Parse and manipulate AutoRest configuration blocks
+- **Partner Workflow Prompt**: A single prompt that encodes the end‑to‑end deterministic workflow
 
 ## Features
 
 ### Available Tools
 
-1. **generate-autorest**
-   - Generates PowerShell code using AutoRest
-   - Parameters: `workingDirectory` (absolute path to README.md)
+1. **setup-module-structure**
+   - Interactive service → provider → API version selection and module name capture
+   - Scaffolds `src/<Module>/<Module>.Autorest/` plus initial `README.md`
+   - Output placeholder `{0}` = module name
 
-2. **no-inline**
-   - Converts flattened models to non-inline parameters
-   - Parameters: `modelNames` (array of model names to make non-inline)
-   - Useful for complex nested models that shouldn't be flattened
+2. **generate-autorest**
+   - Executes Autorest reset, generate, and PowerShell build steps within the given working directory
+   - Parameters: `workingDirectory` (absolute path to the Autorest folder containing README.md)
+   - Output placeholder `{0}` = working directory
 
-3. **model-cmdlet**
-   - Creates `New-` cmdlets for specified models
-   - Parameters: `modelNames` (array of model names)
-   - Generates cmdlets with naming pattern: `New-Az{SubjectPrefix}{ModelName}Object`
+3. **create-example**
+   - Downloads swagger example JSON, filters parameters to those documented in help markdown (`/src/<Module>/help/<Cmdlet>.md`), and writes example scripts under `examples/`
+   - Parameters: `workingDirectory`
+   - Output placeholders: `{0}` = harvested specs path, `{1}` = examples dir, `{2}` = reference ideal example dirs
 
-4. **polymorphism**
-   - Handles polymorphic type detection and configuration
-   - Parameters: `workingDirectory` (absolute path to README.md)
-   - Automatically identifies parent-child type relationships
+4. **create-test**
+   - Generates new `<ResourceName>.Crud.Tests.ps1` files (does not modify stubs) with Create/Get/List/Update/Delete/Negative blocks, using help‑filtered parameters
+   - Parameters: `workingDirectory`
+   - Output placeholders: `{0}` = harvested specs path, `{1}` = test dir, `{2}` = reference ideal test dirs
+
+5. **polymorphism**
+   - Detects discriminator parents and child model names to aid directive insertion
+   - Parameters: `workingDirectory`
+   - Output placeholders: `{0}` = parents, `{1}` = children, `{2}` = working directory
+
+6. **no-inline**
+   - Lists models to be marked `no-inline` (caller inserts directive into README Autorest YAML)
+   - Parameters: `modelNames` (array)
+   - Output `{0}` = comma-separated model list
+
+7. **model-cmdlet**
+   - Lists models for which `New-` object construction cmdlets should be added via directives
+   - Parameters: `modelNames` (array)
+   - Output `{0}` = comma-separated model list
 
 ### Available Prompts
 
-- **create-greeting**: Generate customized greeting messages (example prompt)
+- **partner-module-workflow**: Canonical end‑to‑end instruction set (module structure → generation → examples → tests → regeneration)
+- **create-greeting**: Sample/demo greeting prompt
 
 ## Installation
 
