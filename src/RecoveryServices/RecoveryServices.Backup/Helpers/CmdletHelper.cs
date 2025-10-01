@@ -42,18 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public static string GetContainerNameFromItem(ItemBase item)
         {
-            string containerName = item.ContainerName;
-
-            if (item.ContainerType == CmdletModel.ContainerType.AzureVMAppContainer)
-            {
-                containerName = "VMAppContainer;" + containerName;
-            }
-            //else if (item.ContainerType == ContainerType.AzureStorage)
-            //{
-            //    containerName = "StorageContainer;" + containerName;
-            //}
-
-            return containerName;
+            return item.ContainerName;
         }
 
         public static JobBase UnregisterContainer(ItemBase item, string vaultName, string resourceGroupName, ServiceClientAdapter serviceClientAdapter, RSBackupVaultCmdletBase rsBackupVaultCmdletBase)
@@ -73,8 +62,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         containerName,
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);
-
-                    Logger.Instance.WriteDebug("Unregister workload container response " + JsonConvert.SerializeObject(unRegisterResponse));
 
                     JobBase jobObj = rsBackupVaultCmdletBase.HandleCreatedJob(
                             unRegisterResponse,
@@ -161,13 +148,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 Logger.Instance.WriteDebug("Successfully got response from service");
 
                 List<ProtectableItemBase> itemModels = ConversionHelpers.GetProtectableItemModelList(protectableItems);
+                
+                Logger.Instance.WriteDebug("itemName: " + item.Name + ", itemContainerName: " + item.ContainerName);
 
                 if (!string.IsNullOrEmpty(item.Name))
                 {
                     itemModels = itemModels.Where(itemModel =>
                     {
-                        return (((AzureWorkloadProtectableItem)itemModel).Name == item.Name
-                                && ((AzureWorkloadProtectableItem)itemModel).ContainerName == item.ContainerName);
+                        Logger.Instance.WriteDebug("proItemName: " + ((AzureWorkloadProtectableItem)itemModel).Name +
+                            ", proItemContainerName: " + ((AzureWorkloadProtectableItem)itemModel).ContainerName);
+
+                        return (string.Compare(((AzureWorkloadProtectableItem)itemModel).Name, item.Name,true) == 0
+                        && string.Compare(((AzureWorkloadProtectableItem)itemModel).ContainerName, item.ContainerName, true) == 0);
                     }).ToList();
                 }
                 else
@@ -176,8 +168,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     return null;
                 }
 
-                Logger.Instance.WriteWarning($"Could not find matching protectable item for {item.Name}");
-                return null;
+                if(itemModels!= null && itemModels.Count > 0)
+                {
+                    return itemModels[0];
+                }
+                else
+                {
+                    Logger.Instance.WriteWarning($"Could not find matching protectable item for {item.Name}");
+                    return null;
+                }                    
             }
             catch (Exception ex)
             {

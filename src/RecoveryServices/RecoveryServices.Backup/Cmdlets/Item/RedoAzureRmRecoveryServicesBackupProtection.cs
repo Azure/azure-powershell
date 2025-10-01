@@ -163,26 +163,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 // Add workload-specific parameters based on item type
                 if (Item.WorkloadType == WorkloadType.AzureVM)
                 {
-                    // For VM: extract VM name and resource group from VirtualMachineId
+                    // For VM: extract VM name and resource group from SourceResourceId
                     AzureVmItem vmItem = (AzureVmItem)Item;
-                    string vmName = BackupUtils.ExtractVmNameFromVmId(vmItem.VirtualMachineId); // chck if we should use sourceresourceid here
+                    string vmName = BackupUtils.ExtractVmNameFromVmId(vmItem.SourceResourceId);
 
-                    Logger.Instance.WriteDebug($"Reconfiguring Azure VM protection - SourceResourceId: {vmItem.SourceResourceId}, VirtualMachineId: {vmItem.VirtualMachineId}");
+                    string vmResourceGroupName = BackupUtils.ExtractVmResourceGroupFromVmId(vmItem.SourceResourceId);
 
-                    string vmResourceGroupName = BackupUtils.ExtractVmResourceGroupFromVmId(vmItem.VirtualMachineId);
-                    
+                    WriteVerbose("Extracted VM Name: " + vmName + ", vmResourceGroupName: " + vmResourceGroupName);
+
                     targetProviderParams.Add(ItemParams.ItemName, vmName);
                     targetProviderParams.Add(ItemParams.AzureVMResourceGroupName, vmResourceGroupName);
                     targetProviderParams.Add(ItemParams.ParameterSetName, "AzureVMComputeEnableProtection");
-                    if ((bool)vmItem.IsInclusionList) {
+
+                    if (vmItem.IsInclusionList != null && (bool)vmItem.IsInclusionList) {
                         targetProviderParams.Add(ItemParams.InclusionDisksList, vmItem.DiskLunList);
                     }
                     else targetProviderParams.Add(ItemParams.ExclusionDisksList, vmItem.DiskLunList);
-
-                    // chck handling for ItemParams.AzureVMCloudServiceName, { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
-                                //{ ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent },
-                                //{ ResourceGuardParams.Token, plainToken },
-                                //{ ResourceGuardParams.IsMUAOperation, isMUAOperation },
                 }
                 else if (Item.WorkloadType == WorkloadType.MSSQL )
                 {
@@ -194,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     // For AzureFiles: extract file share name and storage account name
                     AzureFileShareItem afsItem = (AzureFileShareItem)Item;
-                    string fileShareName = afsItem.FriendlyName; // chck : do we need name here?
+                    string fileShareName = afsItem.FriendlyName; // do we need name here?
                     string storageAccountName = BackupUtils.GetStorageAccountNameFromContainerName(afsItem.ContainerName);
                     
                     targetProviderParams.Add(ItemParams.ItemName, fileShareName);
