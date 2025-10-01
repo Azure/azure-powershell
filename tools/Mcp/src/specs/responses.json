@@ -22,12 +22,17 @@
     {
         "name": "create-example",
         "type": "tool",
-        "text": "Read examples from specs under {0}. Fulfill examples under {1}. You are expert in Azure-PowerShell and Autorest.PowerShell. Leave example as empty if you don't find any matches. You know how to map data from {0} to {1}"
+        "text": "Read swagger-derived example JSONs from {0}. Fulfill module example files under {1}. Also leverage high-quality reference examples located in directories: {2} (semicolon-separated). STRICT PARAMETER FILTERING: For each cmdlet, first open its help markdown file located in the module help directory: derive helpDir = parent of {1} with '.Autorest' suffix removed + '/help'; file name pattern: '<CmdletName>.md'. Only include parameters that appear either (a) in the syntax blocks (code fences containing the cmdlet invocation) or (b) as '### -ParameterName' headings in that help file. Ignore any swagger properties not represented as help parameters. Ordering: list required parameters first (as shown in the first syntax block), then remaining optional parameters alphabetically. Do not invent parameters. If no matching parameters from swagger examples align with the help-defined set, leave that example empty. Ensure examples remain minimal yet runnable and mirror advanced usage patterns (e.g., pipeline vs explicit parameters) only when those parameters are defined in help."
     },
     {
         "name": "create-test",
         "type": "tool",
-        "text": "Read examples from specs are under {0}. Implement empty test stubs under {1}. Test stubs are named as '.Test.ps1'. Define variables in function 'setupEnv' in 'utils.ps1' under {1}, and use these variables for test cases. Value of these variables are from {0}. Leave test cases as empty if you don't find any matches. You are expert in Azure-PowerShell and Autorest.PowerShell, You know how to map data from {0} to {1}. "
+        "text": "Read swagger-derived example JSONs from {0}. DO NOT modify or populate any pre-generated stub files under {1}. Instead, CREATE NEW test files in {1}, one per top-level resource (or logical resource group). Name pattern: '<ResourceName>.Crud.Tests.ps1'. In each file include Create, Get, List, Update/Set (if supported), Delete/Remove (cleanup), and a Negative test where meaningful. STYLE & PARAM SOURCE: Only use parameters that are documented in the cmdlet help markdown (helpDir derived as parent of {1} with '.Autorest' removed + '/help'; file name = '<CmdletName>.md'). Extract allowed parameters from syntax code fences and '### -ParameterName' headings. Reject swagger-only properties not in help. Reference high-quality tests in {2} for structure and assertion style. Centralize reusable variables in 'utils.ps1' (setupEnv). Assertions: key identity props, provisioning state, collection membership, and absence after deletion. Idempotent: create what you delete. Skip generating a resource test file if no parameters from examples map to documented help parameters for its cmdlets."
+    },
+    {
+        "name": "setup-module-structure",
+        "type": "tool",
+        "text": "Created the module structure under the folder: {0}."
     },
     {
         "name": "create-greeting",
@@ -38,5 +43,10 @@
         "name": "partner-module-workflow",
         "type": "prompt",
         "text": "@file:prompts/partner-module-workflow.md"
+    },
+    {
+        "name": "autorest-readme-template",
+        "type": "resource",
+        "text": "@file:autorest-readme-template.md"
     }
 ]

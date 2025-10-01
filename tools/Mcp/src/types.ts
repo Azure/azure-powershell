@@ -25,6 +25,13 @@ export interface promptSchema {
     callbackName: string; 
 }
 
+export interface resourceSchema {
+    name: string;
+    description: string;
+    parameters?: any[];
+    callbackName: string;
+}
+
 export interface responseSchema {
     name: string;
     type: string;
