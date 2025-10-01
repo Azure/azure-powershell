@@ -83,6 +83,47 @@ Start-AzStorageAccountMigration -ResourceGroupName myresourcegroup -AccountName 
 
 This command starts a Storage account migration by inputting the TargetSkuName property with a Json file path.
 
+### Example 5: Start multiple Storage account migrations at once
+```powershell
+# Log in to Azure 
+ Write-Host "Logging into Azure..." 
+ Connect-AzAccount 
+
+# Define the CSV file path 
+ $csvFilePath = "path\to\your\input.csv" 
+
+# Read the CSV file 
+ Write-Host "Reading CSV file..." 
+ $storageAccounts = Import-Csv -Path $csvFilePath 
+
+# Iterate through each storage account in the CSV file 
+ foreach ($account in $storageAccounts) { 
+     $storageAccountName = $account.'storageAccount' 
+     $resourceGroupName = $account.'resourceGroup' 
+     $targetSku = $account.'targetSku' 
+
+    Write-Host "Processing storage account: $storageAccountName in resource group: $resourceGroupName to target SKU: $targetSku" 
+
+    # Get the storage account 
+     $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
+
+    # Example of adding a check for the SKU 
+	if ($storageAccount.Sku.Name -ne "Standard_LRS") { 
+         Write-Host "Storage account $storageAccountName is not using Standard_LRS. Skipping..." 
+         continue 
+     } 
+
+    # Submit the storage account SKU conversion 
+     Write-Host "Submitting storage account $storageAccountName conversion to target SKU: $targetSku..." 
+     Start-AzStorageAccountMigration -AccountName $storageAccountName -ResourceGroupName $resourceGroupName  -TargetSku $targetSku -NoWait 
+ }
+```
+
+This script starts the migration for the accounts listed in a CSV file with these example columns:  
+storageAccount,resourceGroup,targetSku 
+mystorageaccount1,myresourcegroup1,Standard_ZRS 
+mystorageaccount2,myresourcegroup2,Standard_ZRS
+
 ## PARAMETERS
 
 ### -AccountName
