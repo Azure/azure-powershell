@@ -15,19 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOracleResourceAnchor
 }
 
 Describe 'Update-AzOracleResourceAnchor' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    $rgName = 'PowerShellTestRg'
+    $name   = 'OFake_PowerShellTestResourceAnchor'
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        {
+            # Minimal PATCH body per your API spec (ResourceAnchorUpdate)
+            $json = @"
+{
+  "properties": {
+    "displayName": "$name"
+  }
+}
+"@
+            $updated = Update-AzOracleResourceAnchor -Name $name -ResourceGroupName $rgName -JsonString $json
+            $updated | Should -Not -BeNullOrEmpty
+            $updated.Name | Should -Be $name
+        } | Should -Not -Throw
     }
 }

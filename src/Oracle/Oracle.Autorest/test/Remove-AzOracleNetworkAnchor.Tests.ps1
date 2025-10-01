@@ -15,11 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzOracleNetworkAnchor'
 }
 
 Describe 'Remove-AzOracleNetworkAnchor' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $subscriptionId = 'fd42b73d-5f28-4a23-ae7c-ca08c625fe07'
+    $rgName         = 'PowerShellTestRg'
+    $name           = 'OFake_PowerShellTestNetworkAnchor'
+    $resourceId     = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Oracle.Database/networkAnchors/$name"
+
+    It 'Delete' {
+        {
+            Remove-AzOracleNetworkAnchor -ResourceGroupName $rgName -Name $name -Force -Confirm:$false -NoWait
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        {
+            $input = @{ Id = $resourceId }
+            Remove-AzOracleNetworkAnchor -InputObject $input -Force -Confirm:$false -NoWait
+        } | Should -Not -Throw
     }
 }

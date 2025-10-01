@@ -15,19 +15,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleNetworkAnchor'))
 }
 
 Describe 'Get-AzOracleNetworkAnchor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $subscriptionId = 'fd42b73d-5f28-4a23-ae7c-ca08c625fe07'
+    $rgName         = 'PowerShellTestRg'
+    $resourceName   = 'OFake_PowerShellTestNetworkAnchor'   # <- avoid $name
+    $resourceId     = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Oracle.Database/networkAnchors/$resourceName"
+
+    It 'List' {
+        $list = Get-AzOracleNetworkAnchor -ResourceGroupName $rgName
+        $list | Should -Not -BeNullOrEmpty
+        ($list | Where-Object Name -eq $resourceName).Id | Should -Be $resourceId
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $item = Get-AzOracleNetworkAnchor -SubscriptionId $subscriptionId -ResourceGroupName $rgName -Name $resourceName
+        $item | Should -Not -BeNullOrEmpty
+        $item.Id   | Should -Be $resourceId
+        $item.Name | Should -Be $resourceName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $list = Get-AzOracleNetworkAnchor -SubscriptionId $subscriptionId
+        $list | Should -Not -BeNullOrEmpty
+        ($list | Where-Object Name -eq $resourceName).Id | Should -Be $resourceId
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $input = @{ Id = $resourceId }
+        $item  = Get-AzOracleNetworkAnchor -InputObject $input
+        $item | Should -Not -BeNullOrEmpty
+        $item.Id   | Should -Be $resourceId
+        $item.Name | Should -Be $resourceName
     }
 }
