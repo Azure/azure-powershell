@@ -268,26 +268,4 @@ directive:
       verb: Remove
       subject: Load
     hide: true
-
-  - where:
-      verb: New
-      subject: Load
-    set:
-      breaking-change:
-        replacement-cmdlet: New-AzLoad
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-        change-description: "***********************************************************************\\r\\n* This cmdlet will undergo a breaking change in a future release.     *\\r\\n* At least one change applies to this cmdlet.                         *\\r\\n* See all possible breaking changes at: https://learn.microsoft.com/powershell/azure/breaking-changes-generated-modules *\\r\\n***********************************************************************"
-    
-  # - where:
-  #     verb: New|Update
-  #     subject: Load
-  #   set:
-  #     breaking-change:
-  #       deprecated-by-version: 2.0.0
-  #       deprecated-by-azversion: 15.0.0
-  #       change-effective-date: 2025/11
-  #       change-description: this is a message
-
 ```
