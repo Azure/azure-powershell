@@ -15,19 +15,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleResourceAnchor'))
 }
 
 Describe 'Get-AzOracleResourceAnchor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $subscriptionId = 'fd42b73d-5f28-4a23-ae7c-ca08c625fe07'
+    $rgName         = 'PowerShellTestRg'
+    $raName         = 'OFake_PowerShellTestResourceAnchor'  # avoid Pester's $Name
+    $resourceId     = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Oracle.Database/resourceAnchors/$raName"
+
+    It 'List' {
+        $list = Get-AzOracleResourceAnchor -ResourceGroupName $rgName
+        if ($list -and $list.value) { $list = $list.value }  # handle non-flattened playback
+        $list | Should -Not -BeNullOrEmpty
+        ($list | Where-Object Name -eq $raName).Id | Should -Be $resourceId
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $item = Get-AzOracleResourceAnchor -ResourceGroupName $rgName -Name $raName
+        $item | Should -Not -BeNullOrEmpty
+        $item.Id   | Should -Be $resourceId
+        $item.Name | Should -Be $raName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $list = Get-AzOracleResourceAnchor -SubscriptionId $subscriptionId
+        if ($list -and $list.value) { $list = $list.value }  # handle non-flattened playback
+        $list | Should -Not -BeNullOrEmpty
+        ($list | Where-Object Name -eq $raName).Id | Should -Be $resourceId
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $input = @{ Id = $resourceId }
+        $item  = Get-AzOracleResourceAnchor -InputObject $input
+        $item | Should -Not -BeNullOrEmpty
+        $item.Id   | Should -Be $resourceId
+        $item.Name | Should -Be $raName
     }
 }

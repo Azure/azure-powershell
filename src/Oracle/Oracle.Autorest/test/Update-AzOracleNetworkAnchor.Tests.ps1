@@ -15,19 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOracleNetworkAnchor'
 }
 
 Describe 'Update-AzOracleNetworkAnchor' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    $rgName = 'PowerShellTestRg'
+    $name   = 'OFake_PowerShellTestNetworkAnchor'
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        {
+            # Minimal PATCH via JsonString; adjust fields to match recording
+            $json = @"
+{
+  "properties": {
+    "displayName": "$name"
+  }
+}
+"@
+            $updated = Update-AzOracleNetworkAnchor -Name $name -ResourceGroupName $rgName -JsonString $json
+            $updated | Should -Not -BeNullOrEmpty
+            $updated.Name | Should -Be $name
+        } | Should -Not -Throw
     }
 }

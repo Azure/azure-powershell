@@ -1,3 +1,6 @@
+# Minimal playback test for New-AzOracleNetworkAnchor using flattened parameters
+# RU note: значения ниже должны совпадать с New-AzOracleNetworkAnchor.Recording.json
+
 if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleNetworkAnchor'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
@@ -15,15 +18,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleNetworkAnchor'))
 }
 
 Describe 'New-AzOracleNetworkAnchor' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    # Constants matching the recording (RU: синхронизировать с записью)
+    $rgName   = 'PowerShellTestRg'
+    $location = 'eastus'
+    $name     = 'OFake_PowerShellTestNetworkAnchor'
 
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Create' {
+        {
+            # Create via flattened parameters (no JsonString)
+            $created = New-AzOracleNetworkAnchor `
+                -Name $name `
+                -ResourceGroupName $rgName `
+                -Location $location `
+                -DisplayName $name `
+                -AnchorType VCN `
+                -OciResourceId 'ocid1.vcn.oc1.iad.fakeuniqueid'
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            # Basic assertions only (RU: держим тест максимально лёгким)
+            $created | Should -Not -BeNullOrEmpty
+            $created.Name | Should -Be $name
+        } | Should -Not -Throw
     }
 }

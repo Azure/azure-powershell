@@ -1,3 +1,6 @@
+# Minimal playback test for New-AzOracleResourceAnchor using typed parameters
+# Keep these constants in sync with New-AzOracleResourceAnchor.Recording.json
+
 if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleResourceAnchor'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
@@ -15,15 +18,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleResourceAnchor'))
 }
 
 Describe 'New-AzOracleResourceAnchor' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    # Constants matching the recording
+    $rgName   = 'PowerShellTestRg'
+    $location = 'eastus'
+    $name     = 'OFake_PowerShellTestResourceAnchor'
 
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Create' {
+        {
+            # Use flattened parameters instead of -JsonString
+            $created = New-AzOracleResourceAnchor `
+                -Name $name `
+                -ResourceGroupName $rgName `
+                -Location $location `
+                -DisplayName $name `
+                -AnchorType Exadata `
+                -OciResourceId 'ocid1.resource.oc1.iad.fakeuniqueid'
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            $created | Should -Not -BeNullOrEmpty
+            $created.Name | Should -Be $name
+        } | Should -Not -Throw
     }
 }
