@@ -1,29 +1,28 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwaflogscrubbingruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwaflogscrubbingruleobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafLogScrubbingRuleObject
 
 ## SYNOPSIS
-Create LogScrubbingRule object for LogScrubbingSetting
+Create an in-memory object for WebApplicationFirewallScrubbingRules.
 
 ## SYNTAX
 
 ```
 New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable <String> -SelectorMatchOperator <String>
- -State <String> [-Selector <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Selector <String>] [-State <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create LogScrubbingRule object for LogScrubbingSetting
+Create an in-memory object for WebApplicationFirewallScrubbingRules.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create LogScrubbingRule object for LogScrubbingSetting
 ```powershell
 New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
 ```
@@ -32,23 +31,8 @@ This object is a parameter for LogscrubbingSetting
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MatchVariable
-Gets or sets the variable to be scrubbed from the logs.
+The variable to be scrubbed from the logs.
 
 ```yaml
 Type: System.String
@@ -63,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Selector
-Gets or sets when matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
 
 ```yaml
 Type: System.String
@@ -78,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -SelectorMatchOperator
-Gets or sets when matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
+When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
 
 ```yaml
 Type: System.String
@@ -93,14 +77,15 @@ Accept wildcard characters: False
 ```
 
 ### -State
-Gets or sets defines the state of a log scrubbing rule.Default value is enabled.
+Defines the state of a log scrubbing rule.
+Default value is enabled.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -112,11 +97,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.WebApplicationFirewallScrubbingRules
 
 ## NOTES
 
