@@ -13,9 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunctionAppPlan E2E' {
 
+    BeforeAll {
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+    }
+
     It "Validate New-AzFunctionAppPlan, Update-AzFunctionAppPlan and Remove-AzFunctionAppPlan" {
 
-        $planName = $env.functionAppPlanName
+        $planName = $env.planNameWorkerTypeWindowsNew
+        Write-Verbose "Updated planName: $planName" -Verbose
         $location = 'centralus'
         $minimumWorkerCount = 1
         $maxBurst = 3
@@ -25,14 +31,14 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
         {
             Write-Verbose "Creating function app plan '$planName'"
             New-AzFunctionAppPlan -Name $planName `
-                                  -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                                  -ResourceGroupName $resourceGroupName `
                                   -WorkerType "Windows" `
                                   -MinimumWorkerCount $minimumWorkerCount `
                                   -MaximumWorkerCount $maxBurst `
                                   -Location $location `
                                   -Sku $sku
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be $sku
@@ -44,9 +50,9 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             $sku = "EP3"
             $maxBurst = 5
             
-            Update-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Sku $sku -MaximumWorkerCount $maxBurst -Force
+            Update-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -Sku $sku -MaximumWorkerCount $maxBurst -Force
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be $sku
@@ -57,17 +63,19 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
         }
         finally
         {
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($plan)
             {
-                Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
+                Remove-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
             }
         }
     }
 
     It "Validate New-AzFunctionAppPlan, Update-AzFunctionAppPlan and Remove-AzFunctionAppPlan with piping (specifying InputObject)" {
 
-        $planName = $env.functionAppPlanName
+        $planName = $env.planNameWorkerTypeWindowsNew
+        Write-Verbose "Updated planName: $planName" -Verbose
+
         $location = 'centralus'
         $minimumWorkerCount = 1
         $maxBurst = 3
@@ -77,14 +85,14 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
         {
             Write-Verbose "Creating function app plan '$planName'"
             New-AzFunctionAppPlan -Name $planName `
-                                  -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                                  -ResourceGroupName $resourceGroupName `
                                   -WorkerType "Windows" `
                                   -MinimumWorkerCount $minimumWorkerCount `
                                   -MaximumWorkerCount $maxBurst `
                                   -Location $location `
                                   -Sku $sku
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be $sku
@@ -97,7 +105,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             $maxBurst = 7
             Update-AzFunctionAppPlan -InputObject $plan -Sku $sku -MaximumWorkerCount $maxBurst -Force
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be $sku
@@ -107,12 +115,12 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
 
             # Remove function app plan
             Remove-AzFunctionAppPlan -InputObject $plan -Force
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             $plan | Should -Be $null
         }
         finally
         {
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($plan)
             {
                 Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
@@ -122,7 +130,9 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
 
     It "Validate 'New-AzFunctionAppPlan -AsJob', 'Update-AzFunctionAppPlan -AsJob' and 'Remove-AzFunctionAppPlan -Force'" {
 
-        $planName = $env.functionAppPlanName
+        $planName = $env.planNameWorkerTypeWindowsNew
+        Write-Verbose "Updated planName: $planName" -Verbose
+
         $location = 'centralus'
         $minimumWorkerCount = 1
         $maxBurst = 3
@@ -137,7 +147,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             # Create a service plan
             Write-Verbose "Creating function app plan '$planName' job started." -Verbose
             $functionAppPlanJob = New-AzFunctionAppPlan -Name $planName `
-                                                        -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                                                        -ResourceGroupName $resourceGroupName `
                                                         -WorkerType "Windows" `
                                                         -MinimumWorkerCount $minimumWorkerCount `
                                                         -MaximumWorkerCount $maxBurst `
@@ -150,7 +160,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             $result.State | Should -Be "Completed"
             $result | Remove-Job -ErrorAction SilentlyContinue
             
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be $sku
@@ -167,7 +177,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             # Update function app plan SKU to EP2 and maxBurst to 5
             $sku = "EP2"            
             $functionAppPlanJob = Update-AzFunctionAppPlan -Name $planName `
-                                                           -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                                                           -ResourceGroupName $resourceGroupName `
                                                            -Sku $sku `
                                                            -Force `
                                                            -AsJob
@@ -177,7 +187,7 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
             $result.State | Should -Be "Completed"
             $result | Remove-Job -ErrorAction SilentlyContinue
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be $sku
@@ -191,13 +201,13 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
                 $plan.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
             }
             
-            Remove-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -Force
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            Remove-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -Force
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             $plan | Should -Be $null
         }
         finally
         {
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($plan)
             {
                 Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue

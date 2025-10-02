@@ -15,9 +15,21 @@ $env:FunctionsTestMode = $true
 
 Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFunctionAppSetting E2E' {
 
+    BeforeAll {
+        $planName = $env.planNameWorkerTypeWindows
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $storageAccountName = $env.storageAccountWindows
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+    }
+
     It "Validate Get-AzFunctionAppSetting, Update-AzFunctionAppSetting and Delete-AzFunctionAppSetting" {
 
-        $functionName = $env.functionNamePowerShell
+        $appName = $env.functionNamePowerShellNew1
+        Write-Verbose "App name: $appName" -Verbose
 
         $appSetting1 = @{}
         $appSetting1.Add("MyAppSetting1", 456789)
@@ -29,23 +41,24 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
 
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                              -PlanName $env.planNameWorkerTypeWindows `
-                              -StorageAccount $env.storageAccountWindows  `
+            Write-Verbose "Create function app with custom app settings" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName  `
                               -Runtime PowerShell `
-                              -RuntimeVersion 7.2 `
+                              -RuntimeVersion 7.4 `
                               -FunctionsVersion 4
 
             # We can get the application setting in two different ways:
             # 1) (Get-AzFunctionApp).ApplicationSettings 
             # 2) Get-AzFunctionAppSetting
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $expectedAppSettings = $functionApp.ApplicationSettings
 
             # App settings via Get-AzFunctionAppSetting
             Write-Verbose "Validate '(Get-AzFunctionApp).ApplicationSettings'" -Verbose
-            $appSettingsViaGetAzFunctionAppSetting = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $appSettingsViaGetAzFunctionAppSetting = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
             ValidateAppSetting -ExpectedAppSetting $expectedAppSettings -ActualAppSetting $appSettingsViaGetAzFunctionAppSetting
             
             # App settings via Get-AzFunctionAppSetting
@@ -55,8 +68,8 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
 
             # Add new app settings
             Write-Verbose "Validate 'Update-AzFunctionAppSetting'" -Verbose
-            $updatedAppSettings = Update-AzFunctionAppSetting -Name $functionName `
-                                                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+            $updatedAppSettings = Update-AzFunctionAppSetting -Name $appName `
+                                                              -ResourceGroupName $resourceGroupName `
                                                               -AppSetting $appSetting1
             foreach ($appSettingName in $appSetting1.Keys)
             {
@@ -64,7 +77,8 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
             }
 
             # Update app settings InputObject
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Validate 'Update-AzFunctionAppSetting -InputObject'" -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $updatedAppSettings2 = Update-AzFunctionAppSetting -InputObject $functionApp -AppSetting $appSetting2
             foreach ($appSettingName in $appSetting2.Keys)
             {
@@ -73,11 +87,11 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
 
             # Delete first set of app settings
             Write-Verbose "Validate 'Remove-AzFunctionAppSetting'" -Verbose
-            Remove-AzFunctionAppSetting -Name $functionName `
-                                        -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+            Remove-AzFunctionAppSetting -Name $appName `
+                                        -ResourceGroupName $resourceGroupName `
                                         -AppSettingName $appSetting1.Keys
             
-            $appSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $appSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
             
             foreach ($appSettingName in $appSetting1.Keys)
             {
@@ -85,7 +99,7 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
             }
 
             # Delete app settings using InputObject
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             Remove-AzFunctionAppSetting -InputObject $functionApp -AppSettingName $appSetting2.Keys
 
             $appSettings = Get-AzFunctionAppSetting -InputObject $functionApp
@@ -97,7 +111,7 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
                 Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
