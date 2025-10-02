@@ -1,49 +1,70 @@
 ---
 external help file:
 Module Name: Az.Automanage
-online version: https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofile
+online version: https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofilehcrpassignment
 schema: 2.0.0
 ---
 
-# Remove-AzAutomanageConfigProfile
+# Update-AzAutomanageConfigProfileHcrpAssignment
 
 ## SYNOPSIS
-Delete a configuration profile
+Update an association between a ARC machine and Automanage configuration profile
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzAutomanageConfigProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAutomanageConfigProfileHcrpAssignment -MachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzAutomanageConfigProfile -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAutomanageConfigProfileHcrpAssignment -InputObject <IAutomanageIdentity>
+ [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMachineExpanded
+```
+Update-AzAutomanageConfigProfileHcrpAssignment -MachineInputObject <IAutomanageIdentity>
+ [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a configuration profile
+Update an association between a ARC machine and Automanage configuration profile
 
 ## EXAMPLES
 
-### Example 1: Delete a configuration profile by name
+### Example 1: Update an association between a ARC machine and Automanage configuration profile
 ```powershell
-Remove-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01
+Update-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -MachineName aglinuxmachines -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 ```
 
-This command delete a configuration profile by name.
-
-### Example 2: Delete a configuration profile by pipeline
-```powershell
-Get-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01 | Remove-AzAutomanageConfigProfile
+```output
+Name    ResourceGroupName ManagedBy Status  TargetId
+----    ----------------- --------- ------  --------
+default automangerg                 Unknown /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.HybridCompute/machines/aglinuxmachines
 ```
 
-This command delete a configuration profile by pipeline.
+Update an association between a ARC machine and Automanage configuration profile
 
 ## PARAMETERS
+
+### -ConfigurationProfile
+The Automanage configurationProfile ARM Resource URI.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -66,7 +87,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -76,30 +97,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the configuration profile
+### -MachineInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ConfigurationProfileName
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: UpdateViaIdentityMachineExpanded
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -MachineName
+The name of the Arc machine.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -112,7 +133,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -127,7 +148,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -177,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 
 ## NOTES
 

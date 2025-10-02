@@ -24,6 +24,12 @@ Get-AzAutomanageConfigProfileHcrpAssignment -InputObject <IAutomanageIdentity> [
  [<CommonParameters>]
 ```
 
+### GetViaIdentityMachine
+```
+Get-AzAutomanageConfigProfileHcrpAssignment -MachineInputObject <IAutomanageIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get information about a configuration profile assignment
 
@@ -89,11 +95,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: GetViaIdentityMachine
 Aliases:
 
 Required: True
@@ -158,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 
 ## NOTES
 
