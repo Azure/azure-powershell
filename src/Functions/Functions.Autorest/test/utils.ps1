@@ -205,7 +205,10 @@ function setupEnv() {
     }
 
     # Create names to be used in the tests
-    $functionNamePowerShell = "Functions-PowerShell-" + (RandomString -len 10)
+    $planNameWorkerTypeWindowsNew = "Func-Windows-Premium-New" + (RandomString -len 6)
+    $functionNamePowerShell = "Functions-PowerShellTest-" + (RandomString -len 10)
+    $functionNamePowerShellNew1 = "Func-PowerShell-NewTest1-" + (RandomString -len 10)
+    $functionNamePowerShellNew2 = "Func-PowerShell-NewTest2-" + (RandomString -len 10)
     $functionNameContainer = "Functions-CustomImage-" + (RandomString -len 10)
     $functionNameTestApp = "Functions-TestAppName-" + (RandomString -len 10)
     $functionNameDotNet = "Functions-DotNet-" + (RandomString -len 10)
@@ -217,7 +220,10 @@ function setupEnv() {
     $functionNameDotNetIsolated = "Functions-DotNet-Isolated" + (RandomString -len 10)
     $functionNameCustomHandler = "Functions-CustomHandler" + (RandomString -len 10)
 
+    $env.add('planNameWorkerTypeWindowsNew', $planNameWorkerTypeWindowsNew) | Out-Null
     $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
+    $env.add('functionNamePowerShellNew1', $functionNamePowerShellNew1) | Out-Null
+    $env.add('functionNamePowerShellNew2', $functionNamePowerShellNew2) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
     $env.add('functionNameTestApp', $functionNameTestApp) | Out-Null
     $env.add('functionNameDotNet', $functionNameDotNet) | Out-Null
