@@ -108,7 +108,7 @@ This command starts a Storage account migration by inputting the TargetSkuName p
      $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
 
     # Example of adding a check for the SKU 
-	if ($storageAccount.Sku.Name -ne "Standard_LRS") { 
+    if ($storageAccount.Sku.Name -ne "Standard_LRS") { 
          Write-Host "Storage account $storageAccountName is not using Standard_LRS. Skipping..." 
          continue 
      } 
