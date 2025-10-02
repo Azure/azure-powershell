@@ -110,7 +110,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebJob
 
 ## NOTES
 
