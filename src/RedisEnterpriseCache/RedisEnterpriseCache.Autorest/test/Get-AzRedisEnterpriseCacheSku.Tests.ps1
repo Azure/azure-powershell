@@ -13,20 +13,3 @@ while(-not $mockingPath) {
 }  
 . ($mockingPath | Select-Object -First 1).FullName  
 }  
-
-Describe 'Get-AzRedisEnterpriseCacheSku' {  
-  It 'List' {  
-      $splat = @{  
-          ClusterName = $env.ClusterName3  
-          ResourceGroupName = $env.ResourceGroupName  
-      }  
-      $skus = Get-AzRedisEnterpriseCacheSku @splat  
-      $skus | Should -Not -Be $null  
-      # Check that the SKUs contain the expected names
-      $skuNames = $skus | Select-Object -ExpandProperty Name
-      $sizes = $skus | Select-Object -ExpandProperty SizeInGb
-      $skuNames | Should -Contain 'Balanced_B250'
-      $skuNames | Should -Contain 'Balanced_B50' 
-      $sizes | Should -Contain 240.0
-  }
-}

@@ -14,12 +14,3 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRedisEnterpriseCache
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzRedisEnterpriseCacheAccessPolicyAssignment' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}
