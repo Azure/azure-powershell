@@ -64,7 +64,6 @@ This command gets the migration status of the storage account myaccount under re
  foreach ($account in $storageAccounts) { 
      $storageAccountName = $account.'storageAccount' 
      $resourceGroupName = $account.'resourceGroup' 
-     $targetSku = $account.'targetSku' 
 
 	# Get the storage account migration status 
 	Get-AzStorageAccountMigration -AccountName $storageAccountName -ResourceGroupName $resourceGroupName  | ft ResourceGroupName,@{Name="StorageAccountName"; Expression={$storageAccountName}},DetailMigrationStatus,DetailTargetSkuName
