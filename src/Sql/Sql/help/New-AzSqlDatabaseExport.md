@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ### -AdministratorLoginPassword
 Specifies the password of the SQL administrator.
 
-This is mandatory. When using `-AuthenticationType ManagedIdentity` a dummy value must be provided.
+This is mandatory. When using `-AuthenticationType ManagedIdentity`, a placeholder value (for example, any non-empty SecureString value) must be provided.
 ```yaml
 Type: System.Security.SecureString
 Parameter Sets: (All)
