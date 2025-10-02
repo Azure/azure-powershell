@@ -13,7 +13,7 @@ Sets the Proxy Agent settings properties for a PSVirtualMachine object.
 ## SYNTAX
 
 ```
-Set-AzVMProxyAgentSetting -VM <PSVirtualMachine> [-EnableProxyAgent <Boolean>] [-WireServerMode <String>]
+Set-AzVMProxyAgentSetting -VM <PSVirtualMachine> [-EnableProxyAgent <Boolean>] [-AddProxyAgentExtension <Boolean>] [-WireServerMode <String>]
  [-WireServerProfile <String>] [-ImdsMode <String>] [-ImdsProfile <String>] [-KeyIncarnationId <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Sets the Proxy Agent settings properties for a PSVirtualMachine object.
 ### Example 1
 ```powershell
 $vmconfig = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
-Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -WireServerMode "Enforce" -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}"
+Set-AzVMProxyAgentSetting -VM $vmconfig -EnableProxyAgent $true -AddProxyAgentExtension false -WireServerMode "Enforce" -ImdsProfile "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}"
 ```
 
 This command sets the Proxy Agent settings for a virtual machine configuration object `$vmconfig`. 
@@ -51,6 +51,21 @@ Accept wildcard characters: False
 
 ### -EnableProxyAgent
 Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AddProxyAgentExtension
+Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
