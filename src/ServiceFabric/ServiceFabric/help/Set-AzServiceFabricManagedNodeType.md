@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceFabricManagedNodeType
 
 ## SYNOPSIS
-Sets node type resource properties or run reimage actions on specific nodes of the node type with -Reimage parameter.
+Sets node type resource properties.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Set-AzServiceFabricManagedNodeType [-ResourceId] <String> [-AsJob] [-DefaultProf
 ```
 
 ## DESCRIPTION
-Sets node type resource properties or run reimage actions on specific nodes of the node type with -Reimage parameter. On reimage operation the service fabric nodes will be disabled before reimaging the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not reimage all the nodes at the same time. Use -ForceReimage to force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
+Sets node type resource properties.
 
 ## EXAMPLES
 
@@ -66,16 +66,6 @@ Update placement properties of the node type. This will overwrite older placemen
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-Set-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -Reimage -NodeName nt1_0, nt1_3
-```
-
-Reimage node 0 and 3 on the node type.
-
-### Example 4
-```powershell
-$rgName = "testRG"
-$clusterName = "testCluster"
-$NodeTypeName = "nt1"
 $nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
 
 $nodeType.VmInstanceCount = 6
@@ -84,7 +74,7 @@ $nodeType | Set-AzServiceFabricManagedNodeType
 
 Update the instance count of the node type, with piping.
 
-### Example 5
+### Example 4
 ```powershell
 $rgName = "testRG"
 $clusterName = "testCluster"
