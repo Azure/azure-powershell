@@ -1,0 +1,75 @@
+{
+  "resourceType": "managementGroups/groupQuotas",
+  "apiVersion": "2025-07-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.quota"
+  },
+  "commands": [
+    {
+      "name": "Get-AzQuotaGroupQuota",
+      "description": "Gets the GroupQuotas for the name passed.\nIt will return the GroupQuotas properties only.\nThe details on group quota can be access from the group quota APIs.",
+      "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.quota/get-azquotagroupquota"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ManagementGroupId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on group quota can be access from the group quota APIs.",
+          "parameters": [
+            {
+              "name": "-ManagementGroupId",
+              "value": "[Path.managementGroupId]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.groupQuotaName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzQuotaGroupQuota",
+      "description": "Deletes the GroupQuotas for the name passed.\nAll the remaining shareQuota in the GroupQuotas will be lost.",
+      "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.quota/remove-azquotagroupquota"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ManagementGroupId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the GroupQuotas for the name passed. All the remaining shareQuota in the GroupQuotas will be lost.",
+          "parameters": [
+            {
+              "name": "-ManagementGroupId",
+              "value": "[Path.managementGroupId]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.groupQuotaName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
