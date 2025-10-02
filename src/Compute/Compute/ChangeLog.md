@@ -48,7 +48,7 @@
 
 ## Version 10.0.0
 * Added new properties `Architecture`, `HyperVGeneration`, and `ImageDeprecationStatus` to be returned in `Get-AzVMImage` ListVMImage parameter set.
-* Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set. 
+* Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set.
 * Added new parameters `EnableAutomaticZoneRebalance`, `AutomaticZoneRebalanceStrategy` and `AutomaticZoneRebalanceBehavior` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Rebalancing.
 
 ## Version 9.3.0
