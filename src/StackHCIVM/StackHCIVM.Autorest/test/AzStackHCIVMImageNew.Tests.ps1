@@ -18,10 +18,9 @@ Describe 'AzStackHCIVMImageNew' {
     It 'Create Image '  {
         New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $env.imagePath  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
-    It 'Create MarketplaceImage' 
-    {
+    It 'Create MarketplaceImage' {
         New-AzStackHCIVMImage -Name  $env.mkpImageName -Offer $env.offer -Publisher $env.publisher -Sku $env.sku -Version $env.version  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeWindows 
-        $image = Get-AzStackHCIVMImage -ResourceId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/testMkpImage1"
+        $image = Get-AzStackHCIVMImage -ResourceId "/subscriptions/$($env.newSubscriptionId)/resourceGroups/$($env.newResourceGroupName)/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/$($env.mkpImageName)"
         $image.ProvisioningState |  Should -BeExactly "Succeeded"
     }
 
