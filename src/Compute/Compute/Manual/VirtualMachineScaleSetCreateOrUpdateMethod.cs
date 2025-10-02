@@ -292,6 +292,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
         public SwitchParameter EnableProxyAgent { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies whether to add installation of the ProxyAgent extension.")]
+        public SwitchParameter AddProxyAgentExtension { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
