@@ -17,19 +17,18 @@ To update other fields use the CreateOrUpdate method.
 ```
 Update-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Enabled <Boolean>] [-Notification <IAutoscaleNotification[]>]
- [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>]
- [-PredictiveAutoscalePolicyScaleMode <PredictiveAutoscalePolicyScaleMode>] [-Profile <IAutoscaleProfile[]>]
- [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>] [-PredictiveAutoscalePolicyScaleMode <String>]
+ [-Profile <IAutoscaleProfile[]>] [-Tag <Hashtable>] [-TargetResourceLocation <String>]
+ [-TargetResourceUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> [-Enabled <Boolean>]
  [-Notification <IAutoscaleNotification[]>] [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>]
- [-PredictiveAutoscalePolicyScaleMode <PredictiveAutoscalePolicyScaleMode>] [-Profile <IAutoscaleProfile[]>]
- [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PredictiveAutoscalePolicyScaleMode <String>] [-Profile <IAutoscaleProfile[]>] [-Tag <Hashtable>]
+ [-TargetResourceLocation <String>] [-TargetResourceUri <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,7 +114,7 @@ the collection of notifications.
 To construct, see NOTES section for NOTIFICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleNotification[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleNotification[]
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +145,7 @@ Accept wildcard characters: False
 the predictive autoscale mode
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +162,7 @@ A maximum of 20 profiles can be specified.
 To construct, see NOTES section for PROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -290,7 +289,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource
 
 ## NOTES
 
