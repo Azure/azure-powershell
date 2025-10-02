@@ -1,17 +1,17 @@
 {
-  "Get-AzDnsDnssecConfig+[NoContext]+Get+$PUT+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+1": {
+  "Get-AzDnsDnssecConfig+[NoContext]+Get+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "48e90be4-89fe-45a5-bc0d-3dee3f2ff354" ],
+        "x-ms-client-request-id": [ "10a72b55-fa64-4739-ba9f-0576f557dc08" ],
         "CommandName": [ "New-AzDnsDnssecConfig" ],
         "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Dns/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,39 +21,41 @@
       "StatusCode": 201,
       "Headers": {
         "Cache-Control": [ "private" ],
-        "ETag": [ "976bda25-2fde-4c22-bc36-f6945872d9eb" ],
+        "ETag": [ "2c1cd774-7bce-40dc-b95c-a25db0268c59" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "48e90be4-89fe-45a5-bc0d-3dee3f2ff354" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-request-id": [ "10a72b55-fa64-4739-ba9f-0576f557dc08" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
-        "x-ms-correlation-request-id": [ "c942b44e-02b8-4bba-80f7-d9429225d2f3" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231030T223230Z:c942b44e-02b8-4bba-80f7-d9429225d2f3" ],
-        "Date": [ "Mon, 30 Oct 2023 22:32:30 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/southeastasia/5835dd2b-f491-4808-9523-9c5d1d53570b" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-correlation-request-id": [ "a86e85bb-b82c-4892-9020-a2186cf22900" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T063757Z:a86e85bb-b82c-4892-9020-a2186cf22900" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 67D8A3093D654996BBFE674E3D9E2C3B Ref B: MAA201060514025 Ref C: 2025-09-11T06:37:51Z" ],
+        "Date": [ "Thu, 11 Sep 2025 06:37:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "357" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"976bda25-2fde-4c22-bc36-f6945872d9eb\",\"properties\":{\"provisioningState\":\"Creating\",\"signingKeys\":[]}}",
+      "Content": "{\"id\":\"\\/subscriptions\\/0e745469-49f8-48c9-873b-24ca87143db1\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"2c1cd774-7bce-40dc-b95c-a25db0268c59\",\"properties\":{\"provisioningState\":\"Creating\",\"signingKeys\":[]}}",
       "isContentBase64": false
     }
   },
-  "Get-AzDnsDnssecConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+2": {
+  "Get-AzDnsDnssecConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "48e90be4-89fe-45a5-bc0d-3dee3f2ff354" ],
+        "x-ms-client-request-id": [ "10a72b55-fa64-4739-ba9f-0576f557dc08" ],
         "CommandName": [ "New-AzDnsDnssecConfig" ],
         "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Dns/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -62,39 +64,41 @@
       "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "private" ],
-        "ETag": [ "d5792c44-843a-4ea2-ac49-abedfa054f7e" ],
+        "ETag": [ "2fb53c3d-1d72-4696-b08a-5db429b2a548" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "48e90be4-89fe-45a5-bc0d-3dee3f2ff354" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-request-id": [ "10a72b55-fa64-4739-ba9f-0576f557dc08" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
-        "x-ms-correlation-request-id": [ "989fdf14-ed69-4436-9933-cd249949ed45" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231030T223300Z:989fdf14-ed69-4436-9933-cd249949ed45" ],
-        "Date": [ "Mon, 30 Oct 2023 22:33:00 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/southeastasia/716869c0-dd25-494b-b6f2-f41c4ef33958" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "efc9b0d4-4c36-46d5-a921-92ed4a338c1b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T063828Z:efc9b0d4-4c36-46d5-a921-92ed4a338c1b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4DD43F811B7A4C188B7D8526EF464D0E Ref B: MAA201060514025 Ref C: 2025-09-11T06:38:28Z" ],
+        "Date": [ "Thu, 11 Sep 2025 06:38:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "950" ],
+        "Content-Length": [ "949" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"d5792c44-843a-4ea2-ac49-abedfa054f7e\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":5808,\"protocol\":3,\"publicKey\":\"El2YBBpP3oQPa\\/tGkqEfDUIA+aJjsEZIoR09w5pq+ar\\/61gfekHF3OWQLiYJUJfmHQmRufhhLaTtX6RUNZFxVA==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"ACA1EB7400B19AF67492DD17D4FD75D3266EF95C6121382273D58B403997D189\",\"record\":\"51366 13 2 ACA1EB7400B19AF67492DD17D4FD75D3266EF95C6121382273D58B403997D189\"}],\"flags\":257,\"keyTag\":51366,\"protocol\":3,\"publicKey\":\"84l4sjz4z1vuwNH1cd\\/XRTCjgKkT\\/Xm3FxxFsV2\\/EiLJr8HuKFqvdwhtxOhqD7wpLkDO1hpBw+G6SCP1oJ2FZw==\",\"securityAlgorithmType\":13}]}}",
+      "Content": "{\"id\":\"\\/subscriptions\\/0e745469-49f8-48c9-873b-24ca87143db1\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"2fb53c3d-1d72-4696-b08a-5db429b2a548\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":1177,\"protocol\":3,\"publicKey\":\"TqTCVgkS5dBktxgJc6X\\/PKvPqoZorr7hDVcTz52IW6fzHAVXS7O2nbeyXfgA5PrUEedw9kZDtqCOnbBy4cvMBw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"672CD46C26CE5DC9AAC7D7C2FEBC69A13B8D9571E2E82C2EE71D967D2A657509\",\"record\":\"35221 13 2 672CD46C26CE5DC9AAC7D7C2FEBC69A13B8D9571E2E82C2EE71D967D2A657509\"}],\"flags\":257,\"keyTag\":35221,\"protocol\":3,\"publicKey\":\"77CynbcUY\\/1o9eKSqA7700xh+dhg21kJPe5ZzQJzMQ0qyHWk0ex1u1xo7cvJOsJPM0al4E\\/0ee\\/ORJt4vimEmw==\",\"securityAlgorithmType\":13}]}}",
       "isContentBase64": false
     }
   },
-  "Get-AzDnsDnssecConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+3": {
+  "Get-AzDnsDnssecConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "48e90be4-89fe-45a5-bc0d-3dee3f2ff354" ],
+        "x-ms-client-request-id": [ "10a72b55-fa64-4739-ba9f-0576f557dc08" ],
         "CommandName": [ "New-AzDnsDnssecConfig" ],
         "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Dns/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -103,38 +107,40 @@
       "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "private" ],
-        "ETag": [ "d5792c44-843a-4ea2-ac49-abedfa054f7e" ],
+        "ETag": [ "2fb53c3d-1d72-4696-b08a-5db429b2a548" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "48e90be4-89fe-45a5-bc0d-3dee3f2ff354" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-request-id": [ "10a72b55-fa64-4739-ba9f-0576f557dc08" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
-        "x-ms-correlation-request-id": [ "db6454cc-6b93-4a08-9277-233dddd56f33" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231030T223300Z:db6454cc-6b93-4a08-9277-233dddd56f33" ],
-        "Date": [ "Mon, 30 Oct 2023 22:33:00 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/southeastasia/ba84a074-84f2-4d7d-8395-d5eb6d61cb5f" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "99a7379a-015c-40ee-9d46-9731b664aa5e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T063829Z:99a7379a-015c-40ee-9d46-9731b664aa5e" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A3030963F0D44790BEE6C88FD2117FAF Ref B: MAA201060514025 Ref C: 2025-09-11T06:38:28Z" ],
+        "Date": [ "Thu, 11 Sep 2025 06:38:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "950" ],
+        "Content-Length": [ "949" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"d5792c44-843a-4ea2-ac49-abedfa054f7e\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":5808,\"protocol\":3,\"publicKey\":\"El2YBBpP3oQPa\\/tGkqEfDUIA+aJjsEZIoR09w5pq+ar\\/61gfekHF3OWQLiYJUJfmHQmRufhhLaTtX6RUNZFxVA==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"ACA1EB7400B19AF67492DD17D4FD75D3266EF95C6121382273D58B403997D189\",\"record\":\"51366 13 2 ACA1EB7400B19AF67492DD17D4FD75D3266EF95C6121382273D58B403997D189\"}],\"flags\":257,\"keyTag\":51366,\"protocol\":3,\"publicKey\":\"84l4sjz4z1vuwNH1cd\\/XRTCjgKkT\\/Xm3FxxFsV2\\/EiLJr8HuKFqvdwhtxOhqD7wpLkDO1hpBw+G6SCP1oJ2FZw==\",\"securityAlgorithmType\":13}]}}",
+      "Content": "{\"id\":\"\\/subscriptions\\/0e745469-49f8-48c9-873b-24ca87143db1\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"2fb53c3d-1d72-4696-b08a-5db429b2a548\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":1177,\"protocol\":3,\"publicKey\":\"TqTCVgkS5dBktxgJc6X\\/PKvPqoZorr7hDVcTz52IW6fzHAVXS7O2nbeyXfgA5PrUEedw9kZDtqCOnbBy4cvMBw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"672CD46C26CE5DC9AAC7D7C2FEBC69A13B8D9571E2E82C2EE71D967D2A657509\",\"record\":\"35221 13 2 672CD46C26CE5DC9AAC7D7C2FEBC69A13B8D9571E2E82C2EE71D967D2A657509\"}],\"flags\":257,\"keyTag\":35221,\"protocol\":3,\"publicKey\":\"77CynbcUY\\/1o9eKSqA7700xh+dhg21kJPe5ZzQJzMQ0qyHWk0ex1u1xo7cvJOsJPM0al4E\\/0ee\\/ORJt4vimEmw==\",\"securityAlgorithmType\":13}]}}",
       "isContentBase64": false
     }
   },
-  "Get-AzDnsDnssecConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+4": {
+  "Get-AzDnsDnssecConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk1.com/dnssecConfigs/default?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "412306a2-a119-48c7-ae3d-9ec364dfe8c7" ],
+        "x-ms-client-request-id": [ "d7f91078-6049-43bb-a8be-8589a8c18f93" ],
         "CommandName": [ "Get-AzDnsDnssecConfig" ],
         "FullCommandName": [ "Get-AzDnsDnssecConfig_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Dns/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -144,22 +150,24 @@
       "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "private" ],
-        "ETag": [ "d5792c44-843a-4ea2-ac49-abedfa054f7e" ],
+        "ETag": [ "2fb53c3d-1d72-4696-b08a-5db429b2a548" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "412306a2-a119-48c7-ae3d-9ec364dfe8c7" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-request-id": [ "d7f91078-6049-43bb-a8be-8589a8c18f93" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
-        "x-ms-correlation-request-id": [ "78ff3bf4-ae7e-4749-8b92-76eb80d6341a" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231030T223301Z:78ff3bf4-ae7e-4749-8b92-76eb80d6341a" ],
-        "Date": [ "Mon, 30 Oct 2023 22:33:00 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/southeastasia/f0e35d8e-b840-4b6d-b7ae-bbec96faedff" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "7e9a75cb-1512-4414-9136-c65fe7c730e4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T063830Z:7e9a75cb-1512-4414-9136-c65fe7c730e4" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 29A5D83631D644729308DC234E3AC2CC Ref B: MAA201060514025 Ref C: 2025-09-11T06:38:30Z" ],
+        "Date": [ "Thu, 11 Sep 2025 06:38:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "950" ],
+        "Content-Length": [ "949" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"d5792c44-843a-4ea2-ac49-abedfa054f7e\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":5808,\"protocol\":3,\"publicKey\":\"El2YBBpP3oQPa\\/tGkqEfDUIA+aJjsEZIoR09w5pq+ar\\/61gfekHF3OWQLiYJUJfmHQmRufhhLaTtX6RUNZFxVA==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"ACA1EB7400B19AF67492DD17D4FD75D3266EF95C6121382273D58B403997D189\",\"record\":\"51366 13 2 ACA1EB7400B19AF67492DD17D4FD75D3266EF95C6121382273D58B403997D189\"}],\"flags\":257,\"keyTag\":51366,\"protocol\":3,\"publicKey\":\"84l4sjz4z1vuwNH1cd\\/XRTCjgKkT\\/Xm3FxxFsV2\\/EiLJr8HuKFqvdwhtxOhqD7wpLkDO1hpBw+G6SCP1oJ2FZw==\",\"securityAlgorithmType\":13}]}}",
+      "Content": "{\"id\":\"\\/subscriptions\\/0e745469-49f8-48c9-873b-24ca87143db1\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk1.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"2fb53c3d-1d72-4696-b08a-5db429b2a548\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":1177,\"protocol\":3,\"publicKey\":\"TqTCVgkS5dBktxgJc6X\\/PKvPqoZorr7hDVcTz52IW6fzHAVXS7O2nbeyXfgA5PrUEedw9kZDtqCOnbBy4cvMBw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"672CD46C26CE5DC9AAC7D7C2FEBC69A13B8D9571E2E82C2EE71D967D2A657509\",\"record\":\"35221 13 2 672CD46C26CE5DC9AAC7D7C2FEBC69A13B8D9571E2E82C2EE71D967D2A657509\"}],\"flags\":257,\"keyTag\":35221,\"protocol\":3,\"publicKey\":\"77CynbcUY\\/1o9eKSqA7700xh+dhg21kJPe5ZzQJzMQ0qyHWk0ex1u1xo7cvJOsJPM0al4E\\/0ee\\/ORJt4vimEmw==\",\"securityAlgorithmType\":13}]}}",
       "isContentBase64": false
     }
   }
