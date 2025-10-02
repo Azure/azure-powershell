@@ -37,7 +37,7 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
         Write-Host ""
         Write-Host "Create resource group and storage account." -ForegroundColor Yellow
         New-AzResourceGroup -Name $resourceGroupNameACA -Location $locationACA 
-        New-AzStorageAccount -Name $storageAccountNameACA -ResourceGroupName $resourceGroupNameACA -Location $locationACA -SkuName "Standard_GRS" | Out-Null
+        New-AzStorageAccount -Name $storageAccountNameACA -ResourceGroupName $resourceGroupNameACA -Location $locationACA -SkuName "Standard_GRS" -AllowBlobPublicAccess $false | Out-Null
         
         Write-Host ""
         Write-Host "Create Log Analytics workspace." -ForegroundColor Yellow
