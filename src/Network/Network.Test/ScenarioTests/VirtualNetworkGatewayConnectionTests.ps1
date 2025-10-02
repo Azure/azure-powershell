@@ -113,7 +113,7 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
-      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel    
 
       # Create VirtualNetworkGateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
@@ -974,3 +974,123 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
      }
 }
 
+function Test-VirtualNetworkGatewayConnectionWithCertificateAuth
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $localnetName = Get-ResourceName
+    $vnetConnectionName = Get-ResourceName
+    $vnetGatewayName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $identityName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try 
+    {
+
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create managed identity
+        $identity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName -Location $location
+
+        $keyVaultName = "kv" + $rgname.Substring(0, [Math]::Min(15, $rgname.Length))
+        $keyVault = New-AzKeyVault -ResourceGroupName $rgname -VaultName $keyVaultName -Location $location -EnabledForDeployment -Sku Standard -DisableRbacAuthorization
+
+        # 2. Grant managed identity access to Key Vault certificates
+        Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $identity.PrincipalId -PermissionsToCertificates get,list -PermissionsToSecrets get,list
+
+        $currentUser = (Get-AzContext).Account.Id
+        Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $currentUser -PermissionsToCertificates get,list,create,delete,import
+
+        # 3. Import certificate 
+        $certFilePath = "./ScenarioTests/Data/VpnGatewayoutboundcert.pfx"
+        $certPassword = ConvertTo-SecureString -String "12345" -Force -AsPlainText
+        Import-AzKeyVaultCertificate -VaultName $keyVaultName -Name "vpn-gateway-cert" `
+            -FilePath $certFilePath -Password $certPassword
+     
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $publicIpName
+
+        # Create VirtualNetworkGateway with managed identity
+        $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+        $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $vnetGatewayName -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -UserAssignedIdentityId $identity.Id
+        $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $vnetGatewayName
+
+        Assert-AreEqual "Succeeded" $vnetGateway.ProvisioningState
+        Assert-NotNull $vnetGateway.Identity
+
+        # Create LocalNetworkGateway
+        $localGateway = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.4.5
+
+        $cert = Get-AzKeyVaultCertificate -VaultName $keyVaultName -Name "vpn-gateway-cert"
+        $outboundCertUrl = $cert.Id
+        $certData = Get-AzKeyVaultCertificate -VaultName $keyVaultName -Name "vpn-gateway-cert"
+        $certBytes = [System.Convert]::ToBase64String($certData.Certificate.RawData)
+        $subjectName = $certData.Certificate.Subject
+
+        $inboundCert1Path = "./ScenarioTests/Data/VpnGatewayInboundCert.cer"
+        $inboundCert2Path = "./ScenarioTests/Data/VpnGatewayAuthCert.cer"
+        $inboundCert1Data = Get-Content -Path $inboundCert1Path -Raw
+        $inboundCert2Data = Get-Content -Path $inboundCert2Path -Raw
+        
+        # Remove PEM headers if present and get Base64 only
+        $inboundCert1Base64 = $inboundCert1Data -replace "-----BEGIN CERTIFICATE-----", "" -replace "-----END CERTIFICATE-----", ""
+        $inboundCert2Base64 = $inboundCert2Data -replace "-----BEGIN CERTIFICATE-----", "" -replace "-----END CERTIFICATE-----", ""
+        $certChain = @($inboundCert1Base64, $inboundCert2Base64) 
+
+        $certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication `
+            -OutboundAuthCertificate $outboundCertUrl `
+            -InboundAuthCertificateSubjectName $subjectName `
+            -InboundAuthCertificateChain $certChain
+
+       # Verify certificate authentication object properties
+        Assert-AreEqual $outboundCertUrl $certAuth.OutboundAuthCertificate
+        Assert-AreEqual $subjectName $certAuth.InboundAuthCertificateSubjectName
+        Assert-AreEqual 2 $certAuth.InboundAuthCertificateChain.Count
+        Assert-NotNull $certAuth.InboundAuthCertificateChain[0]
+        Assert-NotNull $certAuth.InboundAuthCertificateChain[1]
+
+        # Create VirtualNetworkGatewayConnection with Certificate Authentication
+        $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localGateway -ConnectionType IPsec -RoutingWeight 3 -AuthenticationType "Certificate" -CertificateAuthentication $certAuth
+        
+        # Verify connection was created successfully
+        $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-AreEqual $connection.ResourceGroupName $actual.ResourceGroupName	
+        Assert-AreEqual $connection.Name $actual.Name
+        Assert-AreEqual "Certificate" $connection.AuthenticationType
+        Assert-NotNull $connection.CertificateAuthentication
+        Assert-AreEqual $outboundCertUrl $connection.CertificateAuthentication.OutboundAuthCertificate
+        Assert-AreEqual $subjectName $connection.CertificateAuthentication.InboundAuthCertificateSubjectName
+        Assert-AreEqual 2 $connection.CertificateAuthentication.InboundAuthCertificateChain.Count
+
+        # Update with new certificate (just use same cert for test purposes)
+        $newCertAuth = New-AzVirtualNetworkGatewayCertificateAuthentication -OutboundAuthCertificate $outboundCertUrl -InboundAuthCertificateSubjectName $subjectName -InboundAuthCertificateChain $certChain
+        
+        $updatedConnection = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -AuthenticationType "Certificate" -CertificateAuthentication $newCertAuth -Force
+        
+        # Verify update
+        $verifyConnection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-AreEqual "Certificate" $verifyConnection.AuthenticationType
+        Assert-AreEqual $outboundCertUrl $verifyConnection.CertificateAuthentication.OutboundAuthCertificate
+        Assert-AreEqual $subjectName $verifyConnection.CertificateAuthentication.InboundAuthCertificateSubjectName
+
+        # List connections and verify
+        $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name "*"
+        Assert-True { $list.Count -ge 1 }
+        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
