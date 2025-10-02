@@ -65,8 +65,8 @@ This command gets the migration status of the storage account myaccount under re
      $storageAccountName = $account.'storageAccount' 
      $resourceGroupName = $account.'resourceGroup' 
 
-  # Get the storage account migration status 
-  Get-AzStorageAccountMigration -AccountName $storageAccountName -ResourceGroupName $resourceGroupName  | ft ResourceGroupName,@{Name="StorageAccountName"; Expression={$storageAccountName}},DetailMigrationStatus,DetailTargetSkuName
+     # Get the storage account migration status 
+     Get-AzStorageAccountMigration -AccountName $storageAccountName -ResourceGroupName $resourceGroupName  | ft ResourceGroupName,@{Name="StorageAccountName"; Expression={$storageAccountName}},DetailMigrationStatus,DetailTargetSkuName
  }
 ```
 This script gets the migration for the accounts listed in a CSV file with these example columns:  
