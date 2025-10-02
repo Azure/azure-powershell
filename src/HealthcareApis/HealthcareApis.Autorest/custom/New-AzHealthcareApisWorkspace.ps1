@@ -32,8 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace
 https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
 #>
 function New-AzHealthcareApisWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IWorkspace", DeprecatedOutputProperties = ("PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection"), NewOutputProperties = ("PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IWorkspace])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -56,38 +55,51 @@ function New-AzHealthcareApisWorkspace {
         # The subscription identifier.
         ${SubscriptionId},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # An etag associated with the resource, used for optimistic concurrency when editing it.
         ${Etag},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The resource location.
         ${Location},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess]
+        [System.String]
         # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
         ${PublicNetworkAccess},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
+
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]

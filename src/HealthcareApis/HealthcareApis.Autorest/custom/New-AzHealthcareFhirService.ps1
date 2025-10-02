@@ -44,9 +44,7 @@ ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Conta
 https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcarefhirservice
 #>
 function New-AzHealthcareFhirService {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService])]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.GenericBreakingChangeAttribute("IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.", "15.0.0", "9.0.0", "2025/11/03")]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IFhirService", DeprecatedOutputProperties = ("PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection", "AccessPolicy Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceAccessPolicyEntry", "AcrConfigurationOciArtifact Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceOciArtifactEntry", "CorConfigurationOrigin System.String[]", "CorConfigurationMethod System.String[]", "AcrConfigurationLoginServer System.String[]", "CorConfigurationHeader System.String[]"), NewOutputProperties = ("PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection]", "AccessPolicy System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceAccessPolicyEntry]", "AcrConfigurationOciArtifact System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceOciArtifactEntry]", "CorConfigurationOrigin System.Collections.Generic.List`1[System.String]", "CorConfigurationMethod System.Collections.Generic.List`1[System.String]", "AcrConfigurationLoginServer System.Collections.Generic.List`1[System.String]", "CorConfigurationHeader System.Collections.Generic.List`1[System.String]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IFhirService])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -56,174 +54,216 @@ function New-AzHealthcareFhirService {
         # The name of FHIR Service resource.
         ${Name},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
         [System.String]
         # The name of the resource group that contains the service instance.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
-        [System.String]
-        # The name of workspace resource.
-        ${WorkspaceName},
-
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+        [Parameter(ParameterSetName='CreateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The subscription identifier.
         ${SubscriptionId},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+        [System.String]
+        # The name of workspace resource.
+        ${WorkspaceName},
+
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
+        # Identity Parameter
+        ${WorkspaceInputObject},
+
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IFhirServiceAccessPolicyEntry[]]
         # Fhir Service access policies.
-        # To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
         ${AccessPolicyObjectId},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The list of the Azure container registry login servers.
         ${AcrConfigurationLoginServer},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceOciArtifactEntry[]]
         # The list of Open Container Initiative (OCI) artifacts.
-        # To construct, see NOTES section for ACRCONFIGURATIONOCIARTIFACT properties and create a hash table.
         ${AcrConfigurationOciArtifact},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # If credentials are allowed via CORS.
         ${AllowCorsCredential},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The audience url for the service
         ${Audience},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The authority url for the service
         ${Authority},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The headers to be allowed via CORS.
         ${CorsHeader},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.Int32]
         # The max age to be allowed via CORS.
         ${CorsMaxAge},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The methods to be allowed via CORS.
         ${CorsMethod},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String[]]
         # The origins to be allowed via CORS.
         ${CorsOrigin},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # If the SMART on FHIR proxy is enabled
         ${EnableSmartProxy},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Determines whether to enable a system-assigned identity for the resource.
+        ${EnableSystemAssignedIdentity},
+
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # An etag associated with the resource, used for optimistic concurrency when editing it.
         ${Etag},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The name of the default export storage account.
         ${ExportStorageAccountName},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType])]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.PSArgumentCompleterAttribute("fhir-Stu3", "fhir-R4")]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType]
-        # Type of identity being specified, currently SystemAssigned and None are allowed.
-        ${IdentityType},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource.
-        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
-
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind])]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind]
+        [System.String]
         # The kind of the service.
         ${Kind},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The resource location.
         ${Location},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess]
+        [System.String]
         # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
         ${PublicNetworkAccess},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.PSArgumentCompleterAttribute("no-version", "versioned", "versioned-update")]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy]
+        [System.String]
         # The default value for tracking history across all resources.
         ${ResourceVersionPolicyConfigurationDefault},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceVersionPolicyConfigurationResourceTypeOverrides]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IResourceVersionPolicyConfigurationResourceTypeOverrides]))]
         [System.Collections.Hashtable]
         # A list of FHIR Resources and their version policy overrides.
         ${ResourceVersionPolicyConfigurationResourceTypeOverride},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
+
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String[]]
+        # The array of user assigned identities associated with the resource.
+        # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        ${UserAssignedIdentity},
+
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]
