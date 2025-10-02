@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Compute
-Module Guid: 969c43c4-cc53-4871-b660-e3afb5b5796b
+Module Guid: a6e7404d-a42b-4e3f-880c-8b5e012c5adc
 Download Help Link: https://learn.microsoft.com/powershell/module/az.compute
 Help Version: 1.0.0.0
 Locale: en-US
@@ -39,10 +39,10 @@ The operation to delete the run command.
 The operation to delete the VMSS VM run command.
 
 ### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
-The operation to create or update the run command.
+The operation to update the run command.
 
 ### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 
 ### [Update-AzGalleryApplication](Update-AzGalleryApplication.md)
 Update a gallery Application Definition.
