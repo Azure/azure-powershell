@@ -15,23 +15,20 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
     BeforeAll {
 
-        $appName = $env.functionNamePowerShell
-        Write-Verbose "App name: $appName" -Verbose
+        $planName = $env.planNameWorkerTypeWindows
+        Write-Verbose "Plan name: $planName" -Verbose
 
         $resourceGroupName = $env.resourceGroupNameWindowsPremium
         Write-Verbose "Resource group name: $resourceGroupName" -Verbose
-
-        $planName = $env.planNameWorkerTypeWindows
-        Write-Verbose "Plan name: $planName" -Verbose
 
         $storageAccountName = $env.storageAccountWindows
         Write-Verbose "Storage account name: $storageAccountName" -Verbose
 
         $identityInfo = $env.identityInfo
-        Write-Verbose "Identity info: $($identityInfo | Out-String)" -Verbose
+        Write-Verbose "Identity id: $($identityInfo.Id | Out-String)" -Verbose
 
         $newApplInsights = $env.newApplInsights
-        Write-Verbose "New Application Insights: $($newApplInsights | Out-String)" -Verbose
+        Write-Verbose "New Application Insights name: $($newApplInsights.Name | Out-String)" -Verbose
 
         $location = "centralus"
         Write-Verbose "Location: $location" -Verbose
@@ -48,6 +45,9 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         try
         {
             Write-Verbose "Create function app with a SystemAssigned managed identity" -Verbose
+            $appName = $env.functionNamePowerShell
+            Write-Verbose "App name: $appName" -Verbose
+
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `
@@ -70,9 +70,9 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             }
 
             Write-Verbose "Create premium function app plan" -Verbose
-            $planName = $env.functionAppPlanName
-            Write-Verbose "Updated planName: $planName" -Verbose
-            New-AzFunctionAppPlan -Name $planName `
+            $newPlanName = $env.planNameWorkerTypeWindowsNew
+            Write-Verbose "Updated planName: $newPlanName" -Verbose
+            New-AzFunctionAppPlan -Name $newPlanName `
                                   -ResourceGroupName $resourceGroupName `
                                   -WorkerType "Windows" `
                                   -MinimumWorkerCount 1 `
@@ -80,20 +80,20 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                                   -Location $location `
                                   -Sku EP1
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName
+            $plan = Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName
             Write-Verbose "Plan retrieved. Validating properties" -Verbose
             $plan.WorkerType | Should -Be "Windows"
             $plan.SkuTier | Should -Be "ElasticPremium"
             $plan.SkuName | Should -Be "EP1"
             $plan.Location | Should -Be "Central US"
-            $plan.Name | Should -Be $planName
+            $plan.Name | Should -Be $newPlanName
 
             Write-Verbose "Update function app plan hosting plan" -Verbose
-            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -PlanName $planName -Force
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -PlanName $newPlanName -Force
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             Write-Verbose "FunctionApp after plan update. Validate plan name" -Verbose
-            $functionApp.AppServicePlan | Should -Be $planName
+            $functionApp.AppServicePlan | Should -Be $newPlanName
 
             # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
             # Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
@@ -117,17 +117,17 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             Write-Verbose "FunctionApp for cleanup." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp) {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
             }
 
-            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            $plan = Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             Write-Verbose "Plan for cleanup." -Verbose
             if ($plan)
             {
-                Remove-AzFunctionAppPlan -InputObject $plan -Force -ErrorAction SilentlyContinue
+                Remove-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
             }
         }
     }
@@ -137,6 +137,9 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         try
         {
             Write-Verbose "Creating function app -AsJob" -Verbose
+            $appName = $env.functionNamePowerShellNew1
+            Write-Verbose "App name: $appName" -Verbose
+
             $functionAppJob = New-AzFunctionApp -Name $appName `
                                                 -ResourceGroupName $resourceGroupName `
                                                 -PlanName $planName `
@@ -172,7 +175,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             Write-Verbose "Run: Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force" -Verbose
             Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force
 
-            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "Validate that the function app was deleted." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             $functionApp | Should -Be $null
         }
         finally
@@ -181,7 +185,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             if ($functionApp)
             {
                 Write-Verbose "Cleaning up function app" -Verbose
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
             }
         }
     }
@@ -191,6 +195,9 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         try
         {
             Write-Verbose "Creating function app" -Verbose
+            $appName = $env.functionNamePowerShellNew2
+            Write-Verbose "App name: $appName" -Verbose
+
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `
@@ -231,7 +238,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
             }
         }
     }
