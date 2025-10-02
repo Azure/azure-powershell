@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Management.KeyVault
             this.MhsmPrivateLinkResources = new MhsmPrivateLinkResourcesOperations(this);
             this.MhsmRegions = new MhsmRegionsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-11-01";
+            this.ApiVersion = "2025-05-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
