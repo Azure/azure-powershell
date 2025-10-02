@@ -682,11 +682,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlacement()
         {
             TestRunner.RunTestScript("Test-VirtualMachinePlacement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMAddProxyAgentExtension()
+        {
+            TestRunner.RunTestScript("Test-VMAddProxyAgentExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMSSAddProxyAgentExtension()
+        {
+            TestRunner.RunTestScript("Test-VMSSAddProxyAgentExtension");
         }
     }
 }
