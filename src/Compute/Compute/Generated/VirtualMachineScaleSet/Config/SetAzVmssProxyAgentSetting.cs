@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute
                 })
             };
 
-            if (this.IsParameterBound(c => c.AddProxyAgentExtension))
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(AddProxyAgentExtension)))
             {
                 this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension = this.AddProxyAgentExtension;
             }

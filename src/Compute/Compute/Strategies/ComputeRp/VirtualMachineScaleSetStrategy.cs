@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string securityPostureId = null,
             string[] securityPostureExcludeExtension = null,
             bool? enableProxyAgent = null,
-            bool? addProxyAgentExtension = null,
+            bool? addProxyAgentExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,

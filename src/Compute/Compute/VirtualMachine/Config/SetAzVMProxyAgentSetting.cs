@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
                 KeyIncarnationId = this.KeyIncarnationId
             };
 
-            if (this.IsParameterBound(c => c.AddProxyAgentExtension))
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(AddProxyAgentExtension)))
             {
                 this.VM.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension = this.AddProxyAgentExtension;
             }
