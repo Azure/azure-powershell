@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratejob
 schema: 2.0.0
@@ -14,30 +14,31 @@ Retrieves the status of an Azure Migrate job.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzMigrateJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetById
-```
-Get-AzMigrateJob -JobID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByInputObject
-```
-Get-AzMigrateJob -InputObject <IJob> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzMigrateJob -JobName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>] -JobName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetById
+```
+Get-AzMigrateJob [-SubscriptionId <String>] -JobID <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByInputObject
+```
+Get-AzMigrateJob [-SubscriptionId <String>] -InputObject <IJob> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateJob -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>] [-Filter <String>]
+Get-AzMigrateJob [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -48,7 +49,7 @@ The Get-AzMigrateJob cmdlet retrieves the status of an Azure Migrate job.
 
 ### Example 1: Get By Job Id
 ```powershell
-Get-AzMigrateJob -JobID "/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b" 
+Get-AzMigrateJob -JobID "/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b"
 ```
 
 ```output
@@ -158,7 +159,7 @@ OData filter options.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListById, ListByName
+Parameter Sets: ListByName, ListById
 Aliases:
 
 Required: False
@@ -234,7 +235,7 @@ The name of the migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByName
+Parameter Sets: ListByName, GetByName
 Aliases:
 
 Required: True
@@ -264,7 +265,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByName
+Parameter Sets: ListByName, GetByName
 Aliases:
 
 Required: True
@@ -301,4 +302,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

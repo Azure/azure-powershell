@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageMover
-Module Guid: 5aa73e69-8151-459a-88f1-88482a0b2e63
+Module Guid: ccf19870-3e0a-46b9-8739-0b5b083ebd23
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagemover
 Help Version: 1.0.0.0
 Locale: en-US
@@ -32,6 +32,9 @@ Gets a Project resource.
 ### [New-AzStorageMover](New-AzStorageMover.md)
 Creates or updates a top-level Storage Mover resource.
 
+### [New-AzStorageMoverAzNfsFileShareEndpoint](New-AzStorageMoverAzNfsFileShareEndpoint.md)
+Creates a Nfs file share endpoint resource, which represents a data transfer source or destination.
+
 ### [New-AzStorageMoverAzSmbFileShareEndpoint](New-AzStorageMoverAzSmbFileShareEndpoint.md)
 Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 
@@ -40,6 +43,9 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 
 ### [New-AzStorageMoverJobDefinition](New-AzStorageMoverJobDefinition.md)
 Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+
+### [New-AzStorageMoverMultiCloudConnectorEndpoint](New-AzStorageMoverMultiCloudConnectorEndpoint.md)
+Creates a multicloud connector endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverNfsEndpoint](New-AzStorageMoverNfsEndpoint.md)
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
@@ -81,6 +87,10 @@ Properties not specified in the request body will be unchanged.
 ### [Update-AzStorageMoverAgent](Update-AzStorageMoverAgent.md)
 Creates or updates an Agent resource.
 
+### [Update-AzStorageMoverAzNfsFileShareEndpoint](Update-AzStorageMoverAzNfsFileShareEndpoint.md)
+Updates properties for a Nfs File Share endpoint resource.
+Properties not specified in the request body will be unchanged.
+
 ### [Update-AzStorageMoverAzSmbFileShareEndpoint](Update-AzStorageMoverAzSmbFileShareEndpoint.md)
 Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
@@ -91,6 +101,10 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverJobDefinition](Update-AzStorageMoverJobDefinition.md)
 Updates properties for a Job Definition resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverMultiCloudConnectorEndpoint](Update-AzStorageMoverMultiCloudConnectorEndpoint.md)
+Updates properties for a MultiCloudConnector endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverNfsEndpoint](Update-AzStorageMoverNfsEndpoint.md)

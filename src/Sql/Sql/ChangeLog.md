@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved parameter validation for the EnableSoftDelete and SoftDeleteRetentionDays parameters.
+* Updated `New-AzSqlServer` to support soft-delete retention
+    - Added `EnableSoftDelete` parameter to `New-AzSqlServer` to enable creation of a server with soft-delete retention
+    - Added `SoftDeleteRetentionDays` parameter to `New-AzSqlServer` to set the soft-delete retention period (in days)
+* Updated `Set-AzSqlServer` to support soft-delete retention
+    - Added `EnableSoftDelete` parameter to `Set-AzSqlServer` to enable or disable soft-delete retention on an existing server
+    - Added `SoftDeleteRetentionDays` parameter to `Set-AzSqlServer` to update the soft-delete retention period (in days) on an existing server
+* Added `Restore-AzSqlServer` cmdlet to restore a deleted Azure SQL server within the retention period
+
+## Version 6.1.0
 * Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
 * Added `MemorySizeInGB` parameter to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of instances with flexible memory
 * Added `MemorySizeInGB` field to the model of the managed instance so that it displays information about flexible memory instances that are returned by `Get-AzSqlInstance`.

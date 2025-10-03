@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Backing field for <see cref="IPAddressOrRange" /> property.</summary>
         private string _iPAddressOrRange;
 
-        /// <summary>Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.</summary>
+        /// <summary>Specifies the IP or IP range in CIDR format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string IPAddressOrRange { get => this._iPAddressOrRange; set => this._iPAddressOrRange = value; }
 
@@ -49,14 +49,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Allow")]
         string Action { get; set; }
-        /// <summary>Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.</summary>
+        /// <summary>Specifies the IP or IP range in CIDR format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.",
+        Description = @"Specifies the IP or IP range in CIDR format.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         string IPAddressOrRange { get; set; }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The action of IP ACL rule.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Allow")]
         string Action { get; set; }
-        /// <summary>Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.</summary>
+        /// <summary>Specifies the IP or IP range in CIDR format.</summary>
         string IPAddressOrRange { get; set; }
 
     }

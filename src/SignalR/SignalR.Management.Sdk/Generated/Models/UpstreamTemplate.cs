@@ -30,29 +30,29 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="hubPattern">Gets or sets the matching pattern for hub names. If not set, it matches any
         /// hub.
         /// There are 3 kind of patterns supported:
-        /// 1. &#34;*&#34;, it to matches any hub name
+        /// 1. &#34;*&#34;, it to matches any hub name.
         /// 2. Combine multiple hubs with &#34;,&#34;, for example &#34;hub1,hub2&#34;, it matches
-        /// &#34;hub1&#34; and &#34;hub2&#34;
-        /// 3. The single hub name, for example, &#34;hub1&#34;, it matches &#34;hub1&#34;
+        /// &#34;hub1&#34; and &#34;hub2&#34;.
+        /// 3. The single hub name, for example, &#34;hub1&#34;, it matches &#34;hub1&#34;.
         /// </param>
 
         /// <param name="eventPattern">Gets or sets the matching pattern for event names. If not set, it matches
         /// any event.
         /// There are 3 kind of patterns supported:
-        /// 1. &#34;*&#34;, it to matches any event name
+        /// 1. &#34;*&#34;, it to matches any event name.
         /// 2. Combine multiple events with &#34;,&#34;, for example &#34;connect,disconnect&#34;, it
-        /// matches event &#34;connect&#34; and &#34;disconnect&#34;
-        /// 3. The single event name, for example, &#34;connect&#34;, it matches &#34;connect&#34;
+        /// matches event &#34;connect&#34; and &#34;disconnect&#34;.
+        /// 3. The single event name, for example, &#34;connect&#34;, it matches &#34;connect&#34;.
         /// </param>
 
         /// <param name="categoryPattern">Gets or sets the matching pattern for category names. If not set, it
         /// matches any category.
         /// There are 3 kind of patterns supported:
-        /// 1. &#34;*&#34;, it to matches any category name
+        /// 1. &#34;*&#34;, it to matches any category name.
         /// 2. Combine multiple categories with &#34;,&#34;, for example
-        /// &#34;connections,messages&#34;, it matches category &#34;connections&#34; and &#34;messages&#34;
+        /// &#34;connections,messages&#34;, it matches category &#34;connections&#34; and &#34;messages&#34;.
         /// 3. The single category name, for example, &#34;connections&#34;, it matches the
-        /// category &#34;connections&#34;
+        /// category &#34;connections&#34;.
         /// </param>
 
         /// <param name="urlTemplate">Gets or sets the Upstream URL template. You can use 3 predefined parameters
@@ -63,8 +63,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// URL: `http://example.com/chat/api/connect`.
         /// </param>
 
-        /// <param name="auth">Gets or sets the auth settings for an upstream. If not set, no auth is used
-        /// for upstream messages.
+        /// <param name="auth">Upstream auth settings. If not set, no auth is used for upstream messages.
         /// </param>
         public UpstreamTemplate(string urlTemplate, string hubPattern = default(string), string eventPattern = default(string), string categoryPattern = default(string), UpstreamAuthSettings auth = default(UpstreamAuthSettings))
 
@@ -87,10 +86,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Gets or sets gets or sets the matching pattern for hub names. If not set,
         /// it matches any hub.
         /// There are 3 kind of patterns supported:
-        /// 1. &#34;*&#34;, it to matches any hub name
+        /// 1. &#34;*&#34;, it to matches any hub name.
         /// 2. Combine multiple hubs with &#34;,&#34;, for example &#34;hub1,hub2&#34;, it matches
-        /// &#34;hub1&#34; and &#34;hub2&#34;
-        /// 3. The single hub name, for example, &#34;hub1&#34;, it matches &#34;hub1&#34;
+        /// &#34;hub1&#34; and &#34;hub2&#34;.
+        /// 3. The single hub name, for example, &#34;hub1&#34;, it matches &#34;hub1&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hubPattern")]
         public string HubPattern {get; set; }
@@ -99,10 +98,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Gets or sets gets or sets the matching pattern for event names. If not set,
         /// it matches any event.
         /// There are 3 kind of patterns supported:
-        /// 1. &#34;*&#34;, it to matches any event name
+        /// 1. &#34;*&#34;, it to matches any event name.
         /// 2. Combine multiple events with &#34;,&#34;, for example &#34;connect,disconnect&#34;, it
-        /// matches event &#34;connect&#34; and &#34;disconnect&#34;
-        /// 3. The single event name, for example, &#34;connect&#34;, it matches &#34;connect&#34;
+        /// matches event &#34;connect&#34; and &#34;disconnect&#34;.
+        /// 3. The single event name, for example, &#34;connect&#34;, it matches &#34;connect&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "eventPattern")]
         public string EventPattern {get; set; }
@@ -111,11 +110,11 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Gets or sets gets or sets the matching pattern for category names. If not
         /// set, it matches any category.
         /// There are 3 kind of patterns supported:
-        /// 1. &#34;*&#34;, it to matches any category name
+        /// 1. &#34;*&#34;, it to matches any category name.
         /// 2. Combine multiple categories with &#34;,&#34;, for example
-        /// &#34;connections,messages&#34;, it matches category &#34;connections&#34; and &#34;messages&#34;
+        /// &#34;connections,messages&#34;, it matches category &#34;connections&#34; and &#34;messages&#34;.
         /// 3. The single category name, for example, &#34;connections&#34;, it matches the
-        /// category &#34;connections&#34;
+        /// category &#34;connections&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "categoryPattern")]
         public string CategoryPattern {get; set; }
@@ -133,8 +132,8 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public string UrlTemplate {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the auth settings for an upstream. If not set, no
-        /// auth is used for upstream messages.
+        /// Gets or sets upstream auth settings. If not set, no auth is used for
+        /// upstream messages.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "auth")]
         public UpstreamAuthSettings Auth {get; set; }
