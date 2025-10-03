@@ -18,10 +18,29 @@ using System.Text;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Utils;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class PSVirtualMachineConfiguration
     {
+        internal VirtualMachineConfiguration toMgmtVirtualMachineConfiguration()
+        {
+            return new VirtualMachineConfiguration
+            {
+                ImageReference = this.ImageReference?.toMgmtImageReference(),
+                NodeAgentSkuId = this.NodeAgentSkuId,
+                WindowsConfiguration = this.WindowsConfiguration?.toMgmtWindowsConfiguration(),
+                DataDisks = this.DataDisks?.Select(dd => dd?.toMgmtDataDisk()).ToList(),
+                LicenseType = this.LicenseType,
+                ContainerConfiguration = this.ContainerConfiguration?.toMgmtContainerConfiguration(),
+                DiskEncryptionConfiguration = this.DiskEncryptionConfiguration?.toMgmtDiskEncryptionConfiguration(),
+                //NodePlacementConfiguration = this.NodePlacementConfiguration?.toMgmtNodePlacementConfiguration(),
+                //Extensions = this.Extensions?.Select(ext => ext?.toMgmtVMExtension()).ToList(),
+                //OSDisk = this.OSDisk?.toMgmtOSDisk(),
+                //SecurityProfile = this.SecurityProfile?.toMgmtSecurityProfile(),
+                //ServiceArtifactReference = this.ServiceArtifactReference?.toMgmtServiceArtifactReference()
+            };
+        }
     }
 }

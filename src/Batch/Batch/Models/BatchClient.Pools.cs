@@ -166,6 +166,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 Utils.Utils.VirtualMachineConfigurationSyncCollections(parameters.VirtualMachineConfiguration);
                 pool.VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.omObject;
+
+                mgmtPool.DeploymentConfiguration = new DeploymentConfiguration
+                {
+                    VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.toMgmtVirtualMachineConfiguration()
+                };
             }
 
             if (parameters.NetworkConfiguration != null)

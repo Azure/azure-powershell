@@ -668,5 +668,51 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             return (Azure.Batch.Common.AutoUserScope)scope.Value;
         }
+
+        internal static CachingType? toMgmtCaching(Azure.Batch.Common.CachingType? caching)
+        {
+            if (!caching.HasValue)
+            {
+                return null;
+            }
+            return (CachingType)caching.Value;
+        }
+
+        internal static Azure.Batch.Common.CachingType? fromMgmtCaching(CachingType? caching)
+        {
+            if (!caching.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.CachingType)caching.Value;
+        }
+
+        internal static StorageAccountType? toMgmtStorageAccountType(Azure.Batch.Common.StorageAccountType? storageAccountType)
+        {
+            if (!storageAccountType.HasValue)
+            {
+                return null;
+            }
+            return (StorageAccountType)storageAccountType.Value;
+        }
+
+        internal static Azure.Batch.Common.StorageAccountType? fromMgmtStorageAccountType(StorageAccountType? storageAccountType)
+        {
+            if (!storageAccountType.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.StorageAccountType)storageAccountType.Value;
+        }
+
+        internal static DiskEncryptionTarget toMgmtDiskEncryptionTarget(Azure.Batch.Common.DiskEncryptionTarget md)
+        {
+            return (DiskEncryptionTarget)md;
+        }
+
+        internal static Azure.Batch.Common.DiskEncryptionTarget fromMgmtDiskEncryptionTarget(DiskEncryptionTarget md)
+        {
+            return (Azure.Batch.Common.DiskEncryptionTarget)md;
+        }
     }
 }
