@@ -24,23 +24,28 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Initializes a new instance of the PatchVault class.
         /// </summary>
 
-        /// <param name="id">Resource Id represents the complete path to the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name associated with the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type represents the complete path of the form
-        /// Namespace/ResourceType/ResourceType/...
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="etag">Optional ETag.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="location">Resource location.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="etag">Optional ETag.
         /// </param>
 
         /// <param name="properties">Properties of the vault.
@@ -51,9 +56,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="identity">Identity for the resource.
         /// </param>
-        public PatchVault(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), VaultProperties properties = default(VaultProperties), Sku sku = default(Sku), IdentityData identity = default(IdentityData))
+        public PatchVault(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), VaultProperties properties = default(VaultProperties), Sku sku = default(Sku), IdentityData identity = default(IdentityData))
 
-        : base(id, name, type, etag, location, tags)
+        : base(id, name, type, systemData, location, tags, etag)
         {
             this.Properties = properties;
             this.Sku = sku;

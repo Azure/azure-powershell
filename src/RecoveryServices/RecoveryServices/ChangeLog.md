@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added Cross region restore support for new region - eastus3.
+*  Added support for vault soft delete feature - Get soft deleted vault, Undelete softdeleted vault, Get deleted backup items in a soft deleted vault using ARG.
 
 
 ## Version 7.8.0
