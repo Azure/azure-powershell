@@ -8,9 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines the options for how the data plane API of a Search service
-    /// authenticates requests. This cannot be set if &#39;disableLocalAuth&#39; is set to
-    /// true.
+    /// Defines the options for how the search service authenticates a data plane
+    /// request. This cannot be set if &#39;disableLocalAuth&#39; is set to true.
     /// </summary>
     public partial class DataPlaneAuthOptions
     {
@@ -26,11 +25,11 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the DataPlaneAuthOptions class.
         /// </summary>
 
-        /// <param name="apiKeyOnly">Indicates that only the API key needs to be used for authentication.
+        /// <param name="apiKeyOnly">Indicates that only the API key can be used for authentication.
         /// </param>
 
-        /// <param name="aadOrApiKey">Indicates that either the API key or an access token from Azure Active
-        /// Directory can be used for authentication.
+        /// <param name="aadOrApiKey">Indicates that either the API key or an access token from a Microsoft Entra
+        /// ID tenant can be used for authentication.
         /// </param>
         public DataPlaneAuthOptions(object apiKeyOnly = default(object), DataPlaneAadOrApiKeyAuthOption aadOrApiKey = default(DataPlaneAadOrApiKeyAuthOption))
 
@@ -47,15 +46,15 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets indicates that only the API key needs to be used for
+        /// Gets or sets indicates that only the API key can be used for
         /// authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "apiKeyOnly")]
         public object ApiKeyOnly {get; set; }
 
         /// <summary>
-        /// Gets or sets indicates that either the API key or an access token from
-        /// Azure Active Directory can be used for authentication.
+        /// Gets or sets indicates that either the API key or an access token from a
+        /// Microsoft Entra ID tenant can be used for authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "aadOrApiKey")]
         public DataPlaneAadOrApiKeyAuthOption AadOrApiKey {get; set; }

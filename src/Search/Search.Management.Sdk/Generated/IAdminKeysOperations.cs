@@ -14,19 +14,23 @@ namespace Microsoft.Azure.Management.Search
     public partial interface IAdminKeysOperations
     {
         /// <summary>
-        /// Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
+        /// Gets the primary and secondary admin API keys for the specified Azure AI
+        /// Search service.
         /// </summary>
         /// <remarks>
-        /// Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
+        /// Gets the primary and secondary admin API keys for the specified Azure AI
+        /// Search service.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,22 +47,27 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AdminKeyResult>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Regenerates either the primary or secondary admin API key. You can only regenerate one key at a time.
+        /// Regenerates either the primary or secondary admin API key. You can only
+        /// regenerate one key at a time.
         /// </summary>
         /// <remarks>
-        /// Regenerates either the primary or secondary admin API key. You can only regenerate one key at a time.
+        /// Regenerates either the primary or secondary admin API key. You can only
+        /// regenerate one key at a time.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='keyKind'>
-        /// Specifies which key to regenerate. Valid values include &#39;primary&#39; and &#39;secondary&#39;.
+        /// Specifies which key to regenerate. Valid values include &#39;primary&#39; and
+        /// &#39;secondary&#39;.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

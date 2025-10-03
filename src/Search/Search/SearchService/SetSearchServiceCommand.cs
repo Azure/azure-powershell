@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Search.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -101,6 +102,16 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = AadAuthFailureModeMessage)]
         public PSAadAuthFailureMode? AadAuthFailureMode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DataExfiltrationProtectionsMessage)]
+        public PSDataExfiltrationProtection[] DataExfiltrationProtectionList { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = BypassMessage)]
+        public PSSearchBypass? Bypass { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
@@ -122,10 +133,21 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     // GET
                     var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
 
-                    var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
+                    NetworkRuleSet networkRuleSet = null;
+                    if (IPRuleList != null || Bypass != null)
                     {
-                        IpRules = IPRuleList
-                    } : null;
+                        networkRuleSet = new NetworkRuleSet();
+
+                        if (IPRuleList != null)
+                        {
+                            networkRuleSet.IPRules = IPRuleList.Select(ipRule => (IpRule)ipRule).ToList();
+                        }
+
+                        if (Bypass.HasValue)
+                        {
+                            networkRuleSet.Bypass = Bypass.ToString();
+                        }
+                    }
 
                     var identity = IdentityType.HasValue ? new PSIdentity
                     {
@@ -146,6 +168,19 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                         }
                     }
 
+                    var dataExfiltrationProtections = new List<string>();
+
+                    if (DataExfiltrationProtectionList != null)
+                    {
+                        dataExfiltrationProtections = DataExfiltrationProtectionList.Select(x => x.ToString()).ToList();
+                    }
+
+                    string publicNetworkAccess = null;
+                    if (PublicNetworkAccess.HasValue)
+                    {
+                        publicNetworkAccess = PublicNetworkAccess.ToString().ToLower();
+                    }
+
                     // UPDATE
                     var update = new SearchServiceUpdate
                     {
@@ -157,15 +192,17 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                         Tags = service.Tags,
 
                         // Update the properties passed in (treating nulls as no change to be consistent)
-                        NetworkRuleSet = (NetworkRuleSet)networkRuleSet ?? service.NetworkRuleSet,
-                        PublicNetworkAccess = (PublicNetworkAccess?)PublicNetworkAccess ?? service.PublicNetworkAccess,
+                        NetworkRuleSet = networkRuleSet ?? service.NetworkRuleSet,
+                        PublicNetworkAccess = publicNetworkAccess ?? service.PublicNetworkAccess,
                         Identity = (Identity)identity ?? service.Identity,
 
                         PartitionCount = PartitionCount,
                         ReplicaCount = ReplicaCount,
 
                         DisableLocalAuth = DisableLocalAuth,
-                        AuthOptions = (DataPlaneAuthOptions)authOptions
+                        AuthOptions = (DataPlaneAuthOptions)authOptions,
+
+                        DataExfiltrationProtections = dataExfiltrationProtections.Any() ? dataExfiltrationProtections : service.DataExfiltrationProtections,
                     };
 
                     service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, update).Result.Body;
