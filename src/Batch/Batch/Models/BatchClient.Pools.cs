@@ -15,6 +15,8 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Properties;
+using Microsoft.Azure.Management.Batch;
+using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -84,53 +86,80 @@ namespace Microsoft.Azure.Commands.Batch.Models
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
 
             CloudPool pool = poolOperations.CreatePool();
+
+            Pool mgmtPool = new Pool();
+
             pool.Id = parameters.PoolId;
+            //mgmtPool.Id = parameters.PoolId;
             pool.VirtualMachineSize = parameters.VirtualMachineSize;
+            mgmtPool.VMSize = parameters.VirtualMachineSize;
             pool.DisplayName = parameters.DisplayName;
+            mgmtPool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
+            mgmtPool.ResizeOperationStatus.ResizeTimeout = parameters.ResizeTimeout;
             pool.TaskSlotsPerNode = parameters.TaskSlotsPerNode;
+            mgmtPool.TaskSlotsPerNode = parameters.TaskSlotsPerNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
+            mgmtPool.InterNodeCommunication = parameters.InterComputeNodeCommunicationEnabled ? InterNodeCommunicationState.Enabled : InterNodeCommunicationState.Disabled;
 
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
                 pool.AutoScaleEnabled = true;
                 pool.AutoScaleEvaluationInterval = parameters.AutoScaleEvaluationInterval;
                 pool.AutoScaleFormula = parameters.AutoScaleFormula;
+
+                mgmtPool.ScaleSettings.AutoScale = new AutoScaleSettings
+                {
+                    Formula = parameters.AutoScaleFormula,
+                    EvaluationInterval = parameters.AutoScaleEvaluationInterval
+                };
             }
             else if (parameters.TargetDedicatedComputeNodes.HasValue || parameters.TargetLowPriorityComputeNodes.HasValue)
             {
                 pool.TargetDedicatedComputeNodes = parameters.TargetDedicatedComputeNodes;
                 pool.TargetLowPriorityComputeNodes = parameters.TargetLowPriorityComputeNodes;
+
+                mgmtPool.ScaleSettings.FixedScale = new FixedScaleSettings
+                {
+                    TargetDedicatedNodes = parameters.TargetDedicatedComputeNodes,
+                    TargetLowPriorityNodes = parameters.TargetLowPriorityComputeNodes,
+                };
             }
 
             if (parameters.UpgradePolicy != null)
             {
                 pool.UpgradePolicy = parameters.UpgradePolicy.omObject;
+                mgmtPool.UpgradePolicy = parameters.UpgradePolicy.toMgmtUpgradePolicy();
             }
 
             if (parameters.TaskSchedulingPolicy != null)
             {
                 pool.TaskSchedulingPolicy = parameters.TaskSchedulingPolicy.omObject;
+                mgmtPool.TaskSchedulingPolicy = parameters.TaskSchedulingPolicy.toMgmtTaskSchedulingPolicy();
             }
 
             if (parameters.StartTask != null)
             {
                 Utils.Utils.StartTaskSyncCollections(parameters.StartTask);
                 pool.StartTask = parameters.StartTask.omObject;
+                mgmtPool.StartTask = parameters.StartTask.toMgmtStartTask();
             }
 
             if (parameters.Metadata != null)
             {
-                pool.Metadata = new List<MetadataItem>();
+                pool.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
+                mgmtPool.Metadata = new List<Microsoft.Azure.Management.Batch.Models.MetadataItem>();
                 foreach (DictionaryEntry m in parameters.Metadata)
                 {
-                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value?.ToString()));
+                    pool.Metadata.Add(new Microsoft.Azure.Batch.MetadataItem(m.Key.ToString(), m.Value?.ToString()));
+                    mgmtPool.Metadata.Add(new Microsoft.Azure.Management.Batch.Models.MetadataItem(m.Key.ToString(), m.Value?.ToString()));
                 }
             }
 
             if (parameters.ApplicationPackageReferences != null)
             {
                 pool.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
+                mgmtPool.ApplicationPackages = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.toMgmtApplicationPackageReference());
             }
 
             if (parameters.VirtualMachineConfiguration != null)
@@ -146,7 +175,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             if (parameters.MountConfiguration != null)
             {
-                pool.MountConfiguration = new List<MountConfiguration>();
+                pool.MountConfiguration = new List<Azure.Batch.MountConfiguration>();
                 foreach (PSMountConfiguration m in parameters.MountConfiguration)
                 {
                     pool.MountConfiguration.Add(m.omObject);
@@ -159,6 +188,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
+
             pool.Commit(parameters.AdditionalBehaviors);
         }
 
@@ -292,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EvaluateAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            AutoScaleRun evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
+            Microsoft.Azure.Batch.AutoScaleRun evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
             return new PSAutoScaleRun(evaluation);
         }
 

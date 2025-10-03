@@ -127,10 +127,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The user accounts to be created on each node in the pool.
         /// </summary>
         public PSUserAccount[] UserAccounts { get; set; }
-
-        /// <summary>
-        /// The list of application licenses the Batch service will make available on each compute node in the pool.
-        /// </summary>
-        public List<string> ApplicationLicenses { get; set; }
     }
 }
