@@ -16,6 +16,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.Name);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

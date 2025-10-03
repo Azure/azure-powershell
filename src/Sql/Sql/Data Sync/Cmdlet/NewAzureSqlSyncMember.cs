@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

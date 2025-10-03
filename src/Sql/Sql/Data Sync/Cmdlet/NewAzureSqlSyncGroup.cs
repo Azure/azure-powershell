@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.Name);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -247,6 +247,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 catch (CloudException ex)
                 {
                     // There are problems with schema file
+                    // NOTE: This catch block is retained from older versions.
+                    // ConstructSchemaFromFile() does not call any Azure SDK methods,
+                    // so a CloudException will never actually be thrown here.
+                    // Leaving it for clarity / historical reasons.
                     throw new PSArgumentException(ex.Response.ToString(), "SchemaFile");
                 }
             }
