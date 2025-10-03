@@ -28,7 +28,7 @@ The get export database status request may be sent to retrieve status informatio
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 > [!IMPORTANT]
-> In order to make use of this cmdlet the firewall on the Azure SQL Server will need to be configured to "Allow Azure services and resources to access this server". If this is not configured then GatewayTimeout errors will be experienced.
+> In order to make use of this cmdlet the firewall on the Azure SQL Server will need to be configured to "Allow Azure services and resources to access this server". If this is not configured then GatewayTimeout errors will be experienced. This is not required if a Private Link connection is established via the UseNetworkIsolation parameter.
 
 ## EXAMPLES
 
@@ -55,10 +55,38 @@ ErrorMessage               :
 
 This command creates an export request for the specified database.
 
+### Example 2: Create an export request for a database using managed identity for authentication over private link
+
+```powershell
+$sqlServerName = "Server01"
+$storageAccountName = "storageaccount1"
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
+$resourceGroup = "RG01"
+$managedIdentityResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-managed-identity"
+$pw = ConvertTo-SecureString "******" -AsPlainText -Force
+New-AzSqlDatabaseExport `
+    -ResourceGroupName $resourceGroup `
+    -ServerName $sqlServerName `
+    -DatabaseName "Database01" `
+    -StorageKeyType ManagedIdentity `
+    -StorageKey $managedIdentityResourceId `
+    -StorageUri "https://storageaccount1.blob.core.windows.net/container1/my-file-name.bacpac" `
+    -AuthenticationType ManagedIdentity `
+    -AdministratorLogin $managedIdentityResourceId `
+    -AdministratorLoginPassword $pw `
+    -UseNetworkIsolation $true `
+    -SqlServerResourceIdForPrivateLink "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Sql/servers/$sqlServerName" `
+    -StorageAccountResourceIdForPrivateLink "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+```
+
+This command creates an export request for the specified database using managed identity for authentication with connectivity over Private Link.
+
 ## PARAMETERS
 
 ### -AdministratorLogin
 Specifies the name of the SQL administrator.
+
+If `-AuthenticationType ManagedIdentity` is provided, this should be the full resource ID of a user-assigned managed identity that is a [Microsoft Entra administrator](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql&tabs=azure-portal#set-microsoft-entra-admin) of the server.
 
 ```yaml
 Type: System.String
@@ -75,6 +103,7 @@ Accept wildcard characters: False
 ### -AdministratorLoginPassword
 Specifies the password of the SQL administrator.
 
+This is mandatory. When using `-AuthenticationType ManagedIdentity`, a placeholder value (for example, any non-empty SecureString value) must be provided.
 ```yaml
 Type: System.Security.SecureString
 Parameter Sets: (All)
@@ -98,6 +127,9 @@ Set the *AdministratorLogin* and *AdministratorLoginPassword* to the SQL adminis
 Microsoft Entra authentication.
 Set *AdministratorLogin* and *AdministratorLoginPassword* to the Microsoft Entra administrator username and password.
 This parameter is only available on SQL Database V12 servers.
+- ManagedIdentity.
+Managed identity authentication.
+Use a user-assigned managed identity to authenticate with the SQL server. The managed identity must be a [Microsoft Entra administrator](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql&tabs=azure-portal#set-microsoft-entra-admin) for the server.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType
@@ -205,6 +237,8 @@ Accept wildcard characters: False
 ### -StorageKey
 Specifies the access key for the storage account.
 
+When `-StorageKeyType ManagedIdentity` is provided, this should be the full resource ID of a user-assigned managed identity which has write access on the storage account for the StorageUri provided (for example via a [Storage Blob Data Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/storage#storage-blob-data-contributor) role assignment).
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -224,6 +258,8 @@ The acceptable values for this parameter are:
 This value uses a storage account key. 
 - SharedAccessKey.
 This value uses a Shared Access Signature (SAS) key.
+- ManagedIdentity.
+Use a user-assigned managed identity for authentication with the storage account.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType
@@ -239,8 +275,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageUri
-Specifies the blob link, as a URL, to the .bacpac file.
-
+Specifies the blob link, as a URL, to the .bacpac file. For example: `-StorageUri "https://your-storage-account.blob.core.windows.net/your-container/your-file-name.bacpac"`
 ```yaml
 Type: System.Uri
 Parameter Sets: (All)
