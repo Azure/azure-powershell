@@ -46,13 +46,21 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// image. If omitted, the default is &#39;latest&#39;.
         /// </param>
 
-        /// <param name="id">This property is mutually exclusive with other properties. The Shared Image
-        /// Gallery image must have replicas in the same region as the Azure Batch
-        /// account. For information about the firewall settings for the Batch node
-        /// agent to communicate with the Batch service see
-        /// https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+        /// <param name="id">This property is mutually exclusive with other properties. The Azure
+        /// Compute Gallery Image must have replicas in the same region as the Azure
+        /// Batch account. For information about the firewall settings for the Batch
+        /// node agent to communicate with the Batch service see
+        /// https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
         /// </param>
-        public ImageReference(string publisher = default(string), string offer = default(string), string sku = default(string), string version = default(string), string id = default(string))
+
+        /// <param name="sharedGalleryImageId">This property is mutually exclusive with other properties and can be
+        /// fetched from shared gallery image GET call.
+        /// </param>
+
+        /// <param name="communityGalleryImageId">This property is mutually exclusive with other properties and can be
+        /// fetched from community gallery image GET call.
+        /// </param>
+        public ImageReference(string publisher = default(string), string offer = default(string), string sku = default(string), string version = default(string), string id = default(string), string sharedGalleryImageId = default(string), string communityGalleryImageId = default(string))
 
         {
             this.Publisher = publisher;
@@ -60,6 +68,8 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.Sku = sku;
             this.Version = version;
             this.Id = id;
+            this.SharedGalleryImageId = sharedGalleryImageId;
+            this.CommunityGalleryImageId = communityGalleryImageId;
             CustomInit();
         }
 
@@ -96,12 +106,26 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <summary>
         /// Gets or sets this property is mutually exclusive with other properties. The
-        /// Shared Image Gallery image must have replicas in the same region as the
+        /// Azure Compute Gallery Image must have replicas in the same region as the
         /// Azure Batch account. For information about the firewall settings for the
         /// Batch node agent to communicate with the Batch service see
-        /// https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+        /// https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; set; }
+
+        /// <summary>
+        /// Gets or sets this property is mutually exclusive with other properties and
+        /// can be fetched from shared gallery image GET call.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sharedGalleryImageId")]
+        public string SharedGalleryImageId {get; set; }
+
+        /// <summary>
+        /// Gets or sets this property is mutually exclusive with other properties and
+        /// can be fetched from community gallery image GET call.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "communityGalleryImageId")]
+        public string CommunityGalleryImageId {get; set; }
     }
 }

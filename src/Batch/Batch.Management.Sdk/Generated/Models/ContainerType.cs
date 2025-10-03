@@ -11,39 +11,16 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContainerType
+    public static class ContainerType
     {
         /// <summary>
         /// A Docker compatible container technology will be used to launch the
         /// containers.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "DockerCompatible")]
-        DockerCompatible
-    }
-    internal static class ContainerTypeEnumExtension
-    {
-        internal static string ToSerializedValue(this ContainerType? value)
-        {
-            return value == null ? null : ((ContainerType)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this ContainerType value)
-        {
-            switch( value )
-            {
-                case ContainerType.DockerCompatible:
-                    return "DockerCompatible";
-            }
-            return null;
-        }
-        internal static ContainerType? ParseContainerType(this string value)
-        {
-            switch( value )
-            {
-                case "DockerCompatible":
-                    return ContainerType.DockerCompatible;
-            }
-            return null;
-        }
+        public const string DockerCompatible = "DockerCompatible";
+        /// <summary>
+        /// A CRI based technology will be used to launch the containers.
+        /// </summary>
+        public const string CriCompatible = "CriCompatible";
     }
 }

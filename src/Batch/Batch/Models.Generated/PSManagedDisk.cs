@@ -34,9 +34,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ManagedDisk omObject;
         
-        public PSManagedDisk(System.Nullable<Microsoft.Azure.Batch.Common.StorageAccountType> storageAccountType = null)
+        private PSVMDiskSecurityProfile securityProfile;
+        
+        public PSManagedDisk(System.Nullable<Microsoft.Azure.Batch.Common.StorageAccountType> storageAccountType = null, PSVMDiskSecurityProfile securityProfile = default(PSVMDiskSecurityProfile))
         {
-            this.omObject = new Microsoft.Azure.Batch.ManagedDisk(storageAccountType);
+            Microsoft.Azure.Batch.VMDiskSecurityProfile securityProfileOmObject = null;
+            if ((securityProfile != null))
+            {
+                securityProfileOmObject = securityProfile.omObject;
+            }
+            this.omObject = new Microsoft.Azure.Batch.ManagedDisk(storageAccountType, securityProfileOmObject);
         }
         
         internal PSManagedDisk(Microsoft.Azure.Batch.ManagedDisk omObject)
@@ -46,6 +53,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public PSVMDiskSecurityProfile SecurityProfile
+        {
+            get
+            {
+                if (((this.securityProfile == null) 
+                            && (this.omObject.SecurityProfile != null)))
+                {
+                    this.securityProfile = new PSVMDiskSecurityProfile(this.omObject.SecurityProfile);
+                }
+                return this.securityProfile;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.SecurityProfile = null;
+                }
+                else
+                {
+                    this.omObject.SecurityProfile = value.omObject;
+                }
+                this.securityProfile = value;
+            }
         }
         
         public Microsoft.Azure.Batch.Common.StorageAccountType? StorageAccountType

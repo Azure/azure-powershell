@@ -100,57 +100,6 @@ function Test-DisableEnableTerminateJob
 
 <#
 .SYNOPSIS
-Tests create job with TaskDependencies
-#>
-function Test-JobWithTaskDependencies
-{
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $jobId = "testJob4"
-
-    try
-    {
-        $osFamily = 4
-        $targetOS = "*"
-        $cmd = "cmd /c dir /s"
-        $taskId = "taskId1"
-
-        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-
-        $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
-        $poolSpec.TargetDedicated = $targetDedicated = 3
-        $poolSpec.VirtualMachineSize = $vmSize = "standard_d1_v2"
-        $poolSpec.CloudServiceConfiguration = $paasConfiguration
-        $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
-        $autoPoolSpec.PoolSpecification = $poolSpec
-        $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
-        $autoPoolSpec.KeepAlive =  $FALSE
-        $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
-        $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
-        $poolInformation.AutoPoolSpecification = $autoPoolSpec
-
-        $taskIds = @("2","3")
-        $taskIdRange = New-Object Microsoft.Azure.Batch.TaskIdRange(1,10)
-        $dependsOn = New-Object Microsoft.Azure.Batch.TaskDependencies -ArgumentList @([string[]]$taskIds, [Microsoft.Azure.Batch.TaskIdRange[]]$taskIdRange)
-        New-AzBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -usesTaskDependencies
-        New-AzBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -DependsOn $dependsOn -JobId $jobId
-        $job = Get-AzBatchJob -Id $jobId -BatchContext $context
-
-        Assert-AreEqual $job.UsesTaskDependencies $TRUE
-        $task = Get-AzBatchTask -JobId $jobId -Id $taskId -BatchContext $context
-        Assert-AreEqual $task.DependsOn.TaskIdRanges.End 10
-        Assert-AreEqual $task.DependsOn.TaskIdRanges.Start 1
-        Assert-AreEqual $task.DependsOn.TaskIds[0] 2
-        Assert-AreEqual $task.DependsOn.TaskIds[1] 3
-    }
-    finally
-    {
-        Remove-AzBatchJob -Id $jobId -Force -BatchContext $context
-    }
-}
-
-
-<#
-.SYNOPSIS
 Tests create job completes when any task fails
 #>
 function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
