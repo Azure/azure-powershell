@@ -217,7 +217,8 @@ CmdletsToExport = 'Add-AzRecoveryServicesAsrReplicationProtectedItemDisk',
                'Update-AzRecoveryServicesAsrServicesProvider', 
                'Update-AzRecoveryServicesAsrvCenter', 
                'Update-AzRecoveryServicesVault', 
-               'Wait-AzRecoveryServicesBackupJob'
+               'Wait-AzRecoveryServicesBackupJob',
+               'Redo-AzRecoveryServicesBackupProtection'
 
 # Variables to export from this module
 # VariablesToExport = @()
