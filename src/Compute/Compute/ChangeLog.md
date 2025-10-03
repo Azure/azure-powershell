@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* ComputeRP related cmdlets will now use 2025-04-01 version of the ComputeRP API.
+* Added `-AddProxyAgentExtension` parameter (Switch) to `New-AzVmss` and `New-AzVM`
+* Added `-AddProxyAgentExtension` parameter (Bool) to `Set-AzVMProxyAgentSetting` and  `Set-AzVmssProxyAgentSetting`
 * Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
 * Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
 
