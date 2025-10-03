@@ -53,7 +53,7 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $appName -Force -ErrorAction SilentlyContinue
+                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
             }
         }
     }
