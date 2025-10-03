@@ -173,6 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 HubDatabasePassword = model.HubDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.HubDatabasePassword),
                 Schema = model.Schema == null ? null : model.Schema.ToSyncGroupSchema(),
                 UsePrivateLinkConnection = model.UsePrivateLinkConnection,
+                Identity = model.Identity
             });
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
@@ -194,6 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 HubDatabasePassword = model.HubDatabasePassword == null ? null: AzureSqlServerAdapter.Decrypt(model.HubDatabasePassword),
                 Schema = model.Schema == null ? null : model.Schema.ToSyncGroupSchema(),
                 UsePrivateLinkConnection = model.UsePrivateLinkConnection,
+                Identity = model.Identity
             });
             
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
@@ -314,6 +316,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 properties.Password = model.MemberDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.MemberDatabasePassword);
                 properties.UsePrivateLinkConnection = model.UsePrivateLinkConnection;
                 properties.SyncMemberAzureDatabaseResourceId = model.SyncMemberAzureDatabaseResourceId;
+                properties.Identity = model.Identity;
             }
             else 
             {
@@ -346,7 +349,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 UserName = model.MemberDatabaseUserName,
                 Password = model.MemberDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.MemberDatabasePassword),
                 UsePrivateLinkConnection = model.UsePrivateLinkConnection,
-                SyncMemberAzureDatabaseResourceId = model.SyncMemberAzureDatabaseResourceId
+                SyncMemberAzureDatabaseResourceId = model.SyncMemberAzureDatabaseResourceId,
+                Identity = model.Identity
             };
             var updateResp = Communicator.UpdateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName, model.SyncMemberName, properties);
 

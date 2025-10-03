@@ -403,6 +403,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DatabaseCredentials (username/password) must be provided when DatabaseAuthenticationType is &apos;password&apos;..
+        /// </summary>
+        internal static string DatabaseCredentialRequired {
+            get {
+                return ResourceManager.GetString("DatabaseCredentialRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -673,6 +682,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid DatabaseAuthenticationType. Supported authentication types are &apos;userAssigned&apos; and &apos;password&apos;.
+        /// </summary>
+        internal static string InvalidDatabaseAuthenticationType {
+            get {
+                return ResourceManager.GetString("InvalidDatabaseAuthenticationType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use the None option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
@@ -725,6 +743,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidLongTermRetentionBackupResourceIdFormat {
             get {
                 return ResourceManager.GetString("InvalidLongTermRetentionBackupResourceIdFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; cannot be specified when using &apos;{1}&apos; authentication..
+        /// </summary>
+        internal static string InvalidParameterForAuthenticationType {
+            get {
+                return ResourceManager.GetString("InvalidParameterForAuthenticationType", resourceCulture);
             }
         }
         
@@ -1382,6 +1409,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveInstancePoolWarning {
             get {
                 return ResourceManager.GetString("RemoveInstancePoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResourceID of UAMI must be provided when DatabaseAuthenticationType is &apos;userAssigned&apos;..
+        /// </summary>
+        internal static string ResourceIdRequired {
+            get {
+                return ResourceManager.GetString("ResourceIdRequired", resourceCulture);
             }
         }
         
