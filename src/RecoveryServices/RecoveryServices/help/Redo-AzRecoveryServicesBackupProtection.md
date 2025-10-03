@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/redo-azrecoveryservicesbackupprotection
 schema: 2.0.0
 ---
 
