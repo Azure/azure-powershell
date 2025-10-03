@@ -29,27 +29,27 @@ Delete a DbSystem
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a DbSystem
 ```powershell
-{{ Add code here }}
+Remove-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem -Force -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Deletes a DbSystem by name and resource group. For more information, execute `Get-Help Remove-AzOracleDbSystem`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a DbSystem by piping from Get
 ```powershell
-{{ Add code here }}
+Get-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem | Remove-AzOracleDbSystem -Force -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Gets a DbSystem and deletes it by piping the object to `Remove-AzOracleDbSystem`. For more information, execute `Get-Help Remove-AzOracleDbSystem`.
 
 ## PARAMETERS
 

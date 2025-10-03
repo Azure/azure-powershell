@@ -39,7 +39,7 @@ Get a DbSystem
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a list of the DbSystem resources
 ```powershell
 Get-AzOracleDbSystem
 ```
@@ -72,9 +72,10 @@ SystemDataLastModifiedByType                  : Application
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-{{ Add description here }}
+Get a DbSystem resource by name and resource group name.
+For more information, execute `Get-Help Get-AzOracleDbSystem`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a DbSystem by name and resource group name
 ```powershell
 Get-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem
 ```
@@ -106,7 +107,8 @@ SystemDataLastModifiedByType                  : Application
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-{{ Add description here }}
+Gets a specific DbSystem resource by name and resource group name.
+For more information, execute `Get-Help Get-AzOracleDbSystem`.
 
 ## PARAMETERS
 

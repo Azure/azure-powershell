@@ -43,27 +43,73 @@ Update a ResourceAnchor
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update tags on a Resource Anchor
 ```powershell
-{{ Add code here }}
+Update-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor -Tag @{ env="test"; owner="example@oracle.com" }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                          : OFake_PowerShellTestResourceAnchor
+Id                                            : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/resourceAnchors/OFake_PowerShellTestResourceAnchor
+Type                                          : oracle.database/resourceanchors
+Location                                      : eastus2
+ResourceGroupName                             : PowerShellTestRg
+OciUrl                                        : https://cloud.oracle.com/resource-anchors/ocid1.resourceanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example?region=us-ashbur
+                                                n-1&tenant=orpsandbox3
+Ocid                                          : ocid1.resourceanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example
+LinkedResourceId                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs
+ProvisioningState                             : Succeeded
+Property                                      : {
+                                                  ...
+                                                }
+SystemDataCreatedAt                           : 05/07/2024 13:40:35
+SystemDataCreatedBy                           : example@oracle.com
+SystemDataCreatedByType                       : User
+SystemDataLastModifiedAt                      : 06/07/2024 09:19:26
+SystemDataLastModifiedBy                      : 857ad006-4380-4712-ba4c-22f7c64d84e7
+SystemDataLastModifiedByType                  : Application
+Tag                                           : {
+                                                  env=test
+                                                  owner=example@oracle.com
+                                                }
+TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-{{ Add description here }}
+Updates the **tags** on an existing Resource Anchor. For more information, execute `Get-Help Update-AzOracleResourceAnchor`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Partially update a Resource Anchor property
 ```powershell
-{{ Add code here }}
+Update-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor -LinkedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                          : OFake_PowerShellTestResourceAnchor
+Id                                            : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/resourceAnchors/OFake_PowerShellTestResourceAnchor
+Type                                          : oracle.database/resourceanchors
+Location                                      : eastus2
+ResourceGroupName                             : PowerShellTestRg
+OciUrl                                        : https://cloud.oracle.com/resource-anchors/ocid1.resourceanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example?region=us-ashbur
+                                                n-1&tenant=orpsandbox3
+Ocid                                          : ocid1.resourceanchor.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuvm62example
+LinkedResourceId                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
+ProvisioningState                             : Succeeded
+Property                                      : {
+                                                  ...
+                                                }
+SystemDataCreatedAt                           : 05/07/2024 13:40:35
+SystemDataCreatedBy                           : example@oracle.com
+SystemDataCreatedByType                       : User
+SystemDataLastModifiedAt                      : 06/07/2024 09:19:26
+SystemDataLastModifiedBy                      : 857ad006-4380-4712-ba4c-22f7c64d84e7
+SystemDataLastModifiedByType                  : Application
+Tag                                           : {
+                                                  env=test
+                                                  owner=example@oracle.com
+                                                }
+TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-{{ Add description here }}
+Performs a **partial update** of a Resource Anchor (PATCH) to modify a property—in this case, `LinkedResourceId`. For more information, execute `Get-Help Update-AzOracleResourceAnchor`.
 
 ## PARAMETERS
 

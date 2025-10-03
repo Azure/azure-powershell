@@ -41,27 +41,39 @@ Get a DbVersion
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List available Oracle Database versions in a region
 ```powershell
-{{ Add code here }}
+Get-AzOracleDbVersion -Location eastus2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+...
+Version                                       : 19c
+VersionFull                                   : 19.22.0.0
+IsDefault                                     : True
+IsPreview                                     : False
+
+Version                                       : 21c
+VersionFull                                   : 21.10.0.0
+IsDefault                                     : False
+IsPreview                                     : True
 ```
 
-{{ Add description here }}
+Lists the available Oracle Database versions for **eastus2**. For more information, execute `Get-Help Get-AzOracleDbVersion`.
 
-### Example 2: {{ Add title here }}
+### Example 2: List versions for a specific shape
 ```powershell
-{{ Add code here }}
+Get-AzOracleDbVersion -Location eastus2 -Shape "VM.Standard3.Flex"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Version                                       : 19c
+VersionFull                                   : 19.22.0.0
+IsDefault                                     : True
+IsPreview                                     : False
 ```
 
-{{ Add description here }}
+Filters versions by compute shape. For more information, execute `Get-Help Get-AzOracleDbVersion`.
 
 ## PARAMETERS
 
