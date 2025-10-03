@@ -57,9 +57,6 @@ UsedDataStorageSizeInGb                       :
 UsedDataStorageSizeInTb                       : 
 VnetId                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
 WhitelistedIP                                 : 
-ScheduledOperationScheduledStartTime          :
-ScheduledOperationScheduledStopTime           :
-DayOfWeekName                                 :
 ```
 
 Get an Autonomous Database resource by name and resource group name.
