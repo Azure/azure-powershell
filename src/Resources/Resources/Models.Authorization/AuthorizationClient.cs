@@ -264,10 +264,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 result = result.Where(r => r.RoleDefinitionName?.Equals(options.RoleDefinitionName, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
             }
 
-            if (needsFilterPrincipalId)
-            {
-                result = result.Where(r => r.ObjectId?.Equals(principalId, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
-            }
+            if (needsFilterPrincipalId && Guid.TryParse(principalId, out Guid principalAsGuid))
+             {
+                result = result
+                    .Where(r => Guid.TryParse(r.ObjectId, out Guid objectIdAsGuid) && objectIdAsGuid == principalAsGuid)
+                    .ToList();
+             }
 
             if (options.IncludeClassicAdministrators)
             {
