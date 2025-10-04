@@ -82,44 +82,6 @@
       ]
     },
     {
-      "name": "Restart-AzPostgreSqlFlexibleServer",
-      "description": "Restarts a server.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/restart",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Restarts a server.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.serverName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Start-AzPostgreSqlFlexibleServer",
       "description": "Starts a server.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/start",
