@@ -131,14 +131,6 @@ Describe 'New-AzFunctionApp' {
             "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
             "Location" = $env.location
             "ExpectedOSType" = "Windows"
-        },
-        @{
-            "Runtime" = "Python"
-            "RuntimeVersion" = "3.12"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxPremium
-            "Location" = $env.location
-            "ExpectedOSType" = "Linux"
         }
     )
 
@@ -342,6 +334,7 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName 
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be "Python"
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "Python|3.12"
 
             Write-Verbose "Validating app settings..." -Verbose
             $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName 
@@ -721,19 +714,7 @@ Describe 'New-AzFunctionApp' {
             "ExpectedSiteConfig" = @{
                 "LinuxFxVersion" = "Node|22"
             }
-        },
-        @{
-            "Name" = $env.functionNamePython
-            "Runtime" = "Python"
-            "RuntimeVersion" = "3.11"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
-            "Location" = $env.location
-            "OSType" = "Linux"
-            "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "Python|3.11"
-            }
-        },
+        }
         @{
             "Name" = $env.functionNamePowerShell
             "Runtime" = "PowerShell"
