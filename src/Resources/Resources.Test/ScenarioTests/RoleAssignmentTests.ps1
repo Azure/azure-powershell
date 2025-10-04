@@ -939,6 +939,10 @@ function Test-RAGuidFormatHandling
     $expected = @(Get-AzRoleAssignment -ObjectId $principalId -Scope $scope -AtScope)
     $expectedIds = $expected | Select-Object -ExpandProperty RoleAssignmentId | Sort-Object
 
+    # when non-Guid result should be empty
+    $res = @(Get-AzRoleAssignment -ObjectId "abc" -Scope $scope -AtScope)
+    Assert-AreEqual ($res.Count) 0
+
     $guid = [guid]::Parse($principalId)
     $formats = @('N', 'D', 'B', 'P', 'X')
     foreach ($format in $formats) {

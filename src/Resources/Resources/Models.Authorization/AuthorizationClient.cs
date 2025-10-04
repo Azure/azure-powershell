@@ -234,6 +234,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                          * objectId could represent a group, so can't use atScope() and assignedTo('{objectId}') as alternative,
                          * must filter after the results return from server.
                          */
+
+                        // Only GUIDs are currently supported as ObjectId. If the value is not a GUID, the call and result filtering can be skipped.
+                        if (!Guid.TryParse(principalId, out Guid _))
+                        {
+                           return new List<PSRoleAssignment>();
+                        }
+
                         odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
                         needsFilterPrincipalId = true;
                     }
@@ -264,11 +271,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 result = result.Where(r => r.RoleDefinitionName?.Equals(options.RoleDefinitionName, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
             }
 
-            if (needsFilterPrincipalId && Guid.TryParse(principalId, out Guid principalAsGuid))
+            if (needsFilterPrincipalId)
              {
-                result = result
-                    .Where(r => Guid.TryParse(r.ObjectId, out Guid objectIdAsGuid) && objectIdAsGuid == principalAsGuid)
-                    .ToList();
+                if (Guid.TryParse(principalId, out Guid principalAsGuid)){
+                    result = result
+                        .Where(r => Guid.TryParse(r.ObjectId, out Guid objectIdAsGuid) && objectIdAsGuid == principalAsGuid)
+                        .ToList();
+                }
+                else
+                {
+                    result  = new List<PSRoleAssignment>();
+                }
              }
 
             if (options.IncludeClassicAdministrators)
