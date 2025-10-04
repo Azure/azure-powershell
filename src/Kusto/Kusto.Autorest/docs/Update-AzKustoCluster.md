@@ -15,41 +15,34 @@ Update a Kusto cluster.
 ### UpdateExpanded (Default)
 ```
 Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-AcceptedAudience <IAcceptedAudiences[]>] [-AllowedFqdnList <String[]>]
- [-AllowedIPRangeList <String[]>] [-CalloutPolicy <ICalloutPolicy[]>] [-EnableAutoStop]
- [-EnableDiskEncryption] [-EnableDoubleEncryption] [-EnablePurge] [-EnableStreamingIngest]
- [-EngineType <EngineType>] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
- [-LanguageExtensionValue <ILanguageExtension[]>] [-Location <String>] [-OptimizedAutoscaleIsEnabled]
- [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
- [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
- [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-VirtualClusterGraduationProperty <String>]
- [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
- [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationState <VnetState>]
- [-VirtualNetworkConfigurationSubnetId <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AcceptedAudience <IAcceptedAudiences[]>]
+ [-AllowedFqdnList <String[]>] [-AllowedIPRangeList <String[]>] [-CalloutPolicy <ICalloutPolicy[]>]
+ [-EnableAutoStop] [-EnableDiskEncryption] [-EnableDoubleEncryption] [-EnablePurge] [-EnableStreamingIngest]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EngineType <String>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
+ [-KeyVaultPropertyUserIdentity <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
+ [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <String>] [-PublicNetworkAccess <String>]
+ [-RestrictOutboundNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-UserAssignedIdentity <String[]>]
+ [-VirtualNetworkConfigurationState <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKustoCluster -InputObject <IKustoIdentity> [-IfMatch <String>]
+Update-AzKustoCluster -InputObject <IKustoIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AcceptedAudience <IAcceptedAudiences[]>] [-AllowedFqdnList <String[]>] [-AllowedIPRangeList <String[]>]
  [-CalloutPolicy <ICalloutPolicy[]>] [-EnableAutoStop] [-EnableDiskEncryption] [-EnableDoubleEncryption]
- [-EnablePurge] [-EnableStreamingIngest] [-EngineType <EngineType>] [-IdentityType <IdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-KeyVaultPropertyUserIdentity <String>] [-LanguageExtensionValue <ILanguageExtension[]>]
- [-Location <String>] [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>]
- [-OptimizedAutoscaleMinimum <Int32>] [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
- [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
- [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-VirtualClusterGraduationProperty <String>]
- [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
- [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationState <VnetState>]
- [-VirtualNetworkConfigurationSubnetId <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-EnablePurge] [-EnableStreamingIngest] [-EnableSystemAssignedIdentity <Boolean?>] [-EngineType <String>]
+ [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
+ [-LanguageExtensionValue <ILanguageExtension[]>] [-OptimizedAutoscaleIsEnabled]
+ [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <String>] [-PublicNetworkAccess <String>]
+ [-RestrictOutboundNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-UserAssignedIdentity <String[]>]
+ [-VirtualNetworkConfigurationState <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -88,10 +81,9 @@ The above command updates the cluster "testnewkustocluster" found in the resourc
 
 ### -AcceptedAudience
 The cluster's accepted audiences.
-To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IAcceptedAudiences[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IAcceptedAudiences[]
 Parameter Sets: (All)
 Aliases:
 
@@ -149,10 +141,9 @@ Accept wildcard characters: False
 
 ### -CalloutPolicy
 List of callout policies for egress from Cluster.
-To construct, see NOTES section for CALLOUTPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -254,44 +245,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EngineType
 The engine type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The type of managed identity used.
-The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
-The type 'None' will remove all identities.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with the Kusto cluster.
-The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -319,9 +292,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IfNoneMatch
+Set to '*' to allow a new cluster to be created, but to prevent updating an existing cluster.
+Other values will result in a 412 Pre-condition Failed response.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -397,25 +385,9 @@ Accept wildcard characters: False
 
 ### -LanguageExtensionValue
 The list of language extensions.
-To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -520,7 +492,7 @@ Accept wildcard characters: False
 Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -536,7 +508,7 @@ Public network access to the cluster is enabled by default.
 When disabled, only private endpoint connection to the cluster is allowed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -568,7 +540,7 @@ Whether or not to restrict outbound network access.
 Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterNetworkAccessFlag
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -598,7 +570,7 @@ Accept wildcard characters: False
 SKU name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -613,7 +585,7 @@ Accept wildcard characters: False
 SKU tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -656,10 +628,9 @@ Accept wildcard characters: False
 
 ### -TrustedExternalTenant
 The cluster's external tenants.
-To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ITrustedExternalTenant[]
 Parameter Sets: (All)
 Aliases:
 
@@ -670,41 +641,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualClusterGraduationProperty
-Virtual Cluster graduation properties
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkConfigurationDataManagementPublicIPId
-Data management's service public IP address resource id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkConfigurationEnginePublicIPId
-Engine service's public IP address resource id.
-
-```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -717,21 +659,6 @@ Accept wildcard characters: False
 
 ### -VirtualNetworkConfigurationState
 When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.VnetState
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkConfigurationSubnetId
-The subnet resource id.
 
 ```yaml
 Type: System.String
@@ -800,7 +727,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICluster
 
 ## NOTES
 
