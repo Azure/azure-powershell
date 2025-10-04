@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -IntervalType
-Freuquency of the backup.
+Frequency of the backup.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency
