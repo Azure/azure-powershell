@@ -21,12 +21,13 @@ Create an in-memory object for ManagedDiskDetails.
 Create an in-memory object for ManagedDiskDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ManagedDiskDetails
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxManagedDiskDetailsObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxmanageddiskdetailsobject
 #>
 function New-AzDataBoxManagedDiskDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ManagedDiskDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,26 +37,19 @@ function New-AzDataBoxManagedDiskDetailsObject {
         [Parameter(Mandatory, HelpMessage="Resource Id of the storage account that can be used to copy the vhd for staging.")]
         [string]
         $StagingStorageAccountId,
-        [Parameter(Mandatory, HelpMessage="Account Type of the data to be transferred.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType]
-        $DataAccountType,
         [Parameter(HelpMessage="Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+.")]
         [string]
         $SharePassword
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ManagedDiskDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('ResourceGroupId')) {
             $Object.ResourceGroupId = $ResourceGroupId
         }
         if ($PSBoundParameters.ContainsKey('StagingStorageAccountId')) {
             $Object.StagingStorageAccountId = $StagingStorageAccountId
-        }
-        if ($PSBoundParameters.ContainsKey('DataAccountType')) {
-            $Object.DataAccountType = $DataAccountType
         }
         if ($PSBoundParameters.ContainsKey('SharePassword')) {
             $Object.SharePassword = $SharePassword
