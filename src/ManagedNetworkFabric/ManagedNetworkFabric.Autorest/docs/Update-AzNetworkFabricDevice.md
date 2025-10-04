@@ -245,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable

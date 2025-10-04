@@ -17,12 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkFabricNni'))
 Describe 'New-AzNetworkFabricNni' {
     It 'Create' {
         {
-            $optionBLayer3Configuration = @{
-                PrimaryIpv4Prefix = "172.31.0.0/31"
-                SecondaryIpv4Prefix = "172.31.0.20/31"
-                PeerAsn = 28
-                VlanId = 501
-            }
+            $optionBLayer3ConfigurationPrimaryIpv4Prefix = "172.31.0.0/31"
+            $optionBLayer3ConfigurationSecondaryIpv4Prefix = "172.31.0.20/31"
+            $optionBLayer3ConfigurationPeerAsn = 28
+            $optionBLayer3ConfigurationVlanId = 501
             $layer2Configuration = @{
                 Interface = @("/subscriptions//resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-interface")
                 Mtu = 1500
@@ -36,7 +34,7 @@ Describe 'New-AzNetworkFabricNni' {
                 ExportIpv6RoutePolicyId = $global:config.nni.exportIpv6RoutePolicyId
             }
 
-            New-AzNetworkFabricNni -SubscriptionId $global:config.common.subscriptionId -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName -UseOptionB $global:config.nni.useOptionB -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy -IngressAclId $global:config.nni.ingressAclId -IsManagementType $global:config.nni.isManagementType -Layer2Configuration $layer2Configuration -NniType $global:config.nni.nniType -NpbStaticRouteConfiguration $npbStaticRouteConfiguration -OptionBLayer3Configuration $optionBLayer3Configuration
+            New-AzNetworkFabricNni -SubscriptionId $global:config.common.subscriptionId -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName -UseOptionB $global:config.nni.useOptionB -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy -IngressAclId $global:config.nni.ingressAclId -IsManagementType $global:config.nni.isManagementType -Layer2Configuration $layer2Configuration -NniType $global:config.nni.nniType -NpbStaticRouteConfiguration $npbStaticRouteConfiguration -OptionBLayer3ConfigurationPrimaryIpv4Prefix $optionBLayer3ConfigurationPrimaryIpv4Prefix -OptionBLayer3ConfigurationSecondaryIpv4Prefix $optionBLayer3ConfigurationSecondaryIpv4Prefix -OptionBLayer3ConfigurationPeerAsn $optionBLayer3ConfigurationPeerAsn -OptionBLayer3ConfigurationVlanId $optionBLayer3ConfigurationVlanId
 
         } | Should -Not -Throw
     }
