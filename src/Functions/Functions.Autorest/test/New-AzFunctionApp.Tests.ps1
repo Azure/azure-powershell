@@ -56,7 +56,8 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -346,7 +347,8 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -438,8 +440,8 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Write-Verbose "Run: Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue" -Verbose
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -487,7 +489,8 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -550,7 +553,8 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -631,7 +635,8 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName  $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -683,7 +688,8 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -783,6 +789,14 @@ Describe 'New-AzFunctionApp' {
         $storageAccountName = $testCase["StorageAccountName"]
         $OSType = $testCase["OSType"]
 
+        Write-Verbose "App name: $appName" -Verbose
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        Write-Verbose "Runtime: $runtime" -Verbose
+        Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
+        Write-Verbose "OSType: $OSType" -Verbose
+        Write-Verbose "FunctionsVersion: $functionsVersion" -Verbose
+
         $planType = $null
         $location = $null
         $planName = $null
@@ -797,6 +811,10 @@ Describe 'New-AzFunctionApp' {
             $planType = "Premium"
             $planName = $testCase["PlanName"]
         }
+
+        Write-Verbose "PlanType: $planType" -Verbose
+        if ($planName) { Write-Verbose "PlanName: $planName" -Verbose }
+        if ($location) { Write-Verbose "Location: $location" -Verbose }
 
         It "Create v4 $OSType $runtime $runtimeVersion Function App hosted in a $planType plan." {
 
@@ -851,16 +869,18 @@ Describe 'New-AzFunctionApp' {
                     }
                 }
 
+                Write-Verbose "Validating function app properties..." -Verbose
                 $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
                 $functionApp.OSType | Should -Be $OSType
                 $functionApp.Runtime | Should -Be $runtime
 
-                # Validate FUNCTIONS_EXTENSION_VERSION
+                Write-Verbose "Validating FUNCTIONS_EXTENSION_VERSION and app settings..." -Verbose
                 $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
                 $applicationSettings.FUNCTIONS_EXTENSION_VERSION | Should be "~$functionsVersion"
 
                 if ($testCase.ContainsKey("ExpectedSiteConfig"))
                 {
+                    Write-Verbose "Validating SiteConfig properties..." -Verbose
                     $expectedSiteConfig = $testCase["ExpectedSiteConfig"]
                     foreach ($propertyName in $expectedSiteConfig.Keys)
                     {
@@ -871,6 +891,7 @@ Describe 'New-AzFunctionApp' {
 
                 if ($testCase.ContainsKey("ExpectedAppSettings"))
                 {
+                    Write-Verbose "Validating custom app settings..." -Verbose
                     $expectedAppSettings = $testCase["ExpectedAppSettings"]
                     foreach ($appSettingName in $expectedAppSettings.Keys)
                     {
@@ -881,10 +902,12 @@ Describe 'New-AzFunctionApp' {
             }
             finally
             {
+                Write-Verbose "Cleaning up the function app..." -Verbose
                 $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
                 if ($functionApp)
                 {
-                    Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                    Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                    Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
                 }
             }
         }
@@ -899,18 +922,23 @@ Describe 'New-AzFunctionApp' {
             $expectedErrorMessage = "Functions version not supported. Currently supported version are:"
             try
             {
+                Write-Verbose "Create function app with an invalid FunctionsVersion: $functionsVersion" -Verbose
+                # Use valid parameters for other properties
                 New-AzFunctionApp -Name $env.functionNameTestApp `
                                   -ResourceGroupName $env.resourceGroupNameWindowsPremium `
                                   -PlanName $env.planNameWorkerTypeWindows `
                                   -StorageAccount $env.storageAccountWindows  `
                                   -Runtime PowerShell `
-                                  -FunctionsVersion $functionsVersion
+                                  -FunctionsVersion $functionsVersion `
+                                  -ErrorAction Stop
             }
             catch
             {
+                Write-Verbose "Catch the expected exception" -Verbose
                 $myError = $_
             }
 
+            Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
             $myError.FullyQualifiedErrorId | Should Be $errorId
             $myError.Exception.Message | Should Match $expectedErrorMessage
         }
