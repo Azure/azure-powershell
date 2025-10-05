@@ -45,15 +45,21 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         try
         {
             Write-Verbose "Create function app with a SystemAssigned managed identity" -Verbose
-            $appName = $env.functionNamePowerShell
+            $appName = $env.functionNamePowerShellNew1
             Write-Verbose "App name: $appName" -Verbose
+
+            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+            Write-Verbose "Plan name: $planName" -Verbose
+            Write-Verbose "Storage account name: $storageAccountName" -Verbose
+            Write-Verbose "Tags: $($tags | Out-String)" -Verbose
 
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `
                               -StorageAccount $storageAccountName `
+                              -OSType Windows `
                               -Runtime PowerShell `
-                              -RuntimeVersion "7.2" `
+                              -RuntimeVersion 7.4 `
                               -FunctionsVersion 4 `
                               -IdentityType SystemAssigned `
                               -Tag $tags
@@ -74,7 +80,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             Write-Verbose "Updated planName: $newPlanName" -Verbose
             New-AzFunctionAppPlan -Name $newPlanName `
                                   -ResourceGroupName $resourceGroupName `
-                                  -WorkerType "Windows" `
+                                  -WorkerType Windows `
                                   -MinimumWorkerCount 1 `
                                   -MaximumWorkerCount 10 `
                                   -Location $location `
@@ -137,15 +143,15 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         try
         {
             Write-Verbose "Creating function app -AsJob" -Verbose
-            $appName = $env.functionNamePowerShellNew1
+            $appName = $env.functionNamePowerShellNew2
             Write-Verbose "App name: $appName" -Verbose
 
             $functionAppJob = New-AzFunctionApp -Name $appName `
                                                 -ResourceGroupName $resourceGroupName `
                                                 -PlanName $planName `
                                                 -StorageAccount $storageAccountName `
-                                                -OSType "Windows" `
-                                                -Runtime "PowerShell" `
+                                                -OSType Windows `
+                                                -Runtime PowerShell `
                                                 -RuntimeVersion 7.4 `
                                                 -FunctionsVersion 4 `
                                                 -AsJob
@@ -195,15 +201,15 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         try
         {
             Write-Verbose "Creating function app" -Verbose
-            $appName = $env.functionNamePowerShellNew2
+            $appName = $env.functionNamePowerShellNew3
             Write-Verbose "App name: $appName" -Verbose
 
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `
                               -StorageAccount $storageAccountName `
-                              -OSType "Windows" `
-                              -Runtime "PowerShell" `
+                              -OSType Windows `
+                              -Runtime PowerShell `
                               -RuntimeVersion 7.4 `
                               -FunctionsVersion 4
 
