@@ -98,10 +98,11 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
                 $appSettings.ContainsKey($appSettingName) | Should be $false
             }
 
-            # Delete app settings using InputObject
+            Write-Verbose "Validate 'Remove-AzFunctionAppSetting -InputObject'" -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             Remove-AzFunctionAppSetting -InputObject $functionApp -AppSettingName $appSetting2.Keys
 
+            Write-Verbose "Validate that the app settings were removed" -Verbose
             $appSettings = Get-AzFunctionAppSetting -InputObject $functionApp
             
             foreach ($appSettingName in $appSetting2.Keys)
@@ -111,10 +112,12 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
         }
         finally
         {
+            Write-Verbose "Cleaning up the function app..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
