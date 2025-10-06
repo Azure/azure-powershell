@@ -15,7 +15,7 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Cosmo
 Get CosmosDB Account.
 
 ### [Get-AzCosmosDBAccountKey](Get-AzCosmosDBAccountKey.md)
-Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account.
+Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account. 
 
 ### [Get-AzCosmosDBCassandraKeyspace](Get-AzCosmosDBCassandraKeyspace.md)
 Gets a CosmosDB Cassandra Keyspace.
@@ -57,7 +57,8 @@ Lists all the restorable Azure Cosmos DB Gremlin graphs available for a specific
 Lists all the restorable Azure Cosmos DB Gremlin resources available for a specific database account at a given time and location.
 
 ### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
-List Azure Cosmos DB locations and their properties. Get Azure Cosmos DB location properties for a specific location.
+List Azure Cosmos DB locations and their properties.
+Get Azure Cosmos DB location properties for a specific location.
 
 ### [Get-AzCosmosDBMongoDBCollection](Get-AzCosmosDBMongoDBCollection.md)
 Gets the CosmosDB MongoDB Collection.
@@ -333,7 +334,7 @@ Creates a new CosmosDB Sql VectorEmbedding object.
 Creates a new CosmosDB Sql VectorEmbeddingPolicy object.
 
 ### [New-AzCosmosDBSqlVectorIndex](New-AzCosmosDBSqlVectorIndex.md)
-Creates a new CosmosDB Sql VectorIndex object.
+Creates a new CosmosDB Sql VectorIndex object. 
 
 ### [New-AzCosmosDBTable](New-AzCosmosDBTable.md)
 Creates a new CosmosDB Table.
@@ -378,7 +379,7 @@ Deletes a CosmosDB MongoDB Collection.
 Deletes a CosmosDB MongoDB Database.
 
 ### [Remove-AzCosmosDBMongoDBRoleDefinition](Remove-AzCosmosDBMongoDBRoleDefinition.md)
-Deletes a CosmosDB MongoDB Database.
+This cmdlet removes a MongoDB role definition from a specified Cosmos DB account.
 
 ### [Remove-AzCosmosDBMongoDBUserDefinition](Remove-AzCosmosDBMongoDBUserDefinition.md)
 Deletes an existing CosmosDB MongoDB User Definition.
@@ -495,10 +496,10 @@ Updates the CosmosDB MongoDB Database. Performs a client side patch operation by
 Updates the throughput value of a CosmosDB MongoDB Database.
 
 ### [Update-AzCosmosDBMongoDBRoleDefinition](Update-AzCosmosDBMongoDBRoleDefinition.md)
-Update an existing CosmosDB MongoDB Role Definition.
+This cmdlet updates an existing MongoDB role definition in a specified Cosmos DB account.
 
 ### [Update-AzCosmosDBMongoDBUserDefinition](Update-AzCosmosDBMongoDBUserDefinition.md)
-Update an existing CosmosDB MongoDB User Definition.
+This cmdlet updates an existing MongoDB user definition in a specified Cosmos DB account.
 
 ### [Update-AzCosmosDBSqlContainer](Update-AzCosmosDBSqlContainer.md)
 Updates the CosmosDB Sql Container. Performs a client side patch operation by reading the existing Container.
@@ -544,3 +545,4 @@ Update an existing Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Update-AzManagedCassandraDatacenter](Update-AzManagedCassandraDatacenter.md)
 Update an existing Azure Managed Instances for Apache Cassandra data center.
+

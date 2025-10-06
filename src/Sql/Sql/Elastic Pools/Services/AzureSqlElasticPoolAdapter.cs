@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Converts a ElascitPoolAcitivy model to the powershell model.
+        /// Converts a ElasticPoolActivity model to the powershell model.
         /// </summary>
         /// <param name="model">The model from the service</param>
         /// <returns>The converted model</returns>

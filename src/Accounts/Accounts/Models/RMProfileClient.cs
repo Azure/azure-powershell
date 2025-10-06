@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
@@ -22,13 +23,11 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             get
             {
-                if(_profile == null || _profile.DefaultContext == null || _profile.DefaultContext.Account == null)
+                if (_profile == null || _profile.DefaultContext == null || _profile.DefaultContext.Account == null)
                 {
                     throw new PSInvalidOperationException(ResourceMessages.RunConnectAccount);
                 }
@@ -130,13 +129,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool skipValidation,
             IOpenIDConfiguration openIDConfigDoc,
             Action<string> promptAction,
+            string claimsChallenge = null,
             string name = null,
             bool shouldPopulateContextList = true,
             int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation,
             string authScope = null,
             bool IsInteractiveContextSelectionEnabled = true)
         {
-            
+
             WriteInteractiveInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
 
             IAzureSubscription defaultSubscription = null;
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             List<AzureSubscription> subscriptions = new List<AzureSubscription>();
             List<AzureSubscription> tempSubscriptions = null;
             string tenantName = null;
-            
+
             bool selectSubscriptionFromList = AzureAccount.AccountType.User.Equals(account.Type) &&
                 IsInteractiveContextSelectionEnabled &&
                 string.IsNullOrEmpty(subscriptionId) &&
@@ -161,9 +161,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SubscritpionClientCandidates.Reset();
 
             bool needDataPlanAuthFirst = !string.IsNullOrEmpty(authScope);
-            if(needDataPlanAuthFirst)
+            if (needDataPlanAuthFirst)
             {
-                var token = AcquireAccessToken(account, environment, tenantIdOrName, password, promptBehavior, promptAction, authScope);
+                var token = AcquireAccessToken(account, environment, tenantIdOrName, password, promptBehavior, promptAction, claimsChallenge, authScope);
                 promptBehavior = ShowDialog.Never;
             }
 
@@ -202,7 +202,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             tenantIdOrName,
                             password,
                             promptBehavior,
-                            promptAction);
+                            promptAction,
+                            claimsChallenge);
 
                         if (!Guid.TryParse(tenantIdOrName, out Guid _))
                         {
@@ -229,7 +230,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             }
                         }
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         string baseMessage = string.Format(ProfileMessages.TenantDomainNotFound, tenantIdOrName);
                         var typeMessageMap = new Dictionary<string, string>
@@ -293,7 +294,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                         try
                         {
-                            token = AcquireAccessToken(account, environment, tenant.Id, password, ShowDialog.Auto, null);
+                            token = AcquireAccessToken(account, environment, tenant.Id, password, ShowDialog.Auto, null, claimsChallenge);
                             if (accountId == null)
                             {
                                 accountId = account.Id;
@@ -314,7 +315,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 token = null;
                             }
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
                             WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenant.Id, e.Message));
                             WriteDebugMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenant.Id, e.ToString()));
@@ -334,7 +335,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                     defaultTenant = tempTenant;
                                 }
                             }
-                            if(tempSubscription != null)
+                            if (tempSubscription != null)
                             {
                                 subscriptions.AddRange(tempSubscriptions);
                             }
@@ -397,7 +398,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 var defaultContext = _profile.DefaultContext;
                 var populatedSubscriptions = (maxContextPopulation < 0 || selectSubscriptionFromList) ? ListSubscriptions(tenantIdOrName) : ListSubscriptions(tenantIdOrName).Take(maxContextPopulation);
-                
+
                 foreach (var subscription in populatedSubscriptions)
                 {
                     IAzureTenant tempTenant = InteractiveSubscriptionSelectionHelper.GetDetailedTenantFromQueryHistory(_queriedTenants, subscription.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant()
@@ -449,7 +450,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
 
                 var tenantFromSubscription = subscription.GetTenant();
-                tenant = string.IsNullOrWhiteSpace(tenantId) ? (string.IsNullOrEmpty(tenantFromSubscription) ? context.Tenant : CreateTenant(tenantFromSubscription)):  CreateTenant(tenantId);
+                tenant = string.IsNullOrWhiteSpace(tenantId) ? (string.IsNullOrEmpty(tenantFromSubscription) ? context.Tenant : CreateTenant(tenantFromSubscription)) : CreateTenant(tenantId);
             }
             else if (!string.IsNullOrWhiteSpace(tenantId))
             {
@@ -536,14 +537,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             HashSet<Guid> existedSubscriptionIds = new HashSet<Guid>();
 
             // Consider subscription in Home tenant first, exclude duplicate subscriptions by id.
-            foreach(IAzureSubscription subscription in subscriptions)
+            foreach (IAzureSubscription subscription in subscriptions)
             {
-                if (subscription is PSAzureSubscription && subscription.GetTenant() != null 
+                if (subscription is PSAzureSubscription && subscription.GetTenant() != null
                     && subscription.GetHomeTenant().Equals(subscription.GetTenant()) && existedSubscriptionIds.Add(subscription.GetId()))
                 {
                     subscriptionList.Add(subscription);
                 }
-                
+
             }
             // Consider other subscriptions.
             foreach (IAzureSubscription subscription in subscriptions)
@@ -679,6 +680,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SecureString password,
             string promptBehavior,
             Action<string> promptAction,
+            string claimsChallenge = null,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Type == AzureAccount.AccountType.AccessToken)
@@ -689,10 +691,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             var optionalParameters = new Dictionary<string, object>()
             {
-                {AuthenticationFactory.TokenCacheParameterName,  _cache},
-                {AuthenticationFactory.ResourceIdParameterName, resourceId },
-                {AuthenticationFactory.CmdletContextParameterName, CmdletContext }
+                { AuthenticationFactory.ResourceIdParameterName, resourceId },
+                { AuthenticationFactory.ClaimsChallengeParameterName, claimsChallenge },
+                { AuthenticationFactory.TokenCacheParameterName, _cache },
+                { AuthenticationFactory.CmdletContextParameterName, CmdletContext }
             };
+
 
             return AzureSession.Instance.AuthenticationFactory.Authenticate(
                 account,
@@ -814,7 +818,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                 result = SubscriptionAndTenantClient?.ListAccountTenants(commonTenantToken, environment);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, commonTenant, e.Message));
                 WriteDebugMessage(string.Format(ProfileMessages.UnableToAqcuireToken, commonTenant, e.ToString()));
@@ -861,7 +865,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior, null);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenantId, e.Message));
                 WriteDebugMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenantId, e.ToString()));
@@ -881,7 +885,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         private void WriteDebugMessage(string message)
         {
-            if(DebugLog != null)
+            if (DebugLog != null)
             {
                 DebugLog(message);
             }

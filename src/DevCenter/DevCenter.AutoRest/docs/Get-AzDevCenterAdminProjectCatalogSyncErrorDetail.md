@@ -30,7 +30,7 @@ Gets project catalog synchronization error details
 
 ## EXAMPLES
 
-### Example 1: Get the project catalog sync error dteail
+### Example 1: Get the project catalog sync error detail
 ```powershell
 Get-AzDevCenterAdminProjectCatalogSyncErrorDetail -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
 ```

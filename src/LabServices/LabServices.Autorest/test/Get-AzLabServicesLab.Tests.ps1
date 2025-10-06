@@ -22,23 +22,23 @@ Describe 'Get-AzLabServicesLab' {
     }
     
     It 'List with Resource Group' {
-        Get-AzLabServicesLab -ResourceGroupName $ENV:ResourceGroupName | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesLab -ResourceGroupName $env.ResourceGroupName | Should -Not -BeNullOrEmpty
     }
 
    It 'Get' {
-        Get-AzLabServicesLab -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:LabName | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
+        Get-AzLabServicesLab -ResourceGroupName $env.ResourceGroupName -Name $env.LabName | Select-Object -Property Name | Should -Be "@{Name=$($env.LabName)}"
     }
 
     It 'LabPlan' {
-        $plan = Get-AzLabServicesLabPlan -Name $ENV:LabPlanName -ResourceGroupName $ENV:ResourceGroupName
-        Get-AzLabServicesLab -LabPlan $plan -Name $ENV:LabName | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
+        $plan = Get-AzLabServicesLabPlan -Name $env.LabPlanName -ResourceGroupName $env.ResourceGroupName
+        Get-AzLabServicesLab -LabPlan $plan -Name $env.LabName | Select-Object -Property Name | Should -Be "@{Name=$($env.LabName)}"
     }
     
-    It 'ResourceId' -skip {        
-        Get-AzLabServicesLab -ResourceId "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)" | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
+    It 'ResourceId' {        
+        Get-AzLabServicesLab -ResourceId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.LabServices/labs/$($env.LabName)" | Select-Object -Property Name | Should -Be "@{Name=$($env.LabName)}"
     }
 
     It 'Name with wildcard' {
-        Get-AzLabServicesLab -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:LabNameLike | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
+        Get-AzLabServicesLab -ResourceGroupName $env.ResourceGroupName -Name $env.LabNameLike | Select-Object -Property Name | Should -Be "@{Name=$($env.LabName)}"
     }
 }

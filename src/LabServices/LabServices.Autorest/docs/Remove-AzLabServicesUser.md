@@ -25,6 +25,18 @@ Remove-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <St
  [<CommonParameters>]
 ```
 
+### DeleteViaIdentity
+```
+Remove-AzLabServicesUser -InputObject <ILabServicesIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityLab
+```
+Remove-AzLabServicesUser -LabInputObject <ILabServicesIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### Lab
 ```
 Remove-AzLabServicesUser -Lab <Lab> -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
@@ -82,11 +94,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Lab
-To construct, see NOTES section for LAB properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Lab
+The object of lab service lab to remove user from.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 Parameter Sets: Lab
 Aliases:
 
@@ -94,6 +121,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: DeleteViaIdentityLab
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -119,7 +161,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Lab
+Parameter Sets: Delete, DeleteViaIdentityLab, Lab
 Aliases: UserName
 
 Required: True
@@ -176,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service user.
 
 ```yaml
 Type: System.String
@@ -195,7 +237,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete, Lab, ResourceId, User
 Aliases:
 
 Required: False
@@ -206,10 +248,10 @@ Accept wildcard characters: False
 ```
 
 ### -User
-To construct, see NOTES section for USER properties and create a hash table.
+The object of lab service user to remove.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 Parameter Sets: User
 Aliases:
 
@@ -256,9 +298,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 
 ## OUTPUTS
 

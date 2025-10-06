@@ -25,12 +25,12 @@ $password = ConvertTo-SecureString "********" -AsPlainText -Force
 New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceConfigurationData
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.StorageApplianceConfigurationData
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudStorageApplianceConfigurationDataObject
 #>
 function New-AzNetworkCloudStorageApplianceConfigurationDataObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.StorageApplianceConfigurationData])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.StorageApplianceConfigurationData])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

@@ -164,6 +164,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDEnableDnstapLogging()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDEnableDnstapLogging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallVirtualHubPrivateIPAddress()
         {
             TestRunner.RunTestScript("Test-AzureFirewallVirtualHubPrivateIPAddress");
@@ -208,6 +216,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestInvokeAzureFirewallPacketCapture()
         {
             TestRunner.RunTestScript("Test-InvokeAzureFirewallPacketCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestInvokeAzureFirewallPacketCaptureOperation()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzureFirewallPacketCaptureOperation");
         }
 
         [Fact]

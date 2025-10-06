@@ -13,10 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStorageMoverAgent_UpdateViaIdentity", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ParameterSetBreakingChange(new string[] {"UpdateViaIdentity"}, "15.0.0", "2.0.0", "2025/11/03", ChangeDescription="The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"UploadLimitScheduleWeeklyRecurrence"}, NewOutputProperties=new string[] {"UploadLimitScheduleWeeklyRecurrence"}, ChangeDescription="The type of the property UploadLimitScheduleWeeklyRecurrence will be changed from fixed array to 'List'.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Creates or updates an Agent resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}", ApiVersion = "2025-07-01")]
     public partial class UpdateAzStorageMoverAgent_UpdateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener
     {
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Backing field for <see cref="Agent" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters _agent;
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters _agent;
 
         /// <summary>The Agent resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Agent resource.", ValueFromPipeline = true)]
@@ -44,8 +46,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         ReadOnly = false,
         Description = @"The Agent resource.",
         SerializedName = @"agent",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters Agent { get => this._agent; set => this._agent = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgentUpdateParameters Agent { get => this._agent; set => this._agent = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -134,12 +136,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -411,12 +413,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent> response)
         {
             using( NoSynchronizationContext )
             {
@@ -428,7 +430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IAgent
                 WriteObject((await response));
             }
         }

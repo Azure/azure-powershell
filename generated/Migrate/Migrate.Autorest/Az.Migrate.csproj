@@ -3,6 +3,7 @@
     <PsModuleName>Migrate</PsModuleName>
     <PsRootModuleName>Migrate</PsRootModuleName>
     <PsModuleFolder>Migrate.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Migrate</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

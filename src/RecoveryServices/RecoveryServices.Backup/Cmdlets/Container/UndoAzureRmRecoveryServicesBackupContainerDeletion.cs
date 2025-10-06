@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string UndeleteParamSet = "undelete";
 
         /// <summary>
-        /// Specifies the backup contianer to be rehydrated
+        /// Specifies the backup container to be rehydrated
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, HelpMessage = ParamHelpMsgs.Item.Container,
             ParameterSetName = UndeleteParamSet, ValueFromPipelineByPropertyName = true)]

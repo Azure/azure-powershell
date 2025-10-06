@@ -33,6 +33,8 @@ https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcare
 #>
 function New-AzHealthcareDicomService {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService])]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.GenericBreakingChangeAttribute("IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.", "15.0.0", "9.0.0", "2025/11/03")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IDicomService", DeprecatedOutputProperties = ("PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection", "AuthenticationConfigurationAudience System.String[]"), NewOutputProperties = ("PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection]", "AuthenticationConfigurationAudience System.Collections.Generic.List`1[System.String]"))]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]

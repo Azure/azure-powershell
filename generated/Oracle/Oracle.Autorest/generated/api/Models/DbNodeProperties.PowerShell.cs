@@ -146,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("TimeCreated"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated = (global::System.DateTime?) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated = (global::System.DateTime) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("TimeMaintenanceWindowEnd"))
             {
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("TimeCreated"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated = (global::System.DateTime?) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated = (global::System.DateTime) content.GetValueForProperty("TimeCreated",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodePropertiesInternal)this).TimeCreated, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("TimeMaintenanceWindowEnd"))
             {

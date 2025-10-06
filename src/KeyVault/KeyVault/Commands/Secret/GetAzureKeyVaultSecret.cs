@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Version = splitUri.SecretVersion;
             }
 
-            // Check Version/s of Sceret to get.
+            // Check Version/s of Secret to get.
             if (!string.IsNullOrEmpty(Version))
             {
                 secret = DataServiceClient.GetSecret(VaultName, Name, Version);

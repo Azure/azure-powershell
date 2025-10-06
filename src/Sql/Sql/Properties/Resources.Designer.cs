@@ -448,6 +448,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No deleted server named &apos;{0}&apos; found in location &apos;{1}&apos; that can be restored..
+        /// </summary>
+        internal static string DeletedServerNotFound {
+            get {
+                return ResourceManager.GetString("DeletedServerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
         internal static string DeprecatedCmdletUsageWarning {
@@ -729,6 +738,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false..
+        /// </summary>
+        internal static string InvalidSoftDeleteRetentionDaysForDisablingSoftDelete {
+            get {
+                return ResourceManager.GetString("InvalidSoftDeleteRetentionDaysForDisablingSoftDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true..
+        /// </summary>
+        internal static string InvalidSoftDeleteRetentionDaysRange {
+            get {
+                return ResourceManager.GetString("InvalidSoftDeleteRetentionDaysRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please set a valid tenant id in the AzureEnvironment..
         /// </summary>
         internal static string InvalidTenantId {
@@ -779,6 +806,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ManagedInstanceLinkAlreadyExists {
             get {
                 return ResourceManager.GetString("ManagedInstanceLinkAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays parameter can only be specified if EnableSoftDelete is explicitly specified..
+        /// </summary>
+        internal static string MissingEnableSoftDelete {
+            get {
+                return ResourceManager.GetString("MissingEnableSoftDelete", resourceCulture);
             }
         }
         
@@ -990,7 +1026,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanantly removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on instance &apos;{2}&apos; in location &apos;{3}&apos;?.
+        ///   Looks up a localized string similar to Permanently removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on instance &apos;{2}&apos; in location &apos;{3}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
             get {
@@ -1773,7 +1809,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submiting request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Submitting request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;..
         /// </summary>
         internal static string StopAzureSqlInstanceOperationWarning {
             get {
