@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies a Managed HSM network rule set object (from New-AzKeyVaultManagedHsmNetworkRuleSetObject) to configure default action, bypass, IP rules, and virtual network rules at creation time.")]
+        [ValidateNotNull]
+        public PSManagedHsmNetworkRuleSet NetworkRuleSet { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -130,7 +135,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             ManagedServiceIdentity managedServiceIdentity = null;
 
-            if (this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity.Length > 0)
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(UserAssignedIdentity)) && this.UserAssignedIdentity.Length > 0)
             {
                 managedServiceIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
                 {
@@ -138,6 +143,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 };
                 UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
             };
+
+            // Build network ACLs: use provided PS object if bound, otherwise default empty set
+            MhsmNetworkRuleSet networkAcls;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(NetworkRuleSet)) && NetworkRuleSet != null)
+            {
+                networkAcls = ConvertToServiceNetworkRuleSet(NetworkRuleSet);
+            }
+            else
+            {
+                networkAcls = new MhsmNetworkRuleSet();
+            }
+
+            // Enforce DefaultAction rule for initial network ACLs if provided
+            if ((string.IsNullOrEmpty(PublicNetworkAccess) || PublicNetworkAccess.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
+                && networkAcls != null
+                && ( (networkAcls.IPRules != null && networkAcls.IPRules.Count > 0) || (networkAcls.VirtualNetworkRules != null && networkAcls.VirtualNetworkRules.Count > 0) )
+                && string.Equals(networkAcls.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase))
+            {
+                networkAcls.DefaultAction = "Deny";
+                WriteWarning("DefaultAction automatically set to Deny because PublicNetworkAccess is Enabled and IP or Virtual Network rules are specified.");
+            }
 
             return new VaultCreationOrUpdateParameters()
             {
@@ -153,11 +179,37 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 SoftDeleteRetentionInDays = this.SoftDeleteRetentionInDays,
                 // false is not accepted
                 EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
-                // use default network rule set
-                MhsmNetworkAcls = new MhsmNetworkRuleSet(),
+                MhsmNetworkAcls = networkAcls,
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 ManagedServiceIdentity = managedServiceIdentity
             };
+        }
+
+        private static MhsmNetworkRuleSet ConvertToServiceNetworkRuleSet(PSManagedHsmNetworkRuleSet ps)
+        {
+            var svc = new MhsmNetworkRuleSet
+            {
+                DefaultAction = ps.DefaultAction.ToString(),
+                Bypass = ps.Bypass.ToString()
+            };
+            if (ps.IpAddressRanges != null)
+            {
+                svc.IPRules = ps.IpAddressRanges.Select(v => new MhsmipRule { Value = v }).ToList();
+            }
+            if (ps.VirtualNetworkResourceIds != null)
+            {
+                svc.VirtualNetworkRules = ps.VirtualNetworkResourceIds.Select(id => new MhsmVirtualNetworkRule { Id = id }).ToList();
+            }
+            // Service requirement: if any IP/service tag/virtual network rules are specified under enabled public access, DefaultAction must be Deny.
+            // We conservatively enforce: if rules specified and DefaultAction is Allow, flip to Deny (public access default is Enabled when unspecified).
+            if ((svc.IPRules != null && svc.IPRules.Count > 0) || (svc.VirtualNetworkRules != null && svc.VirtualNetworkRules.Count > 0))
+            {
+                if (string.Equals(svc.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase))
+                {
+                    svc.DefaultAction = "Deny";
+                }
+            }
+            return svc;
         }
     }
 }

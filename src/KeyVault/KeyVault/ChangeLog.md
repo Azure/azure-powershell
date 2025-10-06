@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Managed HSM network rule cmdlets mirroring existing Key Vault network rule management:
+    - New-AzKeyVaultManagedHsmNetworkRuleSetObject
+    - Add-AzKeyVaultManagedHsmNetworkRule
+    - Remove-AzKeyVaultManagedHsmNetworkRule
+    - Update-AzKeyVaultManagedHsmNetworkRuleSet
+    These enable creation, incremental modification, removal, and authoritative updates of Managed HSM network rules (IP ranges & virtual network resource IDs).
+* New-AzKeyVaultManagedHsm now supports -NetworkRuleSet parameter to specify Managed HSM network rules (default action, bypass, IP ranges, virtual network resource IDs) at creation.
 
 ## Version 6.3.2
 * Upgraded API version to 2024-11-01 [#27067]
