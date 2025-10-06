@@ -1,7 +1,8 @@
 import fs from 'fs';
 import yaml from "js-yaml";
 import { yamlContent } from '../types.js';
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
+import { logger } from './logger.js';
 import path from 'path';
 import { Dirent } from 'fs';
 
@@ -27,18 +28,28 @@ function testYaml() {
 }
 
 export function generateAndBuild(workingDirectory: string): void {
-    const genBuildCommands = [_autorestReset, _autorest, _pwshBuild]
-    
+    const genBuildCommands = [_autorestReset, _autorest, _pwshBuild];
     for (const command of genBuildCommands) {
-        try {
-            console.log(`Executing command: ${command}`);
-            const result = execSync(command, { stdio: 'inherit', cwd: workingDirectory });
+        logger.info(`Executing command`, { command });
+        const [bin, ...args] = command.split(/\s+/);
+        const res = spawnSync(bin, args, { cwd: workingDirectory, encoding: 'utf-8' });
+        if (res.error) {
+            logger.error(`Command spawn error`, { command }, res.error as any);
+            throw res.error;
         }
-        catch (error) {
-            console.error("Error executing command:", error);
-            throw error;
+        if (res.status !== 0) {
+            logger.error(`Command failed`, { command, status: res.status, stderr: trimLarge(res.stderr) });
+            throw new Error(`Command failed: ${command}`);
         }
+        if (res.stdout) logger.debug(`Command stdout`, { command, stdout: trimLarge(res.stdout) });
+        if (res.stderr) logger.debug(`Command stderr`, { command, stderr: trimLarge(res.stderr) });
+        logger.info(`Command finished`, { command });
     }
+}
+
+function trimLarge(text: string, max = 4000): string {
+    if (!text) return '';
+    return text.length > max ? text.slice(0, max) + `...[truncated ${text.length - max}]` : text;
 }
 
 export function getYamlContentFromReadMe(readmePath: string): string {
@@ -78,7 +89,7 @@ export async function getSwaggerContentFromUrl(swaggerUrl: string): Promise<any>
         }    
         return await response.json();
     } catch (error) {
-        console.error('Error fetching swagger content:', error);
+        logger.error('Error fetching swagger content', { swaggerUrl }, error as Error);
         throw error;
     }
 }
@@ -259,7 +270,7 @@ export async function getExamplesFromSpecs(workingDirectory: string): Promise<st
                 }
             }
         } catch (error) {
-            console.error(`Error fetching examples from ${apiUrl}:`, error);
+            logger.error(`Error fetching examples`, { apiUrl }, error as Error);
         }
     }
     return exampleSpecsPath;
@@ -269,7 +280,7 @@ export function getExampleJsonContent(exampleSpecsPath: string): Array<{name: st
     const jsonList: Array<{name: string, content: any}> = [];
     
     if (!fs.existsSync(exampleSpecsPath)) {
-        console.error(`Example specs directory not found at ${exampleSpecsPath}`);
+        logger.warn(`Example specs directory not found`, { exampleSpecsPath });
     }
     
     try {
@@ -282,13 +293,13 @@ export function getExampleJsonContent(exampleSpecsPath: string): Array<{name: st
                 const fileContent = fs.readFileSync(filePath, 'utf8');
                 const jsonContent = JSON.parse(fileContent);
                 jsonList.push({name: jsonFile.split('.json')[0], content: jsonContent});
-                console.log(`Loaded example JSON: ${jsonFile}`);
+                logger.debug(`Loaded example JSON`, { file: jsonFile });
             } catch (error) {
-                console.error(`Error reading JSON file ${jsonFile}:`, error);
+                logger.error(`Error reading JSON file`, { file: jsonFile }, error as Error);
             }
         }
     } catch (error) {
-        console.error(`Error reading examples directory ${exampleSpecsPath}:`, error);
+        logger.error(`Error reading examples directory`, { exampleSpecsPath }, error as Error);
     }
     
     return jsonList;
@@ -349,10 +360,10 @@ export async function createDirectoryIfNotExists(dirPath: string): Promise<void>
     try {
         if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath, { recursive: true });
-            console.log(`Created directory: ${dirPath}`);
+            logger.info(`Created directory`, { dirPath });
         }
     } catch (error) {
-        console.error(`Error creating directory ${dirPath}:`, error);
+        logger.error(`Error creating directory`, { dirPath }, error as Error);
         throw error;
     }
 }
@@ -361,12 +372,12 @@ export async function writeFileIfNotExists(filePath: string, content: string): P
     try {
         if (!fs.existsSync(filePath)) {
             fs.writeFileSync(filePath, content, 'utf8');
-            console.log(`Created file: ${filePath}`);
+            logger.info(`Created file`, { filePath });
         } else {
-            console.log(`File already exists: ${filePath}`);
+            logger.debug(`File already exists`, { filePath });
         }
     } catch (error) {
-        console.error(`Error writing file ${filePath}:`, error);
+        logger.error(`Error writing file`, { filePath }, error as Error);
         throw error;
     }
 }
@@ -388,7 +399,7 @@ export function getIdealModuleExamplePaths(): string {
         }
         return exampleDirs.join(';');
     } catch (err) {
-        console.error('Error collecting ideal module example paths:', err);
+        logger.error('Error collecting ideal module example paths', undefined, err as Error);
         return '';
     }
 }
@@ -410,7 +421,7 @@ export function getIdealModuleTestPaths(): string {
         }
         return testDirs.join(';');
     } catch (err) {
-        console.error('Error collecting ideal module test paths:', err);
+        logger.error('Error collecting ideal module test paths', undefined, err as Error);
         return '';
     }
 }

@@ -4,6 +4,7 @@ import * as utils from "./utils.js";
 import path from 'path';
 import { get, RequestOptions } from 'http';
 import { toolParameterSchema } from '../types.js';
+import { logger } from './logger.js';
 import { CodegenServer } from '../CodegenServer.js';
 
 export class ToolsService {
@@ -48,21 +49,46 @@ export class ToolsService {
             default:
                 throw new Error(`Tool ${name} not found`);
         }
-        return this.constructCallback<Args>(func, responseTemplate);
+        return this.constructCallback<Args>(func, responseTemplate, name);
     }
 
-    constructCallback = <Args extends ZodRawShape>(fn: (arr: Args) => Promise<string[]>, responseTemplate: string|undefined): (args: Args) => Promise<CallToolResult> => {
+    constructCallback = <Args extends ZodRawShape>(fn: (arr: Args) => Promise<string[]>, responseTemplate: string|undefined, toolName: string): (args: Args) => Promise<CallToolResult> => {
         return async (args: Args): Promise<CallToolResult> => {
-            const argsArray = await fn(args);
-            const response = this.getResponseString(argsArray, responseTemplate) ?? "";
-            return {
-                content: [
-                    {
-                        type: "text",
-                        text: response
-                    }
-                ]
-            };
+            const argKeys = Object.keys(args as any);
+            const correlationId = `${toolName}-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
+            // Build a sanitized snapshot of arguments (stringified & truncated) for logging
+            const rawArgs: any = args as any;
+            const sanitized: Record<string, any> = {};
+            for (const k of argKeys) {
+                try {
+                    const v = rawArgs[k];
+                    let str: string;
+                    if (typeof v === 'string') str = v;
+                    else if (typeof v === 'number' || typeof v === 'boolean') str = String(v);
+                    else str = JSON.stringify(v);
+                    if (str && str.length > 400) str = str.slice(0, 400) + `...[${str.length - 400} trunc]`;
+                    sanitized[k] = str;
+                } catch {
+                    sanitized[k] = '[unserializable]';
+                }
+            }
+            logger.info('Tool invoked', { tool: toolName, correlationId, args: sanitized });
+            try {
+                const argsArray = await fn(args);
+                const response = this.getResponseString(argsArray, responseTemplate) ?? "";
+                logger.info(`Tool completed`, { tool: toolName, correlationId });
+                return {
+                    content: [
+                        {
+                            type: "text",
+                            text: response
+                        }
+                    ]
+                };
+            } catch (err: any) {
+                logger.error(`Tool failed`, { tool: toolName, correlationId }, err);
+                throw err;
+            }
         };
     }
 
@@ -153,8 +179,12 @@ export class ToolsService {
 
     setupModuleStructure = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
         try {
+            const runId = `setup-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
+            
             // List available services with dropdown
             const modules = await utils.listSpecModules();
+            logger.debug('Eliciting user input', { step: 'service-select', runId, moduleCount: modules.length });
+            
             const serviceResponse = await this._server!.elicitInput({
                 message: `Select an Azure service from the dropdown below:`,
                 requestedSchema: {
@@ -174,12 +204,14 @@ export class ToolsService {
             if (!selectedService) {
                 throw new Error("No service selected");
             }
+            logger.info('User input captured', { step: 'service', service: selectedService, runId });
 
             // List providers for the selected service with dropdown
             const providers = await utils.listProvidersForService(selectedService);
             if (providers.length === 0) {
                 throw new Error(`No providers found for service '${selectedService}'`);
             }
+            logger.debug('Eliciting user input', { step: 'provider-select', runId, providerCount: providers.length, service: selectedService });
 
             const providerResponse = await this._server!.elicitInput({
                 message: `Select a provider for ${selectedService} from the dropdown below:`,
@@ -200,6 +232,7 @@ export class ToolsService {
             if (!selectedProvider) {
                 throw new Error("No provider selected");
             }
+            logger.info('User input captured', { step: 'provider', provider: selectedProvider, runId });
 
             // List API versions with dropdown combining version and stability
             const apiVersions = await utils.listApiVersions(selectedService, selectedProvider);
@@ -213,6 +246,7 @@ export class ToolsService {
             }
 
             const versionOptions = allVersions.map(v => `${v.version} (${v.stability})`);
+            logger.debug('Eliciting user input', { step: 'version-select', runId, versionOptionCount: versionOptions.length, service: selectedService, provider: selectedProvider });
             
             const versionResponse = await this._server!.elicitInput({
                 message: `Select an API version for ${selectedService}/${selectedProvider} from the dropdown below:`,
@@ -241,6 +275,7 @@ export class ToolsService {
             
             const selectedVersion = versionMatch[1];
             const selectedStability = versionMatch[2] as 'stable' | 'preview';
+            logger.info('User input captured', { step: 'version', version: selectedVersion, stability: selectedStability, runId });
 
             // Resolve Readme placeholder values based on Responses
             const resolved = await utils.resolveAutorestInputs({
@@ -249,6 +284,7 @@ export class ToolsService {
                 stability: selectedStability,
                 version: selectedVersion
             });
+            logger.debug('Autorest inputs resolved', { runId, resolvedServiceName: resolved.serviceName, commitId: resolved.commitId });
 
             const moduleNameResponse = await this._server!.elicitInput({
                 message: `What would you like call the powershell module? \n\n Configuration resolved:\n- Service: ${selectedService}\n- Provider: ${selectedProvider}\n- Version: ${selectedVersion} (${selectedStability})\n- Service Name: ${resolved.serviceName}\n- Commit ID: ${resolved.commitId}\n- Service Specs: ${resolved.serviceSpecs}\n- Swagger File: ${resolved.swaggerFileSpecs}`,
@@ -268,6 +304,7 @@ export class ToolsService {
             if (!moduleName) {
                 throw new Error("No module name provided");
             }
+            logger.info('User input captured', { step: 'moduleName', moduleName, runId });
 
             // Create folder structure and README.md
             const mcpPath = process.cwd(); // Current working directory is tools/Mcp
@@ -296,10 +333,12 @@ export class ToolsService {
             // Write README.md file
             await utils.writeFileIfNotExists(readmePath, readmeContent);
 
+            logger.info('Setup module structure complete', { runId, moduleName });
             return [moduleName];
 
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : String(error);
+            logger.error('Setup module structure failed', { errorMessage });
             return [`Error during setup: ${errorMessage}`];
         }
     }

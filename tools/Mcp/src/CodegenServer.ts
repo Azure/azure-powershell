@@ -10,6 +10,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { RequestOptions } from "https";
 import { ElicitRequest, ElicitResult } from "@modelcontextprotocol/sdk/types.js";
+import { logger } from "./services/logger.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const srcPath = path.resolve(__dirname, "..", "src");
@@ -105,7 +106,18 @@ export class CodegenServer {
                 schema.name,
                 schema.description,
                 parameter,
-                (args: any) => callback(args)
+                async (args: any) => {
+                    const correlationId = `${schema.name}-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
+                    logger.debug('Prompt started', { prompt: schema.name, correlationId });
+                    try {
+                        const result = await callback(args);
+                        logger.info('Prompt completed', { prompt: schema.name, correlationId });
+                        return result;
+                    } catch (err: any) {
+                        logger.error('Prompt failed', { prompt: schema.name, correlationId }, err);
+                        throw err;
+                    }
+                }
             );
         }
     }
@@ -120,7 +132,18 @@ export class CodegenServer {
                 schema.name,
                 schema.description,
                 parameter,
-                (args: any) => callback(args)
+                async (args: any) => {
+                    const correlationId = `${schema.name}-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
+                    logger.debug('Resource requested', { resource: schema.name, correlationId });
+                    try {
+                        const result = await callback(args);
+                        logger.info('Resource provided', { resource: schema.name, correlationId });
+                        return result;
+                    } catch (err: any) {
+                        logger.error('Resource failed', { resource: schema.name, correlationId }, err);
+                        throw err;
+                    }
+                }
             );
         }
     }
@@ -133,8 +156,8 @@ export class CodegenServer {
                 const absPath = path.join(srcPath, "specs", relPath);
                 try {
                     text = readFileSync(absPath, "utf-8");
-                } catch (e) {
-                    console.error(`Failed to load prompt file ${absPath}:`, e);
+                } catch (e: any) {
+                    logger.error(`Failed to load prompt file`, { absPath }, e as Error);
                 }
             }
             this._responses.set(response.name, text);
