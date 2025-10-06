@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added certificate-based authentication support for VPN Gateway connections
+    - New cmdlet `New-AzVirtualNetworkGatewayCertificateAuthentication` to create certificate authentication configuration
+    - Added `-AuthenticationType` and `-CertificateAuthentication` parameters to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`
+    - Added `-UserAssignedIdentityId` parameter to `Set-AzVirtualNetworkGateway` for managed identity configuration
 
 ## Version 7.21.0
 - Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
