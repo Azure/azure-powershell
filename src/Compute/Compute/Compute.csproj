@@ -22,6 +22,7 @@
     <PackageReference Include="System.Management" Version="4.5.0" />
     <!-- Include the following DLLs for security issue -->
     <PackageReference Include="System.Security.Cryptography.Xml" Version="4.7.1" />
+    <PackageReference Include="Azure.Identity" Version="1.11.4" />
   </ItemGroup>
 
   <ItemGroup>
