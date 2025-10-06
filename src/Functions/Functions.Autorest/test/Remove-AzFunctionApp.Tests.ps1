@@ -23,10 +23,13 @@ Describe 'Remove-AzFunctionApp' {
         $appName = $env.functionNamePowerShellNew4
         Write-Verbose "App name: $appName" -Verbose
         $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
         $location = 'centralus'
         Write-Verbose "Location: $location" -Verbose
         $storageAccountName = $env.storageAccountWindows
         Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        $workerType = "Windows"
+        Write-Verbose "Worker type: $workertype" -Verbose
 
         $minimumWorkerCount = 1
         Write-Verbose "Minimum worker count: $minimumWorkerCount" -Verbose
@@ -39,8 +42,8 @@ Describe 'Remove-AzFunctionApp' {
         {
             Write-Verbose "Creating function app plan '$planName'" -Verbose
             New-AzFunctionAppPlan -Name $planName `
-                                  -ResourceGroupName $resourceGroupName`
-                                  -WorkerType "Windows" `
+                                  -ResourceGroupName $resourceGroupName `
+                                  -WorkerType $workerType `
                                   -MinimumWorkerCount $minimumWorkerCount `
                                   -MaximumWorkerCount $maxBurst `
                                   -Location $location `
