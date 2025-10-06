@@ -15,7 +15,7 @@ Retrieves detailed information about a specific failover test for a virtual netw
 ```
 Get-AzVirtualNetworkGatewayFailoverSingleTestDetail -ResourceGroupName <String>
  -VirtualNetworkGatewayName <String> -PeeringLocation <String> -FailoverTestId <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,6 @@ The `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` cmdlet retrieves detai
 You can obtain the FailoverTestId (or TestGuid) from the output of the Get-AzVirtualNetworkGatewayFailoverAllTestsDetail cmdlet, which provides a list of all failover tests conducted on the virtual network gateway.
 
 This cmdlet is especially useful when you need to examine the results of a single failover test, such as the start time, end time, status, and other related test details. You can specify the failover test to retrieve by using the FailoverTestId and PeeringLocation.
-
 
 ## EXAMPLES
 
@@ -76,21 +75,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

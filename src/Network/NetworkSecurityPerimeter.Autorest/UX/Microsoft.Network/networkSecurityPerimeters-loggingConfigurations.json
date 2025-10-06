@@ -1,6 +1,6 @@
 {
   "resourceType": "networkSecurityPerimeters/loggingConfigurations",
-  "apiVersion": "2024-07-01",
+  "apiVersion": "2024-10-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.network"
   },

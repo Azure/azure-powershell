@@ -14,7 +14,8 @@ Creates a new capture setting object.
 
 ```
 New-AzPacketCaptureSettingsConfig [-FileCount <Int32>] [-FileSizeInBytes <Int64>]
- [-SessionTimeLimitInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SessionTimeLimitInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,7 @@ In the above example, passing file count with file size and session time (in sec
 
 ### Example 2
 ```powershell
-New-AzPacketCaptureSettingsConfig 
+New-AzPacketCaptureSettingsConfig
 ```
 
 In the above example, without passing any parameters. It will create an object with default values,
@@ -116,5 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSPacketCaptureSettings
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
