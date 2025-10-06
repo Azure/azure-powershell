@@ -53,6 +53,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             Write-Verbose "Storage account name: $storageAccountName" -Verbose
             Write-Verbose "Tags: $($tags | Out-String)" -Verbose
 
+            Write-Verbose "Creating function app $appName in resource group $resourceGroupName with plan $planName" -Verbose
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `
@@ -64,6 +65,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                               -IdentityType SystemAssigned `
                               -Tag $tags
 
+            Write-Verbose "Run: Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName" -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             Write-Verbose "FunctionApp retrieved. Validating properties" -Verbose
             $functionApp.OSType | Should -Be "Windows"
@@ -76,8 +78,10 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             }
 
             Write-Verbose "Create premium function app plan" -Verbose
+            $location = $env.location
+            Write-Verbose "Location: $location" -Verbose
             $newPlanName = $env.planNameWorkerTypeWindowsNew
-            Write-Verbose "Updated planName: $newPlanName" -Verbose
+            Write-Verbose "New planName: $newPlanName" -Verbose
             New-AzFunctionAppPlan -Name $newPlanName `
                                   -ResourceGroupName $resourceGroupName `
                                   -WorkerType Windows `
@@ -86,6 +90,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                                   -Location $location `
                                   -Sku EP1
 
+            Write-Verbose "Run: Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName" -Verbose
             $plan = Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName
             Write-Verbose "Plan retrieved. Validating properties" -Verbose
             $plan.WorkerType | Should -Be "Windows"
@@ -146,11 +151,23 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $appName = $env.functionNamePowerShellNew2
             Write-Verbose "App name: $appName" -Verbose
 
+           $planName = $env.planNameWorkerTypeWindows
+            Write-Verbose "Plan name: $planName" -Verbose
+
+            $resourceGroupName = $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+            $storageAccountName = $env.storageAccountWindows
+            Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+            $workerType = "Windows"
+            Write-Verbose "Worker type: $workertype" -Verbose
+
             $functionAppJob = New-AzFunctionApp -Name $appName `
                                                 -ResourceGroupName $resourceGroupName `
                                                 -PlanName $planName `
                                                 -StorageAccount $storageAccountName `
-                                                -OSType Windows `
+                                                -OSType workerType `
                                                 -Runtime PowerShell `
                                                 -RuntimeVersion 7.4 `
                                                 -FunctionsVersion 4 `
