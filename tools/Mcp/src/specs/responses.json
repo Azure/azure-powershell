@@ -43,5 +43,10 @@
         "name": "autorest-readme-template",
         "type": "resource",
         "text": "@file:assets/autorest-readme-template.md"
+    },
+    {
+        "name": "run-partner-module-workflow",
+        "type": "tool",
+        "text": "@file:assets/partner-module-workflow.md"
     }
 ]

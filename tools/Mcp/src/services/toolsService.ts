@@ -46,6 +46,9 @@ export class ToolsService {
             case "setupModuleStructure":
                 func = this.setupModuleStructure<Args>;
                 break;
+            case "runPartnerModuleWorkflow":
+                func = this.runPartnerModuleWorkflow<Args>;
+                break;
             default:
                 throw new Error(`Tool ${name} not found`);
         }
@@ -341,5 +344,9 @@ export class ToolsService {
             logger.error('Setup module structure failed', { errorMessage });
             return [`Error during setup: ${errorMessage}`];
         }
+    }
+
+    runPartnerModuleWorkflow = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
+        return [];
     }
 }
