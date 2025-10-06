@@ -188,6 +188,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyException
 ## NOTES
-## RELATED LINKS
 
 ## RELATED LINKS
