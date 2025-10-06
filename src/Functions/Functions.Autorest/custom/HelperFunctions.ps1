@@ -2168,6 +2168,17 @@ function AddRuntimeToDictionary
         $list = New-Object System.Collections.Generic.List[[Runtime]]
     }
 
+    # Only add runtime versions that are not in the list already
+    foreach ($existingRuntime in $list)
+    {
+        if ($existingRuntime.Version -eq $Runtime.Version)
+        {
+            Write-Debug "$DEBUG_PREFIX Runtime version $($Runtime.Version) for runtime $($Runtime.Name) already exists. Skipping..."
+            return
+        }
+    }
+
+    Write-Debug "$DEBUG_PREFIX Adding runtime version $($Runtime.Version) for runtime $($Runtime.Name)."
     $list.Add($Runtime)
     $RuntimeToVersionDictionary[$Runtime.Name] = $list
 
