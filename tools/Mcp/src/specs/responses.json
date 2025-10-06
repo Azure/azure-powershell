@@ -22,12 +22,12 @@
     {
         "name": "create-example",
         "type": "tool",
-        "text": "@file:example-instructions.md"
+        "text": "@file:assets/example-instructions.md"
     },
     {
         "name": "create-test",
         "type": "tool",
-        "text": "@file:test-instructions.md"
+        "text": "@file:assets/test-instructions.md"
     },
     {
         "name": "setup-module-structure",
@@ -35,18 +35,13 @@
         "text": "Created the module structure under the folder: {0}."
     },
     {
-        "name": "create-greeting",
-        "type": "prompt",
-        "text": "Please generate a greeting in {1} style to {0}."
-    },
-    {
         "name": "partner-module-workflow",
         "type": "prompt",
-        "text": "@file:prompts/partner-module-workflow.md"
+        "text": "@file:assets/partner-module-workflow.md"
     },
     {
         "name": "autorest-readme-template",
         "type": "resource",
-        "text": "@file:autorest-readme-template.md"
+        "text": "@file:assets/autorest-readme-template.md"
     }
 ]

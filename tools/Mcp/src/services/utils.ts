@@ -405,7 +405,7 @@ export function getIdealModuleExamplePaths(): string {
 }
 
 export function getIdealModuleTestPaths(): string {
-    const idealModulesRoot = path.join(process.cwd(), 'src', 'ideal-modules');
+    const idealModulesRoot = path.join(process.cwd(), 'src', 'assets', 'ideal-modules');
     try {
         if (!fs.existsSync(idealModulesRoot)) {
             return '';

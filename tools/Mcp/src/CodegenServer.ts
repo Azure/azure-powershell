@@ -153,7 +153,7 @@ export class CodegenServer {
             let text = response.text;
             if (text.startsWith("@file:")) {
                 const relPath = text.replace("@file:", "");
-                const absPath = path.join(srcPath, "specs", relPath);
+                const absPath = path.join(srcPath, relPath);
                 try {
                     text = readFileSync(absPath, "utf-8");
                 } catch (e: any) {

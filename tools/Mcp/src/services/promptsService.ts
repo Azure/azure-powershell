@@ -102,18 +102,3 @@ export class PromptsService {
         return [];
     };
 }
-
-
-// Some Testing Specs:
-
-        //  {
-        //     "name": "partner-module-workflow",
-        //     "description": "Full autonomous workflow instructions to generate a partner Azure PowerShell module via Autorest.",
-        //     "parameters": [
-        //         {"name": "serviceName", "description": "Service name placeholder. This also often corresponds with the Name of the Powershell Module.", "type": "string", "optional": true},
-        //         {"name": "commitId", "description": "Commit id of the swagger from azure-rest-api-specs", "type": "string", "optional": true},
-        //         {"name": "serviceSpecs", "description": "Service specs path under specification. Path of a swagger upto the resource-manager.", "type": "string", "optional": true},
-        //         {"name": "swaggerFileSpecs", "description": "Swagger JSON relative path. Entire path of the swagger down to the openapi file.", "type": "string", "optional": true}
-        //     ],
-        //     "callbackName": "createPartnerModuleWorkflow"
-        // }

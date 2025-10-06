@@ -18,7 +18,7 @@ You are automating a fresh Azure PowerShell partner module. Follow these steps e
 
 4. create-test
    - Call tool `create-test` with workingDirectory.
-   - Execute the plan in the tool response (CRUD phases, help-based parameter filtering). On failure: stop.
+   - Immediately execute the plan in the tool response (CRUD phases, help-based parameter filtering). On failure: stop.
 
 5. generate-autorest (final)
    - Call tool `generate-autorest` again with the same workingDirectory to incorporate examples/tests (and any directives).
@@ -29,4 +29,4 @@ Rules:
 * Do not manually copy help files; only read them when executing example/test plans.
 * Do not proceed past a failing step.
 
-Completion: After step 5, stop. Provide a concise summary (steps succeeded, any optional directives applied). No additional creative output.
+Completion: After step 5, stop. Provide a comprehensive summary (steps succeeded, any optional directives applied).
