@@ -82,6 +82,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             Write-Verbose "Location: $location" -Verbose
             $newPlanName = $env.planNameWorkerTypeWindowsNew
             Write-Verbose "New planName: $newPlanName" -Verbose
+
             New-AzFunctionAppPlan -Name $newPlanName `
                                   -ResourceGroupName $resourceGroupName `
                                   -WorkerType Windows `
@@ -160,14 +161,14 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $storageAccountName = $env.storageAccountWindows
             Write-Verbose "Storage account name: $storageAccountName" -Verbose
 
-            $workerType = "Windows"
+            $osType = "Windows"
             Write-Verbose "Worker type: $workertype" -Verbose
 
             $functionAppJob = New-AzFunctionApp -Name $appName `
                                                 -ResourceGroupName $resourceGroupName `
                                                 -PlanName $planName `
                                                 -StorageAccount $storageAccountName `
-                                                -OSType workerType `
+                                                -OSType $osType `
                                                 -Runtime PowerShell `
                                                 -RuntimeVersion 7.4 `
                                                 -FunctionsVersion 4 `
@@ -179,7 +180,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $result | Remove-Job -ErrorAction SilentlyContinue
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
-            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.OSType | Should -Be $osType
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.AppServicePlan | Should -Be $planName
 
