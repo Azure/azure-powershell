@@ -71,21 +71,7 @@ The first command gets a virtual network gateway natRule named natRule1 that's t
 The second command gets a virtual network gateway natRule named natRule2 that's type is EgressSnat.
 The third command creates this new virtual Network gateway connection with Ingress and Egress NatRules.
 
-### Example 3 Create VPN connection with certificate authentication
-```powershell
-$vnetgw1 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "gw1"
-$localnetgw = Get-AzLocalNetworkGateway -ResourceGroupName "Rg1" -name "localgw1"
-$certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication -OutboundAuthCertificate "MIICmjCCAYIGCSqGSIb3DQEJEjEOMAwGCisGAQQBgjcCAQwwHAYJKoZIhvcNAQkFMQ8XDTEzMDEwMzEyNTk1OVowLwYJKoZIhvcNAQkEMSIEII8Xqf/JHKJzaOPoCdQf2c7jZwYmK1hc8LTfBrMJuXzi"
-
-New-AzVirtualNetworkGatewayConnection -Name conn-cert-1 -ResourceGroupName "Rg1" -Location "eastus" -VirtualNetworkGateway1 $vnetgw1 -LocalNetworkGateway2 $localnetgw -ConnectionType IPsec -AuthenticationType Certificate -CertificateAuthentication $certAuth
-```
-
-The first command gets a virtual network gateway.
-The second command gets a local network gateway.
-The third command creates a certificate authentication object.
-The fourth command creates a new VPN connection using certificate authentication.
-
-### Example 4 Add GatewayCustomBgpIpAddress to virtual network gateway connection
+### Example 3 Add GatewayCustomBgpIpAddress to virtual network gateway connection
 ```powershell
 $LocalnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName "PS_testing" -name "testLng"
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName PS_testing -ResourceName testGw
@@ -97,6 +83,32 @@ New-AzVirtualNetworkGatewayConnection -ResourceGroupName "PS_testing" -name "Con
 The two command gets a local network gateway and virtual network gateway.
 The third command creates a AzGatewayCustomBgpIpConfigurationObject.
 The third command creates this new virtual Network gateway connection with GatewayCustomBgpIpAddress.
+
+### Example 4 Create a new virtual network gateway connection with certificate-based authentication
+```powershell
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myVnetGateway"
+$localGateway = Get-AzLocalNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myLocalGateway"
+
+# Create certificate chain array with base64-encoded certificates (without headers/footers)
+$certChain = @(
+    "MIIDfzCCAmegA...",
+    "MIIDezCCAmOgA..."
+)
+
+$certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication `
+    -OutboundAuthCertificate "https://myvault.vault.azure.net/certificates/mycert/abc123" `
+    -InboundAuthCertificateSubjectName "CN=MyCertSubject" `
+    -InboundAuthCertificateChain $certChain
+
+New-AzVirtualNetworkGatewayConnection -Name "myCertConnection" -ResourceGroupName "myResourceGroup" -Location "eastus" `
+    -VirtualNetworkGateway1 $gateway -LocalNetworkGateway2 $localGateway -ConnectionType IPsec `
+    -AuthenticationType "Certificate" -CertificateAuthentication $certAuth
+```
+
+This example creates a new virtual network gateway connection with certificate-based authentication. 
+The first two commands get the virtual network gateway and local network gateway.
+The New-AzVirtualNetworkGatewayCertificateAuthentication cmdlet creates the certificate authentication configuration with the Key Vault certificate URL for outbound authentication, the certificate subject name for inbound authentication, and the certificate chain.
+The final command creates the new connection with certificate-based authentication instead of a pre-shared key.
 
 ## PARAMETERS
 

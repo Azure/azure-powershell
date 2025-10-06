@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetworkgatewaycertificateauthentication
+online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterloggingconfiguration
 schema: 2.0.0
 ---
 
 # New-AzVirtualNetworkGatewayCertificateAuthentication
 
 ## SYNOPSIS
-Creates a certificate authentication object for VPN gateway connections.
+Creates a certificate authentication configuration object for VPN gateway connections.
 
 ## SYNTAX
 
@@ -19,24 +19,25 @@ New-AzVirtualNetworkGatewayCertificateAuthentication [-OutboundAuthCertificate <
 ```
 
 ## DESCRIPTION
-The New-AzVirtualNetworkGatewayCertificateAuthentication cmdlet creates a certificate authentication object that can be used with New-AzVirtualNetworkGatewayConnection to configure certificate-based authentication for VPN gateway connections. This enables secure authentication using certificates instead of pre-shared keys.
+Creates a certificate authentication configuration object that can be used when creating or updating a VPN gateway connection with certificate-based authentication.
 
 ## EXAMPLES
 
-### Example 1: Create a certificate authentication object with outbound certificate
+### Example 1: Create a certificate authentication object
 ```powershell
-PS C:\> $certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication -OutboundAuthCertificate "https://myvault.vault.azure.net/secrets/client-cert"
+# Create certificate chain array with base64-encoded certificates (without BEGIN/END CERTIFICATE headers)
+$certChain = @(
+    "MIIDfzCCAmegAwIBAgIQIFxjNWTuGjYGa8zJVnpfnDANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1DZXJ0QmFzZWRBdXRoMB4XDTI0MTIxODA1MjkzOVoXDTI1MTIxODA2MDk...",
+    "MIIDezCCAmOgAwIBAgIQQIpJdJF8D8JwkqF6fJ6zGDANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1DZXJ0QmFzZWRBdXRoMB4XDTI0MTIxODA1MjkzOVoXDTI1MTIxODA2MDk..."
+)
+
+$certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication `
+    -OutboundAuthCertificate "https://myvault.vault.azure.net/certificates/mycert/abc123" `
+    -InboundAuthCertificateSubjectName "MyCertSubject" `
+    -InboundAuthCertificateChain $certChain
 ```
 
-Creates a certificate authentication object with only an outbound authentication certificate from Azure Key Vault.
-
-### Example 2: Create a complete certificate authentication object
-```powershell
-PS C:\> $certChain = @("-----BEGIN CERTIFICATE-----`nMIIC...`n-----END CERTIFICATE-----")
-PS C:\> $certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication -OutboundAuthCertificate "https://myvault.vault.azure.net/secrets/client-cert" -InboundAuthCertificateSubjectName "CN=MyRootCA,O=MyOrg,C=US" -InboundAuthCertificateChain $certChain
-```
-
-Creates a complete certificate authentication object with outbound certificate, inbound certificate subject name, and certificate chain.
+This example creates a certificate authentication object with a Key Vault certificate URL for outbound authentication, a certificate subject name for inbound authentication, and a certificate chain. This object can then be used with New-AzVirtualNetworkGatewayConnection or Set-AzVirtualNetworkGatewayConnection.
 
 ## PARAMETERS
 
@@ -44,7 +45,7 @@ Creates a complete certificate authentication object with outbound certificate, 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -59,7 +60,7 @@ Accept wildcard characters: False
 Inbound authentication certificate public keys.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +75,7 @@ Accept wildcard characters: False
 Inbound authentication certificate subject name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +90,7 @@ Accept wildcard characters: False
 Keyvault secret ID for outbound authentication certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +105,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
