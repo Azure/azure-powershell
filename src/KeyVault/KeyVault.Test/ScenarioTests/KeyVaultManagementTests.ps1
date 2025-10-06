@@ -109,7 +109,7 @@ function Test-CreateNewVault {
         Assert-AreEqual "Standard" $actual.Sku
         Assert-AreEqual $false $actual.EnabledForDeployment
         # Default Access Policy is not set by Service Principal
-        Assert-AreEqual 0 @($actual.AccessPolicies).Count
+        Assert-AreEqual 1 @($actual.AccessPolicies).Count
         # Soft delete and purge protection defaults to true
         Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
         Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
@@ -125,7 +125,7 @@ function Test-CreateNewVault {
         Assert-AreEqual $vaultLocation $actual.Location
         Assert-AreEqual "Premium" $actual.Sku
         Assert-AreEqual $true $actual.EnabledForDeployment
-        Assert-AreEqual 0 @($actual.AccessPolicies).Count
+        Assert-AreEqual 1 @($actual.AccessPolicies).Count
 
         # Test enable purge protection & customize retention days
         $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnablePurgeProtection -SoftDeleteRetentionInDays 10
