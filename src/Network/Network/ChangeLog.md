@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+- Point NetworkSecurityPerimeter API version to 2024-10-01
 
 ## Version 7.21.0
 - Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
