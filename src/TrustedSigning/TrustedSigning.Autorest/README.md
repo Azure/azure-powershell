@@ -28,7 +28,7 @@ For information on how to develop for `Az.TrustedSigning`, see [how-to.md](how-t
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 7ecaa839ffee4d2be46df1783e6167714c0db523
+commit: 47da73f25423b00212169444bda8d05964cf8d22
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -40,7 +40,7 @@ try-require:
   - $(repo)/specification/codesigning/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 1.0.0
 # Normally, title is the service name
 title: TrustedSigning
 subject-prefix: $(service-name)
