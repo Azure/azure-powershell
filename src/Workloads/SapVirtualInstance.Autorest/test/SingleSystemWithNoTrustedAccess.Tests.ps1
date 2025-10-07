@@ -18,7 +18,7 @@ Describe 'SingleSystemWithNoTrustedAccess' {
     It 'CreateSingleSystemWithNoTrustedAccess' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $CreateSingleSystemWithNoTrustedAccessConfig = Join-Path $PSScriptRoot $env.CreateSingleSystemWithNoTrustedAccessConfigPath
-        $CreateSingleSystemWithNoTrustedAccessResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateSingleSystemWithNoTrustedAccessSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateSingleSystemWithNoTrustedAccessConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPub -UserAssignedIdentity $env.IdentityName
+        $CreateSingleSystemWithNoTrustedAccessResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateSingleSystemWithNoTrustedAccessSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateSingleSystemWithNoTrustedAccessConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPub -UserAssignedIdentity @($env.IdentityName)
         $CreateSingleSystemWithNoTrustedAccessResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         $CreateSingleSystemWithNoTrustedAccessResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPub
     }
@@ -29,7 +29,7 @@ Describe 'SingleSystemWithNoTrustedAccess' {
 
     It 'CreateSingleSystemWithNoTrustedAccessAlias' {
         $CreateSingleSystemWithNoTrustedAccessAliasConfig = Join-Path $PSScriptRoot $env.CreateSingleSystemWithNoTrustedAccessConfigPath
-        $CreateSingleSystemWithNoTrustedAccessAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateSingleSystemWithNoTrustedAccessSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateSingleSystemWithNoTrustedAccessAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPub -UserAssignedIdentity $env.IdentityName
+        $CreateSingleSystemWithNoTrustedAccessAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateSingleSystemWithNoTrustedAccessSIDAlias -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateSingleSystemWithNoTrustedAccessAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPub -UserAssignedIdentity @($env.IdentityName)
         $CreateSingleSystemWithNoTrustedAccessAliasResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         $CreateSingleSystemWithNoTrustedAccessAliasResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPub
     }

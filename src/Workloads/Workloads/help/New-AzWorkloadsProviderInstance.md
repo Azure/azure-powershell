@@ -16,8 +16,7 @@ Creates a provider instance for the specified subscription, resource group, SAP 
 New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ProviderSetting <IProviderSpecificProperties>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

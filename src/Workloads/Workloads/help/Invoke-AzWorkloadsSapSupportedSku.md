@@ -16,8 +16,7 @@ Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 ```
 Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] -AppLocation <String>
  -DatabaseType <String> -DeploymentType <String> -Environment <String> -SapProduct <String>
- [-HighAvailabilityType <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-HighAvailabilityType <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaJsonString
@@ -35,16 +34,14 @@ Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] 
 ### Invoke
 ```
 Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>]
- -Body <ISapSupportedSkusRequest> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Body <ISapSupportedSkusRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityExpanded
 ```
 Invoke-AzWorkloadsSapSupportedSku -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
  -DatabaseType <String> -DeploymentType <String> -Environment <String> -SapProduct <String>
- [-HighAvailabilityType <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-HighAvailabilityType <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentity

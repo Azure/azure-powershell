@@ -17,8 +17,7 @@ New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-Subscription
  [-AppLocation <String>] [-IdentityType <ManagedServiceIdentityType>] [-LogAnalyticsWorkspaceArmId <String>]
  [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <RoutingPreference>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-ZoneRedundancyPreference <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
