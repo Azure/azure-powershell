@@ -30,8 +30,7 @@ Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <Strin
 ```
 Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentitySapVirtualInstanceExpanded
@@ -45,8 +44,7 @@ Start-AzWorkloadsSapApplicationInstance -Name <String>
 ```
 Start-AzWorkloadsSapApplicationInstance -Name <String>
  -SapVirtualInstanceInputObject <ISapVirtualInstanceIdentity> -Body <IStartRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Start
@@ -59,15 +57,13 @@ Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <Strin
 ### StartViaIdentityExpanded
 ```
 Start-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-StartVM]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
 Start-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> -Body <IStartRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

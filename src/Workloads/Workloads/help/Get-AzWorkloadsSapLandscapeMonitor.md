@@ -15,8 +15,7 @@ Gets configuration values for Single Pane Of Glass for SAP monitor for the speci
 ### Get (Default)
 ```
 Get-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
