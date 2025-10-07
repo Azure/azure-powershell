@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
 
-        //Gets or sets AddProxyAgentExtension.
+        // Gets or sets the AddProxyAgentExtension.
         public bool? AddProxyAgentExtension { get; set; }
+
     }
 }

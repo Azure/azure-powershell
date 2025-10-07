@@ -7947,21 +7947,21 @@ Test-VMAddProxyAgentExtension creates a VM with Enabled ProxyAgent and added Pro
 function Test-VMAddProxyAgentExtension
 {
     # Setup
-    $resourceGroupName = "resourceGroup1";
-    $adminUsername = "adminUser";
-    $adminPassword = "Pssword123" | ConvertTo-SecureString -AsPlainText -Force;
+    $resourceGroupName = Get-ComputeTestResourceName;
+    $adminUsername = Get-ComputeTestResourceName;
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
     $vmName = 'VM1';
     $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
-    Connect-AzAccount
+
 
     try
     {
-        New-AzVM -ResourceGroupName $resourceGroupName -Name $VMName -Credential $cred -image $imageName -EnableProxyAgent -AddProxyAgentExtension
+        New-AzVM -ResourceGroupName $resourceGroupName -Name $VMName -Credential $cred -image $imageName -Location 'eastus2' -EnableProxyAgent -AddProxyAgentExtension
 
         # Update vm to add proxy agent extension 
         $VM = Get-AzVM -ResourceGroupName $resourceGroupName -VMName $vmName
-        $VM = Set-AzVMProxyAgentSetting -VM $VM -EnableProxyAgent $true -AddProxyAgentExtension false
+        $VM = Set-AzVMProxyAgentSetting -VM $VM -EnableProxyAgent $true -AddProxyAgentExtension $false
         Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
 
         # Validate 
@@ -7982,25 +7982,26 @@ Test-VMSSAddProxyAgentExtension creates a VMSS with Enabled ProxyAgent and added
 function Test-VMSSAddProxyAgentExtension
 {
     # Setup
-    $resourceGroupName = "resourceGroup1";
-    $adminUsername = "adminUser";
-    $adminPassword = "Pssword123" | ConvertTo-SecureString -AsPlainText -Force;
+    $resourceGroupName = Get-ComputeTestResourceName;
+    $adminUsername = Get-ComputeTestResourceName;
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
     $vmssName = 'VMSS1';
     $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
 
+    
     try
     {
-        New-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName -Credential $cred -image $imageName -EnableProxyAgent -AddProxyAgentExtension
+        New-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName -Credential $cred -image $imageName -Location 'eastus2' -EnableProxyAgent -AddProxyAgentExtension
 
         # Update vmss to add proxy agent extension 
         $VMSS = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName
-        $VMSS = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $VMSS -AddProxyAgentExtension false
+        $VMSS = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $VMSS -EnableProxyAgent $true -AddProxyAgentExtension $true
         Update-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $VMSS 
 
         # Validate 
         Assert-AreEqual $VMSS.SecurityProfile.ProxyAgentSettings.Enabled $true
-        Assert-AreEqual $VMSS.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $false
+        Assert-AreEqual $VMSS.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
     }
     finally
     {
