@@ -79,49 +79,70 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
                 var currentIp = current?.IPRules != null ? new List<string>(current.IPRules.Select(r => r.Value)) : new List<string>();
                 var currentVnet = current?.VirtualNetworkRules != null ? new List<string>(current.VirtualNetworkRules.Select(r => r.Id)) : new List<string>();
 
-                if (ipSpecified && IpAddressRange != null)
+                // Merge new entries, avoiding duplicates (case-insensitive) – mirrors Key Vault merge helper semantics
+                if (ipSpecified)
                 {
-                    foreach (var ip in IpAddressRange)
-                    {
-                        if (!currentIp.Exists(x => string.Equals(x, ip, StringComparison.OrdinalIgnoreCase)))
-                        {
-                            currentIp.Add(ip);
-                        }
-                    }
+                    currentIp = MergeInputToSource(IpAddressRange, currentIp).ToList();
                 }
-                if (vnetSpecified && VirtualNetworkResourceId != null)
+                if (vnetSpecified)
                 {
-                    foreach (var idStr in VirtualNetworkResourceId)
-                    {
-                        if (!currentVnet.Exists(x => string.Equals(x, idStr, StringComparison.OrdinalIgnoreCase)))
-                        {
-                            currentVnet.Add(idStr);
-                        }
-                    }
+                    currentVnet = MergeInputToSource(VirtualNetworkResourceId, currentVnet).ToList();
                 }
 
-                var updated = new PSManagedHsmNetworkRuleSet(
-                    // Enforce service rule: when PublicNetworkAccess is Enabled and any IP/VNet rules exist, DefaultAction must be Deny
-                    current?.DefaultAction != null && Enum.TryParse(current.DefaultAction, true, out PSManagedHsmNetworkRuleDefaultActionEnum da) ?
-                        (existing.PublicNetworkAccess != null && existing.PublicNetworkAccess.Equals("Enabled", StringComparison.OrdinalIgnoreCase) && (currentIp.Count > 0 || currentVnet.Count > 0) && da == PSManagedHsmNetworkRuleDefaultActionEnum.Allow
-                            ? PSManagedHsmNetworkRuleDefaultActionEnum.Deny : da)
-                        : (existing.PublicNetworkAccess != null && existing.PublicNetworkAccess.Equals("Enabled", StringComparison.OrdinalIgnoreCase) && (currentIp.Count > 0 || currentVnet.Count > 0)
-                            ? PSManagedHsmNetworkRuleDefaultActionEnum.Deny : PSManagedHsmNetworkRuleDefaultActionEnum.Allow),
-                    current?.Bypass != null && Enum.TryParse(current.Bypass, true, out PSManagedHsmNetworkRuleBypassEnum bp) ? bp : PSManagedHsmNetworkRuleBypassEnum.AzureServices,
-                    currentIp,
-                    currentVnet);
-
-                if (existing.PublicNetworkAccess != null && existing.PublicNetworkAccess.Equals("Enabled", StringComparison.OrdinalIgnoreCase) && (currentIp.Count > 0 || currentVnet.Count > 0) && current?.DefaultAction != null && current.DefaultAction.Equals("Allow", StringComparison.OrdinalIgnoreCase))
+                // Derive effective DefaultAction and Bypass in a readable step-wise fashion.
+                // Start with current values (if any), else fall back to documented defaults (Allow / AzureServices).
+                PSManagedHsmNetworkRuleDefaultActionEnum effectiveDefault = PSManagedHsmNetworkRuleDefaultActionEnum.Allow;
+                if (current?.DefaultAction != null && Enum.TryParse(current.DefaultAction, true, out PSManagedHsmNetworkRuleDefaultActionEnum parsedDefault))
                 {
+                    effectiveDefault = parsedDefault;
+                }
+
+                PSManagedHsmNetworkRuleBypassEnum effectiveBypass = PSManagedHsmNetworkRuleBypassEnum.AzureServices;
+                if (current?.Bypass != null && Enum.TryParse(current.Bypass, true, out PSManagedHsmNetworkRuleBypassEnum parsedBypass))
+                {
+                    effectiveBypass = parsedBypass;
+                }
+
+                // Service rule: if PublicNetworkAccess is Enabled AND any IP/VNet rules exist, DefaultAction must be Deny.
+                bool publicEnabled = existing.PublicNetworkAccess != null && existing.PublicNetworkAccess.Equals("Enabled", StringComparison.OrdinalIgnoreCase);
+                bool anyRules = (currentIp.Count > 0) || (currentVnet.Count > 0);
+
+                if (publicEnabled && anyRules && effectiveDefault == PSManagedHsmNetworkRuleDefaultActionEnum.Allow)
+                {
+                    effectiveDefault = PSManagedHsmNetworkRuleDefaultActionEnum.Deny;
                     WriteWarning("DefaultAction automatically set to Deny because PublicNetworkAccess is Enabled and IP or Virtual Network rules are specified.");
                 }
 
+                var updated = new PSManagedHsmNetworkRuleSet(effectiveDefault, effectiveBypass, currentIp, currentVnet);
                 var result = UpdateCurrentManagedHsm(existing, updated);
+                
                 if (PassThru.IsPresent)
                 {
                     WriteObject(result);
                 }
             }
+        }
+
+        private static IList<string> MergeInputToSource(string[] additions, IList<string> existing)
+        {
+            if (additions == null || additions.Length == 0)
+            {
+                return existing ?? new List<string>();
+            }
+            if (existing == null || existing.Count == 0)
+            {
+                return new List<string>(additions);
+            }
+            var updated = new List<string>(existing);
+            foreach (var candidate in additions)
+            {
+                if (candidate == null) continue;
+                if (updated.FindIndex(x => string.Equals(x, candidate, StringComparison.OrdinalIgnoreCase)) == -1)
+                {
+                    updated.Add(candidate);
+                }
+            }
+            return updated;
         }
     }
 }

@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (existingManagedHsm.OriginalManagedHsm == null)
                 throw new ArgumentNullException("existingManagedHsm.OriginalManagedHsm");
 
-            //Update the vault properties in the object received from server
+            //Update the managed HSM properties in the object received from server
             var properties = existingManagedHsm.OriginalManagedHsm.Properties;
             properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
             if (!string.IsNullOrEmpty(parameters.PublicNetworkAccess))
@@ -641,6 +641,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.NetworkAcls.DefaultAction = PublicNetworkAccess.Enabled.ToString().Equals(parameters.PublicNetworkAccess) ? 
                     NetworkRuleAction.Allow.ToString() : NetworkRuleAction.Deny.ToString();
             }
+            // Normalize / enforce network rule set semantics (pattern mirrors vault helper method style)
+            UpdateManagedHsmNetworkRuleSetProperties(properties, properties.NetworkAcls);
             var response = KeyVaultManagementClient.ManagedHsms.Update(
                 resourceGroupName: existingManagedHsm.ResourceGroupName,
                 name: existingManagedHsm.Name,
@@ -705,6 +707,55 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         #endregion
 
         #region HELP_METHODS
+        /// <summary>
+        /// Update managed HSM network rule set (mirror of vault variant) and enforce service constraints.
+        /// Internal for unit testing.
+        /// </summary>
+        internal static void UpdateManagedHsmNetworkRuleSetProperties(ManagedHsmProperties hsmProperties, MhsmNetworkRuleSet incoming)
+        {
+            if (hsmProperties == null)
+                return;
+
+            var updated = new MhsmNetworkRuleSet();
+            if (incoming != null)
+            {
+                updated.DefaultAction = incoming.DefaultAction;
+                updated.Bypass = incoming.Bypass;
+                // Preserve provided lists (clone to decouple references)
+                if (incoming.IPRules != null)
+                {
+                    updated.IPRules = incoming.IPRules.Select(r => new MhsmipRule { Value = r.Value }).ToList();
+                }
+                else
+                {
+                    updated.IPRules = new List<MhsmipRule>();
+                }
+                if (incoming.VirtualNetworkRules != null)
+                {
+                    updated.VirtualNetworkRules = incoming.VirtualNetworkRules.Select(r => new MhsmVirtualNetworkRule { Id = r.Id }).ToList();
+                }
+                else
+                {
+                    updated.VirtualNetworkRules = new List<MhsmVirtualNetworkRule>();
+                }
+            }
+            else
+            {
+                updated.IPRules = new List<MhsmipRule>();
+                updated.VirtualNetworkRules = new List<MhsmVirtualNetworkRule>();
+                updated.DefaultAction = NetworkRuleAction.Allow.ToString();
+                updated.Bypass = PSManagedHsmNetworkRuleBypassEnum.AzureServices.ToString();
+            }
+
+            // Enforce: if any rules exist and default was Allow, flip to Deny (service requirement under enabled public access)
+            if (string.Equals(updated.DefaultAction, NetworkRuleAction.Allow.ToString(), StringComparison.OrdinalIgnoreCase) &&
+                ((updated.IPRules != null && updated.IPRules.Count > 0) || (updated.VirtualNetworkRules != null && updated.VirtualNetworkRules.Count > 0)))
+            {
+                updated.DefaultAction = NetworkRuleAction.Deny.ToString();
+            }
+
+            hsmProperties.NetworkAcls = updated;
+        }
         /// <summary>
         /// Update vault network rule set
         /// </summary>

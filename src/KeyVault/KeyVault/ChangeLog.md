@@ -25,6 +25,7 @@
     - Update-AzKeyVaultManagedHsmNetworkRuleSet
     These enable creation, incremental modification, removal, and authoritative updates of Managed HSM network rules (IP ranges & virtual network resource IDs).
 * New-AzKeyVaultManagedHsm now supports -NetworkRuleSet parameter to specify Managed HSM network rules (default action, bypass, IP ranges, virtual network resource IDs) at creation.
+* Managed HSM network rule enforcement: when any IP or Virtual Network rules are present the client now automatically coerces DefaultAction to Deny (service requirement) and adds a final safeguard at request dispatch. Subscriptions must be allow-listed by the service to use IP/Service Tag ACL features.
 
 ## Version 6.3.2
 * Upgraded API version to 2024-11-01 [#27067]

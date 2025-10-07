@@ -95,12 +95,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
                         .Select(id => new MhsmVirtualNetworkRule { Id = id })
                         .ToList();
                 }
+                
                 // Enforce DefaultAction Deny when any rules present (service requires this under enabled public access; conservative always safe)
                 if ((serviceRuleSet.IPRules != null && serviceRuleSet.IPRules.Count > 0) || (serviceRuleSet.VirtualNetworkRules != null && serviceRuleSet.VirtualNetworkRules.Count > 0))
                 {
                     if (string.Equals(serviceRuleSet.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase))
                     {
                         serviceRuleSet.DefaultAction = "Deny";
+                        WriteWarning("DefaultAction changed to Deny to satisfy Managed HSM firewall requirement when ip/vnet rules are present.");
                     }
                 }
             }
