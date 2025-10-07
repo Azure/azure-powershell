@@ -13,33 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E' {
 
-    BeforeAll {
-
-        $planName = $env.planNameWorkerTypeWindows
-        Write-Verbose "Plan name: $planName" -Verbose
-
-        $resourceGroupName = $env.resourceGroupNameWindowsPremium
-        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
-
-        $storageAccountName = $env.storageAccountWindows
-        Write-Verbose "Storage account name: $storageAccountName" -Verbose
-
-        $identityInfo = $env.identityInfo
-        Write-Verbose "Identity id: $($identityInfo.Id | Out-String)" -Verbose
-
-        $newApplInsights = $env.newApplInsights
-        Write-Verbose "New Application Insights name: $($newApplInsights.Name | Out-String)" -Verbose
-
-        $location = "centralus"
-        Write-Verbose "Location: $location" -Verbose
-
-        $tags = @{
-            "MyTag1" = "MyTag1Value1"
-            "MyTag2" = "MyTag1Value2"
-        }
-        Write-Verbose "Tags: $($tags | Out-String)" -Verbose
-    }
-
     It "Validate New-AzFunctionAppPlan, Update-AzFunctionApp and Remove-AzFunctionApp" {
 
         try
@@ -48,12 +21,23 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $appName = $env.functionNamePowerShellNew1
             Write-Verbose "App name: $appName" -Verbose
 
-            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+            $planName = $env.planNameWorkerTypeWindows
             Write-Verbose "Plan name: $planName" -Verbose
+
+            $resourceGroupName = $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+            $storageAccountName = $env.storageAccountWindows
             Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+            $tags = @{
+                "MyTag1" = "MyTag1Value1"
+                "MyTag2" = "MyTag1Value2"
+            }
             Write-Verbose "Tags: $($tags | Out-String)" -Verbose
 
-            Write-Verbose "Creating function app $appName in resource group $resourceGroupName with plan $planName" -Verbose
+            Write-Verbose "Creating function app with SystemAssigned manged identity." -Verbose
+
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `
@@ -119,6 +103,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.IdentityType | Should -Be $null
 
             Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
+            $newApplInsights = $env.newApplInsights
             $applicationInsightsName = $newApplInsights.Name
             Write-Verbose "New ApplicationInsights name: $applicationInsightsName" -Verbose
             Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ApplicationInsightsName $applicationInsightsName -Force
@@ -152,7 +137,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $appName = $env.functionNamePowerShellNew2
             Write-Verbose "App name: $appName" -Verbose
 
-           $planName = $env.planNameWorkerTypeWindows
+            $planName = $env.planNameWorkerTypeWindows
             Write-Verbose "Plan name: $planName" -Verbose
 
             $resourceGroupName = $env.resourceGroupNameWindowsPremium
@@ -222,17 +207,29 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $appName = $env.functionNamePowerShellNew3
             Write-Verbose "App name: $appName" -Verbose
 
+            $resourceGroupName = $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+            $planName = $env.planNameWorkerTypeWindows
+            Write-Verbose "Plan name: $planName" -Verbose
+
+            $storageAccountName = $env.storageAccountWindows
+            Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+            $osType = "Windows"
+            Write-Verbose "Worker type: $workertype" -Verbose
+
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `
                               -StorageAccount $storageAccountName `
-                              -OSType Windows `
+                              -OSType $osType `
                               -Runtime PowerShell `
                               -RuntimeVersion 7.4 `
                               -FunctionsVersion 4
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
-            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.OSType | Should -Be $osType
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.AppServicePlan | Should -Be $planName
 
