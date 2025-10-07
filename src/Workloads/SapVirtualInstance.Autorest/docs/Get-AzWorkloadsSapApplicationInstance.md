@@ -36,7 +36,7 @@ Gets the SAP Application Server Instance corresponding to the Virtual Instance f
 
 ## EXAMPLES
 
-### Example 1: Get an overview of The App Server Instance(s)
+### Example 1: Get an overview of The App Server Instance(s) 
 ```powershell
 Get-AzWorkloadsSapApplicationInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT
 ```
@@ -189,3 +189,4 @@ ALIASES
 Get-AzVISApplicationInstance
 
 ## RELATED LINKS
+
