@@ -23,16 +23,30 @@ Describe 'New-AzFunctionAppPlan, Update-AzFunctionAppPlan, and Remove-AzFunction
         $planName = $env.planNameWorkerTypeWindowsNew
         Write-Verbose "Updated planName: $planName" -Verbose
         $location = 'centralus'
+        Write-Verbose "Location: $location" -Verbose
         $minimumWorkerCount = 1
+        Write-Verbose "Minimum worker count: $minimumWorkerCount" -Verbose
         $maxBurst = 3
+        Write-Verbose "Maximum worker count: $maxBurst" -Verbose
         $sku = "EP1"
+        Write-Verbose "SKU: $sku" -Verbose
+        $workerType = "Windows"
+        Write-Verbose "Worker type: $workerType" -Verbose
 
         try
         {
             Write-Verbose "Creating function app plan '$planName'"
+            Write-Verbose "Running: New-AzFunctionAppPlan -Name $planName `
+                                    -ResourceGroupName $resourceGroupName `
+                                    -WorkerType $workerType `
+                                    -MinimumWorkerCount $minimumWorkerCount `
+                                    -MaximumWorkerCount $maxBurst `
+                                    -Location $location `
+                                    -Sku $sku" -Verbose
+
             New-AzFunctionAppPlan -Name $planName `
                                   -ResourceGroupName $resourceGroupName `
-                                  -WorkerType "Windows" `
+                                  -WorkerType  $workerType `
                                   -MinimumWorkerCount $minimumWorkerCount `
                                   -MaximumWorkerCount $maxBurst `
                                   -Location $location `
