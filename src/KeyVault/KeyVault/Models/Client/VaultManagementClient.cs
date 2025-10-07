@@ -715,45 +715,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             if (hsmProperties == null)
                 return;
-
+            // Pass-through now; validation (no Allow+IPs) is handled in cmdlets. We intentionally KEEP
+            // the code path for virtual network rules so future enablement requires no client refactor.
+            // (Cmdlets currently block user input for VNets.) No silent mutation of DefaultAction occurs here.
             var updated = new MhsmNetworkRuleSet();
-            if (incoming != null)
+            if (incoming == null)
             {
-                updated.DefaultAction = incoming.DefaultAction;
-                updated.Bypass = incoming.Bypass;
-                // Preserve provided lists (clone to decouple references)
-                if (incoming.IPRules != null)
-                {
-                    updated.IPRules = incoming.IPRules.Select(r => new MhsmipRule { Value = r.Value }).ToList();
-                }
-                else
-                {
-                    updated.IPRules = new List<MhsmipRule>();
-                }
-                if (incoming.VirtualNetworkRules != null)
-                {
-                    updated.VirtualNetworkRules = incoming.VirtualNetworkRules.Select(r => new MhsmVirtualNetworkRule { Id = r.Id }).ToList();
-                }
-                else
-                {
-                    updated.VirtualNetworkRules = new List<MhsmVirtualNetworkRule>();
-                }
+                updated.DefaultAction = NetworkRuleAction.Allow.ToString();
+                updated.Bypass = PSManagedHsmNetworkRuleBypassEnum.AzureServices.ToString();
+                updated.IPRules = new List<MhsmipRule>();
+                updated.VirtualNetworkRules = new List<MhsmVirtualNetworkRule>();
             }
             else
             {
-                updated.IPRules = new List<MhsmipRule>();
-                updated.VirtualNetworkRules = new List<MhsmVirtualNetworkRule>();
-                updated.DefaultAction = NetworkRuleAction.Allow.ToString();
-                updated.Bypass = PSManagedHsmNetworkRuleBypassEnum.AzureServices.ToString();
+                updated.DefaultAction = incoming.DefaultAction;
+                updated.Bypass = incoming.Bypass;
+                updated.IPRules = incoming.IPRules != null ? incoming.IPRules.Select(r => new MhsmipRule { Value = r.Value }).ToList() : new List<MhsmipRule>();
+                updated.VirtualNetworkRules = incoming.VirtualNetworkRules != null ? incoming.VirtualNetworkRules.Select(r => new MhsmVirtualNetworkRule { Id = r.Id }).ToList() : new List<MhsmVirtualNetworkRule>();
             }
-
-            // Enforce: if any rules exist and default was Allow, flip to Deny (service requirement under enabled public access)
-            if (string.Equals(updated.DefaultAction, NetworkRuleAction.Allow.ToString(), StringComparison.OrdinalIgnoreCase) &&
-                ((updated.IPRules != null && updated.IPRules.Count > 0) || (updated.VirtualNetworkRules != null && updated.VirtualNetworkRules.Count > 0)))
-            {
-                updated.DefaultAction = NetworkRuleAction.Deny.ToString();
-            }
-
             hsmProperties.NetworkAcls = updated;
         }
         /// <summary>

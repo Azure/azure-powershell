@@ -23,8 +23,8 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
 {
     /// <summary>
-    /// Add network rules (IP ranges and/or virtual network resource IDs) to a Managed HSM.
-    /// Mirrors Add-AzKeyVaultNetworkRule for Managed HSM resources.
+    /// Add network IP rules to a Managed HSM.
+    /// VNet rules are not supported. If DefaultAction is Allow this operation will fail (user must set Deny first via Update cmdlet).
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsmNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSManagedHsm))]
@@ -67,55 +67,56 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
             {
                 bool ipSpecified = IsIpAddressRangeSpecified;
                 bool vnetSpecified = IsVirtualNetworkResourceIdSpecified;
-                if (!ipSpecified && !vnetSpecified)
+                if (vnetSpecified)
                 {
-                    throw new ArgumentException("At least one of IpAddressRange or VirtualNetworkResourceId must be specified.");
+                    throw new NotSupportedException("Virtual network rules are not supported for Managed HSM.");
+                }
+                if (!ipSpecified)
+                {
+                    throw new ArgumentException("IpAddressRange must be specified.");
                 }
 
-                ValidateArrayInputs();
+                ValidateArrayInputs(); // will also block VNet param usage
                 var existing = GetCurrentManagedHsm(Name, ResourceGroupName);
                 var current = existing.OriginalManagedHsm.Properties.NetworkAcls;
 
                 var currentIp = current?.IPRules != null ? new List<string>(current.IPRules.Select(r => r.Value)) : new List<string>();
-                var currentVnet = current?.VirtualNetworkRules != null ? new List<string>(current.VirtualNetworkRules.Select(r => r.Id)) : new List<string>();
+                var currentVnet = new List<string>(); // Unsupported
 
                 // Merge new entries, avoiding duplicates (case-insensitive) – mirrors Key Vault merge helper semantics
                 if (ipSpecified)
                 {
                     currentIp = MergeInputToSource(IpAddressRange, currentIp).ToList();
                 }
-                if (vnetSpecified)
+                // vnetSpecified already blocked
+
+                // Derive effective DefaultAction and Bypass from CURRENT state only (no implicit fallback to Allow that could block unnecessarily).
+                // If we cannot determine the current DefaultAction we require the user to set it explicitly first.
+                if (current == null)
                 {
-                    currentVnet = MergeInputToSource(VirtualNetworkResourceId, currentVnet).ToList();
+                    throw new InvalidOperationException("Current network ACLs not initialized. Set the DefaultAction (e.g. Deny) using Update-AzKeyVaultManagedHsmNetworkRuleSet before adding IP rules.");
                 }
 
-                // Derive effective DefaultAction and Bypass in a readable step-wise fashion.
-                // Start with current values (if any), else fall back to documented defaults (Allow / AzureServices).
-                PSManagedHsmNetworkRuleDefaultActionEnum effectiveDefault = PSManagedHsmNetworkRuleDefaultActionEnum.Allow;
-                if (current?.DefaultAction != null && Enum.TryParse(current.DefaultAction, true, out PSManagedHsmNetworkRuleDefaultActionEnum parsedDefault))
+                if (!Enum.TryParse(current.DefaultAction, true, out PSManagedHsmNetworkRuleDefaultActionEnum effectiveDefault))
                 {
-                    effectiveDefault = parsedDefault;
+                    throw new InvalidOperationException("Unable to determine existing DefaultAction. Set it explicitly with Update-AzKeyVaultManagedHsmNetworkRuleSet before adding IP rules.");
                 }
 
-                PSManagedHsmNetworkRuleBypassEnum effectiveBypass = PSManagedHsmNetworkRuleBypassEnum.AzureServices;
-                if (current?.Bypass != null && Enum.TryParse(current.Bypass, true, out PSManagedHsmNetworkRuleBypassEnum parsedBypass))
+                if (!Enum.TryParse(current.Bypass, true, out PSManagedHsmNetworkRuleBypassEnum effectiveBypass))
                 {
-                    effectiveBypass = parsedBypass;
+                    // If bypass parsing fails, retain service default AzureServices without silently overwriting on server (only affects outgoing payload)
+                    effectiveBypass = PSManagedHsmNetworkRuleBypassEnum.AzureServices;
                 }
 
-                // Service rule: if PublicNetworkAccess is Enabled AND any IP/VNet rules exist, DefaultAction must be Deny.
-                bool publicEnabled = existing.PublicNetworkAccess != null && existing.PublicNetworkAccess.Equals("Enabled", StringComparison.OrdinalIgnoreCase);
-                bool anyRules = (currentIp.Count > 0) || (currentVnet.Count > 0);
-
-                if (publicEnabled && anyRules && effectiveDefault == PSManagedHsmNetworkRuleDefaultActionEnum.Allow)
+                // Enforcement: cannot add IP rules while DefaultAction is Allow. (We do not change it here.)
+                if (effectiveDefault == PSManagedHsmNetworkRuleDefaultActionEnum.Allow)
                 {
-                    effectiveDefault = PSManagedHsmNetworkRuleDefaultActionEnum.Deny;
-                    WriteWarning("DefaultAction automatically set to Deny because PublicNetworkAccess is Enabled and IP or Virtual Network rules are specified.");
+                    throw new InvalidOperationException("Cannot add IP network rules while DefaultAction is Allow. Run Update-AzKeyVaultManagedHsmNetworkRuleSet -Name <name> -DefaultAction Deny first, then add IP rules.");
                 }
 
-                var updated = new PSManagedHsmNetworkRuleSet(effectiveDefault, effectiveBypass, currentIp, currentVnet);
+                var updated = new PSManagedHsmNetworkRuleSet(effectiveDefault, effectiveBypass, currentIp, null);
                 var result = UpdateCurrentManagedHsm(existing, updated);
-                
+
                 if (PassThru.IsPresent)
                 {
                     WriteObject(result);

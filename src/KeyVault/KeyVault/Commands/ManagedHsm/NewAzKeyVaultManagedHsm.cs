@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// <summary>
         /// Builds the service network rule set only if user supplied -NetworkRuleSet. Returns null when the parameter
         /// was not bound to avoid sending an empty object (which can trigger slower provisioning paths).
-        /// Also performs one place of validation / normalization (DefaultAction enforcement) for readability.
+        /// Performs explicit validation (no silent mutation). If network rules (IP or VNet) are present while DefaultAction=Allow, throw.
         /// </summary>
         private MhsmNetworkRuleSet BuildInitialNetworkAcls()
         {
@@ -180,11 +180,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             }
 
             var svc = ConvertToServiceNetworkRuleSet(NetworkRuleSet);
-
-            if (RequiresDefaultDeny(svc))
+            bool hasRules = (svc.IPRules?.Count > 0) || (svc.VirtualNetworkRules?.Count > 0);
+            if (hasRules && string.Equals(svc.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase))
             {
-                svc.DefaultAction = "Deny";
-                WriteWarning("DefaultAction automatically set to Deny because PublicNetworkAccess is Enabled and IP or Virtual Network rules are specified.");
+                throw new InvalidOperationException("Cannot specify IP or virtual network rules with DefaultAction Allow. Provide a rule set with DefaultAction Deny.");
             }
 
             return svc;
@@ -211,30 +210,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             return svc;
         }
 
-        /// <summary>
-        /// Determines whether the supplied rule set requires DefaultAction to be auto-flipped to Deny.
-        /// Conditions:
-        ///  - Public network access is effectively Enabled (explicitly Enabled or unspecified)
-        ///  - At least one IP or virtual network rule present
-        ///  - User attempted to keep DefaultAction = Allow
-        /// </summary>
-        private bool RequiresDefaultDeny(MhsmNetworkRuleSet acls)
-        {
-            if (acls == null)
-            {
-                return false;
-            }
-            bool publicAccessEnabled = string.IsNullOrEmpty(PublicNetworkAccess) || PublicNetworkAccess.Equals("Enabled", StringComparison.OrdinalIgnoreCase);
-            if (!publicAccessEnabled)
-            {
-                return false; // When public access is Disabled, service permits Allow (and rules are moot), so no flip needed.
-            }
-            bool hasRules = (acls.IPRules?.Count > 0) || (acls.VirtualNetworkRules?.Count > 0);
-            if (!hasRules)
-            {
-                return false;
-            }
-            return string.Equals(acls.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase);
-        }
+        // No silent mutation helper retained; logic intentionally removed to enforce explicit denial by user.
     }
 }

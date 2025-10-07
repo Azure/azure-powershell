@@ -23,8 +23,9 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
 {
     /// <summary>
-    /// Update network rule set for a Managed HSM.
-    /// Structured intentionally to mirror Update-AzKeyVaultNetworkRuleSet for consistency.
+    /// Update (replace) the network rule set for a Managed HSM. Virtual network rules are not supported.
+    /// If IP rules are specified (or retained) DefaultAction must be Deny; the cmdlet will throw otherwise.
+    /// Mirrors Key Vault pattern except for the stricter MHSM rule (no VNet rules, no Allow+IPs) and does not silently mutate DefaultAction.
     /// </summary>
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsmNetworkRuleSet", SupportsShouldProcess = true, DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSManagedHsm))]
@@ -97,12 +98,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
             {
                 bool isIpAddressRangeSpecified = IsIpAddressRangeSpecified;
                 bool isVirtualNetResIdSpecified = IsVirtualNetworkResourceIdSpecified;
-                if (!DefaultAction.HasValue && !Bypass.HasValue && !isIpAddressRangeSpecified && !isVirtualNetResIdSpecified)
+                if (isVirtualNetResIdSpecified)
                 {
-                    throw new ArgumentException("At least one of DefaultAction, Bypass, IpAddressRange or VirtualNetworkResourceId must be specified.");
+                    throw new NotSupportedException("Virtual network rules are not supported for Managed HSM.");
+                }
+                if (!DefaultAction.HasValue && !Bypass.HasValue && !isIpAddressRangeSpecified)
+                {
+                    throw new ArgumentException("At least one of DefaultAction, Bypass, or IpAddressRange must be specified.");
                 }
 
-                ValidateArrayInputs();
+                ValidateArrayInputs(); // will also guard against unsupported arrays
 
                 var existingHsm = GetCurrentManagedHsm(Name, ResourceGroupName);
                 var updatedRuleSet = ConvertInputToRuleSet(existingHsm, isIpAddressRangeSpecified, isVirtualNetResIdSpecified);
@@ -155,16 +160,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
                 ipAddressRanges = IpAddressRange == null ? null : new List<string>(IpAddressRange);
             }
 
-            // VNet IDs
-            IList<string> vnetIds = existingService?.VirtualNetworkRules != null
-                ? new List<string>(existingService.VirtualNetworkRules.Select(r => r.Id))
-                : new List<string>();
             if (isVirtualNetworkResourceIdSpecified)
             {
-                vnetIds = VirtualNetworkResourceId == null ? null : new List<string>(VirtualNetworkResourceId);
+                throw new NotSupportedException("Virtual network rules are not supported for Managed HSM.");
             }
 
-            return new PSManagedHsmNetworkRuleSet(defaultAct, bypass, ipAddressRanges, vnetIds);
+            // Enforcement: cannot have IP rules with DefaultAction Allow
+            if (ipAddressRanges != null && ipAddressRanges.Count > 0 && defaultAct == PSManagedHsmNetworkRuleDefaultActionEnum.Allow)
+            {
+                throw new InvalidOperationException("Cannot specify IP network rules while DefaultAction is Allow. Specify -DefaultAction Deny.");
+            }
+
+            return new PSManagedHsmNetworkRuleSet(defaultAct, bypass, ipAddressRanges, null);
         }
 
         private void WriteDisabledWarning(Microsoft.Azure.Management.KeyVault.Models.MhsmNetworkRuleSet existingRuleSet,

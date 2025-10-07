@@ -30,15 +30,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
         [Parameter(Mandatory = false, HelpMessage = "Specifies allowed network IP address range of network rule.")]
         public string[] IpAddressRange { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies allowed virtual network resource identifier of network rule.")]
-        public string[] VirtualNetworkResourceId { get; set; }
+    // Virtual network rules currently not supported for Managed HSM; keep parameter absent / disabled.
+    [Parameter(Mandatory = false, HelpMessage = "(Not supported) Virtual network rules are not currently supported for Managed HSM.")]
+    public string[] VirtualNetworkResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns the updated managed HSM object.")]
         public SwitchParameter PassThru { get; set; }
         #endregion
 
         protected bool IsIpAddressRangeSpecified => MyInvocation.BoundParameters.ContainsKey(nameof(IpAddressRange));
-        protected bool IsVirtualNetworkResourceIdSpecified => MyInvocation.BoundParameters.ContainsKey(nameof(VirtualNetworkResourceId));
+    protected bool IsVirtualNetworkResourceIdSpecified => MyInvocation.BoundParameters.ContainsKey(nameof(VirtualNetworkResourceId));
 
         protected void ValidateArrayInputs()
         {
@@ -46,9 +47,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
             {
                 throw new ArgumentException("The array of IpAddressRange input cannot contain null or empty strings");
             }
-            if (VirtualNetworkResourceId != null && VirtualNetworkResourceId.Length > 0 && VirtualNetworkResourceId.Any(string.IsNullOrWhiteSpace))
+            if (IsVirtualNetworkResourceIdSpecified)
             {
-                throw new ArgumentException("The array of VirtualNetworkResourceId input cannot contain null or empty strings");
+                throw new NotSupportedException("Virtual network rules are not supported for Managed HSM at this time.");
             }
         }
 
@@ -83,31 +84,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
             {
                 serviceRuleSet.DefaultAction = updatedRuleSet.DefaultAction.ToString();
                 serviceRuleSet.Bypass = updatedRuleSet.Bypass.ToString();
-                if (updatedRuleSet.IpAddressRanges != null)
-                {
-                    serviceRuleSet.IPRules = updatedRuleSet.IpAddressRanges
-                        .Select(v => new MhsmipRule { Value = v })
-                        .ToList();
-                }
+                serviceRuleSet.IPRules = updatedRuleSet.IpAddressRanges?.Select(v => new MhsmipRule { Value = v }).ToList();
+                // Keep virtual network rule mapping code path for forward compatibility even though cmdlets block input today.
                 if (updatedRuleSet.VirtualNetworkResourceIds != null)
                 {
-                    serviceRuleSet.VirtualNetworkRules = updatedRuleSet.VirtualNetworkResourceIds
-                        .Select(id => new MhsmVirtualNetworkRule { Id = id })
-                        .ToList();
-                }
-                
-                // Enforce DefaultAction Deny when any rules present (service requires this under enabled public access; conservative always safe)
-                if ((serviceRuleSet.IPRules != null && serviceRuleSet.IPRules.Count > 0) || (serviceRuleSet.VirtualNetworkRules != null && serviceRuleSet.VirtualNetworkRules.Count > 0))
-                {
-                    if (string.Equals(serviceRuleSet.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase))
-                    {
-                        serviceRuleSet.DefaultAction = "Deny";
-                        WriteWarning("DefaultAction changed to Deny to satisfy Managed HSM firewall requirement when ip/vnet rules are present.");
-                    }
+                    serviceRuleSet.VirtualNetworkRules = updatedRuleSet.VirtualNetworkResourceIds.Select(id => new MhsmVirtualNetworkRule { Id = id }).ToList();
                 }
             }
 
             properties.NetworkAcls = serviceRuleSet;
+
+            // Final defensive validation: prevent sending Allow + IP rules (should already have been blocked earlier).
+            if (properties.NetworkAcls != null &&
+                string.Equals(properties.NetworkAcls.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase) &&
+                properties.NetworkAcls.IPRules != null && properties.NetworkAcls.IPRules.Count > 0)
+            {
+                throw new InvalidOperationException("Attempted to send IP network rules with DefaultAction Allow. Ensure DefaultAction is Deny before adding rules.");
+            }
 
             // Prepare minimal update parameters (only fields the Update API inspects + tags)
             var updateParameters = new VaultCreationOrUpdateParameters

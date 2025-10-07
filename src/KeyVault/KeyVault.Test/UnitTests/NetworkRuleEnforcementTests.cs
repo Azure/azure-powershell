@@ -21,15 +21,15 @@ using CmdModels = Microsoft.Azure.Commands.KeyVault.Models;
 namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 {
     /// <summary>
-    /// Unit tests for final network rule default action enforcement on Managed HSM updates.
-    /// These tests are offline (no service calls) and validate the logic that prevents
-    /// sending DefaultAction=Allow alongside explicit IP/VNet rules.
+    /// Unit tests for (legacy) management client network rule normalization.
+    /// Updated semantics: client no longer silently flips DefaultAction; validation occurs in cmdlets.
+    /// These tests ensure pass-through behavior (no auto mutation) is preserved.
     /// </summary>
     public class NetworkRuleEnforcementTests : KeyVaultUnitTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Enforce_Deny_When_IpRules_Present_And_Default_Allow()
+        public void Preserve_Allow_Even_When_IpRules_Present_No_AutoFlip()
         {
             // Arrange
             var props = new ManagedHsmProperties
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             VaultManagementClient.UpdateManagedHsmNetworkRuleSetProperties(props, props.NetworkAcls);
 
             // Assert
-            Assert.Equal(CmdModels.NetworkRuleAction.Deny.ToString(), props.NetworkAcls.DefaultAction);
+            Assert.Equal(CmdModels.NetworkRuleAction.Allow.ToString(), props.NetworkAcls.DefaultAction);
         }
 
         [Fact]
@@ -68,6 +68,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             // Assert
             Assert.Equal(CmdModels.NetworkRuleAction.Allow.ToString(), props.NetworkAcls.DefaultAction);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Preserve_Allow_With_VirtualNetworkRules_Present_No_AutoFlip()
+        {
+            // Arrange (simulate future enablement of VNets; cmdlets would block today but client path must be passive)
+            var props = new ManagedHsmProperties
+            {
+                NetworkAcls = new MhsmNetworkRuleSet
+                {
+                    DefaultAction = CmdModels.NetworkRuleAction.Allow.ToString(),
+                    IPRules = new List<MhsmipRule>(),
+                    VirtualNetworkRules = new List<MhsmVirtualNetworkRule> { new MhsmVirtualNetworkRule { Id = "/subscriptions/xxx/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/sub" } }
+                }
+            };
+
+            // Act
+            VaultManagementClient.UpdateManagedHsmNetworkRuleSetProperties(props, props.NetworkAcls);
+
+            // Assert
+            Assert.Equal(CmdModels.NetworkRuleAction.Allow.ToString(), props.NetworkAcls.DefaultAction);
+            Assert.Single(props.NetworkAcls.VirtualNetworkRules);
         }
     }
 }

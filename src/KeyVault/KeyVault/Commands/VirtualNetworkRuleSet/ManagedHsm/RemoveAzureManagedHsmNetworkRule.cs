@@ -87,12 +87,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
             {
                 bool isIpAddressRangeSpecified = IsIpAddressRangeSpecified;
                 bool isVirtualNetResIdSpecified = IsVirtualNetworkResourceIdSpecified;
-                if (!isIpAddressRangeSpecified && !isVirtualNetResIdSpecified)
+                if (isVirtualNetResIdSpecified)
                 {
-                    throw new ArgumentException("At least one of IpAddressRange or VirtualNetworkResourceId must be specified.");
+                    throw new NotSupportedException("Virtual network rules are not supported for Managed HSM.");
+                }
+                if (!isIpAddressRangeSpecified)
+                {
+                    throw new ArgumentException("IpAddressRange must be specified.");
                 }
 
-                ValidateArrayInputs();
+                ValidateArrayInputs(); // will also guard empty strings
 
                 var existingHsm = GetCurrentManagedHsm(Name, ResourceGroupName);
                 var existingService = existingHsm.OriginalManagedHsm.Properties.NetworkAcls;

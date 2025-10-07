@@ -79,7 +79,12 @@ function Test-UpdateVaultWithNetworkRule {
 
 
 function Test-ManagedHsmNetworkRuleLifecycle {
-    # Trimmed test: cover minimal lifecycle (create with 1 IP, add 2nd triggers enforcement, bulk remove, set Allow)
+    # Updated lifecycle matching explicit validation rules (no Allow + IP rules at creation or modification)
+    # Steps:
+    # 1. Create with one IP rule and DefaultAction Deny
+    # 2. Add second IP rule (still Deny)
+    # 3. Remove both IPs
+    # 4. Switch DefaultAction to Allow (now that no rules remain)
     $rgName = getAssetName
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "East US"
     $hsmName = getAssetName
@@ -89,15 +94,16 @@ function Test-ManagedHsmNetworkRuleLifecycle {
     New-AzResourceGroup -Name $rgName -Location $rgLocation | Out-Null
 
     try {
-        # 1. Create with single IP (Allow + rule accepted initially)
+        # 1. Create with single IP and Deny
         $ip1 = "110.0.1.0/24"
-        $nr = New-AzKeyVaultManagedHsmNetworkRuleSetObject -IpAddressRange $ip1 -Bypass AzureServices -DefaultAction Allow
+        $nr = New-AzKeyVaultManagedHsmNetworkRuleSetObject -IpAddressRange $ip1 -Bypass AzureServices -DefaultAction Deny
         $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $adminUserAAD -SoftDeleteRetentionInDays 7 -NetworkRuleSet $nr
         $acls = $hsm.OriginalManagedHsm.Properties.NetworkAcls
         Assert-AreEqual 1 $acls.IPRules.Count
         Assert-AreEqual $ip1 $acls.IPRules[0].Value
+        Assert-AreEqual "Deny" $acls.DefaultAction
 
-        # 2. Add second IP, expect two rules; DefaultAction may flip to Deny (enforced). Assert only counts & membership; tolerate either Allow or Deny.
+        # 2. Add second IP
         $ip2 = "110.0.3.0/24"
         Add-AzKeyVaultManagedHsmNetworkRule -Name $hsmName -ResourceGroupName $rgName -IpAddressRange $ip2 -PassThru | Out-Null
         $hsm = Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName
@@ -105,14 +111,15 @@ function Test-ManagedHsmNetworkRuleLifecycle {
         Assert-AreEqual 2 $acls.IPRules.Count
         Assert-True { $acls.IPRules.Value -contains $ip1 }
         Assert-True { $acls.IPRules.Value -contains $ip2 }
+        Assert-AreEqual "Deny" $acls.DefaultAction
 
-        # 3. Remove both IPs in one shot
+        # 3. Remove both IPs
         Remove-AzKeyVaultManagedHsmNetworkRule -Name $hsmName -ResourceGroupName $rgName -IpAddressRange $ip1,$ip2 -PassThru | Out-Null
         $hsm = Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName
         $acls = $hsm.OriginalManagedHsm.Properties.NetworkAcls
         Assert-True { $acls.IPRules.Count -eq 0 }
 
-        # 4. Explicitly set Allow (no rules present)
+        # 4. Set Allow (legal now that there are no IP rules)
         Update-AzKeyVaultManagedHsmNetworkRuleSet -Name $hsmName -ResourceGroupName $rgName -DefaultAction Allow -PassThru | Out-Null
         $hsm = Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName
         $acls = $hsm.OriginalManagedHsm.Properties.NetworkAcls
@@ -122,23 +129,8 @@ function Test-ManagedHsmNetworkRuleLifecycle {
         Remove-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Force
     }
     finally {
-        # IMPORTANT: Purging immediately often 404s because the soft-deleted HSM entry can take time to surface.
-        # Also, removing the RG first makes the timing window worse. For playback-focused tests we can skip purge entirely.
-        # So we (1) delete RG, (2) optionally attempt a bounded poll for deleted state, (3) purge only if found.
-
+        # Simplified cleanup per new guidance: only remove the resource group.
+        # We intentionally do NOT poll or purge the soft-deleted Managed HSM to avoid long-running operations / gateway timeouts.
         Remove-AzResourceGroup -Name $rgName -Force -ErrorAction SilentlyContinue
-
-        # Optional lightweight poll (keep short to avoid test runtime inflation). If not found, we skip purge silently.
-        $maxAttempts = 5
-        $deleted = $null
-        for ($i=0; $i -lt $maxAttempts; $i++) {
-            $deleted = Get-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -ErrorAction SilentlyContinue
-            if ($deleted) { break }
-            Start-Sleep -Seconds 3
-        }
-        if ($deleted) {
-            # Only purge if the soft-deleted instance is visible; ignore errors (NotFound/GatewayTimeout) as non-fatal.
-            try { Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force -ErrorAction Stop } catch { }
-        }
     }
 }
