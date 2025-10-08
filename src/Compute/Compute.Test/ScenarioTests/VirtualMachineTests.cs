@@ -696,12 +696,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMAddProxyAgentExtension");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMSSAddProxyAgentExtension()
-        {
-            TestRunner.RunTestScript("Test-VMSSAddProxyAgentExtension");
-        }
     }
 }

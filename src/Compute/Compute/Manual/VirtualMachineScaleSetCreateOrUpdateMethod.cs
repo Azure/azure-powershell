@@ -559,7 +559,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
-                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
                     );
             }
 
@@ -699,7 +700,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
-                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
                 );
             }
         }

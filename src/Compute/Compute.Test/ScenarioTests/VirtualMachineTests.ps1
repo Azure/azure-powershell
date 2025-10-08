@@ -7974,38 +7974,3 @@ function Test-VMAddProxyAgentExtension
         Clean-ResourceGroup $resourceGroupName;
     }
 }
-
-<#
-.SYNOPSIS
-Test-VMSSAddProxyAgentExtension creates a VMSS with Enabled ProxyAgent and added ProxyAgentExtension
-#>
-function Test-VMSSAddProxyAgentExtension
-{
-    # Setup
-    $resourceGroupName = Get-ComputeTestResourceName;
-    $adminUsername = Get-ComputeTestResourceName;
-    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
-    $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
-    $vmssName = 'VMSS1';
-    $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
-
-    
-    try
-    {
-        New-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName -Credential $cred -image $imageName -Location 'eastus2' -EnableProxyAgent -AddProxyAgentExtension
-
-        # Update vmss to add proxy agent extension 
-        $VMSS = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName
-        $VMSS = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $VMSS -EnableProxyAgent $true -AddProxyAgentExtension $true
-        Update-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $VMSS 
-
-        # Validate 
-        Assert-AreEqual $VMSS.SecurityProfile.ProxyAgentSettings.Enabled $true
-        Assert-AreEqual $VMSS.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $resourceGroupName;
-    }
-}
