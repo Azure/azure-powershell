@@ -29,6 +29,7 @@ using Newtonsoft.Json;
 using Azure.Identity;
 using Azure.Core;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -107,7 +108,31 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // endpoint is always non-empty now (falls back to local default)
 
-                PostDryRun(endpoint, token, payload);
+                var dryRunResult = PostDryRun(endpoint, token, payload);
+                if (dryRunResult != null)
+                {
+                    // Display the response in a user-friendly format
+                    WriteVerbose("========== DryRun Response ==========");
+                    
+                    // Try to pretty-print the JSON response
+                    try
+                    {
+                        string formattedJson = JsonConvert.SerializeObject(dryRunResult, Formatting.Indented);
+                        // Only output to pipeline once, not both WriteObject and WriteInformation
+                        WriteObject(formattedJson);
+                    }
+                    catch
+                    {
+                        // Fallback: just write the object
+                        WriteObject(dryRunResult);
+                    }
+                    
+                    WriteVerbose("=====================================");
+                }
+                else
+                {
+                    WriteWarning("DryRun request completed but no response data was returned.");
+                }
             }
             catch (Exception ex)
             {
@@ -116,36 +141,174 @@ namespace Microsoft.Azure.Commands.Compute
             return true; // Always prevent normal execution when -DryRun is used
         }
 
-        private void PostDryRun(string endpoint, string bearerToken, object payload)
+        /// <summary>
+        /// Posts DryRun payload and returns parsed JSON response or raw string.
+        /// Mirrors Python test_what_if_ps_preview() behavior.
+        /// </summary>
+        private object PostDryRun(string endpoint, string bearerToken, object payload)
         {
             string json = JsonConvert.SerializeObject(payload);
             using (var request = new HttpRequestMessage(HttpMethod.Post, endpoint))
             {
                 request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+                
+                // Add Accept header and correlation id like Python script
+                request.Headers.Accept.Clear();
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                string correlationId = Guid.NewGuid().ToString();
+                request.Headers.Add("x-ms-client-request-id", correlationId);
+                
                 if (!string.IsNullOrWhiteSpace(bearerToken))
                 {
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
                 }
+                
                 WriteVerbose($"DryRun POST -> {endpoint}");
+                WriteVerbose($"DryRun correlation-id: {correlationId}");
                 WriteVerbose($"DryRun Payload: {Truncate(json, 1024)}");
+                
                 try
                 {
                     var response = _dryRunHttpClient.SendAsync(request).GetAwaiter().GetResult();
                     string respBody = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    
+                    WriteVerbose($"DryRun HTTP Status: {(int)response.StatusCode} {response.ReasonPhrase}");
+                    
                     if (response.IsSuccessStatusCode)
                     {
                         WriteVerbose("DryRun post succeeded.");
-                        WriteVerbose($"DryRun response: {Truncate(respBody, 1024)}");
+                        WriteVerbose($"DryRun response body: {Truncate(respBody, 2048)}");
+                        
+                        // Parse JSON and return as object (similar to Python result = response.json())
+                        try
+                        {
+                            var jToken = !string.IsNullOrWhiteSpace(respBody) ? JToken.Parse(respBody) : null;
+                            if (jToken != null)
+                            {
+                                // Enrich with correlation and status
+                                if (jToken.Type == JTokenType.Object)
+                                {
+                                    ((JObject)jToken)["_correlation_id"] = correlationId;
+                                    ((JObject)jToken)["_http_status"] = (int)response.StatusCode;
+                                    ((JObject)jToken)["_success"] = true;
+                                }
+                                return jToken.ToObject<object>();
+                            }
+                        }
+                        catch (Exception parseEx)
+                        {
+                            WriteVerbose($"DryRun response parse failed: {parseEx.Message}");
+                        }
+                        return respBody;
                     }
                     else
                     {
-                        WriteWarning($"DryRun post failed: {(int)response.StatusCode} {response.ReasonPhrase}");
-                        WriteVerbose($"DryRun failure body: {Truncate(respBody, 1024)}");
+                        // HTTP error response - display detailed error information
+                        WriteWarning($"DryRun API returned error: {(int)response.StatusCode} {response.ReasonPhrase}");
+                        
+                        // Create error response object with all details
+                        var errorResponse = new
+                        {
+                            _success = false,
+                            _http_status = (int)response.StatusCode,
+                            _status_description = response.ReasonPhrase,
+                            _correlation_id = correlationId,
+                            _endpoint = endpoint,
+                            error_message = respBody,
+                            timestamp = DateTime.UtcNow.ToString("o")
+                        };
+                        
+                        // Try to parse error as JSON if possible
+                        try
+                        {
+                            var errorJson = JToken.Parse(respBody);
+                            WriteError(new ErrorRecord(
+                                new Exception($"DryRun API Error: {response.StatusCode} - {respBody}"),
+                                "DryRunApiError",
+                                ErrorCategory.InvalidOperation,
+                                endpoint));
+                            
+                            // Return enriched error object
+                            if (errorJson.Type == JTokenType.Object)
+                            {
+                                ((JObject)errorJson)["_correlation_id"] = correlationId;
+                                ((JObject)errorJson)["_http_status"] = (int)response.StatusCode;
+                                ((JObject)errorJson)["_success"] = false;
+                                return errorJson.ToObject<object>();
+                            }
+                        }
+                        catch
+                        {
+                            // Error body is not JSON, return as plain error object
+                            WriteError(new ErrorRecord(
+                                new Exception($"DryRun API Error: {response.StatusCode} - {respBody}"),
+                                "DryRunApiError",
+                                ErrorCategory.InvalidOperation,
+                                endpoint));
+                        }
+                        
+                        WriteVerbose($"DryRun error response body: {Truncate(respBody, 2048)}");
+                        return errorResponse;
                     }
+                }
+                catch (HttpRequestException httpEx)
+                {
+                    // Network or connection error
+                    WriteError(new ErrorRecord(
+                        new Exception($"DryRun network error: {httpEx.Message}", httpEx),
+                        "DryRunNetworkError",
+                        ErrorCategory.ConnectionError,
+                        endpoint));
+                    
+                    return new
+                    {
+                        _success = false,
+                        _correlation_id = correlationId,
+                        _endpoint = endpoint,
+                        error_type = "NetworkError",
+                        error_message = httpEx.Message,
+                        stack_trace = httpEx.StackTrace,
+                        timestamp = DateTime.UtcNow.ToString("o")
+                    };
+                }
+                catch (TaskCanceledException timeoutEx)
+                {
+                    // Timeout error
+                    WriteError(new ErrorRecord(
+                        new Exception($"DryRun request timeout: {timeoutEx.Message}", timeoutEx),
+                        "DryRunTimeout",
+                        ErrorCategory.OperationTimeout,
+                        endpoint));
+                    
+                    return new
+                    {
+                        _success = false,
+                        _correlation_id = correlationId,
+                        _endpoint = endpoint,
+                        error_type = "Timeout",
+                        error_message = "Request timed out",
+                        timestamp = DateTime.UtcNow.ToString("o")
+                    };
                 }
                 catch (Exception sendEx)
                 {
-                    WriteWarning($"DryRun post exception: {sendEx.Message}");
+                    // Generic error
+                    WriteError(new ErrorRecord(
+                        new Exception($"DryRun request failed: {sendEx.Message}", sendEx),
+                        "DryRunRequestError",
+                        ErrorCategory.NotSpecified,
+                        endpoint));
+                    
+                    return new
+                    {
+                        _success = false,
+                        _correlation_id = correlationId,
+                        _endpoint = endpoint,
+                        error_type = sendEx.GetType().Name,
+                        error_message = sendEx.Message,
+                        stack_trace = sendEx.StackTrace,
+                        timestamp = DateTime.UtcNow.ToString("o")
+                    };
                 }
             }
         }

@@ -499,6 +499,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            // Handle DryRun early (before any real logic)
+            if (DryRun.IsPresent && TryHandleDryRun())
+            {
+                return;
+            }
 
             switch (ParameterSetName)
             {
