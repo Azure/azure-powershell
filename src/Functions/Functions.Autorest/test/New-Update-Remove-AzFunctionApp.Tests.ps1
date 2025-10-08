@@ -159,6 +159,9 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $planName = $env.planNameWorkerTypeWindowsNew3
             Write-Verbose "Plan name: $planName" -Verbose
 
+            $newPlanName = $env.planNameWorkerTypeWindowsNew
+            Write-Verbose "New planName: $newPlanName" -Verbose
+
             $resourceGroupName = $env.resourceGroupNameWindowsPremium
             Write-Verbose "Resource group name: $resourceGroupName" -Verbose
 
@@ -173,6 +176,10 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
             $location = $env.location
             Write-Verbose "Location: $location" -Verbose
+
+            $newApplInsights = $env.newApplInsights
+            $applicationInsightsName = $newApplInsights.Name
+            Write-Verbose "New ApplicationInsights name: $applicationInsightsName" -Verbose
 
             Write-Verbose "Create premium function app plan '$planName'." -Verbose
             New-AzFunctionAppPlan -Name $planName `
@@ -208,9 +215,6 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             }
 
             Write-Verbose "Create premium function app plan" -Verbose
-            $newPlanName = $env.planNameWorkerTypeWindowsNew
-            Write-Verbose "New planName: $newPlanName" -Verbose
-
             New-AzFunctionAppPlan -Name $newPlanName `
                                   -ResourceGroupName $resourceGroupName `
                                   -WorkerType Windows `
@@ -247,9 +251,6 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.IdentityType | Should -Be $null
 
             Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
-            $newApplInsights = $env.newApplInsights
-            $applicationInsightsName = $newApplInsights.Name
-            Write-Verbose "New ApplicationInsights name: $applicationInsightsName" -Verbose
             Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ApplicationInsightsName $applicationInsightsName -Force
 
             $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
