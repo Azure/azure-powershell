@@ -199,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProgressAction
-Internal use. Overrides how progress records are displayed. Normally not needed by end users.
+{{ Fill ProgressAction Description }}
 
 ```yaml
 Type: ActionPreference
