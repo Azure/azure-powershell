@@ -13,122 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E' {
 
-    It "Validate New-AzFunctionAppPlan, Update-AzFunctionApp and Remove-AzFunctionApp" {
-
-        try
-        {
-            Write-Verbose "Create function app with a SystemAssigned managed identity" -Verbose
-            $appName = $env.functionNamePowerShellNew1
-            Write-Verbose "App name: $appName" -Verbose
-
-            $planName = $env.planNameWorkerTypeWindows
-            Write-Verbose "Plan name: $planName" -Verbose
-
-            $resourceGroupName = $env.resourceGroupNameWindowsPremium
-            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
-
-            $storageAccountName = $env.storageAccountWindows
-            Write-Verbose "Storage account name: $storageAccountName" -Verbose
-
-            $tags = @{
-                "MyTag1" = "MyTag1Value1"
-                "MyTag2" = "MyTag1Value2"
-            }
-            Write-Verbose "Tags: $($tags | Out-String)" -Verbose
-
-            Write-Verbose "Creating function app with SystemAssigned manged identity." -Verbose
-
-            New-AzFunctionApp -Name $appName `
-                              -ResourceGroupName $resourceGroupName `
-                              -PlanName $planName `
-                              -StorageAccount $storageAccountName `
-                              -OSType Windows `
-                              -Runtime PowerShell `
-                              -RuntimeVersion 7.4 `
-                              -FunctionsVersion 4 `
-                              -IdentityType SystemAssigned `
-                              -Tag $tags
-
-            Write-Verbose "Run: Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName" -Verbose
-            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
-            Write-Verbose "FunctionApp retrieved. Validating properties" -Verbose
-            $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
-            $functionApp.IdentityType | Should -Be "SystemAssigned"
-
-            foreach ($tagName in $tags.Keys)
-            {
-                $functionApp.Tag.AdditionalProperties[$tagName] | Should -Be $tags[$tagName]
-            }
-
-            Write-Verbose "Create premium function app plan" -Verbose
-            $location = $env.location
-            Write-Verbose "Location: $location" -Verbose
-            $newPlanName = $env.planNameWorkerTypeWindowsNew
-            Write-Verbose "New planName: $newPlanName" -Verbose
-
-            New-AzFunctionAppPlan -Name $newPlanName `
-                                  -ResourceGroupName $resourceGroupName `
-                                  -WorkerType Windows `
-                                  -MinimumWorkerCount 1 `
-                                  -MaximumWorkerCount 10 `
-                                  -Location $location `
-                                  -Sku EP1
-
-            Write-Verbose "Run: Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName" -Verbose
-            $plan = Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName
-            Write-Verbose "Plan retrieved. Validating properties" -Verbose
-            $plan.WorkerType | Should -Be "Windows"
-            $plan.SkuTier | Should -Be "ElasticPremium"
-            $plan.SkuName | Should -Be "EP1"
-            $plan.Location | Should -Be "Central US"
-            $plan.Name | Should -Be $newPlanName
-
-            Write-Verbose "Update function app plan hosting plan" -Verbose
-            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -PlanName $newPlanName -Force
-
-            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
-            Write-Verbose "FunctionApp after plan update. Validate plan name" -Verbose
-            $functionApp.AppServicePlan | Should -Be $newPlanName
-
-            # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
-            # Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
-            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
-
-            Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
-            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
-
-            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
-            Write-Verbose "FunctionApp after identity removal. Validate IdentityType" -Verbose
-            $functionApp.IdentityType | Should -Be $null
-
-            Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
-            $newApplInsights = $env.newApplInsights
-            $applicationInsightsName = $newApplInsights.Name
-            Write-Verbose "New ApplicationInsights name: $applicationInsightsName" -Verbose
-            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ApplicationInsightsName $applicationInsightsName -Force
-
-            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
-            Write-Verbose "FunctionAppSetting after update. Validate ApplicationInsights" -Verbose
-            $applicationSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] | Should -Be $newApplInsights.InstrumentationKey
-        }
-        finally
-        {
-            Write-Verbose "FunctionApp for cleanup." -Verbose
-            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
-            if ($functionApp) {
-                Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
-            }
-
-            $plan = Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
-            Write-Verbose "Plan for cleanup." -Verbose
-            if ($plan)
-            {
-                Remove-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
-            }
-        }
-    }
-
     It "Validate New-AzFunctionApp -AsJob, Update-AzFunctionApp -AsJob and Remove-AzFunctionApp" {
 
         try
@@ -147,7 +31,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             Write-Verbose "Storage account name: $storageAccountName" -Verbose
 
             $osType = "Windows"
-            Write-Verbose "Worker type: $workertype" -Verbose
+            Write-Verbose "OS type: $osType" -Verbose
 
             $functionAppJob = New-AzFunctionApp -Name $appName `
                                                 -ResourceGroupName $resourceGroupName `
@@ -260,6 +144,139 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             if ($functionApp)
             {
                 Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force -ErrorAction SilentlyContinue
+            }
+        }
+    }
+
+    It "Validate New-AzFunctionAppPlan, Update-AzFunctionApp and Remove-AzFunctionApp" {
+
+        try
+        {
+            Write-Verbose "Create function app with a SystemAssigned managed identity" -Verbose
+            $appName = $env.functionNamePowerShellNew1
+            Write-Verbose "App name: $appName" -Verbose
+
+            $planName = $env.planNameWorkerTypeWindowsNew3
+            Write-Verbose "Plan name: $planName" -Verbose
+
+            $resourceGroupName = $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+            $storageAccountName = $env.storageAccountWindows
+            Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+            $tags = @{
+                "MyTag1" = "MyTag1Value1"
+                "MyTag2" = "MyTag1Value2"
+            }
+            Write-Verbose "Tags: $($tags | Out-String)" -Verbose
+
+            $location = $env.location
+            Write-Verbose "Location: $location" -Verbose
+
+            Write-Verbose "Create premium function app plan '$planName'." -Verbose
+            New-AzFunctionAppPlan -Name $planName `
+                                  -ResourceGroupName $resourceGroupName `
+                                  -WorkerType Windows `
+                                  -MinimumWorkerCount 1 `
+                                  -MaximumWorkerCount 6 `
+                                  -Location $location `
+                                  -Sku EP1
+
+            Write-Verbose "Creating function app with SystemAssigned manged identity." -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName `
+                              -OSType Windows `
+                              -Runtime PowerShell `
+                              -RuntimeVersion 7.4 `
+                              -FunctionsVersion 4 `
+                              -IdentityType SystemAssigned `
+                              -Tag $tags
+
+            Write-Verbose "Run: Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName" -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionApp retrieved. Validating properties" -Verbose
+            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.Runtime | Should -Be "PowerShell"
+            $functionApp.IdentityType | Should -Be "SystemAssigned"
+
+            foreach ($tagName in $tags.Keys)
+            {
+                $functionApp.Tag.AdditionalProperties[$tagName] | Should -Be $tags[$tagName]
+            }
+
+            Write-Verbose "Create premium function app plan" -Verbose
+            $newPlanName = $env.planNameWorkerTypeWindowsNew
+            Write-Verbose "New planName: $newPlanName" -Verbose
+
+            New-AzFunctionAppPlan -Name $newPlanName `
+                                  -ResourceGroupName $resourceGroupName `
+                                  -WorkerType Windows `
+                                  -MinimumWorkerCount 1 `
+                                  -MaximumWorkerCount 10 `
+                                  -Location $location `
+                                  -Sku EP1
+
+            Write-Verbose "Run: Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName" -Verbose
+            $plan = Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName
+            Write-Verbose "Plan retrieved. Validating properties" -Verbose
+            $plan.WorkerType | Should -Be "Windows"
+            $plan.SkuTier | Should -Be "ElasticPremium"
+            $plan.SkuName | Should -Be "EP1"
+            $plan.Location | Should -Be "Central US"
+            $plan.Name | Should -Be $newPlanName
+
+            Write-Verbose "Update function app plan hosting plan" -Verbose
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -PlanName $newPlanName -Force
+
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionApp after plan update. Validate plan name" -Verbose
+            $functionApp.AppServicePlan | Should -Be $newPlanName
+
+            # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
+            # Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
+            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
+
+            Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
+
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionApp after identity removal. Validate IdentityType" -Verbose
+            $functionApp.IdentityType | Should -Be $null
+
+            Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
+            $newApplInsights = $env.newApplInsights
+            $applicationInsightsName = $newApplInsights.Name
+            Write-Verbose "New ApplicationInsights name: $applicationInsightsName" -Verbose
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ApplicationInsightsName $applicationInsightsName -Force
+
+            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
+            Write-Verbose "FunctionAppSetting after update. Validate ApplicationInsights" -Verbose
+            $applicationSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] | Should -Be $newApplInsights.InstrumentationKey
+        }
+        finally
+        {
+            Write-Verbose "FunctionApp for cleanup." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            if ($functionApp) {
+                Remove-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -Force
+            }
+
+            Write-Verbose "Plans for cleanup." -Verbose
+            $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            if ($plan)
+            {
+                Write-Verbose "Removing plan $planName" -Verbose
+                Remove-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupName -Force
+            }
+
+            $plan = Get-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            if ($plan)
+            {
+                Write-Verbose "Removing plan $newPlanName" -Verbose
+                Remove-AzFunctionAppPlan -Name $newPlanName -ResourceGroupName $resourceGroupName -Force
             }
         }
     }
