@@ -40,7 +40,7 @@
         [System.String]
         ${FriendlyName},
                 
-        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService,AzureBlob.')]
+        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupDatasourceParameters]
         ${BackupConfiguration},
 
