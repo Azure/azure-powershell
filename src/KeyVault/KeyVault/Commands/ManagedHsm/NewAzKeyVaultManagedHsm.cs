@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
             };
 
-            // Build initial network ACLs (null when user did not bind -NetworkRuleSet so we avoid sending an empty object)
+            // Build initial network ACLs (sending an empty object when user did not bind -NetworkRuleSet to maintain backward compatibility)
             var networkAcls = BuildInitialNetworkAcls();
 
             return new VaultCreationOrUpdateParameters()
@@ -157,10 +157,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 Tags = this.Tag,
                 Administrator = this.Administrator,
                 SkuFamilyName = DefaultManagedHsmSkuFamily,
-                // If retention days is not specified, use the default value
                 SoftDeleteRetentionInDays = this.SoftDeleteRetentionInDays,
-                // false is not accepted
-                EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
+                EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,  // false is not accepted
                 MhsmNetworkAcls = networkAcls,
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 ManagedServiceIdentity = managedServiceIdentity
@@ -176,7 +174,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (!this.IsParameterBound(c => c.NetworkRuleSet) || NetworkRuleSet == null)
             {
-                return null; // User did not request any network ACL customization.
+                return new MhsmNetworkRuleSet(); // User did not request any network ACL customization.
             }
 
             var svc = ConvertToServiceNetworkRuleSet(NetworkRuleSet);
