@@ -161,8 +161,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "PowerShell"
-            RuntimeVersion = '7.2'
-            Name = "Functions-PowerShell-72-" + (RandomString -len 6)
+            RuntimeVersion = '7.4'
+            Name = "Functions-PowerShell-74-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -171,8 +171,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountLinux
             OSType = "Linux"
             Runtime = "Node"
-            RuntimeVersion = 18
-            Name = "Functions-Node-18-" + (RandomString -len 6)
+            RuntimeVersion = 22
+            Name = "Functions-Node-22-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -205,10 +205,14 @@ function setupEnv() {
     }
 
     # Create names to be used in the tests
-    $planNameWorkerTypeWindowsNew = "Func-Windows-Premium-New" + (RandomString -len 6)
+    $planNameWorkerTypeWindowsNew = "Func-Windows-Premium-New-" + (RandomString -len 6)
+    $planNameWorkerTypeWindowsNew2 = "Func-Windows-Premium-New2-" + (RandomString -len 6)
+    $planNameWorkerTypeWindowsNew3 = "Func-Windows-Premium-New3-" + (RandomString -len 6)
     $functionNamePowerShell = "Functions-PowerShellTest-" + (RandomString -len 10)
     $functionNamePowerShellNew1 = "Func-PowerShell-NewTest1-" + (RandomString -len 10)
     $functionNamePowerShellNew2 = "Func-PowerShell-NewTest2-" + (RandomString -len 10)
+    $functionNamePowerShellNew3 = "Func-PowerShell-NewTest3-" + (RandomString -len 10)
+    $functionNamePowerShellNew4 = "Func-PowerShell-NewTest4-" + (RandomString -len 10)
     $functionNameContainer = "Functions-CustomImage-" + (RandomString -len 10)
     $functionNameTestApp = "Functions-TestAppName-" + (RandomString -len 10)
     $functionNameDotNet = "Functions-DotNet-" + (RandomString -len 10)
@@ -217,13 +221,18 @@ function setupEnv() {
     $functionNamePython = "Functions-Python-" + (RandomString -len 10)
     $functionAppPlanName= "Functions-MyPlan-" + (RandomString -len 10)
     $functionAppTestPlanName= "Functions-MyTestPlan1-" + (RandomString -len 10)
+    $functionAppTestPlanName2= "Functions-MyTestPlan2-" + (RandomString -len 10)
     $functionNameDotNetIsolated = "Functions-DotNet-Isolated" + (RandomString -len 10)
     $functionNameCustomHandler = "Functions-CustomHandler" + (RandomString -len 10)
 
     $env.add('planNameWorkerTypeWindowsNew', $planNameWorkerTypeWindowsNew) | Out-Null
+    $env.add('planNameWorkerTypeWindowsNew2', $planNameWorkerTypeWindowsNew2) | Out-Null
+    $env.add('planNameWorkerTypeWindowsNew3', $planNameWorkerTypeWindowsNew3) | Out-Null
     $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
     $env.add('functionNamePowerShellNew1', $functionNamePowerShellNew1) | Out-Null
     $env.add('functionNamePowerShellNew2', $functionNamePowerShellNew2) | Out-Null
+    $env.add('functionNamePowerShellNew3', $functionNamePowerShellNew3) | Out-Null
+    $env.add('functionNamePowerShellNew4', $functionNamePowerShellNew4) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
     $env.add('functionNameTestApp', $functionNameTestApp) | Out-Null
     $env.add('functionNameDotNet', $functionNameDotNet) | Out-Null
@@ -232,6 +241,7 @@ function setupEnv() {
     $env.add('functionNamePython', $functionNamePython) | Out-Null
     $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null
     $env.add('functionAppTestPlanName', $functionAppTestPlanName) | Out-Null
+    $env.add('functionAppTestPlanName2', $functionAppTestPlanName2) | Out-Null
     $env.add('functionNameDotNetIsolated', $functionNameDotNetIsolated) | Out-Null
     $env.add('functionNameCustomHandler', $functionNameCustomHandler) | Out-Null
 
