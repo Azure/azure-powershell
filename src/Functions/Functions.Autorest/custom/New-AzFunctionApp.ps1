@@ -310,7 +310,7 @@ function New-AzFunctionApp {
 
         $runtimeJsonDefinition = $null
 
-        ValidateFunctionName -Name $Name @params
+        ValidateFunctionAppNameAvailability -Name $Name @params
 
         if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp))
         {

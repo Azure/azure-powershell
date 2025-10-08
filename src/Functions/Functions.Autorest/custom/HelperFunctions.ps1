@@ -729,26 +729,34 @@ function GetFunctionAppPlans
     Write-Progress -Activity $activityName -Status "Completed" -Completed
 }
 
-function ValidateFunctionName
+function ValidateFunctionAppNameAvailability
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
-        [Parameter(Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
         [System.String]
         $Name,
-
         $SubscriptionId,
         $HttpPipelineAppend,
         $HttpPipelinePrepend
     )
 
-    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site -Name $Name @PSBoundParameters
+    # Check if the function app name is available
+    if ([string]::IsNullOrEmpty($Name))
+    {
+        $errorMessage = "Function app name cannot be null or empty."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FunctionAppNameIsNullOrEmpty" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $result = Az.Functions.internal\Test-AzNameAvailability -Name $Name -Type Site @PSBoundParameters
 
     if (-not $result.NameAvailable)
     {
-        $errorMessage = "Function name '$Name' is not available.  Please try a different name."
+        $errorMessage = "Function app name '$Name' is not available.  Please try a different name."
         $exception = [System.InvalidOperationException]::New($errorMessage)
         ThrowTerminatingError -ErrorId "FunctionAppNameIsNotAvailable" `
                               -ErrorMessage $errorMessage `
