@@ -22,8 +22,6 @@ function Test-ManagedHsmNetworkRuleLifecycle-New {
     Assert-AreEqual 1 $acls.IPRules.Count
     Assert-AreEqual $ip1 $acls.IPRules[0].Value
     Assert-AreEqual "Deny" $acls.DefaultAction
-    $hsmName = "ps5389"
-    $rgName = "ps4492"
 
     $Global:MhsmLifecycle = @{ ResourceGroupName = $rgName; HsmName = $hsmName; Location = $hsmLoc; AdminId = $adminId; Ip1 = $ip1; Ip2 = $null }
     Write-Host "[New] Created HSM $hsmName in RG $rgName" -ForegroundColor Cyan

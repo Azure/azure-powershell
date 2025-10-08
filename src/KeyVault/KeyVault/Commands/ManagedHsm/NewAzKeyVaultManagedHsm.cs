@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             bool hasRules = (svc.IPRules?.Count > 0) || (svc.VirtualNetworkRules?.Count > 0);
             if (hasRules && string.Equals(svc.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase))
             {
-                throw new InvalidOperationException("Cannot specify IP or virtual network rules with DefaultAction Allow. Provide a rule set with DefaultAction Deny.");
+                throw new InvalidOperationException("Cannot specify both IP network rules & DefaultAction Allow together. Please specify -DefaultAction Deny or remove IPRules.");
             }
 
             return svc;

@@ -16,20 +16,20 @@ Fully backup a managed HSM.
 ```
 Backup-AzKeyVault [-HsmName] <String> -StorageAccountName <String> -StorageContainerName <String>
  [-SasToken <SecureString>] [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveStorageUri
 ```
 Backup-AzKeyVault [-HsmName] <String> -StorageContainerUri <Uri> [-SasToken <SecureString>]
- [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>]
+ [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectStorageUri
 ```
 Backup-AzKeyVault -StorageContainerUri <Uri> [-SasToken <SecureString>] [-UseUserManagedIdentity]
- -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
+ -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Backup-AzKeyVault -StorageContainerUri <Uri> [-SasToken <SecureString>] [-UseUse
 ```
 Backup-AzKeyVault -StorageAccountName <String> -StorageContainerName <String> [-SasToken <SecureString>]
  [-UseUserManagedIdentity] -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +127,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

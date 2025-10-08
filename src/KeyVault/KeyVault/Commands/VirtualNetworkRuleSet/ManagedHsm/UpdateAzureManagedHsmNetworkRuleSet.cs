@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
             // Enforcement: cannot have IP rules with DefaultAction Allow
             if (ipAddressRanges != null && ipAddressRanges.Count > 0 && defaultAct == PSManagedHsmNetworkRuleDefaultActionEnum.Allow)
             {
-                throw new InvalidOperationException("Cannot specify IP network rules while DefaultAction is Allow. Specify -DefaultAction Deny.");
+                throw new InvalidOperationException("Cannot specify both IP network rules & DefaultAction Allow together. Please specify -DefaultAction Deny or remove IPRules.");
             }
 
             return new PSManagedHsmNetworkRuleSet(defaultAct, bypass, ipAddressRanges, null);

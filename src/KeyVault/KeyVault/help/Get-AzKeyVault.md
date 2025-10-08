@@ -16,21 +16,21 @@ Gets key vaults.
 ### GetVaultByName (Default)
 ```
 Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
 Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
 Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -247,6 +247,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
