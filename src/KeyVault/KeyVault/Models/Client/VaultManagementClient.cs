@@ -641,8 +641,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.NetworkAcls.DefaultAction = PublicNetworkAccess.Enabled.ToString().Equals(parameters.PublicNetworkAccess) ? 
                     NetworkRuleAction.Allow.ToString() : NetworkRuleAction.Deny.ToString();
             }
-            // Normalize / enforce network rule set semantics (pattern mirrors vault helper method style)
+
+            // Normalize / enforce network rule set semantics
             UpdateManagedHsmNetworkRuleSetProperties(properties, properties.NetworkAcls);
+
             var response = KeyVaultManagementClient.ManagedHsms.Update(
                 resourceGroupName: existingManagedHsm.ResourceGroupName,
                 name: existingManagedHsm.Name,
@@ -707,6 +709,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         #endregion
 
         #region HELP_METHODS
+        
         /// <summary>
         /// Update managed HSM network rule set (mirror of vault variant) and enforce service constraints.
         /// Internal for unit testing.
@@ -715,9 +718,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             if (hsmProperties == null)
                 return;
-            // Pass-through now; validation (no Allow+IPs) is handled in cmdlets. We intentionally KEEP
-            // the code path for virtual network rules so future enablement requires no client refactor.
-            // (Cmdlets currently block user input for VNets.) No silent mutation of DefaultAction occurs here.
+
             var updated = new MhsmNetworkRuleSet();
             if (incoming == null)
             {
@@ -735,6 +736,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
             hsmProperties.NetworkAcls = updated;
         }
+
         /// <summary>
         /// Update vault network rule set
         /// </summary>

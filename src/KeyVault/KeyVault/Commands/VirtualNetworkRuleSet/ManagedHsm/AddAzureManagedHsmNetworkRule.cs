@@ -104,8 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
 
                 if (!Enum.TryParse(current.Bypass, true, out PSManagedHsmNetworkRuleBypassEnum effectiveBypass))
                 {
-                    // If bypass parsing fails, retain service default AzureServices without silently overwriting on server (only affects outgoing payload)
-                    effectiveBypass = PSManagedHsmNetworkRuleBypassEnum.AzureServices;
+                    throw new InvalidOperationException("Unable to determine existing Bypass. Set it explicitly with Update-AzKeyVaultManagedHsmNetworkRuleSet before adding IP rules.");
                 }
 
                 // Enforcement: cannot add IP rules while DefaultAction is Allow. (We do not change it here.)

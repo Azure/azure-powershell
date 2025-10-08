@@ -102,12 +102,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
                 throw new InvalidOperationException("Attempted to send IP network rules with DefaultAction Allow. Ensure DefaultAction is Deny before adding rules.");
             }
 
-            // Prepare minimal update parameters (only fields the Update API inspects + tags)
+            // IMPORTANT:
+            // DO NOT flow PublicNetworkAccess in the update parameters for Add/Remove network rule operations.
+            // The UpdateManagedHsm method treats a non-null PublicNetworkAccess as an instruction to coerce
+            // NetworkAcls.DefaultAction (Enabled => Allow, Disabled => Deny). That overwrites the existing
+            // Deny we rely on when adding IP rules and leads to an invalid payload (Allow + IP rules) rejected by service.
+            // Leaving PublicNetworkAccess null preserves the current DefaultAction on the resource.
             var updateParameters = new VaultCreationOrUpdateParameters
             {
                 EnablePurgeProtection = existingHsm.EnablePurgeProtection,
-                PublicNetworkAccess = existingHsm.PublicNetworkAccess,
                 Tags = existingHsm.Tags
+                // PublicNetworkAccess intentionally omitted to avoid unintended DefaultAction reset.
             };
 
             return KeyVaultManagementClient.UpdateManagedHsm(existingHsm, updateParameters, GraphClient);

@@ -135,6 +135,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.ManagedHsm.NetworkRuleSet
             {
                 defaultAct = parsedDefault;
             }
+
+            // Override if parameter specified
             if (DefaultAction.HasValue)
             {
                 defaultAct = DefaultAction.Value;
