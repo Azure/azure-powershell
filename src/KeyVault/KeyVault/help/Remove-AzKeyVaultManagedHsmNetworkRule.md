@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProgressAction
-Internal use. Controls progress display output. Normally not specified.
+{{ Fill ProgressAction Description }}
 
 ```yaml
 Type: ActionPreference
