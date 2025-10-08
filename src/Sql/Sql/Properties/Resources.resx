@@ -274,7 +274,7 @@
     <value>Are you sure you want to submit request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'?</value>
   </data>
   <data name="StopAzureSqlInstanceOperationWarning" xml:space="preserve">
-    <value>Submiting request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'.</value>
+    <value>Submitting request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'.</value>
   </data>
   <data name="StorageAccountNotFound" xml:space="preserve">
     <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
@@ -602,7 +602,7 @@
     <value>You cannot change hardware family.</value>
   </data>
   <data name="RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
-    <value>Permanantly removing the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
+    <value>Permanently removing the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
   </data>
   <data name="RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
@@ -669,6 +669,9 @@
   </data>
   <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
     <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
+  </data>
+  <data name="MissingEnableSoftDelete" xml:space="preserve">
+    <value>SoftDeleteRetentionDays parameter can only be specified if EnableSoftDelete is explicitly specified.</value>
   </data>
   <data name="RemoveAzureSqlServerOutboundFirewallRuleDescription" xml:space="preserve">
     <value>Permanently removing allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'.</value>
@@ -765,5 +768,14 @@
   </data>
   <data name="ForwardMigrationWithGeoDRInfo" xml:space="preserve">
     <value>Changing the service tier to Hyperscale also converts the geo-secondary replica to Hyperscale. For more information, see https://go.microsoft.com/fwlink/?linkid=2314103</value>
+  </data>
+  <data name="DeletedServerNotFound" xml:space="preserve">
+    <value>No deleted server named '{0}' found in location '{1}' that can be restored.</value>
+  </data>
+  <data name="InvalidSoftDeleteRetentionDaysForDisablingSoftDelete" xml:space="preserve">
+    <value>SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false.</value>
+  </data>
+  <data name="InvalidSoftDeleteRetentionDaysRange" xml:space="preserve">
+    <value>SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true.</value>
   </data>
 </root>

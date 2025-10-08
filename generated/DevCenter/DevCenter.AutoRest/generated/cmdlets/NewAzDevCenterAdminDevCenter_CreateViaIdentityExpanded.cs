@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDevCenterAdminDevCenter_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="New-AzDevCenterAdminDevCenter", ChangeDescription="PlanId will be removed from the DevCenter output.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Creates or updates a devcenter resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]
@@ -253,6 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         Description = @"Resource Id of an associated Plan",
         SerializedName = @"planId",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.ParameterBreakingChange("PlanId", "15.0.0", "3.0.0", "2025/11/18", ChangeDescription="PlanId parameter will be removed.")]
         public string PlanId { get => _body.PlanId ?? null; set => _body.PlanId = value; }
 
         /// <summary>

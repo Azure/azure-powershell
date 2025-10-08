@@ -596,6 +596,10 @@ Gets the NSP logging configuration.
 ### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
 Gets the specified NSP profile.
 
+### [Get-AzNetworkSecurityPerimeterServiceTag](Get-AzNetworkSecurityPerimeterServiceTag.md)
+Gets the list of service tags supported by NSP.
+These service tags can be used to list access rules in NSP.
+
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
@@ -764,6 +768,9 @@ Gets a Virtual Network Gateway
 ### [Get-AzVirtualNetworkGatewayAdvertisedRoute](Get-AzVirtualNetworkGatewayAdvertisedRoute.md)
 Lists routes being advertised by an Azure virtual network gateway
 
+### [Get-AzAllVirtualNetworkGatewayRadiusServerSecret](Get-AzAllVirtualNetworkGatewayRadiusServerSecret.md)
+Lists the Radius servers and corresponding radius secrets set on VirtualNetworkGateway PointToSite VpnClientConfiguration.
+
 ### [Get-AzVirtualNetworkGatewayBGPPeerStatus](Get-AzVirtualNetworkGatewayBGPPeerStatus.md)
 Lists an Azure virtual network gateway's BGP peers
 
@@ -826,6 +833,9 @@ Gets the list of all VpnServerConfigurations that are associated with this Virtu
 
 ### [Get-AzVirtualWanVpnServerConfigurationVpnProfile](Get-AzVirtualWanVpnServerConfigurationVpnProfile.md)
 Generates and downloads Vpn profile at VirtualWan-VpnServerConfiguration level for Point to site client setup.
+
+### [Get-AzAllVpnServerConfigurationRadiusServerSecret](Get-AzAllVpnServerConfigurationRadiusServerSecret.md)
+Lists the Radius servers and corresponding radius secrets set on VpnServerConfiguration.
 
 ### [Get-AzVpnClientConfiguration](Get-AzVpnClientConfiguration.md)
 Allows users to easily download the Vpn Profile package that was generated using the New-AzVpnClientConfiguration cmdlet.
@@ -934,6 +944,9 @@ Creates a match variable for firewall condition.
 
 ### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
 Creates a application gateway firewall policy.
+
+### [New-AzApplicationGatewayFirewallPolicyException](New-AzApplicationGatewayFirewallPolicyException.md)
+Creates an exception on the Firewall Policy
 
 ### [New-AzApplicationGatewayFirewallPolicyExclusion](New-AzApplicationGatewayFirewallPolicyExclusion.md)
 Creates an exclusion on the Firewall Policy
@@ -1438,6 +1451,9 @@ Creates a new packet capture filter object.
 
 ### [New-AzPacketCaptureScopeConfig](New-AzPacketCaptureScopeConfig.md)
 Creates a new packet capture scope object.
+
+### [New-AzPacketCaptureSettingsConfig](New-AzPacketCaptureSettingsConfig.md)
+Creates a new capture setting object.
 
 ### [New-AzPrivateDnsZoneConfig](New-AzPrivateDnsZoneConfig.md)
 Creates DNS zone configuration of the private dns zone group.
@@ -2329,6 +2345,9 @@ Updates a network manager group.
 
 ### [Set-AzNetworkManagerIpamPool](Set-AzNetworkManagerIpamPool.md)
 Updates an IPAM pool.
+
+### [Set-AzNetworkManagerIpamPoolStaticCidr](Set-AzNetworkManagerIpamPoolStaticCidr.md)
+Updates an IPAM pool's static cidr.
 
 ### [Set-AzNetworkManagerManagementGroupConnection](Set-AzNetworkManagerManagementGroupConnection.md)
 Update a network manger management group connection

@@ -123,10 +123,11 @@ param(
     ${StorageAccountInputObject},
 
     [Parameter(ParameterSetName='List')]
+    [Alias('Maxpagesize')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Query')]
     [System.Int32]
     # Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
-    ${Maxpagesize},
+    ${Top},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

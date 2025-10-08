@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
@@ -76,6 +77,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
             this.AllowedCopyScope = storageAccount.AllowedCopyScope;
             this.DnsEndpointType= storageAccount.DnsEndpointType;
+            this.Zone = storageAccount.Zones is null ? null : storageAccount.Zones.ToArray();
+            this.ZonePlacementPolicy = storageAccount.Placement is null ? null : storageAccount.Placement.ZonePlacementPolicy;
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -170,6 +173,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
         public string DnsEndpointType { get; set; }
+        public string[] Zone { get; set; }
+        public string ZonePlacementPolicy { get; set; }
 
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client, IAzureContext DefaultContext)

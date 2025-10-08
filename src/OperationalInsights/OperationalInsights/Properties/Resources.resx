@@ -153,7 +153,7 @@ Are you sure you want to continue?</value>
     <value>We've hit a internal error, please contact support with workspaceId. SingletonDataSourceHaveMultipleValues.</value>
   </data>
   <data name="DataSourceSyslogNoSeveritySelected" xml:space="preserve">
-    <value>Please atleast have one severity level to enable log collection.</value>
+    <value>Please at least have one severity level to enable log collection.</value>
   </data>
   <data name="DataSourceUpdateCannotModifyKind" xml:space="preserve">
     <value>Cannot modify Kind while updating data source.</value>

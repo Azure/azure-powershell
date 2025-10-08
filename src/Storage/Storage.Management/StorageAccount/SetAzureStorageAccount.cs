@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set resource ids for the the new Storage Account user assignedd Identity, the identity will be used with key management services like Azure KeyVault.")]
+            HelpMessage = "Set resource ids for the the new Storage Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.")]
         [ValidateNotNull]
         public string UserAssignedIdentityId { get; set; }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Set the new Storage Account Identity type, the identity is for use with key management services like Azure KeyVault.")]
         [ValidateSet(AccountIdentityType.systemAssigned,
             AccountIdentityType.userAssigned,
             AccountIdentityType.systemAssignedUserAssigned,
@@ -401,6 +401,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies if managed identities can access SMB shares using OAuth.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbOAuth
+        {
+            get
+            {
+                return enableSmbOAuth.Value;
+            }
+            set
+            {
+                enableSmbOAuth = value;
+            }
+        }
+        private bool? enableSmbOAuth = null;
+
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Allow or disallow anonymous access to all blobs or containers in the storage account.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
@@ -540,7 +558,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. " +
-            "Disabled state disablesthe policy. " +
+            "Disabled state disables the policy. " +
             "Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property. " +
             "Locked state only allows the increase of the immutability retention time. " +
             "A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. " +
@@ -587,6 +605,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [PSArgumentCompleter("PrivateLink", "AAD")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describes the available zones for the product where storage account resource can be created")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The availability zone pinning policy for the storage account.")]
+        [PSArgumentCompleter("None", "Any")]
+        [ValidateNotNullOrEmpty]
+        public string ZonePlacementPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -869,6 +900,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         updateParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
                     }
+                    if (this.enableSmbOAuth != null)
+                    {
+                        if (updateParameters.AzureFilesIdentityBasedAuthentication == null)
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                        }
+                        updateParameters.AzureFilesIdentityBasedAuthentication.SmbOAuthSettings = new SmbOAuthSettings
+                        {
+                            IsSmbOAuthEnabled = this.enableSmbOAuth.Value
+                        };
+                    }
                     if (this.EnableLargeFileShare.IsPresent)
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
@@ -946,6 +988,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.AllowedCopyScope != null)
                     {
                         updateParameters.AllowedCopyScope = this.AllowedCopyScope;
+                    }
+                    if (this.Zone != null)
+                    {
+                        updateParameters.Zones = new List<string>(this.Zone);
+                    }
+                    if (this.ZonePlacementPolicy != null)
+                    {
+                        updateParameters.Placement = new Placement(this.ZonePlacementPolicy);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

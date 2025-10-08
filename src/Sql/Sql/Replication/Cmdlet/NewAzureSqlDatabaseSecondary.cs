@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
@@ -271,7 +272,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName), this.PartnerSubscriptionId);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

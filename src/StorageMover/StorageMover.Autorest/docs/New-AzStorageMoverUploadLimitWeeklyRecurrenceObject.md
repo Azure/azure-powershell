@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence
 
 ## NOTES
 

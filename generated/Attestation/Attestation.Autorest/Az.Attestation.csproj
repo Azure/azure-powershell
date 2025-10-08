@@ -3,6 +3,7 @@
     <PsModuleName>Attestation</PsModuleName>
     <PsRootModuleName>Attestation</PsRootModuleName>
     <PsModuleFolder>Attestation.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Attestation</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

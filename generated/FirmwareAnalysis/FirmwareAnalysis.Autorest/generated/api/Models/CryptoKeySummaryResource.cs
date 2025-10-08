@@ -19,45 +19,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceProperties __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties();
 
-        /// <summary>Backing field for <see cref="PairedKey" /> property.</summary>
-        private long? _pairedKey;
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState = value ?? null; }
+
+        /// <summary>Backing field for <see cref="PairedKeyCount" /> property.</summary>
+        private long? _pairedKeyCount;
 
         /// <summary>Total number of keys found that have a matching paired key or certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? PairedKey { get => this._pairedKey; set => this._pairedKey = value; }
+        public long? PairedKeyCount { get => this._pairedKeyCount; set => this._pairedKeyCount = value; }
 
-        /// <summary>Backing field for <see cref="PrivateKey" /> property.</summary>
-        private long? _privateKey;
+        /// <summary>Backing field for <see cref="PrivateKeyCount" /> property.</summary>
+        private long? _privateKeyCount;
 
         /// <summary>Total number of private keys found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? PrivateKey { get => this._privateKey; set => this._privateKey = value; }
+        public long? PrivateKeyCount { get => this._privateKeyCount; set => this._privateKeyCount = value; }
 
-        /// <summary>Backing field for <see cref="PublicKey" /> property.</summary>
-        private long? _publicKey;
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; }
+
+        /// <summary>Backing field for <see cref="PublicKeyCount" /> property.</summary>
+        private long? _publicKeyCount;
 
         /// <summary>Total number of (non-certificate) public keys found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? PublicKey { get => this._publicKey; set => this._publicKey = value; }
+        public long? PublicKeyCount { get => this._publicKeyCount; set => this._publicKeyCount = value; }
 
-        /// <summary>Backing field for <see cref="ShortKeySize" /> property.</summary>
-        private long? _shortKeySize;
+        /// <summary>Backing field for <see cref="ShortKeySizeCount" /> property.</summary>
+        private long? _shortKeySizeCount;
 
         /// <summary>Total number of keys found that have an insecure key size for the algorithm.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? ShortKeySize { get => this._shortKeySize; set => this._shortKeySize = value; }
+        public long? ShortKeySizeCount { get => this._shortKeySizeCount; set => this._shortKeySizeCount = value; }
 
-        /// <summary>Describes the type of summary.</summary>
+        /// <summary>The type of summary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
         public string SummaryType { get => "CryptoKey"; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).SummaryType = "CryptoKey"; }
 
-        /// <summary>Backing field for <see cref="TotalKey" /> property.</summary>
-        private long? _totalKey;
+        /// <summary>Backing field for <see cref="TotalKeyCount" /> property.</summary>
+        private long? _totalKeyCount;
 
         /// <summary>Total number of cryptographic keys found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? TotalKey { get => this._totalKey; set => this._totalKey = value; }
+        public long? TotalKeyCount { get => this._totalKeyCount; set => this._totalKeyCount = value; }
 
         /// <summary>Creates an new <see cref="CryptoKeySummaryResource" /> instance.</summary>
         public CryptoKeySummaryResource()
@@ -90,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of keys found that have a matching paired key or certificate.",
-        SerializedName = @"pairedKeys",
+        SerializedName = @"pairedKeyCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? PairedKey { get; set; }
+        long? PairedKeyCount { get; set; }
         /// <summary>Total number of private keys found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -101,9 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of private keys found.",
-        SerializedName = @"privateKeys",
+        SerializedName = @"privateKeyCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? PrivateKey { get; set; }
+        long? PrivateKeyCount { get; set; }
         /// <summary>Total number of (non-certificate) public keys found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -112,9 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of (non-certificate) public keys found.",
-        SerializedName = @"publicKeys",
+        SerializedName = @"publicKeyCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? PublicKey { get; set; }
+        long? PublicKeyCount { get; set; }
         /// <summary>Total number of keys found that have an insecure key size for the algorithm.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -123,9 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of keys found that have an insecure key size for the algorithm.",
-        SerializedName = @"shortKeySize",
+        SerializedName = @"shortKeySizeCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? ShortKeySize { get; set; }
+        long? ShortKeySizeCount { get; set; }
         /// <summary>Total number of cryptographic keys found.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -134,9 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"Total number of cryptographic keys found.",
-        SerializedName = @"totalKeys",
+        SerializedName = @"totalKeyCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? TotalKey { get; set; }
+        long? TotalKeyCount { get; set; }
 
     }
     /// Properties for cryptographic key summary.
@@ -144,15 +151,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal
     {
         /// <summary>Total number of keys found that have a matching paired key or certificate.</summary>
-        long? PairedKey { get; set; }
+        long? PairedKeyCount { get; set; }
         /// <summary>Total number of private keys found.</summary>
-        long? PrivateKey { get; set; }
+        long? PrivateKeyCount { get; set; }
         /// <summary>Total number of (non-certificate) public keys found.</summary>
-        long? PublicKey { get; set; }
+        long? PublicKeyCount { get; set; }
         /// <summary>Total number of keys found that have an insecure key size for the algorithm.</summary>
-        long? ShortKeySize { get; set; }
+        long? ShortKeySizeCount { get; set; }
         /// <summary>Total number of cryptographic keys found.</summary>
-        long? TotalKey { get; set; }
+        long? TotalKeyCount { get; set; }
 
     }
 }

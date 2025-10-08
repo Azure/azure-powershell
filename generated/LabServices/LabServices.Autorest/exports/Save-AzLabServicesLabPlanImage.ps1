@@ -22,8 +22,26 @@ Saves an image from a lab VM to the attached shared image gallery.
 .Example
 Save-AzLabServicesLabPlanImage -ResourceGroupName "Group Name" -LabPlanName "Lab Plan Name" -Name "New Image Name" -LabVirtualMachineId "/subscriptions/<subscription Id>/resourceGroups/<group name>/providers/Microsoft.LabServices/labs/labName/virtualMachines/<vm name>"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
 .Outputs
 System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/save-azlabserviceslabplanimage
 #>
@@ -31,38 +49,64 @@ function Save-AzLabServicesLabPlanImage {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='SaveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SaveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the lab plan that uniquely identifies it within containing resource group.
     # Used in resource URIs and in UI.
     ${LabPlanName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SaveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SaveExpanded')]
+    [Parameter(ParameterSetName='SaveViaJsonFilePath')]
+    [Parameter(ParameterSetName='SaveViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SaveViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='SaveExpanded')]
+    [Parameter(ParameterSetName='SaveViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The ID of the lab virtual machine you want to save an image from.
     ${LabVirtualMachineId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SaveExpanded')]
+    [Parameter(ParameterSetName='SaveViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The name for the image we create.
     ${Name},
+
+    [Parameter(ParameterSetName='SaveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Save operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SaveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Save operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,6 +182,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -158,10 +211,11 @@ begin {
 
         $mapping = @{
             SaveExpanded = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveExpanded';
+            SaveViaIdentityExpanded = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveViaIdentityExpanded';
+            SaveViaJsonFilePath = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveViaJsonFilePath';
+            SaveViaJsonString = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveViaJsonString';
         }
-        if (('SaveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('SaveExpanded', 'SaveViaJsonFilePath', 'SaveViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -175,6 +229,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

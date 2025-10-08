@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
 {
     public class ConditionalAssemblyProviderTests
     {
-        private const string NetFx = "netfx";
+        private const string Net45 = "net45";
         private const string NetStandard20 = "netstandard2.0";
         private const string RootPath = "root";
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             Assert.True(assemblies.TryGetValue("Azure.Core", out var azureCore));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Core"), azureCore.Path);
             Assert.True(assemblies.TryGetValue("Newtonsoft.Json", out var newtonsoftJson));
-            Assert.Equal(GetExpectedAssemblyPath(NetFx, "Newtonsoft.Json"), newtonsoftJson.Path);
+            Assert.Equal(GetExpectedAssemblyPath(Net45, "Newtonsoft.Json"), newtonsoftJson.Path);
 
             Assert.True(assemblies.TryGetValue("Azure.Identity", out var azureIdentity));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Identity"), azureIdentity.Path);
