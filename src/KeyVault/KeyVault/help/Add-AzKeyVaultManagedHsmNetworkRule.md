@@ -83,8 +83,7 @@ Appends two ranges then outputs the Managed HSM object because `-PassThru` is sp
 
 ### Example 3: Pipe a Managed HSM object
 ```powershell
-Get-AzKeyVaultManagedHsm -Name $myHsm -ResourceGroupName $myRg | \
-	Add-AzKeyVaultManagedHsmNetworkRule -IpAddressRange 198.51.100.0/25
+Get-AzKeyVaultManagedHsm -Name $myHsm -ResourceGroupName $myRg | Add-AzKeyVaultManagedHsmNetworkRule -IpAddressRange 198.51.100.0/25
 ```
 
 ```output
