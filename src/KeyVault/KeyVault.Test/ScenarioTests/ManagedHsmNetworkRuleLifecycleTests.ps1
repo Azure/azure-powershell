@@ -12,7 +12,10 @@ function Test-ManagedHsmNetworkRuleLifecycle-New {
     $rgLoc   = Get-Location "Microsoft.Resources" "resourceGroups" "East US"
     $hsmName = getAssetName
     $hsmLoc  = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US"
-    $adminId = (Get-AzADUser -SignedIn).Id
+
+    # Replace below with a valid admin object id for recording.
+    # (Get-AzADUser -SignedIn).Id
+    $adminId = "e1b70801-ae8d-4cb2-9d6a-12adffdc6856"
     
     New-AzResourceGroup -Name $rgName -Location $rgLoc | Out-Null
     $ip1 = "110.0.1.0/24"

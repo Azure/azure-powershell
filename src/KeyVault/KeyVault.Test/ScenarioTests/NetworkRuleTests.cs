@@ -37,12 +37,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateVaultWithNetworkRule");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedHsmNetworkRuleLifecycle()
-        {
-            TestRunner.RunTestScript("Test-ManagedHsmNetworkRuleLifecycle");
-        }
-
     }
 }

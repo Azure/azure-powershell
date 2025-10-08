@@ -28,40 +28,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
         }
 
-        // [Fact]
-        // [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // public void TestManagedHsmNetworkRuleLifecycleNew()
-        // {
-        //     TestRunner.RunTestScript("Test-ManagedHsmNetworkRuleLifecycle-New");
-        // }
-
-        // [Fact]
-        // [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // public void TestManagedHsmNetworkRuleLifecycleAdd()
-        // {
-        //     TestRunner.RunTestScript("Test-ManagedHsmNetworkRuleLifecycle-Add");
-        // }
-
-        // [Fact]
-        // [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // public void TestManagedHsmNetworkRuleLifecycleRemove()
-        // {
-        //     TestRunner.RunTestScript("Test-ManagedHsmNetworkRuleLifecycle-Remove");
-        // }
-
-        // [Fact]
-        // [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // public void TestManagedHsmNetworkRuleLifecycleUpdate()
-        // {
-        //     TestRunner.RunTestScript("Test-ManagedHsmNetworkRuleLifecycle-Update");
-        // }
-
-        /// <summary>
-        /// Convenience end-to-end test that executes the four phase scripts in a single runspace so that
-        /// the PowerShell global state (and our persisted JSON file) naturally flows without relying on
-        /// xUnit test ordering. This does NOT modify the individual Facts above and can be opted into
-        /// when a full lifecycle validation is desired (e.g. local debugging or CI gated scenario).
-        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedHsmNetworkRuleLifecycleFullSequence()
