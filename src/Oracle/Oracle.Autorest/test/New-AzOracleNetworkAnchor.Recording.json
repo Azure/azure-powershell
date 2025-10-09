@@ -1,0 +1,92 @@
+{
+  "New-AzOracleNetworkAnchor+[NoContext]+Warmup+$GET+https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "68f08802-2569-4dfe-bcc3-2cc8ef3b5ba9" ],
+        "CommandName": [ "Get-AzOracleGiVersion" ],
+        "FullCommandName": [ "Get-AzOracleGiVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=359af50e-f985-4028-adf5-034a840f32d6,objectId=a9fc9ef3-cabe-4802-90cf-9c9d376bc4e5/southcentralus/fd973ec9-4182-4ee3-b1e7-331ace00684d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "oci-1528779CE1AAE01-202510091632/246B03590AE4AA6EA4E3E768494144C0/31DD752B64064D51350A1D9CB1B03A78" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0bee2657-ada0-47c3-b98d-a63ecbb14e91" ],
+        "x-ms-correlation-request-id": [ "7c34e4be-33d8-429a-b82a-e2687cd6b4d4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251009T163244Z:7c34e4be-33d8-429a-b82a-e2687cd6b4d4" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C7A892426B154810B951EC4EE84A01FD Ref B: SN4AA2022303023 Ref C: 2025-10-09T16:32:36Z" ],
+        "Date": [ "Thu, 09 Oct 2025 16:32:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3155" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*1+v*19.0.0.0\",\"name\":\"s*Exadata.X9M+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*1+v*23.0.0.0\",\"name\":\"s*Exadata.X9M+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*1+v*19.0.0.0\",\"name\":\"s*Exadata.X11M+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*1+v*23.0.0.0\",\"name\":\"s*Exadata.X11M+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*1+v*19.0.0.0\",\"name\":\"s*ExaDbXS+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*1+v*23.0.0.0\",\"name\":\"s*ExaDbXS+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*2+v*19.0.0.0\",\"name\":\"s*Exadata.X9M+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*2+v*23.0.0.0\",\"name\":\"s*Exadata.X9M+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*2+v*19.0.0.0\",\"name\":\"s*Exadata.X11M+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*2+v*23.0.0.0\",\"name\":\"s*Exadata.X11M+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*2+v*19.0.0.0\",\"name\":\"s*ExaDbXS+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*2+v*23.0.0.0\",\"name\":\"s*ExaDbXS+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOracleNetworkAnchor+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/resourceGroups/PowerShellTestRg/providers/Oracle.Database/networkAnchors/Create?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/resourceGroups/PowerShellTestRg/providers/Oracle.Database/networkAnchors/Create?api-version=2025-09-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"resourceAnchorId\": \"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/IAD-AZ/providers/Oracle.Database/resourceAnchors/RAIADAZ01\",\r\n    \"subnetId\": \"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/0322yumfeiTest/providers/Microsoft.Network/virtualNetworks/0607yumfeiTest/subnets/delegated\"\r\n  },\r\n  \"zones\": [ \"1\" ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "406" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=359af50e-f985-4028-adf5-034a840f32d6,objectId=a9fc9ef3-cabe-4802-90cf-9c9d376bc4e5/southcentralus/43eee385-9181-4bb5-a8d2-32f8df7b0dae" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "oci-BD68B76FB588299-202510091632/C114500A2F3C04E0B0E3E7684941446C/4E9A57D3244A52C167FA0735CD7910CC" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "2939f553-798c-44e7-9f57-75f9078a3ab8" ],
+        "x-ms-correlation-request-id": [ "277d7d16-97b4-4eea-bc33-a8639b4e093c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251009T163252Z:277d7d16-97b4-4eea-bc33-a8639b4e093c" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 764FAADE0942400DA17C556884637B83 Ref B: SN4AA2022303023 Ref C: 2025-10-09T16:32:44Z" ],
+        "Date": [ "Thu, 09 Oct 2025 16:32:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "393" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"400\",\"message\":\"Resource anchor id is incorrect: /subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/IAD-AZ/providers/Oracle.Database/resourceAnchors/RAIADAZ01\",\"details\":[{\"code\":\"400\",\"message\":\"Resource anchor id is incorrect: /subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/IAD-AZ/providers/Oracle.Database/resourceAnchors/RAIADAZ01\"}]}}",
+      "isContentBase64": false
+    }
+  }
+}

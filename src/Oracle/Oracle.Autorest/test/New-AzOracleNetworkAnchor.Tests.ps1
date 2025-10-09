@@ -22,6 +22,7 @@ Describe 'New-AzOracleNetworkAnchor' {
     $rgName   = 'PowerShellTestRg'
     $location = 'eastus'
     $name     = 'OFake_PowerShellTestNetworkAnchor'
+    $raName   = '/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/IAD-AZ/providers/Oracle.Database/resourceAnchors/RAIADAZ01'
 
     $hasCmd = Get-Command -Name New-AzOracleNetworkAnchor -ErrorAction SilentlyContinue
 
@@ -38,9 +39,11 @@ Describe 'New-AzOracleNetworkAnchor' {
                     -Name $name `
                     -ResourceGroupName $rgName `
                     -Location $location `
-                    -DisplayName $name `
-                    -AnchorType VCN `
-                    -OciResourceId 'ocid1.vcn.oc1.iad.fakeuniqueid'
+                    -SubscriptionId $env.SubscriptionId `
+                    -ResourceAnchorId $raName  `
+                    -Zone "1" `
+                    -SubnetId "/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/0322yumfeiTest/providers/Microsoft.Network/virtualNetworks/0607yumfeiTest/subnets/delegated" `
+                
 
                 # Basic assertions only (RU: держим тест максимально лёгким)
                 $created | Should -Not -BeNullOrEmpty

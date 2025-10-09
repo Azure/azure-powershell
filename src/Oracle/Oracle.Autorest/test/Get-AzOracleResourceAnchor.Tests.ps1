@@ -15,16 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleResourceAnchor'))
 }
 
 Describe 'Get-AzOracleResourceAnchor' {
-    $subscriptionId = $env:AZURE_SUBSCRIPTION_ID
-    $rgName         = 'PowerShellTestRg'
-    $raName         = 'OFake_PowerShellTestResourceAnchor'  # avoid Pester's $Name
+    $subscriptionId = $env.SubscriptionId
+    $rgName         = 'PowerShellTestRgMihr'
+    $raName         = 'Create'  # avoid Pester's $Name
     $resourceId     = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Oracle.Database/resourceAnchors/$raName"
-
-    It 'Warmup' {
-        # Ensure at least one real HTTP call flows through the AutoRest pipeline so the recorder writes the file
-        # Using an existing generated cmdlet that performs a GET
-        Get-AzOracleGiVersion -Location 'eastus' | Out-Null
-    }
 
     It 'List' {
         $list = Get-AzOracleResourceAnchor -ResourceGroupName $rgName

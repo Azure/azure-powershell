@@ -23,6 +23,9 @@
 * API version updates across all resource types from 2025-03-01 to 2025-09-01 
 * Parameter changes in existing cmdlets, particularly around scheduled operations handling
 
+## Version 1.3.0
+* Upgraded to the stable version 2025-09-01
+
 ## Version 1.2.0
 * Upgraded to the stable version 2025-03-01
 
