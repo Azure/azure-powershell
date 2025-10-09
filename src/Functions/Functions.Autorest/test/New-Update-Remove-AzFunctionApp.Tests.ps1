@@ -153,7 +153,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
         try
         {
             Write-Verbose "Create function app with a SystemAssigned managed identity" -Verbose
-            $appName = $env.functionNamePowerShellNew1
+            $appName = $env.functionNamePowerShellNew5
             Write-Verbose "App name: $appName" -Verbose
 
             $planName = $env.planNameWorkerTypeWindowsNew3

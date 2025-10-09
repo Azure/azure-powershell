@@ -213,6 +213,7 @@ function setupEnv() {
     $functionNamePowerShellNew2 = "Func-PowerShell-NewTest2-" + (RandomString -len 10)
     $functionNamePowerShellNew3 = "Func-PowerShell-NewTest3-" + (RandomString -len 10)
     $functionNamePowerShellNew4 = "Func-PowerShell-NewTest4-" + (RandomString -len 10)
+    $functionNamePowerShellNew5 = "Func-PowerShell-NewTest5-" + (RandomString -len 10)
     $functionNameContainer = "Functions-CustomImage-" + (RandomString -len 10)
     $functionNameTestApp = "Functions-TestAppName-" + (RandomString -len 10)
     $functionNameDotNet = "Functions-DotNet-" + (RandomString -len 10)
@@ -233,6 +234,7 @@ function setupEnv() {
     $env.add('functionNamePowerShellNew2', $functionNamePowerShellNew2) | Out-Null
     $env.add('functionNamePowerShellNew3', $functionNamePowerShellNew3) | Out-Null
     $env.add('functionNamePowerShellNew4', $functionNamePowerShellNew4) | Out-Null
+    $env.add('functionNamePowerShellNew5', $functionNamePowerShellNew5) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
     $env.add('functionNameTestApp', $functionNameTestApp) | Out-Null
     $env.add('functionNameDotNet', $functionNameDotNet) | Out-Null
