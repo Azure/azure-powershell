@@ -1,6 +1,6 @@
 # @wyunchi-ms @dolauli @isra-fel are from the Azure PowerShell team. Adding them ensures they can merge the PR for those modules.
 # To make sure Network PRs go to the right branch, e.g. network-april
-/src/Compute/    @EdwinBernal1 @grizzlytheodore @ntangy @sandido @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi
+/src/Compute/    @ookoka @haagha @audreyttt @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi
 /src/PolicyInsights/  @pilor @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi 
 /src/Batch/ @wiboris @dpwatrous @wyunchi-ms @dolauli @isra-fel @VeryEarly @YanaXu @vidai-msft @NoriZC @notyashhh @Pan-Qi 
 

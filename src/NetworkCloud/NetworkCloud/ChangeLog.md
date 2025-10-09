@@ -24,37 +24,9 @@
   * Cmdlet `Update-AzNetworkCloudCluster`
   * Cmdlet `Update-AzNetworkCloudClusterManager`
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
-* Added breaking change announcement for below cmdlets from fixed array to list.
-  * Cmdlet `Get/New/Update-AzNetworkCloudAgentPool`
-  * Cmdlet `Get/New/Update-AzNetworkCloudBareMetalMachine`
-  * Cmdlet `Get/New/Update-AzNetworkCloudBareMetalMachineKeySet`
-  * Cmdlet `Get/New/Update-AzNetworkCloudBmcKeySet`
-  * Cmdlet `Get/New/Update-AzNetworkCloudCluster`
-  * Cmdlet `Get/New/Update-AzNetworkCloudClusterManager`
-  * Cmdlet `Get/New/Update-AzNetworkCloudKubernetesCluster`
-  * Cmdlet `Get/New/Update-AzNetworkCloudKubernetesClusterFeature`
-  * Cmdlet `Get/New/Update-AzNetworkCloudL2Network`
-  * Cmdlet `Get/New/Update-AzNetworkCloudL3Network`
-  * Cmdlet `Get/New/Update-AzNetworkCloudMetricsConfiguration`
-  * Cmdlet `Get-AzNetworkCloudRackSku`
-  * Cmdlet `Get/Update-AzNetworkCloudServicesNetwork`
-  * Cmdlet `Get/Update-AzNetworkCloudStorageAppliance`
-  * Cmdlet `Get/New/Update-AzNetworkCloudTrunkedNetwork`
-  * Cmdlet `Get/New/Update-AzNetworkCloudVirtualMachine`
-  * Cmdlet `Get/New/Update-AzNetworkCloudVolume`
-  * Cmdlet `New-AzNetworkCloudBgpAdvertisementObject`
-  * Cmdlet `New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject`
-  * Cmdlet `New-AzNetworkCloudControlPlaneNodeConfigurationObject`
-  * Cmdlet `New-AzNetworkCloudEgressEndpointObject`
-  * Cmdlet `New-AzNetworkCloudInitialAgentPoolConfigurationObject`
-  * Cmdlet `New-AzNetworkCloudIpAddressPoolObject`
-  * Cmdlet `New-AzNetworkCloudRackDefinitionObject`
-  * Cmdlet `Invoke-AzNetworkCloudBareMetalMachineDataExtract`
-* Added breaking change announcement for removing parameters `-IdentityType` and `-IdentityUserAssignedIdentity` is renamed to `-UserAssignedIdentity`.
-  * Cmdlet `New-AzNetworkCloudCluster`
-  * Cmdlet `New-AzNetworkCloudClusterManager`
-  * Cmdlet `Update-AzNetworkCloudCluster`
-  * Cmdlet `Update-AzNetworkCloudClusterManager`
+
+## Version 1.2.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 1.2.0
 * Upgraded API version to 2025-02-01

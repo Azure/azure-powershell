@@ -18,15 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added breaking change announcement for below cmdlets from fixed array to list.
-  * Cmdlet `Get-AzStreamAnalyticsDefaultFunctionDefinition`
-  * Cmdlet `Get-AzStreamAnalyticsInput`
-  * Cmdlet `Get-AzStreamAnalyticsJob`
-  * Cmdlet `Get-AzStreamAnalyticsOutput`
-  * Cmdlet `New-AzStreamAnalyticsOutput`
-  * Cmdlet `Update-AzStreamAnalyticsOutput`
-  * Cmdlet `Get-AzStreamAnalyticsQuota`
-* Added 'the parameter Location will be removed' breaking change announcement for Cmdlet `Update-AzStreamAnalyticsCluster`.
+
+## Version 2.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
