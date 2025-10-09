@@ -596,8 +596,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
 
                 $cacheStorageAccount = $amhStoredStorageAccount
 
-                # This will fix brownfield issue where AMH solution tool is set incorrectly that causes UX bifracation to go to the wrong experience;
-                # for new projects that are set correctly from the start, this will essentailly be a no-op.
+                # This will fix brownfield issue where AMH solution tool is set incorrectly that causes UX bifurcation to go to the wrong experience;
+                # for new projects that are set correctly from the start, this will essentially be a no-op.
                 Az.Migrate.Internal\Set-AzMigrateSolution `
                     -MigrateProjectName $ProjectName `
                     -Name $amhSolution.Name `
@@ -626,7 +626,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                         -ResourceGroupName $ResourceGroupName `
                         -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
                         -Tool "ServerMigration_DataReplication" `
-                        -Purpose "Migration"| Out-Null
+                        -Purpose "Migration" | Out-Null
                 }
             }
             else
@@ -957,7 +957,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -ResourceGroupName $ResourceGroupName `
                 -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
                 -Tool "ServerMigration_DataReplication" `
-                -Purpose "Migration"| Out-Null
+                -Purpose "Migration" | Out-Null
         }
 
         Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'"

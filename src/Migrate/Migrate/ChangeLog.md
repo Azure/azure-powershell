@@ -26,7 +26,7 @@
 * Fixed bugs in `Get-AzMigrateLocalServerReplication`: Added ARM id validation for input parameters
 * Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
-  - Correct AMH solution tool name of "ServerMigration_DataReplication" is now being passed in to address replication count missing and UX bifracation experience issues in Azure Migrate on Azure portal.
+  - Correct AMH solution tool name of "ServerMigration_DataReplication" is now being passed in to address replication count missing and UX experience load issues in Azure Migrate on Azure portal.
 
 ## Version 2.9.0
 * Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.
