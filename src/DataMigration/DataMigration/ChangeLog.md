@@ -19,12 +19,9 @@
 -->
 ## Upcoming Release
 * General availability for module Az.DataMigration
-* Upgraded Data Migration API to stable version `2025-06-30`.
+* Upgraded Data Migration API to stable version '2025-06-30'.
 * Added support for retrying database migrations and for deleting SQL VM and SQL MI Database Migration Services.
-* Added cmdlets:
-  - `Invoke-AzDataMigrationRetryToSqlDb`
-  - `Remove-AzDataMigrationToSqlManagedInstance`
-  - `Remove-AzDataMigrationToSqlVM`
+* Added cmdlets: 'Invoke-AzDataMigrationRetryToSqlDb', 'Remove-AzDataMigrationToSqlManagedInstance', 'Remove-AzDataMigrationToSqlVM'
 
 ## Version 0.15.0
 * Bumped up data migration API to 2025-03-15-preview

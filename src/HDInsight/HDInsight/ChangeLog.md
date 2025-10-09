@@ -19,10 +19,10 @@
 -->
 
 ## Upcoming Release
-* Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support create cluster with entra user as gateway credential to replace use username and password.
+* Supported create cluster with entra user as gateway credential to replace use username and password.
   - Added parameter `-EntraUserIdentity` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using one or more ObjectId or Upn.
   - Added parameter `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
-* Added two parameters `-EntraUserIdentity` and `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` to update Entra user information for an existing Entra user cluster.
+* Supported update Entra user information for an existing Entra user cluster.
   - Added parameter `-EntraUserIdentity` to cmdlet `Set-AzHDInsightGatewayCredential` to support update Entra user clusters using one or more ObjectId or Upn.
   - Added parameter `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` to support update Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
 * Added support for using WASB storage with Managed Identity (MSI) in the `New-AzHDInsightCluster` cmdlet.
