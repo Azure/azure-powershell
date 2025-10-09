@@ -154,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveCollection
 
 ## NOTES
 
