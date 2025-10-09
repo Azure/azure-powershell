@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid parameter format for keyId: &apos;{0}&apos;. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901.
+        ///   Looks up a localized string similar to Invalid parameter format for keyId: &apos;{0}&apos;. It should be a well formed Azure Key Vault KeyId such as https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901 (versioned) or https://YourVaultName.vault.azure.net/keys/YourKeyName (versionless).
         /// </summary>
         internal static string InvalidKeyId {
             get {

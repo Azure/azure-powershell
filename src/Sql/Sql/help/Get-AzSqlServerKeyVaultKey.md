@@ -53,7 +53,7 @@ $MyServerKeyVaultKey = Get-AzSqlServerKeyVaultKey -KeyId 'https://contoso.vault.
 ```
 
 This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901', and then stores it in the $MyServerKeyVaultKey variable.
-You can inspect the properties of $MyServerKeyVaultKey to get details about the key vault.
+You can inspect the properties of $MyServerKeyVaultKey to get details about the key vault. Versionless key IDs, for example 'https://contoso.vault.azure.net/keys/contosokey', are also supported.
 
 ## PARAMETERS
 
