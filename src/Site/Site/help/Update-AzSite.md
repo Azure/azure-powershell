@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSite
 
 ## SYNOPSIS
-Update existing Azure Edge Sites across Resource Group, Subscription, and Service Group scopes
+Update a Site
 
 ## SYNTAX
 
@@ -22,115 +22,60 @@ Update-AzSite -Name <String> [-ResourceGroupName <String>] [-SubscriptionId <Str
 ```
 
 ## DESCRIPTION
-Updates existing Azure Edge Sites with support for multiple scopes. Use Resource Group scope (ResourceGroupName + SubscriptionId) to update sites within a specific resource group, Subscription scope (SubscriptionId only) to update sites directly under a subscription, or Service Group scope (ServicegroupName) to update sites within a service group. You can modify display names, descriptions, address information, and labels for existing sites.
+Update a Site in different scopes: Resource Group, Subscription, or Service Group
 
 ## EXAMPLES
 
-### Example 1: Update site display name and description
+### Example 1: Update a site's description and labels
 ```powershell
-Update-AzSite -SiteName "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -DisplayName "Updated West Coast Site" -Description "Updated description for west coast operations"
-```
-
-```output
-Name        : mysite-001
-ResourceGroupName : rg-sites
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Updated West Coast Site
-Description       : Updated description for west coast operations
-Country           : US
-PostalCode        : 98101
-StateOrProvince   : WA
-City              : Seattle
-StreetAddress1    : 123 Main St
-ProvisioningState : Succeeded
-```
-
-Update an existing Azure Edge Site's display name and description.
-
-### Example 2: Update site with new address information
-```powershell
-Update-AzSite -SiteName "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -Country "US" -PostalCode "90210" -StateOrProvince "CA" -City "Beverly Hills" -StreetAddress1 "456 Rodeo Drive"
-```
-
-```output
-Name        : mysite-001
-ResourceGroupName : rg-sites
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Updated West Coast Site
-Description       : Updated description for west coast operations
-Country           : US
-PostalCode        : 90210
-StateOrProvince   : CA
-City              : Beverly Hills
-StreetAddress1    : 456 Rodeo Drive
-ProvisioningState : Succeeded
-```
-
-Update an existing Azure Edge Site's address information including country, postal code, state, city, and street address.
-
-### Example 3: Update site labels
-```powershell
-$updatedLabels = @{
-    "environment" = "staging"
-    "region" = "west"
-    "owner" = "dev-team"
-    "priority" = "high"
+$newLabels = @{
+    "environment" = "updated"
+    "version" = "2.0"
+    "updated-by" = "admin"
 }
 
-Update-AzSite -SiteName "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -Labels $updatedLabels
+Update-AzSite -Name "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -Description "Updated site description" -Labels $newLabels
 ```
 
-```output
-Name        : mysite-001
-ResourceGroupName : rg-sites
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Updated West Coast Site
-Description       : Updated description for west coast operations
-Country           : US
-PostalCode        : 90210
-StateOrProvince   : CA
-City              : Beverly Hills
-StreetAddress1    : 456 Rodeo Drive
-Labels            : {environment=staging, region=west, owner=dev-team, priority=high}
-ProvisioningState : Succeeded
-```
+Update an existing Azure Edge Site's description and labels while preserving other properties.
 
-Update an existing Azure Edge Site's labels with new or modified key-value pairs for better organization and management.
-
-### Example 4: Update site at subscription scope
+### Example 2: Update only the display name
 ```powershell
-Update-AzSite -SiteName "global-site-001" -SubscriptionId "12345678-1234-1234-1234-123456789012" -DisplayName "Updated Global Operations Site" -Description "Updated enterprise-wide operations center"
+Update-AzSite -Name "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -DisplayName "Updated West Coast Site"
 ```
 
-```output
-Name        : global-site-001
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Updated Global Operations Site
-Description       : Updated enterprise-wide operations center
-Country           : US
-PostalCode        : 10001
-StateOrProvince   : NY
-City              : New York
-ProvisioningState : Succeeded
+Perform a partial update to change only the display name while leaving all other properties unchanged.
+
+### Example 3: Update a site using JSON configuration
+```powershell
+$jsonUpdate = @"
+{
+    "properties": {
+        "displayName": "JSON Updated Site",
+        "description": "Updated via JSON configuration",
+        "labels": {
+            "update-method": "json",
+            "automation": "true"
+        }
+    }
+}
+"@
+
+Update-AzSite -Name "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -JsonString $jsonUpdate
+```
+
+Update an Azure Edge Site using a JSON configuration for complex updates or automation scenarios.
+
+### Example 4: Update a site at subscription scope
+```powershell
+Update-AzSite -Name "global-site-001" -SubscriptionId "12345678-1234-1234-1234-123456789012" -DisplayName "Updated Global Site" -Description "Updated enterprise operations center"
 ```
 
 Update an Azure Edge Site that exists at the subscription scope rather than within a specific resource group.
 
-### Example 5: Update site at service group scope
+### Example 5: Update a site at service group scope
 ```powershell
-Update-AzSite -SiteName "service-site-001" -ServicegroupName "my-service-group" -DisplayName "Updated Service Group Site" -Description "Updated site managed at service group level"
-```
-
-```output
-Name        : service-site-001
-ServicegroupName  : my-service-group
-DisplayName       : Updated Service Group Site
-Description       : Updated site managed at service group level
-Country           : US
-PostalCode        : 78701
-StateOrProvince   : TX
-City              : Austin
-ProvisioningState : Succeeded
+Update-AzSite -Name "service-site-001" -ServicegroupName "my-service-group" -DisplayName "Updated Service Group Site" -Description "Updated service group managed site"
 ```
 
 Update an Azure Edge Site that exists at the service group scope.

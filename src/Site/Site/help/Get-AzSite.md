@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSite
 
 ## SYNOPSIS
-Get Azure Edge Sites across Resource Group, Subscription, and Service Group scopes
+Get a Site
 
 ## SYNTAX
 
@@ -19,28 +19,13 @@ Get-AzSite [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <Stri
 ```
 
 ## DESCRIPTION
-Retrieves Azure Edge Sites with support for multiple scopes. Use Resource Group scope (ResourceGroupName + SubscriptionId) to target sites within a specific resource group, Subscription scope (SubscriptionId only) to target sites directly under a subscription, or Service Group scope (ServicegroupName) to target sites within a service group. The cmdlet can retrieve a specific site by name or list all sites within the specified scope.
+Get a Site from different scopes: Resource Group, Subscription, or Service Group
 
 ## EXAMPLES
 
 ### Example 1: Get a specific site by name at resource group scope
 ```powershell
 Get-AzSite -Name "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012"
-```
-
-```output
-Name        : mysite-001
-ResourceGroupName : rg-sites
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : West Coast Site
-Description       : Primary site for west coast operations
-Country           : US
-PostalCode        : 98101
-StateOrProvince   : WA
-City              : Seattle
-StreetAddress1    : 123 Main St
-Labels            : {environment=production, region=west, owner=operations-team}
-ProvisioningState : Succeeded
 ```
 
 Get a specific Azure Edge Site at resource group scope.
@@ -50,18 +35,6 @@ Get a specific Azure Edge Site at resource group scope.
 Get-AzSite -Name "mysite-001" -SubscriptionId "12345678-1234-1234-1234-123456789012"
 ```
 
-```output
-Name        : mysite-001
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Global Operations Site
-Description       : Enterprise-wide operations center
-Country           : US
-PostalCode        : 10001
-StateOrProvince   : NY
-City              : New York
-ProvisioningState : Succeeded
-```
-
 Get a specific Azure Edge Site at subscription scope.
 
 ### Example 3: List all sites in a subscription
@@ -69,51 +42,11 @@ Get a specific Azure Edge Site at subscription scope.
 Get-AzSite -SubscriptionId "12345678-1234-1234-1234-123456789012"
 ```
 
-```output
-Name        : mysite-001
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-ResourceGroupName : rg-sites
-DisplayName       : West Coast Site
-Description       : Primary site for west coast operations
-Country           : US
-PostalCode        : 98101
-ProvisioningState : Succeeded
-
-Name        : mysite-002
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-ResourceGroupName : rg-sites
-DisplayName       : East Coast Site
-Description       : Primary site for east coast operations
-Country           : US
-PostalCode        : 10001
-ProvisioningState : Succeeded
-
-Name        : global-site-001
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Global Operations Site
-Description       : Enterprise-wide operations center
-Country           : US
-PostalCode        : 10001
-ProvisioningState : Succeeded
-```
-
 List all Azure Edge Sites across all resource groups in the specified subscription.
 
 ### Example 4: Get a site at service group scope
 ```powershell
 Get-AzSite -Name "mysite-sg-001" -ServicegroupName "my-service-group"
-```
-
-```output
-Name        : mysite-sg-001
-ServicegroupName  : my-service-group
-DisplayName       : Service Group Site
-Description       : Site managed at service group level
-Country           : US
-PostalCode        : 78701
-StateOrProvince   : TX
-City              : Austin
-ProvisioningState : Succeeded
 ```
 
 Get an Azure Edge Site managed at the service group scope.

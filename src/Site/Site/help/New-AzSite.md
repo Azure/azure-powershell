@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSite
 
 ## SYNOPSIS
-Create new Azure Edge Sites across Resource Group, Subscription, and Service Group scopes
+Create a Site
 
 ## SYNTAX
 
@@ -22,24 +22,13 @@ New-AzSite -SiteName <String> [-ResourceGroupName <String>] [-SubscriptionId <St
 ```
 
 ## DESCRIPTION
-Creates new Azure Edge Sites with support for multiple scopes. Use Resource Group scope (ResourceGroupName + SubscriptionId) to create sites within a specific resource group, Subscription scope (SubscriptionId only) to create sites directly under a subscription, or Service Group scope (ServicegroupName) to create sites within a service group. Sites can be configured with display names, descriptions, address information, and custom labels for organization and management.
+Create a Site in different scopes: Resource Group, Subscription, or Service Group
 
 ## EXAMPLES
 
 ### Example 1: Create a new site at resource group scope with basic information
 ```powershell
 New-AzSite -SiteName "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -DisplayName "West Coast Site" -Description "Primary site for west coast operations" -Country "US" -PostalCode "98101"
-```
-
-```output
-Name        : mysite-001
-ResourceGroupName : rg-sites
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : West Coast Site
-Description       : Primary site for west coast operations
-Country           : US
-PostalCode        : 98101
-ProvisioningState : Succeeded
 ```
 
 Create a new Azure Edge Site with basic information including display name, description, and address details.
@@ -55,36 +44,11 @@ $labels = @{
 New-AzSite -SiteName "mysite-002" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -DisplayName "Seattle Operations Center" -Description "Main operations site for Seattle region" -Country "US" -PostalCode "98101" -StateOrProvince "WA" -City "Seattle" -StreetAddress1 "123 Main St" -Labels $labels
 ```
 
-```output
-Name        : mysite-002
-ResourceGroupName : rg-sites
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Seattle Operations Center
-Description       : Main operations site for Seattle region
-Country           : US
-PostalCode        : 98101
-StateOrProvince   : WA
-City              : Seattle
-StreetAddress1    : 123 Main St
-Labels            : {environment=production, region=west, owner=operations-team}
-ProvisioningState : Succeeded
-```
-
 Create a new Azure Edge Site with complete address information and custom labels for better organization and management.
 
 ### Example 3: Create a site at subscription scope
 ```powershell
 New-AzSite -SiteName "global-site-001" -SubscriptionId "12345678-1234-1234-1234-123456789012" -DisplayName "Global Operations Site" -Description "Enterprise-wide operations center" -Country "US" -PostalCode "10001"
-```
-
-```output
-Name        : global-site-001
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : Global Operations Site
-Description       : Enterprise-wide operations center
-Country           : US
-PostalCode        : 10001
-ProvisioningState : Succeeded
 ```
 
 Create a new Azure Edge Site at the subscription scope rather than within a specific resource group.
@@ -114,36 +78,11 @@ $jsonConfig = @"
 New-AzSite -SiteName "site-json-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012" -JsonString $jsonConfig
 ```
 
-```output
-Name        : site-json-001
-ResourceGroupName : rg-sites
-SubscriptionId    : 12345678-1234-1234-1234-123456789012
-DisplayName       : JSON Created Site
-Description       : Site created via JSON configuration
-Country           : CA
-PostalCode        : K1A 0A6
-StateOrProvince   : ON
-City              : Ottawa
-StreetAddress1    : 100 Wellington St
-Labels            : {deployment-method=json, country=canada}
-ProvisioningState : Succeeded
-```
-
 Create a new Azure Edge Site using a JSON configuration string for complex deployments or infrastructure-as-code scenarios.
 
 ### Example 5: Create a site at service group scope
 ```powershell
 New-AzSite -SiteName "service-site-001" -ServicegroupName "my-service-group" -DisplayName "Service Group Site" -Description "Site managed at service group level" -Country "US" -PostalCode "78701"
-```
-
-```output
-Name        : service-site-001
-ServicegroupName  : my-service-group
-DisplayName       : Service Group Site
-Description       : Site managed at service group level
-Country           : US
-PostalCode        : 78701
-ProvisioningState : Succeeded
 ```
 
 Create a new Azure Edge Site at the service group scope.

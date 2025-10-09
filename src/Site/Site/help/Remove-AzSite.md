@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSite
 
 ## SYNOPSIS
-Remove Azure Edge Sites across Resource Group, Subscription, and Service Group scopes
+Delete a Site
 
 ## SYNTAX
 
@@ -19,39 +19,28 @@ Remove-AzSite -Name <String> [-ResourceGroupName <String>] [-SubscriptionId <Str
 ```
 
 ## DESCRIPTION
-Permanently deletes Azure Edge Sites with support for multiple scopes. Use Resource Group scope (ResourceGroupName + SubscriptionId) to remove sites within a specific resource group, Subscription scope (SubscriptionId only) to remove sites directly under a subscription, or Service Group scope (ServicegroupName) to remove sites within a service group. This operation cannot be undone, so use with caution.
+Delete a Site from different scopes: Resource Group, Subscription, or Service Group
 
 ## EXAMPLES
 
-### Example 1: Remove a site from resource group scope
+### Example 1: Remove a site at resource group scope
 ```powershell
-Remove-AzSite -SiteName "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012"
+Remove-AzSite -Name "mysite-001" -ResourceGroupName "rg-sites" -SubscriptionId "12345678-1234-1234-1234-123456789012"
 ```
 
-```output
-(No output - operation completed successfully)
-```
+Remove an Azure Edge Site at resource group scope.
+The command completes silently upon successful deletion.
 
-Remove an Azure Edge Site from a specific resource group. This operation permanently deletes the site and cannot be undone.
-
-### Example 2: Remove a site from subscription scope
+### Example 2: Remove a site at subscription scope
 ```powershell
-Remove-AzSite -SiteName "global-site-001" -SubscriptionId "12345678-1234-1234-1234-123456789012"
+Remove-AzSite -Name "global-site-001" -SubscriptionId "12345678-1234-1234-1234-123456789012"
 ```
 
-```output
-(No output - operation completed successfully)
-```
+Remove an Azure Edge Site that exists at the subscription scope.
 
-Remove an Azure Edge Site that exists at the subscription scope rather than within a specific resource group.
-
-### Example 3: Remove a site from service group scope
+### Example 3: Remove a site at service group scope
 ```powershell
-Remove-AzSite -SiteName "service-site-001" -ServicegroupName "my-service-group"
-```
-
-```output
-(No output - operation completed successfully)
+Remove-AzSite -Name "service-site-001" -ServicegroupName "my-service-group"
 ```
 
 Remove an Azure Edge Site that exists at the service group scope.
