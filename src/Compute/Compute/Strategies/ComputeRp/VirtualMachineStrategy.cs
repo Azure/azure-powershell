@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             EncryptionAtHost = encryptionAtHostPresent,
                             UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                             SecurityType = securityType,
-                            ProxyAgentSettings = (enableProxyAgent == true || addProxyAgentExtension == true) ? new ProxyAgentSettings(enableProxyAgent) { AddProxyAgentExtension = addProxyAgentExtension } : null,
+                            ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enableProxyAgent) { AddProxyAgentExtension = addProxyAgentExtension } : null,
                         },
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {

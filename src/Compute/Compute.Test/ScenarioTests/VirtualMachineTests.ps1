@@ -7942,9 +7942,9 @@ function Test-VirtualMachinePlacement
 
 <#
 .SYNOPSIS
-Test-VMAddProxyAgentExtension creates a VM with Enabled ProxyAgent and added ProxyAgentExtension
+Test-VirtualMachineAddProxyAgentExtension creates a VM with Enabled ProxyAgent and added ProxyAgentExtension
 #>
-function Test-VMAddProxyAgentExtension
+function Test-VirtualMachineAddProxyAgentExtension
 {
     # Setup
     $resourceGroupName = Get-ComputeTestResourceName;

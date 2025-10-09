@@ -106,7 +106,6 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension = this.AddProxyAgentExtension;
             }
 
-
             WriteObject(this.VM);
         }
     }

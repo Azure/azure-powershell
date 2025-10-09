@@ -482,9 +482,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMSSAddProxyAgentExtension()
+        public void TestVirtualMachineScaleSetAddProxyAgentExtension()
         {
-            TestRunner.RunTestScript("Test-VMSSAddProxyAgentExtension");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAddProxyAgentExtension");
         }
     }
 }

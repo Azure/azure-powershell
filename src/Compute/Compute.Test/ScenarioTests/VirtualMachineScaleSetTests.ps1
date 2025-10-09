@@ -5969,9 +5969,9 @@ function Test-ProxyAgentSetting
 
 <#
 .SYNOPSIS
-Test-VMSSAddProxyAgentExtension creates a VMSS with Enabled ProxyAgent and added ProxyAgentExtension
+Test-VirtualMachineScaleSetAddProxyAgentExtension creates a VMSS with Enabled ProxyAgent and added ProxyAgentExtension
 #>
-function Test-VMSSAddProxyAgentExtension
+function Test-VirtualMachineScaleSetAddProxyAgentExtension
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
