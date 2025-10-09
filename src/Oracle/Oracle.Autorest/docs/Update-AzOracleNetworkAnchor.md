@@ -79,7 +79,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-Updates the **tags** on an existing Network Anchor. For more information, execute `Get-Help Update-AzOracleNetworkAnchor`.
+Updates the **tags** on an existing Network Anchor.
+For more information, execute `Get-Help Update-AzOracleNetworkAnchor`.
 
 ### Example 2: Partially update a Network Anchor property
 ```powershell
@@ -113,7 +114,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-Performs a **partial update** (PATCH) of a Network Anchor to modify a property—in this case, `LinkedResourceId`. For more information, execute `Get-Help Update-AzOracleNetworkAnchor`.
+Performs a **partial update** (PATCH) of a Network Anchor to modify a property—in this case, `LinkedResourceId`.
+For more information, execute `Get-Help Update-AzOracleNetworkAnchor`.
 
 ## PARAMETERS
 

@@ -78,7 +78,8 @@ SystemDataLastModifiedByType                  : Application
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-Updates the **tags** on an existing DbSystem. For more information, execute `Get-Help Update-AzOracleDbSystem`.
+Updates the **tags** on an existing DbSystem.
+For more information, execute `Get-Help Update-AzOracleDbSystem`.
 
 ### Example 2: Scale CPU cores on a DbSystem
 ```powershell
@@ -114,7 +115,8 @@ SystemDataLastModifiedByType                  : Application
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-Performs a **partial update** (PATCH) of a DbSystem to change CPU cores. For more information, execute `Get-Help Update-AzOracleDbSystem`.
+Performs a **partial update** (PATCH) of a DbSystem to change CPU cores.
+For more information, execute `Get-Help Update-AzOracleDbSystem`.
 
 ## PARAMETERS
 

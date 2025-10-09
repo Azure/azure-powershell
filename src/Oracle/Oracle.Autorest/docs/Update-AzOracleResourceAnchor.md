@@ -75,7 +75,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-Updates the **tags** on an existing Resource Anchor. For more information, execute `Get-Help Update-AzOracleResourceAnchor`.
+Updates the **tags** on an existing Resource Anchor.
+For more information, execute `Get-Help Update-AzOracleResourceAnchor`.
 
 ### Example 2: Partially update a Resource Anchor property
 ```powershell
@@ -109,7 +110,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:44:18
 ```
 
-Performs a **partial update** of a Resource Anchor (PATCH) to modify a property—in this case, `LinkedResourceId`. For more information, execute `Get-Help Update-AzOracleResourceAnchor`.
+Performs a **partial update** of a Resource Anchor (PATCH) to modify a property—in this case, `LinkedResourceId`.
+For more information, execute `Get-Help Update-AzOracleResourceAnchor`.
 
 ## PARAMETERS
 

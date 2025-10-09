@@ -72,7 +72,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:40:35
 ```
 
-Creates a Resource Anchor in the specified resource group and location, linking it to an Autonomous Database. For more information, execute `Get-Help New-AzOracleResourceAnchor`.
+Creates a Resource Anchor in the specified resource group and location, linking it to an Autonomous Database.
+For more information, execute `Get-Help New-AzOracleResourceAnchor`.
 
 ### Example 2: Create a Resource Anchor with tags
 ```powershell
@@ -111,7 +112,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:42:10
 ```
 
-Creates a Resource Anchor and assigns tags. For more information, execute `Get-Help New-AzOracleResourceAnchor`.
+Creates a Resource Anchor and assigns tags.
+For more information, execute `Get-Help New-AzOracleResourceAnchor`.
 
 ## PARAMETERS
 

@@ -75,7 +75,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:40:35
 ```
 
-Creates a Network Anchor in the specified resource group and location, linking it to a virtual network. For more information, execute `Get-Help New-AzOracleNetworkAnchor`.
+Creates a Network Anchor in the specified resource group and location, linking it to a virtual network.
+For more information, execute `Get-Help New-AzOracleNetworkAnchor`.
 
 ### Example 2: Create a Network Anchor with tags
 ```powershell
@@ -114,7 +115,8 @@ Tag                                           : {
 TimeCreated                                   : 05/07/2024 13:42:10
 ```
 
-Creates a Network Anchor and assigns tags. For more information, execute `Get-Help New-AzOracleNetworkAnchor`.
+Creates a Network Anchor and assigns tags.
+For more information, execute `Get-Help New-AzOracleNetworkAnchor`.
 
 ## PARAMETERS
 

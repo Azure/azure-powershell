@@ -19,9 +19,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleResourceAnchor'))
 
 Describe 'New-AzOracleResourceAnchor' {
     # Constants matching the recording
-    $rgName   = 'PowerShellTestRg'
-    $location = 'eastus'
-    $name     = 'OFake_PowerShellTestResourceAnchor'
+    $rgName   = 'PowerShellTestRgMihr'
+    $location = 'global'
+    $name     = 'OFake_PowerShellTestRAnchorMih'
 
     $hasCmd = Get-Command -Name New-AzOracleResourceAnchor -ErrorAction SilentlyContinue
 
@@ -38,9 +38,7 @@ Describe 'New-AzOracleResourceAnchor' {
                     -Name $name `
                     -ResourceGroupName $rgName `
                     -Location $location `
-                    -DisplayName $name `
-                    -AnchorType Exadata `
-                    -OciResourceId 'ocid1.resource.oc1.iad.fakeuniqueid'
+                    -SubscriptionId $env.SubscriptionId `
 
                 $created | Should -Not -BeNullOrEmpty
                 $created.Name | Should -Be $name

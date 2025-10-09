@@ -83,7 +83,8 @@ SystemDataLastModifiedByType                  : User
 TimeCreated                                   : 05/07/2024 13:40:35
 ```
 
-Creates a DbSystem in the specified resource group and location. For more information, execute `Get-Help New-AzOracleDbSystem`.
+Creates a DbSystem in the specified resource group and location.
+For more information, execute `Get-Help New-AzOracleDbSystem`.
 
 ### Example 2: Create a DbSystem with tags
 ```powershell
@@ -128,7 +129,8 @@ SystemDataLastModifiedByType                  : User
 TimeCreated                                   : 05/07/2024 13:42:10
 ```
 
-Creates a DbSystem and assigns tags. For more information, execute `Get-Help New-AzOracleDbSystem`.
+Creates a DbSystem and assigns tags.
+For more information, execute `Get-Help New-AzOracleDbSystem`.
 
 ## PARAMETERS
 

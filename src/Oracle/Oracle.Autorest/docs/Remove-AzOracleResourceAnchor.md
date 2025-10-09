@@ -38,7 +38,8 @@ Remove-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_Po
 True
 ```
 
-Deletes a Resource Anchor by name and resource group. For more information, execute `Get-Help Remove-AzOracleResourceAnchor`.
+Deletes a Resource Anchor by name and resource group.
+For more information, execute `Get-Help Remove-AzOracleResourceAnchor`.
 
 ### Example 2: Delete a Resource Anchor by piping from Get
 ```powershell
@@ -49,7 +50,8 @@ Get-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_Power
 True
 ```
 
-Gets a Resource Anchor and deletes it by piping the object to `Remove-AzOracleResourceAnchor`. For more information, execute `Get-Help Remove-AzOracleResourceAnchor`.
+Gets a Resource Anchor and deletes it by piping the object to `Remove-AzOracleResourceAnchor`.
+For more information, execute `Get-Help Remove-AzOracleResourceAnchor`.
 
 ## PARAMETERS
 

@@ -59,7 +59,8 @@ IsDefault                                     : False
 IsPreview                                     : True
 ```
 
-Lists the available Oracle Database versions for **eastus2**. For more information, execute `Get-Help Get-AzOracleDbVersion`.
+Lists the available Oracle Database versions for **eastus2**.
+For more information, execute `Get-Help Get-AzOracleDbVersion`.
 
 ### Example 2: List versions for a specific shape
 ```powershell
@@ -73,7 +74,8 @@ IsDefault                                     : True
 IsPreview                                     : False
 ```
 
-Filters versions by compute shape. For more information, execute `Get-Help Get-AzOracleDbVersion`.
+Filters versions by compute shape.
+For more information, execute `Get-Help Get-AzOracleDbVersion`.
 
 ## PARAMETERS
 

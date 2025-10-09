@@ -38,7 +38,8 @@ Remove-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShe
 True
 ```
 
-Deletes a DbSystem by name and resource group. For more information, execute `Get-Help Remove-AzOracleDbSystem`.
+Deletes a DbSystem by name and resource group.
+For more information, execute `Get-Help Remove-AzOracleDbSystem`.
 
 ### Example 2: Delete a DbSystem by piping from Get
 ```powershell
@@ -49,7 +50,8 @@ Get-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellT
 True
 ```
 
-Gets a DbSystem and deletes it by piping the object to `Remove-AzOracleDbSystem`. For more information, execute `Get-Help Remove-AzOracleDbSystem`.
+Gets a DbSystem and deletes it by piping the object to `Remove-AzOracleDbSystem`.
+For more information, execute `Get-Help Remove-AzOracleDbSystem`.
 
 ## PARAMETERS
 

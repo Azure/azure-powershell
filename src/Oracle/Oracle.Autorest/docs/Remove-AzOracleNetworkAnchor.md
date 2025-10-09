@@ -38,7 +38,8 @@ Remove-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owe
 True
 ```
 
-Deletes a Network Anchor by name and resource group. For more information, execute `Get-Help Remove-AzOracleNetworkAnchor`.
+Deletes a Network Anchor by name and resource group.
+For more information, execute `Get-Help Remove-AzOracleNetworkAnchor`.
 
 ### Example 2: Delete a Network Anchor by piping from Get
 ```powershell
@@ -49,7 +50,8 @@ Get-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerSh
 True
 ```
 
-Gets a Network Anchor and deletes it by piping the object to `Remove-AzOracleNetworkAnchor`. For more information, execute `Get-Help Remove-AzOracleNetworkAnchor`.
+Gets a Network Anchor and deletes it by piping the object to `Remove-AzOracleNetworkAnchor`.
+For more information, execute `Get-Help Remove-AzOracleNetworkAnchor`.
 
 ## PARAMETERS
 

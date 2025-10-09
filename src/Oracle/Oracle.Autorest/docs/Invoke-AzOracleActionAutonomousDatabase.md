@@ -104,7 +104,8 @@ VnetId                                        : /subscriptions/00000000-0000-000
 WhitelistedIP                                 : 
 ```
 
-Performs a lifecycle **Stop** action on the Autonomous Database. For more information, execute `Get-Help Invoke-AzOracleActionAutonomousDatabase`.
+Performs a lifecycle **Stop** action on the Autonomous Database.
+For more information, execute `Get-Help Invoke-AzOracleActionAutonomousDatabase`.
 
 ### Example 2: Start an Autonomous Database
 ```powershell
@@ -166,7 +167,8 @@ VnetId                                        : /subscriptions/00000000-0000-000
 WhitelistedIP                                 : 
 ```
 
-Performs a lifecycle **Start** action on the Autonomous Database. For more information, execute `Get-Help Invoke-AzOracleActionAutonomousDatabase`.
+Performs a lifecycle **Start** action on the Autonomous Database.
+For more information, execute `Get-Help Invoke-AzOracleActionAutonomousDatabase`.
 
 ## PARAMETERS
 
