@@ -1,0 +1,1420 @@
+{
+  "Remove-AzSite+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Test Site 01\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "63" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16023956-0000-0500-0000-68e7907b0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/d97e9172-32a4-4f53-bfa9-ef426d2045dd" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c694dbe2-228c-49b8-93a1-d309ff1c1fe9" ],
+        "x-ms-correlation-request-id": [ "cab96e61-2a81-4f19-ae1c-83005be341bf" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103748Z:cab96e61-2a81-4f19-ae1c-83005be341bf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 30569C8243134B68BBF9118115947159 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:37:47Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:37:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256\",\"name\":\"site-delete-256\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:37:47.4583457Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:37:47.4583457Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "f055a729-e2c9-4048-bdaf-d035da2a7ca9" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16023956-0000-0500-0000-68e7907b0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/cf8a4cde-5068-4484-a323-8be50e3c6986" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f914934c-58d8-4d12-a8e6-b18e91f7f95f" ],
+        "x-ms-correlation-request-id": [ "cb1578ce-a1cf-4ae0-a25e-d2609ae72d88" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103818Z:cb1578ce-a1cf-4ae0-a25e-d2609ae72d88" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0C7206FA8BA64CA8A633C66DEC44E948 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:38:18Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:38:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256\",\"name\":\"site-delete-256\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:37:47.4583457Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:37:47.4583457Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "f055a729-e2c9-4048-bdaf-d035da2a7ca9" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16023956-0000-0500-0000-68e7907b0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/349eb40d-4fa3-4b9c-a3b0-e47f4707c873" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "98a33cb6-9b70-4379-b9ff-22e660dc86c9" ],
+        "x-ms-correlation-request-id": [ "dc07798d-b458-4633-837d-da427dd7df01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103819Z:dc07798d-b458-4633-837d-da427dd7df01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D2E8BC3090614D8A95C0622E0F98AFA1 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:38:19Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:38:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256\",\"name\":\"site-delete-256\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:37:47.4583457Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:37:47.4583457Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "c328c217-bbbf-4ccb-a050-3438f5b90f12" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16023956-0000-0500-0000-68e7907b0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/c6f55979-b91b-4b39-9035-62fea432a12b" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "895fb6b4-3baf-44a6-8a2b-3982bc174c5d" ],
+        "x-ms-correlation-request-id": [ "d2d3ebfc-cbad-4428-b8e2-a6ffa3220910" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103830Z:d2d3ebfc-cbad-4428-b8e2-a6ffa3220910" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7B4EB2B667DB47BD95AFEFB856351D9E Ref B: PNQ231110907023 Ref C: 2025-10-09T10:38:29Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:38:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256\",\"name\":\"site-delete-256\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:37:47.4583457Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:37:47.4583457Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "556a6040-de1c-4dee-ad6c-8588ddd3cf3a" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSite" ],
+        "FullCommandName": [ "Remove-AzSite_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/789efe1d-adea-473a-b55c-980d8fe3575c" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "cb2627de-8c4b-473d-899d-3fc2c9f0883e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103831Z:cb2627de-8c4b-473d-899d-3fc2c9f0883e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F1DC07B063B142E4A53FF031F96F0599 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:38:30Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:38:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "c7e7edb5-049c-4e40-a787-db11db876d56" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/573a3980-9aaa-4520-afb0-8d2f8988025a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "25fb6a2c-1680-4df3-830d-4412ab700f6a" ],
+        "x-ms-correlation-request-id": [ "f58305b7-3342-4e6d-bfc6-d70feca76f48" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103842Z:f58305b7-3342-4e6d-bfc6-d70feca76f48" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DDC072E6ABCF47FDA536D7B100AC18D9 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:38:42Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:38:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "121" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.Edge/sites/site-delete-256\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01+7": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-256?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "bda31131-917a-4749-9fcf-3cd21aab5d3f" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSite" ],
+        "FullCommandName": [ "Remove-AzSite_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/692276fc-0cb6-4789-a069-27337a71a277" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "ea37af7d-cbdd-4698-9ae7-c8920d193b32" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103842Z:ea37af7d-cbdd-4698-9ae7-c8920d193b32" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CB059DC55D854CA3A016D5C8196847BA Ref B: PNQ231110907023 Ref C: 2025-10-09T10:38:42Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:38:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete non-existent site should not throw error+$PUT+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Test Site 01\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "63" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602c459-0000-0500-0000-68e790b30000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/76595ffb-8359-4f17-a296-2458cc308270" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "5a459dff-da5e-4def-b65b-76e11dd2089f" ],
+        "x-ms-correlation-request-id": [ "91132e0f-7c75-4481-be0a-839be2fb40bf" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103843Z:91132e0f-7c75-4481-be0a-839be2fb40bf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D4966C9E26A8458D8E682585B9FF9A4B Ref B: PNQ231110907023 Ref C: 2025-10-09T10:38:43Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:38:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796\",\"name\":\"site-delete-796\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:38:43.3266689Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:38:43.3266689Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete non-existent site should not throw error+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "0275e4a6-e34b-4b37-85d3-098c56fa3541" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602c459-0000-0500-0000-68e790b30000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/fbcd1b4e-beda-436a-a98f-d4df33e583ad" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b37ce896-5b1c-4ecb-a3e4-e2e9e910f037" ],
+        "x-ms-correlation-request-id": [ "7d8dd970-caaa-44c5-a37b-92eba8255112" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103914Z:7d8dd970-caaa-44c5-a37b-92eba8255112" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3C4DD61B835E4992BE27970068D4B533 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:39:14Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:39:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796\",\"name\":\"site-delete-796\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:38:43.3266689Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:38:43.3266689Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete non-existent site should not throw error+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "0275e4a6-e34b-4b37-85d3-098c56fa3541" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602c459-0000-0500-0000-68e790b30000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/5a40169a-0b77-4ad1-9e9b-71fca15e5e73" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0bf605fc-b877-4b75-97d5-00fc67810532" ],
+        "x-ms-correlation-request-id": [ "bb2088d4-628c-44c7-b9a6-18a128603148" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103914Z:bb2088d4-628c-44c7-b9a6-18a128603148" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CB36798780254882911871221BD9A068 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:39:14Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:39:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796\",\"name\":\"site-delete-796\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:38:43.3266689Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:38:43.3266689Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete non-existent site should not throw error+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/non-existent-site-12345?api-version=2025-06-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/non-existent-site-12345?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "a506441e-7c34-40c5-be8e-4c28c6ffdf5e" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSite" ],
+        "FullCommandName": [ "Remove-AzSite_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/2669effd-f6d6-4689-8341-8ed6f3bcef76" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "1e05580d-59c6-4adc-86b9-6540d5711209" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103925Z:1e05580d-59c6-4adc-86b9-6540d5711209" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A6DB79E2492E484F8BADB77194757BBC Ref B: PNQ231110907023 Ref C: 2025-10-09T10:39:24Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:39:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete non-existent site should not throw error+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-796?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "06b70b12-a62d-46cf-b9fc-39235ab4637c" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSite" ],
+        "FullCommandName": [ "Remove-AzSite_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/a9870030-f6c5-4e4c-b1dc-f298ef084ef8" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "4b8ebe82-06c1-4e3e-a45f-54e2d28c9f90" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103925Z:4b8ebe82-06c1-4e3e-a45f-54e2d28c9f90" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 02D488A729264D4DAD7E622380B4F985 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:39:25Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:39:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$PUT+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Test Site 01\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "63" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602f85b-0000-0500-0000-68e790de0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/0149e1f4-1130-46ec-822a-fd8207c7e40a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ece4a55d-fcb1-4c60-8ce8-7236953baf5a" ],
+        "x-ms-correlation-request-id": [ "6f350867-e8de-472b-b9d8-1dbe3cb188dd" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103926Z:6f350867-e8de-472b-b9d8-1dbe3cb188dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E5C02C07899F4E61B1AF213DCD3D27AD Ref B: PNQ231110907023 Ref C: 2025-10-09T10:39:25Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:39:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "507" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995\",\"name\":\"site-delete-995\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:39:26.143441Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:39:26.143441Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "41bb2d69-2099-439d-9281-c3af1352d098" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602f85b-0000-0500-0000-68e790de0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/f51f52f2-aa21-43c7-94e6-b2bec34687e9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c05eff44-7f69-40b7-8d0f-15ff2d02e8ec" ],
+        "x-ms-correlation-request-id": [ "291d1695-36d7-4753-99cf-ae1512369233" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103957Z:291d1695-36d7-4753-99cf-ae1512369233" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F2E3AC878B364D5B93ADD776852988C7 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:39:56Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:39:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "507" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995\",\"name\":\"site-delete-995\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:39:26.143441Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:39:26.143441Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "41bb2d69-2099-439d-9281-c3af1352d098" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602f85b-0000-0500-0000-68e790de0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/b366b36e-92d5-45dc-b01b-2a3dd26c26b8" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d5f2c535-0d6c-426b-a42c-1a5d81efa5f2" ],
+        "x-ms-correlation-request-id": [ "19dc7b42-93da-41f7-b350-8dac7a332120" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T103957Z:19dc7b42-93da-41f7-b350-8dac7a332120" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8C209A7D277C470BBBE703D248CFAEE3 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:39:57Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:39:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "507" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995\",\"name\":\"site-delete-995\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:39:26.143441Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:39:26.143441Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$PUT+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"siteAddress\": {\r\n      \"country\": \"US\",\r\n      \"postalCode\": \"12345\"\r\n    },\r\n    \"displayName\": \"Test Sub Delete\",\r\n    \"description\": \"Test subscription scope deletion\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "205" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16029d5e-0000-0500-0000-68e791080000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/8be717a1-3e1b-44f4-830d-e49784afd7ff" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "870ca373-2006-49ac-a06a-37732407a957" ],
+        "x-ms-correlation-request-id": [ "359c5488-29fe-47a9-ac34-31cd6790169b" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T104008Z:359c5488-29fe-47a9-ac34-31cd6790169b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A90C0A97B96445829687613E8BA392B9 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:40:07Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:40:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "588" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:40:08.0472836Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:40:08.0472836Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Sub Delete\",\"description\":\"Test subscription scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "744b985e-8fc8-41a6-b2d0-8c3a0b9de7cc" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "New-AzSiteSitesBySubscription_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16029d5e-0000-0500-0000-68e791080000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/westindia/86e96369-68ac-47e2-b961-e19975fc9413" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "05cdebce-5c54-4530-ab6b-433b813f93de" ],
+        "x-ms-correlation-request-id": [ "2189f3e5-f25b-4d9a-8d1b-0017e3b22d21" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T104040Z:2189f3e5-f25b-4d9a-8d1b-0017e3b22d21" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CAA35BB1A57D4BEFAAF1908BB843C267 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:40:39Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:40:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "588" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:40:08.0472836Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:40:08.0472836Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Sub Delete\",\"description\":\"Test subscription scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "744b985e-8fc8-41a6-b2d0-8c3a0b9de7cc" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "New-AzSiteSitesBySubscription_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16029d5e-0000-0500-0000-68e791080000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/centralindia/3ac410df-5181-453d-9f0c-b4659ace3e8f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "680e0bc6-e9ea-4f72-995a-6f36dab0323e" ],
+        "x-ms-correlation-request-id": [ "9c0140c2-766f-4f92-ac0e-8b4cb18e7320" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251009T104042Z:9c0140c2-766f-4f92-ac0e-8b4cb18e7320" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C86C4BBCE1B043E29EF8FC0A13CEAACA Ref B: PNQ231110907023 Ref C: 2025-10-09T10:40:40Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:40:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "588" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:40:08.0472836Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:40:08.0472836Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Sub Delete\",\"description\":\"Test subscription scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "096c6f61-b15d-4273-acdd-ae29ce5a9f60" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "Get-AzSiteSitesBySubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16029d5e-0000-0500-0000-68e791080000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/centralindia/6226b7f4-161d-4f4a-916e-e420689008a5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e061e739-cfa2-402a-b327-acc4b0c80797" ],
+        "x-ms-correlation-request-id": [ "2f1c4cd7-9db5-4d92-b62a-137ff360a39a" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251009T104046Z:2f1c4cd7-9db5-4d92-b62a-137ff360a39a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 35FA7A319AFB4DA7AC8FA5D63F4AC28E Ref B: PNQ231110907023 Ref C: 2025-10-09T10:40:42Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:40:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "588" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:40:08.0472836Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:40:08.0472836Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Sub Delete\",\"description\":\"Test subscription scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "f78c3c89-2fe4-4af5-a883-0288ab32763d" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "Remove-AzSiteSitesBySubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/westindia/80b2319e-e91e-45c2-8a41-ad564e89f7c8" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "800" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "12000" ],
+        "x-ms-correlation-request-id": [ "daa31789-cce3-47b9-bc74-cbbd4bdc7b0b" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T104054Z:daa31789-cce3-47b9-bc74-cbbd4bdc7b0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 253195C089F643C298471150654F7BAD Ref B: PNQ231110907023 Ref C: 2025-10-09T10:40:46Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:40:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "ccc83532-d42b-4288-9e63-ef01d8c02462" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "Get-AzSiteSitesBySubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/centralindia/d0c64a34-d3a1-4e3a-8b27-e8de522f7f27" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "01710681-8fe2-4f32-8ab2-bedede0be6b9" ],
+        "x-ms-correlation-request-id": [ "6803cc42-845b-4fe3-bb38-19ea0fad93f3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251009T104106Z:6803cc42-845b-4fe3-bb38-19ea0fad93f3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BCF888E144DD4B73A2C2E7B1A31B34B9 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:41:04Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:41:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "123" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.Edge/sites/site-sub-scope-01\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Subscription Scope+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01+10": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-995?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "83c03ab7-2737-49e0-b498-033ad1d54551" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSite" ],
+        "FullCommandName": [ "Remove-AzSite_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/southindia/62d8da87-6d48-4aec-87a7-8ee8f1b0a629" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "f32a9795-b6c7-4c99-99f1-900d44f010f9" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251009T104110Z:f32a9795-b6c7-4c99-99f1-900d44f010f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4DF4B439EF9F41059BB00A25C9342357 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:41:06Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:41:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$PUT+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Test Site 01\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "63" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602bf62-0000-0500-0000-68e791470000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/39217095-4ab7-4d46-8a1a-8ac7e281a7fc" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "dff1aa4c-685b-474d-976b-283711f844a5" ],
+        "x-ms-correlation-request-id": [ "93c860f3-acd4-4e47-9bce-e4226e798cb9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T104111Z:93c860f3-acd4-4e47-9bce-e4226e798cb9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 67A59EE3845544A889859B723176B5AB Ref B: PNQ231110907023 Ref C: 2025-10-09T10:41:10Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:41:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728\",\"name\":\"site-delete-728\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:41:10.6616742Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:41:10.6616742Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "f40f6306-7585-400b-8c4f-b5cc4768722f" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602bf62-0000-0500-0000-68e791470000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/876ab381-4a5a-434f-b2e9-82aad4c1a72c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "27153c44-9e3d-4315-9fd9-f0c0ebcb6e46" ],
+        "x-ms-correlation-request-id": [ "a5bacdd7-c8e8-4559-b933-a0697c8a9f25" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T104142Z:a5bacdd7-c8e8-4559-b933-a0697c8a9f25" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FE8188DB2EB042159AF360E42D3160D5 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:41:41Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:41:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728\",\"name\":\"site-delete-728\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:41:10.6616742Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:41:10.6616742Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "f40f6306-7585-400b-8c4f-b5cc4768722f" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSite" ],
+        "FullCommandName": [ "New-AzSite_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1602bf62-0000-0500-0000-68e791470000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/0f388acd-9f49-4a8c-b54f-4a98e864b896" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c111445f-256e-4bb4-bd57-bba3ddee702c" ],
+        "x-ms-correlation-request-id": [ "e7ea902d-0b74-4d6a-9e06-7720abf3e5fe" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T104142Z:e7ea902d-0b74-4d6a-9e06-7720abf3e5fe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DF8E9314FFB24417AD8B08DBE24A9A56 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:41:42Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:41:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728\",\"name\":\"site-delete-728\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:41:10.6616742Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:41:10.6616742Z\"},\"properties\":{\"displayName\":\"Test Site 01\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$PUT+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"siteAddress\": {\r\n      \"country\": \"US\",\r\n      \"postalCode\": \"12345\"\r\n    },\r\n    \"displayName\": \"Test SG Delete\",\r\n    \"description\": \"Test service group scope deletion\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "205" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16026165-0000-0500-0000-68e791710000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a566364e-6662-4689-880d-0160345d4296" ],
+        "x-ms-correlation-request-id": [ "d1b87209-ef98-4c07-a7cc-dcd19e749a5f" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "799" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T104153Z:d1b87209-ef98-4c07-a7cc-dcd19e749a5f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6B0718DD0549423EB3A59DD7ECA52900 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:41:53Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:41:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:41:53.4206052Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:41:53.4206052Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test SG Delete\",\"description\":\"Test service group scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "871acaa8-9644-4278-aae3-f5d093247829" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "New-AzSiteSitesByServiceGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16026165-0000-0500-0000-68e791710000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "886e3d45-7085-41e9-8f68-e32bba57cd0a" ],
+        "x-ms-correlation-request-id": [ "60fdc025-1d3f-4e39-bfe7-da234e5a95c7" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251009T104225Z:60fdc025-1d3f-4e39-bfe7-da234e5a95c7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F638C5A68142444D9BF15FD1C4E3E79A Ref B: PNQ231110907023 Ref C: 2025-10-09T10:42:24Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:42:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:41:53.4206052Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:41:53.4206052Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test SG Delete\",\"description\":\"Test service group scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "871acaa8-9644-4278-aae3-f5d093247829" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "New-AzSiteSitesByServiceGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16026165-0000-0500-0000-68e791710000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1cf83500-92dd-4ad9-bd51-ca4dbf99dcd0" ],
+        "x-ms-correlation-request-id": [ "20562e6d-616d-428e-882e-06fb24a30ada" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251009T104226Z:20562e6d-616d-428e-882e-06fb24a30ada" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: ADF029F2DF9D4117823C964350BDBF5B Ref B: PNQ231110907023 Ref C: 2025-10-09T10:42:25Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:42:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:41:53.4206052Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:41:53.4206052Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test SG Delete\",\"description\":\"Test service group scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "f94cc506-3eaa-48c1-9492-70d134883df4" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "Get-AzSiteSitesByServiceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"16026165-0000-0500-0000-68e791710000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4dd112a2-800b-4dfb-9a0c-e989ecf10e24" ],
+        "x-ms-correlation-request-id": [ "df6bff81-88ce-490a-851a-af81a5576d2a" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T104226Z:df6bff81-88ce-490a-851a-af81a5576d2a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 01494E48696047E6A18A9B04780706C7 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:42:26Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:42:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:41:53.4206052Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:41:53.4206052Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test SG Delete\",\"description\":\"Test service group scope deletion\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$DELETE+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "37543a8c-cc3d-4b21-aa80-4a13ad612dbd" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "Remove-AzSiteSitesByServiceGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "827ae56a-307d-4c3f-8071-2278ca60a724" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T104227Z:827ae56a-307d-4c3f-8071-2278ca60a724" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9DB89F99A0DF4FE99B52AB5BA975A2B4 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:42:26Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:42:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "269c7aaf-994a-47c8-a48d-eea89ab8a3aa" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "Get-AzSiteSitesByServiceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "89f9908e-0aad-4741-acbd-b724cff85ffb" ],
+        "x-ms-correlation-request-id": [ "490cbaba-9884-4b56-af36-d8cc64aa749c" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251009T104241Z:490cbaba-9884-4b56-af36-d8cc64aa749c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FAD82CC2130E4003896E7C1BFEEA2729 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:42:37Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:42:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "173" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSite+[NoContext]+Delete site at Service Group Scope+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01+10": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-delete-728?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "a959abb7-b112-4547-9ea8-279496d5ac9a" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSite" ],
+        "FullCommandName": [ "Remove-AzSite_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/westindia/ba3fd756-2b2d-4a96-a01f-c05ae4774f9a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "4ff11d9a-a007-4d5b-83d3-4f64aac7452d" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T104242Z:4ff11d9a-a007-4d5b-83d3-4f64aac7452d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F1A9FDF4E4E144D8B0471F3107006E84 Ref B: PNQ231110907023 Ref C: 2025-10-09T10:42:41Z" ],
+        "Date": [ "Thu, 09 Oct 2025 10:42:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
