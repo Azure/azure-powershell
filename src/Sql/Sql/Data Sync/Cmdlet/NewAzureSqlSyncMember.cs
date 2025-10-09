@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the credential (username and password) of the Azure SQL Database. 
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = AzureSqlSet,
             HelpMessage = "The credential (username and password) of the Azure SQL Database.")]
         public PSCredential MemberDatabaseCredential { get; set; }
@@ -169,6 +170,19 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         private string syncAgentId = null;
 
+        ///<summary>
+        /// Gets or sets the Database Authentication type of the sync member database
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The database authentication type of the Member database. If not specified, defaults to 'SqlAuthentication' (username/password).")]
+        [ValidateSet("password", "userAssigned", IgnoreCase = true)]
+        public string MemberDatabaseAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity ID of the sync member database in case of user assigned identity authentication
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the UAMI (User Assigned Managed Identity) to use for member database authentication.")]
+        public string ResourceId { get; set; }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -180,7 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -233,9 +247,60 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 newModel.MemberDatabaseName = this.MemberDatabaseName;
                 newModel.MemberServerName = this.MemberServerName;
-                newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
-                newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
-            } 
+
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(MemberDatabaseAuthenticationType)) ||
+                    this.MemberDatabaseAuthenticationType.Equals("password", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!MyInvocation.BoundParameters.ContainsKey(nameof(MemberDatabaseCredential))
+                        || this.MemberDatabaseCredential == null
+                        || string.IsNullOrEmpty(this.MemberDatabaseCredential.UserName))
+                    {
+                        throw new PSArgumentException(
+                            Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseCredentialRequired, nameof(MemberDatabaseCredential));
+                    }
+
+                    if (MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)))
+                    {
+                        throw new PSArgumentException(
+                            string.Format(
+                                Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidParameterForAuthenticationType,
+                                nameof(ResourceId), "password"), nameof(ResourceId));
+                    }
+
+                    newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
+                    newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
+
+                    newModel.Identity = new DataSyncParticipantIdentity
+                    {
+                        Type = "None"
+                    };
+                }
+                else if (this.MemberDatabaseAuthenticationType.Equals("userAssigned", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
+                        string.IsNullOrEmpty(this.ResourceId))
+                    {
+                        throw new PSArgumentException(
+                            Microsoft.Azure.Commands.Sql.Properties.Resources.ResourceIdRequired, nameof(ResourceId));
+                    }
+
+                    if (MyInvocation.BoundParameters.ContainsKey(nameof(MemberDatabaseCredential)))
+                    {
+                        throw new PSArgumentException(
+                            string.Format(
+                                Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidParameterForAuthenticationType,
+                                nameof(MemberDatabaseCredential), "userAssigned"), nameof(MemberDatabaseCredential));
+                    }
+
+                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId);
+                }
+                else
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidDatabaseAuthenticationType, nameof(MemberDatabaseAuthenticationType));
+                }
+
+            }
             else
             {
                 newModel.SqlServerDatabaseId = this.SqlServerDatabaseId;
