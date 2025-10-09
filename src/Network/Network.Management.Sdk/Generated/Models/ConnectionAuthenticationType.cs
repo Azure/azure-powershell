@@ -7,19 +7,19 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for DisableBgpRoutePropagation.
+    /// Defines values for ConnectionAuthenticationType.
     /// </summary>
 
 
-    public static class DisableBgpRoutePropagation
+    public static class ConnectionAuthenticationType
     {
         /// <summary>
-        /// BGP route propagation is enabled.
+        /// Pre-shared key authentication method for VPN gateway connections.
         /// </summary>
-        public const string False = "False";
+        public const string PSK = "PSK";
         /// <summary>
-        /// BGP route propagation is disabled.
+        /// Certificate-based authentication method for VPN gateway connections.
         /// </summary>
-        public const string True = "True";
+        public const string Certificate = "Certificate";
     }
 }
