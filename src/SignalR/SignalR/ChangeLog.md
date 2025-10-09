@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added cmdlets for managing custom domains: `New-AzSignalRCustomDomain`, `Get-AzSignalRCustomDomain`, `Remove-AzSignalRCustomDomain`, `Update-AzSignalRCustomDomain`
 * Added cmdlets for managing custom certificates: `New-AzSignalRCustomCertificate`, `Get-AzSignalRCustomCertificate`, `Remove-AzSignalRCustomCertificate`, `Update-AzSignalRCustomCertificate`
 * Added `-EnableSystemAssignedIdentity` and `UserAssignedIdentity` for managed identity to `New-AzSignalR` and `Update-AzSignalR`

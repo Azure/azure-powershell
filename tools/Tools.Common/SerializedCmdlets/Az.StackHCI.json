@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StackHCI",
-  "ModuleVersion": "2.6.2",
+  "ModuleVersion": "2.6.3",
   "Cmdlets": [
     {
       "VerbName": "Add",
