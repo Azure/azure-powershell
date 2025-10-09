@@ -16,7 +16,7 @@ Add one or more IP network rules to a Managed HSM that already has its firewall 
 ```
 Add-AzKeyVaultManagedHsmNetworkRule [-Name] <String> [[-ResourceGroupName] <String>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Add-AzKeyVaultManagedHsmNetworkRule [-Name] <String> [[-ResourceGroupName] <Stri
 ```
 Add-AzKeyVaultManagedHsmNetworkRule [-InputObject] <PSManagedHsm> [-IpAddressRange <String[]>]
  [-VirtualNetworkResourceId <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Add-AzKeyVaultManagedHsmNetworkRule [-ResourceId] <String> [-IpAddressRange <String[]>]
  [-VirtualNetworkResourceId <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,21 +190,6 @@ If this switch is specified, it returns the updated managed HSM object.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

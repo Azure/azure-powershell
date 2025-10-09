@@ -15,13 +15,13 @@ Gets the key rotation policy for the specified key in Key Vault.
 ### ByVaultName (Default)
 ```
 Get-AzKeyVaultKeyRotationPolicy [-VaultName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Get-AzKeyVaultKeyRotationPolicy [-InputObject] <PSKeyVaultKeyIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,21 +88,6 @@ Aliases: KeyName
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

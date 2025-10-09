@@ -16,21 +16,21 @@ Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specifi
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
  -ByteArrayValue <Byte[]> [-Name] <String> [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmName
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
  -ByteArrayValue <Byte[]> [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
  -ByteArrayValue <Byte[]> [-InputObject] <PSKeyVaultKeyIdentityItem> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,21 +232,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

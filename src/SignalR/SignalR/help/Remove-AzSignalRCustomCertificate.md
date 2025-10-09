@@ -15,28 +15,28 @@ Remove a custom certificate from a SignalR service.
 ### ResourceGroupParameterSet (Default)
 ```
 Remove-AzSignalRCustomCertificate [-ResourceGroupName <String>] -SignalRName <String> [-Name] <String> [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### InputSignalRObjectParameterSet
 ```
 Remove-AzSignalRCustomCertificate [-Name] <String> -SignalRInputObject <PSSignalRResource> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzSignalRCustomCertificate -InputObject <PSCustomCertificateResource> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzSignalRCustomCertificate -ResourceId <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -144,21 +144,6 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

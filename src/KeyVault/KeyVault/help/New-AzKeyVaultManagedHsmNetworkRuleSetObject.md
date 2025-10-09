@@ -16,7 +16,7 @@ Create an in‑memory Managed HSM network rule set object for use with New/Updat
 New-AzKeyVaultManagedHsmNetworkRuleSetObject [-DefaultAction <PSManagedHsmNetworkRuleDefaultActionEnum>]
  [-Bypass <PSManagedHsmNetworkRuleBypassEnum>] [-IpAddressRange <String[]>]
  [-VirtualNetworkResourceId <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,21 +171,6 @@ Optional array of CIDR IP ranges. When provided you should also set `-DefaultAct
 Type: String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

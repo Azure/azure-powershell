@@ -15,19 +15,19 @@ Get the requested number of bytes containing random values from a managed HSM.
 ### GetByHsmName (Default)
 ```
 Get-AzKeyVaultRandomNumber [-DefaultProfile <IAzureContextContainer>] [-HsmName] <String> -Count <Int32>
- [-AsBase64String] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AsBase64String] [<CommonParameters>]
 ```
 
 ### GetByHsmResourceId
 ```
 Get-AzKeyVaultRandomNumber [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] -Count <Int32>
- [-AsBase64String] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AsBase64String] [<CommonParameters>]
 ```
 
 ### GetByHsmInputObject
 ```
 Get-AzKeyVaultRandomNumber [-DefaultProfile <IAzureContextContainer>] [-InputObject] <PSManagedHsm>
- -Count <Int32> [-AsBase64String] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -Count <Int32> [-AsBase64String] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,21 +161,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

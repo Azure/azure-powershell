@@ -17,7 +17,7 @@ Replace or modify the Managed HSM network rule set (DefaultAction, Bypass, and/o
 Update-AzKeyVaultManagedHsmNetworkRuleSet [-Name] <String> [[-ResourceGroupName] <String>]
  [-DefaultAction <PSManagedHsmNetworkRuleDefaultActionEnum>] [-Bypass <PSManagedHsmNetworkRuleBypassEnum>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzKeyVaultManagedHsmNetworkRuleSet [-Name] <String> [[-ResourceGroupName]
 Update-AzKeyVaultManagedHsmNetworkRuleSet [-InputObject] <PSManagedHsm>
  [-DefaultAction <PSManagedHsmNetworkRuleDefaultActionEnum>] [-Bypass <PSManagedHsmNetworkRuleBypassEnum>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzKeyVaultManagedHsmNetworkRuleSet [-InputObject] <PSManagedHsm>
 Update-AzKeyVaultManagedHsmNetworkRuleSet [-ResourceId] <String>
  [-DefaultAction <PSManagedHsmNetworkRuleDefaultActionEnum>] [-Bypass <PSManagedHsmNetworkRuleBypassEnum>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -260,21 +260,6 @@ If this switch is specified, it returns the updated managed HSM object.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

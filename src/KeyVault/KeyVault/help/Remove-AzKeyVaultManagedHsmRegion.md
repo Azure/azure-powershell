@@ -16,7 +16,7 @@ The List operation gets information about the regions associated with the manage
 Remove-AzKeyVaultManagedHsmRegion -HsmName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Region <String[]> [-DefaultProfile <PSObject>] [-PassThru] [-AsJob] [-Break]
  [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -139,21 +139,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

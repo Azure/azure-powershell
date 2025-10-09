@@ -17,7 +17,7 @@ New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Locati
  [-Administrator] <String[]> [-Sku <String>] -SoftDeleteRetentionInDays <Int32> [-PublicNetworkAccess <String>]
  [-EnablePurgeProtection] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>]
  [-NetworkRuleSet <PSManagedHsmNetworkRuleSet>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,21 +220,6 @@ Specifies a Managed HSM network rule set object (from New-AzKeyVaultManagedHsmNe
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsmNetworkRuleSet
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

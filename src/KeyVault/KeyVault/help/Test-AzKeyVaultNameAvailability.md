@@ -16,7 +16,7 @@ Checks that the vault name is valid and is not already in use.
 ```
 Test-AzKeyVaultNameAvailability [-SubscriptionId <String>] -Name <String> [-DefaultProfile <PSObject>] [-Break]
  [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Test-AzKeyVaultNameAvailability [-SubscriptionId <String>] -Name <String> [-Defa
 ```
 Test-AzKeyVaultNameAvailability [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Test-AzKeyVaultNameAvailability [-SubscriptionId <String>] -JsonFilePath <String
 ```
 Test-AzKeyVaultNameAvailability [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -171,21 +171,6 @@ Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
