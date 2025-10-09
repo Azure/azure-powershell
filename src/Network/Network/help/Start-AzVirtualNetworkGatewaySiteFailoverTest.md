@@ -15,18 +15,17 @@ Starts a failover simulation on the virtual network gateway for the specified pe
 ```
 Start-AzVirtualNetworkGatewaySiteFailoverTest -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
  -PeeringLocation <String> [-Type <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The `Start-AzVirtualNetworkGatewaySiteFailoverTest` cmdlet initiates a failover simulation on the virtual network gateway, specifically for the given **PeeringLocation**. This is useful for testing the gateway’s ability to failover and ensure network resiliency.
+The `Start-AzVirtualNetworkGatewaySiteFailoverTest` cmdlet initiates a failover simulation on the virtual network gateway, specifically for the given **PeeringLocation**. This is useful for testing the gateway's ability to failover and ensure network resiliency.
 
 You can specify the **Type** of the failover test, either:
 - `SingleSiteFailover`: A test to simulate a failover for a single site.
 - `MultiSiteFailover`: A test to simulate a failover for multiple sites.
 
 By default, the test will be performed using the `SingleSiteFailover` type unless specified otherwise. The failover test helps ensure that the virtual network gateway can handle failovers correctly and that any issues are identified proactively.
-
 
 ## EXAMPLES
 
@@ -76,21 +75,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name of the virtual network gateway.
 
@@ -131,6 +115,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
