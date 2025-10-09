@@ -88,7 +88,7 @@ FunctionsToExport = 'Add-AzKeyVaultManagedHsmRegion', 'Get-AzKeyVaultManagedHsmR
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact', 
                'Add-AzKeyVaultKey', 'Add-AzKeyVaultManagedStorageAccount', 
-               'Add-AzKeyVaultNetworkRule', 'Backup-AzKeyVault', 
+               'Add-AzKeyVaultNetworkRule', 'Add-AzKeyVaultManagedHsmNetworkRule', 'Backup-AzKeyVault', 
                'Backup-AzKeyVaultCertificate', 'Backup-AzKeyVaultKey', 
                'Backup-AzKeyVaultManagedStorageAccount', 'Backup-AzKeyVaultSecret', 
                'Export-AzKeyVaultSecurityDomain', 'Get-AzKeyVault', 
@@ -107,7 +107,7 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact
                'New-AzKeyVaultCertificateAdministratorDetail', 
                'New-AzKeyVaultCertificateOrganizationDetail', 
                'New-AzKeyVaultCertificatePolicy', 'New-AzKeyVaultManagedHsm', 
-               'New-AzKeyVaultNetworkRuleSetObject', 
+               'New-AzKeyVaultNetworkRuleSetObject', 'New-AzKeyVaultManagedHsmNetworkRuleSetObject', 
                'New-AzKeyVaultRoleAssignment', 'New-AzKeyVaultRoleDefinition', 
                'Remove-AzKeyVault', 'Remove-AzKeyVaultAccessPolicy', 
                'Remove-AzKeyVaultCertificate', 
@@ -117,7 +117,7 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact
                'Remove-AzKeyVaultManagedHsm', 
                'Remove-AzKeyVaultManagedStorageAccount', 
                'Remove-AzKeyVaultManagedStorageSasDefinition', 
-               'Remove-AzKeyVaultNetworkRule', 'Remove-AzKeyVaultRoleAssignment', 
+               'Remove-AzKeyVaultNetworkRule', 'Remove-AzKeyVaultManagedHsmNetworkRule', 'Remove-AzKeyVaultRoleAssignment', 
                'Remove-AzKeyVaultRoleDefinition', 'Remove-AzKeyVaultSecret', 
                'Restore-AzKeyVault', 'Restore-AzKeyVaultCertificate', 
                'Restore-AzKeyVaultKey', 'Restore-AzKeyVaultManagedStorageAccount', 
@@ -136,7 +136,7 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact
                'Update-AzKeyVaultKey', 'Update-AzKeyVaultManagedHsm', 
                'Update-AzKeyVaultManagedStorageAccount', 
                'Update-AzKeyVaultManagedStorageAccountKey', 
-               'Update-AzKeyVaultNetworkRuleSet', 'Update-AzKeyVaultSecret', 
+               'Update-AzKeyVaultNetworkRuleSet', 'Update-AzKeyVaultManagedHsmNetworkRuleSet', 'Update-AzKeyVaultSecret', 
                'Update-AzKeyVaultSetting'
 
 # Variables to export from this module
