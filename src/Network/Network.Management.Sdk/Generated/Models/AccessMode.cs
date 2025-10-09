@@ -7,19 +7,19 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for DisableBgpRoutePropagation.
+    /// Defines values for AccessMode.
     /// </summary>
 
 
-    public static class DisableBgpRoutePropagation
+    public static class AccessMode
     {
         /// <summary>
-        /// BGP route propagation is enabled.
+        /// Allows unrestricted access to the private link service.
         /// </summary>
-        public const string False = "False";
+        public const string Default = "Default";
         /// <summary>
-        /// BGP route propagation is disabled.
+        /// Limits access to subscriptions which are inside visibility list only.
         /// </summary>
-        public const string True = "True";
+        public const string Restricted = "Restricted";
     }
 }
