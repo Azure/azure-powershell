@@ -7915,7 +7915,7 @@ function Test-VirtualMachinePlacement
         $user = Get-ComputeTestResourceName;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        # create VM with placement feature 
+        # create VM with placement feature
         $vmname = '1' + $rgname;
         $domainNameLabel = "d1" + $rgname;
         $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS85Gen2 -DomainNameLabel $domainNameLabel -ZonePlacementPolicy "Any" -IncludeZone "1","2" -AlignRegionalDisksToVMZone
@@ -7953,11 +7953,12 @@ function Test-VirtualMachineAddProxyAgentExtension
     $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
     $vmName = 'VM1';
     $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
+    $domainNameLabel = "d1" + $resourceGroupName;
 
 
     try
     {
-        New-AzVM -ResourceGroupName $resourceGroupName -Name $VMName -Credential $cred -image $imageName -Location 'eastus2' -EnableProxyAgent -AddProxyAgentExtension
+        New-AzVM -ResourceGroupName $resourceGroupName -Name $VMName -Credential $cred -image $imageName -DomainNameLabel $domainNameLabel -Location 'eastus2' -EnableProxyAgent -AddProxyAgentExtension
 
         # Update vm to add proxy agent extension 
         $VM = Get-AzVM -ResourceGroupName $resourceGroupName -VMName $vmName
