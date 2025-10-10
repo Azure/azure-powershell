@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="fileSharePaidBursting">File Share Paid Bursting properties.
         /// </param>
-        public FileShareProperties(System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), int? provisionedIops = default(int?), int? provisionedBandwidthMibps = default(int?), int? includedBurstIops = default(int?), long? maxBurstCreditsForIops = default(long?), System.DateTime? nextAllowedQuotaDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedIopsDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedBandwidthDowngradeTime = default(System.DateTime?), string enabledProtocols = default(string), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?), FileSharePropertiesFileSharePaidBursting fileSharePaidBursting = default(FileSharePropertiesFileSharePaidBursting))
+        public FileShareProperties(System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), int? provisionedIops = default(int?), int? provisionedBandwidthMibps = default(int?), int? includedBurstIops = default(int?), long? maxBurstCreditsForIops = default(long?), string nextAllowedQuotaDowngradeTime = default(string), string nextAllowedProvisionedIopsDowngradeTime = default(string), string nextAllowedProvisionedBandwidthDowngradeTime = default(string), string enabledProtocols = default(string), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?), FileSharePropertiesFileSharePaidBursting fileSharePaidBursting = default(FileSharePropertiesFileSharePaidBursting))
 
         {
             this.LastModifiedTime = lastModifiedTime;
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Provisioned v1 SSD and Files Provisioned v2 account type
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextAllowedQuotaDowngradeTime")]
-        public System.DateTime? NextAllowedQuotaDowngradeTime {get; private set; }
+        public string NextAllowedQuotaDowngradeTime {get; private set; }
 
         /// <summary>
         /// Gets returns the next allowed provisioned IOPS downgrade time for the
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Provisioned v2 account type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextAllowedProvisionedIopsDowngradeTime")]
-        public System.DateTime? NextAllowedProvisionedIopsDowngradeTime {get; private set; }
+        public string NextAllowedProvisionedIopsDowngradeTime {get; private set; }
 
         /// <summary>
         /// Gets returns the next allowed provisioned bandwidth downgrade time for the
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Provisioned v2 account type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextAllowedProvisionedBandwidthDowngradeTime")]
-        public System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime {get; private set; }
+        public string NextAllowedProvisionedBandwidthDowngradeTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the authentication protocol that is used for the file share.

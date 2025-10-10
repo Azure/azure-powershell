@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Management.Storage
         /// SRP today does not return continuation token.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -56,6 +55,40 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ListContainerItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, string maxpagesize = default(string), string filter = default(string), string include = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Gets properties of a specified container.
+        /// </summary>
+        /// <remarks>
+        /// Gets properties of a specified container.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobContainer>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates a new container under the specified account as described by request
         /// body. The container resource includes metadata and properties for that
         /// container. It does not include a list of the blobs contained by the
@@ -68,8 +101,7 @@ namespace Microsoft.Azure.Management.Storage
         /// container.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -110,8 +142,7 @@ namespace Microsoft.Azure.Management.Storage
         /// container doesn&#39;t already exist.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -142,49 +173,13 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobContainer>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, BlobContainer blobContainer, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets properties of a specified container.
-        /// </summary>
-        /// <remarks>
-        /// Gets properties of a specified container.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobContainer>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Deletes specified container under its account.
         /// </summary>
         /// <remarks>
         /// Deletes specified container under its account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -209,54 +204,6 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sets legal hold tags. Setting the same tag results in an idempotent
-        /// operation. SetLegalHold follows an append pattern and does not clear out
-        /// the existing tags that are not specified in the request.
-        /// </summary>
-        /// <remarks>
-        /// Sets legal hold tags. Setting the same tag results in an idempotent
-        /// operation. SetLegalHold follows an append pattern and does not clear out
-        /// the existing tags that are not specified in the request.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='tags'>
-        /// Each tag should be 3 to 23 alphanumeric characters and is normalized to
-        /// lower case at SRP.
-        /// </param>
-        /// <param name='allowProtectedAppendWritesAll'>
-        /// When enabled, new blocks can be written to both &#39;Append and Bock Blobs&#39;
-        /// while maintaining legal hold protection and compliance. Only new blocks can
-        /// be added and any existing blocks cannot be modified or deleted.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LegalHold>> SetLegalHoldWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Clears legal hold tags. Clearing the same or non-existent tag results in an
         /// idempotent operation. ClearLegalHold clears out only the specified tags in
         /// the request.
@@ -267,8 +214,7 @@ namespace Microsoft.Azure.Management.Storage
         /// the request.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -305,6 +251,47 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LegalHold>> ClearLegalHoldWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Gets the existing immutability policy along with the corresponding ETag in
+        /// response headers and body.
+        /// </summary>
+        /// <remarks>
+        /// Gets the existing immutability policy along with the corresponding ETag in
+        /// response headers and body.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersGetImmutabilityPolicyHeaders>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates or updates an unlocked immutability policy. ETag in If-Match is
         /// honored if given but not required for this operation.
         /// </summary>
@@ -313,8 +300,7 @@ namespace Microsoft.Azure.Management.Storage
         /// honored if given but not required for this operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -351,48 +337,6 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersCreateOrUpdateImmutabilityPolicyHeaders>> CreateOrUpdateImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), ImmutabilityPolicy parameters = default(ImmutabilityPolicy), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the existing immutability policy along with the corresponding ETag in
-        /// response headers and body.
-        /// </summary>
-        /// <remarks>
-        /// Gets the existing immutability policy along with the corresponding ETag in
-        /// response headers and body.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update must
-        /// be returned to the server for all update operations. The ETag value must
-        /// include the leading and trailing double quotes as returned by the service.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersGetImmutabilityPolicyHeaders>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Aborts an unlocked immutability policy. The response of delete has
         /// immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is
         /// required for this operation. Deleting a locked immutability policy is not
@@ -407,8 +351,7 @@ namespace Microsoft.Azure.Management.Storage
         /// blobs inside the policy locked container.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -441,6 +384,52 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersDeleteImmutabilityPolicyHeaders>> DeleteImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Extends the immutabilityPeriodSinceCreationInDays of a locked
+        /// immutabilityPolicy. The only action allowed on a Locked policy will be this
+        /// action. ETag in If-Match is required for this operation.
+        /// </summary>
+        /// <remarks>
+        /// Extends the immutabilityPeriodSinceCreationInDays of a locked
+        /// immutabilityPolicy. The only action allowed on a Locked policy will be this
+        /// action. ETag in If-Match is required for this operation.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
+        /// </param>
+        /// <param name='parameters'>
+        /// The content of the action request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersExtendImmutabilityPolicyHeaders>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, ImmutabilityPolicy parameters = default(ImmutabilityPolicy), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Sets the ImmutabilityPolicy to Locked state. The only action allowed on a
         /// Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is
         /// required for this operation.
@@ -451,8 +440,7 @@ namespace Microsoft.Azure.Management.Storage
         /// required for this operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -485,54 +473,6 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersLockImmutabilityPolicyHeaders>> LockImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Extends the immutabilityPeriodSinceCreationInDays of a locked
-        /// immutabilityPolicy. The only action allowed on a Locked policy will be this
-        /// action. ETag in If-Match is required for this operation.
-        /// </summary>
-        /// <remarks>
-        /// Extends the immutabilityPeriodSinceCreationInDays of a locked
-        /// immutabilityPolicy. The only action allowed on a Locked policy will be this
-        /// action. ETag in If-Match is required for this operation.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update must
-        /// be returned to the server for all update operations. The ETag value must
-        /// include the leading and trailing double quotes as returned by the service.
-        /// </param>
-        /// <param name='parameters'>
-        /// The ImmutabilityPolicy Properties that will be extended for a blob
-        /// container.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersExtendImmutabilityPolicyHeaders>> ExtendImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, ImmutabilityPolicy parameters = default(ImmutabilityPolicy), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// The Lease Container operation establishes and manages a lock on a container
         /// for delete operations. The lock duration can be 15 to 60 seconds, or can be
         /// infinite.
@@ -543,8 +483,7 @@ namespace Microsoft.Azure.Management.Storage
         /// infinite.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -558,7 +497,7 @@ namespace Microsoft.Azure.Management.Storage
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='parameters'>
-        /// Lease Container request body.
+        /// The content of the action request
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -589,8 +528,7 @@ namespace Microsoft.Azure.Management.Storage
         /// on the container.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -612,7 +550,54 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BlobContainersObjectLevelWormHeaders>> ObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Sets legal hold tags. Setting the same tag results in an idempotent
+        /// operation. SetLegalHold follows an append pattern and does not clear out
+        /// the existing tags that are not specified in the request.
+        /// </summary>
+        /// <remarks>
+        /// Sets legal hold tags. Setting the same tag results in an idempotent
+        /// operation. SetLegalHold follows an append pattern and does not clear out
+        /// the existing tags that are not specified in the request.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='tags'>
+        /// Each tag should be 3 to 23 alphanumeric characters and is normalized to
+        /// lower case at SRP.
+        /// </param>
+        /// <param name='allowProtectedAppendWritesAll'>
+        /// When enabled, new blocks can be written to both &#39;Append and Bock Blobs&#39;
+        /// while maintaining legal hold protection and compliance. Only new blocks can
+        /// be added and any existing blocks cannot be modified or deleted.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LegalHold>> SetLegalHoldWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// This operation migrates a blob container from container level WORM to
@@ -629,8 +614,7 @@ namespace Microsoft.Azure.Management.Storage
         /// on the container.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -652,7 +636,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BlobContainersObjectLevelWormHeaders>> BeginObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all containers and does not support a prefix like data plane. Also

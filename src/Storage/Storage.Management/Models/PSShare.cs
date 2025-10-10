@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ProvisionedBandwidthMibps = share.ProvisionedBandwidthMibps;
             this.IncludedBurstIops = share.IncludedBurstIops;
             this.MaxBurstCreditsForIops = share.MaxBurstCreditsForIops;
-            this.NextAllowedProvisionedBandwidthDowngradeTime = share.NextAllowedProvisionedBandwidthDowngradeTime;
-            this.NextAllowedProvisionedIopsDowngradeTime = share.NextAllowedProvisionedIopsDowngradeTime;
-            this.NextAllowedQuotaDowngradeTime = share.NextAllowedQuotaDowngradeTime;
+            this.NextAllowedProvisionedBandwidthDowngradeTime = ParseDateTimeString(share.NextAllowedProvisionedBandwidthDowngradeTime);
+            this.NextAllowedProvisionedIopsDowngradeTime = ParseDateTimeString(share.NextAllowedProvisionedIopsDowngradeTime);
+            this.NextAllowedQuotaDowngradeTime = ParseDateTimeString(share.NextAllowedQuotaDowngradeTime);
             this.FileSharePaidBursting = share.FileSharePaidBursting is null ? null : new PSFileSharePropertiesFileSharePaidBursting(share.FileSharePaidBursting);
         }
 
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ProvisionedBandwidthMibps = share.ProvisionedBandwidthMibps;
             this.IncludedBurstIops = share.IncludedBurstIops;
             this.MaxBurstCreditsForIops = share.MaxBurstCreditsForIops;
-            this.NextAllowedProvisionedBandwidthDowngradeTime = share.NextAllowedProvisionedBandwidthDowngradeTime;
-            this.NextAllowedProvisionedIopsDowngradeTime = share.NextAllowedProvisionedIopsDowngradeTime;
-            this.NextAllowedQuotaDowngradeTime = share.NextAllowedQuotaDowngradeTime;
+            this.NextAllowedProvisionedBandwidthDowngradeTime = ParseDateTimeString(share.NextAllowedProvisionedBandwidthDowngradeTime);
+            this.NextAllowedProvisionedIopsDowngradeTime = ParseDateTimeString(share.NextAllowedProvisionedIopsDowngradeTime);
+            this.NextAllowedQuotaDowngradeTime = ParseDateTimeString(share.NextAllowedQuotaDowngradeTime);
             this.FileSharePaidBursting = share.FileSharePaidBursting is null ? null : new PSFileSharePropertiesFileSharePaidBursting(share.FileSharePaidBursting);
         }
 
@@ -140,6 +140,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get; private set; }
         public PSFileSharePropertiesFileSharePaidBursting FileSharePaidBursting { get; set; }
 
+        public DateTime? ParseDateTimeString(string dateString)
+        {
+            if (string.IsNullOrEmpty(dateString))
+            {
+                return null;
+            }
+
+            DateTime date;
+            if (DateTime.TryParse(dateString, out date))
+            {
+                return date;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         public class PSFileSharePropertiesFileSharePaidBursting
         {
             public PSFileSharePropertiesFileSharePaidBursting() { }

@@ -18,13 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 9.2.0
-* Supported Zone and ZonePlacementPolicy on Storage accounts: `New-AzStorageAccount`, `Set-AzStorageAccount`
-* Supported listing Storage SKU: `Get-AzStorageSku`
-* Supported enabling SMB Oauth on Storage accounts: `New-AzStorageAccount`, `Set-AzStorageAccount`
-* Supported Enable Metrics when set object replication policy: `Set-AzStorageObjectReplicationPolicy`
-* Supported create and get symbolic link in NFS File Share: `New-AzStorageFileSymbolicLink`, `Get-AzStorageFileSymbolicLink`
+* Supported Zone and ZonePlacementPolicy on Storage accounts 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported listing Storage SKU
+    - `Get-AzStorageSku`
+* Supported enabling SMB Oauth on Storage accounts 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Enable Metrics when set object replication policy 
+    - `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.1.0
 * Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
