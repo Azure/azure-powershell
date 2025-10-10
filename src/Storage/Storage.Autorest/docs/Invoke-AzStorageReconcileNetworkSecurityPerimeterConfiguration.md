@@ -1,47 +1,63 @@
 ---
 external help file:
 Module Name: Az.Storage
-online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragetaskassignment
+online version: https://learn.microsoft.com/powershell/module/az.storage/invoke-azstoragereconcilenetworksecurityperimeterconfiguration
 schema: 2.0.0
 ---
 
-# Remove-AzStorageTaskAssignment
+# Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration
 
 ## SYNOPSIS
-Delete the storage task assignment sub-resource
+Refreshes any information about the association.
 
 ## SYNTAX
 
-### Delete (Default)
+### Reconcile (Default)
 ```
-Remove-AzStorageTaskAssignment -AccountName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzStorageTaskAssignment -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration -AccountName <String>
+ -NetworkSecurityPerimeterConfigurationName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityStorageAccount
+### ReconcileViaIdentity
 ```
-Remove-AzStorageTaskAssignment -Name <String> -StorageAccountInputObject <IStorageIdentity>
+Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration -InputObject <IStorageIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReconcileViaIdentityStorageAccount
+```
+Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration
+ -NetworkSecurityPerimeterConfigurationName <String> -StorageAccountInputObject <IStorageIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete the storage task assignment sub-resource
+Refreshes any information about the association.
 
 ## EXAMPLES
 
-### Example 1: Remove a task assignment
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStorageTaskAssignment -AccountName myaccount -ResourceGroupName myresourcegroup -Name mytaskassignment
+{{ Add code here }}
 ```
 
-This command deletes a task assignment.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -51,7 +67,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Reconcile
 Aliases:
 
 Required: True
@@ -97,7 +113,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: ReconcileViaIdentity
 Aliases:
 
 Required: True
@@ -107,14 +123,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the storage task assignment within the specified resource group.
-Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+### -NetworkSecurityPerimeterConfigurationName
+The name for Network Security Perimeter configuration
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityStorageAccount
-Aliases: StorageTaskAssignmentName
+Parameter Sets: Reconcile, ReconcileViaIdentityStorageAccount
+Aliases:
 
 Required: True
 Position: Named
@@ -159,7 +174,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Reconcile
 Aliases:
 
 Required: True
@@ -174,7 +189,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: DeleteViaIdentityStorageAccount
+Parameter Sets: ReconcileViaIdentityStorageAccount
 Aliases:
 
 Required: True
@@ -190,7 +205,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Reconcile
 Aliases:
 
 Required: False

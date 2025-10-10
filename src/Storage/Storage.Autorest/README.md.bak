@@ -33,7 +33,7 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/welovej/azure-rest-api-specs/blob/bd46040e2bc84dea94b147ae5fa47e5dfe689e4b/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/openapi.json
+  - https://github.com/welovej/azure-rest-api-specs/blob/TspMig-storage/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/openapi.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
