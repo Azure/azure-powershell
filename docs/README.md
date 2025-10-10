@@ -44,6 +44,20 @@ This directory contains analysis and documentation comparing the two SQL SDKs us
 
 ---
 
+### 📐 [SQL SDK Architecture Diagrams](./sql-sdk-architecture-diagram.md)
+**Visual representation** of SDK architecture and relationships.
+
+- ✅ Current vs target state diagrams
+- ✅ Migration timeline visualization
+- ✅ Data flow comparison
+- ✅ Operation coverage Venn diagrams
+- ✅ Dependency graphs
+- ✅ Breaking change impact visualization
+
+**Use this** to understand the architecture visually and communicate with stakeholders.
+
+---
+
 ## Quick Answer
 
 ### Can we remove Sql.LegacySdk?
