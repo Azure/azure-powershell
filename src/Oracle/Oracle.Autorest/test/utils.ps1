@@ -185,14 +185,53 @@ function setupEnv() {
     #New-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -Description $env.description -HighCapacityDatabaseStorageInput $env.highCapacityDatabaseStorageInput -DisplayName $env.oracleExascaleDbStorageVaultName
     #$dbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
 
-   #prerequisite resources
-   $adbsDNDName = "adbsDNDP"
-   $env.Add("adbsDNDName", $adbsDNDName)
-   $VmClusterDNDName = "OfakeDNDVM"
-   $env.Add("VmClusterDNDName", $VmClusterDNDName)
-   $ExaInfraDNDName = "OfakeExaDND"
-   $env.Add("ExaInfraDNDName", $ExaInfraDNDName)
+    #prerequisite resources
+    $adbsDNDName = "adbsDNDP"
+    $env.Add("adbsDNDName", $adbsDNDName)
+    $VmClusterDNDName = "OfakeDNDVM"
+    $env.Add("VmClusterDNDName", $VmClusterDNDName)
+    $ExaInfraDNDName = "OfakeExaDND"
+    $env.Add("ExaInfraDNDName", $ExaInfraDNDName)
 
+    # BaseDB Properties
+    $baseDbName = "PowershellSdk"
+    $env.Add("baseDbName", $baseDbName)
+
+    $baseDbZone = @("3")
+    $env.Add("baseDbZone", $baseDbZone)
+
+    $databaseEdition = "EnterpriseEdition"
+    $env.Add("databaseEdition", $databaseEdition)
+
+    $baseDbHostname = "whitelist2"
+    $env.Add("baseDbHostname", $baseDbHostname)
+
+    $baseDbShape = "VM.Standard.x86"
+    $env.Add("baseDbShape", $baseDbShape)
+
+    $baseDbDisplayName = "BaseDbWhitelisttest"
+    $env.Add("baseDbDisplayName", $baseDbDisplayName)
+
+    $baseDbNodeCount = 1
+    $env.Add("baseDbNodeCount", $baseDbNodeCount)
+
+    $initialDataStorageSizeInGb = 256
+    $env.Add("initialDataStorageSizeInGb", $initialDataStorageSizeInGb)
+
+    $baseDbComputeModel = "ECPU"
+    $env.Add("baseDbComputeModel", $baseDbComputeModel)
+
+    $baseDbComputeCount = 4
+    $env.Add("baseDbComputeCount", $baseDbComputeCount)
+
+    $baseDbVersion = "19.27.0.0"
+    $env.Add("baseDbVersion", $baseDbVersion)
+
+    $baseDbPdbName = "pdbNameSep02"
+    $env.Add("baseDbPdbName", $baseDbPdbName)
+
+    $dbSystemOptionStorageManagement = "LVM"
+    $env.Add("dbSystemOptionStorageManagement", $dbSystemOptionStorageManagement)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

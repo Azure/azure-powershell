@@ -24,11 +24,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleDbSystem'))
 
 Describe 'New-AzOracleDbSystem' {
     # Inputs (keep consistent with the recording)
-    $dbsName  = 'PowershellSdk'
-    $location = 'eastus'
     $subId    = if ($env:SubscriptionId) { $env:SubscriptionId } else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
     $rgName   = if ($env:resourceGroup)  { $env:resourceGroup }  else { 'basedb-rg929-ti-iad52' }
-    $zone     = '3'
 
     $netAnchor = '/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/networkAnchors/basedb-na9293-ti-iad52'
     $resAnchor = '/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourcegroups/basedb-rg929-ti-iad52/providers/oracle.database/resourceanchors/basedb-ra929-ti-iad52'
@@ -42,26 +39,26 @@ Describe 'New-AzOracleDbSystem' {
         {
             if ($hasCmd) {
                 $created = New-AzOracleDbSystem `
-                    -Name $dbsName `
+                    -Name $env.baseDbName `
                     -ResourceGroupName $rgName `
                     -SubscriptionId $subId `
-                    -Location $location `
-                    -Zone $zone `
-                    -DatabaseEdition 'EnterpriseEdition' `
+                    -Location $env.location `
+                    -Zone $env.baseDbZone `
+                    -DatabaseEdition $env.databaseEdition `
                     -AdminPassword $adminPwd `
                     -ResourceAnchorId $resAnchor `
                     -NetworkAnchorId $netAnchor `
-                    -Hostname 'whitelist2' `
-                    -Shape 'VM.Standard.x86' `
+                    -Hostname $env.baseDbHostname `
+                    -Shape $env.baseDbShape `
                     -SshPublicKey $sshKey `
-                    -DisplayName 'BaseDbWhitelisttest' `
-                    -NodeCount 1 `
-                    -InitialDataStorageSizeInGb 256 `
-                    -ComputeModel 'ECPU' `
-                    -ComputeCount 4 `
-                    -DbVersion '19.27.0.0' `
-                    -PdbName 'pdbNameSep02' `
-                    -DbSystemOptionStorageManagement 'LVM'
+                    -DisplayName $env.baseDbDisplayName `
+                    -NodeCount $env.baseDbNodeCount `
+                    -InitialDataStorageSizeInGb $env.initialDataStorageSizeInGb `
+                    -ComputeModel $env.baseDbComputeModel `
+                    -ComputeCount $env.baseDbComputeCount `
+                    -DbVersion $env.baseDbVersion `
+                    -PdbName $env.baseDbPdbName `
+                    -DbSystemOptionStorageManagement $env.dbSystemOptionStorageManagement
 
                 $created | Should -Not -BeNullOrEmpty
             } else {
