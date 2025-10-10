@@ -42,7 +42,7 @@ https://learn.microsoft.com/powershell/module/az.site/remove-azsite
 #>
 function Remove-AzSite {
     [OutputType([System.Boolean])]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter(Mandatory)]
         [Alias('SiteName')]
@@ -148,19 +148,25 @@ function Remove-AzSite {
             # Extract parameters from InputObject and route accordingly
             if ($InputObject.ResourceGroupName -and $InputObject.SubscriptionId) {
                 # Resource Group scope
-                Az.Site.internal\Remove-AzSite @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.Name)' in Resource Group '$($InputObject.ResourceGroupName)'", "Remove")) {
+                    Az.Site.internal\Remove-AzSite @PSBoundParameters
+                }
             }
             elseif ($InputObject.ServicegroupName) {
                 # Service Group scope - clean parameters
                 $null = $PSBoundParameters.Remove('SubscriptionId')
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
-                Az.Site.internal\Remove-AzSiteSitesByServiceGroup @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.Name)' in Service Group '$($InputObject.ServicegroupName)'", "Remove")) {
+                    Az.Site.internal\Remove-AzSiteSitesByServiceGroup @PSBoundParameters
+                }
             }
             elseif ($InputObject.SubscriptionId) {
                 # Subscription scope - clean parameters
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 $null = $PSBoundParameters.Remove('ServicegroupName')
-                Az.Site.internal\Remove-AzSiteSitesBySubscription @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.Name)' in Subscription '$($InputObject.SubscriptionId)'", "Remove")) {
+                    Az.Site.internal\Remove-AzSiteSitesBySubscription @PSBoundParameters
+                }
             }
             return
         }
@@ -169,19 +175,25 @@ function Remove-AzSite {
         if ($PSBoundParameters.ContainsKey('SubscriptionId') -and 
             $PSBoundParameters.ContainsKey('ResourceGroupName')) {
             # Resource Group Scope - call base generated cmdlet
-            Az.Site.internal\Remove-AzSite @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$Name' in Resource Group '$ResourceGroupName'", "Remove")) {
+                Az.Site.internal\Remove-AzSite @PSBoundParameters
+            }
         }
         elseif ($PSBoundParameters.ContainsKey('ServicegroupName')) {
             # Service Group Scope - prepare parameters for service group-scoped cmdlet
             $null = $PSBoundParameters.Remove('SubscriptionId')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
-            Az.Site.internal\Remove-AzSiteSitesByServiceGroup @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$Name' in Service Group '$ServicegroupName'", "Remove")) {
+                Az.Site.internal\Remove-AzSiteSitesByServiceGroup @PSBoundParameters
+            }
         }
         elseif ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             # Subscription Scope - prepare parameters for subscription-scoped cmdlet
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ServicegroupName')
-            Az.Site.internal\Remove-AzSiteSitesBySubscription @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$Name' in Subscription '$SubscriptionId'", "Remove")) {
+                Az.Site.internal\Remove-AzSiteSitesBySubscription @PSBoundParameters
+            }
         }
         else {
             throw "Must provide either (SubscriptionId + ResourceGroupName), SubscriptionId only, or ServicegroupName only"

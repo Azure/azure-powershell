@@ -47,7 +47,7 @@ https://learn.microsoft.com/powershell/module/az.site/new-azsite
 #>
 function New-AzSite {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Site.Models.ISite])]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter(Mandatory)]
         [Alias('Name')]
@@ -149,10 +149,11 @@ function New-AzSite {
         ${StreetAddress2},
 
         [Parameter()]
+        [Alias('Labels')]
         [Microsoft.Azure.PowerShell.Cmdlets.Site.Category('Body')]
         [System.Collections.Hashtable]
         # Key-value pairs for labeling the site resource
-        ${Labels},
+        ${Label},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -221,21 +222,27 @@ function New-AzSite {
             # Extract parameters from InputObject and route accordingly
             if ($InputObject.ResourceGroupName -and $InputObject.SubscriptionId) {
                 # Resource Group scope
-                Az.Site.internal\New-AzSite @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.SiteName)' in Resource Group '$($InputObject.ResourceGroupName)'", "Create")) {
+                    Az.Site.internal\New-AzSite @PSBoundParameters
+                }
             }
             elseif ($InputObject.ServicegroupName) {
                 # Service Group scope - clean parameters
                 $null = $PSBoundParameters.Remove('SubscriptionId')
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 # Map Name to SiteName for scope-specific cmdlets
-                Az.Site.internal\New-AzSiteSitesByServiceGroup @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.SiteName)' in Service Group '$($InputObject.ServicegroupName)'", "Create")) {
+                    Az.Site.internal\New-AzSiteSitesByServiceGroup @PSBoundParameters
+                }
             }
             elseif ($InputObject.SubscriptionId) {
                 # Subscription scope - clean parameters
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 $null = $PSBoundParameters.Remove('ServicegroupName')
                 # Map Name to SiteName for scope-specific cmdlets
-                Az.Site.internal\New-AzSiteSitesBySubscription @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.SiteName)' in Subscription '$($InputObject.SubscriptionId)'", "Create")) {
+                    Az.Site.internal\New-AzSiteSitesBySubscription @PSBoundParameters
+                }
             }
             return
         }
@@ -244,19 +251,25 @@ function New-AzSite {
         if ($PSBoundParameters.ContainsKey('SubscriptionId') -and 
             $PSBoundParameters.ContainsKey('ResourceGroupName')) {
             # Resource Group Scope - call base generated cmdlet
-            Az.Site.internal\New-AzSite @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$SiteName' in Resource Group '$ResourceGroupName'", "Create")) {
+                Az.Site.internal\New-AzSite @PSBoundParameters
+            }
         }
         elseif ($PSBoundParameters.ContainsKey('ServicegroupName')) {
             # Service Group Scope - prepare parameters for service group-scoped cmdlet
             $null = $PSBoundParameters.Remove('SubscriptionId')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
-            Az.Site.internal\New-AzSiteSitesByServiceGroup @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$SiteName' in Service Group '$ServicegroupName'", "Create")) {
+                Az.Site.internal\New-AzSiteSitesByServiceGroup @PSBoundParameters
+            }
         }
         elseif ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             # Subscription Scope - prepare parameters for subscription-scoped cmdlet
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ServicegroupName')
-            Az.Site.internal\New-AzSiteSitesBySubscription @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$SiteName' in Subscription '$SubscriptionId'", "Create")) {
+                Az.Site.internal\New-AzSiteSitesBySubscription @PSBoundParameters
+            }
         }
         else {
             throw "Must provide either (SubscriptionId + ResourceGroupName), SubscriptionId only, or ServicegroupName only"

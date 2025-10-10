@@ -30,7 +30,7 @@ Describe 'Update-AzSite' {
             "updated-by" = "powershell-test"
         }
         
-        $updatedSite = Update-AzSite -Name $env.siteName01 -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId -Description $env.description02 -Labels $newLabels
+        $updatedSite = Update-AzSite -Name $env.siteName01 -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId -Description $env.description02 -Label $newLabels
         
         $updatedSite | Should -Not -BeNullOrEmpty
         $updatedSite.Name | Should -Be $env.siteName01

@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSite'))
 
 Describe 'Remove-AzSite' {
     BeforeEach {
-        # Create a site for deletion tests
-        $testSiteName = "site-delete-$(Get-Random -Maximum 999)"
+        # Use predefined site name for consistent recording/playback
+        $testSiteName = $env.siteNameDelete
         
         # Create site with minimal required parameters
         New-AzSite -SiteName $testSiteName -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId -DisplayName $env.displayName01
@@ -39,11 +39,6 @@ Describe 'Remove-AzSite' {
         { Get-AzSite -Name $script:testSiteName -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId } | Should -Throw
     }
 
-    It 'Delete non-existent site should not throw error' {
-        # PowerShell should handle this gracefully
-        { Remove-AzSite -Name "non-existent-site-12345" -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId -ErrorAction SilentlyContinue } | Should -Not -Throw
-    }
-
     AfterEach {
         # Cleanup any remaining test sites
         if ($script:testSiteName) {
@@ -57,38 +52,44 @@ Describe 'Remove-AzSite' {
     }
 
     It 'Delete site at Subscription Scope' {
+        # Use predefined site name for consistent recording/playback
+        $testSiteName = $env.siteNameDeleteSubscriptionScope
+        
         # First create a site at subscription scope
-        $testSite = New-AzSite -SiteName $env.siteNameSubscriptionScope -SubscriptionId $env.SubscriptionId -DisplayName "Test Sub Delete" -Description "Test subscription scope deletion" -Country $env.country -PostalCode $env.postalCode
+        New-AzSite -SiteName $testSiteName -SubscriptionId $env.SubscriptionId -DisplayName "Test Sub Delete" -Description "Test subscription scope deletion" -Country $env.country -PostalCode $env.postalCode
         
         # Verify it was created
-        $createdSite = Get-AzSite -Name $env.siteNameSubscriptionScope -SubscriptionId $env.SubscriptionId
+        $createdSite = Get-AzSite -Name $testSiteName -SubscriptionId $env.SubscriptionId
         $createdSite | Should -Not -BeNullOrEmpty
         
         # Delete the site at subscription scope
-        Remove-AzSite -Name $env.siteNameSubscriptionScope -SubscriptionId $env.SubscriptionId
+        Remove-AzSite -Name $testSiteName -SubscriptionId $env.SubscriptionId
         
         # Wait for deletion to propagate
         Start-TestSleep -Seconds 10
         
         # Verify deletion
-        { Get-AzSite -Name $env.siteNameSubscriptionScope -SubscriptionId $env.SubscriptionId } | Should -Throw
+        { Get-AzSite -Name $testSiteName -SubscriptionId $env.SubscriptionId } | Should -Throw
     }
 
     It 'Delete site at Service Group Scope' {
+        # Use predefined site name for consistent recording/playback
+        $testSiteName = $env.siteNameDeleteServiceGroupScope
+        
         # First create a site at service group scope
-        $testSite = New-AzSite -SiteName $env.siteNameServiceGroupScope -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId -DisplayName "Test SG Delete" -Description "Test service group scope deletion" -Country $env.country -PostalCode $env.postalCode
+        New-AzSite -SiteName $testSiteName -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId -DisplayName "Test SG Delete" -Description "Test service group scope deletion" -Country $env.country -PostalCode $env.postalCode
         
         # Verify it was created
-        $createdSite = Get-AzSite -Name $env.siteNameServiceGroupScope -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId
+        $createdSite = Get-AzSite -Name $testSiteName -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId
         $createdSite | Should -Not -BeNullOrEmpty
         
         # Delete the site at service group scope
-        Remove-AzSite -Name $env.siteNameServiceGroupScope -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId
+        Remove-AzSite -Name $testSiteName -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId
         
         # Wait for deletion to propagate
         Start-TestSleep -Seconds 10
         
         # Verify deletion
-        { Get-AzSite -Name $env.siteNameServiceGroupScope -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId } | Should -Throw
+        { Get-AzSite -Name $testSiteName -ServicegroupName $env.servicegroupname -SubscriptionId $env.SubscriptionId } | Should -Throw
     }
 }

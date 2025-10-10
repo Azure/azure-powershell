@@ -21,7 +21,7 @@ Describe 'New-AzSite' {
             "owner" = "automation"
         }
         
-        $site = New-AzSite -SiteName $env.siteName01 -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId -DisplayName $env.displayName01 -Description $env.description01 -Country $env.country -PostalCode $env.postalCode -Labels $labels
+        $site = New-AzSite -SiteName $env.siteName01 -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId -DisplayName $env.displayName01 -Description $env.description01 -Country $env.country -PostalCode $env.postalCode -Label $labels
         
         $site | Should -Not -BeNullOrEmpty
         $site.Name | Should -Be $env.siteName01

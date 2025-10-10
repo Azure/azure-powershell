@@ -17,8 +17,8 @@ New-AzSite -SiteName <String> [-ResourceGroupName <String>] [-SubscriptionId <St
  [-ServicegroupName <String>] [-InputObject <ISiteIdentity>] [-Site <ISite>] [-JsonFilePath <String>]
  [-JsonString <String>] [-Description <String>] [-DisplayName <String>] [-City <String>] [-Country <String>]
  [-PostalCode <String>] [-StateOrProvince <String>] [-StreetAddress1 <String>] [-StreetAddress2 <String>]
- [-Labels <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+ [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -226,13 +226,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Labels
+### -Label
 Key-value pairs for labeling the site resource
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Labels
 
 Required: False
 Position: Named
@@ -390,6 +390,37 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

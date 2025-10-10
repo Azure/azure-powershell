@@ -47,7 +47,7 @@ https://learn.microsoft.com/powershell/module/az.site/update-azsite
 #>
 function Update-AzSite {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Site.Models.ISite])]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter(Mandatory)]
         [Alias('SiteName')]
@@ -143,10 +143,11 @@ function Update-AzSite {
         ${StreetAddress2},
 
         [Parameter()]
+        [Alias('Labels')]
         [Microsoft.Azure.PowerShell.Cmdlets.Site.Category('Body')]
         [System.Collections.Hashtable]
         # Key-value pairs for labeling the site resource
-        ${Labels},
+        ${Label},
 
         [Parameter(ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Site.Category('Path')]
@@ -220,19 +221,25 @@ function Update-AzSite {
             # Extract parameters from InputObject and route accordingly
             if ($InputObject.ResourceGroupName -and $InputObject.SubscriptionId) {
                 # Resource Group scope
-                Az.Site.internal\Update-AzSite @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.SiteName)' in Resource Group '$($InputObject.ResourceGroupName)'", "Update")) {
+                    Az.Site.internal\Update-AzSite @PSBoundParameters
+                }
             }
             elseif ($InputObject.ServicegroupName) {
                 # Service Group scope
                 $null = $PSBoundParameters.Remove('SubscriptionId')
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
-                Az.Site.internal\Update-AzSiteSitesByServiceGroup @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.SiteName)' in Service Group '$($InputObject.ServicegroupName)'", "Update")) {
+                    Az.Site.internal\Update-AzSiteSitesByServiceGroup @PSBoundParameters
+                }
             }
             elseif ($InputObject.SubscriptionId) {
                 # Subscription scope
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
                 $null = $PSBoundParameters.Remove('ServicegroupName')
-                Az.Site.internal\Update-AzSiteSitesBySubscription @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("Site '$($InputObject.SiteName)' in Subscription '$($InputObject.SubscriptionId)'", "Update")) {
+                    Az.Site.internal\Update-AzSiteSitesBySubscription @PSBoundParameters
+                }
             }
             return
         }
@@ -241,19 +248,25 @@ function Update-AzSite {
         if ($PSBoundParameters.ContainsKey('SubscriptionId') -and 
             $PSBoundParameters.ContainsKey('ResourceGroupName')) {
             # Resource Group Scope - call base generated cmdlet
-            Az.Site.internal\Update-AzSite @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$SiteName' in Resource Group '$ResourceGroupName'", "Update")) {
+                Az.Site.internal\Update-AzSite @PSBoundParameters
+            }
         }
         elseif ($PSBoundParameters.ContainsKey('ServicegroupName')) {
             # Service Group Scope - remove incompatible parameters
             $null = $PSBoundParameters.Remove('SubscriptionId')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
-            Az.Site.internal\Update-AzSiteSitesByServiceGroup @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$SiteName' in Service Group '$ServicegroupName'", "Update")) {
+                Az.Site.internal\Update-AzSiteSitesByServiceGroup @PSBoundParameters
+            }
         }
         elseif ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             # Subscription Scope - remove incompatible parameters
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('ServicegroupName')
-            Az.Site.internal\Update-AzSiteSitesBySubscription @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess("Site '$SiteName' in Subscription '$SubscriptionId'", "Update")) {
+                Az.Site.internal\Update-AzSiteSitesBySubscription @PSBoundParameters
+            }
         }
         else {
             throw "Must provide either (SubscriptionId + ResourceGroupName), SubscriptionId only, or ServicegroupName only"
