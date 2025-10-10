@@ -18,7 +18,8 @@
         - Additional information about change #1
 --->
 
-## Upcoming Release
+## Version 7.22.0
+* Added `RouteTableUsageMode` parameter to `New-AzNetworkManagerRoutingConfiguration` and `Set-AzNetworkManagerRoutingConfiguration` cmdlet to define which route table usage mode (ManagedOnly or UseExisting) will be used by the network manager routing configuration
 
 ## Version 7.21.0
 * Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`

@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Description { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Specifies the route table usage mode for the configuration. Valid values: 'ManagedOnly' and 'UseExisting'.",
+             ParameterSetName = CreateByNameParameterSet)]
+        [PSArgumentCompleter(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
+        [ValidateSet("ManagedOnly", "UseExisting")]
+        public string RouteTableUsageMode { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
@@ -105,6 +114,17 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.Description))
             {
                 routingConfig.Description = this.Description;
+            }
+
+            // Set RouteTableUsageMode: use provided value or default to ManagedOnly
+            if (!string.IsNullOrEmpty(this.RouteTableUsageMode))
+            {
+                routingConfig.RouteTableUsageMode = this.RouteTableUsageMode;
+            }
+            else
+            {
+                // Default to ManagedOnly for new configurations
+                routingConfig.RouteTableUsageMode = MNM.RouteTableUsageMode.ManagedOnly;
             }
 
             // Map to the sdk object
