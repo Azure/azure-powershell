@@ -21,17 +21,11 @@
 ## Upcoming Release
 
 ## Version 7.21.0
-- Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
+* Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
 * Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall
-    - `Invoke-AzFirewallPacketCaptureOperation`
 * Updated cmdlet to add the mandatory property of 'Operation' and made all other properties not mandatory for Azure Firewall Packet Capture Parameters. Updated corresponding cmdlets.
-    - `New-AzFirewallPacketCaptureParameter`
 * Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
-    - `Get-AzNetworkSecurityPerimeterServiceTag`
 * Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
-    - `New-AzApplicationGatewayBackendHttpSetting`
-    - `Add-AzApplicationGatewayBackendHttpSetting`
-    - `Set-AzApplicationGatewayBackendHttpSetting`
 * Added cmdlet 'Get-AzAllVirtualNetworkGatewayRadiusServerSecret' to fetch list of VirtualNetworkGateway VpnClientConfiguration Radius servers and corresponding radius secrets.
 * Added cmdlet 'Get-AzAllVpnServerConfigurationRadiusServerSecret ' to fetch list of VirtualWan VpnServerConfiguration Radius servers and corresponding radius secrets.
 
