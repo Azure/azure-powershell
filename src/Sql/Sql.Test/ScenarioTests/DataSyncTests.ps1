@@ -170,13 +170,13 @@ function Test-ListSyncAgentLinkedDatabase
 function Test-CreateSyncGroup
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     $params = Get-SqlSyncGroupTestEnvironmentParameters
 
     try
@@ -203,13 +203,13 @@ function Test-CreateSyncGroup
 function Test-UpdateSyncGroup
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
@@ -238,13 +238,13 @@ function Test-UpdateSyncGroup
 function Test-GetAndListSyncGroups
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $credential = Get-ServerCredential
-    $databaseName = Get-DatabaseName
-    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $databaseName = Get-DatabaseName 
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName  -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName  -Force
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
@@ -280,13 +280,13 @@ function Test-GetAndListSyncGroups
 function Test-RefreshAndGetSyncGroupHubSchema
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
@@ -318,13 +318,13 @@ function Test-RefreshAndGetSyncGroupHubSchema
 function Test-RemoveSyncGroup
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
-    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     # Create a sync group
     $sgName = Get-SyncGroupName
@@ -355,17 +355,17 @@ function Test-RemoveSyncGroup
 function Test-CreateSyncMember
 {
     # Setup
-    $rg = Create-ResourceGroupForTest 
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Force
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
@@ -404,17 +404,17 @@ function Test-CreateSyncMember
 function Test-GetAndListSyncMembers
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Force
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
         
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
@@ -462,17 +462,17 @@ function Test-GetAndListSyncMembers
 function Test-UpdateSyncMember
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Force
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
@@ -513,17 +513,17 @@ function Test-UpdateSyncMember
 function Test-RefreshAndGetSyncMemberSchema
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Force
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
@@ -562,17 +562,17 @@ function Test-RefreshAndGetSyncMemberSchema
 function Test-RemoveSyncMember
 {
     # Setup
-    $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "West Europe"
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
-    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Force
     $databaseName2 = Get-DatabaseName
-    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -Force
     $syncDatabaseName = Get-DatabaseName
-    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     
     $params = Get-SqlSyncGroupTestEnvironmentParameters
     $sgName = Get-SyncGroupName
@@ -596,6 +596,205 @@ function Test-RemoveSyncMember
         $all = Get-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName
         Assert-AreEqual $all.Count 0
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+
+<# 
+    .SYNOPSIS
+    Tests for creating a sync group with UAMI authentication
+#>
+function Test-CreateSyncGroupWithIdentity
+{
+    # Setup
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
+    $credential = Get-ServerCredential
+    $databaseName = Get-DatabaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
+    $syncDatabaseName = Get-DatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
+    $params = Get-SqlSyncGroupTestEnvironmentParameters
+
+    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
+    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+
+    Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
+    -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
+ 
+    try
+    {
+        # Create a sync group
+        $sgName = Get-SyncGroupName
+        $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+            -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
+            -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
+            $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -HubDatabaseAuthenticationType UserAssigned `
+            -ResourceId $uamiId
+        Assert-AreEqual $params.intervalInSeconds $sg.IntervalInSeconds
+        Assert-AreEqual $params.conflictResolutionPolicy $sg.ConflictResolutionPolicy
+        Assert-NotNull $sg.HubdatabaseuserName
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests for updating a sync group with UAMI authentication
+#>
+function Test-UpdateSyncGroupWithIdentity
+{
+    # Setup
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
+    $credential = Get-ServerCredential
+    $databaseName = Get-DatabaseName
+    $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
+    $syncDatabaseName = Get-DatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
+    $params = Get-SqlSyncGroupTestEnvironmentParameters
+
+    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
+    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+
+    Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
+    -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
+ 
+    # Create a sync group
+    $sgName = Get-SyncGroupName
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
+        -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
+        $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -HubDatabaseAuthenticationType UserAssigned `
+        -ResourceId $uamiId
+    try
+    {
+        # Update a sync group
+        $newIntervalInSeconds = 200
+        $sg2 = Update-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+            -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $newIntervalInSeconds -HubDatabaseAuthenticationType UserAssigned
+        Assert-AreEqual $newIntervalInSeconds $sg2.IntervalInSeconds 
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests for creating a sync member with UAMI authentication
+#>
+function Test-CreateSyncMemberWithIdentity
+{
+    # Setup
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
+    $serverDNS = Get-DNSNameBasedOnEnvironment
+    $serverName = $server.ServerName + $serverDNS
+    $credential = Get-ServerCredential
+    $databaseName1 = Get-DatabaseName
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Force
+    $databaseName2 = Get-DatabaseName
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -Force
+    $syncDatabaseName = Get-DatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
+
+    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
+    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+
+    Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
+    -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
+    
+    $params = Get-SqlSyncGroupTestEnvironmentParameters
+    $sgName = Get-SyncGroupName
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+                -DatabaseName $databaseName1 -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
+                -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
+                $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -HubDatabaseAuthenticationType UserAssigned -ResourceId $uamiId
+
+    try
+    {
+        # Create a sync member 
+        $smParams = Get-SqlSyncMemberTestEnvironmentParameters
+        $smName = Get-SyncMemberName
+        $sm1 = New-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
+            -SyncDirection $smParams.syncDirection -MemberDatabaseType $smParams.databaseType -MemberDatabaseName $databaseName2 `
+            -MemberServerName $serverName -MemberDatabaseAuthenticationType UserAssigned -ResourceId $uamiId
+        Assert-AreEqual $smParams.syncDirection $sm1.SyncDirection
+        Assert-AreEqual $smParams.databaseType $sm1.MemberDatabaseType
+        Assert-AreEqual $databaseName2 $sm1.MemberDatabaseName
+        Assert-AreEqual $serverName $sm1.MemberServerName
+        Assert-Null $sm1.MemberDatabasePassword
+        Assert-True {[string]::IsNullOrEmpty($sm1.MemberDatabaseUserName)}
+        Assert-Null $sm1.SyncAgentId
+        Assert-Null $sm1.SqlServerDatabaseId
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests for updating a sync member with IdentityType UserAssigned
+#>
+function Test-UpdateSyncMemberWithIdentity
+{
+    # Setup
+    $rg = Create-ResourceGroupForTest "southeastasia"
+    $server = Create-ServerForTest $rg "southeastasia"
+    $serverDNS = Get-DNSNameBasedOnEnvironment
+    $serverName = $server.ServerName + $serverDNS
+    $credential = Get-ServerCredential
+    $databaseName1 = Get-DatabaseName
+    $db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1 -Force
+    $databaseName2 = Get-DatabaseName
+    $db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -Force
+    $syncDatabaseName = Get-DatabaseName
+    $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
+    
+    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
+    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+
+    Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
+    -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
+    
+    $params = Get-SqlSyncGroupTestEnvironmentParameters
+    $sgName = Get-SyncGroupName
+    $sg = New-AzSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+                -DatabaseName $databaseName1 -SyncGroupName $sgName -IntervalInSeconds $params.intervalInSeconds `
+                -ConflictResolutionPolicy $params.conflictResolutionPolicy -SyncDatabaseName $syncDatabaseName -SyncDatabaseServerName `
+                $server.ServerName -SyncDatabaseResourceGroupName $rg.ResourceGroupName -HubDatabaseAuthenticationType UserAssigned -ResourceId $uamiId
+    # Create a sync member 
+    $smParams = Get-SqlSyncMemberTestEnvironmentParameters
+    $smName = Get-SyncMemberName
+    $sm1 = New-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
+        -SyncDirection $smParams.syncDirection -MemberDatabaseType $smParams.databaseType -MemberDatabaseName $databaseName2 `
+        -MemberServerName $serverName -MemberDatabaseAuthenticationType UserAssigned -ResourceId $uamiId
+    try
+    {
+        # Update a sync member
+        $sm2 = Update-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
+             -MemberDatabaseAuthenticationType UserAssigned
+        Assert-AreEqual $smParams.databaseType $sm2.MemberDatabaseType
+        Assert-AreEqual $databaseName2 $sm2.MemberDatabaseName
+        Assert-AreEqual $serverName $sm2.MemberServerName
+        Assert-Null $sm2.MemberDatabasePassword
+        Assert-True {[string]::IsNullOrEmpty($sm1.MemberDatabaseUserName)}
+        Assert-Null $sm2.SyncAgentId
+        Assert-Null $sm2.SqlServerDatabaseId
     }
     finally
     {

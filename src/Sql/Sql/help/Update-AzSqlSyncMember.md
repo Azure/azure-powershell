@@ -85,6 +85,9 @@ MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
 MemberDatabasePassword      : 
 SyncState                   : Good
+```
+
+Note: HubDatabaseAuthenticationType should be specified if the hub database was using user assigned managed identity as the authentication type earlier and resourceId can be left null if there is no update to the UAMI.
 
 This command updates the sync member uami identity id for the member database.
 

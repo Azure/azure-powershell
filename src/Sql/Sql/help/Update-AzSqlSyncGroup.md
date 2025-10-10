@@ -56,8 +56,7 @@ This command updates a sync group for an Azure SQL Database. "schema.json" is a 
 ### Example 2: Update a sync group for an Azure SQL Database with user assigned managed identity as the authentication type for hub db.
 ```powershell
 Update-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" `
--HubDatabaseAuthenticationType "userAssigned" `
--IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -IntervalInSeconds 100 -Schema ".\schema.json" | Format-List
+-HubDatabaseAuthenticationType "userAssigned" | Format-List
 ```
 
 ```output
@@ -73,6 +72,8 @@ SyncState                   : NotReady
 LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :
 ```
+
+Note: HubDatabaseAuthenticationType should be specified if the hub database was using user assigned managed identity as the authentication type earlier and resourceId can be left null if there is no update to the UAMI.
 
 This command updates a sync group for an Azure SQL Database
 
