@@ -19,9 +19,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleResourceAnchor'))
 
 Describe 'New-AzOracleResourceAnchor' {
     # Constants matching the recording
-    $rgName   = 'PowerShellTestRgMihr'
+    $rgName  = if ($env:resourceGroup)  { $env:resourceGroup }  else { 'basedb-rg929-ti-iad52' }
     $location = 'global'
-    $name     = 'OFake_PowerShellTestRAnchorMih'
+
 
     $hasCmd = Get-Command -Name New-AzOracleResourceAnchor -ErrorAction SilentlyContinue
 

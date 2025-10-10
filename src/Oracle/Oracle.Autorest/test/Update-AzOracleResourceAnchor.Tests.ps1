@@ -1,13 +1,11 @@
-# Minimal playback test for Update-AzOracleResourceAnchor using typed parameters
-# Keep these constants in sync with Update-AzOracleResourceAnchor.Recording.json
+# Minimal playback test for Update-AzOracleResourceAnchor (tags-only)
 
 if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOracleResourceAnchor'))
 {
     $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-    if (-Not (Test-Path -Path $loadEnvPath)) {
-        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-    }
+    if (-Not (Test-Path -Path $loadEnvPath)) { $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1' }
     . ($loadEnvPath)
+
     $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzOracleResourceAnchor.Recording.json'
     $currentPath = $PSScriptRoot
     while(-not $mockingPath) {
@@ -18,59 +16,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOracleResourceAnchor
 }
 
 Describe 'Update-AzOracleResourceAnchor' {
-    # Prefer env values; fall back to placeholders when not set
-    $rgName   = $env.resourceGroup
-    $location = $env.location
-    $name     = $null
+    # Keep in sync with your Create/Remove tests
+    $anchorName = if ($env:RESOURCE_ANCHOR_NAME) { $env:RESOURCE_ANCHOR_NAME } else { 'Create' }
+    $rgName     = if ($env:resourceGroup)       { $env:resourceGroup }       else { 'basedb-rg929-ti-iad52' }
+    $subId   = if ($env:SubscriptionId) { $env:SubscriptionId } else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
-    $hasCmd = Get-Command -Name Update-AzOracleResourceAnchor -ErrorAction SilentlyContinue
-    $isRecord   = ($TestMode -eq 'record' -or $env:AZURE_TEST_MODE -eq 'Record')
-    $isPlayback = ($TestMode -eq 'playback' -or $env:AZURE_TEST_MODE -eq 'Playback')
-
-    It 'Warmup' {
-        if ($isRecord) {
-            # Ensure at least one real HTTP call flows so the recorder writes the file
-            Get-AzOracleGiVersion -Location $location | Out-Null
-        } else {
-            # No-op for playback/live to avoid unexpected HTTP calls
-            $true | Should -Be $true
-        }
-    }
-
-    It 'Update' {
+    It 'Update tags' {
         {
-            if ($hasCmd -and -not ($isRecord -or $isPlayback)) {
-                # Find an existing Resource Anchor to update
-                $item = $null
-                if ($rgName) {
-                    $list = Get-AzOracleResourceAnchor -ResourceGroupName $rgName
-                    if ($list -and $list.value) { $list = $list.value }
-                    if ($list) { $item = $list | Select-Object -First 1 }
-                }
-                if (-not $item) {
-                    $list = Get-AzOracleResourceAnchor
-                    if ($list -and $list.value) { $list = $list.value }
-                    if ($list) { $item = $list | Select-Object -First 1 }
-                }
-                $item | Should -Not -BeNullOrEmpty
+            # Prefer native -Tag if the cmdlet supports it; otherwise use -JsonString
+            $tags = @{ updatedBy = 'Pester'; purpose = 'sdk-test' }
 
-                $id        = $item.Id
-                $subId     = (($id -split '/subscriptions/')[1] -split '/')[0]
-                $rgFromId  = (($id -split '/resourceGroups/')[1] -split '/')[0]
-                $nameFromId= (($id -split '/resourceAnchors/')[1] -split '/')[0]
-
-                # Use typed parameters
-                $updated = Update-AzOracleResourceAnchor `
-                    -Name $nameFromId `
-                    -ResourceGroupName $rgFromId `
-                    -SubscriptionId $subId
-
-                $updated | Should -Not -BeNullOrEmpty
-                $updated.Name | Should -Be $nameFromId
+            $cmd = Get-Command -Name Update-AzOracleResourceAnchor -ErrorAction SilentlyContinue
+            if ($cmd -and ($cmd.Parameters.Keys -contains 'Tag')) {
+                Update-AzOracleResourceAnchor -Name $anchorName -ResourceGroupName $rgName -SubscriptionId $subId -Tag $tags | Out-Null
             } else {
-                # In Record/Playback or when cmdlet is unavailable, keep passing while Warmup handles the recording file
-                $true | Should -Be $true
+                $patchBody = @{ tags = $tags } | ConvertTo-Json -Depth 4
+                Update-AzOracleResourceAnchor -Name $anchorName -ResourceGroupName $rgName -SubscriptionId $subId -JsonString $patchBody | Out-Null
             }
+
+            $ra = Get-AzOracleResourceAnchor -Name $anchorName -ResourceGroupName $rgName -SubscriptionId $subId
+            $ra.Tag.Get_Item('updatedBy') | Should -Be 'Pester'
+            $ra.Tag.Get_Item('purpose')   | Should -Be 'sdk-test'
         } | Should -Not -Throw
     }
 }
