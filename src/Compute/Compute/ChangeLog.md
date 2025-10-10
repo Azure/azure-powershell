@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
 
 ## Version 10.4.0
 * Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
