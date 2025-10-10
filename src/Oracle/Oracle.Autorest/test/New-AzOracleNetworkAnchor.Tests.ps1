@@ -9,6 +9,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleNetworkAnchor'))
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzOracleNetworkAnchor.Recording.json'
+  # Ensure Az.Oracle module (which defines PipelineMock) is loaded before mocking
+  $modulePsd1 = Join-Path $PSScriptRoot '..\Az.Oracle.psd1'
+  if (Test-Path -Path $modulePsd1) { Import-Module $modulePsd1 -Force }
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -36,6 +39,7 @@ Describe 'New-AzOracleNetworkAnchor' {
                     -ResourceGroupName $rgName `
                     -Location $location `
                     -SubscriptionId $env.SubscriptionId `
+                    -ResourceAnchorId $raName `
                     -ResourceAnchorId $raName `
                     -Zone "1" `
                     -SubnetId "/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/resourceGroups/IAD-AZ/providers/Microsoft.Network/virtualNetworks/VNIADAZ01/subnets/delegated"

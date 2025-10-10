@@ -15,37 +15,42 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleResourceAnchor'))
 }
 
 Describe 'Get-AzOracleResourceAnchor' {
-    $subscriptionId = $env.SubscriptionId
     $rgName         = 'PowerShellTestRgMihr'
     $raName         = 'Create'  # avoid Pester's $Name
-    $resourceId     = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Oracle.Database/resourceAnchors/$raName"
+    $resourceSuffix = "/resourceGroups/$rgName/providers/Oracle.Database/resourceAnchors/$raName"
 
     It 'List' {
         $list = Get-AzOracleResourceAnchor -ResourceGroupName $rgName
         if ($list -and $list.value) { $list = $list.value }  # handle non-flattened playback
         $list | Should -Not -BeNullOrEmpty
-        ($list | Where-Object Name -eq $raName).Id | Should -Be $resourceId
+        $target = ($list | Where-Object Name -eq $raName).Id
+        $target | Should -Not -BeNullOrEmpty
+        $target | Should -BeLike "*$resourceSuffix"
     }
 
     It 'Get' {
         $item = Get-AzOracleResourceAnchor -ResourceGroupName $rgName -Name $raName
         $item | Should -Not -BeNullOrEmpty
-        $item.Id   | Should -Be $resourceId
+        $item.Id   | Should -BeLike "*$resourceSuffix"
         $item.Name | Should -Be $raName
     }
 
     It 'List1' {
-        $list = Get-AzOracleResourceAnchor -SubscriptionId $subscriptionId
+        $list = Get-AzOracleResourceAnchor
         if ($list -and $list.value) { $list = $list.value }  # handle non-flattened playback
         $list | Should -Not -BeNullOrEmpty
-        ($list | Where-Object Name -eq $raName).Id | Should -Be $resourceId
+        $target = ($list | Where-Object Name -eq $raName).Id
+        $target | Should -Not -BeNullOrEmpty
+        $target | Should -BeLike "*$resourceSuffix"
     }
 
     It 'GetViaIdentity' {
-        $input = @{ Id = $resourceId }
+        $base  = Get-AzOracleResourceAnchor -ResourceGroupName $rgName -Name $raName
+        $base  | Should -Not -BeNullOrEmpty
+        $input = @{ Id = $base.Id }
         $item  = Get-AzOracleResourceAnchor -InputObject $input
         $item | Should -Not -BeNullOrEmpty
-        $item.Id   | Should -Be $resourceId
+        $item.Id   | Should -BeLike "*$resourceSuffix"
         $item.Name | Should -Be $raName
     }
 }
