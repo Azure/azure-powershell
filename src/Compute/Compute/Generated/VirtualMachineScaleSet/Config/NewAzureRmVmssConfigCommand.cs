@@ -406,6 +406,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("CreateBeforeDelete")]
         public string AutomaticZoneRebalanceBehavior { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.")]
+        [PSArgumentCompleter("Any", "Auto")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used.")]
+        public int MaxZoneCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set.")]
+        public SwitchParameter EnableMaxInstancePercentPerZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.")]
+        public int ValueMaxInstancePercentPerZone { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -454,6 +479,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             //ResiliencyPolicy
             ResiliencyPolicy vResiliencyPolicy = null;
+
+            // Placement
+            Placement vPlacement = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -1121,6 +1149,60 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
             }
 
+            if (this.IsParameterBound(c => c.ZonePlacementPolicy))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.ZonePlacementPolicy = this.ZonePlacementPolicy;
+
+                if (this.IsParameterBound(c => c.Overprovision) && this.Overprovision == true)
+                {
+                    throw new ArgumentException("Overprovision must be false when ZonePlacementPolicy is specified.");
+                }
+
+                if (!this.IsParameterBound(c => c.Overprovision))
+                {
+                    this.Overprovision = false;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.MaxZoneCount))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                vResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount = this.MaxZoneCount;
+            }
+
+            if (this.EnableMaxInstancePercentPerZone.IsPresent)
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+                vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone.IsPresent;
+
+                if (this.IsParameterBound(c => c.ValueMaxInstancePercentPerZone))
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.ValueMaxInstancePercentPerZone;
+                }
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -1145,7 +1227,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
                 PriorityMixPolicy = vPriorityMixPolicy,
                 SkuProfile = vSkuProfile,
-                ResiliencyPolicy = vResiliencyPolicy
+                ResiliencyPolicy = vResiliencyPolicy,
+                Placement = vPlacement
             };
 
             WriteObject(vVirtualMachineScaleSet);

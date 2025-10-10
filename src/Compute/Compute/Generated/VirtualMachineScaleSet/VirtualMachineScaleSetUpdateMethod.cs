@@ -463,6 +463,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("CreateBeforeDelete")]
         public string AutomaticZoneRebalanceBehavior { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.")]
+        [PSArgumentCompleter("Any", "Auto")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used.")]
+        public int MaxZoneCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set.")]
+        public SwitchParameter EnableMaxInstancePercentPerZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.")]
+        public int ValueMaxInstancePercentPerZone { get; set; }
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1511,6 +1536,60 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 InitializeAutomaticZoneRebalancingPolicy();
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior = this.AutomaticZoneRebalanceBehavior;
             }
+
+            void InitializeZoneAllocationPolicy()
+            {
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.ZonePlacementPolicy))
+            {
+                if (this.VirtualMachineScaleSet.Placement == null)
+                {
+                    this.VirtualMachineScaleSet.Placement = new Placement();
+                }
+                this.VirtualMachineScaleSet.Placement.ZonePlacementPolicy = this.ZonePlacementPolicy;
+
+                // Apply overprovision validation similar to the config command
+                if (this.IsParameterBound(c => c.Overprovision) && this.Overprovision == true)
+                {
+                    throw new ArgumentException("Overprovision must be false when ZonePlacementPolicy is specified.");
+                }
+
+                if (!this.IsParameterBound(c => c.Overprovision))
+                {
+                    this.Overprovision = false;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.MaxZoneCount))
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount = this.MaxZoneCount;
+            }
+
+            if (this.EnableMaxInstancePercentPerZone.IsPresent)
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.ValueMaxInstancePercentPerZone))
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.ValueMaxInstancePercentPerZone;
+            }
         }
 
         private void BuildPutObject()
@@ -2363,6 +2442,60 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 InitializeAutomaticZoneRebalancingPolicy();
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior = this.AutomaticZoneRebalanceBehavior;
+            }
+
+            void InitializeZoneAllocationPolicy()
+            {
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.ZonePlacementPolicy))
+            {
+                if (this.VirtualMachineScaleSet.Placement == null)
+                {
+                    this.VirtualMachineScaleSet.Placement = new Placement();
+                }
+                this.VirtualMachineScaleSet.Placement.ZonePlacementPolicy = this.ZonePlacementPolicy;
+
+                // Apply overprovision validation similar to the config command
+                if (this.IsParameterBound(c => c.Overprovision) && this.Overprovision == true)
+                {
+                    throw new ArgumentException("Overprovision must be false when ZonePlacementPolicy is specified.");
+                }
+
+                if (!this.IsParameterBound(c => c.Overprovision))
+                {
+                    this.Overprovision = false;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.MaxZoneCount))
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount = this.MaxZoneCount;
+            }
+
+            if (this.EnableMaxInstancePercentPerZone.IsPresent)
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.ValueMaxInstancePercentPerZone))
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.ValueMaxInstancePercentPerZone;
             }
         }
     }

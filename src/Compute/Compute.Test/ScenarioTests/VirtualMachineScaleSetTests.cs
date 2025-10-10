@@ -479,5 +479,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ProxyAgentSetting");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAutomaticZonePlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutomaticZonePlacement");
+        }
     }
 }
