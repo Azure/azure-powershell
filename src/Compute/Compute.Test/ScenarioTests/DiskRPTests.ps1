@@ -1959,23 +1959,29 @@ Test SupportedSecurityOption Parameter during creation of managed disk using Cre
 function Test-SupportedSecurityOption 
 {
 	$rgname = Get-ComputeTestResourceName;
-	$loc = "eastus2euap";
+	$loc = Get-ComputeVMLocation;
 
     try{
     	New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        $sourceUri = "https://teststorage.blob.core.windows.net/vhds/test.vhd"
-        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
-        $storageAccountId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Storage/storageAccounts/teststorage"
+        # Get the current Azure context (subscription, tenant, account)
+        $context = Get-AzContext
+        Write-Debug "Current Subscription: $($context.Subscription.Name) ($($context.Subscription.Id))"
+        Write-Debug "Current Tenant: $($context.Tenant.Id)"
+        Write-Debug "Current Account: $($context.Account.Id)"
+        Write-Debug "Current region: $loc"
 
-        $diskConfig = New-AzDiskConfig -Location $loc -AccountType 'Premium_LRS' -CreateOption Import -SourceUri $sourceUri -StorageAccountId $storageAccountId -SupportedSecurityOption "TrustedLaunchSupported"
+        $diskConfig = New-AzDiskConfig -Location $loc -SkuName 'PremiumV2_LRS' -DiskSizeGB 2 -CreateOption Empty -SupportedSecurityOption 'TrustedLaunchSupported';
 		$diskname = "disk" + $rgname;
 		New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
-        Assert-AreEqual $disk.SupportedSecurityOption "TrustedLaunchSupported";
+        
+        # Check the SupportedCapabilities object
+        Assert-NotNull $disk.SupportedCapabilities;
+        Assert-AreEqual "TrustedLaunchSupported" $disk.SupportedCapabilities.SupportedSecurityOption;
 
         $updateconfig = New-AzDiskUpdateConfig -SupportedSecurityOption "TrustedLaunchAndConfidentialVMSupported";
         $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
-        Assert-AreEqual $disk.SupportedSecurityOption "TrustedLaunchAndConfidentialVMSupported";
+        Assert-AreEqual $disk.SupportedCapabilities.SupportedSecurityOption; "TrustedLaunchAndConfidentialVMSupported";
     }
 
     finally

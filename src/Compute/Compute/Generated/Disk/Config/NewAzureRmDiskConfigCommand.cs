@@ -498,6 +498,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSupportedCapabilities.Architecture = this.Architecture;
             }
 
+            if (this.IsParameterBound(c => c.SupportedSecurityOption))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.SupportedSecurityOption = this.SupportedSecurityOption;
+            }
+
             var vDisk = new PSDisk
             {
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
@@ -525,8 +534,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportedCapabilities = vSupportedCapabilities,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
                 DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
-                OptimizedForFrequentAttach = this.IsParameterBound(c => c.OptimizedForFrequentAttach) ? OptimizedForFrequentAttach : null,
-                SupportedSecurityOption = this.IsParameterBound(c => c.SupportedSecurityOption) ? SupportedSecurityOption : null
+                OptimizedForFrequentAttach = this.IsParameterBound(c => c.OptimizedForFrequentAttach) ? OptimizedForFrequentAttach : null
             };
 
             WriteObject(vDisk);

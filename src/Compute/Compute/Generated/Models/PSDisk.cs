@@ -81,6 +81,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public bool? OptimizedForFrequentAttach { get; set; }
         public string SecurityDataUri { get; set; }
         public string SecurityMetadataUri { get; set; }
-        public string SupportedSecurityOption { get; set; }
     }
 }
