@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzNetworkManagerRoutingConfigurationCommand : NetworkManagerRoutingConfigurationBaseCmdlet
     {
         private const string CreateByNameParameterSet = "ByName";
+        private const string DefaultRouteTableUsageMode = MNM.RouteTableUsageMode.ManagedOnly;
 
         [Alias("ResourceName")]
         [Parameter(
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Specifies the route table usage mode for the configuration. Valid values: 'ManagedOnly' and 'UseExisting'.",
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
              ParameterSetName = CreateByNameParameterSet)]
         [PSArgumentCompleter(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
         [ValidateSet(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 // Default to ManagedOnly for new configurations
-                routingConfig.RouteTableUsageMode = MNM.RouteTableUsageMode.ManagedOnly;
+                routingConfig.RouteTableUsageMode = DefaultRouteTableUsageMode;
             }
 
             // Map to the sdk object
