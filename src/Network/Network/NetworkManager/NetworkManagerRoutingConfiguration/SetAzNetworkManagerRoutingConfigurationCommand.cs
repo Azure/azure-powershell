@@ -88,17 +88,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Specifies the route table usage mode for the configuration. Valid values: 'ManagedOnly' and 'UseExisting'.",
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
              ParameterSetName = SetByNameParameterSet)]
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Specifies the route table usage mode for the configuration. Valid values: 'ManagedOnly' and 'UseExisting'.",
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
              ParameterSetName = SetByResourceIdParameterSet)]
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Specifies the route table usage mode for the configuration. Valid values: 'ManagedOnly' and 'UseExisting'.",
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
              ParameterSetName = SetByInputObjectParameterSet)]
         [PSArgumentCompleter(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
         public string RouteTableUsageMode { get; set; }
