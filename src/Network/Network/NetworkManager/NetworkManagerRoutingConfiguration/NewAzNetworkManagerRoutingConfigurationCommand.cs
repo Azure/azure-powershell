@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "Specifies the route table usage mode for the configuration. Valid values: 'ManagedOnly' and 'UseExisting'.",
              ParameterSetName = CreateByNameParameterSet)]
         [PSArgumentCompleter(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
-        [ValidateSet("ManagedOnly", "UseExisting")]
+        [ValidateSet(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
         public string RouteTableUsageMode { get; set; }
 
         [Parameter(
