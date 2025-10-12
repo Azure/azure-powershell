@@ -118,15 +118,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Set RouteTableUsageMode: use provided value or default to ManagedOnly
-            if (!string.IsNullOrEmpty(this.RouteTableUsageMode))
-            {
-                routingConfig.RouteTableUsageMode = this.RouteTableUsageMode;
-            }
-            else
-            {
-                // Default to ManagedOnly for new configurations
-                routingConfig.RouteTableUsageMode = DefaultRouteTableUsageMode;
-            }
+            routingConfig.RouteTableUsageMode = string.IsNullOrEmpty(this.RouteTableUsageMode) ? DefaultRouteTableUsageMode : this.RouteTableUsageMode;
 
             // Map to the sdk object
             var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(routingConfig);
