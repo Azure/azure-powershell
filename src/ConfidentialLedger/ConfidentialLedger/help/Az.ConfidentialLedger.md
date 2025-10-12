@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: ConfidentialLedger cmdlets
 Retrieves the properties of a Confidential Ledger.
 
 ### [New-AzConfidentialLedger](New-AzConfidentialLedger.md)
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 
 ### [New-AzConfidentialLedgerAADBasedSecurityPrincipalObject](New-AzConfidentialLedgerAADBasedSecurityPrincipalObject.md)
 Create an in-memory object for AADBasedSecurityPrincipal.
