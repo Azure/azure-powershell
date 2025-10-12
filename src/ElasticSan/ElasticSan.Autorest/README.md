@@ -32,7 +32,8 @@ commit: 72c69a0cf561d41ae99fe6810c426a874d3a8372
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2024-05-01/elasticsan.json
+  # - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2024-05-01/elasticsan.json
+  - D:\code\azure-rest-api-specs\specification\elasticsan\resource-manager\Microsoft.ElasticSan\ElasticSan\stable\2025-09-01\elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan
@@ -109,6 +110,18 @@ directive:
       subject: VolumeSnapshot
       verb: Update
     remove: true
+  - where:
+      verb: Backup
+      subject: VolumePre
+    set:
+      verb: Test
+      subject: VolumeBackup
+  - where:
+      verb: Restore
+      subject: VolumePre
+    set:
+      verb: Test
+      subject: VolumeRestore
   - where:
       parameter-name: EncryptionIdentityEncryptionUserAssignedIdentity
     set:

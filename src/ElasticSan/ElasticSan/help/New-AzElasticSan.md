@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticSan
 
 ## SYNOPSIS
-create ElasticSan.
+Create ElasticSan.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ create ElasticSan.
 New-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -SkuName <String> [-AvailabilityZone <String[]>] [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
  [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -25,11 +25,11 @@ New-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
 New-AzElasticSan -InputObject <IElasticSanIdentity> -Location <String> -SkuName <String>
  [-AvailabilityZone <String[]>] [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
  [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create ElasticSan.
+Create ElasticSan.
 
 ## EXAMPLES
 
@@ -229,6 +229,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

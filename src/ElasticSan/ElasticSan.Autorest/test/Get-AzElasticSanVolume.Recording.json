@@ -1,8 +1,8 @@
 {
-  "Get-AzElasticSanVolume+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes?api-version=2024-05-01+1": {
+  "Get-AzElasticSanVolume+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes?api-version=2024-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzElasticSanVolume+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes/testvol6oa2ky8f?api-version=2024-05-01+1": {
+  "Get-AzElasticSanVolume+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes/testvol6oa2ky8f?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes/testvol6oa2ky8f?api-version=2024-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg6oa2ky8f/providers/Microsoft.ElasticSan/elasticSans/testelasticsan16oa2ky8f/volumegroups/testvolgroup6oa2ky8f/volumes/testvol6oa2ky8f?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

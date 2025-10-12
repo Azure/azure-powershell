@@ -8,28 +8,32 @@ schema: 2.0.0
 # Update-AzElasticSan
 
 ## SYNOPSIS
-update a Elastic San.
+Update a Elastic San.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>]
+ [-ScaleUpPropertyAutoScalePolicyEnforcement <String>] [-ScaleUpPropertyCapacityUnitScaleUpLimitTiB <Int64>]
+ [-ScaleUpPropertyIncreaseCapacityUnitByTiB <Int64>] [-ScaleUpPropertyUnusedSizeTiB <Int64>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzElasticSan -InputObject <IElasticSanIdentity> [-BaseSizeTiB <Int64>]
- [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>]
+ [-ScaleUpPropertyAutoScalePolicyEnforcement <String>] [-ScaleUpPropertyCapacityUnitScaleUpLimitTiB <Int64>]
+ [-ScaleUpPropertyIncreaseCapacityUnitByTiB <Int64>] [-ScaleUpPropertyUnusedSizeTiB <Int64>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a Elastic San.
+Update a Elastic San.
 
 ## EXAMPLES
 
@@ -173,6 +177,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Allow or disallow public network access to ElasticSan Account.
 Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
@@ -199,6 +218,66 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleUpPropertyAutoScalePolicyEnforcement
+Enable or Disable scale up setting on Elastic San Appliance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleUpPropertyCapacityUnitScaleUpLimitTiB
+Maximum scale up size on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleUpPropertyIncreaseCapacityUnitByTiB
+Unit to increase Capacity Unit on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleUpPropertyUnusedSizeTiB
+Unused size on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
