@@ -16,14 +16,14 @@ Create or replace a custom domain for a SignalR service.
 ```
 New-AzSignalRCustomDomain [-ResourceGroupName <String>] -SignalRName <String> [-Name] <String>
  -DomainName <String> -CustomCertificateId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputSignalRObjectParameterSet
 ```
 New-AzSignalRCustomDomain [-Name] <String> -DomainName <String> -CustomCertificateId <String>
  -SignalRObject <PSSignalRResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,21 +120,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
