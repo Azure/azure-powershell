@@ -102,7 +102,7 @@ $diskConfig = New-AzDiskConfig -AccountType $accountType -CreateOption Import -S
 New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
 ```
 
-Creation of managed disk using CreateOption of Import, with SupportedSecuirtyOption as TrustedLaunchSupported
+Creation of managed disk using CreateOption of Import, with SupportedSecurityOption as TrustedLaunchSupported
 
 ## PARAMETERS
 
