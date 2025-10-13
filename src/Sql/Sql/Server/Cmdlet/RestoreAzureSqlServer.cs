@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 {
                    throw new PSArgumentException(
                        string.Format(Properties.Resources.DeletedServerNotFound,
-                       this.ServerName, this.ResourceGroupName),
+                       this.ServerName, this.Location),
                        "ServerName");
                 }
 
@@ -99,10 +99,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 {
                     throw new PSArgumentException(
                         string.Format(Properties.Resources.DeletedServerNotFound, 
-                        this.ServerName, this.ResourceGroupName),
+                        this.ServerName, this.Location),
                         "ServerName");
                 }
-                
+
                 // Unexpected exception encountered
                 throw;
             }
