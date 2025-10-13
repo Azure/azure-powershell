@@ -1963,19 +1963,12 @@ function Test-SupportedSecurityOption
 
     try{
     	New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        # Get the current Azure context (subscription, tenant, account)
-        $context = Get-AzContext
-        Write-Debug "Current Subscription: $($context.Subscription.Name) ($($context.Subscription.Id))"
-        Write-Debug "Current Tenant: $($context.Tenant.Id)"
-        Write-Debug "Current Account: $($context.Account.Id)"
-        Write-Debug "Current region: $loc"
 
         $diskConfig = New-AzDiskConfig -Location $loc -SkuName 'PremiumV2_LRS' -DiskSizeGB 2 -CreateOption Empty -SupportedSecurityOption 'TrustedLaunchSupported';
 		$diskname = "disk" + $rgname;
 		New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
         
-        # Check the SupportedCapabilities object
         Assert-NotNull $disk.SupportedCapabilities;
         Assert-AreEqual "TrustedLaunchSupported" $disk.SupportedCapabilities.SupportedSecurityOption;
 
