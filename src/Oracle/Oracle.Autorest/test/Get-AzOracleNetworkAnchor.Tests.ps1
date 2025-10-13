@@ -31,22 +31,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleNetworkAnchor'))
 }
 
 Describe 'Get-AzOracleNetworkAnchor' {
-    # Match defaults used in the CREATE test
-    $naName  = if ($env:NETWORK_ANCHOR_NAME) { $env:NETWORK_ANCHOR_NAME } else { 'PowershellTest1s' }
-    $rgName  = if ($env:resourceGroup)      { $env:resourceGroup }      else { 'basedb-iad53-rg' }
-    $subId   = if ($env:SubscriptionId)     { $env:SubscriptionId }     else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     It 'Get by name and resource group' {
         {
-            $na = Get-AzOracleNetworkAnchor -Name $naName -ResourceGroupName $rgName -SubscriptionId $subId
+            $na = Get-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId
             $na | Should -Not -BeNullOrEmpty
-            $na.Name | Should -Be $naName
+            $na.Name | Should -Be $env.networkAnchorName
         } | Should -Not -Throw
     }
 
     It 'List in subscription (sanity)' {
         {
-            $list = Get-AzOracleNetworkAnchor -SubscriptionId $subId
+            $list = Get-AzOracleNetworkAnchor -SubscriptionId $env.networkAnchorSubId
             $list.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

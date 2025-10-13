@@ -18,10 +18,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleResourceAnchor'))
 }
 
 Describe 'New-AzOracleResourceAnchor' {
-    # Constants matching the recording
-    $rgName  = if ($env:resourceGroup)  { $env:resourceGroup }  else { 'basedb-rg929-ti-iad52' }
-    $location = 'global'
-
 
     $hasCmd = Get-Command -Name New-AzOracleResourceAnchor -ErrorAction SilentlyContinue
 
@@ -35,10 +31,10 @@ Describe 'New-AzOracleResourceAnchor' {
             if ($hasCmd -and $env:AZURE_TEST_MODE -ne 'Record') {
                 # Use flattened parameters instead of -JsonString
                 $created = New-AzOracleResourceAnchor `
-                    -Name $name `
-                    -ResourceGroupName $rgName `
-                    -Location $location `
-                    -SubscriptionId $env.SubscriptionId `
+                    -Name $env.resourceAnchorName `
+                    -ResourceGroupName $env.resourceAnchorRgName `
+                    -Location $env.resourceAnchorLocation `
+                    -SubscriptionId $env.networkAnchorSubId `
 
                 $created | Should -Not -BeNullOrEmpty
                 $created.Name | Should -Be $name
