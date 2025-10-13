@@ -8,7 +8,7 @@ schema: 2.0.0
 # Approve-AzDataTransferConnection
 
 ## SYNOPSIS
-Approves the specified connection request in a pipeline.
+Approves a pending connection request associated with the specified Pipeline.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Approve-AzDataTransferConnection -InputObject <IDataTransferIdentity> -Connectio
 ```
 
 ## DESCRIPTION
-Approves the specified connection request in a pipeline.
+Approves a pending connection request associated with the specified Pipeline.
 
 ## EXAMPLES
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -PipelineName
-The name for the pipeline to perform the operation on.
+The name of the pipeline on which to operate.
 
 ```yaml
 Type: System.String
