@@ -63,7 +63,7 @@ function setupEnv() {
 
     # Exadata Infra Properties
 
-    $exaInfraName = "OFake_PowerShellTestExaInfra"
+    $exaInfraName = "OFake_PowerShellExaInfra"
     $env.Add("exaInfraName", $exaInfraName)
 
     $exaInfraShape = "Exadata.X9M"

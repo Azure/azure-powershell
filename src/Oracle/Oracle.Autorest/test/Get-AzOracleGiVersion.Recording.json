@@ -1,13 +1,13 @@
 {
-  "Get-AzOracleGiVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01+1": {
+  "Get-AzOracleGiVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "1bdc644e-0c44-40de-95c3-f7e93e56b3c4" ],
+        "x-ms-client-request-id": [ "d3e96903-020e-4a06-a6f2-623809fbc862" ],
         "CommandName": [ "Get-AzOracleGiVersion" ],
         "FullCommandName": [ "Get-AzOracleGiVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,26 +23,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Origin", "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=359af50e-f985-4028-adf5-034a840f32d6,objectId=a9fc9ef3-cabe-4802-90cf-9c9d376bc4e5/southcentralus/28b1e100-f9f6-4a0b-8f16-35bb496081a5" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/eastus/611a9874-9e8e-43ca-8820-275b473adb4d" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "opc-request-id": [ "oci-4F4BAB73F58BF91-202510130508/10EC46DB2BB915D05089EC68494144A0/0139232587203FB0EFFFF59B17EED453" ],
+        "opc-request-id": [ "oci-D76DF61718392C1-202510131739/0CA28C2D36258C0E3B39ED68494144B4/95D55ECDFCB4F4EF3D611723CCE345ED" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "63340ef3-1b81-4977-b5b7-77edf0de3bea" ],
-        "x-ms-correlation-request-id": [ "a008147a-bbb0-4027-8f3f-8f0e4a09809a" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251013T050839Z:a008147a-bbb0-4027-8f3f-8f0e4a09809a" ],
+        "x-ms-request-id": [ "2bfbba17-4cb5-4657-aa89-fe2235b9da11" ],
+        "x-ms-correlation-request-id": [ "eb0dbce3-d65d-4765-9006-2909597456da" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "250" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3750" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251013T173917Z:eb0dbce3-d65d-4765-9006-2909597456da" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1569DBC98A3F4A08A438C22B7B58B562 Ref B: SN4AA2022305029 Ref C: 2025-10-13T05:08:32Z" ],
-        "Date": [ "Mon, 13 Oct 2025 05:08:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 105CC828AD374550BD0B7E2444FCE6CC Ref B: DM2AA1091211017 Ref C: 2025-10-13T17:39:05Z" ],
+        "Date": [ "Mon, 13 Oct 2025 17:39:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "3155" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*1+v*19.0.0.0\",\"name\":\"s*Exadata.X9M+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*1+v*23.0.0.0\",\"name\":\"s*Exadata.X9M+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*1+v*19.0.0.0\",\"name\":\"s*Exadata.X11M+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*1+v*23.0.0.0\",\"name\":\"s*Exadata.X11M+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*1+v*19.0.0.0\",\"name\":\"s*ExaDbXS+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*1+v*23.0.0.0\",\"name\":\"s*ExaDbXS+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*2+v*19.0.0.0\",\"name\":\"s*Exadata.X9M+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*2+v*23.0.0.0\",\"name\":\"s*Exadata.X9M+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*2+v*19.0.0.0\",\"name\":\"s*Exadata.X11M+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*2+v*23.0.0.0\",\"name\":\"s*Exadata.X11M+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*2+v*19.0.0.0\",\"name\":\"s*ExaDbXS+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*2+v*23.0.0.0\",\"name\":\"s*ExaDbXS+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*1+v*19.0.0.0\",\"name\":\"s*Exadata.X9M+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*1+v*23.0.0.0\",\"name\":\"s*Exadata.X9M+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*1+v*19.0.0.0\",\"name\":\"s*Exadata.X11M+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*1+v*23.0.0.0\",\"name\":\"s*Exadata.X11M+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*1+v*19.0.0.0\",\"name\":\"s*ExaDbXS+z*1+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*1+v*23.0.0.0\",\"name\":\"s*ExaDbXS+z*1+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*2+v*19.0.0.0\",\"name\":\"s*Exadata.X9M+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X9M+z*2+v*23.0.0.0\",\"name\":\"s*Exadata.X9M+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*2+v*19.0.0.0\",\"name\":\"s*Exadata.X11M+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*Exadata.X11M+z*2+v*23.0.0.0\",\"name\":\"s*Exadata.X11M+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*2+v*19.0.0.0\",\"name\":\"s*ExaDbXS+z*2+v*19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/s*ExaDbXS+z*2+v*23.0.0.0\",\"name\":\"s*ExaDbXS+z*2+v*23.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"23.0.0.0\"}}]}",
       "isContentBase64": false
     }
   }

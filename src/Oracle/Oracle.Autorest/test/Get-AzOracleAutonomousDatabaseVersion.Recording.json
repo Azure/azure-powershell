@@ -1,13 +1,13 @@
 {
-  "Get-AzOracleAutonomousDatabaseVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2025-09-01+1": {
+  "Get-AzOracleAutonomousDatabaseVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "f21d61fa-5303-47a3-ac1b-392451927c2c" ],
+        "x-ms-client-request-id": [ "fc97bd22-47ea-4205-9ea4-7e7a9ef77dd5" ],
         "CommandName": [ "Get-AzOracleAutonomousDatabaseVersion" ],
         "FullCommandName": [ "Get-AzOracleAutonomousDatabaseVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,26 +23,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Origin", "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=359af50e-f985-4028-adf5-034a840f32d6,objectId=a9fc9ef3-cabe-4802-90cf-9c9d376bc4e5/southcentralus/ed51dc1b-9960-44d0-98d4-b5a6d92dadee" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/southcentralus/7fda631d-1b73-4a23-871e-214f216f5160" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "opc-request-id": [ "oci-7D0403A95901AA4-202510130506/09DB1ED0C4E9A146E588EC6849414489/41D237CA4288435D9BB51E44473DB9D6" ],
+        "opc-request-id": [ "oci-454CC6C6F829565-202510131746/DCE3A8B8597835BCFE3AED6849414468/3242FA1A22F16795AC9FD4E80FF86605" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "42c584df-2c19-42e6-9189-cd59f2bedc64" ],
-        "x-ms-correlation-request-id": [ "1e2a934a-9f6e-4171-a608-bd5ead4747f5" ],
+        "x-ms-request-id": [ "c5789fb2-fdca-4a0f-9799-953c236a08df" ],
+        "x-ms-correlation-request-id": [ "a16bb93e-cba9-4f66-957e-b07c02ddfcda" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251013T050646Z:1e2a934a-9f6e-4171-a608-bd5ead4747f5" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251013T174639Z:a16bb93e-cba9-4f66-957e-b07c02ddfcda" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 224541E1AAEA4360831EEAB95CF5857A Ref B: SN4AA2022303051 Ref C: 2025-10-13T05:06:44Z" ],
-        "Date": [ "Mon, 13 Oct 2025 05:06:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8203913145F643C2A3C5CD78100DB7FB Ref B: SN4AA2022301033 Ref C: 2025-10-13T17:46:37Z" ],
+        "Date": [ "Mon, 13 Oct 2025 17:46:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2689" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/3b3aa069-da96-41b6-b5aa-6f20dd9db826/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":true,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDbVersions/23ai\",\"name\":\"23ai\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":false,\"isDefaultForPaid\":false,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"23ai\"}}]}",
       "isContentBase64": false
     }
   }
