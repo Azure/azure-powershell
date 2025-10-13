@@ -16,17 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOracleDbSystem'))
 }
 
 Describe 'Update-AzOracleDbSystem' {
-    # Use a var name that won't collide with Pester's $Name
-    $dbsName = 'PowershellSdk'
-    $rgName  = if ($env:resourceGroup)  { $env:resourceGroup }  else { 'basedb-rg929-ti-iad52' }
-    $subId   = if ($env:SubscriptionId) { $env:SubscriptionId } else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     It 'Update tags' {
         {
             $tags = @{ updatedBy = 'Pester'; purpose = 'sdk-test' }
-            Update-AzOracleDbSystem -Name $dbsName -ResourceGroupName $rgName -SubscriptionId $subId -Tag $tags | Out-Null
+            Update-AzOracleDbSystem -Name $env.baseDbName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId -Tag $tags | Out-Null
 
-            $db = Get-AzOracleDbSystem -Name $dbsName -ResourceGroupName $rgName -SubscriptionId $subId
+            $db = Get-AzOracleDbSystem -Name $env.baseDbName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId
             $db.Tag.Get_Item('updatedBy') | Should -Be 'Pester'
             $db.Tag.Get_Item('purpose')   | Should -Be 'sdk-test'
         } | Should -Not -Throw

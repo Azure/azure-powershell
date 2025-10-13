@@ -23,10 +23,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzOracleResourceAnchor
 }
 
 Describe 'Remove-AzOracleResourceAnchor' {
-    # Keep in sync with your create test/recording
-    $anchorName = if ($env:RESOURCE_ANCHOR_NAME) { $env:RESOURCE_ANCHOR_NAME } else { 'Create' }
-    $rgName     = if ($env:resourceGroup)       { $env:resourceGroup }       else { 'basedb-rg929-ti-iad52' }
-    $subId   = if ($env:SubscriptionId) { $env:SubscriptionId } else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     $hasCmd = Get-Command -Name Remove-AzOracleResourceAnchor -ErrorAction SilentlyContinue
 
@@ -34,9 +30,9 @@ Describe 'Remove-AzOracleResourceAnchor' {
         {
             if ($hasCmd) {
                 Remove-AzOracleResourceAnchor `
-                    -Name $anchorName `
-                    -ResourceGroupName $rgName `
-                    -SubscriptionId $subId `
+                    -Name $env.resourceAnchorName `
+                    -ResourceGroupName $env.resourceAnchorRgName `
+                    -SubscriptionId $env.networkAnchorSubId `
                     -NoWait `
                     -Confirm:$false | Out-Null
             } else {

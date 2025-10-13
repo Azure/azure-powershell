@@ -17,22 +17,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDbSystem'))
 }
 
 Describe 'Get-AzOracleDbSystem' {
-    # Vars (ENV overrides; keep in sync with your Create test)
-    $dbsName = if ($env:DBSYSTEM_NAME) { $env:DBSYSTEM_NAME } else { 'PowershellSdk' }
-    $rgName  = if ($env:resourceGroup) { $env:resourceGroup } else { 'basedb-rg929-ti-iad52' }
-    $subId   = if ($env:SubscriptionId){ $env:SubscriptionId } else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     It 'Get by name and resource group' {
         {
-            $dbs = Get-AzOracleDbSystem -Name $dbsName -ResourceGroupName $rgName -SubscriptionId $subId
+            $dbs = Get-AzOracleDbSystem -Name $env.baseDbName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId
             $dbs | Should -Not -BeNullOrEmpty
-            $dbs.Name | Should -Be $dbsName
+            $dbs.Name | Should -Be $env.baseDbName
         } | Should -Not -Throw
     }
 
     It 'List in subscription' {
         {
-            $list = Get-AzOracleDbSystem -SubscriptionId $subId
+            $list = Get-AzOracleDbSystem -SubscriptionId $env.networkAnchorSubId
             $list.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

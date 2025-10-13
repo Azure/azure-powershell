@@ -31,10 +31,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzOracleNetworkAnchor'
 }
 
 Describe 'Update-AzOracleNetworkAnchor' {
-    # Match the CREATE/GET defaults
-    $naName  = if ($env:NETWORK_ANCHOR_NAME) { $env:NETWORK_ANCHOR_NAME } else { 'PowershellTest1s' }
-    $rgName  = if ($env:resourceGroup)      { $env:resourceGroup }      else { 'basedb-iad53-rg' }
-    $subId   = if ($env:SubscriptionId)     { $env:SubscriptionId }     else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     It 'Update tags only' {
         {
@@ -42,13 +38,13 @@ Describe 'Update-AzOracleNetworkAnchor' {
 
             $cmd = Get-Command -Name Update-AzOracleNetworkAnchor -ErrorAction SilentlyContinue
             if ($cmd -and ($cmd.Parameters.Keys -contains 'Tag')) {
-                Update-AzOracleNetworkAnchor -Name $naName -ResourceGroupName $rgName -SubscriptionId $subId -Tag $tags | Out-Null
+                Update-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId -Tag $tags | Out-Null
             } else {
                 $patchBody = @{ tags = $tags } | ConvertTo-Json -Depth 4
-                Update-AzOracleNetworkAnchor -Name $naName -ResourceGroupName $rgName -SubscriptionId $subId -JsonString $patchBody -NoWait| Out-Null
+                Update-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId -JsonString $patchBody -NoWait| Out-Null
             }
 
-            $na = Get-AzOracleNetworkAnchor -Name $naName -ResourceGroupName $rgName -SubscriptionId $subId
+            $na = Get-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId
             $na | Should -Not -BeNullOrEmpty
             $na.Tag.Get_Item('updatedBy') | Should -Be 'Pester'
             $na.Tag.Get_Item('purpose')   | Should -Be 'sdk-test'

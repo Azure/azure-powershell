@@ -19,22 +19,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleResourceAnchor'))
 }
 
 Describe 'Get-AzOracleResourceAnchor' {
-    # Vars (ENV overrides first; keep defaults in sync with your Create test)
-    $raName = if ($env:RESOURCE_ANCHOR_NAME) { $env:RESOURCE_ANCHOR_NAME } else { 'Create' }
-    $rgName = if ($env:resourceGroup)       { $env:resourceGroup }       else { 'basedb-rg929-ti-iad52' }
-    $subId  = if ($env:SubscriptionId)      { $env:SubscriptionId }      else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     It 'Get by name and resource group' {
         {
-            $ra = Get-AzOracleResourceAnchor -Name $raName -ResourceGroupName $rgName -SubscriptionId $subId
+            $ra = Get-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId
             $ra | Should -Not -BeNullOrEmpty
-            $ra.Name | Should -Be $raName
+            $ra.Name | Should -Be $env.resourceAnchorName
         } | Should -Not -Throw
     }
 
     It 'List in subscription' {
         {
-            $list = Get-AzOracleResourceAnchor -SubscriptionId $subId
+            $list = Get-AzOracleResourceAnchor -SubscriptionId $env.networkAnchorSubId
             $list.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

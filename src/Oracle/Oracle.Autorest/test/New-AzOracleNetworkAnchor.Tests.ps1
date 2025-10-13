@@ -31,24 +31,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleNetworkAnchor'))
 }
 
 Describe 'New-AzOracleNetworkAnchor' {
-    # Variables (ENV overrides first)
-    $naName   = if ($env:NETWORK_ANCHOR_NAME) { $env:NETWORK_ANCHOR_NAME } else { 'PowershellTest1s' }
-    $rgName   = if ($env:resourceGroup)      { $env:resourceGroup }      else { 'basedb-iad53-rg' }
-    $subId    = if ($env:SubscriptionId)     { $env:SubscriptionId }     else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
-    $location = if ($env:location)           { $env:location }           else { 'eastus' }
-    $zone     = if ($env:NETWORK_ZONE)       { $env:NETWORK_ZONE }       else { '2' }
-
-    $resAnchorId = if ($env:ORACLE_RESOURCE_ANCHOR_ID) {
-        $env:ORACLE_RESOURCE_ANCHOR_ID
-    } else {
-        '/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/resourceAnchors/basedb-iad53-ra'
-    }
-
-    $subnetId = if ($env:NETWORK_SUBNET_ID) {
-        $env:NETWORK_SUBNET_ID
-    } else {
-        '/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Microsoft.Network/virtualNetworks/basedb-iad53-vnet/subnets/delegated'
-    }
 
     $hasCmd = Get-Command -Name New-AzOracleNetworkAnchor -ErrorAction SilentlyContinue
 
@@ -56,13 +38,13 @@ Describe 'New-AzOracleNetworkAnchor' {
         {
             if ($hasCmd) {
                 $created = New-AzOracleNetworkAnchor `
-                    -Name $naName `
-                    -ResourceGroupName $rgName `
-                    -SubscriptionId $subId `
-                    -Location $location `
-                    -ResourceAnchorId $resAnchorId `
-                    -SubnetId $subnetId `
-                    -Zone $zone `
+                    -Name $env.networkAnchorName `
+                    -ResourceGroupName $env.networkAnchorRgName `
+                    -SubscriptionId $env.networkAnchorSubId `
+                    -Location $env.location `
+                    -ResourceAnchorId $env.resourceAnchorId `
+                    -SubnetId $env.networkAnchorSubnetId `
+                    -Zone $env.zone `
                     -NoWait
 
                 # Always ensure we got something back
