@@ -29,7 +29,7 @@ For information on how to develop for `Az.DataTransfer`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: c424d91129a85194f3a0800a6bb5dcd28f8eb6eb
+commit: a7ed089176a106a5ac433d1df0630545a5ad27bf
 namespace: ADT
 require:
 # readme.azure.noprofile.md is the common configuration file
@@ -250,4 +250,27 @@ directive:
       verb: Invoke
       subject: ^ExecutePipelineAction
     hide: true
+  
+    ## Hide Remove-FlowProfile command
+  - where:
+      verb: Remove
+      subject: ^FlowProfile
+    hide: true
+
+  - where:
+      verb: Get
+      subject: ^AzureDataTransferFlowProfile
+    set:
+      subject: FlowProfile
+
+  # Fix the AntiviruAvSolution parameter name to correct spelling
+  - where:
+      parameter-name: AntiviruAvSolution
+    set:
+      parameter-name: AntivirusAvSolution
+
+  - where:
+      property-name: AntiviruAvSolution
+    set:
+      property-name: AntivirusAvSolution
 ```
