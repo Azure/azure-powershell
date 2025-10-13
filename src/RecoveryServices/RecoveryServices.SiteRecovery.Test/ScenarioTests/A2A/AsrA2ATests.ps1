@@ -1931,6 +1931,8 @@ function Test-VMSSReplication {
     $recMappingName = getRecoveryContainerMapping
     $primaryNetMapping = getPrimaryNetworkMapping
     $recoveryNetMapping = getRecoveryNetworkMapping
+    $platformFaultDomain = getPlatformDomain
+    $platformFaultDomain1 = getPlatformDomain1
 
     #create recovery side resources
     $recRgName = getRecoveryResourceGroupName
@@ -1941,7 +1943,7 @@ function Test-VMSSReplication {
     $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
     #create virtual Machine scale set
     $stnd = "Standard"
-    $vmssConfig = New-AzVmssConfig -Location $recoveryLocation -PlatformFaultDomainCount 1 -SinglePlacementGroup 0 -SecurityType $stnd
+    $vmssConfig = New-AzVmssConfig -Location $recoveryLocation -PlatformFaultDomainCount 2 -SinglePlacementGroup 0 -SecurityType $stnd
     $recVmss = new-azvmss -resourcegroupname $recRgName -vmscalesetname 'vmss-asr' -virtualmachinescaleset $vmssConfig
     $recVmss1 = new-azvmss -resourcegroupname $recRgName -vmscalesetname 'vmss1-asr' -virtualmachinescaleset $vmssConfig
 
@@ -2017,7 +2019,7 @@ function Test-VMSSReplication {
     $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
-    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryVirtualMachineScaleSetId $recVmss.Id
+    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryVirtualMachineScaleSetId $recVmss.Id -PlatformFaultDomain $platformFaultDomain
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     WaitForJobCompletion -JobId $enableDRjob.Name
@@ -2026,12 +2028,14 @@ function Test-VMSSReplication {
     #Validate vmss Set in replicated vm properties
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     Assert-NotNull($pe.providerSpecificDetails.RecoveryVirtualMachineScaleSetId)
+    Assert-NotNull($pe.providerSpecificDetails.PlatformFaultDomain)
 
     #Update Vmpropertie
-    $updateDRjob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $pe -RecoveryVirtualMachineScaleSetId $recVmss1.Id
+    $updateDRjob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $pe -RecoveryVirtualMachineScaleSetId $recVmss1.Id -PlatformFaultDomain $platformFaultDomain1
     WaitForJobCompletion -JobId $updateDRjob.Name
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     Assert-NotNull($pe.providerSpecificDetails.RecoveryVirtualMachineScaleSetId)
+    Assert-NotNull($pe.providerSpecificDetails.PlatformFaultDomain)
 
     #Failover
     $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
@@ -2212,7 +2216,9 @@ $CacheStorageAccount = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/reso
 
 $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg"
 
-$ReprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ReplicationProtectedItem $ReplicationProtectedItem -ProtectionContainerMapping $RecoveryMapping -LogStorageAccountId $CacheStorageAccount -RecoveryResourceGroupID $rgId
+$platformFaultDomain = 1
+
+$ReprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ReplicationProtectedItem $ReplicationProtectedItem -ProtectionContainerMapping $RecoveryMapping -LogStorageAccountId $CacheStorageAccount -RecoveryResourceGroupID $rgId -PlatformFaultDomain $platformFaultDomain
 
 [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
 WaitForJobCompletion -JobId $ReprotectJob.Name

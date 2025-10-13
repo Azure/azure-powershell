@@ -308,6 +308,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string TestNetworkId { get; set; }
 
         /// <summary>
+        ///     Gets or sets the platform fault domain for replication protected item after failover.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public int? PlatformFaultDomain { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -354,6 +361,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.IsParameterBound(c => c.RecoveryProximityPlacementGroupId) &&
                     this.IsParameterBound(c => c.RecoveryVirtualMachineScaleSetId) &&
                     this.IsParameterBound(c => c.RecoveryCapacityReservationGroupId) &&
+                    this.IsParameterBound(c => c.PlatformFaultDomain) &&
                     string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType) &&
@@ -419,6 +427,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var recoveryNicTag = this.RecoveryNicTag;
                 var diskTag = this.DiskTag;
                 var tfoNetworkId = string.Empty;
+                var platformFaultDomain = this.PlatformFaultDomain;
                 var vMNicInputDetailsList = new List<VMNicInputDetails>();
                 var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
 
@@ -694,6 +703,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         ? this.RecoveryCapacityReservationGroupId
                         : providerSpecificDetails.RecoveryCapacityReservationGroupId;
 
+                    platformFaultDomain = this.IsParameterBound(c => c.PlatformFaultDomain)
+                        ? this.PlatformFaultDomain
+                        : providerSpecificDetails.PlatformFaultDomain;
+
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.RecoveryCloudServiceId)))
                     {
@@ -756,7 +769,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             this.DiskEncryptionSecretUrl,
                             this.DiskEncryptionVaultId,
                             this.KeyEncryptionKeyUrl,
-                            this.KeyEncryptionVaultId)
+                            this.KeyEncryptionVaultId),
+                        PlatformFaultDomain = this.PlatformFaultDomain
                     };
 
                     if (this.ASRVMNicConfiguration != null &&
