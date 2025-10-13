@@ -193,6 +193,32 @@ function setupEnv() {
     $ExaInfraDNDName = "OfakeExaDND"
     $env.Add("ExaInfraDNDName", $ExaInfraDNDName)
 
+    # Resource Anchor Properties
+    $resourceAnchorRgName = "basedb-rg929-ti-iad52"
+    $env.Add("resourceAnchorRgName", $resourceAnchorRgName)
+
+    $resourceAnchorName = "PowershellTestRA"
+    $env.Add("resourceAnchorName", $resourceAnchorName)
+
+    $resourceAnchorLocation = "global"
+    $env.Add("resourceAnchorLocation", $resourceAnchorLocation)
+
+    # Network Anchor Properties
+    $networkAnchorSubId = "049e5678-fbb1-4861-93f3-7528bd0779fd"
+    $env.Add("networkAnchorSubId", $networkAnchorSubId)
+
+    $networkAnchorRgName = "basedb-iad53-rg"
+    $env.Add("networkAnchorRgName", $networkAnchorRgName)
+
+    $networkAnchorName = "PowershellTest1s"
+    $env.Add("networkAnchorName", $networkAnchorName)
+
+    $networkAnchorSubnetId = "/subscriptions/$($env.networkAnchorSubId)/resourceGroups/$($env.networkAnchorRgName)/providers/Microsoft.Network/virtualNetworks/basedb-iad53-vnet/subnets/$($subnetName)"
+    $env.Add("networkAnchorSubnetId", $networkAnchorSubnetId)
+
+    $resourceAnchorId = "/subscriptions/$($env.networkAnchorSubId)/resourceGroups/$($env.networkAnchorRgName)/providers/Oracle.Database/resourceAnchors/basedb-iad53-ra"
+    $env.Add("resourceAnchorId", $resourceAnchorId)
+
     # BaseDB Properties
     $baseDbName = "PowershellSdk"
     $env.Add("baseDbName", $baseDbName)
@@ -233,37 +259,13 @@ function setupEnv() {
     $dbSystemOptionStorageManagement = "LVM"
     $env.Add("dbSystemOptionStorageManagement", $dbSystemOptionStorageManagement)
 
-    $baseDbNetAnchor = "/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/networkAnchors/basedb-na9293-ti-iad52"
+    $netAnchorName = "basedb-na9293-ti-iad52"
+    $baseDbNetAnchor = "/subscriptions/$($env.networkAnchorSubId)/resourceGroups/$($env.resourceAnchorRgName)/providers/Oracle.Database/networkAnchors/$($netAnchorName)"
     $env.Add("baseDbNetAnchor", $baseDbNetAnchor)
 
-    $baseDbResAnchor = "/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourcegroups/basedb-rg929-ti-iad52/providers/oracle.database/resourceanchors/basedb-ra929-ti-iad52"
+    $resAnchorName = "basedb-na9293-ti-iad52"
+    $baseDbResAnchor = "/subscriptions/$($env.networkAnchorSubId)/resourcegroups/$($env.resourceAnchorRgName)/providers/oracle.database/resourceanchors/$($resAnchorName)"
     $env.Add("baseDbResAnchor", $baseDbResAnchor)
-
-    # Resource Anchor Properties
-    $resourceAnchorName = "PowershellTestRA"
-    $env.Add("resourceAnchorName", $resourceAnchorName)
-
-    $resourceAnchorLocation = "global"
-    $env.Add("resourceAnchorLocation", $resourceAnchorLocation)
-
-    $resourceAnchorRgName = "basedb-rg929-ti-iad52"
-    $env.Add("resourceAnchorRgName", $resourceAnchorRgName)
-
-    # Network Anchor Properties
-    $networkAnchorName = "PowershellTest1s"
-    $env.Add("networkAnchorName", $networkAnchorName)
-
-    $networkAnchorSubnetId = "/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Microsoft.Network/virtualNetworks/basedb-iad53-vnet/subnets/delegated"
-    $env.Add("networkAnchorSubnetId", $networkAnchorSubnetId)
-
-    $resourceAnchorId = "/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/resourceAnchors/basedb-iad53-ra"
-    $env.Add("resourceAnchorId", $resourceAnchorId)
-
-    $networkAnchorSubId = "049e5678-fbb1-4861-93f3-7528bd0779fd"
-    $env.Add("networkAnchorSubId", $networkAnchorSubId)
-
-    $networkAnchorRgName = "basedb-iad53-rg"
-    $env.Add("networkAnchorRgName", $networkAnchorRgName)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
