@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzWvdControlSessionHostUpdate
 
 ## SYNOPSIS
-Control post of a hostpool.
+Control actions on a session host post
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-Control post of a hostpool.
+Control actions on a session host post
 
 ## EXAMPLES
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostPoolUpdateControlParameter
-Represents properties for a hostpool update control request.
+Object containing control action for hostpool update.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateControlParameter

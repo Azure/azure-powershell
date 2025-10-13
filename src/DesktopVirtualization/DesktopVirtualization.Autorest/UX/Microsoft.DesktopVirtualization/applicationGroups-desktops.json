@@ -1,6 +1,6 @@
 {
   "resourceType": "applicationGroups/desktops",
-  "apiVersion": "2025-03-01-preview",
+  "apiVersion": "2025-04-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },

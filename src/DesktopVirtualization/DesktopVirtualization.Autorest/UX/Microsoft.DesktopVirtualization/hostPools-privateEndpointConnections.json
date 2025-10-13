@@ -1,13 +1,13 @@
 {
   "resourceType": "hostPools/privateEndpointConnections",
-  "apiVersion": "2025-03-01-preview",
+  "apiVersion": "2025-04-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
       "name": "Get-AzWvdPrivateEndpointConnection",
-      "description": "Get a private endpoint connection.",
+      "description": "Get a PrivateEndpointConnectionWithSystemData",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a private endpoint connection.",
+          "description": "Get a PrivateEndpointConnectionWithSystemData",
           "parameters": [
             {
               "name": "-HostPoolName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzWvdPrivateEndpointConnection",
-      "description": "Remove a connection.",
+      "description": "Delete a PrivateEndpointConnectionWithSystemData",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Remove a connection.",
+          "description": "Delete a PrivateEndpointConnectionWithSystemData",
           "parameters": [
             {
               "name": "-HostPoolName",

@@ -262,6 +262,7 @@ Accept wildcard characters: False
 
 ### -UpdateLogOffMessage
 Log off message sent to user for logoff.
+Default value is an empty string.
 
 ```yaml
 Type: System.String
