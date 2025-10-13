@@ -18,7 +18,8 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-DirectUdp <String>] [-FriendlyName <String>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
+ [-DirectUdp <String>] [-FriendlyName <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
  [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>]
  [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
  [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
@@ -33,7 +34,8 @@ Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-DirectUdp <String>] [-FriendlyName <String>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
+ [-DirectUdp <String>] [-FriendlyName <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
  [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>]
  [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
  [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
@@ -211,6 +213,38 @@ Friendly name of HostPool.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

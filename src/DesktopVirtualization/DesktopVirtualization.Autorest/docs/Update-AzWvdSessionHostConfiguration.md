@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomInfoResourceId
-The resource id of the custom image.
+The resource ID of the image.
 
 ```yaml
 Type: System.String
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 Gets or sets specifies the ephemeral disk placement for operating system disk.
 The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used.
 Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-Possible values include: 'CacheDisk', 'ResourceDisk'
+Possible values include: 'CacheDisk', 'ResourceDisk'.
 
 ```yaml
 Type: System.String
@@ -361,7 +361,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedDiskType
-The disk type used by virtual machine in hostpool session host.
+Managed Disk information.
 
 ```yaml
 Type: System.String
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 ### -MarketplaceInfoExactVersion
-The exact version of the image.
+The version of the image.
 
 ```yaml
 Type: System.String
@@ -421,7 +421,7 @@ Accept wildcard characters: False
 ```
 
 ### -MarketplaceInfoSku
-The sku of the image.
+The SKU of the image.
 
 ```yaml
 Type: System.String
@@ -514,6 +514,7 @@ Accept wildcard characters: False
 
 ### -SecurityInfoType
 The security type used by virtual machine in hostpool session host.
+Default is Standard.
 
 ```yaml
 Type: System.String
@@ -528,7 +529,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityInfoVTpmEnabled
-Whether to use vTPM on the virtual machine.
+Whether to use vTpm on the virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -589,7 +590,8 @@ Accept wildcard characters: False
 ```
 
 ### -VMLocation
-The Location for the session host to be created in
+The Location for the session host to be created in.
+It will default to the location of the hostpool if not provided
 
 ```yaml
 Type: System.String

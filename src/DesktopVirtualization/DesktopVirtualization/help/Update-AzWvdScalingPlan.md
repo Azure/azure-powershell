@@ -269,7 +269,7 @@ Accept wildcard characters: False
 ```
 
 ### -Schedule
-List Pooled ScalingSchedule definitions.
+List of ScalingSchedule definitions.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule[]

@@ -281,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageLastUpdated
-Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+Date Package was last updated, found in the appxmanifest.xml.
 
 ```yaml
 Type: System.DateTime
@@ -342,7 +342,8 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFamilyName
-Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+Package Family Name from appxmanifest.xml.
+Contains Package Name and Publisher name.
 
 ```yaml
 Type: System.String
@@ -357,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFullName
-Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+Package Full Name from appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -402,7 +403,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePath
-VHD/CIM/APP-V image path on Network Share.
+VHD/CIM image path on Network Share.
 
 ```yaml
 Type: System.String
@@ -417,7 +418,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageVersion
-Package Version found in the appxmanifest.xml.
+Package version found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -462,7 +463,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultUrl
-URL of keyvault location to store certificate
+URL path to certificate name located in keyVault
 
 ```yaml
 Type: System.String
@@ -492,7 +493,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the App Attach package arm object
+The name of the App Attach package
 
 ```yaml
 Type: System.String

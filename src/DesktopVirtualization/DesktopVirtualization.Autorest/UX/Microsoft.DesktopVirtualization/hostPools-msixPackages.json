@@ -1,6 +1,6 @@
 {
   "resourceType": "hostPools/msixPackages",
-  "apiVersion": "2025-03-01-preview",
+  "apiVersion": "2025-04-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
@@ -8,7 +8,7 @@
     {
       "name": "Get-AzWvdMsixPackage",
       "description": "Get a msixpackage.",
-      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdmsixpackage"
@@ -51,7 +51,7 @@
     {
       "name": "Remove-AzWvdMsixPackage",
       "description": "Remove an MSIX Package.",
-      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdmsixpackage"

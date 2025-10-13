@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWvdActiveSessionHostConfiguration
 
 ## SYNOPSIS
-Get the ActiveSessionHostConfiguration for the hostPool that is currently being used for get operations.
+Get a ActiveSessionHostConfiguration.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzWvdActiveSessionHostConfiguration -HostPoolName <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-Get the ActiveSessionHostConfiguration for the hostPool that is currently being used for get operations.
+Get a ActiveSessionHostConfiguration.
 
 ## EXAMPLES
 

@@ -1,13 +1,13 @@
 {
   "resourceType": "hostPools",
-  "apiVersion": "2025-03-01-preview",
+  "apiVersion": "2025-04-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
       "name": "Get-AzWvdActiveSessionHostConfiguration",
-      "description": "Get the ActiveSessionHostConfiguration for the hostPool that is currently being used for get operations.",
+      "description": "Get a ActiveSessionHostConfiguration.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/activeSessionHostConfigurations/default",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Get the ActiveSessionHostConfiguration for the hostPool that is currently being used for get operations.",
+          "description": "Get a ActiveSessionHostConfiguration.",
           "parameters": [
             {
               "name": "-HostPoolName",
@@ -159,7 +159,7 @@
     },
     {
       "name": "Get-AzWvdSessionHostManagementsUpdateStatus",
-      "description": "Get the session host get status for a given hostpool.",
+      "description": "Get a SessionHostManagementUpdateStatus.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostUpdateStatuses/default",
       "help": {
         "learnMore": {
@@ -177,7 +177,7 @@
       },
       "examples": [
         {
-          "description": "Get the session host get status for a given hostpool.",
+          "description": "Get a SessionHostManagementUpdateStatus.",
           "parameters": [
             {
               "name": "-HostPoolName",
