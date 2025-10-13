@@ -1959,7 +1959,7 @@ Test SupportedSecurityOption Parameter during creation of managed disk using Cre
 function Test-SupportedSecurityOption 
 {
 	$rgname = Get-ComputeTestResourceName;
-	$loc = Get-ComputeVMLocation;
+	$loc = "eastus2euap";
 
     try{
     	New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -1981,7 +1981,7 @@ function Test-SupportedSecurityOption
 
         $updateconfig = New-AzDiskUpdateConfig -SupportedSecurityOption "TrustedLaunchAndConfidentialVMSupported";
         $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
-        Assert-AreEqual $disk.SupportedCapabilities.SupportedSecurityOption; "TrustedLaunchAndConfidentialVMSupported";
+        Assert-AreEqual "TrustedLaunchAndConfidentialVMSupported" $disk.SupportedCapabilities.SupportedSecurityOption;
     }
 
     finally
