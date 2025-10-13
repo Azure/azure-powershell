@@ -289,8 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-E.g.
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
 ApiApps are a kind of Microsoft.Web/sites type.
 If supported, the resource provider must validate and persist this value.
 
@@ -450,7 +449,7 @@ Accept wildcard characters: False
 ```
 
 ### -Schedule
-List of Pooled ScalingSchedule definitions.
+List of ScalingPlanPooledSchedule definitions.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule[]

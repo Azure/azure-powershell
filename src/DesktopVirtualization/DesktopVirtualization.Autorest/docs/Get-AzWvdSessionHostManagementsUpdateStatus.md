@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWvdSessionHostManagementsUpdateStatus
 
 ## SYNOPSIS
-Get the session host get status for a given hostpool.
+Get a SessionHostManagementUpdateStatus.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzWvdSessionHostManagementsUpdateStatus -InputObject <IDesktopVirtualization
 ```
 
 ## DESCRIPTION
-Get the session host get status for a given hostpool.
+Get a SessionHostManagementUpdateStatus.
 
 ## EXAMPLES
 

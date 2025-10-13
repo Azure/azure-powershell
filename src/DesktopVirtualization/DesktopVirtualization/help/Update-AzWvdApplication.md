@@ -18,8 +18,8 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
  [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
  [-ApplicationType <String>] [-CommandLineArgument <String>] [-CommandLineSetting <String>]
  [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
- [-MsixPackageFamilyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResetIcon
@@ -49,7 +49,7 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
 Update-AzWvdApplication -Name <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
  -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> [-ApplicationType <String>]
  [-CommandLineArgument <String>] [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>]
- [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-Tag <Hashtable>]
+ [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,8 +65,8 @@ Update-AzWvdApplication -Name <String> -ApplicationGroupInputObject <IDesktopVir
 Update-AzWvdApplication [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
  -InputObject <IDesktopVirtualizationIdentity> [-ApplicationType <String>] [-CommandLineArgument <String>]
  [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
- [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -426,21 +426,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-tags to be updated
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

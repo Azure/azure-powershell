@@ -15,11 +15,9 @@ Update a SessionHostManagement.
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdSessionHostManagement -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-FailedSessionHostCleanupPolicy <String>] [-ProvisioningCanaryPolicy <String>]
- [-ProvisioningInstanceCount <Int32>] [-ProvisioningSetDrainMode] [-ScheduledDateTimeZone <String>]
- [-UpdateDeleteOriginalVM] [-UpdateLogOffDelayMinute <Int32>] [-UpdateLogOffMessage <String>]
- [-UpdateMaxVmsRemoved <Int32>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ScheduledDateTimeZone <String>] [-UpdateDeleteOriginalVM] [-UpdateLogOffDelayMinute <Int32>]
+ [-UpdateLogOffMessage <String>] [-UpdateMaxVmsRemoved <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -39,11 +37,9 @@ Update-AzWvdSessionHostManagement -HostPoolName <String> -ResourceGroupName <Str
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdSessionHostManagement -InputObject <IDesktopVirtualizationIdentity>
- [-FailedSessionHostCleanupPolicy <String>] [-ProvisioningCanaryPolicy <String>]
- [-ProvisioningInstanceCount <Int32>] [-ProvisioningSetDrainMode] [-ScheduledDateTimeZone <String>]
- [-UpdateDeleteOriginalVM] [-UpdateLogOffDelayMinute <Int32>] [-UpdateLogOffMessage <String>]
- [-UpdateMaxVmsRemoved <Int32>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ScheduledDateTimeZone <String>] [-UpdateDeleteOriginalVM] [-UpdateLogOffDelayMinute <Int32>]
+ [-UpdateLogOffMessage <String>] [-UpdateMaxVmsRemoved <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,21 +76,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FailedSessionHostCleanupPolicy
-The policy that should be applied when the Session Host provisioning operation fails.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -157,51 +138,6 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningCanaryPolicy
-Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningInstanceCount
-the number of session hosts to exist in the Host Pool.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningSetDrainMode
-Whether the session host should be set in drain mode following provisioning.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -289,6 +225,7 @@ Accept wildcard characters: False
 
 ### -UpdateLogOffMessage
 Log off message sent to user for logoff.
+Default value is an empty string.
 
 ```yaml
 Type: System.String
