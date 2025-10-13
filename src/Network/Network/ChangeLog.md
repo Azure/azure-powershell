@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgraded the api version from 2024-10-01 to 2025-01-01
 
 ## Version 7.21.0
 - Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
