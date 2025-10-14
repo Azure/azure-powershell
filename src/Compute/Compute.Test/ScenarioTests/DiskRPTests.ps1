@@ -1954,7 +1954,7 @@ function Test-DiskSnapshotInstantAccess
 
 <#
 .SYNOPSIS
-Test SupportedSecurityOption Parameter during creation of managed disk using CreateOption of Import
+Test SupportedSecurityOption Parameter during creation and update of disk
 #>
 function Test-SupportedSecurityOption 
 {
