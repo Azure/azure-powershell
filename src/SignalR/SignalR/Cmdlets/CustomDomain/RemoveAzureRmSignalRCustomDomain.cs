@@ -86,7 +86,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 if (ShouldProcess($"SignalR custom domain {ResourceGroupName}/{SignalRName}/{Name}", "remove"))
                 {
                     Microsoft.Azure.Management.SignalR.SignalRCustomDomainsOperationsExtensions.Delete(Client.SignalRCustomDomains, ResourceGroupName, SignalRName, Name);
-
                     WriteObject(true);
                 }
             });
