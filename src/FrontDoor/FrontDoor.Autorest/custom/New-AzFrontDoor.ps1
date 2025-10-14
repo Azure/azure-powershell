@@ -262,12 +262,79 @@ param(
 )
 
     process {
-        $duplicateCheck = Get-AzFrontDoor -ResourceGroupName $ResourceGroupName
-
-        foreach ($fd in $duplicateCheck) {
-            if ($fd.Name -eq $Name) {
-                throw "Front Door with name $Name already exists in resource group $ResourceGroupName"
+        $RoutingRule = $RoutingRule 
+        if ($PSBoundParameters.ContainsKey('RoutingRule')) {
+            $null = $PSBoundParameters.Remove('RoutingRule')
+        }
+        
+        $BackendPool = $BackendPool
+        if ($PSBoundParameters.ContainsKey('BackendPool')) {
+            $null = $PSBoundParameters.Remove('BackendPool')
+        }
+        
+        $BackendPoolsSetting = $BackendPoolsSetting
+        if ($PSBoundParameters.ContainsKey('BackendPoolsSetting')) {
+            $null = $PSBoundParameters.Remove('BackendPoolsSetting')
+        }
+        
+        $FrontendEndpoint = $FrontendEndpoint
+        if ($PSBoundParameters.ContainsKey('FrontendEndpoint')) {
+            $null = $PSBoundParameters.Remove('FrontendEndpoint')
+        }
+        
+        $LoadBalancingSetting = $LoadBalancingSetting
+        if ($PSBoundParameters.ContainsKey('LoadBalancingSetting')) {
+            $null = $PSBoundParameters.Remove('LoadBalancingSetting')
+        }
+        
+        $HealthProbeSetting = $HealthProbeSetting
+        if ($PSBoundParameters.ContainsKey('HealthProbeSetting')) {
+            $null = $PSBoundParameters.Remove('HealthProbeSetting')
+        }
+        
+        $Tag = $Tag
+        if ($PSBoundParameters.ContainsKey('Tag')) {
+            $null = $PSBoundParameters.Remove('Tag')
+        }
+      
+        try {
+            $duplicateCheck = Get-AzFrontDoor @PSBoundParameters
+            
+            foreach ($fd in $duplicateCheck) {
+                if ($fd.Name -eq $Name) {
+                    throw "Front Door with name $Name already exists in resource group $ResourceGroupName"
+                }
             }
+        }
+        catch {
+            # If Get-AzFrontDoor throws an error because the resource doesn't exist, 
+            # we can continue with creating the new Front Door
+            if ($_.Exception.Message -notlike "*was not found*") {
+                # Re-throw if it's not a "not found" error
+                throw $_
+            }
+        }
+
+        if ($RoutingRule) {
+            $PSBoundParameters.Add('RoutingRule', $RoutingRule)
+        }
+        if ($BackendPool) {
+            $PSBoundParameters.Add('BackendPool', $BackendPool)
+        }
+        if ($BackendPoolsSetting) {
+            $PSBoundParameters.Add('BackendPoolsSetting', $BackendPoolsSetting)
+        }
+        if ($FrontendEndpoint) {
+            $PSBoundParameters.Add('FrontendEndpoint', $FrontendEndpoint)
+        }
+        if ($LoadBalancingSetting) {
+            $PSBoundParameters.Add('LoadBalancingSetting', $LoadBalancingSetting)
+        }
+        if ($HealthProbeSetting) {
+            $PSBoundParameters.Add('HealthProbeSetting', $HealthProbeSetting)
+        }
+        if ($Tag) {
+            $PSBoundParameters.Add('Tag', $Tag)
         }
 
         Az.FrontDoor.internal\New-AzFrontDoor @PSBoundParameters

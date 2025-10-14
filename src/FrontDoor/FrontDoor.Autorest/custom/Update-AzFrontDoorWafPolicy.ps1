@@ -277,7 +277,90 @@ param(
 )
 
 process {
-        $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $ResourceGroupName
+        $SkuName = $SkuName
+        if ($PSBoundParameters.ContainsKey('SkuName')) {
+            $null = $PSBoundParameters.Remove('SkuName')
+        }
+        
+        $CustomRule = $CustomRule
+        if ($PSBoundParameters.ContainsKey('CustomRule')) {
+            $null = $PSBoundParameters.Remove('CustomRule')
+        }
+        
+        $ManagedRuleSet = $ManagedRuleSet
+        if ($PSBoundParameters.ContainsKey('ManagedRuleSet')) {
+            $null = $PSBoundParameters.Remove('ManagedRuleSet')
+        }
+        
+        $EnabledState = $EnabledState
+        if ($PSBoundParameters.ContainsKey('EnabledState')) {
+            $null = $PSBoundParameters.Remove('EnabledState')
+        }
+
+        $Mode = $Mode
+        if ($PSBoundParameters.ContainsKey('Mode')) {
+            $null = $PSBoundParameters.Remove('Mode')
+        }
+        
+        $RequestBodyCheck = $RequestBodyCheck
+        if ($PSBoundParameters.ContainsKey('RequestBodyCheck')) {
+            $null = $PSBoundParameters.Remove('RequestBodyCheck')
+        }
+        
+        $LogScrubbingSetting = $LogScrubbingSetting
+        if ($PSBoundParameters.ContainsKey('LogScrubbingSetting')) {
+            $null = $PSBoundParameters.Remove('LogScrubbingSetting')
+        }
+        
+        $JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
+        if ($PSBoundParameters.ContainsKey('JavascriptChallengeExpirationInMinutes')) {
+            $null = $PSBoundParameters.Remove('JavascriptChallengeExpirationInMinutes')
+        }
+
+        try {
+            $retrievedPolicy = Get-AzFrontDoorWafPolicy @PSBoundParameters
+        }
+        catch {
+            # If Get-AzFrontDoorWafPolicy throws an error because the resource doesn't exist,
+            # we cannot proceed with the update operation
+            if ($_.Exception.Message -like "*was not found*") {
+                throw "WAF policy '$Name' was not found in resource group '$ResourceGroupName'. Cannot update a non-existent policy."
+            }
+            else {
+                # Re-throw if it's not a "not found" error
+                throw $_
+            }
+        }
+        
+        # Handle SKU: use provided SkuName or preserve existing SKU from retrieved policy
+        if ($PSBoundParameters.ContainsKey('SkuName') -and ![string]::IsNullOrEmpty($SkuName)) {
+            $PSBoundParameters.Add('SkuName', $SkuName)
+        } elseif ($retrievedPolicy.Sku -and $retrievedPolicy.Sku.Name) {
+            $PSBoundParameters.Add('SkuName', $retrievedPolicy.Sku.Name)
+        }
+        if ($CustomRule) {
+            $PSBoundParameters.Add('CustomRule', $CustomRule)
+        }
+        if ($ManagedRuleSet) {
+            $PSBoundParameters.Add('ManagedRuleSet', $ManagedRuleSet)
+        }
+        if (![string]::IsNullOrEmpty($EnabledState)) {
+            $PSBoundParameters.Add('EnabledState', $EnabledState)
+        }
+        # Only add Mode and RequestBodyCheck if they have valid values
+        if (![string]::IsNullOrEmpty($Mode)) {
+            $PSBoundParameters.Add('Mode', $Mode)
+        }
+        if (![string]::IsNullOrEmpty($RequestBodyCheck)) {
+            $PSBoundParameters.Add('RequestBodyCheck', $RequestBodyCheck)
+        }
+        if ($LogScrubbingSetting) {
+            $PSBoundParameters.Add('LogScrubbingSetting', $LogScrubbingSetting)
+        }
+        if ($JavascriptChallengeExpirationInMinutes -gt 0) {
+            $PSBoundParameters.Add('JavascriptChallengeExpirationInMinutes', $JavascriptChallengeExpirationInMinutes)
+        }
+
         $UpdatePolicySetting = $retrievedPolicy.PolicySetting
         if ($PSBoundParameters.ContainsKey("CustomBlockResponseBody")) {
           $null = $PSBoundParameters.Remove("CustomBlockResponseBody")
@@ -288,7 +371,7 @@ process {
           $null = $PSBoundParameters.Remove("CustomBlockResponseStatusCode")
           $UpdatePolicySetting.CustomBlockResponseStatusCode = $CustomBlockResponseStatusCode
         }
-        if ($PSBoundParameters.ContainsKey("EnabledState")) {
+        if ($PSBoundParameters.ContainsKey("EnabledState") -and ![string]::IsNullOrEmpty($EnabledState)) {
           $null = $PSBoundParameters.Remove("EnabledState")
           $UpdatePolicySetting.EnabledState = $EnabledState
         }
@@ -296,7 +379,7 @@ process {
           $null = $PSBoundParameters.Remove("LogScrubbingSetting")
           $UpdatePolicySetting.LogScrubbingSetting = $LogScrubbingSetting
         }
-        if ($PSBoundParameters.ContainsKey("Mode")) {
+        if ($PSBoundParameters.ContainsKey("Mode") -and ![string]::IsNullOrEmpty($Mode)) {
           $null = $PSBoundParameters.Remove("Mode")
           $UpdatePolicySetting.Mode = $Mode
         }
@@ -304,7 +387,7 @@ process {
           $null = $PSBoundParameters.Remove("RedirectUrl")
           $UpdatePolicySetting.RedirectUrl = $RedirectUrl
         }
-        if ($PSBoundParameters.ContainsKey("RequestBodyCheck")) {
+        if ($PSBoundParameters.ContainsKey("RequestBodyCheck") -and ![string]::IsNullOrEmpty($RequestBodyCheck)) {
           $null = $PSBoundParameters.Remove("RequestBodyCheck")
           $UpdatePolicySetting.RequestBodyCheck = $RequestBodyCheck
         }
@@ -312,6 +395,7 @@ process {
           $null = $PSBoundParameters.Remove("JavascriptChallengeExpirationInMinutes")
           $UpdatePolicySetting.JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
         }
+        
         $PSBoundParameters.PolicySetting = $UpdatePolicySetting
 
         Az.FrontDoor.internal\Update-AzFrontDoorWafPolicy @PSBoundParameters

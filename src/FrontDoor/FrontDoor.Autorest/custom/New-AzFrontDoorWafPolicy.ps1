@@ -264,11 +264,86 @@ param(
 )
 
     process {
-        $duplicateCheck = Get-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName
-        foreach ($policy in $duplicateCheck) {
-            if ($policy.Name -eq $Name) {
-                throw "WAF policy with name $Name already exists in resource group $ResourceGroupName"
+        $SkuName = $SkuName
+        if ($PSBoundParameters.ContainsKey('SkuName')) {
+            $null = $PSBoundParameters.Remove('SkuName')
+        }
+        
+        $CustomRule = $CustomRule
+        if ($PSBoundParameters.ContainsKey('CustomRule')) {
+            $null = $PSBoundParameters.Remove('CustomRule')
+        }
+        
+        $ManagedRuleSet = $ManagedRuleSet
+        if ($PSBoundParameters.ContainsKey('ManagedRuleSet')) {
+            $null = $PSBoundParameters.Remove('ManagedRuleSet')
+        }
+        
+        $EnabledState = $EnabledState
+        if ($PSBoundParameters.ContainsKey('EnabledState')) {
+            $null = $PSBoundParameters.Remove('EnabledState')
+        }
+
+        $Mode = $Mode
+        if ($PSBoundParameters.ContainsKey('Mode')) {
+            $null = $PSBoundParameters.Remove('Mode')
+        }
+        
+        $RequestBodyCheck = $RequestBodyCheck
+        if ($PSBoundParameters.ContainsKey('RequestBodyCheck')) {
+            $null = $PSBoundParameters.Remove('RequestBodyCheck')
+        }
+        
+        $LogScrubbingSetting = $LogScrubbingSetting
+        if ($PSBoundParameters.ContainsKey('LogScrubbingSetting')) {
+            $null = $PSBoundParameters.Remove('LogScrubbingSetting')
+        }
+        
+        $JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
+        if ($PSBoundParameters.ContainsKey('JavascriptChallengeExpirationInMinutes')) {
+            $null = $PSBoundParameters.Remove('JavascriptChallengeExpirationInMinutes')
+        }
+
+        try {
+            $duplicateCheck = Get-AzFrontDoorWafPolicy @PSBoundParameters
+            foreach ($policy in $duplicateCheck) {
+                if ($policy.Name -eq $Name) {
+                    throw "WAF policy with name $Name already exists in resource group $ResourceGroupName"
+                }
             }
+        }
+        catch {
+            # If Get-AzFrontDoorWafPolicy throws an error because the resource doesn't exist, 
+            # we can continue with creating the new WAF policy
+            if ($_.Exception.Message -notlike "*was not found*") {
+                # Re-throw if it's not a "not found" error
+                throw $_
+            }
+        }
+        
+        if (![string]::IsNullOrEmpty($SkuName)) {
+            $PSBoundParameters.Add('SkuName', $SkuName)
+        }
+        if ($CustomRule) {
+            $PSBoundParameters.Add('CustomRule', $CustomRule)
+        }
+        if ($ManagedRuleSet) {
+            $PSBoundParameters.Add('ManagedRuleSet', $ManagedRuleSet)
+        }
+        if (![string]::IsNullOrEmpty($EnabledState)) {
+            $PSBoundParameters.Add('EnabledState', $EnabledState)
+        }
+        if (![string]::IsNullOrEmpty($Mode)) {
+            $PSBoundParameters.Add('Mode', $Mode)
+        }
+        if (![string]::IsNullOrEmpty($RequestBodyCheck)) {
+            $PSBoundParameters.Add('RequestBodyCheck', $RequestBodyCheck)
+        }
+        if ($LogScrubbingSetting) {
+            $PSBoundParameters.Add('LogScrubbingSetting', $LogScrubbingSetting)
+        }
+        if ($JavascriptChallengeExpirationInMinutes -gt 0) {
+            $PSBoundParameters.Add('JavascriptChallengeExpirationInMinutes', $JavascriptChallengeExpirationInMinutes)
         }
 
         $PolicySettings = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettings]::New()
