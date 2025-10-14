@@ -14,5 +14,6 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     public static class ManagedHsmSkuFamily
     {
         public const string B = "B";
+        public const string C = "C";
     }
 }

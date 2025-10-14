@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzVMRunCommand_UpdateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"InstanceViewStatuses","ProtectedParameter","Parameter"}, NewOutputProperties=new string[] {"InstanceViewStatuses","ProtectedParameter","Parameter"}, ChangeDescription="The types of the properties 'InstanceViewStatuses', 'ProtectedParameter' and 'Parameter' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"The operation to create or update the run command.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Generated]

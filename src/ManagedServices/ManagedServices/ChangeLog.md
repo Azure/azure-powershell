@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.2
+* Update the outputs of breaking change announcements.
+
 ## Version 3.1.1
 * Added breaking change announcement for below commands from array or single object to list.
     - 'Get-AzManagedServicesAssignment'

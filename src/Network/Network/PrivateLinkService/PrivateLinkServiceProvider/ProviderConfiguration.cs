@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Keyvault/managedHSMs", "2021-06-01-preview", true, false);
             RegisterConfiguration("Microsoft.MachineLearningServices/workspaces", "2021-07-01", true, false);
             RegisterConfiguration("Microsoft.MachineLearningServices/registries", "2022-10-01-preview", true, false);
+            RegisterConfiguration("Microsoft.Maps/accounts", "2023-12-01-preview", true, true);
             RegisterConfiguration("Microsoft.Media/mediaservices", "2021-06-01", true, true);
             RegisterConfiguration("Microsoft.Media/videoanalyzers", "2021-11-01-preview", true, true);
             RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false, false);
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.SignalRService/webPubSub", "2021-10-01", true, false);
             RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false, false);
-            RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2020-03-01", true, false);
+            RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2022-09-01", true, true);
             RegisterConfiguration("Microsoft.Synapse/privateLinkHubs", "2021-05-01", true, true);
             RegisterConfiguration("Microsoft.Synapse/workspaces", "2019-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Web/sites", "2019-08-01", true, false);
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.App/managedEnvironments", "2024-02-02-preview", true, true);
             RegisterConfiguration("Microsoft.VideoIndexer/accounts", "2024-06-01-preview", true, true, true);
             RegisterConfiguration("Microsoft.FluidRelay/fluidRelayServers", "2025-03-10-preview", true, true, true);
+            RegisterConfiguration("Microsoft.FileShares/fileShares", "2025-06-01-preview", true, true);
         }
         /// <summary>
         /// Register private endpoint connection and private link resource configuration

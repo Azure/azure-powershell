@@ -27,9 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BinaryHardeningListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BinaryHardeningListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task BinaryHardeningListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task BinaryHardeningListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -123,12 +123,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult> BinaryHardeningListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult> BinaryHardeningListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -181,12 +181,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult> BinaryHardeningListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult> BinaryHardeningListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -225,10 +225,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult> BinaryHardeningListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult> BinaryHardeningListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task BinaryHardeningListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task BinaryHardeningListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -354,10 +354,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
-        /// <summary>Lists cryptographic certificate analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto certificate analysis results of a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -370,9 +371,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CryptoCertificatesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CryptoCertificatesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -404,7 +405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists cryptographic certificate analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto certificate analysis results of a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -414,9 +415,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CryptoCertificatesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CryptoCertificatesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -461,17 +462,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists cryptographic certificate analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto certificate analysis results of a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult> CryptoCertificatesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult> CryptoCertificatesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -516,7 +517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists cryptographic certificate analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto certificate analysis results of a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -524,12 +525,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult> CryptoCertificatesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult> CryptoCertificatesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -568,10 +569,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult> CryptoCertificatesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult> CryptoCertificatesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -590,7 +591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -633,7 +634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CryptoCertificatesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CryptoCertificatesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -652,7 +653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -697,10 +698,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
-        /// <summary>Lists cryptographic key analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto key analysis results of a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -713,9 +715,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CryptoKeysListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CryptoKeysListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -747,7 +749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists cryptographic key analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto key analysis results of a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -757,9 +759,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CryptoKeysListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CryptoKeysListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -804,17 +806,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists cryptographic key analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto key analysis results of a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult> CryptoKeysListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult> CryptoKeysListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -859,7 +861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists cryptographic key analysis results found in a firmware.</summary>
+        /// <summary>Lists crypto key analysis results of a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -867,12 +869,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult> CryptoKeysListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult> CryptoKeysListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -909,10 +911,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult> CryptoKeysListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult> CryptoKeysListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -931,7 +933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -974,7 +976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CryptoKeysListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CryptoKeysListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -993,7 +995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1038,6 +1040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
@@ -1054,9 +1057,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CvesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CvesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1098,9 +1101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CvesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CvesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1150,12 +1153,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult> CvesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult> CvesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1208,12 +1211,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult> CvesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult> CvesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1250,10 +1253,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult> CvesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult> CvesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1272,7 +1275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -1315,7 +1318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CvesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CvesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1334,7 +1337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1379,10 +1382,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
-        /// <summary>The operation to Create a firmware.</summary>
+        /// <summary>The operation to create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -1400,7 +1404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresCreate(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1435,7 +1439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware.</summary>
+        /// <summary>The operation to create a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1450,7 +1454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1498,7 +1502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware.</summary>
+        /// <summary>The operation to create a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1510,7 +1514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1558,7 +1562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware.</summary>
+        /// <summary>The operation to create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -1575,7 +1579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresCreateViaJsonString(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1610,7 +1614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware.</summary>
+        /// <summary>The operation to create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -1624,7 +1628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1659,7 +1663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware.</summary>
+        /// <summary>The operation to create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -1674,7 +1678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresCreateWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1857,6 +1861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -1878,7 +1883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresDelete(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1922,7 +1927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2047,694 +2052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
-            }
-        }
-
-        /// <summary>The operation to a url for file download.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
-        /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task FirmwaresGenerateDownloadUrl(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + global::System.Uri.EscapeDataString(workspaceName)
-                        + "/firmwares/"
-                        + global::System.Uri.EscapeDataString(firmwareId)
-                        + "/generateDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.FirmwaresGenerateDownloadUrl_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>The operation to a url for file download.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task FirmwaresGenerateDownloadUrlViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var workspaceName = _match.Groups["workspaceName"].Value;
-                var firmwareId = _match.Groups["firmwareId"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + workspaceName
-                        + "/firmwares/"
-                        + firmwareId
-                        + "/generateDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.FirmwaresGenerateDownloadUrl_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>The operation to a url for file download.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> FirmwaresGenerateDownloadUrlViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var workspaceName = _match.Groups["workspaceName"].Value;
-                var firmwareId = _match.Groups["firmwareId"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + workspaceName
-                        + "/firmwares/"
-                        + firmwareId
-                        + "/generateDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.FirmwaresGenerateDownloadUrlWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>The operation to a url for file download.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
-        /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> FirmwaresGenerateDownloadUrlWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + global::System.Uri.EscapeDataString(workspaceName)
-                        + "/firmwares/"
-                        + global::System.Uri.EscapeDataString(firmwareId)
-                        + "/generateDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.FirmwaresGenerateDownloadUrlWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Actual wire call for <see cref= "FirmwaresGenerateDownloadUrlWithResult" /> method.
-        /// </summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> FirmwaresGenerateDownloadUrlWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UrlToken.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            return await _result;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            // Error Response : default
-                            var code = (await _result)?.Code;
-                            var message = (await _result)?.Message;
-                            if ((null == code || null == message))
-                            {
-                                // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>(_response, await _result);
-                                throw ex;
-                            }
-                            else
-                            {
-                                throw new global::System.Exception($"[{code}] : {message}");
-                            }
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "FirmwaresGenerateDownloadUrl" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task FirmwaresGenerateDownloadUrl_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UrlToken.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="FirmwaresGenerateDownloadUrl" /> method. Call this like the actual call, but you will
-        /// get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
-        /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task FirmwaresGenerateDownloadUrl_Validate(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
-                await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
-                await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
-            }
-        }
-
-        /// <summary>The operation to a url for tar file download.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
-        /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task FirmwaresGenerateFilesystemDownloadUrl(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + global::System.Uri.EscapeDataString(workspaceName)
-                        + "/firmwares/"
-                        + global::System.Uri.EscapeDataString(firmwareId)
-                        + "/generateFilesystemDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.FirmwaresGenerateFilesystemDownloadUrl_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>The operation to a url for tar file download.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task FirmwaresGenerateFilesystemDownloadUrlViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var workspaceName = _match.Groups["workspaceName"].Value;
-                var firmwareId = _match.Groups["firmwareId"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + workspaceName
-                        + "/firmwares/"
-                        + firmwareId
-                        + "/generateFilesystemDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.FirmwaresGenerateFilesystemDownloadUrl_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>The operation to a url for tar file download.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> FirmwaresGenerateFilesystemDownloadUrlViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var workspaceName = _match.Groups["workspaceName"].Value;
-                var firmwareId = _match.Groups["firmwareId"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + workspaceName
-                        + "/firmwares/"
-                        + firmwareId
-                        + "/generateFilesystemDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.FirmwaresGenerateFilesystemDownloadUrlWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>The operation to a url for tar file download.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
-        /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> FirmwaresGenerateFilesystemDownloadUrlWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-01-10";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
-                        + global::System.Uri.EscapeDataString(workspaceName)
-                        + "/firmwares/"
-                        + global::System.Uri.EscapeDataString(firmwareId)
-                        + "/generateFilesystemDownloadUrl"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.FirmwaresGenerateFilesystemDownloadUrlWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Actual wire call for <see cref= "FirmwaresGenerateFilesystemDownloadUrlWithResult" /> method.
-        /// </summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> FirmwaresGenerateFilesystemDownloadUrlWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UrlToken.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            return await _result;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            // Error Response : default
-                            var code = (await _result)?.Code;
-                            var message = (await _result)?.Message;
-                            if ((null == code || null == message))
-                            {
-                                // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>(_response, await _result);
-                                throw ex;
-                            }
-                            else
-                            {
-                                throw new global::System.Exception($"[{code}] : {message}");
-                            }
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Actual wire call for <see cref= "FirmwaresGenerateFilesystemDownloadUrl" /> method.
-        /// </summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task FirmwaresGenerateFilesystemDownloadUrl_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UrlToken.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="FirmwaresGenerateFilesystemDownloadUrl" /> method. Call this like the actual call, but
-        /// you will get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
-        /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task FirmwaresGenerateFilesystemDownloadUrl_Validate(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
-                await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
-                await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
@@ -2753,7 +2071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresGet(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2796,7 +2114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2850,7 +2168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2907,7 +2225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresGetWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3072,6 +2390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
@@ -3087,9 +2406,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirmwaresListByWorkspace(string subscriptionId, string resourceGroupName, string workspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirmwaresListByWorkspace(string subscriptionId, string resourceGroupName, string workspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3129,9 +2448,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirmwaresListByWorkspaceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirmwaresListByWorkspaceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3178,12 +2497,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList> FirmwaresListByWorkspaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult> FirmwaresListByWorkspaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3232,12 +2551,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList> FirmwaresListByWorkspaceWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult> FirmwaresListByWorkspaceWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3272,10 +2591,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList> FirmwaresListByWorkspaceWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult> FirmwaresListByWorkspaceWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3294,7 +2613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -3337,7 +2656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FirmwaresListByWorkspace_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FirmwaresListByWorkspace_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3356,7 +2675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3402,7 +2721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update firmware.</summary>
+        /// <summary>The operation to update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3419,7 +2738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresUpdate(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareUpdateDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3454,7 +2773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update firmware.</summary>
+        /// <summary>The operation to update firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3468,7 +2787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareUpdateDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3516,7 +2835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update firmware.</summary>
+        /// <summary>The operation to update firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3528,7 +2847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareUpdateDefinition body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3576,7 +2895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update firmware.</summary>
+        /// <summary>The operation to update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3592,7 +2911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task FirmwaresUpdateViaJsonString(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3627,7 +2946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update firmware.</summary>
+        /// <summary>The operation to update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3641,7 +2960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3676,7 +2995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update firmware.</summary>
+        /// <summary>The operation to update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3691,7 +3010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> FirmwaresUpdateWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareUpdateDefinition body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3861,12 +3180,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>Lists the operations for this resource provider</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3877,7 +3197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3901,7 +3221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists the operations for this resource provider</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3913,7 +3233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3946,7 +3266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists the operations for this resource provider</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3956,7 +3276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3989,7 +3309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists the operations for this resource provider</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -3998,7 +3318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4161,9 +3481,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PasswordHashesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PasswordHashesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4205,9 +3525,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PasswordHashesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PasswordHashesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4257,12 +3577,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult> PasswordHashesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult> PasswordHashesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4315,12 +3635,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult> PasswordHashesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult> PasswordHashesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4359,10 +3679,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult> PasswordHashesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult> PasswordHashesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4381,7 +3701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -4424,7 +3744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PasswordHashesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PasswordHashesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4443,7 +3763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4488,10 +3808,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
-        /// <summary>Lists SBOM analysis results of a firmware.</summary>
+        /// <summary>Lists sbom analysis results of a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -4504,9 +3825,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SbomComponentsListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SbomComponentsListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4538,7 +3859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists SBOM analysis results of a firmware.</summary>
+        /// <summary>Lists sbom analysis results of a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4548,9 +3869,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SbomComponentsListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SbomComponentsListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4595,17 +3916,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists SBOM analysis results of a firmware.</summary>
+        /// <summary>Lists sbom analysis results of a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult> SbomComponentsListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult> SbomComponentsListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4650,7 +3971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>Lists SBOM analysis results of a firmware.</summary>
+        /// <summary>Lists sbom analysis results of a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -4658,12 +3979,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult> SbomComponentsListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult> SbomComponentsListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4702,10 +4023,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult> SbomComponentsListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult> SbomComponentsListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4724,7 +4045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -4767,7 +4088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SbomComponentsListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SbomComponentsListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4786,7 +4107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4831,6 +4152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
@@ -4839,7 +4161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
         /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="summaryName">The Firmware analysis summary name describing the type of summary.</param>
+        /// <param name="summaryType">The Firmware analysis summary name describing the type of summary.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4848,9 +4170,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SummariesGet(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, string summaryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SummariesGet(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, string summaryType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4865,7 +4187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         + "/firmwares/"
                         + global::System.Uri.EscapeDataString(firmwareId)
                         + "/summaries/"
-                        + global::System.Uri.EscapeDataString(summaryName)
+                        + global::System.Uri.EscapeDataString(summaryType)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -4895,16 +4217,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task SummariesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)/summaries/(?<summaryName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)/summaries/(?<summaryType>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4912,7 +4234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var workspaceName = _match.Groups["workspaceName"].Value;
                 var firmwareId = _match.Groups["firmwareId"].Value;
-                var summaryName = _match.Groups["summaryName"].Value;
+                var summaryType = _match.Groups["summaryType"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -4924,7 +4246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         + "/firmwares/"
                         + firmwareId
                         + "/summaries/"
-                        + summaryName
+                        + summaryType
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -4952,16 +4274,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource> SummariesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)/summaries/(?<summaryName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/firmwares/(?<firmwareId>[^/]+)/summaries/(?<summaryType>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4969,7 +4291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var workspaceName = _match.Groups["workspaceName"].Value;
                 var firmwareId = _match.Groups["firmwareId"].Value;
-                var summaryName = _match.Groups["summaryName"].Value;
+                var summaryType = _match.Groups["summaryType"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -4981,7 +4303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         + "/firmwares/"
                         + firmwareId
                         + "/summaries/"
-                        + summaryName
+                        + summaryType
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5004,16 +4326,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
         /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="summaryName">The Firmware analysis summary name describing the type of summary.</param>
+        /// <param name="summaryType">The Firmware analysis summary name describing the type of summary.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource> SummariesGetWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, string summaryName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource> SummariesGetWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, string summaryType, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5028,7 +4350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         + "/firmwares/"
                         + global::System.Uri.EscapeDataString(firmwareId)
                         + "/summaries/"
-                        + global::System.Uri.EscapeDataString(summaryName)
+                        + global::System.Uri.EscapeDataString(summaryType)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5164,12 +4486,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
         /// <param name="firmwareId">The id of the firmware.</param>
-        /// <param name="summaryName">The Firmware analysis summary name describing the type of summary.</param>
+        /// <param name="summaryType">The Firmware analysis summary name describing the type of summary.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SummariesGet_Validate(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, string summaryName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SummariesGet_Validate(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, string summaryType, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5181,7 +4503,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
-                await eventListener.AssertNotNull(nameof(summaryName),summaryName);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+                await eventListener.AssertNotNull(nameof(summaryType),summaryType);
             }
         }
 
@@ -5200,9 +4523,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SummariesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SummariesListByFirmware(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5246,9 +4569,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SummariesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SummariesListByFirmwareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5300,12 +4623,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult> SummariesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult> SummariesListByFirmwareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5360,12 +4683,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult> SummariesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult> SummariesListByFirmwareWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string firmwareId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5402,10 +4725,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult> SummariesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult> SummariesListByFirmwareWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5424,7 +4747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -5467,7 +4790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SummariesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SummariesListByFirmware_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5486,7 +4809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5531,10 +4854,678 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                 await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
                 await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
                 await eventListener.AssertNotNull(nameof(firmwareId),firmwareId);
+                await eventListener.AssertRegEx(nameof(firmwareId), firmwareId, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
             }
         }
 
-        /// <summary>The operation to Create a firmware analysis workspace.</summary>
+        /// <summary>Gets monthly usage information for a workspace.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
+        /// <param name="name">The Firmware analysis summary name describing the type of summary.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UsageMetricsGet(string subscriptionId, string resourceGroupName, string workspaceName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + global::System.Uri.EscapeDataString(workspaceName)
+                        + "/usageMetrics/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UsageMetricsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets monthly usage information for a workspace.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UsageMetricsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/usageMetrics/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var workspaceName = _match.Groups["workspaceName"].Value;
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + workspaceName
+                        + "/usageMetrics/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UsageMetricsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets monthly usage information for a workspace.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric> UsageMetricsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/usageMetrics/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var workspaceName = _match.Groups["workspaceName"].Value;
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + workspaceName
+                        + "/usageMetrics/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsageMetricsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets monthly usage information for a workspace.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
+        /// <param name="name">The Firmware analysis summary name describing the type of summary.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric> UsageMetricsGetWithResult(string subscriptionId, string resourceGroupName, string workspaceName, string name, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + global::System.Uri.EscapeDataString(workspaceName)
+                        + "/usageMetrics/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsageMetricsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsageMetricsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric> UsageMetricsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsageMetricsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task UsageMetricsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetric>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="UsageMetricsGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
+        /// <param name="name">The Firmware analysis summary name describing the type of summary.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task UsageMetricsGet_Validate(string subscriptionId, string resourceGroupName, string workspaceName, string name, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
+                await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+                await eventListener.AssertNotNull(nameof(name),name);
+                await eventListener.AssertRegEx(nameof(name), name, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+            }
+        }
+
+        /// <summary>Lists monthly usage information for a workspace.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UsageMetricsListByWorkspace(string subscriptionId, string resourceGroupName, string workspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + global::System.Uri.EscapeDataString(workspaceName)
+                        + "/usageMetrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UsageMetricsListByWorkspace_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists monthly usage information for a workspace.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UsageMetricsListByWorkspaceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/usageMetrics$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var workspaceName = _match.Groups["workspaceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + workspaceName
+                        + "/usageMetrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UsageMetricsListByWorkspace_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists monthly usage information for a workspace.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult> UsageMetricsListByWorkspaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.IoTFirmwareDefense/workspaces/(?<workspaceName>[^/]+)/usageMetrics$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var workspaceName = _match.Groups["workspaceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + workspaceName
+                        + "/usageMetrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsageMetricsListByWorkspaceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists monthly usage information for a workspace.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult> UsageMetricsListByWorkspaceWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-08-02";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.IoTFirmwareDefense/workspaces/"
+                        + global::System.Uri.EscapeDataString(workspaceName)
+                        + "/usageMetrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UsageMetricsListByWorkspaceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "UsageMetricsListByWorkspaceWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult> UsageMetricsListByWorkspaceWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetricListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UsageMetricsListByWorkspace" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task UsageMetricsListByWorkspace_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUsageMetricListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetricListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="UsageMetricsListByWorkspace" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task UsageMetricsListByWorkspace_Validate(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(workspaceName),workspaceName);
+                await eventListener.AssertRegEx(nameof(workspaceName), workspaceName, @"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+            }
+        }
+
+        /// <summary>The operation to create a firmware analysis workspace.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -5551,7 +5542,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesCreate(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5584,7 +5575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware analysis workspace.</summary>
+        /// <summary>The operation to create a firmware analysis workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when creating a firmware analysis workspace.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5599,7 +5590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5644,7 +5635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware analysis workspace.</summary>
+        /// <summary>The operation to create a firmware analysis workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when creating a firmware analysis workspace.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5656,7 +5647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5701,7 +5692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware analysis workspace.</summary>
+        /// <summary>The operation to create a firmware analysis workspace.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -5717,7 +5708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesCreateViaJsonString(string subscriptionId, string resourceGroupName, string workspaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5750,7 +5741,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware analysis workspace.</summary>
+        /// <summary>The operation to create a firmware analysis workspace.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -5763,7 +5754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string workspaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5796,7 +5787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Create a firmware analysis workspace.</summary>
+        /// <summary>The operation to create a firmware analysis workspace.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -5810,7 +5801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesCreateWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5998,8 +5989,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6007,9 +5998,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesDelete(string subscriptionId, string resourceGroupName, string workspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesDelete(string subscriptionId, string resourceGroupName, string workspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6034,14 +6025,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.WorkspacesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.WorkspacesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>The operation to delete a firmware analysis workspace.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6049,9 +6040,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6088,14 +6079,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.WorkspacesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.WorkspacesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "WorkspacesDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6103,17 +6094,110 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task WorkspacesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task WorkspacesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -6174,7 +6258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to get a url for file upload.</summary>
+        /// <summary>Generate a URL for uploading a firmware image.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -6190,7 +6274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesGenerateUploadUrl(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6224,7 +6308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to get a url for file upload.</summary>
+        /// <summary>Generate a URL for uploading a firmware image.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when requesting a URL to upload firmware.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6238,7 +6322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesGenerateUploadUrlViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6284,7 +6368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to get a url for file upload.</summary>
+        /// <summary>Generate a URL for uploading a firmware image.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when requesting a URL to upload firmware.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6296,7 +6380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> WorkspacesGenerateUploadUrlViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6342,7 +6426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to get a url for file upload.</summary>
+        /// <summary>Generate a URL for uploading a firmware image.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -6357,7 +6441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesGenerateUploadUrlViaJsonString(string subscriptionId, string resourceGroupName, string workspaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6391,7 +6475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to get a url for file upload.</summary>
+        /// <summary>Generate a URL for uploading a firmware image.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -6404,7 +6488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> WorkspacesGenerateUploadUrlViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string workspaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6438,7 +6522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to get a url for file upload.</summary>
+        /// <summary>Generate a URL for uploading a firmware image.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -6452,7 +6536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken> WorkspacesGenerateUploadUrlWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6640,7 +6724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesGet(string subscriptionId, string resourceGroupName, string workspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6681,7 +6765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6732,7 +6816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6785,7 +6869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesGetWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6960,9 +7044,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7000,9 +7084,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7046,12 +7130,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList> WorkspacesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult> WorkspacesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7096,12 +7180,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList> WorkspacesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult> WorkspacesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7136,10 +7220,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList> WorkspacesListByResourceGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult> WorkspacesListByResourceGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7158,7 +7242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -7201,7 +7285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task WorkspacesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task WorkspacesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7220,7 +7304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7273,9 +7357,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7311,9 +7395,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task WorkspacesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7354,12 +7438,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList> WorkspacesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult> WorkspacesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7400,12 +7484,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList> WorkspacesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult> WorkspacesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7438,10 +7522,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>"
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList> WorkspacesListBySubscriptionWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult> WorkspacesListBySubscriptionWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7460,7 +7544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -7503,7 +7587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task WorkspacesListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task WorkspacesListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7522,7 +7606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7561,7 +7645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7575,9 +7659,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesUpdate(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdateDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task WorkspacesUpdate(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7610,7 +7694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to update a firmware analysis workspaces.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when updating a firmware analysis workspace.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7622,9 +7706,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task WorkspacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdateDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task WorkspacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7669,7 +7753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to update a firmware analysis workspaces.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when updating a firmware analysis workspace.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7679,9 +7763,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdateDefinition body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7726,7 +7810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7741,7 +7825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task WorkspacesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string workspaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7774,7 +7858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7787,7 +7871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string workspaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7820,7 +7904,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7832,9 +7916,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesUpdateWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdateDefinition body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace> WorkspacesUpdateWithResult(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-10";
+            var apiVersion = @"2025-08-02";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7989,7 +8073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task WorkspacesUpdate_Validate(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdateDefinition body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task WorkspacesUpdate_Validate(string subscriptionId, string resourceGroupName, string workspaceName, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

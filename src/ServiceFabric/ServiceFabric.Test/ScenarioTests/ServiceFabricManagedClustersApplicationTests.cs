@@ -50,6 +50,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedAppUpgradeRecreate()
+        {
+            TestRunner.RunTestScript("Test-ManagedAppUpgrade-Recreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedService()
         {
             TestRunner.RunTestScript("Test-ManagedService");

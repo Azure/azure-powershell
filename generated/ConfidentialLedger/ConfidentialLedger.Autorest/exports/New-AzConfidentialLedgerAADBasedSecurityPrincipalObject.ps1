@@ -22,8 +22,8 @@ Create an in-memory object for AADBasedSecurityPrincipal.
 .Example
 New-AzConfidentialLedgerAADBasedSecurityPrincipalObject `
   -LedgerRoleName "Administrator" `
-  -PrincipalId "34621747-6fc8-4771-a2eb-72f31c461f2e" `
-  -TenantId "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
+  -PrincipalId "00001111-aaaa-2222-bbbb-3333cccc4444" `
+  -TenantId "00001111-aaaa-2222-bbbb-3333cccc4444"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AadBasedSecurityPrincipal

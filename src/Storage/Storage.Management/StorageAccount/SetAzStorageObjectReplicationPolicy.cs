@@ -126,6 +126,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string DestinationAccount { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication metrics feature is enabled for the policy.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication metrics feature is enabled for the policy.",
+            ParameterSetName = AccountObjectParameterSet)]
+        public bool EnableMetric
+        {
+            get
+            {
+                return enableMetric.Value;
+            }
+            set
+            {
+                enableMetric = value;
+            }
+        }
+        private bool? enableMetric = null;
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "Object Replication Policy Rules.",
             ParameterSetName = AccountNameParameterSet)]
@@ -182,6 +203,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         DestinationAccount = this.DestinationAccount,
                         Rules = PSObjectReplicationPolicyRule.ParseObjectReplicationPolicyRules(this.Rule)
                     };
+                    if (this.enableMetric != null)
+                    {
+                        policyToSet.Metrics = new ObjectReplicationPolicyPropertiesMetrics()
+                        {
+                            Enabled = this.enableMetric
+                        };
+                    }
                 }
 
                 ObjectReplicationPolicy policy = this.StorageClient.ObjectReplicationPolicies.CreateOrUpdate(

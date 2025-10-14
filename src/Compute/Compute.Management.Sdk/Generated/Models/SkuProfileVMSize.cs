@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -58,21 +57,5 @@ namespace Microsoft.Azure.Management.Compute.Models
         [JsonProperty(PropertyName = "rank")]
         public int? Rank { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Rank != null)
-            {
-                if (Rank < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "Rank", 0);
-                }
-            }
-        }
     }
 }

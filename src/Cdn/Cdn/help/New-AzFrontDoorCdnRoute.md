@@ -25,18 +25,11 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <Stri
  [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### CreateViaIdentityProfile
 ```
-New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfileExpanded
@@ -51,11 +44,25 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObjec
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityProfile
+### CreateViaJsonFilePath
 ```
-New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
- -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityAfdEndpoint
+```
+New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity> -Route <IRoute>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityAfdEndpointExpanded
@@ -66,13 +73,6 @@ New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity>
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
  [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
  [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityAfdEndpoint
-```
-New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity> -Route <IRoute>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -109,7 +109,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: CreateViaIdentityAfdEndpointExpanded, CreateViaIdentityAfdEndpoint
+Parameter Sets: CreateViaIdentityAfdEndpoint, CreateViaIdentityAfdEndpointExpanded
 Aliases:
 
 Required: True
@@ -251,7 +251,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Parameter Sets: CreateExpanded, CreateViaIdentityProfile, CreateViaIdentityProfileExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -418,7 +418,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: True
@@ -433,7 +433,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium which is uniqu
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -449,7 +449,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -495,7 +495,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False

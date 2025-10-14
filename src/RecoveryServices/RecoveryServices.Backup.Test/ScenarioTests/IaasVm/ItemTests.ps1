@@ -12,6 +12,40 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVMRedoProtection
+{
+    $resourceGroupName = "hiagarg"
+    $vaultName = "hiagaVault"
+    $targetVaultName = "hiagaVault2"
+    $vmContainerSuffix = "hiaga-adhoc-vm"
+    $policyName = "DefaultPolicy"
+
+    try
+    {
+        # Step 1: Move protection from hiagaVault to hiagaVault2
+        $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+        $items = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID | Where-Object { $_.ContainerName.EndsWith($vmContainerSuffix) }
+        $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $targetVaultName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $policyName -VaultId $targetVault.ID
+        
+	$redoJob = Redo-AzRecoveryServicesBackupProtection -Item $items[-1] -TargetVaultId $targetVault.ID -TargetPolicy $policy -VaultId $vault.ID -Force -Confirm:$false
+	Assert-True { $redoJob.Status -eq "Completed" }
+
+	# Step 2: Reverse - move protection back to hiagaVault
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $targetVaultName
+	$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $policyName -VaultId $targetVault.ID
+	$items = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID | Where-Object { $_.ContainerName.EndsWith($vmContainerSuffix) }
+
+	$redoJob = Redo-AzRecoveryServicesBackupProtection -Item $items[-1] -TargetVaultId $targetVault.ID -TargetPolicy $policy -VaultId $vault.ID -Force -Confirm:$false
+	Assert-True { $redoJob.Status -eq "Completed" }
+    }
+    finally
+    {
+        # Optional cleanup if needed
+    }
+}
+
 function Test-AzurePERestore
 {
 	$subId = "f2edfd5d-5496-4683-b94f-b3588c579009"
@@ -1330,5 +1364,64 @@ function Test-AzureVMDiskExclusion
 	finally
 	{
 		cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
+{
+	$location = "eastus2euap"
+	$resourceGroupName = "sgholap-rg"
+	$vaultName = "PSTestingVault"
+	$vmName = "PSCVMRestoreTestingVM"
+	$saName = "sgholapecysa3"
+	$targetVMName = "PSRestoreVM"
+	$targetVNetName = "testadeecy-vnet"
+	$targetRG = "asmaskarrg"
+	$targetSubnetName = "default"
+	$owner = "sgholap"
+	$subscriptionId = "5288acd1-ba79-4377-9205-9f220331a44a"
+	$recoveryPointId = "807152782396876"
+	$cVMOSDiskEncryptionSetId = "/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/sgholap-rg/providers/Microsoft.Compute/diskEncryptionSets/CVMPSRestoreDES"
+	try
+	{	
+		# Setup		
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -FriendlyName $vmName -VaultId $vault.ID
+		$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -VaultId $vault.ID -RecoveryPointId $recoveryPointId
+
+		# Test command by passing CVMOSDiskEncryptionSetId as non-empty string
+		$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $targetRG -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetRG -TargetSubnetName $targetSubnetName -CVMOSDiskEncryptionSetId $cVMOSDiskEncryptionSetId
+		
+		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
+
+		Delete-VM $targetRG $targetVMName
+
+		# Test command by passing CVMOSDiskEncryptionSetId as empty string
+		$cVMOSDiskEncryptionSetId = ""
+
+		$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $targetRG -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetRG -TargetSubnetName $targetSubnetName -CVMOSDiskEncryptionSetId $cVMOSDiskEncryptionSetId
+		
+		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
+
+		Delete-VM $targetRG $targetVMName
+
+		# Test command without passing CVMOSDiskEncryptionSetId
+		$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $targetRG -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetRG -TargetSubnetName $targetSubnetName
+		
+		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		Delete-VM $targetRG $targetVMName
 	}
 }
