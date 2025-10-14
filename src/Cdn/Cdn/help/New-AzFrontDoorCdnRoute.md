@@ -444,8 +444,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -490,8 +489,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
+Azure Subscription ID.
 
 ```yaml
 Type: System.String
