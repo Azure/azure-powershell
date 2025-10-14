@@ -1,13 +1,13 @@
 {
-  "Get-AzFrontDoorWafPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-ahz7/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/testpsWaf8alq?api-version=2024-02-01+1": {
+  "Get-AzFrontDoorWafPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-3fhp/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/testpsWafve35?api-version=2024-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-ahz7/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/testpsWaf8alq?api-version=2024-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-3fhp/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/testpsWafve35?api-version=2024-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "a77ad8dd-57c1-4e5a-b60d-a70995efaef4" ],
+        "x-ms-client-request-id": [ "c179c599-cb28-4dd7-82a5-b84a13813c9a" ],
         "CommandName": [ "Get-AzFrontDoorWafPolicy" ],
         "FullCommandName": [ "Get-AzFrontDoorWafPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,23 +23,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "87aab9b8-0a1b-4791-8c3a-9f3cfadf158e" ],
-        "x-ms-client-request-id": [ "a77ad8dd-57c1-4e5a-b60d-a70995efaef4" ],
+        "x-ms-request-id": [ "7175a89f-f3d1-47c4-9c3b-fdacfc841e43" ],
+        "x-ms-client-request-id": [ "c179c599-cb28-4dd7-82a5-b84a13813c9a" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "3a6317ca-da87-4d36-a42c-b21842c324c5" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251014T061624Z:3a6317ca-da87-4d36-a42c-b21842c324c5" ],
+        "x-ms-correlation-request-id": [ "518fc22f-09d4-473b-9d3d-42ebdf98a94a" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251014T090733Z:518fc22f-09d4-473b-9d3d-42ebdf98a94a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A0034AB400DE4B90946EE1D542576557 Ref B: SYD03EDGE1114 Ref C: 2025-10-14T06:16:22Z" ],
-        "Date": [ "Tue, 14 Oct 2025 06:16:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4B114541A29D429CB42F07DE48A304A6 Ref B: SYD03EDGE2021 Ref C: 2025-10-14T09:07:31Z" ],
+        "Date": [ "Tue, 14 Oct 2025 09:07:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1912" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-ahz7/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/testpsWaf8alq\",\"type\":\"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\"name\":\"testpsWaf8alq\",\"location\":\"Global\",\"tags\":{},\"sku\":{\"name\":\"Premium_AzureFrontDoor\"},\"properties\":{\"policySettings\":{\"enabledState\":\"Enabled\",\"mode\":\"Prevention\",\"redirectUrl\":null,\"customBlockResponseStatusCode\":null,\"customBlockResponseBody\":null,\"requestBodyCheck\":\"Disabled\",\"javascriptChallengeExpirationInMinutes\":30,\"logScrubbing\":{\"state\":\"Enabled\",\"scrubbingRules\":[{\"matchVariable\":\"RequestHeaderNames\",\"selectorMatchOperator\":\"EqualsAny\",\"selector\":null,\"state\":\"Enabled\"}]}},\"customRules\":{\"rules\":[{\"name\":\"Rule1\",\"enabledState\":\"Enabled\",\"priority\":2,\"ruleType\":\"MatchRule\",\"rateLimitDurationInMinutes\":1,\"rateLimitThreshold\":null,\"matchConditions\":[{\"matchVariable\":\"RequestHeader\",\"selector\":\"UserAgent\",\"operator\":\"Contains\",\"negateCondition\":false,\"matchValue\":[\"WINDOWS\"],\"transforms\":[\"Uppercase\"]}],\"action\":\"Block\",\"groupBy\":[]}]},\"managedRules\":{\"managedRuleSets\":[{\"ruleSetType\":\"DefaultRuleSet\",\"ruleSetVersion\":\"1.0\",\"ruleSetAction\":null,\"ruleGroupOverrides\":[{\"ruleGroupName\":\"SQLI\",\"rules\":[{\"ruleId\":\"942100\",\"enabledState\":\"Enabled\",\"action\":\"Log\",\"exclusions\":[{\"matchVariable\":\"QueryStringArgNames\",\"selectorMatchOperator\":\"Equals\",\"selector\":\"ExcludeInRule\"}]}],\"exclusions\":[{\"matchVariable\":\"QueryStringArgNames\",\"selectorMatchOperator\":\"Equals\",\"selector\":\"ExcludeInGroup\"}]}],\"exclusions\":[{\"matchVariable\":\"QueryStringArgNames\",\"selectorMatchOperator\":\"Equals\",\"selector\":\"ExcludeInSet\"}]},{\"ruleSetType\":\"BotProtection\",\"ruleSetVersion\":\"preview-0.1\",\"ruleSetAction\":null,\"ruleGroupOverrides\":[],\"exclusions\":[]}]},\"frontendEndpointLinks\":[],\"securityPolicyLinks\":[],\"resourceState\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-3fhp/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/testpsWafve35\",\"type\":\"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\"name\":\"testpsWafve35\",\"location\":\"Global\",\"tags\":{},\"sku\":{\"name\":\"Premium_AzureFrontDoor\"},\"properties\":{\"policySettings\":{\"enabledState\":\"Enabled\",\"mode\":\"Prevention\",\"redirectUrl\":null,\"customBlockResponseStatusCode\":null,\"customBlockResponseBody\":null,\"requestBodyCheck\":\"Disabled\",\"javascriptChallengeExpirationInMinutes\":30,\"logScrubbing\":{\"state\":\"Enabled\",\"scrubbingRules\":[{\"matchVariable\":\"RequestHeaderNames\",\"selectorMatchOperator\":\"EqualsAny\",\"selector\":null,\"state\":\"Enabled\"}]}},\"customRules\":{\"rules\":[{\"name\":\"Rule1\",\"enabledState\":\"Enabled\",\"priority\":2,\"ruleType\":\"MatchRule\",\"rateLimitDurationInMinutes\":1,\"rateLimitThreshold\":null,\"matchConditions\":[{\"matchVariable\":\"RequestHeader\",\"selector\":\"UserAgent\",\"operator\":\"Contains\",\"negateCondition\":false,\"matchValue\":[\"WINDOWS\"],\"transforms\":[\"Uppercase\"]}],\"action\":\"Block\",\"groupBy\":[]}]},\"managedRules\":{\"managedRuleSets\":[{\"ruleSetType\":\"DefaultRuleSet\",\"ruleSetVersion\":\"1.0\",\"ruleSetAction\":null,\"ruleGroupOverrides\":[{\"ruleGroupName\":\"SQLI\",\"rules\":[{\"ruleId\":\"942100\",\"enabledState\":\"Enabled\",\"action\":\"Log\",\"exclusions\":[{\"matchVariable\":\"QueryStringArgNames\",\"selectorMatchOperator\":\"Equals\",\"selector\":\"ExcludeInRule\"}]}],\"exclusions\":[{\"matchVariable\":\"QueryStringArgNames\",\"selectorMatchOperator\":\"Equals\",\"selector\":\"ExcludeInGroup\"}]}],\"exclusions\":[{\"matchVariable\":\"QueryStringArgNames\",\"selectorMatchOperator\":\"Equals\",\"selector\":\"ExcludeInSet\"}]},{\"ruleSetType\":\"BotProtection\",\"ruleSetVersion\":\"preview-0.1\",\"ruleSetAction\":null,\"ruleGroupOverrides\":[],\"exclusions\":[]}]},\"frontendEndpointLinks\":[],\"securityPolicyLinks\":[],\"resourceState\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }
