@@ -57,24 +57,28 @@ Updates mutable properties on an existing replica including SKU, unit count (cap
 ```powershell
 Update-AzSignalRReplica -ResourceGroupName "myRg" -SignalRName "mySignalR" -Name "replica-westus2" -UnitCount 5
 ```
+
 Increases the capacity of the replica to 5 units.
 
 ### Example 2: Disable the regional endpoint
 ```powershell
 Update-AzSignalRReplica -ResourceGroupName "myRg" -SignalRName "mySignalR" -Name "replica-westus2" -RegionEndpointEnabled Disabled
 ```
+
 Temporarily disables the replica's endpoint.
 
 ### Example 3: Change SKU and scale
 ```powershell
 Update-AzSignalRReplica -ResourceGroupName "myRg" -SignalRName "mySignalR" -Name "replica-westus2" -Sku Premium_P2 -UnitCount 200
 ```
+
 Moves the replica to Premium_P2 SKU with capacity 200.
 
 ### Example 4: Update tags from a replica object
 ```powershell
 Get-AzSignalRReplica -ResourceGroupName "myRg" -SignalRName "mySignalR" -Name "replica-westus2" | Update-AzSignalRReplica -Tag @{ Environment = "Prod"; Owner = "Ops" }
 ```
+
 Adds or updates tags on the replica.
 
 ## PARAMETERS
@@ -83,7 +87,7 @@ Adds or updates tags on the replica.
 Run the cmdlet in background job.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -113,7 +117,7 @@ Accept wildcard characters: False
 The SignalR replica resource object.
 
 ```yaml
-Type: PSReplicaResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -128,7 +132,7 @@ Accept wildcard characters: False
 The replica name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet, InputSignalRObjectParameterSet
 Aliases:
 
@@ -143,7 +147,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -159,7 +163,7 @@ Enable or disable the regional endpoint.
 Valid values are 'Enabled' and 'Disabled'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +178,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -189,7 +193,7 @@ Accept wildcard characters: False
 The resource ID of the replica.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -204,7 +208,7 @@ Accept wildcard characters: False
 The SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -219,7 +223,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: PSSignalRResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 Parameter Sets: InputSignalRObjectParameterSet
 Aliases:
 
@@ -234,7 +238,7 @@ Accept wildcard characters: False
 The SignalR replica service SKU.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -267,7 +271,7 @@ Default to 1.
 For Premium_P2: 100,200,300,400,500,600,700,800,900,1000
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -282,7 +286,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -298,7 +302,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

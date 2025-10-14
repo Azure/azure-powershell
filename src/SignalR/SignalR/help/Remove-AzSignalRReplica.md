@@ -48,18 +48,21 @@ Removes a specified replica from a SignalR service. This action is irreversible;
 ```powershell
 Remove-AzSignalRReplica -ResourceGroupName "myRg" -SignalRName "mySignalR" -Name "replica-westus2" -PassThru
 ```
+
 Deletes the replica named "replica-westus2" and returns `True` on success.
 
 ### Example 2: Remove a replica by resource ID
 ```powershell
 Remove-AzSignalRReplica -ResourceId "/subscriptions/{subId}/resourceGroups/myRg/providers/Microsoft.SignalRService/SignalR/mySignalR/replicas/replica-westus2"
 ```
+
 Deletes the specified replica using its full resource ID.
 
 ### Example 3: Remove a replica from a replica object
 ```powershell
 Get-AzSignalRReplica -ResourceGroupName "myRg" -SignalRName "mySignalR" -Name "replica-dr" | Remove-AzSignalRReplica -PassThru
 ```
+
 Pipes the replica object into the removal cmdlet.
 
 ### Example 4: Remove a replica from a SignalR object
@@ -67,6 +70,7 @@ Pipes the replica object into the removal cmdlet.
 $signalr = Get-AzSignalR -ResourceGroupName "myRg" -Name "mySignalR"
 $signalr | Remove-AzSignalRReplica -Name "replica-eastus2"
 ```
+
 Removes the specified replica by piping the primary SignalR resource.
 
 ## PARAMETERS
@@ -75,7 +79,7 @@ Removes the specified replica by piping the primary SignalR resource.
 Run the cmdlet in background job.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -105,7 +109,7 @@ Accept wildcard characters: False
 The replica resource object.
 
 ```yaml
-Type: PSReplicaResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -120,7 +124,7 @@ Accept wildcard characters: False
 The replica name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet, InputSignalRObjectParameterSet
 Aliases:
 
@@ -135,7 +139,7 @@ Accept wildcard characters: False
 Returns true when the command succeeds.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +154,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -165,7 +169,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -180,7 +184,7 @@ Accept wildcard characters: False
 The resource ID of a replica
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -195,7 +199,7 @@ Accept wildcard characters: False
 The SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -210,7 +214,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: PSSignalRResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 Parameter Sets: InputSignalRObjectParameterSet
 Aliases:
 
@@ -225,7 +229,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -241,7 +245,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

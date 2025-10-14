@@ -73,7 +73,7 @@ function Test-AzureRmSignalR
         $newKeys1 = Get-AzSignalRKey -ResourceGroupName $resourceGroupName -Name $signalrName
         Assert-NotNull $newKeys1
 
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
             Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
@@ -89,7 +89,7 @@ function Test-AzureRmSignalR
         Assert-NotNull $newKeys2
         Assert-AreEqual $newKeys1.PrimaryKey $newKeys2.PrimaryKey
         Assert-AreEqual $newKeys1.PrimaryConnectionString $newKeys2.PrimaryConnectionString
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Assert-AreNotEqual $newKeys1.SecondaryKey $newKeys2.SecondaryKey
             Assert-AreNotEqual $newKeys1.SecondaryConnectionString $newKeys2.SecondaryConnectionString
@@ -159,7 +159,7 @@ function Test-AzureRmSignalRWithDefaultArgs
         # The following two lines don't work in "playback" mode because all the connection strings are sanitized to the same value.
         # If test mode is playback , skip the test
 
-        if( GetTestMode -eq "Record" )
+        if( $env:AZURE_TEST_MODE -eq "Record" )
         {
             Assert-AreNotEqual $keys.PrimaryKey $newKeys1.PrimaryKey
             Assert-AreNotEqual $keys.PrimaryConnectionString $newKeys1.PrimaryConnectionString
@@ -498,43 +498,43 @@ function Test-AzureRmSignalRCustomCertificateAndCustomDomain
 
         # ===== Remove domain =====
         # Remove domain via resource group parameter set
-        $result = Remove-AzSignalRCustomDomain -ResourceGroupName $resourceGroupName -SignalRName $signalrName -Name "domain1"
+        $result = Remove-AzSignalRCustomDomain -ResourceGroupName $resourceGroupName -SignalRName $signalrName -Name "domain1" -PassThru
         Assert-True { $result }
 
         # Remove domain via SignalR object parameter set
-        $result = $signalr | Remove-AzSignalRCustomDomain -Name "domain2"
+        $result = $signalr | Remove-AzSignalRCustomDomain -Name "domain2" -PassThru
         Assert-True { $result }
 
         # Remove domain via input object parameter set
         $domain3 = $signalr | New-AzSignalRCustomDomain -Name "domain3" -DomainName $customDomainName -CustomCertificateId $cert1.Id
-        $result = $domain3 | Remove-AzSignalRCustomDomain
+        $result = $domain3 | Remove-AzSignalRCustomDomain -PassThru
         Assert-True { $result }
 
         # Remove domain via Resource ID parameter set
         $domain4 = $signalr | New-AzSignalRCustomDomain -Name "domain4" -DomainName $customDomainName -CustomCertificateId $cert1.Id
         $domain4Resource = [pscustomobject]@{ResourceId = $domain4.Id }
-        $result = $domain4Resource | Remove-AzSignalRCustomDomain
+        $result = $domain4Resource | Remove-AzSignalRCustomDomain -PassThru
         Assert-True { $result }
 
         # ====== Remove cert =====
 
         # Remove the certificate via resource group parameter set
-        $result = Remove-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -SignalRName $signalrName -Name "cert1"
+        $result = Remove-AzSignalRCustomCertificate -ResourceGroupName $resourceGroupName -SignalRName $signalrName -Name "cert1" -PassThru
         Assert-True { $result }
 
         # Remove the certificate via SignalR object parameter set
-        $result = $signalr | Remove-AzSignalRCustomCertificate -Name "cert2"
+        $result = $signalr | Remove-AzSignalRCustomCertificate -Name "cert2" -PassThru
         Assert-True { $result }
 
         # Remove the certificate via input Object parameter set
         $cert2 = $signalr | New-AzSignalRCustomCertificate -Name "cert2" -KeyVaultBaseUri $keyVaultBaseUri -KeyVaultSecretName $keyVaultSecretName
-        $result = $cert2 | Remove-AzSignalRCustomCertificate
+        $result = $cert2 | Remove-AzSignalRCustomCertificate -PassThru
         Assert-True { $result }
 
         # Remove the certificate via Resource ID parameter set
         $cert2 = $signalr | New-AzSignalRCustomCertificate -Name "cert2" -KeyVaultBaseUri $keyVaultBaseUri -KeyVaultSecretName $keyVaultSecretName
         $certResource3 = [pscustomobject]@{ResourceId = $cert2.Id }
-        $result = $certResource3 | Remove-AzSignalRCustomCertificate
+        $result = $certResource3 | Remove-AzSignalRCustomCertificate -PassThru
         Assert-True { $result }
 
     } finally
@@ -571,7 +571,7 @@ function Test-AzSignalRReplica
         Assert-AreEqual 2 $replica1.Sku.Capacity
 
         # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -592,7 +592,7 @@ function Test-AzSignalRReplica
         Assert-AreEqual 2 $replicas.Count
 
         # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -602,7 +602,7 @@ function Test-AzSignalRReplica
         Assert-AreEqual "Disabled" $updatedReplica.RegionEndpointEnabled
 
         # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -612,7 +612,7 @@ function Test-AzSignalRReplica
         Assert-True { $result }
 
         # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -623,7 +623,7 @@ function Test-AzSignalRReplica
         Assert-True { $result }
 
         # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -633,7 +633,7 @@ function Test-AzSignalRReplica
         Assert-True { $result }
 
          # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -643,7 +643,7 @@ function Test-AzSignalRReplica
         Assert-True { $result }
 
         # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -653,7 +653,7 @@ function Test-AzSignalRReplica
         Assert-True { $result }
 
         # Replica may be in "updating" internally, wait until update finishes.
-        if( GetTestMode -eq "Record")
+        if( $env:AZURE_TEST_MODE -eq "Record")
         {
             Start-Sleep -Seconds 120
         }
@@ -756,4 +756,42 @@ function Remove-Environment
         [string] $resourceGroupName
     )
     Remove-AzResourceGroup -Name $resourceGroupName
+}
+
+<#!
+.SYNOPSIS
+Test IP rule cmdlets for SignalR (New/Add/Remove-AzSignalRNetworkIpRule).
+#>
+function Test-AzSignalRNetworkIpRule
+{
+    $location = Get-ProviderLocation "Microsoft.SignalRService/SignalR"
+    $nameSuffix = "iprule-test"
+    $resourceGroupName = Get-RandomResourceGroupName $nameSuffix
+    $signalrName = Get-RandomSignalRName  $nameSuffix
+
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -Sku "Premium_P1"
+
+    # Create IP rule objects
+    $rule1 = New-AzSignalRNetworkIpRuleObject -Value "10.1.0.0/16" -Action Allow
+    $rule2 = New-AzSignalRNetworkIpRuleObject -Value "20.2.2.2" -Action Deny
+
+    # a. Add via resource group parameter set
+    $acls = Add-AzSignalRNetworkIpRule -ResourceGroupName $resourceGroupName -Name $signalrName -IpRule $rule1, $rule2
+    Assert-NotNull $acls
+    Assert-AreEqual 4 $acls.IPRules.Count
+    Assert-True { $acls.IPRules | Where-Object { $_.Value -eq "10.1.0.0/16" -and $_.Action -eq "Allow" } }
+    Assert-True { $acls.IPRules | Where-Object { $_.Value -eq "20.2.2.2" -and $_.Action -eq "Deny" } }
+
+    # Remove one via resource group parameter set
+    $acls = Remove-AzSignalRNetworkIpRule -ResourceGroupName $resourceGroupName -Name $signalrName -IpRule $rule1
+    Assert-AreEqual 3 $acls.IPRules.Count
+    Assert-False { $acls.IPRules | Where-Object { $_.Value -eq "10.1.0.0/16" } }
+
+    # Remove one via resource ID parameter set
+    $signalr = Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+    $acls = Remove-AzSignalRNetworkIpRule -ResourceId $signalr.Id -IpRule $rule2
+    Assert-AreEqual 2 $acls.IPRules.Count
+    Assert-False { $acls.IPRules | Where-Object { $_.Value -eq "20.2.2.2" } }
+
 }

@@ -39,6 +39,7 @@ Creates a new replica in a different region (or same region if supported) for a 
 ```powershell
 New-AzSignalRReplica -ResourceGroupName "myRg" -SignalRName "mySignalR" -Name "replica-westus2" -Location "West US 2" -Sku Premium_P1 -UnitCount 2
 ```
+
 Creates a replica named "replica-westus2" in West US 2 with 2 units using Premium_P1.
 
 ### Example 2: Create a replica using a SignalR object from the pipeline
@@ -46,8 +47,8 @@ Creates a replica named "replica-westus2" in West US 2 with 2 units using Premiu
 $signalr = Get-AzSignalR -ResourceGroupName "myRg" -Name "mySignalR"
 $signalr | New-AzSignalRReplica -Name "replica-eastus2" -Location "East US 2" -Sku Premium_P1
 ```
-Creates a replica in East US 2 by piping the primary SignalR resource.
 
+Creates a replica in East US 2 by piping the primary SignalR resource.
 
 ## PARAMETERS
 
@@ -55,7 +56,7 @@ Creates a replica in East US 2 by piping the primary SignalR resource.
 Run the cmdlet in background job.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 The location where the replica will be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 The replica name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +116,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -132,7 +133,7 @@ Valid values are 'Enabled' and 'Disabled'.
 Default is 'Enabled'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +148,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -164,7 +165,7 @@ Valid values are 'true' and 'false'.
 Default is 'false'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +180,7 @@ Accept wildcard characters: False
 The SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -194,7 +195,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: PSSignalRResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 Parameter Sets: InputSignalRObjectParameterSet
 Aliases:
 
@@ -211,7 +212,7 @@ Default is Premium_P1.
 Only Premium_P1, Premium_P2 are supported.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +245,7 @@ Default to 1.
 For Premium_P2: 100,200,300,400,500,600,700,800,900,1000
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +260,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -275,7 +276,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

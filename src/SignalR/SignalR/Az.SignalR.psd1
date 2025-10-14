@@ -94,7 +94,8 @@ CmdletsToExport = 'Get-AzSignalR', 'Get-AzSignalRKey', 'Get-AzSignalRUsage',
                'Update-AzSignalR', 'Update-AzSignalRNetworkAcl', 
                'New-AzSignalRCustomDomain', 'Get-AzSignalRCustomDomain', 'Remove-AzSignalRCustomDomain', 'Update-AzSignalRCustomDomain',
                'New-AzSignalRCustomCertificate', 'Get-AzSignalRCustomCertificate', 'Remove-AzSignalRCustomCertificate',
-               'Get-AzSignalRReplica', 'New-AzSignalRReplica', 'Remove-AzSignalRReplica', 'Restart-AzSignalRReplica', 'Start-AzSignalRReplica', 'Stop-AzSignalRReplica', 'Update-AzSignalRReplica'
+               'Get-AzSignalRReplica', 'New-AzSignalRReplica', 'Remove-AzSignalRReplica', 'Restart-AzSignalRReplica', 'Start-AzSignalRReplica', 'Stop-AzSignalRReplica', 'Update-AzSignalRReplica',
+               'New-AzSignalRNetworkIpRuleObject', 'Remove-AzSignalRNetworkIpRule', 'Add-AzSignalRNetworkIpRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

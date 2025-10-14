@@ -44,12 +44,14 @@ If no replica name is provided, all replicas for the specified SignalR service a
 ```powershell
 Get-AzSignalRReplica -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR"
 ```
+
 Lists every replica created for the primary SignalR resource "mySignalR".
 
 ### Example 2: Get a specific replica by name
 ```powershell
 Get-AzSignalRReplica -ResourceGroupName "myResourceGroup" -SignalRName "mySignalR" -Name "replica-westus2"
 ```
+
 Gets the replica named "replica-westus2".
 
 ### Example 3: Use pipeline from a SignalR resource object
@@ -57,12 +59,14 @@ Gets the replica named "replica-westus2".
 $signalr = Get-AzSignalR -ResourceGroupName "myResourceGroup" -Name "mySignalR"
 $signalr | Get-AzSignalRReplica
 ```
+
 Lists all replicas for the SignalR resource represented by `$signalr`.
 
 ### Example 4: Get a replica by resource ID
 ```powershell
 Get-AzSignalRReplica -ResourceId "/subscriptions/{subId}/resourceGroups/{resourceGroup}/providers/Microsoft.SignalRService/SignalR/{signalRName}/replicas/{replicaName}"
 ```
+
 Gets the replica using its full ARM resource ID.
 
 ## PARAMETERS
@@ -71,7 +75,7 @@ Gets the replica using its full ARM resource ID.
 Run the cmdlet in background job.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,7 +105,7 @@ Accept wildcard characters: False
 The name of the replica
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet, InputSignalRObjectParameterSet
 Aliases:
 
@@ -116,7 +120,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -132,7 +136,7 @@ The resource group name.
 The default one will be used if not specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -147,7 +151,7 @@ Accept wildcard characters: False
 The resource ID of a replica
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -162,7 +166,7 @@ Accept wildcard characters: False
 The SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -177,7 +181,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: PSSignalRResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 Parameter Sets: InputSignalRObjectParameterSet
 Aliases:
 
