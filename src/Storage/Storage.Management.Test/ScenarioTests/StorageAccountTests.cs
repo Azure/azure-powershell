@@ -302,5 +302,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StorageAccountDnsEndpointType");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountEnableSmbOauth()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountEnableSmbOauth");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountZonePlacement()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountZonePlacement");
+        }
     }
 }

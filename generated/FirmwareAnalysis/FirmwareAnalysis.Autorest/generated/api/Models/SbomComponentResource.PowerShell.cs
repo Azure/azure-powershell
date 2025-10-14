@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PowerShell;
 
-    /// <summary>SBOM analysis result resource</summary>
+    /// <summary>The object representing a firmware analysis SBOM component result resource</summary>
     [System.ComponentModel.TypeConverter(typeof(SbomComponentResourceTypeConverter))]
     public partial class SbomComponentResource
     {
@@ -153,6 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("ComponentId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ComponentId = (string) content.GetValueForProperty("ComponentId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ComponentId, global::System.Convert.ToString);
@@ -234,6 +238,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("ComponentId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ComponentId = (string) content.GetValueForProperty("ComponentId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResourceInternal)this).ComponentId, global::System.Convert.ToString);
@@ -274,7 +282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             return ToJsonString();
         }
     }
-    /// SBOM analysis result resource
+    /// The object representing a firmware analysis SBOM component result resource
     [System.ComponentModel.TypeConverter(typeof(SbomComponentResourceTypeConverter))]
     public partial interface ISbomComponentResource
 

@@ -46,31 +46,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElements Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShare { get => (this._liveShare = this._liveShare ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements()); set { {_liveShare = value;} } }
 
         /// <summary>Internal Acessors for LiveShareFileShareCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareFileShareCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).FileShareCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).FileShareCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareFileShareCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).FileShareCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).FileShareCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for LiveShareProvisionedBandwidthMiBPerSec</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedBandwidthMiBPerSec = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedBandwidthMiBPerSec = value ?? default(int); }
 
         /// <summary>Internal Acessors for LiveShareProvisionedIops</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop = value ?? default(int); }
 
         /// <summary>Internal Acessors for LiveShareProvisionedStorageGiB</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedStorageGiB = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedStorageGiB = value ?? default(int); }
 
         /// <summary>Internal Acessors for SoftDeletedShare</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElements Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShare { get => (this._softDeletedShare = this._softDeletedShare ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageElements()); set { {_softDeletedShare = value;} } }
 
         /// <summary>Internal Acessors for SoftDeletedShareFileShareCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareFileShareCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).FileShareCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).FileShareCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareFileShareCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).FileShareCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).FileShareCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for SoftDeletedShareProvisionedBandwidthMiBPerSec</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedBandwidthMiBPerSec = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedBandwidthMiBPerSec = value ?? default(int); }
 
         /// <summary>Internal Acessors for SoftDeletedShareProvisionedIops</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop = value ?? default(int); }
 
         /// <summary>Internal Acessors for SoftDeletedShareProvisionedStorageGiB</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedStorageGiB = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedStorageGiB = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="SoftDeletedShare" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElements _softDeletedShare;

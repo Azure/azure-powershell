@@ -15,5 +15,6 @@ namespace Microsoft.Azure.Management.SignalR.Models
     {
         public const string Primary = "Primary";
         public const string Secondary = "Secondary";
+        public const string Salt = "Salt";
     }
 }

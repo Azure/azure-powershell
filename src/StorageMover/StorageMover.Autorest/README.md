@@ -28,15 +28,15 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 1cb8cb0a95c20513c5d767614888f415be99245d
+commit: 17891d99ece54475e43fb8665727d044e8fb2f54
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2024-07-01/storagemover.json
+  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2025-07-01/storagemover.json
 
 # For new RP, the version is 0.1.0
-module-version: 1.2.0
+module-version: 1.6.0
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)
@@ -164,4 +164,78 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData');
+
+  - where:
+      verb: Get|Update
+      subject: Agent
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - UploadLimitScheduleWeeklyRecurrence
+        new-output-properties:
+          - UploadLimitScheduleWeeklyRecurrence
+        change-description: The type of the property UploadLimitScheduleWeeklyRecurrence will be changed from fixed array to 'List'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: New
+      subject: JobDefinition
+      variant: Create
+    set:
+      breaking-change:
+        change-description: The parameter set Create will be removed. Suggest to use CreateExpanded and CreateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: New
+      subject: Project
+      variant: Create
+    set:
+      breaking-change:
+        change-description: The parameter set Create will be removed. Suggest to use CreateExpanded and CreateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: StorageMover
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: Agent
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: JobDefinition
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Update
+      subject: Project
+      variant: Update$|UpdateViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```

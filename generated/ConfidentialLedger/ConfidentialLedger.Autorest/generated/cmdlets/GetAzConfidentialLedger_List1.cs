@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.ConfidentialLedger/ledgers/"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzConfidentialLedger_List1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AadBasedSecurityPrincipal","CertBasedSecurityPrincipal"}, NewOutputProperties=new string[] {"AadBasedSecurityPrincipal","CertBasedSecurityPrincipal"}, ChangeDescription="The type of property 'AadBasedSecurityPrincipal', 'CertBasedSecurityPrincipal' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Description(@"Retrieves the properties of all Confidential Ledgers.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Generated]

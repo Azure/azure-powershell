@@ -254,6 +254,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.")]
         public bool? OptimizedForFrequentAttach { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM.")]
+        public string SecurityMetadataUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.")]
+        public string SecurityDataUri { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -370,6 +382,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.PerformancePlus = this.PerformancePlus;
+            }
+
+            if(this.IsParameterBound((c => c.SecurityDataUri)))
+            {
+                if (vCreationData == null)
+                { 
+                    vCreationData = new CreationData();
+                }
+                vCreationData.SecurityDataUri = this.SecurityDataUri;
+            }
+            
+            if (this.IsParameterBound((c => c.SecurityMetadataUri)))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.SecurityMetadataUri = this.SecurityMetadataUri;
             }
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))

@@ -117,3 +117,18 @@ directive:
           - Ttl
         labels:
           ResourceGroupName: Resource Group
+
+  - where:
+      verb: Get
+      subject: Configuration
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Digest
+        new-output-properties:
+          - Digest
+        change-description: The type of property 'Digest' of type 'Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig]'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+```

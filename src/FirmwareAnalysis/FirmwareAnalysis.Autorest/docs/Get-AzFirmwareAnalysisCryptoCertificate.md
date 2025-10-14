@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFirmwareAnalysisCryptoCertificate
 
 ## SYNOPSIS
-Lists cryptographic certificate analysis results found in a firmware.
+Lists crypto certificate analysis results of a firmware.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-Lists cryptographic certificate analysis results found in a firmware.
+Lists crypto certificate analysis results of a firmware.
 
 ## EXAMPLES
 
