@@ -7,19 +7,19 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for DisableBgpRoutePropagation.
+    /// Defines values for RouteTableUsageMode.
     /// </summary>
 
 
-    public static class DisableBgpRoutePropagation
+    public static class RouteTableUsageMode
     {
         /// <summary>
-        /// BGP route propagation is enabled.
+        /// Only route tables managed by the routing configuration will be used.
         /// </summary>
-        public const string False = "False";
+        public const string ManagedOnly = "ManagedOnly";
         /// <summary>
-        /// BGP route propagation is disabled.
+        /// Use existing user-defined route tables already associated with resources.
         /// </summary>
-        public const string True = "True";
+        public const string UseExisting = "UseExisting";
     }
 }

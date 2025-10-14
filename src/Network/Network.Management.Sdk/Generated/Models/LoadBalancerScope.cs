@@ -7,19 +7,13 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for DisableBgpRoutePropagation.
+    /// Defines values for LoadBalancerScope.
     /// </summary>
 
 
-    public static class DisableBgpRoutePropagation
+    public static class LoadBalancerScope
     {
-        /// <summary>
-        /// BGP route propagation is enabled.
-        /// </summary>
-        public const string False = "False";
-        /// <summary>
-        /// BGP route propagation is disabled.
-        /// </summary>
-        public const string True = "True";
+        public const string Public = "Public";
+        public const string Private = "Private";
     }
 }
