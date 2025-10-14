@@ -454,7 +454,7 @@
     <value>KeyId parameter is required for encryption protector type AzureKeyVault</value>
   </data>
   <data name="InvalidKeyId" xml:space="preserve">
-    <value>Invalid parameter format for keyId: '{0}'. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901</value>
+    <value>Invalid parameter format for keyId: '{0}'. It should be a well formed Azure Key Vault KeyId such as https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901 (versioned) or https://YourVaultName.vault.azure.net/keys/YourKeyName (versionless).</value>
   </data>
   <data name="SetAzureSqlInstanceDescription" xml:space="preserve">
     <value>Setting Azure Sql Database Managed Instance '{0}'.</value>

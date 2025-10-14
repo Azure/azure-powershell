@@ -38,7 +38,7 @@ Thumbprint        : 1122334455667788990011223344556677889900
 CreationDate      : 1/1/2017 12:00:00 AM
 ```
 
-This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL server named 'ContosoServer' in the resource group 'ContosoResourceGroup'.
+This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL server named 'ContosoServer' in the resource group 'ContosoResourceGroup'. Versionless key IDs, for example 'https://contoso.vault.azure.net/keys/contosokey', are also supported.
 
 ## PARAMETERS
 
