@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterloggingconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewaycertificateauthentication
 schema: 2.0.0
 ---
 

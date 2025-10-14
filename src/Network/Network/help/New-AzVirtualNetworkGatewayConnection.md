@@ -89,15 +89,15 @@ The third command creates this new virtual Network gateway connection with Gatew
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myVnetGateway"
 $localGateway = Get-AzLocalNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myLocalGateway"
 
-# Create certificate chain array with base64-encoded certificates (without headers/footers)
+# Create certificate chain array with base64-encoded certificates (without BEGIN/END CERTIFICATE headers)
 $certChain = @(
-    "MIIDfzCCAmegA...",
-    "MIIDezCCAmOgA..."
+    "MIIDfzCCAmegAwIBAgIQIFxjNWTuGjYGa8zJVnpfnDANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1DZXJ0QmFzZWRBdXRoMB4XDTI0MTIxODA1MjkzOVoXDTI1MTIxODA2MDk...",
+    "MIIDezCCAmOgAwIBAgIQQIpJdJF8D8JwkqF6fJ6zGDANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1DZXJ0QmFzZWRBdXRoMB4XDTI0MTIxODA1MjkzOVoXDTI1MTIxODA2MDk..."
 )
 
 $certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication `
     -OutboundAuthCertificate "https://myvault.vault.azure.net/certificates/mycert/abc123" `
-    -InboundAuthCertificateSubjectName "CN=MyCertSubject" `
+    -InboundAuthCertificateSubjectName "MyCertSubject" `
     -InboundAuthCertificateChain $certChain
 
 New-AzVirtualNetworkGatewayConnection -Name "myCertConnection" -ResourceGroupName "myResourceGroup" -Location "eastus" `
