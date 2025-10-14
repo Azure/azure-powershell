@@ -1450,10 +1450,7 @@
               "LifecycleState": "System.String",
               "LifecycleDetail": "System.String",
               "LocalStandbyDbTimeDisasterRecoveryRoleChanged": "System.String",
-              "LocalDisasterRecoveryType": "System.String",
-              "ScheduledOperationScheduledStartTime": "System.String",
-              "ScheduledOperationScheduledStopTime": "System.String",
-              "DayOfWeekName": "System.String"
+              "LocalDisasterRecoveryType": "System.String"
             }
           },
           "ParameterSets": [
