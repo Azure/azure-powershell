@@ -29,7 +29,7 @@ For information on how to develop for `Az.DataTransfer`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 3a1833c86fbad00062482b683ee0df83cc2832e6
+commit: ab76a9a9cdd1812bf936ccf3b3b2ccf6be89d3de
 namespace: ADT
 require:
 # readme.azure.noprofile.md is the common configuration file
@@ -37,6 +37,9 @@ require:
   - $(repo)/specification/azuredatatransfer/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
+
+# Pin to version
+tag: package-2025-05-30-preview
 
 try-require: 
   - $(repo)/specification/azuredatatransfer/resource-manager/readme.powershell.md
