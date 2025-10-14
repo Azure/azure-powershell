@@ -1,6 +1,6 @@
 ### Example 1: Delete a Network Anchor
 ```powershell
-Remove-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor -Force -PassThru
+Remove-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor -PassThru
 ```
 
 ```output
@@ -11,7 +11,7 @@ Deletes a Network Anchor by name and resource group. For more information, execu
 
 ### Example 2: Delete a Network Anchor by piping from Get
 ```powershell
-Get-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor | Remove-AzOracleNetworkAnchor -Force -PassThru
+Get-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor | Remove-AzOracleNetworkAnchor -PassThru
 ```
 
 ```output

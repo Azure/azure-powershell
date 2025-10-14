@@ -4,7 +4,6 @@ New-AzOracleResourceAnchor `
   -ResourceGroupName PowerShellTestRg `
   -Name OFake_PowerShellTestResourceAnchor `
   -Location eastus2 `
-  -LinkedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs"
 ```
 
 ```output
@@ -40,7 +39,6 @@ New-AzOracleResourceAnchor `
   -ResourceGroupName PowerShellTestRg `
   -Name OFake_PowerShellTestResourceAnchor `
   -Location eastus2 `
-  -LinkedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs" `
   -Tag @{ env="test"; owner="example@oracle.com" }
 ```
 
