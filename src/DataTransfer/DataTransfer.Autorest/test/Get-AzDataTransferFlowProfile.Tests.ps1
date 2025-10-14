@@ -19,6 +19,25 @@ $testRunId = "09280826"
 $getTestFlowProfileName = "test-basic-fp-$testRunId"
 
 Describe 'Get-AzDataTransferFlowProfile' {
+    It 'List via Provider Action' {
+        {
+            # List all FlowProfiles in the pipeline
+            $flowProfiles = Get-AzDataTransferFlowProfile -PipelineName $env.PipelineName
+            $flowProfiles.Count | Should -BeGreaterThan 0
+            $flowProfiles | ForEach-Object {
+                $_.Name | Should -Not -BeNullOrEmpty
+                $_.ReplicationScenario | Should -Not -BeNullOrEmpty
+                $_.Status | Should -Not -BeNullOrEmpty
+            }
+            
+            # Verify our test FlowProfile is in the list
+            $testFlowProfile = $flowProfiles | Where-Object { $_.Name -eq $getTestFlowProfileName }
+            $testFlowProfile | Should -Not -BeNullOrEmpty
+            $testFlowProfile.ReplicationScenario | Should -Be "Files"
+            $testFlowProfile.Status | Should -Be "Enabled"
+        } | Should -Not -Throw
+    }
+
     It 'List' {
         {
             # List all FlowProfiles in the pipeline
