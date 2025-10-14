@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -193,6 +192,14 @@ function New-AzRedisEnterpriseCache {
         ${HighAvailability},
 
         [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PublicNetworkAccess])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PublicNetworkAccess]
+        # Whether or not public network traffic can access the Redis cluster.
+        # Only 'Enabled' or 'Disabled' can be set.
+        ${PublicNetworkAccess},
+
+        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType]
@@ -361,6 +368,7 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityType")
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
         $null = $PSBoundParameters.Remove("HighAvailability")
+        $null = $PSBoundParameters.Remove("PublicNetworkAccess")  # Remove for database creation
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
         $cluster.Database = @{$database.Name = $database}

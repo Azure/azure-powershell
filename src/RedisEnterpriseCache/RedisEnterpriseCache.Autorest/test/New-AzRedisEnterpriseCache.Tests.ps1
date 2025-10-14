@@ -24,6 +24,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "OSSCluster"
             EvictionPolicy = "VolatileLRU"
+            PublicNetworkAccess = "Enabled"
         }
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name
@@ -53,6 +54,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             SubscriptionId = $env.SubscriptionId
             Sku = "Balanced_B10"
             NoDatabase = $true
+            PublicNetworkAccess = "Enabled"
         }
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name
@@ -73,6 +75,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             SubscriptionId = $env.SubscriptionId
             Sku = "Balanced_B10"
             NoDatabase = $true
+            PublicNetworkAccess = "Enabled"
         }
         Write-Host $splat.Name
         $cache = New-AzRedisEnterpriseCache @splat
@@ -97,6 +100,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "NoEviction"
+            PublicNetworkAccess = "Enabled"
             GroupNickname = "GroupName" 
             LinkedDatabase = $id -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
         }

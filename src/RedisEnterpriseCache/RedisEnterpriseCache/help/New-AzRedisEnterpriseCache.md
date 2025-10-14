@@ -20,8 +20,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>]
  [-ClusteringPolicy <ClusteringPolicy>] [-AccessKeysAuthentication <AccessKeysAuthentication>]
  [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <HighAvailability>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <AofFrequency>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -33,8 +33,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Sku <SkuName> [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>] [-Zone <String[]>]
  [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <HighAvailability>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -472,6 +472,22 @@ Specified at create time.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateClusterWithDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network traffic can access the Redis cluster.
+Only 'Enabled' or 'Disabled' can be set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PublicNetworkAccess
+Parameter Sets: (All)
 Aliases:
 
 Required: False
