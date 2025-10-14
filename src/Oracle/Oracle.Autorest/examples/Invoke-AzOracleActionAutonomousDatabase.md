@@ -1,6 +1,6 @@
 ### Example 1: Stop an Autonomous Database
 ```powershell
-Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Name OFakePowerShellTestAdbs -Action Stop
+Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Autonomousdatabasename OFakePowerShellTestAdbs -Action Stop
 ```
 
 ```output
@@ -62,7 +62,7 @@ Performs a lifecycle **Stop** action on the Autonomous Database. For more inform
 
 ### Example 2: Start an Autonomous Database
 ```powershell
-Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Name OFakePowerShellTestAdbs -Action Start
+Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Autonomousdatabasename OFakePowerShellTestAdbs -Action Start
 ```
 
 ```output

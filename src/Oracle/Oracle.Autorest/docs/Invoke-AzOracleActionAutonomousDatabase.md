@@ -46,7 +46,7 @@ Perform Lifecycle Management Action on Autonomous Database
 
 ### Example 1: Stop an Autonomous Database
 ```powershell
-Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Name OFakePowerShellTestAdbs -Action Stop
+Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Autonomousdatabasename OFakePowerShellTestAdbs -Action Stop
 ```
 
 ```output
@@ -109,7 +109,7 @@ For more information, execute `Get-Help Invoke-AzOracleActionAutonomousDatabase`
 
 ### Example 2: Start an Autonomous Database
 ```powershell
-Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Name OFakePowerShellTestAdbs -Action Start
+Invoke-AzOracleActionAutonomousDatabase -ResourceGroupName PowerShellTestRg -Autonomousdatabasename OFakePowerShellTestAdbs -Action Start
 ```
 
 ```output
