@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug: Buse boolean in comparision
 
 ## Version 2.6.3
 * Modified the Cluster Registration to use Managed Service Identity instead of AAD App based registration for new OS versions.
