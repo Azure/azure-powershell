@@ -9,14 +9,14 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch the properties of the provided virtual machine console, or update the tags associated with the virtual machine console.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Enabled <ConsoleEnabled>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Enabled <String>]
  [-Expiration <DateTime>] [-SshPublicKeyData <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -24,13 +24,35 @@ Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -Virtual
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudConsole -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-Enabled <ConsoleEnabled>] [-Expiration <DateTime>] [-SshPublicKeyData <String>] [-Tag <Hashtable>]
+ [-Enabled <String>] [-Expiration <DateTime>] [-SshPublicKeyData <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityVirtualMachineExpanded
+```
+Update-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Enabled <String>] [-Expiration <DateTime>]
+ [-SshPublicKeyData <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Patch the properties of the provided virtual machine console, or update the tags associated with the virtual machine console.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -91,8 +113,8 @@ Accept wildcard characters: False
 The indicator of whether the console access is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ConsoleEnabled
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -107,7 +129,7 @@ The date and time after which the key will be disallowed access.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -152,7 +174,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -166,12 +187,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the virtual machine console.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityVirtualMachineExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ConsoleName
 
 Required: True
@@ -202,7 +253,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -217,7 +268,7 @@ The SSH public key data.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -233,7 +284,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -248,7 +299,7 @@ The Azure resource tags that will replace the existing ones.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -258,12 +309,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: UpdateViaIdentityVirtualMachineExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineName
 The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -313,7 +379,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
 
 ## NOTES
 
