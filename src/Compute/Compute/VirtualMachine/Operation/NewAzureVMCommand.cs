@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SimpleParameterSet,
-            HelpMessage = "Specifies whether to add installation of the ProxyAgent extension.")]
+            HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
         public SwitchParameter AddProxyAgentExtension { get; set; }
 
         public override void ExecuteCmdlet()

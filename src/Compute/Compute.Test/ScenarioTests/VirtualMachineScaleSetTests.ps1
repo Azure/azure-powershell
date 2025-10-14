@@ -6001,14 +6001,14 @@ function Test-VirtualMachineScaleSetAddProxyAgentExtension
 
         # Update vmss to add proxy agent extension 
         $VMSS = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
-        $VMSS = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $VMSS -EnableProxyAgent $true -AddProxyAgentExtension $true
+        $VMSS = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $VMSS -EnableProxyAgent $true -AddProxyAgentExtension $false
         $vmssUpdated = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $VMSS
 
         
 
         # Validate 
         Assert-AreEqual $vmssUpdated.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
-        Assert-AreEqual $vmssUpdated.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vmssUpdated.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $false
     }
     finally
     {
