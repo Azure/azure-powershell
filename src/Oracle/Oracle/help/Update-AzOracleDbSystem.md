@@ -84,7 +84,7 @@ For more information, execute `Get-Help Update-AzOracleDbSystem`.
 
 ### Example 2: Scale CPU cores on a DbSystem
 ```powershell
-Update-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem -CpuCoreCount 8
+Update-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem
 ```
 
 ```output

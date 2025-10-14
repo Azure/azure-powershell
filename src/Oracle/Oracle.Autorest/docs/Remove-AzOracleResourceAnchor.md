@@ -31,7 +31,7 @@ Delete a ResourceAnchor
 
 ### Example 1: Delete a Resource Anchor
 ```powershell
-Remove-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor -Force -PassThru
+Remove-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor -PassThru
 ```
 
 ```output
@@ -43,7 +43,7 @@ For more information, execute `Get-Help Remove-AzOracleResourceAnchor`.
 
 ### Example 2: Delete a Resource Anchor by piping from Get
 ```powershell
-Get-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor | Remove-AzOracleResourceAnchor -Force -PassThru
+Get-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor | Remove-AzOracleResourceAnchor -PassThru
 ```
 
 ```output
