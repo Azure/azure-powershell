@@ -189,7 +189,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableL4ClientIpPresrevation
+### -EnableL4ClientIpPreservation
 Whether to send Proxy Protocol header to backend servers over TCP or TLS protocols. Default value is false.
 
 ```yaml
