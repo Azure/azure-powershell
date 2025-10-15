@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies a Managed HSM network rule set object (from New-AzKeyVaultManagedHsmNetworkRuleSetObject) to configure default action, bypass, IP rules, and virtual network rules at creation time.")]
+        [ValidateNotNull]
+        public PSManagedHsmNetworkRuleSet NetworkRuleSet { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -139,6 +144,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
             };
 
+            // Build initial network ACLs (sending an empty object when user did not bind -NetworkRuleSet to maintain backward compatibility)
+            var networkAcls = BuildInitialNetworkAcls();
+
             return new VaultCreationOrUpdateParameters()
             {
                 Name = this.Name,
@@ -149,15 +157,57 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 Tags = this.Tag,
                 Administrator = this.Administrator,
                 SkuFamilyName = DefaultManagedHsmSkuFamily,
-                // If retention days is not specified, use the default value
                 SoftDeleteRetentionInDays = this.SoftDeleteRetentionInDays,
-                // false is not accepted
-                EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
-                // use default network rule set
-                MhsmNetworkAcls = new MhsmNetworkRuleSet(),
+                EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,  // false is not accepted
+                MhsmNetworkAcls = networkAcls,
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 ManagedServiceIdentity = managedServiceIdentity
             };
         }
+
+        /// <summary>
+        /// Builds the service network rule set only if user supplied -NetworkRuleSet. Returns null when the parameter
+        /// was not bound to avoid sending an empty object (which can trigger slower provisioning paths).
+        /// Performs explicit validation (no silent mutation). If network rules (IP or VNet) are present while DefaultAction=Allow, throw.
+        /// </summary>
+        private MhsmNetworkRuleSet BuildInitialNetworkAcls()
+        {
+            if (!this.IsParameterBound(c => c.NetworkRuleSet) || NetworkRuleSet == null)
+            {
+                return new MhsmNetworkRuleSet(); // User did not request any network ACL customization.
+            }
+
+            var svc = ConvertToServiceNetworkRuleSet(NetworkRuleSet);
+            bool hasRules = (svc.IPRules?.Count > 0) || (svc.VirtualNetworkRules?.Count > 0);
+            if (hasRules && string.Equals(svc.DefaultAction, "Allow", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException("Cannot specify both IP network rules & DefaultAction Allow together. Please specify -DefaultAction Deny or remove IPRules.");
+            }
+
+            return svc;
+        }
+
+        /// <summary>
+        /// Converts the PowerShell-facing network rule set object to the service model without any policy enforcement.
+        /// </summary>
+        private static MhsmNetworkRuleSet ConvertToServiceNetworkRuleSet(PSManagedHsmNetworkRuleSet ps)
+        {
+            var svc = new MhsmNetworkRuleSet
+            {
+                DefaultAction = ps.DefaultAction.ToString(),
+                Bypass = ps.Bypass.ToString()
+            };
+            if (ps.IpAddressRanges != null)
+            {
+                svc.IPRules = ps.IpAddressRanges.Select(v => new MhsmipRule { Value = v }).ToList();
+            }
+            if (ps.VirtualNetworkResourceIds != null)
+            {
+                svc.VirtualNetworkRules = ps.VirtualNetworkResourceIds.Select(id => new MhsmVirtualNetworkRule { Id = id }).ToList();
+            }
+            return svc;
+        }
+
+        // No silent mutation helper retained; logic intentionally removed to enforce explicit denial by user.
     }
 }
