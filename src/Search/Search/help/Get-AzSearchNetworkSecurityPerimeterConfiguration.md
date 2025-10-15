@@ -19,7 +19,7 @@ Get-AzSearchNetworkSecurityPerimeterConfiguration [-ResourceGroupName] <String> 
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchService** cmdlet gets the specified Azure AI Search service network security perimeter configuration.
+The **Get-AzSearchNetworkSecurityPerimeterConfiguration** cmdlet gets the specified Azure AI Search service network security perimeter configuration.
 
 ## EXAMPLES
 
@@ -32,7 +32,7 @@ Get-AzSearchNetworkSecurityPerimeterConfiguration -ResourceGroupName rg1 -Servic
 {
   "Name": "00000001-2222-3333-4444-111144444444.assoc1",
   "Id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Search/searchServices/mysearchservice/networkSecurityPerimeterConfigurations/00000001-2222-3333-4444-111144444444.assoc1",
-  "Yype": "Microsoft.Search/searchServices/networkSecurityPerimeterConfigurations",
+  "Type": "Microsoft.Search/searchServices/networkSecurityPerimeterConfigurations",
   "ProvisioningState": "Accepted",
   "NetworkSecurityPerimeter": {
     "Id": "/subscriptions/subid/resourceGroups/networkRG/providers/Microsoft.Network/networkSecurityPerimeters/perimeter1",

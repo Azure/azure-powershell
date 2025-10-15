@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.11.0
 * Added support for 2025-05-01 RP API 
 * Added support for ACC compute type option
 * Added support for data exfiltration protection option

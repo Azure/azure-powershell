@@ -21,8 +21,7 @@ using System.Net;
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SearchNetworkSecurityPerimeterConfiguration",
-    DefaultParameterSetName = ResourceNameParameterSetName,
-    SupportsShouldProcess = true),
+    DefaultParameterSetName = ResourceNameParameterSetName),
     OutputType(typeof(Models.PSNetworkSecurityPerimeterConfiguration))]
     public class GetNetworkSecurityPerimeterConfigurationCommand : NetworkSecurityPerimeterConfigurationsBaseCmdlet
     {

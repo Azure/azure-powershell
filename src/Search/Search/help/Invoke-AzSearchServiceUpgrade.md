@@ -34,7 +34,7 @@ The **Invoke-AzSearchServiceUpgrade** cmdlet upgrades the Azure AI Search servic
 Invoke-AzSearchServiceUpgrade -ResourceGroupName rg1 -Name mysearchservice
 ```
 
-Upgrades an Azure Cognitive Search service with specified parameters.
+Upgrades an Azure AI Search service with specified parameters.
 
 ## PARAMETERS
 

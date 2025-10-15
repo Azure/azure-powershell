@@ -33,7 +33,7 @@ Gets an Azure AI Search service.
 Gets shared private link resources(s) of the Azure AI Search service.
 
 ### [Invoke-AzSearchNetworkSecurityPerimeterConfigurationReconcile](Invoke-AzSearchNetworkSecurityPerimeterConfigurationReconcile.md)
-{{ Fill in the Synopsis }}
+Reconciles the network security perimeter configuration for the Azure AI Search service.
 
 ### [New-AzSearchAdminKey](New-AzSearchAdminKey.md)
 Regenerates an admin key of the Azure AI Search service.

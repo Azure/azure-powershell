@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
     public abstract class NetworkSecurityPerimeterConfigurationsBaseCmdlet : SearchServiceBaseCmdlet
     {
         protected const string NetworkSecurityPerimeterConfigurationNameHelpMessage =
-            "Azure AI Search Service network security perimeter configuration name in the format of {NSP perimeter guid}.{associateion name}";
+            "Azure AI Search Service network security perimeter configuration name in the format of {NSP perimeter guid}.{association name}";
 
         protected void WriteNetworkSecurityPerimeterConfiguration(NetworkSecurityPerimeterConfiguration configuration)
         {
