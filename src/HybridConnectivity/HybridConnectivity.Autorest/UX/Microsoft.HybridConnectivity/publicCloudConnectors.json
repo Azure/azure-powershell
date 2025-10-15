@@ -1,0 +1,123 @@
+{
+  "resourceType": "publicCloudConnectors",
+  "apiVersion": "2024-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHybridConnectivityPublicCloudConnector",
+      "description": "Get a PublicCloudConnector",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/get-azhybridconnectivitypubliccloudconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PublicCloudConnector <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a PublicCloudConnector",
+          "parameters": [
+            {
+              "name": "-PublicCloudConnector",
+              "value": "[Path.publicCloudConnector]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzHybridConnectivityPublicCloudConnector",
+      "description": "Delete a PublicCloudConnector",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/remove-azhybridconnectivitypubliccloudconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PublicCloudConnector <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a PublicCloudConnector",
+          "parameters": [
+            {
+              "name": "-PublicCloudConnector",
+              "value": "[Path.publicCloudConnector]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzHybridConnectivityPublicCloudConnectorPermission",
+      "description": "A long-running resource action.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}/testPermissions",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/test-azhybridconnectivitypubliccloudconnectorpermission"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PublicCloudConnector <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "A long-running resource action.",
+          "parameters": [
+            {
+              "name": "-PublicCloudConnector",
+              "value": "[Path.publicCloudConnector]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
