@@ -34,16 +34,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.TaskContainerSettings omObject;
         
+        private IList<PSContainerHostBatchBindMountEntry> containerHostBatchBindMounts;
+        
         private PSContainerRegistry registry;
         
-        public PSTaskContainerSettings(string imageName, string containerRunOptions = null, PSContainerRegistry registry = default(PSContainerRegistry), System.Nullable<Microsoft.Azure.Batch.Common.ContainerWorkingDirectory> workingDirectory = null)
+        public PSTaskContainerSettings(string imageName, string containerRunOptions = null, PSContainerRegistry registry = default(PSContainerRegistry), System.Nullable<Microsoft.Azure.Batch.Common.ContainerWorkingDirectory> workingDirectory = null, System.Collections.Generic.IList<Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry> containerHostBatchBindMounts = null)
         {
             Microsoft.Azure.Batch.ContainerRegistry registryOmObject = null;
             if ((registry != null))
             {
                 registryOmObject = registry.omObject;
             }
-            this.omObject = new Microsoft.Azure.Batch.TaskContainerSettings(imageName, containerRunOptions, registryOmObject, workingDirectory);
+            this.omObject = new Microsoft.Azure.Batch.TaskContainerSettings(imageName, containerRunOptions, registryOmObject, workingDirectory, containerHostBatchBindMounts);
         }
         
         internal PSTaskContainerSettings(Microsoft.Azure.Batch.TaskContainerSettings omObject)
@@ -53,6 +55,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public IList<PSContainerHostBatchBindMountEntry> ContainerHostBatchBindMounts
+        {
+            get
+            {
+                if (((this.containerHostBatchBindMounts == null) 
+                            && (this.omObject.ContainerHostBatchBindMounts != null)))
+                {
+                    List<PSContainerHostBatchBindMountEntry> list;
+                    list = new List<PSContainerHostBatchBindMountEntry>();
+                    IEnumerator<Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry> enumerator;
+                    enumerator = this.omObject.ContainerHostBatchBindMounts.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSContainerHostBatchBindMountEntry(enumerator.Current));
+                    }
+                    this.containerHostBatchBindMounts = list;
+                }
+                return this.containerHostBatchBindMounts;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ContainerHostBatchBindMounts = null;
+                }
+                else
+                {
+                    this.omObject.ContainerHostBatchBindMounts = new List<Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry>();
+                }
+                this.containerHostBatchBindMounts = value;
+            }
         }
         
         public string ContainerRunOptions

@@ -45,6 +45,10 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// to true.
         /// </param>
 
+        /// <param name="enableAutomaticUpgrade">Indicates whether the extension should be automatically upgraded by the
+        /// platform if there is a newer version of the extension available.
+        /// </param>
+
         /// <param name="settings">JSON formatted public settings for the extension.
         /// </param>
 
@@ -55,7 +59,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="provisionAfterExtensions">Collection of extension names after which this extension needs to be
         /// provisioned.
         /// </param>
-        public VMExtension(string name, string publisher, string type, string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), System.Collections.Generic.IList<string> provisionAfterExtensions = default(System.Collections.Generic.IList<string>))
+        public VMExtension(string name, string publisher, string type, string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), System.Collections.Generic.IList<string> provisionAfterExtensions = default(System.Collections.Generic.IList<string>))
 
         {
             this.Name = name;
@@ -63,6 +67,7 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.Type = type;
             this.TypeHandlerVersion = typeHandlerVersion;
             this.AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
+            this.EnableAutomaticUpgrade = enableAutomaticUpgrade;
             this.Settings = settings;
             this.ProtectedSettings = protectedSettings;
             this.ProvisionAfterExtensions = provisionAfterExtensions;
@@ -107,6 +112,14 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "autoUpgradeMinorVersion")]
         public bool? AutoUpgradeMinorVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the extension should be automatically
+        /// upgraded by the platform if there is a newer version of the extension
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableAutomaticUpgrade")]
+        public bool? EnableAutomaticUpgrade {get; set; }
 
         /// <summary>
         /// Gets or sets jSON formatted public settings for the extension.

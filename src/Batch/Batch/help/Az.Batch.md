@@ -50,9 +50,6 @@ Gets information about the specified application.
 ### [Get-AzBatchApplicationPackage](Get-AzBatchApplicationPackage.md)
 Gets information about an application package in a Batch account.
 
-### [Get-AzBatchCertificate](Get-AzBatchCertificate.md)
-Gets the certificates in a Batch account.
-
 ### [Get-AzBatchComputeNode](Get-AzBatchComputeNode.md)
 Gets Batch compute nodes from a pool.
 
@@ -85,9 +82,6 @@ Gets Batch node counts per node state grouped by pool id.
 
 ### [Get-AzBatchPoolUsageMetric](Get-AzBatchPoolUsageMetric.md)
 Gets pool usage metrics for a Batch account.
-
-### [Get-AzBatchRemoteDesktopProtocolFile](Get-AzBatchRemoteDesktopProtocolFile.md)
-Gets an RDP file from a compute node.
 
 ### [Get-AzBatchRemoteLoginSetting](Get-AzBatchRemoteLoginSetting.md)
 Gets remote logon settings for a compute node.
@@ -122,9 +116,6 @@ Adds an application to the specified Batch account.
 ### [New-AzBatchApplicationPackage](New-AzBatchApplicationPackage.md)
 Creates an application package in a Batch account.
 
-### [New-AzBatchCertificate](New-AzBatchCertificate.md)
-Adds a certificate to the specified Batch account.
-
 ### [New-AzBatchComputeNodeUser](New-AzBatchComputeNodeUser.md)
 Creates a user account on a Batch compute node.
 
@@ -151,9 +142,6 @@ Deletes an application from a Batch account.
 
 ### [Remove-AzBatchApplicationPackage](Remove-AzBatchApplicationPackage.md)
 Deletes an application package record and the binary file.
-
-### [Remove-AzBatchCertificate](Remove-AzBatchCertificate.md)
-Deletes a certificate from an account.
 
 ### [Remove-AzBatchComputeNode](Remove-AzBatchComputeNode.md)
 Removes compute nodes from a pool.
@@ -208,9 +196,6 @@ Upload compute node service log files to an Azure Storage container.
 
 ### [Start-AzBatchPoolResize](Start-AzBatchPoolResize.md)
 Starts to resize a pool.
-
-### [Stop-AzBatchCertificateDeletion](Stop-AzBatchCertificateDeletion.md)
-Cancels a failed deletion of a certificate.
 
 ### [Stop-AzBatchJob](Stop-AzBatchJob.md)
 Stops a Batch job.
