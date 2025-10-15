@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added new RouteTableUsageMode property for Network Manager Routing Configuration
+  - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
+  - Updated `Set-AzNetworkManagerRoutingConfiguration` cmdlet
 * Added certificate-based authentication support for VPN Gateway connections
     - New cmdlet `New-AzVirtualNetworkGatewayCertificateAuthentication` to create certificate authentication configuration
     - Added `-AuthenticationType` and `-CertificateAuthentication` parameters to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`
