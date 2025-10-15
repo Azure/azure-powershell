@@ -281,7 +281,6 @@ param
       $authTypes = $expected.VpnClientConfiguration.VpnAuthenticationTypes
       Assert-NotNull $authTypes
       Assert-AreEqual 3 @($authTypes).Count
-
       $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
       $vpnProfilePackageUrl = New-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
       Assert-NotNull $vpnProfilePackageUrl
@@ -755,7 +754,7 @@ function Test-VirtualNetworkGatewayRadius
 		$subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
 		# Create the IP config
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
 		# Create & Get virtualnetworkgateway
@@ -767,11 +766,25 @@ function Test-VirtualNetworkGatewayRadius
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerAddress $radiusServer2.RadiusServerAddress
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer2.RadiusServerScore
 		 
+        # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+        $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual 2 $vngRadiusAuthServers.Count
+        Assert-AreEqual "10.1.0.1" $vngRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
+        Assert-AreEqual "10.1.0.2" $vngRadiusAuthServers[1].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[1].RadiusServerSecret
+
 		# Update gateway to singular radius
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerAddress 10.1.0.2 -RadiusServerSecret $radiuspd
         $actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-Null  $actual.VpnClientConfiguration.RadiusServers
         Assert-AreEqual $actual.VpnClientConfiguration.RadiusServerAddress 10.1.0.2
+        
+        # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+        $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual 1 $vngRadiusAuthServers.Count
+        Assert-AreEqual "10.1.0.2" $vngRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
 
 		# Update gateway radius settings
         $radiusServers = @($radiusServer3, $radiusServer1)
@@ -783,6 +796,14 @@ function Test-VirtualNetworkGatewayRadius
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[0].RadiusServerScore $radiusServer3.RadiusServerScore
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerAddress $radiusServer1.RadiusServerAddress
 		Assert-AreEqual $actual.VpnClientConfiguration.RadiusServers[1].RadiusServerScore $radiusServer1.RadiusServerScore
+
+        # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+        $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual 2 $vngRadiusAuthServers.Count
+        Assert-AreEqual "10.1.0.3" $vngRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
+        Assert-AreEqual "10.1.0.1" $vngRadiusAuthServers[1].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[1].RadiusServerSecret
 	}
     finally
     {
@@ -817,7 +838,7 @@ function Test-VirtualNetworkGatewayOpenVPN
 		# create the client root cert
 		$clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
 		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$samplePublicCertData = "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
+		$samplePublicCertData = "MIIC4zCCAcugAwIBAgIQS9GFAODldohNrJMp4jr6KTANBgkqhkiG9w0BAQsFADAU MRIwEAYDVQQDDAlCVlRSb290Q0EwHhcNMjMwMzEwMTgxMDQwWhcNMzMwMzEwMTgy MDQwWjAUMRIwEAYDVQQDDAlCVlRSb290Q0EwggEiMA0GCSqGSIb3DQEBAQUAA4IB DwAwggEKAoIBAQDNy4RZYlZ3llU/7VpjSog2PXnAM4VSGz+tlX3uI5/qWSwzlEdT MGI/UckF8740v+76BsJrnvj9woAGYNB2s3T9q9g2kH1zwa4oaMWbvKaIZq+rmgWV aTorBkJWMCj2TMYj22reJCoeD/cGkUdvChSlrP7Sa7ySW0I5BiOkug9i6zESVv4P wvOwYfOJgNtt11UbqcjxlCHS1vhX88whZaAMYO4/y0GYtOjtaJpkCzj3G/KUTTcO yP6Wty8YwFRbakFhEFCsrbV4zUbSdcV2Qnjd4bf8aQENFD4Y6a5NEIU66ydj06lp 3vLqCWRn3/Oq2z8tDWsysP9436650FMjXXxxAgMBAAGjMTAvMA4GA1UdDwEB/wQE AwICBDAdBgNVHQ4EFgQUGUdxz+0yU7SOpMXOXP64qFcW+iMwDQYJKoZIhvcNAQEL BQADggEBAJTI8F6tqAQhfZcVUhieSTsIU8WUwP8JH+DkMbras0isvzbqwsOAV2eM UoheKxxCDpNP0JXUUYtXEnOxcLPbYhxJUDu03hadhbwLYn5Dlu2x0kqabUfoh4f0 Je+wJYtz6PlGsiOQf8B7CrP4btUByXD+4HuQ0o/rCKk3c/5v6fsQmNpRhQReoLe+ 3V41QaOWt9j17dJksPew2cOHPWHUc/tU2f92RFwXwvjiRXd02mPXT7LeFhvq+2I7 8Mwz+YdLmRSwoirYbBA+wn0zLSp9W4wMflYdCPbAQ7Ixd8NEg8XgWqwi25xd3vyJ ZuP+wYy3Ti0734XVYc2ZIxi7uTiHJUo="
         $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
         $Secure_String_Pwd = ConvertTo-SecureString "radiuspd" -AsPlainText -Force
@@ -832,13 +853,13 @@ function Test-VirtualNetworkGatewayOpenVPN
 		$subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
 		# Create the IP config
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get OpenVPN virtualnetworkgateway
-		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert  
+		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol OpenVPN -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert  
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationType Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer
+		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN -VpnAuthenticationType Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
@@ -863,6 +884,12 @@ function Test-VirtualNetworkGatewayOpenVPN
         Assert-AreEqual $aadAudience $actual.VpnClientConfiguration.AadAudience
         Assert-AreEqual "1.2.3.4" $actual.VpnClientConfiguration.RadiusServerAddress
         Assert-NotNull $actual.VpnClientConfiguration.VpnClientRootCertificates
+
+        # Get AllVirtualNetworkGatewayRadiusServerSecret from virtualnetworkgateway
+        $vngRadiusAuthServers = Get-AzAllVirtualNetworkGatewayRadiusServerSecret -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual 1 $vngRadiusAuthServers.Count
+        Assert-AreEqual "1.2.3.4" $vngRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "radiuspd" $vngRadiusAuthServers[0].RadiusServerSecret
 	}
 	finally
     {
@@ -1432,10 +1459,10 @@ param
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
-      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-      $samplePublicCertData = "MIIC8TCCAdmgAwIBAgIQEqoni9yN+Y5Jdmfm9iieSzANBgkqhkiG9w0BAQsFADAbMRkwFwYDVQQDDBBCVlRNdWx0aXBvb2xSb290MB4XDTIyMDMwODIxMjM0M1oXDTIzMDMwODIxNDM0M1owGzEZMBcGA1UEAwwQQlZUTXVsdGlwb29sUm9vdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMNgZH9pjOkayYfPbd1HnFosUtpRluaP0tFsb8MKOSlah5LNIjxT0SEY1r3RpdV9JSlyEe75leWRXrUqiSEUATza8tLW3kyBY8C7fO2ppBFbpALYdnTSnO2MzA5R6oqDKENCinfvL+nExSP48CRDYTtqPajFsBtCA0g55dKiEll9Ov/QRhWbWhehDbDULKd0JMuycbS6P8UFYii7HPKDTbWj8wBETvkc2HO8FOQCMQ14PNAhXuBXVZkuPrlyNpaEqWwGXNNm4SLKiWt9Yat2LYnUvdx/8J1N3Qt7K7S///fHmYMfNH+A+xOeAKhS+IwFRlVbycZ001f0252yvfBmhPUCAwEAAaMxMC8wDgYDVR0PAQH/BAQDAgIEMB0GA1UdDgQWBBRGU/KC4/phW9thGt5yAli1sWxNwTANBgkqhkiG9w0BAQsFAAOCAQEAlO1P/4FKu0n+BRRT9dKx+nTZtIDhFg1GauI9bYvBsc7Wm1opA/+CCXNo5ChNWvrSmDxGInVrGmHwlaB0PEL5W0u5W65UIZlb8ew0vzPmm+Dn/D/9DiqbSt+6yP6RBd6w26og2eh/daMIR90T2ehMsShzlgjmiTeola6EXA15lokfEOaNroj/wFWs26Yz9pvlL+R/nu+QPrnvQQWz/sSYuabmlOzF6rwS2vTae0Q8Y3JvWpEmGeCUMvFYDaK+Wqy1SmMyFLK1QOFz2e/D0PIk1eljoq16p2gd0h6iwsqKstEBXULi0BF9ZhFLBZ1d0ispMdp00huccSektXZiVBpBdQ=="
+      $samplePublicCertData = "MIIC4zCCAcugAwIBAgIQS9GFAODldohNrJMp4jr6KTANBgkqhkiG9w0BAQsFADAU MRIwEAYDVQQDDAlCVlRSb290Q0EwHhcNMjMwMzEwMTgxMDQwWhcNMzMwMzEwMTgy MDQwWjAUMRIwEAYDVQQDDAlCVlRSb290Q0EwggEiMA0GCSqGSIb3DQEBAQUAA4IB DwAwggEKAoIBAQDNy4RZYlZ3llU/7VpjSog2PXnAM4VSGz+tlX3uI5/qWSwzlEdT MGI/UckF8740v+76BsJrnvj9woAGYNB2s3T9q9g2kH1zwa4oaMWbvKaIZq+rmgWV aTorBkJWMCj2TMYj22reJCoeD/cGkUdvChSlrP7Sa7ySW0I5BiOkug9i6zESVv4P wvOwYfOJgNtt11UbqcjxlCHS1vhX88whZaAMYO4/y0GYtOjtaJpkCzj3G/KUTTcO yP6Wty8YwFRbakFhEFCsrbV4zUbSdcV2Qnjd4bf8aQENFD4Y6a5NEIU66ydj06lp 3vLqCWRn3/Oq2z8tDWsysP9436650FMjXXxxAgMBAAGjMTAvMA4GA1UdDwEB/wQE AwICBDAdBgNVHQ4EFgQUGUdxz+0yU7SOpMXOXP64qFcW+iMwDQYJKoZIhvcNAQEL BQADggEBAJTI8F6tqAQhfZcVUhieSTsIU8WUwP8JH+DkMbras0isvzbqwsOAV2eM UoheKxxCDpNP0JXUUYtXEnOxcLPbYhxJUDu03hadhbwLYn5Dlu2x0kqabUfoh4f0 Je+wJYtz6PlGsiOQf8B7CrP4btUByXD+4HuQ0o/rCKk3c/5v6fsQmNpRhQReoLe+ 3V41QaOWt9j17dJksPew2cOHPWHUc/tU2f92RFwXwvjiRXd02mPXT7LeFhvq+2I7 8Mwz+YdLmRSwoirYbBA+wn0zLSp9W4wMflYdCPbAQ7Ixd8NEg8XgWqwi25xd3vyJ ZuP+wYy3Ti0734XVYc2ZIxi7uTiHJUo="
       $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
       $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
 

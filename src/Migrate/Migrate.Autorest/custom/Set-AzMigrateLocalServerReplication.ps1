@@ -128,8 +128,10 @@ function Set-AzMigrateLocalServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonSettings.ps1'
+        Import-Module $helperPath
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonHelper.ps1'
+        Import-Module $helperPath
 
         CheckResourcesModuleDependency
         
@@ -152,12 +154,19 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('OsType')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
+
+        # Validate ARM ID format from inputs
+        if (!(Test-AzureResourceIdFormat -Data $TargetObjectID -Format $IdFormats.ProtectedItemArmIdTemplate)) {
+            throw "Invalid -TargetObjectID '$TargetObjectID'. A valid protected item ARM ID should follow the format '$($IdFormats.ProtectedItemArmIdTemplate)'."
+        }
         
+        # $TargetObjectID is in the format of
+        # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
         $ProtectedItemIdArray = $TargetObjectID.Split("/")
-        $ResourceGroupName = $ProtectedItemIdArray[4]
-        $VaultName = $ProtectedItemIdArray[8]
-        $MachineName = $ProtectedItemIdArray[10]
-      
+        $ResourceGroupName = $ProtectedItemIdArray[4] # {1}
+        $VaultName = $ProtectedItemIdArray[8] # {2}
+        $MachineName = $ProtectedItemIdArray[10] # {3}
+
         # Get existing Protected Item
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("VaultName", $VaultName)
@@ -196,17 +205,29 @@ function Set-AzMigrateLocalServerReplication {
 
         # Update target CPU core
         if ($HasTargetVMCPUCore) {
-            if ($TargetVMCPUCore -le 0) {
-                throw "Specify target CPU core greater than 0"    
+            if ($TargetVMCPUCore -lt $TargetVMCPUCores.Min -or $TargetVMCPUCore -gt $TargetVMCPUCores.Max)
+            {
+                throw "Specify -TargetVMCPUCore between $($TargetVMCPUCores.Min) and $($TargetVMCPUCores.Max)."
             }
-
             $customPropertiesUpdate.TargetCpuCore = $TargetVMCPUCore
         }
 
-        # Update VM Ram
+        # Update TargetVMRam
         if ($HasTargetVMRam) {
-            if ($TargetVMRam -le 0) {
-                throw "Specify target RAM greater than 0"    
+            if ($customProperties.HyperVGeneration -eq "1") {
+                # Between 512 MB and 1 TB
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen1Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen1Max)
+                {
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen1Min) and $($TargetVMRamInMB.Gen1Max) MB (i.e., 1 TB) for Hyper-V Generation 1 VM."
+                }
+            }
+            else # Hyper-V Generation 2
+            {
+                # Between 32 MB and 12 TB
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen2Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen2Max)
+                {
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen2Min) and $($TargetVMRamInMB.Gen2Max) MB (i.e., 12 TB) for Hyper-V Generation 2 VM."
+                }
             }
 
             $customPropertiesUpdate.TargetMemoryInMegaByte = $TargetVMRam

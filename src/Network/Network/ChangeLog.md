@@ -20,6 +20,24 @@
 
 ## Upcoming Release
 
+## Version 7.21.0
+* Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
+* Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall
+* Updated cmdlet to add the mandatory property of 'Operation' and made all other properties not mandatory for Azure Firewall Packet Capture Parameters. Updated corresponding cmdlets.
+* Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
+* Added properties 'DedicatedBackendConnection', 'ValidateCertChainAndExpiry', 'ValidateSNI', and 'SniName' to Application Gateway Backend HTTP Settings, as well as support for them in the following cmdlets:
+* Added cmdlet 'Get-AzAllVirtualNetworkGatewayRadiusServerSecret' to fetch list of VirtualNetworkGateway VpnClientConfiguration Radius servers and corresponding radius secrets.
+* Added cmdlet 'Get-AzAllVpnServerConfigurationRadiusServerSecret ' to fetch list of VirtualWan VpnServerConfiguration Radius servers and corresponding radius secrets.
+
+## Version 7.20.0
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetail` to list all failover tests for a virtual network gateway.
+* Added cmdlet `Start-AzVirtualNetworkGatewaySiteFailoverTest` to initiate a site failover test on a virtual network gateway.
+* Added cmdlet `Stop-AzVirtualNetworkGatewaySiteFailoverTest` to stop an ongoing site failover test.
+* Added cmdlet `Get-AzVirtualNetworkGatewayResiliencyInformation` to retrieve resiliency information for a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayRoutesInformation` to get route information for a virtual network gateway.
+* Onboarded Maps to Private Link Common Cmdlets
+
 ## Version 7.19.1
 * Added a read-only property `ComputedDisabledRules` to `ApplicationGatewayFirewallPolicyManagedRuleSet`. This property shows which rules are effectively disabled, based on both user-defined WAF policy overrides and the default state of the rules in the managed ruleset.
     * Primary affected Cmdlet (returns the modified object directly):
@@ -31,7 +49,6 @@
         - `New-AzApplicationGatewayFirewallPolicy`
 * Onboarded FileShares to Private Link Common Cmdlets
 * Updated Api version for StorageSync to Private Link Common Cmdlets
-
 
 ## Version 7.19.0
 * Returned appgw and agc in waf policy
@@ -45,7 +62,7 @@
 * Added properties 'ContinuousCapture', 'LocalPath', and 'CaptureSetting' reference in Packet capture V2 command, as well as support for it for the following cmdlets:
     - `New-AzNetworkWatcherPacketCaptureV2`
 * Onboarded Application Gateway WAF Exceptions cmdlet.
-    - `New-AzApplicationGatewayFirewallPolicyException` 
+    - `New-AzApplicationGatewayFirewallPolicyException`
 
 ## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:

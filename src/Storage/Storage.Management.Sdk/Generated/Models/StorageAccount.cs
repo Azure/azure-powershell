@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="extendedLocation">The extendedLocation of the resource.
         /// </param>
 
+        /// <param name="zones">Optional. Gets or sets the pinned logical availability zone for the storage
+        /// account.
+        /// </param>
+
+        /// <param name="placement">Optional. Gets or sets the zonal placement details for the storage account.
+        /// </param>
+
         /// <param name="provisioningState">Gets the status of the storage account at the time the operation was
         /// called.
         /// Possible values include: &#39;Creating&#39;, &#39;ResolvingDNS&#39;, &#39;Succeeded&#39;</param>
@@ -156,6 +163,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// account
         /// </param>
 
+        /// <param name="dualStackEndpointPreference">Maintains information about the Internet protocol opted by the user.
+        /// </param>
+
         /// <param name="blobRestoreStatus">Blob restore status
         /// </param>
 
@@ -218,7 +228,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="accountMigrationInProgress">If customer initiated account migration is in progress, the value will be
         /// true else it will be null.
         /// </param>
-        public StorageAccount(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), Identity identity = default(Identity), ExtendedLocation extendedLocation = default(ExtendedLocation), ProvisioningState? provisioningState = default(ProvisioningState?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string), bool? isSkuConversionBlocked = default(bool?), bool? accountMigrationInProgress = default(bool?))
+        public StorageAccount(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), Identity identity = default(Identity), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), ProvisioningState? provisioningState = default(ProvisioningState?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string), bool? isSkuConversionBlocked = default(bool?), bool? accountMigrationInProgress = default(bool?))
 
         : base(location, id, name, type, tags)
         {
@@ -226,6 +236,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.Kind = kind;
             this.Identity = identity;
             this.ExtendedLocation = extendedLocation;
+            this.Zones = zones;
+            this.Placement = placement;
             this.ProvisioningState = provisioningState;
             this.CustomDomain = customDomain;
             this.SasPolicy = sasPolicy;
@@ -253,6 +265,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.FailoverInProgress = failoverInProgress;
             this.LargeFileSharesState = largeFileSharesState;
             this.PrivateEndpointConnections = privateEndpointConnections;
+            this.DualStackEndpointPreference = dualStackEndpointPreference;
             this.BlobRestoreStatus = blobRestoreStatus;
             this.AllowBlobPublicAccess = allowBlobPublicAccess;
             this.MinimumTlsVersion = minimumTlsVersion;
@@ -299,6 +312,20 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Gets or sets the pinned logical availability zone
+        /// for the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
+        public System.Collections.Generic.IList<string> Zones {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Gets or sets the zonal placement details for the
+        /// storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "placement")]
+        public Placement Placement {get; set; }
 
         /// <summary>
         /// Gets gets the status of the storage account at the time the operation was
@@ -486,6 +513,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         public System.Collections.Generic.IList<PrivateEndpointConnection> PrivateEndpointConnections {get; private set; }
 
         /// <summary>
+        /// Gets or sets maintains information about the Internet protocol opted by the
+        /// user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dualStackEndpointPreference")]
+        public DualStackEndpointPreference DualStackEndpointPreference {get; set; }
+
+        /// <summary>
         /// Gets blob restore status
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.blobRestoreStatus")]
@@ -610,6 +644,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             }
 
 
+
+
             if (this.CustomDomain != null)
             {
                 this.CustomDomain.Validate();
@@ -640,6 +676,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 this.NetworkRuleSet.Validate();
             }
+
 
 
 
