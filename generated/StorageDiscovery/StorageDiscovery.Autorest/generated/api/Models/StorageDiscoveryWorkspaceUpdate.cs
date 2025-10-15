@@ -34,11 +34,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         public string Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesUpdateInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesUpdateInternal)Property).Sku = value ?? null; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags _tag;
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags _tag;
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags()); set => this._tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryWorkspaceUpdateTags()); set => this._tag = value; }
 
         /// <summary>The view level storage discovery data estate</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PropertyOrigin.Inlined)]
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         Update = true,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags Tag { get; set; }
         /// <summary>The view level storage discovery data estate</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(
         Required = false,
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PSArgumentCompleterAttribute("Standard", "Free")]
         string Sku { get; set; }
         /// <summary>Resource tags.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags Tag { get; set; }
         /// <summary>The view level storage discovery data estate</summary>
         System.Collections.Generic.List<string> WorkspaceRoot { get; set; }
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Storage
-Module Guid: f586bd97-8cde-45be-883a-cf5716cc062d
+Module Guid: 4deee175-f94f-4dfd-80d5-fd7c43018494
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storage
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,6 +16,9 @@ Gets the status of the ongoing migration for the specified storage account.
 
 ### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
 Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
+
+### [Get-AzStorageSku](Get-AzStorageSku.md)
+Lists the available SKUs supported by Microsoft.Storage for given subscription.
 
 ### [Get-AzStorageTaskAssignment](Get-AzStorageTaskAssignment.md)
 Get the storage task assignment properties
@@ -37,5 +40,5 @@ The migration updates the non-zonal redundant storage account to a zonal redunda
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 
 ### [Update-AzStorageTaskAssignment](Update-AzStorageTaskAssignment.md)
-update storage task assignment properties
+Update storage task assignment properties
 

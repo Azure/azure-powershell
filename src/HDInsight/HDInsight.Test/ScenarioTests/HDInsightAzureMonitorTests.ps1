@@ -23,7 +23,6 @@ function Test-AzureMonitorRelatedCommands{
 	{
 		# get cluster that will be used throughout test
 		$cluster = Get-AzHDInsightCluster -ResourceGroupName  "group-ps-test" -ClusterName  "ps-test-cluster"
-
 		Assert-NotNull $cluster
 
 		# get a Log Analytics Workspace
@@ -69,12 +68,12 @@ function Test-AzureMonitorAgentRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East US"
+		# $location = "East Asia"
 		# prepare parameter for creating parameter
 		# $params= Prepare-ClusterCreateParameter -location $location
 
 		# create cluster that will be used throughout test
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName "group-ps-test" -ClusterName "ps-test-cluster"
 		Assert-NotNull $cluster
 
 		$workspaceName = "ps-la"
@@ -93,7 +92,7 @@ function Test-AzureMonitorAgentRelatedCommands{
 
 		Assert-NotNull $workspaceId
 		Assert-NotNull $primaryKey
-		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -Primary  $primaryKey
+		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -PrimaryKey  $primaryKey
 		
 		$result = Get-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-True {$result.ClusterMonitoringEnabled}

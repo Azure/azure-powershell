@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.19.5
+* Added support for Salesforce V2 partitionOption feature.
+* Added support MI In Lakehouse And Warehouse connection.
+
 ## Version 1.19.4
 * Added support for Databricks Job Activity.
 * Added more support for QuickBooks connection properties.

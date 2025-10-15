@@ -2604,6 +2604,9 @@ configuration:
             mentionees:
             - ambhatna
             - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3094,6 +3097,9 @@ configuration:
             mentionees:
             - ambhatna
             - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3112,6 +3118,9 @@ configuration:
             - daeunyim
             - rajsell
             - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3878,6 +3887,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - nazang
+            - mooshc
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
