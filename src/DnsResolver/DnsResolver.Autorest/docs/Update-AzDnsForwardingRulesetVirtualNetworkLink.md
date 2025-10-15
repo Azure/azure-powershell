@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDnsForwardingRulesetVirtualNetworkLink
 
 ## SYNOPSIS
-Updates a virtual network link to a DNS forwarding ruleset.
+Update a virtual network link to a DNS forwarding ruleset.
 
 ## SYNTAX
 
@@ -19,6 +19,13 @@ Update-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <Strin
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityDnsForwardingRulesetExpanded
+```
+Update-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetInputObject <IDnsResolverIdentity>
+ -Name <String> [-IfMatch <String>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsForwardingRulesetVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
@@ -26,8 +33,22 @@ Update-AzDnsForwardingRulesetVirtualNetworkLink -InputObject <IDnsResolverIdenti
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates a virtual network link to a DNS forwarding ruleset.
+Update a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
 
@@ -91,12 +112,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsForwardingRulesetInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: UpdateViaIdentityDnsForwardingRulesetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsForwardingRulesetName
 The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -125,7 +161,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -139,12 +174,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Metadata
 Metadata attached to the virtual network link.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -159,7 +224,7 @@ The name of the virtual network link.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: VirtualNetworkLinkName
 
 Required: True
@@ -190,7 +255,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -206,7 +271,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -256,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IVirtualNetworkLink
 
 ## NOTES
 
