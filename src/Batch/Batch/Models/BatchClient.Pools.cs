@@ -17,6 +17,7 @@ using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -66,7 +67,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
                 IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
+
+                IPage<Pool> mgmtPools = BatchManagementClient.Pool.ListByBatchAccount(
+                    resourceGroupName: options.Context.ResourceGroupName, 
+                    accountName: options.Context.AccountName);
+
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
+
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
                     pools, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
@@ -87,16 +94,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             CloudPool pool = poolOperations.CreatePool();
 
-            Pool mgmtPool = new Pool();
+            Pool mgmtPool = new Pool(id: parameters.PoolId,name: parameters.DisplayName);
 
             pool.Id = parameters.PoolId;
-            //mgmtPool.Id = parameters.PoolId;
             pool.VirtualMachineSize = parameters.VirtualMachineSize;
             mgmtPool.VMSize = parameters.VirtualMachineSize;
             pool.DisplayName = parameters.DisplayName;
             mgmtPool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
-            mgmtPool.ResizeOperationStatus.ResizeTimeout = parameters.ResizeTimeout;
+            if (parameters.ResizeTimeout.HasValue)
+            {
+                mgmtPool.ScaleSettings = new ScaleSettings();
+                mgmtPool.ScaleSettings.FixedScale = new FixedScaleSettings();
+                mgmtPool.ScaleSettings.FixedScale.ResizeTimeout = parameters.ResizeTimeout;
+            }
             pool.TaskSlotsPerNode = parameters.TaskSlotsPerNode;
             mgmtPool.TaskSlotsPerNode = parameters.TaskSlotsPerNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
@@ -108,6 +119,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.AutoScaleEvaluationInterval = parameters.AutoScaleEvaluationInterval;
                 pool.AutoScaleFormula = parameters.AutoScaleFormula;
 
+                if(mgmtPool.ScaleSettings == null)
+                {
+                    mgmtPool.ScaleSettings = new ScaleSettings();
+                }
                 mgmtPool.ScaleSettings.AutoScale = new AutoScaleSettings
                 {
                     Formula = parameters.AutoScaleFormula,
@@ -119,6 +134,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.TargetDedicatedComputeNodes = parameters.TargetDedicatedComputeNodes;
                 pool.TargetLowPriorityComputeNodes = parameters.TargetLowPriorityComputeNodes;
 
+                if (mgmtPool.ScaleSettings == null)
+                {
+                    mgmtPool.ScaleSettings = new ScaleSettings();
+                }
                 mgmtPool.ScaleSettings.FixedScale = new FixedScaleSettings
                 {
                     TargetDedicatedNodes = parameters.TargetDedicatedComputeNodes,
@@ -176,25 +195,35 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (parameters.NetworkConfiguration != null)
             {
                 pool.NetworkConfiguration = parameters.NetworkConfiguration.omObject;
+                mgmtPool.NetworkConfiguration = parameters.NetworkConfiguration.toMgmtNetworkConfiguration();
             }
 
             if (parameters.MountConfiguration != null)
             {
                 pool.MountConfiguration = new List<Azure.Batch.MountConfiguration>();
+                mgmtPool.MountConfiguration = new List<Microsoft.Azure.Management.Batch.Models.MountConfiguration>();
                 foreach (PSMountConfiguration m in parameters.MountConfiguration)
                 {
                     pool.MountConfiguration.Add(m.omObject);
+                    mgmtPool.MountConfiguration.Add(m.toMgmtMountConfiguration());
                 }
             }
 
             if (parameters.UserAccounts != null)
             {
                 pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);
+                mgmtPool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.toMgmtUserAccount());
             }
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
 
-            pool.Commit(parameters.AdditionalBehaviors);
+            BatchManagementClient.Pool.Create(
+                resourceGroupName: parameters.Context.ResourceGroupName, 
+                accountName: parameters.Context.AccountName, 
+                poolName: parameters.PoolId,
+                parameters: mgmtPool);
+            
+            //pool.Commit(parameters.AdditionalBehaviors);
         }
 
         /// <summary>

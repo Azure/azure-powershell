@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
-    
-    
+
     public partial class PSAzureBlobFileSystemConfiguration
     {
         
@@ -127,5 +126,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 return this.omObject.SasKey;
             }
         }
+
+        
     }
 }

@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
         {
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(null);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(null);
 
             // Assert
             Assert.Null(result);
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -459,8 +459,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result1 = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
-            var result2 = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result1 = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result2 = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result1);
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var result = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var result = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(result);
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Act
             var mgmtContainerConfig = originalPsContainerConfig.toMgmtContainerConfiguration();
             var psContainerConfig = new PSContainerConfiguration();
-            var roundTripPsContainerConfig = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var roundTripPsContainerConfig = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(roundTripPsContainerConfig);
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Act
             var mgmtContainerConfig = originalPsContainerConfig.toMgmtContainerConfiguration();
             var psContainerConfig = new PSContainerConfiguration();
-            var roundTripPsContainerConfig = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var roundTripPsContainerConfig = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(roundTripPsContainerConfig);
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Act
             var mgmtContainerConfig = originalPsContainerConfig.toMgmtContainerConfiguration();
             var psContainerConfig = new PSContainerConfiguration();
-            var roundTripPsContainerConfig = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var roundTripPsContainerConfig = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(roundTripPsContainerConfig);
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Act
             var mgmtContainerConfig = originalPsContainerConfig.toMgmtContainerConfiguration();
             var psContainerConfig = new PSContainerConfiguration();
-            var roundTripPsContainerConfig = psContainerConfig.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var roundTripPsContainerConfig = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(roundTripPsContainerConfig);
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var convertedPsContainerConfig = psContainerConfig.fromMgmtContainerConfiguration(originalMgmtContainerConfig);
+            var convertedPsContainerConfig = PSContainerConfiguration.fromMgmtContainerConfiguration(originalMgmtContainerConfig);
             var roundTripMgmtContainerConfig = convertedPsContainerConfig.toMgmtContainerConfiguration();
 
             // Assert
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Act
             var mgmtContainerConfig = psContainerConfig.toMgmtContainerConfiguration();
             var psContainerConfigInstance = new PSContainerConfiguration();
-            var backToPs = psContainerConfigInstance.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var backToPs = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert
             Assert.NotNull(mgmtContainerConfig);
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var psContainerConfig = new PSContainerConfiguration();
-            var resultFromNull = psContainerConfig.fromMgmtContainerConfiguration(null);
+            var resultFromNull = PSContainerConfiguration.fromMgmtContainerConfiguration(null);
 
             // Assert
             Assert.Null(resultFromNull);
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
                 // Verify round-trip conversion maintains container configuration semantics
                 var psContainerConfigInstance = new PSContainerConfiguration();
-                var backToPs = psContainerConfigInstance.fromMgmtContainerConfiguration(mgmtContainerConfig);
+                var backToPs = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
                 Assert.NotNull(backToPs);
                 Assert.Equal(scenario.Type, backToPs.Type);
                 Assert.Equal(scenario.ImageNames.Count, backToPs.ContainerImageNames.Count);
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Act
             var mgmtResult = psContainerConfig.toMgmtContainerConfiguration();
             var psContainerConfigInstance = new PSContainerConfiguration();
-            var psResult = psContainerConfigInstance.fromMgmtContainerConfiguration(mgmtContainerConfig);
+            var psResult = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
             // Assert - Verify proper instance creation
             Assert.NotNull(mgmtResult);
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             {
                 var mgmtResult = psContainerConfig.toMgmtContainerConfiguration();
                 var psContainerConfigInstance = new PSContainerConfiguration();
-                var psResult = psContainerConfigInstance.fromMgmtContainerConfiguration(mgmtContainerConfig);
+                var psResult = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
                 Assert.NotNull(mgmtResult);
                 Assert.NotNull(psResult);
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             defaultMgmtContainerConfig.Type = "CriCompatible";
 
             var psContainerConfigInstance = new PSContainerConfiguration();
-            var psFromDefault = psContainerConfigInstance.fromMgmtContainerConfiguration(defaultMgmtContainerConfig);
+            var psFromDefault = PSContainerConfiguration.fromMgmtContainerConfiguration(defaultMgmtContainerConfig);
             Assert.NotNull(psFromDefault);
             Assert.Equal("CriCompatible", psFromDefault.Type);
             Assert.Null(psFromDefault.ContainerImageNames);
@@ -956,8 +956,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             Assert.Null(mgmtNullValuesResult.ContainerImageNames);
             Assert.Null(mgmtNullValuesResult.ContainerRegistries);
 
-            var psContainerConfigInstance2 = new PSContainerConfiguration();
-            var roundTripNullValues = psContainerConfigInstance2.fromMgmtContainerConfiguration(mgmtNullValuesResult);
+            var roundTripNullValues = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtNullValuesResult);
             Assert.NotNull(roundTripNullValues);
             Assert.Equal("DockerCompatible", roundTripNullValues.Type);
             Assert.Null(roundTripNullValues.ContainerImageNames);
@@ -997,7 +996,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
                 var mgmtContainerConfig = psContainerConfig.toMgmtContainerConfiguration();
                 var psContainerConfigInstance = new PSContainerConfiguration();
-                var roundTripContainerConfig = psContainerConfigInstance.fromMgmtContainerConfiguration(mgmtContainerConfig);
+                var roundTripContainerConfig = PSContainerConfiguration.fromMgmtContainerConfiguration(mgmtContainerConfig);
 
                 // Assert - Container type semantics should be preserved
                 Assert.NotNull(mgmtContainerConfig);

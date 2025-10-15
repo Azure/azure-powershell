@@ -35,11 +35,35 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 LicenseType = this.LicenseType,
                 ContainerConfiguration = this.ContainerConfiguration?.toMgmtContainerConfiguration(),
                 DiskEncryptionConfiguration = this.DiskEncryptionConfiguration?.toMgmtDiskEncryptionConfiguration(),
-                //NodePlacementConfiguration = this.NodePlacementConfiguration?.toMgmtNodePlacementConfiguration(),
-                //Extensions = this.Extensions?.Select(ext => ext?.toMgmtVMExtension()).ToList(),
-                //OSDisk = this.OSDisk?.toMgmtOSDisk(),
-                //SecurityProfile = this.SecurityProfile?.toMgmtSecurityProfile(),
-                //ServiceArtifactReference = this.ServiceArtifactReference?.toMgmtServiceArtifactReference()
+                NodePlacementConfiguration = this.NodePlacementConfiguration?.toMgmtNodePlacementConfiguration(),
+                Extensions = this.Extensions?.Select(ext => ext?.toMgmtVMExtension()).ToList(),
+                OSDisk = this.OSDisk?.toMgmtOSDisk(),
+                SecurityProfile = this.SecurityProfile?.toMgmtSecurityProfile(),
+                ServiceArtifactReference = this.ServiceArtifactReference?.toMgmtServiceArtifactReference()
+            };
+        }
+
+        internal static PSVirtualMachineConfiguration fromMgmtPSVirtualMachineConfiguration(VirtualMachineConfiguration virtualMachineConfiguration)
+        {
+            if (virtualMachineConfiguration == null)
+            {
+                return null;
+            }
+            return new PSVirtualMachineConfiguration(
+                imageReference: PSImageReference.fromMgmtImageReference(virtualMachineConfiguration.ImageReference),
+                nodeAgentSkuId: virtualMachineConfiguration.NodeAgentSkuId
+            )
+            {
+                WindowsConfiguration = PSWindowsConfiguration.fromMgmtWindowsConfiguration(virtualMachineConfiguration.WindowsConfiguration),
+                DataDisks = (virtualMachineConfiguration.DataDisks != null) ? virtualMachineConfiguration.DataDisks.Select(dd => PSDataDisk.fromMgmtDataDisk(dd)).ToList() : null,
+                LicenseType = virtualMachineConfiguration.LicenseType,
+                ContainerConfiguration = PSContainerConfiguration.fromMgmtContainerConfiguration(virtualMachineConfiguration.ContainerConfiguration),
+                DiskEncryptionConfiguration = PSDiskEncryptionConfiguration.fromMgmtDiskEncryptionConfiguration(virtualMachineConfiguration.DiskEncryptionConfiguration),
+                NodePlacementConfiguration = PSNodePlacementConfiguration.fromMgmtNodePlacementConfiguration(virtualMachineConfiguration.NodePlacementConfiguration),
+                Extensions = (virtualMachineConfiguration.Extensions != null) ? virtualMachineConfiguration.Extensions.Select(ext => PSVMExtension.fromMgmtVMExtension(ext)).ToList() : null,
+                OSDisk = PSOSDisk.fromMgmtOSDisk(virtualMachineConfiguration.OSDisk),
+                SecurityProfile = PSSecurityProfile.fromMgmtSecurityProfile(virtualMachineConfiguration.SecurityProfile),
+                ServiceArtifactReference = PSServiceArtifactReference.fromMgmtServiceArtifactReference(virtualMachineConfiguration.ServiceArtifactReference)
             };
         }
     }

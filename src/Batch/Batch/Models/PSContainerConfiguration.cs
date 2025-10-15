@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.ContainerRegistries?.ToList().ConvertAll(cr => cr.toMgmtContainerRegistry()));
         }
 
-        internal PSContainerConfiguration fromMgmtContainerConfiguration(ContainerConfiguration containerConfiguration)
+        internal static PSContainerConfiguration fromMgmtContainerConfiguration(ContainerConfiguration containerConfiguration)
         {
             if (containerConfiguration == null)
             {

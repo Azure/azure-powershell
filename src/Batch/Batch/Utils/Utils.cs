@@ -714,5 +714,136 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             return (Azure.Batch.Common.DiskEncryptionTarget)md;
         }
+
+        internal static NodePlacementPolicyType? toMgmtNodePlacementPolicyType(Azure.Batch.Common.NodePlacementPolicyType? policy)
+        {
+           return (NodePlacementPolicyType?)policy;
+        }
+
+        internal static Azure.Batch.Common.NodePlacementPolicyType? fromMgmtNodePlacementPolicyType(NodePlacementPolicyType? policy)
+        {
+            return (Azure.Batch.Common.NodePlacementPolicyType?)policy;
+        }
+
+        internal static StorageAccountType? ToMgmtStorageAccountType(Azure.Batch.Common.StorageAccountType? storageAccountType)
+        {
+            return (StorageAccountType?)storageAccountType;
+        }
+
+        internal static Azure.Batch.Common.StorageAccountType? FromMgmtStorageAccountType(StorageAccountType? storageAccountType)
+        {
+            return (Azure.Batch.Common.StorageAccountType?)storageAccountType;
+        }
+
+        internal static Azure.Batch.Common.DiffDiskPlacement? FromMgmtPlacement(DiffDiskPlacement? placement)
+        {
+            return (Azure.Batch.Common.DiffDiskPlacement?)placement;
+        }
+
+        internal static DiffDiskPlacement? ToMgmtPlacement(Azure.Batch.Common.DiffDiskPlacement? placement)
+        {
+            return (DiffDiskPlacement?)placement;
+        }
+
+        internal static SecurityTypes? ToMgmtSecurityType(Azure.Batch.Common.SecurityTypes? securityType)
+        {
+            if (!securityType.HasValue)
+            {
+                return null;
+            }
+            return (SecurityTypes?)securityType;
+        }
+
+        internal static Azure.Batch.Common.SecurityTypes? fromMgmtSecurityType(SecurityTypes? securityType)
+        {
+            if (!securityType.HasValue) {
+                return null;
+            }
+            return (Azure.Batch.Common.SecurityTypes?)securityType;
+        }
+
+        internal static Azure.Batch.Common.IPAddressProvisioningType? toIPAddressProvisioningType(IPAddressProvisioningType? provision)
+        {
+            if (!provision.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.IPAddressProvisioningType)provision;
+        }
+
+        internal static IPAddressProvisioningType? toMgmtIPAddressProvisioningType(Azure.Batch.Common.IPAddressProvisioningType? provision)
+        {
+            if (!provision.HasValue) {
+                return null;
+            }
+            return (IPAddressProvisioningType)provision;
+        }
+
+        internal static DynamicVNetAssignmentScope? toMgmtDynamicVNetAssignmentScope(Azure.Batch.Common.DynamicVNetAssignmentScope? dynamicVNetAssignmentScope)
+        {
+            if (!dynamicVNetAssignmentScope.HasValue)
+            {
+                return null;
+            }
+            return (DynamicVNetAssignmentScope)dynamicVNetAssignmentScope;
+        }
+
+        internal static Azure.Batch.Common.DynamicVNetAssignmentScope? fromMgmtDynamicVNetAssignmentScope(DynamicVNetAssignmentScope? dynamicVnetAssignmentScope)
+        {
+            if (!dynamicVnetAssignmentScope.HasValue) {
+                return null;
+            }
+            return (Azure.Batch.Common.DynamicVNetAssignmentScope)dynamicVnetAssignmentScope;
+        }
+
+        internal static InboundEndpointProtocol ToMgmtInboundEndpointProtocol(Azure.Batch.Common.InboundEndpointProtocol protocol)
+        {
+            return (InboundEndpointProtocol)protocol;
+        }
+
+        internal static Azure.Batch.Common.InboundEndpointProtocol FromMgmtInboundEndpointProtocol(InboundEndpointProtocol protocol)
+        {
+            return (Azure.Batch.Common.InboundEndpointProtocol)protocol;
+        }
+
+        internal static NetworkSecurityGroupRuleAccess ToMgmtNetworkSecurityRuleAccess(Azure.Batch.Common.NetworkSecurityGroupRuleAccess access)
+        {
+            return (NetworkSecurityGroupRuleAccess)access;
+        }
+
+        internal static Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess FromMgmtNetworkSecurityRuleAccess(NetworkSecurityGroupRuleAccess access)
+        {
+            return (Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess)access;
+        }
+
+        internal static ElevationLevel? ToMgmtElevationLevel(Azure.Batch.Common.ElevationLevel? elevationLevel)
+        {
+            return (ElevationLevel?)elevationLevel;
+        }
+
+        internal static Azure.Batch.Common.ElevationLevel? FromMgmtElevationLevel(ElevationLevel? elevationLevel)
+        {
+            return (Azure.Batch.Common.ElevationLevel?)elevationLevel;
+        }
+
+        internal static LoginMode? ToMgmtLoginMode(Azure.Batch.Common.LoginMode? loginMode)
+        {
+            return (LoginMode?)loginMode;
+        }
+
+        internal static Azure.Batch.Common.LoginMode? FromMgmtLoginMode(LoginMode? loginMode)
+        {
+            return (Azure.Batch.Common.LoginMode?)loginMode;
+        }
+
+        internal static Azure.Batch.Common.AllocationState? ToPSAllocationState(AllocationState? allocationState)
+        {
+            return (Azure.Batch.Common.AllocationState?)allocationState;
+        }
+
+        internal static AllocationState? FromPSAllocationState(Azure.Batch.Common.AllocationState? allocationState)
+        {
+            return (AllocationState?)allocationState;
+        }
     }
 }
