@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -37,8 +36,7 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -60,11 +58,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -81,11 +79,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -107,11 +105,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -128,11 +126,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -154,11 +152,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -175,11 +173,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -198,11 +196,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.
@@ -219,11 +217,11 @@ namespace Microsoft.Azure.Management.SignalR
         /// The operations group for this extension method.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the resource.

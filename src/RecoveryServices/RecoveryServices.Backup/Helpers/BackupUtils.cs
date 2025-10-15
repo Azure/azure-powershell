@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -99,6 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"southwestus", "centralus"},
             {"southcentralus2", "westcentralus"},
             {"southeastus3", "westus3"},
+            {"eastus3", "westus3"},
             {"southeastus5", "centralus"},
             {"southeastus", "westus3"}
         };
@@ -147,7 +151,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }
             
             return containersCount;
-        }        
+        }
+
+        // Helper method to check if a job is still running
+        public static bool IsJobInProgress(JobBase job)
+        {
+            return string.Equals(job.Status, "InProgress", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(job.Status, "Cancelling", StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Extracts VM name from VM ID
+        /// </summary>
+        public static string ExtractVmNameFromVmId(string vmId)
+        {
+            // Expected format: /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Compute/virtualMachines/{vmName}
+            var parts = vmId.Split('/');
+            var vmIndex = Array.IndexOf(parts, "virtualMachines");
+            if (vmIndex >= 0 && vmIndex + 1 < parts.Length)
+            {
+                return parts[vmIndex + 1];
+            }
+            throw new ArgumentException($"Invalid VM ID format: {vmId}");
+        }
+
+        /// <summary>
+        /// Extracts VM resource group from VM ID
+        /// </summary>
+        public static string ExtractVmResourceGroupFromVmId(string vmId)
+        {
+            // Expected format: /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Compute/virtualMachines/{vmName}
+            var parts = vmId.Split('/');
+            var rgIndex = Array.IndexOf(parts, "resourceGroups");
+            if (rgIndex >= 0 && rgIndex + 1 < parts.Length)
+            {
+                return parts[rgIndex + 1];
+            }
+            throw new ArgumentException($"Invalid VM ID format: {vmId}");
+        }
+
+        /// <summary>
+        /// Extracts storage account name from container name
+        /// </summary>
+        public static string GetStorageAccountNameFromContainerName(string containerName)
+        {
+            if (containerName.StartsWith("StorageContainer;"))
+            {
+                var parts = containerName.Split(';');
+                return parts[parts.Length - 1];
+            }
+            return null;
+        }
+
     }
 }
 

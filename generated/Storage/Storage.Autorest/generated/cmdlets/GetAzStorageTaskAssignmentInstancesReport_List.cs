@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Fetch the report summary of all the storage task assignments and instances in an account")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports", ApiVersion = "2025-01-01")]
     public partial class GetAzStorageTaskAssignmentInstancesReport_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IContext

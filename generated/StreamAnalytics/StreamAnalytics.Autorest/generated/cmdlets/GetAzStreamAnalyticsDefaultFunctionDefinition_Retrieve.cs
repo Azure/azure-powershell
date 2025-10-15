@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStreamAnalyticsDefaultFunctionDefinition_Retrieve", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"Input"}, NewOutputProperties=new string[] {"Input"}, ChangeDescription="The type of property Input will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Description(@"Retrieves the default definition of a function based on the parameters specified.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Generated]

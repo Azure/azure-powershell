@@ -32,9 +32,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         /// <param name="enable">Specifies if event grid and resource graph is
         /// enabled for Scheduled event related configurations.</param>
-        public EventGridAndResourceGraph(bool? enable = default(bool?))
+        /// <param name="scheduledEventsApiVersion">Specifies the api-version
+        /// to determine which Scheduled Events configuration schema version
+        /// will be delivered.</param>
+        public EventGridAndResourceGraph(bool? enable = default(bool?), string scheduledEventsApiVersion = default(string))
         {
             Enable = enable;
+            ScheduledEventsApiVersion = scheduledEventsApiVersion;
             CustomInit();
         }
 
@@ -49,6 +53,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "enable")]
         public bool? Enable { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the api-version to determine which Scheduled
+        /// Events configuration schema version will be delivered.
+        /// </summary>
+        [JsonProperty(PropertyName = "scheduledEventsApiVersion")]
+        public string ScheduledEventsApiVersion { get; set; }
 
     }
 }

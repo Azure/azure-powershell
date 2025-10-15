@@ -92,6 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdatePropertiesMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemUpdatePropertiesMaintenanceWindowTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RootSquashSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSetting = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings) content.GetValueForProperty("RootSquashSetting",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSetting, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("EncryptionSettingKeyEncryptionKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).EncryptionSettingKeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IKeyVaultKeyReference) content.GetValueForProperty("EncryptionSettingKeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).EncryptionSettingKeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.KeyVaultKeyReferenceTypeConverter.ConvertFrom);
@@ -103,6 +107,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("MaintenanceWindowTimeOfDayUtc"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindowTimeOfDayUtc = (string) content.GetValueForProperty("MaintenanceWindowTimeOfDayUtc",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindowTimeOfDayUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingMode = (string) content.GetValueForProperty("RootSquashSettingMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingNoSquashNidList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingNoSquashNidList = (string) content.GetValueForProperty("RootSquashSettingNoSquashNidList",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingNoSquashNidList, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingSquashUid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashUid = (long?) content.GetValueForProperty("RootSquashSettingSquashUid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashUid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingSquashGid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashGid = (long?) content.GetValueForProperty("RootSquashSettingSquashGid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashGid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingStatus = (string) content.GetValueForProperty("RootSquashSettingStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingStatus, global::System.Convert.ToString);
             }
             if (content.Contains("KeyEncryptionKeySourceVault"))
             {
@@ -149,6 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdatePropertiesMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemUpdatePropertiesMaintenanceWindowTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RootSquashSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSetting = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings) content.GetValueForProperty("RootSquashSetting",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSetting, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("EncryptionSettingKeyEncryptionKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).EncryptionSettingKeyEncryptionKey = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IKeyVaultKeyReference) content.GetValueForProperty("EncryptionSettingKeyEncryptionKey",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).EncryptionSettingKeyEncryptionKey, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.KeyVaultKeyReferenceTypeConverter.ConvertFrom);
@@ -160,6 +188,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("MaintenanceWindowTimeOfDayUtc"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindowTimeOfDayUtc = (string) content.GetValueForProperty("MaintenanceWindowTimeOfDayUtc",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).MaintenanceWindowTimeOfDayUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingMode = (string) content.GetValueForProperty("RootSquashSettingMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingNoSquashNidList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingNoSquashNidList = (string) content.GetValueForProperty("RootSquashSettingNoSquashNidList",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingNoSquashNidList, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingSquashUid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashUid = (long?) content.GetValueForProperty("RootSquashSettingSquashUid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashUid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingSquashGid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashGid = (long?) content.GetValueForProperty("RootSquashSettingSquashGid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingSquashGid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingStatus = (string) content.GetValueForProperty("RootSquashSettingStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateInternal)this).RootSquashSettingStatus, global::System.Convert.ToString);
             }
             if (content.Contains("KeyEncryptionKeySourceVault"))
             {

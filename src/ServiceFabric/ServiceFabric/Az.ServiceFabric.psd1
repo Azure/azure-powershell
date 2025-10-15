@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.6.0'
+ModuleVersion = '3.8.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
@@ -140,6 +140,9 @@ CmdletsToExport = 'Add-AzServiceFabricClientCertificate',
                'Get-AzServiceFabricManagedClusterApplicationTypeVersion', 
                'Get-AzServiceFabricManagedClusterService', 
                'Get-AzServiceFabricManagedNodeType', 'Get-AzServiceFabricService', 
+               'Invoke-AzServiceFabricDeallocateManagedNodeType', 
+               'Invoke-AzServiceFabricRedeployManagedNodeType', 
+               'Invoke-AzServiceFabricReimageManagedNodeType', 
                'New-AzServiceFabricApplication', 
                'New-AzServiceFabricApplicationType', 
                'New-AzServiceFabricApplicationTypeVersion', 
@@ -171,6 +174,7 @@ CmdletsToExport = 'Add-AzServiceFabricClientCertificate',
                'Set-AzServiceFabricManagedClusterService', 
                'Set-AzServiceFabricManagedNodeType', 'Set-AzServiceFabricSetting', 
                'Set-AzServiceFabricUpgradeType', 
+               'Start-AzServiceFabricManagedNodeType', 
                'Update-AzServiceFabricApplication', 
                'Update-AzServiceFabricDurability', 
                'Update-AzServiceFabricNodeType', 
@@ -210,9 +214,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added parameter ''Location'' to allow users to specify a different node type location than the resource group location in cmdlet ''Add-AzServiceFabricNodeType''.
-* Added parameter ''VmSize'' to allow for in-place sku swap for cmdlet ''Set-AzServiceFabricManagedNodeType''.
-* Updated SFMC to latest api preview version ''2025-03-01-preview'''
+        ReleaseNotes = '* Changed from ''Basic'' to ''Standard'' SKUs for loadbalancers and public IP addresses for ''New-AzServiceFabricCluster'' and ''Add-AzServiceFabricNodeType'' as ''Basic'' SKUs are being deprecated.
+* Added parameters ''-EnableAutoOsUpgrade'' and ''-AllowRdpAccess'' to ''New-AzServiceFabricManagedCluster'' and ''Set-AzServiceFabricManagedCluster''.
+* Added parameters ''-ZoneBalance'', ''-AllowOverProvisioning'', and ''-Zone'' to ''New-AzServiceFabricManagedNodeType'' and ''Set-AzServiceFabricManagedNodeType''.
+* Added preannoucement for removing Reimage parameters from ''Set-AzServiceFabricManagedNodeType''.
+* Added new cmdlets for managed node types: ''Invoke-AzServiceFabricDeallocateManagedNodeType'', ''Invoke-AzServiceFabricRedeployManagedNodeType'', ''Invoke-AzServiceFabricReimageManagedNodeType'', ''Start-AzServiceFabricManagedNodeType''
+* Marked ''NodeName'' as non-required and added parameter ''-UpdateType'' in ''Restart-AzServiceFabricManagedNodeType'' to allow UD by UD restarts of all nodes in node type.
+* Renamed Remove-AzServiceFabricManagedNodeType parameter sets to use ''Remove'' instead of ''Delete'' for consistency with cmdlet name.'
 
         # Prerelease string of this module
         # Prerelease = ''

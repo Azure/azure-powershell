@@ -88,9 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeyType = (string) content.GetValueForProperty("KeyType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeyType, global::System.Convert.ToString);
             }
-            if (content.Contains("KeySize"))
+            if (content.Contains("Size"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeySize = (long?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeySize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).Size = (long?) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).Size, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("KeyAlgorithm"))
             {
@@ -108,13 +108,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).IsShortKeySize = (bool?) content.GetValueForProperty("IsShortKeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).IsShortKeySize, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PairedKeyId"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("PairedKeyType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyType = (string) content.GetValueForProperty("PairedKeyType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyType, global::System.Convert.ToString);
+            }
+            if (content.Contains("PairedKeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -145,9 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeyType = (string) content.GetValueForProperty("KeyType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeyType, global::System.Convert.ToString);
             }
-            if (content.Contains("KeySize"))
+            if (content.Contains("Size"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeySize = (long?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).KeySize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).Size = (long?) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).Size, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("KeyAlgorithm"))
             {
@@ -165,13 +169,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).IsShortKeySize = (bool?) content.GetValueForProperty("IsShortKeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).IsShortKeySize, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("PairedKeyId"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("PairedKeyType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyType = (string) content.GetValueForProperty("PairedKeyType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyType, global::System.Convert.ToString);
+            }
+            if (content.Contains("PairedKeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal)this).PairedKeyId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

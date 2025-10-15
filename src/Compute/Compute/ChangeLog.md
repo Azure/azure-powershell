@@ -20,6 +20,18 @@
 
 -->
 ## Upcoming Release
+* Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
+
+## Version 10.4.0
+* Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
+* Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
+* Updated SDK to use 2025-04-01 version of the ComputeRP API for Compute related cmdlets.
+
+## Version 10.3.0
+* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
+* Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.
 
 ## Version 10.2.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
