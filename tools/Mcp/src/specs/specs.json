@@ -71,18 +71,21 @@
                 }
             ],
             "callbackName": "createTestsFromSpecs"
+        },
+        {
+            "name": "setup-module-structure",
+            "description": "Setup Azure PowerShell module structure by selecting service, provider, and API version through interactive dropdowns",
+            "parameters": [],
+            "callbackName": "setupModuleStructure"
+        },
+        {
+            "name": "run-partner-module-workflow",
+            "description": "This tools generates an autorest powershell module. This can be used to automatically generate a powershell module. Use this when a user asks about: partner module steps, autorest workflow, generating an Azure PowerShell module, order of tools, examples/tests guidance, working directory invariants, or stop-on-failure logic. Includes: exact tool invocation order, workingDirectory derivation rule (never recompute), STOP conditions (no retries), and completion summary expectations. Keywords: partner module, autorest, azure powershell onboarding, create-example, create-test, setup-module-structure, generate-autorest, workflow steps, module generation, examples, tests, regeneration.",
+            "parameters": [],
+            "callbackName": "runPartnerModuleWorkflow"
         }
     ],
     "prompts": [
-        {
-            "name": "create-greeting",
-            "description": "Generate a customized greeting message",
-            "parameters": [
-                {"name": "name", "description": "Name of the person to greet", "type": "string"},
-                {"name": "style", "description": "The style of greeting, such a formal, excited, or casual. If not specified casual will be used", "type": "string", "optional": true}
-            ],
-            "callbackName": "createGreetingPrompt"
-        },
         {
             "name": "partner-module-workflow",
             "description": "Full autonomous workflow instructions to generate a partner Azure PowerShell module via Autorest.",

@@ -1,14 +1,16 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { responseSchema, toolParameterSchema, toolSchema, promptSchema } from "./types.js";
+import { responseSchema, toolParameterSchema, toolSchema, promptSchema, resourceSchema } from "./types.js";
 import { ToolsService } from "./services/toolsService.js";
 import { PromptsService } from "./services/promptsService.js";
+import { ResourcesService } from "./services/resourcesService.js";
 import { readFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { RequestOptions } from "https";
 import { ElicitRequest, ElicitResult } from "@modelcontextprotocol/sdk/types.js";
+import { logger } from "./services/logger.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const srcPath = path.resolve(__dirname, "..", "src");
@@ -37,6 +39,7 @@ export class CodegenServer {
         this.initResponses();
         this.initTools();
         this.initPrompts();
+        this.initResources();
     }
 
     // dummy method for sending sampling request
@@ -74,6 +77,9 @@ export class CodegenServer {
         await this._mcp.connect(transport);
     }
 
+    public getResponseTemplate(name: string): string | undefined {
+        return this._responses.get(name);
+    }
 
     initTools() {
         const toolsService = ToolsService.getInstance().setServer(this);
@@ -100,7 +106,44 @@ export class CodegenServer {
                 schema.name,
                 schema.description,
                 parameter,
-                (args: any) => callback(args)
+                async (args: any) => {
+                    const correlationId = `${schema.name}-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
+                    logger.debug('Prompt started', { prompt: schema.name, correlationId });
+                    try {
+                        const result = await callback(args);
+                        logger.info('Prompt completed', { prompt: schema.name, correlationId });
+                        return result;
+                    } catch (err: any) {
+                        logger.error('Prompt failed', { prompt: schema.name, correlationId }, err);
+                        throw err;
+                    }
+                }
+            );
+        }
+    }
+
+    initResources() {
+        const resourcesService = ResourcesService.getInstance().setServer(this);
+        const resourcesSchemas = (specs.resources || []) as resourceSchema[];
+        for (const schema of resourcesSchemas) {
+            const parameter = resourcesService.createResourceParametersFromSchema(schema.parameters || []);
+            const callback = resourcesService.getResources(schema.callbackName, this._responses.get(schema.name));
+            this._mcp.resource(
+                schema.name,
+                schema.description,
+                parameter,
+                async (args: any) => {
+                    const correlationId = `${schema.name}-${Date.now()}-${Math.random().toString(16).slice(2,8)}`;
+                    logger.debug('Resource requested', { resource: schema.name, correlationId });
+                    try {
+                        const result = await callback(args);
+                        logger.info('Resource provided', { resource: schema.name, correlationId });
+                        return result;
+                    } catch (err: any) {
+                        logger.error('Resource failed', { resource: schema.name, correlationId }, err);
+                        throw err;
+                    }
+                }
             );
         }
     }
@@ -110,14 +153,16 @@ export class CodegenServer {
             let text = response.text;
             if (text.startsWith("@file:")) {
                 const relPath = text.replace("@file:", "");
-                const absPath = path.join(srcPath, "specs", relPath);
+                const absPath = path.join(srcPath, relPath);
                 try {
                     text = readFileSync(absPath, "utf-8");
-                } catch (e) {
-                    console.error(`Failed to load prompt file ${absPath}:`, e);
+                } catch (e: any) {
+                    logger.error(`Failed to load prompt file`, { absPath }, e as Error);
                 }
             }
             this._responses.set(response.name, text);
         });
     }
+
+
 }

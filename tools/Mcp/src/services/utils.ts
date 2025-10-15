@@ -1,8 +1,14 @@
 import fs from 'fs';
 import yaml from "js-yaml";
 import { yamlContent } from '../types.js';
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
+import { logger } from './logger.js';
 import path from 'path';
+import { Dirent } from 'fs';
+
+const GITHUB_API_BASE = 'https://api.github.com';
+const REST_API_SPECS_OWNER = 'Azure';
+const REST_API_SPECS_REPO = 'azure-rest-api-specs';
 
 const _pwshCD = (path: string): string => { return `pwsh -Command "$path = resolve-path ${path} | Set-Location"` }
 const _autorestReset = "autorest --reset"
@@ -22,18 +28,28 @@ function testYaml() {
 }
 
 export function generateAndBuild(workingDirectory: string): void {
-    const genBuildCommands = [_autorestReset, _autorest, _pwshBuild]
-    
+    const genBuildCommands = [_autorestReset, _autorest, _pwshBuild];
     for (const command of genBuildCommands) {
-        try {
-            console.log(`Executing command: ${command}`);
-            const result = execSync(command, { stdio: 'inherit', cwd: workingDirectory });
+        logger.info(`Executing command`, { command });
+        const [bin, ...args] = command.split(/\s+/);
+        const res = spawnSync(bin, args, { cwd: workingDirectory, encoding: 'utf-8' });
+        if (res.error) {
+            logger.error(`Command spawn error`, { command }, res.error as any);
+            throw res.error;
         }
-        catch (error) {
-            console.error("Error executing command:", error);
-            throw error;
+        if (res.status !== 0) {
+            logger.error(`Command failed`, { command, status: res.status, stderr: trimLarge(res.stderr) });
+            throw new Error(`Command failed: ${command}`);
         }
+        if (res.stdout) logger.debug(`Command stdout`, { command, stdout: trimLarge(res.stdout) });
+        if (res.stderr) logger.debug(`Command stderr`, { command, stderr: trimLarge(res.stderr) });
+        logger.info(`Command finished`, { command });
     }
+}
+
+function trimLarge(text: string, max = 4000): string {
+    if (!text) return '';
+    return text.length > max ? text.slice(0, max) + `...[truncated ${text.length - max}]` : text;
 }
 
 export function getYamlContentFromReadMe(readmePath: string): string {
@@ -73,9 +89,108 @@ export async function getSwaggerContentFromUrl(swaggerUrl: string): Promise<any>
         }    
         return await response.json();
     } catch (error) {
-        console.error('Error fetching swagger content:', error);
+        logger.error('Error fetching swagger content', { swaggerUrl }, error as Error);
         throw error;
     }
+}
+
+export async function getSpecsHeadCommitSha(branch: string = 'main'): Promise<string> {
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/branches/${branch}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Failed to fetch branch '${branch}' info: ${res.status}`);
+    }
+    const data = await res.json();
+    return data?.commit?.sha as string;
+}
+
+export async function listSpecModules(): Promise<string[]> {
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/specification`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Failed to list specification directory: ${res.status}`);
+    }
+    const list = await res.json();
+    return (Array.isArray(list) ? list : [])
+        .filter((e: any) => e.type === 'dir')
+        .map((e: any) => e.name)
+        .sort((a: string, b: string) => a.localeCompare(b));
+}
+
+export async function listProvidersForService(service: string): Promise<string[]> {
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/specification/${service}/resource-manager`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        // Sometimes service has alternate structure or doesn't exist
+        throw new Error(`Failed to list providers for service '${service}': ${res.status}`);
+    }
+    const list = await res.json();
+    return (Array.isArray(list) ? list : [])
+        .filter((e: any) => e.type === 'dir')
+        .map((e: any) => e.name)
+        .sort((a: string, b: string) => a.localeCompare(b));
+}
+
+export async function listApiVersions(service: string, provider: string): Promise<{ stable: string[]; preview: string[] }> {
+    const base = `specification/${service}/resource-manager/${provider}`;
+    const folders = ['stable', 'preview'] as const;
+    const result: { stable: string[]; preview: string[] } = { stable: [], preview: [] };
+    for (const f of folders) {
+        const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/${base}/${f}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+            // ignore missing
+            continue;
+        }
+        const list = await res.json();
+        const versions = (Array.isArray(list) ? list : [])
+            .filter((e: any) => e.type === 'dir')
+            .map((e: any) => e.name)
+            .sort((a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }));
+        result[f] = versions;
+    }
+    return result;
+}
+
+export async function listSwaggerFiles(service: string, provider: string, stability: 'stable'|'preview', version: string): Promise<string[]> {
+    const dir = `specification/${service}/resource-manager/${provider}/${stability}/${version}`;
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/${dir}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Failed to list files for ${dir}: ${res.status}`);
+    }
+    const list = await res.json();
+    const files: any[] = Array.isArray(list) ? list : [];
+    // Find JSON files; prefer names ending with provider or service
+    const jsons = files.filter(f => f.type === 'file' && f.name.endsWith('.json'));
+    const preferred = jsons.filter(f => new RegExp(`${provider.split('.').pop()}|${service}`, 'i').test(f.name));
+    const ordered = (preferred.length ? preferred : jsons).map(f => f.path);
+    return ordered;
+}
+
+export async function resolveAutorestInputs(params: {
+    service: string;
+    provider: string;
+    stability: 'stable'|'preview';
+    version: string;
+    swaggerPath?: string; // optional repo-relative path override
+}): Promise<{ serviceName: string; commitId: string; serviceSpecs: string; swaggerFileSpecs: string }> {
+    const commitId = await getSpecsHeadCommitSha('main');
+    const serviceSpecs = `${params.service}/resource-manager`;
+    let swaggerFileSpecs = params.swaggerPath ?? '';
+    if (!swaggerFileSpecs) {
+        const candidates = await listSwaggerFiles(params.service, params.provider, params.stability, params.version);
+        if (candidates.length === 0) {
+            throw new Error(`No swagger files found for ${params.service}/${params.provider}/${params.stability}/${params.version}`);
+        }
+        swaggerFileSpecs = candidates[0];
+    }
+    return {
+        serviceName: params.provider.replace(/^Microsoft\./, ''),
+        commitId,
+        serviceSpecs,
+        swaggerFileSpecs
+    };
 }
 
 export async function findAllPolyMorphism(workingDirectory: string): Promise<Map<string, Set<string>>> {
@@ -155,7 +270,7 @@ export async function getExamplesFromSpecs(workingDirectory: string): Promise<st
                 }
             }
         } catch (error) {
-            console.error(`Error fetching examples from ${apiUrl}:`, error);
+            logger.error(`Error fetching examples`, { apiUrl }, error as Error);
         }
     }
     return exampleSpecsPath;
@@ -165,7 +280,7 @@ export function getExampleJsonContent(exampleSpecsPath: string): Array<{name: st
     const jsonList: Array<{name: string, content: any}> = [];
     
     if (!fs.existsSync(exampleSpecsPath)) {
-        console.error(`Example specs directory not found at ${exampleSpecsPath}`);
+        logger.warn(`Example specs directory not found`, { exampleSpecsPath });
     }
     
     try {
@@ -178,13 +293,13 @@ export function getExampleJsonContent(exampleSpecsPath: string): Array<{name: st
                 const fileContent = fs.readFileSync(filePath, 'utf8');
                 const jsonContent = JSON.parse(fileContent);
                 jsonList.push({name: jsonFile.split('.json')[0], content: jsonContent});
-                console.log(`Loaded example JSON: ${jsonFile}`);
+                logger.debug(`Loaded example JSON`, { file: jsonFile });
             } catch (error) {
-                console.error(`Error reading JSON file ${jsonFile}:`, error);
+                logger.error(`Error reading JSON file`, { file: jsonFile }, error as Error);
             }
         }
     } catch (error) {
-        console.error(`Error reading examples directory ${exampleSpecsPath}:`, error);
+        logger.error(`Error reading examples directory`, { exampleSpecsPath }, error as Error);
     }
     
     return jsonList;
@@ -239,6 +354,76 @@ export function unflattenJsonObject(keyValuePairs: Array<{ key: string; value: a
     }
     
     return result;
+}
+
+export async function createDirectoryIfNotExists(dirPath: string): Promise<void> {
+    try {
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+            logger.info(`Created directory`, { dirPath });
+        }
+    } catch (error) {
+        logger.error(`Error creating directory`, { dirPath }, error as Error);
+        throw error;
+    }
+}
+
+export async function writeFileIfNotExists(filePath: string, content: string): Promise<void> {
+    try {
+        if (!fs.existsSync(filePath)) {
+            fs.writeFileSync(filePath, content, 'utf8');
+            logger.info(`Created file`, { filePath });
+        } else {
+            logger.debug(`File already exists`, { filePath });
+        }
+    } catch (error) {
+        logger.error(`Error writing file`, { filePath }, error as Error);
+        throw error;
+    }
+}
+
+export function getIdealModuleExamplePaths(): string {
+    const idealModulesRoot = path.join(process.cwd(), 'src', 'ideal-modules');
+    try {
+        if (!fs.existsSync(idealModulesRoot)) {
+            return '';
+        }
+        const modules: Dirent[] = fs.readdirSync(idealModulesRoot, { withFileTypes: true });
+        const exampleDirs: string[] = [];
+        for (const mod of modules) {
+            if (!mod.isDirectory()) continue;
+            const candidate = path.join(idealModulesRoot, mod.name, 'examples');
+            if (fs.existsSync(candidate)) {
+                exampleDirs.push(candidate);
+            }
+        }
+        return exampleDirs.join(';');
+    } catch (err) {
+        logger.error('Error collecting ideal module example paths', undefined, err as Error);
+        return '';
+    }
+}
+
+export function getIdealModuleTestPaths(): string {
+    const idealModulesRoot = path.join(process.cwd(), 'src', 'assets', 'ideal-modules');
+    try {
+        if (!fs.existsSync(idealModulesRoot)) {
+            return '';
+        }
+        const modules: Dirent[] = fs.readdirSync(idealModulesRoot, { withFileTypes: true });
+        const testDirs: string[] = [];
+        for (const mod of modules) {
+            if (!mod.isDirectory()) continue;
+            const candidate = path.join(idealModulesRoot, mod.name, 'tests');
+            if (fs.existsSync(candidate)) {
+                testDirs.push(candidate);
+            }
+        }
+        return testDirs.join(';');
+    } catch (err) {
+        logger.error('Error collecting ideal module test paths', undefined, err as Error);
+        return '';
+    }
 }
 
 

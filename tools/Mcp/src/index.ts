@@ -1,16 +1,16 @@
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CodegenServer } from "./CodegenServer.js";
-import * as utils from "./services/utils.js";
-import { yamlContent } from "./types.js";
+import { logger } from "./services/logger.js";
 
 const server = CodegenServer.getInstance();
 
 async function main() {
+    logger.info("Server startup begin");
     server.init();
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    const time = `Codegen MCP Server running on stdio at ${new Date()}`;
-    console.log(time);
+    logger.info("Codegen MCP Server startup complete");
+    logger.info("Server listening (stdio)");
     
     // const yaml = utils.getYamlContentFromReadMe("C:/workspace/azure-powershell/tools/Mcp/test/README.md") as yamlContent;
     // console.log(yaml['input-file'])
@@ -21,6 +21,6 @@ async function main() {
 }
 
 main().catch((error) => {
-    console.error("Fatal error in main():", error);
+    logger.error("Fatal error in main()", undefined, error as Error);
     process.exit(1);
-})
+});
