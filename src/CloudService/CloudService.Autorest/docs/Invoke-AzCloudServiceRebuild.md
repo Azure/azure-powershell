@@ -15,15 +15,29 @@ If you do not want to initialize storage resources, you can use Reimage Role Ins
 
 ### RebuildExpanded (Default)
 ```
-Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> -RoleInstance <String[]>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-RoleInstance <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RebuildViaIdentityExpanded
 ```
-Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> -RoleInstance <String[]>
+Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> [-RoleInstance <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RebuildViaJsonFilePath
+```
+Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RebuildViaJsonString
+```
+Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +83,7 @@ Name of the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded
+Parameter Sets: RebuildExpanded, RebuildViaJsonFilePath, RebuildViaJsonString
 Aliases:
 
 Required: True
@@ -97,7 +111,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
@@ -108,6 +121,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Rebuild operation
+
+```yaml
+Type: System.String
+Parameter Sets: RebuildViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Rebuild operation
+
+```yaml
+Type: System.String
+Parameter Sets: RebuildViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -146,7 +189,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded
+Parameter Sets: RebuildExpanded, RebuildViaJsonFilePath, RebuildViaJsonString
 Aliases:
 
 Required: True
@@ -162,10 +205,10 @@ Value of '*' will signify all role instances of the cloud service.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: RebuildExpanded, RebuildViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,7 +221,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded
+Parameter Sets: RebuildExpanded, RebuildViaJsonFilePath, RebuildViaJsonString
 Aliases:
 
 Required: False
