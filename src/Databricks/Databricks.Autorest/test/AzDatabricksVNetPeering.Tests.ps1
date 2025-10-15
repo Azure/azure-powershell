@@ -28,21 +28,21 @@ Describe 'AzDatabricksVNetPeering' {
         } | Should -Not -Throw
     }
 
-    It 'Get' -Skip {
+    It 'Get' {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' -Skip {
+    It 'UpdateExpanded' {
         { 
             $config = Update-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1 -AllowForwardedTraffic
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -Skip {
+    It 'UpdateViaIdentityExpanded' {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
             $config = Update-AzDatabricksVNetPeering -InputObject $config -AllowForwardedTraffic
@@ -50,7 +50,7 @@ Describe 'AzDatabricksVNetPeering' {
         } | Should -Not -Throw
     }
 
-    It 'Delete' {
+    It 'Delete' -skip {
         { 
             Remove-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
         } | Should -Not -Throw
