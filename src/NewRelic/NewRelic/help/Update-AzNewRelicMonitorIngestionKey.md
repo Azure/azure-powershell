@@ -52,8 +52,6 @@ True
 
 Refreshes the ingestion key using pipeline input from Get-AzNewRelicMonitor cmdlet.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -DefaultProfile
