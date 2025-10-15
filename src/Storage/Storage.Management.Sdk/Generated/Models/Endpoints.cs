@@ -48,7 +48,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="internetEndpoints">Gets the internet routing storage endpoints
         /// </param>
-        public Endpoints(string blob = default(string), string queue = default(string), string table = default(string), string file = default(string), string web = default(string), string dfs = default(string), StorageAccountMicrosoftEndpoints microsoftEndpoints = default(StorageAccountMicrosoftEndpoints), StorageAccountInternetEndpoints internetEndpoints = default(StorageAccountInternetEndpoints))
+
+        /// <param name="ipv6Endpoints">Gets the IPv6 storage endpoints.
+        /// </param>
+        public Endpoints(string blob = default(string), string queue = default(string), string table = default(string), string file = default(string), string web = default(string), string dfs = default(string), StorageAccountMicrosoftEndpoints microsoftEndpoints = default(StorageAccountMicrosoftEndpoints), StorageAccountInternetEndpoints internetEndpoints = default(StorageAccountInternetEndpoints), StorageAccountIpv6Endpoints ipv6Endpoints = default(StorageAccountIpv6Endpoints))
 
         {
             this.Blob = blob;
@@ -59,6 +62,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.Dfs = dfs;
             this.MicrosoftEndpoints = microsoftEndpoints;
             this.InternetEndpoints = internetEndpoints;
+            this.Ipv6Endpoints = ipv6Endpoints;
             CustomInit();
         }
 
@@ -115,5 +119,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "internetEndpoints")]
         public StorageAccountInternetEndpoints InternetEndpoints {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets the IPv6 storage endpoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipv6Endpoints")]
+        public StorageAccountIpv6Endpoints Ipv6Endpoints {get; set; }
     }
 }

@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added Cross region restore support for new region - eastus3.
 
+## Version 7.9.0
+* Added Cross region restore support for new region - eastus3.
+* Added support for reregistration of a backup item to another vault.
 
 ## Version 7.8.0
 * Added new optional parameter CVMOsDiskEncryptionSetId in Restore-AzRecoveryServicesBackupItem.

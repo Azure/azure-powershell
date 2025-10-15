@@ -79,6 +79,18 @@ jobs:
        Write-Host "List artifacts..."
        Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
 
+  - task: Bash@3
+    displayName: 'Ensure Mono installed (required for NuGet.exe on 1ES Ubuntu >= 24)'
+    condition: eq( variables['Agent.OS'], 'Linux' )
+    inputs:
+      targetType: inline
+      script: |
+        # Conditionally install Mono if missing from image
+        command -v mono >/dev/null || { 
+            echo "Mono not found, installing..."; 
+            sudo apt-get update -qq && sudo apt-get install -y mono-complete; 
+        }
+
   - task: NuGetCommand@2
     condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
     displayName: 'Download Previous Az .nupkg Files'

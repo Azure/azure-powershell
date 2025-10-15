@@ -69,10 +69,10 @@ Get Service Fabric service details under the specified application and cluster. 
 Deallocate specific nodes from the node type.
 
 ### [Invoke-AzServiceFabricRedeployManagedNodeType](Invoke-AzServiceFabricRedeployManagedNodeType.md)
-Redeploy specific nodes from the node type.
+Redeploy nodes from the node type.
 
 ### [Invoke-AzServiceFabricReimageManagedNodeType](Invoke-AzServiceFabricReimageManagedNodeType.md)
-Reimage specific nodes from the node type.
+Reimage nodes from the node type.
 
 ### [New-AzServiceFabricApplication](New-AzServiceFabricApplication.md)
 Create new service fabric application under the specified resource group and cluster.
@@ -156,7 +156,7 @@ Remove a service from the cluster. Only supports ARM deployed services.
 Remove one or multiple Service Fabric setting from the cluster.
 
 ### [Restart-AzServiceFabricManagedNodeType](Restart-AzServiceFabricManagedNodeType.md)
-Restart specific nodes from the node type.
+Restart nodes from the node type.
 
 ### [Set-AzServiceFabricManagedCluster](Set-AzServiceFabricManagedCluster.md)
 Set cluster resource properties.

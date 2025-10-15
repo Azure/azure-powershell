@@ -42,6 +42,11 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
 https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 #>
 function New-AzStaticWebApp {
+[Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PreviewMessage("**********************************************************************************************`n
+* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *`n
+* At least one change applies to this cmdlet.                                                     *`n
+* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+***************************************************************************************************")]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

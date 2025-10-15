@@ -86,7 +86,7 @@ function New-AzMigrateLocalServerReplication {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the target Resource Group Id where the migrated VM resources will reside.
+        # Specifies the target resource group ARM ID where the migrated VM resources will reside.
         ${TargetResourceGroupId},
 
         [Parameter(Mandatory)]
@@ -98,7 +98,7 @@ function New-AzMigrateLocalServerReplication {
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the Operating System disk for the source server to be migrated.
+        # Specifies the operating system disk for the source server to be migrated.
         ${OSDiskID},
 
         [Parameter(Mandatory)]
@@ -169,8 +169,10 @@ function New-AzMigrateLocalServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonSettings.ps1'
+        Import-Module $helperPath
+        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonHelper.ps1'
+        Import-Module $helperPath
 
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
@@ -181,23 +183,40 @@ function New-AzMigrateLocalServerReplication {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
+        $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasTargetTestVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')
         $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $MachineIdArray = $MachineId.Split("/")
-        if ($MachineIdArray.Length -lt 11) {
-            throw "Invalid machine ARM ID '$MachineId'"
+
+        # Validate ARM ID format from inputs
+        if (!(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate)) {
+            throw "Invalid -MachineId '$MachineId'. A valid machine ARM ID should follow the format '$($IdFormats.MachineArmIdTemplate)'."
         }
-        $SiteType = $MachineIdArray[7]
-        $SiteName = $MachineIdArray[8]
-        $ResourceGroupName = $MachineIdArray[4]
-        $MachineName = $MachineIdArray[10]
+
+        if (!(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
+            throw "Invalid -TargetStoragePathId '$TargetStoragePathId'. A valid storage path ARM ID should follow the format '$($IdFormats.StoragePathArmIdTemplate)'."
+        }
+
+        if (!(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
+            throw "Invalid -TargetResourceGroupId '$TargetResourceGroupId'. A valid resource group ARM ID should follow the format '$($IdFormats.ResourceGroupArmIdTemplate)'."
+        }
+
+        if ($HasTargetVirtualSwitchId -and !(Test-AzureResourceIdFormat -Data $TargetVirtualSwitchId -Format $IdFormats.LogicalNetworkArmIdTemplate)) {
+            throw "Invalid -TargetVirtualSwitchId '$TargetVirtualSwitchId'. A valid logical network ARM ID should follow the format '$($IdFormats.LogicalNetworkArmIdTemplate)'."
+        }
+
+        if ($HasTargetTestVirtualSwitchId -and !(Test-AzureResourceIdFormat -Data $TargetTestVirtualSwitchId -Format $IdFormats.LogicalNetworkArmIdTemplate)) {
+            throw "Invalid -TargetTestVirtualSwitchId '$TargetTestVirtualSwitchId'. A valid logical network ARM ID should follow the format '$($IdFormats.LogicalNetworkArmIdTemplate)'."
+        }
+
+        # $MachineId is in the format of
+        # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
+        $MachineIdArray = $MachineId.Split("/")
+        $ResourceGroupName = $MachineIdArray[4] # {1}
+        $SiteType = $MachineIdArray[7] # {2}
+        $SiteName = $MachineIdArray[8] # {3}
+        $MachineName = $MachineIdArray[10] # {4}
 
         # Get the source site and the discovered machine
-        if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
-            throw "Site type is not supported. Site type '$SiteType'. Check MachineId provided."
-        }
-        
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal
 
@@ -318,11 +337,11 @@ function New-AzMigrateLocalServerReplication {
         }
         else
         {
-            throw "Unsupported site type '$SiteType'. Only Hyper-V and VMware sites are supported."
+            throw "Site type of '$SiteType' in -MachineId is not supported. Only '$($SiteTypes.HyperVSites)' and '$($SiteTypes.VMwareSites)' are supported."
         }
 
         if ([string]::IsNullOrEmpty($runAsAccountId)) {
-            throw "Unable to determine RunAsAccount for site '$SiteName' from machine '$MachineName'. Please verify your appliance setup."
+            throw "Unable to determine RunAsAccount for site '$SiteName' from machine '$MachineName'. Please verify your appliance setup and provided -MachineId."
         }
 
         # Validate the VM
@@ -560,7 +579,6 @@ function New-AzMigrateLocalServerReplication {
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
-        $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $machine.NumberOfProcessorCore }
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
     
         # Determine target VM Hyper-V Generation
@@ -573,11 +591,37 @@ function New-AzMigrateLocalServerReplication {
             $customProperties.HyperVGeneration = if ($machine.Firmware -ieq "BIOS") { "1" } else { "2" }
         }
 
+        # Validate TargetVMCPUCore
+        if ($HasTargetVMCPUCore)
+        {
+            if ($TargetVMCPUCore -lt $TargetVMCPUCores.Min -or $TargetVMCPUCore -gt $TargetVMCPUCores.Max)
+            {
+                throw "Specify -TargetVMCPUCore between $($TargetVMCPUCores.Min) and $($TargetVMCPUCores.Max)."
+            }
+            $customProperties.TargetCpuCore = $TargetVMCPUCore
+        }
+        else
+        {
+            $customProperties.TargetCpuCore = $machine.NumberOfProcessorCore
+        }
+
         # Validate TargetVMRam
-        if ($HasTargetVMRam) {
-            # TargetVMRam needs to be greater than 0
-            if ($TargetVMRam -le 0) {
-                throw "Specify a target RAM that is greater than 0"    
+        if ($HasTargetVMRam)
+        {
+            if ($customProperties.HyperVGeneration -eq "1") {
+                # Between 512 MB and 1 TB
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen1Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen1Max)
+                {
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen1Min) and $($TargetVMRamInMB.Gen1Max) MB (i.e., 1 TB) for Hyper-V Generation 1 VM."
+                }
+            }
+            else # Hyper-V Generation 2
+            {
+                # Between 32 MB and 12 TB
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen2Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen2Max)
+                {
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen2Min) and $($TargetVMRamInMB.Gen2Max) MB (i.e., 12 TB) for Hyper-V Generation 2 VM."
+                }
             }
 
             $customProperties.TargetMemoryInMegaByte = $TargetVMRam 
@@ -604,21 +648,11 @@ function New-AzMigrateLocalServerReplication {
                 if ($null -eq $osDisk) {
                     throw "No Disk found with InstanceId $OSDiskID from discovered machine disks."
                 }
-
-                $diskName = Split-Path $osDisk.Path -leaf
-                if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
-                }
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
                 $osDisk = $machine.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
                 if ($null -eq $osDisk) {
                     throw "No Disk found with Uuid $OSDiskID from discovered machine disks."
-                }
-
-                $diskName = Split-Path $osDisk.Path -leaf
-                if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
             }
 
@@ -663,14 +697,14 @@ function New-AzMigrateLocalServerReplication {
             # Validate DiskToInclude
             [PSCustomObject[]]$uniqueDisks = @()
             foreach ($disk in $DiskToInclude) {
-                # VHD is not supported in Gen2 VMs
+                # Enforce VHDX for Gen2 VMs
                 if ($customProperties.HyperVGeneration -eq "2" -and $disk.DiskFileFormat -eq "VHD") {
-                    throw "VHD disks are not supported in Hyper-V Generation 2 VMs. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 'VHDX' as Format."
+                    throw "Please specify 'VHDX' as Format for the disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject."
                 }
 
-                # PhysicalSectorSize must be 512 for VHD format
-                if ($disk.DiskFileFormat -eq "VHD" -and $disk.DiskPhysicalSectorSize -ne 512) {
-                    throw "PhysicalSectorSize must be 512 for VHD format. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 512 as PhysicalSectorSize."
+                # PhysicalSectorSize must be 512 for VHD format if it is set
+                if ($disk.DiskFileFormat -eq "VHD" -and $null -ne $disk.DiskPhysicalSectorSize -and $disk.DiskPhysicalSectorSize -ne 512) {
+                    throw "Invalid Physical sector size of $($disk.DiskPhysicalSectorSize) is found for VHD format. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 512 as -PhysicalSectorSize."
                 }
 
                 if ($SiteType -eq $SiteTypes.HyperVSites) {
@@ -684,11 +718,6 @@ function New-AzMigrateLocalServerReplication {
                     if ($null -eq $discoveredDisk) {
                         throw "No Disk found with Uuid '$($disk.DiskId)' from discovered machine disks."
                     }
-                }
-
-                $diskName = Split-Path -Path $discoveredDisk.Path -Leaf
-                if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
 
                 if ($uniqueDisks.Contains($disk.DiskId)) {
