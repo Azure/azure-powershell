@@ -24,8 +24,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the NameAvailabilityParameters class.
         /// </summary>
 
-        /// <param name="type">The resource type. Can be &#34;Microsoft.SignalRService/SignalR&#34; or
-        /// &#34;Microsoft.SignalRService/webPubSub&#34;
+        /// <param name="type">The resource type. Can be &#34;Microsoft.SignalRService/SignalR&#34;,
+        /// &#34;Microsoft.SignalRService/WebPubSub&#34;,
+        /// &#34;Microsoft.SignalRService/SignalR/replicas&#34; or
+        /// &#34;Microsoft.SignalRService/WebPubSub/replicas&#34;
         /// </param>
 
         /// <param name="name">The resource name to validate. e.g.&#34;my-resource-name&#34;
@@ -45,8 +47,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets the resource type. Can be &#34;Microsoft.SignalRService/SignalR&#34;
-        /// or &#34;Microsoft.SignalRService/webPubSub&#34;
+        /// Gets or sets the resource type. Can be &#34;Microsoft.SignalRService/SignalR&#34;,
+        /// &#34;Microsoft.SignalRService/WebPubSub&#34;,
+        /// &#34;Microsoft.SignalRService/SignalR/replicas&#34; or
+        /// &#34;Microsoft.SignalRService/WebPubSub/replicas&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; set; }
