@@ -2,7 +2,7 @@
 
 function Update-AzDataProtectionBackupInstance
 {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a given backup instance')]
 
@@ -36,7 +36,7 @@ function Update-AzDataProtectionBackupInstance
         [System.String]
         ${UserAssignedIdentityArmId},
 
-        [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob.')]
+        [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob and AzureDataLakeStorage.')]
         [System.String[]]
         ${VaultedBackupContainer},
         
@@ -125,7 +125,7 @@ function Update-AzDataProtectionBackupInstance
                 throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
             }
             
-            $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IdentityDetails]::new()
+            $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IdentityDetails]::new()
             $instance.Property.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
 
             if ($hasUserAssignedIdentityArmId) {
@@ -135,7 +135,7 @@ function Update-AzDataProtectionBackupInstance
         
         if($hasVaultedBackupContainer){
 
-            if($DatasourceType -ne "AzureBlob"){
+            if($DatasourceType -ne "AzureBlob" -and $DatasourceType -ne "AzureDataLakeStorage"){
                 $err = "Parameter VaultedBackupContainer isn't supported for given Datasource"
                 throw $err
             }
@@ -143,7 +143,7 @@ function Update-AzDataProtectionBackupInstance
             # exclude containers which start with $ except $web, $root
             $unsupportedContainers = $VaultedBackupContainer | Where-Object { $_ -like '$*' -and $_ -ne "`$root" -and $_ -ne "`$web"}
             if($unsupportedContainers.Count -gt 0){
-                $message = "Following containers are not allowed for configure protection with AzureBlob - $unsupportedContainers. Please remove them and try again."
+                $message = "Following containers are not allowed for configure protection with AzureBlob and AzureDataLakeStorage - $unsupportedContainers. Please remove them and try again."
                 throw $message
             }
                         
@@ -153,7 +153,7 @@ function Update-AzDataProtectionBackupInstance
                 $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList = $VaultedBackupContainer
             }
             elseif($datasourceParam -eq $null){
-                $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BlobBackupDatasourceParameters]::new()
+                $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.BlobBackupDatasourceParameters]::new()
                 $backupConfiguration.ObjectType = "BlobBackupDatasourceParameters"
                 $backupConfiguration.ContainersList = $VaultedBackupContainer
 
