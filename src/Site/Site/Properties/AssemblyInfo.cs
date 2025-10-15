@@ -16,13 +16,13 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - StackHCI")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - Site")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("8853A329-2E41-4A6A-808B-9D1170A5BBB4")]
-[assembly: AssemblyVersion("2.6.4")]
-[assembly: AssemblyFileVersion("2.6.4")]
+[assembly: Guid("689bbedf-d989-4d3b-bea5-bd70258a5b40")]
+[assembly: AssemblyVersion("0.1.0")]
+[assembly: AssemblyFileVersion("0.1.0")]
