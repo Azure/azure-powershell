@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
+  - Correct AMH solution tool name of "ServerMigration_DataReplication" is now being passed in to address replication count missing and UX experience load issues in Azure Migrate on Azure portal.
+* Address Join-Path compatibility issue in older version of PowerShell environment such as PowerShell 5.1 in the following commands
+ - `Initialize-AzMigrateLocalReplicationInfrastructure`
+ - `Initialize-AzMigrateReplicationInfrastructure`
+ - `New-AzMigrateLocalServerReplication`
+ - `Get-AzMigrateLocalServerReplication`
+ - `Set-AzMigrateLocalServerReplication`
+ - `Start-AzMigrateLocalServerMigration`
 
 ## Version 2.10.0
 * Fixed bugs in `New-AzMigrateLocalDiskMappingObject`: Only validate for non-512 physical sector size of VHD when `-PhysicalSectorSize` parameter is given
@@ -25,8 +34,6 @@
 * Fixed bugs in `Set-AzMigrateLocalServerReplication`: Added ARM id validation for input parameters
 * Fixed bugs in `Get-AzMigrateLocalServerReplication`: Added ARM id validation for input parameters
 * Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
-* Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
-  - Correct AMH solution tool name of "ServerMigration_DataReplication" is now being passed in to address replication count missing and UX experience load issues in Azure Migrate on Azure portal.
 
 ## Version 2.9.0
 * Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.
