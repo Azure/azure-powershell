@@ -1,6 +1,6 @@
 ### Example 1: Delete a DbSystem
 ```powershell
-Remove-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem -Force -PassThru
+Remove-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem -PassThru
 ```
 
 ```output
@@ -11,7 +11,7 @@ Deletes a DbSystem by name and resource group. For more information, execute `Ge
 
 ### Example 2: Delete a DbSystem by piping from Get
 ```powershell
-Get-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem | Remove-AzOracleDbSystem -Force -PassThru
+Get-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem | Remove-AzOracleDbSystem -PassThru
 ```
 
 ```output

@@ -20,7 +20,7 @@ Lists the available Oracle Database versions for **eastus2**. For more informati
 
 ### Example 2: List versions for a specific shape
 ```powershell
-Get-AzOracleDbVersion -Location eastus2 -Shape "VM.Standard3.Flex"
+Get-AzOracleDbVersion -Location eastus2
 ```
 
 ```output

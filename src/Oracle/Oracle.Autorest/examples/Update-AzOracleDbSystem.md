@@ -36,7 +36,7 @@ Updates the **tags** on an existing DbSystem. For more information, execute `Get
 
 ### Example 2: Scale CPU cores on a DbSystem
 ```powershell
-Update-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem -CpuCoreCount 8
+Update-AzOracleDbSystem -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestDbSystem
 ```
 
 ```output

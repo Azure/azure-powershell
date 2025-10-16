@@ -51,9 +51,6 @@ New-AzOracleDbSystem `
   -Name OFake_PowerShellTestDbSystem `
   -Location eastus2 `
   -Shape VM.Standard3.Flex `
-  -CpuCoreCount 4 `
-  -DataStorageSizeInGb 256 `
-  -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated" `
   -AdminPassword (ConvertTo-SecureString 'P@ssw0rd!' -AsPlainText -Force)
 ```
 
@@ -94,9 +91,6 @@ New-AzOracleDbSystem `
   -Name OFake_PowerShellTestDbSystem `
   -Location eastus2 `
   -Shape VM.Standard3.Flex `
-  -CpuCoreCount 4 `
-  -DataStorageSizeInGb 256 `
-  -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated" `
   -Tag @{ env="test"; owner="example@oracle.com" } `
   -AdminPassword (ConvertTo-SecureString 'P@ssw0rd!' -AsPlainText -Force)
 ```

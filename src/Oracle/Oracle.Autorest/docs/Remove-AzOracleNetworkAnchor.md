@@ -31,7 +31,7 @@ Delete a NetworkAnchor
 
 ### Example 1: Delete a Network Anchor
 ```powershell
-Remove-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor -Force -PassThru
+Remove-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor -PassThru
 ```
 
 ```output
@@ -43,7 +43,7 @@ For more information, execute `Get-Help Remove-AzOracleNetworkAnchor`.
 
 ### Example 2: Delete a Network Anchor by piping from Get
 ```powershell
-Get-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor | Remove-AzOracleNetworkAnchor -Force -PassThru
+Get-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor | Remove-AzOracleNetworkAnchor -PassThru
 ```
 
 ```output

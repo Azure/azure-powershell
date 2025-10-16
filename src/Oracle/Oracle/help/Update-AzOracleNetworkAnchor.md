@@ -85,7 +85,7 @@ For more information, execute `Get-Help Update-AzOracleNetworkAnchor`.
 
 ### Example 2: Partially update a Network Anchor property
 ```powershell
-Update-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor -LinkedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet"
+Update-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor
 ```
 
 ```output

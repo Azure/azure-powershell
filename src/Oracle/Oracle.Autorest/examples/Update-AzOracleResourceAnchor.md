@@ -34,7 +34,7 @@ Updates the **tags** on an existing Resource Anchor. For more information, execu
 
 ### Example 2: Partially update a Resource Anchor property
 ```powershell
-Update-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor -LinkedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet"
+Update-AzOracleResourceAnchor -ResourceGroupName PowerShellTestRg -Name OFake_PowerShellTestResourceAnchor
 ```
 
 ```output

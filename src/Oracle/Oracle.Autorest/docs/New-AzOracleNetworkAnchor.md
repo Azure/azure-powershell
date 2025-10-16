@@ -47,7 +47,6 @@ New-AzOracleNetworkAnchor `
   -ResourceGroupName PowerShellTestRg `
   -Name OFake_owerShellTestNetworkAnchor `
   -Location eastus2 `
-  -LinkedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet"
 ```
 
 ```output
@@ -84,7 +83,6 @@ New-AzOracleNetworkAnchor `
   -ResourceGroupName PowerShellTestRg `
   -Name OFake_owerShellTestNetworkAnchor `
   -Location eastus2 `
-  -LinkedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet" `
   -Tag @{ env="test"; owner="example@oracle.com" }
 ```
 
