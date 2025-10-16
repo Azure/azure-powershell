@@ -34,10 +34,10 @@ Describe 'New-AzOracleResourceAnchor' {
                     -Name $env.resourceAnchorName `
                     -ResourceGroupName $env.resourceAnchorRgName `
                     -Location $env.resourceAnchorLocation `
-                    -SubscriptionId $env.networkAnchorSubId `
+                    -SubscriptionId $env.subscriptionId `
 
                 $created | Should -Not -BeNullOrEmpty
-                $created.Name | Should -Be $name
+                $created.Name | Should -Be $env.resourceAnchorName
             } else {
                 # In Record/Playback or when cmdlet is unavailable, keep passing while Warmup generates the recording
                 $true | Should -Be $true

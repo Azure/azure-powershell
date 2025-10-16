@@ -34,15 +34,15 @@ Describe 'Get-AzOracleNetworkAnchor' {
 
     It 'Get by name and resource group' {
         {
-            $na = Get-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId
+            $na = Get-AzOracleNetworkAnchor -Name "perfTestNA001" -ResourceGroupName "perf-test-dbsystems" -SubscriptionId $env.SubscriptionId
             $na | Should -Not -BeNullOrEmpty
-            $na.Name | Should -Be $env.networkAnchorName
+            $na.Name | Should -Be "perfTestNA001"
         } | Should -Not -Throw
     }
 
     It 'List in subscription (sanity)' {
         {
-            $list = Get-AzOracleNetworkAnchor -SubscriptionId $env.networkAnchorSubId
+            $list = Get-AzOracleNetworkAnchor -SubscriptionId $env.SubscriptionId
             $list.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

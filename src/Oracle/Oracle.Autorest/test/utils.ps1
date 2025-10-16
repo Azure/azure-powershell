@@ -194,48 +194,45 @@ function setupEnv() {
     $env.Add("ExaInfraDNDName", $ExaInfraDNDName)
 
     # Resource Anchor Properties
-    $resourceAnchorRgName = "basedb-rg929-ti-iad52"
+    $resourceAnchorRgName = "PowershellAnchors"
     $env.Add("resourceAnchorRgName", $resourceAnchorRgName)
 
-    $resourceAnchorName = "PowershellTestRA"
+    $resourceAnchorName = "PowershellTestRANew1"
     $env.Add("resourceAnchorName", $resourceAnchorName)
 
     $resourceAnchorLocation = "global"
     $env.Add("resourceAnchorLocation", $resourceAnchorLocation)
 
     # Network Anchor Properties
-    $networkAnchorSubId = "049e5678-fbb1-4861-93f3-7528bd0779fd"
-    $env.Add("networkAnchorSubId", $networkAnchorSubId)
-
-    $networkAnchorRgName = "basedb-iad53-rg"
+    $networkAnchorRgName = "PowershellAnchors"
     $env.Add("networkAnchorRgName", $networkAnchorRgName)
 
     $networkAnchorName = "PowershellTest1s"
     $env.Add("networkAnchorName", $networkAnchorName)
 
-    $networkAnchorSubnetId = "/subscriptions/$($env.networkAnchorSubId)/resourceGroups/$($env.networkAnchorRgName)/providers/Microsoft.Network/virtualNetworks/basedb-iad53-vnet/subnets/$($subnetName)"
-    $env.Add("networkAnchorSubnetId", $networkAnchorSubnetId)
+    # $networkAnchorSubnetId = "/subscriptions/$($env.subscriptionId)/resourceGroups/$($env.networkAnchorRgName)/providers/Microsoft.Network/virtualNetworks/basedb-iad53-vnet/subnets/$($subnetName)"
+    # $env.Add("networkAnchorSubnetId", $networkAnchorSubnetId)
 
-    $resourceAnchorId = "/subscriptions/$($env.networkAnchorSubId)/resourceGroups/$($env.networkAnchorRgName)/providers/Oracle.Database/resourceAnchors/basedb-iad53-ra"
+    $resourceAnchorId = "/subscriptions/$($env.subscriptionId)/resourceGroups/$($env.networkAnchorRgName)/providers/Oracle.Database/resourceAnchors/PowershellTestRANew1"
     $env.Add("resourceAnchorId", $resourceAnchorId)
 
     # BaseDB Properties
-    $baseDbName = "PowershellSdk"
+    $baseDbName = "PowershellSdkNew"
     $env.Add("baseDbName", $baseDbName)
 
-    $baseDbZone = @("3")
+    $baseDbZone = @("1")
     $env.Add("baseDbZone", $baseDbZone)
 
     $databaseEdition = "EnterpriseEdition"
     $env.Add("databaseEdition", $databaseEdition)
 
-    $baseDbHostname = "whitelist2"
+    $baseDbHostname = "whitelist25"
     $env.Add("baseDbHostname", $baseDbHostname)
 
-    $baseDbShape = "VM.Standard.x86"
+    $baseDbShape = "VM.Standard.E5.Flex"
     $env.Add("baseDbShape", $baseDbShape)
 
-    $baseDbDisplayName = "BaseDbWhitelisttest"
+    $baseDbDisplayName = "BaseDbWhitelisMih"
     $env.Add("baseDbDisplayName", $baseDbDisplayName)
 
     $baseDbNodeCount = 1
@@ -244,7 +241,7 @@ function setupEnv() {
     $initialDataStorageSizeInGb = 256
     $env.Add("initialDataStorageSizeInGb", $initialDataStorageSizeInGb)
 
-    $baseDbComputeModel = "ECPU"
+    $baseDbComputeModel = "OCPU"
     $env.Add("baseDbComputeModel", $baseDbComputeModel)
 
     $baseDbComputeCount = 4
@@ -253,18 +250,18 @@ function setupEnv() {
     $baseDbVersion = "19.27.0.0"
     $env.Add("baseDbVersion", $baseDbVersion)
 
-    $baseDbPdbName = "pdbNameSep02"
+    $baseDbPdbName = "pdbNameSep05"
     $env.Add("baseDbPdbName", $baseDbPdbName)
 
     $dbSystemOptionStorageManagement = "LVM"
     $env.Add("dbSystemOptionStorageManagement", $dbSystemOptionStorageManagement)
 
     $netAnchorName = "basedb-na9293-ti-iad52"
-    $baseDbNetAnchor = "/subscriptions/$($env.networkAnchorSubId)/resourceGroups/$($env.resourceAnchorRgName)/providers/Oracle.Database/networkAnchors/$($netAnchorName)"
+    $baseDbNetAnchor = "/subscriptions/a374f63c-de57-4fa6-a14a-53fb69667389/resourceGroups/canary-basedb-iad/providers/Oracle.Database/networkAnchors/canary-NA-DND"
     $env.Add("baseDbNetAnchor", $baseDbNetAnchor)
 
     $resAnchorName = "basedb-na9293-ti-iad52"
-    $baseDbResAnchor = "/subscriptions/$($env.networkAnchorSubId)/resourcegroups/$($env.resourceAnchorRgName)/providers/oracle.database/resourceanchors/$($resAnchorName)"
+    $baseDbResAnchor = "/subscriptions/a374f63c-de57-4fa6-a14a-53fb69667389/resourceGroups/canary-basedb-iad/providers/Oracle.Database/resourceAnchors/canary-RA-DND"
     $env.Add("baseDbResAnchor", $baseDbResAnchor)
 
     # For any resources you created for test, you should add it to $env here.

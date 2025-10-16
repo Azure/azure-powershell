@@ -10,8 +10,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleDbSystem'))
 
     $pubLoaded  = Get-Module Az.Oracle -ErrorAction SilentlyContinue
     $privLoaded = Get-Module Az.Oracle.private -ErrorAction SilentlyContinue
-    if (-not ($pubLoaded -and $privLoaded)) {
-        & (Join-Path $PSScriptRoot 'run-module.ps1')
+     if (-not ($pubLoaded -and $privLoaded)) {
+        $runScript = Join-Path $PSScriptRoot 'run-module.ps1'
+        if (Test-Path $runScript) {
+            & $runScript
+        } else {
+            $modulePsd1 = Join-Path $PSScriptRoot '..\Az.Oracle.psd1'
+            if (Test-Path $modulePsd1) { Import-Module $modulePsd1 -ErrorAction Stop }
+        }
     }
 
     $currentPath = $PSScriptRoot
@@ -36,7 +42,7 @@ Describe 'New-AzOracleDbSystem' {
                 $created = New-AzOracleDbSystem `
                     -Name $env.baseDbName `
                     -ResourceGroupName $env.resourceAnchorRgName `
-                    -SubscriptionId $env.networkAnchorSubId `
+                    -SubscriptionId $env.SubscriptionId `
                     -Location $env.location `
                     -Zone $env.baseDbZone `
                     -DatabaseEdition $env.databaseEdition `
@@ -54,6 +60,7 @@ Describe 'New-AzOracleDbSystem' {
                     -DbVersion $env.baseDbVersion `
                     -PdbName $env.baseDbPdbName `
                     -DbSystemOptionStorageManagement $env.dbSystemOptionStorageManagement
+                    -NoWait
 
                 $created | Should -Not -BeNullOrEmpty
             } else {

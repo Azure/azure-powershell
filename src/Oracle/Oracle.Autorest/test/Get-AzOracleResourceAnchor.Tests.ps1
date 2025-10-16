@@ -22,7 +22,7 @@ Describe 'Get-AzOracleResourceAnchor' {
 
     It 'Get by name and resource group' {
         {
-            $ra = Get-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId
+            $ra = Get-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.SubscriptionId
             $ra | Should -Not -BeNullOrEmpty
             $ra.Name | Should -Be $env.resourceAnchorName
         } | Should -Not -Throw
@@ -30,7 +30,7 @@ Describe 'Get-AzOracleResourceAnchor' {
 
     It 'List in subscription' {
         {
-            $list = Get-AzOracleResourceAnchor -SubscriptionId $env.networkAnchorSubId
+            $list = Get-AzOracleResourceAnchor -SubscriptionId $env.SubscriptionId
             $list.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

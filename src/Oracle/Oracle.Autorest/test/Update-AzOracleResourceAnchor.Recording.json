@@ -1,15 +1,15 @@
 {
-  "Update-AzOracleResourceAnchor+[NoContext]+Update tags+$PATCH+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01+1": {
+  "Update-AzOracleResourceAnchor+[NoContext]+Update tags+$PATCH+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowershellAnchors/providers/Oracle.Database/resourceAnchors/PowershellTestRANew1?api-version=2025-09-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01",
-      "Content": "{\n  \"tags\": {\n    \"updatedBy\": \"Pester\",\n    \"purpose\": \"sdk-test\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowershellAnchors/providers/Oracle.Database/resourceAnchors/PowershellTestRANew1?api-version=2025-09-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"purpose\": \"sdk-test\",\r\n    \"updatedBy\": \"Pester\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "72" ]
+        "Content-Length": [ "77" ]
       }
     },
     "Response": {
@@ -17,42 +17,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"4000e025-0000-0700-0000-68e957560000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=dce5441b-0867-46bb-9d5f-2750244d9c01,objectId=ff527500-a33c-4844-ab6c-05aeee02b255/southcentralus/f722de23-bc8b-4289-8379-87e6334beb5b" ],
+        "ETag": [ "\"9400e680-0000-0700-0000-68ee868b0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/southcentralus/1752b430-9d7a-4add-ba4d-b9f8dea38f56" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "05d07afc-8022-4a88-b9bb-a354c165fd0d" ],
-        "x-ms-correlation-request-id": [ "3de4d2e4-6496-4013-9455-8d898a16118d" ],
+        "x-ms-request-id": [ "27caf0c2-659d-45ac-af7a-a5be2c72ded0" ],
+        "x-ms-correlation-request-id": [ "9435765f-1f86-4f2f-ada3-81de3f291f6d" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251010T185831Z:3de4d2e4-6496-4013-9455-8d898a16118d" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251014T172116Z:9435765f-1f86-4f2f-ada3-81de3f291f6d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BCBC1B11254047ECB00CF55858E4508E Ref B: SN4AA2022303027 Ref C: 2025-10-10T18:58:30Z" ],
-        "Date": [ "Fri, 10 Oct 2025 18:58:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0B0F4E2B9B5840D39392A0F666346DE7 Ref B: SN4AA2022305023 Ref C: 2025-10-14T17:21:14Z" ],
+        "Date": [ "Tue, 14 Oct 2025 17:21:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "674" ],
+        "Content-Length": [ "693" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create\",\"name\":\"Create\",\"type\":\"oracle.database/resourceanchors\",\"location\":\"global\",\"tags\":{\"updatedBy\":\"Pester\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"mikita.artsemyeu@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-10T18:56:07.2493256Z\",\"lastModifiedBy\":\"mikita.artsemyeu@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-10T18:58:30.273692Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"linkedCompartmentId\":\"ocid1.compartment.oc1..aaaaaaaapp7w6fpyiz4zkso7ltyuquwkuk2mm7x3mvq34gud64kaifi5p5jq\"}}",
+      "Content": "{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowershellAnchors/providers/Oracle.Database/resourceAnchors/PowershellTestRANew1\",\"name\":\"PowershellTestRANew1\",\"type\":\"oracle.database/resourceanchors\",\"location\":\"global\",\"tags\":{\"purpose\":\"sdk-test\",\"updatedBy\":\"Pester\"},\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-13T19:15:12.3148168Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T17:21:15.2831461Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"linkedCompartmentId\":\"ocid1.compartment.oc1..aaaaaaaarxkmqhihd5rng4ahdof6fqnor7zcyneloxbm4esygi3l5pmxezka\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzOracleResourceAnchor+[NoContext]+Update tags+$GET+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01+2": {
+  "Update-AzOracleResourceAnchor+[NoContext]+Update tags+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowershellAnchors/providers/Oracle.Database/resourceAnchors/PowershellTestRANew1?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowershellAnchors/providers/Oracle.Database/resourceAnchors/PowershellTestRANew1?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "535e979a-50d5-40b9-b45c-5401c3145722" ],
+        "x-ms-client-request-id": [ "480b1835-97b0-4050-8e37-b6c2787e8692" ],
         "CommandName": [ "Get-AzOracleResourceAnchor" ],
         "FullCommandName": [ "Get-AzOracleResourceAnchor_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -63,25 +63,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"4000e025-0000-0700-0000-68e957560000\"" ],
+        "ETag": [ "\"9400e680-0000-0700-0000-68ee868b0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "104ae5a9-7f6a-46bf-8ec6-2310a22c28ab" ],
-        "x-ms-correlation-request-id": [ "25b60741-cc96-4786-aacf-9f6abae77422" ],
+        "x-ms-request-id": [ "149b5ad1-0cc8-4221-9e39-5c6b9e6ef4f2" ],
+        "x-ms-correlation-request-id": [ "8a55555e-8e88-4122-a3af-06f95c5d9397" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251010T185831Z:25b60741-cc96-4786-aacf-9f6abae77422" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251014T172116Z:8a55555e-8e88-4122-a3af-06f95c5d9397" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AE6665CD04FA4E69A187FDA94A9FC608 Ref B: SN4AA2022303027 Ref C: 2025-10-10T18:58:31Z" ],
-        "Date": [ "Fri, 10 Oct 2025 18:58:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B9453AC0270B41B7B68CBD0F1633CE14 Ref B: SN4AA2022305023 Ref C: 2025-10-14T17:21:16Z" ],
+        "Date": [ "Tue, 14 Oct 2025 17:21:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "674" ],
+        "Content-Length": [ "693" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create\",\"name\":\"Create\",\"type\":\"oracle.database/resourceanchors\",\"location\":\"global\",\"tags\":{\"updatedBy\":\"Pester\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"mikita.artsemyeu@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-10T18:56:07.2493256Z\",\"lastModifiedBy\":\"mikita.artsemyeu@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-10T18:58:30.273692Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"linkedCompartmentId\":\"ocid1.compartment.oc1..aaaaaaaapp7w6fpyiz4zkso7ltyuquwkuk2mm7x3mvq34gud64kaifi5p5jq\"}}",
+      "Content": "{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/PowershellAnchors/providers/Oracle.Database/resourceAnchors/PowershellTestRANew1\",\"name\":\"PowershellTestRANew1\",\"type\":\"oracle.database/resourceanchors\",\"location\":\"global\",\"tags\":{\"purpose\":\"sdk-test\",\"updatedBy\":\"Pester\"},\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-13T19:15:12.3148168Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T17:21:15.2831461Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"linkedCompartmentId\":\"ocid1.compartment.oc1..aaaaaaaarxkmqhihd5rng4ahdof6fqnor7zcyneloxbm4esygi3l5pmxezka\"}}",
       "isContentBase64": false
     }
   }

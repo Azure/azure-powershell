@@ -24,13 +24,13 @@ Describe 'Update-AzOracleResourceAnchor' {
 
             $cmd = Get-Command -Name Update-AzOracleResourceAnchor -ErrorAction SilentlyContinue
             if ($cmd -and ($cmd.Parameters.Keys -contains 'Tag')) {
-                Update-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId -Tag $tags | Out-Null
+                Update-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.SubscriptionId -Tag $tags | Out-Null
             } else {
                 $patchBody = @{ tags = $tags } | ConvertTo-Json -Depth 4
-                Update-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId -JsonString $patchBody | Out-Null
+                Update-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.SubscriptionId -JsonString $patchBody | Out-Null
             }
 
-            $ra = Get-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId
+            $ra = Get-AzOracleResourceAnchor -Name $env.resourceAnchorName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.SubscriptionId
             $ra.Tag.Get_Item('updatedBy') | Should -Be 'Pester'
             $ra.Tag.Get_Item('purpose')   | Should -Be 'sdk-test'
         } | Should -Not -Throw

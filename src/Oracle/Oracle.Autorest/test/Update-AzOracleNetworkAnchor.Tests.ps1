@@ -38,13 +38,13 @@ Describe 'Update-AzOracleNetworkAnchor' {
 
             $cmd = Get-Command -Name Update-AzOracleNetworkAnchor -ErrorAction SilentlyContinue
             if ($cmd -and ($cmd.Parameters.Keys -contains 'Tag')) {
-                Update-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId -Tag $tags | Out-Null
+                Update-AzOracleNetworkAnchor -Name "perfTestNA001" -ResourceGroupName "perf-test-dbsystems" -SubscriptionId $env.SubscriptionId -Tag $tags | Out-Null
             } else {
                 $patchBody = @{ tags = $tags } | ConvertTo-Json -Depth 4
-                Update-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId -JsonString $patchBody -NoWait| Out-Null
+                Update-AzOracleNetworkAnchor -Name "perfTestNA001" -ResourceGroupName "perf-test-dbsystems" -SubscriptionId $env.SubscriptionId -JsonString $patchBody -NoWait| Out-Null
             }
 
-            $na = Get-AzOracleNetworkAnchor -Name $env.networkAnchorName -ResourceGroupName $env.networkAnchorRgName -SubscriptionId $env.networkAnchorSubId
+            $na = Get-AzOracleNetworkAnchor -Name "perfTestNA001" -ResourceGroupName "perf-test-dbsystems" -SubscriptionId $env.SubscriptionId
             $na | Should -Not -BeNullOrEmpty
             $na.Tag.Get_Item('updatedBy') | Should -Be 'Pester'
             $na.Tag.Get_Item('purpose')   | Should -Be 'sdk-test'

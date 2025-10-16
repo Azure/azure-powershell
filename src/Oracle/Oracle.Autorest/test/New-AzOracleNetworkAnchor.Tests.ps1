@@ -39,11 +39,11 @@ Describe 'New-AzOracleNetworkAnchor' {
             if ($hasCmd) {
                 $created = New-AzOracleNetworkAnchor `
                     -Name $env.networkAnchorName `
-                    -ResourceGroupName $env.networkAnchorRgName `
-                    -SubscriptionId $env.networkAnchorSubId `
+                    -ResourceGroupName $env.resourceGroup `
+                    -SubscriptionId $env.SubscriptionId `
                     -Location $env.location `
                     -ResourceAnchorId $env.resourceAnchorId `
-                    -SubnetId $env.networkAnchorSubnetId `
+                    -SubnetId $env.subnetId `
                     -Zone $env.zone `
                     -NoWait
 

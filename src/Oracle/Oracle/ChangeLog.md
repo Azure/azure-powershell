@@ -18,26 +18,33 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* New anchor resource types and their corresponding cmdlets for resource and network anchors 
-* Addition of DbSystem resource management cmdlets and documentation 
-* API version updates across all resource types from 2025-03-01 to 2025-09-01 
+
+* New anchor resource types and their corresponding cmdlets for resource and network anchors
+* Addition of DbSystem resource management cmdlets and documentation
+* API version updates across all resource types from 2025-03-01 to 2025-09-01
 * Parameter changes in existing cmdlets, particularly around scheduled operations handling
 
 ## Version 1.3.0
+
 * Upgraded to the stable version 2025-09-01
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 1.2.0
+
 * Upgraded to the stable version 2025-03-01
 
 ## Version 1.1.1
+
 * Fixed module name in module metadata
 
 ## Version 1.1.0
+
 * Upgraded nuget package to signed package.
 
 ## Version 1.0.0
+
 * General availability for module Az.Oracle
 
 ## Version 0.1.0
-* First preview release for module Az.Oracle
 
+* First preview release for module Az.Oracle
