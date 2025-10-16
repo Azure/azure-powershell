@@ -8,23 +8,24 @@ schema: 2.0.0
 # Get-AzSearchService
 
 ## SYNOPSIS
-Gets an Azure Cognitive Search service.
+Gets an Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceGroupParameterSet (Default)
 ```
 Get-AzSearchService [-ResourceGroupName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzSearchService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSearchService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchService** cmdlet gets the specified Azure Cognitive Search service.
+The **Get-AzSearchService** cmdlet gets the specified Azure AI Search service.
 
 ## EXAMPLES
 
@@ -44,7 +45,7 @@ HostingMode       : Default
 Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Search/searchServices/felixwa-basic-search
 ```
 
-Get an Azure Cognitive Search service with specified parameters.
+Get an Azure AI Search service with specified parameters.
 
 ## PARAMETERS
 
@@ -64,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String
@@ -73,6 +74,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure Cognitive Search Service Resource Id.
+Azure AI Search Service Resource Id.
 
 ```yaml
 Type: System.String

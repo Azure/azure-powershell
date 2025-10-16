@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the current state of an existing Private Link Service connection
-    /// to the Azure Private Endpoint.
+    /// Describes the current state of an existing Azure Private Link service
+    /// connection to the private endpoint.
     /// </summary>
     public partial class PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState
     {
@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState class.
         /// </summary>
 
-        /// <param name="status">Status of the the private link service connection. Can be Pending,
-        /// Approved, Rejected, or Disconnected.
-        /// Possible values include: 'Pending', 'Approved', 'Rejected', 'Disconnected'</param>
+        /// <param name="status">Status of the the private link service connection. Valid values are
+        /// Pending, Approved, Rejected, or Disconnected.
+        /// Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;</param>
 
         /// <param name="description">The description for the private link service connection state.
         /// </param>
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets status of the the private link service connection. Can be
-        /// Pending, Approved, Rejected, or Disconnected. Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;
+        /// Gets or sets status of the the private link service connection. Valid
+        /// values are Pending, Approved, Rejected, or Disconnected. Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public PrivateLinkServiceConnectionStatus? Status {get; set; }

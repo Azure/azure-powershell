@@ -17,6 +17,24 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
     public enum PSPublicNetworkAccess
     {
         Enabled = 0,
-        Disabled = 1
+        Disabled = 1,
+        SecuredByPerimeter = 2,
+    }
+
+    internal static class PSPublicNetworkAccessEnumExtension
+    {
+        internal static PSPublicNetworkAccess? ParsePSPublicNetworkAccess(this string value)
+        {
+            switch (value)
+            {
+                case "Enabled":
+                    return PSPublicNetworkAccess.Enabled;
+                case "Disabled":
+                    return PSPublicNetworkAccess.Disabled;
+                case "SecuredByPerimeter":
+                    return PSPublicNetworkAccess.SecuredByPerimeter;
+            }
+            return null;
+        }
     }
 }
