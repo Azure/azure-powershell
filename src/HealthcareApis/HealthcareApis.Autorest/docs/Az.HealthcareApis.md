@@ -1,6 +1,6 @@
 ---
 Module Name: Az.HealthcareApis
-Module Guid: 92ae786e-d3cd-4190-a3eb-dc1d46135851
+Module Guid: e46bb962-353c-4483-b482-124708c06285
 Download Help Link: https://learn.microsoft.com/powershell/module/az.healthcareapis
 Help Version: 1.0.0.0
 Locale: en-US
@@ -78,11 +78,14 @@ Update the metadata of a service instance.
 Patch workspace details.
 
 ### [Update-AzHealthcareDicomService](Update-AzHealthcareDicomService.md)
-Patch DICOM Service details.
+Update a DICOM Service resource with the specified parameters.
 
 ### [Update-AzHealthcareFhirService](Update-AzHealthcareFhirService.md)
-Patch FHIR Service details.
+Update a FHIR Service resource with the specified parameters.
 
 ### [Update-AzHealthcareIotConnector](Update-AzHealthcareIotConnector.md)
-Patch an IoT Connector.
+Update an IoT Connector resource with the specified parameters.
+
+### [Update-AzHealthcareIotConnectorFhirDestination](Update-AzHealthcareIotConnectorFhirDestination.md)
+Update an IoT Connector FHIR destination resource with the specified parameters.
 
