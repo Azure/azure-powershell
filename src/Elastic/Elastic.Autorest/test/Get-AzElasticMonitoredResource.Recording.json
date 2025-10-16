@@ -1,17 +1,17 @@
 {
-  "Get-AzElasticMonitoredResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listMonitoredResources?api-version=2024-03-01+1": {
+  "Get-AzElasticMonitoredResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listMonitoredResources?api-version=2025-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listMonitoredResources?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listMonitoredResources?api-version=2025-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "939080e8-6e15-49b3-abd9-a3534d610a7f" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "0a1400f1-225c-4932-9c34-ffd8b6c4bc35" ],
         "CommandName": [ "Get-AzElasticMonitoredResource" ],
         "FullCommandName": [ "Get-AzElasticMonitoredResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.Elastic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,26 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/44fd91ba-fc00-4fea-bccf-59138c9b1edd" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "b457b857-8495-4470-a838-349ab42f1a90" ],
+        "mise-correlation-id": [ "4e5d1fcc-1a5a-4d52-891b-681b9bf66086" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "39ecb0d9-856f-4fb1-9975-847acfcae6c5" ],
-        "x-ms-correlation-request-id": [ "1c506a50-8890-4f72-aec5-66df494196f1" ],
+        "x-ms-request-id": [ "8c15f001-da17-4aba-9e3d-daa12ff290eb" ],
+        "x-ms-correlation-request-id": [ "80c1a57b-f6c1-4d9e-854a-4c20283f0c17" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052330Z:1c506a50-8890-4f72-aec5-66df494196f1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251015T165522Z:80c1a57b-f6c1-4d9e-854a-4c20283f0c17" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 21D38181B1D440D08F73317D17E95C38 Ref B: MAA201060513037 Ref C: 2024-10-15T05:23:29Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:23:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 793BEFEC569B4EB69A568625EC42C4E1 Ref B: PNQ231110909023 Ref C: 2025-10-15T16:55:21Z" ],
+        "Date": [ "Wed, 15 Oct 2025 16:55:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "28" ],
+        "Content-Length": [ "165" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E\",\"sendingLogs\":\"False\",\"reasonForLogsStatus\":\"DiagnosticSettingsLimitReached\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }

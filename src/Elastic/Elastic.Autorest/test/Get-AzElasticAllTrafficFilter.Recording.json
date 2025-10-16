@@ -1,17 +1,17 @@
 {
-  "Get-AzElasticAllTrafficFilter+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listAllTrafficFilters?api-version=2024-03-01+1": {
+  "Get-AzElasticAllTrafficFilter+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listAllTrafficFilters?api-version=2025-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listAllTrafficFilters?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listAllTrafficFilters?api-version=2025-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "b9a8dfad-1e0d-4d2c-9655-906703ac6f64" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "4126fe43-5ba4-4949-8ccb-637be3c39cf3" ],
         "CommandName": [ "Get-AzElasticAllTrafficFilter" ],
         "FullCommandName": [ "Get-AzElasticAllTrafficFilter_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.Elastic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,19 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/westindia/79736e11-fbb2-470a-8e89-76b8eeebadee" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "b8739c79-6aed-4784-933a-da5dec17dba3" ],
+        "mise-correlation-id": [ "759e1a4d-a950-4947-8e3c-515bf6154bde" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "78574fe5-2cd1-4c99-b20f-16190bbac823" ],
-        "x-ms-correlation-request-id": [ "bb2506f0-0c29-472a-81a0-42878cc37847" ],
+        "x-ms-request-id": [ "f260afe9-4996-488b-bcfe-9b834e9759ec" ],
+        "x-ms-correlation-request-id": [ "8da116e6-18f4-4246-818f-f57f426b29f5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052213Z:bb2506f0-0c29-472a-81a0-42878cc37847" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251015T165453Z:8da116e6-18f4-4246-818f-f57f426b29f5" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 846DA55745B64FAEBAD8657DD5843865 Ref B: MAA201060513037 Ref C: 2024-10-15T05:22:12Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:22:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 49E3E874CDD4404D812A9B865DD77BE4 Ref B: PNQ231110909023 Ref C: 2025-10-15T16:54:51Z" ],
+        "Date": [ "Wed, 15 Oct 2025 16:54:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "15" ],

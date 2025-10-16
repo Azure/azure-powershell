@@ -1,0 +1,235 @@
+{
+  "Remove-AzElasticMonitoredSubscription+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "0ea26354-f198-4e83-93ea-68939a09e686" ],
+        "CommandName": [ "Remove-AzElasticMonitoredSubscription" ],
+        "FullCommandName": [ "Remove-AzElasticMonitoredSubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/16e4ad92-098e-44af-8647-1d0f56eb987f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "ea7b8fe0-041d-44db-b4be-849e11ef4f09" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "748c936b-11ee-4b9c-83b5-59c3bf4cfe14" ],
+        "x-ms-correlation-request-id": [ "5eab0cb3-82b3-48bd-8fb0-8470684da356" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251015T165542Z:5eab0cb3-82b3-48bd-8fb0-8470684da356" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 797B0349101741A38CEC7FB44730A62F Ref B: PNQ231110909023 Ref C: 2025-10-15T16:55:41Z" ],
+        "Date": [ "Wed, 15 Oct 2025 16:55:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzElasticMonitoredSubscription+[NoContext]+DeleteViaIdentityMonitor+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "946b973c-0d0e-48c6-bed4-e11068c451a6" ],
+        "CommandName": [ "Get-AzElasticMonitor" ],
+        "FullCommandName": [ "Get-AzElasticMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"df00fcfb-0000-0800-0000-68efd1530000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8ba82979-79d4-40e7-bcaa-2aa047dd2cc9" ],
+        "x-ms-correlation-request-id": [ "d65c2e26-6579-46cb-9800-ba505a5a335b" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251015T165543Z:d65c2e26-6579-46cb-9800-ba505a5a335b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 21C0A912CF504FAE98F452323BD9C771 Ref B: PNQ231110909023 Ref C: 2025-10-15T16:55:42Z" ],
+        "Date": [ "Wed, 15 Oct 2025 16:55:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2006" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106\",\"name\":\"PortalCloudTest-6939106\",\"type\":\"microsoft.elastic/monitors\",\"sku\":{\"name\":\"ess-consumption-2024_Monthly@TIDgmz7xq9ge3py\"},\"kind\":\"elastic-hosted-search\",\"location\":\"westus2\",\"tags\":{\"key03\":\"3\",\"key01\":\"1\",\"key02\":\"2\",\"key04\":\"4\"},\"systemData\":{\"createdBy\":\"TEST_TEST_user3@testtestliftrtest5.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-30T20:22:33.2490102Z\",\"lastModifiedBy\":\"joytesting1310@testtestliftrtest5.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-15T16:52:35.6067412Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"elasticProperties\":{\"elasticCloudUser\":{\"emailAddress\":\"TEST_TEST_user3@testtestliftrtest5.onmicrosoft.com\",\"id\":\"1847077549\",\"elasticCloudSsoDefaultUrl\":\"https://cloud.elastic.co\"},\"elasticCloudDeployment\":{\"name\":\"PortalCloudTest-6939106\",\"deploymentId\":\"c1d96e6e5385275ebda1084a8a68215e\",\"azureSubscriptionId\":\"e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e\",\"elasticsearchRegion\":\"azure-westus2\",\"elasticsearchServiceUrl\":\"https://portalcloudtest-6939106-c1d96e.es.westus2.azure.elastic-cloud.com\",\"kibanaServiceUrl\":\"https://013f4e5896ec48ee88cbfd13b3abd04a.westus2.azure.elastic-cloud.com\",\"kibanaSsoUrl\":\"/sso/v1/go/ec:1677795862:kibana-portalcloudtest-6939106-c1d96e?acs=https://portalcloudtest-6939106-c1d96e.kb.westus2.azure.elastic-cloud.com/api/security/saml/callback\u0026sp_login_url=https://portalcloudtest-6939106-c1d96e.kb.westus2.azure.elastic-cloud.com\"}},\"planDetails\":{\"offerID\":\"ec-azure-pp\",\"publisherID\":\"elastic\",\"termID\":\"gmz7xq9ge3py\",\"planID\":\"ess-consumption-2024\"},\"version\":\"9.0.7\",\"sourceCampaignName\":\"\",\"sourceCampaignId\":\"\",\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"generateApiKey\":false,\"hostingType\":\"Hosted\",\"projectDetails\":{\"projectType\":\"NotApplicable\",\"configurationType\":\"NotApplicable\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzElasticMonitoredSubscription+[NoContext]+DeleteViaIdentityMonitor+$DELETE+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "9daa098d-0818-49af-b0f8-36056d93f5a1" ],
+        "CommandName": [ "Remove-AzElasticMonitoredSubscription" ],
+        "FullCommandName": [ "Remove-AzElasticMonitoredSubscription_DeleteViaIdentityMonitor" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/c3270003-df67-497b-bc09-9b75aaca3d0f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "d5493848-673d-4909-8c47-daf42f1aa8f5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "047c1f93-0ca2-4904-a4ee-9aa39055ba34" ],
+        "x-ms-correlation-request-id": [ "e3ec1d2e-8c30-4bfc-9e86-2f8412d50caf" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251015T165544Z:e3ec1d2e-8c30-4bfc-9e86-2f8412d50caf" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CF7ADAE1EC1B408EB77D4D72BC5010DB Ref B: PNQ231110909023 Ref C: 2025-10-15T16:55:43Z" ],
+        "Date": [ "Wed, 15 Oct 2025 16:55:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzElasticMonitoredSubscription+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "2b579a5d-cedc-46fe-b71e-2dd6fbda43f1" ],
+        "CommandName": [ "Get-AzElasticMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzElasticMonitoredSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/d08937f4-ee90-41a3-abad-572c5244b1fe" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "f0778e7b-e17b-488b-8c74-a43c061dd30f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "19bfde54-5f46-4d71-b5ba-202398b0e668" ],
+        "x-ms-correlation-request-id": [ "b1f73f9e-8be2-43ce-97f3-bf5c71332131" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251015T165545Z:b1f73f9e-8be2-43ce-97f3-bf5c71332131" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 19A2FE08D4A0431A862134A14D27C882 Ref B: PNQ231110909023 Ref C: 2025-10-15T16:55:44Z" ],
+        "Date": [ "Wed, 15 Oct 2025 16:55:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "391" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e\",\"name\":\"e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e\",\"type\":\"Microsoft.Elastic/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzElasticMonitoredSubscription+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/monitoredSubscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "5e417525-052a-498f-8c35-bf80706d8e03" ],
+        "CommandName": [ "Remove-AzElasticMonitoredSubscription" ],
+        "FullCommandName": [ "Remove-AzElasticMonitoredSubscription_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/679fc044-79b7-407c-a40b-420871edd5d4" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "db25366b-7e34-440e-954d-09a2ed0c5d3c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "6e59d3b1-e320-464f-876a-4f03e2de2cd4" ],
+        "x-ms-correlation-request-id": [ "aa87c8fd-f880-4c9c-aabc-3654e2574376" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251015T165545Z:aa87c8fd-f880-4c9c-aabc-3654e2574376" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A2CA11C4A7F64A89908EB482D01064CD Ref B: PNQ231110909023 Ref C: 2025-10-15T16:55:45Z" ],
+        "Date": [ "Wed, 15 Oct 2025 16:55:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  }
+}
