@@ -183,6 +183,16 @@ function getClusterName{
     return "powershell-cluster";
 }
 
+function getPlatformFaultDomain
+{
+    return 0
+}
+
+function getPlatformUpdateDomain1
+{
+    return 1
+}
+
 function Get-RandomSuffix(
 	[int] $size = 8)
 {

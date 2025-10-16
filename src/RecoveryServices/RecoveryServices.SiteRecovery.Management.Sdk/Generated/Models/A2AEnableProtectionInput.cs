@@ -82,9 +82,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="recoveryCapacityReservationGroupId">The recovery capacity reservation group Id.
         /// </param>
 
+        /// <param name="platformFaultDomain">the platform fault domain.
+        /// </param>
+
         /// <param name="autoProtectionOfDataDisk">A value indicating whether the auto protection is enabled.
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public A2AEnableProtectionInput(string fabricObjectId, string recoveryContainerId = default(string), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryProximityPlacementGroupId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string multiVMGroupName = default(string), string multiVMGroupId = default(string), string protectionClusterId = default(string), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryAvailabilityZone = default(string), ExtendedLocation recoveryExtendedLocation = default(ExtendedLocation), string recoveryAzureNetworkId = default(string), string recoverySubnetName = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), string autoProtectionOfDataDisk = default(string))
+        public A2AEnableProtectionInput(string fabricObjectId, string recoveryContainerId = default(string), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryProximityPlacementGroupId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string multiVMGroupName = default(string), string multiVMGroupId = default(string), string protectionClusterId = default(string), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryAvailabilityZone = default(string), ExtendedLocation recoveryExtendedLocation = default(ExtendedLocation), string recoveryAzureNetworkId = default(string), string recoverySubnetName = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), int? platformFaultDomain = default(int?), string autoProtectionOfDataDisk = default(string))
 
         {
             this.FabricObjectId = fabricObjectId;
@@ -106,6 +109,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoverySubnetName = recoverySubnetName;
             this.RecoveryVirtualMachineScaleSetId = recoveryVirtualMachineScaleSetId;
             this.RecoveryCapacityReservationGroupId = recoveryCapacityReservationGroupId;
+            this.PlatformFaultDomain = platformFaultDomain;
             this.AutoProtectionOfDataDisk = autoProtectionOfDataDisk;
             CustomInit();
         }
@@ -229,6 +233,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryCapacityReservationGroupId")]
         public string RecoveryCapacityReservationGroupId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the platform fault domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "platformFaultDomain")]
+        public int? PlatformFaultDomain {get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the auto protection is enabled. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
