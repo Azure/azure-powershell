@@ -42,7 +42,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"cloudId\":\"PortalCloudTest-6939106:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkMTRmY2RhNDFmMzkwNGVhOThmYjZmMmU2NjE4ZmQ4NGQkMDEzZjRlNTg5NmVjNDhlZTg4Y2JmZDEzYjNhYmQwNGE=\",\"ingestionKey\":\"TGlmdHJfRWxhc3RpYzpVRlJXRkIxODM4UUpWQ0hVRUI=\"}",
+      "Content": "{\"cloudId\":\"PortalCloudTest-6939106:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkMTRmY2RhNDFmMzkwNGVhOThmYjZmMmU2NjE4ZmQ4NGQkMDEzZjRlNTg5NmVjNDhlZTg4Y2JmZDEzYjNhYmQwNGE=\",\"ingestionKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
       "isContentBase64": false
     }
   },
