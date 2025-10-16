@@ -37,27 +37,33 @@ Delete subscriptions being monitored by the Elastic monitor resource, removing t
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a specific subscription from Elastic monitoring
 ```powershell
-{{ Add code here }}
+Remove-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified subscription from being monitored by the Elastic monitor. No output is returned upon successful completion.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove monitored subscription with confirmation prompt
 ```powershell
-{{ Add code here }}
+Remove-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012" -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+This command removes the monitored subscription but prompts for confirmation before executing the removal operation.
+
+### Example 3: Remove monitored subscription using pipeline from Get-AzElasticMonitoredSubscription
+```powershell
+Get-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012" | Remove-AzElasticMonitoredSubscription
 ```
 
-{{ Add description here }}
+This command gets a specific monitored subscription and pipes it to Remove-AzElasticMonitoredSubscription to remove it from monitoring.
+
+### Example 4: Remove monitored subscription with PassThru parameter
+```powershell
+Remove-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012" -PassThru
+```
+
+This command removes the monitored subscription and returns a boolean value indicating success, useful for scripting scenarios where you need confirmation of the operation.
 
 ## PARAMETERS
 

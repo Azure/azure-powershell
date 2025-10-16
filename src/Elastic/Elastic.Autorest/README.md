@@ -61,6 +61,11 @@ directive:
           "readOnly": true,
           "$ref": "#/definitions/ProvisioningState"
         }
+  # This is necessary because the Get-AzElasticResubscribeOrganization cmdlet has both:
+  # 1. A path parameter "SubscriptionId" (from the Azure subscription context)
+  # 2. A body parameter "subscriptionId" (the target subscription for resubscription)
+  # PowerShell cannot have the same parameter name with different types [String[], String]
+  # Renaming the body parameter to "TargetSubscriptionId" resolves this conflict while maintaining clarity
   - from: swagger-document
     where: $.definitions.ResubscribeProperties.properties.subscriptionId
     transform: $["x-ms-client-name"] = "TargetSubscriptionId"

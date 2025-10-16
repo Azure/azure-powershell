@@ -17,28 +17,28 @@ Resubscribe the Elasticsearch Organization.
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-OrganizationId <String>] [-PlanId <String>] [-ResourceGroup <String>]
  [-TargetSubscriptionId <String>] [-Term <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResubscribeViaJsonString
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResubscribeViaJsonFilePath
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Resubscribe
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -Body <IResubscribeProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResubscribeViaIdentityExpanded
@@ -61,27 +61,37 @@ Resubscribe the Elasticsearch Organization.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resubscribe an Elastic organization to a new Azure subscription
 ```powershell
-{{ Add code here }}
+Get-AzElasticResubscribeOrganization -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -TargetSubscriptionId "87654321-4321-4321-4321-210987654321"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                   : /subscriptions/87654321-4321-4321-4321-210987654321/resourceGroups/myResourceGroup/providers/Microsoft.Elastic/monitors/myElasticMonitor/resubscribe
+Name                 : myElasticMonitor
+Type                 : Microsoft.Elastic/monitors/resubscribe
+Status               : InProgress
+TargetSubscriptionId : 87654321-4321-4321-4321-210987654321
+Message              : Resubscription initiated successfully
 ```
 
-{{ Add description here }}
+This command resubscribes the specified Elastic monitor to a new Azure subscription, moving the marketplace subscription to the target subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Resubscribe using pipeline from Get-AzElasticMonitor
 ```powershell
-{{ Add code here }}
+Get-AzElasticMonitor -ResourceGroupName "myResourceGroup" -Name "myElasticMonitor" | Get-AzElasticResubscribeOrganization -TargetSubscriptionId "87654321-4321-4321-4321-210987654321"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                   : /subscriptions/87654321-4321-4321-4321-210987654321/resourceGroups/myResourceGroup/providers/Microsoft.Elastic/monitors/myElasticMonitor/resubscribe
+Name                 : myElasticMonitor
+Type                 : Microsoft.Elastic/monitors/resubscribe
+Status               : InProgress
+TargetSubscriptionId : 87654321-4321-4321-4321-210987654321
+Message              : Resubscription initiated successfully
 ```
 
-{{ Add description here }}
+This command resubscribes an Elastic monitor to a new subscription by piping the monitor object from Get-AzElasticMonitor.
 
 ## PARAMETERS
 
