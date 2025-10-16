@@ -1,8 +1,8 @@
 {
-  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2025-04-15+1": {
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2025-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2025-06-01",
       "Content": "{\r\n  \"probeURL\": \"https://www.notexist.com/notexist/notexist.txt\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,17 +18,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "6122b8ba-6118-4feb-be98-a540d340be01" ],
-        "x-ms-client-request-id": [ "d988ff18-1baa-4486-926d-5df20baa9480" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiacentral2/836e7e5d-efd8-4056-af47-76cc14fd8246" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "797" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11997" ],
-        "x-ms-correlation-request-id": [ "e8f7501d-6186-40ee-a32d-dcce2f3139c7" ],
-        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL2:20250508T091904Z:e8f7501d-6186-40ee-a32d-dcce2f3139c7" ],
+        "x-ms-request-id": [ "da6e05e0-f6fb-4a27-a089-78820d9b9db3" ],
+        "x-ms-client-request-id": [ "3b23a08b-9687-4c83-807c-73be3a204f59" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiaeast/4bdbbc29-17cf-4a76-96c2-867fb8aef8b8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "a10ec490-bd82-4570-9aea-9aca0e400726" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250723T023557Z:a10ec490-bd82-4570-9aea-9aca0e400726" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 829CDF6DD6024EF7AC29102029032353 Ref B: SYD03EDGE1408 Ref C: 2025-05-08T09:19:03Z" ],
-        "Date": [ "Thu, 08 May 2025 09:19:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1ADFD1E4D7864EF6BB531253A26C115C Ref B: SYD03EDGE1306 Ref C: 2025-07-23T02:35:56Z" ],
+        "Date": [ "Wed, 23 Jul 2025 02:35:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "194" ],
