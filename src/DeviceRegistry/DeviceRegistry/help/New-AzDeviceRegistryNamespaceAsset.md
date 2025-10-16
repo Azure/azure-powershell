@@ -22,7 +22,7 @@ New-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -
  [-DefaultManagementGroupsConfiguration <String>] [-DefaultStreamsConfiguration <String>]
  [-DefaultStreamsDestination <IStreamDestination[]>] [-Description <String>] [-DeviceRefDeviceName <String>]
  [-DeviceRefEndpointName <String>] [-DiscoveredAssetRef <String[]>] [-DisplayName <String>]
- [-DocumentationUri <String>] [-Enabled] [-Event <INamespaceEvent[]>] [-ExternalAssetId <String>]
+ [-DocumentationUri <String>] [-Enabled] [-EventGroup <INamespaceEventGroup[]>] [-ExternalAssetId <String>]
  [-HardwareRevision <String>] [-ManagementGroup <IManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceStream[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -566,12 +566,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Event
-Array of events that are part of the asset.
-Each event can have per-event configuration.
+### -EventGroup
+Array of event groups that are part of the asset.
+Each event group can have per-event group configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup[]
 Parameter Sets: CreateExpanded
 Aliases:
 
