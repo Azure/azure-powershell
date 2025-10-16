@@ -1,8 +1,8 @@
 {
-  "Test-AzTrustedSigningAccountNameAvailability+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2024-09-30-preview+1": {
+  "Test-AzTrustedSigningAccountNameAvailability+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2025-10-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2024-09-30-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2025-10-13",
       "Content": "{ \"name\": \"nonexistent\",   \"type\": \"microsoft.codesigning/codesigningaccounts\" }",
       "isContentBase64": false,
       "Headers": {
@@ -17,17 +17,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=02c431f3-68c3-468e-b558-b7aa99c1193e/eastus/e3ed3304-2f51-479b-b6af-bf719b1472cf" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "825e3cd4-566e-46fe-9689-a3403c42afd1" ],
-        "x-ms-correlation-request-id": [ "110c1f6d-76e2-485e-80d4-2f51a39a1e2c" ],
+        "x-ms-request-id": [ "26d2702f-9b5d-48ea-aed6-998e3488a9ac" ],
+        "x-ms-correlation-request-id": [ "7ffde8ab-64c6-43cb-aefa-956e55f452b3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20250225T003517Z:110c1f6d-76e2-485e-80d4-2f51a39a1e2c" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251010T204400Z:7ffde8ab-64c6-43cb-aefa-956e55f452b3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 654BC58D58214DE391047056FB297CFF Ref B: CO6AA3150217029 Ref C: 2025-02-25T00:35:13Z" ],
-        "Date": [ "Tue, 25 Feb 2025 00:35:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 695911DD922E4B9898B61402AA527B0D Ref B: MWH011020808040 Ref C: 2025-10-10T20:43:59Z" ],
+        "Date": [ "Fri, 10 Oct 2025 20:44:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
