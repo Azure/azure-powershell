@@ -25,7 +25,7 @@ namespace ADT
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfiles(ADT.Models.IListFlowProfilesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfiles(ADT.Models.IListFlowProfilesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
@@ -67,7 +67,7 @@ namespace ADT
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfilesViaIdentity(global::System.String viaIdentity, ADT.Models.IListFlowProfilesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfilesViaIdentity(global::System.String viaIdentity, ADT.Models.IListFlowProfilesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
@@ -113,10 +113,10 @@ namespace ADT
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
-        /// that will be complete when handling of the response is completed.
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>" /> that will be complete when handling
+        /// of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IListFlowProfilesRequest body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult> AzureDataTransferListFlowProfilesViaIdentityWithResult(global::System.String viaIdentity, ADT.Models.IListFlowProfilesRequest body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
@@ -165,7 +165,7 @@ namespace ADT
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfilesViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfilesViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
@@ -200,10 +200,10 @@ namespace ADT
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
-        /// that will be complete when handling of the response is completed.
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>" /> that will be complete when handling
+        /// of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesViaJsonStringWithResult(global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult> AzureDataTransferListFlowProfilesViaJsonStringWithResult(global::System.String jsonString, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
@@ -239,10 +239,10 @@ namespace ADT
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="ADT.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
-        /// that will be complete when handling of the response is completed.
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>" /> that will be complete when handling
+        /// of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesWithResult(ADT.Models.IListFlowProfilesRequest body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult> AzureDataTransferListFlowProfilesWithResult(ADT.Models.IListFlowProfilesRequest body, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender, ADT.Runtime.SerializationMode serializationMode = ADT.Runtime.SerializationMode.IncludeCreate|ADT.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2025-05-30-preview";
             // Constant Parameters
@@ -279,10 +279,10 @@ namespace ADT
         /// <param name="eventListener">an <see cref="ADT.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an ADT.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>" />
-        /// that will be complete when handling of the response is completed.
+        /// A <see cref="global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>" /> that will be complete when handling
+        /// of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> AzureDataTransferListFlowProfilesWithResult_Call(global::System.Net.Http.HttpRequestMessage request, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult> AzureDataTransferListFlowProfilesWithResult_Call(global::System.Net.Http.HttpRequestMessage request, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -301,7 +301,7 @@ namespace ADT
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => If( ADT.Runtime.Json.JsonArray.Parse(body.Result) as ADT.Runtime.Json.JsonArray, out var __y) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__y, (__x)=>(ADT.Models.IFlowProfileMetadata) (ADT.Models.FlowProfileMetadata.FromJson(__x) )) ))() : null);
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfilesListResult.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
                         default:
@@ -344,7 +344,7 @@ namespace ADT
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfiles_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AzureDataTransferListFlowProfiles_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<ADT.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, ADT.Runtime.IEventListener eventListener, ADT.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -363,7 +363,7 @@ namespace ADT
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(ADT.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => If( ADT.Runtime.Json.JsonArray.Parse(body.Result) as ADT.Runtime.Json.JsonArray, out var __y) ? new global::System.Func<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__y, (__x)=>(ADT.Models.IFlowProfileMetadata) (ADT.Models.FlowProfileMetadata.FromJson(__x) )) ))() : null));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => ADT.Models.FlowProfilesListResult.FromJson(ADT.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:

@@ -15,7 +15,7 @@ namespace ADT.Cmdlets
     /// [OpenAPI] ListFlowProfiles=>POST:"/providers/Microsoft.AzureDataTransfer/listFlowProfiles"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataTransferFlowProfile_ListExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(ADT.Models.IFlowProfileMetadata))]
+    [global::System.Management.Automation.OutputType(typeof(ADT.Models.IFlowProfilesListResult))]
     [global::ADT.Description(@"Retrieves a list of FlowProfile resources associated with a specified pipeline.")]
     [global::ADT.Generated]
     [global::ADT.HttpPath(Path = "/providers/Microsoft.AzureDataTransfer/listFlowProfiles", ApiVersion = "2025-05-30-preview")]
@@ -150,12 +150,12 @@ namespace ADT.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>">System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata></see>
+        /// <param name="response">the body result as a <see cref="ADT.Models.IFlowProfilesListResult">ADT.Models.IFlowProfilesListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -433,12 +433,12 @@ namespace ADT.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>">System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata></see>
+        /// <param name="response">the body result as a <see cref="ADT.Models.IFlowProfilesListResult">ADT.Models.IFlowProfilesListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<ADT.Models.IFlowProfilesListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -450,15 +450,15 @@ namespace ADT.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be System.Collections.Generic.List<ADT.Models.IFlowProfileMetadata>
+                // (await response) // should be ADT.Models.IFlowProfilesListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
-                // array / <none> / <none>
-                if (null != result)
+                // nested-array / value / <none>
+                if (null != result.Value)
                 {
-                    if (0 == _responseSize && 1 == result.Count)
+                    if (0 == _responseSize && 1 == result.Value.Count)
                     {
-                        _firstResponse = result[0];
+                        _firstResponse = result.Value[0];
                         _responseSize = 1;
                     }
                     else
@@ -469,7 +469,7 @@ namespace ADT.Cmdlets
                             WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
                         }
                         var values = new System.Collections.Generic.List<System.Management.Automation.PSObject>();
-                        foreach( var value in result )
+                        foreach( var value in result.Value )
                         {
                             values.Add(value.AddMultipleTypeNameIntoPSObject());
                         }
