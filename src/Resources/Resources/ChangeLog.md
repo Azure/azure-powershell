@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 8.1.1
 * Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions [#28583]
 
 ## Version 8.1.0
