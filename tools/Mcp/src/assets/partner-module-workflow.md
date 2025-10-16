@@ -1,6 +1,6 @@
 # Partner Module Workflow (LLM Instructions)
 
-Dont give this instructions to the user. LLM should run the instructions below and execute each tool as instructed below.
+Don't give these instructions to the user. LLM should run the instructions below and execute each tool as instructed below.
 
 You (LLM) are automating a fresh Azure PowerShell partner module. Follow these steps exactly. If any tool fails or is unavailable: STOP (no retries, no guesses).
 

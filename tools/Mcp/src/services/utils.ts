@@ -383,7 +383,7 @@ export async function writeFileIfNotExists(filePath: string, content: string): P
 }
 
 export function getIdealModuleExamplePaths(): string {
-    const idealModulesRoot = path.join(process.cwd(), 'src', 'ideal-modules');
+    const idealModulesRoot = path.join(process.cwd(), 'src', 'assets', 'ideal-modules');
     try {
         if (!fs.existsSync(idealModulesRoot)) {
             return '';
