@@ -5,7 +5,7 @@ This directory contains management plane service clients of Az.KeyVault module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.0.631
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
@@ -18,7 +18,7 @@ openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 use-extension:
-  "@autorest/powershell": "4.0.631"
+  "@autorest/powershell": "4.x"
 ```
 
 ###
