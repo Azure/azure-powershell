@@ -50,7 +50,7 @@
         },
         {
             "name": "create-example",
-            "description": "Fullfil examples for empty example files under '{workingDirectory}/examples' directory.",
+            "description": "Fulfill examples for empty example files under '{workingDirectory}/examples' directory.",
             "parameters": [
                 {
                     "name": "workingDirectory",
