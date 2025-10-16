@@ -1275,7 +1275,7 @@ ADT.Models.IListFlowProfilesRequest
 .Outputs
 ADT.Models.IFlowProfile
 .Outputs
-ADT.Models.IFlowProfileMetadata
+ADT.Models.IFlowProfilesListResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1305,7 +1305,7 @@ PIPELINEINPUTOBJECT <IDataTransferIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferflowprofile
 #>
 function Get-AzDataTransferFlowProfile {
-[OutputType([ADT.Models.IFlowProfile], [ADT.Models.IFlowProfileMetadata])]
+[OutputType([ADT.Models.IFlowProfile], [ADT.Models.IFlowProfilesListResult])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
