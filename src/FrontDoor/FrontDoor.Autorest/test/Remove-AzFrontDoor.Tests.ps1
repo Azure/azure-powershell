@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoor'))
 Describe 'Remove-AzFrontDoor' {
     It 'Delete'  {
         {
-            $frontDoorName = 'testps-fd-' + (RandomString -allChars $false -len 4)
+            $frontDoorName = $env.FrontDoorNameForDelete
             $tags = @{"tag1" = "value1"; "tag2" = "value2"}
             $hostName = "$frontDoorName.azurefd.net"
             $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule2" -FrontDoorName $frontDoorName -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint2" -BackendPoolName "backendPool2"

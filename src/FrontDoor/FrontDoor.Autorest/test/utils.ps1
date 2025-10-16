@@ -108,6 +108,18 @@ function setupEnv() {
 
     $env.Add("WafPolicyName", $wafName)
 
+    # Generate names for other tests
+    $wafNameForCreate = 'testpsWaf' + (RandomString -allChars $false -len 4)
+    $env.Add("WafPolicyNameForCreate", $wafNameForCreate)
+    
+    $wafNameForDelete = 'testpsWaf' + (RandomString -allChars $false -len 4)
+    $env.Add("WafPolicyNameForDelete", $wafNameForDelete)
+    
+    $frontDoorNameForDelete = 'testps-fd-' + (RandomString -allChars $false -len 4)
+    $env.Add("FrontDoorNameForDelete", $frontDoorNameForDelete)
+    
+    $frontDoorNameForUpdate = 'testps-fd-' + (RandomString -allChars $false -len 4)
+    $env.Add("FrontDoorNameForUpdate", $frontDoorNameForUpdate)
 
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.

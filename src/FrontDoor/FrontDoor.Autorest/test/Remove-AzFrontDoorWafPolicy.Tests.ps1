@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorWafPolicy')
 Describe 'Remove-AzFrontDoorWafPolicy' {
     It 'Delete' {
         {
-            $wafName = 'testpsWaf' + (RandomString -allChars $false -len 4)
+            $wafName = $env.WafPolicyNameForDelete
             $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
             $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType "MatchRule" -MatchCondition $matchCondition1 -Action Block -Priority 2
         

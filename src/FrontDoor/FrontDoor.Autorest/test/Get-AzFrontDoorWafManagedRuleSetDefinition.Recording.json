@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "4ea0d9dc-3d4d-48e1-afd1-5e4a671a2c9f" ],
+        "x-ms-client-request-id": [ "b783472b-758b-4890-be89-47b8d0de4220" ],
         "CommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition" ],
         "FullCommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.FrontDoor/1.13.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.FrontDoor/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,17 +23,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1a1f738c-e5bf-4172-94f0-cc2385960ff3" ],
-        "x-ms-client-request-id": [ "4ea0d9dc-3d4d-48e1-afd1-5e4a671a2c9f" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/cee9e9f1-d3ea-4afe-a8c1-20ebc3739029" ],
+        "x-ms-request-id": [ "e66b1141-cf72-42d2-b5cb-cb52b3d14ead" ],
+        "x-ms-client-request-id": [ "b783472b-758b-4890-be89-47b8d0de4220" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/599f3173-46ba-4e7e-bb34-e46e68bf86ea" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "95648f7b-e4f4-48b6-9aac-eaea583d5009" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251014T090731Z:95648f7b-e4f4-48b6-9aac-eaea583d5009" ],
+        "x-ms-correlation-request-id": [ "a72d2a54-650b-4162-806f-e288ae98fbcf" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251016T025545Z:a72d2a54-650b-4162-806f-e288ae98fbcf" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 96A07EA43E8646FAA73C75D782A82FDF Ref B: SYD03EDGE2021 Ref C: 2025-10-14T09:07:30Z" ],
-        "Date": [ "Tue, 14 Oct 2025 09:07:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C330B9EAA86444FB8B490DAAEC877EE9 Ref B: SYD03EDGE1713 Ref C: 2025-10-16T02:55:44Z" ],
+        "Date": [ "Thu, 16 Oct 2025 02:55:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "162977" ],

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzFrontDoor'))
 
 Describe 'Set-AzFrontDoor' {
     It 'UpdateExpanded' {
-        $FDName = 'testps-fd-' + (RandomString -allChars $false -len 4)
+        $FDName = $env.FrontDoorNameForUpdate
         $tags = @{"tag1" = "value1"; "tag2" = "value2"}
         $hostName = "$FDName.azurefd.net"
         $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $FDName -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
