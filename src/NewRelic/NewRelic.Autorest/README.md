@@ -154,9 +154,9 @@ directive:
   - where:
       verb: Get
       subject: Operation
-      parameter-name: SubscriptionId1
+      parameter-name: -SubscriptionId1
     set:
-      parameter-name: NewSubscriptionId
+      parameter-name: -NewSubscriptionId
   # customize the body property and parameter name
   # - from: source-file-csharp
   #   where: $

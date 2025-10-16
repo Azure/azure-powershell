@@ -48,14 +48,10 @@ LastModifiedDate         : 6/27/2023 8:30:45 AM
 
 Retrieves the latest SaaS resource linked to the specified NewRelic monitor
 
-### Example 2: Get latest linked SaaS resource using identity object
+### Example 2: Get latest linked SaaS resource using pipeline
 ```powershell
-$identity = @{
-    MonitorName = "test-01"
-    ResourceGroupName = "ps-test"
-    SubscriptionId = "11111111-2222-3333-4444-555555555555"
-}
-Invoke-AzNewRelicLatestMonitorLinkedSaaS -InputObject $identity
+$monitor = Get-AzNewRelicMonitor -Name "test-01" -ResourceGroupName "ps-test"
+$monitor | Invoke-AzNewRelicLatestMonitorLinkedSaaS
 ```
 
 ```output
@@ -70,7 +66,7 @@ CreatedDate              : 6/27/2023 8:30:45 AM
 LastModifiedDate         : 6/27/2023 8:30:45 AM
 ```
 
-Retrieves the latest SaaS resource linked to the NewRelic monitor using an identity object
+Retrieves the latest SaaS resource linked to the NewRelic monitor using pipeline input
 
 ## PARAMETERS
 
