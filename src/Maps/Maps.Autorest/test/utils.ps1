@@ -69,4 +69,3 @@ function cleanupEnv() {
     Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
-# Temp edit
