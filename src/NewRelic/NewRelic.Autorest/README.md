@@ -28,8 +28,8 @@ For information on how to develop for `Az.NewRelic`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 559f989d2b38bc80db762cfd277614583dddc3bb
-tag: package-2024-01-01
+commit: 91e3aca0bfa4b59a9f578959d0b214a26b90df40
+tag: package-2025-05-01-preview
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -151,6 +151,12 @@ directive:
       subject: MonitorAppService
     set:
       subject: MonitoredAppService
+  - where:
+      verb: Get
+      subject: Operation
+      parameter-name: SubscriptionId1
+    set:
+      parameter-name: NewSubscriptionId
   # customize the body property and parameter name
   # - from: source-file-csharp
   #   where: $
