@@ -340,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ADT.Models.IFlowProfile
 
-### ADT.Models.IFlowProfileMetadata
+### ADT.Models.IFlowProfilesListResult
 
 ## NOTES
 

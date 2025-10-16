@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed return type for Get-AzDataTransferFlowProfile cmdlet
 
 ## Version 2.0.0
 * Added commands for FlowProfile creation and management
