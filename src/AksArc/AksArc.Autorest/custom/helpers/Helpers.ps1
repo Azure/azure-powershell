@@ -20,6 +20,28 @@ function GetConnectedClusterResourceURI {
     return $Scope
 }
 
+function Get-NodePoolInfoFromURI {
+    param (
+        [String] $NodePoolResourceURI
+    )
+    $normalizedResourceID = "/${NodePoolResourceURI}" -replace '/{2,}', '/'
+    $splitResourceID = $normalizedResourceID -split '/'
+    $subscriptionIndex = $null
+    for ($i = 0; $i -lt $splitResourceID.Length; $i++) {
+        if ($splitResourceID[$i] -eq "subscriptions") {
+            $subscriptionIndex = $i + 1
+            break
+        }
+    }
+    $scope = GetConnectedClusterResourceURI -SubscriptionId $splitResourceID[$subscriptionIndex] `
+        -ResourceGroupName $splitResourceID[$subscriptionIndex+2] `
+        -ClusterName $splitResourceID[$subscriptionIndex+6]
+    return @{
+        "scope" = $scope
+        "name" = $splitResourceID[$subscriptionIndex+12]
+    }
+}
+
 function CreateConnectedCluster {
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.DoNotExportAttribute()]
     param(
@@ -74,7 +96,7 @@ function CreateConnectedCluster {
     }
 }
 "@  
-    $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$ConnectedClusterAPIVersion" -Method PUT -payload $json
+    return Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$ConnectedClusterAPIVersion" -Method PUT -payload $json
 }
 
 function UpdateConnectedCluster {
@@ -91,7 +113,7 @@ function UpdateConnectedCluster {
     $Location = ($ConnectedClusterResource.Content | ConvertFrom-Json).location
     $EnableAzureRbac = ($ConnectedClusterResource.Content | ConvertFrom-Json).properties.aadProfile.enableAzureRBAC
 
-    CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID -EnableAzureRbac:$EnableAzureRbac
+    return CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID -EnableAzureRbac:$EnableAzureRbac
 }
 
 function GenerateSSHKey {
@@ -102,15 +124,20 @@ function GenerateSSHKey {
     $SshPublicKeyObj = [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.LinuxProfilePropertiesSshPublicKeysItem]::New()
     $suffix = Get-Random -Minimum -1000 -Maximum 9999
     $filename = $ClusterName + "_" + $suffix
-    $sshkeydir = $HOME + "\.ssh\" + $filename
+    $sshKeyDir = Join-Path -Path $HOME -ChildPath ".ssh"
+    New-Item -Path $sshKeyDir -ItemType Directory -Force
+    $sshKeyFile = Join-Path -Path $sshKeyDir -ChildPath $filename
 
+    if (!(Get-Command "ssh-keygen")) {
+        throw "ssh-keygen command not found. Please install OpenSSH client tools and ensure ssh-keygen is in your PATH."
+    }
     if ($PSVersionTable.PSVersion.Major -eq 7) {
-        ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N ''
+        ssh-keygen -b 2048 -t rsa -f $sshKeyFile -q -N ''
     } else {
-        ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N '""'
+        ssh-keygen -b 2048 -t rsa -f $sshKeyFile -q -N '""'
     }
     
-    $publickeyfile = $sshkeydir + ".pub"
+    $publickeyfile = $sshKeyFile + ".pub"
     $publicKey = Get-Content -Path $publickeyfile
     
     $SshPublicKeyObj.KeyData = $publicKey

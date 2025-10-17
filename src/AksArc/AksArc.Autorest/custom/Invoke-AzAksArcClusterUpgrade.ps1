@@ -55,7 +55,7 @@ function Invoke-AzAksArcClusterUpgrade {
         [Parameter(ParameterSetName='Upgrade', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
-        # The version of Kubernetes in use by the provisioned cluster.
+        # Kubernetes version to upgrade to. If not provided, the cluster will be upgraded to the latest supported version.
         ${KubernetesVersion},
     
         [Parameter()]
@@ -118,24 +118,21 @@ function Invoke-AzAksArcClusterUpgrade {
         $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
     
         # Upgrade Provisioned Cluster
+        $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
         if ($PSBoundParameters.ContainsKey("KubernetesVersion"))
         {   
-            $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
             if (!($upgrades.ControlPlaneProfileUpgrade.KubernetesVersion -contains $KubernetesVersion)) {
                 throw "Kubernetes Version $KubernetesVersion is not a valid upgradable version."
             } 
         } else {
-            $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-            $UpgradeListLength = $upgrades.ControlPlaneProfileUpgrade.KubernetesVersion.Length
-            if ($UpgradeListLength -eq 0) {
+            if ($upgrades.ControlPlaneProfileUpgrade.KubernetesVersion.Length -eq 0) {
                 Write-Error "Already on latest kubernetes version."
                 return
             }
-            $LatestUpgrade = $upgrades.ControlPlaneProfileUpgrade[$UpgradeListLength-1].KubernetesVersion
-    
+            $LatestUpgrade = $upgrades.ControlPlaneProfileUpgrade[-1].KubernetesVersion
             $null = $PSBoundParameters.Add("KubernetesVersion", $LatestUpgrade)
         }
         
         Az.AksArc.internal\Update-AzAksArcCluster @PSBoundParameters
     }
-    }
+}
