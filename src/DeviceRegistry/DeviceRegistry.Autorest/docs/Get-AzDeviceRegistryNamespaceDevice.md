@@ -105,7 +105,7 @@ EndpointsInbound             : {
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
 ExtendedLocationName         : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+                               ft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Id                           : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/microso
@@ -121,7 +121,7 @@ OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 OutboundUnassigned           : {
@@ -190,7 +190,7 @@ EndpointsInbound             : {
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+                               ft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microso
@@ -206,7 +206,7 @@ OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 OutboundUnassigned           : {
@@ -281,7 +281,7 @@ EndpointsInbound             : {
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
 ExtendedLocationName         : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+                               ft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Id                           : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/microso
@@ -297,7 +297,7 @@ OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 OutboundUnassigned           : {

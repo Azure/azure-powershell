@@ -90,6 +90,8 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].EndpointType | Should -Be $commonProperties.inboundEndpointType1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsCertificateSecretName | Should -Be $commonProperties.certificateSecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsKeySecretName | Should -Be $commonProperties.keySecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsIntermediateCertificatesSecretName | Should -Be $commonProperties.intermediateCertificatesSecretName
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].Address | Should -Be $commonProperties.inboundAddress2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].EndpointType | Should -Be $commonProperties.inboundEndpointType2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod2
@@ -121,6 +123,8 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].EndpointType | Should -Be $commonProperties.inboundEndpointType1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsCertificateSecretName | Should -Be $commonProperties.certificateSecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsKeySecretName | Should -Be $commonProperties.keySecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsIntermediateCertificatesSecretName | Should -Be $commonProperties.intermediateCertificatesSecretName
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].Address | Should -Be $commonProperties.inboundAddress2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].EndpointType | Should -Be $commonProperties.inboundEndpointType2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod2

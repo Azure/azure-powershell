@@ -50,7 +50,7 @@ Create a NamespaceAsset
 
 ### Example 1: Create Namespace Asset with Expanded Parameters
 ```powershell
-New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
+New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
 ```
 
 ```output
@@ -78,7 +78,7 @@ DocumentationUri                     : https://www.example.com/manual/
 Enabled                              : True
 Event                                :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : my-external-asset-id
 HardwareRevision                     : 1.0
@@ -147,7 +147,7 @@ DocumentationUri                     :
 Enabled                              : True
 Event                                :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
@@ -217,7 +217,7 @@ DocumentationUri                     :
 Enabled                              : True
 Event                                :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :

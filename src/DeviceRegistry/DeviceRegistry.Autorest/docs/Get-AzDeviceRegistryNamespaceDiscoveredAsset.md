@@ -195,7 +195,7 @@ Event                                : {{
                                          ]
                                        }}
 ExtendedLocationName                 : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
 Id                                   : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers
@@ -414,7 +414,7 @@ Event                                : {{
                                          ]
                                        }}
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
 Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers
@@ -639,7 +639,7 @@ Event                                : {{
                                          ]
                                        }}
 ExtendedLocationName                 : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
 Id                                   : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers

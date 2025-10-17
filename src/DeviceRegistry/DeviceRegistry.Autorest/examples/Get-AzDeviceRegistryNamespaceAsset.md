@@ -48,7 +48,7 @@ DocumentationUri                     :
 Enabled                              : True
 Event                                :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
@@ -116,7 +116,7 @@ DocumentationUri                     :
 Enabled                              : True
 Event                                :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
@@ -190,7 +190,7 @@ DocumentationUri                     :
 Enabled                              : True
 Event                                :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :

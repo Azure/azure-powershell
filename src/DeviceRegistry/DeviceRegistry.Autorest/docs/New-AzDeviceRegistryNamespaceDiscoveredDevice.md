@@ -45,7 +45,7 @@ Create a NamespaceDiscoveredDevice
 ```powershell
 $outboundAssigned = @{
     "myendpoint2" = @{
-        Address = "https://myendpoint2.westeurope-1.edge.azure.net"
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
         EndpointType = "Microsoft.Devices/IoTHubs"
     }
 }
@@ -62,7 +62,7 @@ $endpointInbound = @{
     }
 }
 
-New-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -Location "East US" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DiscoveryId "discovery-123" -Version "1.0.0" -Manufacturer "Contoso" -Model "Device-X1" -OperatingSystem "Linux" -OperatingSystemVersion "Ubuntu 20.04" -OutboundAssigned $outboundAssigned -EndpointInbound $endpointInbound
+New-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -Location "East US" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq" -ExtendedLocationType "CustomLocation" -DiscoveryId "discovery-123" -Version "1.0.0" -Manufacturer "Contoso" -Model "Device-X1" -OperatingSystem "Linux" -OperatingSystemVersion "Ubuntu 20.04" -OutboundAssigned $outboundAssigned -EndpointInbound $endpointInbound
 ```
 
 ```output
@@ -97,7 +97,7 @@ EndpointInbound              : {
                                    "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
@@ -110,7 +110,7 @@ OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
@@ -168,7 +168,7 @@ EndpointInbound              : {
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+                               ft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
@@ -181,7 +181,7 @@ OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
@@ -240,7 +240,7 @@ EndpointInbound              : {
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+                               ft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
@@ -253,7 +253,7 @@ OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
