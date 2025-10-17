@@ -32,7 +32,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 91e3aca0bfa4b59a9f578959d0b214a26b90df40
+commit: a39b73b1c7d12a633805a3b2ed3177a8bfddd9e2
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
