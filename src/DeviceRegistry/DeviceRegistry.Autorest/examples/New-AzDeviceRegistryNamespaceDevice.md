@@ -9,13 +9,13 @@ $outboundAssigned = @{
 $endpointsInbound = @{
     "my-inbound-endpoint1" = @{
         Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
-        EndpointType = "Microsoft.IotHub"
+        EndpointType = "Microsoft.Devices/IotHubs"
         AuthenticationMethod = "Certificate"
         X509CredentialsCertificateSecretName = "my-certificate"
     }
     "my-inbound-endpoint2" = @{
         Address = "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
-        EndpointType = "Microsoft.IotHub"
+        EndpointType = "Microsoft.Devices/IotHubs"
         AuthenticationMethod = "UsernamePassword"
         UsernamePasswordCredentialsUsernameSecretName = "my-username"
         UsernamePasswordCredentialsPasswordSecretName = "my-password"
@@ -47,7 +47,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "Certificate"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "my-inbound-endpoint2": {
@@ -58,7 +58,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "UsernamePassword"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
@@ -130,7 +130,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "Certificate"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "my-inbound-endpoint2": {
@@ -141,7 +141,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "UsernamePassword"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
@@ -214,7 +214,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "Certificate"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "my-inbound-endpoint2": {
@@ -225,7 +225,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "UsernamePassword"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }

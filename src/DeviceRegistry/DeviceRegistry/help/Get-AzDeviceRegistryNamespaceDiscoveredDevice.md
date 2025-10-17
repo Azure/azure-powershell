@@ -81,12 +81,12 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
                                    "version": "1.0"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "version": "2.0"
                                  }
@@ -140,12 +140,12 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
                                    "version": "1.0"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "version": "2.0"
                                  }
@@ -205,12 +205,12 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
                                    "version": "1.0"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "version": "2.0"
                                  }
