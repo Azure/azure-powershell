@@ -84,7 +84,9 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "mycertificate",
+                                       "keySecretName": "mykeysecret",
+                                       "intermediateCertificatesSecretName": "myintermediatecerts"
                                      },
                                      "method": "Certificate"
                                    },
@@ -169,7 +171,9 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "mycertificate",
+                                       "keySecretName": "mykeysecret",
+                                       "intermediateCertificatesSecretName": "myintermediatecerts"
                                      },
                                      "method": "Certificate"
                                    },
@@ -260,7 +264,9 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "mycertificate",
+                                       "keySecretName": "mykeysecret",
+                                       "intermediateCertificatesSecretName": "myintermediatecerts"
                                      },
                                      "method": "Certificate"
                                    },

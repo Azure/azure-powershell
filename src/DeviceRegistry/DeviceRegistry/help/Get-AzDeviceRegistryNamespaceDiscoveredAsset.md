@@ -139,61 +139,46 @@ DeviceRefDeviceName                  : myDeviceName
 DeviceRefEndpointName                : myEndpointName
 DiscoveryId                          : myDiscoveryId
 DocumentationUri                     : https://www.example.com/manual/
-Event                                : {{
-                                         "name": "event1",
-                                         "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
-                                         "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-                                         "destinations": [
+EventGroup                           : {{
+                                         "name": "eventGroup1",
+                                         "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/EventGroup1",
+                                         "eventGroupConfiguration": "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
+                                         "typeRef": "eventGroup1TypeRef",
+                                         "events": [
                                            {
-                                             "target": "Mqtt",
-                                             "configuration": {
-                                               "topic": "/contoso/testEvent1",
-                                               "retain": "Keep",
-                                               "qos": "Qos0",
-                                               "ttl": 7200
-                                             }
-                                           }
-                                         ],
-                                         "typeRef": "event1Ref",
-                                         "dataPoints": [
-                                           {
-                                             "name": "event1DataPoint1",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-                                           },
-                                           {
-                                             "name": "event1DataPoint2",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+                                             "name": "event1",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Mqtt",
+                                                 "configuration": {
+                                                   "topic": "/contoso/testEvent1",
+                                                   "retain": "Keep",
+                                                   "qos": "Qos0",
+                                                   "ttl": 7200
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event1Ref"
                                            }
                                          ]
                                        }, {
-                                         "name": "event2",
-                                         "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
-                                         "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-                                         "destinations": [
+                                         "name": "eventGroup2",
+                                         "events": [
                                            {
-                                             "target": "Storage",
-                                             "configuration": {
-                                               "path": "/tmp/event2"
-                                             }
-                                           }
-                                         ],
-                                         "typeRef": "event2Ref",
-                                         "dataPoints": [
-                                           {
-                                             "name": "event2DataPoint1",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-                                           },
-                                           {
-                                             "name": "event2DataPoint2",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+                                             "name": "event2",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Storage",
+                                                 "configuration": {
+                                                   "path": "/tmp/event2"
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event2Ref"
                                            }
                                          ]
                                        }}
@@ -358,61 +343,46 @@ DeviceRefDeviceName                  : myDeviceName
 DeviceRefEndpointName                : myEndpointName
 DiscoveryId                          : myDiscoveryId
 DocumentationUri                     : https://www.example.com/manual/
-Event                                : {{
-                                         "name": "event1",
-                                         "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
-                                         "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-                                         "destinations": [
+EventGroup                           : {{
+                                         "name": "eventGroup1",
+                                         "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/EventGroup1",
+                                         "eventGroupConfiguration": "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
+                                         "typeRef": "eventGroup1TypeRef",
+                                         "events": [
                                            {
-                                             "target": "Mqtt",
-                                             "configuration": {
-                                               "topic": "/contoso/testEvent1",
-                                               "retain": "Keep",
-                                               "qos": "Qos0",
-                                               "ttl": 7200
-                                             }
-                                           }
-                                         ],
-                                         "typeRef": "event1Ref",
-                                         "dataPoints": [
-                                           {
-                                             "name": "event1DataPoint1",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-                                           },
-                                           {
-                                             "name": "event1DataPoint2",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+                                             "name": "event1",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Mqtt",
+                                                 "configuration": {
+                                                   "topic": "/contoso/testEvent1",
+                                                   "retain": "Keep",
+                                                   "qos": "Qos0",
+                                                   "ttl": 7200
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event1Ref"
                                            }
                                          ]
                                        }, {
-                                         "name": "event2",
-                                         "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
-                                         "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-                                         "destinations": [
+                                         "name": "eventGroup2",
+                                         "events": [
                                            {
-                                             "target": "Storage",
-                                             "configuration": {
-                                               "path": "/tmp/event2"
-                                             }
-                                           }
-                                         ],
-                                         "typeRef": "event2Ref",
-                                         "dataPoints": [
-                                           {
-                                             "name": "event2DataPoint1",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-                                           },
-                                           {
-                                             "name": "event2DataPoint2",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+                                             "name": "event2",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Storage",
+                                                 "configuration": {
+                                                   "path": "/tmp/event2"
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event2Ref"
                                            }
                                          ]
                                        }}
@@ -583,61 +553,46 @@ DeviceRefDeviceName                  : myDeviceName
 DeviceRefEndpointName                : myEndpointName
 DiscoveryId                          : myDiscoveryId
 DocumentationUri                     : https://www.example.com/manual/
-Event                                : {{
-                                         "name": "event1",
-                                         "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
-                                         "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-                                         "destinations": [
+EventGroup                           : {{
+                                         "name": "eventGroup1",
+                                         "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/EventGroup1",
+                                         "eventGroupConfiguration": "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
+                                         "typeRef": "eventGroup1TypeRef",
+                                         "events": [
                                            {
-                                             "target": "Mqtt",
-                                             "configuration": {
-                                               "topic": "/contoso/testEvent1",
-                                               "retain": "Keep",
-                                               "qos": "Qos0",
-                                               "ttl": 7200
-                                             }
-                                           }
-                                         ],
-                                         "typeRef": "event1Ref",
-                                         "dataPoints": [
-                                           {
-                                             "name": "event1DataPoint1",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-                                           },
-                                           {
-                                             "name": "event1DataPoint2",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+                                             "name": "event1",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Mqtt",
+                                                 "configuration": {
+                                                   "topic": "/contoso/testEvent1",
+                                                   "retain": "Keep",
+                                                   "qos": "Qos0",
+                                                   "ttl": 7200
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event1Ref"
                                            }
                                          ]
                                        }, {
-                                         "name": "event2",
-                                         "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
-                                         "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-                                         "destinations": [
+                                         "name": "eventGroup2",
+                                         "events": [
                                            {
-                                             "target": "Storage",
-                                             "configuration": {
-                                               "path": "/tmp/event2"
-                                             }
-                                           }
-                                         ],
-                                         "typeRef": "event2Ref",
-                                         "dataPoints": [
-                                           {
-                                             "name": "event2DataPoint1",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-                                           },
-                                           {
-                                             "name": "event2DataPoint2",
-                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10",
-                                             "dataPointConfiguration":
-                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+                                             "name": "event2",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Storage",
+                                                 "configuration": {
+                                                   "path": "/tmp/event2"
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event2Ref"
                                            }
                                          ]
                                        }}

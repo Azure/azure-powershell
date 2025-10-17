@@ -89,7 +89,7 @@ DiscoveredAssetRef                   :
 DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
@@ -110,7 +110,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :
@@ -157,7 +157,7 @@ DiscoveredAssetRef                   :
 DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
@@ -178,7 +178,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :
@@ -231,7 +231,7 @@ DiscoveredAssetRef                   :
 DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
@@ -252,7 +252,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :
