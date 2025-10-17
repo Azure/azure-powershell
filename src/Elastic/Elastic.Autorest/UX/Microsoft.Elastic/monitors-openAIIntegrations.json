@@ -1,13 +1,13 @@
 {
   "resourceType": "monitors/openAIIntegrations",
-  "apiVersion": "2024-03-01",
+  "apiVersion": "2025-06-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.elastic"
   },
   "commands": [
     {
       "name": "Get-AzElasticOpenAiStatus",
-      "description": "Get OpenAI integration status for a given integration.",
+      "description": "Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}/getStatus",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get OpenAI integration status for a given integration.",
+          "description": "Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.",
           "parameters": [
             {
               "name": "-IntegrationName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Get-AzElasticOpenAi",
-      "description": "Get OpenAI integration rule for a given monitor resource.",
+      "description": "Get detailed information about OpenAI integration rules for a given Elastic monitor resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Get OpenAI integration rule for a given monitor resource.",
+          "description": "Get detailed information about OpenAI integration rules for a given Elastic monitor resource.",
           "parameters": [
             {
               "name": "-IntegrationName",
@@ -93,7 +93,7 @@
     },
     {
       "name": "Remove-AzElasticOpenAi",
-      "description": "Delete OpenAI integration rule for a given monitor resource.",
+      "description": "Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}",
       "help": {
         "learnMore": {
@@ -112,7 +112,7 @@
       },
       "examples": [
         {
-          "description": "Delete OpenAI integration rule for a given monitor resource.",
+          "description": "Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.",
           "parameters": [
             {
               "name": "-IntegrationName",

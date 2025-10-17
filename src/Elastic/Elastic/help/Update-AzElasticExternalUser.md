@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticExternalUser
 
 ## SYNOPSIS
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update external user configurations for your Elastic monitor resource, enabling access and management by external users.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzElasticExternalUser -InputObject <IElasticIdentity> [-EmailId <String>]
 ```
 
 ## DESCRIPTION
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update external user configurations for your Elastic monitor resource, enabling access and management by external users.
 
 ## EXAMPLES
 

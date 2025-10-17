@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticTagRule
 
 ## SYNOPSIS
-Get a tag rule set for a given monitor resource.
+Get detailed information about a tag rule set for a given Elastic monitor resource.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Get-AzElasticTagRule -MonitorInputObject <IElasticIdentity> [-DefaultProfile <PS
 ```
 
 ## DESCRIPTION
-Get a tag rule set for a given monitor resource.
+Get detailed information about a tag rule set for a given Elastic monitor resource.
 
 ## EXAMPLES
 

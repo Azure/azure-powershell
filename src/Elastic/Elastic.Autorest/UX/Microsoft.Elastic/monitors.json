@@ -1,13 +1,13 @@
 {
   "resourceType": "monitors",
-  "apiVersion": "2024-03-01",
+  "apiVersion": "2025-06-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.elastic"
   },
   "commands": [
     {
       "name": "Get-AzElasticBillingInfo",
-      "description": "Get marketplace and organization info mapped to the given monitor.",
+      "description": "Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/getBillingInfo",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Get marketplace and organization info mapped to the given monitor.",
+          "description": "Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.",
           "parameters": [
             {
               "name": "-MonitorName",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Get-AzElasticDetailUpgradableVersion",
-      "description": "List of upgradable versions for a given monitor resource.",
+      "description": "List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listUpgradableVersions",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "List of upgradable versions for a given monitor resource.",
+          "description": "List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.",
           "parameters": [
             {
               "name": "-MonitorName",
@@ -83,7 +83,7 @@
     },
     {
       "name": "Get-AzElasticDetailVMIngestion",
-      "description": "List the vm ingestion details that will be monitored by the Elastic monitor resource.",
+      "description": "List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmIngestionDetails",
       "help": {
         "learnMore": {
@@ -101,7 +101,7 @@
       },
       "examples": [
         {
-          "description": "List the vm ingestion details that will be monitored by the Elastic monitor resource.",
+          "description": "List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.",
           "parameters": [
             {
               "name": "-Name",
@@ -121,7 +121,7 @@
     },
     {
       "name": "Get-AzElasticMonitor",
-      "description": "Get the properties of a specific monitor resource.",
+      "description": "Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
       "help": {
         "learnMore": {
@@ -139,7 +139,7 @@
       },
       "examples": [
         {
-          "description": "Get the properties of a specific monitor resource.",
+          "description": "Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.",
           "parameters": [
             {
               "name": "-Name",
@@ -159,7 +159,7 @@
     },
     {
       "name": "Remove-AzElasticMonitor",
-      "description": "Delete a monitor resource.",
+      "description": "Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
       "help": {
         "learnMore": {
@@ -177,7 +177,7 @@
       },
       "examples": [
         {
-          "description": "Delete a monitor resource.",
+          "description": "Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.",
           "parameters": [
             {
               "name": "-Name",
