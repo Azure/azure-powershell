@@ -78,8 +78,6 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
         $jsonFilePath = Join-Path $PSScriptRoot $testConfig.jsonFilePath
         $jsonString = Get-Content -Path $jsonFilePath -Raw
 
-        Write-Host "extended location name: $extendedLocationName"
-
         $result = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonString $jsonString
 
         $result.Name | Should -Be $testConfig.name
