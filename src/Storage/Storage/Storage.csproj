@@ -25,6 +25,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AssemblyLoading\AssemblyLoading.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Aks\Aks.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Authorization\Authorization.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Common\Common.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Compute\Compute.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Graph.Rbac\Graph.Rbac.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\KeyVault\KeyVault.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Monitor\Monitor.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Network\Network.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\PolicyInsights\PolicyInsights.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\ResourceManager\ResourceManager.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Share\Share.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Storage\Storage.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Storage.Management\Storage.Management.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Strategies\Strategies.csproj" />
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Websites\Websites.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Storage.common\Storage.common.csproj" />
   </ItemGroup>
   <ItemGroup>
