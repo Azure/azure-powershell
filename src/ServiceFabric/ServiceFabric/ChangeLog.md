@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed `ReimageByName`, `ReimageById`, and `ReimageByObj` parameter sets from `Set-AzServiceFabricManagedNodeType`.
 
 ## Version 3.8.0
 * Changed from `Basic` to `Standard` SKUs for loadbalancers and public IP addresses for `New-AzServiceFabricCluster` and `Add-AzServiceFabricNodeType` as `Basic` SKUs are being deprecated.
