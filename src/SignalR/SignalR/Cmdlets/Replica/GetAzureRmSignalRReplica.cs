@@ -13,51 +13,43 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalRCustomDomain", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
-    [OutputType(typeof(bool))]
-    public class RemoveAzureRmSignalRCustomDomain : SignalRCmdletBase, ISignalRChildResource, IWithResourceId
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalRReplica", DefaultParameterSetName = ResourceGroupParameterSet)]
+    [OutputType(typeof(PSReplicaResource))]
+    public class GetAzureRmSignalRReplica : SignalRCmdletBase, ISignalRChildResource
     {
         [Parameter(Mandatory = false, ParameterSetName = ResourceGroupParameterSet, HelpMessage = "The resource group name. The default one will be used if not specified.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty()]
         [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceGroupParameterSet, HelpMessage = "The SignalR service name.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty()]
         [ResourceNameCompleter(Constants.SignalRResourceType, nameof(ResourceGroupName))]
         public string SignalRName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ResourceGroupParameterSet, HelpMessage = "The custom domain name.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = SignalRObjectParameterSet, HelpMessage = "The custom domain name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(Constants.SignalRCustomDomainResourceType, nameof(ResourceGroupName), nameof(SignalRName))]
+        [ValidateNotNullOrEmpty()]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupParameterSet, HelpMessage = "The name of the replica")]
+        [Parameter(Mandatory = false, ParameterSetName = SignalRObjectParameterSet, HelpMessage = "The name of the replica")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The SignalR custom domain resource object.")]
-        [ValidateNotNull]
-        public PSCustomDomainResource InputObject { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = SignalRObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The SignalR resource object.")]
-        [ValidateNotNull]
-        public PSSignalRResource SignalRResourceObject { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The resource ID of the custom domain.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The resource ID of a replica", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty()]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = SignalRObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The SignalR resource object.")]
+        [ValidateNotNull]
+        public PSSignalRResource SignalRObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run the cmdlet in background job.")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -69,25 +61,24 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     case ResourceGroupParameterSet:
                         ResolveResourceGroupName();
                         break;
-                    case ResourceIdParameterSet:
-                        this.LoadFromChildResourceId(ResourceId, Constants.SignalRCustomDomainResourceType);
-                        break;
                     case SignalRObjectParameterSet:
-                        var signalRResourceId = new ResourceIdentifier(SignalRResourceObject.Id);
-                        ResourceGroupName = signalRResourceId.ResourceGroupName;
-                        SignalRName = signalRResourceId.ResourceName;
+                        this.LoadFromSignalRResourceId(SignalRObject.Id);
                         break;
-                    case InputObjectParameterSet:
-                        this.LoadFromChildResourceId(InputObject.Id, Constants.SignalRCustomDomainResourceType);
+                    case ResourceIdParameterSet:
+                        this.LoadFromChildResourceId(ResourceId, Constants.SignalRReplicaResourceType);
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
                 }
-                if (ShouldProcess($"SignalR custom domain {ResourceGroupName}/{SignalRName}/{Name}", "remove"))
+                if (Name == null)
                 {
-                    Microsoft.Azure.Management.SignalR.SignalRCustomDomainsOperationsExtensions.Delete(Client.SignalRCustomDomains, ResourceGroupName, SignalRName, Name);
-
-                    WriteObject(true);
+                    var result = Microsoft.Azure.Management.SignalR.SignalRReplicasOperationsExtensions.List(Client.SignalRReplicas, ResourceGroupName, SignalRName);
+                    WriteObject(result.Select(r => new PSReplicaResource(r)), true);
+                }
+                else
+                {
+                    var result = Microsoft.Azure.Management.SignalR.SignalRReplicasOperationsExtensions.Get(Client.SignalRReplicas, ResourceGroupName, SignalRName, Name);
+                    WriteObject(new PSReplicaResource(result));
                 }
             });
         }

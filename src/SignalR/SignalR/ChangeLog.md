@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for managing replicas:
+    - Get-AzSignalRReplica: get replica(s) for SignalR
+    - New-AzSignalRReplica: create a new replica for SignalR
+    - Remove-AzSignalRReplica: remove a replica from SignalR
+    - Restart-AzSignalRReplica: restart a SignalR replica
+    - Start-AzSignalRReplica: start a SignalR replica
+    - Stop-AzSignalRReplica: stop a SignalR replica
+    - Update-AzSignalRReplica: update a SignalR replica
+* Added cmdlets for managing network IP rules
+    - New-AzSignalRNetworkIpRuleObject: create a new network IP rule object for SignalR
+    - Add-AzSignalRNetworkIpRule: add network IP rule(s) to SignalR
+    - Remove-AzSignalRNetworkIpRule: remove network IP rule(s) from SignalR
 
 ## Version 2.2.0
 * Added cmdlets for managing custom domains: `New-AzSignalRCustomDomain`, `Get-AzSignalRCustomDomain`, `Remove-AzSignalRCustomDomain`, `Update-AzSignalRCustomDomain`
