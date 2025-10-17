@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitorMonitoredResource
 
 ## SYNOPSIS
-List the resources currently being monitored by the NewRelic monitor resource.
+Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight into the coverage of your observability setup
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzNewRelicMonitorMonitoredResource -MonitorName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-List the resources currently being monitored by the NewRelic monitor resource.
+Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight into the coverage of your observability setup
 
 ## EXAMPLES
 
