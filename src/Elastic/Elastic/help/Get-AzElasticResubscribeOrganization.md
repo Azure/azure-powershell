@@ -45,15 +45,14 @@ Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <S
 ```
 Get-AzElasticResubscribeOrganization -InputObject <IElasticIdentity> [-OrganizationId <String>]
  [-PlanId <String>] [-ResourceGroup <String>] [-TargetSubscriptionId <String>] [-Term <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [<CommonParameters>]
 ```
 
 ### ResubscribeViaIdentity
 ```
 Get-AzElasticResubscribeOrganization -InputObject <IElasticIdentity> -Body <IResubscribeProperties>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

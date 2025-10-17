@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "74c7d6b9-9760-46a6-ba53-af6bdd75602f" ],
+        "x-ms-client-request-id": [ "0b67a8a6-a161-4bc1-ab81-15c9e87a0caf" ],
         "CommandName": [ "Get-AzElasticMonitoredResource" ],
         "FullCommandName": [ "Get-AzElasticMonitoredResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,20 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/84acee9a-4705-4388-bb12-0c7d542db26f" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/fe497114-3e42-4404-a072-b14b44b39f53" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "5b6fbc21-dc6d-4ed1-a9e7-14d4fd398dc5" ],
+        "mise-correlation-id": [ "abe8bd01-2846-4bfd-bf1d-1e3075d7ed44" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "6b1795b6-aac7-45de-9c19-eb03a2426326" ],
-        "x-ms-correlation-request-id": [ "a82ab4e0-74b5-46a5-877f-da58c116dbe3" ],
+        "x-ms-request-id": [ "5c24c04d-5f12-4d47-bfaa-11c5c85d08f5" ],
+        "x-ms-correlation-request-id": [ "ae20c2e2-5310-488d-8a76-d41889840c57" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251016T052822Z:a82ab4e0-74b5-46a5-877f-da58c116dbe3" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T030954Z:ae20c2e2-5310-488d-8a76-d41889840c57" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CA22C456B0DB4E3FA704DF5CB1097682 Ref B: PNQ231110909029 Ref C: 2025-10-16T05:28:21Z" ],
-        "Date": [ "Thu, 16 Oct 2025 05:28:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B4889CFC93C3496FA969969AF8AA8F92 Ref B: PNQ231110908052 Ref C: 2025-10-17T03:09:53Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:09:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "165" ],

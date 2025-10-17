@@ -17,28 +17,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"3600c9f4-0000-0800-0000-68f082880000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/535fe306-c28c-4ba8-92a3-ab15c8d9e3e7" ],
+        "ETag": [ "\"bb008761-0000-0800-0000-68f1b3950000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/334aa153-3535-49af-b78e-5c0ee43d0276" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "d53d6cac-ec63-41a0-a4b7-81ee2b63d7ff" ],
+        "mise-correlation-id": [ "55ba5f28-9d94-42bc-865b-58ce79d0f321" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "4bbf8dd3-9092-48b2-bb94-a5c299dccd86" ],
-        "x-ms-correlation-request-id": [ "1e98d808-d63c-4e7e-9076-233003891b1e" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251016T052841Z:1e98d808-d63c-4e7e-9076-233003891b1e" ],
+        "x-ms-request-id": [ "77df54cd-73b3-441e-ba6d-2cb2c2cee2b7" ],
+        "x-ms-correlation-request-id": [ "1675f2fd-7eea-460f-8162-c36ce281d0ee" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T031013Z:1675f2fd-7eea-460f-8162-c36ce281d0ee" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 906CB5A9C3444925B572CEB83102DE4B Ref B: PNQ231110909029 Ref C: 2025-10-16T05:28:40Z" ],
-        "Date": [ "Thu, 16 Oct 2025 05:28:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1CFA751C2C98461EADE7BB6585313773 Ref B: PNQ231110908052 Ref C: 2025-10-17T03:10:12Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:10:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "680" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"TEST_TEST_user3@testtestliftrtest5.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-30T20:27:48.9125841Z\",\"lastModifiedBy\":\"joytesting1310@testtestliftrtest5.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T05:28:40.4847918Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"TEST_TEST_user3@testtestliftrtest5.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-30T20:27:48.9125841Z\",\"lastModifiedBy\":\"joytesting1310@testtestliftrtest5.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T03:10:12.7898437Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   }

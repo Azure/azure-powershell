@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "67f7fc16-7db8-44ed-98ee-94c6299bf1b2" ],
+        "x-ms-client-request-id": [ "d2f5c9b2-0568-4abf-a1c1-126aeb6e89f2" ],
         "CommandName": [ "Get-AzElasticDeploymentInfo" ],
         "FullCommandName": [ "Get-AzElasticDeploymentInfo_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,20 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/f19d9788-0b5c-4a9a-8679-62d7dfc0d162" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/3fc1e12e-0218-474a-a93f-a4af8d8b4c79" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "48fc69b4-e301-4d91-9026-7ea9d28078a3" ],
+        "mise-correlation-id": [ "c92c19eb-cc2d-494c-aa99-b8538eb26a5d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "1ab3d389-0799-4c39-89d4-44c284dfbea8" ],
-        "x-ms-correlation-request-id": [ "6845324b-78cb-44e3-984f-00c985da61ef" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251016T052802Z:6845324b-78cb-44e3-984f-00c985da61ef" ],
+        "x-ms-request-id": [ "8f6b89bd-9c2e-486a-a136-77680890fd7e" ],
+        "x-ms-correlation-request-id": [ "83797199-5f11-40d7-9c51-77b25ec0a6fa" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "197" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2997" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T030917Z:83797199-5f11-40d7-9c51-77b25ec0a6fa" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8A6CAE2D7BFD460FB5D38AC1D5EDF9D6 Ref B: PNQ231110909029 Ref C: 2025-10-16T05:28:00Z" ],
-        "Date": [ "Thu, 16 Oct 2025 05:28:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1379FFC831BD4758893EFC7F9F6F69FA Ref B: PNQ231110908052 Ref C: 2025-10-17T03:09:16Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:09:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "834" ],

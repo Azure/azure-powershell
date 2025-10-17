@@ -16,42 +16,38 @@ Resubscribe the Elasticsearch Organization.
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-OrganizationId <String>] [-PlanId <String>] [-ResourceGroup <String>]
- [-TargetSubscriptionId <String>] [-Term <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TargetSubscriptionId <String>] [-Term <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### Resubscribe
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
- -Body <IResubscribeProperties> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Body <IResubscribeProperties> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### ResubscribeViaIdentity
 ```
 Get-AzElasticResubscribeOrganization -InputObject <IElasticIdentity> -Body <IResubscribeProperties>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResubscribeViaIdentityExpanded
 ```
 Get-AzElasticResubscribeOrganization -InputObject <IElasticIdentity> [-OrganizationId <String>]
  [-PlanId <String>] [-ResourceGroup <String>] [-TargetSubscriptionId <String>] [-Term <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResubscribeViaJsonFilePath
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResubscribeViaJsonString
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
