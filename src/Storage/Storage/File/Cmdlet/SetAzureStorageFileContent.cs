@@ -34,6 +34,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Runtime.InteropServices;
     using System.Security.Cryptography;
     using System.Threading.Tasks;
+    using System.Linq; // For merging dynamic parameters (minimal addition)
+    using System.Collections.ObjectModel; // For RuntimeDefinedParameter attribute collection
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
@@ -469,14 +471,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
         }
 
-        public object GetDynamicParameters()
+        // Override to cooperatively merge base dynamic parameters (e.g. AcquirePolicyToken) with existing Windows-only ones.
+        public override object GetDynamicParameters()
         {
+            // Get base dynamic parameters (may be null or a RuntimeDefinedParameterDictionary)
+            var baseResult = base.GetDynamicParameters();
+            var dict = baseResult as RuntimeDefinedParameterDictionary;
+
+            // If on Windows, we still need the previous dynamic parameter object (context) for PreserveSMBAttribute usage later.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 context = new WindowsOnlyParameters();
-                return context;
+
+                // If base didn't return a dictionary, create one so we can add our parameter while still preserving base param(s).
+                if (dict == null)
+                {
+                    dict = new RuntimeDefinedParameterDictionary();
+                }
+
+                // Reflect the dynamic parameter properties from WindowsOnlyParameters (currently minimal: PreserveSMBAttribute).
+                // We only add if not already present to avoid collisions.
+                var winParamProp = typeof(WindowsOnlyParameters).GetProperty("PreserveSMBAttribute");
+                if (winParamProp != null && !dict.ContainsKey(winParamProp.Name))
+                {
+                    var attrs = winParamProp.GetCustomAttributes(true).OfType<Attribute>().ToArray();
+                    var attrCollection = new Collection<Attribute>(attrs.ToList());
+                    var rd = new RuntimeDefinedParameter(winParamProp.Name, winParamProp.PropertyType, attrCollection);
+                    dict.Add(winParamProp.Name, rd);
+                }
+
+                return dict; // Return combined dictionary (base params + Windows-only param)
             }
-            else return null;
+
+            // Non-Windows: just pass through whatever base produced (could be null or already a dictionary including AcquirePolicyToken)
+            return baseResult;
         }
         private WindowsOnlyParameters context;
     }
