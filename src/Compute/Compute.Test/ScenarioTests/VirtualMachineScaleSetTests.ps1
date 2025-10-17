@@ -5966,3 +5966,53 @@ function Test-ProxyAgentSetting
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test-VirtualMachineScaleSetAddProxyAgentExtension creates a VMSS with Enabled ProxyAgent and added ProxyAgentExtension
+#>
+function Test-VirtualMachineScaleSetAddProxyAgentExtension
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+        $linuxImage = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest"
+
+        # Case 1: Create using simple parameter set
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -Image $linuxImage -EnableProxyAgent -AddProxyAgentExtension
+
+        # verify
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+
+
+        # Update vmss to add proxy agent extension 
+        $VMSS = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $VMSS = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $VMSS -EnableProxyAgent $true -AddProxyAgentExtension $false
+        $vmssUpdated = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $VMSS
+
+        
+
+        # Validate 
+        Assert-AreEqual $vmssUpdated.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vmssUpdated.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
