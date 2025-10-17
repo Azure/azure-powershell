@@ -89,7 +89,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the load balancer resource.
         /// </param>
-        public LoadBalancer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), LoadBalancerSku sku = default(LoadBalancerSku), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string))
+
+        /// <param name="scope">Indicates the scope of the load balancer: external (Public) or internal
+        /// (Private).
+        /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
+        public LoadBalancer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), LoadBalancerSku sku = default(LoadBalancerSku), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string), string scope = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -105,6 +109,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.InboundNatPools = inboundNatPools;
             this.OutboundRules = outboundRules;
             this.ResourceGuid = resourceGuid;
+            this.Scope = scope;
             CustomInit();
         }
 
@@ -200,5 +205,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets indicates the scope of the load balancer: external (Public) or
+        /// internal (Private). Possible values include: &#39;Public&#39;, &#39;Private&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scope")]
+        public string Scope {get; set; }
     }
 }
