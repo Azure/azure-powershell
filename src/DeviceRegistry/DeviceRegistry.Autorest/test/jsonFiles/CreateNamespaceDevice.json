@@ -2,9 +2,9 @@
   "tags": {
     "sensor": "temperature,humidity"
   },
-  "location": "eastus2",
+  "location": "eastus2euap",
   "extendedLocation": {
-    "name": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq",
+    "name": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-canary-test-ga-2510/providers/Microsoft.ExtendedLocation/customLocations/adr-canary-test-ga-2510-cl",
     "type": "CustomLocation"
   },
   "properties": {
@@ -16,16 +16,16 @@
     "endpoints": {
       "outbound": {
         "assigned": {
-          "myendpoint2": {
+          "endpoint2": {
             "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-            "endpointType": "Microsoft.Devices/IoTHubs"
+            "endpointType": "Microsoft.Devices/IotHubs"
           }
         }
       },
       "inbound": {
         "endpoint1": {
           "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-          "endpointType": "Microsoft.IotHub",
+          "endpointType": "Microsoft.Devices/IotHubs",
           "authentication": {
             "method": "Certificate",
             "x509Credentials": {
@@ -37,7 +37,7 @@
         },
         "endpoint2": {
           "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-          "endpointType": "Microsoft.IotHub",
+          "endpointType": "Microsoft.Devices/IotHubs",
           "authentication": {
             "method": "UsernamePassword",
             "usernamePasswordCredentials": {
