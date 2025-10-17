@@ -31,6 +31,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzOracleNetworkAnchor'
 }
 
 Describe 'Remove-AzOracleNetworkAnchor' {
+    # Match CREATE/GET/UPDATE defaults
+    $naName = if ($env:NETWORK_ANCHOR_NAME) { $env:NETWORK_ANCHOR_NAME } else { 'PowershellTest1s' }
+    $rgName = if ($env:resourceGroup)      { $env:resourceGroup }      else { 'basedb-iad53-rg' }
+    $subId  = if ($env:SubscriptionId)     { $env:SubscriptionId }     else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     $hasCmd = Get-Command -Name Remove-AzOracleNetworkAnchor -ErrorAction SilentlyContinue
 
@@ -38,9 +42,9 @@ Describe 'Remove-AzOracleNetworkAnchor' {
         {
             if ($hasCmd) {
                 $result = Remove-AzOracleNetworkAnchor `
-                    -Name $env.networkAnchorName `
-                    -ResourceGroupName $env.networkAnchorRgName `
-                    -SubscriptionId $env.networkAnchorSubId `
+                    -Name $naName `
+                    -ResourceGroupName $rgName `
+                    -SubscriptionId $subId `
                     -NoWait `
                     -Confirm:$false
 

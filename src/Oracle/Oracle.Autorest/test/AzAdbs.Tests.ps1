@@ -28,7 +28,12 @@ Describe 'AzAdbs' {
             $adbs.Name | Should -Be $env.adbsName
         } | Should -Not -Throw
     }
-
+    It 'ListAdbs' {
+        {
+            $adbsList = Get-AzOracleAutonomousDatabase
+            $adbsList.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
+    }
     It 'UpdateAdbs' {
         {
             $tagHashTable = @{'tagName'="tagValue"}

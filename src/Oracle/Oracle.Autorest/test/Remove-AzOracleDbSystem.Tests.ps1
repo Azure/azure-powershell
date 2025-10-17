@@ -23,6 +23,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzOracleDbSystem'))
 }
 
 Describe 'Remove-AzOracleDbSystem' {
+    # Keep in sync with Create/Update tests
+    $dbsName = 'PowershellSdk'
+    $rgName  = if ($env:resourceGroup)  { $env:resourceGroup }  else { 'basedb-rg929-ti-iad52' }
+    $subId   = if ($env:SubscriptionId) { $env:SubscriptionId } else { '049e5678-fbb1-4861-93f3-7528bd0779fd' }
 
     $hasCmd = Get-Command -Name Remove-AzOracleDbSystem -ErrorAction SilentlyContinue
 
@@ -30,9 +34,9 @@ Describe 'Remove-AzOracleDbSystem' {
         {
             if ($hasCmd) {
                 Remove-AzOracleDbSystem `
-                    -Name $env.baseDbName `
-                    -ResourceGroupName $env.resourceAnchorRgName `
-                    -SubscriptionId $env.networkAnchorSubId `
+                    -Name $dbsName `
+                    -ResourceGroupName $rgName `
+                    -SubscriptionId $subId `
                     -NoWait `
                     -Confirm:$false | Out-Null
             } else {

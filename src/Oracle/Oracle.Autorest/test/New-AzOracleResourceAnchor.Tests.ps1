@@ -18,6 +18,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleResourceAnchor'))
 }
 
 Describe 'New-AzOracleResourceAnchor' {
+    # Constants matching the recording
+    $rgName  = if ($env:resourceGroup)  { $env:resourceGroup }  else { 'basedb-rg929-ti-iad52' }
+    $location = 'global'
+
 
     $hasCmd = Get-Command -Name New-AzOracleResourceAnchor -ErrorAction SilentlyContinue
 
@@ -31,13 +35,13 @@ Describe 'New-AzOracleResourceAnchor' {
             if ($hasCmd -and $env:AZURE_TEST_MODE -ne 'Record') {
                 # Use flattened parameters instead of -JsonString
                 $created = New-AzOracleResourceAnchor `
-                    -Name $env.resourceAnchorName `
-                    -ResourceGroupName $env.resourceAnchorRgName `
-                    -Location $env.resourceAnchorLocation `
-                    -SubscriptionId $env.subscriptionId `
+                    -Name $name `
+                    -ResourceGroupName $rgName `
+                    -Location $location `
+                    -SubscriptionId $env.SubscriptionId `
 
                 $created | Should -Not -BeNullOrEmpty
-                $created.Name | Should -Be $env.resourceAnchorName
+                $created.Name | Should -Be $name
             } else {
                 # In Record/Playback or when cmdlet is unavailable, keep passing while Warmup generates the recording
                 $true | Should -Be $true
