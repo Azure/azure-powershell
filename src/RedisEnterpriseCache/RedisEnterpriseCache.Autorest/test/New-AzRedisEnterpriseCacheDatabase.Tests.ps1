@@ -22,6 +22,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "NoEviction"
             Port = 10000
+            AccessKeysAuthentication = "Enabled"
         }
         $database = New-AzRedisEnterpriseCacheDatabase @splat
         $databaseName = "default"
@@ -45,6 +46,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "NoEviction"
+            AccessKeysAuthentication = "Enabled"
             GroupNickname = "GroupName" 
             LinkedDatabase = $idCluster3,$idCluster4 -join ","
         }
