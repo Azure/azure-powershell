@@ -16,7 +16,7 @@ Updates an Azure SQL Database Sync Group.
 Update-AzSqlSyncGroup [-Name] <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
  [-SchemaFile <String>] [-UsePrivateLinkConnection <Boolean>] [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-HubDatabaseAuthenticationType <String>] 
- [-IdentityId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceId <String>] [-RemoveIdentityResourceId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -237,6 +237,23 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
+### -RemoveIdentityResourceId
+
+The resource ID of the User Assigned Managed Identity (UAMI) to remove from the hub database authentication.
+If specified, this UAMI will be removed (mapped to null in the request).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 Required: False
 Position: Named
 Default value: None

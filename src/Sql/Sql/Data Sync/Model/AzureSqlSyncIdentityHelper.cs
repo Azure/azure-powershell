@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Model
 {
@@ -25,19 +26,40 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
     public static class AzureSqlSyncIdentityHelper
     {
         /// <summary>
-        /// Creates a DataSyncParticipantIdentity for a user-assigned managed identity.
+        /// Constructs a <see cref="DataSyncParticipantIdentity"/> of type "UserAssigned"
+        /// with an optional UAMI to add and an optional UAMI to remove.
         /// </summary>
-        /// <param name="identityResourceId">The resource ID of the user-assigned managed identity.</param>
-        /// <returns>A DataSyncParticipantIdentity object configured for user-assigned identity.</returns>
-        public static DataSyncParticipantIdentity CreateUserAssignedIdentity(string identityResourceId)
+        /// <param name="addResourceId">
+        /// A single UAMI resource ID to add. If null or empty, no UAMI is added.
+        /// </param>
+        /// <param name="removeResourceId">
+        /// A single UAMI resource ID to remove. If null, no UAMI is removed (mapped to null in the dictionary).
+        /// </param>
+        /// <returns>
+        /// A <see cref="DataSyncParticipantIdentity"/> object of type "UserAssigned" containing a dictionary of user-assigned identities:
+        /// - Key = UAMI resource ID
+        /// - Value = <see cref="DataSyncParticipantUserAssignedIdentity"/> for addition, or <c>null</c> for removal
+        /// </returns>
+        public static DataSyncParticipantIdentity CreateUserAssignedIdentity(
+            string addResourceId,
+            string removeResourceId = null)  // default null ensures backward compatibility
         {
+            var userAssignedDict = new Dictionary<string, DataSyncParticipantUserAssignedIdentity>();
+
+            if (!string.IsNullOrEmpty(addResourceId))
+            {
+                userAssignedDict[addResourceId] = new DataSyncParticipantUserAssignedIdentity();
+            }
+
+            if (!string.IsNullOrEmpty(removeResourceId))
+            {
+                userAssignedDict[removeResourceId] = null;
+            }
+
             return new DataSyncParticipantIdentity
             {
                 Type = "UserAssigned",
-                UserAssignedIdentities = new Dictionary<string, DataSyncParticipantUserAssignedIdentity>
-                {
-                    [identityResourceId] = new DataSyncParticipantUserAssignedIdentity()
-                }
+                UserAssignedIdentities = userAssignedDict
             };
         }
     }

@@ -16,8 +16,8 @@ Updates an Azure SQL Database Sync Member.
 Update-AzSqlSyncMember -Name <String> [-MemberDatabaseCredential <PSCredential>]
  [-UsePrivateLinkConnection <Boolean>] [-SyncMemberAzureDatabaseResourceId <String>] [-SyncGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-MemberDatabaseAuthenticationType <String>] 
- [-IdentityId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-MemberDatabaseAuthenticationType <String>]
+ [-ResourceId <String>] [-RemoveIdentityResourceId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -244,13 +244,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
+### -ResourceId
 The identity ID of the sync member DB in case of UAMI Authentication
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoveIdentityResourceId
+
+The resource ID of the User Assigned Managed Identity (UAMI) to remove from the member database authentication.
+If specified, this UAMI will be removed (mapped to null in the request).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 Required: False
 Position: Named
 Default value: None

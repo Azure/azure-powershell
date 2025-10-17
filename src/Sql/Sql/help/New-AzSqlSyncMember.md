@@ -19,7 +19,7 @@ New-AzSqlSyncMember -Name <String> -MemberDatabaseType <String> -MemberServerNam
  [-UsePrivateLinkConnection] [-SyncMemberAzureDatabaseResourceId <String>] [-SyncGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-MemberDatabaseAuthenticationType <String>] 
- [-IdentityId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### OnPremisesDatabaseSyncAgentComponent
@@ -104,7 +104,7 @@ This command creates a sync member for an on-premises SQL database.
 ```powershell
 New-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" -SyncDirection "OneWayMemberToHub" `
 -MemberDatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01"  -MemberDatabaseAuthenticationType "userAssigned" `
--IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" | Format-List
+-ResourceId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" | Format-List
 ```
 
 ```output
@@ -415,7 +415,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
+### -ResourceId
 The identity ID of the sync member DB in case of UAMI Authentication
 ```yaml
 Type: String

@@ -17,7 +17,7 @@ New-AzSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabaseServ
  -SyncDatabaseResourceGroupName <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
  [-ConflictResolutionPolicy <String>] [-SchemaFile <String>] [-UsePrivateLinkConnection] [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-HubDatabaseAuthenticationType <String>] [-IdentityId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HubDatabaseAuthenticationType <String>] [-ResourceId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +65,7 @@ New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup02" -ServerName "Server02" -
 -SyncDatabaseServerName "Server02" -SyncDatabaseName "Database02" `
 -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup02" `
 -HubDatabaseAuthenticationType "userAssigned" `
--IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -Schema ".\schema.json" | Format-List
+-ResourceId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -Schema ".\schema.json" | Format-List
 ```
 
 ```output
@@ -296,7 +296,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
+### -ResourceId
 The identity ID of the hub database in case of UAMI Authentication.
 ```yaml
 Type: String

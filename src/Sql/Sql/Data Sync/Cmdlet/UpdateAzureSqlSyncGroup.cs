@@ -76,6 +76,14 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource ID of the User Assigned Managed Identity (UAMI) to remove from hub database authentication.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the User Assigned Managed Identity (UAMI) to remove from hub database authentication." +
+            "If specified, this UAMI will be removed ")]
+        public string RemoveIdentityResourceId { get; set; }
+
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -144,8 +152,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             }
             else if (this.HubDatabaseAuthenticationType.Equals("userAssigned", System.StringComparison.OrdinalIgnoreCase))
             {
-                if (!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
-                    string.IsNullOrEmpty(this.ResourceId))
+                if ((!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
+                    string.IsNullOrEmpty(this.ResourceId)) &&
+                    ((!MyInvocation.BoundParameters.ContainsKey(nameof(RemoveIdentityResourceId))) ||
+                    (string.IsNullOrEmpty(this.RemoveIdentityResourceId))))
                 {
                     newModel.Identity = new DataSyncParticipantIdentity
                     {
@@ -154,7 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 }
                 else
                 {
-                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId);
+                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId, this.RemoveIdentityResourceId);
                 }
             }
             else
