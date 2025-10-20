@@ -130,6 +130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Kind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Kind, global::System.Convert.ToString);
+            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceTagsTypeConverter.ConvertFrom);
@@ -150,6 +154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetail = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IPlanDetails) content.GetValueForProperty("PlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetail, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PlanDetailsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ProjectDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetail = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetails) content.GetValueForProperty("ProjectDetail",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetail, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ProjectDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -157,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("MonitoringStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).MonitoringStatus = (string) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).MonitoringStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostingType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).HostingType = (string) content.GetValueForProperty("HostingType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).HostingType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -241,6 +253,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("PlanDetailPlanName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetailPlanName = (string) content.GetValueForProperty("PlanDetailPlanName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetailPlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProjectDetailProjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailProjectType = (string) content.GetValueForProperty("ProjectDetailProjectType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailProjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProjectDetailConfigurationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailConfigurationType = (string) content.GetValueForProperty("ProjectDetailConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailConfigurationType, global::System.Convert.ToString);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -383,6 +403,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Kind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Kind, global::System.Convert.ToString);
+            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceTagsTypeConverter.ConvertFrom);
@@ -403,6 +427,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetail = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IPlanDetails) content.GetValueForProperty("PlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetail, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PlanDetailsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ProjectDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetail = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetails) content.GetValueForProperty("ProjectDetail",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetail, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ProjectDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -410,6 +438,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("MonitoringStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).MonitoringStatus = (string) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).MonitoringStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostingType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).HostingType = (string) content.GetValueForProperty("HostingType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).HostingType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -494,6 +526,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("PlanDetailPlanName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetailPlanName = (string) content.GetValueForProperty("PlanDetailPlanName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).PlanDetailPlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProjectDetailProjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailProjectType = (string) content.GetValueForProperty("ProjectDetailProjectType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailProjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProjectDetailConfigurationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailConfigurationType = (string) content.GetValueForProperty("ProjectDetailConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceInternal)this).ProjectDetailConfigurationType, global::System.Convert.ToString);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
