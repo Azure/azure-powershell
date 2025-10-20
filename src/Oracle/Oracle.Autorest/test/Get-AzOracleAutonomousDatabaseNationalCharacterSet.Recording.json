@@ -1,8 +1,8 @@
 {
-  "Get-AzOracleAutonomousDatabaseNationalCharacterSet+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2025-03-01+1": {
+  "Get-AzOracleAutonomousDatabaseNationalCharacterSet+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2025-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseNationalCharacterSets?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

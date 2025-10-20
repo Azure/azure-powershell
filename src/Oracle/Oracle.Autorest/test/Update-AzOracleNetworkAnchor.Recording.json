@@ -1,0 +1,82 @@
+{
+  "Update-AzOracleNetworkAnchor+[NoContext]+Update tags only+$PATCH+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s?api-version=2025-09-01",
+      "Content": "{\n  \"tags\": {\n    \"updatedBy\": \"Pester\",\n    \"purpose\": \"sdk-test\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": { },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "72" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=dce5441b-0867-46bb-9d5f-2750244d9c01,objectId=ff527500-a33c-4844-ab6c-05aeee02b255/eastus/a84a4387-5d67-43b4-802a-6f39c645dbde" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "oci-1234" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c9f7ae37-7024-42d3-8586-4e782f50f382" ],
+        "x-ms-correlation-request-id": [ "001e1665-e673-4c0e-b233-464f06f03b05" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251010T220442Z:001e1665-e673-4c0e-b233-464f06f03b05" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D213E3C9043C48518E05E05CF7FD2636 Ref B: BY1AA1072318029 Ref C: 2025-10-10T22:04:41Z" ],
+        "Date": [ "Fri, 10 Oct 2025 22:04:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "554" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s\",\"name\":\"PowershellTest1s\",\"type\":\"Oracle.Database/networkAnchors\",\"location\":\"eastus\",\"tags\":{\"updatedBy\":\"Pester\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T18:00:00.000Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T19:00:00.000Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzOracleNetworkAnchor+[NoContext]+Update tags only+$GET+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "11111111-2222-3333-4444-555555555555" ],
+        "CommandName": [ "Get-AzOracleNetworkAnchor" ],
+        "FullCommandName": [ "Get-AzOracleNetworkAnchor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": { }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-request-id": [ "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" ],
+        "x-ms-correlation-request-id": [ "ffffffff-1111-2222-3333-444444444444" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 10 Oct 2025 22:04:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "554" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s\",\"name\":\"PowershellTest1s\",\"type\":\"Oracle.Database/networkAnchors\",\"location\":\"eastus\",\"tags\":{\"updatedBy\":\"Pester\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"mihret.kidane@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T18:00:00.000Z\",\"lastModifiedBy\":\"mihret.kidane@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T19:00:00.000Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

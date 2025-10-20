@@ -1,0 +1,47 @@
+{
+  "New-AzOracleNetworkAnchor+[NoContext]+Create minimal (NoWait ack safe assertions)+$PUT+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s?api-version=2025-09-01",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"resourceAnchorId\": \"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/resourceAnchors/basedb-iad53-ra\",\n    \"subnetId\": \"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Microsoft.Network/virtualNetworks/basedb-iad53-vnet/subnets/delegated\"\n  },\n  \"zones\": [ \"2\" ]\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "418" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1000448b-0000-0100-0000-68e980770000\"" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=dce5441b-0867-46bb-9d5f-2750244d9c01,objectId=ff527500-a33c-4844-ab6c-05aeee02b255/eastus/cb9a2623-4639-4002-b458-0c14401acc50" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "oci-803E9339E46E735-202510102153/5D4BDFCDC7365BDD6C80E96849414480/929225297C404F19BE87E3762C051E14" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/467f3e32-b1b8-40b7-974b-77eb51dccdc6*36984456E30139711F0B603962ACC5490001D31CABC20A69F01D2D9DEC43FA0D?api-version=2025-09-01\u0026t=638957300392781154\u0026c=MIIIpTCCBo2gAwIBAgITFgGpymN7LTW4kGDY9AABAanKYzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDMwHhcNMjUwNzE2MDY0NzU2WhcNMjYwMTEyMDY0NzU2WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKTm5YrLmfx9BQfyqn0KlKU5oAoMO71ploN13WymwudXY4jancWivKtgBQUtClbNOMf8GYtxePPkFtxCfON6ynaA50b2GFHRrjRAHMFB49frm55UXml1ym0Wz3JH6bXBwGJBhpQkMn2aLk58hRpzNpxEu8BK4avf0oZczbk_PMUH85rY1z-QQUNFQb_nIO7v3SIOCK3CKt4GdAKztacTI1NAnA_-1QYq5xcwep6CETOHLmlB_JNwscGCDdFNyGB72czos_xXG50Xhzs81LE3w3j92c_7ddvO9ojBuiNMBdFbP7GW31DrqzglZVWg5GHxjEcuVEIKM8kcIdQ2s7z8aGkCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9BTTNQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAzKDEpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQU0zUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMygxKS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0FNM1BLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3J0MB0GA1UdDgQWBBTviIwcnAMMwKNPI0scxiwQPceQFTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDMoMSkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBRIo61gdWpv7GDzaVXRALEyV_xs5DAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggIBAB7FilN5Nb2BMo0idhK0QI7CLur1vEiQDTx3r1PyBucoZKAhxeeSGSgzuFXBjtOGdl6KlaAyTE6thgbXA5VqVyLYuRnuvUDMFTX51g7bJmFMAwi3IsYN5OQ5fQkuPX3Ao0gysXGrQmU3uH3rbGlVWXLp9xDSUfHh3jfeoU0Q4cgn2VZBiXWIGMiSW0OI1ZQtmEAvtUUja-Za7Q8TrERfxJg1nnqfjm8pH78RqklGECDK_m93WbGutB81jiRb598PoEFLqatWtUWEOagPl1wHToKm4tfgg5pN24otf99UUJQrf6A8kHQVZhuyARbhm-_Y9HSN43NooeVkaEzxST2gsLitbuz9EW6djyVhce8jc4d89cfOQaamQ7wOpiwXusaP-u5Vh-mmGXqkJVn4g_pDI4iv6NGaCosqQodrbEwWjkxiG_jX08qhEuGUhw-vo0jXacuguanQ0ap7Rns1PSLEOSmOB0LlsacAuoBAAQasSIYAX1woGPttqGnuqoCxw6jclcJayt0x4q1URe4WhXuTzySAt-1OtDyzZrXnwfkNB-J1J0iocdL_DCgWGQa2MlPP9EZiR9ox-VqkrOPQAMZBqtP9tQacMeO-V3JqiNzdu8ZzGnJrVT0fbgiS5E3emSyi_rYbuKDR06QJurZseja_toZCirAeHMjBVtn2wNuaY6Rr\u0026s=PcwyQWpmYv4UTtmgVQDRElEnYzCw2dblIFyY37akzyGyGvb4iADJftc3YDau6oensRphxRsl6Ksd0RPJBpDSetZGhmO3z8ElwZz5cdg8ls8zO8qtIdumC_l5bVilV-QqlvxgnnHm1lk3xV0nymIDtWWWM7p6COeOpkfQq0zIPFHGkTb0t-mosDk_jKJsOxqtmmJBSj4ysT_CwX5NAUfbKi3eTDJgtSY6FM9pz0vkv33Aih0LhyI0_RP1pkp1bXsJ0GvyHsN9XTOSX65H4H28R7QQdVNh4SFT9KvwYiLvHNTh9gNNG8xcGd_uN2Tla9o0Jlc6aPd1m5tpT-v_LCzqXQ\u0026h=DQDTC889czU8S3EBR9tJS6kA40lbGr3asMGXT9ws69U" ],
+        "x-ms-async-operation-timeout": [ "PT4H" ],
+        "x-ms-request-id": [ "467f3e32-b1b8-40b7-974b-77eb51dccdc6" ],
+        "x-ms-correlation-request-id": [ "4bf66095-d245-4895-9b8f-db17e5e80fd3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251010T215359Z:4bf66095-d245-4895-9b8f-db17e5e80fd3" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 79E3FC1A3EBF45198FEB2FB743BBB285 Ref B: BY1AA1072317034 Ref C: 2025-10-10T21:53:47Z" ],
+        "Date": [ "Fri, 10 Oct 2025 21:53:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1302" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/networkAnchors/PowershellTest1s\",\"name\":\"PowershellTest1s\",\"type\":\"oracle.database/networkanchors\",\"location\":\"eastus\",\"zones\":[\"2\"],\"systemData\":{\"createdBy\":\"mikita.artsemyeu@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-10T21:53:48.684484Z\",\"lastModifiedBy\":\"mikita.artsemyeu@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-10T21:53:48.684484Z\"},\"properties\":{\"resourceAnchorId\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Oracle.Database/resourceAnchors/basedb-iad53-ra\",\"provisioningState\":\"Accepted\",\"vnetId\":null,\"subnetId\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-iad53-rg/providers/Microsoft.Network/virtualNetworks/basedb-iad53-vnet/subnets/delegated\",\"cidrBlock\":null,\"ociVcnId\":null,\"ociVcnDnsLabel\":null,\"ociSubnetId\":null,\"ociBackupCidrBlock\":null,\"isOracleToAzureDnsZoneSyncEnabled\":null,\"isOracleDnsListeningEndpointEnabled\":null,\"isOracleDnsForwardingEndpointEnabled\":null,\"dnsListeningEndpointIpAddress\":null,\"dnsForwardingEndpointIpAddress\":null,\"dnsForwardingRulesUrl\":null,\"dnsListeningEndpointNsgRulesUrl\":null,\"dnsForwardingEndpointNsgRulesUrl\":null}}",
+      "isContentBase64": false
+    }
+  }
+}

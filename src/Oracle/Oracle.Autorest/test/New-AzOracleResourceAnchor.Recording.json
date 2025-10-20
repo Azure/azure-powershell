@@ -1,0 +1,175 @@
+{
+  "New-AzOracleResourceAnchor+[NoContext]+Warmup+$GET+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "CommandName": [ "Get-AzOracleGiVersion" ],
+        "FullCommandName": [ "Get-AzOracleGiVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": { }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "154" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/eastus/giVersions/19.0.0.0\",\"name\":\"19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOracleResourceAnchor+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01",
+      "Content": "{\n  \"location\": \"global\"\n}",
+      "isContentBase64": false,
+      "Headers": { },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"4000cc1c-0000-0700-0000-68e956c80000\"" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/00000000-0000-0000-0000-000000000000?api-version=2025-09-01" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "240" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create\",\"name\":\"Create\",\"type\":\"oracle.database/resourceanchors\",\"location\":\"global\",\"properties\":{\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOracleResourceAnchor+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/00000000-0000-0000-0000-000000000000?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/00000000-0000-0000-0000-000000000000?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "CommandName": [ "New-AzOracleResourceAnchor" ],
+        "FullCommandName": [ "New-AzOracleResourceAnchor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": { }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "250" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/00000000-0000-0000-0000-000000000000\",\"name\":\"00000000-0000-0000-0000-000000000000\",\"resourceId\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-10T18:56:07Z\",\"endTime\":\"2025-10-10T18:56:37Z\",\"percentComplete\":100.0}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOracleResourceAnchor+[NoContext]+Warmup+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "CommandName": [ "Get-AzOracleGiVersion" ],
+        "FullCommandName": [ "Get-AzOracleGiVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": { }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "154" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/giVersions/19.0.0.0\",\"name\":\"19.0.0.0\",\"type\":\"Oracle.Database/Locations/giVersions\",\"properties\":{\"version\":\"19.0.0.0\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOracleResourceAnchor+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/00000000-0000-0000-0000-000000000000?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/00000000-0000-0000-0000-000000000000?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "CommandName": [ "New-AzOracleResourceAnchor" ],
+        "FullCommandName": [ "New-AzOracleResourceAnchor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": { }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "250" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/providers/Oracle.Database/locations/EASTUS/operationStatuses/00000000-0000-0000-0000-000000000000\",\"name\":\"00000000-0000-0000-0000-000000000000\",\"resourceId\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-10T18:56:07Z\",\"endTime\":\"2025-10-10T18:56:37Z\",\"percentComplete\":100.0}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzOracleResourceAnchor+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": { },
+      "ContentHeaders": { }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "675" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create\",\"name\":\"Create\",\"type\":\"oracle.database/resourceanchors\",\"location\":\"global\",\"tags\":{\"updatedBy\":\"Pester\",\"purpose\":\"sdk-test\"},\"systemData\":{\"createdBy\":\"mikita.artsemyeu@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-10T18:56:07.2493256Z\",\"lastModifiedBy\":\"mikita.artsemyeu@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-10T20:40:02.9560451Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"linkedCompartmentId\":\"ocid1.compartment.oc1..aaaaaaaapp7w6fpyiz4zkso7ltyuquwkuk2mm7x3mvq34gud64kaifi5p5jq\"}}",
+      "isContentBase64": false
+    }
+  }
+}
