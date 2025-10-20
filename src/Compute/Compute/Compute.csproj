@@ -25,6 +25,11 @@
     <PackageReference Include="Azure.Identity" Version="1.11.4" />
   </ItemGroup>
 
+  <!-- Include shared WhatIf library -->
+  <ItemGroup>
+    <Compile Include="..\..\shared\WhatIf\**\*.cs" LinkBase="Shared\WhatIf" />
+  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="Strategies\ComputeRp\Images.json" />
   </ItemGroup>

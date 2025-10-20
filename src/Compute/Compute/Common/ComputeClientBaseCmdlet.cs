@@ -30,6 +30,10 @@ using Azure.Identity;
 using Azure.Core;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using Microsoft.Azure.PowerShell.Cmdlets.Shared.WhatIf.Formatters;
+using Microsoft.Azure.PowerShell.Cmdlets.Shared.WhatIf.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -111,23 +115,46 @@ namespace Microsoft.Azure.Commands.Compute
                 var dryRunResult = PostDryRun(endpoint, token, payload);
                 if (dryRunResult != null)
                 {
-                    // Display the response in a user-friendly format
-                    WriteVerbose("========== DryRun Response ==========");
-                    
-                    // Try to pretty-print the JSON response
+                    // Try to format using the shared WhatIf formatter
                     try
                     {
-                        string formattedJson = JsonConvert.SerializeObject(dryRunResult, Formatting.Indented);
-                        // Only output to pipeline once, not both WriteObject and WriteInformation
-                        WriteObject(formattedJson);
+                        // Try to parse as WhatIf result and format it
+                        var whatIfResult = TryAdaptDryRunToWhatIf(dryRunResult);
+                        if (whatIfResult != null)
+                        {
+                            WriteVerbose("========== DryRun Response (Formatted) ==========");
+                            string formattedOutput = WhatIfOperationResultFormatter.Format(
+                                whatIfResult,
+                                noiseNotice: "Note: DryRun preview - actual deployment behavior may differ."
+                            );
+                            WriteObject(formattedOutput);
+                            WriteVerbose("=================================================");
+                        }
+                        else
+                        {
+                            // Fallback: display as JSON
+                            WriteVerbose("========== DryRun Response ==========");
+                            string formattedJson = JsonConvert.SerializeObject(dryRunResult, Formatting.Indented);
+                            WriteObject(formattedJson);
+                            WriteVerbose("=====================================");
+                        }
                     }
-                    catch
+                    catch (Exception formatEx)
                     {
-                        // Fallback: just write the object
-                        WriteObject(dryRunResult);
+                        WriteVerbose($"DryRun formatting failed: {formatEx.Message}");
+                        // Fallback: just output the raw result
+                        WriteVerbose("========== DryRun Response ==========");
+                        try
+                        {
+                            string formattedJson = JsonConvert.SerializeObject(dryRunResult, Formatting.Indented);
+                            WriteObject(formattedJson);
+                        }
+                        catch
+                        {
+                            WriteObject(dryRunResult);
+                        }
+                        WriteVerbose("=====================================");
                     }
-                    
-                    WriteVerbose("=====================================");
                 }
                 else
                 {
@@ -139,6 +166,45 @@ namespace Microsoft.Azure.Commands.Compute
                 WriteWarning($"DryRun error: {ex.Message}");
             }
             return true; // Always prevent normal execution when -DryRun is used
+        }
+
+        /// <summary>
+        /// Attempts to adapt the DryRun JSON response to IWhatIfOperationResult for formatting.
+        /// Returns null if the response doesn't match expected structure.
+        /// </summary>
+        private IWhatIfOperationResult TryAdaptDryRunToWhatIf(object dryRunResult)
+        {
+            try
+            {
+                // Try to parse as JObject
+                JObject jObj = null;
+                if (dryRunResult is JToken jToken)
+                {
+                    jObj = jToken as JObject;
+                }
+                else if (dryRunResult is string strResult)
+                {
+                    jObj = JObject.Parse(strResult);
+                }
+
+                if (jObj == null)
+                {
+                    return null;
+                }
+
+                // Check if it has a 'changes' or 'resourceChanges' field
+                var changesToken = jObj["changes"] ?? jObj["resourceChanges"];
+                if (changesToken == null)
+                {
+                    return null;
+                }
+
+                return new DryRunWhatIfResult(jObj);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -442,6 +508,244 @@ namespace Microsoft.Azure.Commands.Compute
                 this._armClient = value;
             }
         }
+
+        #region DryRun WhatIf Adapter Classes
+
+        /// <summary>
+        /// Adapter class to convert DryRun JSON response to IWhatIfOperationResult interface
+        /// </summary>
+        private class DryRunWhatIfResult : IWhatIfOperationResult
+        {
+            private readonly JObject _response;
+            private readonly Lazy<IList<IWhatIfChange>> _changes;
+            private readonly Lazy<IList<IWhatIfChange>> _potentialChanges;
+            private readonly Lazy<IList<IWhatIfDiagnostic>> _diagnostics;
+            private readonly Lazy<IWhatIfError> _error;
+
+            public DryRunWhatIfResult(JObject response)
+            {
+                _response = response;
+                _changes = new Lazy<IList<IWhatIfChange>>(() => ParseChanges(_response["changes"] ?? _response["resourceChanges"]));
+                _potentialChanges = new Lazy<IList<IWhatIfChange>>(() => ParseChanges(_response["potentialChanges"]));
+                _diagnostics = new Lazy<IList<IWhatIfDiagnostic>>(() => ParseDiagnostics(_response["diagnostics"]));
+                _error = new Lazy<IWhatIfError>(() => ParseError(_response["error"]));
+            }
+
+            public string Status => _response["status"]?.Value<string>() ?? "Succeeded";
+            public IList<IWhatIfChange> Changes => _changes.Value;
+            public IList<IWhatIfChange> PotentialChanges => _potentialChanges.Value;
+            public IList<IWhatIfDiagnostic> Diagnostics => _diagnostics.Value;
+            public IWhatIfError Error => _error.Value;
+
+            private static IList<IWhatIfChange> ParseChanges(JToken changesToken)
+            {
+                if (changesToken == null || changesToken.Type != JTokenType.Array)
+                {
+                    return new List<IWhatIfChange>();
+                }
+
+                return changesToken
+                    .Select(c => new DryRunWhatIfChange(c as JObject))
+                    .Cast<IWhatIfChange>
+                    .ToList();
+            }
+
+            private static IList<IWhatIfDiagnostic> ParseDiagnostics(JToken diagnosticsToken)
+            {
+                if (diagnosticsToken == null || diagnosticsToken.Type != JTokenType.Array)
+                {
+                    return new List<IWhatIfDiagnostic>();
+                }
+
+                return diagnosticsToken
+                    .Select(d => new DryRunWhatIfDiagnostic(d as JObject))
+                    .Cast<IWhatIfDiagnostic>()
+                    .ToList();
+            }
+
+            private static IWhatIfError ParseError(JToken errorToken)
+            {
+                if (errorToken == null)
+                {
+                    return null;
+                }
+
+                return new DryRunWhatIfError(errorToken as JObject);
+            }
+        }
+
+        /// <summary>
+        /// Adapter for individual resource change
+        /// </summary>
+        private class DryRunWhatIfChange : IWhatIfChange
+        {
+            private readonly JObject _change;
+            private readonly Lazy<IList<IWhatIfPropertyChange>> _delta;
+
+            public DryRunWhatIfChange(JObject change)
+            {
+                _change = change;
+                
+                // Parse resourceId into scope and relative path
+                string resourceId = _change["resourceId"]?.Value<string>() ?? string.Empty;
+                var parts = SplitResourceId(resourceId);
+                Scope = parts.scope;
+                RelativeResourceId = parts.relativeId;
+                
+                _delta = new Lazy<IList<IWhatIfPropertyChange>>(() => ParsePropertyChanges(_change["delta"] ?? _change["propertyChanges"]));
+            }
+
+            public string Scope { get; }
+            public string RelativeResourceId { get; }
+            public string UnsupportedReason => _change["unsupportedReason"]?.Value<string>();
+            public string FullyQualifiedResourceId => _change["resourceId"]?.Value<string>() ?? $"{Scope}/{RelativeResourceId}";
+            
+            public ChangeType ChangeType
+            {
+                get
+                {
+                    string changeTypeStr = _change["changeType"]?.Value<string>() ?? "NoChange";
+                    return ParseChangeType(changeTypeStr);
+                }
+            }
+
+            public string ApiVersion => _change["apiVersion"]?.Value<string>() ?? 
+                                       Before?["apiVersion"]?.Value<string>() ?? 
+                                       After?["apiVersion"]?.Value<string>();
+            
+            public JToken Before => _change["before"];
+            public JToken After => _change["after"];
+            public IList<IWhatIfPropertyChange> Delta => _delta.Value;
+
+            private static (string scope, string relativeId) SplitResourceId(string resourceId)
+            {
+                if (string.IsNullOrEmpty(resourceId))
+                {
+                    return (string.Empty, string.Empty);
+                }
+
+                // Find last occurrence of /providers/
+                int providersIndex = resourceId.LastIndexOf("/providers/", StringComparison.OrdinalIgnoreCase);
+                if (providersIndex > 0)
+                {
+                    string scope = resourceId.Substring(0, providersIndex);
+                    string relativeId = resourceId.Substring(providersIndex + 1); // Skip the leading '/'
+                    return (scope, relativeId);
+                }
+
+                // If no providers found, treat entire path as relative
+                return (string.Empty, resourceId);
+            }
+
+            private static ChangeType ParseChangeType(string changeTypeStr)
+            {
+                if (Enum.TryParse<ChangeType>(changeTypeStr, true, out var changeType))
+                {
+                    return changeType;
+                }
+                return ChangeType.NoChange;
+            }
+
+            private static IList<IWhatIfPropertyChange> ParsePropertyChanges(JToken deltaToken)
+            {
+                if (deltaToken == null || deltaToken.Type != JTokenType.Array)
+                {
+                    return new List<IWhatIfPropertyChange>();
+                }
+
+                return deltaToken
+                    .Select(pc => new DryRunWhatIfPropertyChange(pc as JObject))
+                    .Cast<IWhatIfPropertyChange>()
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// Adapter for property changes
+        /// </summary>
+        private class DryRunWhatIfPropertyChange : IWhatIfPropertyChange
+        {
+            private readonly JObject _propertyChange;
+            private readonly Lazy<IList<IWhatIfPropertyChange>> _children;
+
+            public DryRunWhatIfPropertyChange(JObject propertyChange)
+            {
+                _propertyChange = propertyChange;
+                _children = new Lazy<IList<IWhatIfPropertyChange>>(() => ParseChildren(_propertyChange["children"]));
+            }
+
+            public string Path => _propertyChange["path"]?.Value<string>() ?? string.Empty;
+            
+            public PropertyChangeType PropertyChangeType
+            {
+                get
+                {
+                    string typeStr = _propertyChange["propertyChangeType"]?.Value<string>() ?? 
+                                    _propertyChange["changeType"]?.Value<string>() ?? 
+                                    "NoEffect";
+                    if (Enum.TryParse<PropertyChangeType>(typeStr, true, out var propChangeType))
+                    {
+                        return propChangeType;
+                    }
+                    return PropertyChangeType.NoEffect;
+                }
+            }
+
+            public JToken Before => _propertyChange["before"];
+            public JToken After => _propertyChange["after"];
+            public IList<IWhatIfPropertyChange> Children => _children.Value;
+
+            private static IList<IWhatIfPropertyChange> ParseChildren(JToken childrenToken)
+            {
+                if (childrenToken == null || childrenToken.Type != JTokenType.Array)
+                {
+                    return new List<IWhatIfPropertyChange>();
+                }
+
+                return childrenToken
+                    .Select(c => new DryRunWhatIfPropertyChange(c as JObject))
+                    .Cast<IWhatIfPropertyChange>()
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// Adapter for diagnostics
+        /// </summary>
+        private class DryRunWhatIfDiagnostic : IWhatIfDiagnostic
+        {
+            private readonly JObject _diagnostic;
+
+            public DryRunWhatIfDiagnostic(JObject diagnostic)
+            {
+                _diagnostic = diagnostic;
+            }
+
+            public string Code => _diagnostic["code"]?.Value<string>() ?? string.Empty;
+            public string Message => _diagnostic["message"]?.Value<string>() ?? string.Empty;
+            public string Level => _diagnostic["level"]?.Value<string>() ?? "Info";
+            public string Target => _diagnostic["target"]?.Value<string>() ?? string.Empty;
+            public string Details => _diagnostic["details"]?.Value<string>() ?? string.Empty;
+        }
+
+        /// <summary>
+        /// Adapter for errors
+        /// </summary>
+        private class DryRunWhatIfError : IWhatIfError
+        {
+            private readonly JObject _error;
+
+            public DryRunWhatIfError(JObject error)
+            {
+                _error = error;
+            }
+
+            public string Code => _error["code"]?.Value<string>() ?? string.Empty;
+            public string Message => _error["message"]?.Value<string>() ?? string.Empty;
+            public string Target => _error["target"]?.Value<string>() ?? string.Empty;
+        }
+
+        #endregion
     }
 }
 
