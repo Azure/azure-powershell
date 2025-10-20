@@ -17,7 +17,9 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Added Cross region restore support for new region - northeastus5.
 
 ## Version 7.9.0
 * Added Cross region restore support for new region - eastus3.
