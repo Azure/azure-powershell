@@ -46,20 +46,20 @@ function Remove-AzAksArcNodepool {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster on which get is called.
     ${ClusterName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -135,13 +135,24 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
-
-process {
-    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
-    $null = $PSBoundParameters.Remove("SubscriptionId")
-    $null = $PSBoundParameters.Remove("ResourceGroupName")
-    $null = $PSBoundParameters.Remove("ClusterName")
-    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
+  process {
+    $scope = $null
+    if ($PSCmdlet.ParameterSetName -eq "Delete") {
+      $scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId `
+        -ResourceGroupName $ResourceGroupName `
+        -ClusterName $ClusterName
+      $null = $PSBoundParameters.Remove("SubscriptionId")
+      $null = $PSBoundParameters.Remove("ResourceGroupName")
+      $null = $PSBoundParameters.Remove("ClusterName")
+    } elseif ($PSCmdlet.ParameterSetName -eq "DeleteViaIdentity") {
+      # Parameter set DeleteViaIdentity is broken because nodepool doesn't have a valid ARM ID, so work around 
+      # by parsing the resource ID for subscription ID, resource group name, cluster name, and nodepool name.
+      $scopeAndName = Get-NodePoolInfoFromURI -NodePoolResourceURI $InputObject.Id
+      $scope = $scopeAndName["scope"]
+      $null = $PSBoundParameters.Add("Name", $scopeAndName["name"])
+      $null = $PSBoundParameters.Remove("InputObject")
+    }
+    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $scope)
     Az.AksArc.internal\Remove-AzAksArcNodepool @PSBoundParameters
-}
+  }
 }

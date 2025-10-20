@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.19.5
 * Added support for Salesforce V2 partitionOption feature.
 * Added support MI In Lakehouse And Warehouse connection.
 

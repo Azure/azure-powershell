@@ -32,15 +32,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// class.
         /// </summary>
         /// <param name="serviceName">The name of the service. Possible values
-        /// include: 'AutomaticRepairs',
-        /// 'DummyOrchestrationServiceName'</param>
+        /// include: 'AutomaticRepairs', 'AutomaticZoneRebalancing'</param>
         /// <param name="serviceState">The current state of the service.
         /// Possible values include: 'NotRunning', 'Running',
         /// 'Suspended'</param>
-        public OrchestrationServiceSummary(string serviceName = default(string), string serviceState = default(string))
+        /// <param name="latestOperationStatus">The latest operation status of
+        /// the service. Minimum API version for this property is 2025-04-01.
+        /// Possible values include: 'InProgress', 'Completed'</param>
+        /// <param name="lastStatusChangeTime">The last UTC time when the
+        /// operation status changed. Minimum API version for this property is
+        /// 2025-04-01.</param>
+        public OrchestrationServiceSummary(string serviceName = default(string), string serviceState = default(string), string latestOperationStatus = default(string), System.DateTime? lastStatusChangeTime = default(System.DateTime?))
         {
             ServiceName = serviceName;
             ServiceState = serviceState;
+            LatestOperationStatus = latestOperationStatus;
+            LastStatusChangeTime = lastStatusChangeTime;
             CustomInit();
         }
 
@@ -51,7 +58,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets the name of the service. Possible values include:
-        /// 'AutomaticRepairs'
+        /// 'AutomaticRepairs', 'AutomaticZoneRebalancing'
         /// </summary>
         [JsonProperty(PropertyName = "serviceName")]
         public string ServiceName { get; private set; }
@@ -62,6 +69,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "serviceState")]
         public string ServiceState { get; private set; }
+
+        /// <summary>
+        /// Gets the latest operation status of the service. Minimum API
+        /// version for this property is 2025-04-01. Possible values include:
+        /// 'InProgress', 'Completed'
+        /// </summary>
+        [JsonProperty(PropertyName = "latestOperationStatus")]
+        public string LatestOperationStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the last UTC time when the operation status changed. Minimum
+        /// API version for this property is 2025-04-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "lastStatusChangeTime")]
+        public System.DateTime? LastStatusChangeTime { get; private set; }
 
     }
 }

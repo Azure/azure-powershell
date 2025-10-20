@@ -120,9 +120,9 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
     )
 
     process {
-        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonSettings.ps1'
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
         Import-Module $helperPath
-        $helperPath = Join-Path $PSScriptRoot 'Helper' 'AzLocalCommonHelper.ps1'
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
         Import-Module $helperPath
 
         CheckResourcesModuleDependency
@@ -586,32 +586,51 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             
             # amhStoredStorageAccount exists and in Succeeded state
             if ($null -ne $amhStoredStorageAccount -and
-                $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
+                $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded)
+            {
                 # Use amhStoredStorageAccount and ignore user provided Cache Storage Account Id
-                if (![string]::IsNullOrEmpty($CacheStorageAccountId) -and $amhStoredStorageAccount.Id -ne $CacheStorageAccountId) {
+                if (![string]::IsNullOrEmpty($CacheStorageAccountId) -and $amhStoredStorageAccount.Id -ne $CacheStorageAccountId)
+                {
                     Write-Host "A Cache Storage Account '$($amhStoredStorageAccountName)' has been linked already. The given -CacheStorageAccountId '$($CacheStorageAccountId)' will be ignored."
                 }
 
                 $cacheStorageAccount = $amhStoredStorageAccount
+
+                # This will fix brownfield issue where AMH solution tool is set incorrectly that causes UX bifurcation to go to the wrong experience;
+                # for new projects that are set correctly from the start, this will essentially be a no-op.
+                Az.Migrate.Internal\Set-AzMigrateSolution `
+                    -MigrateProjectName $ProjectName `
+                    -Name $amhSolution.Name `
+                    -ResourceGroupName $ResourceGroupName `
+                    -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
+                    -Tool "ServerMigration_DataReplication" `
+                    -Purpose "Migration" | Out-Null
             }
-            elseif ($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) {
+            elseif ($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState)
+            {
                 # amhStoredStorageAccount is found but in a bad state, so log to ask user to remove
-                if ($null -ne $amhStoredStorageAccount -and $null -eq $amhStoredStorageAccount.ProvisioningState) {
+                if ($null -ne $amhStoredStorageAccount -and $null -eq $amhStoredStorageAccount.ProvisioningState)
+                {
                     Write-Host "A previously linked Cache Storage Account with Id '$($amhStoredStorageAccountId)' is found but in a unusable state. Please remove it manually and re-run this command."
                 }
 
                 # amhStoredStorageAccount is not found or in a bad state but AMH has a record of it, so remove the record
-                if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
+                if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId"))
+                {
                     $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId") | Out-Null
                     $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $null) | Out-Null
+
                     Az.Migrate.Internal\Set-AzMigrateSolution `
                         -MigrateProjectName $ProjectName `
                         -Name $amhSolution.Name `
                         -ResourceGroupName $ResourceGroupName `
-                        -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
+                        -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
+                        -Tool "ServerMigration_DataReplication" `
+                        -Purpose "Migration" | Out-Null
                 }
             }
-            else {
+            else
+            {
                 throw "A linked Cache Storage Account with Id '$($amhStoredStorageAccountId)' times out with Provisioning State: '$($amhStoredStorageAccount.ProvisioningState)'. Please re-run this command or contact support if help needed."
             }
 
@@ -928,13 +947,17 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         # Update AMH record with chosen Cache Storage Account
-        if (!$amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
+        if (!$amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId"))
+        {
             $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $cacheStorageAccount.Id)
+
             Az.Migrate.Internal\Set-AzMigrateSolution `
                 -MigrateProjectName $ProjectName `
                 -Name $amhSolution.Name `
                 -ResourceGroupName $ResourceGroupName `
-                -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
+                -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
+                -Tool "ServerMigration_DataReplication" `
+                -Purpose "Migration" | Out-Null
         }
 
         Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'"

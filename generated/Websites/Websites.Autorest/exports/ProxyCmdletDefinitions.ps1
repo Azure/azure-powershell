@@ -4253,7 +4253,7 @@ Description for Creates or updates the app settings of a static site build.
 .Example
 New-AzStaticWebAppBuildAppSetting -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -EnvironmentName 'default'  -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 .Example
-Get-AzStaticWebAppBuildAppSetting -ResourceGroupName resourceGroup -Name taticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
+Get-AzStaticWebAppBuildAppSetting -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
