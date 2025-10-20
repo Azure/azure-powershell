@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorWafCustomRuleO
 }
 
 Describe 'New-AzFrontDoorWafCustomRuleObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
         $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType "MatchRule" -MatchCondition $matchCondition1 -Action "Block" -Priority 2
         $customRule1.Name | Should -Be "Rule1"

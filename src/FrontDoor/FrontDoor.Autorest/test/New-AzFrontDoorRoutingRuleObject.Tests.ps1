@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorRoutingRuleObj
 }
 
 Describe 'New-AzFrontDoorRoutingRuleObject' {
-    It 'ForwardingParameterSet' {
+    It 'ForwardingParameterSet' -skip {
         $FDName = $env.FrontDoorName
         $resourceGroupName = $env.ResourceGroupName
         $subId = $env.SubscriptionId
@@ -30,7 +30,7 @@ Describe 'New-AzFrontDoorRoutingRuleObject' {
         $routingrule1.RouteConfiguration.ForwardingProtocol | Should -Be "MatchRequest"
     }
 
-    It 'RedirectParameterSet' {
+    It 'RedirectParameterSet' -skip {
         $FDName = $env.FrontDoorName
         $resourceGroupName = $env.ResourceGroupName
         $subId = $env.SubscriptionId

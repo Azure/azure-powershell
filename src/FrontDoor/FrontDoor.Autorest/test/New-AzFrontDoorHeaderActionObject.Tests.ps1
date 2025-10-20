@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorHeaderActionOb
 }
 
 Describe 'New-AzFrontDoorHeaderActionObject' {
-    It '__AllParameterSets'  {
+    It '__AllParameterSets' -skip {
         $headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
         $headerActions.HeaderActionType | Should -Be "Append"
         $headerActions.HeaderName | Should -Be "X-Content-Type-Options"

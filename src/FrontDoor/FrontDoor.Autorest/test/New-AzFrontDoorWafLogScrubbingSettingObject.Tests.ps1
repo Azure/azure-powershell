@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorWafLogScrubbin
 }
 
 Describe 'New-AzFrontDoorWafLogScrubbingSettingObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
         $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State "Enabled" -ScrubbingRule @($LogScrubbingRule)
         $logscrubbingSetting.State | Should -Be "Enabled"

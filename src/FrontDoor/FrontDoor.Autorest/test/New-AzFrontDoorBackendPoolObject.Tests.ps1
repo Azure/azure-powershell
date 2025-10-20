@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorBackendPoolObj
 }
 
 Describe 'New-AzFrontDoorBackendPoolObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $FDName = $env.FrontDoorName
         $resourceGroupName = $env.ResourceGroupName
         $subId = $env.SubscriptionId

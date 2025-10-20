@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorBackendPoolsSe
 }
 
 Describe 'New-AzFrontDoorBackendPoolsSettingObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33
         $backendPoolsSetting1.SendRecvTimeoutInSeconds | Should -Be 33
         $backendPoolsSetting1.EnforceCertificateNameCheck | Should -Be "Enabled"

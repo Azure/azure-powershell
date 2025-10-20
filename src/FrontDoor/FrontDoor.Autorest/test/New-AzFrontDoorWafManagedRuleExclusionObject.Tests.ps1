@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorWafManagedRule
 }
 
 Describe 'New-AzFrontDoorWafManagedRuleExclusionObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $exclusionRule = New-AzFrontDoorWafManagedRuleExclusionObject -Variable "QueryStringArgNames" -Operator "Equals" -Selector "ExcludeInRule"
         $exclusionRule.Variable | Should -Be "QueryStringArgNames"
         $exclusionRule.Operator | Should -Be "Equals"

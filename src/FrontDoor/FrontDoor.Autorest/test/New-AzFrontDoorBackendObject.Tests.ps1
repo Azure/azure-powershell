@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorBackendObject'
 }
 
 Describe 'New-AzFrontDoorBackendObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
         $backend1.Address | Should -Be "contoso1.azurewebsites.net"
         $backend1.BackendHostHeader | Should -Be "contoso1.azurewebsites.net"

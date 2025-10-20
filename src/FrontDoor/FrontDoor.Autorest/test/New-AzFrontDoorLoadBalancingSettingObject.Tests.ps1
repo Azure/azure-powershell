@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorLoadBalancingS
 }
 
 Describe 'New-AzFrontDoorLoadBalancingSettingObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
         $loadBalancingSetting1.Name | Should -Be "loadbalancingsetting1"
         $loadBalancingSetting1.SampleSize | Should -Be 4

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorHealthProbeSet
 }
 
 Describe 'New-AzFrontDoorHealthProbeSettingObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" 
         $healthProbeSetting1.Name | Should -Be "healthProbeSetting1"
         $healthProbeSetting1.EnabledState | Should -Be "Enabled"

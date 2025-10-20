@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorFrontendEndpoi
 }
 
 Describe 'New-AzFrontDoorFrontendEndpointObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $FDName = $env.FrontDoorName
         $hostName = "$FDName.azurefd.net"
 

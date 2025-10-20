@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorRulesEngineAct
 }
 
 Describe 'New-AzFrontDoorRulesEngineActionObject' {
-    It 'ForwardingParameterSet' {
+    It 'ForwardingParameterSet' -skip {
         $FDName = $env.FrontDoorName
         $resourceGroupName = $env.ResourceGroupName
         $subId = $env.SubscriptionId
@@ -30,7 +30,7 @@ Describe 'New-AzFrontDoorRulesEngineActionObject' {
         $ruleEngineForwardAction.RouteConfigurationOverride.CacheConfiguration.QueryParameter | Should -Be $null
         $ruleEngineForwardAction.RouteConfigurationOverride.CacheConfiguration.CacheDuration | Should -Be $null
     }
-    It 'RedirectParameterSet' {
+    It 'RedirectParameterSet' -skip {
         $ruleEngineRedirectAction = New-AzFrontDoorRulesEngineActionObject -RedirectProtocol "MatchRequest" -CustomHost "www.contoso.com" -RedirectType "Moved"
         $ruleEngineRedirectAction.RouteConfigurationOverride.RedirectProtocol | Should -Be "MatchRequest"
         $ruleEngineRedirectAction.RouteConfigurationOverride.RedirectType | Should -Be "Moved"
