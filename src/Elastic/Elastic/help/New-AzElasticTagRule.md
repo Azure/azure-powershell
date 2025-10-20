@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticTagRule
 
 ## SYNOPSIS
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzElasticTagRule -MonitorInputObject <IElasticIdentity> [-LogRuleFilteringTa
 ```
 
 ## DESCRIPTION
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 
 ## EXAMPLES
 
