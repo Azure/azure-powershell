@@ -51,7 +51,7 @@ function New-AzMigrateProject {
 
         [Parameter(ParameterSetName='PutExpandedCustom')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProjectProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProjectProperties]
         # Specifies the project properties.
         ${Property},
 
@@ -65,7 +65,7 @@ function New-AzMigrateProject {
     
     process{
         if ($null -eq $Property) {
-            $Property = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.MigrateProjectProperties]::new()
+            $Property = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrateProjectProperties]::new()
             $Property.RegisteredTool = {}
         }
 

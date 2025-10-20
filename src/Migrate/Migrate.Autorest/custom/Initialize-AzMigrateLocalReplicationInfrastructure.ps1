@@ -179,7 +179,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
 
         # Get Migrate Project
         $migrateProject = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateProject" `
+            -CommandName "Az.Migrate.private\Get-AzMigrateProject_Get" `
             -Parameters @{
                 "Name" = $ProjectName;
                 "ResourceGroupName" = $ResourceGroupName
@@ -192,7 +192,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         # Get Data Replication Service, or the AMH solution
         $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
         $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
@@ -217,7 +217,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         # Access Discovery Service
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
         $discoverySolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
@@ -268,7 +268,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         # Get healthy asrv2 fabrics in the resource group
-        $allFabrics = Az.Migrate\Get-AzMigrateLocalReplicationFabric -ResourceGroupName $ResourceGroupName | Where-Object {
+        $allFabrics = Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1 -ResourceGroupName $ResourceGroupName | Where-Object {
             $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
             $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
         }
@@ -456,12 +456,12 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             # Setup Policy deployment parameters
-            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.PolicyModelProperties]::new()
+            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PolicyModelProperties]::new()
             if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHcipolicyModelCustomProperties]::new()
             }
             elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHcipolicyModelCustomProperties]::new()
             }
             else {
                 throw "Instance type '$($instanceType)' is not supported. Currently, for AzLocal scenario, only HyperV and VMware as the source is supported."
@@ -543,7 +543,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
 
         # Put Cache Storage Account
         $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
@@ -616,7 +616,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+                -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
                 -Parameters @{
                     "SubscriptionId" = $SubscriptionId;
                     "ResourceGroupName" = $ResourceGroupName;
@@ -907,7 +907,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
@@ -1085,15 +1085,15 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             # Setup Replication Extension deployment parameters
-            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ReplicationExtensionModelProperties]::new()
+            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ReplicationExtensionModelProperties]::new()
         
             if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.HyperVFabricArmId = $params.SourceFabricArmId
                 
             }
             elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.VMwareFabricArmId = $params.SourceFabricArmId
             }
             else {

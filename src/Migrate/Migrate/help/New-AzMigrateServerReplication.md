@@ -171,10 +171,9 @@ Accept wildcard characters: False
 
 ### -DiskTag
 Specifies the tag to be used for disk creation.
-To construct, see NOTES section for DISKTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetDiskTags
 Parameter Sets: (All)
 Aliases:
 
@@ -187,10 +186,9 @@ Accept wildcard characters: False
 
 ### -DiskToInclude
 Specifies the disks on the source server to be included for replication.
-To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput[]
 Parameter Sets: ByIdPowerUser, ByInputObjectPowerUser
 Aliases:
 
@@ -219,10 +217,9 @@ Accept wildcard characters: False
 ### -InputObject
 Specifies the discovered server to be migrated.
 The server object can be retrieved using the Get-AzMigrateServer cmdlet.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 Parameter Sets: ByInputObjectDefaultUser, ByInputObjectPowerUser
 Aliases:
 
@@ -280,10 +277,9 @@ Accept wildcard characters: False
 
 ### -NicTag
 Specifies the tag to be used for NIC creation.
-To construct, see NOTES section for NICTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetNicTags
 Parameter Sets: (All)
 Aliases:
 
@@ -521,10 +517,9 @@ Accept wildcard characters: False
 
 ### -VMTag
 Specifies the tag to be used for VM creation.
-To construct, see NOTES section for VMTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetVmtags
 Parameter Sets: (All)
 Aliases:
 
@@ -557,7 +552,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 
 ## NOTES
 

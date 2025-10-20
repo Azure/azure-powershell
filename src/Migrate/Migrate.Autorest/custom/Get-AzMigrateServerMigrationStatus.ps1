@@ -369,7 +369,7 @@ function Get-AzMigrateServerMigrationStatus {
         $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
         $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
-        $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+        $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
         if ($solution -and ($solution.Count -ge 1)) {
             $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
         }

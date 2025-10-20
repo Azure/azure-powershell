@@ -12,7 +12,7 @@ Gets the details of registered recovery services provider.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -23,6 +23,18 @@ Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName <String> -Re
 Get-AzMigrateReplicationRecoveryServicesProvider -FabricName <String> -ProviderName <String>
  -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityReplicationFabric
+```
+Get-AzMigrateReplicationRecoveryServicesProvider -ProviderName <String>
+ -ReplicationFabricInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzMigrateReplicationRecoveryServicesProvider -FabricName <String> -ResourceGroupName <String>
+ -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +78,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -81,7 +93,7 @@ Recovery services provider name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityReplicationFabric
 Aliases:
 
 Required: True
@@ -91,12 +103,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReplicationFabricInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentityReplicationFabric
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -111,7 +138,7 @@ The name of the recovery services vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -126,7 +153,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -141,9 +168,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IRecoveryServicesProvider
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IRecoveryServicesProvider
 
 ## NOTES
 

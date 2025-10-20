@@ -264,10 +264,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Specifies the machine object of the replicating server.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem
 Parameter Sets: GetByInputObject
 Aliases:
 
@@ -405,7 +404,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem
 
 ## NOTES
 

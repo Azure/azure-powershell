@@ -15,23 +15,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateServerMigrationS
 }
 
 Describe 'Get-AzMigrateServerMigrationStatus' {
-    It 'ListByName' -skip {
+    It 'ListByName' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetByApplianceName' -skip {
+    It 'GetByApplianceName' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetByMachineName' -skip {
+    It 'GetByMachineName' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetHealthByMachineName' -skip {
+    It 'GetHealthByMachineName' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetByPrioritiseServer' -skip {
+    It 'GetByPrioritiseServer' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

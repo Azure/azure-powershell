@@ -58,9 +58,6 @@ module-version: 3.0.13
 title: Migrate 
 subject-prefix: 'Migrate'
 
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Correct some swagger operationIds
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
@@ -516,3 +513,14 @@ directive:
       model-name: Fabric
     set:
       suppress-format: true
+  
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Remove
+      subject: VCenterVcenter
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Update
+      subject: ReplicationRecoveryServicesProvider|VCenter
+    remove: true
