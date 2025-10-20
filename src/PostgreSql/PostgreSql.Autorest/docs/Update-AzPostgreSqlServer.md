@@ -17,21 +17,20 @@ Use Update-AzPostSqlConfiguration instead if you want update server parameters s
 ### UpdateExpanded (Default)
 ```
 Update-AzPostgreSqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>]
- [-MinimalTlsVersion <MinimalTlsVersionEnum>] [-PublicNetworkAccess <PublicNetworkAccessEnum>]
- [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuTier <SkuTier>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>] [-MinimalTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuTier <String>] [-SslEnforcement <String>] [-StorageAutogrow <String>]
+ [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPostgreSqlServer -InputObject <IPostgreSqlIdentity> [-AdministratorLoginPassword <SecureString>]
- [-BackupRetentionDay <Int32>] [-MinimalTlsVersion <MinimalTlsVersionEnum>]
- [-PublicNetworkAccess <PublicNetworkAccessEnum>] [-ReplicationRole <String>] [-Sku <String>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuTier <SkuTier>] [-SslEnforcement <SslEnforcementEnum>]
- [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackupRetentionDay <Int32>] [-MinimalTlsVersion <String>] [-PublicNetworkAccess <String>]
+ [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuTier <String>]
+ [-SslEnforcement <String>] [-StorageAutogrow <String>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,7 +150,7 @@ Set the minimal TLS version for connections to server when SSL is enabled.
 Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +195,7 @@ Accept wildcard characters: False
 Enable or disable public network access
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -289,7 +288,7 @@ The tier of the particular SKU, e.g.
 Basic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -304,7 +303,7 @@ Accept wildcard characters: False
 Enable ssl enforcement or not when connect to server.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -319,7 +318,7 @@ Accept wildcard characters: False
 Enable Storage Auto Grow.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -415,7 +414,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer
 
 ## NOTES
 

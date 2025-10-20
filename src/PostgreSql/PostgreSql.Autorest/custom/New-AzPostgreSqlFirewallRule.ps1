@@ -20,7 +20,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 Creates a new firewall rule or updates an existing firewall rule.
 #>
 function New-AzPostgreSqlFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
