@@ -30,7 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Creates the SQL Server Key Name from an Azure Key Vault KeyId
         /// Throws an exception if the provided KeyId is malformed.
-        /// An example of a well formed Azure Key Vault KeyId is: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901
+        /// Examples of well formed Azure Key Vault KeyIds are:
+        /// https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901 (versioned)
+        /// https://YourVaultName.vault.azure.net/keys/YourKeyName (versionless)
         /// </summary>
         /// <param name="keyId">The full Azure Key Vault KeyId</param>
         /// <returns>The Server Key Name for the provided KeyId</returns>
@@ -41,8 +43,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 return ServerKeyType.ServiceManaged.ToString();
             }
 
-            // Validate that the url is a keyvault url and has a key and version
-            Regex r = new Regex(@"https://(.)+\.(managedhsm.azure.net|managedhsm-preview.azure.net|vault.azure.net|vault-int.azure-int.net|vault.azure.cn|managedhsm.azure.cn|vault.usgovcloudapi.net|managedhsm.usgovcloudapi.net|vault.microsoftazure.de|managedhsm.microsoftazure.de|vault.cloudapi.eaglex.ic.gov|vault.cloudapi.microsoft.scloud)(:443)?\/keys/[^\/]+\/[0-9a-zA-Z]+$", RegexOptions.IgnoreCase);
+            // Validate that the url is a keyvault url and has a key with an optional version
+            Regex r = new Regex(@"^https://(.)+\.(managedhsm\.azure\.net|managedhsm-preview\.azure\.net|vault\.azure\.net|vault-int\.azure-int\.net|vault\.azure\.cn|managedhsm\.azure\.cn|vault\.usgovcloudapi\.net|managedhsm\.usgovcloudapi\.net|vault\.microsoftazure\.de|managedhsm\.microsoftazure\.de|vault\.cloudapi\.eaglex\.ic\.gov|vault\.cloudapi\.microsoft\.scloud|mdep\.azure\.net)(:443)?/keys/[^/]+(/([0-9a-zA-Z]+))?/?$", RegexOptions.IgnoreCase);
             if (!r.IsMatch(keyId))
             {
                 // Throw an error here, since we don't want to use a non keyvault url
@@ -53,10 +55,17 @@ namespace Microsoft.Azure.Commands.Sql.Common
             var uri = new Uri(keyId);
 
             string vault = uri.Host.Split('.').First();
-            string key = uri.Segments[2].TrimEnd('/');
-            string version = uri.Segments.Last();
+            string[] pathSegments = uri.AbsolutePath.Trim('/').Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            string key = pathSegments[1];
+            bool hasVersion = pathSegments.Length >= 3 && !string.IsNullOrEmpty(pathSegments[2]);
 
-            return String.Format("{0}_{1}_{2}", vault, key, version);
+            if (hasVersion)
+            {
+                string version = pathSegments[2];
+                return String.Format("{0}_{1}_{2}", vault, key, version);
+            }
+
+            return String.Format("{0}_{1}", vault, key);
         }
     }
 }

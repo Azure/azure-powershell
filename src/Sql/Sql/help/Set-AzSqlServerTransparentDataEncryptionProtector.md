@@ -48,7 +48,7 @@ ResourceGroupName    ServerName                   Type ServerKeyVaultKeyName
 ContosoResourceGroup ContosoServer       AzureKeyVault contoso_contosokey_01234567890123456789012345678901
 ```
 
-This command updates a server to use the Server Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.
+This command updates a server to use the Server Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector. You can also specify a versionless key, for example 'https://contoso.vault.azure.net/keys/contosokey'.
 
 ### Example 3
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyId
-The Azure Key Vault KeyId.
+The Azure Key Vault KeyId. Supports versioned and versionless key IDs.
 
 ```yaml
 Type: System.String
