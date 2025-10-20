@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.0
 * GA stable release of API version 2025-10-01 for Az.DeviceRegistry. New updates include:
     - Schema and Schema Version asynchronous delete. No longer synchronous.
     - Namespace Asset and Namespace Discovered Asset EventGroups.
