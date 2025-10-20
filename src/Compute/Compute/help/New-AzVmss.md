@@ -17,8 +17,8 @@ Creates a virtual machine scale set.
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EdgeZone <String>] [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
@@ -39,8 +39,9 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
- [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension] [-DefaultProfile <IAzureContextContainer>]
- [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
+ [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -290,6 +291,21 @@ The virtual machine scale set above has Trusted Launch enabled by default. Pleas
 
 ## PARAMETERS
 
+### -AddProxyAgentExtension
+Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -AllocationMethod
 Allocation method for the Public IP Address of the Scale Set (Static or Dynamic).  If no value is supplied, allocation will be static.
 
@@ -496,21 +512,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AddProxyAgentExtension 
-Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SimpleParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -EnableSecureBoot
 Specifies whether secure boot should be enabled on the virtual machine.
 
@@ -599,6 +600,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HighSpeedInterconnectPlacement
+Specifies the high speed interconnect placement for the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

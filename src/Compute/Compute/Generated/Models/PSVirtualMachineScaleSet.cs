@@ -77,5 +77,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Etag { get; private set; }
 
         public ResiliencyPolicy ResiliencyPolicy { get; set; }
+        public string HighSpeedInterconnectPlacement { get; set; }
     }
 }

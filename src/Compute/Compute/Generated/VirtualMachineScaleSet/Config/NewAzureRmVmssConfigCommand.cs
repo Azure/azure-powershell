@@ -406,6 +406,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("CreateBeforeDelete")]
         public string AutomaticZoneRebalanceBehavior { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
+        [PSArgumentCompleter("None", "Trunk")]
+        public string HighSpeedInterconnectPlacement { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -1145,7 +1152,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
                 PriorityMixPolicy = vPriorityMixPolicy,
                 SkuProfile = vSkuProfile,
-                ResiliencyPolicy = vResiliencyPolicy
+                ResiliencyPolicy = vResiliencyPolicy,
+                HighSpeedInterconnectPlacement = this.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? this.HighSpeedInterconnectPlacement : null
             };
 
             WriteObject(vVirtualMachineScaleSet);
