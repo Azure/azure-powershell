@@ -428,6 +428,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbOAuth
+        {
+            get
+            {
+                return enableSmbOAuth.Value;
+            }
+            set
+            {
+                enableSmbOAuth = value;
+            }
+        }
+        private bool? enableSmbOAuth = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.",
             ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
         [PSArgumentCompleter("User", "Computer")]
@@ -637,6 +654,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string DnsEndpointType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describes the available zones for the product where storage account resource can be created.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The availability zone pinning policy for the storage account.")]
+        [PSArgumentCompleter("None", "Any")]
+        [ValidateNotNullOrEmpty]
+        public string ZonePlacementPolicy { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -769,6 +799,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 createParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
             }
+
+            if (this.enableSmbOAuth != null)
+            {
+                if (createParameters.AzureFilesIdentityBasedAuthentication == null)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication
+                    {
+                        DirectoryServiceOptions = DirectoryServiceOptions.None
+                    };
+                }
+                createParameters.AzureFilesIdentityBasedAuthentication.SmbOAuthSettings = new SmbOAuthSettings(this.enableSmbOAuth.Value);
+            }
+
             if (this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
@@ -936,6 +979,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.DnsEndpointType != null)
             {
                 createParameters.DnsEndpointType = this.DnsEndpointType;
+            }
+            if (this.Zone != null)
+            {
+                createParameters.Zones = this.Zone;
+            }
+            if (this.ZonePlacementPolicy != null)
+            {
+                createParameters.Placement = new Placement(this.ZonePlacementPolicy);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

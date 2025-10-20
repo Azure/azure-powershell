@@ -19,42 +19,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceProperties __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties();
 
-        /// <summary>Backing field for <see cref="Canary" /> property.</summary>
-        private int? _canary;
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState = value ?? null; }
 
-        /// <summary>Canary summary percentage</summary>
+        /// <summary>Backing field for <see cref="NotExecutableStackCount" /> property.</summary>
+        private long? _notExecutableStackCount;
+
+        /// <summary>Total number of analyzed files that were found to have a nonexecutable stack</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public int? Canary { get => this._canary; set => this._canary = value; }
+        public long? NotExecutableStackCount { get => this._notExecutableStackCount; set => this._notExecutableStackCount = value; }
 
-        /// <summary>Backing field for <see cref="Nx" /> property.</summary>
-        private int? _nx;
+        /// <summary>Backing field for <see cref="PositionIndependentExecutableCount" /> property.</summary>
+        private long? _positionIndependentExecutableCount;
 
-        /// <summary>NX summary percentage</summary>
+        /// <summary>
+        /// Total number of analyzed files that were compiled to be a position independent executable
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public int? Nx { get => this._nx; set => this._nx = value; }
+        public long? PositionIndependentExecutableCount { get => this._positionIndependentExecutableCount; set => this._positionIndependentExecutableCount = value; }
 
-        /// <summary>Backing field for <see cref="Pie" /> property.</summary>
-        private int? _pie;
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; }
 
-        /// <summary>PIE summary percentage</summary>
+        /// <summary>Backing field for <see cref="RelocationReadOnlyCount" /> property.</summary>
+        private long? _relocationReadOnlyCount;
+
+        /// <summary>
+        /// Total number of analyzed files that have enabled relocation read-only protections
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public int? Pie { get => this._pie; set => this._pie = value; }
+        public long? RelocationReadOnlyCount { get => this._relocationReadOnlyCount; set => this._relocationReadOnlyCount = value; }
 
-        /// <summary>Backing field for <see cref="Relro" /> property.</summary>
-        private int? _relro;
+        /// <summary>Backing field for <see cref="StackCanaryCount" /> property.</summary>
+        private long? _stackCanaryCount;
 
-        /// <summary>RELRO summary percentage</summary>
+        /// <summary>Total number of analyzed files that have stack canaries enabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public int? Relro { get => this._relro; set => this._relro = value; }
+        public long? StackCanaryCount { get => this._stackCanaryCount; set => this._stackCanaryCount = value; }
 
-        /// <summary>Backing field for <see cref="Stripped" /> property.</summary>
-        private int? _stripped;
+        /// <summary>Backing field for <see cref="StrippedBinaryCount" /> property.</summary>
+        private long? _strippedBinaryCount;
 
-        /// <summary>Stripped summary percentage</summary>
+        /// <summary>Total number of analyzed files that have debug symbols stripped</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public int? Stripped { get => this._stripped; set => this._stripped = value; }
+        public long? StrippedBinaryCount { get => this._strippedBinaryCount; set => this._strippedBinaryCount = value; }
 
-        /// <summary>Describes the type of summary.</summary>
+        /// <summary>The type of summary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
         public string SummaryType { get => "BinaryHardening"; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).SummaryType = "BinaryHardening"; }
@@ -89,61 +100,65 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceProperties
     {
-        /// <summary>Canary summary percentage</summary>
+        /// <summary>Total number of analyzed files that were found to have a nonexecutable stack</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Canary summary percentage",
-        SerializedName = @"canary",
-        PossibleTypes = new [] { typeof(int) })]
-        int? Canary { get; set; }
-        /// <summary>NX summary percentage</summary>
+        Description = @"Total number of analyzed files that were found to have a nonexecutable stack",
+        SerializedName = @"notExecutableStackCount",
+        PossibleTypes = new [] { typeof(long) })]
+        long? NotExecutableStackCount { get; set; }
+        /// <summary>
+        /// Total number of analyzed files that were compiled to be a position independent executable
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"NX summary percentage",
-        SerializedName = @"nx",
-        PossibleTypes = new [] { typeof(int) })]
-        int? Nx { get; set; }
-        /// <summary>PIE summary percentage</summary>
+        Description = @"Total number of analyzed files that were compiled to be a position independent executable",
+        SerializedName = @"positionIndependentExecutableCount",
+        PossibleTypes = new [] { typeof(long) })]
+        long? PositionIndependentExecutableCount { get; set; }
+        /// <summary>
+        /// Total number of analyzed files that have enabled relocation read-only protections
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"PIE summary percentage",
-        SerializedName = @"pie",
-        PossibleTypes = new [] { typeof(int) })]
-        int? Pie { get; set; }
-        /// <summary>RELRO summary percentage</summary>
+        Description = @"Total number of analyzed files that have enabled relocation read-only protections",
+        SerializedName = @"relocationReadOnlyCount",
+        PossibleTypes = new [] { typeof(long) })]
+        long? RelocationReadOnlyCount { get; set; }
+        /// <summary>Total number of analyzed files that have stack canaries enabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"RELRO summary percentage",
-        SerializedName = @"relro",
-        PossibleTypes = new [] { typeof(int) })]
-        int? Relro { get; set; }
-        /// <summary>Stripped summary percentage</summary>
+        Description = @"Total number of analyzed files that have stack canaries enabled",
+        SerializedName = @"stackCanaryCount",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StackCanaryCount { get; set; }
+        /// <summary>Total number of analyzed files that have debug symbols stripped</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Stripped summary percentage",
-        SerializedName = @"stripped",
-        PossibleTypes = new [] { typeof(int) })]
-        int? Stripped { get; set; }
+        Description = @"Total number of analyzed files that have debug symbols stripped",
+        SerializedName = @"strippedBinaryCount",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StrippedBinaryCount { get; set; }
         /// <summary>Total number of binaries that were analyzed</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -161,16 +176,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
     internal partial interface IBinaryHardeningSummaryResourceInternal :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal
     {
-        /// <summary>Canary summary percentage</summary>
-        int? Canary { get; set; }
-        /// <summary>NX summary percentage</summary>
-        int? Nx { get; set; }
-        /// <summary>PIE summary percentage</summary>
-        int? Pie { get; set; }
-        /// <summary>RELRO summary percentage</summary>
-        int? Relro { get; set; }
-        /// <summary>Stripped summary percentage</summary>
-        int? Stripped { get; set; }
+        /// <summary>Total number of analyzed files that were found to have a nonexecutable stack</summary>
+        long? NotExecutableStackCount { get; set; }
+        /// <summary>
+        /// Total number of analyzed files that were compiled to be a position independent executable
+        /// </summary>
+        long? PositionIndependentExecutableCount { get; set; }
+        /// <summary>
+        /// Total number of analyzed files that have enabled relocation read-only protections
+        /// </summary>
+        long? RelocationReadOnlyCount { get; set; }
+        /// <summary>Total number of analyzed files that have stack canaries enabled</summary>
+        long? StackCanaryCount { get; set; }
+        /// <summary>Total number of analyzed files that have debug symbols stripped</summary>
+        long? StrippedBinaryCount { get; set; }
         /// <summary>Total number of binaries that were analyzed</summary>
         long? TotalFile { get; set; }
 

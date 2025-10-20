@@ -48,7 +48,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionMode">The connection mode for this connection.
         /// Possible values include: &#39;Default&#39;, &#39;ResponderOnly&#39;, &#39;InitiatorOnly&#39;</param>
 
-        /// <param name="sharedKey">The IPSec shared key.
+        /// <param name="sharedKey">The IPSec shared key. We will no longer return sharedKey in
+        /// VirtualNetworkGatewayConnection Create/Update/Get/List/UpdateTags APIs
+        /// response. Please use VirtualNetworkGatewayConnection GetSharedKey API to
+        /// fetch connection sharedKey.
         /// </param>
 
         /// <param name="connectionStatus">Virtual Network Gateway connection status.
@@ -181,7 +184,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ConnectionMode {get; set; }
 
         /// <summary>
-        /// Gets or sets the IPSec shared key.
+        /// Gets or sets the IPSec shared key. We will no longer return sharedKey in
+        /// VirtualNetworkGatewayConnection Create/Update/Get/List/UpdateTags APIs
+        /// response. Please use VirtualNetworkGatewayConnection GetSharedKey API to
+        /// fetch connection sharedKey.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sharedKey")]
         public string SharedKey {get; set; }

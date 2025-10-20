@@ -212,10 +212,16 @@ begin {
         }
 
         # Fetch machine details
-        $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-        if ($null -eq $machineObj) {
-            throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+        try {
+            $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction Stop
+            if ($null -eq $machineObj) {
+                throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+            }
         }
+        catch {
+          throw "Failed to get VM '$Name' in Resource Group '$ResourceGroupName' (SubscriptionId '$SubscriptionId'). Exception: $($_.Exception.Message)"
+        }
+
         $PSBoundParameters['MachineId'] = $machineObj.Id
 
         if ($PSBoundParameters.ContainsKey('DeleteFromHost')) {

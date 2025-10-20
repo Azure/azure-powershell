@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
     /// <summary>
     /// Response containing the primary and secondary admin API keys for a given
-    /// Azure Cognitive Search service.
+    /// Azure AI Search service.
     /// </summary>
     public partial class AdminKeyResult
     {

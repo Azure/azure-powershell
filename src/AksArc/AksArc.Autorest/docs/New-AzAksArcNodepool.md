@@ -27,13 +27,6 @@ New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <St
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
-```
-New-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
@@ -126,21 +119,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
