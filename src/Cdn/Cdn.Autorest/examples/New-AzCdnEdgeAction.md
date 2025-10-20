@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Edge Action with Standard SKU
 ```powershell
-{{ Add code here }}
+New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001 -Location Global -SkuName Standard_AzureFrontDoor -SkuTier Standard
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name          Kind ResourceGroupName
+-------- ----          ---- -----------------
+Global   edgeaction001      testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a new Edge Action with Standard Azure Front Door SKU under the resource group

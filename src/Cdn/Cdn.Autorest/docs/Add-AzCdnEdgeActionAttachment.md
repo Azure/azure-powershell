@@ -57,27 +57,18 @@ A long-running operation for adding an EdgeAction attachment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add an Edge Action Attachment
 ```powershell
-{{ Add code here }}
+Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachmentName attachment001 -EndpointName endpoint001
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AttachmentName ResourceGroupName EdgeActionName EndpointName
+-------------- ----------------- -------------- ------------
+attachment001  testps-rg-da16jm  edgeaction001  endpoint001
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Add an Edge Action Attachment to link an edge action with an endpoint
 
 ## PARAMETERS
 

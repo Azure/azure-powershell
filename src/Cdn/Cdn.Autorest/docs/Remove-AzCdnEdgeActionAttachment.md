@@ -57,27 +57,12 @@ A long-running operation for deleting an EdgeAction attachment that returns no c
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an Edge Action Attachment
 ```powershell
-{{ Add code here }}
+Remove-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachmentName attachment001 -EndpointName endpoint001
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove an Edge Action Attachment to unlink an edge action from an endpoint
 
 ## PARAMETERS
 

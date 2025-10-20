@@ -22,27 +22,12 @@ Delete EdgeAction resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an Edge Action
 ```powershell
-{{ Add code here }}
+Remove-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove an Edge Action under the resource group
 
 ## PARAMETERS
 

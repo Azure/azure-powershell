@@ -39,27 +39,32 @@ Update EdgeActionVersion resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Edge Action Version with JSON string
 ```powershell
-{{ Add code here }}
+$jsonString = '{"properties":{"description":"Updated version description"}}'
+Update-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Name version001 -JsonString $jsonString
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       ResourceGroupName EdgeActionName
+----       ----------------- --------------
+version001 testps-rg-da16jm  edgeaction001
 ```
 
-{{ Add description here }}
+Update an Edge Action Version using JSON string configuration
 
-### Example 2: {{ Add title here }}
+### Example 2: Update Edge Action Version from JSON file
 ```powershell
-{{ Add code here }}
+Update-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Name version001 -JsonFilePath "C:\config\edgeaction-version.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       ResourceGroupName EdgeActionName
+----       ----------------- --------------
+version001 testps-rg-da16jm  edgeaction001
 ```
 
-{{ Add description here }}
+Update an Edge Action Version using configuration from a JSON file
 
 ## PARAMETERS
 

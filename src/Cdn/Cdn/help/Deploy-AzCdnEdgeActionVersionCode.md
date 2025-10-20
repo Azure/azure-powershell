@@ -72,27 +72,18 @@ A long-running operation to deploy versioncode to EdgeActionVersion resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deploy Edge Action Version Code
 ```powershell
-{{ Add code here }}
+Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -VersionName version001
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Status      ResourceGroupName EdgeActionName VersionName
+------      ----------------- -------------- -----------
+Successful  testps-rg-da16jm  edgeaction001  version001
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deploy code for a specific Edge Action Version
 
 ## PARAMETERS
 

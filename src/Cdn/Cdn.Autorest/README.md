@@ -34,7 +34,7 @@ input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/afdx.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/cdn.json
-  - "C:/Users/jingnanxu/source/repos/azure-rest-api-specs/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json"
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-07-22-preview/edgeaction.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 

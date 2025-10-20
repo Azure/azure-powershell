@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all Edge Action Versions
 ```powershell
-{{ Add code here }}
+Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       ResourceGroupName EdgeActionName
+----       ----------------- --------------
+version001 testps-rg-da16jm  edgeaction001
+version002 testps-rg-da16jm  edgeaction001
 ```
 
-{{ Add description here }}
+List all versions of the specified Edge Action
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Edge Action Version by name
 ```powershell
-{{ Add code here }}
+Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Name version001
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       ResourceGroupName EdgeActionName
+----       ----------------- --------------
+version001 testps-rg-da16jm  edgeaction001
 ```
 
-{{ Add description here }}
+Get a specific Edge Action Version by name
 

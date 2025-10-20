@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an Edge Action Execution Filter
 ```powershell
-{{ Add code here }}
+Remove-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Name filter001
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Remove a specific Edge Action Execution Filter

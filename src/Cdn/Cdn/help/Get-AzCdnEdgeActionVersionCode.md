@@ -71,27 +71,18 @@ A long-running operation to get versioncode deployed to EdgeActionVersion resour
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Edge Action Version Code
 ```powershell
-{{ Add code here }}
+Get-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -VersionName version001
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Code                               ResourceGroupName EdgeActionName VersionName
+----                               ----------------- -------------- -----------
+function handleRequest(request)... testps-rg-da16jm  edgeaction001  version001
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get the source code for a specific Edge Action Version
 
 ## PARAMETERS
 

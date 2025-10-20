@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Edge Action tags
 ```powershell
-{{ Add code here }}
+$tags = @{"Environment" = "Staging"; "Owner" = "Team2"}
+Update-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001 -Tag $tags
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name          Kind ResourceGroupName
+-------- ----          ---- -----------------
+Global   edgeaction001      testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Update an Edge Action's tags under the resource group
 
-### Example 2: {{ Add title here }}
+### Example 2: Update Edge Action using JSON string
 ```powershell
-{{ Add code here }}
+$jsonString = '{"tags":{"Environment":"Development","Team":"DevOps"}}'
+Update-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001 -JsonString $jsonString
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name          Kind ResourceGroupName
+-------- ----          ---- -----------------
+Global   edgeaction001      testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Update an Edge Action using JSON string configuration
 
