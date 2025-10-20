@@ -85,4 +85,53 @@ directive:
       parameter-name: ScheduledOperationScheduledStopTime
     set: 
       parameter-name: ScheduledStopTime
+
+  #  removal of properties from the IAutonomousDatabase model.
+  - where:
+      model-name: AutonomousDatabase
+    set:
+      breaking-change:
+        property-name:
+          - DayOfWeekName
+          - ScheduledOperationScheduledStartTime
+          - ScheduledOperationScheduledStopTime
+        change-description: "The properties 'DayOfWeekName', 'ScheduledOperationScheduledStartTime', and 'ScheduledOperationScheduledStopTime' have been removed from the output object. Scripts that access these properties on the cmdlet's output will fail."
+
+  # removed parameters and parameter sets for New-AzOracleAutonomousDatabase.
+  - where:
+      verb: New
+      subject: OracleAutonomousDatabase
+    set:
+      breaking-change:
+        remove-parameter:
+          - DayOfWeekName
+          - ScheduledStartTime
+          - ScheduledStopTime
+        remove-parameter-set:
+          - CreateExpanded
+        change-description: "The parameters '-DayOfWeekName', '-ScheduledStartTime', '-ScheduledStopTime', and the parameter set 'CreateExpanded' have been removed. Please refer to the documentation for the new method of configuring maintenance schedules during creation."
+
+  # removed parameters and parameter sets for Update-AzOracleAutonomousDatabase.
+  - where:
+      verb: Update
+      subject: OracleAutonomousDatabase
+    set:
+      breaking-change:
+        remove-parameter:
+          - DayOfWeekName
+          - ScheduledStartTime
+          - ScheduledStopTime
+        remove-parameter-set:
+          - UpdateExpanded
+          - UpdateViaIdentityExpanded
+        change-description: "The parameters '-DayOfWeekName', '-ScheduledStartTime', '-ScheduledStopTime', and the parameter sets 'UpdateExpanded' and 'UpdateViaIdentityExpanded' have been removed. Please refer to the documentation for the current method of modifying maintenance schedules."
+
+  # removal of the Update-AzOracleAutonomousDatabaseBackUp cmdlet.
+  - where:
+      subject: AutonomousDatabaseBackUp
+      verb: Update
+    set:
+      breaking-change:
+        remove-cmdlet: true
+        change-description: "The cmdlet 'Update-AzOracleAutonomousDatabaseBackUp' has been removed."
 ```
