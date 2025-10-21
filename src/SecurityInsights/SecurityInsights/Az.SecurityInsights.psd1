@@ -51,6 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
+
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
@@ -103,7 +104,8 @@ FunctionsToExport = 'Get-AzSentinelAlertRule', 'Get-AzSentinelAlertRuleAction',
                'Update-AzSentinelBookmarkRelation', 
                'Update-AzSentinelDataConnector', 'Update-AzSentinelEntityQuery', 
                'Update-AzSentinelIncident', 'Update-AzSentinelIncidentComment', 
-               'Update-AzSentinelIncidentRelation', 'Update-AzSentinelSetting'
+               'Update-AzSentinelIncidentRelation', 
+               'Update-AzSentinelOnboardingState', 'Update-AzSentinelSetting'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
