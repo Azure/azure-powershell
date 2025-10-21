@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+* GA stable release of API version 2025-10-01 for Az.DeviceRegistry. New updates include:
+    - Schema and Schema Version asynchronous delete. No longer synchronous.
+    - Namespace Asset and Namespace Discovered Asset EventGroups.
+    - Namespace Device x509 certificate authentication now supports intermediate certificates and key secret names.
+
 ## Version 0.2.0
 * Public preview release of API version 2025-07-01-preview for Az.DeviceRegistry. New resources included:
     - Schema Registry
