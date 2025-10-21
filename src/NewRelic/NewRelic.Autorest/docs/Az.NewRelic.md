@@ -63,7 +63,7 @@ Returns the latest SaaS linked to the newrelic organization of the underlying mo
 Links a new SaaS to the newrelic organization of the underlying monitor.
 
 ### [Invoke-AzNewRelicResubscribeMonitor](Invoke-AzNewRelicResubscribeMonitor.md)
-Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace
 
 ### [New-AzNewRelicFilteringTagObject](New-AzNewRelicFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
