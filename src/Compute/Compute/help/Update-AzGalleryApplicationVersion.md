@@ -15,8 +15,8 @@ Update a gallery Application Version.
 ### UpdateExpanded (Default)
 ```
 Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -PackageFileLink <String> [-ConfigFileName <String>]
- [-DefaultConfigFileLink <String>] [-PackageFileName <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -PackageFileLink <String>
+ [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
  [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -25,10 +25,9 @@ Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName
 ### UpdateViaIdentityGalleryExpanded
 ```
 Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -Name <String>
- -GalleryInputObject <IComputeIdentity> -PackageFileLink <String> [-ConfigFileName <String>]
- [-DefaultConfigFileLink <String>] [-PackageFileName <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
- [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
- [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -GalleryInputObject <IComputeIdentity> -PackageFileLink <String> [-DefaultConfigFileLink <String>]
+ [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
+ [-Tag <Hashtable>] [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,18 +48,18 @@ Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName
 ### UpdateViaIdentityApplicationExpanded
 ```
 Update-AzGalleryApplicationVersion -Name <String> -ApplicationInputObject <IComputeIdentity>
- -PackageFileLink <String> [-ConfigFileName <String>] [-DefaultConfigFileLink <String>]
- [-PackageFileName <String>] [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest]
- [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PackageFileLink <String> [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+ [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzGalleryApplicationVersion -InputObject <IComputeIdentity> -PackageFileLink <String>
- [-ConfigFileName <String>] [-DefaultConfigFileLink <String>] [-PackageFileName <String>]
- [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
- [-Tag <Hashtable>] [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+ [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -106,24 +105,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigFileName
-Optional.
-The name to assign the downloaded config file on the VM.
-This is limited to 4096 characters.
-If not specified, the config file will be named the Gallery Application name appended with "_config".
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityGalleryExpanded, UpdateViaIdentityApplicationExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -298,24 +279,6 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityGalleryExpanded, UpdateViaIdent
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PackageFileName
-Optional.
-The name to assign the downloaded package file on the VM.
-This is limited to 4096 characters.
-If not specified, the package file will be named the same as the Gallery Application name.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityGalleryExpanded, UpdateViaIdentityApplicationExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

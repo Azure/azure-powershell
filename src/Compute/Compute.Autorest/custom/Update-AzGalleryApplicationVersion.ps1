@@ -91,18 +91,6 @@ function Update-AzGalleryApplicationVersion {
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Optional.
-        # The name to assign the downloaded config file on the VM.
-        # This is limited to 4096 characters.
-        # If not specified, the config file will be named the Gallery Application name appended with "_config".
-        ${ConfigFileName},
-
-        [Parameter(ParameterSetName='UpdateExpanded')]
-        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [System.String]
-        # Optional.
         # The defaultConfigurationLink of the artifact, must be a readable storage page blob.
         ${DefaultConfigFileLink},
 
@@ -115,18 +103,6 @@ function Update-AzGalleryApplicationVersion {
         # Required.
         # The mediaLink of the artifact, must be a readable storage page blob.
         ${PackageFileLink},
-
-        [Parameter(ParameterSetName='UpdateExpanded')]
-        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [System.String]
-        # Optional.
-        # The name to assign the downloaded package file on the VM.
-        # This is limited to 4096 characters.
-        # If not specified, the package file will be named the same as the Gallery Application name.
-        ${PackageFileName},
 
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
