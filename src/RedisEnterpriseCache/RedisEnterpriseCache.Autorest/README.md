@@ -268,7 +268,7 @@ directive:
   # add breaking change warning message
   - where:
       verb: New|Update
-      subject: AzRedisEnterpriseCache
+      subject: RedisEnterpriseCache
     set:
       preview-announcement:
         preview-message: This cmdlet will undergo a breaking change in a future release. A new required property publicNetworkAccess will be added and AccessKeysAuthentication default value will be updated to Disabled
