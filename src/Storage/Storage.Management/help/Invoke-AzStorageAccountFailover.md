@@ -91,7 +91,7 @@ PostPlannedFailoverRedundancy : Standard_GRS
 PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -FailoverType Unplanned -Force -AsJob
 PS C:\>$job | Wait-Job
 ```
-This command check the last sync time and canFailover status of a Storage account and then invokes an unplanned failover of it. 
+This command checks the last sync time and canFailover status of a Storage account and then invokes an unplanned failover of it. 
 
 
 ## PARAMETERS
