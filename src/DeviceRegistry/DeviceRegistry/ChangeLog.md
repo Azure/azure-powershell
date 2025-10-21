@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.DeviceRegistry
 
 * GA stable release of API version 2025-10-01 for Az.DeviceRegistry. New updates include:
     - Schema and Schema Version asynchronous delete. No longer synchronous.
