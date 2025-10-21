@@ -37,6 +37,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ValidateNotNullOrEmpty]
         public string ConfigReferenceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If set to true, when a new Gallery Application version is available in PIR/SIG it will be automatically updated for the VM.")]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableAutomaticUpgrade { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If set to true, any failure for any operation in the VmApplication will fail the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public bool? TreatFailureAsDeploymentFailure { get; set; }
+
         public override void ExecuteCmdlet()
         {
 
@@ -45,6 +57,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.IsParameterBound(c => c.ConfigReferenceId))
             {
                 vmGal.ConfigurationReference = this.ConfigReferenceId;
+            }
+
+            if (this.IsParameterBound(c => c.EnableAutomaticUpgrade))
+            {
+                vmGal.EnableAutomaticUpgrade = this.EnableAutomaticUpgrade;
+            }
+
+            if (this.IsParameterBound(c => c.TreatFailureAsDeploymentFailure))
+            {
+                vmGal.TreatFailureAsDeploymentFailure = this.TreatFailureAsDeploymentFailure;
             }
 
             WriteObject(vmGal);
