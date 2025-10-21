@@ -120,13 +120,4 @@ directive:
           - ScheduledStartTime
           - ScheduledStopTime
         change-description: "The parameters '-DayOfWeekName', '-ScheduledStartTime' and '-ScheduledStopTime' have been removed. Please refer to the documentation for the current method of modifying maintenance schedules."
-
-  # removal of the Update-AzOracleAutonomousDatabaseBackUp cmdlet.
-  - where:
-      subject: AutonomousDatabaseBackUp
-      verb: Update
-    set:
-      breaking-change:
-        remove-cmdlet: true
-        change-description: "The cmdlet 'Update-AzOracleAutonomousDatabaseBackUp' has been removed."
 ```
