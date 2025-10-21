@@ -67,14 +67,9 @@ subject-prefix: $(service-name)
 clear-output-folder: true
 output-folder: .
 ```
-
+<!-- 
 > Directives
 ``` yaml
-identity-correction-for-post: true
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Fix the error in swagger, RP actually returns 200 when deletion succeeds
   - from: swagger-document
@@ -97,58 +92,84 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
-  # Remove the unexpanded parameter set
+
+  # Remove the non-expanded parameter set
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
+      variant: ^(Add|Check|Detach)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+
   # Remove the unexpanded parameter set for specific commands
   - where:
       subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterPrincipalAssignment$|^DatabasePrincipalAssignment$
-      variant: ^Create$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+
   - where:
       verb: Remove
       subject: DatabasePrincipal|ClusterLanguageExtension
-      variant: ^Remove$|^RemoveViaIdentity$
+      variant: ^(Remove)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+
   # Custom commands
   - where:
       subject: ^DataConnectionValidation$
     hide: true
+    
   - where:
       subject: ^Database$|^DataConnection$
       variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
     hide: true
+  
+  # Autorest V4 generated variants, but need customise, can be added back upon service team request
+  - where:
+      subject: ^Database$|^DataConnection$
+      variant: ^CreateViaIdentityCluster$|^CreateViaIdentityClusterExpanded$|^CreateViaIdentityDatabase$|^CreateViaIdentityDatabaseExpanded$|^UpdateViaIdentityCluster$|^UpdateViaIdentityClusterExpanded$|^UpdateViaIdentityDatabase$|^UpdateViaIdentityDatabaseExpanded$
+    remove: true
+
   # Hide the operation API
   - where:
       subject: Operation
     hide: true
+
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
+
   # Rename cmdlet from Get-AzKustoOperationsResultsLocation to Get-AzKustoOperationsResultLocation so it's consistent with Get-AzKustoOperationsResult
   - where:
       verb: Get
       subject: OperationsResultsLocation
-      variant: ^Get$|^GetViaIdentity$
     set:
       subject: OperationsResultLocation
+
   # For Get-AzKustoOperationResult no particular need for -PassThru parameter
   - where:
       verb: Get
       subject: OperationsResultLocation
       parameter-name: ^PassThru$
     hide: true
-    # Rename Move-AzKustoCluster -> Invoke-AzKustoClusterMigration
+
+  # Rename Move-AzKustoCluster -> Invoke-AzKustoClusterMigration
   - where:
       verb: Move
       subject: Cluster
     set:
       verb: Invoke
       subject: ClusterMigration
+
+  # Autorest V4 generated GET+PUT api Update cmdlets, can be added upon service team request
+  - where:
+      verb: Update
+      subject: DatabasePrincipalAssignment|ClusterPrincipalAssignment|AttachedDatabaseConfiguration
+    remove: true
+      
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property');
-```
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection Property');
+``` -->
