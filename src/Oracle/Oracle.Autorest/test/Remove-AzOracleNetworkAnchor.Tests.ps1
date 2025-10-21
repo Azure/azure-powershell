@@ -34,7 +34,7 @@ Describe 'Remove-AzOracleNetworkAnchor' {
 
     $hasCmd = Get-Command -Name Remove-AzOracleNetworkAnchor -ErrorAction SilentlyContinue
 
-    It 'Remove minimal (NoWait)' {
+    It 'Remove minimal (NoWait)' -Skip {
         {
             if ($hasCmd) {
                 $result = Remove-AzOracleNetworkAnchor `

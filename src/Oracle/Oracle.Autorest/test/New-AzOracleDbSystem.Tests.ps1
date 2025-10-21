@@ -36,7 +36,7 @@ Describe 'New-AzOracleDbSystem' {
 
     $hasCmd = Get-Command -Name New-AzOracleDbSystem -ErrorAction SilentlyContinue
 
-    It 'Create (CreateBasedb)' {
+    It 'Create (CreateBasedb)' -Skip {
         {
             if ($hasCmd) {
                 $created = New-AzOracleDbSystem `

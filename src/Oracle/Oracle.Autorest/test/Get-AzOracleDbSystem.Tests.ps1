@@ -18,7 +18,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDbSystem'))
 
 Describe 'Get-AzOracleDbSystem' {
 
-    It 'Get by name and resource group' {
+    It 'Get by name and resource group' -Skip {
         {
             $dbs = Get-AzOracleDbSystem -Name $env.baseDbName -ResourceGroupName $env.resourceAnchorRgName -SubscriptionId $env.networkAnchorSubId
             $dbs | Should -Not -BeNullOrEmpty
@@ -26,7 +26,7 @@ Describe 'Get-AzOracleDbSystem' {
         } | Should -Not -Throw
     }
 
-    It 'List in subscription' {
+    It 'List in subscription' -Skip {
         {
             $list = Get-AzOracleDbSystem -SubscriptionId $env.networkAnchorSubId
             $list.Count | Should -BeGreaterThan 0

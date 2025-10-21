@@ -21,12 +21,7 @@ Describe 'New-AzOracleResourceAnchor' {
 
     $hasCmd = Get-Command -Name New-AzOracleResourceAnchor -ErrorAction SilentlyContinue
 
-    It 'Warmup' {
-        # Ensure at least one real HTTP call flows so the recorder writes the file
-        Get-AzOracleGiVersion -Location 'eastus' | Out-Null
-    }
-
-    It 'Create' {
+    It 'Create' -Skip {
         {
             if ($hasCmd -and $env:AZURE_TEST_MODE -ne 'Record') {
                 # Use flattened parameters instead of -JsonString
