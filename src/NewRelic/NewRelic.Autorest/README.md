@@ -152,8 +152,8 @@ directive:
     set:
       subject: MonitoredAppService
   - where:
-      verb: Get
-      subject: Operation
+      verb: Invoke
+      subject: ResubscribeMonitor
       parameter-name: -SubscriptionId1
     set:
       parameter-name: -NewSubscriptionId
