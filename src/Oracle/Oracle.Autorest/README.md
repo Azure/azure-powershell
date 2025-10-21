@@ -107,7 +107,7 @@ directive:
           - DayOfWeekName
           - ScheduledStartTime
           - ScheduledStopTime
-        change-description: "The parameters '-DayOfWeekName', '-ScheduledStartTime' and'-ScheduledStopTime' have been removed. Please refer to the documentation for the new method of configuring maintenance schedules during creation."
+        change-description: "The parameters '-DayOfWeekName', '-ScheduledStartTime' and '-ScheduledStopTime' have been removed. Please refer to the documentation for the new method of configuring maintenance schedules during creation."
 
   # removed parameters and parameter sets for Update-AzOracleAutonomousDatabase.
   - where:
