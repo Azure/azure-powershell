@@ -14,7 +14,7 @@ Create an in-memory object for ManagedRuleSet.
 
 ```
 New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String> [-Exclusion <IManagedRuleExclusion[]>]
- [-RuleGroupOverride <IManagedRuleGroupOverride[]>] [-RuleSetAction <String>]
+ [-RuleGroupOverride <IManagedRuleGroupOverride[]>] [-RuleSetAction <String>] [-Action <String>]
  [<CommonParameters>]
 ```
 
@@ -44,6 +44,20 @@ RuleGroupOverrides RuleSetType    RuleSetVersion
 Create a ManagedRule Object
 
 ## PARAMETERS
+
+### -Action
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Exclusion
 Describes the exclusions that are applied to all rules in the set.

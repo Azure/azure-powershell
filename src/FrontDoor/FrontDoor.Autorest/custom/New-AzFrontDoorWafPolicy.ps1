@@ -16,13 +16,11 @@
 
 <#
 .Synopsis
-create policy with specified rule set name within a resource group.
+Create policy with specified rule set name within a resource group.
 .Description
-create policy with specified rule set name within a resource group.
+Create policy with specified rule set name within a resource group.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $customRule1,$customRule2 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention -RedirectUrl "https://www.bing.com/" -CustomBlockResponseStatusCode 405 -CustomBlockResponseBody "<html><head><title>You are blocked!</title></head><body></body></html>"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy
@@ -36,20 +34,20 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   MatchCondition <List<IMatchCondition>>: List of match conditions.
     MatchValue <List<String>>: List of possible match values.
     MatchVariable <String>: Request variable to compare with.
-    Operator <String>: Comparison type to use for matching with the variable value.
+    OperatorProperty <String>: Comparison type to use for matching with the variable value.
     [NegateCondition <Boolean?>]: Describes if the result of this condition should be negated.
     [Selector <String>]: Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
     [Transform <List<String>>]: List of transforms.
   Priority <Int32>: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   RuleType <String>: Describes type of rule.
   [EnabledState <String>]: Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  [GroupBy <List<IGroupByVariable>>]: Descriibes the list of variables to group the rate limit requests
+  [GroupByCustomRule <List<IGroupByVariable>>]: Describes the list of variables to group the rate limit requests
     VariableName <String>: Describes the supported variable for group by
   [Name <String>]: Describes the name of the rule.
-  [RateLimitDurationInMinute <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
+  [RateLimitDurationInMinutes <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
 
-LOGSCRUBBING <IPolicySettingsLogScrubbing>: Defines rules that scrub sensitive fields in the Web Application Firewall logs.
+LOGSCRUBBINGSETTING <IPolicySettingsLogScrubbing>: Defines rules that scrub sensitive fields in the Web Application Firewall logs.
   [ScrubbingRule <List<IWebApplicationFirewallScrubbingRules>>]: List of log scrubbing rules applied to the Web Application Firewall logs.
     MatchVariable <String>: The variable to be scrubbed from the logs.
     SelectorMatchOperator <String>: When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
@@ -58,16 +56,16 @@ LOGSCRUBBING <IPolicySettingsLogScrubbing>: Defines rules that scrub sensitive f
   [State <String>]: State of the log scrubbing config. Default value is Enabled.
 
 MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
-  RuleSetType <String>: Defines the rule set type to use.
-  RuleSetVersion <String>: Defines the version of the rule set to use.
+  Type <String>: Defines the rule set type to use.
+  Version <String>: Defines the version of the rule set to use.
   [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to all rules in the set.
-    MatchVariable <String>: The variable type to be excluded.
+    Operator <String>: Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
     Selector <String>: Selector value for which elements in the collection this exclusion applies to.
-    SelectorMatchOperator <String>: Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
+    Variable <String>: The variable type to be excluded.
   [RuleGroupOverride <List<IManagedRuleGroupOverride>>]: Defines the rule group overrides to apply to the rule set.
     RuleGroupName <String>: Describes the managed rule group to override.
     [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to all rules in the group.
-    [Rule <List<IManagedRuleOverride>>]: List of rules that will be disabled. If none specified, all rules in the group will be disabled.
+    [ManagedRuleOverride <List<IManagedRuleOverride>>]: List of rules that will be disabled. If none specified, all rules in the group will be disabled.
       RuleId <String>: Identifier for the managed rule.
       [Action <String>]: Describes the override action to be applied when rule matches.
       [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
@@ -119,7 +117,7 @@ param(
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]]
   # List of rules
-  ${CustomRule},
+  ${Customrule},
 
   [Parameter(ParameterSetName='CreateExpanded')]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
@@ -279,9 +277,9 @@ param(
             $null = $PSBoundParameters.Remove('SkuName')
         }
         
-        $CustomRule = $CustomRule
-        if ($PSBoundParameters.ContainsKey('CustomRule')) {
-            $null = $PSBoundParameters.Remove('CustomRule')
+        $Customrule = $Customrule
+        if ($PSBoundParameters.ContainsKey('Customrule')) {
+            $null = $PSBoundParameters.Remove('Customrule')
         }
         
         $ManagedRuleSet = $ManagedRuleSet
@@ -339,8 +337,8 @@ param(
         if (![string]::IsNullOrEmpty($SkuName)) {
             $PSBoundParameters.Add('SkuName', $SkuName)
         }
-        if ($CustomRule) {
-            $PSBoundParameters.Add('CustomRule', $CustomRule)
+        if ($Customrule) {
+            $PSBoundParameters.Add('Customrule', $Customrule)
         }
         if ($ManagedRuleSet) {
             $PSBoundParameters.Add('ManagedRuleSet', $ManagedRuleSet)

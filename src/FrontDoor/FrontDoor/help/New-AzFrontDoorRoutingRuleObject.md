@@ -334,7 +334,7 @@ The route patterns of the rule.
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: PatternToMatch
 
 Required: False
 Position: Named
@@ -438,7 +438,7 @@ Resource ID.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: RulesEngineName
 
 Required: False
 Position: Named

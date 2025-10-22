@@ -12,10 +12,10 @@ Gets a Frontend endpoint with the specified name within the specified Front Door
 
 ## SYNTAX
 
-### List (Default)
+### ByFieldsParameterSet (Default)
 ```
-Get-AzFrontDoorFrontendEndpoint -FrontDoorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFrontDoorFrontendEndpoint -FrontDoorName <String> -ResourceGroupName <String> [-Name <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -40,6 +40,12 @@ Get-AzFrontDoorFrontendEndpoint -InputObject <IFrontDoorIdentity> [-DefaultProfi
 ```
 Get-AzFrontDoorFrontendEndpoint -FrontDoorInputObject <IFrontDoorIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzFrontDoorFrontendEndpoint -FrontDoorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +127,7 @@ Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: ByFieldsParameterSet, Get, List
 Aliases:
 
 Required: True
@@ -151,7 +157,7 @@ Name of the Frontend endpoint which is unique within the Front Door.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByObjectParameterSet, Get, GetViaIdentityFrontDoor
+Parameter Sets: ByFieldsParameterSet, ByObjectParameterSet, Get, GetViaIdentityFrontDoor
 Aliases: FrontendEndpointName
 
 Required: True
@@ -166,7 +172,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: ByFieldsParameterSet, Get, List
 Aliases:
 
 Required: True

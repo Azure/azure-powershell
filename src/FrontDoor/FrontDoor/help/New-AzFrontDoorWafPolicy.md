@@ -15,7 +15,7 @@ Create policy with specified rule set name within a resource group.
 ### CreateExpanded (Default)
 ```
 New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
+ [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-Customrule <ICustomRule[]>]
  [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
  [-CaptchaExpirationInMinutes <Int32>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
  [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>]
@@ -120,7 +120,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomRule
+### -Customrule
 List of rules
 
 ```yaml

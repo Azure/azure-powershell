@@ -42,7 +42,7 @@ function New-AzFrontDoorWafCustomRuleObject {
         [Parameter(HelpMessage="Describes the list of variables to group the rate limit requests.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IGroupByVariable[]]
         [Alias("CustomRule")]
-        $GroupBy,
+        $GroupByCustomRule,
         [Parameter(Mandatory, HelpMessage="List of match conditions.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchCondition[]]
         $MatchCondition,
@@ -72,8 +72,8 @@ function New-AzFrontDoorWafCustomRuleObject {
             $Object.Action = $Action
         }
         $Object.EnabledState = $EnabledState
-        if ($PSBoundParameters.ContainsKey('GroupBy')) {
-            $Object.GroupBy = $GroupBy
+        if ($PSBoundParameters.ContainsKey('GroupByCustomRule')) {
+            $Object.GroupByCustomRule = $GroupByCustomRule
         }
         if ($PSBoundParameters.ContainsKey('MatchCondition')) {
             $Object.MatchCondition = $MatchCondition

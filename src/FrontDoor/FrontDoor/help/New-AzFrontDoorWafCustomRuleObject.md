@@ -14,7 +14,7 @@ Create an in-memory object for CustomRule.
 
 ```
 New-AzFrontDoorWafCustomRuleObject -Action <String> -MatchCondition <IMatchCondition[]> -Priority <Int32>
- -RuleType <String> [-EnabledState <String>] [-GroupBy <IGroupByVariable[]>] [-Name <String>]
+ -RuleType <String> [-EnabledState <String>] [-GroupByCustomRule <IGroupByVariable[]>] [-Name <String>]
  [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>]
  [<CommonParameters>]
 ```
@@ -70,7 +70,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupBy
+### -GroupByCustomRule
 Describes the list of variables to group the rate limit requests.
 
 ```yaml

@@ -53,12 +53,14 @@ function New-AzFrontDoorRoutingRuleObject {
         [string]
         $FrontDoorName,
         [Parameter(HelpMessage="The route patterns of the rule.")]
+        [Alias('PatternToMatch')]
         [string[]]
         $PatternsToMatch = @('/*'),
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRouteConfiguration]
         $RouteConfiguration,
         [Parameter(HelpMessage="Resource ID.")]
+        [Alias('RulesEngineName')]
         [string]
         $RuleEngineName,
         [Parameter(HelpMessage="Resource ID.")]

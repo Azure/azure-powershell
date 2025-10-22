@@ -16,7 +16,7 @@ Update policy with specified rule set name within a resource group.
 ```
 Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CaptchaExpirationInMinutes <Int32?>] [-CustomBlockResponseBody <String>]
- [-CustomBlockResponseStatusCode <Int32?>] [-CustomRule <ICustomRule[]>] [-EnabledState <String>]
+ [-CustomBlockResponseStatusCode <Int32?>] [-Customrule <ICustomRule[]>] [-EnabledState <String>]
  [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32?>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
  [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
@@ -27,7 +27,7 @@ Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-Subscri
 ```
 Update-AzFrontDoorWafPolicy [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <String>]
  [-CaptchaExpirationInMinutes <Int32?>] [-CustomBlockResponseBody <String>]
- [-CustomBlockResponseStatusCode <Int32?>] [-CustomRule <ICustomRule[]>] [-EnabledState <String>]
+ [-CustomBlockResponseStatusCode <Int32?>] [-Customrule <ICustomRule[]>] [-EnabledState <String>]
  [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32?>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
  [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
@@ -37,7 +37,7 @@ Update-AzFrontDoorWafPolicy [-Name <String>] [-ResourceGroupName <String>] [-Sub
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-CaptchaExpirationInMinutes <Int32?>]
- [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32?>] [-CustomRule <ICustomRule[]>]
+ [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32?>] [-Customrule <ICustomRule[]>]
  [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32?>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
  [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
@@ -160,7 +160,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomRule
+### -Customrule
 List of rules
 
 ```yaml

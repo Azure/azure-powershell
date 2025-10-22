@@ -46,7 +46,10 @@ function New-AzFrontDoorWafManagedRuleObject {
         $Type,
         [Parameter(Mandatory, HelpMessage="Defines the version of the rule set to use.")]
         [string]
-        $Version
+        $Version,
+        [Parameter()]
+        [string]
+        $Action
     )
 
     process {

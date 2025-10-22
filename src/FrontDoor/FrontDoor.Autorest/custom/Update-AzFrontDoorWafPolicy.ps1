@@ -16,13 +16,17 @@
 
 <#
 .Synopsis
-update policy with specified rule set name within a resource group.
+Update policy with specified rule set name within a resource group.
 .Description
-update policy with specified rule set name within a resource group.
+Update policy with specified rule set name within a resource group.
 .Example
-{{ Add code here }}
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
 .Example
-{{ Add code here }}
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
+.Example
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
+.Example
+Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Mode Detection -EnabledState Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
@@ -45,7 +49,7 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   Priority <Int32>: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   RuleType <String>: Describes type of rule.
   [EnabledState <String>]: Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  [GroupBy <List<IGroupByVariable>>]: Describes the list of variables to group the rate limit requests
+  [GroupByCustomRule <List<IGroupByVariable>>]: Describes the list of variables to group the rate limit requests
     VariableName <String>: Describes the supported variable for group by
   [Name <String>]: Describes the name of the rule.
   [RateLimitDurationInMinutes <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
@@ -78,6 +82,7 @@ MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
   [RuleSetAction <String>]: Defines the rule set action.
 
 POLICYSETTING <IPolicySettings>: Describes settings for the policy.
+  [CaptchaExpirationInMinutes <Int32?>]: Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
   [CustomBlockResponseBody <String>]: If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
   [CustomBlockResponseStatusCode <Int32?>]: If the action type is block, customer can override the response status code.
   [EnabledState <String>]: Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
@@ -134,7 +139,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]]
     # List of rules
-    ${CustomRule},
+    ${Customrule},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
@@ -294,9 +299,9 @@ process {
             $null = $PSBoundParameters.Remove('SkuName')
         }
         
-        $CustomRule = $CustomRule
-        if ($PSBoundParameters.ContainsKey('CustomRule')) {
-            $null = $PSBoundParameters.Remove('CustomRule')
+        $Customrule = $Customrule
+        if ($PSBoundParameters.ContainsKey('Customrule')) {
+            $null = $PSBoundParameters.Remove('Customrule')
         }
         
         $ManagedRuleSet = $ManagedRuleSet

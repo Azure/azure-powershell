@@ -55,10 +55,11 @@ https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorfronte
 #>
 function Get-AzFrontDoorFrontendEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='ByFieldsParameterSet', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='ByFieldsParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
     # Name of the Front Door which is globally unique.
@@ -66,6 +67,7 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='GetViaIdentityFrontDoor', Mandatory)]
+    [Parameter(ParameterSetName='ByFieldsParameterSet')]
     [Parameter(ParameterSetName='ByObjectParameterSet')]
     [Alias('FrontendEndpointName')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
@@ -75,6 +77,7 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='ByFieldsParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.

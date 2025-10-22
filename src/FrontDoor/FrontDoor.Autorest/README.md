@@ -122,8 +122,8 @@ directive:
       cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
     - model-name: ManagedRuleExclusion
       cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
-    - model-name: ManagedRuleSet
-      cmdlet-name: New-AzFrontDoorWafManagedRuleObject
+    # - model-name: ManagedRuleSet
+    #   cmdlet-name: New-AzFrontDoorWafManagedRuleObject
     - model-name: PolicySettingsLogScrubbing
       cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject
     - model-name: WebApplicationFirewallScrubbingRules
@@ -245,6 +245,11 @@ directive:
     set:
       default:
         script: '"global"'
+  - where:
+      subject: WafPolicy
+      parameter-name: CustomRule
+    set:
+      parameter-name: Customrule
 
   # Clear-AzFrontDoorEndpointContent rename to Remove-AzFrontDoorContent
   - where:
@@ -360,7 +365,7 @@ directive:
       model-name: WebApplicationFirewallPolicy
       property-name: CustomRuleRules
     set:
-      property-name: CustomRule
+      property-name: Customrule
 
   - where:
       model-name: ManagedRuleExclusion
@@ -426,6 +431,15 @@ directive:
       property-name: LogScrubbing
     set:
       property-name: LogScrubbingSetting
-    
+  - where:
+      model-name: CustomRule
+      property-name: GroupBy
+    set:
+      property-name: GroupByCustomRule
+  - where: 
+      model-name: RulesEngine
+      property-name: Rule
+    set:
+      property: RulesEngineRule
 
 ```
