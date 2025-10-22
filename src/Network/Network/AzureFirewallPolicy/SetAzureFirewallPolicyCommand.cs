@@ -219,6 +219,22 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        private Microsoft.Azure.Management.Network.Models.SubResource ExtractBasePolicy()
+        {
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                if (InputObject.BasePolicy != null)
+                {
+                    return new Microsoft.Azure.Management.Network.Models.SubResource(InputObject.BasePolicy.Id);
+                }
+            }
+            else
+            {
+                return new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy);
+            }
+            return null;
+        }
+
         public override void Execute()
         {
             base.Execute();
@@ -245,7 +261,6 @@ namespace Microsoft.Azure.Commands.Network
                 this.Location = this.IsParameterBound(c => c.Location) ? Location : InputObject.Location;
                 this.ThreatIntelMode = this.IsParameterBound(c => c.ThreatIntelMode) ? ThreatIntelMode : InputObject.ThreatIntelMode;
                 this.ThreatIntelWhitelist = this.IsParameterBound(c => c.ThreatIntelWhitelist) ? ThreatIntelWhitelist : InputObject.ThreatIntelWhitelist;
-                this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : (InputObject.BasePolicy != null ? InputObject.BasePolicy.Id : null);
                 this.DnsSetting = this.IsParameterBound(c => c.DnsSetting) ? DnsSetting : (InputObject.DnsSettings != null ? InputObject.DnsSettings : null);
                 this.SqlSetting = this.IsParameterBound(c => c.SqlSetting) ? SqlSetting : (InputObject.SqlSetting != null ? InputObject.SqlSetting : null);
                 this.IntrusionDetection = this.IsParameterBound(c => c.IntrusionDetection) ? IntrusionDetection : (InputObject.IntrusionDetection != null ? InputObject.IntrusionDetection : null);
@@ -266,7 +281,7 @@ namespace Microsoft.Azure.Commands.Network
                     Location = this.Location,
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
-                    BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null,
+                    BasePolicy = ExtractBasePolicy(),
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange,
