@@ -25,28 +25,6 @@ Create an in-memory object for RulesEngineRule.
 ### Example 1: Create new PSRulesEngineRule object and demonstrate how to see the subfields.
 ```powershell
 New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
-
-Name                    : rules1
-Priority                : 0
-MatchProcessingBehavior : Stop
-MatchCondition          : {Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition}
-Action                  : Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction
-
-
-$rulesEngineRule1.Action
-
-RequestHeaderActions           ResponseHeaderActions RouteConfigurationOverride
---------------------           --------------------- --------------------------
-{headeraction1, headeraction2} {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
-
-$rulesEngineRule1.MatchCondition[0]
-
-RulesEngineMatchVariable : RequestHeader
-RulesEngineMatchValue    : {allowoverride}
-Selector                 : Rules-Engine-Route-Forward
-RulesEngineOperator      : Equal
-NegateCondition          : False
-Transforms               : {Lowercase, Uppercase}
 ```
 
 Create new PSRulesEngineRule object and demonstrate how to see the subfields.
