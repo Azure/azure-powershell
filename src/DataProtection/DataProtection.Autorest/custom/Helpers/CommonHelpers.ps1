@@ -37,6 +37,11 @@ function GetDatasourceSetInfo
 			$DataSourceSetInfo.ResourceUri = ""
 		}
 
+		if($DataSourceSetInfo.PSObject.Properties.Name -contains "ResourceProperties")
+		{
+			$DataSourceSetInfo.PSObject.Properties.Remove("ResourceProperties") | Out-Null
+		}
+
 		return $DataSourceSetInfo
 	}
 }

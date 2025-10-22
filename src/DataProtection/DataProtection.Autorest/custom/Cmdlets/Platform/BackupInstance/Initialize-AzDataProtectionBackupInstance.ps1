@@ -185,6 +185,14 @@
             throw $errormsg
         }
 
+        if($manifest.enableDataSourceSetInfo -eq $true)
+        {
+            $backupInstanceResource.Property.DataSourceSetInfo = GetDatasourceInfo -ResourceId $DatasourceId -ResourceLocation $DatasourceLocation -DatasourceType $DatasourceType
+            $tmpVar = $backupInstance.DataSourceSetInfo = GetDatasourceSetInfo -DatasourceInfo $backupInstance.DataSourceInfo -DatasourceType $DatasourceType
+
+            $backupInstanceResource.Property.DataSourceSetInfo.ObjectType = $tmpVar.ObjectType
+        }
+
         return $backupInstanceResource
     }
 }
