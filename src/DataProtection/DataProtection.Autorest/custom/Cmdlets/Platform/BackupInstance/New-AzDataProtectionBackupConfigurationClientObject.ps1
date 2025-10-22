@@ -39,7 +39,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
         ${IncludeClusterScopeResource},
 
         [Parameter(Mandatory=$false, HelpMessage='Hook reference to be executed during backup.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.NamespacedNameResource[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.NamespacedNameResource[]]
         ${BackupHookReference},
         
         [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob.')]
@@ -71,7 +71,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                 throw $message
             }
 
-            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.KubernetesClusterBackupDatasourceParameters]::new()
+            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.KubernetesClusterBackupDatasourceParameters]::new()
             $dataSourceParam.ObjectType = "KubernetesClusterBackupDatasourceParameters"
         
             $dataSourceParam.ExcludedResourceType = $ExcludedResourceType
@@ -97,7 +97,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
         }
 
         if($DatasourceType.ToString() -eq "AzureBlob"){
-            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BlobBackupDatasourceParameters]::new()
+            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.BlobBackupDatasourceParameters]::new()
             $dataSourceParam.ObjectType = "BlobBackupDatasourceParameters"
             
             if($VaultedBackupContainer -ne $null){
