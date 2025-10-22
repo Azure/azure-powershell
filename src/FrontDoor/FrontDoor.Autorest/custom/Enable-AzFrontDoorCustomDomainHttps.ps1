@@ -124,6 +124,7 @@ function Enable-AzFrontDoorCustomDomainHttps {
         [Parameter(ParameterSetName='EnableExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
+        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("1.0", "1.2")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='1.2')]
@@ -134,6 +135,7 @@ function Enable-AzFrontDoorCustomDomainHttps {
         [Parameter(ParameterSetName='EnableExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
+        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
         [System.String]
         # The name of the Key Vault secret representing the full certificate PFX
@@ -142,6 +144,7 @@ function Enable-AzFrontDoorCustomDomainHttps {
         [Parameter(ParameterSetName='EnableExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
+        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
         [System.String]
         # The version of the Key Vault secret representing the full certificate PFX
@@ -150,6 +153,7 @@ function Enable-AzFrontDoorCustomDomainHttps {
         [Parameter(ParameterSetName='EnableExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
         [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
+        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
         [System.String]
         # Resource ID.
@@ -168,6 +172,7 @@ function Enable-AzFrontDoorCustomDomainHttps {
         ${JsonString},
     
         [Parameter()]
+        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]

@@ -18,7 +18,9 @@ Describe 'Update-AzFrontDoorWafPolicy' {
     It 'UpdateExpanded' {
         $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable "RequestHeader" -OperatorProperty "Contains" -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
         $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType "MatchRule" -MatchCondition $matchCondition1 -Action "Log" -Priority 2
-        $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $env.WafPolicyName -ResourceGroupName $env.ResourceGroupName -CustomRule $customRule2 -LogScrubbingSetting @{}
+        # Create an empty LogScrubbingSetting to test removal
+        $emptyLogScrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State "Disabled"
+        $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $env.WafPolicyName -ResourceGroupName $env.ResourceGroupName -CustomRule $customRule2 -LogScrubbingSetting $emptyLogScrubbingSetting
         $updatedPolicy.CustomRule[0].Name | Should -Be "Rule2"
         $updatedPolicy.CustomRule[0].RuleType | Should -Be "MatchRule"
         $updatedPolicy.CustomRule[0].MatchCondition[0].MatchVariable | Should -Be "RequestHeader"

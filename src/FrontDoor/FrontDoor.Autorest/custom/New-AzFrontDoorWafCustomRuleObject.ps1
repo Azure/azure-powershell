@@ -54,7 +54,7 @@ function New-AzFrontDoorWafCustomRuleObject {
         [ValidateRange(0, [int]::MaxValue)]
         $Priority = 0,
         [Parameter(HelpMessage="Time window for resetting the rate limit count. Default is 1 minute.")]
-        [int]
+        [System.Nullable`1[System.Int32]]
         $RateLimitDurationInMinutes = 1,
         [Parameter(HelpMessage="Number of allowed requests per client within the time window.")]
         [int]

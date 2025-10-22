@@ -37,7 +37,7 @@ function New-AzFrontDoorWafManagedRuleOverrideObject {
         $Action,
         [Parameter(HelpMessage="Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
-        [string]
+        [System.Management.Automation.SwitchParameter]
         $Disabled,
         [Parameter(HelpMessage="Describes the exclusions that are applied to this specific rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]]
@@ -53,8 +53,8 @@ function New-AzFrontDoorWafManagedRuleOverrideObject {
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action
         }
-        if ($PSBoundParameters.ContainsKey('EnabledState')) {
-            $Object.EnabledState = $Disabled
+        if ($PSBoundParameters.ContainsKey('Disabled')) {
+            $Object.EnabledState = if ($Disabled) { "Disabled" } else { "Enabled" }
         }
         if ($PSBoundParameters.ContainsKey('Exclusion')) {
             $Object.Exclusion = $Exclusion

@@ -43,7 +43,7 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   Priority <Int32>: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   RuleType <String>: Describes type of rule.
   [EnabledState <String>]: Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  [GroupBy <List<IGroupByVariable>>]: Describes the list of variables to group the rate limit requests
+  [GroupBy <List<IGroupByVariable>>]: Descriibes the list of variables to group the rate limit requests
     VariableName <String>: Describes the supported variable for group by
   [Name <String>]: Describes the name of the rule.
   [RateLimitDurationInMinute <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
@@ -137,11 +137,19 @@ param(
 
   [Parameter(ParameterSetName='CreateExpanded')]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-  [System.Int32]
+  [System.Nullable`1[System.Int32]]
   # Defines the JavaScript challenge cookie validity lifetime in minutes.
   # This setting is only applicable to Premium_AzureFrontDoor.
   # Value must be an integer between 5 and 1440 with the default value being 30.
   ${JavascriptChallengeExpirationInMinutes},
+
+  [Parameter(ParameterSetName='CreateExpanded')]
+  [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+  [System.Nullable`1[System.Int32]]
+  # Defines the Captcha cookie validity lifetime in minutes.
+  # This setting is only applicable to Premium_AzureFrontDoor.
+  # Value must be an integer between 5 and 1440 with the default value being 30.
+  ${CaptchaExpirationInMinutes},
 
   [Parameter(ParameterSetName='CreateExpanded')]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
@@ -151,6 +159,7 @@ param(
 
   [Parameter(ParameterSetName='CreateExpanded')]
   [AllowEmptyCollection()]
+  [Alias("ManagedRule")]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]]
   # List of rule sets.
@@ -180,6 +189,7 @@ param(
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Classic_AzureFrontDoor", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor")]
   [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
   [System.String]
+  [Alias("Sku")]
   # Name of the pricing tier.
   ${SkuName},
 
@@ -304,6 +314,11 @@ param(
             $null = $PSBoundParameters.Remove('JavascriptChallengeExpirationInMinutes')
         }
 
+        $CaptchaExpirationInMinutes = $CaptchaExpirationInMinutes
+        if ($PSBoundParameters.ContainsKey('CaptchaExpirationInMinutes')) {
+            $null = $PSBoundParameters.Remove('CaptchaExpirationInMinutes')
+        }
+
         try {
             $duplicateCheck = Get-AzFrontDoorWafPolicy @PSBoundParameters
             foreach ($policy in $duplicateCheck) {
@@ -345,6 +360,9 @@ param(
         if ($JavascriptChallengeExpirationInMinutes -gt 0) {
             $PSBoundParameters.Add('JavascriptChallengeExpirationInMinutes', $JavascriptChallengeExpirationInMinutes)
         }
+        if ($CaptchaExpirationInMinutes -gt 0) {
+            $PSBoundParameters.Add('CaptchaExpirationInMinutes', $CaptchaExpirationInMinutes)
+        }
 
         $PolicySettings = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettings]::New()
         if ($PSBoundParameters.ContainsKey('CustomBlockResponseBody')) {
@@ -361,6 +379,10 @@ param(
         if ($PSBoundParameters.ContainsKey('JavascriptChallengeExpirationInMinutes')) {
             $null = $PSBoundParameters.Remove('JavascriptChallengeExpirationInMinutes')
             $PolicySettings.JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
+        }
+        if ($PSBoundParameters.ContainsKey('CaptchaExpirationInMinutes')) {
+            $null = $PSBoundParameters.Remove('CaptchaExpirationInMinutes')
+            $PolicySettings.CaptchaExpirationInMinutes = $CaptchaExpirationInMinutes
         }
         if ($PSBoundParameters.ContainsKey('LogScrubbingSetting')) {
            $null = $PSBoundParameters.Remove('LogScrubbingSetting')

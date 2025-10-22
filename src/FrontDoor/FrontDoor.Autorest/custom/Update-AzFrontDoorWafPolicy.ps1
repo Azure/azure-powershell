@@ -100,6 +100,7 @@ function Update-AzFrontDoorWafPolicy {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ByFieldsParameterSet')]
     [Alias('PolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
@@ -107,12 +108,14 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ByFieldsParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByFieldsParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -141,25 +144,26 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
+    [Alias('ManagedRule')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]]
     # List of rule sets.
     ${ManagedRuleSet},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # If the action type is block, customer can override the response body.
     # The body must be specified in base64 encoding.
     ${CustomBlockResponseBody},
   
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.Int32]
+    [System.Nullable`1[System.Int32]]
     # If the action type is block, customer can override the response status code.
     ${CustomBlockResponseStatusCode},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
@@ -167,39 +171,47 @@ param(
     # Defaults to Enabled if not specified.
     ${EnabledState},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing]
     # Defines rules that scrub sensitive fields in the Web Application Firewall logs.
     ${LogScrubbingSetting},
   
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Prevention", "Detection")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Describes if it is in detection mode or prevention mode at policy level.
     ${Mode},
   
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # If action type is redirect, this field represents redirect URL for the client.
     ${RedirectUrl},
   
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Describes if policy managed rules will inspect the request body content.
     ${RequestBodyCheck},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [System.Int32]
+    [System.Nullable`1[System.Int32]]
     # Defines the JavaScript challenge cookie validity lifetime in minutes.
     # This setting is only applicable to Premium_AzureFrontDoor.
     # Value must be an integer between 5 and 1440 with the default value being 30.
     ${JavascriptChallengeExpirationInMinutes},
+    
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.Nullable`1[System.Int32]]
+    # Defines the Captcha cookie validity lifetime in minutes.
+    # This setting is only applicable to Premium_AzureFrontDoor.
+    # Value must be an integer between 5 and 1440 with the default value being 30.
+    ${CaptchaExpirationInMinutes},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Classic_AzureFrontDoor", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor")]
@@ -317,6 +329,11 @@ process {
             $null = $PSBoundParameters.Remove('JavascriptChallengeExpirationInMinutes')
         }
 
+        $CaptchaExpirationInMinute = $CaptchaExpirationInMinute
+        if ($PSBoundParameters.ContainsKey('CaptchaExpirationInMinutes')) {
+            $null = $PSBoundParameters.Remove('CaptchaExpirationInMinutes')
+        }
+
         try {
             $retrievedPolicy = Get-AzFrontDoorWafPolicy @PSBoundParameters
         }
@@ -360,7 +377,10 @@ process {
         if ($JavascriptChallengeExpirationInMinutes -gt 0) {
             $PSBoundParameters.Add('JavascriptChallengeExpirationInMinutes', $JavascriptChallengeExpirationInMinutes)
         }
-
+        if ($CaptchaExpirationInMinutes -gt 0) {
+            $PSBoundParameters.Add('CaptchaExpirationInMinutes', $CaptchaExpirationInMinutes)
+        }
+        
         $UpdatePolicySetting = $retrievedPolicy.PolicySetting
         if ($PSBoundParameters.ContainsKey("CustomBlockResponseBody")) {
           $null = $PSBoundParameters.Remove("CustomBlockResponseBody")
@@ -394,6 +414,11 @@ process {
         if ($PSBoundParameters.ContainsKey("JavascriptChallengeExpirationInMinutes")) {
           $null = $PSBoundParameters.Remove("JavascriptChallengeExpirationInMinutes")
           $UpdatePolicySetting.JavascriptChallengeExpirationInMinutes = $JavascriptChallengeExpirationInMinutes
+        }
+
+        if ($PSBoundParameters.ContainsKey("CaptchaExpirationInMinutes")) {
+          $null = $PSBoundParameters.Remove("CaptchaExpirationInMinutes")
+          $UpdatePolicySetting.CaptchaExpirationInMinutes = $CaptchaExpirationInMinutes
         }
         
         $PSBoundParameters.PolicySetting = $UpdatePolicySetting

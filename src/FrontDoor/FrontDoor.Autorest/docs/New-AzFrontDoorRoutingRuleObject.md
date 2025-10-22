@@ -12,7 +12,7 @@ Create an in-memory object for RoutingRule.
 
 ## SYNTAX
 
-### ForwardingParameterSet (Default)
+### ByFieldsWithForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolName <String>]
  [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-CustomFragment <String>]
@@ -24,7 +24,7 @@ New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolNam
  [-RuleEngineName <String>] [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
 ```
 
-### RedirectParameterSet
+### ByFieldsWithRedirectParameterSet
 ```
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolName <String>]
  [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-CustomFragment <String>]
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: ForwardingParameterSet
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False

@@ -13,7 +13,7 @@ Create an in-memory object for ManagedRuleOverride.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Disabled <String>]
+New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Disabled]
  [-Exclusion <IManagedRuleExclusion[]>] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ Describes if the managed rule is in enabled or disabled state.
 Defaults to Disabled if not specified.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

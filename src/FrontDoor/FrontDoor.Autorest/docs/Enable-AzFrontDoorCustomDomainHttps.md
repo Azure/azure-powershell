@@ -20,6 +20,13 @@ Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointNam
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ByResourceIdWithVaultParameterSet
+```
+Enable-AzFrontDoorCustomDomainHttps [-MinimumTlsVersion <String>] [-SecretName <String>]
+ [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### Enable
 ```
 Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
@@ -347,7 +354,7 @@ The minimum TLS version required from the clients to establish an SSL handshake 
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
+Parameter Sets: ByResourceIdWithVaultParameterSet, EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
 Aliases:
 
 Required: False
@@ -407,7 +414,7 @@ The name of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
+Parameter Sets: ByResourceIdWithVaultParameterSet, EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
 Aliases:
 
 Required: False
@@ -422,7 +429,7 @@ The version of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
+Parameter Sets: ByResourceIdWithVaultParameterSet, EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
 Aliases:
 
 Required: False
@@ -453,7 +460,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
+Parameter Sets: ByResourceIdWithVaultParameterSet, EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
 Aliases:
 
 Required: False

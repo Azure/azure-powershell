@@ -12,7 +12,7 @@ Create an in-memory object for RulesEngineAction.
 
 ## SYNTAX
 
-### ForwardingParameterSet (Default)
+### ByFieldsWithForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRulesEngineActionObject [-BackendPoolName <String>] [-CacheDuration <TimeSpan>]
  [-CustomForwardingPath <String>] [-CustomFragment <String>] [-CustomHost <String>] [-CustomPath <String>]
@@ -24,7 +24,7 @@ New-AzFrontDoorRulesEngineActionObject [-BackendPoolName <String>] [-CacheDurati
  [<CommonParameters>]
 ```
 
-### RedirectParameterSet
+### ByFieldsWithRedirectParameterSet
 ```
 New-AzFrontDoorRulesEngineActionObject [-BackendPoolName <String>] [-CacheDuration <TimeSpan>]
  [-CustomForwardingPath <String>] [-CustomFragment <String>] [-CustomHost <String>] [-CustomPath <String>]
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: ForwardingParameterSet
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False

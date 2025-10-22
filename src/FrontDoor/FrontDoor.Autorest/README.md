@@ -28,15 +28,15 @@ For information on how to develop for `Az.FrontDoor`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: cf9f241708ed82f2dad218fed3c09ca5fd191311
+commit: f11631f1c1057d8363f9e3f9597c73b90f8924c8
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/webapplicationfirewall.json
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/network.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2025-03-01/webapplicationfirewall.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2025-03-01/network.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/frontdoor.json
 
 try-require: 
@@ -173,6 +173,11 @@ directive:
       verb: Set
       subject: FrontDoor
     hide: true
+    
+  - where:
+      verb: Get
+      subject: FrontendEndpoint
+    hide: true
 
   - where:
       subject: FrontendEndpointHttps
@@ -248,6 +253,13 @@ directive:
     set:
       verb: Remove
       subject: Content
+
+  - where:
+      verb: Remove 
+      subject: Content
+      parameter-name: FrontDoorName
+    set:
+      parameter-name: Name
 
   # Update Rules Engine rename, and hide set
   - where:
@@ -404,6 +416,11 @@ directive:
       property-name: JavascriptChallengeExpirationInMinute
     set:
       property-name: JavascriptChallengeExpirationInMinutes
+  - where:
+      model-name: PolicySettings
+      property-name: CaptchaExpirationInMinute
+    set:
+      property-name: CaptchaExpirationInMinutes
   - where:
       model-name: PolicySettings
       property-name: LogScrubbing

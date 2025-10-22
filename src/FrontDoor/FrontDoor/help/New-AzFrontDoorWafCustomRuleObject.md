@@ -136,7 +136,7 @@ Time window for resetting the rate limit count.
 Default is 1 minute.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

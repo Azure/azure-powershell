@@ -13,7 +13,7 @@ Create an in-memory object for PolicySettings.
 ## SYNTAX
 
 ```
-New-AzFrontDoorPolicySettingsObject [-CustomBlockResponseBody <String>]
+New-AzFrontDoorPolicySettingsObject [-CaptchaExpirationInMinutes <Int32>] [-CustomBlockResponseBody <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
  [-JavascriptChallengeExpirationInMinutes <Int32>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
  [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>] [<CommonParameters>]
@@ -44,6 +44,23 @@ RequestBodyCheck                        : Enabled
 Create a comprehensive WAF policy settings object with prevention mode enabled, custom block response, redirect URL, and log scrubbing configuration.
 
 ## PARAMETERS
+
+### -CaptchaExpirationInMinutes
+Defines the Captcha cookie validity lifetime in minutes.
+This setting is only applicable to Premium_AzureFrontDoor.
+Value must be an integer between 5 and 1440 with the default value being 30.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomBlockResponseBody
 If the action type is block, customer can override the response body.

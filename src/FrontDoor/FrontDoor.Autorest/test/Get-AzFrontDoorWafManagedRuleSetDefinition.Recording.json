@@ -1,17 +1,17 @@
 {
-  "Get-AzFrontDoorWafManagedRuleSetDefinition+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets?api-version=2024-02-01+1": {
+  "Get-AzFrontDoorWafManagedRuleSetDefinition+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets?api-version=2025-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets?api-version=2024-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "b783472b-758b-4890-be89-47b8d0de4220" ],
+        "x-ms-client-request-id": [ "692ce893-a40a-49bc-9f63-32f189f5b7d4" ],
         "CommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition" ],
         "FullCommandName": [ "Get-AzFrontDoorWafManagedRuleSetDefinition_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.FrontDoor/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.FrontDoor/1.13.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,17 +23,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e66b1141-cf72-42d2-b5cb-cb52b3d14ead" ],
-        "x-ms-client-request-id": [ "b783472b-758b-4890-be89-47b8d0de4220" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/599f3173-46ba-4e7e-bb34-e46e68bf86ea" ],
+        "x-ms-request-id": [ "48ff2089-687e-441d-92ef-7768f191599e" ],
+        "x-ms-client-request-id": [ "692ce893-a40a-49bc-9f63-32f189f5b7d4" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/89510590-ca0f-41d6-b8ff-880c191edd44" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "a72d2a54-650b-4162-806f-e288ae98fbcf" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251016T025545Z:a72d2a54-650b-4162-806f-e288ae98fbcf" ],
+        "x-ms-correlation-request-id": [ "1061875b-b3b0-426e-aff8-e1908d1b32b3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251022T000424Z:1061875b-b3b0-426e-aff8-e1908d1b32b3" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C330B9EAA86444FB8B490DAAEC877EE9 Ref B: SYD03EDGE1713 Ref C: 2025-10-16T02:55:44Z" ],
-        "Date": [ "Thu, 16 Oct 2025 02:55:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B490E07FE81E4D949D5C2014E313F823 Ref B: SYD03EDGE1015 Ref C: 2025-10-22T00:04:24Z" ],
+        "Date": [ "Wed, 22 Oct 2025 00:04:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "162977" ],

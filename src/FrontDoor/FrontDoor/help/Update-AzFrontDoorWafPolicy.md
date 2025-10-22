@@ -18,15 +18,30 @@ Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-Subscri
  [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>]
  [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-Mode <String>] [-RedirectUrl <String>]
- [-RequestBodyCheck <String>] [-JavascriptChallengeExpirationInMinutes <Int32>] [-SkuName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RequestBodyCheck <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFieldsParameterSet
+```
+Update-AzFrontDoorWafPolicy [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <String>]
+ [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ManagedRuleSet <IManagedRuleSet[]>]
+ [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
+ [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-Mode <String>] [-RedirectUrl <String>]
+ [-RequestBodyCheck <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-CustomRule <ICustomRule[]>] [-Etag <String>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-EnabledState <String>]
+ [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-Mode <String>] [-RedirectUrl <String>]
+ [-RequestBodyCheck <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,13 +113,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CaptchaExpirationInMinutes
+Defines the Captcha cookie validity lifetime in minutes.
+This setting is only applicable to Premium_AzureFrontDoor.
+Value must be an integer between 5 and 1440 with the default value being 30.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomBlockResponseBody
 If the action type is block, customer can override the response body.
 The body must be specified in base64 encoding.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -118,8 +150,8 @@ Accept wildcard characters: False
 If the action type is block, customer can override the response status code.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -166,7 +198,7 @@ Defaults to Enabled if not specified.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,8 +244,8 @@ This setting is only applicable to Premium_AzureFrontDoor.
 Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -228,7 +260,7 @@ Defines rules that scrub sensitive fields in the Web Application Firewall logs.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -244,7 +276,7 @@ List of rule sets.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ManagedRule
 
 Required: False
 Position: Named
@@ -258,7 +290,7 @@ Describes if it is in detection mode or prevention mode at policy level.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -277,6 +309,18 @@ Parameter Sets: UpdateExpanded
 Aliases: PolicyName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases: PolicyName
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -303,7 +347,7 @@ If action type is redirect, this field represents redirect URL for the client.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,7 +362,7 @@ Describes if policy managed rules will inspect the request body content.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -337,6 +381,18 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -364,7 +420,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, ByFieldsParameterSet
 Aliases:
 
 Required: False

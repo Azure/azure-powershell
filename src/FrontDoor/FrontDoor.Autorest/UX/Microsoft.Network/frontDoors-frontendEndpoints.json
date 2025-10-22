@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Get-AzFrontDoorFrontendEndpoint",
-      "description": "Gets a Frontend endpoint with the specified name within the specified Front Door.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorfrontendendpoint"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-FrontDoorName <String>",
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String[]>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Gets a Frontend endpoint with the specified name within the specified Front Door.",
-          "parameters": [
-            {
-              "name": "-FrontDoorName",
-              "value": "[Path.frontDoorName]"
-            },
-            {
-              "name": "-Name",
-              "value": "[Path.frontendEndpointName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

@@ -14,28 +14,28 @@ Removes a content from Front Door.
 
 ### PurgeExpanded (Default)
 ```
-Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzFrontDoorContent -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ContentPath <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurgeViaJsonString
 ```
-Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzFrontDoorContent -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurgeViaJsonFilePath
 ```
-Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzFrontDoorContent -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Purge
 ```
-Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzFrontDoorContent -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ContentFilePath <IPurgeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -130,21 +130,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontDoorName
-Name of the Front Door which is globally unique.
-
-```yaml
-Type: System.String
-Parameter Sets: PurgeExpanded, PurgeViaJsonString, PurgeViaJsonFilePath, Purge
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -181,6 +166,21 @@ Json string supplied to the Purge operation
 ```yaml
 Type: System.String
 Parameter Sets: PurgeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Front Door which is globally unique.
+
+```yaml
+Type: System.String
+Parameter Sets: PurgeExpanded, PurgeViaJsonString, PurgeViaJsonFilePath, Purge
 Aliases:
 
 Required: True

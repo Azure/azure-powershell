@@ -15,25 +15,50 @@ Update a new Front Door with a Front Door name under the specified subscription 
 ### UpdateExpanded (Default)
 ```
 Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-BackendPool <IBackendPool[]>] [-BackendPoolsSetting <IBackendPoolsSettings>] [-DisableCertificateNameCheck]
- [-EnabledState <String>] [-FriendlyName <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
+ [-BackendPool <IBackendPool[]>] [-BackendPoolsSetting <IBackendPoolsSettings>] [-EnabledState <String>]
+ [-FriendlyName <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
  [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
  [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-BackendPool <IBackendPool[]>] [-EnabledState <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
+ [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
+ [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ByResourceIdWithBackendPoolsSettingParameterSet
+```
+Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-BackendPool <IBackendPool[]>] [-BackendPoolsSetting <IBackendPoolsSettings>] [-EnabledState <String>]
+ [-FrontendEndpoint <IFrontendEndpoint[]>] [-HealthProbeSetting <IHealthProbeSettingsModel[]>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>] [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByResourceIdWithCertificateNameCheckParameterSet
+```
+Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-BackendPool <IBackendPool[]>] [-DisableCertificateNameCheck] [-EnabledState <String>]
+ [-FrontendEndpoint <IFrontendEndpoint[]>] [-HealthProbeSetting <IHealthProbeSettingsModel[]>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>] [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaJsonFilePath
 ```
 Set-AzFrontDoor -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DisableCertificateNameCheck] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Set-AzFrontDoor -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
- [-DisableCertificateNameCheck] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,7 +192,7 @@ Backend pools available to routing rules.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, UpdateExpanded
 Aliases:
 
 Required: False
@@ -182,7 +207,7 @@ Settings for all backendPools
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdWithBackendPoolsSettingParameterSet, UpdateExpanded
 Aliases:
 
 Required: False
@@ -213,7 +238,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ByResourceIdWithCertificateNameCheckParameterSet
 Aliases:
 
 Required: False
@@ -229,7 +254,7 @@ Permitted values are 'Enabled' or 'Disabled'
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, UpdateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +284,7 @@ Frontend endpoints available to routing rules.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, UpdateExpanded
 Aliases:
 
 Required: False
@@ -274,7 +299,7 @@ Health probe settings associated with this Front Door instance.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, UpdateExpanded
 Aliases:
 
 Required: False
@@ -319,7 +344,7 @@ Load balancing settings associated with this Front Door instance.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, UpdateExpanded
 Aliases:
 
 Required: False
@@ -379,7 +404,7 @@ Routing rules associated with this Front Door.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, UpdateExpanded
 Aliases:
 
 Required: False
@@ -410,7 +435,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, UpdateExpanded
 Aliases:
 
 Required: False

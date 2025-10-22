@@ -15,8 +15,9 @@ Create policy with specified rule set name within a resource group.
 ### CreateExpanded (Default)
 ```
 New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
- [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32?>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>] [-EnabledState <String>]
+ [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32?>]
  [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
  [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -62,6 +63,23 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CaptchaExpirationInMinutes
+Defines the Captcha cookie validity lifetime in minutes.
+This setting is only applicable to Premium_AzureFrontDoor.
+Value must be an integer between 5 and 1440 with the default value being 30.
+
+```yaml
+Type: System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -170,7 +188,7 @@ This setting is only applicable to Premium_AzureFrontDoor.
 Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -232,7 +250,7 @@ List of rule sets.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
 Parameter Sets: CreateExpanded
-Aliases:
+Aliases: ManagedRule
 
 Required: False
 Position: Named
@@ -337,7 +355,7 @@ Name of the pricing tier.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
-Aliases:
+Aliases: Sku
 
 Required: False
 Position: Named

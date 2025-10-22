@@ -124,6 +124,9 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool[]]
@@ -131,15 +134,20 @@ param(
     ${BackendPool},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings]
     # Settings for all backendPools
     ${BackendPoolsSetting},
 
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
     [switch]
     ${DisableCertificateNameCheck},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
@@ -154,6 +162,9 @@ param(
     ${FriendlyName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint[]]
@@ -161,6 +172,9 @@ param(
     ${FrontendEndpoint},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel[]]
@@ -168,6 +182,9 @@ param(
     ${HealthProbeSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel[]]
@@ -175,6 +192,9 @@ param(
     ${LoadBalancingSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule[]]
@@ -182,6 +202,9 @@ param(
     ${RoutingRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceTags]))]
     [System.Collections.Hashtable]
@@ -201,6 +224,9 @@ param(
     ${JsonString},
 
     [Parameter()]
+    [Parameter(ParameterSetName='ByResourceIdParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithCertificateNameCheckParameterSet')]
+    [Parameter(ParameterSetName='ByResourceIdWithBackendPoolsSettingParameterSet')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]

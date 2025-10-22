@@ -31,6 +31,9 @@ function New-AzFrontDoorPolicySettingsObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(HelpMessage="Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
+        [int]
+        $CaptchaExpirationInMinutes,
         [Parameter(HelpMessage="If the action type is block, customer can override the response body. The body must be specified in base64 encoding.")]
         [string]
         $CustomBlockResponseBody,
@@ -63,6 +66,9 @@ function New-AzFrontDoorPolicySettingsObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettings]::New()
 
+        if ($PSBoundParameters.ContainsKey('CaptchaExpirationInMinutes')) {
+            $Object.CaptchaExpirationInMinutes = $CaptchaExpirationInMinutes
+        }
         if ($PSBoundParameters.ContainsKey('CustomBlockResponseBody')) {
             $Object.CustomBlockResponseBody = $CustomBlockResponseBody
         }
