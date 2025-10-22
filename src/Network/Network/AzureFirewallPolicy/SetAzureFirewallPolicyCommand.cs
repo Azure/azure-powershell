@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                return new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy);
+                return this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null;
             }
             return null;
         }
