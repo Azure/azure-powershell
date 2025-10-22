@@ -1798,6 +1798,9 @@
             <Label>Configuration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DataSource</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DefaultTimeoutInSecond</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1815,6 +1818,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Configuration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DataSource</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DefaultTimeoutInSecond</PropertyName>
@@ -2293,6 +2299,28 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEvent</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEvent#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroup#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2927,10 +2955,19 @@
             <Label>DefaultStreamsConfiguration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DiscoveryId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DocumentationUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExternalAssetId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>HardwareRevision</Label>
@@ -2976,10 +3013,19 @@
                 <PropertyName>DefaultStreamsConfiguration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DiscoveryId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DocumentationUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExternalAssetId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HardwareRevision</PropertyName>
@@ -3033,7 +3079,13 @@
             <Label>DefaultStreamsConfiguration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DiscoveryId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DocumentationUri</Label>
@@ -3079,7 +3131,13 @@
                 <PropertyName>DefaultStreamsConfiguration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DiscoveryId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DocumentationUri</PropertyName>
@@ -3453,10 +3511,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>EventConfiguration</Label>
+            <Label>DataSource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>EventNotifier</Label>
+            <Label>EventConfiguration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastUpdatedOn</Label>
@@ -3472,10 +3530,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>EventConfiguration</PropertyName>
+                <PropertyName>DataSource</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>EventNotifier</PropertyName>
+                <PropertyName>EventConfiguration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LastUpdatedOn</PropertyName>
@@ -3492,39 +3550,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventDataPoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventDataPoint#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventGroup#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DataPointConfiguration</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DataSource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>LastUpdatedOn</Label>
+            <Label>EventGroupConfiguration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeRef</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>DataPointConfiguration</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DataSource</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>LastUpdatedOn</PropertyName>
+                <PropertyName>EventGroupConfiguration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeRef</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3603,6 +3661,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>DataSource</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DefaultTimeoutInSecond</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3624,6 +3685,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DataSource</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DefaultTimeoutInSecond</PropertyName>
               </TableColumnItem>
@@ -3695,10 +3759,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>EventConfiguration</Label>
+            <Label>DataSource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>EventNotifier</Label>
+            <Label>EventConfiguration</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
@@ -3711,10 +3775,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>EventConfiguration</PropertyName>
+                <PropertyName>DataSource</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>EventNotifier</PropertyName>
+                <PropertyName>EventConfiguration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
@@ -3728,33 +3792,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPoint#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventGroup#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DataPointConfiguration</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DataSource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EventGroupConfiguration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeRef</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>DataPointConfiguration</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DataSource</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EventGroupConfiguration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeRef</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -5087,6 +5157,74 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>UsernameSecretName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentials</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentials#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CertificateSecretName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntermediateCertificatesSecretName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeySecretName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateSecretName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntermediateCertificatesSecretName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeySecretName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentialsUpdate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentialsUpdate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CertificateSecretName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntermediateCertificatesSecretName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeySecretName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateSecretName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntermediateCertificatesSecretName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeySecretName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
