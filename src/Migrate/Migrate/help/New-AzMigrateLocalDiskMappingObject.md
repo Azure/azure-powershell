@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateLocalDiskMappingObject -DiskID <String> -Format <String> -IsDynamic <String> -IsOSDisk <String>
- -Size <Int64> [-PhysicalSectorSize <Int64>] [<CommonParameters>]
+New-AzMigrateLocalDiskMappingObject -DiskID <String> -IsOSDisk <String> -IsDynamic <String> -Size <Int64>
+ -Format <String> [-PhysicalSectorSize <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ DiskId             : a
 DiskSizeGb         : 1
 IsDynamic          : True
 IsOSDisk           : True
-StorageContainerId : 
+StorageContainerId :
 ```
 
 Get disk object to provide input for New-AzMigrateLocalServerReplication
@@ -143,4 +143,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

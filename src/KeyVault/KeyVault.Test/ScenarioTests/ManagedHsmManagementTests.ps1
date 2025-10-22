@@ -19,9 +19,9 @@ $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
 $subscriptionId = "0e745469-49f8-48c9-873b-24ca87143db1"
 
 # @NOTE: need to create a resource group to assign the managed identity to (populate with own values):
-$manangedRgName = "daniels-rg-name"
-$managedRgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "East Asia"
-$identityName = "danielId01"
+$manangedRgName = "yash-rg"
+$managedRgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "East US"
+$identityName = "yashManagedIdentity01"
 $userAssignedIdentity = "/subscriptions/$subscriptionId/resourceGroups/$manangedRgName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName"
 
 # @NOTE: Run these commands locally with above vars set

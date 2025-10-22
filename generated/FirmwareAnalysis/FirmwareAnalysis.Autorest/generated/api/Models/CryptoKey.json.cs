@@ -68,11 +68,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {_pairedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonObject>("pairedKey"), out var __jsonPairedKey) ? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PairedKey.FromJson(__jsonPairedKey) : _pairedKey;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cryptoKeyId"), out var __jsonCryptoKeyId) ? (string)__jsonCryptoKeyId : (string)_id;}
             {_keyType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("keyType"), out var __jsonKeyType) ? (string)__jsonKeyType : (string)_keyType;}
-            {_keySize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("keySize"), out var __jsonKeySize) ? (long?)__jsonKeySize : _keySize;}
+            {_size = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("cryptoKeySize"), out var __jsonCryptoKeySize) ? (long?)__jsonCryptoKeySize : _size;}
             {_keyAlgorithm = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("keyAlgorithm"), out var __jsonKeyAlgorithm) ? (string)__jsonKeyAlgorithm : (string)_keyAlgorithm;}
             {_usage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray>("usage"), out var __jsonUsage) ? If( __jsonUsage as Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _usage;}
             {_filePath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray>("filePaths"), out var __jsonFilePaths) ? If( __jsonFilePaths as Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _filePath;}
             {_isShortKeySize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("isShortKeySize"), out var __jsonIsShortKeySize) ? (bool?)__jsonIsShortKeySize : _isShortKeySize;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
 
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             AddIf( null != this._pairedKey ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) this._pairedKey.ToJson(null,serializationMode) : null, "pairedKey" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._id.ToString()) : null, "cryptoKeyId" ,container.Add );
             AddIf( null != (((object)this._keyType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._keyType.ToString()) : null, "keyType" ,container.Add );
-            AddIf( null != this._keySize ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._keySize) : null, "keySize" ,container.Add );
+            AddIf( null != this._size ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._size) : null, "cryptoKeySize" ,container.Add );
             AddIf( null != (((object)this._keyAlgorithm)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._keyAlgorithm.ToString()) : null, "keyAlgorithm" ,container.Add );
             if (null != this._usage)
             {
@@ -134,6 +135,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 }
             }
             AddIf( null != this._isShortKeySize ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._isShortKeySize) : null, "isShortKeySize" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

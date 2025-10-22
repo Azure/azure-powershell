@@ -2295,40 +2295,6 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
-              label: IotCentral
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: IotCentral
-        then:
-        - mentionUsers:
-            mentionees:
-            - iluican
-            - jlian
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - or:
-          - labelAdded:
-              label: Service Attention
-          - labelAdded:
-              label: IotDPS
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: IotDPS
-        then:
-        - mentionUsers:
-            mentionees:
-            - iluican
-            - jlian
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - or:
-          - labelAdded:
-              label: Service Attention
-          - labelAdded:
               label: IotHub
         - hasLabel:
             label: Service Attention
@@ -2604,6 +2570,9 @@ configuration:
             mentionees:
             - ambhatna
             - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3094,6 +3063,9 @@ configuration:
             mentionees:
             - ambhatna
             - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3112,6 +3084,9 @@ configuration:
             - daeunyim
             - rajsell
             - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3680,6 +3655,7 @@ configuration:
             mentionees:
             - shariq-mcs
             - MSFTeegarden
+            - abhijitch25
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3878,6 +3854,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - nazang
+            - mooshc
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

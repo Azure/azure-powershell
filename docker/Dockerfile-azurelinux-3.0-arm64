@@ -1,5 +1,5 @@
-FROM mcr.microsoft.com/powershell:azurelinux-3.0-arm64
-RUN tdnf update -y && tdnf upgrade -y && tdnf clean all
+FROM mcr.microsoft.com/dotnet/sdk:9.0-azurelinux3.0-arm64v8
+RUN tdnf update -y && tdnf upgrade -y && tdnf install -y tar gzip && tdnf clean all
 
 ARG REPOSITORY=PSGallery
 ARG MODULE=Az
@@ -13,7 +13,7 @@ ARG LATEST=
 ARG BLOB_URL=
 ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:${VERSION}-azurelinux-3.0-arm64
 
-ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-azurelinux-3.0"
+ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/${VERSION}-azurelinux-3.0-arm64"
 
 LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
       readme.md="http://aka.ms/azpsdockerreadme" \

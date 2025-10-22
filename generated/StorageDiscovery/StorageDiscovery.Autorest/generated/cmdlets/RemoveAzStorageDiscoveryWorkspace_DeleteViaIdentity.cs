@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Description(@"Delete a StorageDiscoveryWorkspace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}", ApiVersion = "2025-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}", ApiVersion = "2025-09-01")]
     public partial class RemoveAzStorageDiscoveryWorkspace_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IContext
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
                     return ;
                 }
                 // onNoContent - response for 204 / application/json
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }
