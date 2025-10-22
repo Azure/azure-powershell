@@ -28,7 +28,7 @@ function Restart-AzMigrateServerReplication {
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which the resync needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replicating server for which the resync needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]

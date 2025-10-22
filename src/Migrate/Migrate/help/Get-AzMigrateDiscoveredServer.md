@@ -26,18 +26,18 @@ Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GetInSite
+```
+Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
+ [-SubscriptionId <String[]>] -ApplianceName <String> -Name <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
  [-SubscriptionId <String[]>] -Name <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### GetInSite
-```
-Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
- [-SubscriptionId <String[]>] -Name <String> -ApplianceName <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,7 +213,7 @@ For users, use display name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetInSite
+Parameter Sets: GetInSite, Get
 Aliases:
 
 Required: True

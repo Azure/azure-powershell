@@ -187,7 +187,7 @@ function Get-AzMigrateServerReplication {
                 $null = $PSBoundParameters.Remove("Name")
                 $null = $PSBoundParameters.Remove("MigrateProjectName")
                 $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                $allFabrics = Az.Migrate.private\Get-AzMigrateReplicationFabric_Get @PSBoundParameters
+                $allFabrics = Az.Migrate.private\Get-AzMigrateReplicationFabric_List @PSBoundParameters
                 $FabricName = ""
                 if ($allFabrics -and ($allFabrics.length -gt 0)) {
                     foreach ($fabric in $allFabrics) {
