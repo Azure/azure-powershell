@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
     using Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="NamespaceEventDataPoint" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="NamespaceEventGroup" />
     /// </summary>
-    public partial class NamespaceEventDataPointTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class NamespaceEventGroupTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="NamespaceEventDataPoint"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="NamespaceEventGroup"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="NamespaceEventDataPoint"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="NamespaceEventGroup"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="NamespaceEventDataPoint" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="NamespaceEventGroup" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,31 +95,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="NamespaceEventDataPoint" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="NamespaceEventGroup" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="NamespaceEventDataPoint" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="NamespaceEventGroup" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="NamespaceEventDataPoint" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="NamespaceEventGroup" />.</param>
         /// <returns>
-        /// an instance of <see cref="NamespaceEventDataPoint" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="NamespaceEventGroup" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return NamespaceEventDataPoint.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return NamespaceEventGroup.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -127,11 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return NamespaceEventDataPoint.DeserializeFromPSObject(sourceValue);
+                return NamespaceEventGroup.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return NamespaceEventDataPoint.DeserializeFromDictionary(sourceValue);
+                return NamespaceEventGroup.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

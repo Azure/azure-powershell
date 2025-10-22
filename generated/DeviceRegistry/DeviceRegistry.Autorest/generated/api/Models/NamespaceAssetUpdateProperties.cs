@@ -125,14 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public bool? Enabled { get => this._enabled; set => this._enabled = value; }
 
-        /// <summary>Backing field for <see cref="Event" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> _event;
+        /// <summary>Backing field for <see cref="EventGroup" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> _eventGroup;
 
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get => this._event; set => this._event = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get => this._eventGroup; set => this._eventGroup = value; }
 
         /// <summary>Backing field for <see cref="HardwareRevision" /> property.</summary>
         private string _hardwareRevision;
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? Enabled { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -388,10 +388,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of events that are part of the asset. Each event can have per-event configuration.",
-        SerializedName = @"events",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get; set; }
+        Description = @"Array of event groups that are part of the asset. Each event group can have per-event group configuration.",
+        SerializedName = @"eventGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get; set; }
         /// <summary>Asset hardware revision number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -544,9 +544,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Enabled/disabled status of the asset.</summary>
         bool? Enabled { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get; set; }
         /// <summary>Asset hardware revision number.</summary>
         string HardwareRevision { get; set; }
         /// <summary>
