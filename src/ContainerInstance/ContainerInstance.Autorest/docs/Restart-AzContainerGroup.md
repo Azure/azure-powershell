@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Restarts all containers in a container group in place.
-If container image has updates, new image will be downloaded.
+If container image has restart  new image will be downloaded.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Restart-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProf
 
 ## DESCRIPTION
 Restarts all containers in a container group in place.
-If container image has updates, new image will be downloaded.
+If container image has restart  new image will be downloaded.
 
 ## EXAMPLES
 
@@ -80,7 +80,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
