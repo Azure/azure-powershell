@@ -67,14 +67,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 8600539fa5ba6c774b4454a401d9cd3cf01a36a7
+commit: f3b08b0a0f4e54b9684821bc7217a287457f05ae
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2025-05-01/dnsresolver.json
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2025-05-01/dnsresolverpolicy.json
+  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/DnsResolver/preview/2025-10-01-preview/openapi.json
 
-module-version: 1.2.0-preview
+module-version: 1.3.0-preview
 title: DnsResolver
 subject-prefix: DnsResolver
 

@@ -15,9 +15,10 @@ Creates or updates a DNS security rule for a DNS resolver policy.
 ```
 New-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- -DnsResolverDomainList <ISubResource[]> -Location <String> -Priority <Int32> [-ActionType <ActionType>]
- [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> -Priority <Int32> [-ActionType <ActionType>] [-DnsResolverDomainList <ISubResource[]>]
+ [-DnsSecurityRuleState <DnsSecurityRuleState>] [-ManagedDomainList <ManagedDomainList[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,11 +105,11 @@ DNS resolver policy domains lists that the DNS security rule applies to.
 To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,6 +188,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedDomainList
+Managed domain lists that the DNS security rule applies to.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -323,7 +339,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule
 
 ## NOTES
 

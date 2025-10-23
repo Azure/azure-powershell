@@ -216,7 +216,7 @@ DNS servers to forward the DNS query to.
 To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ITargetDnsServer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ITargetDnsServer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +265,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule
 
 ## NOTES
 

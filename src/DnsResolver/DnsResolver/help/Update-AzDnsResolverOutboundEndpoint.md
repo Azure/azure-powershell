@@ -256,7 +256,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint
 
 ## NOTES
 
