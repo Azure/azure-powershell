@@ -37,6 +37,7 @@
     - `Set-AzApplicationGatewayProbeConfig`
 	- `Add-AzApplicationGatewayProbeConfig`
 	- `New-AzApplicationGatewayProbeConfig`
+* Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 
 ## Version 7.21.0
 * Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
