@@ -1,0 +1,43 @@
+{
+  "Remove-AzOracleResourceAnchor+[NoContext]+Remove minimal+$DELETE+https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/049e5678-fbb1-4861-93f3-7528bd0779fd/resourceGroups/basedb-rg929-ti-iad52/providers/Oracle.Database/resourceAnchors/Create?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "6e1030a3-7ad0-45d0-a077-416996522b6b" ],
+        "CommandName": [ "Remove-AzOracleResourceAnchor" ],
+        "FullCommandName": [ "Remove-AzOracleResourceAnchor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-request-id": [ "02946ce2-30b4-4583-be62-7ffc2cf32d5c" ],
+        "x-ms-correlation-request-id": [ "02946ce2-30b4-4583-be62-7ffc2cf32d5c" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251010T185514Z:02946ce2-30b4-4583-be62-7ffc2cf32d5c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4C006B54A38E421AA37835A7B1375514 Ref B: SN4AA2022303051 Ref C: 2025-10-10T18:55:14Z" ],
+        "Date": [ "Fri, 10 Oct 2025 18:55:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
