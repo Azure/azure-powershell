@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/monitors"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWorkloadsMonitor_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Description(@"Gets a list of SAP monitors in the specified subscription. The operations returns various properties of each SAP monitor.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Generated]

@@ -23,8 +23,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
- [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization]
- [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
+ [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableDnstapLogging]
+ [-EnableUDPLogOptimization] [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -39,8 +39,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
- [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization]
- [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
+ [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableDnstapLogging]
+ [-EnableUDPLogOptimization] [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -55,8 +55,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
- [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization]
- [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
+ [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableDnstapLogging]
+ [-EnableUDPLogOptimization] [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -366,8 +366,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableFatFlowLogging
-Enable Fat Flow Logging. By default it is false.
+### -EnableDnstapLogging
+Enable Dnstap Logging. By default it is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -381,8 +381,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableDnstapLogging
-Enable Dnstap Logging. By default it is false.
+### -EnableFatFlowLogging
+Enable Fat Flow Logging. By default it is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

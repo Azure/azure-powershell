@@ -36,7 +36,7 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 
 ## EXAMPLES
 
-### Example 1: Deploy infrastructure for a three-tier distributed SAP system using Virtual Instances for SAP solutions
+### Example 1: Deploy infrastructure for a three-tier distributed SAP system using Virtual Instances for SAP solutions 
 ```powershell
 New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name L46 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayload.json -Tag @{k1 = "v1"; k2 = "v2"} -IdentityType 'UserAssigned' -ManagedResourceGroupName "L46-rg" -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
 ```
@@ -64,7 +64,7 @@ L46  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     Regis
 In this example, you Install the SAP software on  the deployed infrastructure for a three tier Non-High Availability distributed SAP system.
 A sample json payload is a linked here:https://go.microsoft.com/fwlink/?linkid=2230167
 
-### Example 3: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions
+### Example 3: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions 
 ```powershell
  New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name SK1 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayloadHACustomNames.json -IdentityType 'UserAssigned' -ManagedResourceGroupName "acss-mrg1" -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
 ```
@@ -117,7 +117,7 @@ L46  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     Regis
 Use the New-AzWorkloadsSapVirtualInstance cmdlet with the suggested input parameters to register an existing SAP system as a Virtual Instance for SAP solutions resource with a custom Managed Resource Group and Managed Storage Account Name, and specify the Managed Storage Account Network Access Type setting as per your security requirements.
 Learn More: https://go.microsoft.com/fwlink/?linkid=2256933
 
-### Example 7: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system with Azure Compute Gallary Image
+### Example 7: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system with Azure Compute Gallary Image 
 ```powershell
  New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name SK1 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayloadHACustomNames.json -IdentityType 'UserAssigned' -ManagedResourceGroupName "acss-mrg1" -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
 ```
@@ -440,3 +440,4 @@ ALIASES
 New-AzVIS
 
 ## RELATED LINKS
+

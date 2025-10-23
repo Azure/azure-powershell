@@ -448,4 +448,25 @@ directive:
 - from: SapVirtualInstance.cs
   where: $
   transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
+
+- where:
+    verb: Get|Start|Stop|Update
+    subject: SapApplicationInstance|SapCentralInstance|SapDatabaseInstance|SapVirtualInstance
+  set:
+    preview-announcement:
+      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+
+- where:
+    verb: Invoke
+    subject: SapDiskConfiguration|SapSizingRecommendation|SapSupportedSku
+  set:
+    preview-announcement:
+      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+
+- where:
+    verb: New
+    subject: SapVirtualInstance
+  set:
+    preview-announcement:
+      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```
