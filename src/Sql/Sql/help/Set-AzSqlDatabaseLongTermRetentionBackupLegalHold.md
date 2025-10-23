@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlDatabaseLongTermRetentionBackupLegalHold
 
 ## SYNOPSIS
-Set legal hold immutability on an LTR backup.
+Set legal hold immutability on an LTR backup. (Public Preview)
 
 ## SYNTAX
 

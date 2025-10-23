@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    [CmdletPreview()]
+    [CmdletPreview("Legal Hold feature for SQL Long Term Retention backups is currently in Public Preview")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionBackupLegalHold", DefaultParameterSetName = SetLegalHoldDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
     public class SetAzureRmSqlDatabaseLongTermRetentionBackupLegalHold : AzureSqlDatabaseLongTermRetentionBackupCmdletBase<AzureSqlDatabaseLongTermRetentionBackupModel>
     {

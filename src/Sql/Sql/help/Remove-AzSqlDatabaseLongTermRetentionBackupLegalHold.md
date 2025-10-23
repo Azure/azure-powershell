@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold
 
 ## SYNOPSIS
-Removes legal hold immutability on an LTR backup.
+Removes legal hold immutability on an LTR backup. (Public Preview)
 
 ## SYNTAX
 
