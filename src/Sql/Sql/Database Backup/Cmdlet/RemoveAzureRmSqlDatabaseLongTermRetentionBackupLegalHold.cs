@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Management.Automation;
 using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
+    [CmdletPreview()]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionBackupLegalHold", DefaultParameterSetName = RemoveBackupLegalHoldDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
     public class RemoveAzureRmSqlDatabaseLongTermRetentionBackupLegalHold : AzureSqlDatabaseLongTermRetentionBackupCmdletBase<AzureSqlDatabaseLongTermRetentionBackupModel>
     {
