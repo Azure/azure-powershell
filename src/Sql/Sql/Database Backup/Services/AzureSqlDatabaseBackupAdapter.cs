@@ -569,6 +569,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             return GetBackupModel(Communicator.LockDatabaseLongTermRetentionBackupImmutability(locationName, serverName, databaseName, backupName), locationName);
         }
 
+        internal AzureSqlDatabaseLongTermRetentionBackupModel LockDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(
+            string resourceGroupName,
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName)
+        {
+            return GetBackupModel(Communicator.LockDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName), locationName);
+        }
+
         /// <summary>
         /// Removes a Long Term Retention backup.
         /// </summary>
@@ -585,6 +595,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             return GetBackupModel(Communicator.RemoveDatabaseLongTermRetentionBackupImmutability(locationName, serverName, databaseName, backupName), locationName);
         }
 
+        internal AzureSqlDatabaseLongTermRetentionBackupModel RemoveDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(
+            string resourceGroupName,
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName)
+        {
+            return GetBackupModel(Communicator.RemoveDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName), locationName);
+        }
+
         internal AzureSqlDatabaseLongTermRetentionBackupModel SetDatabaseLongTermRetentionBackupLegalHold(
             string locationName,
             string serverName,
@@ -594,6 +614,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             return GetBackupModel(Communicator.SetDatabaseLongTermRetentionBackupLegalHold(locationName, serverName, databaseName, backupName), locationName);
         }
 
+        internal AzureSqlDatabaseLongTermRetentionBackupModel SetDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(
+            string resourceGroupName,
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName)
+        {
+            return GetBackupModel(Communicator.SetDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName), locationName);
+        }
+
         internal AzureSqlDatabaseLongTermRetentionBackupModel RemoveDatabaseLongTermRetentionBackupLegalHold(
             string locationName,
             string serverName,
@@ -601,6 +631,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string backupName)
         {
             return GetBackupModel(Communicator.RemoveDatabaseLongTermRetentionBackupLegalHold(locationName, serverName, databaseName, backupName), locationName);
+        }
+
+        internal AzureSqlDatabaseLongTermRetentionBackupModel RemoveDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(
+            string resourceGroupName,
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName)
+        {
+            return GetBackupModel(Communicator.RemoveDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName), locationName);
         }
 
         /// <summary>

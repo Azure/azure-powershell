@@ -175,7 +175,14 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
-            ModelAdapter.LockDatabaseLongTermRetentionBackupImmutability(Location, ServerName, DatabaseName, BackupName);
+            if (string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                ModelAdapter.LockDatabaseLongTermRetentionBackupImmutability(Location, ServerName, DatabaseName, BackupName);
+            }
+            else
+            {
+                ModelAdapter.LockDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(Location, ServerName, DatabaseName, BackupName, ResourceGroupName);
+            }
 
             if (PassThru.IsPresent)
             {

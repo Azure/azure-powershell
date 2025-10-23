@@ -181,7 +181,14 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
-            ModelAdapter.RemoveDatabaseLongTermRetentionBackupLegalHold(Location, ServerName, DatabaseName, BackupName);
+            if (string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                ModelAdapter.RemoveDatabaseLongTermRetentionBackupLegalHold(Location, ServerName, DatabaseName, BackupName);
+            }
+            else
+            {
+                ModelAdapter.RemoveDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(Location, ServerName, DatabaseName, BackupName, this.ResourceGroupName);
+            }
 
             if (PassThru.IsPresent)
             {

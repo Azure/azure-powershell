@@ -550,9 +550,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             return GetCurrentSqlClient().LongTermRetentionBackups.SetLegalHoldImmutability(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
         }
 
+        public Management.Sql.Models.LongTermRetentionBackup SetDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionBackups.SetLegalHoldImmutabilityByResourceGroup(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
+        }
+
         public Management.Sql.Models.LongTermRetentionBackup RemoveDatabaseLongTermRetentionBackupLegalHold(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
         {
             return GetCurrentSqlClient().LongTermRetentionBackups.RemoveLegalHoldImmutability(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
+        }
+
+        public Management.Sql.Models.LongTermRetentionBackup RemoveDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionBackups.RemoveLegalHoldImmutabilityByResourceGroup(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
         }
 
         public Management.Sql.Models.LongTermRetentionBackup LockDatabaseLongTermRetentionBackupImmutability(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
@@ -560,9 +570,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             return GetCurrentSqlClient().LongTermRetentionBackups.LockTimeBasedImmutability(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
         }
 
+        public Management.Sql.Models.LongTermRetentionBackup LockDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionBackups.LockTimeBasedImmutabilityByResourceGroup(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
+        }
+
         public Management.Sql.Models.LongTermRetentionBackup RemoveDatabaseLongTermRetentionBackupImmutability(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
         {
             return GetCurrentSqlClient().LongTermRetentionBackups.RemoveTimeBasedImmutability(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
+        }
+
+        public Management.Sql.Models.LongTermRetentionBackup RemoveDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionBackups.RemoveTimeBasedImmutabilityByResourceGroup(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
         }
 
         /// <summary>
