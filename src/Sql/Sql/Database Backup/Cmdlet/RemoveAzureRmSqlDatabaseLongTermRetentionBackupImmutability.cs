@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
             else
             {
-                ModelAdapter.RemoveDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(Location, ServerName, DatabaseName, BackupName, this.ResourceGroupName);
+                ModelAdapter.RemoveDatabaseLongTermRetentionBackupImmutabilityByResourceGroup(ResourceGroupName, Location, ServerName, DatabaseName, BackupName);
             }
 
             if (PassThru.IsPresent)

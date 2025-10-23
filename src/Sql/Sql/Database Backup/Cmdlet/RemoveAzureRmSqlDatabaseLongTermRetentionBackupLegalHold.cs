@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
             else
             {
-                ModelAdapter.RemoveDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(Location, ServerName, DatabaseName, BackupName, this.ResourceGroupName);
+                ModelAdapter.RemoveDatabaseLongTermRetentionBackupLegalHoldByResourceGroup(ResourceGroupName, Location, ServerName, DatabaseName, BackupName);
             }
 
             if (PassThru.IsPresent)

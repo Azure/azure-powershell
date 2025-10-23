@@ -398,7 +398,7 @@ function Test-LongTermRetentionV2ResourceGroupBased
 	$serverName = "brandong-ltr-ps-test"
 	$databaseName = "testdb2"
 	$restoredDatabase = "testdb_restored"
-	$databaseWithRemovableBackup = "testdb";
+	$databaseWithRemovableBackup = "testdb2";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
@@ -452,10 +452,10 @@ function Test-LongTermRetentionV2ResourceGroupBased
 	$backupForLegalHold = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Force -ForceDropExpired -PassThru
 	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
 
-	Get-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseWithRemovableBackup | Get-AzSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
+	$removableBackup = Get-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseWithRemovableBackup | Get-AzSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 
 	# Test Remove with Piping
-	Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackup -Force
+	Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $removableBackup.BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackup -Force
 
 	# drop the restored db
 	Remove-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $restoredDatabase -Force
