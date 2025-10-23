@@ -63,7 +63,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="auxiliarySku">Specifies whether the Auxiliary sku is
         /// enabled for the Network Interface resource. Possible values
         /// include: 'None', 'A1', 'A2', 'A4', 'A8'</param>
-        public VirtualMachineNetworkInterfaceConfiguration(string name, IList<VirtualMachineNetworkInterfaceIPConfiguration> ipConfigurations, bool? primary = default(bool?), string deleteOption = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableFpga = default(bool?), bool? enableIPForwarding = default(bool?), SubResource networkSecurityGroup = default(SubResource), VirtualMachineNetworkInterfaceDnsSettingsConfiguration dnsSettings = default(VirtualMachineNetworkInterfaceDnsSettingsConfiguration), SubResource dscpConfiguration = default(SubResource), string auxiliaryMode = default(string), string auxiliarySku = default(string))
+        /// <param name="tags">Resource tags applied to the networkInterface
+        /// address created by this NetworkInterfaceConfiguration</param>
+        public VirtualMachineNetworkInterfaceConfiguration(string name, IList<VirtualMachineNetworkInterfaceIPConfiguration> ipConfigurations, bool? primary = default(bool?), string deleteOption = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableFpga = default(bool?), bool? enableIPForwarding = default(bool?), SubResource networkSecurityGroup = default(SubResource), VirtualMachineNetworkInterfaceDnsSettingsConfiguration dnsSettings = default(VirtualMachineNetworkInterfaceDnsSettingsConfiguration), SubResource dscpConfiguration = default(SubResource), string auxiliaryMode = default(string), string auxiliarySku = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Name = name;
             Primary = primary;
@@ -78,6 +80,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             DscpConfiguration = dscpConfiguration;
             AuxiliaryMode = auxiliaryMode;
             AuxiliarySku = auxiliarySku;
+            Tags = tags;
             CustomInit();
         }
 
@@ -173,6 +176,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.auxiliarySku")]
         public string AuxiliarySku { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags applied to the networkInterface address
+        /// created by this NetworkInterfaceConfiguration
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Validate the object.

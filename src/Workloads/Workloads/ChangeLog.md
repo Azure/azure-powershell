@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 1.0.0
 * General availability for module Az.Workloads
 * Upgraded API version to 2024-09-01

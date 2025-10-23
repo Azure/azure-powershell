@@ -991,5 +991,9 @@
   {
     "alias": "Sftp",
     "module": "Sftp"
+  },
+  {
+    "module": "Site",
+    "alias": "Site"
   }
 ]

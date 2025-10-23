@@ -5,7 +5,7 @@ This directory contains management plane service clients of Az.KeyVault module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.0.631
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
@@ -18,16 +18,16 @@ openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 use-extension:
-  "@autorest/powershell": "4.0.631"
+  "@autorest/powershell": "4.x"
 ```
 
 ###
 ``` yaml
-commit: b92fe44fbb8e415302342ecd6c2c5bb764da7949
+commit: 402675202904b97229b067bf3b03ac8519de5125
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2024-11-01/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2024-11-01/keyvault.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2024-11-01/managedHsm.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/common.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/keyvault.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2025-05-01/managedHsm.json
 
 ### there are 2 same "reason" property with same x-ms-enum.name="Reason" defined in both keyvault.json and managedHsm.json. Rename one of them to avoid autorest converting error.
 ### 

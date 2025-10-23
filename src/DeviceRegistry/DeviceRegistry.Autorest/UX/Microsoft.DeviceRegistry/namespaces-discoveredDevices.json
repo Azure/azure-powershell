@@ -1,6 +1,6 @@
 {
   "resourceType": "namespaces/discoveredDevices",
-  "apiVersion": "2025-07-01-preview",
+  "apiVersion": "2025-10-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
   },
