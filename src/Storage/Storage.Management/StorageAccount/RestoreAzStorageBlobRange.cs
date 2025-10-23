@@ -119,8 +119,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (ShouldProcess(this.StorageAccountName, "Restore Blob Range"))
             {
                 if (waitForComplete)
-                {                    
-                    Task<AzureOperationResponse<BlobRestoreStatus>> beginTask = this.StorageClient.StorageAccounts.BeginRestoreBlobRangesWithHttpMessagesAsync(
+                {
+                    Task<AzureOperationResponse<BlobRestoreStatus, StorageAccountsRestoreBlobRangesHeaders>> beginTask = this.StorageClient.StorageAccounts.BeginRestoreBlobRangesWithHttpMessagesAsync(
                      this.ResourceGroupName,
                      this.StorageAccountName,
                      this.TimeToRestore,
@@ -128,11 +128,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                     beginTask.Wait();
 
-                    AzureOperationResponse<BlobRestoreStatus> response = beginTask.Result;
+                    AzureOperationResponse<BlobRestoreStatus, StorageAccountsRestoreBlobRangesHeaders> response = beginTask.Result;
 
                     WriteWarning(string.Format("Restore blob ranges with Id '{0}' started. Restore blob ranges time to complete is dependent on the size of the restore.", response.Body is null ? "" : response.Body.RestoreId));
 
-                    Task<AzureOperationResponse<BlobRestoreStatus>> waitTask = ((StorageManagementClient)this.StorageClient).GetPostOrDeleteOperationResultAsync(response, null, new System.Threading.CancellationToken());
+                    Task<AzureOperationResponse<BlobRestoreStatus, StorageAccountsRestoreBlobRangesHeaders>> waitTask = ((StorageManagementClient)this.StorageClient).GetPostOrDeleteOperationResultAsync(response, null, new System.Threading.CancellationToken());
                     try
                     {
                         waitTask.Wait();
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         throw new InvalidJobStateException(string.Format("Blob ranges restore failed with information: '{0}'.", ((CloudException)ex.InnerException).Response.Content));
                     }
 
-                    AzureOperationResponse<BlobRestoreStatus> result = waitTask.Result;
+                    AzureOperationResponse<BlobRestoreStatus, StorageAccountsRestoreBlobRangesHeaders> result = waitTask.Result;
 
                     WriteObject(new PSBlobRestoreStatus(result.Body));
 
