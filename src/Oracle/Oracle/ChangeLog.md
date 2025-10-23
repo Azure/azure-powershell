@@ -27,7 +27,7 @@
 ## Version 1.3.0
 
 * Upgraded to the stable version 2025-09-01
-* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Preannounced breaking changes. Please refer to https://github.com/Azure/azure-powershell/blob/c3412a913b59a5445cd9f23c339eda321eb2b136/documentation/development-docs/breakingchange-for-autogen-module.md
 
 ## Version 1.2.0
 
