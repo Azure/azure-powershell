@@ -79,7 +79,7 @@ function Merge-DevPullRequest {
                 $prsToMerge += $pr
             }
             catch {
-                throw "Failed to get pull request #$prNumber`: $_"
+                throw "Failed to get pull request #$prNumber: $_"
             }
         }
     }
