@@ -14,15 +14,29 @@ Restarts one or more role instances in a cloud service.
 
 ### RestartExpanded (Default)
 ```
-Restart-AzCloudService -Name <String> -ResourceGroupName <String> -RoleInstance <String[]>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Restart-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-RoleInstance <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RestartViaIdentityExpanded
 ```
-Restart-AzCloudService -InputObject <ICloudServiceIdentity> -RoleInstance <String[]>
+Restart-AzCloudService -InputObject <ICloudServiceIdentity> [-RoleInstance <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestartViaJsonFilePath
+```
+Restart-AzCloudService -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RestartViaJsonString
+```
+Restart-AzCloudService -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +94,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
@@ -94,12 +107,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded
+Parameter Sets: RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases: CloudServiceName
 
 Required: True
@@ -144,7 +187,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded
+Parameter Sets: RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: True
@@ -160,10 +203,10 @@ Value of '*' will signify all role instances of the cloud service.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +219,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded
+Parameter Sets: RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: False
