@@ -36,8 +36,8 @@ New-AzStorageFileSymbolicLink [-ShareDirectoryClient] <ShareDirectoryClient> [-P
  [-LinkText] <String> [-Metadata <Hashtable>] [-FileCreatedOn <DateTimeOffset>]
  [-FileLastWrittenOn <DateTimeOffset>] [-Owner <String>] [-Group <String>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

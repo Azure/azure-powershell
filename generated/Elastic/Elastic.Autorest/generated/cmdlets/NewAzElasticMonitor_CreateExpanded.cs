@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>create a monitor resource.</summary>
+    /// <summary>
+    /// create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure
+    /// resources through Elastic.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzElasticMonitor_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"create a monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}", ApiVersion = "2025-06-01")]
     public partial class NewAzElasticMonitor_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext
@@ -42,15 +45,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -151,6 +145,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter GenerateApiKey { get => _body.GenerateApiKey ?? default(global::System.Management.Automation.SwitchParameter); set => _body.GenerateApiKey = value; }
 
+        /// <summary>
+        /// Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.",
+        SerializedName = @"hostingType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Hosted", "Serverless")]
+        public string HostingType { get => _body.HostingType ?? null; set => _body.HostingType = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -165,6 +173,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>The kind of the Elastic resource - observability, security, search etc.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The kind of the Elastic resource - observability, security, search etc.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The kind of the Elastic resource - observability, security, search etc.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Kind { get => _body.Kind ?? null; set => _body.Kind = value; }
 
         /// <summary>The location of the monitor resource</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The location of the monitor resource")]
@@ -279,6 +298,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         SerializedName = @"termID",
         PossibleTypes = new [] { typeof(string) })]
         public string PlanDetailTermId { get => _body.PlanDetailTermId ?? null; set => _body.PlanDetailTermId = value; }
+
+        /// <summary>Configuration type of the Elasticsearch project</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Configuration type of the Elasticsearch project")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Configuration type of the Elasticsearch project",
+        SerializedName = @"configurationType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("GeneralPurpose", "Vector", "TimeSeries", "NotApplicable")]
+        public string ProjectDetailConfigurationType { get => _body.ProjectDetailConfigurationType ?? null; set => _body.ProjectDetailConfigurationType = value; }
+
+        /// <summary>Project type; ex: Elasticsearch / Observability / Security</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Project type; ex: Elasticsearch / Observability / Security")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Project type; ex: Elasticsearch / Observability / Security",
+        SerializedName = @"projectType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Elasticsearch", "Observability", "Security", "NotApplicable")]
+        public string ProjectDetailProjectType { get => _body.ProjectDetailProjectType ?? null; set => _body.ProjectDetailProjectType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -526,11 +569,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -846,24 +884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

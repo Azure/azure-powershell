@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Search
     using Models;
 
     /// <summary>
-    /// Client that can be used to manage Azure Cognitive Search services and API keys.
+    /// Client that can be used to manage Azure AI Search services and API keys.
     /// </summary>
     public partial class SearchManagementClient : Microsoft.Rest.ServiceClient<SearchManagementClient>, ISearchManagementClient, IAzureClient
     {
@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Management.Search
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The unique identifier for a Microsoft Azure subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The unique identifier for a Microsoft Azure subscription. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -49,14 +50,14 @@ namespace Microsoft.Azure.Management.Search
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -92,6 +93,10 @@ namespace Microsoft.Azure.Management.Search
         /// Gets the IUsagesOperations
         /// </summary>
         public virtual IUsagesOperations Usages { get; private set; }
+        /// <summary>
+        /// Gets the INetworkSecurityPerimeterConfigurationsOperations
+        /// </summary>
+        public virtual INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; private set; }
         /// <summary>
         /// Initializes a new instance of the SearchManagementClient class.
         /// </summary>
@@ -296,6 +301,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -335,8 +343,9 @@ namespace Microsoft.Azure.Management.Search
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.SharedPrivateLinkResources = new SharedPrivateLinkResourcesOperations(this);
             this.Usages = new UsagesOperations(this);
+            this.NetworkSecurityPerimeterConfigurations = new NetworkSecurityPerimeterConfigurationsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-11-01";
+            this.ApiVersion = "2025-05-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -371,7 +380,7 @@ namespace Microsoft.Azure.Management.Search
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());
         }
         /// <summary>
-        /// Gets the quota usage for a search sku in the given subscription.
+        /// Gets the quota usage for a search SKU in the given subscription.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
@@ -380,7 +389,7 @@ namespace Microsoft.Azure.Management.Search
         /// The unique location name for a Microsoft Azure geographic region.
         /// </param>
         /// <param name='skuName'>
-        /// The unique search service sku name supported by Azure Cognitive Search.
+        /// The unique SKU name that identifies a billable tier.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
                 Name = v.Name,
                 GroupId = v.Properties.GroupId,
                 PrivateLinkResourceId = v.Properties.PrivateLinkResourceId,
-                ProvisioningState = (PSSharedPrivateLinkResourceProvisioningState?)v.Properties.ProvisioningState,
+                ProvisioningState = v.Properties.ProvisioningState.ParsePSSharedPrivateLinkResourceProvisioningState(),
                 RequestMessage = v.Properties.RequestMessage,
                 ResourceRegion = v.Properties.ResourceRegion
             };
@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
                 name: v.Name, 
                 type: v.Type, 
                 properties: new SharedPrivateLinkResourceProperties(
-                    status: (SharedPrivateLinkResourceStatus?)v.Status, 
-                    provisioningState: (SharedPrivateLinkResourceProvisioningState?)v.ProvisioningState)
+                    status: v.Status.ToString(), 
+                    provisioningState: v.ProvisioningState.ToString())
                 {
                     GroupId = v.GroupId,
                     PrivateLinkResourceId = v.PrivateLinkResourceId,
