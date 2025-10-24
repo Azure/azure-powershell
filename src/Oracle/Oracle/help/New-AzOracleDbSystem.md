@@ -51,7 +51,7 @@ New-AzOracleDbSystem `
   -Name OFake_PowerShellTestDbSystem `
   -Location eastus2 `
   -Shape VM.Standard3.Flex `
-  -AdminPassword (ConvertTo-SecureString 'P@ssw0rd!' -AsPlainText -Force)
+  -AdminPassword (ConvertTo-SecureString 'password' -AsPlainText -Force)
 ```
 
 ```output
