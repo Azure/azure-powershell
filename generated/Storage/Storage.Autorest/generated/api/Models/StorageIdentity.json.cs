@@ -92,6 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_fileServiceUsagesName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("fileServiceUsagesName"), out var __jsonFileServiceUsagesName) ? (string)__jsonFileServiceUsagesName : (string)_fileServiceUsagesName;}
             {_shareName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("shareName"), out var __jsonShareName) ? (string)__jsonShareName : (string)_shareName;}
             {_storageTaskAssignmentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("storageTaskAssignmentName"), out var __jsonStorageTaskAssignmentName) ? (string)__jsonStorageTaskAssignmentName : (string)_storageTaskAssignmentName;}
+            {_networkSecurityPerimeterConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("networkSecurityPerimeterConfigurationName"), out var __jsonNetworkSecurityPerimeterConfigurationName) ? (string)__jsonNetworkSecurityPerimeterConfigurationName : (string)_networkSecurityPerimeterConfigurationName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -131,6 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             AddIf( null != (((object)this._fileServiceUsagesName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._fileServiceUsagesName.ToString()) : null, "fileServiceUsagesName" ,container.Add );
             AddIf( null != (((object)this._shareName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._shareName.ToString()) : null, "shareName" ,container.Add );
             AddIf( null != (((object)this._storageTaskAssignmentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._storageTaskAssignmentName.ToString()) : null, "storageTaskAssignmentName" ,container.Add );
+            AddIf( null != (((object)this._networkSecurityPerimeterConfigurationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._networkSecurityPerimeterConfigurationName.ToString()) : null, "networkSecurityPerimeterConfigurationName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
