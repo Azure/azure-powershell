@@ -8,7 +8,7 @@ schema: 2.0.0
 # Switch-AzNewRelicMonitorBilling
 
 ## SYNOPSIS
-Switches the billing for NewRelic monitor resource.
+Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Switches the billing for NewRelic monitor resource.
+Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
 
 ## EXAMPLES
 
@@ -177,8 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlanDataBillingCycle
-Different billing cycles like MONTHLY/WEEKLY.
-this could be enum
+Different billing cycles like Monthly/Weekly.
 
 ```yaml
 Type: System.String

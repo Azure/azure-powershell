@@ -1,15 +1,15 @@
 {
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$PUT+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$PUT+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendAadLogs\": \"Enabled\",\r\n      \"sendSubscriptionLogs\": \"Enabled\",\r\n      \"sendActivityLogs\": \"Enabled\"\r\n    },\r\n    \"metricRules\": {\r\n      \"sendMetrics\": \"Enabled\",\r\n      \"userEmail\": \"v-jiaji@microsoft.com\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendAadLogs\": \"Enabled\",\r\n      \"sendSubscriptionLogs\": \"Enabled\",\r\n      \"sendActivityLogs\": \"Enabled\"\r\n    },\r\n    \"metricRules\": {\r\n      \"sendMetrics\": \"Enabled\",\r\n      \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "273" ]
+        "Content-Length": [ "276" ]
       }
     },
     "Response": {
@@ -17,45 +17,46 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0d00033a-0000-0100-0000-664f1a8a0000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"0c05bfa6-0000-0100-0000-68f0aaa50000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/southeastasia/fc9f6053-91cf-40d8-b36c-5ea9b784ebc4" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "796061cd-bf35-4de6-835a-715aa2561eb8" ],
+        "mise-correlation-id": [ "e4692aff-2388-4138-bcf1-6256a3ba4b50" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-correlation-request-id": [ "0fbf3bfc-d785-4613-b314-0f2ea31ef2f8" ],
-        "x-ms-client-request-id": [ "881ad8b7-c645-4fd4-a4a5-52f9f5726cb5" ],
-        "x-ms-request-id": [ "c0b42689-31a7-4cce-b41d-d268a316b3ec" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T102930Z:0fbf3bfc-d785-4613-b314-0f2ea31ef2f8" ],
+        "x-ms-correlation-request-id": [ "7971a76b-ecc5-450b-b5b6-15f39930deb3" ],
+        "x-ms-client-request-id": [ "bc25c306-e2fd-44a0-a84f-da0781dbbe95" ],
+        "x-ms-request-id": [ "eed36186-a905-4c00-b65c-f22e1219f479" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251016T081949Z:7971a76b-ecc5-450b-b5b6-15f39930deb3" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4E90B85580CE43FCA23BA957196833D0 Ref B: MAA201060516031 Ref C: 2024-05-23T10:29:26Z" ],
-        "Date": [ "Thu, 23 May 2024 10:29:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 74082FF93A504B31970A23CACA7E3D38 Ref B: JKT201051407029 Ref C: 2025-10-16T08:19:45Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:19:48 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "707" ],
+        "Content-Length": [ "734" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-23T10:29:27.0521822Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-23T10:29:27.0521822Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01+2": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "881ad8b7-c645-4fd4-a4a5-52f9f5726cb5" ],
+        "x-ms-client-request-id": [ "bc25c306-e2fd-44a0-a84f-da0781dbbe95" ],
         "CommandName": [ "New-AzNewRelicMonitorTagRule" ],
         "FullCommandName": [ "New-AzNewRelicMonitorTagRule_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -65,42 +66,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0d00033a-0000-0100-0000-664f1a8a0000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"0c05bfa6-0000-0100-0000-68f0aaa50000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/e7c0e169-b06f-4bae-af88-77da7d78b270" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "f620f09f-a583-4b7b-ae10-41f2071ec1f2" ],
-        "x-ms-correlation-request-id": [ "f3eadb4a-5fcd-4576-8d34-9d2394e80f50" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103001Z:f3eadb4a-5fcd-4576-8d34-9d2394e80f50" ],
+        "x-ms-request-id": [ "b77ff26d-d9ee-4000-8742-ed639b36fd1a" ],
+        "x-ms-correlation-request-id": [ "2824037a-ab8c-4fe7-ab0b-951daad77ba2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082020Z:2824037a-ab8c-4fe7-ab0b-951daad77ba2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 53D4A237DAD74FD79C3ABCDD5B02D135 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:00Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B7AD6AA533284DEC9D84A01EC364ABB7 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:19Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "707" ],
+        "Content-Length": [ "734" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-23T10:29:27.0521822Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-23T10:29:27.0521822Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01+3": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "881ad8b7-c645-4fd4-a4a5-52f9f5726cb5" ],
+        "x-ms-client-request-id": [ "bc25c306-e2fd-44a0-a84f-da0781dbbe95" ],
         "CommandName": [ "New-AzNewRelicMonitorTagRule" ],
         "FullCommandName": [ "New-AzNewRelicMonitorTagRule_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -110,41 +112,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0d00033a-0000-0100-0000-664f1a8a0000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"0c05bfa6-0000-0100-0000-68f0aaa50000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/b81eeb4b-93ba-44a4-a712-9d1310202024" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "2279a6d9-be70-4cd2-ae26-dc728a3f108e" ],
-        "x-ms-correlation-request-id": [ "2f0dcac0-0167-415a-b3ef-a9de19048d17" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103003Z:2f0dcac0-0167-415a-b3ef-a9de19048d17" ],
+        "x-ms-request-id": [ "f9e58263-fd73-48b9-a9de-50636baa47f7" ],
+        "x-ms-correlation-request-id": [ "92105d13-c555-4365-9788-d65faa524f75" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082020Z:92105d13-c555-4365-9788-d65faa524f75" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3D87F79352464D7CAF50350719CEC846 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:01Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0A1569A2C321446E8716A596FB092300 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:20Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "707" ],
+        "Content-Length": [ "734" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-23T10:29:27.0521822Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-23T10:29:27.0521822Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "e04d129c-0cda-49fa-8ad1-43ecbf22c628" ],
+        "x-ms-client-request-id": [ "38d938fe-b06b-4cf6-9636-2a9e4d293537" ],
         "CommandName": [ "Get-AzNewRelicMonitorTagRule" ],
         "FullCommandName": [ "Get-AzNewRelicMonitorTagRule_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -155,40 +158,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/fcf5856b-2ef8-4c51-be4d-4381a7b9e993" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "44defd44-9f10-418e-80e5-ad840199f692" ],
-        "x-ms-correlation-request-id": [ "191daaf8-ae1a-45ea-af07-98dc5c61f7c4" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103004Z:191daaf8-ae1a-45ea-af07-98dc5c61f7c4" ],
+        "x-ms-request-id": [ "ff77e34d-c070-430c-b46b-14d8f83dabb3" ],
+        "x-ms-correlation-request-id": [ "53a0a7f8-5c7f-4ae0-abf9-f84ea8b7229c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082021Z:53a0a7f8-5c7f-4ae0-abf9-f84ea8b7229c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0C4C42757B9643939BB3A1A6F1874DB2 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:03Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EAD60DFE948A4370B7C1FC078D66FFE3 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:21Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "719" ],
+        "Content-Length": [ "729" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-23T10:29:27.0521822Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-23T10:29:27.0521822Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[]}}}]}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorListGp+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorListGp+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "25e0b4ab-20a2-4136-8f25-1daa9e6e27d0" ],
-        "CommandName": [ "Get-AzNewRelicMonitor" ],
+        "x-ms-client-request-id": [ "c1687811-efed-4ead-a874-17137e2e368e" ],
+        "CommandName": [ "Az.NewRelic.internal\\Get-AzNewRelicMonitor" ],
         "FullCommandName": [ "Get-AzNewRelicMonitor_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -199,40 +203,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "f8c1f7e9-289b-4022-893a-5b3433b76e89", "86831329-e169-4c5a-81db-0d2f475fae54", "831af7bf-bed1-4bd3-b46f-21f649be67d5" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "61a3a38e-eab2-4037-a509-bf64fce092d2" ],
-        "x-ms-correlation-request-id": [ "61a3a38e-eab2-4037-a509-bf64fce092d2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103010Z:61a3a38e-eab2-4037-a509-bf64fce092d2" ],
+        "x-ms-original-request-ids": [ "564794b2-e040-4d7b-8db4-038847399bf1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "588cfa4b-468b-4cf7-8184-28bd5b93a983" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "588cfa4b-468b-4cf7-8184-28bd5b93a983" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082022Z:588cfa4b-468b-4cf7-8184-28bd5b93a983" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4BBF77EF58974E249E26909502B6CAF9 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:04Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 64DE8BB4D8EE4F0CA81C2A8A62BFE225 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:21Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1368" ],
+        "Content-Length": [ "1369" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01\",\"name\":\"testMonitor-01\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-23T07:58:51.1346996Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-23T07:58:51.1346996Z\"},\"identity\":{\"principalId\":\"3dfd31e1-f0bb-4584-ab76-5d406dd1e405\",\"tenantId\":\"888d76fa-54b2-4ced-8ee5-aac1585adee7\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"4458669\"},\"organizationInfo\":{\"organizationId\":\"50919780-11fc-42a5-934f-6ae8dc6587d9\"}},\"userInfo\":{\"firstName\":\"Joyer\",\"lastName\":\"Jin (Wicresoft North America Ltd)\",\"emailAddress\":\"v-jiaji@microsoft.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2024-05-23T07:58:22.926Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014\",\"name\":\"clientParity-Test-1014\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T10:33:03.5764066Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T10:33:03.5764066Z\"},\"identity\":{\"principalId\":\"58688f66-7376-4a3c-9369-6aab6385208c\",\"tenantId\":\"c9967a4f-613f-442b-88f6-1e46aad03123\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"7243015\"},\"organizationInfo\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}},\"userInfo\":{\"firstName\":\"Vansh\",\"lastName\":\"Joshi\",\"emailAddress\":\"vanshjoshi@microsoft.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"standardpaygrevisedplan@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2025-10-14T10:32:29.993Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}]}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorGet+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorGet+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "f419946a-fd08-4ed3-b555-346545cea2c0" ],
-        "CommandName": [ "Get-AzNewRelicMonitor" ],
+        "x-ms-client-request-id": [ "43d9b21b-8f73-44b0-b39f-46437ed51875" ],
+        "CommandName": [ "Az.NewRelic.internal\\Get-AzNewRelicMonitor" ],
         "FullCommandName": [ "Get-AzNewRelicMonitor_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -243,39 +248,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0500f414-0000-0100-0000-664ef7640000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"29005c63-0000-0100-0000-68ee27130000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "1c0d8574-27f7-456a-8a4c-58cf950c0ad6" ],
-        "x-ms-correlation-request-id": [ "a022c94d-cb05-4e9f-99e5-eb43b4e9c0b9" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103011Z:a022c94d-cb05-4e9f-99e5-eb43b4e9c0b9" ],
+        "x-ms-request-id": [ "5ab755ea-cded-47ef-9b24-ca5ab5bf4153" ],
+        "x-ms-correlation-request-id": [ "5c3692f7-6699-48a4-b6a4-a3eedd422a8b" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082022Z:5c3692f7-6699-48a4-b6a4-a3eedd422a8b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 813E0526770C4230A9E11EF8BB6C9D71 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:10Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 13B9E03D7ED2430F8A6FB033BBAF5247 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:22Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1356" ],
+        "Content-Length": [ "1357" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01\",\"name\":\"testMonitor-01\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-23T07:58:51.1346996Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-23T07:58:51.1346996Z\"},\"identity\":{\"principalId\":\"3dfd31e1-f0bb-4584-ab76-5d406dd1e405\",\"tenantId\":\"888d76fa-54b2-4ced-8ee5-aac1585adee7\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"4458669\"},\"organizationInfo\":{\"organizationId\":\"50919780-11fc-42a5-934f-6ae8dc6587d9\"}},\"userInfo\":{\"firstName\":\"Joyer\",\"lastName\":\"Jin (Wicresoft North America Ltd)\",\"emailAddress\":\"v-jiaji@microsoft.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2024-05-23T07:58:22.926Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014\",\"name\":\"clientParity-Test-1014\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T10:33:03.5764066Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T10:33:03.5764066Z\"},\"identity\":{\"principalId\":\"58688f66-7376-4a3c-9369-6aab6385208c\",\"tenantId\":\"c9967a4f-613f-442b-88f6-1e46aad03123\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"7243015\"},\"organizationInfo\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}},\"userInfo\":{\"firstName\":\"Vansh\",\"lastName\":\"Joshi\",\"emailAddress\":\"vanshjoshi@microsoft.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"standardpaygrevisedplan@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2025-10-14T10:32:29.993Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AppServiceList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listAppServices?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+AppServiceList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listAppServices?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listAppServices?api-version=2024-01-01",
-      "Content": "{\r\n  \"azureResourceIds\": [ \"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/Microsoft.Web/sites/joyertestapp\" ],\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listAppServices?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"azureResourceIds\": [ \"\" ],\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "200" ]
+        "Content-Length": [ "78" ]
       }
     },
     "Response": {
@@ -283,19 +288,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/467f589f-c286-4c8a-b1df-d925f70a0bf5" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "b8045a9e-1b84-4970-a451-03ee2f016e72" ],
+        "mise-correlation-id": [ "7d208035-dd46-4e36-811e-6ac4adb41c53" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "54a96388-0c1a-4911-93cf-1a010a0503f2" ],
-        "x-ms-correlation-request-id": [ "fb64ef6d-556c-4926-a169-106d7e63e05c" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103014Z:fb64ef6d-556c-4926-a169-106d7e63e05c" ],
+        "x-ms-request-id": [ "d3477339-0f4a-4389-af11-a25c4f1b2f6f" ],
+        "x-ms-correlation-request-id": [ "d33c6ff3-6c58-4462-a3a3-32bca96112d5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082024Z:d33c6ff3-6c58-4462-a3a3-32bca96112d5" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 72D6C5CA18314592A40BF7DF8F736175 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:11Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0165E84C1CBA4B839372B8D118A7A974 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:23Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "28" ],
@@ -306,17 +312,17 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+HostList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listHosts?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+HostList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listHosts?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listHosts?api-version=2024-01-01",
-      "Content": "{\r\n  \"vmIds\": [ \"joyertestmachine01\" ],\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listHosts?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"vmIds\": [ \"joyertestmachine01\" ],\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "82" ]
+        "Content-Length": [ "85" ]
       }
     },
     "Response": {
@@ -324,19 +330,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/1d2ba2dd-ac98-42b1-b8b7-006ff20e9d08" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "ce98173c-c959-45a2-b0c5-affc094ad7e2" ],
+        "mise-correlation-id": [ "d4ec11be-9567-49f2-a21f-4a4102be9db9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "7b0b6ad7-aaae-4970-a25d-7bf2f418a4a6" ],
-        "x-ms-correlation-request-id": [ "ae693b33-7f54-4748-83c7-464f7600110e" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103021Z:ae693b33-7f54-4748-83c7-464f7600110e" ],
+        "x-ms-request-id": [ "a75404e4-1d00-4c78-9eeb-07887ccfdd4c" ],
+        "x-ms-correlation-request-id": [ "e3d3da38-748c-4deb-a9c6-d1d2357c74ce" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082026Z:e3d3da38-748c-4deb-a9c6-d1d2357c74ce" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BF2BE0E635DA41A886BCFD7EA6E0FA47 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:14Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7A15F19FE66C4E65BB7E6D290B7F2513 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:25Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "28" ],
@@ -347,17 +354,17 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MetricRuleList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/getMetricRules?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MetricRuleList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricRules?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/getMetricRules?api-version=2024-01-01",
-      "Content": "{\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricRules?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "44" ]
+        "Content-Length": [ "47" ]
       }
     },
     "Response": {
@@ -365,20 +372,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/619e0252-8c1a-4448-a8fd-f6910ddedfa3" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "c76f37d9-5ef0-4557-a86d-28b684036c6a" ],
-        "x-ms-correlation-request-id": [ "150aa7ac-f9ba-4b4d-b86d-8a20c19db4cc" ],
-        "x-ms-client-request-id": [ "f677eeff-45f2-4a30-a52e-30b506411e4f" ],
+        "mise-correlation-id": [ "26ae87f6-13fa-4139-8d80-08c2154ab5c0" ],
+        "x-ms-correlation-request-id": [ "e00b07bf-69d0-461e-ae0e-156cbd6f9f15" ],
+        "x-ms-client-request-id": [ "871afa04-89a1-4927-945e-c53eed2085c7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "6a2ffa1d-c64b-411b-9d3a-b11ee4530dae" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103024Z:150aa7ac-f9ba-4b4d-b86d-8a20c19db4cc" ],
+        "x-ms-request-id": [ "eb224136-250a-43cf-9ccc-f84242298112" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082028Z:e00b07bf-69d0-461e-ae0e-156cbd6f9f15" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D0EE418BEDCC4786818D846D19F2300C Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:21Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 162EC814C5294FB4B99950FA2E75A4B3 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:27Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "61" ],
@@ -389,17 +397,17 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MetricStatusList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/getMetricStatus?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MetricStatusList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricStatus?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/getMetricStatus?api-version=2024-01-01",
-      "Content": "{\r\n  \"azureResourceIds\": [ \"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/Microsoft.Web/sites/joyertestapp\" ],\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricStatus?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"azureResourceIds\": [ \"\" ],\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "200" ]
+        "Content-Length": [ "78" ]
       }
     },
     "Response": {
@@ -407,20 +415,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/6612e847-876b-4ca8-92d4-9fe8159f9c91" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "e0e2066f-cc1f-423b-8b74-01ad70e0d00a" ],
-        "x-ms-correlation-request-id": [ "d3e37e29-3c03-4b9c-983c-fc98981188ca" ],
-        "x-ms-client-request-id": [ "e660f245-9f4b-452c-8abb-3dbe4e95563a" ],
+        "mise-correlation-id": [ "575f0fc1-fcf6-4c86-9479-aa2554042463" ],
+        "x-ms-correlation-request-id": [ "6aeddf69-accc-4af9-ab88-123f45244f3f" ],
+        "x-ms-client-request-id": [ "279c2603-8aae-47a4-82c3-4c93e4998916" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "44c36fe2-ba48-4b87-a38e-afd9d98d6a67" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103027Z:d3e37e29-3c03-4b9c-983c-fc98981188ca" ],
+        "x-ms-request-id": [ "1d599109-db65-4fa1-a11e-2870f6e38644" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082031Z:6aeddf69-accc-4af9-ab88-123f45244f3f" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7E9BAF7707F448C5B59EC427C9537C7D Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:24Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 80556540820D47C0AA4AD496E54B377D Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:29Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "23" ],
@@ -431,19 +440,19 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitoredResource+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/monitoredResources?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MonitoredResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/monitoredResources?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/monitoredResources?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/monitoredResources?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "17ead234-5393-4c08-aab0-3ca3fe123285" ],
+        "x-ms-client-request-id": [ "9ad04a55-f7ba-4000-bec7-ee44bde1525f" ],
         "CommandName": [ "Get-AzNewRelicMonitorMonitoredResource" ],
         "FullCommandName": [ "Get-AzNewRelicMonitorMonitoredResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -454,43 +463,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/f9374675-4c54-471a-93a9-e4e4b9f7c988" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "ab394686-c33d-4354-b853-045b612bfff2" ],
-        "x-ms-correlation-request-id": [ "743a400a-7341-48b2-b8b8-d8db78843909" ],
-        "x-ms-client-request-id": [ "17ead234-5393-4c08-aab0-3ca3fe123285" ],
+        "mise-correlation-id": [ "8b42b66e-1634-4647-baa9-c73ea36021f4" ],
+        "x-ms-correlation-request-id": [ "fec59951-916d-420e-87ca-b1b4593a0183" ],
+        "x-ms-client-request-id": [ "9ad04a55-f7ba-4000-bec7-ee44bde1525f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "fefc381a-fce9-49ef-abf2-573e289db7b5" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103029Z:743a400a-7341-48b2-b8b8-d8db78843909" ],
+        "x-ms-request-id": [ "e4bc0556-b7b5-4a90-874a-566b636233f7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082033Z:fec59951-916d-420e-87ca-b1b4593a0183" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E850667FEDCD4FF9A033AD6EA6C8A85E Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:28Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 960CEC8A20B24749928773E0CA0790EC Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:31Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "28" ],
+        "Content-Length": [ "12741" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LIFTRCONFLUENT_IT/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/TESTACCOUNTCONFLUENTIT5\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/SCOPELOCKSTORAGE\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ES-CLOUDTESTS-PORTAL/PROVIDERS/MICROSOFT.COGNITIVESERVICES/ACCOUNTS/ES-OPENAI-RESOURCE-24092025\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LIFTRPURE_IT/PROVIDERS/MICROSOFT.NETWORK/VIRTUALNETWORKS/VNET1\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/DEFAULTRESOURCEGROUP-CUS/PROVIDERS/MICROSOFT.OPERATIONALINSIGHTS/WORKSPACES/DEFAULTWORKSPACE-E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E-CUS\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/SCOPELOCKDD1509\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LIFTRCONFLUENT_IT/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/COSMOSCONFLUENTCENTRALUS\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.CACHE/REDIS/SCOPELOCKREDIS1509\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/DD-CLOUD-TEST-RG/PROVIDERS/MICROSOFT.NETWORK/PUBLICIPADDRESSES/DD-CLOUDTEST-VM-IP\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LFCPACRIT09209D/PROVIDERS/MICROSOFT.CONTAINERREGISTRY/REGISTRIES/ACR0920E9808D201\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/BHARGAVSAI-RG/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/COSMOS-NOSQL-LEARN\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LFCPACRIT10161B/PROVIDERS/MICROSOFT.CONTAINERREGISTRY/REGISTRIES/ACR10160300A6A12\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/SCOPELOCKSTORAGE/BLOBSERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/MAMATHA-RG/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/KV-WESTUS2919\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/DD-CLOUD-TEST-RG/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/DD-CLOUD-TEST-KV-2\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LFCPACRIT10161B/PROVIDERS/MICROSOFT.CONTAINERREGISTRY/REGISTRIES/ACR10160300A6A10\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/INFORMATICAIT-RG/PROVIDERS/MICROSOFT.NETWORK/PUBLICIPADDRESSES/INFORMATICA-IT-IP-TEST\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/DD-CLOUD-TEST-RG/PROVIDERS/MICROSOFT.NETWORK/VIRTUALNETWORKS/DD-CLOUDTEST-VM-VNET\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/MAMATHA-RG/PROVIDERS/MICROSOFT.CONTAINERREGISTRY/REGISTRIES/SAMETAGUKSOUTH\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/INFORMATICAIT-RG/PROVIDERS/MICROSOFT.NETWORK/VIRTUALNETWORKS/INFORMATICA-IT-VNET-TEST\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/MAMATHA-RG/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/WESTUS2-KV919\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/PRAVEENTESTRESOURCEGROUP/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/CONFLUENT-COSMOS-DB-V2-CONNECTOR\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/SHEKARTEST/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/COSMOSTESTPGSCENTRALUS\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LFCPACRIT10161B/PROVIDERS/MICROSOFT.CONTAINERREGISTRY/REGISTRIES/ACR10160300A6A11\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/SHEKARTEST/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/COSMOSTESTPGSEASTUS\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/PRAVEENTESTRESOURCEGROUP/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/COSMOSACCOUNTPRAVEENTESTCONFLUENT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/APOO-RG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TEST-VM-APOORVA-NSG\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/APOO-RG/PROVIDERS/MICROSOFT.NETWORK/PUBLICIPADDRESSES/TEST-VM-APOORVA-IP\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/APOO-RG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TEST-ES-WINDOWS-VM-NSG\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LIFTRCONFLUENT_IT/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/TESTACCOUNTCONFLUENTIT5/TABLESERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/SCOPELOCKSTORAGE/FILESERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/MAMATHA-RG/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/NOTSAME-TAG\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LIFTRCONFLUENT_IT/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/TESTACCOUNTCONFLUENTIT5/FILESERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.OPERATIONALINSIGHTS/WORKSPACES/WORKSPACEIWQTNUW5D6WP6\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/VARTIKA-TESTRG/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/TESTKV-NEU\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/APOO-RG/PROVIDERS/MICROSOFT.NETWORK/VIRTUALNETWORKS/TEST-VM-APOORVA-VNET\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LIFTRCONFLUENT_IT/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/TESTACCOUNTCONFLUENTIT5/QUEUESERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/VARTIKA-TESTRG/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/TESTKV-ES\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/POSHETT-RG/PROVIDERS/MICROSOFT.NETWORK/VIRTUALNETWORKS/POSHETTTESTING-VM-01-VNET\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/DD-CLOUD-TEST-RG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DD-CLOUDTEST-VM-NSG\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/POSHETT-RG/PROVIDERS/MICROSOFT.NETWORK/PUBLICIPADDRESSES/POSHETTTESTING-VM-01-IP\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/LIFTRCONFLUENT_IT/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/TESTACCOUNTCONFLUENTIT5/BLOBSERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/APOO-RG/PROVIDERS/MICROSOFT.NETWORK/PUBLICIPADDRESSES/TEST-ES-WINDOWS-VM-IP\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/APP-INSIGHTS-IWQTNUW5D6WP6\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/POSHETT-RG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/POSHETTTESTING-VM-01-NSG\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/PRAVEENTESTRESOURCEGROUP/PROVIDERS/MICROSOFT.WEB/SITES/PRAVEENMONGODBLOGICAPPS\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.CONTAINERREGISTRY/REGISTRIES/SCOPELOCKACR1509\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/SHEKARTEST/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/COSMOSTESTPGS1\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/SCOPELOCKKV1509\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.CACHE/REDIS/SCOPELOCKREDISTEST\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/V-SATHYA-RG/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/TEST-SANITY-KV\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/SCOPELOCKSTORAGE/TABLESERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/DD-CLOUD-TEST-RG/PROVIDERS/MICROSOFT.WEB/SITES/DD-CLOUDTEST-AS\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/SCOPELOCKSTORAGE/QUEUESERVICES/DEFAULT\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/DD-CLOUD-TEST-RG/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/DD-CLOUDTEST-AS\",\"sendingLogs\":\"Enabled\",\"reasonForLogsStatus\":\"CapturedByRules\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E\",\"sendingLogs\":\"Disabled\",\"reasonForLogsStatus\":\"DiagnosticSettingsLimitReached\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.CACHE/REDIS/SCOPELOCKREDIS0310\",\"sendingLogs\":\"Disabled\",\"reasonForLogsStatus\":\"ScopeLocked\"},{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/ROHIT-TEST/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/SCOPELOCKKV0310\",\"sendingLogs\":\"Disabled\",\"reasonForLogsStatus\":\"ScopeLocked\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus+1": {
+  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "b6a9982d-ff93-4f4d-b455-52f5dccdced7" ],
+        "x-ms-client-request-id": [ "5557ef6a-d125-4fe6-96bf-92acfbe6de81" ],
         "CommandName": [ "Get-AzNewRelicAccount" ],
         "FullCommandName": [ "Get-AzNewRelicAccount_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -501,43 +511,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/810f8edb-2602-4ce1-9a33-f14dc93eea81" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "02e9e868-7cff-4101-8f8f-3c0bd5551ca9" ],
-        "x-ms-correlation-request-id": [ "bf5373f5-928c-43e2-b6db-6ea9cc9ca643" ],
-        "x-ms-client-request-id": [ "b6a9982d-ff93-4f4d-b455-52f5dccdced7" ],
+        "mise-correlation-id": [ "89b1079b-e53c-4d6e-bd67-44fcb6310df1" ],
+        "x-ms-correlation-request-id": [ "6a72cdac-a836-418e-b51b-b3f0e56f2874" ],
+        "x-ms-client-request-id": [ "5557ef6a-d125-4fe6-96bf-92acfbe6de81" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "397e36ac-e65f-4638-a939-d0e9ddfbdca3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103035Z:bf5373f5-928c-43e2-b6db-6ea9cc9ca643" ],
+        "x-ms-request-id": [ "52bef892-2f85-4002-8233-f2c4aa9bdd68" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082034Z:6a72cdac-a836-418e-b51b-b3f0e56f2874" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E4028F441794462E8F30069BB7CC2A32 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:29Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 08D1DDBAC3DF487FBD0006ADB309F1F7 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:33Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "4439" ],
+        "Content-Length": [ "1733" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3974757\",\"properties\":{\"accountId\":\"3974757\",\"accountName\":\"3974757\",\"organizationId\":\"d2f7ead5-855d-4c76-ab0e-8db6ace6a4e1\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4003694\",\"properties\":{\"accountId\":\"4003694\",\"accountName\":\"4003694\",\"organizationId\":\"2ae82717-8d07-45e6-946f-6221e47687fb\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3967352\",\"properties\":{\"accountId\":\"3967352\",\"accountName\":\"3967352\",\"organizationId\":\"9a7aa973-ff6e-4e0f-acd6-86b41f6a7b80\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4456029\",\"properties\":{\"accountId\":\"4456029\",\"accountName\":\"4456029\",\"organizationId\":\"a5dec75f-e145-4243-bae7-5197df2219f6\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4458669\",\"properties\":{\"accountId\":\"4458669\",\"accountName\":\"4458669\",\"organizationId\":\"50919780-11fc-42a5-934f-6ae8dc6587d9\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3967342\",\"properties\":{\"accountId\":\"3967342\",\"accountName\":\"3967342\",\"organizationId\":\"51170629-d6fd-4c58-91a3-0efb267704e7\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3966988\",\"properties\":{\"accountId\":\"3966988\",\"accountName\":\"3966988\",\"organizationId\":\"61c8301a-d564-4c97-aeec-d9bec5bca043\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4002514\",\"properties\":{\"accountId\":\"4002514\",\"accountName\":\"4002514\",\"organizationId\":\"20b21e30-2716-41d0-b5e7-a0b04f30bd22\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3994838\",\"properties\":{\"accountId\":\"3994838\",\"accountName\":\"3994838\",\"organizationId\":\"40f16846-b6e5-4394-9dcd-36c484b5d907\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3994857\",\"properties\":{\"accountId\":\"3994857\",\"accountName\":\"3994857\",\"organizationId\":\"ea6e1130-d7a1-4519-826f-e7d51b66c7a4\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3968603\",\"properties\":{\"accountId\":\"3968603\",\"accountName\":\"3968603\",\"organizationId\":\"5ef43ba0-1831-44a3-a8d0-6da95bec103e\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/3996563\",\"properties\":{\"accountId\":\"3996563\",\"accountName\":\"3996563\",\"organizationId\":\"9c5445c7-65e3-4bd5-8581-80c65584100f\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4002530\",\"properties\":{\"accountId\":\"4002530\",\"accountName\":\"4002530\",\"organizationId\":\"6f8b584a-02a8-4e0a-bd96-77e39f017802\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4002524\",\"properties\":{\"accountId\":\"4002524\",\"accountName\":\"4002524\",\"organizationId\":\"88920754-30e2-4356-8211-60ae56d8ea54\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4442203\",\"properties\":{\"accountId\":\"4442203\",\"accountName\":\"4442203\",\"organizationId\":\"b5c18841-c8a2-4c34-9aa6-45edfa0e0783\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4404219\",\"properties\":{\"accountId\":\"4404219\",\"accountName\":\"4404219\",\"organizationId\":\"c15df2c9-75ba-4d92-9e83-6b9657a60aac\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4457435\",\"properties\":{\"accountId\":\"4457435\",\"accountName\":\"4457435\",\"organizationId\":\"d660d396-4114-4f97-a29e-ad8833c4bec6\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts/4457456\",\"properties\":{\"accountId\":\"4457456\",\"accountName\":\"4457456\",\"organizationId\":\"fe8fd616-c10d-40c2-b680-0a487ec69b0d\",\"region\":\"eastus\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts/6909368\",\"properties\":{\"accountId\":\"6909368\",\"accountName\":\"6909368\",\"organizationId\":\"5ffc7f23-e261-4a30-9f27-d3332eef3811\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts/6959577\",\"properties\":{\"accountId\":\"6959577\",\"accountName\":\"6959577\",\"organizationId\":\"f513b1ae-b616-47e2-9778-33f88aa5837a\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts/7084460\",\"properties\":{\"accountId\":\"7084460\",\"accountName\":\"7084460\",\"organizationId\":\"13e1dc6f-cdcb-4761-bda8-463e787b5ab3\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts/7087678\",\"properties\":{\"accountId\":\"7087678\",\"accountName\":\"7087678\",\"organizationId\":\"96afd653-b580-4083-ac56-d31bd8d9f2ff\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts/7243015\",\"properties\":{\"accountId\":\"7243015\",\"accountName\":\"7243015\",\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts/7243013\",\"properties\":{\"accountId\":\"7243013\",\"accountName\":\"7243013\",\"organizationId\":\"ae39e438-7ab7-47a7-b701-a34da0c2e56b\",\"region\":\"eastus\"}},{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts/7243011\",\"properties\":{\"accountId\":\"7243011\",\"accountName\":\"7243011\",\"organizationId\":\"e020aa55-72d6-44f5-944c-397033f3c4ed\",\"region\":\"eastus\"}}]}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/plans?api-version=2024-01-01\u0026organizationId=d2f7ead5-855d-4c76-ab0e-8db6ace6a4e1+2": {
+  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/plans?api-version=2025-05-01-preview\u0026organizationId=5ffc7f23-e261-4a30-9f27-d3332eef3811+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/plans?api-version=2024-01-01\u0026organizationId=d2f7ead5-855d-4c76-ab0e-8db6ace6a4e1",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/plans?api-version=2025-05-01-preview\u0026organizationId=5ffc7f23-e261-4a30-9f27-d3332eef3811",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "28dba85a-f73e-48ab-b244-bc33ce8c046e" ],
+        "x-ms-client-request-id": [ "45ff99ad-3123-4dce-9a50-6bf992605681" ],
         "CommandName": [ "Get-AzNewRelicPlan" ],
         "FullCommandName": [ "Get-AzNewRelicPlan_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -548,43 +559,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/southeastasia/099b52ce-b4b9-4687-9f75-cadfd0470cfb" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "f82ea6f6-5a4f-4684-9ae3-3457b2d439cf" ],
-        "x-ms-correlation-request-id": [ "f7cba895-f618-4a1b-a2e9-b21db4576e49" ],
-        "x-ms-client-request-id": [ "28dba85a-f73e-48ab-b244-bc33ce8c046e" ],
+        "mise-correlation-id": [ "a379b405-afee-4f8f-b521-b7d778370355" ],
+        "x-ms-correlation-request-id": [ "91940784-3e5c-4ff4-9dd7-9c187d946930" ],
+        "x-ms-client-request-id": [ "45ff99ad-3123-4dce-9a50-6bf992605681" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "1b3534ea-7116-480b-a3df-c503a5a4c53e" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103038Z:f7cba895-f618-4a1b-a2e9-b21db4576e49" ],
+        "x-ms-request-id": [ "ba096238-87ce-417e-a989-ead32b320f0e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251016T082039Z:91940784-3e5c-4ff4-9dd7-9c187d946930" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D5C611F4094945A993F89A1F1BDD9B1E Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:35Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1DFF6DBA94044AAF9A94A8DFC4CAB5DA Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:34Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "158" ],
+        "Content-Length": [ "384" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/plans/\",\"properties\":{\"orgCreationSource\":\"NEWRELIC\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/plans/standardpaygrevisedplan\",\"properties\":{\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"standardpaygrevisedplan@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2025-07-14T05:17:20.245Z\"},\"orgCreationSource\":\"LIFTR\"}}]}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+OrganizationList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/organizations?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus+1": {
+  "NewRelicObservability+[NoContext]+OrganizationList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/organizations?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/organizations?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/organizations?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "a8be3673-2c55-4f4b-8e8d-af79e3c06e89" ],
+        "x-ms-client-request-id": [ "ce8b8a9a-508e-4e60-a0e1-a45939742242" ],
         "CommandName": [ "Get-AzNewRelicOrganization" ],
         "FullCommandName": [ "Get-AzNewRelicOrganization_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -595,19 +607,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/southeastasia/f892e91e-f586-4bdc-8b22-2ab4f8076c8a" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "2d23b9ff-0c4a-45a5-9dc1-a682f79fe692" ],
+        "mise-correlation-id": [ "8e31c654-3d95-42cf-b8fb-6dafe1c3ed61" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "ac638a51-55bd-4d6a-85ed-60d55b4d1083" ],
-        "x-ms-correlation-request-id": [ "6c06d57e-db73-46ee-a32d-ca6941aa6e4c" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103042Z:6c06d57e-db73-46ee-a32d-ca6941aa6e4c" ],
+        "x-ms-request-id": [ "360d8794-3455-42ed-bbdc-945fa4e17c49" ],
+        "x-ms-correlation-request-id": [ "6e03f7ed-f3cd-4ad3-8c4b-587626954870" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251016T082044Z:6e03f7ed-f3cd-4ad3-8c4b-587626954870" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CDEEB124EB134A02B120496FCFB3F98A Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:39Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2AB021D871D04BF38DE8C8EBD54300FF Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:39Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
@@ -618,19 +631,19 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+ListMonitorLinkedResource+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listLinkedResources?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+ListMonitorLinkedResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listLinkedResources?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listLinkedResources?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listLinkedResources?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "157d667d-10fb-4458-8fab-20b0697b83d9" ],
-        "CommandName": [ "Get-AzNewRelicMonitorLinkedResource" ],
+        "x-ms-client-request-id": [ "4c40ff1c-97df-4d32-94d1-0d3eb6130b14" ],
+        "CommandName": [ "Az.NewRelic.internal\\Get-AzNewRelicMonitorLinkedResource" ],
         "FullCommandName": [ "Get-AzNewRelicMonitorLinkedResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -641,42 +654,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/southeastasia/4836522c-3855-413b-9d4d-7b2cc0df6867" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "a1a26de9-1dd3-4c08-ae0e-b270998048e8" ],
+        "mise-correlation-id": [ "44ddd5e3-4df6-4601-83ed-4fad0043c560" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "026690f5-c2fc-4546-ad85-883557f79743" ],
-        "x-ms-correlation-request-id": [ "77492902-c2d1-4ccf-a4db-9091ad59f4ea" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103044Z:77492902-c2d1-4ccf-a4db-9091ad59f4ea" ],
+        "x-ms-request-id": [ "5b89320a-1df4-46e3-b3a0-927789ba2485" ],
+        "x-ms-correlation-request-id": [ "16eddb18-bfe2-45ad-8444-3c79257dab88" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251016T082046Z:16eddb18-bfe2-45ad-8444-3c79257dab88" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C238A3C3604F4D78B601B591AF78F45A Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:42Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 903E7029E9594EDA9FB12B98C5A6E9AE Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:44Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "176" ],
+        "Content-Length": [ "197" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/TESTGROUP-JOYER/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/TESTMONITOR-01\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/VANSHJOSHI-CLIENTPARITY-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/CLIENTPARITY-TEST-1014\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+BillingInfoGet+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/getBillingInfo?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+BillingInfoGet+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getBillingInfo?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/getBillingInfo?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getBillingInfo?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "8ba8ada0-82fa-42dd-8ef2-91485fe7fcb4" ],
+        "x-ms-client-request-id": [ "eddfaf32-8eef-4aab-bd31-6fd00076b993" ],
         "CommandName": [ "Get-AzNewRelicBillingInfo" ],
         "FullCommandName": [ "Get-AzNewRelicBillingInfo_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -687,42 +701,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/5bd730bc-2e3f-4f09-8c70-c3ec2b6d2a07" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "8767dfa1-dbdf-4413-b258-08cd60bed69e" ],
+        "mise-correlation-id": [ "c9c7e4ed-94a2-49d2-a303-f1b7d914813a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "25ffe5f7-3ca1-4e19-a26f-73ce77401a8f" ],
-        "x-ms-correlation-request-id": [ "fff74525-53d2-47ed-be5f-2a83ecf395d4" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103047Z:fff74525-53d2-47ed-be5f-2a83ecf395d4" ],
+        "x-ms-request-id": [ "4150b257-659b-4be4-99e0-bfd0906a340d" ],
+        "x-ms-correlation-request-id": [ "b876e113-18c0-4485-a701-52c35ff72191" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082049Z:b876e113-18c0-4485-a701-52c35ff72191" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0D36ABBFE2D0452286E76845C9EFE26C Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:44Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 78D08DC072B54C659491847A476A0B63 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:46Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "633" ],
+        "Content-Length": [ "642" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"marketplaceSaasInfo\":{\"marketplaceSubscriptionId\":\"d0d07a42-ee17-478b-d979-1ddf7d726657\",\"marketplaceSubscriptionName\":\"AzNewRelic_1c26e57e-f627-44d0-8943-a2adebe4d900_testMonitor-01\",\"marketplaceResourceId\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/Microsoft.SaaS/resources/AzNewRelic_ab3d1aa1-285c-44c2-a82a-a1b7e10ac465_testMonitor-01\",\"marketplaceStatus\":\"Subscribed\",\"billedAzureSubscriptionId\":\"272c26cb-7026-4b37-b190-7cb7b2abecb0\"},\"partnerBillingEntity\":{\"organizationId\":\"d660d396-4114-4f97-a29e-ad8833c4bec6\",\"organizationName\":\"d660d396-4114-4f97-a29e-ad8833c4bec6\"}}",
+      "Content": "{\"marketplaceSaasInfo\":{\"marketplaceSubscriptionId\":\"4b3683e9-b7d9-4edd-c31f-30e4a7db5057\",\"marketplaceSubscriptionName\":\"AzNewRelic_90b894e2-8de4-40d3-82a5-560208b3ba2e_clientParity\",\"marketplaceResourceId\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/Microsoft.SaaS/resources/AzNewRelic_90b894e2-8de4-40d3-82a5-560208b3ba2e_clientParity\",\"marketplaceStatus\":\"Subscribed\",\"billedAzureSubscriptionId\":\"e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e\"},\"partnerBillingEntity\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\",\"organizationName\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+GetConnectedPartnerResource+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listConnectedPartnerResources?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+GetConnectedPartnerResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listConnectedPartnerResources?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/listConnectedPartnerResources?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listConnectedPartnerResources?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "611783a2-3679-4636-ab5a-5854ba80df23" ],
+        "x-ms-client-request-id": [ "c47ca2f8-21b3-49b9-b8e1-9fb1716bd7e5" ],
         "CommandName": [ "Get-AzNewRelicConnectedPartnerResource" ],
         "FullCommandName": [ "Get-AzNewRelicConnectedPartnerResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -733,33 +748,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/a13d2412-c79f-447d-86ac-f0709ebbcc93" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
-        "mise-correlation-id": [ "fb0721b2-733c-4c57-ae83-49317cdb0f9b" ],
+        "mise-correlation-id": [ "7cf75c08-727b-4143-b242-1eea13dcb473" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e4938e1b-f179-45db-8e3a-69a58d765569" ],
-        "x-ms-correlation-request-id": [ "9dbdb79a-7497-413d-b402-72fd31871aa4" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103050Z:9dbdb79a-7497-413d-b402-72fd31871aa4" ],
+        "x-ms-request-id": [ "0b5b877d-29fd-4149-8604-16f7bb307436" ],
+        "x-ms-correlation-request-id": [ "14cc37f5-20a8-456f-8b15-29c30fda7b9b" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082050Z:14cc37f5-20a8-456f-8b15-29c30fda7b9b" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DBDE10686A004AACA695FAD589083BA7 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:47Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3662C536C72C40439900DCE854330108 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:49Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "278" ],
+        "Content-Length": [ "299" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"accountName\":\"Account 4458669\",\"accountId\":\"4458669\",\"azureResourceId\":\"/SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/TESTGROUP-JOYER/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/TESTMONITOR-01\",\"location\":\"eastus\"}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"properties\":{\"accountName\":\"Account 7243015\",\"accountId\":\"7243015\",\"azureResourceId\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/VANSHJOSHI-CLIENTPARITY-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/CLIENTPARITY-TEST-1014\",\"location\":\"eastus\"}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleUpdateExpanded+$PATCH+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleUpdateExpanded+$PATCH+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendActivityLogs\": \"Disabled\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -774,41 +790,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0d00ad43-0000-0100-0000-664f1adb0000\"" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "ETag": [ "\"0c05e3c5-0000-0100-0000-68f0aae30000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/4b1d891c-4a1f-497c-995d-1de064ea7e0e" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "d53036e7-e22d-4989-ae78-056aa1840267" ],
-        "x-ms-correlation-request-id": [ "6f4ab2ab-01d5-478c-8db8-b5a7be35e334" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103051Z:6f4ab2ab-01d5-478c-8db8-b5a7be35e334" ],
+        "x-ms-request-id": [ "18bc715e-852b-465b-9565-6248ffcca1ec" ],
+        "x-ms-correlation-request-id": [ "a84432b7-02d7-4a92-8819-64dd542e31cf" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082051Z:a84432b7-02d7-4a92-8819-64dd542e31cf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3AF04EF35225419AA4656EF08D1A507E Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:50Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 43B8429B01B342CF8176C5C3A4889A78 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:51Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:51 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "691" ],
+        "Content-Length": [ "718" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-23T10:29:27.0521822Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-23T10:30:50.7241381Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Disabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:20:51.5240726Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Disabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleDelete+$DELETE+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleDelete+$DELETE+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/testgroup-joyer/providers/NewRelic.Observability/monitors/testMonitor-01/tagRules/default?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "ec2a91c1-55c1-499a-a219-e189999f4416" ],
+        "x-ms-client-request-id": [ "465b2ff0-a2dc-4dfc-8f9a-af4e2a602bca" ],
         "CommandName": [ "Remove-AzNewRelicMonitorTagRule" ],
         "FullCommandName": [ "Remove-AzNewRelicMonitorTagRule_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.NewRelic/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.NewRelic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -821,15 +838,16 @@
         "Pragma": [ "no-cache" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "2b5b0833-865c-4bd5-8c38-d37f8bc2cb7d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240523T103054Z:2b5b0833-865c-4bd5-8c38-d37f8bc2cb7d" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a497bc27-2c8d-4543-903d-9388fe2a65bc/eastus/2d9d4a32-abf5-42da-806b-758f2aaa4a29" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "e0cac22e-180c-4828-85b2-9c4e1c6f8fac" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251016T082052Z:e0cac22e-180c-4828-85b2-9c4e1c6f8fac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 12323B564DB844708E0F284D7C4B23F4 Ref B: MAA201060516031 Ref C: 2024-05-23T10:30:51Z" ],
-        "Date": [ "Thu, 23 May 2024 10:30:54 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 580B82B91BAB46FB89DF9EF510B758D8 Ref B: JKT201051407029 Ref C: 2025-10-16T08:20:52Z" ],
+        "Date": [ "Thu, 16 Oct 2025 08:20:52 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

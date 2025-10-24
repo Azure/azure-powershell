@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitorMetricStatus
 
 ## SYNOPSIS
-Get metric status
+Retrieves the metric status that are configured in the New Relic monitor resource
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Get-AzNewRelicMonitorMetricStatus -InputObject <INewRelicIdentity> -UserEmail <S
 ```
 
 ## DESCRIPTION
-Get metric status
+Retrieves the metric status that are configured in the New Relic monitor resource
 
 ## EXAMPLES
 

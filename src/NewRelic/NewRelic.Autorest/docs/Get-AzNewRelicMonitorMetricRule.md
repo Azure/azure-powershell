@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitorMetricRule
 
 ## SYNOPSIS
-Get metric rules
+Retrieves the metric rules that are configured in the New Relic monitor resource
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzNewRelicMonitorMetricRule -MonitorName <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Get metric rules
+Retrieves the metric rules that are configured in the New Relic monitor resource
 
 ## EXAMPLES
 
