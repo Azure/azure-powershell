@@ -16,34 +16,34 @@ Validate whether a disk snapshot backup can be taken for list of volumes.
 ```
 Test-AzElasticSanVolumeBackup -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -VolumeName <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupViaJsonString
 ```
 Test-AzElasticSanVolumeBackup -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupViaJsonFilePath
 ```
 Test-AzElasticSanVolumeBackup -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Backup
 ```
 Test-AzElasticSanVolumeBackup -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -Parameter <IVolumeNameList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupViaIdentityElasticSanExpanded
 ```
 Test-AzElasticSanVolumeBackup -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- -VolumeName <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -VolumeName <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,20 +51,20 @@ Test-AzElasticSanVolumeBackup -VolumeGroupName <String> -ElasticSanInputObject <
 ```
 Test-AzElasticSanVolumeBackup -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
  -Parameter <IVolumeNameList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupViaIdentityExpanded
 ```
 Test-AzElasticSanVolumeBackup -InputObject <IElasticSanIdentity> -VolumeName <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### BackupViaIdentity
 ```
 Test-AzElasticSanVolumeBackup -InputObject <IElasticSanIdentity> -Parameter <IVolumeNameList>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -73,27 +73,18 @@ Validate whether a disk snapshot backup can be taken for list of volumes.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate whether a disk snapshot backup can be taken for list of volumes.
 ```powershell
-{{ Add code here }}
+Test-AzElasticSanVolumeBackup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -VolumeName myvolume
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ValidationStatus
+----------------
+Success
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command validates whether a disk snapshot backup can be taken for list of volumes.
 
 ## PARAMETERS
 
@@ -230,21 +221,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

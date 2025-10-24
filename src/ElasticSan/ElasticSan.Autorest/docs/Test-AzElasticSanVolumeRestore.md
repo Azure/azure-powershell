@@ -71,27 +71,18 @@ Validate whether a list of backed up disk snapshots can be restored into Elastic
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
 ```powershell
-{{ Add code here }}
+Test-AzElasticSanVolumeRestore -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -DiskSnapshotId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Compute/snapshots/mydisksnapshot"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ValidationStatus
+----------------
+Success
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command validates whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
 
 ## PARAMETERS
 

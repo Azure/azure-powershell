@@ -71,27 +71,18 @@ Validate whether a disk snapshot backup can be taken for list of volumes.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate whether a disk snapshot backup can be taken for list of volumes.
 ```powershell
-{{ Add code here }}
+Test-AzElasticSanVolumeBackup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -VolumeName myvolume
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ValidationStatus
+----------------
+Success
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command validates whether a disk snapshot backup can be taken for list of volumes.
 
 ## PARAMETERS
 

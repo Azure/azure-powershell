@@ -16,33 +16,33 @@ Get a Volume Snapshot.
 ```
 Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -VolumeGroupName <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -VolumeGroupName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityVolumegroup
 ```
 Get-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityElasticSan
 ```
 Get-AzElasticSanVolumeSnapshot -Name <String> -VolumeGroupName <String>
- -ElasticSanInputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -ElasticSanInputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,21 +239,6 @@ Parameter Sets: Get, GetViaIdentityVolumegroup, GetViaIdentityElasticSan
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

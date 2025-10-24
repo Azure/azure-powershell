@@ -138,6 +138,38 @@ directive:
       parameter-name: KeyVaultPropertyKeyVersion
     set:
       parameter-name: KeyVersion
+  - where: 
+      parameter-name: ScaleUpPropertyAutoScalePolicyEnforcement
+    set:
+      parameter-name: AutoScalePolicyEnforcement
+  - where: 
+      parameter-name: ScaleUpPropertyCapacityUnitScaleUpLimitTiB
+    set:
+      parameter-name: CapacityUnitScaleUpLimitTiB
+  - where: 
+      parameter-name: ScaleUpPropertyIncreaseCapacityUnitByTiB
+    set:
+      parameter-name: IncreaseCapacityUnitByTiB
+  - where: 
+      parameter-name: ScaleUpPropertyUnusedSizeTiB
+    set:
+      parameter-name: UnusedSizeTiB
+  - where: 
+      property-name: ScaleUpPropertyAutoScalePolicyEnforcement
+    set: 
+      property-name: AutoScalePolicyEnforcement
+  - where:
+      property-name: ScaleUpPropertyCapacityUnitScaleUpLimitTiB
+    set:
+      property-name: CapacityUnitScaleUpLimitTiB
+  - where:
+      property-name: ScaleUpPropertyIncreaseCapacityUnitByTiB
+    set:
+      property-name: IncreaseCapacityUnitByTiB
+  - where:
+      property-name: ScaleUpPropertyUnusedSizeTiB
+    set:
+      property-name: UnusedSizeTiB
   # Change the description of cmdlets that correspond to multiple APIs
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}"].get

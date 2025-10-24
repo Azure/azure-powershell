@@ -16,55 +16,55 @@ Validate whether a list of backed up disk snapshots can be restored into Elastic
 ```
 Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -DiskSnapshotId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestoreViaJsonString
 ```
 Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestoreViaJsonFilePath
 ```
 Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Restore
 ```
 Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VolumeGroupName <String> -Parameter <IDiskSnapshotList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityElasticSanExpanded
 ```
 Test-AzElasticSanVolumeRestore -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
  -DiskSnapshotId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityElasticSan
 ```
 Test-AzElasticSanVolumeRestore -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
  -Parameter <IDiskSnapshotList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpanded
 ```
 Test-AzElasticSanVolumeRestore -InputObject <IElasticSanIdentity> -DiskSnapshotId <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
 ```
 Test-AzElasticSanVolumeRestore -InputObject <IElasticSanIdentity> -Parameter <IDiskSnapshotList>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -73,27 +73,18 @@ Validate whether a list of backed up disk snapshots can be restored into Elastic
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
 ```powershell
-{{ Add code here }}
+Test-AzElasticSanVolumeRestore -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -DiskSnapshotId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Compute/snapshots/mydisksnapshot"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ValidationStatus
+----------------
+Success
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command validates whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
 
 ## PARAMETERS
 
@@ -245,21 +236,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
