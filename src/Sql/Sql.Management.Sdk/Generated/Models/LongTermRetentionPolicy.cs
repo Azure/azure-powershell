@@ -34,6 +34,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="type">Resource type.
         /// </param>
 
+        /// <param name="timeBasedImmutability">The setting for whether to enable time-based immutability for future
+        /// backups. When set, future backups will have TimeBasedImmutability enabled.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="timeBasedImmutabilityMode">The setting for time-based immutability mode for future backup (Value can
+        /// be either Locked or UnLocked. Only effective if TimeBasedImmutability is
+        /// enabled). Caution: Immutability of LTR backup cannot be removed if
+        /// TimeBasedImmutabilityMode is Locked.
+        /// Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;</param>
+
         /// <param name="weeklyRetention">The weekly retention policy for an LTR backup in an ISO 8601 format.
         /// </param>
 
@@ -45,10 +55,12 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="weekOfYear">The week of year to take the yearly backup in an ISO 8601 format.
         /// </param>
-        public LongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
+        public LongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), string timeBasedImmutability = default(string), string timeBasedImmutabilityMode = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
 
         : base(id, name, type)
         {
+            this.TimeBasedImmutability = timeBasedImmutability;
+            this.TimeBasedImmutabilityMode = timeBasedImmutabilityMode;
             this.WeeklyRetention = weeklyRetention;
             this.MonthlyRetention = monthlyRetention;
             this.YearlyRetention = yearlyRetention;
@@ -61,6 +73,23 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the setting for whether to enable time-based immutability for
+        /// future backups. When set, future backups will have TimeBasedImmutability
+        /// enabled. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.timeBasedImmutability")]
+        public string TimeBasedImmutability {get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting for time-based immutability mode for future backup
+        /// (Value can be either Locked or UnLocked. Only effective if
+        /// TimeBasedImmutability is enabled). Caution: Immutability of LTR backup
+        /// cannot be removed if TimeBasedImmutabilityMode is Locked. Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.timeBasedImmutabilityMode")]
+        public string TimeBasedImmutabilityMode {get; set; }
 
         /// <summary>
         /// Gets or sets the weekly retention policy for an LTR backup in an ISO 8601
