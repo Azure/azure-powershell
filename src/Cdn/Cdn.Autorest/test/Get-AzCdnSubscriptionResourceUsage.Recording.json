@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "155" ],
-        "x-ms-client-request-id": [ "49c4d9a3-f8a1-4483-a28f-de2914004684" ],
+        "x-ms-unique-id": [ "167" ],
+        "x-ms-client-request-id": [ "04d4a5ff-3af7-4903-8b3c-658491a6de6e" ],
         "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.1", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,24 +23,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "5f53fc29-a49c-4c81-97aa-58fcb7cdde1c" ],
-        "x-ms-client-request-id": [ "49c4d9a3-f8a1-4483-a28f-de2914004684" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiasoutheast/3b243e4b-a4f2-4532-b7e1-bb32e3b3c782" ],
+        "x-ms-request-id": [ "8e17ff49-edb9-4ae0-a417-1f70040d9fe5" ],
+        "x-ms-client-request-id": [ "04d4a5ff-3af7-4903-8b3c-658491a6de6e" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/2976f5cf-cf2c-442e-87dd-a480115f619b" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "9555ba44-ebd4-4a22-b309-6948b396881f" ],
-        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20250508T073606Z:9555ba44-ebd4-4a22-b309-6948b396881f" ],
+        "x-ms-correlation-request-id": [ "e73701cc-2bd3-47ef-abaa-3f2be359d0d5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251024T104805Z:e73701cc-2bd3-47ef-abaa-3f2be359d0d5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2539B11042594A1B9E3FC1A55DA3C426 Ref B: SYD03EDGE1408 Ref C: 2025-05-08T07:36:05Z" ],
-        "Date": [ "Thu, 08 May 2025 07:36:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 17C3FA5DF06343DC919210E07290505E Ref B: SYD03EDGE1007 Ref C: 2025-10-24T10:48:05Z" ],
+        "Date": [ "Fri, 24 Oct 2025 10:48:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "158" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"resourceType\":\"profile\",\"unit\":\"count\",\"currentValue\":33,\"limit\":200},{\"resourceType\":\"afdprofile\",\"unit\":\"count\",\"currentValue\":30,\"limit\":500}]}",
+      "Content": "{\"value\":[{\"resourceType\":\"profile\",\"unit\":\"count\",\"currentValue\":32,\"limit\":200},{\"resourceType\":\"afdprofile\",\"unit\":\"count\",\"currentValue\":31,\"limit\":500}]}",
       "isContentBase64": false
     }
   }

@@ -15,15 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEdgeAction'))
 }
 
 Describe 'New-AzCdnEdgeAction' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        # Test creating edge action with expanded parameters
+        $resourceGroupName = $env.ResourceGroupName
+        $edgeActionName = "ea" + (Get-Random -Maximum 99999)
+        
+        try {
+            $result = New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+            
+            $result | Should -Not -BeNullOrEmpty
+            $result.Name | Should -Be $edgeActionName
+            $result.ResourceGroupName | Should -Be $resourceGroupName
+        } finally {
+            # Cleanup
+            try { Remove-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -NoWait -ErrorAction SilentlyContinue } catch {}
+        }
     }
 
     It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
