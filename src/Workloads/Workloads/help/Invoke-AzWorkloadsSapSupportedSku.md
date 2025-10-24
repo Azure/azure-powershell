@@ -23,8 +23,7 @@ Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] 
 ### Invoke
 ```
 Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>]
- -Body <ISapSupportedSkusRequest> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Body <ISapSupportedSkusRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityExpanded

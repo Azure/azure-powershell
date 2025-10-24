@@ -17,24 +17,22 @@ Update a provider instance for the specified subscription, resource group, SAP m
 Update-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean>]
  [-ProviderSetting <IProviderSpecificProperties>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMonitorExpanded
 ```
 Update-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
  [-EnableSystemAssignedIdentity <Boolean>] [-ProviderSetting <IProviderSpecificProperties>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-EnableSystemAssignedIdentity <Boolean>]
  [-ProviderSetting <IProviderSpecificProperties>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderDB2Ins
 
 Describe 'New-AzWorkloadsProviderDB2InstanceObject' {
     It '__AllParameterSets' {
-        $providerSetting = New-AzWorkloadsProviderDB2InstanceObject -Name Sample -Password '' -Port 25000 -Username db2admin -Hostname 10.1.21.4 -SapSid OPA -SslPreference Disabled
+        $providerSetting = New-AzWorkloadsProviderDB2InstanceObject -Name KLN -Password 'Geslo2aDbDva' -Port 5912 -Username db2kln -Hostname 10.170.200.4 -SapSid KLN -SslPreference Disabled
         $providerSetting.ProviderType | Should -Be "Db2"
 
         $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.db2ProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting $providerSetting
