@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// on all nodes in the cluster. For more information see [Custom CA Trust
         /// Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
         /// </param>
-        public ManagedClusterSecurityProfile(ManagedClusterSecurityProfileDefender defender = default(ManagedClusterSecurityProfileDefender), AzureKeyVaultKms azureKeyVaultKms = default(AzureKeyVaultKms), ManagedClusterSecurityProfileWorkloadIdentity workloadIdentity = default(ManagedClusterSecurityProfileWorkloadIdentity), ManagedClusterSecurityProfileImageCleaner imageCleaner = default(ManagedClusterSecurityProfileImageCleaner), System.Collections.Generic.IList<byte[]?> customCaTrustCertificates = default(System.Collections.Generic.IList<byte[]?>))
+        public ManagedClusterSecurityProfile(ManagedClusterSecurityProfileDefender defender = default(ManagedClusterSecurityProfileDefender), AzureKeyVaultKms azureKeyVaultKms = default(AzureKeyVaultKms), ManagedClusterSecurityProfileWorkloadIdentity workloadIdentity = default(ManagedClusterSecurityProfileWorkloadIdentity), ManagedClusterSecurityProfileImageCleaner imageCleaner = default(ManagedClusterSecurityProfileImageCleaner), System.Collections.Generic.IList<byte[]> customCaTrustCertificates = default(System.Collections.Generic.IList<byte[]>))
 
         {
             this.Defender = defender;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customCATrustCertificates")]
-        public System.Collections.Generic.IList<byte[]?> CustomCaTrustCertificates {get; set; }
+        public System.Collections.Generic.IList<byte[]> CustomCaTrustCertificates {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

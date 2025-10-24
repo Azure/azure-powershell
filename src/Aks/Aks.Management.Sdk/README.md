@@ -63,7 +63,9 @@ directive:
       property-name: PropertiesType
     set:
       property-name: AgentPoolType
-
+  - from: ManagedClusterSecurityProfile.cs
+    where: $
+    transform: $ = $.replaceAll('System.Collections.Generic.IList<byte[]?>', 'System.Collections.Generic.IList<byte[]>');
 output-folder: Generated
 namespace: Microsoft.Azure.Management.ContainerService
 ```
