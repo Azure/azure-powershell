@@ -16,14 +16,36 @@ Creates a replication for a container registry with the specified parameters.
 ```
 New-AzContainerRegistryReplication -RegistryName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] -Location <String> [-RegionEndpointEnabled] [-Tag <Hashtable>]
- [-ZoneRedundancy <ZoneRedundancy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ZoneRedundancy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerRegistryReplication -RegistryName <String> -ResourceGroupName <String> [-Name <String>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerRegistryReplication -RegistryName <String> -ResourceGroupName <String> [-Name <String>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByRegistry
 ```
 New-AzContainerRegistryReplication [-Name <String>] [-SubscriptionId <String>] -Registry <IRegistry>
- -Location <String> [-RegionEndpointEnabled] [-Tag <Hashtable>] [-ZoneRedundancy <ZoneRedundancy>]
+ -Location <String> [-RegionEndpointEnabled] [-Tag <Hashtable>] [-ZoneRedundancy <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityRegistryExpanded
+```
+New-AzContainerRegistryReplication [-Name <String>] -RegistryInputObject <IContainerRegistryIdentity>
+ -Location <String> [-RegionEndpointEnabled] [-Tag <Hashtable>] [-ZoneRedundancy <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -64,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -78,13 +101,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the resource.
 This cannot be changed after the resource is created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases: ReplicationLocation
 
 Required: True
@@ -130,7 +183,7 @@ Requests will not be routed to a replication whose regional endpoint is disabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -142,10 +195,9 @@ Accept wildcard characters: False
 
 ### -Registry
 The Registry Object.
-To construct, see NOTES section for REGISTRY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 Parameter Sets: CreateByRegistry
 Aliases:
 
@@ -156,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: CreateViaIdentityRegistryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: ContainerRegistryName
 
 Required: True
@@ -177,7 +244,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -193,7 +260,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString, CreateByRegistry
 Aliases:
 
 Required: False
@@ -208,7 +275,7 @@ The tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases: Tags
 
 Required: False
@@ -222,8 +289,8 @@ Accept wildcard characters: False
 Whether or not zone redundancy is enabled for this container registry replication
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ZoneRedundancy
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -269,9 +336,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication
 
 ## NOTES
 
