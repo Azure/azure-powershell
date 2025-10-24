@@ -7,7 +7,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
     param(
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
-        [ValidateSet('AzureKubernetesService', 'AzureBlob')]
+        [ValidateSet('AzureKubernetesService', 'AzureBlob', 'AzureDataLakeStorage')]
         ${DatasourceType},
         
         [Parameter(Mandatory=$false, HelpMessage='List of resource types to be excluded from backup')]
@@ -39,7 +39,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
         ${IncludeClusterScopeResource},
 
         [Parameter(Mandatory=$false, HelpMessage='Hook reference to be executed during backup.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.NamespacedNameResource[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.NamespacedNameResource[]]
         ${BackupHookReference},
         
         [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob.')]
@@ -71,7 +71,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                 throw $message
             }
 
-            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.KubernetesClusterBackupDatasourceParameters]::new()
+            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.KubernetesClusterBackupDatasourceParameters]::new()
             $dataSourceParam.ObjectType = "KubernetesClusterBackupDatasourceParameters"
         
             $dataSourceParam.ExcludedResourceType = $ExcludedResourceType
@@ -97,7 +97,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
         }
 
         if($DatasourceType.ToString() -eq "AzureBlob"){
-            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BlobBackupDatasourceParameters]::new()
+            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.BlobBackupDatasourceParameters]::new()
             $dataSourceParam.ObjectType = "BlobBackupDatasourceParameters"
             
             if($VaultedBackupContainer -ne $null){
@@ -106,6 +106,45 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                 $unsupportedContainers = $VaultedBackupContainer | Where-Object { $_ -like '$*' -and $_ -ne "`$root" -and $_ -ne "`$web"}
                 if($unsupportedContainers.Count -gt 0){
                     $message = "Following containers are not allowed for configure protection with AzureBlob - $unsupportedContainers. Please remove them and proceed."
+                    throw $message
+                }
+
+                $dataSourceParam.ContainersList = $VaultedBackupContainer
+            }
+            elseif($IncludeAllContainer){
+                if($StorageAccountName -eq $null -or $StorageAccountResourceGroupName -eq $null){
+                    $message = "Please input StorageAccountName and StorageAccountResourceGroupName parameters for fetching all vaulted containers."
+                    throw $message
+                }
+
+                CheckStorageModuleDependency
+                $storageAccount = Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAccountName 
+                $containers = Get-AzStorageContainer -Context $storageAccount.Context
+
+                # exclude containers which start with $ except $web, $root
+                $allContainers = $containers.Name | Where-Object { -not($_ -like '$*' -and $_ -ne "`$root" -and $_ -ne "`$web")}
+                $dataSourceParam.ContainersList = $allContainers
+            }
+            elseif($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $SnapshotVolume -ne $null -or $IncludeClusterScopeResource -ne $null){
+                $message = "Invalid parameters ExcludedResourceType, IncludedResourceType, ExcludedNamespace, IncludedNamespace, LabelSelector, SnapshotVolume, IncludeClusterScopeResource for given DatasourceType."
+                throw $message
+            }
+            else {
+                 $message = "Please input VaultedBackupContainer or IncludeAllContainer parameters for given workload type."
+                 throw $message
+            }
+        }
+        
+        if($DatasourceType.ToString() -eq "AzureDataLakeStorage"){
+            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.AdlsBlobBackupDatasourceParameters]::new()
+            $dataSourceParam.ObjectType = "AdlsBlobBackupDatasourceParameters"
+
+            if($VaultedBackupContainer -ne $null){
+
+                # exclude containers which start with $ except $web, $root
+                $unsupportedContainers = $VaultedBackupContainer | Where-Object { $_ -like '$*' -and $_ -ne "`$root" -and $_ -ne "`$web"}
+                if($unsupportedContainers.Count -gt 0){
+                    $message = "Following containers are not allowed for configure protection with AzureDataLakeStorage - $unsupportedContainers. Please remove them and proceed."
                     throw $message
                 }
 
