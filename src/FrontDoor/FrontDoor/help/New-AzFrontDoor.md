@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoor
 schema: 2.0.0
@@ -8,30 +8,36 @@ schema: 2.0.0
 # New-AzFrontDoor
 
 ## SYNOPSIS
-Create a new Azure Front Door load balancer
+Create a new Front Door with a Front Door name under the specified subscription and resource group.
 
 ## SYNTAX
 
-### ByFieldsWithBackendPoolsSettingParameterSet (Default)
+### CreateExpanded (Default)
 ```
-New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
- -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
- -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSetting <PSBackendPoolsSetting>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-BackendPool <IBackendPool[]>] [-BackendPoolsSetting <IBackendPoolsSettings>] [-DisableCertificateNameCheck]
+ [-EnabledState <String>] [-FriendlyName <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
+ [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
+ [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByFieldsWithCertificateNameCheckParameterSet
+### CreateViaJsonFilePath
 ```
-New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
- -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
- -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DisableCertificateNameCheck]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DisableCertificateNameCheck] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DisableCertificateNameCheck] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzFrontDoor** cmdlet creates a new Azure Front Door load balancer in the specified resource group under current subscription
+Create a new Front Door with a Front Door name under the specified subscription and resource group.
 
 ## EXAMPLES
 
@@ -63,15 +69,30 @@ Create a Front Door based on given parameters.
 
 ## PARAMETERS
 
-### -BackendPool
-Backendpools available to routing rule.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackendPool
+Backend pools available to routing rules.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -82,8 +103,8 @@ Accept wildcard characters: False
 Settings for all backendPools
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
-Parameter Sets: ByFieldsWithBackendPoolsSettingParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -94,12 +115,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -109,11 +131,10 @@ Accept wildcard characters: False
 ```
 
 ### -DisableCertificateNameCheck
-Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByFieldsWithCertificateNameCheckParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,14 +145,28 @@ Accept wildcard characters: False
 ```
 
 ### -EnabledState
-EnabledState of the Front Door load balancer.
-Default value is Enabled
+Operational status of the Front Door load balancer.
+Permitted values are 'Enabled' or 'Disabled'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
-Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FriendlyName
+A friendly name for the frontDoor
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -141,14 +176,14 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendEndpoint
-Frontend endpoints available to routing rule.
+Frontend endpoints available to routing rules.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint[]
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,8 +194,38 @@ Accept wildcard characters: False
 Health probe settings associated with this Front Door instance.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -174,11 +239,11 @@ Accept wildcard characters: False
 Load balancing settings associated with this Front Door instance.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel[]
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,12 +251,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Front Door name.
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FrontDoorName
 
 Required: True
 Position: Named
@@ -200,8 +265,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The resource group name that the Front Door will be created in.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -216,26 +296,42 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingRule
-Routing rules associated with this FrontDoor
+Routing rules associated with this Front Door.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule[]
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
-The tags associate with the FrontDoor.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -281,19 +377,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor
+
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzFrontDoor](./Get-AzFrontDoor.md)
-[Set-AzFrontDoor](./Set-AzFrontDoor.md)
-[Remove-AzFrontDoor](./Remove-AzFrontDoor.md)
-[New-AzFrontDoorRoutingRuleObject](./New-AzFrontDoorRoutingRuleObject.md)
-[New-AzFrontDoorHealthProbeSettingObject](./New-AzFrontDoorHealthProbeSettingObject.md)
-[New-AzFrontDoorLoadBalancingSettingObject](./New-AzFrontDoorLoadBalancingSettingObject.md)
-[New-AzFrontDoorFrontendEndpointObject](./New-AzFrontDoorFrontendEndpointObject.md)
-[New-AzFrontDoorBackendPoolObject](./New-AzFrontDoorBackendPoolObject.md)

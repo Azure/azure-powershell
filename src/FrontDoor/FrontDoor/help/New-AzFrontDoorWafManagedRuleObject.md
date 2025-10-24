@@ -1,29 +1,29 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafManagedRuleObject
 
 ## SYNOPSIS
-Create ManagedRule Object for WAF policy creation
+Create an in-memory object for ManagedRuleSet.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String> [-Action <String>]
- [-RuleGroupOverride <PSAzureRuleGroupOverride[]>] [-Exclusion <PSManagedRuleExclusion[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String> [-Exclusion <IManagedRuleExclusion[]>]
+ [-RuleGroupOverride <IManagedRuleGroupOverride[]>] [-RuleSetAction <String>] [-Action <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create ManagedRule Object for WAF policy creation
+Create an in-memory object for ManagedRuleSet.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create ManagedRule Object for WAF policy creation
 ```powershell
 $ruleOverride1 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log
 $ruleOverride2 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942251" -Action Log
@@ -46,7 +46,6 @@ Create a ManagedRule Object
 ## PARAMETERS
 
 ### -Action
-Rule Set Action. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'.
 
 ```yaml
 Type: System.String
@@ -60,26 +59,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Exclusion
-Exclusion
+Describes the exclusions that are applied to all rules in the set.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -91,10 +75,25 @@ Accept wildcard characters: False
 ```
 
 ### -RuleGroupOverride
-List of azure managed provider override configuration
+Defines the rule group overrides to apply to the rule set.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetAction
+Defines the rule set action.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Type of the ruleset
+Defines the rule set type to use.
 
 ```yaml
 Type: System.String
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Version of the ruleset
+Defines the version of the rule set to use.
 
 ```yaml
 Type: System.String
@@ -140,16 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSet
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
-[Update-AzFrontDoorWafPolicy](./Update-AzFrontDoorWafPolicy.md)
-[New-AzFrontDoorWafRuleGroupOverrideObject](./New-AzFrontDoorWafRuleGroupOverrideObject.md)
