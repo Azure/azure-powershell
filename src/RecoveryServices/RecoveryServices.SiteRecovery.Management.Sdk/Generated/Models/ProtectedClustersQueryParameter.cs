@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     using System.Linq;
 
     /// <summary>
-    /// Query parameters for listing protected clusters
+    /// Query parameter to enumerate protected clusters.
     /// </summary>
     public partial class ProtectedClustersQueryParameter
     {

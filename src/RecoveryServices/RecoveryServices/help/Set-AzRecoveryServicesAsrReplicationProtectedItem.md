@@ -32,6 +32,7 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
  [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>]
  [-ASRVMNicConfiguration <ASRVMNicConfig[]>] [-TestNetworkId <String>]
+ [-PlatformFaultDomain <Integer>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -309,6 +310,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: NotSelected, SelectedByUser
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlatformFaultDomain
+Specify the platform fault domain to used by the failover Vm in target recovery region.
+
+```yaml
+Type: System.int32
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
 
 Required: False
 Position: Named

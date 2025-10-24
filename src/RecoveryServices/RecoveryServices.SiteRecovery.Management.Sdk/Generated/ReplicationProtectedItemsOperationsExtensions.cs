@@ -1262,6 +1262,67 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the fabric containing the protected item.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// The name of the container containing the protected item.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        public static ReplicationProtectedItem ReinstallMobilityService(this IReplicationProtectedItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties))
+        {
+                return ((IReplicationProtectedItemsOperations)operations).ReinstallMobilityServiceAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the fabric containing the protected item.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// The name of the container containing the protected item.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationProtectedItem> ReinstallMobilityServiceAsync(this IReplicationProtectedItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ReinstallMobilityServiceWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the list of ASR replication protected items in the vault.
         /// </summary>
         /// <param name='operations'>
@@ -2447,6 +2508,67 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         public static async System.Threading.Tasks.Task<ReplicationProtectedItem> BeginUpdateMobilityServiceAsync(this IReplicationProtectedItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginUpdateMobilityServiceWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the fabric containing the protected item.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// The name of the container containing the protected item.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        public static ReplicationProtectedItem BeginReinstallMobilityService(this IReplicationProtectedItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties))
+        {
+                return ((IReplicationProtectedItemsOperations)operations).BeginReinstallMobilityServiceAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the fabric containing the protected item.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// The name of the container containing the protected item.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationProtectedItem> BeginReinstallMobilityServiceAsync(this IReplicationProtectedItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginReinstallMobilityServiceWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
