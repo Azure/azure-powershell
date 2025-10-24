@@ -15,27 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWorkloadsProviderIns
 }
 
 Describe 'Update-AzWorkloadsProviderInstance' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityMonitorExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityMonitor' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $response = Update-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.osProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting '{"sslPreference":"Disabled","providerType":"PrometheusOS","prometheusUrl":"http://10.8.1.37:9100/metrics","sapSid":"CHA"}'
+        $response.ProvisioningState | Should -Be "Succeeded"
     }
 }
