@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserve
 #>
 function Get-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'GetByItemID', Mandatory)]
@@ -189,7 +189,7 @@ function Get-AzMigrateLocalServerReplication {
             # hence retry get machine site.
             if ($siteType -eq $SiteTypes.VMwareSites) {
                 $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate\Get-AzMigrateSite' `
+                    -CommandName 'Az.Migrate.private\Get-AzMigrateSite_Get' `
                     -Parameters $PSBoundParameters `
                     -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
             } elseif ($siteType -eq $SiteTypes.HyperVSites) {
@@ -210,7 +210,7 @@ function Get-AzMigrateLocalServerReplication {
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
             $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
+                -CommandName 'Az.Migrate.private\Get-AzMigrateSolution_Get' `
                 -Parameters $PSBoundParameters `
                 -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
 
@@ -247,7 +247,7 @@ function Get-AzMigrateLocalServerReplication {
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
             $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
+                -CommandName 'Az.Migrate.private\Get-AzMigrateSolution_Get' `
                 -Parameters $PSBoundParameters `
                 -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
 

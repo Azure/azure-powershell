@@ -26,18 +26,18 @@ Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GetInSite
+```
+Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
+ [-SubscriptionId <String[]>] -ApplianceName <String> -Name <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
  [-SubscriptionId <String[]>] -Name <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### GetInSite
-```
-Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
- [-SubscriptionId <String[]>] -Name <String> -ApplianceName <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,7 +213,7 @@ For users, use display name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetInSite
+Parameter Sets: GetInSite, Get
 Aliases:
 
 Required: True
@@ -322,9 +322,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVMachine
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 
 ## NOTES
 

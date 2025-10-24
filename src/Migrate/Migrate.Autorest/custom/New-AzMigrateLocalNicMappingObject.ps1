@@ -22,8 +22,9 @@ The New-AzMigrateLocalNicMappingObject cmdlet creates a mapping of the source NI
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalnicmappingobject
 #>
 function New-AzMigrateLocalNicMappingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -70,7 +71,7 @@ function New-AzMigrateLocalNicMappingObject {
             $selectionTypeForFailover = $VMNicSelection.NotSelected
         }
 
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput]::new(
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput]::new(
             $NicID,
             $TargetVirtualSwitchId,
             $TargetTestVirtualSwitchId,

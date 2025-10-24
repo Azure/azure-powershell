@@ -25,6 +25,19 @@ Get-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -Mapping
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityReplicationFabric
+```
+Get-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -ProtectionContainerName <String>
+ -ReplicationFabricInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityReplicationProtectionContainer
+```
+Get-AzMigrateReplicationProtectionContainerMapping -MappingName <String>
+ -ReplicationProtectionContainerInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### List
 ```
 Get-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -ProtectionContainerName <String>
@@ -88,7 +101,7 @@ Protection Container mapping name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityReplicationFabric, GetViaIdentityReplicationProtectionContainer
 Aliases:
 
 Required: True
@@ -103,7 +116,7 @@ Protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityReplicationFabric, List
 Aliases:
 
 Required: True
@@ -113,12 +126,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReplicationFabricInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentityReplicationFabric
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ReplicationProtectionContainerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentityReplicationProtectionContainer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -133,7 +176,7 @@ The name of the recovery services vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -148,7 +191,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -163,9 +206,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping
 
 ## NOTES
 
