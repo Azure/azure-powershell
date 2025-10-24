@@ -240,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 
 ## NOTES
 
