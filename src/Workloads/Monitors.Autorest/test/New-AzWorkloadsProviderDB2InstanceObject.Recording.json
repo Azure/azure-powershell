@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/db2?api-version=2023-04-01",
-      "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"Db2\",\n      \"hostname\": \"10.170.200.4\",\n      \"dbName\": \"KLN\",\n      \"dbPort\": \"5912\",\n      \"dbUsername\": \"db2kln\",\n      \"dbPassword\": \"Geslo2aDbDva\",\n      \"sapSid\": \"KLN\",\n      \"sslPreference\": \"Disabled\"\n    }\n  }\n}",
+      "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"Db2\",\n      \"hostname\": \"10.170.200.4\",\n      \"dbName\": \"KLN\",\n      \"dbPort\": \"5912\",\n      \"dbUsername\": \"db2kln\",\n      \"dbPassword\": \"\",\n      \"sapSid\": \"KLN\",\n      \"sslPreference\": \"Disabled\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },

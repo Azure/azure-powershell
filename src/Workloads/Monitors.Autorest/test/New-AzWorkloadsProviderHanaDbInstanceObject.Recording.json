@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/hana?api-version=2023-04-01",
-      "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"SapHana\",\n      \"hostname\": \"10.8.0.7\",\n      \"dbName\": \"SYSTEMDB\",\n      \"sqlPort\": \"1433\",\n      \"instanceNumber\": \"00\",\n      \"dbUsername\": \"SYSTEM\",\n      \"dbPassword\": \"mA3KcdVReQAH\",\n      \"sslPreference\": \"Disabled\",\n      \"sapSid\": \"CHA\"\n    }\n  }\n}",
+      "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"SapHana\",\n      \"hostname\": \"10.8.0.7\",\n      \"dbName\": \"SYSTEMDB\",\n      \"sqlPort\": \"1433\",\n      \"instanceNumber\": \"00\",\n      \"dbUsername\": \"SYSTEM\",\n      \"dbPassword\": \"\",\n      \"sslPreference\": \"Disabled\",\n      \"sapSid\": \"CHA\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },

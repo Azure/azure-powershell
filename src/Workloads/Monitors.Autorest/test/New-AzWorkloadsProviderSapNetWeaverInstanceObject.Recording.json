@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01",
-      "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"SapNetWeaver\",\n      \"sapSid\": \"CHA\",\n      \"sapHostname\": \"10.8.1.9\",\n      \"sapInstanceNr\": \"00\",\n      \"sapHostFileEntries\": [ \"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\" ],\n      \"sapUsername\": \"AMS_USER\",\n      \"sapPassword\": \"Welcome@123\",\n      \"sapClientId\": \"400\",\n      \"sapPortNumber\": \"8000\",\n      \"sslPreference\": \"Disabled\"\n    }\n  }\n}",
+      "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"SapNetWeaver\",\n      \"sapSid\": \"CHA\",\n      \"sapHostname\": \"10.8.1.9\",\n      \"sapInstanceNr\": \"00\",\n      \"sapHostFileEntries\": [ \"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\" ],\n      \"sapUsername\": \"AMS_USER\",\n      \"sapPassword\": \"\",\n      \"sapClientId\": \"400\",\n      \"sapPortNumber\": \"8000\",\n      \"sslPreference\": \"Disabled\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },

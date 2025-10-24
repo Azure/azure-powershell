@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderSqlSer
 
 Describe 'New-AzWorkloadsProviderSqlServerInstanceObject' {
     It '__AllParameterSets' {
-        $providerSetting = New-AzWorkloadsProviderSqlServerInstanceObject -Password 'Sap.az4sap12' -Port 1433 -Username AMFSS -Hostname 10.4.8.90 -SapSid X00 -SslPreference Disabled
+        $providerSetting = New-AzWorkloadsProviderSqlServerInstanceObject -Password '' -Port 1433 -Username AMFSS -Hostname 10.4.8.90 -SapSid X00 -SslPreference Disabled
         $providerSetting.ProviderType | Should -Be "MsSqlServer"
 
         $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.sqlProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting $providerSetting
