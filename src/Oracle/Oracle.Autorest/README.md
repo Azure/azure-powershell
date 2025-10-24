@@ -85,4 +85,39 @@ directive:
       parameter-name: ScheduledOperationScheduledStopTime
     set: 
       parameter-name: ScheduledStopTime
+
+    #  removal of properties from the IAutonomousDatabase model.
+  - where:
+      model-name: AutonomousDatabase
+    set:
+      breaking-change:
+        property-name:
+          - DayOfWeekName
+          - ScheduledOperationScheduledStartTime
+          - ScheduledOperationScheduledStopTime
+        change-description: "The properties 'DayOfWeekName', 'ScheduledOperationScheduledStartTime', and 'ScheduledOperationScheduledStopTime' have been removed from the output object. Scripts that access these properties on the cmdlet's output will fail."
+
+  # removed parameters and parameter sets for New-AzOracleAutonomousDatabase.
+  - where:
+      verb: New
+      subject: OracleAutonomousDatabase
+    set:
+      breaking-change:
+        remove-parameter:
+          - DayOfWeekName
+          - ScheduledStartTime
+          - ScheduledStopTime
+        change-description: "The parameters '-DayOfWeekName', '-ScheduledStartTime' and '-ScheduledStopTime' have been removed. Please refer to the documentation for the new method of configuring maintenance schedules during creation."
+
+  # removed parameters and parameter sets for Update-AzOracleAutonomousDatabase.
+  - where:
+      verb: Update
+      subject: OracleAutonomousDatabase
+    set:
+      breaking-change:
+        remove-parameter:
+          - DayOfWeekName
+          - ScheduledStartTime
+          - ScheduledStopTime
+        change-description: "The parameters '-DayOfWeekName', '-ScheduledStartTime' and '-ScheduledStopTime' have been removed. Please refer to the documentation for the current method of modifying maintenance schedules."
 ```
