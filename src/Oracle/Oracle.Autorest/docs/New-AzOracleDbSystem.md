@@ -91,7 +91,7 @@ New-AzOracleDbSystem `
   -Location eastus2 `
   -Shape VM.Standard3.Flex `
   -Tag @{ env="test"; owner="example@oracle.com" } `
-  -AdminPassword (ConvertTo-SecureString 'P@ssw0rd!' -AsPlainText -Force)
+  -AdminPassword (ConvertTo-SecureString 'password' -AsPlainText -Force)
 ```
 
 ```output

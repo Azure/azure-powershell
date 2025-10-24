@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzAdbs'))
 Describe 'AzAdbs' {
     It 'CreateAdbs' {
         {
-            [SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "PowerShellTestPass123" -AsPlainText -Force
+            [SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
             $adbs = New-AzOracleAutonomousDatabase -Name $env.adbsName -ResourceGroupName $env.resourceGroup -Location $env.location -DisplayName $env.adbsName -DbWorkload $env.adbsDbWorkload -ComputeCount $env.adbsComputeCount -ComputeModel $env.adbsComputeModel -DbVersion $env.adbsDbVersion -DataStorageSizeInGb $env.adbsDataStorageInGb -AdminPassword $adbsAdminPassword -LicenseModel $env.adbsLicenseModel -SubnetId $env.subnetId -VnetId $env.vnetId -DataBaseType $env.adbsDatabaseType -CharacterSet $env.adbsCharacterSet -NcharacterSet $env.adbsNCharacterSet
             $adbs.Name | Should -Be $env.adbsName
         } | Should -Not -Throw
