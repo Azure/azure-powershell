@@ -652,9 +652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Cluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Cluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Cluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Cluster</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -698,9 +698,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessKeys</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessKeys</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -726,9 +726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -748,9 +748,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignmentList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignmentList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignmentList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignmentList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -770,9 +770,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignmentProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignmentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignmentProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignmentProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -798,9 +798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignmentPropertiesUser</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignmentPropertiesUser</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignmentPropertiesUser</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignmentPropertiesUser</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -820,9 +820,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -842,9 +842,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -900,9 +900,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterPropertiesEncryptionCustomerManagedKeyEncryption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterPropertiesEncryptionCustomerManagedKeyEncryption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterPropertiesEncryptionCustomerManagedKeyEncryption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterPropertiesEncryptionCustomerManagedKeyEncryption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -922,9 +922,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterPropertiesEncryptionCustomerManagedKeyEncryptionKeyIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterPropertiesEncryptionCustomerManagedKeyEncryptionKeyIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterPropertiesEncryptionCustomerManagedKeyEncryptionKeyIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterPropertiesEncryptionCustomerManagedKeyEncryptionKeyIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -950,9 +950,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -972,9 +972,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Database</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Database</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Database</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Database</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1030,9 +1030,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.DatabaseList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.DatabaseList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.DatabaseList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.DatabaseList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1052,9 +1052,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.DatabaseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.DatabaseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.DatabaseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.DatabaseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1122,9 +1122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.DatabasePropertiesGeoReplication</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.DatabasePropertiesGeoReplication</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.DatabasePropertiesGeoReplication</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.DatabasePropertiesGeoReplication</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1144,9 +1144,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ExportClusterParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ExportClusterParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ExportClusterParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ExportClusterParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1166,9 +1166,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ForceLinkParametersGeoReplication</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ForceLinkParametersGeoReplication</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ForceLinkParametersGeoReplication</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ForceLinkParametersGeoReplication</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1188,9 +1188,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ImportClusterParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ImportClusterParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ImportClusterParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ImportClusterParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1210,9 +1210,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.LinkedDatabase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.LinkedDatabase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.LinkedDatabase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.LinkedDatabase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1232,9 +1232,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Module</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Module</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Module</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Module</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1266,9 +1266,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.OperationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.OperationStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.OperationStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.OperationStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1306,9 +1306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Persistence</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Persistence</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Persistence</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Persistence</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1346,9 +1346,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.RegenerateKeyParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.RegenerateKeyParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.RegenerateKeyParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.RegenerateKeyParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1368,9 +1368,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1396,9 +1396,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.SkuDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.SkuDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.SkuDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.SkuDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
