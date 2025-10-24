@@ -316,5 +316,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StorageAccountZonePlacement");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountGeoPriorityReplication()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountGeoPriorityReplication");
+        }
     }
 }

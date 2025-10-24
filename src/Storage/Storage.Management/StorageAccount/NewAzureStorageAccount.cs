@@ -667,6 +667,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ZonePlacementPolicy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Status indicating whether Geo Priority Replication is enabled for the account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableBlobGeoPriorityReplication
+        {
+            get
+            {
+                return enableBlobGeoPriorityReplication != null ? enableBlobGeoPriorityReplication.Value : false;
+            }
+            set
+            {
+                enableBlobGeoPriorityReplication = value;
+            }
+        }
+        private bool? enableBlobGeoPriorityReplication = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -987,6 +1004,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.ZonePlacementPolicy != null)
             {
                 createParameters.Placement = new Placement(this.ZonePlacementPolicy);
+            }
+            if (this.enableBlobGeoPriorityReplication != null)
+            {
+                createParameters.GeoPriorityReplicationStatus = new GeoPriorityReplicationStatus(this.enableBlobGeoPriorityReplication);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
