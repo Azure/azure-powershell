@@ -179,10 +179,11 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
 
         # Get Migrate Project
         $migrateProject = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.private\Get-AzMigrateProject_Get" `
+            -CommandName "Get-AzMigrateProject" `
             -Parameters @{
+                "SubscriptionId" = $SubscriptionId;
+                "ResourceGroupName" = $ResourceGroupName;
                 "Name" = $ProjectName;
-                "ResourceGroupName" = $ResourceGroupName
             } `
             -ErrorMessage "Migrate project '$ProjectName' not found."
         if ($migrateProject.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
@@ -190,14 +191,14 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         # Get Data Replication Service, or the AMH solution
-        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+        $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
         $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
+            -CommandName "Get-AzMigrateSolution" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
                 "MigrateProjectName" = $ProjectName;
-                "Name" = $amhSolutionName
+                "Name" = $amhSolutionName;
             } `
             -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
 
@@ -215,14 +216,14 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup"
 
         # Access Discovery Service
-        $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
+        $discoverySolutionName = $AzMigrateSolutions.DiscoverySolution
         $discoverySolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
+            -CommandName "Get-AzMigrateSolution" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
                 "MigrateProjectName" = $ProjectName;
-                "Name" = $discoverySolutionName
+                "Name" = $discoverySolutionName;
             } `
             -ErrorMessage "Server Discovery Solution '$discoverySolutionName' not found."
 
@@ -268,10 +269,13 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         # Get healthy asrv2 fabrics in the resource group
-        $allFabrics = Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1 -ResourceGroupName $ResourceGroupName | Where-Object {
-            $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
-            $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
-        }
+        $allFabrics = Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1 `
+            -ResourceGroupName $ResourceGroupName `
+            -SubscriptionId $SubscriptionId `
+            | Where-Object {
+                $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
+                $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
+            }
 
         # Filter for source fabric
         $sourceFabric = $allFabrics | Where-Object {
@@ -290,8 +294,9 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         $sourceDras = InvokeAzMigrateGetCommandWithRetries `
             -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
             -Parameters @{
+                SubscriptionId = $SubscriptionId;
+                ResourceGroupName = $ResourceGroupName;
                 FabricName = $sourceFabric.Name;
-                ResourceGroupName = $ResourceGroupName
             } `
             -ErrorMessage $sourceDraErrorMessage
         $sourceDra = $sourceDras | Where-Object {
@@ -326,7 +331,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
             -Parameters @{
                 FabricName = $($targetFabric.Name);
-                ResourceGroupName = $ResourceGroupName
+                ResourceGroupName = $ResourceGroupName;
+                SubscriptionId = $SubscriptionId;
             } `
             -ErrorMessage $targetDraErrorMessage
         $targetDra = $targetDras | Where-Object {
@@ -543,12 +549,12 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
 
         # Put Cache Storage Account
         $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
+            -CommandName "Get-AzMigrateSolution" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
                 "MigrateProjectName" = $ProjectName;
-                "Name" = $amhSolutionName
+                "Name" = $amhSolutionName;
             } `
             -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
 
@@ -635,12 +641,12 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
+                -CommandName "Get-AzMigrateSolution" `
                 -Parameters @{
                     "SubscriptionId" = $SubscriptionId;
                     "ResourceGroupName" = $ResourceGroupName;
                     "MigrateProjectName" = $ProjectName;
-                    "Name" = $amhSolutionName
+                    "Name" = $amhSolutionName;
                 } `
                 -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
             # Check if AMH record is removed
@@ -926,12 +932,12 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
+            -CommandName "Get-AzMigrateSolution" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
                 "MigrateProjectName" = $ProjectName;
-                "Name" = $amhSolutionName
+                "Name" = $amhSolutionName;
             } `
             -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
         if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {

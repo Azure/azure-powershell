@@ -189,7 +189,7 @@ function Get-AzMigrateLocalServerReplication {
             # hence retry get machine site.
             if ($siteType -eq $SiteTypes.VMwareSites) {
                 $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate.private\Get-AzMigrateSite_Get' `
+                    -CommandName 'Get-AzMigrateSite' `
                     -Parameters $PSBoundParameters `
                     -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
             } elseif ($siteType -eq $SiteTypes.HyperVSites) {
@@ -205,12 +205,12 @@ function Get-AzMigrateLocalServerReplication {
             $null = $PSBoundParameters.Remove('SiteName')
 
             # Get the migrate solution.
-            $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+            $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
             $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
             $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.private\Get-AzMigrateSolution_Get' `
+                -CommandName 'Get-AzMigrateSolution' `
                 -Parameters $PSBoundParameters `
                 -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
 
@@ -241,7 +241,7 @@ function Get-AzMigrateLocalServerReplication {
                 $ProjectName = $projectIdArray[8] # {2}
             }
 
-            $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+            $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)

@@ -303,8 +303,9 @@ function New-AzMigrateLocalServerReplication {
 
             # Get VMware site
             $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.private\Get-AzMigrateSite_Get' `
+                -CommandName 'Get-AzMigrateSite' `
                 -Parameters @{
+                    'SubscriptionId' = $SubscriptionId;
                     'ResourceGroupName' = $ResourceGroupName;
                     'SiteName' = $SiteName;
                 } `
@@ -351,13 +352,14 @@ function New-AzMigrateLocalServerReplication {
         $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
 
         # Get Data Replication Service, or the AMH solution
-        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+        $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
         $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.private\Get-AzMigrateSolution_Get' `
+            -CommandName 'Get-AzMigrateSolution' `
             -Parameters @{
                 "ResourceGroupName" = $ResourceGroupName;
                 "Name" = $amhSolutionName;
                 "MigrateProjectName" = $ProjectName;
+                "SubscriptionId" = $SubscriptionId
             } `
             -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
         
@@ -378,9 +380,9 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Access Discovery Service
-        $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
+        $discoverySolutionName = $AzMigrateSolutions.DiscoverySolution
         $discoverySolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.private\Get-AzMigrateSolution_Get" `
+            -CommandName "Get-AzMigrateSolution" `
             -Parameters @{
                 "SubscriptionId" = $SubscriptionId;
                 "ResourceGroupName" = $ResourceGroupName;
@@ -424,10 +426,13 @@ function New-AzMigrateLocalServerReplication {
         }
         
         # Get healthy asrv2 fabrics in the resource group
-        $allFabrics = Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1 -ResourceGroupName $ResourceGroupName | Where-Object {
-            $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
-            $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
-        }
+        $allFabrics = Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1 `
+            -ResourceGroupName $ResourceGroupName `
+            -SubscriptionId $SubscriptionId `
+            | Where-Object {
+                $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
+                $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
+            }
 
         # Filter for source fabric
         if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal)
