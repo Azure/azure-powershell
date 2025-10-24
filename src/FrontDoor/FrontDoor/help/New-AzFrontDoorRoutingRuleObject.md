@@ -12,6 +12,7 @@ Create an in-memory object for RoutingRule.
 
 ## SYNTAX
 
+### ByFieldsWithForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <String>]
  [-FrontendEndpointName <String[]>] [-Name <String>] [-ResourceGroupName <String>] [-FrontDoorName <String>]
@@ -19,9 +20,17 @@ New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <
  [-WebApplicationFirewallPolicyLinkId <String>] [-Id <String>] [-BackendPoolName <String>]
  [-CacheDuration <TimeSpan>] [-DynamicCompression <String>] [-QueryParameter <String>]
  [-QueryParameterStripDirective <String>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
- [-EnableCaching <Boolean>] [-CustomFragment <String>] [-CustomHost <String>] [-CustomPath <String>]
- [-CustomQueryString <String>] [-RedirectProtocol <String>] [-RedirectType <String>]
- [<CommonParameters>]
+ [-EnableCaching <Boolean>] [<CommonParameters>]
+```
+
+### ByFieldsWithRedirectParameterSet
+```
+New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <String>]
+ [-FrontendEndpointName <String[]>] [-Name <String>] [-ResourceGroupName <String>] [-FrontDoorName <String>]
+ [-PatternsToMatch <String[]>] [-RouteConfiguration <IRouteConfiguration>] [-RuleEngineName <String>]
+ [-WebApplicationFirewallPolicyLinkId <String>] [-Id <String>] [-CustomFragment <String>]
+ [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>] [-RedirectProtocol <String>]
+ [-RedirectType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +106,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -114,7 +123,7 @@ HTTP requires the value to be no more than a year.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -130,7 +139,7 @@ Leave empty to use incoming path.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -147,7 +156,7 @@ Do not include the #.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -163,7 +172,7 @@ Leave empty to use the incoming host as the destination host.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -180,7 +189,7 @@ Leave empty to use the incoming path as destination path.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -198,7 +207,7 @@ The first ? and & will be added automatically so do not include them in the fron
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -213,7 +222,7 @@ Whether to use dynamic compression for cached content.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -227,7 +236,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -258,7 +267,7 @@ Protocol this rule will use when forwarding traffic to backends.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -348,7 +357,7 @@ query parameters to include or exclude (comma separated).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -363,7 +372,7 @@ Treatment of URL query terms when forming the cache key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -378,7 +387,7 @@ The protocol of the destination to where the traffic is redirected.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -393,7 +402,7 @@ The redirect type the rule will use when redirecting traffic.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False

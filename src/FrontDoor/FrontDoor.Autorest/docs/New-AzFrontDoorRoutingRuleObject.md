@@ -15,25 +15,22 @@ Create an in-memory object for RoutingRule.
 ### ByFieldsWithForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolName <String>]
- [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-CustomFragment <String>]
- [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>] [-DynamicCompression <String>]
+ [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-DynamicCompression <String>]
  [-EnableCaching <Boolean>] [-EnabledState <String>] [-ForwardingProtocol <String>] [-FrontDoorName <String>]
  [-FrontendEndpointName <String[]>] [-Id <String>] [-Name <String>] [-PatternsToMatch <String[]>]
- [-QueryParameter <String>] [-QueryParameterStripDirective <String>] [-RedirectProtocol <String>]
- [-RedirectType <String>] [-ResourceGroupName <String>] [-RouteConfiguration <IRouteConfiguration>]
- [-RuleEngineName <String>] [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
+ [-QueryParameter <String>] [-QueryParameterStripDirective <String>] [-ResourceGroupName <String>]
+ [-RouteConfiguration <IRouteConfiguration>] [-RuleEngineName <String>]
+ [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
 ```
 
 ### ByFieldsWithRedirectParameterSet
 ```
-New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-BackendPoolName <String>]
- [-CacheDuration <TimeSpan>] [-CustomForwardingPath <String>] [-CustomFragment <String>]
- [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>] [-DynamicCompression <String>]
- [-EnabledState <String>] [-ForwardingProtocol <String>] [-FrontDoorName <String>]
- [-FrontendEndpointName <String[]>] [-Id <String>] [-Name <String>] [-PatternsToMatch <String[]>]
- [-QueryParameter <String>] [-QueryParameterStripDirective <String>] [-RedirectProtocol <String>]
- [-RedirectType <String>] [-ResourceGroupName <String>] [-RouteConfiguration <IRouteConfiguration>]
- [-RuleEngineName <String>] [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
+New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-CustomFragment <String>]
+ [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>] [-EnabledState <String>]
+ [-FrontDoorName <String>] [-FrontendEndpointName <String[]>] [-Id <String>] [-Name <String>]
+ [-PatternsToMatch <String[]>] [-RedirectProtocol <String>] [-RedirectType <String>]
+ [-ResourceGroupName <String>] [-RouteConfiguration <IRouteConfiguration>] [-RuleEngineName <String>]
+ [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +106,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -126,7 +123,7 @@ HTTP requires the value to be no more than a year.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -142,7 +139,7 @@ Leave empty to use incoming path.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -159,7 +156,7 @@ Do not include the #.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -175,7 +172,7 @@ Leave empty to use the incoming host as the destination host.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -192,7 +189,7 @@ Leave empty to use the incoming path as destination path.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -210,7 +207,7 @@ The first ? and & will be added automatically so do not include them in the fron
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -225,7 +222,7 @@ Whether to use dynamic compression for cached content.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -271,7 +268,7 @@ Protocol this rule will use when forwarding traffic to backends.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -361,7 +358,7 @@ query parameters to include or exclude (comma separated).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -376,7 +373,7 @@ Treatment of URL query terms when forming the cache key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -391,7 +388,7 @@ The protocol of the destination to where the traffic is redirected.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -406,7 +403,7 @@ The redirect type the rule will use when redirecting traffic.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
