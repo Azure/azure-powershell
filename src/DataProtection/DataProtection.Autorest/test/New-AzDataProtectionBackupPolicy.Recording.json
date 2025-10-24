@@ -1156,10 +1156,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.DataProtection/backupVaults/blob-eus-pstest-vault/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BaseBackupPolicyResource?api-version=2025-01-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.DataProtection/backupVaults/blob-eus-pstest-vault/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.BaseBackupPolicyResource?api-version=2025-01-01+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.DataProtection/backupVaults/blob-eus-pstest-vault/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BaseBackupPolicyResource?api-version=2025-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.DataProtection/backupVaults/blob-eus-pstest-vault/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.BaseBackupPolicyResource?api-version=2025-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
