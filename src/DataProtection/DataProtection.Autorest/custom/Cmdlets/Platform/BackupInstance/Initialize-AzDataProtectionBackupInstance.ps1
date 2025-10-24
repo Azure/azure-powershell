@@ -40,7 +40,7 @@
         [System.String]
         ${FriendlyName},
                 
-        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService,AzureBlob.')]
+        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupDatasourceParameters]
         ${BackupConfiguration},
 
@@ -183,14 +183,6 @@
         elseif($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $SnapshotVolume -ne $null -or $IncludeClusterScopeResource -ne $null){
             $errormsg = "ExcludedResourceType, IncludedResourceType, ExcludedNamespace, IncludedNamespace, LabelSelector, SnapshotVolume, IncludeClusterScopeResource parameters are not applicable for given DatasourceType. Please ensure to remove them"
             throw $errormsg
-        }
-
-        if($manifest.enableDataSourceSetInfo -eq $true)
-        {
-            $backupInstanceResource.Property.DataSourceSetInfo = GetDatasourceInfo -ResourceId $DatasourceId -ResourceLocation $DatasourceLocation -DatasourceType $DatasourceType
-            $tmpVar = $backupInstance.DataSourceSetInfo = GetDatasourceSetInfo -DatasourceInfo $backupInstance.DataSourceInfo -DatasourceType $DatasourceType
-
-            $backupInstanceResource.Property.DataSourceSetInfo.ObjectType = $tmpVar.ObjectType
         }
 
         return $backupInstanceResource
