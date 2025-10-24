@@ -314,5 +314,48 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmVfsCachePressure")]
         public int? VMVfsCachePressure {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.NetIpv4TcpkeepaliveIntvl != null)
+            {
+                if (this.NetIpv4TcpkeepaliveIntvl > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "NetIpv4TcpkeepaliveIntvl", 90);
+                }
+                if (this.NetIpv4TcpkeepaliveIntvl < 10)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "NetIpv4TcpkeepaliveIntvl", 10);
+                }
+            }
+
+            if (this.NetNetfilterNfConntrackMax != null)
+            {
+                if (this.NetNetfilterNfConntrackMax > 2097152)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "NetNetfilterNfConntrackMax", 2097152);
+                }
+                if (this.NetNetfilterNfConntrackMax < 131072)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "NetNetfilterNfConntrackMax", 131072);
+                }
+            }
+            if (this.NetNetfilterNfConntrackBuckets != null)
+            {
+                if (this.NetNetfilterNfConntrackBuckets > 524288)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "NetNetfilterNfConntrackBuckets", 524288);
+                }
+                if (this.NetNetfilterNfConntrackBuckets < 65536)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "NetNetfilterNfConntrackBuckets", 65536);
+                }
+            }
+        }
     }
 }
