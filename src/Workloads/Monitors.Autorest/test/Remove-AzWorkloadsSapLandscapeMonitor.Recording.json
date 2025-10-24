@@ -1,8 +1,8 @@
 {
-  "Remove-AzWorkloadsSapLandscapeMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+  "Remove-AzWorkloadsSapLandscapeMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzWorkloadsSapLandscapeMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+  "Remove-AzWorkloadsSapLandscapeMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create/sapLandscapeMonitor/default?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

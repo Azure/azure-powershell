@@ -1,8 +1,8 @@
 {
-  "Remove-AzWorkloadsMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create?api-version=2023-04-01+1": {
+  "Remove-AzWorkloadsMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -90,7 +90,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -137,7 +137,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -184,7 +184,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -231,7 +231,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -278,7 +278,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -325,7 +325,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -372,7 +372,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -419,7 +419,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -466,7 +466,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -513,7 +513,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\"}",
       "isContentBase64": false
     }
   },
@@ -558,7 +558,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
@@ -603,14 +603,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"name\":\"87288c6e-6a7c-40f6-b58a-ce10938c659e*F7DE69CCD3341AC7823EECED9F90B5487E5E225CD6612284D14BA635D9248796\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:21:30.5538392Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzWorkloadsMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1?api-version=2023-04-01+1": {
+  "Remove-AzWorkloadsMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -698,7 +698,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -745,7 +745,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -792,7 +792,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -839,7 +839,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -886,7 +886,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -933,7 +933,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -980,7 +980,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1027,7 +1027,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1074,7 +1074,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1121,7 +1121,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1168,7 +1168,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1215,7 +1215,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1262,7 +1262,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1309,7 +1309,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Deleting\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\"}",
       "isContentBase64": false
     }
   },
@@ -1354,7 +1354,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/eastus/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
@@ -1399,7 +1399,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"name\":\"5f5e760d-312b-48a1-adc2-3488c410b0a6*4E19536195524A8DC16058E796B8EA381A1AA01FE0FFB390C2683F28746FC3F1\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:27:14.4531168Z\",\"properties\":null}",
       "isContentBase64": false
     }
   }

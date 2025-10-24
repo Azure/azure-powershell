@@ -1,8 +1,8 @@
 {
-  "Remove-AzWorkloadsProviderInstance+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os?api-version=2023-04-01+1": {
+  "Remove-AzWorkloadsProviderInstance+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -90,7 +90,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:01.765615Z\",\"endTime\":\"2025-10-09T13:18:03.4297017Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:01.765615Z\",\"endTime\":\"2025-10-09T13:18:03.4297017Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
@@ -135,14 +135,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:01.765615Z\",\"endTime\":\"2025-10-09T13:18:03.4297017Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"e0183f08-e410-4341-8183-009a5286fc21*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:01.765615Z\",\"endTime\":\"2025-10-09T13:18:03.4297017Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzWorkloadsProviderInstance+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/hana?api-version=2023-04-01+1": {
+  "Remove-AzWorkloadsProviderInstance+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/hana?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/hana?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/hana?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -230,7 +230,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"name\":\"9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/hana\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:34.1772648Z\",\"endTime\":\"2025-10-09T13:18:35.8161804Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"name\":\"9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/hana\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:34.1772648Z\",\"endTime\":\"2025-10-09T13:18:35.8161804Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
@@ -275,7 +275,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"name\":\"9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/hana\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:34.1772648Z\",\"endTime\":\"2025-10-09T13:18:35.8161804Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"name\":\"9911c12a-2755-4b2f-85dd-03dda839568c*9C052F22D64413FBBA1C86E4EBDF861F086D4394F3EC07D22D5E373BBFC4E012\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/hana\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T13:18:34.1772648Z\",\"endTime\":\"2025-10-09T13:18:35.8161804Z\",\"properties\":null}",
       "isContentBase64": false
     }
   }

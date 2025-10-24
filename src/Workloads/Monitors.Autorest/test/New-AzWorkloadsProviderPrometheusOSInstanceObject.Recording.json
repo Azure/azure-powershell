@@ -1,8 +1,8 @@
 {
-  "New-AzWorkloadsProviderPrometheusOSInstanceObject+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os?api-version=2023-04-01+1": {
+  "New-AzWorkloadsProviderPrometheusOSInstanceObject+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os?api-version=2023-04-01",
       "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"PrometheusOS\",\n      \"prometheusUrl\": \"http://10.8.1.37:9100/metrics\",\n      \"sslPreference\": \"Disabled\",\n      \"sapSid\": \"CHA\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -39,7 +39,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os\",\"name\":\"os\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:34:47.1527398Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:37:52.4252584Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"providerSettings\":{\"providerType\":\"PrometheusOS\",\"prometheusUrl\":\"http://10.8.1.37:9100/metrics\",\"sslPreference\":\"Disabled\",\"sapSid\":\"CHA\"}}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os\",\"name\":\"os\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:34:47.1527398Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:37:52.4252584Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"providerSettings\":{\"providerType\":\"PrometheusOS\",\"prometheusUrl\":\"http://10.8.1.37:9100/metrics\",\"sslPreference\":\"Disabled\",\"sapSid\":\"CHA\"}}}",
       "isContentBase64": false
     }
   },
@@ -84,7 +84,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:37:52.8150806Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:37:52.8150806Z\"}",
       "isContentBase64": false
     }
   },
@@ -129,7 +129,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:37:52.8150806Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:37:52.8150806Z\"}",
       "isContentBase64": false
     }
   },
@@ -174,14 +174,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T09:37:52.8150806Z\",\"endTime\":\"2025-10-09T09:39:05.9519196Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"name\":\"34d22caa-5572-448b-b14d-e5a90ae527d5*1B5B50B0E02A84FBE9321E88AB57C84E0BF205A5B9608F2CE9C0CE83127BE767\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T09:37:52.8150806Z\",\"endTime\":\"2025-10-09T09:39:05.9519196Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "New-AzWorkloadsProviderPrometheusOSInstanceObject+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os?api-version=2023-04-01+5": {
+  "New-AzWorkloadsProviderPrometheusOSInstanceObject+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os?api-version=2023-04-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -220,7 +220,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/os\",\"name\":\"os\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:34:47.1527398Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:37:52.4252584Z\"},\"properties\":{\"providerSettings\":{\"prometheusUrl\":\"http://10.8.1.37:9100/metrics\",\"sslPreference\":\"Disabled\",\"sapSid\":\"CHA\",\"providerType\":\"PrometheusOS\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/os\",\"name\":\"os\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:34:47.1527398Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:37:52.4252584Z\"},\"properties\":{\"providerSettings\":{\"prometheusUrl\":\"http://10.8.1.37:9100/metrics\",\"sslPreference\":\"Disabled\",\"sapSid\":\"CHA\",\"providerType\":\"PrometheusOS\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
       "isContentBase64": false
     }
   }

@@ -1,8 +1,8 @@
 {
-  "New-AzWorkloadsProviderSapNetWeaverInstanceObject+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01+1": {
+  "New-AzWorkloadsProviderSapNetWeaverInstanceObject+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01",
       "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"SapNetWeaver\",\n      \"sapSid\": \"CHA\",\n      \"sapHostname\": \"10.8.1.9\",\n      \"sapInstanceNr\": \"00\",\n      \"sapHostFileEntries\": [ \"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\" ],\n      \"sapUsername\": \"AMS_USER\",\n      \"sapPassword\": \"Welcome@123\",\n      \"sapClientId\": \"400\",\n      \"sapPortNumber\": \"8000\",\n      \"sslPreference\": \"Disabled\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -39,7 +39,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:40:04.1870864Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"errors\":{},\"providerSettings\":{\"providerType\":\"SapNetWeaver\",\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\"}}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:40:04.1870864Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"errors\":{},\"providerSettings\":{\"providerType\":\"SapNetWeaver\",\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\"}}}",
       "isContentBase64": false
     }
   },
@@ -84,7 +84,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"name\":\"c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:40:04.6005434Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"name\":\"c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:40:04.6005434Z\"}",
       "isContentBase64": false
     }
   },
@@ -129,7 +129,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"name\":\"c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:40:04.6005434Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"name\":\"c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"status\":\"Accepted\",\"startTime\":\"2025-10-09T09:40:04.6005434Z\"}",
       "isContentBase64": false
     }
   },
@@ -174,14 +174,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"name\":\"c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T09:40:04.6005434Z\",\"endTime\":\"2025-10-09T09:41:21.1380011Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"name\":\"c77231e7-3e62-4576-97fb-41182865ae17*401231714AFAB5085F2F23FD52032B285223420CE47C3A7EE725AD97CF0145EC\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-09T09:40:04.6005434Z\",\"endTime\":\"2025-10-09T09:41:21.1380011Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "New-AzWorkloadsProviderSapNetWeaverInstanceObject+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01+5": {
+  "New-AzWorkloadsProviderSapNetWeaverInstanceObject+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -220,7 +220,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:40:04.1870864Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:40:04.1870864Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
       "isContentBase64": false
     }
   }

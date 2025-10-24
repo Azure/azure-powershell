@@ -1,8 +1,8 @@
 {
-  "Get-AzWorkloadsProviderInstance+[NoContext]+List+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances?api-version=2023-04-01+1": {
+  "Get-AzWorkloadsProviderInstance+[NoContext]+List+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances?api-version=2023-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,14 +40,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzWorkloadsProviderInstance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01+1": {
+  "Get-AzWorkloadsProviderInstance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -86,14 +86,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
       "isContentBase64": false
     }
   },
-  "Get-AzWorkloadsProviderInstance+[NoContext]+GetViaId+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01+1": {
+  "Get-AzWorkloadsProviderInstance+[NoContext]+GetViaId+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -132,7 +132,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/tp-ps-RG/providers/Microsoft.Workloads/monitors/tp-ps1/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
       "isContentBase64": false
     }
   }

@@ -1,8 +1,8 @@
 {
-  "New-AzWorkloadsProviderSqlServerInstanceObject+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql?api-version=2023-04-01+1": {
+  "New-AzWorkloadsProviderSqlServerInstanceObject+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql?api-version=2023-04-01",
       "Content": "{\n  \"properties\": {\n    \"providerSettings\": {\n      \"providerType\": \"MsSqlServer\",\n      \"hostname\": \"10.4.8.90\",\n      \"dbPort\": \"1433\",\n      \"dbUsername\": \"AMFSS\",\n      \"dbPassword\": \"Sap.az4sap12\",\n      \"sapSid\": \"X00\",\n      \"sslPreference\": \"Disabled\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -39,7 +39,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql\",\"name\":\"sql\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-15T09:16:11.3779797Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-15T09:16:11.3779797Z\"},\"properties\":{\"providerSettings\":{\"providerType\":\"MsSqlServer\",\"hostname\":\"10.4.8.90\",\"dbPort\":\"1433\",\"dbUsername\":\"AMFSS\",\"sapSid\":\"X00\",\"sslPreference\":\"Disabled\"},\"provisioningState\":\"Accepted\"}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql\",\"name\":\"sql\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-15T09:16:11.3779797Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-15T09:16:11.3779797Z\"},\"properties\":{\"providerSettings\":{\"providerType\":\"MsSqlServer\",\"hostname\":\"10.4.8.90\",\"dbPort\":\"1433\",\"dbUsername\":\"AMFSS\",\"sapSid\":\"X00\",\"sslPreference\":\"Disabled\"},\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
@@ -84,7 +84,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"name\":\"8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql\",\"status\":\"Accepted\",\"startTime\":\"2025-10-15T09:16:11.8622221Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"name\":\"8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql\",\"status\":\"Accepted\",\"startTime\":\"2025-10-15T09:16:11.8622221Z\"}",
       "isContentBase64": false
     }
   },
@@ -129,7 +129,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"name\":\"8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql\",\"status\":\"Accepted\",\"startTime\":\"2025-10-15T09:16:11.8622221Z\"}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"name\":\"8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql\",\"status\":\"Accepted\",\"startTime\":\"2025-10-15T09:16:11.8622221Z\"}",
       "isContentBase64": false
     }
   },
@@ -174,14 +174,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"name\":\"8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-15T09:16:11.8622221Z\",\"endTime\":\"2025-10-15T09:17:26.46194Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/providers/Microsoft.Workloads/locations/EASTUS/operationStatuses/8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"name\":\"8026a472-9066-4b88-9f60-f24581c7d0b2*9BAE30121D4AE8F6FD4AD5768AC759A7E76ABBA830D817067BB0866C0B046BD9\",\"resourceId\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql\",\"status\":\"Succeeded\",\"startTime\":\"2025-10-15T09:16:11.8622221Z\",\"endTime\":\"2025-10-15T09:17:26.46194Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "New-AzWorkloadsProviderSqlServerInstanceObject+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql?api-version=2023-04-01+5": {
+  "New-AzWorkloadsProviderSqlServerInstanceObject+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql?api-version=2023-04-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -220,7 +220,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-e2e-infra-rg-sql/providers/Microsoft.Workloads/monitors/ak-sql-test/providerInstances/sql\",\"name\":\"sql\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-15T09:16:11.3779797Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-15T09:16:11.3779797Z\"},\"properties\":{\"providerSettings\":{\"hostname\":\"10.4.8.90\",\"dbPort\":\"1433\",\"dbUsername\":\"AMFSS\",\"sapSid\":\"X00\",\"sslPreference\":\"Disabled\",\"providerType\":\"MsSqlServer\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/sql\",\"name\":\"sql\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"jasksingh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-15T09:16:11.3779797Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-15T09:16:11.3779797Z\"},\"properties\":{\"providerSettings\":{\"hostname\":\"10.4.8.90\",\"dbPort\":\"1433\",\"dbUsername\":\"AMFSS\",\"sapSid\":\"X00\",\"sslPreference\":\"Disabled\",\"providerType\":\"MsSqlServer\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }
