@@ -125,6 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).TypeRef = (string) content.GetValueForProperty("TypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).TypeRef, global::System.Convert.ToString);
             }
+            if (content.Contains("DataSource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).DataSource, global::System.Convert.ToString);
+            }
             if (content.Contains("DefaultTopic"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).DefaultTopic = (string) content.GetValueForProperty("DefaultTopic",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).DefaultTopic, global::System.Convert.ToString);
@@ -169,6 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("TypeRef"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).TypeRef = (string) content.GetValueForProperty("TypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).TypeRef, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataSource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroupInternal)this).DataSource, global::System.Convert.ToString);
             }
             if (content.Contains("DefaultTopic"))
             {

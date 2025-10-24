@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Extensions;
 
-    /// <summary>Defines the event data point properties.</summary>
-    public partial class NamespaceEventDataPoint
+    /// <summary>The x509 certificate for authentication mode Certificate.</summary>
+    public partial class X509CertificateCredentialsUpdate
     {
 
         /// <summary>
@@ -54,43 +54,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdate.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdate.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint FromJson(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdate FromJson(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject json ? new NamespaceEventDataPoint(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject json ? new X509CertificateCredentialsUpdate(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject into a new instance of <see cref="NamespaceEventDataPoint" />.
-        /// </summary>
-        /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal NamespaceEventDataPoint(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject json)
-        {
-            bool returnNow = false;
-            BeforeFromJson(json, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
-            {_dataSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("dataSource"), out var __jsonDataSource) ? (string)__jsonDataSource : (string)_dataSource;}
-            {_dataPointConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("dataPointConfiguration"), out var __jsonDataPointConfiguration) ? (string)__jsonDataPointConfiguration : (string)_dataPointConfiguration;}
-            AfterFromJson(json);
-        }
-
-        /// <summary>
-        /// Serializes this instance of <see cref="NamespaceEventDataPoint" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="X509CertificateCredentialsUpdate" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="NamespaceEventDataPoint" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="X509CertificateCredentialsUpdate" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode)
         {
@@ -102,11 +84,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            AddIf( null != (((object)this._dataSource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._dataSource.ToString()) : null, "dataSource" ,container.Add );
-            AddIf( null != (((object)this._dataPointConfiguration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._dataPointConfiguration.ToString()) : null, "dataPointConfiguration" ,container.Add );
+            AddIf( null != (((object)this._certificateSecretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._certificateSecretName.ToString()) : null, "certificateSecretName" ,container.Add );
+            AddIf( null != (((object)this._keySecretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._keySecretName.ToString()) : null, "keySecretName" ,container.Add );
+            AddIf( null != (((object)this._intermediateCertificatesSecretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._intermediateCertificatesSecretName.ToString()) : null, "intermediateCertificatesSecretName" ,container.Add );
             AfterToJson(ref container);
             return container;
+        }
+
+        /// <summary>
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject into a new instance of <see cref="X509CertificateCredentialsUpdate" />.
+        /// </summary>
+        /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject instance to deserialize from.</param>
+        internal X509CertificateCredentialsUpdate(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject json)
+        {
+            bool returnNow = false;
+            BeforeFromJson(json, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            {_certificateSecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("certificateSecretName"), out var __jsonCertificateSecretName) ? (string)__jsonCertificateSecretName : (string)_certificateSecretName;}
+            {_keySecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("keySecretName"), out var __jsonKeySecretName) ? (string)__jsonKeySecretName : (string)_keySecretName;}
+            {_intermediateCertificatesSecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("intermediateCertificatesSecretName"), out var __jsonIntermediateCertificatesSecretName) ? (string)__jsonIntermediateCertificatesSecretName : (string)_intermediateCertificatesSecretName;}
+            AfterFromJson(json);
         }
     }
 }

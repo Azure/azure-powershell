@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PowerShell;
 
-    /// <summary>Defines the event data point properties.</summary>
-    [System.ComponentModel.TypeConverter(typeof(NamespaceEventDataPointTypeConverter))]
-    public partial class NamespaceEventDataPoint
+    /// <summary>Defines the asset status event group properties.</summary>
+    [System.ComponentModel.TypeConverter(typeof(NamespaceAssetStatusEventGroupTypeConverter))]
+    public partial class NamespaceAssetStatusEventGroup
     {
 
         /// <summary>
@@ -63,44 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPoint"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroup"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new NamespaceEventDataPoint(content);
+            return new NamespaceAssetStatusEventGroup(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPoint"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroup"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new NamespaceEventDataPoint(content);
+            return new NamespaceAssetStatusEventGroup(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="NamespaceEventDataPoint" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="NamespaceAssetStatusEventGroup" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="NamespaceEventDataPoint" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="NamespaceAssetStatusEventGroup" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPoint"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroup"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal NamespaceEventDataPoint(global::System.Collections.IDictionary content)
+        internal NamespaceAssetStatusEventGroup(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -111,25 +111,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             // actually deserialize
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("DataSource"))
+            if (content.Contains("Event"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataSource, global::System.Convert.ToString);
-            }
-            if (content.Contains("DataPointConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataPointConfiguration = (string) content.GetValueForProperty("DataPointConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataPointConfiguration, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPoint"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroup"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal NamespaceEventDataPoint(global::System.Management.Automation.PSObject content)
+        internal NamespaceAssetStatusEventGroup(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -140,15 +136,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             // actually deserialize
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("DataSource"))
+            if (content.Contains("Event"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataSource, global::System.Convert.ToString);
-            }
-            if (content.Contains("DataPointConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataPointConfiguration = (string) content.GetValueForProperty("DataPointConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPointInternal)this).DataPointConfiguration, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroupInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
@@ -170,9 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             return ToJsonString();
         }
     }
-    /// Defines the event data point properties.
-    [System.ComponentModel.TypeConverter(typeof(NamespaceEventDataPointTypeConverter))]
-    public partial interface INamespaceEventDataPoint
+    /// Defines the asset status event group properties.
+    [System.ComponentModel.TypeConverter(typeof(NamespaceAssetStatusEventGroupTypeConverter))]
+    public partial interface INamespaceAssetStatusEventGroup
 
     {
 
