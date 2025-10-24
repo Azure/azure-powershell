@@ -47,7 +47,24 @@ namespace Microsoft.Azure.Commands.Compute
         private ComputeClient computeClient;
 
         // Reusable static HttpClient for DryRun posts
-        private static readonly HttpClient _dryRunHttpClient = new HttpClient();
+        private static readonly HttpClient _dryRunHttpClient = CreateDryRunHttpClient();
+
+        private static HttpClient CreateDryRunHttpClient()
+        {
+            int timeoutSeconds = 300; // Default 5 minutes
+            
+            // Allow override via environment variable
+            string timeoutEnv = Environment.GetEnvironmentVariable("AZURE_POWERSHELL_DRYRUN_TIMEOUT_SECONDS");
+            if (!string.IsNullOrWhiteSpace(timeoutEnv) && int.TryParse(timeoutEnv, out int customTimeout) && customTimeout > 0)
+            {
+                timeoutSeconds = customTimeout;
+            }
+            
+            return new HttpClient()
+            {
+                Timeout = TimeSpan.FromSeconds(timeoutSeconds)
+            };
+        }
 
         [Parameter(Mandatory = false, HelpMessage = "Send the invoked PowerShell command (ps_script) and subscription id to a remote endpoint without executing the real operation.")]
         public SwitchParameter DryRun { get; set; }
@@ -192,17 +209,30 @@ namespace Microsoft.Azure.Commands.Compute
                     return null;
                 }
 
+                // Check if the response has a 'what_if_result' wrapper
+                JObject whatIfData = jObj;
+                if (jObj["what_if_result"] != null)
+                {
+                    // Extract the nested what_if_result object
+                    whatIfData = jObj["what_if_result"] as JObject;
+                    if (whatIfData == null)
+                    {
+                        return null;
+                    }
+                }
+
                 // Check if it has a 'changes' or 'resourceChanges' field
-                var changesToken = jObj["changes"] ?? jObj["resourceChanges"];
+                var changesToken = whatIfData["changes"] ?? whatIfData["resourceChanges"];
                 if (changesToken == null)
                 {
                     return null;
                 }
 
-                return new DryRunWhatIfResult(jObj);
+                return new DryRunWhatIfResult(whatIfData);
             }
-            catch
+            catch (Exception ex)
             {
+                WriteVerbose($"Failed to adapt DryRun result to WhatIf format: {ex.Message}");
                 return null;
             }
         }
@@ -545,8 +575,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 return changesToken
-                    .Select(c => new DryRunWhatIfChange(c as JObject))
-                    .Cast<IWhatIfChange>
+                    .Select(c => (IWhatIfChange)new DryRunWhatIfChange(c as JObject))
                     .ToList();
             }
 
@@ -558,8 +587,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 return diagnosticsToken
-                    .Select(d => new DryRunWhatIfDiagnostic(d as JObject))
-                    .Cast<IWhatIfDiagnostic>()
+                    .Select(d => (IWhatIfDiagnostic)new DryRunWhatIfDiagnostic(d as JObject))
                     .ToList();
             }
 
@@ -654,8 +682,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 return deltaToken
-                    .Select(pc => new DryRunWhatIfPropertyChange(pc as JObject))
-                    .Cast<IWhatIfPropertyChange>()
+                    .Select(pc => (IWhatIfPropertyChange)new DryRunWhatIfPropertyChange(pc as JObject))
                     .ToList();
             }
         }
@@ -703,8 +730,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 return childrenToken
-                    .Select(c => new DryRunWhatIfPropertyChange(c as JObject))
-                    .Cast<IWhatIfPropertyChange>()
+                    .Select(c => (IWhatIfPropertyChange)new DryRunWhatIfPropertyChange(c as JObject))
                     .ToList();
             }
         }
