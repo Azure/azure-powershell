@@ -251,7 +251,7 @@ Accept wildcard characters: False
 
 ### -VaultedBackupContainer
 List of containers to be backed up inside the VaultStore.
-Use this parameter for DatasourceType AzureBlob.
+Use this parameter for DatasourceType AzureBlob and AzureDataLakeStorage.
 
 ```yaml
 Type: System.String[]
@@ -318,7 +318,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupInstanceResource
 
 ## NOTES
 
