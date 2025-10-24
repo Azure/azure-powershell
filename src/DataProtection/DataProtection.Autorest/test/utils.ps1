@@ -182,24 +182,44 @@ function setupEnv() {
 
     $BlobHardeningVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
-        CrossSubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        CrossSubscriptionId = "349ea464-dc60-42e9-8c5d-46fa013b9546"
         Location = "eastus"
-        ResourceGroupName = "blob-eus-pstest-rg"
-        VaultName = "blob-eus-pstest-vault"
-        PolicyName = "operational-vaulted-policy"
-        UpdatePolicyName = "op-vault-pstest-policy"
-        UpdatedContainersList = @( "conaaa", "conabb", "coneee", "conwxy", "conzzz" )
-        StorageAccountName = "blobeuspstestsa"
-        OperationalPolicyName = "op-pstest-policy"
-        VaultPolicyName = "vaulted-pstest-policy"
-        OperationalVaultedPolicyName = "op-vault-pstest-policy"
-        StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.Storage/storageAccounts/blobeuspstestsa"
-        TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Storage/storageAccounts/hiagaeussa"
-        TargetStorageAccountName = "hiagaeussa"
-        TargetStorageAccountRGName = "hiagarg"
-        TargetCrossSubStorageAccId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiagaTestRG/providers/Microsoft.Storage/storageAccounts/hiagatestsa"
-        TargetCrossSubStorageAccountName = "hiagatestsa"
-        TargetCrossSubStorageAccountRGName = "hiagaTestRG"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "dataprotectionpstest-bv"
+        PolicyName = "opvaultpolicy"
+        UpdatePolicyName = "opvaultpolicy2"
+        UpdatedContainersList = @( "con1", "con2", "con3", "con4", "con5" )
+        StorageAccountName = "blobsourcesa1"
+        OperationalPolicyName = "operationalpol2"
+        VaultPolicyName = "vaultpolicy"
+        OperationalVaultedPolicyName = "opvaultpolicy"
+        StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobsourcesa1"
+        TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobtargetsa"
+        TargetStorageAccountName = "blobtargetsa"
+        TargetStorageAccountRGName = "dataprotectionpstest-rg"
+        TargetCrossSubStorageAccId = "/subscriptions/349ea464-dc60-42e9-8c5d-46fa013b9546/resourceGroups/dataprotectionpstest2-rg/providers/Microsoft.Storage/storageAccounts/crrblobtargetsa"
+        TargetCrossSubStorageAccountName = "crrblobtargetsa"
+        TargetCrossSubStorageAccountRGName = "dataprotectionpstest2-rg"
+    }
+
+    $AdlsBlobHardeningVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        CrossSubscriptionId = "349ea464-dc60-42e9-8c5d-46fa013b9546"
+        Location = "eastus"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "dataprotectionpstest-bv"
+        PolicyName = "adlsvaultpolicy"
+        UpdatePolicyName = "adlsvaultpolicy2"
+        UpdatedContainersList = @( "con1", "con2", "con3", "con4", "con5" )
+        StorageAccountName = "adlsblobsourcesa"
+        VaultPolicyName = "adlsvaultpolicy"
+        StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/adlsblobsourcesa"
+        TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/adlsblobtargetsa"
+        TargetStorageAccountName = "adlsblobtargetsa"
+        TargetStorageAccountRGName = "dataprotectionpstest-rg"
+        TargetCrossSubStorageAccId = "/subscriptions/349ea464-dc60-42e9-8c5d-46fa013b9546/resourceGroups/dataprotectionpstest2-rg/providers/Microsoft.Storage/storageAccounts/crradlsblobtargetsa"
+        TargetCrossSubStorageAccountName = "crradlsblobtargetsa"
+        TargetCrossSubStorageAccountRGName = "dataprotectionpstest2-rg"
     }
 
     $UpdateBIWithUAMIVariables = @{
@@ -309,6 +329,7 @@ function setupEnv() {
     $env.add("TestAksPolicyScenario", $AksPolicyVariables) | Out-Null
     $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
+    $env.add("TestAdlsBlobHardeningScenario", $AdlsBlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
     $env.add("TestCrossRegionRestoreScenario", $CrossRegionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
