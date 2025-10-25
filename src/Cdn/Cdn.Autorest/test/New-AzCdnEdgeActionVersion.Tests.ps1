@@ -33,7 +33,7 @@ Describe 'New-AzCdnEdgeActionVersion' {
         } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonFilePath' - skip {
+    It 'CreateViaJsonFilePath' -skip {
     }
 
     It 'CreateViaJsonString' -skip {
