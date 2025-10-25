@@ -168,6 +168,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A list of availability zones denoting where the firewall needs to come from.")]
         public string[] Zone { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The edge zone where the firewall needs to be deployed.")]
+        public string EdgeZone { get; set; }
+
         [Alias("Sku")]
         [Parameter(
             Mandatory = false,
@@ -286,6 +291,12 @@ namespace Microsoft.Azure.Commands.Network
             sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AzfwVnet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
+            // Validate that EdgeZone and Zones are not both specified
+            if (!string.IsNullOrEmpty(this.EdgeZone) && this.Zone != null && this.Zone.Length > 0)
+            {
+                throw new ArgumentException("Zones cannot be specified when EdgeZone is provided. EdgeZone deployments do not support availability zones.", nameof(this.Zone));
+            }
+
             if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
             {
                 if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.Location))
@@ -336,10 +347,11 @@ namespace Microsoft.Azure.Commands.Network
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
-                    Zones = this.Zone == null ? null : this.Zone.ToList(),
+                    Zones = (!string.IsNullOrEmpty(this.EdgeZone)) ? null : (this.Zone == null ? null : this.Zone.ToList()),
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
                     EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
-                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
+                    ExtendedLocation = (!string.IsNullOrEmpty(this.EdgeZone)) ? new PSExtendedLocation(this.EdgeZone) : null
                 };
 
                 if (this.PublicIpAddress != null) 
@@ -368,12 +380,13 @@ namespace Microsoft.Azure.Commands.Network
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
                     EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
                     EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
-                    RouteServerId = this.RouteServerId
+                    RouteServerId = this.RouteServerId,
+                    ExtendedLocation = (!string.IsNullOrEmpty(this.EdgeZone)) ? new PSExtendedLocation(this.EdgeZone) : null
                 };
 
                 if (this.Zone != null)
                 {
-                    firewall.Zones = this.Zone?.ToList();
+                    firewall.Zones = (!string.IsNullOrEmpty(this.EdgeZone)) ? null : this.Zone?.ToList();
                 }
 
                 if (this.virtualNetwork != null)

@@ -249,5 +249,29 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallAutoscaleConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDWithEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDWithEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubCRUDWithEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUDWithEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallEdgeZoneZonesValidation()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallEdgeZoneZonesValidation");
+        }
     }
 }
