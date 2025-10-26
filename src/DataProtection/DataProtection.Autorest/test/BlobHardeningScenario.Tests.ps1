@@ -66,8 +66,6 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $instance[0].Name -match $storageAcountName | Should be $true
 
         # Trigger Backup
-        Write-Host "Backup instance name: $($instance.Name)"
-        Write-Host "Backup instance name at first index: $($instance[0].Name)" 
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $pol[0].Property.PolicyRule[-1].Name -TriggerOptionRetentionTagOverride $pol[0].Property.PolicyRule[-1].Trigger.TaggingCriterion[0].TagInfoTagName
 
         $jobid = $backupJob.JobId.Split("/")[-1]
@@ -95,12 +93,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
-        Write-Host "Vault name: $($vault.Name)"
-        Write-Host "Storage account name: $($storageAccountName)"
-        Write-Host "Resource group name: $($resourceGroupName)"
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
-        Write-Host "Backup instance name: $($instance.Name)"
-        # Write-Host "Backup instance name at first index: $($instance[0].Name)" 
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 
         $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
@@ -121,8 +114,6 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         # Initialize Restore
         $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
-        Write-Host "Backup instance name: $($instance.Name)"
-        Write-Host "Backup instance name at first index: $($instance[0].Name)"
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
         $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -Parameter $restoreReq
@@ -176,8 +167,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
-        Write-Host "Backup instance name: $instance.Name"
-        Write-Host "Backup instance name at first index: $instance[0].Name" 
+       
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 
         $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
@@ -203,8 +193,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
 
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
-        Write-Host "Backup instance name: $instance.Name"
-        Write-Host "Backup instance name at first index: $instance[0].Name" 
+
         $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -Parameter $restoreReq
 
         $restoreReqCSR = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetCrossSubStorageAccId -ContainersList $backedUpContainers[0,1]
