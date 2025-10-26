@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'AdlsBlobHardeningScenario' {
+Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         It 'ConfigureBackup' {
         $subId = $env.TestAdlsBlobHardeningScenario.SubscriptionId
         $location = $env.TestAdlsBlobHardeningScenario.Location
