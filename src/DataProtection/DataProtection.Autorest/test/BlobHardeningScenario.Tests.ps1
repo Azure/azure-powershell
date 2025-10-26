@@ -119,7 +119,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         }
 
         # Initialize Restore
-        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDataLakeStorage -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch
+        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
         Write-Host "Backup instance name: $($instance.Name)"
         Write-Host "Backup instance name at first index: $($instance[0].Name)"
