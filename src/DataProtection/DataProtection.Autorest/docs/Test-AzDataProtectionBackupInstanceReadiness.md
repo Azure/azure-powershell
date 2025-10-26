@@ -62,7 +62,7 @@ Backup Instance
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupInstance
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the BackupVaultResource
+The name of the backup vault.
 
 ```yaml
 Type: System.String
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo
 
 ## NOTES
 

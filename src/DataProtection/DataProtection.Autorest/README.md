@@ -31,11 +31,11 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: 3d25fefc22d4b7835a8e572ae3097edc68dd23ad
+commit: ebdacd9571bc8a5faad5b8d418c70c3b6b7c2965
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2025-07-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2025-02-01/dataprotection.json
 title: DataProtection
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
@@ -322,35 +322,35 @@ directive:
   - where:
       verb: Test
       subject: BackupInstance
-      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
-    set:
-      subject: BackupInstanceRestore
-  - where:
-      verb: Test
-      subject: BackupInstance
       variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
     set:
-      subject: BackupInstanceReadiness
+      subject: BackupInstanceRestore
   - where:
       verb: Test
       subject: BackupInstance
       variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     set:
+      subject: BackupInstanceReadiness
+  - where:
+      verb: Test
+      subject: BackupInstance
+      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
+    set:
       subject: BackupInstanceUpdate
   - where:
       verb: Test
       subject: BackupInstanceUpdate
-      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+      variant: ^Validate1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
     hide: true
   - where:
       verb: Test
       subject: BackupInstanceReadiness
-      variant: ^Validate2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     hide: true
   - where:
       verb: Test
       subject: BackupInstanceRestore
-      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
+      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
     hide: true
   - where:
       verb: Test
@@ -467,19 +467,19 @@ directive:
     - EncryptionSettings
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRecoveryPoint Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.INamespacedNameResource ResourceModifierReference');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.INamespacedNameResource ResourceModifierReference');
 ```
 
 ## Alternate settings

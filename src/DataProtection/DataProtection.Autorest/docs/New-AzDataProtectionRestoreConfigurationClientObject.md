@@ -171,7 +171,7 @@ Namespaces mapping from source namespaces to target namespaces to resolve namesp
 To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.KubernetesClusterRestoreCriteriaNamespaceMappings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.KubernetesClusterRestoreCriteriaNamespaceMappings
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +204,7 @@ Resource modifier reference to be executed during restore.
 To construct, see NOTES section for RESOURCEMODIFIERREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.NamespacedNameResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.NamespacedNameResource
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +220,7 @@ Hook reference to be executed during restore.
 To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 

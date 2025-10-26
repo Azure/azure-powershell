@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2025 -Month 03 -Day 31 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2025 -Month 10 -Day 25 -Hour 17 -Minute 31 -Second 02).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -108,7 +108,7 @@ function setupEnv() {
         VaultName = "oss-pstest-vault"
         OssServerName = "oss-pstest-server"
         OssDbName = "oss-pstest-db"
-        OssDbId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres"
+        OssDbId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/flexibleServers/hiagaoss1"
         PolicyName = "oss-pstest-policy"
         NewPolicyName = "oss-pstest-policy-archive"
         KeyVault = "oss-pstest-keyvault"
@@ -192,7 +192,7 @@ function setupEnv() {
         StorageAccountName = "blobsourcesa1"
         OperationalPolicyName = "operationalpol2"
         VaultPolicyName = "vaultpolicy"
-        OperationalVaultedPolicyName = "opvaultpolicy"
+        OperationalVaultedPolicyName = "opvaultpolicy3"
         StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobsourcesa1"
         TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobtargetsa"
         TargetStorageAccountName = "blobtargetsa"
@@ -306,13 +306,13 @@ function setupEnv() {
     }
 
     $CmkEncryptionVariables = @{
-        SubscriptionId = "191973cd-9c54-41e0-ac19-25dd9a92d5a8"
-        ResourceGroupName = "jeevan-wrk-vms"
-        VaultName = "pstestvault-automated"
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "testcmkvault7"
         Location = "eastasia"
-        CmkUserAssignedIdentityId = "/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest"
-        CmkEncryptionKeyUri = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
-        CmkEncryptionKeyUriUpdated = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
+        CmkUserAssignedIdentityId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/dataprotectionpstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest"
+        CmkEncryptionKeyUri = "https://iannakeyvault.vault.azure.net/keys/pskey/acabb3f41e4e4266abf44100b81e7872"
+        CmkEncryptionKeyUriUpdated = "https://iannakeyvault.vault.azure.net/keys/pskey2/759c6ee414554dd7a6225bc22a90871d"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null

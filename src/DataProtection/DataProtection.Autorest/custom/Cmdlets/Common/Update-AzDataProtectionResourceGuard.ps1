@@ -2,7 +2,7 @@
 
 function Update-AzDataProtectionResourceGuard
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IResourceGuardResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a resource guard belonging to a resource group')]
 
