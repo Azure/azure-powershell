@@ -13,7 +13,7 @@ Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 ## SYNTAX
 
 ```
-Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet <PSVirtualMachineScaleSet> [-EnableProxyAgent <Boolean>]
+Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet <PSVirtualMachineScaleSet> [-EnableProxyAgent <Boolean>] [-AddProxyAgentExtension <Boolean>]
  [-WireServerMode <String>] [-WireServerProfile <String>] [-ImdsMode <String>] [-ImdsProfile <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 ### Example 1
 ```powershell
 $vmssConfig = New-AzVmssConfig -Location 'EastUS2' -SkuName 'Standard_D4s_v3'
-Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmssConfig -EnableProxyAgent $true -WireServerProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}' -ImdsProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}'
+Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmssConfig -EnableProxyAgent $true -AddProxyAgentExtension false -WireServerProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}' -ImdsProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}'
 ```
 
 This command sets the Proxy Agent settings for a virtual machine scale set configuration object `$vmssConfig`. 
@@ -51,6 +51,21 @@ Accept wildcard characters: False
 
 ### -EnableProxyAgent
 Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AddProxyAgentExtension
+Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

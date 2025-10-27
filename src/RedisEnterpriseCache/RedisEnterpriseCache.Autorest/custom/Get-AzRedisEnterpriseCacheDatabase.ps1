@@ -26,12 +26,12 @@ Name    Type
 default Microsoft.Cache/redisEnterprise/databases
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachedatabase
 #>
 function Get-AzRedisEnterpriseCacheDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
