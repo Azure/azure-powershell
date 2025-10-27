@@ -11,9 +11,9 @@
   "enableDataSourceSetInfo": true,
   "resourceType": "Microsoft.Storage/storageAccounts",
   "parentResourceType": "Microsoft.Storage/storageAccounts",
-  "datasourceType": "Microsoft.Storage/storageAccounts/blobServices",
-  "allowedRestoreModes": [ "PointInTimeBased", "RecoveryPointBased" ],
-  "allowedRestoreTargetTypes": [ "OriginalLocation", "AlternateLocation" ],
+  "datasourceType": "Microsoft.Storage/storageAccounts/adlsBlobServices",
+  "allowedRestoreModes": [ "RecoveryPointBased" ],
+  "allowedRestoreTargetTypes": [ "AlternateLocation" ],
   "itemLevelRecoveyEnabled": true,
   "fileNamePrefixDisabled": false,
   "addBackupDatasourceParametersList": true,
@@ -26,7 +26,7 @@
   "renameContainersEnabled": true,
   "policySettings": {
     "supportedRetentionTags": [ "Weekly", "Monthly", "Yearly" ],
-    "supportedDatastoreTypes": [ "OperationalStore", "VaultStore" ],
+    "supportedDatastoreTypes": [ "VaultStore" ],
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": false,
     "backupScheduleSupported": true,
@@ -82,9 +82,9 @@
           "objectType": "AzureRetentionRule"
         }
       ],
-      "name": "BlobPolicy1",
+      "name": "AdlsBlobPolicy1",
       "datasourceTypes": [
-        "Microsoft.Storage/storageAccounts/blobServices"
+        "Microsoft.Storage/storageAccounts/adlsBlobServices"
       ],
       "objectType": "BackupPolicy"
     }

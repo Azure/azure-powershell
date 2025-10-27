@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'BlobHardeningScenario.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'AdlsBlobHardeningScenario.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,15 +11,15 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
-    It 'ConfigureBackup' {
-        $subId = $env.TestBlobHardeningScenario.SubscriptionId
-        $location = $env.TestBlobHardeningScenario.Location
-        $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
-        $vaultName = $env.TestBlobHardeningScenario.VaultName
-        $policyName = $env.TestBlobHardeningScenario.PolicyName
-        $storageAccountName = $env.TestBlobHardeningScenario.StorageAccountName
-        $storageAccId = $env.TestBlobHardeningScenario.StorageAccId
+Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
+        It 'ConfigureBackup' {
+        $subId = $env.TestAdlsBlobHardeningScenario.SubscriptionId
+        $location = $env.TestAdlsBlobHardeningScenario.Location
+        $resourceGroupName = $env.TestAdlsBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestAdlsBlobHardeningScenario.VaultName
+        $policyName = $env.TestAdlsBlobHardeningScenario.PolicyName
+        $storageAccountName = $env.TestAdlsBlobHardeningScenario.StorageAccountName
+        $storageAccId = $env.TestAdlsBlobHardeningScenario.StorageAccId
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -match $policyName }
@@ -38,10 +38,10 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
         $containers=Get-AzStorageContainer -Context $storageAccount.Context
 
-        $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name
+        $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -VaultedBackupContainer $containers.Name
         $backupConfig.ContainersList = $backupConfig.ContainersList[1,3,4]
 
-        $backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureBlob -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $storageAccId -BackupConfiguration $backupConfig
+        $backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDataLakeStorage -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $storageAccId -BackupConfiguration $backupConfig
 
         # assign permissions and validate
         Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
@@ -81,19 +81,20 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $jobstatus | Should be "Completed"
     }
 
-    It 'BlobVaultedILR'  {        
-        $subId = $env.TestBlobHardeningScenario.SubscriptionId
-        $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
-        $vaultName = $env.TestBlobHardeningScenario.VaultName
+    It 'AdlsBlobVaultedILR' {        
+        $subId = $env.TestAdlsBlobHardeningScenario.SubscriptionId
+        $resourceGroupName = $env.TestAdlsBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestAdlsBlobHardeningScenario.VaultName
         
-        $storageAccountName = $env.TestBlobHardeningScenario.StorageAccountName
-        $targetStorageAccId = $env.TestBlobHardeningScenario.TargetStorageAccId
-        $targetStorageAccountRGName = $env.TestBlobHardeningScenario.TargetStorageAccountRGName
-        $targetStorageAccountName = $env.TestBlobHardeningScenario.TargetStorageAccountName
-        
+        $storageAccountName = $env.TestAdlsBlobHardeningScenario.StorageAccountName
+        $targetStorageAccId = $env.TestAdlsBlobHardeningScenario.TargetStorageAccId
+        $targetStorageAccountRGName = $env.TestAdlsBlobHardeningScenario.TargetStorageAccountRGName
+        $targetStorageAccountName = $env.TestAdlsBlobHardeningScenario.TargetStorageAccountName
+
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
+
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 
         $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
@@ -111,8 +112,10 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
             $backedUpContainers[1]= @("c")
         }
 
+
         # Initialize Restore
-        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch
+        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDataLakeStorage -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch
+	
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
@@ -143,31 +146,29 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         # Validate job completed successfully
         $jobstatus | Should be "Completed"
 
-        Write-Host "BlobVaultedILR test completed successfully - all validations passed!"
+        Write-Host "AdlsBlobVaultedILR test completed successfully - all validations passed!"
     }
 
-    
     It 'TriggerRestore' -skip {
         # TODO: OLR should throw an error in case of vaulted backups
 
-        $subId = $env.TestBlobHardeningScenario.SubscriptionId
-        $crossSubscriptionId = $env.TestBlobHardeningScenario.CrossSubscriptionId
-        $location = $env.TestBlobHardeningScenario.Location
-        $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
-        $vaultName = $env.TestBlobHardeningScenario.VaultName
-        $policyName = $env.TestBlobHardeningScenario.PolicyName
-        $storageAccountName = $env.TestBlobHardeningScenario.StorageAccountName
-        $storageAccId = $env.TestBlobHardeningScenario.StorageAccId
-        $targetStorageAccId = $env.TestBlobHardeningScenario.TargetStorageAccId
-        $targetCrossSubStorageAccId = $env.TestBlobHardeningScenario.TargetCrossSubStorageAccId
-        $targetStorageAccountName = $env.TestBlobHardeningScenario.TargetStorageAccountName
-        $targetStorageAccountRGName = $env.TestBlobHardeningScenario.TargetStorageAccountRGName
-        $targetCrossSubStorageAccountName = $env.TestBlobHardeningScenario.TargetCrossSubStorageAccountName
-        $targetCrossSubStorageAccountRGName = $env.TestBlobHardeningScenario.TargetCrossSubStorageAccountRGName
+        $subId = $env.TestAdlsBlobHardeningScenario.SubscriptionId
+        $crossSubscriptionId = $env.TestAdlsBlobHardeningScenario.CrossSubscriptionId
+        $location = $env.TestAdlsBlobHardeningScenario.Location
+        $resourceGroupName = $env.TestAdlsBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestAdlsBlobHardeningScenario.VaultName
+        $policyName = $env.TestAdlsBlobHardeningScenario.PolicyName
+        $storageAccountName = $env.TestAdlsBlobHardeningScenario.StorageAccountName
+        $storageAccId = $env.TestAdlsBlobHardeningScenario.StorageAccId
+        $targetStorageAccId = $env.TestAdlsBlobHardeningScenario.TargetStorageAccId
+        $targetCrossSubStorageAccId = $env.TestAdlsBlobHardeningScenario.TargetCrossSubStorageAccId
+        $targetStorageAccountName = $env.TestAdlsBlobHardeningScenario.TargetStorageAccountName
+        $targetStorageAccountRGName = $env.TestAdlsBlobHardeningScenario.TargetStorageAccountRGName
+        $targetCrossSubStorageAccountName = $env.TestAdlsBlobHardeningScenario.TargetCrossSubStorageAccountName
+        $targetCrossSubStorageAccountRGName = $env.TestAdlsBlobHardeningScenario.TargetCrossSubStorageAccountRGName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
-       
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 
         $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
@@ -189,16 +190,14 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         }
 
         # Initialize Restore
-        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1]
+        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDataLakeStorage -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1]
 
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
         $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -Parameter $restoreReq
 
-        $restoreReqCSR = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetCrossSubStorageAccId -ContainersList $backedUpContainers[0,1]
-
-        Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -RestoreRequest $restoreReqCSR -PermissionsScope ResourceGroup
+        $restoreReqCSR = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDataLakeStorage -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetCrossSubStorageAccId -ContainersList $backedUpContainers[0,1]
 
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReqCSR
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
