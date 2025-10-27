@@ -24,6 +24,10 @@ function Get-AzFunctionAppAvailableLocation {
         [ValidateSet("Linux", "Windows")]
         ${OSType},
 
+        [Parameter(HelpMessage='Filter the list to return only locations which support zone redundancy.')]
+        [System.Management.Automation.SwitchParameter]
+        ${ZoneRedundant},
+
         [Parameter(HelpMessage=' The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -78,7 +82,8 @@ function Get-AzFunctionAppAvailableLocation {
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
         $paramsToRemove = @(
             "OSType",
-            "PlanType"
+            "PlanType",
+            "ZoneRedundant"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -142,6 +147,25 @@ function Get-AzFunctionAppAvailableLocation {
                                   -Exception $exception
         }
 
-        Az.Functions.internal\Get-AzFunctionAppAvailableLocation @PSBoundParameters
+        if ($ZoneRedundant.IsPresent -and ($PlanType -ne 'FlexConsumption'))
+        {
+            $errorMessage = "ZoneRedundant parameter is only applicable for FlexConsumption plan type."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "ZoneRedundantIsOnlyApplicableForFlexConsumption" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
+        }
+
+        $regions = Az.Functions.internal\Get-AzFunctionAppAvailableLocation @PSBoundParameters
+
+        if ($ZoneRedundant.IsPresent -and ($PlanType -eq 'FlexConsumption'))
+        {
+            $regions | ForEach-Object { if ($_.OrgDomain -match "FCZONEREDUNDANCY") { $_ }}
+        }
+        else
+        {
+            $regions
+        }
     }
 }
