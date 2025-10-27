@@ -49,19 +49,28 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// reservations that belong to the capacity reservation group.</param>
         /// <param name="sharingProfile">Specifies the settings to enable
         /// sharing across subscriptions for the capacity reservation group
-        /// resource. Pls. keep in mind the capacity reservation group resource
-        /// generally can be shared across subscriptions belonging to a single
-        /// azure AAD tenant or cross AAD tenant if there is a trust
-        /// relationship established between the AAD tenants. **Note:** Minimum
-        /// api-version: 2023-09-01. Please refer to
+        /// resource. The capacity reservation group resource can generally be
+        /// shared across subscriptions belonging to a single Azure AAD tenant
+        /// or across AAD tenants if there is a trust relationship established
+        /// between the tenants.  Block capacity reservation does not support
+        /// sharing across subscriptions. **Note:** Minimum api-version:
+        /// 2023-09-01. Please refer to
         /// https://aka.ms/computereservationsharing for more details.</param>
-        public CapacityReservationGroupUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> capacityReservations = default(IList<SubResourceReadOnly>), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), CapacityReservationGroupInstanceView instanceView = default(CapacityReservationGroupInstanceView), ResourceSharingProfile sharingProfile = default(ResourceSharingProfile))
+        /// <param name="reservationType">Indicates the type of capacity
+        /// reservation. Allowed values are 'Block' for block capacity
+        /// reservations and 'Targeted' for reservations that enable a VM to
+        /// consume a specific capacity reservation when a capacity reservation
+        /// group is provided. The reservation type is immutable and cannot be
+        /// changed after it is assigned. Possible values include: 'Targeted',
+        /// 'Block'</param>
+        public CapacityReservationGroupUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> capacityReservations = default(IList<SubResourceReadOnly>), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), CapacityReservationGroupInstanceView instanceView = default(CapacityReservationGroupInstanceView), ResourceSharingProfile sharingProfile = default(ResourceSharingProfile), string reservationType = default(string))
             : base(tags)
         {
             CapacityReservations = capacityReservations;
             VirtualMachinesAssociated = virtualMachinesAssociated;
             InstanceView = instanceView;
             SharingProfile = sharingProfile;
+            ReservationType = reservationType;
             CustomInit();
         }
 
@@ -94,16 +103,28 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the settings to enable sharing across
-        /// subscriptions for the capacity reservation group resource. Pls.
-        /// keep in mind the capacity reservation group resource generally can
-        /// be shared across subscriptions belonging to a single azure AAD
-        /// tenant or cross AAD tenant if there is a trust relationship
-        /// established between the AAD tenants. **Note:** Minimum api-version:
-        /// 2023-09-01. Please refer to
-        /// https://aka.ms/computereservationsharing for more details.
+        /// subscriptions for the capacity reservation group resource. The
+        /// capacity reservation group resource can generally be shared across
+        /// subscriptions belonging to a single Azure AAD tenant or across AAD
+        /// tenants if there is a trust relationship established between the
+        /// tenants.  Block capacity reservation does not support sharing
+        /// across subscriptions. **Note:** Minimum api-version: 2023-09-01.
+        /// Please refer to https://aka.ms/computereservationsharing for more
+        /// details.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sharingProfile")]
         public ResourceSharingProfile SharingProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the type of capacity reservation. Allowed
+        /// values are 'Block' for block capacity reservations and 'Targeted'
+        /// for reservations that enable a VM to consume a specific capacity
+        /// reservation when a capacity reservation group is provided. The
+        /// reservation type is immutable and cannot be changed after it is
+        /// assigned. Possible values include: 'Targeted', 'Block'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.reservationType")]
+        public string ReservationType { get; set; }
 
     }
 }

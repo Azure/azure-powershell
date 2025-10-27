@@ -1,8 +1,8 @@
 {
-  "Update-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/containerEndpoint2gv4kubhz?api-version=2025-07-01+1": {
+  "Update-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1o7je935h/endpoints/containerEndpoint2o7je935h?api-version=2025-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2gv4kubhz?api-version=2025-07-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2o7je935h?api-version=2025-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureStorageBlobContainer\",\r\n    \"description\": \"\",\r\n    \"storageAccountResourceId\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.Storage/storageAccounts/storaccpul1qe2g\",\r\n    \"blobContainerName\": \"containerpul1qe2g\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -36,14 +36,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2gv4kubhz\",\"name\":\"containerEndpoint2gv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:55:17.6952839Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:24.0923726Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.Storage/storageAccounts/storaccpul1qe2g\",\"blobContainerName\":\"containerpul1qe2g\",\"endpointType\":\"AzureStorageBlobContainer\",\"description\":\"\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2o7je935h\",\"name\":\"containerEndpoint2o7je935h\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:55:17.6952839Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:24.0923726Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.Storage/storageAccounts/storaccpul1qe2g\",\"blobContainerName\":\"containerpul1qe2g\",\"endpointType\":\"AzureStorageBlobContainer\",\"description\":\"\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/containerEndpoint2gv4kubhz?api-version=2025-07-01+2": {
+  "Update-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1o7je935h/endpoints/containerEndpoint2o7je935h?api-version=2025-07-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2gv4kubhz?api-version=2025-07-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2o7je935h?api-version=2025-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureStorageBlobContainer\",\r\n    \"description\": \"update description\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -77,14 +77,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2gv4kubhz\",\"name\":\"containerEndpoint2gv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:55:17.6952839Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:25.857875Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.Storage/storageAccounts/storaccpul1qe2g\",\"blobContainerName\":\"containerpul1qe2g\",\"endpointType\":\"AzureStorageBlobContainer\",\"description\":\"update description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2o7je935h\",\"name\":\"containerEndpoint2o7je935h\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:55:17.6952839Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:25.857875Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.Storage/storageAccounts/storaccpul1qe2g\",\"blobContainerName\":\"containerpul1qe2g\",\"endpointType\":\"AzureStorageBlobContainer\",\"description\":\"update description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.StorageMover/storageMovers/testStoMover1gv4kubhz/endpoints/containerEndpoint2gv4kubhz?api-version=2025-07-01+3": {
+  "Update-AzStorageMoverAzStorageContainerEndpoint+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1o7je935h/endpoints/containerEndpoint2o7je935h?api-version=2025-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2gv4kubhz?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2o7je935h?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -122,7 +122,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2gv4kubhz\",\"name\":\"containerEndpoint2gv4kubhz\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:55:17.6952839Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:25.857875Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.Storage/storageAccounts/storaccpul1qe2g\",\"blobContainerName\":\"containerpul1qe2g\",\"endpointType\":\"AzureStorageBlobContainer\",\"description\":\"update description\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/containerEndpoint2o7je935h\",\"name\":\"containerEndpoint2o7je935h\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:55:17.6952839Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:56:25.857875Z\"},\"properties\":{\"storageAccountResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.Storage/storageAccounts/storaccpul1qe2g\",\"blobContainerName\":\"containerpul1qe2g\",\"endpointType\":\"AzureStorageBlobContainer\",\"description\":\"update description\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalRKey", DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRKeys))]
-    public class GetAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
+    public class GetAzureRmSignalRKey : SignalRCmdletBase, IWithSignalRInputObject, IWithResourceId
     {
         [Parameter(
             Mandatory = false,
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        this.LoadFromInputObject();
+                        this.LoadFromSignalRInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);

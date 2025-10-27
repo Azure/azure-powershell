@@ -56,7 +56,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 'Detach'</param>
         /// <param name="sku">Describes the public IP Sku. It can only be set
         /// with OrchestrationMode as Flexible.</param>
-        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), SubResource publicIPPrefix = default(SubResource), string publicIPAddressVersion = default(string), string deleteOption = default(string), PublicIPAddressSku sku = default(PublicIPAddressSku))
+        /// <param name="tags">Resource tags applied to the publicIP address
+        /// created by this PublicIPAddressConfiguration</param>
+        public VirtualMachineScaleSetPublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings), IList<VirtualMachineScaleSetIpTag> ipTags = default(IList<VirtualMachineScaleSetIpTag>), SubResource publicIPPrefix = default(SubResource), string publicIPAddressVersion = default(string), string deleteOption = default(string), PublicIPAddressSku sku = default(PublicIPAddressSku), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Name = name;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             PublicIPAddressVersion = publicIPAddressVersion;
             DeleteOption = deleteOption;
             Sku = sku;
+            Tags = tags;
             CustomInit();
         }
 
@@ -129,6 +132,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public PublicIPAddressSku Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags applied to the publicIP address created
+        /// by this PublicIPAddressConfiguration
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -14,7 +14,7 @@ Get an analysis result summary of a firmware by name.
 
 ### Get (Default)
 ```
-Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String> -ResourceGroupName <String>
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -Type <String>
  -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -26,13 +26,13 @@ Get-AzFirmwareAnalysisSummary -InputObject <IFirmwareAnalysisIdentity> [-Default
 
 ### GetViaIdentityFirmware
 ```
-Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Name <String>
+Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Type <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
 ```
-Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String>
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Type <String>
  -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Get an analysis result summary of a firmware by name.
 
 ### Example 1: List all the analysis results summary for a firmware by analysis type CVE.
 ```powershell
-Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type
+Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type CVE
 ```
 
 ```output
@@ -65,7 +65,7 @@ List all the analysis results summary for a firmware by analysis type CVE.
 
 ### Example 2: List all the analysis results summary for a firmware by analysis type Firmware.
 ```powershell
-Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type
+Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Type Firmware
 ```
 
 ```output
@@ -148,21 +148,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The Firmware analysis summary name describing the type of summary.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityFirmware, GetViaIdentityWorkspace
-Aliases: SummaryName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -191,6 +176,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The Firmware analysis summary name describing the type of summary.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityFirmware, GetViaIdentityWorkspace
+Aliases: SummaryType
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
