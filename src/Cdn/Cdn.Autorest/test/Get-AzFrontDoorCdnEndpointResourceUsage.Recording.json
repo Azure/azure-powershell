@@ -1,17 +1,17 @@
 {
-  "Get-AzFrontDoorCdnEndpointResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-s3am/providers/Microsoft.Cdn/profiles/fdp-i87x60/afdEndpoints/end-21qj48/usages?api-version=2025-04-15+1": {
+  "Get-AzFrontDoorCdnEndpointResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-z3sv/providers/Microsoft.Cdn/profiles/fdp-4cbmkt/afdEndpoints/end-shz37t/usages?api-version=2025-04-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-s3am/providers/Microsoft.Cdn/profiles/fdp-i87x60/afdEndpoints/end-21qj48/usages?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-z3sv/providers/Microsoft.Cdn/profiles/fdp-4cbmkt/afdEndpoints/end-shz37t/usages?api-version=2025-04-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "178" ],
-        "x-ms-client-request-id": [ "47ee247f-f8cb-46aa-b812-74208d8a1a99" ],
+        "x-ms-unique-id": [ "192" ],
+        "x-ms-client-request-id": [ "e156526c-06e0-4248-935c-148fe5123b17" ],
         "CommandName": [ "Get-AzFrontDoorCdnEndpointResourceUsage" ],
         "FullCommandName": [ "Get-AzFrontDoorCdnEndpointResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/5.0.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,24 +23,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "8f137057-ebbd-4f57-9aee-0dd31dc30ca2" ],
-        "x-ms-client-request-id": [ "47ee247f-f8cb-46aa-b812-74208d8a1a99" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/f8b1373b-b139-4f08-b963-d52e50d3e6a0" ],
+        "x-ms-request-id": [ "da03ed85-c208-4b9a-b21a-addaf2d960b0" ],
+        "x-ms-client-request-id": [ "e156526c-06e0-4248-935c-148fe5123b17" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/7e65dca4-e698-4692-a392-07169e6da3ac" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "68572a12-b42d-4b44-ae1b-e053b61be396" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251024T220738Z:68572a12-b42d-4b44-ae1b-e053b61be396" ],
+        "x-ms-correlation-request-id": [ "9d38b29e-0a4c-414f-90c0-93adb117c5ae" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251027T040736Z:9d38b29e-0a4c-414f-90c0-93adb117c5ae" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E09630F549D44E6B98D796CE4FA355A8 Ref B: SYD03EDGE0707 Ref C: 2025-10-24T22:07:38Z" ],
-        "Date": [ "Fri, 24 Oct 2025 22:07:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 369B0C0CE3A64E9FBE60986AB20936E2 Ref B: SYD03EDGE1320 Ref C: 2025-10-27T04:07:36Z" ],
+        "Date": [ "Mon, 27 Oct 2025 04:07:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "264" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-s3am/providers/Microsoft.Cdn/profiles/fdp-i87x60/afdendpoints/end-21qj48\",\"unit\":\"count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"route\",\"localizedValue\":\"route\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-z3sv/providers/Microsoft.Cdn/profiles/fdp-4cbmkt/afdendpoints/end-shz37t\",\"unit\":\"count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"route\",\"localizedValue\":\"route\"}}]}",
       "isContentBase64": false
     }
   }

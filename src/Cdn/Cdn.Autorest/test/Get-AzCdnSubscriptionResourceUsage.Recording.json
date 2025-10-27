@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "169" ],
-        "x-ms-client-request-id": [ "3efadf2c-9e43-4739-a2cd-ee62232ecbef" ],
+        "x-ms-unique-id": [ "183" ],
+        "x-ms-client-request-id": [ "8e8e443f-05c1-4e2f-95ae-333524c3bae0" ],
         "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/5.0.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,17 +23,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "52fabb4e-88e7-401e-8d50-00c412a39046" ],
-        "x-ms-client-request-id": [ "3efadf2c-9e43-4739-a2cd-ee62232ecbef" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/a3371ce1-f768-4660-8be5-2524921f6eff" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
-        "x-ms-correlation-request-id": [ "ac6cb350-2b80-4aa2-ba76-c32f1c796356" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251024T220729Z:ac6cb350-2b80-4aa2-ba76-c32f1c796356" ],
+        "x-ms-request-id": [ "5899caad-53a6-4f02-900e-9be20e08d12a" ],
+        "x-ms-client-request-id": [ "8e8e443f-05c1-4e2f-95ae-333524c3bae0" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/35460c29-18b2-43d3-8379-b015dff8ba65" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "d4310519-0369-4237-9a26-ec85a1c210de" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251027T040728Z:d4310519-0369-4237-9a26-ec85a1c210de" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F5A0C4631E744453B42D754F159A6406 Ref B: SYD03EDGE0707 Ref C: 2025-10-24T22:07:29Z" ],
-        "Date": [ "Fri, 24 Oct 2025 22:07:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AE1384E4D4DD40CA9C716A6781BAF20D Ref B: SYD03EDGE1320 Ref C: 2025-10-27T04:07:27Z" ],
+        "Date": [ "Mon, 27 Oct 2025 04:07:27 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "158" ],
