@@ -19,11 +19,13 @@
 --->
 
 ## Upcoming Release
+
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
   * Added -EdgeZone parameter to New-AzFirewall cmdlet
   * When EdgeZone is specified, zones property is automatically set to null
 
 ## Version 7.22.0
+
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
   - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
   - Updated `Set-AzNetworkManagerRoutingConfiguration` cmdlet
