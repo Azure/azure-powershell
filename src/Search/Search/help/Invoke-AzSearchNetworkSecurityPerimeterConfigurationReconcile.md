@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.search/invoke-azsearchnetworksecurityperimeterconfigurationreconcile
 schema: 2.0.0
 ---
 
