@@ -21,8 +21,7 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
  [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromPointInTimeBackupWithVcore
@@ -33,7 +32,7 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
  [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
  [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackup
@@ -44,8 +43,7 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
  [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackupWithVcore
@@ -56,8 +54,7 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
  [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromGeoBackup
@@ -67,8 +64,8 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
  [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
  [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
  [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FromGeoBackupWithVcore
@@ -78,8 +75,7 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
  [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackup
@@ -90,7 +86,7 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
  [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
  [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackupWithVcore
@@ -100,8 +96,8 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
  [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
  [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
  [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -476,21 +472,6 @@ Accept wildcard characters: False
 Type: System.DateTime
 Parameter Sets: FromDeletedDatabaseBackup, FromDeletedDatabaseBackupWithVcore
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

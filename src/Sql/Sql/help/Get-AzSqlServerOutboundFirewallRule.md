@@ -14,8 +14,8 @@ Gets outbound firewall rules (Allowed FQDNs) for a SQL Database server.
 
 ```
 Get-AzSqlServerOutboundFirewallRule [[-AllowedFQDN] <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,8 +26,6 @@ If you specify the name of an allowed FQDN, this cmdlet gets information about t
 
 ### Example 1: Get outbound firewall rule(s) for a server
 <!-- Skip: Output cannot be splitted from code -->
-
-
 ```powershell
 Get-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 
@@ -76,21 +74,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -16,7 +16,7 @@ Get managed database copy operation details
 ```
 Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResourceGroupName <String>]
  [-TargetInstanceName <String>] [-OnlyLatestPerDatabase] [-InstanceName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet
@@ -24,7 +24,7 @@ Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResource
 Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResourceGroupName <String>]
  [-TargetInstanceName <String>] -DatabaseObject <AzureSqlManagedDatabaseModel> [-OnlyLatestPerDatabase]
  [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet
@@ -32,14 +32,14 @@ Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResource
 Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResourceGroupName <String>]
  [-TargetInstanceName <String>] -ModelObject <MoveCopyManagedDatabaseModel> [-OnlyLatestPerDatabase]
  [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet
 ```
 Get-AzSqlInstanceDatabaseCopyOperation [-TargetResourceGroupName <String>] [-TargetInstanceName <String>]
  -ResourceId <String> [-OnlyLatestPerDatabase] [-InstanceName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -299,21 +299,6 @@ Return only latest operation per managed database
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

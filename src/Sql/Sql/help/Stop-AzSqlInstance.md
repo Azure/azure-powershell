@@ -15,22 +15,20 @@ Stops Azure SQL Managed Instance
 ### StopInstanceFromInputParameters (Default)
 ```
 Stop-AzSqlInstance [-Name] <String> [-Force] [-AsJob] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 Stop-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force] [-AsJob]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StopInstanceFromAzureResourceId
 ```
 Stop-AzSqlInstance [-ResourceId] <String> [-Force] [-AsJob] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +49,7 @@ Stops instance-name Azure SQL Managed Instance in rg-name resource group.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +79,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +94,7 @@ Accept wildcard characters: False
 The instance object to Stop
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Type: AzureSqlManagedInstanceModel
 Parameter Sets: StopInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 Aliases: SqlInstance
 
@@ -111,7 +109,7 @@ Accept wildcard characters: False
 The name of the instance.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StopInstanceFromInputParameters
 Aliases: InstanceName
 
@@ -122,26 +120,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +139,7 @@ Accept wildcard characters: False
 The resource id of instance object to Stop
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StopInstanceFromAzureResourceId
 Aliases:
 
@@ -171,7 +154,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -187,7 +170,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -214,7 +197,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Start-AzSqlInstance](./Start-AzSqlInstance.md)
 
 [Get-AzSqlInstanceStartStopSchedule](./Get-AzSqlInstanceStartStopSchedule.md)

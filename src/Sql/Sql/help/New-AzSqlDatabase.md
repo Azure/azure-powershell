@@ -24,8 +24,8 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
  [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -39,8 +39,8 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
  [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -597,21 +597,6 @@ The preferred enclave type for the Azure Sql database. Possible values are Defau
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

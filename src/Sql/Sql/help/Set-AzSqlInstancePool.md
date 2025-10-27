@@ -15,25 +15,22 @@ Sets properties for an Azure SQL Instance pool.
 ### DefaultSetInstancePoolParameterSet (Default)
 ```
 Set-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String> [-LicenseType <String>] [-Tag <Hashtable>]
- [-AsJob] [-MaintenanceConfigurationId <String>] [-VCore <Int32>] [-ComputeGeneration <String>]
- [-Edition <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSetInstancePoolParameterSet
 ```
 Set-AzSqlInstancePool [-InputObject] <AzureSqlInstancePoolModel> [-LicenseType <String>] [-Tag <Hashtable>]
- [-AsJob] [-MaintenanceConfigurationId <String>] [-VCore <Int32>] [-ComputeGeneration <String>]
- [-Edition <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSetInstancePoolParameterSet
 ```
-Set-AzSqlInstancePool [-ResourceId] <String> [-LicenseType <String>] [-Tag <Hashtable>] [-AsJob]
- [-MaintenanceConfigurationId <String>] [-VCore <Int32>] [-ComputeGeneration <String>] [-Edition <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzSqlInstancePool [-ResourceId] <String> [-LicenseType <String>] [-Tag <Hashtable>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,21 +128,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComputeGeneration
-The compute generation for the instance pool.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -153,21 +135,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Edition
-The edition for the instance pool.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -207,21 +174,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaintenanceConfigurationId
-The maintenance configuration id to associate with the instance
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the instance pool.
 
@@ -232,21 +184,6 @@ Aliases: InstancePoolName
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -289,21 +226,6 @@ The tags to associate with the instance
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VCore
-Determines how much VCore to associate with instance.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases: VCores
 
 Required: False
 Position: Named

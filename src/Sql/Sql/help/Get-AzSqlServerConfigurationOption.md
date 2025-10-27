@@ -15,25 +15,25 @@ Returns information about server configuration options for Azure SQL Managed Ins
 ### GetByNameParameterSet (Default)
 ```
 Get-AzSqlServerConfigurationOption [-ResourceGroupName] <String> [-InstanceName] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
 Get-AzSqlServerConfigurationOption [[-Name] <String>] [-InstanceObject] <AzureSqlManagedInstanceModel>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByInstanceResourceIdParameterSet
 ```
 Get-AzSqlServerConfigurationOption [[-Name] <String>] [-InstanceResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
 Get-AzSqlServerConfigurationOption [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,21 +130,6 @@ Accepted values: allowPolybaseExport
 
 Required: False
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

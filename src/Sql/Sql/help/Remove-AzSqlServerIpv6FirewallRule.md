@@ -14,8 +14,8 @@ Deletes an IPv6 firewall rule from a SQL Database server.
 
 ```
 Remove-AzSqlServerIpv6FirewallRule [-Ipv6FirewallRuleName] <String> [-Force] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,21 +47,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Ipv6FirewallRuleName
 Specifies the name of the IPv6 firewall rule that this cmdlet deletes.
 
@@ -77,13 +62,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -Force
+Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named

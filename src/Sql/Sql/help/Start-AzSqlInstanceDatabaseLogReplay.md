@@ -14,19 +14,18 @@ Starts a Log Replay service with the given parameters.
 
 ### LogReplayInstanceDatabaseFromInputParameters (Default)
 ```
-Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> [-StorageContainerSasToken <String>]
+Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> -StorageContainerSasToken <String>
  [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-StorageContainerIdentity <String>]
  [-AsJob] [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
-Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> [-StorageContainerSasToken <String>]
+Start-AzSqlInstanceDatabaseLogReplay -StorageContainerUri <String> -StorageContainerSasToken <String>
  [-AutoCompleteRestore] [-LastBackupName <String>] [-Collation <String>] [-StorageContainerIdentity <String>]
  [-AsJob] [-PassThru] [-InputObject] <AzureSqlManagedDatabaseModel> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,21 +206,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -260,7 +244,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: SasToken
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,29 +15,26 @@ Removes a server trust certificate.
 ### DeleteByNameParameterSet (Default)
 ```
 Remove-AzSqlInstanceServerTrustCertificate [-ResourceGroupName] <String> [-InstanceName] <String>
- [-Name] <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteByParentObjectParameterSet
 ```
 Remove-AzSqlInstanceServerTrustCertificate [-Name] <String> [-InstanceObject] <AzureSqlManagedInstanceModel>
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByInputObjectParameterSet
 ```
 Remove-AzSqlInstanceServerTrustCertificate [-InputObject] <AzureSqlInstanceServerTrustCertificateModel>
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByResourceIdParameterSet
 ```
 Remove-AzSqlInstanceServerTrustCertificate [-ResourceId] <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,21 +203,6 @@ Defines whether to return the removed Server Trust Certificate
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

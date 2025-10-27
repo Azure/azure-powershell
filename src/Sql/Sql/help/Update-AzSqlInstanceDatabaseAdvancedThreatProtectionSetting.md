@@ -15,13 +15,13 @@ Sets the Advanced Threat Protection settings on a managed database.
 ```
 Update-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting -Enable <Boolean> [-PassThru]
  -InstanceName <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Update-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting** cmdlet sets the Advanced Threat Protection settings on an Azure SQL managed database.
 To use this cmdlet, specify the *ResourceGroupName*, *InstanceName* and *DatabaseName* parameters to identify the managed database.
+
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ This command sets the Advanced Threat Protection settings for a managed database
 SQL Managed Database name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Defines whether to enable or disable Advanced Threat Protection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 SQL Managed Instance name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,24 +99,9 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -129,7 +114,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +129,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -160,7 +145,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

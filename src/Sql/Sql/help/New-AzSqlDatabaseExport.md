@@ -15,11 +15,10 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 
 ```
 New-AzSqlDatabaseExport [-DatabaseName] <String> [-ServerName] <String> -StorageKeyType <StorageKeyType>
- -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String>
- [-AdministratorLoginPassword <SecureString>] [-AuthenticationType <AuthenticationType>]
- [-UseNetworkIsolation <Boolean>] [-StorageAccountResourceIdForPrivateLink <String>]
- [-SqlServerResourceIdForPrivateLink <String>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -StorageKey <String> -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
+ [-AuthenticationType <AuthenticationType>] [-UseNetworkIsolation <Boolean>]
+ [-StorageAccountResourceIdForPrivateLink <String>] [-SqlServerResourceIdForPrivateLink <String>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -105,14 +104,12 @@ Accept wildcard characters: False
 Specifies the password of the SQL administrator.
 
 This is mandatory. When using `-AuthenticationType ManagedIdentity`, a placeholder value (for example, any non-empty SecureString value) must be provided.
-
-
 ```yaml
 Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,21 +166,6 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -294,8 +276,6 @@ Accept wildcard characters: False
 
 ### -StorageUri
 Specifies the blob link, as a URL, to the .bacpac file. For example: `-StorageUri "https://your-storage-account.blob.core.windows.net/your-container/your-file-name.bacpac"`
-
-
 ```yaml
 Type: System.Uri
 Parameter Sets: (All)

@@ -15,20 +15,19 @@ Gets one or more job private endpoints
 ### DefaultSet (Default)
 ```
 Get-AzSqlElasticJobPrivateEndpoint [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
 Get-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentObject] <AzureSqlElasticJobAgentModel> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Get-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentResourceId] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,21 +142,6 @@ The private endpoint name
 Type: System.String
 Parameter Sets: (All)
 Aliases: PrivateEndpointName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

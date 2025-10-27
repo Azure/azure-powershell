@@ -15,17 +15,16 @@ Creates an Azure SQL Managed Instance.
 ### NewByEditionAndComputeGenerationParameterSet (Default)
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorCredential <PSCredential>]
- -Location <String> -SubnetId <String> [-LicenseType <String>] [-StorageSizeInGB <Int32>] -VCore <Int32>
- [-MemorySizeInGB <Int32>] -Edition <String> -ComputeGeneration <String> [-Collation <String>]
- [-PublicDataEndpointEnabled] [-ProxyOverride <String>] [-TimezoneId <String>] [-Tag <Hashtable>]
- [-AssignIdentity] [-DnsZonePartner <String>] [-InstancePoolName <String>] [-MinimalTlsVersion <String>]
+ -Location <String> -SubnetId <String> [-MemorySizeInGB <Int32>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> [-IsGeneralPurposeV2 <Boolean>] [-Collation <String>]
+ [-PublicDataEndpointEnabled] [-ProxyOverride <String>] [-TimezoneId <String>] [-Tag <Hashtable>] [-AssignIdentity]
+ [-DnsZonePartner <String>] [-InstancePoolName <String>] [-MinimalTlsVersion <String>]
  [-BackupStorageRedundancy <String>] [-MaintenanceConfigurationId <String>]
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-IsGeneralPurposeV2 <Boolean>] [-StorageIOps <Int32>] [-AuthenticationMetadata <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,8 +38,8 @@ New-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-Name] <String>
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewByInstancePoolResourceIdParameterSet
@@ -53,24 +52,22 @@ New-AzSqlInstance [-InstancePoolResourceId] <String> [-Name] <String> [-Administ
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewBySkuNameParameterSetParameter
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorCredential <PSCredential>]
- -Location <String> -SubnetId <String> [-LicenseType <String>] [-StorageSizeInGB <Int32>] -VCore <Int32>
- [-MemorySizeInGB <Int32>] -SkuName <String> [-Collation <String>] [-PublicDataEndpointEnabled]
- [-ProxyOverride <String>] [-TimezoneId <String>] [-Tag <Hashtable>] [-AssignIdentity]
- [-DnsZonePartner <String>] [-InstancePoolName <String>] [-MinimalTlsVersion <String>]
- [-BackupStorageRedundancy <String>] [-MaintenanceConfigurationId <String>]
- [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>]
+ -Location <String> -SubnetId <String> [-MemorySizeInGB <Int32>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]
+ -VCore <Int32> -SkuName <String> [-IsGeneralPurposeV2 <Boolean>] [-Collation <String>] [-PublicDataEndpointEnabled]
+ [-ProxyOverride <String>] [-TimezoneId <String>] [-Tag <Hashtable>] [-AssignIdentity] [-DnsZonePartner <String>]
+ [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-BackupStorageRedundancy <String>]
+ [-MaintenanceConfigurationId <String>] [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-IsGeneralPurposeV2 <Boolean>] [-StorageIOps <Int32>] [-AuthenticationMetadata <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -221,6 +218,7 @@ DnsZone                  : ad35cna0mw
 InstancePoolName         : instancepool0
 ```
 
+
 This command creates a new instance in an instance pool using an instance pool object.
 
 ### Example 6: Create a new instance in an instance pool using an instance pool resource identifier
@@ -315,8 +313,6 @@ This command creates a new instance with maintenance configuration MI_2
 
 ### Example 9: Create a new instance with External (Microsoft Entra ID) Administrator, Microsoft Entra-only Authentication and no SqlAdministratorCredentials
 <!-- Skip: Output cannot be splitted from code -->
-
-
 ```powershell
 New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication -Location westcentralus -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
 
@@ -652,23 +648,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseFormat
-The database format for the instance. Possible values are:
-- AlwaysUpToDate - The instance gets access to all new SQL engine features as soon as they are released in Azure. Database format keeps evolving to accommodate new features. 
-- SQLServer2022 - The instance keeps getting SQL engine bug fixes, security patches and small functional improvements via Cumulative Updates for SQL Server 2022 during its mainstream support period. Database format remains compatible with SQL Server 2022 during that time.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -911,21 +890,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MemorySizeInGB
-Determines how much memory in GB to associate with instance
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: NewByEditionAndComputeGenerationParameterSet, NewBySkuNameParameterSetParameter
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MinimalTlsVersion
 The minimal TLS version to enforce for Managed instance 
 
@@ -957,21 +921,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PricingModel
-The pricing model for the instance.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PrimaryUserAssignedIdentityId
 The primary User Managed Identity(UMI) id.
 
@@ -979,21 +928,6 @@ The primary User Managed Identity(UMI) id.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -1184,12 +1118,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MemorySizeInGB
+Determines how much memory in GB to associate with instance
+
+```yaml
+Type: System.Int32
+Parameter Sets: NewByEditionAndComputeGenerationParameterSet, NewBySkuNameParameterSetParameter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ZoneRedundant
 Use zone redundant storage
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseFormat
+The database format for the instance. Possible values are:
+- AlwaysUpToDate - The instance gets access to all new SQL engine features as soon as they are released in Azure. Database format keeps evolving to accommodate new features. 
+- SQLServer2022 - The instance keeps getting SQL engine bug fixes, security patches and small functional improvements via Cumulative Updates for SQL Server 2022 during its mainstream support period. Database format remains compatible with SQL Server 2022 during that time.
+
+```yaml
+Type: System.String
+Parameter Sets: NewByEditionAndComputeGenerationParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PricingModel
+The pricing model for the instance.
+
+```yaml
+Type: System.String
+Parameter Sets: NewByEditionAndComputeGenerationParameterSet
 Aliases:
 
 Required: False

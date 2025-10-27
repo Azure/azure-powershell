@@ -14,8 +14,7 @@ Refreshes the value of external governance on the server.
 
 ```
 Invoke-AzSqlServerExternalGovernanceStatusRefresh [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +24,7 @@ Refreshes the value of external governance on the server. If successful, the val
 
 ### Example 1
 ```powershell
-Invoke-AzSqlServerExternalGovernanceStatusRefresh -ServerName MyServer -ResourceGroupName MyResourceGroup
+Invoke-AzSqlServerExternalGovernanceStatusRefresh -ServerName MyServer -ResourceGroupName MyResourceGroup 
 ```
 
 Successfully refreshed external governance status
@@ -36,24 +35,9 @@ Successfully refreshed external governance status
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -66,7 +50,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +65,7 @@ Accept wildcard characters: False
 The Azure Sql Server name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +80,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +96,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

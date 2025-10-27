@@ -15,15 +15,14 @@ Removes start stop schedule for Azure SQL Managed Instance
 ### GetInstanceScheduleInputParameters (Default)
 ```
 Remove-AzSqlInstanceStartStopSchedule -InstanceName <String> [-PassThru] [-Force] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetInstanceScheduleByInstanceModelInputParameters
 ```
 Remove-AzSqlInstanceStartStopSchedule -InstanceModel <AzureSqlManagedInstanceModel> [-PassThru] [-Force]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +43,7 @@ Removes schedule from instance-name Azure SQL Managed Instance on rg-name resour
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -59,7 +58,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +73,7 @@ Accept wildcard characters: False
 Instance model input object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Type: AzureSqlManagedInstanceModel
 Parameter Sets: GetInstanceScheduleByInstanceModelInputParameters
 Aliases:
 
@@ -89,7 +88,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Managed Instance
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetInstanceScheduleInputParameters
 Aliases:
 
@@ -104,24 +103,9 @@ Accept wildcard characters: False
 Signal to receive output from a cmdlet which does not return anything.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -134,7 +118,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +133,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -165,7 +149,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,7 +176,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzSqlInstanceStartStopSchedule](./Get-AzSqlInstanceStartStopSchedule.md)
 
 [New-AzSqlInstanceStartStopSchedule](./New-AzSqlInstanceStartStopSchedule.md)

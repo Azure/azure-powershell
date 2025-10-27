@@ -15,15 +15,14 @@ Sets the value for a server configuration option on Azure SQL Managed Instance.
 ### CreateByNameParameterSet (Default)
 ```
 Set-AzSqlServerConfigurationOption [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
- [-Value] <Int32> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Value] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 Set-AzSqlServerConfigurationOption [-Name] <String> [-Value] <Int32>
- [-InstanceObject] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,21 +104,6 @@ Accepted values: allowPolybaseExport
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

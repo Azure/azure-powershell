@@ -14,8 +14,7 @@ Helper command for creating ScheduleItem object that is uses for New-AzSqlInstan
 
 ```
 New-AzSqlInstanceScheduleItem -StartDay <DayOfWeek> -StartTime <String> -StopDay <DayOfWeek> -StopTime <String>
- [-ScheduleList <ScheduleItem[]>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ScheduleList <ScheduleItem[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,24 +46,9 @@ Appends one more schedule item thats starts on Monday at 9 AM and stops on Frida
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -77,7 +61,7 @@ Accept wildcard characters: False
 Existing schedule items to append new one on.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstanceSchedule.Model.ScheduleItem[]
+Type: ScheduleItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +76,7 @@ Accept wildcard characters: False
 Start day for schedule
 
 ```yaml
-Type: System.DayOfWeek
+Type: DayOfWeek
 Parameter Sets: (All)
 Aliases:
 Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
@@ -108,7 +92,7 @@ Accept wildcard characters: False
 Start time for schedule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +107,7 @@ Accept wildcard characters: False
 Stop day for schedule
 
 ```yaml
-Type: System.DayOfWeek
+Type: DayOfWeek
 Parameter Sets: (All)
 Aliases:
 Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
@@ -139,7 +123,7 @@ Accept wildcard characters: False
 Stop time for schedule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +148,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzSqlInstanceStartStopSchedule](./Get-AzSqlInstanceStartStopSchedule.md)
 
 [New-AzSqlInstanceStartStopSchedule](./New-AzSqlInstanceStartStopSchedule.md)

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabaselongtermretentionbackup
 schema: 2.0.0
 ---
 
@@ -15,51 +15,46 @@ Gets one or more long term retention backups.
 ### Location (Default)
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ResourceGroupName <String>]
- [-OnlyLatestPerDatabase] [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OnlyLatestPerDatabase] [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ServerName
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName <String>]
  [-ResourceGroupName <String>] [-OnlyLatestPerDatabase] [-DatabaseState <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupName
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> -DatabaseName <String>
- [-BackupName] <String> [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackupName] <String> [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupByResourceId
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ResourceId] <String> [-BackupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupsByResourceId
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ResourceId] <String> [-OnlyLatestPerDatabase]
- [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupByInputObject
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseModel> [-BackupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupsByInputObject
 ```
 Get-AzSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseModel> [-OnlyLatestPerDatabase]
- [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseState <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,35 +68,29 @@ Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope
 ```
 
 ```output
-BackupExpirationTime                : 3/22/2018 5:50:55 AM
-BackupName                          : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-BackupTime                          : 3/15/2018 5:50:55 AM
-DatabaseName                        : database01
-DatabaseDeletionTime                :
-Location                            : northeurope
-ResourceId                          : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-ServerName                          : server01
-ServerCreateTime                    : 2/29/2018 12:12:19 AM
-ResourceGroupName                   : 
-BackupStorageRedundancy             : Geo
-TimeBasedImmutability               : Disabled
-TimeBasedImmutabilityMode           : Unlocked
-LegalHoldImmutability               : Disabled
+BackupExpirationTime			 : 3/22/2018 5:50:55 AM
+BackupName						 : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime						 : 3/15/2018 5:50:55 AM
+DatabaseName					 : database01
+DatabaseDeletionTime			 :
+Location						 : northeurope
+ResourceId						 : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName						 : server01
+ServerCreateTime				 : 2/29/2018 12:12:19 AM
+ResourceGroupName                : 
+BackupStorageRedundancy			 : Geo
 
-BackupExpirationTime                : 3/22/2018 11:43:18 PM
-BackupName                          : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
-BackupTime                          : 3/15/2018 11:43:18 PM
-DatabaseName                        : database02
-DatabaseDeletionTime                : 3/18/2018 4:36:00 PM
-Location                            : northeurope
-ResourceId                          : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
-ServerName                          : server02
-ServerCreateTime                    : 2/28/2018 12:12:19 AM
-ResourceGroupName                   : 
-BackupStorageRedundancy             : 
-TimeBasedImmutability               : Disabled
-TimeBasedImmutabilityMode           : Unlocked
-LegalHoldImmutability               : Disabled
+BackupExpirationTime			 : 3/22/2018 11:43:18 PM
+BackupName						 : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
+BackupTime						 : 3/15/2018 11:43:18 PM
+DatabaseName					 : database02
+DatabaseDeletionTime			 : 3/18/2018 4:36:00 PM
+Location						 : northeurope
+ResourceId						 : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
+ServerName						 : server02
+ServerCreateTime				 : 2/28/2018 12:12:19 AM
+ResourceGroupName                : 
+BackupStorageRedundancy			 : Geo
 ```
 
 This command gets all long term retention backups for all databases (which may be alive or deleted) in southeastasia, resource group will be set only if server is live.
@@ -112,20 +101,17 @@ Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ResourceGroupNam
 ```
 
 ```output
-BackupExpirationTime                : 3/22/2018 5:50:55 AM
-BackupName                          : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-BackupTime                          : 3/15/2018 5:50:55 AM
-DatabaseName                        : database01
-DatabaseDeletionTime                :
-Location                            : northeurope
-ResourceId                          : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-ServerName                          : server01
-ServerCreateTime                    : 2/29/2018 12:12:19 AM
-ResourceGroupName                   : resourceGroup01
-BackupStorageRedundancy             : Geo
-TimeBasedImmutability               : Disabled
-TimeBasedImmutabilityMode           : Unlocked
-LegalHoldImmutability               : Disabled
+BackupExpirationTime			 : 3/22/2018 5:50:55 AM
+BackupName						     : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime						     : 3/15/2018 5:50:55 AM
+DatabaseName					     : database01
+DatabaseDeletionTime			 :
+Location						       : northeurope
+ResourceId						     : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName						     : server01
+ServerCreateTime			  	 : 2/29/2018 12:12:19 AM
+ResourceGroupName          : resourceGroup01
+BackupStorageRedundancy		 : Geo
 ```
 
 This command gets all long term retention backups for all databases (which may be alive or deleted) under a resource group in northeurope.
@@ -136,20 +122,17 @@ Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName serve
 ```
 
 ```output
-BackupExpirationTime                : 3/22/2018 5:50:55 AM
-BackupName                          : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-BackupTime                          : 3/15/2018 5:50:55 AM
-DatabaseName                        : database01
-DatabaseDeletionTime                :
-Location                            : northeurope
-ResourceId                          : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-ServerName                          : server01
-ServerCreateTime                    : 2/29/2018 12:12:19 AM
-ResourceGroupName                   : 
-BackupStorageRedundancy             : Geo
-TimeBasedImmutability               : Disabled
-TimeBasedImmutabilityMode           : Unlocked
-LegalHoldImmutability               : Disabled
+BackupExpirationTime			 : 3/22/2018 5:50:55 AM
+BackupName						     : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime						     : 3/15/2018 5:50:55 AM
+DatabaseName					     : database01
+DatabaseDeletionTime			 :
+Location						       : northeurope
+ResourceId					       : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName						     : server01
+ServerCreateTime			  	 : 2/29/2018 12:12:19 AM
+ResourceGroupName          : 
+BackupStorageRedundancy		 : Geo
 ```
 
 This command gets the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
@@ -160,20 +143,17 @@ Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -Datab
 ```
 
 ```output
-BackupExpirationTime                : 3/22/2018 5:50:55 AM
-BackupName                          : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-BackupTime                          : 3/15/2018 5:50:55 AM
-DatabaseName                        : database01
-DatabaseDeletionTime                :
-Location                            : northeurope
-ResourceId                          : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-ServerName                          : server01
-ServerCreateTime                    : 2/29/2018 12:12:19 AM
-ResourceGroupName                   : 
-BackupStorageRedundancy             : Geo
-TimeBasedImmutability               : Disabled
-TimeBasedImmutabilityMode           : Unlocked
-LegalHoldImmutability               : Disabled
+BackupExpirationTime			 : 3/22/2018 5:50:55 AM
+BackupName						     : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime						     : 3/15/2018 5:50:55 AM
+DatabaseName					     : database01
+DatabaseDeletionTime			 :
+Location						       : northeurope
+ResourceId						     : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName						     : server01
+ServerCreateTime				   : 2/29/2018 12:12:19 AM
+ResourceGroupName          : 
+BackupStorageRedundancy		 : Geo
 ```
 
 This command gets all long term retention backups for database01
@@ -184,35 +164,29 @@ Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName serve
 ```
 
 ```output
-BackupExpirationTime                : 3/22/2018 11:43:18 PM
-BackupName                          : 601061b7-164c-4a4a-88e5-7158d092d503;131656309980000000
-BackupTime                          : 3/15/2018 11:43:18 PM
-DatabaseName                        : database02
-DatabaseDeletionTime                : 3/18/2018 4:36:00 PM
-Location                            : northeurope
-ResourceId                          : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database02/longTermRetentionBackups/601061b7-164c-4a4a-88e5-7158d092d503;131656309980000000
-ServerName                          : server01
-ServerCreateTime                    : 2/28/2018 12:12:19 AM
-ResourceGroupName                   : 
-BackupStorageRedundancy             : Geo
-TimeBasedImmutability               : Disabled
-TimeBasedImmutabilityMode           : Unlocked
-LegalHoldImmutability               : Disabled
+BackupExpirationTime			 : 3/22/2018 11:43:18 PM
+BackupName					       : 601061b7-164c-4a4a-88e5-7158d092d503;131656309980000000
+BackupTime						     : 3/15/2018 11:43:18 PM
+DatabaseName					     : database02
+DatabaseDeletionTime			 : 3/18/2018 4:36:00 PM
+Location						       : northeurope
+ResourceId					       : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database02/longTermRetentionBackups/601061b7-164c-4a4a-88e5-7158d092d503;131656309980000000
+ServerName						     : server01
+ServerCreateTime				   : 2/28/2018 12:12:19 AM
+ResourceGroupName          : 
+BackupStorageRedundancy		 : Geo
 
-BackupExpirationTime                : 3/22/2018 5:50:55 AM
-BackupName                          : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-BackupTime                          : 3/15/2018 5:50:55 AM
-DatabaseName                        : database01
-DatabaseDeletionTime                :
-Location                            : northeurope
-ResourceId                          : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-ServerName                          : server01
-ServerCreateTime                    : 2/29/2018 12:12:19 AM
-ResourceGroupName                   : 
-BackupStorageRedundancy             : Geo
-TimeBasedImmutability               : Disabled
-TimeBasedImmutabilityMode           : Unlocked
-LegalHoldImmutability               : Disabled
+BackupExpirationTime			 : 3/22/2018 5:50:55 AM
+BackupName						     : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+BackupTime						     : 3/15/2018 5:50:55 AM
+DatabaseName					     : database01
+DatabaseDeletionTime			 :
+Location						       : northeurope
+ResourceId						     : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/resourceGroups/resourcegroup01/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
+ServerName						     : server01
+ServerCreateTime				   : 2/29/2018 12:12:19 AM
+ResourceGroupName          : 
+BackupStorageRedundancy		 : Geo
 ```
 
 This command gets all backups with name that starts with "601061b7"
@@ -235,7 +209,7 @@ Accept wildcard characters: True
 ```
 
 ### -DatabaseName
-The name of the Azure SQL Server the backups are under.
+The name of the Azure SQL Database the backup is from.
 
 ```yaml
 Type: System.String
@@ -334,22 +308,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -409,7 +368,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -425,7 +384,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -452,14 +411,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Copy-AzSqlDatabaseLongTermRetentionBackup](./Copy-AzSqlDatabaseLongTermRetentionBackup.md)
 
 [Remove-AzSqlDatabaseLongTermRetentionBackup](./Remove-AzSqlDatabaseLongTermRetentionBackup.md)
-
-[Set-AzSqlDatabaseLongTermRetentionBackupLegalHold](./Set-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
-
-[Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold](./Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
-
-[Lock-AzSqlDatabaseLongTermRetentionBackupImmutability](./Lock-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
-
-[Remove-AzSqlDatabaseLongTermRetentionBackupImmutability](./Remove-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
 
 [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 

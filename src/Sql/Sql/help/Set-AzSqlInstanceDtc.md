@@ -19,8 +19,7 @@ Set-AzSqlInstanceDtc [-ResourceGroupName] <String> [-InstanceName] <String> [[-D
  [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
@@ -30,8 +29,7 @@ Set-AzSqlInstanceDtc [-InstanceObject] <AzureSqlManagedInstanceModel> [[-DtcEnab
  [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -41,8 +39,7 @@ Set-AzSqlInstanceDtc [-InputObject] <AzureSqlManagedInstanceDtcModel> [[-DtcEnab
  [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -52,8 +49,7 @@ Set-AzSqlInstanceDtc [-ResourceId] <String> [[-DtcEnabled] <Boolean>]
  [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -313,21 +309,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

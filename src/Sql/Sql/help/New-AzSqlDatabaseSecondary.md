@@ -17,28 +17,24 @@ Creates a secondary database for an existing database and starts data replicatio
 ```
 New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveName <String>]
  [-SecondaryElasticPoolName <String>] [-Tags <Hashtable>] -PartnerResourceGroupName <String>
- -PartnerServerName <String> [-PartnerDatabaseName <String>] [-PartnerSubscriptionId <String>]
- [-AllowConnections <AllowConnections>] [-AsJob] [-LicenseType <String>] [-AutoPauseDelayInMinutes <Int32>]
- [-MinimumCapacity <Double>] [-BackupStorageRedundancy <String>] [-SecondaryType <String>]
+ -PartnerServerName <String> [-PartnerDatabaseName <String>] [-AllowConnections <AllowConnections>] [-AsJob]
+ [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-SecondaryType <String>]
  [-HighAvailabilityReplicaCount <Int32>] [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
  [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
 ```
 New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -PartnerResourceGroupName <String>
- -PartnerServerName <String> [-PartnerDatabaseName <String>] [-PartnerSubscriptionId <String>]
- [-AllowConnections <AllowConnections>] [-AsJob] -SecondaryComputeGeneration <String>
- [-SecondaryComputeModel <String>] -SecondaryVCore <Int32> [-LicenseType <String>]
- [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-BackupStorageRedundancy <String>]
- [-SecondaryType <String>] [-HighAvailabilityReplicaCount <Int32>] [-ZoneRedundant] [-AssignIdentity]
- [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
- [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PartnerServerName <String> [-PartnerDatabaseName <String>] [-AllowConnections <AllowConnections>] [-AsJob]
+ -SecondaryComputeGeneration <String> -SecondaryVCore <Int32> [-SecondaryComputeModel <String>] [-LicenseType <String>]
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-HighAvailabilityReplicaCount <Int32>]
+ [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
+ [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -330,21 +326,6 @@ Specifies the subscription of the Azure SQL database server if it is different f
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

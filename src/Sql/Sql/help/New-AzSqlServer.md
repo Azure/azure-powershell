@@ -21,7 +21,7 @@ New-AzSqlServer -ServerName <String> [-SqlAdministratorCredentials <PSCredential
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-FederatedClientId <Guid>] [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,8 +49,6 @@ This command creates a version 12 Azure SQL Database server.
 
 ### Example 2: Create a new Azure SQL Database server with External (Microsoft Entra ID) Administrator, Microsoft Entra-only Authentication and no SqlAdministratorCredentials
 <!-- Skip: Output cannot be splitted from code -->
-
-
 ```powershell
 New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication
 ResourceGroupName        : resourcegroup01
@@ -223,7 +221,7 @@ Accept wildcard characters: False
 Specifies whether or not soft-delete retention is enabled for the server.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -347,21 +345,6 @@ The primary User Managed Identity(UMI) id.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

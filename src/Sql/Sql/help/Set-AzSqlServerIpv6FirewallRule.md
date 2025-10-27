@@ -13,10 +13,9 @@ Modifies an IPv6 firewall rule in Azure SQL Database server.
 ## SYNTAX
 
 ```
-Set-AzSqlServerIpv6FirewallRule [-Ipv6FirewallRuleName] <String> -StartIpv6Address <String>
- -EndIpv6Address <String> [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzSqlServerIpv6FirewallRule [-Ipv6FirewallRuleName] <String> -StartIpv6Address <String> -EndIpv6Address <String>
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,21 +83,6 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -15,8 +15,7 @@ Returns information about SQL Database servers.
 
 ```
 Get-AzSqlServer [[-ResourceGroupName] <String>] [[-ServerName] <String>] [-ExpandActiveDirectoryAdministrator]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,8 +142,6 @@ This command gets information about all the Azure SQL Database servers assigned 
 
 ### Example 5: Get all instances of SQL Server assigned to a resource group with external administrator information
 <!-- Skip: Output cannot be splitted from code -->
-
-
 ```powershell
 $val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -190,8 +187,6 @@ This command gets information about all the Azure SQL Database servers assigned 
 
 ### Example 6: Get information about an Azure SQL Database server with external administrator information
 <!-- Skip: Output cannot be splitted from code -->
-
-
 ```powershell
 $val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ExpandActiveDirectoryAdministrator
 ResourceGroupName        : resourcegroup01
@@ -240,21 +235,6 @@ Expand Active Directory Administrator Information on the server.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
