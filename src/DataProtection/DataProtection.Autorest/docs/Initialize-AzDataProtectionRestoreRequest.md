@@ -27,7 +27,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Res
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -ItemLevelRecovery
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
  -TargetResourceId <String> [-ContainersList <String[]>] [-PrefixMatch <Hashtable>] [-RecoveryPoint <String>]
- [-RenameTo <Hashtable>] [-RestoreConfiguration <PSObject>] [-UserAssignedIdentityArmId <String>]
+ [-RestoreConfiguration <PSObject>] [-UserAssignedIdentityArmId <String>]
  [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
 ```
 
@@ -382,22 +382,6 @@ This parameter is mandatory for rehydrate restore of archived points.
 ```yaml
 Type: System.String
 Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenameTo
-Use this parameter to rename container(s) for alternate location ILR.
-Input for this parameter is a hashtable where each key is the original container name and each value is the new name for the corresponding container.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: AlternateLocationILR
 Aliases:
 
 Required: False
