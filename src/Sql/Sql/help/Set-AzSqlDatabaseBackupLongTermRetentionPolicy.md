@@ -148,7 +148,7 @@ YearlyRetention                        : P10Y
 WeekOfYear                             : 26
 Location                               :
 TimeBasedImmutability                  : Enabled
-TimeBasedImmutabilityMode              : Unlocked
+TimeBasedImmutabilityMode              : Locked
 ```
 
 This sets the long term retention policy of database01 to save the full backup taken on the 26th week of the year for 10 years. 
