@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticVMHost
 
 ## SYNOPSIS
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticVMHost -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 ```
 
 ## DESCRIPTION
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## EXAMPLES
 

@@ -227,6 +227,9 @@ Creates a Backup protection policy.
 ### [New-AzRecoveryServicesVault](New-AzRecoveryServicesVault.md)
 Creates a new Recovery Services vault.
 
+### [Redo-AzRecoveryServicesBackupProtection](Redo-AzRecoveryServicesBackupProtection.md)
+Reconfigures backup protection for a protected item to another Recovery Services vault.
+
 ### [Register-AzRecoveryServicesBackupContainer](Register-AzRecoveryServicesBackupContainer.md)
 The **Register-AzRecoveryServicesBackupContainer** cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
 
@@ -279,7 +282,8 @@ Deletes a Recovery Services vault.
 Restarts an Azure Site Recovery job.
 
 ### [Restore-AzRecoveryServicesBackupItem](Restore-AzRecoveryServicesBackupItem.md)
-Restores the data and configuration for a Backup item to the specified recovery point. The required parameters vary with the backup item type. The same command is used to restore Azure Virtual machines, databases running within Azure Virtual machines and Azure file shares as well.
+Restores the data and configuration for a Backup item to the specified recovery point. The required parameters vary with the backup item type.
+The same command is used to restore Azure Virtual machines, databases running within Azure Virtual machines and Azure file shares as well.
 
 ### [Resume-AzRecoveryServicesAsrJob](Resume-AzRecoveryServicesAsrJob.md)
 Resumes a suspended Azure Site Recovery job.
@@ -378,7 +382,8 @@ Unregisters a Windows Server or other container from the vault.
 Unregisters a SCDPM server or Backup server from the vault.
 
 ### [Update-AzRecoveryServicesAsrClusterProtectionDirection](Update-AzRecoveryServicesAsrClusterProtectionDirection.md)
-Updates the replication direction for the specified replication protection cluster. Used to re-protect/reverse replicate a failed over replication protection cluster.
+Updates the replication direction for the specified replication protection cluster.
+Used to re-protect/reverse replicate a failed over replication protection cluster.
 
 ### [Update-AzRecoveryServicesAsrMobilityService](Update-AzRecoveryServicesAsrMobilityService.md)
 Push mobility service agent updates to protected machines.

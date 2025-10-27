@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticCreateAndAssociateIPFilter
 
 ## SYNOPSIS
-create and Associate IP traffic filter for the given deployment.
+Create and associate an IP filter with your Elastic monitor resource to control and manage network traffic.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ New-AzElasticCreateAndAssociateIPFilter -InputObject <IElasticIdentity> [-IP <St
 ```
 
 ## DESCRIPTION
-create and Associate IP traffic filter for the given deployment.
+Create and associate an IP filter with your Elastic monitor resource to control and manage network traffic.
 
 ## EXAMPLES
 

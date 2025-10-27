@@ -64,7 +64,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the load balancer resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public LoadBalancerPropertiesFormat(System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string), string provisioningState = default(string))
+
+        /// <param name="scope">Indicates the scope of the load balancer: external (Public) or internal
+        /// (Private).
+        /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
+        public LoadBalancerPropertiesFormat(System.Collections.Generic.IList<FrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<BackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<BackendAddressPool>), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), System.Collections.Generic.IList<Probe> probes = default(System.Collections.Generic.IList<Probe>), System.Collections.Generic.IList<InboundNatRule> inboundNatRules = default(System.Collections.Generic.IList<InboundNatRule>), System.Collections.Generic.IList<InboundNatPool> inboundNatPools = default(System.Collections.Generic.IList<InboundNatPool>), System.Collections.Generic.IList<OutboundRule> outboundRules = default(System.Collections.Generic.IList<OutboundRule>), string resourceGuid = default(string), string provisioningState = default(string), string scope = default(string))
 
         {
             this.FrontendIPConfigurations = frontendIPConfigurations;
@@ -76,6 +80,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.OutboundRules = outboundRules;
             this.ResourceGuid = resourceGuid;
             this.ProvisioningState = provisioningState;
+            this.Scope = scope;
             CustomInit();
         }
 
@@ -152,5 +157,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets indicates the scope of the load balancer: external (Public) or
+        /// internal (Private). Possible values include: &#39;Public&#39;, &#39;Private&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scope")]
+        public string Scope {get; set; }
     }
 }

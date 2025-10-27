@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticOrganizationApiKey
 
 ## SYNOPSIS
-Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonString <String
 ```
 
 ## DESCRIPTION
-Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.
 
 ## EXAMPLES
 
