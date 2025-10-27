@@ -15,7 +15,7 @@ Create ManagedRules for the firewall policy.
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRule
  [-ManagedRuleSet <PSApplicationGatewayFirewallPolicyManagedRuleSet[]>]
- [-Exclusion <PSApplicationGatewayFirewallPolicyExclusion[]>] 
+ [-Exclusion <PSApplicationGatewayFirewallPolicyExclusion[]>]
  [-Exception <PSApplicationGatewayFirewallPolicyException[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```

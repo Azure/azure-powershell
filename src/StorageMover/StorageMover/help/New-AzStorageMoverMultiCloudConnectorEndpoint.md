@@ -39,7 +39,6 @@ Property                     : {
                                  "awsS3BucketId": "my-s3-bucket",
                                  "multiCloudConnectorId": "samplearmid"
                                }
-Identity                     : "SystemAssigned"
 SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
 SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
 SystemDataCreatedByType      : Application
