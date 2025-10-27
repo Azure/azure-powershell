@@ -665,7 +665,7 @@ directive:
       breaking-change:
         old-parameter-type: Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction
         new-parameter-type: System.String
-        change-description: no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction' for parameter 'Action'.
+        change-description: The type for parameter 'Action' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction' to 'System.String'.
         deprecated-by-version: 5.0.0
         deprecated-by-azversion: 14.0.0
         change-effective-date: 2025/5/19
