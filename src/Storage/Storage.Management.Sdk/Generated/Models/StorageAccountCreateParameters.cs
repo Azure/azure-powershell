@@ -164,7 +164,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// accounts in an Azure DNS Zone and the endpoint URL will have an
         /// alphanumeric DNS Zone identifier.
         /// Possible values include: &#39;Standard&#39;, &#39;AzureDnsZone&#39;</param>
-        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), string allowedCopyScope = default(string), string publicNetworkAccess = default(string), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string))
+
+        /// <param name="geoPriorityReplicationStatus">Status indicating whether Geo Priority Replication is enabled for the
+        /// account.
+        /// </param>
+        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), string allowedCopyScope = default(string), string publicNetworkAccess = default(string), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus))
 
         {
             this.Sku = sku;
@@ -200,6 +204,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.DefaultToOAuthAuthentication = defaultToOAuthAuthentication;
             this.ImmutableStorageWithVersioning = immutableStorageWithVersioning;
             this.DnsEndpointType = dnsEndpointType;
+            this.GeoPriorityReplicationStatus = geoPriorityReplicationStatus;
             CustomInit();
         }
 
@@ -452,6 +457,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsEndpointType")]
         public string DnsEndpointType {get; set; }
+
+        /// <summary>
+        /// Gets or sets status indicating whether Geo Priority Replication is enabled
+        /// for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.geoPriorityReplicationStatus")]
+        public GeoPriorityReplicationStatus GeoPriorityReplicationStatus {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -518,6 +530,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 this.ImmutableStorageWithVersioning.Validate();
             }
+
 
         }
     }
