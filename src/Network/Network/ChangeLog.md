@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 
+* Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
+
 ## Version 7.22.0
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
   - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
