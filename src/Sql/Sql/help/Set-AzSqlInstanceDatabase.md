@@ -15,27 +15,29 @@ Updated an Azure SQL Managed Instance database.
 ### SetInstanceDatabaseFromInputParameters (Default)
 ```
 Set-AzSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String>
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceDatabaseFromAzureSqlManagedInstanceModel
 ```
-Set-AzSqlInstanceDatabase [[-Name] <String>] [-Tag <Hashtable>]
- [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabase [[-Name] <String>] -Tag <Hashtable> [-InstanceObject] <AzureSqlManagedInstanceModel>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetInstanceDatabaseFromAzureSqlManagedDatabaseModel
 ```
-Set-AzSqlInstanceDatabase [-Tag <Hashtable>] [-InputObject] <AzureSqlManagedDatabaseModel> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabase -Tag <Hashtable> [-InputObject] <AzureSqlManagedDatabaseModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetInstanceDatabaseFromAzureResourceId
 ```
-Set-AzSqlInstanceDatabase [-Tag <Hashtable>] [-ResourceId] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabase -Tag <Hashtable> [-ResourceId] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +47,8 @@ Set-AzSqlInstanceDatabase [-Tag <Hashtable>] [-ResourceId] <String> [-AsJob]
 
 ### Example 1
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Set-AzSqlInstanceDatabase -Name "name1" -InstanceName "instance1" -ResourceGroupName "rg1" -Tags @{tag1="value1"}
 
@@ -137,6 +141,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InstanceObject
+The managed instance object
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: SetInstanceDatabaseFromAzureSqlManagedInstanceModel
+Aliases: ParentObject
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the instance database to create.
 
@@ -159,6 +178,21 @@ Aliases: InstanceDatabaseName
 
 Required: False
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -206,21 +240,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceObject
-The managed instance object
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: SetInstanceDatabaseFromAzureSqlManagedInstanceModel
-Aliases: ParentObject
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

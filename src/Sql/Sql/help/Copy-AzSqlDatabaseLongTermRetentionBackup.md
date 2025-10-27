@@ -17,16 +17,16 @@ Copies a long term retention backup to a target database.
 Copy-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-BackupName] <String> [-ResourceGroupName <String>] -TargetDatabaseName <String>
  [-TargetServerFullyQualifiedDomainName <String>] [-TargetServerName <String>] -TargetSubscriptionId <String>
- -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CopyBackupByResourceId
 ```
 Copy-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> -TargetDatabaseName <String>
  [-TargetServerFullyQualifiedDomainName <String>] [-TargetServerName <String>] -TargetSubscriptionId <String>
- -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CopyBackupByInputObject
@@ -34,7 +34,8 @@ Copy-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> -TargetDatabase
 Copy-AzSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel>
  -TargetDatabaseName <String> [-TargetServerFullyQualifiedDomainName <String>] [-TargetServerName <String>]
  -TargetSubscriptionId <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,6 +156,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

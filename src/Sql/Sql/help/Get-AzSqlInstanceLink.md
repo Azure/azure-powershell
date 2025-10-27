@@ -15,24 +15,25 @@ Returns information about link feature for Azure SQL Managed Instance.
 ### GetByNameParameterSet (Default)
 ```
 Get-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
 Get-AzSqlInstanceLink [[-Name] <String>] [-InstanceObject] <AzureSqlManagedInstanceModel>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByInstanceResourceIdParameterSet
 ```
 Get-AzSqlInstanceLink [[-Name] <String>] [-InstanceResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzSqlInstanceLink [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSqlInstanceLink [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -389,6 +390,21 @@ Aliases: LinkName
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

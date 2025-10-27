@@ -45,7 +45,6 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] [-Mon
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-
 ## DESCRIPTION
 The **Set-AzSqlDatabaseBackupLongTermRetentionPolicy** cmdlet sets the long term retention policy registered to this database.
 The policy is an Azure Backup resource used to define backup storage policy.

@@ -15,13 +15,13 @@ Get start/stop schedule for Azure SQL Managed Instance
 ### GetInstanceScheduleInputParameters (Default)
 ```
 Get-AzSqlInstanceStartStopSchedule -InstanceName <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetInstanceScheduleByInstanceModelInputParameters
 ```
 Get-AzSqlInstanceStartStopSchedule -InstanceModel <AzureSqlManagedInstanceModel> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,7 @@ Get start/stop schedule for Azure SQL Managed Instance
 ```powershell
 Get-AzSqlInstanceStartStopSchedule -InstanceName instance-name -ResourceGroupName rg-name
 ```
+
 ```output
 Description TimeZoneId                   ScheduleList
 ----------- ----------                   ------------
@@ -47,7 +48,7 @@ Gets start/stop schedule for instance-name in rg-name resource group.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 Instance model input object.
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: GetInstanceScheduleByInstanceModelInputParameters
 Aliases:
 
@@ -77,7 +78,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Managed Instance
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstanceScheduleInputParameters
 Aliases:
 
@@ -88,11 +89,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,6 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Remove-AzSqlInstanceStartStopSchedule](./Remove-AzSqlInstanceStartStopSchedule.md)
 
 [New-AzSqlInstanceStartStopSchedule](./New-AzSqlInstanceStartStopSchedule.md)

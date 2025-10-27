@@ -16,21 +16,23 @@ Restores an Azure SQL Managed Instance database.
 ```
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-InputObject] <AzureSqlManagedDatabaseBaseModel>
  -PointInTime <DateTime> -TargetInstanceDatabaseName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeSameInstanceRestoreInstanceDatabaseFromAzureResourceId
 ```
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -PointInTime <DateTime>
- -TargetInstanceDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetInstanceDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromInputParameters
@@ -38,30 +40,32 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
  -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-InputObject] <AzureSqlManagedDatabaseBaseModel>
  -PointInTime <DateTime> -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
- -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId
 ```
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -PointInTime <DateTime>
  -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeDeletedDatabasesSameInstanceRestoreInstanceDatabaseFromInputParameters
 ```
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime>
- -TargetInstanceDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetInstanceDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeDeletedDatabasesCrossInstanceRestoreInstanceDatabaseFromInputParameters
@@ -69,7 +73,8 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>] [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime>
  -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroup
@@ -77,7 +82,8 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-SubscriptionId <String>
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] -SubscriptionId <String> [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> -PointInTime <DateTime> -TargetInstanceDatabaseName <String>
  -TargetInstanceName <String> -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeCrossSubscriptionRestoreFromInputObjectParameter
@@ -85,15 +91,16 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] -SubscriptionId <String> 
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-InputObject] <AzureSqlManagedDatabaseBaseModel>
  -PointInTime <DateTime> -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
  -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeCrossSubscriptionRestoreFromResourceIdParameter
 ```
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -PointInTime <DateTime>
  -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String>
- -TargetSubscriptionId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetSubscriptionId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroup
@@ -101,37 +108,40 @@ Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -P
 Restore-AzSqlInstanceDatabase [-FromPointInTimeBackup] -SubscriptionId <String> [-ResourceGroupName] <String>
  [-InstanceName] <String> [-Name] <String> [-DeletionDate] <DateTime> -PointInTime <DateTime>
  -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String>
- -TargetSubscriptionId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetSubscriptionId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter
 ```
 Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-GeoBackupObject] <AzureSqlRecoverableManagedDatabaseModel>
  -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### GeoRestoreFromGeoBackupSetNameFromResourceIdParameter
 ```
 Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-ResourceId] <String> -TargetInstanceDatabaseName <String>
  -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter
 ```
 Restore-AzSqlInstanceDatabase [-FromGeoBackup] [-ResourceGroupName] <String> [-InstanceName] <String>
  [-Name] <String> -TargetInstanceDatabaseName <String> -TargetInstanceName <String>
- -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LongTermRetentionBackupRestoreParameter
 ```
 Restore-AzSqlInstanceDatabase [-FromLongTermRetentionBackup] [-SubscriptionId <String>] [-ResourceId] <String>
  -TargetInstanceDatabaseName <String> -TargetInstanceName <String> -TargetResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -225,6 +235,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-TargetResourceGroupName "targetResourceGroupName" `
 			-TargetSubscriptionId "targetSubscriptionId"
 ```
+
 The command restores database backup from instance in one subscription to database `targetDatabaseName` on instance `targetManagedInstanceName` to different subscription `targetSubscriptionId`.
 
 ### Example 8. Restore database from different subscription using source object and pipping
@@ -240,6 +251,7 @@ $sourceDatabase | Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-TargetResourceGroupName "targetResourceGroupName" `
 			-TargetSubscriptionId "targetSubscriptionId"
 ```
+
 First command gets source managed database object and stores in variable sourceDatabase.
 Second command executes restore from source to the given target database using point in time restore.
 
@@ -404,6 +416,21 @@ Parameter Sets: PointInTimeSameInstanceRestoreInstanceDatabaseFromInputParameter
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

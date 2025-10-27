@@ -12,11 +12,11 @@ Creates an IPv6 firewall rule for a SQL Database server.
 
 ## SYNTAX
 
-### UserSpecifiedRuleSet
 ```
-New-AzSqlServerIpv6FirewallRule -Ipv6FirewallRuleName <String> -StartIpv6Address <String> -EndIpv6Address <String>
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzSqlServerIpv6FirewallRule -Ipv6FirewallRuleName <String> -StartIpv6Address <String>
+ -EndIpv6Address <String> [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ Specifies the end value of the IPv6 address range for this rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UserSpecifiedRuleSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -77,10 +77,25 @@ Specifies the name of the new IPv6 firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UserSpecifiedRuleSet
+Parameter Sets: (All)
 Aliases: Name
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,7 +138,7 @@ Specifies the start value of the IPv6 address range for the IPv6 firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UserSpecifiedRuleSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True

@@ -15,31 +15,32 @@ Returns information about Azure SQL Managed Database Instance.
 ### DefaultParameterSet (Default)
 ```
 Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-ExpandActiveDirectoryAdministrator]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolObjectParameterSet
 ```
 Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-ExpandActiveDirectoryAdministrator]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### ListByInstancePoolResourceIdentifierParameterSet
+### ListByInstancePoolResourceIdentiferParameterSet
 ```
 Get-AzSqlInstance [-InstancePoolResourceId] <String> [-ExpandActiveDirectoryAdministrator]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByManagedInstanceResourceIdentifierParameterSet
 ```
 Get-AzSqlInstance [-ResourceId] <String> [-ExpandActiveDirectoryAdministrator]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolParameterSet
 ```
 Get-AzSqlInstance [-InstancePoolName] <String> -ResourceGroupName <String>
- [-ExpandActiveDirectoryAdministrator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ExpandActiveDirectoryAdministrator] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -342,6 +343,8 @@ This command gets information about the instance named managedInstance1.
 
 ### Example 8: Get all instances assigned to a resource group with external administrator information
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -406,6 +409,8 @@ This command gets information about all instances assigned to the resource group
 
 ### Example 9: Get information about an instance with external administrator information
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -508,7 +513,7 @@ The instance pool resource identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByInstancePoolResourceIdentifierParameterSet
+Parameter Sets: ListByInstancePoolResourceIdentiferParameterSet
 Aliases:
 
 Required: True
@@ -531,6 +536,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

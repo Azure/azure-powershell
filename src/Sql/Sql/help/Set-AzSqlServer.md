@@ -19,10 +19,9 @@ Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>
  [-RestrictOutboundNetworkAccess <String>] [-MinimalTlsVersion <String>]
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>] [-FederatedClientId <Guid>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
- [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>]
- [-Force]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>] [-Force] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +148,7 @@ Accept wildcard characters: False
 Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. If you want to specify a different retention period, use the SoftDeleteRetentionDays parameter.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -243,6 +242,21 @@ The primary User Managed Identity(UMI) id.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

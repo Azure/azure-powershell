@@ -15,28 +15,29 @@ Failovers an instance link.
 ### FailoverByNameParameterSet (Default)
 ```
 Start-AzSqlInstanceLinkFailover [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
- -FailoverType <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -FailoverType <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FailoverByParentObjectParameterSet
 ```
 Start-AzSqlInstanceLinkFailover [-Name] <String> -FailoverType <String>
- [-InstanceObject] <AzureSqlManagedInstanceModel> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FailoverByInputObjectParameterSet
 ```
 Start-AzSqlInstanceLinkFailover [-Name] <String> -FailoverType <String>
  [-InputObject] <AzureSqlManagedInstanceLinkModel> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FailoverByResourceIdParameterSet
 ```
 Start-AzSqlInstanceLinkFailover -FailoverType <String> [-ResourceId] <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -199,6 +200,21 @@ Aliases: LinkName
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

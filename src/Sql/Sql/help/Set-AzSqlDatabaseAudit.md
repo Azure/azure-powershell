@@ -20,8 +20,8 @@ Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] [-ResourceGroupName] <String>
- [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DatabaseObjectParameterSet
@@ -31,7 +31,8 @@ Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] -DatabaseObject <AzureSqlDatabaseModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,7 +143,7 @@ For more information, see https://learn.microsoft.com/sql/relational-databases/s
 Type: Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP, LEDGER_OPERATION_GROUP, DBCC_GROUP, DATABASE_OWNERSHIP_CHANGE_GROUP, DATABASE_CHANGE_GROUP
+Accepted values: AUDIT_CHANGE_GROUP, BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP, DBCC_GROUP, DATABASE_OWNERSHIP_CHANGE_GROUP, DATABASE_CHANGE_GROUP, LEDGER_OPERATION_GROUP, BROKER_LOGIN_GROUP, DATABASE_MIRRORING_LOGIN_GROUP, DATABASE_OBJECT_ACCESS_GROUP, EXTGOV_OPERATION_GROUP, FAILED_LOGIN_GROUP, FULLTEXT_GROUP, LOGIN_CHANGE_PASSWORD_GROUP, LOGOUT_GROUP, SERVER_OBJECT_CHANGE_GROUP, SERVER_OBJECT_OWNERSHIP_CHANGE_GROUP, SERVER_OBJECT_PERMISSION_CHANGE_GROUP, SERVER_OPERATION_GROUP, SERVER_PERMISSION_CHANGE_GROUP, SERVER_PRINCIPAL_CHANGE_GROUP, SERVER_PRINCIPAL_IMPERSONATION_GROUP, SERVER_ROLE_MEMBER_CHANGE_GROUP, SERVER_STATE_CHANGE_GROUP, SUCCESSFUL_LOGIN_GROUP, TRACE_CHANGE_GROUP, TRANSACTION_GROUP, USER_DEFINED_AUDIT_GROUP, SENSITIVE_BATCH_COMPLETED_GROUP
 
 Required: False
 Position: Named
@@ -304,6 +305,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -387,6 +403,7 @@ Indicates whether to use managed identity or not. It is required when you want t
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: TRUE, FALSE
 
 Required: False
 Position: Named

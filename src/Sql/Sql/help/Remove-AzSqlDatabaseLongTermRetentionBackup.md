@@ -323,6 +323,7 @@ Backups which are protected by an unlocked time-based immutability policy or by 
 Backups which are protected by a locked time-based immutability policy cannot be deleted manually.
 
 ## RELATED LINKS
+
 [Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold](./Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
 
 [Remove-AzSqlDatabaseLongTermRetentionBackupImmutability](./Remove-AzSqlDatabaseLongTermRetentionBackupImmutability.md)

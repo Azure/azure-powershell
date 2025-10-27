@@ -18,7 +18,7 @@ Set-AzSqlDatabaseFailoverGroup [-ServerName] <String> [-FailoverGroupName] <Stri
  [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
  [-PartnerServerList <System.Collections.Generic.List`1[System.String]>]
  [-ReadOnlyEndpointTargetServer <String>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,21 @@ The list of partner servers in the failover group (empty list for 0 servers).
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

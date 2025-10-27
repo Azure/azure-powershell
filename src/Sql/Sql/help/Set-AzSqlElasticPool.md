@@ -19,7 +19,8 @@ Set-AzSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Dtu <Int3
  [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
  [-LicenseType <String>] [-MaintenanceConfigurationId <String>] [-HighAvailabilityReplicaCount <Int32>]
  [-PreferredEnclaveType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VcoreBasedPool
@@ -28,8 +29,8 @@ Set-AzSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-StorageMB
  [-ComputeGeneration <String>] [-DatabaseVCoreMin <Double>] [-DatabaseVCoreMax <Double>] [-Tags <Hashtable>]
  [-ZoneRedundant] [-LicenseType <String>] [-MaintenanceConfigurationId <String>]
  [-HighAvailabilityReplicaCount <Int32>] [-PreferredEnclaveType <String>] [-AsJob] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -350,6 +351,21 @@ The preferred enclave type for the Azure SQL Elastic Pool. Possible values are D
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

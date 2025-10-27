@@ -15,43 +15,46 @@ Sets properties for an Azure SQL Managed Instance.
 ### SetInstanceFromInputParameters (Default)
 ```
 Set-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorPassword <SecureString>]
- [-Edition <String>] [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>] [-MemorySizeInGB <Int32>]
- [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
- [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
- [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
+ [-Edition <String>] [-SubnetId <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-MemorySizeInGB <Int32>] [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>]
+ [-AssignIdentity] [-InstancePoolName <String>] [-MinimalTlsVersion <String>]
+ [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>] [-Force] [-ComputeGeneration <String>]
+ [-MaintenanceConfigurationId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
  [-BackupStorageRedundancy <String>] [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
- [-DatabaseFormat <String>] [-PricingModel <String>] [-AuthenticationMetadata <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseFormat <String>] [-PricingModel <String>] [-IsGeneralPurposeV2 <Boolean>] [-StorageIOps <Int32>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 Set-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorPassword <SecureString>]
- [-Edition <String>] [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]  [-VCore <Int32>] [-MemorySizeInGB <Int32>]
- [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
- [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
- [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
+ [-Edition <String>] [-SubnetId <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-MemorySizeInGB <Int32>] [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>]
+ [-AssignIdentity] [-InstancePoolName <String>] [-MinimalTlsVersion <String>]
+ [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>] [-Force] [-ComputeGeneration <String>]
+ [-MaintenanceConfigurationId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
  [-BackupStorageRedundancy <String>] [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
- [-DatabaseFormat <String>] [-PricingModel <String>] [-AuthenticationMetadata <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseFormat <String>] [-PricingModel <String>] [-IsGeneralPurposeV2 <Boolean>] [-StorageIOps <Int32>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceFromAzureResourceId
 ```
 Set-AzSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>] [-Edition <String>]
- [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>] [-MemorySizeInGB <Int32>]
- [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
- [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
- [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
+ [-SubnetId <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-MemorySizeInGB <Int32>] [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>]
+ [-AssignIdentity] [-InstancePoolName <String>] [-MinimalTlsVersion <String>]
+ [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>] [-Force] [-ComputeGeneration <String>]
+ [-MaintenanceConfigurationId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
  [-BackupStorageRedundancy <String>] [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
- [-DatabaseFormat <String>] [-PricingModel <String>] [-AuthenticationMetadata <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseFormat <String>] [-PricingModel <String>] [-IsGeneralPurposeV2 <Boolean>] [-StorageIOps <Int32>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -568,6 +571,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseFormat
+The database format for the instance. Possible values are:
+- AlwaysUpToDate - The instance gets access to all new SQL engine features as soon as they are released in Azure. Database format keeps evolving to accommodate new features. 
+- SQLServer2022 - The instance keeps getting SQL engine bug fixes, security patches and small functional improvements via Cumulative Updates for SQL Server 2022 during its mainstream support period. Database format remains compatible with SQL Server 2022 during that time.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -720,6 +740,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MemorySizeInGB
+Determines how much memory in GB to associate with instance
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MinimalTlsVersion
 The minimal TLS version to enforce for Managed instance 
 
@@ -751,6 +786,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PricingModel
+The pricing model for the instance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrimaryUserAssignedIdentityId
 The primary User Managed Identity(UMI) id.
 
@@ -758,6 +808,21 @@ The primary User Managed Identity(UMI) id.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -932,59 +997,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MemorySizeInGB
-Determines how much memory in GB to associate with instance
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ZoneRedundant
 Use zone redundant storage
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseFormat
-The database format for the instance. Possible values are:
-- AlwaysUpToDate - The instance gets access to all new SQL engine features as soon as they are released in Azure. Database format keeps evolving to accommodate new features. 
-- SQLServer2022 - The instance keeps getting SQL engine bug fixes, security patches and small functional improvements via Cumulative Updates for SQL Server 2022 during its mainstream support period. Database format remains compatible with SQL Server 2022 during that time.
-
-```yaml
-Type: System.String
-Parameter Sets: NewByEditionAndComputeGenerationParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PricingModel
-The pricing model for the instance.
-
-```yaml
-Type: System.String
-Parameter Sets: NewByEditionAndComputeGenerationParameterSet
 Aliases:
 
 Required: False

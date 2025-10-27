@@ -12,24 +12,24 @@ Refreshes the value of external governance on the managed instance.
 
 ## SYNTAX
 
-### InvokeByNameParameterSet
+### InvokeByNameParameterSet (Default)
 ```
 Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InvokeByParentObjectParameterSet
 ```
 Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-InstanceObject] <AzureSqlManagedInstanceModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InvokeByResourceIdParameterSet
 ```
 Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -89,6 +89,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

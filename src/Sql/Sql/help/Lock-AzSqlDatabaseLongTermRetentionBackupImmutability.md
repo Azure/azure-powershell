@@ -295,6 +295,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Remove-AzSqlDatabaseLongTermRetentionBackupImmutability](./Remove-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
 
 [Get-AzSqlDatabaseLongTermRetentionBackup](./Get-AzSqlDatabaseLongTermRetentionBackup.md)

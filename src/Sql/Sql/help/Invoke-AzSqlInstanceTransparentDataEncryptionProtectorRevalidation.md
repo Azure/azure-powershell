@@ -14,22 +14,22 @@ Revalidates the Managed Instance Encryption Protector AKV key
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet (Default)
 ```
-Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob]
- [-ResourceGroupName] <String> [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 ```
 Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob]
- [-Instance] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Instance] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 ```
-Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob]
- [-InstanceResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob] [-InstanceResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -119,6 +119,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

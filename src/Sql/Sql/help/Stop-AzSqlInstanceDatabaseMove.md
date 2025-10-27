@@ -16,20 +16,23 @@ Stop move operation of a managed database.
 ```
 Stop-AzSqlInstanceDatabaseMove -DatabaseName <String> -InstanceName <String> -ResourceGroupName <String>
  [-TargetSubscriptionId <String>] [-TargetResourceGroupName <String>] -TargetInstanceName <String> [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CancelManagedDatabaseMoveByMoveModelObject
 ```
 Stop-AzSqlInstanceDatabaseMove -MoveModelObject <MoveCopyManagedDatabaseModel> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByOperationObjectParameterSet
 ```
 Stop-AzSqlInstanceDatabaseMove [-DatabaseName <String>] [-InstanceName <String>] [-ResourceGroupName <String>]
  -MoveCopyOperationObject <ManagedDatabaseMoveCopyOperation> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByInputObjectParameterSet
@@ -37,15 +40,15 @@ Stop-AzSqlInstanceDatabaseMove [-DatabaseName <String>] [-InstanceName <String>]
 Stop-AzSqlInstanceDatabaseMove -InstanceName <String> -ResourceGroupName <String>
  [-TargetSubscriptionId <String>] [-TargetResourceGroupName <String>] -TargetInstanceName <String>
  -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByResourceIdParameterSet
 ```
 Stop-AzSqlInstanceDatabaseMove -InstanceName <String> -ResourceGroupName <String>
  [-TargetSubscriptionId <String>] [-TargetResourceGroupName <String>] -TargetInstanceName <String>
- -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,6 +220,21 @@ Signal to receive output from a cmdlet which does not return anything
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

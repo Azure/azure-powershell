@@ -19,7 +19,7 @@ Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccoun
  [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
  [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>]
  [-ResourceGroupName] <String> [-ServerName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServerObjectParameterSet
@@ -27,8 +27,8 @@ Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccoun
 Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
  [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>]
- -ServerObject <AzureSqlServerModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ServerObject <AzureSqlServerModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,6 +208,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -275,6 +290,7 @@ Indicates whether to use managed identity or not. It is required when you want t
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: TRUE, FALSE
 
 Required: False
 Position: Named

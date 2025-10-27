@@ -17,7 +17,8 @@ Creates a new instance link.
 New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
  -PartnerAvailabilityGroupName <String> -InstanceAvailabilityGroupName <String> -Database <String[]>
  -PartnerEndpoint <String> [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
@@ -25,8 +26,8 @@ New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-N
 New-AzSqlInstanceLink [-Name] <String> -PartnerAvailabilityGroupName <String>
  -InstanceAvailabilityGroupName <String> -Database <String[]> -PartnerEndpoint <String>
  [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
- [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -281,6 +282,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the resource group.
 
@@ -297,7 +313,7 @@ Accept wildcard characters: False
 ```
 
 ### -SeedingMode
-Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
+Database seeding mode ï¿½ can be Automatic (default), or Manual for supported scenarios.
 
 ```yaml
 Type: System.String
