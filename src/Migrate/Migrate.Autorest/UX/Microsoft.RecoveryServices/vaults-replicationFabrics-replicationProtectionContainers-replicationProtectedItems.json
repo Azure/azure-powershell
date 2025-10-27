@@ -1,0 +1,62 @@
+{
+  "resourceType": "vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.migrate"
+  },
+  "commands": [
+    {
+      "name": "Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService",
+      "description": "The operation to reinstall the installed mobility service software on a replication protected item to the latest available version.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reinstallMobilityService",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.migrate/invoke-azmigratereinstallreplicationprotecteditemmobilityservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FabricName <String>",
+              "-ProtectionContainerName <String>",
+              "-ReplicatedProtectedItemName <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "The operation to reinstall the installed mobility service software on a replication protected item to the latest available version.",
+          "parameters": [
+            {
+              "name": "-FabricName",
+              "value": "[Path.fabricName]"
+            },
+            {
+              "name": "-ProtectionContainerName",
+              "value": "[Path.protectionContainerName]"
+            },
+            {
+              "name": "-ReplicatedProtectedItemName",
+              "value": "[Path.replicatedProtectedItemName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
