@@ -931,7 +931,7 @@ directive:
       breaking-change:
         old-parameter-type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
         new-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings
-        change-description: no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'BackendPoolsSetting'.
+        change-description: no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting' for parameter 'BackendPoolsSetting'.
         deprecated-by-version: 5.0.0
         deprecated-by-azversion: 14.0.0
         change-effective-date: 2025/5/19
