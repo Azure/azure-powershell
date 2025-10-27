@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Search
     public static partial class SearchManagementClientExtensions
     {
         /// <summary>
-        /// Gets the quota usage for a search sku in the given subscription.
+        /// Gets the quota usage for a search SKU in the given subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Search
         /// The unique location name for a Microsoft Azure geographic region.
         /// </param>
         /// <param name='skuName'>
-        /// The unique search service sku name supported by Azure Cognitive Search.
+        /// The unique SKU name that identifies a billable tier.
         /// </param>
         public static QuotaUsageResult UsageBySubscriptionSku(this ISearchManagementClient operations, string location, string skuName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Gets the quota usage for a search sku in the given subscription.
+        /// Gets the quota usage for a search SKU in the given subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Search
         /// The unique location name for a Microsoft Azure geographic region.
         /// </param>
         /// <param name='skuName'>
-        /// The unique search service sku name supported by Azure Cognitive Search.
+        /// The unique SKU name that identifies a billable tier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

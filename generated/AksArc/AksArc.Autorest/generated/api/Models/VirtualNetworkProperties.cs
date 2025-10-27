@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The error code from the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Code = value ?? null; }
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Code; }
 
         /// <summary>Backing field for <see cref="DnsServer" /> property.</summary>
         private System.Collections.Generic.List<string> _dnsServer;
@@ -58,16 +58,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The error message from the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Message = value ?? null; }
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Message; }
+
+        /// <summary>Internal Acessors for Code</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Code = value ?? null; }
 
         /// <summary>Internal Acessors for InfraVnetProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfile Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.InfraVnetProfile { get => (this._infraVnetProfile = this._infraVnetProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.VirtualNetworkPropertiesInfraVnetProfile()); set { {_infraVnetProfile = value;} } }
 
         /// <summary>Internal Acessors for InfraVnetProfileHci</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileHci Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.InfraVnetProfileHci { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileInternal)InfraVnetProfile).Hci; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileInternal)InfraVnetProfile).Hci = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileHci Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.InfraVnetProfileHci { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileInternal)InfraVnetProfile).Hci; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInfraVnetProfileInternal)InfraVnetProfile).Hci = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Message</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).Message = value ?? null; }
+
+        /// <summary>Internal Acessors for OperationStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.OperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusStatus = value ?? null; }
 
         /// <summary>Internal Acessors for OperationStatusError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatusError Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.OperationStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatusError Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.OperationStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusError = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for OperationStatusOperationId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.OperationStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusOperationId = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -76,15 +88,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.VirtualNetworkPropertiesStatus()); set { {_status = value;} } }
 
         /// <summary>Internal Acessors for StatusOperationStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.StatusOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusOperationStatus Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesInternal.StatusOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatus = value ?? null /* model class */; }
 
         /// <summary>The status of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string OperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusStatus = value ?? null; }
+        public string OperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusStatus; }
 
         /// <summary>The identifier of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Inlined)]
-        public string OperationStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusOperationId = value ?? null; }
+        public string OperationStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworkPropertiesStatusInternal)Status).OperationStatusOperationId; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

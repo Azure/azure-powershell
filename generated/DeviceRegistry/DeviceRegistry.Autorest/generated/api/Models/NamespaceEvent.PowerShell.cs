@@ -113,9 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("EventNotifier"))
+            if (content.Contains("DataSource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).EventNotifier = (string) content.GetValueForProperty("EventNotifier",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).EventNotifier, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataSource, global::System.Convert.ToString);
             }
             if (content.Contains("EventConfiguration"))
             {
@@ -128,10 +128,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("TypeRef"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).TypeRef = (string) content.GetValueForProperty("TypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).TypeRef, global::System.Convert.ToString);
-            }
-            if (content.Contains("DataPoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataPoint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint>) content.GetValueForProperty("DataPoint",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataPoint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPointTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -154,9 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("EventNotifier"))
+            if (content.Contains("DataSource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).EventNotifier = (string) content.GetValueForProperty("EventNotifier",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).EventNotifier, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataSource, global::System.Convert.ToString);
             }
             if (content.Contains("EventConfiguration"))
             {
@@ -169,10 +165,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("TypeRef"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).TypeRef = (string) content.GetValueForProperty("TypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).TypeRef, global::System.Convert.ToString);
-            }
-            if (content.Contains("DataPoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataPoint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint>) content.GetValueForProperty("DataPoint",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventInternal)this).DataPoint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPointTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
