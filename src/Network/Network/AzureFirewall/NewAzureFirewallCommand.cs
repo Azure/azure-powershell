@@ -297,6 +297,46 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Zones cannot be specified when EdgeZone is provided. EdgeZone deployments do not support availability zones.", nameof(this.Zone));
             }
 
+            // Validate that VirtualNetwork and PublicIpAddress are in the same EdgeZone when EdgeZone is specified
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                // Check VirtualNetwork has matching ExtendedLocation
+                if (this.virtualNetwork != null)
+                {
+                    if (this.virtualNetwork.ExtendedLocation == null || 
+                        string.IsNullOrEmpty(this.virtualNetwork.ExtendedLocation.Name) ||
+                        !this.virtualNetwork.ExtendedLocation.Name.Equals(this.EdgeZone, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException($"Virtual Network must be deployed in the same edge zone '{this.EdgeZone}' as the firewall. The Virtual Network's extended location does not match.", nameof(VirtualNetwork));
+                    }
+                }
+
+                // Check PublicIpAddress(es) have matching ExtendedLocation
+                if (this.publicIpAddresses != null && this.publicIpAddresses.Length > 0)
+                {
+                    foreach (var pip in this.publicIpAddresses)
+                    {
+                        if (pip.ExtendedLocation == null || 
+                            string.IsNullOrEmpty(pip.ExtendedLocation.Name) ||
+                            !pip.ExtendedLocation.Name.Equals(this.EdgeZone, StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new ArgumentException($"Public IP Address '{pip.Name}' must be deployed in the same edge zone '{this.EdgeZone}' as the firewall. The Public IP's extended location does not match.", nameof(PublicIpAddress));
+                        }
+                    }
+                }
+
+                // Check ManagementPublicIpAddress has matching ExtendedLocation
+                if (this.ManagementPublicIpAddress != null)
+                {
+                    if (this.ManagementPublicIpAddress.ExtendedLocation == null || 
+                        string.IsNullOrEmpty(this.ManagementPublicIpAddress.ExtendedLocation.Name) ||
+                        !this.ManagementPublicIpAddress.ExtendedLocation.Name.Equals(this.EdgeZone, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException($"Management Public IP Address must be deployed in the same edge zone '{this.EdgeZone}' as the firewall. The Management Public IP's extended location does not match.", nameof(ManagementPublicIpAddress));
+                    }
+                }
+            }
+
             if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
             {
                 if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.Location))
