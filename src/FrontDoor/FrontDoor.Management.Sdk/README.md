@@ -444,7 +444,7 @@ directive:
       breaking-change:
         old-parameter-type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackend
         new-parameter-type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackend[]
-        change-description: no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'Backend'.
+        change-description: no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackend' for parameter 'Backend'.
         deprecated-by-version: 5.0.0
         deprecated-by-azversion: 14.0.0
         change-effective-date: 2025/5/19
