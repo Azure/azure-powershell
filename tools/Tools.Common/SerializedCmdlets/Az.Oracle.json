@@ -1395,6 +1395,7 @@
               "RemoteDisasterRecoveryConfigurationDisasterRecoveryType": "System.String",
               "PrivateEndpoint": "System.String",
               "PrivateEndpointIP": "System.String",
+              "ScheduledOperationScheduledStartTime": "System.String",
               "AutonomousMaintenanceScheduleType": "System.String",
               "AutonomousDatabaseId": "System.String",
               "PrivateEndpointLabel": "System.String",
@@ -1413,6 +1414,7 @@
               "TimeOfLastRefreshPoint": "System.String",
               "TimeOfLastSwitchover": "System.String",
               "TimeReclamationOfFreeAutonomousDatabase": "System.String",
+              "ScheduledOperationScheduledStopTime": "System.String",
               "ConnectionUrlOrdsUrl": "System.String",
               "CharacterSet": "System.String",
               "OperationsInsightsStatus": "System.String",
@@ -1421,6 +1423,7 @@
               "DataBaseType": "System.String",
               "DataSafeStatus": "System.String",
               "DatabaseEdition": "System.String",
+              "DayOfWeekName": "System.String",
               "DbVersion": "System.String",
               "DbWorkload": "System.String",
               "DisplayName": "System.String",
@@ -24502,6 +24505,7 @@
               "RemoteDisasterRecoveryConfigurationDisasterRecoveryType": "System.String",
               "PrivateEndpoint": "System.String",
               "PrivateEndpointIP": "System.String",
+              "ScheduledOperationScheduledStartTime": "System.String",
               "AutonomousMaintenanceScheduleType": "System.String",
               "AutonomousDatabaseId": "System.String",
               "PrivateEndpointLabel": "System.String",
@@ -24520,6 +24524,7 @@
               "TimeOfLastRefreshPoint": "System.String",
               "TimeOfLastSwitchover": "System.String",
               "TimeReclamationOfFreeAutonomousDatabase": "System.String",
+              "ScheduledOperationScheduledStopTime": "System.String",
               "ConnectionUrlOrdsUrl": "System.String",
               "CharacterSet": "System.String",
               "OperationsInsightsStatus": "System.String",
@@ -24528,6 +24533,7 @@
               "DataBaseType": "System.String",
               "DataSafeStatus": "System.String",
               "DatabaseEdition": "System.String",
+              "DayOfWeekName": "System.String",
               "DbVersion": "System.String",
               "DbWorkload": "System.String",
               "DisplayName": "System.String",
@@ -25952,6 +25958,7 @@
               "RemoteDisasterRecoveryConfigurationDisasterRecoveryType": "System.String",
               "PrivateEndpoint": "System.String",
               "PrivateEndpointIP": "System.String",
+              "ScheduledOperationScheduledStartTime": "System.String",
               "AutonomousMaintenanceScheduleType": "System.String",
               "AutonomousDatabaseId": "System.String",
               "PrivateEndpointLabel": "System.String",
@@ -25970,6 +25977,7 @@
               "TimeOfLastRefreshPoint": "System.String",
               "TimeOfLastSwitchover": "System.String",
               "TimeReclamationOfFreeAutonomousDatabase": "System.String",
+              "ScheduledOperationScheduledStopTime": "System.String",
               "ConnectionUrlOrdsUrl": "System.String",
               "CharacterSet": "System.String",
               "OperationsInsightsStatus": "System.String",
@@ -25978,6 +25986,7 @@
               "DataBaseType": "System.String",
               "DataSafeStatus": "System.String",
               "DatabaseEdition": "System.String",
+              "DayOfWeekName": "System.String",
               "DbVersion": "System.String",
               "DbWorkload": "System.String",
               "DisplayName": "System.String",
@@ -26171,6 +26180,15 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "DayOfWeekName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DbVersion",
           "Type": {
             "Namespace": "System",
@@ -26271,6 +26289,24 @@
         },
         {
           "Name": "PrivateEndpointLabel",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ScheduledStartTime",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ScheduledStopTime",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -26862,6 +26898,21 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DayOfWeekName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DbVersion",
                 "Type": {
                   "Namespace": "System",
@@ -27028,6 +27079,36 @@
             {
               "ParameterMetadata": {
                 "Name": "PrivateEndpointLabel",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledStartTime",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledStopTime",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -44708,6 +44789,7 @@
               "RemoteDisasterRecoveryConfigurationDisasterRecoveryType": "System.String",
               "PrivateEndpoint": "System.String",
               "PrivateEndpointIP": "System.String",
+              "ScheduledOperationScheduledStartTime": "System.String",
               "AutonomousMaintenanceScheduleType": "System.String",
               "AutonomousDatabaseId": "System.String",
               "PrivateEndpointLabel": "System.String",
@@ -44726,6 +44808,7 @@
               "TimeOfLastRefreshPoint": "System.String",
               "TimeOfLastSwitchover": "System.String",
               "TimeReclamationOfFreeAutonomousDatabase": "System.String",
+              "ScheduledOperationScheduledStopTime": "System.String",
               "ConnectionUrlOrdsUrl": "System.String",
               "CharacterSet": "System.String",
               "OperationsInsightsStatus": "System.String",
@@ -44734,6 +44817,7 @@
               "DataBaseType": "System.String",
               "DataSafeStatus": "System.String",
               "DatabaseEdition": "System.String",
+              "DayOfWeekName": "System.String",
               "DbVersion": "System.String",
               "DbWorkload": "System.String",
               "DisplayName": "System.String",
@@ -46668,6 +46752,7 @@
               "RemoteDisasterRecoveryConfigurationDisasterRecoveryType": "System.String",
               "PrivateEndpoint": "System.String",
               "PrivateEndpointIP": "System.String",
+              "ScheduledOperationScheduledStartTime": "System.String",
               "AutonomousMaintenanceScheduleType": "System.String",
               "AutonomousDatabaseId": "System.String",
               "PrivateEndpointLabel": "System.String",
@@ -46686,6 +46771,7 @@
               "TimeOfLastRefreshPoint": "System.String",
               "TimeOfLastSwitchover": "System.String",
               "TimeReclamationOfFreeAutonomousDatabase": "System.String",
+              "ScheduledOperationScheduledStopTime": "System.String",
               "ConnectionUrlOrdsUrl": "System.String",
               "CharacterSet": "System.String",
               "OperationsInsightsStatus": "System.String",
@@ -46694,6 +46780,7 @@
               "DataBaseType": "System.String",
               "DataSafeStatus": "System.String",
               "DatabaseEdition": "System.String",
+              "DayOfWeekName": "System.String",
               "DbVersion": "System.String",
               "DbWorkload": "System.String",
               "DisplayName": "System.String",
@@ -48517,6 +48604,7 @@
               "RemoteDisasterRecoveryConfigurationDisasterRecoveryType": "System.String",
               "PrivateEndpoint": "System.String",
               "PrivateEndpointIP": "System.String",
+              "ScheduledOperationScheduledStartTime": "System.String",
               "AutonomousMaintenanceScheduleType": "System.String",
               "AutonomousDatabaseId": "System.String",
               "PrivateEndpointLabel": "System.String",
@@ -48535,6 +48623,7 @@
               "TimeOfLastRefreshPoint": "System.String",
               "TimeOfLastSwitchover": "System.String",
               "TimeReclamationOfFreeAutonomousDatabase": "System.String",
+              "ScheduledOperationScheduledStopTime": "System.String",
               "ConnectionUrlOrdsUrl": "System.String",
               "CharacterSet": "System.String",
               "OperationsInsightsStatus": "System.String",
@@ -48543,6 +48632,7 @@
               "DataBaseType": "System.String",
               "DataSafeStatus": "System.String",
               "DatabaseEdition": "System.String",
+              "DayOfWeekName": "System.String",
               "DbVersion": "System.String",
               "DbWorkload": "System.String",
               "DisplayName": "System.String",
@@ -48726,6 +48816,15 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "DayOfWeekName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DisplayName",
           "Type": {
             "Namespace": "System",
@@ -48853,6 +48952,24 @@
         },
         {
           "Name": "Role",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ScheduledStartTime",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ScheduledStopTime",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -49641,6 +49758,21 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DayOfWeekName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DisplayName",
                 "Type": {
                   "Namespace": "System",
@@ -49852,6 +49984,36 @@
             {
               "ParameterMetadata": {
                 "Name": "Role",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledStartTime",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledStopTime",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -50238,6 +50400,21 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DayOfWeekName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DisplayName",
                 "Type": {
                   "Namespace": "System",
@@ -50449,6 +50626,36 @@
             {
               "ParameterMetadata": {
                 "Name": "Role",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledStartTime",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledStopTime",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
