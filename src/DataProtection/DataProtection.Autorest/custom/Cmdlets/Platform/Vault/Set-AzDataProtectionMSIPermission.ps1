@@ -15,7 +15,7 @@
         $vaultIdentity = $vault.Identity.UserAssignedIdentity[$UserAssignedIdentityARMId].PrincipalID
         Write-Host "Using Vault UAMI with ARMId: $UserAssignedIdentityARMId with Principal ID: $vaultIdentity"
     } else {
-        $vaultIdentity = $vault.IdentityPrincipalId
+        $vaultIdentity = $vault.Identity.PrincipalId
         Write-Host "Using system-assigned identity with Principal ID: $vaultIdentity"
     }
 
