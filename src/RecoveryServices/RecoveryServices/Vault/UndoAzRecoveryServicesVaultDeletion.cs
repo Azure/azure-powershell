@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                     WriteVerbose($"Undelete operation completed for vault '{this.Name}'");
                     
-                    this.WriteObject(new ARSSoftDeletedVault(undeleteResult)); // chck with Rishav what should be the output type here.
+                    this.WriteObject(new ARSSoftDeletedVault(undeleteResult));
                 }
                 catch (Exception exception)
                 {

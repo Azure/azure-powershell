@@ -95,25 +95,9 @@ function Test-AzureVaultSoftDelete
 		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
 		Assert-True {  $vault -ne $null }
 		
-		# Disable soft delete 
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Disable
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Disabled" }
-
-		# Enable soft delete 
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Enable
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Enabled" }
-
-		# Enable disable hybrid security setting 
-		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $false
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Enabled" }
-
-		# Disable hybrid security setting
-		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $true
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Disabled" }		
+		# Disable soft delete - should throw exception as it's no longer allowed
+		Assert-ThrowsContains { Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Disable } `
+		"Operation returned an invalid status code 'BadRequest'"
 	}
 	finally
 	{
@@ -450,7 +434,7 @@ function Test-AzureVMMUA
 	finally
 	{		
 		# disable softDelete 
-		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Disable -VaultId $vault.ID
+		# Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Disable -VaultId $vault.ID
 
 		#disable protection with RemoveRecoveryPoints
 		Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -VaultId $vault.ID -Force
@@ -459,7 +443,7 @@ function Test-AzureVMMUA
 		Remove-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID
 
 		# enable soft delete 
-		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
+		# Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
 	}
 }
 

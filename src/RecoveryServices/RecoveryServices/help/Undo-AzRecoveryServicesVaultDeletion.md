@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesvaultdeletion
 schema: 2.0.0
 ---
 
