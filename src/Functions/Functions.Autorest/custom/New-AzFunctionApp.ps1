@@ -7,6 +7,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -16,6 +17,7 @@ function New-AzFunctionApp {
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan")]
         [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage")]
         [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(Mandatory=$true, ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${ResourceGroupName},
@@ -24,6 +26,7 @@ function New-AzFunctionApp {
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan")]
         [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage")]
         [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(Mandatory=$true,ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${Name},
@@ -32,6 +35,7 @@ function New-AzFunctionApp {
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan")]
         [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage")]
         [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(Mandatory=$true, ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${StorageAccountName},
@@ -40,6 +44,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         [Alias("AppInsightsName")]
@@ -49,8 +54,8 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
-        [System.String]
         [System.String]
         [Alias("AppInsightsKey")]
         ${ApplicationInsightsKey},
@@ -77,6 +82,7 @@ function New-AzFunctionApp {
         
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan", HelpMessage='The function runtime.')]
         [Parameter(Mandatory=$true, ParameterSetName="Consumption")]
+        [Parameter(Mandatory=$true, ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         # Runtime types are defined in HelperFunctions.ps1
@@ -84,6 +90,7 @@ function New-AzFunctionApp {
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='The function runtime.')]
         [Parameter(ParameterSetName="Consumption")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         # RuntimeVersion types are defined in HelperFunctions.ps1
@@ -100,6 +107,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [System.Management.Automation.SwitchParameter]
         [Alias("DisableAppInsights")]
         ${DisableApplicationInsights},
@@ -126,6 +134,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${NoWait},
@@ -134,6 +143,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${AsJob},
@@ -142,6 +152,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
         [System.Collections.Hashtable]
@@ -152,6 +163,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [ValidateNotNullOrEmpty()]
         [Hashtable]
         ${AppSetting},
@@ -164,6 +176,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [String]
@@ -175,9 +188,74 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
         [ValidateNotNull()]
         [System.String[]]
         ${IdentityID},
+
+        [Parameter(Mandatory=$true,ParameterSetName="FlexConsumption", HelpMessage='Location to create Flex Consumption function app.')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${FlexConsumptionLocation},
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Name of deployment storage account to be used for function app artifacts.')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${DeploymentStorageName},
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Deployment storage container name.')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${DeploymentStorageContainerName},
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Deployment storage authentication type. Allowed values: StorageAccountConnectionString, SystemAssignedIdentity, UserAssignedIdentity')]
+        [ValidateSet("StorageAccountConnectionString","SystemAssignedIdentity","UserAssignedIdentity")]
+        [System.String]
+        ${DeploymentStorageAuthType},
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Deployment storage authentication value used for the chosen auth type (eg: connection string, or user-assigned identity resource id).')]
+        [System.String]
+        ${DeploymentStorageAuthValue},
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage=
+'Array of hashtables describing the AlwaysReady configuration. Each hashtable must include:
+- name: The function name or route name.
+- instanceCount: The number of pre-warmed instances for that function.
+
+Example:
+@(@{ name = "http"; instanceCount = 2 }).')]
+        [Hashtable[]]
+        ${AlwaysReady},
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Maximum instance count for Flex Consumption.')]
+        [ValidateRange(40, 1000)]
+        [int]
+        ${MaximumInstanceCount} = 100,
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Per-instance memory in MB for Flex Consumption instances.')]
+        [ValidateSet(512, 2048, 4096)]
+        [int]
+        ${InstanceMemoryMB} = 2048,
+
+        #[Parameter(ParameterSetName="FlexConsumption", HelpMessage='Trigger configuration hashtable, e.g. @{ http = @{ perInstanceConcurrency = 6 } }')]
+        # [Hashtable]
+        # ${Trigger},
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='The maximum number of concurrent HTTP trigger invocations per instance.')]
+        [ValidateRange(1, 1000)]
+        [int]
+        ${HttpPerInstanceConcurrency},
+
+        [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Enable zone redundancy for high availability. Applies to Flex Consumption SKU only.')]
+        [System.Management.Automation.SwitchParameter]
+        ${EnableZoneRedundancy},
+
+        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Redirect all traffic made to an app using HTTP to HTTPS.')]
+        [Parameter(ParameterSetName="Consumption")]
+        [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
+        [Parameter(ParameterSetName="FlexConsumption")]
+        [System.Management.Automation.SwitchParameter]
+        ${EnableHttpsOnly},
 
         [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp", HelpMessage='Name of the container app environment.')]
         [ValidateNotNullOrEmpty()]
@@ -288,7 +366,17 @@ function New-AzFunctionApp {
             "ResourceCpu",
             "ResourceMemory",
             "ScaleMaxReplica",
-            "ScaleMinReplica"
+            "ScaleMinReplica",
+            "FlexConsumptionLocation",
+            "DeploymentStorageName",
+            "DeploymentStorageContainerName",
+            "DeploymentStorageAuthType",
+            "DeploymentStorageAuthValue",
+            "AlwaysReady",
+            "MaximumInstanceCount",
+            "InstanceMemoryMB",
+            "HttpPerInstanceConcurrency",
+            "EnableZoneRedundancy"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -300,32 +388,49 @@ function New-AzFunctionApp {
 
         $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
         $environmentForContainerApp = $PsCmdlet.ParameterSetName -eq "EnvironmentForContainerApp"
+        $consumptionPlan = $PsCmdlet.ParameterSetName -eq "Consumption"
+        $functionAppIsFlexConsumption = $PsCmdlet.ParameterSetName -eq "FlexConsumption"
 
         $appSettings = New-Object -TypeName 'System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair]'
         $siteConfig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.SiteConfig
         $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Site
 
+        $OSIsLinux = ($OSType -eq "Linux") -or $functionAppIsFlexConsumption
+
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
 
-        $runtimeJsonDefinition = $null
+        if ($EnableHttpsOnly.IsPresent)
+        {
+            $functionAppDef.HttpsOnly = $true
+        }
 
         ValidateFunctionAppNameAvailability -Name $Name @params
 
+        $runtimeJsonDefinition = $null
+
         if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp))
         {
-            if (-not $FunctionsVersion)
+            if ($functionAppIsFlexConsumption)
             {
+                $OSType = "Linux"
                 $FunctionsVersion = $DefaultFunctionsVersion
-                Write-Warning "FunctionsVersion not specified. Setting default value to '$FunctionsVersion'. $SetDefaultValueParameterWarningMessage"
             }
-
-            ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
-
-            if (-not $OSType)
+            else
             {
-                $OSType = GetDefaultOSType -Runtime $Runtime
-                Write-Warning "OSType not specified. Setting default value to '$OSType'. $SetDefaultValueParameterWarningMessage"
+                if (-not $FunctionsVersion)
+                {
+                    $FunctionsVersion = $DefaultFunctionsVersion
+                    Write-Warning "FunctionsVersion not specified. Setting default value to '$FunctionsVersion'. $SetDefaultValueParameterWarningMessage"
+                }
+
+                ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
+
+                if (-not $OSType)
+                {
+                    $OSType = GetDefaultOSType -Runtime $Runtime
+                    Write-Warning "OSType not specified. Setting default value to '$OSType'. $SetDefaultValueParameterWarningMessage"
+                }
             }
 
             $runtimeJsonDefinition = GetStackDefinitionForRuntime -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
@@ -342,30 +447,31 @@ function New-AzFunctionApp {
 
             }
 
-            # Add app settings
-            if ($runtimeJsonDefinition.AppSettingsDictionary.Count -gt 0)
+            if (-not $functionAppIsFlexConsumption)
             {
-                foreach ($keyName in $runtimeJsonDefinition.AppSettingsDictionary.Keys)
+                # Add app settings
+                if ($runtimeJsonDefinition.AppSettingsDictionary.Count -gt 0)
                 {
-                    $value = $runtimeJsonDefinition.AppSettingsDictionary[$keyName]
-                    $appSettings.Add((NewAppSetting -Name $keyName -Value $value))
+                    foreach ($keyName in $runtimeJsonDefinition.AppSettingsDictionary.Keys)
+                    {
+                        $value = $runtimeJsonDefinition.AppSettingsDictionary[$keyName]
+                        $appSettings.Add((NewAppSetting -Name $keyName -Value $value))
+                    }
+                }
+
+                # Add site config properties
+                if ($runtimeJsonDefinition.SiteConfigPropertiesDictionary.Count -gt 0)
+                {
+                    foreach ($PropertyName in $runtimeJsonDefinition.SiteConfigPropertiesDictionary.Keys)
+                    {
+                        $value = $runtimeJsonDefinition.SiteConfigPropertiesDictionary[$PropertyName]
+                        $siteConfig.$PropertyName = $value
+                    }
                 }
             }
-
-            # Add site config properties
-            if ($runtimeJsonDefinition.SiteConfigPropertiesDictionary.Count -gt 0)
-            {
-                foreach ($PropertyName in $runtimeJsonDefinition.SiteConfigPropertiesDictionary.Keys)
-                {
-                    $value = $runtimeJsonDefinition.SiteConfigPropertiesDictionary[$PropertyName]
-                    $siteConfig.$PropertyName = $value
-                }
-            }            
         }
 
         $servicePlan = $null
-        $consumptionPlan = $PsCmdlet.ParameterSetName -eq "Consumption"
-        $OSIsLinux = $OSType -eq "Linux"
         $dockerRegistryServerUrl = $null
         
         if ($consumptionPlan)
@@ -420,6 +526,7 @@ function New-AzFunctionApp {
             $functionAppDef.Location = $Location
         }
 
+        # TODO: Need to move this to the top before any logic for an SKU specific settings are added.
         if ($OSIsLinux)
         {
             # These are the scenarios we currently support when creating a Docker container:
@@ -461,10 +568,13 @@ function New-AzFunctionApp {
             }
             else
             {
-                $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'true'))
+                if (-not $functionAppIsFlexConsumption)
+                {
+                    $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'true'))
+                }
             }
         }
-        else 
+        else
         {
             # Windows function app
             $functionAppDef.Kind = 'functionapp'
@@ -476,7 +586,6 @@ function New-AzFunctionApp {
             $functionAppDef.Reserved = $null
             $functionAppDef.HttpsOnly = $null
             $functionAppDef.ScmSiteAlsoStopped = $null
-            $functionAppDef.HttpsOnly = $null
 
             ValidateCpuAndMemory -ResourceCpu $ResourceCpu -ResourceMemory $ResourceMemory
             if ($ResourceCpu -and $ResourceMemory)
@@ -512,19 +621,283 @@ function New-AzFunctionApp {
             $functionAppDef.ManagedEnvironmentId = $managedEnvironment.Id
         }
 
+        if ($functionAppIsFlexConsumption)
+        {
+            $appSettings.Clear()
+            $formattedLocation = Format-FlexConsumptionLocation -Location $FlexConsumptionLocation
+            $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption `
+                                                                         -ZoneRedundant:$EnableZoneRedundancy `
+                                                                         @params
+
+            # Validate FlexConsumptionLocation
+            $found = $false
+            foreach ($region in $flexConsumptionRegions)
+            {
+                $regionName = Format-FlexConsumptionLocation -Location $region.Name
+
+                if ($region.Name -eq $FlexConsumptionLocation)
+                {
+                    $found = $true
+                    break
+                }
+                elseif ($regionName -eq $formattedLocation)
+                {
+                    $found = $true
+                    break
+                }
+            }
+
+            if (-not $found)
+            {
+                $errorMessage = $null
+                $errorId = $null
+                if ($EnableZoneRedundancy)
+                {
+                    $errorMessage = "The specified location '$FlexConsumptionLocation' doesn't support zone redundancy in Flex Consumption. "
+                    $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant' for the list of supported locations."
+                    $errorId = "RegionNotSupportedForZoneRedundancyInFlexConsumption"
+                }
+                else
+                {
+                    $errorMessage = "The specified location '$FlexConsumptionLocation' doesn't support Flex Consumption. "
+                    $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption' for the list of supported locations."
+                    $errorId = "RegionNotSupportedForFlexConsumption"
+                }
+
+                $exception = [System.InvalidOperationException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId $errorId `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+            }
+
+            $FlexConsumptionLocation = $formattedLocation
+
+            # Reset properties not applicable for Flex Consumption
+            $siteConfig.NetFrameworkVersion = $null
+            $functionAppDef.Reserved = $null
+            $functionAppDef.IsXenon = $null
+
+            try {
+
+                # Create Flex Consumption App Service Plan
+                $storageContainerCreated = $false
+                $flexConsumptionPlanCreated = $false
+                $planName = New-PlanName -ResourceGroupName $ResourceGroupName
+                $planInfo = New-FlexConsumptionAppPlan -Name $PlanName `
+                                                       -ResourceGroupName $ResourceGroupName `
+                                                       -Location $FlexConsumptionLocation `
+                                                       -EnableZoneRedundancy:$EnableZoneRedundancy `
+                                                       @params
+
+                $flexConsumptionPlanCreated = $true
+
+                $functionAppDef.ServerFarmId = $planInfo.Id
+                $functionAppDef.Location = $FlexConsumptionLocation
+
+                # Validate Deployment Storage
+                if (-not $DeploymentStorageName) {
+                    $DeploymentStorageName = $StorageAccountName
+                }
+
+                if (-not $DeploymentStorageContainerName)
+                {
+                    # Generate a unique container name
+                    $normalizedName = ($Name -replace '[^a-zA-Z0-9]', '').Substring(0, [Math]::Min(32, $Name.Length))
+                    $randomSuffix = Get-Random -Minimum 0 -Maximum 9999999
+                    $DeploymentStorageContainerName = "app-package-$normalizedName-{0:D7}" -f $randomSuffix
+                }
+
+                # Check if container exists; create if missing
+                $StorageAccountInfo = Get-StorageAccountInfo -Name $DeploymentStorageName @params
+
+                $ctx = $StorageAccountInfo.Context
+                $container = Get-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
+                                                 -AccountName $DeploymentStorageName `
+                                                 -ResourceGroupName $ResourceGroupName `
+                                                 -ErrorAction SilentlyContinue @params
+                if (-not $container)
+                {
+                    Write-Verbose "Container '$DeploymentStorageContainerName' does not exist. Creating..."
+                    $container = New-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
+                                                     -AccountName $DeploymentStorageName `
+                                                     -ResourceGroupName $ResourceGroupName `
+                                                     -ContainerPropertyPublicAccess None `
+                                                     @params
+                    $storageContainerCreated = $true
+                }
+
+                # Blob URL
+                $blobContainerUrl = "$($StorageAccountInfo.PrimaryEndpointBlob)$DeploymentStorageContainerName"
+                $functionAppDef.StorageType = "blobContainer"
+                $functionAppDef.StorageValue = $blobContainerUrl
+
+                # Validate DeploymentStorageAuthType
+                if (-not $DeploymentStorageAuthType)
+                {
+                    $DeploymentStorageAuthType = 'StorageAccountConnectionString'
+                }
+
+                $functionAppDef.AuthenticationType = $DeploymentStorageAuthType
+
+                # Set deployment storage authentication
+                if ($DeploymentStorageAuthType -eq "SystemAssignedIdentity")
+                {
+                    if ($DeploymentStorageAuthValue)
+                    {
+                        $errorMessage = "-DeploymentStorageAuthValue is only valid when -DeploymentStorageAuthType is UserAssignedIdentity or StorageAccountConnectionString."
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId $errorId `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
+                    }
+                }
+                elseif ($DeploymentStorageAuthType -eq "StorageAccountConnectionString")
+                {
+                    if (-not $DeploymentStorageAuthValue)
+                    {
+                        Write-Verbose "DeploymentStorageAuthValue was not provided. Generating a connection string for deployment storage..."
+                        $DeploymentStorageAuthValue = GetConnectionString -StorageAccountName $DeploymentStorageName @params
+                    }
+
+                    $DEPLOYMENT_STORAGE_CONNECTION_STRING = 'DEPLOYMENT_STORAGE_CONNECTION_STRING'
+
+                    $functionAppDef.AuthenticationStorageAccountConnectionStringName = $DEPLOYMENT_STORAGE_CONNECTION_STRING
+                    $appSettings.Add((NewAppSetting -Name $DEPLOYMENT_STORAGE_CONNECTION_STRING -Value $DeploymentStorageAuthValue))
+                }
+                elseif ($DeploymentStorageAuthType -eq "UserAssignedIdentity")
+                {
+                    if (-not $DeploymentStorageAuthValue)
+                    {
+                        $errorMessage = "IdentityID is required for UserAssigned identity"
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
+                                                -ErrorMessage $errorMessage `
+                                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                -Exception $exception
+
+                        # $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                        # $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                    }
+
+                    $functionAppDef.AuthenticationUserAssignedIdentityResourceId = $DeploymentStorageAuthValue
+                }
+
+                # Parse the version from LinuxFxVersion
+                $runtimeName = $runtimeJsonDefinition.siteConfigPropertiesDictionary["LinuxFxVersion"].Split("|")[0]
+                $runtimeVersion = $runtimeJsonDefinition.siteConfigPropertiesDictionary["LinuxFxVersion"].Split("|")[1]
+
+                # Set runtime information
+                $functionAppDef.RuntimeName = $runtimeName
+                $functionAppDef.RuntimeVersion = $runtimeVersion
+
+                if ($AlwaysReady)
+                {
+                    # Validate AlwaysReady
+                    $NAME = 'name'
+                    $INSTANCECOUNT = 'instanceCount'
+
+                    foreach ($entry in $AlwaysReady)
+                    {
+                        if (-not ($entry.ContainsKey($NAME) -and $entry.ContainsKey($INSTANCECOUNT)))
+                        {
+                            $errorMessage = "Each hashtable in AlwaysReady must contain '$NAME' and '$INSTANCECOUNT' keys."
+                            $exception = [System.InvalidOperationException]::New($errorMessage)
+                            ThrowTerminatingError -ErrorId "InvalidAlwaysReadyConfiguration" `
+                                                  -ErrorMessage $errorMessage `
+                                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                  -Exception $exception
+                        }
+
+                        # Validate that Name is a non-empty string
+                        if ([string]::IsNullOrWhiteSpace($entry[$NAME]))
+                        {
+                            $errorMessage = "Name in AlwaysReady must be a non-empty string."
+                            $exception = [System.InvalidOperationException]::New($errorMessage)
+                            ThrowTerminatingError -ErrorId "InvalidAlwaysReadyName" `
+                                                  -ErrorMessage $errorMessage `
+                                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                  -Exception $exception
+                        }
+
+                        # Validate that InstanceCount is a non-negative integer
+                        if (-not [int]::TryParse($entry[$INSTANCECOUNT], [ref]$null))
+                        {
+                            $errorMessage = "InstanceCount in AlwaysReady must be a valid integer."
+                            $exception = [System.InvalidOperationException]::New($errorMessage)
+                            ThrowTerminatingError -ErrorId "InvalidAlwaysReadyInstanceCount" `
+                                                  -ErrorMessage $errorMessage `
+                                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                  -Exception $exception
+                        }
+
+                        if ([int]$entry[$INSTANCECOUNT] -lt 0)
+                        {
+                            $errorMessage = "InstanceCount in AlwaysReady must be a non-negative integer."
+                            $exception = [System.InvalidOperationException]::New($errorMessage)
+                            ThrowTerminatingError -ErrorId "InvalidAlwaysReadyInstanceCount" `
+                                                  -ErrorMessage $errorMessage `
+                                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                  -Exception $exception
+                        }
+                    }
+
+                    $functionAppDef.ScaleAndConcurrencyAlwaysReady = $AlwaysReady
+                }
+
+                # Set scaling information
+                # TODO: Set default values if not provided? Currently they are optional parameters.
+                # If not provided, the service will use its own defaults.
+                # TODO: Validate MaximumInstanceCount and InstanceMemoryMB ranges - Need Thiago's input on valid ranges.
+                if ($MaximumInstanceCount -gt 0)
+                {
+                    $functionAppDef.ScaleAndConcurrencyMaximumInstanceCount = $MaximumInstanceCount
+                }
+
+                if ($InstanceMemoryMB -gt 0)
+                {
+                    $functionAppDef.ScaleAndConcurrencyInstanceMemoryMB = $InstanceMemoryMB
+                }
+
+                if ($HttpPerInstanceConcurrency -gt 0)
+                {
+                    $functionAppDef.HttpPerInstanceConcurrency = $HttpPerInstanceConcurrency
+                }
+            }
+            catch
+            {
+                # TODO: We need a similar cleanup logic for when we fail to create the function app.
+                if ($flexConsumptionPlanCreated)
+                {
+                    Remove-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName -Name $planName @params
+                }
+                if ($storageContainerCreated)
+                {
+                    Remove-AzBlobContainer -ResourceGroupName $ResourceGroupName -StorageAccountName $DeploymentStorageName -ContainerName $DeploymentStorageContainerName @params
+                }
+
+                $errorMessage = "Failed to create Flex Consumption Function App. Exception: $_"
+                $exception = [System.InvalidOperationException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId "FailedToCreateFlexConsumptionFunctionApp" `
+                                      -ErrorMessage $errorMessage `
+                                      -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                      -Exception $exception
+            }
+        }
+
         # Validate storage account and get connection string
         $connectionString = GetConnectionString -StorageAccountName $StorageAccountName @params
-            $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionString))
-            $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionString))
+        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionString))
 
-        if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp))
+        if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp -or $functionAppIsFlexConsumption))
         {
             $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_EXTENSION_VERSION' -Value "~$FunctionsVersion"))
         }
 
         # If plan is not consumption, elastic premium or a container app environment, set always on
         $planIsElasticPremium = $servicePlan.SkuTier -eq 'ElasticPremium'
-        if ((-not $consumptionPlan) -and (-not $planIsElasticPremium) -and (-not $Environment))
+        if ((-not $consumptionPlan) -and (-not $planIsElasticPremium) -and (-not $Environment) -and (-not $functionAppIsFlexConsumption))
         {
             $siteConfig.AlwaysOn = $true
         }
@@ -538,6 +911,14 @@ function New-AzFunctionApp {
             $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $shareName))
         }
 
+        # Set up Dashboard if no ApplicationInsights
+        if ($DisableApplicationInsights -and (-not $functionAppIsFlexConsumption))
+        {
+            $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionString))
+        }
+
+        # Set up Application Insights
+        # TODO: Need to figure out how to get the app insight connection string
         if (-not $DisableApplicationInsights)
         {
             if ($ApplicationInsightsKey)
@@ -549,7 +930,7 @@ function New-AzFunctionApp {
                 $appInsightsProject = GetApplicationInsightsProject -Name $ApplicationInsightsName @params
                 if (-not $appInsightsProject)
                 {
-                    $errorMessage = "Failed to get application insights key for project name '$ApplicationInsightsName'. Please make sure the project exist."
+                    $errorMessage = "Failed to get application insights project name '$ApplicationInsightsName'. Please make sure the project exist."
                     $exception = [System.InvalidOperationException]::New($errorMessage)
                     ThrowTerminatingError -ErrorId "ApplicationInsightsProjectNotFound" `
                                         -ErrorMessage $errorMessage `
@@ -557,17 +938,20 @@ function New-AzFunctionApp {
                                         -Exception $exception
                 }
 
-                $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $appInsightsProject.InstrumentationKey))
+                #$appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $appInsightsProject.InstrumentationKey))
+                $appSettings.Add((NewAppSetting -Name 'APPLICATIONINSIGHTS_CONNECTION_STRING' -Value $appInsightsProject.ConnectionString))
             }
             else
             {
+                Write-Verbose "Creating new Application Insights project for function app '$Name' in resource group '$ResourceGroupName'." -Verbose
                 $newAppInsightsProject = CreateApplicationInsightsProject -ResourceGroupName $resourceGroupName `
                                                                           -ResourceName $Name `
                                                                           -Location $functionAppDef.Location `
                                                                           @params
                 if ($newAppInsightsProject)
                 {
-                    $appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
+                    #$appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $newAppInsightsProject.InstrumentationKey))
+                    $appSettings.Add((NewAppSetting -Name 'APPLICATIONINSIGHTS_CONNECTION_STRING' -Value $newAppInsightsProject.ConnectionString))
                 }
                 else
                 {

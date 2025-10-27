@@ -1,7 +1,7 @@
 # Load Az.Functions module constants
 $constants = @{}
 $constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS', 'Standard_GZRS')
-$constants["RequiredStorageEndpoints"] = @('PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
+$constants["RequiredStorageEndpoints"] = @('PrimaryEndpointBlob', 'PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
 $constants["DefaultFunctionsVersion"] = '4'
 $constants["RuntimeToFormattedName"] = @{
     'dotnet' = 'DotNet'
@@ -97,7 +97,7 @@ function GetConnectionString
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
     }
-    
+
     $skuName = $storageAccountInfo.SkuName
     if (-not ($AllowedStorageTypes -contains $skuName))
     {
@@ -2504,4 +2504,247 @@ function Get-Today {
         return [datetime]"2024-01-01"
     }
     return Get-Date
+}
+
+function New-PlanName
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $ResourceGroupName
+    )
+
+    $suffix = "-" + ([guid]::NewGuid().ToString().Substring(0,4))
+    $name = $ResourceGroupName -replace '[^a-zA-Z0-9]', ''
+    $prefix = "ASP-$name"
+    return $prefix.Substring(0, [Math]::Min(35, $prefix.Length)) + $suffix
+}
+
+function New-FlexConsumptionAppPlan
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Name,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $ResourceGroupName,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location,
+
+        [System.Management.Automation.SwitchParameter]
+        $EnableZoneRedundancy,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    foreach ($paramName in @("Location", "EnableZoneRedundancy"))
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+
+    $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.AppServicePlan
+    $servicePlan.Location = $Location
+    $servicePlan.Reserved = $true
+    $servicePlan.Kind = "functionapp"
+    $servicePlan.SkuName = "FC1"
+    $servicePlan.SkuTier = "FlexConsumption"
+    $servicePlan.SkuSize = "FC"
+    $servicePlan.SkuFamily = "FC"
+
+    if ($EnableZoneRedundancy.IsPresent)
+    {
+        $servicePlan.ZoneRedundant = $true
+        $servicePlan.SkuCapability = 3
+    }
+
+    # Add plan definition
+    $PSBoundParameters.Add("AppServicePlan", $servicePlan)  | Out-Null
+
+    # Save the ErrorActionPreference
+    $currentErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'Stop'
+    $plan = $null
+
+    $activityName = "Creating Flex Consumption Plan"
+
+    try
+    {
+        Write-Progress -Activity $activityName `
+                       -Status "Creating plan $Name in resource group $ResourceGroupName" `
+                       -PercentComplete 50
+
+        $plan = Az.Functions.internal\New-AzFunctionAppPlan @PSBoundParameters
+
+        Write-Progress -Activity $activityName `
+                       -Status "Plan creation completed successfully." `
+                       -Completed
+    }
+    catch
+    {
+        $errorMessage = GetErrorMessage -Response $_
+        if ($errorMessage)
+        {
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "FailedToCreateFunctionAppFlexConsumPlan" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+        }
+
+        throw $_
+    }
+    finally
+    {
+        $ErrorActionPreference = $currentErrorActionPreference
+    }
+
+    return $plan
+}
+
+function Get-StorageAccountInfo
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [System.String]
+        $Name,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    $paramsToRemove = @(
+        "Name"
+    )
+    foreach ($paramName in $paramsToRemove)
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    # Get storage account
+    $storageAccountInfo = GetStorageAccount -Name $Name @PSBoundParameters
+
+    if (-not $storageAccountInfo)
+    {
+        $errorMessage = "Storage account '$Name' does not exist."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountNotFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    if ($storageAccountInfo.ProvisioningState -ne "Succeeded")
+    {
+        $errorMessage = "Storage account '$Name' is not ready. Please run 'Get-AzStorageAccount' and ensure that the ProvisioningState is 'Succeeded'"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountNotFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $skuName = $storageAccountInfo.SkuName
+    if (-not ($AllowedStorageTypes -contains $skuName))
+    {
+        $storageOptions = $AllowedStorageTypes -join ", "
+        $errorMessage = "Storage type '$skuName' is not allowed'. Currently supported storage options: $storageOptions"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageTypeNotSupported" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    # Validate endpoints
+    foreach ($endpoint in $RequiredStorageEndpoints)
+    {
+        if ([string]::IsNullOrEmpty($storageAccountInfo.$endpoint))
+        {
+            $errorMessage = "Storage account '$StorageAccountName' has no '$endpoint' endpoint. It must have table, queue, and blob endpoints all enabled."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "StorageAccountRequiredEndpointNotAvailable" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
+        }
+    }
+
+    return $storageAccountInfo
+}
+
+function Get-ConnectionString
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        $StorageAccountInfo
+    )
+
+    if (-not $StorageAccountInfo)
+    {
+        throw "StorageAccountInfo cannot be null."
+    }
+
+    $resourceGroupName = ($storageAccountInfo.Id -split "/")[4]
+    $keys = Az.Functions.internal\Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountInfo.Name @PSBoundParameters -ErrorAction SilentlyContinue
+
+    if (-not $keys)
+    {
+        $errorMessage = "Failed to get key for storage account '$StorageAccountName'."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToGetStorageAccountKey" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    if ([string]::IsNullOrEmpty($keys[0].Value))
+    {
+        $errorMessage = "Storage account '$StorageAccountName' has no key value."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountHasNoKeyValue" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $suffix = GetEndpointSuffix
+    $accountKey = $keys[0].Value
+
+    $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey" + $suffix
+
+    return $connectionString
+}
+
+function Format-FlexConsumptionLocation
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [System.String]
+        $Location
+    )
+
+    $normalizedLocation = $Location.ToLower().Replace(" ", "")
+    return $normalizedLocation
 }
