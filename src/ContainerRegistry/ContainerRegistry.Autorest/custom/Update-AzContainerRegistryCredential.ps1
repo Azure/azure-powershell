@@ -66,6 +66,7 @@ function Update-AzContainerRegistryCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
     [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
@@ -75,6 +76,7 @@ param(
     # The name of the container registry.
     ${RegistryName},
 
+    [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
     [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
@@ -84,6 +86,7 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='Regenerate')]
     [Parameter(ParameterSetName='RegenerateExpanded')]
     [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
     [Parameter(ParameterSetName='RegenerateViaJsonString')]
@@ -99,6 +102,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegenerateCredentialParameters]
+    # The parameters used to regenerate the login credential.
+    ${RegenerateCredentialParameter},
 
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
     [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory)]

@@ -54,6 +54,8 @@ module-version: 0.1.0
 title: ContainerRegistry
 subject-prefix: $(service-name)
 
+inlining-threshold: 100
+
 directive:
 # Remove cmdlet, Private link related resource should be ignored. 
 - where:
