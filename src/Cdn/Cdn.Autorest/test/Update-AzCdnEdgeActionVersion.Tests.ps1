@@ -16,7 +16,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnEdgeActionVersion
 
 Describe 'Update-AzCdnEdgeActionVersion' {
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $script:EdgeActionName = "eavupdate"
+        $script:TestResourceGroup = $env.ResourceGroupName
+        
+        # Create test edge action first (required for version creation)
+        New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+        # Test creating edge action version with expanded parameters
+        $version = "v1"
+        
+        # Now we can create version on existing EdgeAction
+        {
+            New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonFilePath' -skip {

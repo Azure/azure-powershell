@@ -15,8 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEdgeActionExecutionF
 }
 
 Describe 'New-AzCdnEdgeActionExecutionFilter' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        # Test creating edge action with expanded parameters
+        $resourceGroupName = $env.ResourceGroupName
+        $edgeActionName = "eaefnew" 
+
+        $result = New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+            
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $edgeActionName
+        $result.ResourceGroupName | Should -Be $resourceGroupName        
     }
 
     It 'CreateViaJsonFilePath' -skip {

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEdgeActionVersion'))
 
 Describe 'Get-AzCdnEdgeActionVersion' {
     BeforeAll {
-        $script:EdgeActionName = "eav" + (Get-Random -Maximum 99999)
+        $script:EdgeActionName = "eavget"
         $script:Version = "v1"
         $script:TestResourceGroup = $env.ResourceGroupName
         

@@ -39,7 +39,7 @@ Create EdgeAction resource
 
 ### Example 1: Create a new Edge Action with Standard SKU
 ```powershell
-New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001 -Location Global -SkuName Standard_AzureFrontDoor -SkuTier Standard
+New-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001" -Location "Global" -SkuName "Standard" -SkuTier "Standard"
 ```
 
 ```output

@@ -1,6 +1,6 @@
 ### Example 1: List all Edge Actions in a resource group
 ```powershell
-Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm
+Get-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm"
 ```
 
 ```output
@@ -14,7 +14,7 @@ List all Edge Actions under the resource group
 
 ### Example 2: Get a specific Edge Action by name
 ```powershell
-Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001
+Get-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001"
 ```
 
 ```output

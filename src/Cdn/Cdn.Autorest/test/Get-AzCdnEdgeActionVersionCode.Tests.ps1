@@ -15,6 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEdgeActionVersionCod
 }
 
 Describe 'Get-AzCdnEdgeActionVersionCode' {
+    BeforeAll {
+        $script:EdgeActionName = "eavcget"
+        $script:Version = "v1"
+        $script:TestResourceGroup = $env.ResourceGroupName
+        
+        # Create test edge action and version for Get tests
+        New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+        New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $script:Version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
+    }
+
     It 'GetExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -27,8 +37,12 @@ Describe 'Get-AzCdnEdgeActionVersionCode' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        # Test getting specific edge action version by name
+        $result = Get-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $script:Version
+        
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $script:Version
     }
 
     It 'GetViaIdentityEdgeActionExpanded' -skip {

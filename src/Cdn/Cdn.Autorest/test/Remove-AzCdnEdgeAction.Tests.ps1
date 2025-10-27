@@ -15,15 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnEdgeAction'))
 }
 
 Describe 'Remove-AzCdnEdgeAction' {
-    BeforeAll {
-        $script:EdgeActionName = "ea" + (Get-Random -Maximum 99999)
+    It 'Delete' {
+        $script:EdgeActionName = "earemove"
         $script:TestResourceGroup = $env.ResourceGroupName
         
         # Create test edge action for removal test
         New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-    }
-
-    It 'Delete' {
         # Test deleting existing edge action
         { Remove-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName } | Should -Not -Throw
     }

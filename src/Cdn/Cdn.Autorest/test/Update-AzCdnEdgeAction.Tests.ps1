@@ -15,8 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnEdgeAction'))
 }
 
 Describe 'Update-AzCdnEdgeAction' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        # Test creating edge action with expanded parameters
+        $resourceGroupName = $env.ResourceGroupName
+        $edgeActionName = "eaupdate" 
+
+        $result = New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+            
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $edgeActionName
+        $result.ResourceGroupName | Should -Be $resourceGroupName    
     }
 
     It 'UpdateViaJsonFilePath' -skip {

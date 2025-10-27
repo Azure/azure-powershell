@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEdgeAction'))
 
 Describe 'Get-AzCdnEdgeAction' {
     BeforeAll {
-        $script:EdgeActionName = "ea" + (Get-Random -Maximum 99999)
+        $script:EdgeActionName = "eaget"
         $script:TestResourceGroup = $env.ResourceGroupName
         
         # Create test edge action for Get tests

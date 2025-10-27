@@ -15,15 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEdgeActionVersion'))
 }
 
 Describe 'New-AzCdnEdgeActionVersion' {
-    BeforeAll {
-        $script:EdgeActionName = "eav" + (Get-Random -Maximum 99999)
+    It 'CreateExpanded' {
+        $script:EdgeActionName = "eavnew"
         $script:TestResourceGroup = $env.ResourceGroupName
         
         # Create test edge action first (required for version creation)
         New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-    }
-
-    It 'CreateExpanded' {
         # Test creating edge action version with expanded parameters
         $version = "v1"
         
