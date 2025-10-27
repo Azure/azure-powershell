@@ -36,6 +36,7 @@ input-file:
   - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storage.json
   - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/file.json
   - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storageTaskAssignments.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/networkSecurityPerimeter.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1

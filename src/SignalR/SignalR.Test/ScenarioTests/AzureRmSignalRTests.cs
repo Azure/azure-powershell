@@ -52,5 +52,17 @@ namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRCustomCertificateAndCustomDomain() =>
             TestRunner.RunTestScript("Test-AzureRmSignalRCustomCertificateAndCustomDomain");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzSignalRReplica() =>
+            TestRunner.RunTestScript("Test-AzSignalRReplica");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzSignalRNetworkIpRule()
+        {
+            TestRunner.RunTestScript("Test-AzSignalRNetworkIpRule");
+        }
     }
 }
