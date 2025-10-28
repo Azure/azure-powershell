@@ -1364,7 +1364,7 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 	$targetSubnetName = "default"
 	$owner = "sgholap"
 	$subscriptionId = "5288acd1-ba79-4377-9205-9f220331a44a"
-	$recoveryPointId = "807152782396876"
+	$recoveryPointId = "808254335380202" #"807152782396876"
 	$cVMOSDiskEncryptionSetId = "/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/sgholap-rg/providers/Microsoft.Compute/diskEncryptionSets/CVMPSRestoreDES"
 	try
 	{	

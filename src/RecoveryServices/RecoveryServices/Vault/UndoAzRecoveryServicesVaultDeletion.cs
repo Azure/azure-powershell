@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Undeletes a soft deleted Azure Recovery Services Vault.
     /// </summary>
     [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultDeletion", SupportsShouldProcess = true)]
-    [OutputType(typeof(Object))] // chck: ServeClientModel.OperationStatus
+    [OutputType(typeof(Object))]
     public class UndoAzRecoveryServicesVaultDeletion : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     WriteVerbose($"Starting undelete operation for vault '{this.Name}' in location '{this.Location}'");
                     WriteVerbose($"Recovery Resource Group ID: {recoveryResourceGroupId}");
 
+                    // ServiceClientModel.OperationStatus
                     DeletedVault undeleteResult = RecoveryServicesClient.UndeleteSoftDeletedVault(
                         this.Location, 
                         this.Name, 

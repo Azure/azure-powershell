@@ -231,7 +231,19 @@ function Delete-Vault($vault)
 		}
 	}
 
-	Remove-AzRecoveryServicesVault -Vault $vault
+	try {
+		$remove = Remove-AzRecoveryServicesVault -Vault $vault
+	}
+	catch {
+		if ($_.Exception.Message -like "*NotFound*" -or $_.Exception.Message -like "*not found*") {
+			# Vault not found - continue silently as it's already deleted
+			Write-Verbose "Vault $($vault.Name) not found - already deleted or doesn't exist"
+		}
+		else {
+			# Re-throw other errors
+			throw
+		}
+	}
 }
 
 function Delete-VM(
