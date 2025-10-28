@@ -121,11 +121,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// application package references on any given pool.
         /// </param>
 
-        /// <param name="applicationLicenses">The list of application licenses must be a subset of available Batch
-        /// service application licenses. If a license is requested which is not
-        /// supported, pool creation will fail.
-        /// </param>
-
         /// <param name="resizeOperationStatus">Describes either the current operation (if the pool AllocationState is
         /// Resizing) or the previously completed operation (if the AllocationState is
         /// Steady).
@@ -142,7 +137,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="upgradePolicy">Describes an upgrade policy - automatic, manual, or rolling.
         /// </param>
-        public PoolProperties(string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), AllocationState? allocationState = default(AllocationState?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), ScaleSettings scaleSettings = default(ScaleSettings), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), StartTask startTask = default(StartTask), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?), UpgradePolicy upgradePolicy = default(UpgradePolicy))
+        public PoolProperties(string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), AllocationState? allocationState = default(AllocationState?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), ScaleSettings scaleSettings = default(ScaleSettings), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), StartTask startTask = default(StartTask), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?), UpgradePolicy upgradePolicy = default(UpgradePolicy))
 
         {
             this.DisplayName = displayName;
@@ -167,7 +162,6 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.StartTask = startTask;
             this.Certificates = certificates;
             this.ApplicationPackages = applicationPackages;
-            this.ApplicationLicenses = applicationLicenses;
             this.ResizeOperationStatus = resizeOperationStatus;
             this.MountConfiguration = mountConfiguration;
             this.TargetNodeCommunicationMode = targetNodeCommunicationMode;
@@ -346,14 +340,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "applicationPackages")]
         public System.Collections.Generic.IList<ApplicationPackageReference> ApplicationPackages {get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of application licenses must be a subset of available
-        /// Batch service application licenses. If a license is requested which is not
-        /// supported, pool creation will fail.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "applicationLicenses")]
-        public System.Collections.Generic.IList<string> ApplicationLicenses {get; set; }
 
         /// <summary>
         /// Gets describes either the current operation (if the pool AllocationState is
