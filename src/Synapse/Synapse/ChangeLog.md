@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.22
 
 ## Version 3.2.2
 * Fixed an error when remove artifact throw `ArgumentNullException`
@@ -32,7 +33,7 @@
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.
 
 ## Version 3.1.1
-* Removed "Microsoft.Azure.Management.Synapse" Version "2.6.0-preview" package reference 
+* Removed "Microsoft.Azure.Management.Synapse" Version "2.6.0-preview" package reference
 
 ## Version 3.1.0
 * Upgraded nuget package to signed package.
