@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             };
 
             // Act
-            var result = psPolicy.fromMgmtUpgradePolicy(mgmtPolicy);
+            var result = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var psPolicy = new PSUpgradePolicy(Microsoft.Azure.Batch.Common.UpgradeMode.Manual);
 
             // Act
-            var result = psPolicy.fromMgmtUpgradePolicy(null);
+            var result = PSUpgradePolicy.fromMgmtUpgradePolicy(null);
 
             // Assert
             Assert.Null(result);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             };
 
             // Act
-            var result = psPolicy.fromMgmtUpgradePolicy(mgmtPolicy);
+            var result = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             };
 
             // Act
-            var result = psPolicy.fromMgmtUpgradePolicy(mgmtPolicy);
+            var result = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             };
 
             // Act
-            var result = psPolicy.fromMgmtUpgradePolicy(mgmtPolicy);
+            var result = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             };
 
             // Act
-            var result = psPolicy.fromMgmtUpgradePolicy(mgmtPolicy);
+            var result = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var mgmtPolicy = originalPsPolicy.toMgmtUpgradePolicy();
-            var roundTripPsPolicy = new PSUpgradePolicy(Microsoft.Azure.Batch.Common.UpgradeMode.Manual).fromMgmtUpgradePolicy(mgmtPolicy);
+            var roundTripPsPolicy = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(roundTripPsPolicy);
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var mgmtPolicy = originalPsPolicy.toMgmtUpgradePolicy();
-            var roundTripPsPolicy = new PSUpgradePolicy(Microsoft.Azure.Batch.Common.UpgradeMode.Automatic).fromMgmtUpgradePolicy(mgmtPolicy);
+            var roundTripPsPolicy = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(roundTripPsPolicy);
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
                 // Act
                 var mgmtPolicy = psPolicy.toMgmtUpgradePolicy();
-                var backToPs = new PSUpgradePolicy(Microsoft.Azure.Batch.Common.UpgradeMode.Manual).fromMgmtUpgradePolicy(mgmtPolicy);
+                var backToPs = PSUpgradePolicy.fromMgmtUpgradePolicy(mgmtPolicy);
 
                 // Assert
                 Assert.NotNull(mgmtPolicy);

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return upgradePolicy;
         }
 
-        internal PSUpgradePolicy fromMgmtUpgradePolicy(UpgradePolicy upgradePolicy)
+        internal static PSUpgradePolicy fromMgmtUpgradePolicy(UpgradePolicy upgradePolicy)
         {
             if (upgradePolicy == null)
             {

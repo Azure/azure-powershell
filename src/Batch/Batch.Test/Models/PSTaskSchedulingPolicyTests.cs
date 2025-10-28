@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Spread);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(mgmtComputeNodeFillType);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var psPolicy = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(null);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(null);
 
             // Assert
             Assert.Null(result);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Spread);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Spread);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Spread);
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var mgmtPolicy = new TaskSchedulingPolicy(); // Uses default constructor
 
             // Act
-            var result = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var result = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(result);
@@ -285,8 +285,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var mgmtPolicy = originalPsPolicy.toMgmtTaskSchedulingPolicy();
-            var roundTripPsPolicy = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Spread)
-                .fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var roundTripPsPolicy = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(roundTripPsPolicy);
@@ -302,8 +301,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var mgmtPolicy = originalPsPolicy.toMgmtTaskSchedulingPolicy();
-            var roundTripPsPolicy = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack)
-                .fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var roundTripPsPolicy = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(roundTripPsPolicy);
@@ -322,8 +320,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var mgmtPolicy = originalPsPolicy.toMgmtTaskSchedulingPolicy();
-            var roundTripPsPolicy = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack)
-                .fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var roundTripPsPolicy = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert
             Assert.NotNull(roundTripPsPolicy);
@@ -337,8 +334,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var originalMgmtPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
 
             // Act
-            var psPolicy = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Spread)
-                .fromMgmtTaskSchedulingPolicy(originalMgmtPolicy);
+            var psPolicy = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(originalMgmtPolicy);
             var roundTripMgmtPolicy = psPolicy.toMgmtTaskSchedulingPolicy();
 
             // Assert
@@ -359,8 +355,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Test Pack semantics - Tasks fill each node before moving to the next
             var psPack = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack);
             var mgmtPack = psPack.toMgmtTaskSchedulingPolicy();
-            var backToPs = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Spread)
-                .fromMgmtTaskSchedulingPolicy(mgmtPack);
+            var backToPs = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPack);
 
             Assert.Equal(ComputeNodeFillType.Pack, mgmtPack.NodeFillType);
             Assert.Equal(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack, backToPs.ComputeNodeFillType);
@@ -368,8 +363,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             // Test Spread semantics - Tasks are distributed evenly across nodes
             var psSpread = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Spread);
             var mgmtSpread = psSpread.toMgmtTaskSchedulingPolicy();
-            var backToPsSpread = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack)
-                .fromMgmtTaskSchedulingPolicy(mgmtSpread);
+            var backToPsSpread = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtSpread);
 
             Assert.Equal(ComputeNodeFillType.Spread, mgmtSpread.NodeFillType);
             Assert.Equal(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Spread, backToPsSpread.ComputeNodeFillType);
@@ -382,7 +376,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             var psPolicy = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack);
 
             // Act
-            var resultFromNull = psPolicy.fromMgmtTaskSchedulingPolicy(null);
+            var resultFromNull = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(null);
 
             // Assert
             Assert.Null(resultFromNull);
@@ -409,10 +403,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             Assert.Equal(ComputeNodeFillType.Spread, mgmtSpreadPolicy.NodeFillType);
 
             // Verify round-trip conversion maintains pool scheduling semantics
-            var backToPack = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Spread)
-                .fromMgmtTaskSchedulingPolicy(mgmtPackPolicy);
-            var backToSpread = new PSTaskSchedulingPolicy(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack)
-                .fromMgmtTaskSchedulingPolicy(mgmtSpreadPolicy);
+            var backToPack = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPackPolicy);
+            var backToSpread = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtSpreadPolicy);
 
             Assert.Equal(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Pack, backToPack.ComputeNodeFillType);
             Assert.Equal(Microsoft.Azure.Batch.Common.ComputeNodeFillType.Spread, backToSpread.ComputeNodeFillType);
@@ -429,7 +421,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var mgmtResult = psPolicy.toMgmtTaskSchedulingPolicy();
-            var psResult = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+            var psResult = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
             // Assert - Verify proper instance creation
             Assert.NotNull(mgmtResult);
@@ -459,7 +451,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
             for (int i = 0; i < 100; i++)
             {
                 var mgmtResult = psPolicy.toMgmtTaskSchedulingPolicy();
-                var psResult = psPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
+                var psResult = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(mgmtPolicy);
 
                 Assert.NotNull(mgmtResult);
                 Assert.NotNull(psResult);
@@ -477,7 +469,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ModelsConversions
 
             // Act
             var mgmtResult = defaultPsPolicy.toMgmtTaskSchedulingPolicy();
-            var psResult = defaultPsPolicy.fromMgmtTaskSchedulingPolicy(defaultMgmtPolicy);
+            var psResult = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(defaultMgmtPolicy);
 
             // Assert
             Assert.NotNull(mgmtResult);

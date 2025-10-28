@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return mgmtTaskSchedulingPolicy;
         }
 
-        internal PSTaskSchedulingPolicy fromMgmtTaskSchedulingPolicy(TaskSchedulingPolicy mgmtTaskSchedulingPolicy)
+        internal static PSTaskSchedulingPolicy fromMgmtTaskSchedulingPolicy(TaskSchedulingPolicy mgmtTaskSchedulingPolicy)
         {
             if (mgmtTaskSchedulingPolicy == null)
             {

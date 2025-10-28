@@ -544,11 +544,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         internal static IList<Management.Batch.Models.EnvironmentSetting> toMgmtEnvironmentSettings(IDictionary psEnvironmentSettings)
         {
-            if(psEnvironmentSettings == null)
+            if (psEnvironmentSettings == null)
             {
                 return null;
             }
-            
+
             List<Management.Batch.Models.EnvironmentSetting> mgmtEnvironmentSettings = new List<Management.Batch.Models.EnvironmentSetting>();
             foreach (DictionaryEntry item in psEnvironmentSettings)
             {
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             List<PSResourceFile> psResourceFiles = new List<PSResourceFile>();
             foreach (var mgmtResourceFile in resourceFiles)
             {
-                Microsoft.Azure.Batch.ComputeNodeIdentityReference identityReference=  PSComputeNodeIdentityReference.fromMgmtIdentityReference(mgmtResourceFile.IdentityReference);
+                Microsoft.Azure.Batch.ComputeNodeIdentityReference identityReference = PSComputeNodeIdentityReference.fromMgmtIdentityReference(mgmtResourceFile.IdentityReference);
                 Microsoft.Azure.Batch.ResourceFile resourceFile;
                 if (!string.IsNullOrEmpty(mgmtResourceFile.HttpUrl))
                 {
@@ -622,8 +622,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     resourceFile = Microsoft.Azure.Batch.ResourceFile.FromStorageContainerUrl(
                         storageContainerUrl: mgmtResourceFile.StorageContainerUrl,
                         identityReference: identityReference,
-                        mgmtResourceFile.FilePath, 
-                        blobPrefix: mgmtResourceFile.BlobPrefix, 
+                        mgmtResourceFile.FilePath,
+                        blobPrefix: mgmtResourceFile.BlobPrefix,
                         fileMode: mgmtResourceFile.FileMode);
                 }
                 else
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         internal static NodePlacementPolicyType? toMgmtNodePlacementPolicyType(Azure.Batch.Common.NodePlacementPolicyType? policy)
         {
-           return (NodePlacementPolicyType?)policy;
+            return (NodePlacementPolicyType?)policy;
         }
 
         internal static Azure.Batch.Common.NodePlacementPolicyType? fromMgmtNodePlacementPolicyType(NodePlacementPolicyType? policy)
@@ -756,7 +756,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         internal static Azure.Batch.Common.SecurityTypes? fromMgmtSecurityType(SecurityTypes? securityType)
         {
-            if (!securityType.HasValue) {
+            if (!securityType.HasValue)
+            {
                 return null;
             }
             return (Azure.Batch.Common.SecurityTypes?)securityType;
@@ -773,7 +774,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         internal static IPAddressProvisioningType? toMgmtIPAddressProvisioningType(Azure.Batch.Common.IPAddressProvisioningType? provision)
         {
-            if (!provision.HasValue) {
+            if (!provision.HasValue)
+            {
                 return null;
             }
             return (IPAddressProvisioningType)provision;
@@ -790,7 +792,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         internal static Azure.Batch.Common.DynamicVNetAssignmentScope? fromMgmtDynamicVNetAssignmentScope(DynamicVNetAssignmentScope? dynamicVnetAssignmentScope)
         {
-            if (!dynamicVnetAssignmentScope.HasValue) {
+            if (!dynamicVnetAssignmentScope.HasValue)
+            {
                 return null;
             }
             return (Azure.Batch.Common.DynamicVNetAssignmentScope)dynamicVnetAssignmentScope;
@@ -845,5 +848,24 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             return (AllocationState?)allocationState;
         }
+
+        internal static Azure.Batch.Common.PoolState? toPoolState(PoolProvisioningState? provisioningState)
+        {
+            if (!provisioningState.HasValue)
+            {
+                return null;
+            }
+
+            switch (provisioningState)
+            {
+                case PoolProvisioningState.Succeeded:
+                    return Azure.Batch.Common.PoolState.Active;
+                case PoolProvisioningState.Deleting:
+                    return Azure.Batch.Common.PoolState.Deleting;
+                default:
+                    return null;
+            }
+        }
     }
 }
+    
