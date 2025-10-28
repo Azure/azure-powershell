@@ -2,6 +2,8 @@
 
 This directory contains common assemblies / libraries that Azure PowerShell modules depend on.
 
+The assemblies will be copied to `artifacts/{Configuration}/Az.Accounts/` when building. See `Az.Accounts.csproj` for more information.
+
 ## How to use this directory
 
 When making changes to the dependencies in this directory, please follow these steps:
