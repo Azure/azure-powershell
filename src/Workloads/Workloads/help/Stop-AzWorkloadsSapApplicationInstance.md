@@ -16,15 +16,14 @@ Stops the SAP Application Server Instance.
 ```
 Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-DeallocateVM] [-SoftStopTimeoutSecond <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaIdentityExpanded
 ```
 Stop-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
- [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

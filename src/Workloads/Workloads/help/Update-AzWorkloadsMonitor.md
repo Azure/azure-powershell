@@ -18,8 +18,7 @@ Update-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-Subscript
  [-AppLocation <String>] [-EnableSystemAssignedIdentity <Boolean>] [-LogAnalyticsWorkspaceArmId <String>]
  [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,8 +27,7 @@ Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-AppLocation <String
  [-EnableSystemAssignedIdentity <Boolean>] [-LogAnalyticsWorkspaceArmId <String>]
  [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
