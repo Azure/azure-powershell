@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
-    [CmdletOutputBreakingChangeAttribute(typeof(PSFrontDoor), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontend'.")]
+    [CmdletOutputBreakingChangeAttribute(typeof(PSFrontDoor), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", DefaultParameterSetName = FieldsWithBackendPoolsSettingParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
     public class NewFrontDoor : AzureFrontDoorCmdletBase
     {
