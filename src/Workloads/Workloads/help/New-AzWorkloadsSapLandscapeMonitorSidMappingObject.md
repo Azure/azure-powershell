@@ -13,7 +13,8 @@ Create an in-memory object for SapLandscapeMonitorSidMapping.
 ## SYNTAX
 
 ```
-New-AzWorkloadsSapLandscapeMonitorSidMappingObject [-Name <String>] [-TopSid <String[]>] [<CommonParameters>]
+New-AzWorkloadsSapLandscapeMonitorSidMappingObject [-Name <String>] [-TopSid <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

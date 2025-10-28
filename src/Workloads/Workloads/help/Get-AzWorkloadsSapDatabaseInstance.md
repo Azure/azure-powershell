@@ -15,13 +15,15 @@ Gets the SAP Database Instance resource.
 ### List (Default)
 ```
 Get-AzWorkloadsSapDatabaseInstance -ResourceGroupName <String> -SapVirtualInstanceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String> -SapVirtualInstanceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

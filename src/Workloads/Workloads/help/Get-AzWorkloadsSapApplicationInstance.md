@@ -15,7 +15,8 @@ Gets the SAP Application Server Instance corresponding to the Virtual Instance f
 ### List (Default)
 ```
 Get-AzWorkloadsSapApplicationInstance -ResourceGroupName <String> -SapVirtualInstanceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

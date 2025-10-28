@@ -18,8 +18,8 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> -CentralServerVmId <String>
  [-ManagedRgStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateWithJsonTemplatePath
@@ -28,8 +28,8 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType>
  [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>]
  [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

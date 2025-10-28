@@ -14,7 +14,8 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 ```
 New-AzWorkloadsProviderPrometheusOSInstanceObject [-PrometheusUrl <String>] [-SapSid <String>]
- [-SslCertificateUri <String>] [-SslPreference <String>] [<CommonParameters>]
+ [-SslCertificateUri <String>] [-SslPreference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

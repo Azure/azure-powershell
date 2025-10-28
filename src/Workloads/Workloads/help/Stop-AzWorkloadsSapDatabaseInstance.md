@@ -22,8 +22,8 @@ Stop-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String> -
 ### StopViaIdentityExpanded
 ```
 Stop-AzWorkloadsSapDatabaseInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
- [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

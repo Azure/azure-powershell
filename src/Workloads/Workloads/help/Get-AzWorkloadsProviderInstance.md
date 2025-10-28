@@ -21,7 +21,8 @@ Get-AzWorkloadsProviderInstance -MonitorName <String> -ResourceGroupName <String
 ### Get
 ```
 Get-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityMonitor

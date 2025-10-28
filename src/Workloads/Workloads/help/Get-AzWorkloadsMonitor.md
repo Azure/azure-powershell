@@ -14,7 +14,8 @@ Gets properties of a SAP monitor for the specified subscription, resource group,
 
 ### List (Default)
 ```
-Get-AzWorkloadsMonitor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWorkloadsMonitor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzWorkloadsMonitor -ResourceGroupName <String> [-SubscriptionId <String[]>] 
 
 ### GetViaIdentity
 ```
-Get-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
