@@ -21,8 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    // TODO: Support WhatIf https://github.com/Azure/azure-powershell/issues/27667
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpGroup", SupportsShouldProcess = false), OutputType(typeof(PSIpGroup))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpGroup", SupportsShouldProcess = true), OutputType(typeof(PSIpGroup))]
     public class SetIpGroupsCommand : IpGroupBaseCmdlet
     {
         [Parameter(
