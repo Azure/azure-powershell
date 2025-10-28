@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added more support for HDInsightOnDemand connection properties.
+* Added support for clusterResourceGroupAuthType property in HDInsightOnDemand linked services properties.
 
 ## Version 1.19.5
 * Added support for Salesforce V2 partitionOption feature.
