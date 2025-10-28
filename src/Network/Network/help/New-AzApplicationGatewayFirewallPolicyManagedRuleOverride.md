@@ -103,7 +103,7 @@ Accepted values: Low, Medium, High
 
 Required: False
 Position: Named
-Default value: None
+Default value: Medium
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
