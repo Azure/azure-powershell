@@ -17,13 +17,14 @@ using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoorHealthProbeSettingObject cmdlet.
     /// </summary>
-    [CmdletOutputBreakingChangeAttribute(typeof(PSHealthProbeSetting), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HealthProbeSettingsModel", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSHealthProbeSetting), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HealthProbeSettingsModel", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorHealthProbeSettingObject"), OutputType(typeof(PSHealthProbeSetting))]
     public class NewFrontDoorHealthProbeSettingObject : AzureFrontDoorCmdletBase
     {
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Protocol scheme to use for this probe
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("Protocol", "15.0.0", "6.0.0", OldParameterType = typeof(PSProtocol), NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol' for parameter 'Protocol'.")]
+        [CmdletParameterBreakingChangeWithVersion("Protocol", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol' for parameter 'Protocol'.")]
         [Parameter(Mandatory = false, HelpMessage = "Protocol scheme to use for this probe. Default value is HTTP")]
         public PSProtocol Protocol { get; set; }
 
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("EnabledState", "15.0.0", "6.0.0", OldParameterType = typeof(PSEnabledState), NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.")]
+        [CmdletParameterBreakingChangeWithVersion("EnabledState", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.")]
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public PSEnabledState EnabledState { get; set; }

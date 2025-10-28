@@ -17,10 +17,11 @@ using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [CmdletOutputBreakingChangeAttribute(typeof(PSRulesEngineRule), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineRule", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSRulesEngineRule), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineRule", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngineRuleObject"), OutputType(typeof(PSRulesEngineRule))]
     public class NewFrontDoorRulesEngineRuleObject : AzureFrontDoorCmdletBase
     {
@@ -32,16 +33,16 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public int Priority { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Actions to perform on the request and response if all of the match conditions are met.")]
-        [CmdletParameterBreakingChangeWithVersion("Action", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction", ChangeDescription = "parameter 'Action' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction'.")]
+        [CmdletParameterBreakingChangeWithVersion("Action", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction", ChangeDescription = "parameter 'Action' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction'.")]
         public PSRulesEngineAction Action { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "If this rule is a match should the rules engine continue running the remaining rules or stop. Possible values are Continue and Stop. If not present, defaults to Continue.")]
-        [CmdletParameterBreakingChangeWithVersion("MatchProcessingBehavior", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "System.String", ChangeDescription = "parameter 'MatchProcessingBehavior' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSMatchProcessingBehavior' to type 'System.String'.")]
+        [CmdletParameterBreakingChangeWithVersion("MatchProcessingBehavior", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "parameter 'MatchProcessingBehavior' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSMatchProcessingBehavior' to type 'System.String'.")]
         public PSMatchProcessingBehavior MatchProcessingBehavior { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.")]
-        [CmdletParameterBreakingChangeWithVersion("MatchCondition", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineMatchCondition[]", ChangeDescription = "parameter 'MatchCondition' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineMatchCondition[]'.")]
+        [CmdletParameterBreakingChangeWithVersion("MatchCondition", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineMatchCondition[]", ChangeDescription = "parameter 'MatchCondition' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineMatchCondition[]'.")]
         public PSRulesEngineMatchCondition[] MatchCondition { get; set; }
 
         public override void ExecuteCmdlet()

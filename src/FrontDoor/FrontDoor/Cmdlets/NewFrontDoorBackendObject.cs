@@ -16,13 +16,14 @@ using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoorRoutingRuleObject cmdlet.
     /// </summary>
-    [CmdletOutputBreakingChangeAttribute(typeof(PSBackend), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackend'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSBackend), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackend'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendObject"), OutputType(typeof(PSBackend))]
     public class NewFrontDoorBackendObject : AzureFrontDoorCmdletBase
     {
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enable use of this backend.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("EnabledState", "15.0.0", "6.0.0", OldParameterType = typeof(PSEnabledState), NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.")]
+        [CmdletParameterBreakingChangeWithVersion("EnabledState", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.")]
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable use of this backend. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 

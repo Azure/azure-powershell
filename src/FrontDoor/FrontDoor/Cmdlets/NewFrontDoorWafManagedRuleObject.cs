@@ -18,13 +18,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoorWafManagedRuleObject cmdlet.
     /// </summary>
-    [CmdletOutputBreakingChangeAttribute(typeof(PSAzureManagedRule), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSet", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSAzureManagedRule), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSet", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafManagedRuleObject"), OutputType(typeof(PSAzureManagedRule))]
     public class NewFrontDoorWafManagedRuleObject : AzureFrontDoorCmdletBase
     {
@@ -53,14 +54,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// List of azure managed provider override configuration
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "List of azure managed provider override configuration")]
-        [CmdletParameterBreakingChangeWithVersion("RuleGroupOverride", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupOverride[]", ChangeDescription = "parameter 'RuleGroupOverride' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupOverride[]'.")]
+        [CmdletParameterBreakingChangeWithVersion("RuleGroupOverride", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupOverride[]", ChangeDescription = "parameter 'RuleGroupOverride' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupOverride[]'.")]
         public PSAzureRuleGroupOverride[] RuleGroupOverride { get; set; }
 
         /// <summary>
         /// Exclusions
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Exclusions")]
-        [CmdletParameterBreakingChangeWithVersion("Exclusion", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]", ChangeDescription = "parameter 'Exclusion' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]'.")]
+        [CmdletParameterBreakingChangeWithVersion("Exclusion", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]", ChangeDescription = "parameter 'Exclusion' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]'.")]
         public PSManagedRuleExclusion[] Exclusion { get; set; }
 
         public override void ExecuteCmdlet()

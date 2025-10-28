@@ -21,13 +21,14 @@ using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the Get-FrontDoorFrontendEndpoint cmdlet.
     /// </summary>
-    [CmdletOutputBreakingChangeAttribute(typeof(PSFrontendEndpoint), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSFrontendEndpoint), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFrontendEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontendEndpoint))]
     public class GetFrontDoorFrontendEndpoint : AzureFrontDoorCmdletBase
     {
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         ///The Front Door object.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("FrontDoorObject", "15.0.0", "6.0.0", OldParameterType = typeof(PSFrontDoor), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity", ChangeDescription = "The element type for parameter 'FrontDoorObject' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity'.")]
+        [CmdletParameterBreakingChangeWithVersion("FrontDoorObject", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity", ChangeDescription = "The element type for parameter 'FrontDoorObject' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity'.")]
         [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The FrontDoor object.")]
         [ValidateNotNullOrEmpty]
         public PSFrontDoor FrontDoorObject { get; set; }

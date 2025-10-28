@@ -18,13 +18,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-FrontDoorWafLogScrubbingSettingObject cmdlet.
     /// </summary>
-    [CmdletOutputBreakingChangeAttribute(typeof(PSFrontDoorWafLogScrubbingSetting), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettingsLogScrubbing", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSFrontDoorWafLogScrubbingSetting), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettingsLogScrubbing", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafLogScrubbingSettingObject"), OutputType(typeof(PSFrontDoorWafLogScrubbingSetting))]
     public class NewFrontDoorWafLogScrubbingSettingObject : AzureFrontDoorCmdletBase
     {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "List of log scrubbing rules applied to the Web Application Firewall logs.")]
         [AllowEmptyCollection]
-        [CmdletParameterBreakingChangeWithVersion("ScrubbingRule", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]", ChangeDescription = "parameter 'ScrubbingRule' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]'.")]
+        [CmdletParameterBreakingChangeWithVersion("ScrubbingRule", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]", ChangeDescription = "parameter 'ScrubbingRule' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]'.")]
         public PSFrontDoorWafLogScrubbingRule[] ScrubbingRule { get; set; }
 
         /// State of the log scrubbing config. Default value is Enabled.

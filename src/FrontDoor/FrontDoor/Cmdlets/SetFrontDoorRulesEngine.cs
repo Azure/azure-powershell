@@ -22,10 +22,11 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
-    [CmdletOutputBreakingChangeAttribute(typeof(PSRulesEngine), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSRulesEngine), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine'.")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet),
         OutputType(typeof(PSRulesEngine))]
     public class SetFrontDoorRulesEngine : AzureFrontDoorCmdletBase
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Rule", "15.0.0", "6.0.0", OldParameterType = typeof(PSRulesEngineRule), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule[]", ChangeDescription = "The element type for parameter 'Rule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule'.")]
+        [CmdletParameterBreakingChangeWithVersion("Rule", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule[]", ChangeDescription = "The element type for parameter 'Rule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule'.")]
         [Parameter(Mandatory = false, HelpMessage = "A list of rules that define a particular Rules Engine Configuration.")]
         public PSRulesEngineRule[] Rule { get; set; }
 

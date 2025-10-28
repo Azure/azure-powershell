@@ -20,13 +20,14 @@ using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the Get-AzFrontDoorWafManagedRuleSetDefinition cmdlet.
     /// </summary>
-    [CmdletOutputBreakingChangeAttribute(typeof(PSManagedRuleSetDefinition), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleSetDefinition'.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSManagedRuleSetDefinition), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleSetDefinition'.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafManagedRuleSetDefinition"), OutputType(typeof(PSManagedRuleSetDefinition))]
     public class GetFrontDoorWafManagedRuleSetDefinition : AzureFrontDoorCmdletBase
     {
