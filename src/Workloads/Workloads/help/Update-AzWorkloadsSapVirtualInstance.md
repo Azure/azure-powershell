@@ -23,14 +23,15 @@ Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -173,7 +174,7 @@ The options to choose from are Public and Private.
 If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist.
 This is required for establishing connectivity between VM extensions and the managed resource group storage account.
 This setting is currently applicable only to Storage Account.
-Learn more here https://go.microsoft.com/fwlink/linkid=2247228
+Learn more here https://go.microsoft.com/fwlink/?linkid=2247228
 
 ```yaml
 Type: System.String

@@ -24,8 +24,11 @@ Update-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-Subscript
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-IdentityType <ManagedServiceIdentityType>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-AppLocation <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-LogAnalyticsWorkspaceArmId <String>]
+ [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -88,7 +91,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -209,7 +212,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

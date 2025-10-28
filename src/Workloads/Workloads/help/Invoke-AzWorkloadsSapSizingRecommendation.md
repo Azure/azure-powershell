@@ -35,7 +35,8 @@ Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <S
 ### Invoke
 ```
 Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <String>]
- -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityExpanded
@@ -49,7 +50,8 @@ Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdent
 ### InvokeViaIdentity
 ```
 Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdentity>
- -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

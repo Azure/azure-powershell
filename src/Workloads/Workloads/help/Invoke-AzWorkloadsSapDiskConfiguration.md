@@ -34,7 +34,8 @@ Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <Stri
 ### Invoke
 ```
 Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <String>]
- -Body <ISapDiskConfigurationsRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Body <ISapDiskConfigurationsRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityExpanded
@@ -47,7 +48,8 @@ Invoke-AzWorkloadsSapDiskConfiguration -InputObject <ISapVirtualInstanceIdentity
 ### InvokeViaIdentity
 ```
 Invoke-AzWorkloadsSapDiskConfiguration -InputObject <ISapVirtualInstanceIdentity>
- -Body <ISapDiskConfigurationsRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Body <ISapDiskConfigurationsRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
