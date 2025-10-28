@@ -17,8 +17,8 @@ Create a SAP Landscape Monitor Dashboard for the specified subscription, resourc
 New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
- [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

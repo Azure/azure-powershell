@@ -16,8 +16,7 @@ Stops the SAP Application Server Instance.
 ```
 Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-DeallocateVM] [-SoftStopTimeoutSecond <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaJsonString
@@ -31,23 +30,21 @@ Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String
 ```
 Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaIdentitySapVirtualInstanceExpanded
 ```
 Stop-AzWorkloadsSapApplicationInstance -Name <String>
  -SapVirtualInstanceInputObject <ISapVirtualInstanceIdentity> [-DeallocateVM] [-SoftStopTimeoutSecond <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaIdentityExpanded
 ```
 Stop-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
- [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

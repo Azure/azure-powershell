@@ -15,11 +15,10 @@ Create a SAP monitor for the specified subscription, resource group, and resourc
 ### CreateExpanded (Default)
 ```
 New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-AppLocation <String>] [-EnableSystemAssignedIdentity] [-LogAnalyticsWorkspaceArmId <String>]
- [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AppLocation <String>] [-IdentityType <ManagedServiceIdentityType>] [-LogAnalyticsWorkspaceArmId <String>]
+ [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <RoutingPreference>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-ZoneRedundancyPreference <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

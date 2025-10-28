@@ -14,32 +14,10 @@ Create a provider instance for the specified subscription, resource group, SAP m
 
 ### CreateExpanded (Default)
 ```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-ProviderSetting <IProviderSpecificProperties>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityMonitorExpanded
-```
-New-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
- [-EnableSystemAssignedIdentity] [-ProviderSetting <IProviderSpecificProperties>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ProviderSetting <IProviderSpecificProperties>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

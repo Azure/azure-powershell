@@ -15,8 +15,7 @@ Deletes a SAP Landscape Monitor Dashboard with the specified subscription, resou
 ### Delete (Default)
 ```
 Remove-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

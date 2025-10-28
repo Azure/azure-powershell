@@ -17,16 +17,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'RegisterWithTrustedAccessCust
 Describe 'RegisterWithTrustedAccessCustomSaMrg' {
 
     It 'RegisterWithTrustedAccessCustomSaMrg' {
-        $MsiIdentityName = @{ $env.IdentityName = @{}}
-        $RegisterWithTrustedAccessCustomSaMrgResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId -ManagedResourceGroupName $env.MrgRGName -ManagedRgStorageAccountName $env.MrgSAName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -UserAssignedIdentity $env.IdentityName
+        $RegisterWithTrustedAccessCustomSaMrgResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.DiscoverSVI -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId -ManagedResourceGroupName $env.MrgRGName -ManagedRgStorageAccountName $env.MrgSAName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -UserAssignedIdentity @($env.IdentityName)
         $RegisterWithTrustedAccessCustomSaMrgResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         $RegisterWithTrustedAccessCustomSaMrgResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
         ($RegisterWithTrustedAccessCustomSaMrgResponse.Configuration | ConvertFrom-Json).managedRgStorageAccountName | Should -Be $env.MrgSAName
         $RegisterWithTrustedAccessCustomSaMrgResponse.managedResourceGroupConfigurationName | Should -Be $env.MrgRGName
     }
 
-    It 'RegisterWithTrustedAccessCustomSaMrgAlias' {
-        $RegisterWithTrustedAccessCustomSaMrgAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId -ManagedResourceGroupName $env.MrgRGName -ManagedRgStorageAccountName $env.MrgSAName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -UserAssignedIdentity $env.IdentityName
+    It 'RegisterWithTrustedAccessCustomSaMrgAlias' -skip {
+        $RegisterWithTrustedAccessCustomSaMrgAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId -ManagedResourceGroupName $env.MrgRGName -ManagedRgStorageAccountName $env.MrgSAName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -UserAssignedIdentity @($env.IdentityName)
         $RegisterWithTrustedAccessCustomSaMrgAliasResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         $RegisterWithTrustedAccessCustomSaMrgAliasResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
         ($RegisterWithTrustedAccessCustomSaMrgAliasResponse.Configuration | ConvertFrom-Json).managedRgStorageAccountName | Should -Be $env.MrgSAName

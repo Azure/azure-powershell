@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'DistributedHAAvSetDiffTransRg
 Describe 'DistributedHAAvSetDiffTransRgShare' {
     It 'CreateDistributedHAAvSetDiffTransRgShare' {
         $CreateDistributedHAAvSetDiffTransRgShareConfig = Join-Path $PSScriptRoot $env.CreateDistributedHAAvSetDiffTransRgShareConfigPath
-        $CreateDistributedHAAvSetDiffTransRgShareResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvSetDiffTransRgShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedHAAvSetDiffTransRgShareConfig -UserAssignedIdentity $env.IdentityName
+        $CreateDistributedHAAvSetDiffTransRgShareResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvSetDiffTransRgShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedHAAvSetDiffTransRgShareConfig -UserAssignedIdentity @($env.IdentityName)
         $CreateDistributedHAAvSetDiffTransRgShareResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         ($CreateDistributedHAAvSetDiffTransRgShareResponse.Configuration | ConvertFrom-Json).infrastructureConfiguration.storageConfiguration.transportFileShareConfiguration.configurationType | Should -Be $env.MountTransShareConfigType
     }
@@ -28,7 +28,7 @@ Describe 'DistributedHAAvSetDiffTransRgShare' {
 
     It 'CreateDistributedHAAvSetDiffTransRgShareAlias' {
         $CreateDistributedHAAvSetDiffTransRgShareAliasConfig = Join-Path $PSScriptRoot $env.CreateDistributedHAAvSetDiffTransRgShareConfigPath
-        $CreateDistributedHAAvSetDiffTransRgShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvSetDiffTransRgShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedHAAvSetDiffTransRgShareAliasConfig -UserAssignedIdentity $env.IdentityName
+        $CreateDistributedHAAvSetDiffTransRgShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvSetDiffTransRgShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedHAAvSetDiffTransRgShareAliasConfig -UserAssignedIdentity @($env.IdentityName)
         $CreateDistributedHAAvSetDiffTransRgShareAliasResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         ($CreateDistributedHAAvSetDiffTransRgShareAliasResponse.Configuration | ConvertFrom-Json).infrastructureConfiguration.storageConfiguration.transportFileShareConfiguration.configurationType | Should -Be $env.MountTransShareConfigType
     }
