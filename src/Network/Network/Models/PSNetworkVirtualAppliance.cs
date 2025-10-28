@@ -55,7 +55,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSVirtualApplianceNetworkProfile NetworkProfile { get; set; }
 
-        [JsonIgnore]
+        public IList<PSNetworkVirtualApplianceInterfaceConfigProperties> NvaInterfaceConfigurations { get; set; }
+
+				[JsonIgnore]
         public string VirtualHubText
         {
             get { return JsonConvert.SerializeObject(VirtualHub, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
