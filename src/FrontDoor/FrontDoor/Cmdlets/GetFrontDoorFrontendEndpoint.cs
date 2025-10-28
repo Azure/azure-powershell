@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         ///The Front Door object.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("FrontDoorObject", "15.0.0", "6.0.0", OldParameterType = typeof(PSFrontDoor), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity", ChangeDescription = "The element type for parameter 'RoutingRule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule'.")]
+        [CmdletParameterBreakingChangeWithVersion("FrontDoorObject", "15.0.0", "6.0.0", OldParameterType = typeof(PSFrontDoor), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity", ChangeDescription = "The element type for parameter 'FrontDoorObject' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity'.")]
         [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The FrontDoor object.")]
         [ValidateNotNullOrEmpty]
         public PSFrontDoor FrontDoorObject { get; set; }
