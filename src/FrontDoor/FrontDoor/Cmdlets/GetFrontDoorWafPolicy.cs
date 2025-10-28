@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the Get-AzFrontDoorFireWallPolicy cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSPolicy), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy'.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy"), OutputType(typeof(PSPolicy))]
     public class GetFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {

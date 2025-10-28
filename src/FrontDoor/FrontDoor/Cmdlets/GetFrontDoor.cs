@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the Get-AzFrontDoor cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSFrontDoor), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontend'.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor"), OutputType(typeof(PSFrontDoor))]
     public class GetFrontDoor : AzureFrontDoorCmdletBase
     {

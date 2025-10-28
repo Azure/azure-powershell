@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorWafPolicy cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSPolicy), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy", SupportsShouldProcess = true), OutputType(typeof(PSPolicy))]
     public class NewFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether the policy is in enabled state or disabled state. Possible values include: 'Disabled', 'Enabled'
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("EnabledState", "15.0.0", "6.0.0", OldParameterType = typeof(PSEnabledState), NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.")]
         [Parameter(Mandatory = false, HelpMessage = "Whether the policy is in enabled state or disabled state. Possible values include: 'Disabled', 'Enabled'")]
         public PSEnabledState EnabledState { get; set; }
 
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Custom rules inside the policy
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("Customrule", "15.0.0", "6.0.0", OldParameterType = typeof(PSCustomRule), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]", ChangeDescription = "The element type for parameter 'Customrule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule'.")]
         [Parameter(Mandatory = false, HelpMessage = "Custom rules inside the policy")]
         [ValidateNotNullOrEmpty]
         public PSCustomRule[] Customrule { get; set; }
@@ -72,6 +75,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Managed rules inside the policy
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("ManagedRule", "15.0.0", "6.0.0", OldParameterType = typeof(PSManagedRule), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]", ChangeDescription = "The element type for parameter 'ManagedRule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet'.")]
         [Parameter(Mandatory = false, HelpMessage = "Managed rules inside the policy")]
         public PSManagedRule[] ManagedRule { get; set; }
 
@@ -115,6 +119,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string Sku { get; set; }
 
         /// Defines rules that scrub sensitive fields in the Web Application Firewall
+        [CmdletParameterBreakingChangeWithVersion("LogScrubbingSetting", "15.0.0", "6.0.0", OldParameterType = typeof(PSFrontDoorWafLogScrubbingSetting), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting' for parameter 'LogScrubbingSetting'.")]
         [Parameter(Mandatory = false, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
         public PSFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
 

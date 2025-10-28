@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the Set-AzFrontDoor cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSFrontDoor), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor'.")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontDoor))]
     public class SetFrontDoor : AzureFrontDoorCmdletBase
     {
@@ -71,30 +72,35 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Routing rules associated with this Front Door
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("RoutingRule", "15.0.0", "6.0.0", OldParameterType = typeof(PSRoutingRule), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule[]", ChangeDescription = "The element type for parameter 'RoutingRule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule'.")]
         [Parameter(Mandatory = false, HelpMessage = "Routing rules associated with this Front Door")]
         public PSRoutingRule[] RoutingRule { get; set; }
 
         /// <summary>
         /// Backendpools available to routing rule.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("BackendPool", "15.0.0", "6.0.0", OldParameterType = typeof(PSBackendPool), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool[]", ChangeDescription = "The element type for parameter 'BackendPool' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool'.")]
         [Parameter(Mandatory = false, HelpMessage = "Backendpools available to routing rule.")]
         public PSBackendPool[] BackendPool { get; set; }
 
         /// <summary>
         /// Frontend endpoints available to routing rule.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("FrontendEndpoint", "15.0.0", "6.0.0", OldParameterType = typeof(PSFrontendEndpoint), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint[]", ChangeDescription = "The element type for parameter 'FrontendEndpoint' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint'.")]
         [Parameter(Mandatory = false, HelpMessage = "Frontend endpoints available to routing rule.")]
         public PSFrontendEndpoint[] FrontendEndpoint { get; set; }
 
         /// <summary>
         /// Load balancing settings associated with this Front Door instance.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("LoadBalancingSetting", "15.0.0", "6.0.0", OldParameterType = typeof(PSLoadBalancingSetting), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel[]", ChangeDescription = "The element type for parameter 'LoadBalancingSetting' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel'.")]
         [Parameter(Mandatory = false, HelpMessage = "Load balancing settings associated with this Front Door instance.")]
         public PSLoadBalancingSetting[] LoadBalancingSetting { get; set; }
 
         /// <summary>
         /// Health probe settings associated with this Front Door instance.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("HealthProbeSetting", "15.0.0", "6.0.0", OldParameterType = typeof(PSHealthProbeSetting), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel[]", ChangeDescription = "The element type for parameter 'HealthProbeSetting' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel'.")]
         [Parameter(Mandatory = false, HelpMessage = "Health probe settings associated with this Front Door instance.")]
         public PSHealthProbeSetting[] HealthProbeSetting { get; set; }
 
@@ -107,6 +113,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enable use of this rule.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("EnabledState", "15.0.0", "6.0.0", OldParameterType = typeof(PSEnabledState), NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.")]
         [Parameter(Mandatory = false, HelpMessage = "Operational status of the Front Door load balancer. Default value is Enabled")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public PSEnabledState EnabledState { get; set; }
@@ -122,6 +129,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Settings for all backendPools
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("BackendPoolsSetting", "15.0.0", "6.0.0", OldParameterType = typeof(PSBackendPoolsSetting), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting' for parameter 'BackendPoolsSetting'.")]
         [Parameter(Mandatory = true, ParameterSetName = FieldsWithBackendPoolsSettingParameterSet, HelpMessage = "Settings for all backendPools")]
         [Parameter(Mandatory = true, ParameterSetName = ObjectWithBackendPoolsSettingParameterSet, HelpMessage = "Settings for all backendPools")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdWithBackendPoolsSettingParameterSet, HelpMessage = "Settings for all backendPools")]

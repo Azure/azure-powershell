@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorBackendPoolObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSBackendPool), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPool", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolObject"), OutputType(typeof(PSBackendPool))]
     public class NewFrontDoorBackendPoolObject : AzureFrontDoorCmdletBase
     {
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The set of backends for this pool.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("Backend", "15.0.0", "6.0.0", OldParameterType = typeof(PSBackend), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackend[]", ChangeDescription = "The element type for parameter 'Backend' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackend' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackend'.")]
         [Parameter(Mandatory = true, HelpMessage = "The set of backends for this pool.")]
         [ValidateNotNullOrEmpty]
         public PSBackend[] Backend { get; set; }

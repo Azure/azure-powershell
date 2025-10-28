@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorBackendPoolsSettingsObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSBackendPoolsSetting), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolsSettingObject"), OutputType(typeof(PSBackendPoolsSetting))]
     public class NewFrontDoorBackendPoolsSettingObject : AzureFrontDoorCmdletBase
     {
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        [CmdletParameterBreakingChangeWithVersion("EnforceCertificateNameCheck", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "System.String", ChangeDescription = "parameter 'EnforceCertificateNameCheck' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' to type 'System.String'.")]
         public PSEnabledState EnforceCertificateNameCheck { get; set; }
 
         /// <summary>

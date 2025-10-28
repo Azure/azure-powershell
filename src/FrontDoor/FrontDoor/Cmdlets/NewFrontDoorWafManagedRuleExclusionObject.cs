@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorWafManagedRuleExclusionObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSManagedRuleExclusion), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleExclusion", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafManagedRuleExclusionObject"), OutputType(typeof(PSManagedRuleExclusion))]
     public class NewFrontDoorWafManagedRuleExclusionObject : AzureFrontDoorCmdletBase
     {

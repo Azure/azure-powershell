@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorWafRuleGroupOverrideObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSAzureRuleGroupOverride), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleGroupOverride", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafRuleGroupOverrideObject"), OutputType(typeof(PSAzureRuleGroupOverride))]
     public class NewFrontDoorWafRuleGroupOverrideObject : AzureFrontDoorCmdletBase
     {
@@ -35,12 +36,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Rule override list
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Rule override list")]
+        [CmdletParameterBreakingChangeWithVersion("ManagedRuleOverride", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverride[]", ChangeDescription = "parameter 'ManagedRuleOverride' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverride[]'.")]
         public PSAzureManagedRuleOverride[] ManagedRuleOverride { get; set; }
 
         /// <summary>
         /// Exclusions
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Exclusions")]
+        [CmdletParameterBreakingChangeWithVersion("Exclusion", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]", ChangeDescription = "parameter 'Exclusion' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]'.")]
         public PSManagedRuleExclusion[] Exclusion { get; set; }
 
         public override void ExecuteCmdlet()

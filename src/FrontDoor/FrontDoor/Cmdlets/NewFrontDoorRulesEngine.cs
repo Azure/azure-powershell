@@ -22,6 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
+    [CmdletOutputBreakingChangeAttribute(typeof(PSRulesEngine), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine", SupportsShouldProcess = true), OutputType(typeof(PSRulesEngine))]
     public class NewFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Rule", "15.0.0", "6.0.0", OldParameterType = typeof(PSRulesEngineRule), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule[]", ChangeDescription = "The element type for parameter 'Rule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule'.")]
         [Parameter(Mandatory = false, HelpMessage = "A list of rules that define a particular Rules Engine Configuration.")]
         public PSRulesEngineRule[] Rule { get; set; }
 

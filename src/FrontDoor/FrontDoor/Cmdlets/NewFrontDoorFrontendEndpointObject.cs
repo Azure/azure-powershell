@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorFrontendEndpointObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSFrontendEndpoint), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpoint", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFrontendEndpointObject"), OutputType(typeof(PSFrontendEndpoint))]
     public class NewFrontDoorFrontendEndpointObject : AzureFrontDoorCmdletBase
     {
@@ -40,9 +41,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string HostName { get; set; }
 
         /// <summary>
-        /// Whether to allow session affinity on this host. Valid options are ‘Enabled’ or ‘Disabled’.
+        /// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to allow session affinity on this host. Default value is Disabled")]
+        [CmdletParameterBreakingChangeWithVersion("SessionAffinityEnabledState", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "System.String", ChangeDescription = "parameter 'SessionAffinityEnabledState' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' to type 'System.String'.")]
         public PSEnabledState SessionAffinityEnabledState { get; set; }
 
         /// <summary>

@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorWafManagedRuleOverrideObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeAttribute(typeof(PSAzureManagedRuleOverride), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleOverride", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafManagedRuleOverrideObject"), OutputType(typeof(PSAzureManagedRuleOverride))]
     public class NewFrontDoorWafManagedRuleOverrideObject : AzureFrontDoorCmdletBase
     {
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Exclusions
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Exclusions")]
+        [CmdletParameterBreakingChangeWithVersion("Exclusion", "15.0.0", "6.0.0", ReplacementCmdletParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]", ChangeDescription = "parameter 'Exclusion' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]'.")]
         public PSManagedRuleExclusion[] Exclusion { get; set; }
 
         public override void ExecuteCmdlet()
