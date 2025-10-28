@@ -19,13 +19,6 @@ Update-AzContainerRegistryCredential -RegistryName <String> -ResourceGroupName <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Regenerate
-```
-Update-AzContainerRegistryCredential -RegistryName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -RegenerateCredentialParameter <IRegenerateCredentialParameters>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### RegenerateViaJsonFilePath
 ```
 Update-AzContainerRegistryCredential -RegistryName <String> -ResourceGroupName <String>
@@ -149,21 +142,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RegenerateCredentialParameter
-The parameters used to regenerate the login credential.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegenerateCredentialParameters
-Parameter Sets: Regenerate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Registry
 The Registry Object.
 
@@ -184,7 +162,7 @@ The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate, RegenerateViaJsonFilePath, RegenerateViaJsonString
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases: ContainerRegistryName, Name, ResourceName
 
 Required: True
@@ -200,7 +178,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate, RegenerateViaJsonFilePath, RegenerateViaJsonString
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: True
@@ -216,7 +194,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate, RegenerateViaJsonFilePath, RegenerateViaJsonString
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: False
@@ -263,8 +241,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegenerateCredentialParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 
