@@ -202,7 +202,9 @@
     <Message Importance="high" Text="Running help generation..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" 
+          ContinueOnError="false" 
+          IgnoreExitCode="false" />
   </Target>
 
   <!-- Everything except Publish -->
