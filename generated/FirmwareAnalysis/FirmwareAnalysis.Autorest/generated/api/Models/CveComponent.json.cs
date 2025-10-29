@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Extensions;
 
-    /// <summary>Properties of the SBOM component for a CVE.</summary>
+    /// <summary>Legacy component of a CVE result.</summary>
     public partial class CveComponent
     {
 

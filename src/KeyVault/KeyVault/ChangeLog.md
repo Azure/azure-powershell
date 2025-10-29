@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.4.0
+* Added Managed HSM network rule cmdlets mirroring existing Key Vault network rule management: `New-AzKeyVaultManagedHsmNetworkRuleSetObject`, `Add-AzKeyVaultManagedHsmNetworkRule`, `Remove-AzKeyVaultManagedHsmNetworkRule`, `Update-AzKeyVaultManagedHsmNetworkRuleSet`
+* New-AzKeyVaultManagedHsm now supports -NetworkRuleSet parameter to specify Managed HSM network rules (default action, bypass, IP ranges, virtual network resource IDs) at creation.
+* Managed HSM network rule enforcement: when any IP or Virtual Network rules are present the client now automatically coerces DefaultAction to Deny (service requirement) and adds a final safeguard at request dispatch. Subscriptions must be allow-listed by the service to use IP/Service Tag ACL features.
+
+## Version 6.3.2
 * Upgraded API version to 2024-11-01 [#27067]
 
 ## Version 6.3.1

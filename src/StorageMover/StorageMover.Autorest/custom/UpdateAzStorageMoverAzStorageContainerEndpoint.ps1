@@ -25,11 +25,11 @@ Properties not specified in the request body will be unchanged.
 Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMover -Description "Update Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazstoragecontainerendpoint
 #>
 function Update-AzStorageMoverAzStorageContainerEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -146,7 +146,7 @@ function Update-AzStorageMoverAzStorageContainerEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.AzureStorageBlobContainerEndpointUpdateProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.AzureStorageBlobContainerEndpointUpdateProperties]::New()
         $Properties.EndpointType = 'AzureStorageBlobContainer'
 
         if ($PSBoundParameters.ContainsKey('Description')) {
@@ -157,6 +157,9 @@ function Update-AzStorageMoverAzStorageContainerEndpoint {
         if ($PSBoundParameters.ContainsKey('Description')) {
             $null = $PSBoundParameters.Remove('Description')
         }
+
+        $Identity = "SystemAssigned"
+        $PSBoundParameters.Add("IdentityType", $Identity)
 
         Az.StorageMover.internal\Update-AzStorageMoverEndpoint @PSBoundParameters
     }

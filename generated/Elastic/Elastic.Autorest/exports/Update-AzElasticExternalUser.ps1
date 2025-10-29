@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update external user configurations for your Elastic monitor resource, enabling access and management by external users.
 .Description
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update external user configurations for your Elastic monitor resource, enabling access and management by external users.
 .Example
 Update-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -32,6 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

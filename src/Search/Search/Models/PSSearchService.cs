@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         public PSPublicNetworkAccess? PublicNetworkAccess { get; private set; }
 
         [Ps1Xml(Label = "Network Rule Set", Target = ViewControl.List, Position = 9)]
-        public IList<PSIpRule> NetworkRuleSet { get; private set; }
+        public PSNetworkRuleSet NetworkRuleSet { get; private set; }
 
         [Ps1Xml(Label = "Private Endpoint Connections", Target = ViewControl.List, Position = 10)]
         public IList<PSPrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
@@ -75,6 +75,24 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         [Ps1Xml(Label = "Semantic search", Target = ViewControl.List, Position = 16)]
         public PSSemanticSearchMode SemanticSearchMode { get; set; }
 
+        [Ps1Xml(Label = "Compute type", Target = ViewControl.List, Position = 17)]
+        public PSComputeType ComputeType { get; set; }
+
+        [Ps1Xml(Label = "Data exfiltration protections", Target = ViewControl.List, Position = 18)]
+        public IList<PSDataExfiltrationProtection> DataExfiltrationProtections { get; set; }
+
+        [Ps1Xml(Label = "Endpoint", Target = ViewControl.List, Position = 19)]
+        public string Endpoint { get; private set; }
+
+        [Ps1Xml(Label = "Upgrade available", Target = ViewControl.List, Position = 20)]
+        public PSUpgradeAvailable UpgradeAvailable { get; private set; }
+
+        [Ps1Xml(Label = "Service upgraded at", Target = ViewControl.List, Position = 21)]
+        public DateTime? ServiceUpgradedAt { get; private set; }
+
+        [Ps1Xml(Label = "ETag", Target = ViewControl.List, Position = 22)]
+        public string ETag { get; private set; }
+
         public PSSearchService(Azure.Management.Search.Models.SearchService searchService)
         {
             ResourceGroupName = new ResourceIdentifier(searchService.Id).ResourceGroupName;
@@ -84,7 +102,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
             if (searchService.Sku != null && searchService.Sku.Name != null)
             {
-                Sku = (PSSkuName)searchService.Sku.Name;
+                Sku = searchService.Sku.Name.ParsePSSkuName();
             }
 
             ReplicaCount = searchService.ReplicaCount;
@@ -101,13 +119,19 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
             if (searchService.PublicNetworkAccess != null)
             {
-                PublicNetworkAccess = (PSPublicNetworkAccess)searchService.PublicNetworkAccess;
+                PublicNetworkAccess = searchService.PublicNetworkAccess.ParsePSPublicNetworkAccess();
             }
 
-            NetworkRuleSet = new List<PSIpRule>();
             if (searchService.NetworkRuleSet != null)
             {
-                NetworkRuleSet = searchService.NetworkRuleSet.IPRules.Select(ipRule => (PSIpRule)ipRule).ToList();
+                NetworkRuleSet = new PSNetworkRuleSet();
+                NetworkRuleSet.IpRules = searchService.NetworkRuleSet.IPRules.Select(ipRule => (PSIpRule)ipRule).ToList();
+
+                if (searchService.NetworkRuleSet.Bypass != null && 
+                    Enum.TryParse(searchService.NetworkRuleSet.Bypass, ignoreCase: true, out PSSearchBypass bypass))
+                {
+                    NetworkRuleSet.Bypass = bypass;
+                }
             }
 
             PrivateEndpointConnections = new List<PSPrivateEndpointConnection>();
@@ -134,6 +158,37 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             {
                 SemanticSearchMode = semanticSearchMode;
             }
+
+            DataExfiltrationProtections = new List<PSDataExfiltrationProtection>();
+            if (searchService.DataExfiltrationProtections != null)
+            {
+
+                foreach (string dataExfiltrationProtection in searchService.DataExfiltrationProtections)
+                {
+                    if (Enum.TryParse(dataExfiltrationProtection, ignoreCase: true, out PSDataExfiltrationProtection pSDataExfiltrationProtection))
+                    {
+                        DataExfiltrationProtections.Add(pSDataExfiltrationProtection);
+                    }
+                }
+            }
+
+            if (searchService.ComputeType != null &&
+                Enum.TryParse(searchService.ComputeType, ignoreCase: true, out PSComputeType computeType)) 
+            {
+                ComputeType = computeType;
+            }
+
+            Endpoint = searchService.Endpoint;
+
+            if (searchService.UpgradeAvailable != null &&
+                Enum.TryParse(searchService.UpgradeAvailable, ignoreCase: true, out PSUpgradeAvailable upgradeAvailable))
+            {
+                UpgradeAvailable = upgradeAvailable;
+            }
+
+            ServiceUpgradedAt = searchService.ServiceUpgradedAt;
+
+            ETag = searchService.ETag;
         }
 
         public static PSSearchService Create(Azure.Management.Search.Models.SearchService searchService)
