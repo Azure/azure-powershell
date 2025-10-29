@@ -200,9 +200,6 @@ Update a host pool.
 ### [Update-AzWvdMsixPackage](Update-AzWvdMsixPackage.md)
 Update an  MSIX Package.
 
-### [Update-AzWvdPrivateEndpointConnection](Update-AzWvdPrivateEndpointConnection.md)
-Approve or reject a private endpoint connection.
-
 ### [Update-AzWvdScalingPlan](Update-AzWvdScalingPlan.md)
 Update a scaling plan.
 
