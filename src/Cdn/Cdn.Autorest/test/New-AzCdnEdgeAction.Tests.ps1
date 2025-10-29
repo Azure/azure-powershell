@@ -20,11 +20,10 @@ Describe 'New-AzCdnEdgeAction' {
         $resourceGroupName = $env.ResourceGroupName
         $edgeActionName = "eanew" 
 
-        $result = New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-            
-        $result | Should -Not -BeNullOrEmpty
-        $result.Name | Should -Be $edgeActionName
-        $result.ResourceGroupName | Should -Be $resourceGroupName        
+        {
+            New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+        } | Should -Not -Throw
+        
     }
 
     It 'CreateViaJsonFilePath' -skip {

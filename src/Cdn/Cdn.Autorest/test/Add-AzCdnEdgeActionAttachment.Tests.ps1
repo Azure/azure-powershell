@@ -15,8 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzCdnEdgeActionAttachment
 }
 
 Describe 'Add-AzCdnEdgeActionAttachment' {
-    It 'AddExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddExpanded' {
+        $resourceGroupName = $env.ResourceGroupName
+        $edgeActionName = "eanew" 
+        $version = "v1"
+
+        New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+
+        New-AzCdnEdgeActionVersion -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -Version $version -DeploymentType "zip" -IsDefaultVersion $false -Location "global"
+
+        Add-AzCdnEdgeActionAttachment -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -AttachedResourceId "97b45a70-afbe-49a6-ac4b-176a45e2b24f/resourceGroups/Synthetics-AFD-NorwayEast/providers/Microsoft.Cdn/profiles/easyntheticsppenorwayeast/ruleSets/eaRuleSet/rules/EdgeAction" 
+        # Remove-AzCdnEdgeActionAttachment -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -AttachedResourceId "97b45a70-afbe-49a6-ac4b-176a45e2b24f/resourceGroups/Synthetics-AFD-NorwayEast/providers/Microsoft.Cdn/profiles/easyntheticsppenorwayeast/ruleSets/eaRuleSet/rules/EdgeAction"
     }
 
     It 'AddViaJsonString' -skip {

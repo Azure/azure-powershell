@@ -15,39 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEdgeActionExecutionF
 }
 
 Describe 'Get-AzCdnEdgeActionExecutionFilter' {
-    BeforeAll {
-        $script:EdgeActionName = "eaefget"
-        $script:TestResourceGroup = $env.ResourceGroupName
-        
-        # Create test edge action for Get tests
-        New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-    }
-    
-    AfterAll {
-        try {
-            Remove-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -NoWait -ErrorAction SilentlyContinue
-        } catch {
-            # Ignore cleanup errors
-        }
+    It 'List' -skip {
     }
 
-    It 'List' {
-        # Test listing all edge actions in resource group
-        $result = Get-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup
-        
-        # Should return a collection containing our test edge action
-        $result | Should -Not -BeNullOrEmpty
-        $ourAction = $result | Where-Object { $_.Name -eq $script:EdgeActionName }
-        $ourAction | Should -Not -BeNullOrEmpty
-        $ourAction.Name | Should -Be $script:EdgeActionName
-    }
-
-    It 'Get' {
-        # Test getting specific edge action by name
-        $result = Get-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName
-        
-        $result | Should -Not -BeNullOrEmpty
-        $result.Name | Should -Be $script:EdgeActionName
-        $result.ResourceGroupName | Should -Be $script:TestResourceGroup
+    It 'Get' -skip {
     }
 }

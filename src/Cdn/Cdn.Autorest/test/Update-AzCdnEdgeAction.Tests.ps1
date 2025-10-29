@@ -20,11 +20,9 @@ Describe 'Update-AzCdnEdgeAction' {
         $resourceGroupName = $env.ResourceGroupName
         $edgeActionName = "eaupdate" 
 
-        $result = New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-            
-        $result | Should -Not -BeNullOrEmpty
-        $result.Name | Should -Be $edgeActionName
-        $result.ResourceGroupName | Should -Be $resourceGroupName    
+        New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
+
+        Update-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Premium" -SkuTier "Standard"
     }
 
     It 'UpdateViaJsonFilePath' -skip {

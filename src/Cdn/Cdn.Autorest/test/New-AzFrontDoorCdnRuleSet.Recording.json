@@ -1,17 +1,17 @@
 {
-  "New-AzFrontDoorCdnRuleSet+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-z3sv/providers/Microsoft.Cdn/profiles/fdp-4cbmkt/ruleSets/rsName070?api-version=2025-04-15+1": {
+  "New-AzFrontDoorCdnRuleSet+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/ruleSets/rsName070?api-version=2025-04-15+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-z3sv/providers/Microsoft.Cdn/profiles/fdp-4cbmkt/ruleSets/rsName070?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/ruleSets/rsName070?api-version=2025-04-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "403" ],
-        "x-ms-client-request-id": [ "12d30d76-d576-47b4-8b42-60075a0f3d88" ],
+        "x-ms-unique-id": [ "431" ],
+        "x-ms-client-request-id": [ "5573a092-4210-481d-a10b-7d6828b6dd67" ],
         "CommandName": [ "New-AzFrontDoorCdnRuleSet" ],
         "FullCommandName": [ "New-AzFrontDoorCdnRuleSet_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/5.0.1" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,24 +23,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "91bb9fc0-3006-4c51-8255-eeb6997713d2" ],
-        "x-ms-client-request-id": [ "12d30d76-d576-47b4-8b42-60075a0f3d88" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/ac686a5d-2e3f-49e3-a782-f3934d573316" ],
+        "x-ms-request-id": [ "128d85d1-40d4-4c27-bed5-6d7e894a5c42" ],
+        "x-ms-client-request-id": [ "5573a092-4210-481d-a10b-7d6828b6dd67" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/3cb900cd-cc8f-4f6f-87a4-6574c57216cc" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "e3df6093-64fb-4adf-9413-af564508cfd8" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251027T044050Z:e3df6093-64fb-4adf-9413-af564508cfd8" ],
+        "x-ms-correlation-request-id": [ "362dbb18-d706-4660-8742-911b65f2749e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251028T232834Z:362dbb18-d706-4660-8742-911b65f2749e" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B1298EE8FAD44EFBA1AEAE677425049B Ref B: SYD03EDGE1320 Ref C: 2025-10-27T04:40:49Z" ],
-        "Date": [ "Mon, 27 Oct 2025 04:40:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 45FADBB8455840679B628C3684C38897 Ref B: SYD03EDGE1319 Ref C: 2025-10-28T23:28:33Z" ],
+        "Date": [ "Tue, 28 Oct 2025 23:28:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "292" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-z3sv/providers/Microsoft.Cdn/profiles/fdp-4cbmkt/rulesets/rsName070\",\"type\":\"Microsoft.Cdn/profiles/rulesets\",\"name\":\"rsName070\",\"properties\":{\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/rulesets/rsName070\",\"type\":\"Microsoft.Cdn/profiles/rulesets\",\"name\":\"rsName070\",\"properties\":{\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   }

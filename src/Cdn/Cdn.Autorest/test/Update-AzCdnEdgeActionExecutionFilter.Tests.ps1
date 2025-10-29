@@ -15,16 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnEdgeActionExecuti
 }
 
 Describe 'Update-AzCdnEdgeActionExecutionFilter' {
-    It 'UpdateExpanded' {
-        # Test creating edge action with expanded parameters
-        $resourceGroupName = $env.ResourceGroupName
-        $edgeActionName = "eaefupdate" 
-
-        $result = New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-            
-        $result | Should -Not -BeNullOrEmpty
-        $result.Name | Should -Be $edgeActionName
-        $result.ResourceGroupName | Should -Be $resourceGroupName
+    It 'UpdateExpanded' -skip {
     }
 
     It 'UpdateViaJsonFilePath' -skip {

@@ -26,7 +26,7 @@ Describe 'New-AzCdnEdgeActionVersion' {
         
         # Now we can create version on existing EdgeAction
         {
-            New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
+            New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "zip" -IsDefaultVersion $false -Location "global"
         } | Should -Not -Throw
     }
 

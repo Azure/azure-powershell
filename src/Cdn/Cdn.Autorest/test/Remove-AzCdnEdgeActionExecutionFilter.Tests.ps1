@@ -15,13 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnEdgeActionExecuti
 }
 
 Describe 'Remove-AzCdnEdgeActionExecutionFilter' {
-    It 'Delete' {
-        $script:EdgeActionName = "eaefremove"
-        $script:TestResourceGroup = $env.ResourceGroupName
-        
-        # Create test edge action for removal test
-        New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-        # Test deleting existing edge action
-        { Remove-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName } | Should -Not -Throw
+    It 'Delete' -skip {
     }
 }

@@ -22,7 +22,7 @@ Describe 'Get-AzCdnEdgeActionVersion' {
         
         # Create test edge action and version for Get tests
         New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-        New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $script:Version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
+        New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $script:Version -DeploymentType "zip" -IsDefaultVersion $false -Location "global"
     }
 
     It 'List' {

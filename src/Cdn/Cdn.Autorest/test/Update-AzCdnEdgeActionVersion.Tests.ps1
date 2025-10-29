@@ -19,15 +19,12 @@ Describe 'Update-AzCdnEdgeActionVersion' {
         $script:EdgeActionName = "eavupdate"
         $script:TestResourceGroup = $env.ResourceGroupName
         
-        # Create test edge action first (required for version creation)
         New-AzCdnEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-        # Test creating edge action version with expanded parameters
         $version = "v1"
-        
-        # Now we can create version on existing EdgeAction
-        {
-            New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
-        } | Should -Not -Throw
+
+        New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "zip" -IsDefaultVersion $false 
+
+        Update-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file"
     }
 
     It 'UpdateViaJsonFilePath' -skip {
