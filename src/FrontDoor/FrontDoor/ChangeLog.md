@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Added breaking change messages for next version
+
 ## Version 1.13.0
 * Added support for Captcha
 

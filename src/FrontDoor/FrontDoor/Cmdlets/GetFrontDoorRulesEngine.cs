@@ -21,9 +21,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSRulesEngine), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine'.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngine"), OutputType(typeof(PSRulesEngine))]
     public class GetFrontDoorRulesEngine : AzureFrontDoorCmdletBase
     {

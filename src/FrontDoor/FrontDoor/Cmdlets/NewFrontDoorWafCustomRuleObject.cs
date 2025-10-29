@@ -19,12 +19,14 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoorWafCustomRuleObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSCustomRule), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRule", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafCustomRuleObject"), OutputType(typeof(PSCustomRule))]
     public class NewFrontDoorWafCustomRuleObject : AzureFrontDoorCmdletBase
     {
@@ -47,6 +49,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "List of match conditions.")]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChangeWithVersion("MatchCondition", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchCondition[]", ChangeDescription = "parameter 'MatchCondition' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchCondition[]'.")]
         public PSMatchCondition[] MatchCondition { get; set; }
 
         /// <summary>

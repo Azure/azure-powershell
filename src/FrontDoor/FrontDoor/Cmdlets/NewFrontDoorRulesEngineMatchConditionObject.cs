@@ -19,12 +19,15 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSRulesEngineMatchCondition), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineMatchCondition", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngineMatchConditionObject"), OutputType(typeof(PSRulesEngineMatchCondition))]
     public class NewFrontDoorRulesEngineMatchConditionObject : AzureFrontDoorCmdletBase
     {
+        [CmdletParameterBreakingChangeWithVersion("MatchVariable", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchVariable' for parameter 'MatchVariable'.")]
         [Parameter(Mandatory = true,
             HelpMessage = "Match Variable. Possible values are IsMobile, RemoteAddr, RequestMethod, QueryString, PostArg, RequestUri, RequestPath, RequestFileName, RequestfilenameExtension, RequestHeader, RequestBody, RequestScheme")]
         public PSRulesEngineMatchVariable MatchVariable { get; set; }
@@ -36,6 +39,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Name of selector in RequestHeader or RequestBody to be matched")]
         public string Selector { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Operator", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineOperator' for parameter 'Operator'.")]
         [Parameter(Mandatory = false,
             HelpMessage = "Describes operator to apply to the match condition. Possible values are Any, IPMatch, GeoMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith.")]
         public PSRulesEngineOperator Operator { get; set; }
@@ -43,6 +47,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Describes if this is negate condition or not")]
         public bool NegateCondition { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Transform", "15.0.0", "6.0.0", NewParameterTypeName = "System.String[]", ChangeDescription = "The element type for parameter 'Transform' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSTransform' to 'System.String'.")]
         [Parameter(Mandatory = false,
             HelpMessage = "List of what transforms are applied before matching. Possible individual transform values are Lowercase, Uppercase, Trim, UrlDecode, UrlEncode, RemoveNulls.")]
         [PSArgumentCompleter("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]

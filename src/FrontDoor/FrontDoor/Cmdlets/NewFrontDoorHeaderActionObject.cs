@@ -16,9 +16,11 @@ using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSHeaderAction), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HeaderAction", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "HeaderActionObject"), OutputType(typeof(PSHeaderAction))]
     public class NewFrontDoorHeaderActionObject : AzureFrontDoorCmdletBase
     {
@@ -26,6 +28,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string HeaderName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Which type of manipulation to apply to the header. Possible values include 'Append', 'Delete', or 'Overwrite'")]
+        [CmdletParameterBreakingChangeWithVersion("HeaderActionType", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "parameter 'HeaderActionType' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderActionType' to type 'System.String'.")]
         public PSHeaderActionType HeaderActionType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The value to update the given header name with. This value is not used if the actionType is Delete.")]
