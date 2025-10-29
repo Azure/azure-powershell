@@ -37,6 +37,12 @@
     - `Set-AzApplicationGatewayProbeConfig`
 	- `Add-AzApplicationGatewayProbeConfig`
 	- `New-AzApplicationGatewayProbeConfig`
+* Added property "NvaInterfaceConfigurations" to Network Virtual Appliances, as well as support for them in following cmdlets:
+    - `New-AzNetworkVirtualAppliance`
+    - `Get-AzNetworkVirtualAppliance`
+* Added cmdlet to take the NvaInterfaceConfigurations properties on the Network Virtual Appliance:
+    - `New-AznvaInterfaceConfiguration`  to build individual interface configuration for network virtual appliance.
+    - `New-AznvaInterfaceConfigurations`  to build interface configuration for network virtual appliance and pass as a parameter.
 
 ## Version 7.21.0
 * Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
