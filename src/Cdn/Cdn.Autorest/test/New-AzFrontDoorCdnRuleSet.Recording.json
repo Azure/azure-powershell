@@ -1,13 +1,13 @@
 {
-  "New-AzFrontDoorCdnRuleSet+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/ruleSets/rsName070?api-version=2025-04-15+1": {
+  "New-AzFrontDoorCdnRuleSet+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/fdp-5qylei/ruleSets/rsName070?api-version=2025-04-15+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/ruleSets/rsName070?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/fdp-5qylei/ruleSets/rsName070?api-version=2025-04-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "431" ],
-        "x-ms-client-request-id": [ "5573a092-4210-481d-a10b-7d6828b6dd67" ],
+        "x-ms-unique-id": [ "457" ],
+        "x-ms-client-request-id": [ "4653614a-407b-410e-9581-d2fe641c84c6" ],
         "CommandName": [ "New-AzFrontDoorCdnRuleSet" ],
         "FullCommandName": [ "New-AzFrontDoorCdnRuleSet_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,24 +23,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "128d85d1-40d4-4c27-bed5-6d7e894a5c42" ],
-        "x-ms-client-request-id": [ "5573a092-4210-481d-a10b-7d6828b6dd67" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/3cb900cd-cc8f-4f6f-87a4-6574c57216cc" ],
+        "x-ms-request-id": [ "0c508e2a-41f9-468b-bea8-31e52073a9b5" ],
+        "x-ms-client-request-id": [ "4653614a-407b-410e-9581-d2fe641c84c6" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/915d571b-19a7-4e67-80f9-d091620a47e9" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "362dbb18-d706-4660-8742-911b65f2749e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251028T232834Z:362dbb18-d706-4660-8742-911b65f2749e" ],
+        "x-ms-correlation-request-id": [ "a078ce51-0dcd-464d-ae94-eee20ec9253f" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251029T051145Z:a078ce51-0dcd-464d-ae94-eee20ec9253f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 45FADBB8455840679B628C3684C38897 Ref B: SYD03EDGE1319 Ref C: 2025-10-28T23:28:33Z" ],
-        "Date": [ "Tue, 28 Oct 2025 23:28:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D26DF88A7B02415F9788743F83916010 Ref B: SYD03EDGE0914 Ref C: 2025-10-29T05:11:44Z" ],
+        "Date": [ "Wed, 29 Oct 2025 05:11:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "292" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/rulesets/rsName070\",\"type\":\"Microsoft.Cdn/profiles/rulesets\",\"name\":\"rsName070\",\"properties\":{\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/fdp-5qylei/rulesets/rsName070\",\"type\":\"Microsoft.Cdn/profiles/rulesets\",\"name\":\"rsName070\",\"properties\":{\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   }

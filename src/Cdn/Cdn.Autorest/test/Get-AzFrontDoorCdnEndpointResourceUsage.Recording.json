@@ -1,13 +1,13 @@
 {
-  "Get-AzFrontDoorCdnEndpointResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/afdEndpoints/end-r0pyb6/usages?api-version=2025-04-15+1": {
+  "Get-AzFrontDoorCdnEndpointResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/fdp-5qylei/afdEndpoints/end-q49n78/usages?api-version=2025-04-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/afdEndpoints/end-r0pyb6/usages?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/fdp-5qylei/afdEndpoints/end-q49n78/usages?api-version=2025-04-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "214" ],
-        "x-ms-client-request-id": [ "1e9d75ef-1392-4557-ad25-2d695b9180ae" ],
+        "x-ms-unique-id": [ "213" ],
+        "x-ms-client-request-id": [ "a379c569-b8a3-4536-a4cc-51b25e6a5b42" ],
         "CommandName": [ "Get-AzFrontDoorCdnEndpointResourceUsage" ],
         "FullCommandName": [ "Get-AzFrontDoorCdnEndpointResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,24 +23,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "5f9ec9cd-56a0-4440-844d-d1059d47ba83" ],
-        "x-ms-client-request-id": [ "1e9d75ef-1392-4557-ad25-2d695b9180ae" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/6743d57c-e637-4dd2-ae65-d1acfc4928f4" ],
+        "x-ms-request-id": [ "17544e1b-a128-4d9c-a296-0c787d3682ae" ],
+        "x-ms-client-request-id": [ "a379c569-b8a3-4536-a4cc-51b25e6a5b42" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/41236da9-f4e5-4c34-90b4-a5c1d675d9a0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "ada962e1-4335-4441-bdf3-9e51bbbad4ac" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251028T225203Z:ada962e1-4335-4441-bdf3-9e51bbbad4ac" ],
+        "x-ms-correlation-request-id": [ "6374c130-e356-4e05-aae7-c02479358ee1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251029T041859Z:6374c130-e356-4e05-aae7-c02479358ee1" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 311205F99CFA4DBCB2181BFC6EEF9969 Ref B: SYD03EDGE0911 Ref C: 2025-10-28T22:52:02Z" ],
-        "Date": [ "Tue, 28 Oct 2025 22:52:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EB17CF1447C94F228249205B4842E0AD Ref B: SYD03EDGE1114 Ref C: 2025-10-29T04:18:58Z" ],
+        "Date": [ "Wed, 29 Oct 2025 04:18:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "264" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-90gh/providers/Microsoft.Cdn/profiles/fdp-g8sjlz/afdendpoints/end-r0pyb6\",\"unit\":\"count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"route\",\"localizedValue\":\"route\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/fdp-5qylei/afdendpoints/end-q49n78\",\"unit\":\"count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"route\",\"localizedValue\":\"route\"}}]}",
       "isContentBase64": false
     }
   }
