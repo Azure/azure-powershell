@@ -14,7 +14,6 @@
     <Net45Assemblies Include="$(RepoSrc)lib\net45\*.dll" />
     <Net46Assemblies Include="$(RepoSrc)lib\net46\*.dll" />
     <Net461Assemblies Include="$(RepoSrc)lib\net461\*.dll" />
-    <Net462Assemblies Include="$(RepoSrc)lib\net462\*.dll" />
     <Net47Assemblies Include="$(RepoSrc)lib\net47\*.dll" />
     <NetStandardAssemblies Include="$(RepoSrc)lib\netstandard2.0\*.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
@@ -28,7 +27,6 @@
     <Copy SourceFiles="@(Net45Assemblies)" DestinationFolder="$(TargetDir)lib\net45" />
     <Copy SourceFiles="@(Net46Assemblies)" DestinationFolder="$(TargetDir)lib\net46" />
     <Copy SourceFiles="@(Net461Assemblies)" DestinationFolder="$(TargetDir)lib\net461" />
-    <Copy SourceFiles="@(Net462Assemblies)" DestinationFolder="$(TargetDir)lib\net462" />
     <Copy SourceFiles="@(Net47Assemblies)" DestinationFolder="$(TargetDir)lib\net47" />
     <Copy SourceFiles="@(NetStandardAssemblies)" DestinationFolder="$(TargetDir)lib\netstandard2.0" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />

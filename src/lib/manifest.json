@@ -1,7 +1,7 @@
 [
     {
         "PackageName": "Azure.Core",
-        "PackageVersion": "1.47.3",
+        "PackageVersion": "1.45.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -22,7 +22,7 @@
     },
     {
         "PackageName": "Microsoft.Bcl.AsyncInterfaces",
-        "PackageVersion": "8.0.0",
+        "PackageVersion": "6.0.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -72,14 +72,14 @@
     },
     {
         "PackageName": "System.ClientModel",
-        "PackageVersion": "1.6.1",
+        "PackageVersion": "1.2.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "System.Memory.Data",
-        "PackageVersion": "8.0.1",
+        "PackageVersion": "6.0.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -135,7 +135,7 @@
     },
     {
         "PackageName": "System.Text.Json",
-        "PackageVersion": "8.0.6",
+        "PackageVersion": "6.0.11",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -156,8 +156,8 @@
     },
     {
         "PackageName": "System.Diagnostics.DiagnosticSource",
-        "PackageVersion": "8.0.1",
-        "TargetFramework": "net462",
+        "PackageVersion": "6.0.1",
+        "TargetFramework": "net461",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false
     },
@@ -198,8 +198,8 @@
     },
     {
         "PackageName": "System.Text.Encodings.Web",
-        "PackageVersion": "8.0.0",
-        "TargetFramework": "net462",
+        "PackageVersion": "6.0.1",
+        "TargetFramework": "net461",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false
     },

@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 5.3.0
 * Updated `AuthenticationAssemblyLoadContext` project to deprecate .NET 6.0 and build on .NET 8.0.
