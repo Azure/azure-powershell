@@ -16,7 +16,7 @@ Sets a server long term retention policy.
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-TimeBasedImmutability <String>]
  [-TimeBasedImmutabilityMode <String>] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-TimeB
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-TimeBasedImmutability <String>]
  [-TimeBasedImmutabilityMode <String>] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-TimeBasedImmuta
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] -MonthlyRetention <String>
  [-TimeBasedImmutability <String>] [-TimeBasedImmutabilityMode <String>] [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### YearlyRetentionRequired
@@ -41,7 +41,7 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] -Mont
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] [-MonthlyRetention <String>]
  -YearlyRetention <String> -WeekOfYear <Int32> [-TimeBasedImmutability <String>]
  [-TimeBasedImmutabilityMode <String>] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -275,21 +275,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -16,21 +16,21 @@ Set legal hold immutability on an LTR backup. (Public Preview)
 ```
 Set-AzSqlDatabaseLongTermRetentionBackupLegalHold [-Location] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetLegalHoldByInputObject
 ```
 Set-AzSqlDatabaseLongTermRetentionBackupLegalHold [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel>
- [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetLegalHoldByResourceId
 ```
 Set-AzSqlDatabaseLongTermRetentionBackupLegalHold [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -185,21 +185,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -302,4 +287,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 
 [SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
-
