@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DnsResolver
-Module Guid: 88e239b3-f615-4018-adf3-f0952a0f46a8
+Module Guid: a9027b82-375b-4648-967a-e7e8731c395a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dnsresolver
 Help Version: 1.0.0.0
 Locale: en-US
@@ -42,37 +42,37 @@ Gets properties of a DNS security rule for a DNS resolver policy.
 Gets properties of a DNS resolver policy virtual network link.
 
 ### [New-AzDnsForwardingRuleset](New-AzDnsForwardingRuleset.md)
-Creates or updates a DNS forwarding ruleset.
+Create a DNS forwarding ruleset.
 
 ### [New-AzDnsForwardingRulesetForwardingRule](New-AzDnsForwardingRulesetForwardingRule.md)
-Creates or updates a forwarding rule in a DNS forwarding ruleset.
+Create a forwarding rule in a DNS forwarding ruleset.
 
 ### [New-AzDnsForwardingRulesetVirtualNetworkLink](New-AzDnsForwardingRulesetVirtualNetworkLink.md)
-Creates or updates a virtual network link to a DNS forwarding ruleset.
+Create a virtual network link to a DNS forwarding ruleset.
 
 ### [New-AzDnsResolver](New-AzDnsResolver.md)
-Creates or updates a DNS resolver.
+Create a DNS resolver.
 
 ### [New-AzDnsResolverDomainList](New-AzDnsResolverDomainList.md)
-Creates or updates a DNS resolver domain list.
+Create a DNS resolver domain list.
 
 ### [New-AzDnsResolverInboundEndpoint](New-AzDnsResolverInboundEndpoint.md)
-Creates or updates an inbound endpoint for a DNS resolver.
+Create an inbound endpoint for a DNS resolver.
 
 ### [New-AzDnsResolverIPConfigurationObject](New-AzDnsResolverIPConfigurationObject.md)
 Create a in-memory object for IPConfiguration
 
 ### [New-AzDnsResolverOutboundEndpoint](New-AzDnsResolverOutboundEndpoint.md)
-Creates or updates an outbound endpoint for a DNS resolver.
+Create an outbound endpoint for a DNS resolver.
 
 ### [New-AzDnsResolverPolicy](New-AzDnsResolverPolicy.md)
-Creates or updates a DNS resolver policy.
+Create a DNS resolver policy.
 
 ### [New-AzDnsResolverPolicyDnsSecurityRule](New-AzDnsResolverPolicyDnsSecurityRule.md)
-Creates or updates a DNS security rule for a DNS resolver policy.
+Create a DNS security rule for a DNS resolver policy.
 
 ### [New-AzDnsResolverPolicyVirtualNetworkLink](New-AzDnsResolverPolicyVirtualNetworkLink.md)
-Creates or updates a DNS resolver policy virtual network link.
+Create a DNS resolver policy virtual network link.
 
 ### [New-AzDnsResolverTargetDnsServerObject](New-AzDnsResolverTargetDnsServerObject.md)
 Create a in-memory object for Target DNS server
@@ -119,32 +119,32 @@ Deletes a DNS resolver policy virtual network link.
 WARNING: This operation cannot be undone.
 
 ### [Update-AzDnsForwardingRuleset](Update-AzDnsForwardingRuleset.md)
-Updates a DNS forwarding ruleset.
+Update a DNS forwarding ruleset.
 
 ### [Update-AzDnsForwardingRulesetForwardingRule](Update-AzDnsForwardingRulesetForwardingRule.md)
-Updates a forwarding rule in a DNS forwarding ruleset.
+Update a forwarding rule in a DNS forwarding ruleset.
 
 ### [Update-AzDnsForwardingRulesetVirtualNetworkLink](Update-AzDnsForwardingRulesetVirtualNetworkLink.md)
-Updates a virtual network link to a DNS forwarding ruleset.
+Update a virtual network link to a DNS forwarding ruleset.
 
 ### [Update-AzDnsResolver](Update-AzDnsResolver.md)
-Updates a DNS resolver.
+Update a DNS resolver.
 
 ### [Update-AzDnsResolverDomainList](Update-AzDnsResolverDomainList.md)
-Updates a DNS resolver domain list.
+Update a DNS resolver domain list.
 
 ### [Update-AzDnsResolverInboundEndpoint](Update-AzDnsResolverInboundEndpoint.md)
-Updates an inbound endpoint for a DNS resolver.
+Update an inbound endpoint for a DNS resolver.
 
 ### [Update-AzDnsResolverOutboundEndpoint](Update-AzDnsResolverOutboundEndpoint.md)
-Updates an outbound endpoint for a DNS resolver.
+Update an outbound endpoint for a DNS resolver.
 
 ### [Update-AzDnsResolverPolicy](Update-AzDnsResolverPolicy.md)
-Updates a DNS resolver policy.
+Update a DNS resolver policy.
 
 ### [Update-AzDnsResolverPolicyDnsSecurityRule](Update-AzDnsResolverPolicyDnsSecurityRule.md)
-Updates a DNS security rule.
+Update a DNS security rule.
 
 ### [Update-AzDnsResolverPolicyVirtualNetworkLink](Update-AzDnsResolverPolicyVirtualNetworkLink.md)
-Updates a DNS resolver policy virtual network link.
+Update a DNS resolver policy virtual network link.
 
