@@ -24,21 +24,21 @@ The Get-AzRecoveryServicesSoftDeletedVault cmdlet retrieves Recovery Services va
 
 ### Example 1: Get all soft-deleted vaults in a location
 ```powershell
-PS C:\> Get-AzRecoveryServicesSoftDeletedVault -Location "westus"
+Get-AzRecoveryServicesSoftDeletedVault -Location "westus"
 ```
 
 Gets all soft-deleted Recovery Services vaults in the West US location within the subscription context.
 
 ### Example 2: Get a specific soft-deleted vault by name
 ```powershell
-PS C:\> Get-AzRecoveryServicesSoftDeletedVault -Location "westus" -Name "wus-rg_fe7567gh-9d2b-4376-aa4a-de1c7176e40e" -ResourceGroupName "wus-rg"
+Get-AzRecoveryServicesSoftDeletedVault -Location "westus" -Name "wus-rg_fe7567gh-9d2b-4376-aa4a-de1c7176e40e" -ResourceGroupName "wus-rg"
 ```
 
 Gets a specific soft-deleted Recovery Services vault named "wus-rg_fe7567gh-9d2b-4376-aa4a-de1c7176e40e" in the "wus-rg" resource group.
 
 ### Example 3: Filter soft-deleted vaults by original vault name
 ```powershell
-PS C:\> $sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus | Where-Object { $_.Properties.VaultId -match "wus-vault" }
+$sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus | Where-Object { $_.Properties.VaultId -match "wus-vault" }
 ```
 
 Gets soft-deleted vaults in West US and filters them to find vaults with "wus-vault" in ARM ID of the original Recovery Services vault.

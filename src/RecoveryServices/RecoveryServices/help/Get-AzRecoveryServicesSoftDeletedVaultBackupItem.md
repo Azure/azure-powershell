@@ -24,16 +24,16 @@ The Get-AzRecoveryServicesSoftDeletedVaultBackupItem cmdlet retrieves backup ite
 
 ### Example 1: Get backup items using VaultId
 ```powershell
-PS C:\> $sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus | Where-Object { $_.Properties.VaultId -match "wus-vault" }
-PS C:\> Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultId $sdVault.ID
+$sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus | Where-Object { $_.Properties.VaultId -match "wus-vault" }
+Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultId $sdVault.ID
 ```
 
 Gets backup items from a soft-deleted vault using the vault's ARM ID.
 
 ### Example 2: Get backup items using VaultName and ResourceGroupName
 ```powershell
-PS C:\> $sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus -Name "wus-rg_fe7567gh-9d2b-4376-aa4a-de1c7176e40e"
-PS C:\> Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultName $sdVault.Name -ResourceGroupName $sdVault.ResourceGroupName
+$sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus -Name "wus-rg_fe7567gh-9d2b-4376-aa4a-de1c7176e40e"
+Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultName $sdVault.Name -ResourceGroupName $sdVault.ResourceGroupName
 ```
 
 Gets backup items from a soft-deleted vault using the vault name and resource group name.

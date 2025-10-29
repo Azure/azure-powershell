@@ -25,8 +25,8 @@ The Undo-AzRecoveryServicesVaultDeletion cmdlet undeletes a soft-deleted Recover
 
 ### Example 1: Undelete a soft-deleted vault
 ```powershell
-PS C:\> $sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus | Where-Object { $_.Properties.VaultId -match "wus-vault" }
-PS C:\> Undo-AzRecoveryServicesVaultDeletion -ResourceGroupName $sdVault.ResourceGroupName -Name $sdVault.Name -Location "westus"
+$sdVault = Get-AzRecoveryServicesSoftDeletedVault -Location westus | Where-Object { $_.Properties.VaultId -match "wus-vault" }
+Undo-AzRecoveryServicesVaultDeletion -ResourceGroupName $sdVault.ResourceGroupName -Name $sdVault.Name -Location "westus"
 ```
 
 Undeletes a soft-deleted Recovery Services vault by specifying the resource group name, vault name, and location.
