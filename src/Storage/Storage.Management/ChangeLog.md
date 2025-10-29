@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.3.0
 * Supported Blob Geo Replication SLA on Storage accounts
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

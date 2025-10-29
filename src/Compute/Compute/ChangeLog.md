@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 10.5.0
 * Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
 * Added `-SupportedSecurityOption` parameter to `New-AzDiskConfig` cmdlet.
 * ComputeRP related cmdlets will now use 2025-04-01 version of the ComputeRP API.

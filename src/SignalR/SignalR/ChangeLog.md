@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Added cmdlets for managing replicas:
     - Get-AzSignalRReplica: get replica(s) for SignalR
     - New-AzSignalRReplica: create a new replica for SignalR
