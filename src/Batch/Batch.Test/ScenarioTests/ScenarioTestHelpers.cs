@@ -143,7 +143,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int? targetDedicated,
             int? targetLowPriority,
             StartTask startTask = null,
-            UpgradePolicy upgradePolicy = null)
+            UpgradePolicy upgradePolicy = null,
+            PSNetworkConfiguration networkConfiguration = null)
         {
             PSStartTask psStartTask = null;
             if (startTask != null)
@@ -156,6 +157,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 psUpgradePolicy = new PSUpgradePolicy(upgradePolicy);
             }
+            PSNetworkConfiguration pSNetworkConfiguration = null;
+            if(networkConfiguration != null)
+            {
+                pSNetworkConfiguration = networkConfiguration;
+            }
+
 
             string vmSize = "STANDARD_D2S_V3";
             string publisher = "canonical";
@@ -166,7 +173,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             PSImageReference imageReference = new PSImageReference(offer: offer, publisher: publisher, sku: sku);
             PSVirtualMachineConfiguration vmConfiguration = new PSVirtualMachineConfiguration(imageReference, nodeAgent);
             vmConfiguration.NodePlacementConfiguration = new PSNodePlacementConfiguration(NodePlacementPolicyType.Zonal);
-
+            
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = vmSize,
@@ -176,7 +183,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 UpgradePolicy = psUpgradePolicy,
                 StartTask = psStartTask,
                 TaskSlotsPerNode = 1,
-                InterComputeNodeCommunicationEnabled = true
+                InterComputeNodeCommunicationEnabled = true,
+                NetworkConfiguration = pSNetworkConfiguration
             };
 
             CreatePoolIfNotExists(runner, parameters);
