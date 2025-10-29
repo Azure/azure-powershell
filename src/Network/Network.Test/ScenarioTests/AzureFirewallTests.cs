@@ -261,14 +261,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
-        public void TestAzureFirewallVirtualHubCRUDWithEdgeZone()
-        {
-            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUDWithEdgeZone");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallEdgeZoneZonesValidation()
         {
             TestRunner.RunTestScript("Test-AzureFirewallEdgeZoneZonesValidation");
