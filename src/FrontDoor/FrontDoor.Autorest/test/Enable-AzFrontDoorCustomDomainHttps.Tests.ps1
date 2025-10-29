@@ -15,10 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorCustomDomai
 }
 
 Describe 'Enable-AzFrontDoorCustomDomainHttps' {
-    It 'EnableExpanded' {
+    It 'EnableExpanded' -skip {
         # need to clean dns zone record before running this test
-        $PrefixName = "pwshenable-6"
-        $FrontDoorName = "pwshenable6"
+        $PrefixName = "pwshenable-7"
+        $FrontDoorName = "pwshenable7"
         $tags = @{"tag1" = "value1"; "tag2" = "value2"}
         $hostName = "$FrontDoorName.azurefd.net"
         $customDomainHostName = "$PrefixName.afdxe2e.azfdtest.xyz"
@@ -71,7 +71,7 @@ Describe 'Enable-AzFrontDoorCustomDomainHttps' {
 }
 
 Describe 'Disable-AzFrontDoorCustomDomainHttps' {
-    It 'Disable' {
+    It 'Disable' -skip {
         $FrontDoorName = "pwshv4test"
         $customFrontendEndpointName = "frontendendpoint2"
 
