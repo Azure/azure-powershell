@@ -21,12 +21,14 @@ using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the Enable-AzCustomDomainHttps cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSFrontendEndpoint), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "System.Boolean", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontendEndpoint))]
     public class EnableFrontDoorCustomDomainHttps : AzureFrontDoorCmdletBase
     {

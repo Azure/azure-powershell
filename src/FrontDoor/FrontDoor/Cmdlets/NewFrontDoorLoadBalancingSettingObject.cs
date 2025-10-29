@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoorLoadBalancingSettingObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSLoadBalancingSetting), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorLoadBalancingSettingObject"), OutputType(typeof(PSLoadBalancingSetting))]
     public class NewFrontDoorLoadBalancingSettingObject : AzureFrontDoorCmdletBase
     {

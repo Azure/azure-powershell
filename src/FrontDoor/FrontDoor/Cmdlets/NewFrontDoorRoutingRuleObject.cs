@@ -19,12 +19,14 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoorRoutingRuleObject cmdlet.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSRoutingRule), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRoutingRuleObject", DefaultParameterSetName = FieldsWithForwardingParameterSet), OutputType(typeof(PSRoutingRule))]
     public class NewFrontDoorRoutingRuleObject : AzureFrontDoorCmdletBase
     {
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The Protocol schemes to match for this rule
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("AcceptedProtocol", "15.0.0", "6.0.0", NewParameterTypeName = "System.String[]", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol' for parameter 'AcceptedProtocol'.")]
         [Parameter(Mandatory = false, HelpMessage = "Protocol schemes to match for this rule. Default value is Http, Https")]
         public PSProtocol[] AcceptedProtocol { get; set; }
 
@@ -104,6 +107,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to use dynamic compression for cached content
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("DynamicCompression", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'DynamicCompression'.")]
         [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "Whether to enable dynamic compression for cached content. Default value is Enabled")]
         public PSEnabledState DynamicCompression { get; set; }
 
@@ -148,6 +152,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enable use of this rule.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("EnabledState", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.")]
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable use of this rule. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 

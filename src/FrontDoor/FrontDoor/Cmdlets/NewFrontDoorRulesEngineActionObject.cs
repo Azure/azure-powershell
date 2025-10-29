@@ -4,15 +4,19 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSRulesEngineAction), "15.0.0", "6.0.0", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction", ChangeDescription = "no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction'.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor" + "RulesEngineActionObject", DefaultParameterSetName = FieldsWithRegularActionParameterSet), OutputType(typeof(PSRulesEngineAction))]
     public class NewFrontDoorRulesEngineActionObject : AzureFrontDoorCmdletBase
     {
+        [CmdletParameterBreakingChangeWithVersion("RequestHeaderAction", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]", ChangeDescription = "no longer supports the type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction]' for parameter 'RequestHeaderAction'.")]
         [Parameter(Mandatory = false, HelpMessage = "A list of header actions to apply from the request from AFD to the origin.")]
         public List<PSHeaderAction> RequestHeaderAction { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ResponseHeaderAction", "15.0.0", "6.0.0", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]", ChangeDescription = "no longer supports the type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction]' for parameter 'ResponseHeaderAction'.")]
         [Parameter(Mandatory = false, HelpMessage = "A list of header actions to apply from the response from AFD to the client.")]
         public List<PSHeaderAction> ResponseHeaderAction { get; set; }
 
@@ -49,6 +53,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [PSArgumentCompleter("StripNone", "StripAll")]
         public string QueryParameterStripDirective { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DynamicCompression", "15.0.0", "6.0.0", NewParameterTypeName = "System.String", ChangeDescription = "no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'DynamicCompression'.")]
         [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet,
             HelpMessage = "Whether to enable dynamic compression for cached content. Default value is Enabled")]
         public PSEnabledState DynamicCompression { get; set; }
