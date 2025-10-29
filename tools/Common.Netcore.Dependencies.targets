@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.47.3"/>
+    <PackageReference Include="Azure.Core" Version="1.45.0"/>
   </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.18.0">

@@ -75,11 +75,11 @@ Count Name                      Group
 
 ### Update Assemblies in `src/lib`
 
-`Update-DevAssembly` is used to update the assemblies in the `src/lib` directory. This is useful because it saves you from having to manually download / extract / pick the correct one from the package.
+`Update-DevDependency` is used to update the assemblies in the `src/lib` directory. This is useful because it saves you from having to manually download / extract / pick the correct one from the package.
 
 ```powershell
 # Update the assembly manifest manually, then
-Update-DevAssembly
+Update-DevDependency
 # Check in all the changes
 ```
 
