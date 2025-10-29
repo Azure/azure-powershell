@@ -86,6 +86,10 @@ namespace Microsoft.Azure.Management.DataFactory
         /// </summary>
         public virtual IIntegrationRuntimeNodesOperations IntegrationRuntimeNodes { get; private set; }
         /// <summary>
+        /// Gets the IIntegrationRuntimeOperations
+        /// </summary>
+        public virtual IIntegrationRuntimeOperations IntegrationRuntime { get; private set; }
+        /// <summary>
         /// Gets the ILinkedServicesOperations
         /// </summary>
         public virtual ILinkedServicesOperations LinkedServices { get; private set; }
@@ -397,6 +401,7 @@ namespace Microsoft.Azure.Management.DataFactory
             this.IntegrationRuntimes = new IntegrationRuntimesOperations(this);
             this.IntegrationRuntimeObjectMetadata = new IntegrationRuntimeObjectMetadataOperations(this);
             this.IntegrationRuntimeNodes = new IntegrationRuntimeNodesOperations(this);
+            this.IntegrationRuntime = new IntegrationRuntimeOperations(this);
             this.LinkedServices = new LinkedServicesOperations(this);
             this.Datasets = new DatasetsOperations(this);
             this.Pipelines = new PipelinesOperations(this);
