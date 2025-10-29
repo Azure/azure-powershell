@@ -1,17 +1,67 @@
 {
-  "Remove-AzWvdSessionHost+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/Delete4Test-0?api-version=2025-04-01-preview\u0026force=True+1": {
+  "Remove-AzWvdSessionHost+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHosts/auto-1?api-version=2025-04-01-preview\u0026force=True+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/Delete4Test-0?api-version=2025-04-01-preview\u0026force=True",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHosts/auto-1?api-version=2025-04-01-preview\u0026force=True",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "139" ],
-        "x-ms-client-request-id": [ "78d81eb7-cfb9-4d56-8f6b-85eb7ae88cf0" ],
+        "x-ms-unique-id": [ "346" ],
+        "x-ms-client-request-id": [ "19a8b58e-da92-4e07-81c1-7be11bcc5d8f" ],
         "CommandName": [ "Remove-AzWvdSessionHost" ],
         "FullCommandName": [ "Remove-AzWvdSessionHost_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.DesktopVirtualization/5.4.2" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.DesktopVirtualization/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ARRAffinity=9362d262488165e67ba764e3038a0872f73864fc65a953b463f17e37ca23f7ff;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=9362d262488165e67ba764e3038a0872f73864fc65a953b463f17e37ca23f7ff;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0cy9hdXRvLTE=" ],
+        "x-ms-lamport-ts": [ "10114394550" ],
+        "x-ms-correlation-id": [ "e5c7f3a0-f1ee-4cc5-b9c4-9809d3e78ed7" ],
+        "x-ms-request-id": [ "19a8b58e-da92-4e07-81c1-7be11bcc5d8f" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/48b50f92-adba-420d-a9a0-f3eea1db472e" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "23b76a11-cb0f-4e7b-97d9-3e3da2a06f10" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251029T023110Z:23b76a11-cb0f-4e7b-97d9-3e3da2a06f10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 068003CF51914ADFAFE42C289805B33A Ref B: SIN221080711023 Ref C: 2025-10-29T02:31:10Z" ],
+        "Date": [ "Wed, 29 Oct 2025 02:31:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWvdSessionHost+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHosts/auto-1?api-version=2025-04-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHosts/auto-1?api-version=2025-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "347" ],
+        "x-ms-client-request-id": [ "0507aab7-2a99-4897-a13a-4dd07e596baf" ],
+        "CommandName": [ "Get-AzWvdSessionHost" ],
+        "FullCommandName": [ "Get-AzWvdSessionHost_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +72,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "5471295f-20f0-4bc0-9a21-b5cb96e1e0ec" ],
-        "x-ms-correlation-request-id": [ "5471295f-20f0-4bc0-9a21-b5cb96e1e0ec" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251013T061548Z:5471295f-20f0-4bc0-9a21-b5cb96e1e0ec" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Set-Cookie": [ "ARRAffinity=18ffbb6bc42e6a8947719b4904cdb240a479c70cd565ecfce265809dd3032f9a;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=18ffbb6bc42e6a8947719b4904cdb240a479c70cd565ecfce265809dd3032f9a;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0cy9hdXRvLTE=" ],
+        "x-ms-lamport-ts": [ "10114394229" ],
+        "x-ms-correlation-id": [ "c585364e-49a5-4264-83dd-8d66a4e8091b" ],
+        "x-ms-request-id": [ "0507aab7-2a99-4897-a13a-4dd07e596baf" ],
+        "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/894ca3eb-d8ad-4ba1-bc61-f47885441107" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-correlation-request-id": [ "76c5fecf-3247-4f12-913a-9130f158c184" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251029T023111Z:76c5fecf-3247-4f12-913a-9130f158c184" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B88038983D854CC0A3D2D64A9976643E Ref B: JKT201051406060 Ref C: 2025-10-13T06:15:48Z" ],
-        "Date": [ "Mon, 13 Oct 2025 06:15:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BBD6D8D875A4412FA4624FE15AF3632A Ref B: SIN221080711023 Ref C: 2025-10-29T02:31:11Z" ],
+        "Date": [ "Wed, 29 Oct 2025 02:31:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "113" ],
+        "Content-Length": [ "119" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027alecbUserSessionTests\u0027 could not be found.\"}}",
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: c585364e-49a5-4264-83dd-8d66a4e8091b Error: SessionHost does not exist\"}}",
       "isContentBase64": false
     }
   }

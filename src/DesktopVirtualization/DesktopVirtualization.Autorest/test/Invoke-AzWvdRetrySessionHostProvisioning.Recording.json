@@ -1,43 +1,53 @@
 {
-  "Invoke-AzWvdRetrySessionHostProvisioning+[NoContext]+Retry+$POST+https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/poshSHMHP/sessionHosts/shm-1/retryProvisioning?api-version=2025-04-01-preview+1": {
+  "Invoke-AzWvdRetrySessionHostProvisioning+[NoContext]+Retry+$POST+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHosts/auto-0/retryProvisioning?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/poshSHMHP/sessionHosts/shm-1/retryProvisioning?api-version=2025-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHosts/auto-0/retryProvisioning?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "83" ],
-        "x-ms-client-request-id": [ "ea24cf1f-f4b1-4e02-a089-100d36dac38f" ],
+        "x-ms-unique-id": [ "183" ],
+        "x-ms-client-request-id": [ "119ff225-6eca-40f2-8f66-cfdea13c63f6" ],
         "CommandName": [ "Invoke-AzWvdRetrySessionHostProvisioning" ],
         "FullCommandName": [ "Invoke-AzWvdRetrySessionHostProvisioning_Retry" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.DesktopVirtualization/5.4.2" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "0cc35d13-0f6f-458e-ba00-2c0f2c3c53cb" ],
-        "x-ms-correlation-request-id": [ "0cc35d13-0f6f-458e-ba00-2c0f2c3c53cb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251013T061429Z:0cc35d13-0f6f-458e-ba00-2c0f2c3c53cb" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Set-Cookie": [ "ARRAffinity=78cc7ed2e16cd9d0de735360d27b2d80c6dbba9425ecf0dbe0884f7517a0ca11;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=78cc7ed2e16cd9d0de735360d27b2d80c6dbba9425ecf0dbe0884f7517a0ca11;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0cy9hdXRvLTA=" ],
+        "x-ms-lamport-ts": [ "10114360966" ],
+        "x-ms-correlation-id": [ "2e1d22e4-cf4a-4709-92d2-ae3c74a60b56" ],
+        "x-ms-request-id": [ "119ff225-6eca-40f2-8f66-cfdea13c63f6" ],
+        "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/1110f791-f81c-4b0c-8b40-35b41ef97379" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "688aa410-c942-4056-9ce5-0fcde6711535" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251029T022628Z:688aa410-c942-4056-9ce5-0fcde6711535" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 008517B50CB943E0BB4D6CA1A237ACBA Ref B: JKT201051406060 Ref C: 2025-10-13T06:14:29Z" ],
-        "Date": [ "Mon, 13 Oct 2025 06:14:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BA568D1FB09A4D41989B49815E8C2A76 Ref B: SIN221080711023 Ref C: 2025-10-29T02:26:27Z" ],
+        "Date": [ "Wed, 29 Oct 2025 02:26:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "113" ],
+        "Content-Length": [ "167" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027alecbUserSessionTests\u0027 could not be found.\"}}",
+      "Content": "{\"error\":{\"code\":\"400\",\"message\":\"ActivityId: 2e1d22e4-cf4a-4709-92d2-ae3c74a60b56 Error: Cannot retry provisioning for Session Host because it has active sessions.\"}}",
       "isContentBase64": false
     }
   }

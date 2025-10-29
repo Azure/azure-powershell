@@ -19,9 +19,9 @@ Describe 'Update-AzWvdSessionHostConfiguration' {
         $configuration = Update-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
         -ResourceGroupName $env.ResourceGroupPersistent `
         -HostPoolName $env.AutomatedHostpoolPersistent `
-        -VMNamePrefix "updateTest" `
+        -VMNamePrefix $env.SessionHostNamePrefixOfAutomatedHostpoolPersistent `
         -MarketplaceInfoExactVersion $env.MarketplaceImageVersion
 
-        $configuration.VMNamePrefix | Should -Be "updateTest"
+        $configuration.VMNamePrefix | Should -Be $env.SessionHostNamePrefixOfAutomatedHostpoolPersistent
     }
 }

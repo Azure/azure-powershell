@@ -13,6 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzWvdSessionHost' {
     It 'Delete' {
+         # This will fail when there's no existed session host
         Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `

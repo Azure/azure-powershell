@@ -15,8 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdCancelSessionHost
 }
 
 Describe 'Invoke-AzWvdCancelSessionHostProvisioning' {
+    
+    BeforeAll {
+        # Get SHM first. Use the existed SHM information to test
+        $existedSessionHostManagement = Get-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
+                                -HostPoolName $env.SHPHostPoolPersistent
+        
+        $provisioningInstanceCount = $existedSessionHostManagement.ProvisioningInstanceCount + 1
+    }
+    
     It 'PostExpanded' {
-             Update-AzWvdSessionHostManagement -ProvisioningInstanceCount 3 -ResourceGroup $env.ResourceGroupPersistent -HostPoolName $env.SHPHostPoolPersistent -SubscriptionId $env.subscriptionId
+             Update-AzWvdSessionHostManagement -ProvisioningInstanceCount $provisioningInstanceCount -ResourceGroup $env.ResourceGroupPersistent -HostPoolName $env.SHPHostPoolPersistent -SubscriptionId $env.subscriptionId
              Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName $env.SHPHostPoolPersistent -ResourceGroupName $env.ResourceGroupPersistent -SubscriptionId $env.subscriptionId -CancelMessage "Giving up" -NoWait
     }
 }

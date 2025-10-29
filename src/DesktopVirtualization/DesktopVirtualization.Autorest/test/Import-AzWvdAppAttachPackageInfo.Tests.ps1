@@ -11,9 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
+# This test is duplicated with New-AzWvdAppAttachPackage 
 Describe 'Import-AzWvdAppAttachPackageInfo' {
     It 'ImportExpanded' {
-        $package = Import-AzWvdAppAttachPackageInfo -HostPoolName $env.HostPoolPersistent2 `
+        $package = Import-AzWvdAppAttachPackageInfo -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId `
                 -Path $env.MSIXImagePath
@@ -23,12 +24,12 @@ Describe 'Import-AzWvdAppAttachPackageInfo' {
                 $package = $package[0]
             }
 
-            $package.ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
-            $package.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
-            $package.ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'
-            $package.ImagePackageAlias | Should -Be 'mozillamozillafirefox'
+            $package.ImagePackageFamilyName | Should -Be  $env.MSIXImageFamilyName
+            $package.ImagePath | Should -Be $env.MSIXImagePath
+            $package.ImagePackageName | Should -Be $env.MSIXImagePackageName
+            $package.ImagePackageAlias | Should -Be $env.MSIXImagePackageAlias
             $package.ImageIsActive | Should -Be $False
             $package.ImageIsRegularRegistration | Should -Be $False
-            $package.ImagePackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
+            $package.ImagePackageRelativePath | Should -Be $env.MSIXImagePackageRelativePath
     }
 }

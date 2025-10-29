@@ -1,38 +1,49 @@
 {
-  "Import-AzWvdAppAttachPackageInfo+[NoContext]+ImportExpanded+$POST+https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/importAppAttachPackageInfo?api-version=2025-04-01-preview+1": {
+  "Import-AzWvdAppAttachPackageInfo+[NoContext]+ImportExpanded+$POST+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/importAppAttachPackageInfo?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbRemoteAppHP/importAppAttachPackageInfo?api-version=2025-04-01-preview",
-      "Content": "{\r\n  \"path\": \"C:\\\\AppAttach\\\\Firefox20110.0.1.vhdx\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/importAppAttachPackageInfo?api-version=2025-04-01-preview",
+      "Content": "{\r\n  \"path\": \"\\\\\\\\liweiavdtestsa.file.core.windows.net\\\\avdtestfs\\\\Apps\\\\VHDX\\\\XmlNotepad\\\\XmlNotepad.vhdx\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "54" ]
+        "Content-Length": [ "110" ]
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "f56eea79-7615-468c-81b6-5ed705c9b4a1" ],
-        "x-ms-correlation-request-id": [ "f56eea79-7615-468c-81b6-5ed705c9b4a1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251013T061423Z:f56eea79-7615-468c-81b6-5ed705c9b4a1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=39eae58dae3e9ce3daa32a653411adeefc8bac631df7d8341ac09f4a2566b7ae;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=39eae58dae3e9ce3daa32a653411adeefc8bac631df7d8341ac09f4a2566b7ae;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/74838940-c740-4ceb-9a33-4eb5b20ee3f0" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVk" ],
+        "x-ms-lamport-ts": [ "10114359950" ],
+        "x-ms-correlation-id": [ "34309c66-311c-4e9c-9aa5-27daa865da03" ],
+        "x-ms-request-id": [ "2dd4b61c-a1b2-4cbc-9bf9-d4816e569986" ],
+        "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "f1793692-5a2e-4f1a-bb6e-34de597ff352" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251029T022600Z:f1793692-5a2e-4f1a-bb6e-34de597ff352" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 154FCBDBB7CD4BF7985EB15620D92EBE Ref B: JKT201051406060 Ref C: 2025-10-13T06:14:23Z" ],
-        "Date": [ "Mon, 13 Oct 2025 06:14:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8AD6B8D341664DC4A1BBDD0E75FD2676 Ref B: SIN221080711023 Ref C: 2025-10-29T02:25:50Z" ],
+        "Date": [ "Wed, 29 Oct 2025 02:26:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "113" ],
+        "Content-Length": [ "4865" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027alecbUserSessionTests\u0027 could not be found.\"}}",
+      "Content": "{\"value\":[{\"name\":\"importappattachpackageinfo\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourcegroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/appattachpackages/importappattachpackageinfo\",\"type\":\"Microsoft.DesktopVirtualization/appattachpackages\",\"properties\":{\"image\":{\"packageAlias\":\"43906chrislovettxmlnotepad-1\",\"imagePath\":\"\\\\\\\\liweiavdtestsa.file.core.windows.net\\\\avdtestfs\\\\Apps\\\\VHDX\\\\XmlNotepad\\\\XmlNotepad.vhdx\",\"packageName\":\"43906ChrisLovett.XmlNotepad\",\"packageFamilyName\":\"43906ChrisLovett.XmlNotepad_hndwmj480pefj\",\"packageFullName\":\"43906ChrisLovett.XmlNotepad_2.9.0.16_neutral__hndwmj480pefj\",\"displayName\":null,\"packageRelativePath\":\"\\\\apps\\\\43906ChrisLovett.XmlNotepad_2.9.0.16_neutral__hndwmj480pefj\",\"isRegularRegistration\":false,\"isActive\":false,\"packageDependencies\":[],\"version\":\"2.9.0.16\",\"lastUpdated\":\"2025-06-23T02:31:04.2415625+00:00\",\"packageApplications\":[{\"appUserModelID\":\"43906ChrisLovett.XmlNotepad_hndwmj480pefj!App\",\"appId\":\"App\",\"description\":\"XML Notepad is a lightweight and fast tool for editing XML documents. XML has proliferated across the planet and XML Notepad has been downloaded over 3 million times!\",\"friendlyName\":\"XmlNotepad\",\"iconImageName\":\"Square44x44Logo.scale-200.png\",\"rawIcon\":\"AAABAAEAICAAAAAAIADOBAAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAgAAAAIAgGAAAAc3p69AAAAAFzUkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAEY0lEQVRYR+2USUxbVxSGn1o1VFGUoCpEkbLopos2UtWBFjsMVYAQEkDMs8HMYAanjCFQaHfdBEyhBBoMboBgxmCICSSUkk274CktDZBaDDGjARMwJAXD5vmv3jU2xpEi+uiSIx1Zx36+//efd86lqKM4ioNEGO8jSuikMtdC/jlK6PjcXIfyP6diHMfMtfXzh45Yl2dU1AVQkQ6upBY6DZM64kI4qeNdJkgdwrPfrY3Ph/Eu7jvnv0bx9mBr0dYvhrPZPqAi+UidaDIUbj4yvF8UAkrAR/hQpSFLd99wOsMTVCQPQlWdQaRtN5zO9CK/Bz6pMMQuNBmiJqUfWJ99oCjS99MFG31M8dYAkzYpZ/LXe5nctR4mb6OXiRuTMde0CiZ96R4jfqFgBKM1TNJ8M5Mw18QkapqZoD8qmWh1PRM5JWNCx+s+sT77QFGkH6ALXz0Emzde9uH6+gPk6JTIWu3G1y+6IF7pRNpyB0RLbUhebEXiQjPi55sQM9sI4UwDBNN3EPFchkMD3NjoRd4+ccV+cU2LlXi9WTxsshah49XcAL7RD9Cs8zeKWziPtXIeNlWLkEkpArgCFGw+oveLW7Vdsys+Z+Fc/bPZechEDYLGb3MHuP7PQzpnTQlPxbfIXlfi2konvqxKhWi5HW6KYiQvtiBu7i4RD3hSDt+hMkSoZbBvzCTOg8Z/gr+qCgGjFdwA8l49oDNXu3GxrRD2NRkQjNTgTI4P0tc68XYkH3ZZV4l47MJd2MQ44VSqOwTz9aDCHRA8JSXivn/fgjdXgOyXPTTb9kxdN2yEjjgW4wyxrguilQ68G+uM4wlfIUHbAj+6DJ/KxAQgYvYOqHAeAiduE3GfZz/iMleAzHUlLdZ2ImPlHk4kueItAR8ibTuStW04Fu0I799ugifPha3IDaETNTgpckPYjIwA+I9XE3Gv0XJc/rOUG4BY10WzA+fV/z0+rkyGu/I7fCiJQ+JyCwEQzjWCCvwMZ/J9EaSqxkmRO4LVUlDB9giclsJHVQnPkR+4A6SvKmh22u1SLyFluQ0JGjmOhzsgflEOuywvMnDnbyXDd7iCDNzZAj/S9i/ac2ET54ITKa7weCrhDpC20kGzl0ySxmLVZhvIqkWqd1fNYtr9VFXmtl9hWz8iwaXhErhyBUjRttHsnptWzbjnezecac/9VdXmgWPFPUfK4PGXBO7DJSQ5AyQut9JG5w37Lxn2hiPirHNWvHJXvAJXiHgpcX5ogPilZpp1Hj1tEq9DqNm5se3E+ZhRnB04VtwkfGiAOI2cZu/2qF1xY9ulCDQ732u70fle2/8fgPkm2vzOp2oRbOXc2/KdP33duSm9uQLMT83Qit/70fq4B62DPWgZVBrzVzbvo9ki5QPdryX7fd/QY8yr1dwA9Nt6ent7G1tbW9Dr9eTzTWn9DFvv7OxAp9vkBlDkfIqWJFxFSbwn5yyNcUO+wzvcAMo9bAfKPGwhOUSy/7/p9t5567OP4ihM8S/0O24eq08REAAAAABJRU5ErkJggg==\",\"rawPng\":\"iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAABGNJREFUWEftlElMW1cUhp9aNVRRlKAqRJGy6KaLNlLVgRY7DFWAEBJAzLPBzGAGp4whUGh33QRMoQQaDG6AYMZgiAkklJJNu+ApLQ2QWgwxowETMCQFw+b5r941NsaRIvrokiMdWcd+vv/3n3fOpaijOIqDRBjvI0ropDLXQv45Suj43FyH8j+nYhzHzLX184eOWJdnVNQFUJEOrqQWOg2TOuJCOKnjXSZIHcKz362Nz4fxLu47579G8fZga9HWL4az2T6gIvlInWgyFG4+MrxfFAJKwEf4UKUhS3ffcDrDE1QkD0JVnUGkbTeczvQivwc+qTDELjQZoialH1iffaAo0vfTBRt9TPHWAJM2KWfy13uZ3LUeJm+jl4kbkzHXtAomfekeI36hYASjNUzSfDOTMNfEJGqamaA/KplodT0TOSVjQsfrPrE++0BRpB+gC189BJs3Xvbh+voD5OiUyFrtxtcvuiBe6UTacgdES21IXmxF4kIz4uebEDPbCOFMAwTTdxDxXIZDA9zY6EXePnHFfnFNi5V4vVk8bLIWoePV3AC+0Q/QrPM3ils4j7VyHjZVi5BJKQK4AhRsPqL3i1u1XbMrPmfhXP2z2XnIRA2Cxm9zB7j+z0M6Z00JT8W3yF5X4tpKJ76sSoVouR1uimIkL7Ygbu4uEQ94Ug7foTJEqGWwb8wkzoPGf4K/qgoBoxXcAPJePaAzV7txsa0Q9jUZEIzU4EyOD9LXOvF2JB92WVeJeOzCXdjEOOFUqjsE8/Wgwh0QPCUl4r5/34I3V4Dslz002/ZMXTdshI44FuMMsa4LopUOvBvrjOMJXyFB2wI/ugyfysQEIGL2DqhwHgInbhNxn2c/4jJXgMx1JS3WdiJj5R5OJLniLQEfIm07krVtOBbtCO/fboInz4WtyA2hEzU4KXJD2IyMAPiPVxNxr9FyXP6zlBuAWNdFswPn1f89Pq5MhrvyO3woiUPicgsBEM41ggr8DGfyfRGkqsZJkTuC1VJQwfYInJbCR1UJz5EfuAOkrypodtrtUi8hZbkNCRo5joc7IH5RDrssLzJw528lw3e4ggzc2QI/0vYv2nNhE+eCEymu8Hgq4Q6QttJBs5dMksZi1WYbyKpFqndXzWLa/VRV5rZfYVs/IsGl4RK4cgVI0bbR7J6bVs2453s3nGnP/VXV5oFjxT1HyuDxlwTuwyUkOQMkLrfSRucN+y8Z9oYj4qxzVrxyV7wCV4h4KXF+aID4pWaadR49bRKvQ6jZubHtxPmYUZwdOFbcJHxogDiNnGbv9qhdcWPbpQg0O99ru9H5Xtv/H4D5Jtr8zqdqEWzl3NvynT993bkpvbkCzE/N0Irf+9H6uAetgz1oGVQa81c276PZIuUD3a8l+33f0GPMq9XcAPTbenp7extbW1vQ6/Xk801p/Qxb7+zsQKfb5AZQ5HyKliRcRUm8J+csjXFDvsM73ADKPWwHyjxsITlEsv+/6fbeeeuzj+IoTPEv9DtuHqtPERAAAAAASUVORK5CYII=\"}],\"certificateExpiry\":\"2025-03-27T23:59:59+00:00\",\"certificateName\":\"CN=Chris Lovett, O=Chris Lovett, S=Washington, C=US\",\"isPackageTimestamped\":\"Timestamped\"},\"hostPoolReferences\":null,\"failHealthCheckOnStagingFailure\":null,\"keyVaultURL\":null},\"systemData\":null}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }

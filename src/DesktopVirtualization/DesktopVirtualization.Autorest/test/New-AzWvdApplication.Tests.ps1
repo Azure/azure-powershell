@@ -45,34 +45,34 @@ Describe 'New-AzWvdApplication' {
                                 -ResourceGroupName $env.ResourceGroup `
                                 -GroupName $env.RemoteApplicationGroup `
                                 -Name 'Paint' `
-                                -FilePath 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
+                                -FilePath 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
                                 -FriendlyName 'fri' `
                                 -Description 'des' `
                                 -IconIndex 0 `
-                                -IconPath 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
+                                -IconPath 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
                                 -CommandLineSetting 'Allow' `
                                 -ShowInPortal:$true
-                $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
-                $application.FilePath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
-                $application.FriendlyName | Should -Be 'fri'
-                $application.Description | Should -Be 'des'
-                $application.IconIndex | Should -Be 0
-                $application.IconPath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
-                $application.CommandLineSetting | Should -Be 'Allow'
-                $application.ShowInPortal | Should -Be $true
+            $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+            $application.FilePath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
+            $application.FriendlyName | Should -Be 'fri'
+            $application.Description | Should -Be 'des'
+            $application.IconIndex | Should -Be 0
+            $application.IconPath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
+            $application.CommandLineSetting | Should -Be 'Allow'
+            $application.ShowInPortal | Should -Be $true
 
             $application = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -GroupName $env.RemoteApplicationGroup `
                                 -Name 'Paint'
-                $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
-                $application.FilePath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
-                $application.FriendlyName | Should -Be 'fri'
-                $application.Description | Should -Be 'des'
-                $application.IconIndex | Should -Be 0
-                $application.IconPath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
-                $application.CommandLineSetting | Should -Be 'Allow'
-                $application.ShowInPortal | Should -Be $true
+            $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+            $application.FilePath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
+            $application.FriendlyName | Should -Be 'fri'
+            $application.Description | Should -Be 'des'
+            $application.IconIndex | Should -Be 0
+            $application.IconPath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
+            $application.CommandLineSetting | Should -Be 'Allow'
+            $application.ShowInPortal | Should -Be $true
         }
         finally{
             $application = Remove-AzWvdApplication -SubscriptionId $env.SubscriptionId `
@@ -84,30 +84,34 @@ Describe 'New-AzWvdApplication' {
 
     It 'AppAlias' {  
         try{     
-
+            
+            # This function requires: 1. Active Session Hosts in the source Hostpool 2. AppAlias come from the StartMenu
+            # So change to use the presistant Application Group as source
             New-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroupPersistent `
                                 -GroupName $env.PersistentRemoteAppGroup `
-                                -Name 'Paint1' `
-                                -AppAlias 'paint' `
-                                -CommandLineSetting 'Allow'
+                                -Name 'Task manager 1' `
+                                -AppAlias 'taskmanager' `
+                                -CommandLineSetting 'Allow' `
+                                -FriendlyName  'fri' 
 
             $application = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroupPersistent `
                                 -GroupName $env.PersistentRemoteAppGroup `
-                                -Name 'Paint1'
-                $application.Name | Should -Be 'alecbRemoteAppHP-RAG/Paint1'
-                $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
-                $application.IconIndex | Should -Be 0
-                $application.IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
-                $application.CommandLineSetting | Should -Be 'Allow'
-                $application.ShowInPortal | Should -Be $false
+                                -Name 'Task manager 1'
+            $application.Name | Should -Be 'zhongjie-automated-RAG/Task manager 1'
+            $application.FilePath | Should -Be 'C:\Windows\system32\taskmgr.exe'
+            $application.IconIndex | Should -Be -30651
+            $application.IconPath | Should -Be 'C:\Windows\system32\Taskmgr.exe'
+            $application.CommandLineSetting | Should -Be 'Allow'
+            $application.ShowInPortal | Should -Be $false
+            $application.FriendlyName | Should -Be 'fri'
         }
         finally{
             $application = Remove-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroupPersistent `
                                 -GroupName $env.PersistentRemoteAppGroup `
-                                -Name 'Paint1'
+                                -Name 'Task manager 1'
         }
 
     }
@@ -115,10 +119,10 @@ Describe 'New-AzWvdApplication' {
         try{
             $enc = [system.Text.Encoding]::UTF8
             $string1 = "some image"
-            $data1 = $enc.GetBytes($string1) 
+            $data1 = $enc.GetBytes($string1)
 
-            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
-            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
+            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications]@{ appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies]@{ dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })
 
             $package = New-AzWvdMsixPackage -FullName MsixTest_FullName_UnitTest `
                 -HostPoolName $env.HostPool `
@@ -133,7 +137,7 @@ Describe 'New-AzWvdApplication' {
                 -PackageFamilyName 'MsixUnitTest_FamilyName' `
                 -PackageName 'MsixUnitTest_Name' `
                 -PackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
-                -Version '0.0.18838.722' 
+                -Version '0.0.18838.722'
 
             # create MSIX App 
 
@@ -162,27 +166,29 @@ Describe 'New-AzWvdApplication' {
             $application.IconPath | Should -Be 'c:\unittest_img.png'
             $application.ShowInPortal | Should -Be $true
         }
-        finally{
+        finally
+        {
             $application = Remove-AzWvdApplication -GroupName $env.RemoteApplicationGroup `
                 -Name 'UnitTest-MSIX-Application' `
                 -ResourceGroupName $env.ResourceGroup `
-                -SubscriptionId $env.SubscriptionId 
+                -SubscriptionId $env.SubscriptionId
 
             $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
                 -HostPoolName $env.HostPool `
                 -ResourceGroupName $env.ResourceGroup `
-                -SubscriptionId $env.SubscriptionId 
+                -SubscriptionId $env.SubscriptionId
         }
     }
 
     It 'Create_MsixApplication_DAG' {
-        try{
+        try
+        {
             $enc = [system.Text.Encoding]::UTF8
             $string1 = "some image"
-            $data1 = $enc.GetBytes($string1) 
+            $data1 = $enc.GetBytes($string1)
 
-            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
-            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
+            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MsixPackageApplications]@{ appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MsixPackageDependencies]@{ dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })
 
             $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -206,7 +212,7 @@ Describe 'New-AzWvdApplication' {
                 -PackageFamilyName 'MsixUnitTest_FamilyName' `
                 -PackageName 'MsixUnitTest_Name' `
                 -PackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
-                -Version '0.0.18838.722' 
+                -Version '0.0.18838.722'
 
             # create MSIX App 
 
@@ -236,14 +242,15 @@ Describe 'New-AzWvdApplication' {
             $application = Remove-AzWvdApplication -GroupName $env.DesktopApplicationGroup `
                 -Name UnitTest-MSIX-Application `
                 -ResourceGroupName $env.ResourceGroup `
-                -SubscriptionId $env.SubscriptionId 
+                -SubscriptionId $env.SubscriptionId
 
             $package = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
                 -HostPoolName $env.HostPool `
                 -ResourceGroupName $env.ResourceGroup `
-                -SubscriptionId $env.SubscriptionId 
+                -SubscriptionId $env.SubscriptionId
         }
-        finally{
+        finally
+        {
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -Name $env.DesktopApplicationGroup

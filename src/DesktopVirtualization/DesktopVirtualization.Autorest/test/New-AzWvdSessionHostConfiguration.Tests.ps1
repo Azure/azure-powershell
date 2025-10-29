@@ -18,7 +18,7 @@ Describe 'New-AzWvdSessionHostConfiguration' {
         try {
             
             $vmTag = @{
-                "cm-resource-parent" = "/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/HostPoolPowershellContained1"
+                "cm-resource-parent" = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/" + $env.HostPool
             }
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
@@ -36,17 +36,28 @@ Describe 'New-AzWvdSessionHostConfiguration' {
                 -ValidationEnvironment:$false `
                 -PreferredAppGroupType 'Desktop' `
                 -StartVMOnConnect:$false `
-                -ManagementType 'Automated'
+                -ManagementType 'Automated' `
+                -IdentityType 'SystemAssigned'
+            
+            # Assign 'Desktop Virtualization Virtual Machine Contributor' role for this hostpool on the Resource Group level
+            $assignment = New-AzRoleAssignment -ObjectId $hostPool.IdentityPrincipalId `
+                -RoleDefinitionName "Desktop Virtualization Virtual Machine Contributor" `
+                -Scope $env.ResourceGroupArmPath
+            
+            # Assign 'Key Vault Secrets User' role for this hostpool on the Resource Group level
+            $assignment = New-AzRoleAssignment -ObjectId $hostPool.IdentityPrincipalId `
+                -RoleDefinitionName "Key Vault Secrets User" `
+                -Scope $env.KeyVaultPersistentArmPath
 
             $configuration = New-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup `
                 -HostPoolName $env.HostPool -ManagedDiskType "Standard_LRS" `
                 -DomainInfoJoinType "AzureActiveDirectory" -ImageInfoImageType "Marketplace" `
-                -NetworkInfoSubnetId "/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Network/virtualNetworks/alecbUserSession-vnet/subnets/default" `
-                -VMAdminCredentialsPasswordKeyvaultSecretUri "https://hpuposhkv.vault.azure.net/secrets/LocalAdminPW" `
-                -VMAdminCredentialsUserNameKeyvaultSecretUri "https://hpuposhkv.vault.azure.net/secrets/LocalAdminUserName" `
+                -NetworkInfoSubnetId $env.VnetSubnetId `
+                -VMAdminCredentialsPasswordKeyvaultSecretUri $env.VMAdminCredentialsPasswordKeyvaultSecretUri `
+                -VMAdminCredentialsUserNameKeyvaultSecretUri $env.VMAdminCredentialsUserNameKeyvaultSecretUri `
                 -VMNamePrefix "createTest" -VMSizeId "Standard_D2s_v3" -MarketplaceInfoExactVersion $env.MarketplaceImageVersion `
-                -MarketplaceInfoOffer "office-365" -MarketplaceInfoPublisher "microsoftwindowsdesktop" `
-                -MarketplaceInfoSku "win11-23h2-avd-m365" `
+                -MarketplaceInfoOffer $env.MarketplaceInfoOffer -MarketplaceInfoPublisher $env.MarketplaceInfoPublisher `
+                -MarketplaceInfoSku $env.MarketplaceInfoSku `
                 -SecurityInfoSecureBootEnabled `
                 -SecurityInfoType "TrustedLaunch" `
                 -SecurityInfoVTpmEnabled `

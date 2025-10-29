@@ -1,8 +1,8 @@
 {
-  "Invoke-AzWvdInitiateSessionHostUpdate+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2025-04-01-preview+1": {
+  "Invoke-AzWvdInitiateSessionHostUpdate+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/8689a73d-b2fd-4fcc-84e8-1ebb0a5a61fd/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2025-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default/initiateSessionHostUpdate?api-version=2025-04-01-preview",
       "Content": "{\r\n  \"update\": {\r\n    \"deleteOriginalVm\": true,\r\n    \"maxVmsRemoved\": 1,\r\n    \"logOffDelayMinutes\": 0,\r\n    \"logOffMessage\": \"Updating Session Hosts. Will Log off\"\r\n  },\r\n  \"scheduledDateTimeZone\": \"Pacific Standard Time\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -13,26 +13,34 @@
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 204,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "e55c4592-f251-4194-96d1-5d393896fe96" ],
-        "x-ms-correlation-request-id": [ "e55c4592-f251-4194-96d1-5d393896fe96" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251013T061427Z:e55c4592-f251-4194-96d1-5d393896fe96" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Set-Cookie": [ "ARRAffinity=2b32c941e87fc70dc161f1125535279f54f62986d944c59b80b03a276f731b44;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=2b32c941e87fc70dc161f1125535279f54f62986d944c59b80b03a276f731b44;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0TWFuYWdlbWVudHMvZGVmYXVsdA==" ],
+        "x-ms-lamport-ts": [ "10114361363" ],
+        "x-ms-correlation-id": [ "3dfbc9b1-8aef-4783-9b43-5063d841719a" ],
+        "x-ms-request-id": [ "c196d370-c84b-4cdb-a8b1-382a0323e4ef" ],
+        "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/cc5b5929-cbd5-44a9-9552-530636406037" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "c73b985f-45df-41f4-810f-a3cb2bcd21ab" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251029T022626Z:c73b985f-45df-41f4-810f-a3cb2bcd21ab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6C4A03C18C5146E5AE208F26DEB754BC Ref B: JKT201051406060 Ref C: 2025-10-13T06:14:27Z" ],
-        "Date": [ "Mon, 13 Oct 2025 06:14:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 70866CE047DA403F88BDA7366A2DB5EF Ref B: SIN221080711023 Ref C: 2025-10-29T02:26:26Z" ],
+        "Date": [ "Wed, 29 Oct 2025 02:26:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "113" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027alecbUserSessionTests\u0027 could not be found.\"}}",
+      "Content": null,
       "isContentBase64": false
     }
   }
