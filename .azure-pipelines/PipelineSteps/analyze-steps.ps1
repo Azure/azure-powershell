@@ -36,10 +36,6 @@ if ($PowerShellPlatform) {
 }
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
 dotnet msbuild $buildProjPath /t:GenerateHelp "/p:Configuration=$Configuration"
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Help generation failed with exit code $LASTEXITCODE"
-    exit $LASTEXITCODE
-}
 Write-Host -ForegroundColor DarkGreen "-------------------- End generating help ... --------------------`n`n`n`n`n"
 
 # Static Analysis

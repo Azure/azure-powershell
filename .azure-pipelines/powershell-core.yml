@@ -128,6 +128,8 @@ jobs:
       targetType: inline
       workingDirectory: $(Build.SourcesDirectory)
       pwsh: true
+      errorActionPreference: 'stop'
+      failOnStderr: true
       script: .azure-pipelines/PipelineSteps/analyze-steps.ps1 -RepoRoot "$(Build.SourcesDirectory)" -Configuration "${{ variables.Configuration }}" -PowerShellPlatform "${{ variables.PowerShellPlatform }}"
   - template: util/publish-artifacts-steps.yml
     parameters:
