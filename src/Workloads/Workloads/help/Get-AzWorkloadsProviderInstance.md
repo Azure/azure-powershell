@@ -31,12 +31,6 @@ Get-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIde
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityMonitor
-```
-Get-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>]

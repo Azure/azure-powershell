@@ -35,20 +35,6 @@ New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <Str
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
-```
-New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 

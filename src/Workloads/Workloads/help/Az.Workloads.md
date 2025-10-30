@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: Workloads cmdlets
 
 ## Az.Workloads Cmdlets
-### [Get-AzWorkloadsMonitor](Get-AzWorkloadsMonitor.md)
-Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
-
 ### [Get-AzWorkloadsProviderInstance](Get-AzWorkloadsProviderInstance.md)
 Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 

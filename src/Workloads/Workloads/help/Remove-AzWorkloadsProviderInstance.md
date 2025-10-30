@@ -26,13 +26,6 @@ Remove-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitors
  [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityMonitor
-```
-Remove-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### DeleteViaIdentity
 ```
 Remove-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>] [-AsJob]

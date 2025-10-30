@@ -35,20 +35,6 @@ Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
-```
-Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWorkloadsSapLandscapeMonitor -InputObject <IMonitorsIdentity>
