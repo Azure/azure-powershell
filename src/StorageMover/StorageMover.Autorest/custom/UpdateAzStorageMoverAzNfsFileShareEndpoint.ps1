@@ -51,7 +51,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
   [SubscriptionId<String>]: The ID of the target subscription.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovernfsfileshareendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveraznfsfileshareendpoint
 #>
 function Update-AzStorageMoverAzNfsFileShareEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
