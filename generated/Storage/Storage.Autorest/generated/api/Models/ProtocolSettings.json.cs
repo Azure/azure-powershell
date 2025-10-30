@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             {_smb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("smb"), out var __jsonSmb) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbSetting.FromJson(__jsonSmb) : _smb;}
+            {_nf = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("nfs"), out var __jsonNfs) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NfsSetting.FromJson(__jsonNfs) : _nf;}
             AfterFromJson(json);
         }
 
@@ -101,6 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return container;
             }
             AddIf( null != this._smb ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._smb.ToJson(null,serializationMode) : null, "smb" ,container.Add );
+            AddIf( null != this._nf ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._nf.ToJson(null,serializationMode) : null, "nfs" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

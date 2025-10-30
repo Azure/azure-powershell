@@ -19,6 +19,13 @@ Remove-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-Subscri
  [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityConfigurationProfileAssignment
+```
+Remove-AzAutomanageConfigProfileAssignment -VMName <String>
+ -ConfigurationProfileAssignmentInputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzAutomanageConfigProfileAssignment -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
@@ -46,6 +53,21 @@ This command deletes a configuration profile assignment by pipeline.
 
 ## PARAMETERS
 
+### -ConfigurationProfileAssignmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: DeleteViaIdentityConfigurationProfileAssignment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -64,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
@@ -129,7 +150,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityConfigurationProfileAssignment
 Aliases:
 
 Required: True

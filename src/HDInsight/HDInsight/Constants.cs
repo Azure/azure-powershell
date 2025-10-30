@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string CredentialIsEnabledKey = "restAuthCredential.isEnabled";
             public const string UserNameKey = "restAuthCredential.username";
             public const string PasswordKey = "restAuthCredential.password";
+            public const string EntraUsers  = "restAuthEntraUsers";
         }
 
         public static class StorageConfigurations

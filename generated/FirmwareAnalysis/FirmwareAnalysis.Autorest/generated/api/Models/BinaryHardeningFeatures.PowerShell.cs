@@ -76,17 +76,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Nx"))
+            if (content.Contains("NoExecute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Nx = (bool?) content.GetValueForProperty("Nx",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Nx, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).NoExecute = (bool?) content.GetValueForProperty("NoExecute",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).NoExecute, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("Pie"))
+            if (content.Contains("PositionIndependentExecutable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Pie = (bool?) content.GetValueForProperty("Pie",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Pie, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).PositionIndependentExecutable = (bool?) content.GetValueForProperty("PositionIndependentExecutable",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).PositionIndependentExecutable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("Relro"))
+            if (content.Contains("RelocationReadOnly"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Relro = (bool?) content.GetValueForProperty("Relro",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Relro, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).RelocationReadOnly = (bool?) content.GetValueForProperty("RelocationReadOnly",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).RelocationReadOnly, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("Canary"))
             {
@@ -113,17 +113,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Nx"))
+            if (content.Contains("NoExecute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Nx = (bool?) content.GetValueForProperty("Nx",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Nx, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).NoExecute = (bool?) content.GetValueForProperty("NoExecute",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).NoExecute, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("Pie"))
+            if (content.Contains("PositionIndependentExecutable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Pie = (bool?) content.GetValueForProperty("Pie",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Pie, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).PositionIndependentExecutable = (bool?) content.GetValueForProperty("PositionIndependentExecutable",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).PositionIndependentExecutable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("Relro"))
+            if (content.Contains("RelocationReadOnly"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Relro = (bool?) content.GetValueForProperty("Relro",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).Relro, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).RelocationReadOnly = (bool?) content.GetValueForProperty("RelocationReadOnly",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)this).RelocationReadOnly, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("Canary"))
             {

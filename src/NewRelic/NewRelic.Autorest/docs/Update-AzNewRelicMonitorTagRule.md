@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNewRelicMonitorTagRule
 
 ## SYNOPSIS
-Update a TagRule
+Update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure resources are monitored
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Update a TagRule
+Update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure resources are monitored
 
 ## EXAMPLES
 
