@@ -34,7 +34,7 @@ input-file:
   - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2025-08-01/grafana.json
 
 title: Dashboard
-module-version: 0.2.0
+module-version: 0.3.0
 subject-prefix: Grafana
 
 directive:
