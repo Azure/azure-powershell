@@ -4242,6 +4242,44 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 	}
 }
 
+
+<#
+.SYNOPSIS
+Application gateway v2 WAF tests - invalid sensitivity value should fail
+#>
+function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithInvalidSensitivity {
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "uksouth"
+    $rgname = Get-ResourceGroupName
+    $wafPolicy = Get-ResourceName
+
+    try {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag" }
+
+        # Attempt to create ManagedRuleOverride with invalid sensitivity
+        try {
+            $invalidRuleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride `
+                -RuleId 500100 `
+                -State Enabled `
+                -Action Block `
+                -Sensitivity foo  # Invalid enum value
+
+            # If no error is thrown, fail the test
+            throw "Expected validation error for invalid Sensitivity value 'foo', but command succeeded."
+        }
+        catch {
+            # Assert that the error message contains expected validation text
+            Assert-True ($_.Exception.Message -match "Invalid" -or $_.Exception.Message -match "Sensitivity") `
+                "Validation error message did not contain expected text. Actual: $($_.Exception.Message)"
+        }
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
 <#
 .SYNOPSIS
 Application gateway v2 waf policy default managed rule set
