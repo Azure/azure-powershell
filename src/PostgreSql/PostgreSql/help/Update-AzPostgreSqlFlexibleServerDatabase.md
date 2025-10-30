@@ -1,56 +1,64 @@
 ---
 external help file: Az.PostgreSql-help.xml
 Module Name: Az.PostgreSql
-online version: https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlvirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlflexibleserverdatabase
 schema: 2.0.0
 ---
 
-# Remove-AzPostgreSqlVirtualNetworkRule
+# Update-AzPostgreSqlFlexibleServerDatabase
 
 ## SYNOPSIS
-Deletes the virtual network rule with the given name.
+Update a new database or update an existing database.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzPostgreSqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Update-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityFlexibleServerExpanded
+```
+Update-AzPostgreSqlFlexibleServerDatabase -Name <String> -FlexibleServerInputObject <IPostgreSqlIdentity>
+ [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityServer
+### UpdateViaIdentityExpanded
 ```
-Remove-AzPostgreSqlVirtualNetworkRule -Name <String> -ServerInputObject <IPostgreSqlIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzPostgreSqlVirtualNetworkRule -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPostgreSqlFlexibleServerDatabase -InputObject <IPostgreSqlIdentity> [-Charset <String>]
+ [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the virtual network rule with the given name.
+Update a new database or update an existing database.
 
 ## EXAMPLES
 
-### Example 1: Remove PostgreSql server Virtual Network Rule by name
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+{{ Add code here }}
 ```
 
-This cmdlet removes PostgreSql server Virtual Network Rule by name.
-
-### Example 2: Remove PostgreSql server Virtual Network Rule by identity
-```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-These cmdlets remove PostgreSql server Virtual Network Rule by identity.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -59,6 +67,36 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Charset
+The charset of the database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Collation
+The collation of the database.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,12 +123,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FlexibleServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
+Parameter Sets: UpdateViaIdentityFlexibleServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -101,12 +154,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the virtual network rule.
+The name of the database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityServer
-Aliases: VirtualNetworkRuleName
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded
+Aliases: DatabaseName
 
 Required: True
 Position: Named
@@ -130,49 +183,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: DeleteViaIdentityServer
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -181,7 +204,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -196,7 +219,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -246,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IDatabaseAutoGenerated
 
 ## NOTES
 
