@@ -247,7 +247,7 @@ function Get-AzMigrateLocalServerReplication {
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
             $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.private\Get-AzMigrateSolution_Get' `
+                -CommandName 'Get-AzMigrateSolution' `
                 -Parameters $PSBoundParameters `
                 -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
 

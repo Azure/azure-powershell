@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
 schema: 2.0.0
@@ -15,15 +15,7 @@ Gets the details of a protection container.
 ### List1 (Default)
 ```
 Get-AzMigrateReplicationProtectionContainer -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List
-```
-Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -36,8 +28,13 @@ Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionCont
 ### GetViaIdentityReplicationFabric
 ```
 Get-AzMigrateReplicationProtectionContainer -ProtectionContainerName <String>
- -ReplicationFabricInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -ReplicationFabricInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ResourceGroupName <String>
+ -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +91,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -139,7 +136,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, List, Get
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -154,7 +151,7 @@ The name of the recovery services vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, List, Get
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -169,7 +166,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, List, Get
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -193,3 +190,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

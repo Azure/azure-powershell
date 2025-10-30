@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratelocalservermigration
 schema: 2.0.0
@@ -14,15 +14,14 @@ Starts the migration for the replicating server.
 
 ### ByID (Default)
 ```
-Start-AzMigrateLocalServerMigration -TargetObjectID <String> [-TurnOffSourceServer] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzMigrateLocalServerMigration -TargetObjectID <String> [-SubscriptionId <String>] [-TurnOffSourceServer]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Start-AzMigrateLocalServerMigration [-TurnOffSourceServer] [-SubscriptionId <String>]
- -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Start-AzMigrateLocalServerMigration -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
+ [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -238,3 +237,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

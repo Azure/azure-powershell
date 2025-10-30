@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateservermigrationstatus
 schema: 2.0.0
@@ -14,35 +14,33 @@ Retrieves the details of the replicating server status.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetByMachineName
-```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetHealthByMachineName
-```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-Health] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetByPrioritiseServer
-```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-Expedite] [-DefaultProfile <PSObject>]
+Get-AzMigrateServerMigrationStatus -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByApplianceName
 ```
-Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -ApplianceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerMigrationStatus -ApplianceName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByMachineName
+```
+Get-AzMigrateServerMigrationStatus -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByPrioritiseServer
+```
+Get-AzMigrateServerMigrationStatus -Expedite -MachineName <String> -ProjectName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetHealthByMachineName
+```
+Get-AzMigrateServerMigrationStatus -Health -MachineName <String> -ProjectName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +54,7 @@ Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupN
 ```
 
 ```output
+
 Appliance     Server          State                         Progress TimeElapsed TimeRemaining UploadSpeed Health LastSync             Datastore        ESXiHost
 ---------     ------          -----                         -------- ----------- ------------- ----------- ------ --------             ---------        --------
 nosbm-test-ds el41-r5w12r1-3  InitialReplication InProgress 48 %     3 hr 48 min 12 hr 37 min  1230 Mbps   Normal -                    IDCLAB-T100_10TB idclab-vcen65.corp.microsoft.com_10.150.84.28
@@ -251,7 +250,7 @@ Specifies the display name of the replicating machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByMachineName, GetHealthByMachineName, GetByPrioritiseServer
+Parameter Sets: GetByMachineName, GetByPrioritiseServer, GetHealthByMachineName
 Aliases:
 
 Required: True
@@ -333,3 +332,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

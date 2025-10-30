@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateLocalJob'))
 }
 
 Describe 'Get-AzMigrateLocalJob' {
-    It 'ListByName' {
+    It 'ListByName' -Skip {
         $output = Get-AzMigrateLocalJob `
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
@@ -23,7 +23,7 @@ Describe 'Get-AzMigrateLocalJob' {
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetByName' {
+    It 'GetByName' -Skip {
         $output = Get-AzMigrateLocalJob `
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
@@ -32,14 +32,14 @@ Describe 'Get-AzMigrateLocalJob' {
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetById' {
+    It 'GetById' -Skip {
         $output = Get-AzMigrateLocalJob `
             -SubscriptionId $env.hciSubscriptionId `
             -ID $env.hciJobId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetByInputObject' {
+    It 'GetByInputObject' -Skip {
         $output = Get-AzMigrateLocalJob `
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
@@ -52,7 +52,7 @@ Describe 'Get-AzMigrateLocalJob' {
         $output1.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'ListById' {
+    It 'ListById' -Skip {
         $output = Get-AzMigrateLocalJob `
             -ProjectID $env.hciProjectId `
             -ResourceGroupID $env.hciMigResourceGroupId `

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
 schema: 2.0.0
@@ -16,21 +16,21 @@ Registers a tool with the migrate project.
 ```
 Register-AzMigrateProjectTool -MigrateProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AcceptLanguage <String>] [-Tool <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegisterViaJsonFilePath
 ```
-Register-AzMigrateProjectTool -MigrateProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AcceptLanguage <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Register-AzMigrateProjectTool -MigrateProjectName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-AcceptLanguage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RegisterViaJsonString
 ```
-Register-AzMigrateProjectTool -MigrateProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AcceptLanguage <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Register-AzMigrateProjectTool -MigrateProjectName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-AcceptLanguage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,3 +216,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

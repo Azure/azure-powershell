@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalreplicationfabric
 schema: 2.0.0
@@ -24,17 +24,16 @@ Get-AzMigrateLocalReplicationFabric -Name <String> -ResourceGroupName <String> [
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzMigrateLocalReplicationFabric -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-ContinuationToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzMigrateLocalReplicationFabric -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzMigrateLocalReplicationFabric -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-ContinuationToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,7 +239,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -264,3 +263,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

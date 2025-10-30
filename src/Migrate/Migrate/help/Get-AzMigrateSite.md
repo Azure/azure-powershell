@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 schema: 2.0.0
@@ -15,25 +15,25 @@ Method to get a site.
 ### Get (Default)
 ```
 Get-AzMigrateSite -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySubscription
 ```
 Get-AzMigrateSite -Name <String> -SubscriptionInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentitySubscription1
 ```
 Get-AzMigrateSite -Name <String> -Subscription1InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySubscription2
 ```
 Get-AzMigrateSite -Name <String> -Subscription2InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,7 @@ Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMwar
 ETag Location      Name                Type
 ---- --------      ----                ----
      southeastasia BBVMwareAVScbbcsite Microsoft.OffAzure/VMwareSites
+
 ```
 
 Get site by name
@@ -212,3 +213,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

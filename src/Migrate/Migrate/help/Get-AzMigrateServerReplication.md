@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 schema: 2.0.0
@@ -14,40 +14,38 @@ Retrieves the details of the replicating server.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetByMachineName
-```
-Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetBySRSID
-```
-Get-AzMigrateServerReplication [-SubscriptionId <String>] -TargetObjectID <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetBySDSID
-```
-Get-AzMigrateServerReplication [-SubscriptionId <String>] -DiscoveredMachineId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
-Get-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
+Get-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByMachineName
+```
+Get-AzMigrateServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetBySDSID
+```
+Get-AzMigrateServerReplication -DiscoveredMachineId <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetBySRSID
+```
+Get-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateServerReplication [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMigrateServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -254,7 +252,7 @@ OData filter options.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName, ListById
+Parameter Sets: ListById, ListByName
 Aliases:
 
 Required: False
@@ -314,7 +312,7 @@ Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName, GetByMachineName
+Parameter Sets: GetByMachineName, ListByName
 Aliases:
 
 Required: True
@@ -344,7 +342,7 @@ Specifies the Resource Group of the Azure Migrate Project in the current subscri
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName, GetByMachineName
+Parameter Sets: GetByMachineName, ListByName
 Aliases:
 
 Required: True
@@ -359,7 +357,7 @@ The pagination token.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName, ListById
+Parameter Sets: ListById, ListByName
 Aliases:
 
 Required: False
@@ -411,3 +409,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
