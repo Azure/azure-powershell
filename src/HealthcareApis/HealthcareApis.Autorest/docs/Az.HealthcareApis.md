@@ -1,6 +1,6 @@
 ---
 Module Name: Az.HealthcareApis
-Module Guid: e46bb962-353c-4483-b482-124708c06285
+Module Guid: a8b4fff7-56f6-4856-9591-6a1af5bde964
 Download Help Link: https://learn.microsoft.com/powershell/module/az.healthcareapis
 Help Version: 1.0.0.0
 Locale: en-US
