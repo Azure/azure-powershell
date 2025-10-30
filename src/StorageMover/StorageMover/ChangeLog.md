@@ -23,10 +23,13 @@
 * Added unexpanded parameter sets deprecated breaking change announcement for below cmdlets.
   * parameter sets Create for cmdlet `New-AzStorageMover`, `New-AzStorageMoverProject`, `New-AzStorageMoverJobDefinition`
   * parameter sets Update and UpdateViaIdentity for Cmdlet `Update-AzStorageMover`, `Update-AzStorageMoverAgent`, `Update-AzStorageMoverJobDefinition`,  `Update-AzStorageMoverProject`
+
+## Version 1.6.0
 * Added  support for new api version 2025-07-01
-* Included new endpoint types supported in the api version
-    * MultiCloudConnector
-    * NFSFileShare
+* Included new endpoint types supported in the api version: `MultiCloudConnector`, `NFSFileShare`
+* Enhanced help documentation for New-AzStorageMoverAzStorageContainerEndpoint and New-AzStorageMoverMultiCloudConnectorEndpoint with identity details.
+* Corrected online version link for Update-AzStorageMoverAzNfsFileShareEndpoint help documentation.
+* Added identity information to the output properties in help documentation for storage container and multi-cloud connector endpoints.
 
 ## Version 1.5.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

@@ -1,7 +1,7 @@
 @{
   GUID = '81a2f031-8f0e-4640-9129-5f4b797b8a95'
   RootModule = './Az.StorageDiscovery.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
