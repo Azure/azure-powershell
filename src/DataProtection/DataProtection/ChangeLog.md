@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for AzureDataLakeStorage workload
 
 ## Version 2.7.0
 * Added new cmdlet for validate for Modify backup - Test-AzDataProtectionBackupInstanceUpdate.

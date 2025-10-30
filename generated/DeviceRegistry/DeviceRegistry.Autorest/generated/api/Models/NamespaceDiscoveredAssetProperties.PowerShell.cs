@@ -117,13 +117,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DeviceRef = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRef) content.GetValueForProperty("DeviceRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DeviceRef, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceRefTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
             if (content.Contains("AssetTypeRef"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).AssetTypeRef = (System.Collections.Generic.List<string>) content.GetValueForProperty("AssetTypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).AssetTypeRef, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
             if (content.Contains("DiscoveryId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DiscoveryId = (string) content.GetValueForProperty("DiscoveryId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DiscoveryId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalAssetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).ExternalAssetId = (string) content.GetValueForProperty("ExternalAssetId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).ExternalAssetId, global::System.Convert.ToString);
             }
             if (content.Contains("Version"))
             {
@@ -197,9 +209,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Dataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("Event"))
+            if (content.Contains("EventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).EventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>) content.GetValueForProperty("EventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).EventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("Stream"))
             {
@@ -242,13 +254,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DeviceRef = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRef) content.GetValueForProperty("DeviceRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DeviceRef, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceRefTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
             if (content.Contains("AssetTypeRef"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).AssetTypeRef = (System.Collections.Generic.List<string>) content.GetValueForProperty("AssetTypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).AssetTypeRef, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
             if (content.Contains("DiscoveryId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DiscoveryId = (string) content.GetValueForProperty("DiscoveryId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).DiscoveryId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalAssetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).ExternalAssetId = (string) content.GetValueForProperty("ExternalAssetId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).ExternalAssetId, global::System.Convert.ToString);
             }
             if (content.Contains("Version"))
             {
@@ -322,9 +346,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Dataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("Event"))
+            if (content.Contains("EventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).EventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>) content.GetValueForProperty("EventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)this).EventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("Stream"))
             {

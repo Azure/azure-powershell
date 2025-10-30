@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzElasticTrafficFilter
 
 ## SYNOPSIS
-Delete traffic filter from the account.
+Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Remove-AzElasticTrafficFilter -InputObject <IElasticIdentity> [-RulesetId <Strin
 ```
 
 ## DESCRIPTION
-Delete traffic filter from the account.
+Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## EXAMPLES
 

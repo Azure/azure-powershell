@@ -18,13 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated with support for Immutable Long-Term Retention Backups
+    - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.
+    - Updated `AzureSqlDatabaseBackupLongTermRetentionPolicyModel` to add `TimeBasedImmutability` and `TimeBasedImmutabilityMode` properties.
+    - Updated `AzureSqlDatabaseLongTermRetentionBackupModel` to add `TimeBasedImmutability`, `TimeBasedImmutabilityMode`, and `LegalHoldImmutability` properties.
+    - Added new cmdlets `Lock-AzSqlDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlDatabaseLongTermRetentionBackupImmutability` for managing time-based immutability on LTR backups.
+    - Added new cmdlets `Set-AzSqlDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold` for managing legal hold immutability on LTR backups.
+
+## Version 6.2.0
 * Improved parameter validation for the EnableSoftDelete and SoftDeleteRetentionDays parameters.
-* Updated `New-AzSqlServer` to support soft-delete retention
-    - Added `EnableSoftDelete` parameter to `New-AzSqlServer` to enable creation of a server with soft-delete retention
-    - Added `SoftDeleteRetentionDays` parameter to `New-AzSqlServer` to set the soft-delete retention period (in days)
-* Updated `Set-AzSqlServer` to support soft-delete retention
-    - Added `EnableSoftDelete` parameter to `Set-AzSqlServer` to enable or disable soft-delete retention on an existing server
-    - Added `SoftDeleteRetentionDays` parameter to `Set-AzSqlServer` to update the soft-delete retention period (in days) on an existing server
+* Added `EnableSoftDelete` and `SoftDeleteRetentionDays` to `New-AzSqlServer` to support soft-delete retention
+* Added `EnableSoftDelete` and `SoftDeleteRetentionDays` to `Set-AzSqlServer` to support soft-delete retention
 * Added `Restore-AzSqlServer` cmdlet to restore a deleted Azure SQL server within the retention period
 
 ## Version 6.1.0

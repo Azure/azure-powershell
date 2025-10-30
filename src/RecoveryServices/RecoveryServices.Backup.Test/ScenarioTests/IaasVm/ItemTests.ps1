@@ -12,6 +12,40 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVMRedoProtection
+{
+    $resourceGroupName = "hiagarg"
+    $vaultName = "hiagaVault"
+    $targetVaultName = "hiagaVault2"
+    $vmContainerSuffix = "hiaga-adhoc-vm"
+    $policyName = "DefaultPolicy"
+
+    try
+    {
+        # Step 1: Move protection from hiagaVault to hiagaVault2
+        $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+        $items = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID | Where-Object { $_.ContainerName.EndsWith($vmContainerSuffix) }
+        $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $targetVaultName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $policyName -VaultId $targetVault.ID
+        
+	$redoJob = Redo-AzRecoveryServicesBackupProtection -Item $items[-1] -TargetVaultId $targetVault.ID -TargetPolicy $policy -VaultId $vault.ID -Force -Confirm:$false
+	Assert-True { $redoJob.Status -eq "Completed" }
+
+	# Step 2: Reverse - move protection back to hiagaVault
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $targetVaultName
+	$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $policyName -VaultId $targetVault.ID
+	$items = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID | Where-Object { $_.ContainerName.EndsWith($vmContainerSuffix) }
+
+	$redoJob = Redo-AzRecoveryServicesBackupProtection -Item $items[-1] -TargetVaultId $targetVault.ID -TargetPolicy $policy -VaultId $vault.ID -Force -Confirm:$false
+	Assert-True { $redoJob.Status -eq "Completed" }
+    }
+    finally
+    {
+        # Optional cleanup if needed
+    }
+}
+
 function Test-AzurePERestore
 {
 	$subId = "f2edfd5d-5496-4683-b94f-b3588c579009"
