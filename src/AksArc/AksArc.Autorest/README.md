@@ -176,19 +176,6 @@ directive:
       subject: KubernetesVersion
     remove: true
 
-# Rename parameters
-  - where:
-      subject: VirtualNetwork
-      parameter-name: ExtendedLocationName
-    set: 
-      parameter-name: CustomLocationID
-  
-  - where:
-      subject: VirtualNetwork
-      parameter-name: ExtendedLocationName
-    set: 
-      parameter-name: CustomLocationID
-
 # Clusters
   - where: 
       parameter-name: ControlPlaneEndpointHostIP

@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -KubernetesVersion
-The version of Kubernetes in use by the provisioned cluster.
+Kubernetes version to upgrade to.
+If not provided, the cluster will be upgraded to the latest supported version.
 
 ```yaml
 Type: System.String

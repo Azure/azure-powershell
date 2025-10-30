@@ -1,13 +1,13 @@
 {
   "resourceType": "monitors/monitoredSubscriptions",
-  "apiVersion": "2024-01-01",
+  "apiVersion": "2025-05-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.newrelic"
   },
   "commands": [
     {
       "name": "Get-AzNewRelicMonitoredSubscription",
-      "description": "List the subscriptions currently being monitored by the NewRelic monitor resource.",
+      "description": "Lists all the subscriptions currently being monitored by the NewRelic monitor resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "List the subscriptions currently being monitored by the NewRelic monitor resource.",
+          "description": "Lists all the subscriptions currently being monitored by the NewRelic monitor resource.",
           "parameters": [
             {
               "name": "-MonitorName",

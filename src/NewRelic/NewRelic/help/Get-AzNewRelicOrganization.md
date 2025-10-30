@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicOrganization
 
 ## SYNOPSIS
-List all the existing organizations
+Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations that have been created
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzNewRelicOrganization [-SubscriptionId <String[]>] -Location <String> -User
 ```
 
 ## DESCRIPTION
-List all the existing organizations
+Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations that have been created
 
 ## EXAMPLES
 
