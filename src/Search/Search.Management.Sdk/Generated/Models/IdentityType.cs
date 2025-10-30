@@ -11,41 +11,27 @@ namespace Microsoft.Azure.Management.Search.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IdentityType
+    public static class IdentityType
     {
-        [System.Runtime.Serialization.EnumMember(Value = "None")]
-        None,
-        [System.Runtime.Serialization.EnumMember(Value = "SystemAssigned")]
-        SystemAssigned
-    }
-    internal static class IdentityTypeEnumExtension
-    {
-        internal static string ToSerializedValue(this IdentityType? value)
-        {
-            return value == null ? null : ((IdentityType)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this IdentityType value)
-        {
-            switch( value )
-            {
-                case IdentityType.None:
-                    return "None";
-                case IdentityType.SystemAssigned:
-                    return "SystemAssigned";
-            }
-            return null;
-        }
-        internal static IdentityType? ParseIdentityType(this string value)
-        {
-            switch( value )
-            {
-                case "None":
-                    return IdentityType.None;
-                case "SystemAssigned":
-                    return IdentityType.SystemAssigned;
-            }
-            return null;
-        }
+        /// <summary>
+        /// Indicates that any identity associated with the search service needs to be
+        /// removed.
+        /// </summary>
+        public const string None = "None";
+        /// <summary>
+        /// Indicates that system-assigned identity for the search service will be
+        /// enabled.
+        /// </summary>
+        public const string SystemAssigned = "SystemAssigned";
+        /// <summary>
+        /// Indicates that one or more user assigned identities will be assigned to the
+        /// search service.
+        /// </summary>
+        public const string UserAssigned = "UserAssigned";
+        /// <summary>
+        /// Indicates that system-assigned identity for the search service will be
+        /// enabled along with the assignment of one or more user assigned identities.
+        /// </summary>
+        public const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
     }
 }

@@ -112,24 +112,45 @@ function Test-RestoreDeletedDatabaseBackup
 	}
 }
 
-function Test-RestorePointInTimeBackup
+function Test-RestorePointInTimeBackup ([switch]$isRecording)
 {
 	# Setup
-	$location = "west europe"
+	$location = "eastus2euap"
 	$serverVersion = "12.0"
-	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
-	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$db = Get-AzSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb -ResourceGroupName $rg.ResourceGroupName
+	$rg = Create-ResourceGroupForTest
+	$databaseName = "powershell_db"
 	$restoredDbName = "powershell_db_restored"
 	$restoredVcoreDbName = "powershell_db_restored_vcore"
 
-	# Restore to same with source db
-	Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredDbName -ResourceGroupName $db.ResourceGroupName `
-	-ServerName $db.ServerName -ResourceId $db.ResourceId
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen5_2
 
-	# Restore to a Vcore db
-	Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
-		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen4'
+		while ($db.EarliestRestoreDate -eq $null)
+		{
+			$db = $db | Get-AzSqlDatabase 
+			
+			if ($isRecording)
+			{
+				Start-Sleep -Seconds 30
+			}
+		}
+
+		$pointInTime = $db.EarliestRestoreDate.ToString("s")
+
+		# Restore to same with source db
+		Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pointInTime -TargetDatabaseName $restoredDbName -ResourceGroupName $db.ResourceGroupName `
+		-ServerName $db.ServerName -ResourceId $db.ResourceId
+
+		# Restore to a Vcore db
+		Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pointInTime -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
+			-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen5'
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 # LTR-V1 restore tests need to be removed once the service is retired completely
@@ -147,10 +168,59 @@ function Test-RestoreLongTermRetentionBackup
 		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
 
-function Test-LongTermRetentionV2Policy($location = "southeastasia")
+function Test-LongTermRetentionLockImmutability
+{
+	# Prerequisite: create an LTR database with immutable, unlocked policy
+	# Wait 18 hours for first backup
+	# Then update the below with the location and resource group
+	# Note you will need multiple databases to update both remove and lock policy tests
+
+	$locationName = "eastus2euap"
+	$resourceGroup = "Default-ServiceBus-JapanWest"
+
+	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
+	$backupForLockImmutability = $backups | ?{$_.TimeBasedImmutability -eq "Enabled" -and $_.TimeBasedImmutabilityMode -eq "Unlocked"} | Select-Object -First 1
+	Assert-NotNull $backupForLockImmutability
+
+	$backupAfterLock = $backupForLockImmutability | Lock-AzSqlDatabaseLongTermRetentionBackupImmutability -Force -PassThru
+	Assert-AreEqual $backupAfterLock.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $backupAfterLock.TimeBasedImmutabilityMode "Locked"
+}
+
+function Test-LongTermRetentionRemoveImmutability
+{
+	# Prerequisite: create an LTR database with immutable, unlocked policy
+	# Wait 18 hours for first backup
+	# Then update the below with the location and resource group
+	# Note you will need multiple databases to update both remove and lock policy tests
+
+	$locationName = "eastus2euap"
+	$resourceGroup = "Default-ServiceBus-JapanWest"
+
+	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
+	$backupForRemoveImmutability = $backups | ?{$_.TimeBasedImmutability -eq "Enabled" -and $_.TimeBasedImmutabilityMode -eq "Unlocked"} | Select-Object -First 1
+	Assert-NotNull $backupForRemoveImmutability
+
+	$backupAfterRemove = $backupForRemoveImmutability | Remove-AzSqlDatabaseLongTermRetentionBackupImmutability -Force -PassThru
+	Assert-AreEqual $backupAfterRemove.TimeBasedImmutability "Disabled"
+}
+
+function Test-RemoveImmutability
+{
+	$location = "west europe"
+	$serverVersion = "12.0"
+	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
+	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_restored_ltr"
+	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
+
+    Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName `
+		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+}
+
+function Test-LongTermRetentionV2Policy($location = "eastus2euap")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 	$weeklyRetention1 = "P1W"
@@ -169,6 +239,7 @@ function Test-LongTermRetentionV2Policy($location = "southeastasia")
 		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention2
 		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
 		Assert-AreEqual $policy.YearlyRetention $emptyRetention
+		Assert-AreEqual $policy.TimeBasedImmutability "Disabled"
 
 		# Alias Policy Test
 		Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1
@@ -176,6 +247,34 @@ function Test-LongTermRetentionV2Policy($location = "southeastasia")
 		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention1
 		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
 		Assert-AreEqual $policy.YearlyRetention $emptyRetention
+		Assert-AreEqual $policy.TimeBasedImmutability "Disabled"
+
+		# Immutable Policy Test - Enabled Default
+		Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1 -TimeBasedImmutability "Enabled"
+		$policy = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention1
+		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
+		Assert-AreEqual $policy.YearlyRetention $emptyRetention
+		Assert-AreEqual $policy.TimeBasedImmutability "Enabled"
+		Assert-AreEqual $policy.TimeBasedImmutabilityMode "Unlocked"
+
+		# Immutable Policy Test - Enabled Unlocked
+		Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1 -TimeBasedImmutability "Enabled" -TimeBasedImmutabilityMode "Unlocked"
+		$policy = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention1
+		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
+		Assert-AreEqual $policy.YearlyRetention $emptyRetention
+		Assert-AreEqual $policy.TimeBasedImmutability "Enabled"
+		Assert-AreEqual $policy.TimeBasedImmutabilityMode "Unlocked"
+
+		# Immutable Policy Test - Enabled Locked
+		Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1 -TimeBasedImmutability "Enabled" -TimeBasedImmutabilityMode "Locked"
+		$policy = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention1
+		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
+		Assert-AreEqual $policy.YearlyRetention $emptyRetention
+		Assert-AreEqual $policy.TimeBasedImmutability "Enabled"
+		Assert-AreEqual $policy.TimeBasedImmutabilityMode "Locked"
 	}
 	finally
 	{
@@ -183,10 +282,9 @@ function Test-LongTermRetentionV2Policy($location = "southeastasia")
 	}
 }
 
-function Test-LongTermRetentionV2Backup($location = "southeastasia")
+function Test-LongTermRetentionV2Backup($location = "eastus2euap")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -210,10 +308,9 @@ function Test-LongTermRetentionV2Backup($location = "southeastasia")
 	}
 }
 
-function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeastasia")
+function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "eastus2euap")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -237,20 +334,17 @@ function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeast
 
 function Test-LongTermRetentionV2
 {
-
 	# MANUAL INSTRUCTIONS
 	# Create a server and database and fill in the appropriate information below
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
-	$resourceGroup = "brandong-test"
-	$locationName = "eastus"
-	$serverName = "brandong-ltr-test"
-	$databaseName = "testltr"
-	$weeklyRetention1 = "P1W"
-	$weeklyRetention2 = "P2W"
-	$restoredDatabase = "testdb5"
+	$resourceGroup = "Default-ServiceBus-JapanWest"
+	$locationName = "eastus2euap"
+	$serverName = "brandong-ltr-ps-test"
+	$databaseName = "testdb2"
+	$restoredDatabase = "testdb_restored"
 	$databaseWithRemovableBackup = "testdb";
 
 	# Basic Get Tests
@@ -293,19 +387,18 @@ function Test-LongTermRetentionV2
 
 function Test-LongTermRetentionV2ResourceGroupBased
 {
-
 	# MANUAL INSTRUCTIONS
 	# Create a server and database and fill in the appropriate information below
 	# Set the weekly retention on the database so that the first backup gets picked up, for example:
 	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroup = "brandong-test"
-	$locationName = "eastus"
-	$serverName = "brandong-ltr-test"
-	$databaseName = "testltr"
-	$restoredDatabase = "mydb_restore"
-	$databaseWithRemovableBackup = "testdb";
+	$resourceGroup = "Default-ServiceBus-JapanWest"
+	$locationName = "eastus2euap"
+	$serverName = "brandong-ltr-ps-test"
+	$databaseName = "testdb2"
+	$restoredDatabase = "testdb_restored"
+	$databaseWithRemovableBackup = "testdb2";
 
 	# Basic Get Tests
 	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
@@ -336,8 +429,33 @@ function Test-LongTermRetentionV2ResourceGroupBased
 	$db = Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -ServerName $serverName -TargetDatabaseName $restoredDatabase
 	Assert-AreEqual $db.DatabaseName $restoredDatabase
 
+	# Test Legal Hold with default parameters
+	$backupForLegalHold = $backups[0]
+
+	$backupForLegalHold = Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -Force -PassThru
+	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Enabled"
+
+	$backupForLegalHold = Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ForceDropExpired -Force -PassThru
+	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
+
+	# Test legal hold with ResourceId
+	$backupForLegalHold = Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -ResourceId $backupForLegalHold.ResourceId -Force -PassThru
+	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Enabled"
+
+	$backupForLegalHold = Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -ResourceId $backupForLegalHold.ResourceId -Force -ForceDropExpired -PassThru
+	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
+
+	# Test Legal Hold with input object piping
+	$backupForLegalHold = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup | Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Force -PassThru
+	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Enabled"
+
+	$backupForLegalHold = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Force -ForceDropExpired -PassThru
+	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
+
+	$removableBackup = Get-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseWithRemovableBackup | Get-AzSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
+
 	# Test Remove with Piping
-	Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackup -Force
+	Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $removableBackup.BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackup -Force
 
 	# drop the restored db
 	Remove-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $restoredDatabase -Force
@@ -443,21 +561,24 @@ function Test-RemoveDatabaseRestorePoint
 function Test-ShortTermRetentionPolicy
 {
 	# Setup
-	$location = "westus2"
-	$rg = "WestUS2ResourceGroup"
-	$server = "lillian-westus2-server"
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
 
  	try
 	{
 		# Create db with default values
-		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -Force:$true
+		$databaseName = "testdb"
+		$serverName = $server.ServerName
+        $resourceGroupName = $rg.ResourceGroupName
+
+		$db = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -Force:$true
 
 		# Test GET default values.
 		$defaultRetention = 7
 		# After we configure Backup Service's default DiffBackupIntervalInHours to 24 hours for new created databases, $defaultDiffbackupinterval should be changed to 24.
-		$defaultDiffbackupinterval = 12
-		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
+		$defaultDiffbackupinterval = 24
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $defaultRetention $policy[0].RetentionDays
 		Assert-AreEqual $defaultDiffbackupinterval $policy[0].DiffBackupIntervalInHours
@@ -465,19 +586,19 @@ function Test-ShortTermRetentionPolicy
  		# Test SET
 		$retention = 6
 		$diffbackupinterval = 24
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
 		$retentionOnly = 5
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retentionOnly
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -RetentionDays $retentionOnly
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retentionOnly $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
 		$diffbackupintervalOnly = 12
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -DiffBackupIntervalInHours $diffbackupintervalOnly
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -DiffBackupIntervalInHours $diffbackupintervalOnly
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retentionOnly $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupintervalOnly $policy[0].DiffBackupIntervalInHours
@@ -521,7 +642,7 @@ function Test-ShortTermRetentionPolicy
  	}
 	finally
 	{
-		Remove-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
+		Remove-ResourceGroupForTest $rg
 	}
 }
 

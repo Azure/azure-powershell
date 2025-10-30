@@ -94,8 +94,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Tenant&#39;, &#39;DelegatedServices&#39;</param>
 
         /// <param name="defaultOutboundAccess">Set this property to false to disable default outbound connectivity for all
-        /// VMs in the subnet. This property can only be set at the time of subnet
-        /// creation and cannot be updated for an existing subnet.
+        /// VMs in the subnet.
         /// </param>
 
         /// <param name="ipamPoolPrefixAllocations">A list of IPAM Pools for allocating IP address prefixes.
@@ -264,8 +263,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets set this property to false to disable default outbound
-        /// connectivity for all VMs in the subnet. This property can only be set at
-        /// the time of subnet creation and cannot be updated for an existing subnet.
+        /// connectivity for all VMs in the subnet.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultOutboundAccess")]
         public bool? DefaultOutboundAccess {get; set; }
