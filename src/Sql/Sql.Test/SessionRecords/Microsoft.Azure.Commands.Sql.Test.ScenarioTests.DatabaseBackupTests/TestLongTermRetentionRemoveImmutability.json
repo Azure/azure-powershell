@@ -1,0 +1,446 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionBackups?onlyLatestPerDatabase=false&api-version=2024-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1KYXBhbldlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcz9vbmx5TGF0ZXN0UGVyRGF0YWJhc2U9ZmFsc2UmYXBpLXZlcnNpb249MjAyNC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "53209815-28ec-4ee8-abd8-cbfa19b7fc62"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2125.47513",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f2502eab-c58a-4051-af26-4971a63f90e5"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=49ff0ff1-152e-4cc6-b4b7-5f2cb703bb9a/japanwest/9c6361e0-03f2-47b7-85fe-37050552db1b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "df37b014-848b-421d-b031-8baaef5de3e8"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANWEST:20251023T185711Z:df37b014-848b-421d-b031-8baaef5de3e8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: EB14A5630679402BBBFF2D8DD6B31C9B Ref B: BY1AA1072318062 Ref C: 2025-10-23T18:57:10Z"
+        ],
+        "Date": [
+          "Thu, 23 Oct 2025 18:57:10 GMT"
+        ],
+        "Content-Length": [
+          "13875"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb4\",\r\n        \"backupTime\": \"2025-10-17T08:03:03Z\",\r\n        \"backupExpirationTime\": \"2025-10-24T08:03:03Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": true,\r\n        \"timeBasedImmutability\": \"Enabled\",\r\n        \"timeBasedImmutabilityMode\": \"Locked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb4/longTermRetentionBackups/04d64399-bfbf-4a4e-8a5f-3d0a3156753f;134051617830000000;Hot\",\r\n      \"name\": \"04d64399-bfbf-4a4e-8a5f-3d0a3156753f;134051617830000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb6\",\r\n        \"backupTime\": \"2025-10-18T00:01:36Z\",\r\n        \"backupExpirationTime\": \"2025-10-25T00:01:36Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": true,\r\n        \"timeBasedImmutability\": \"Enabled\",\r\n        \"timeBasedImmutabilityMode\": \"Locked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb6/longTermRetentionBackups/be8d9b12-2e00-4745-b95e-47c6bd622853;134052192960000000;Hot\",\r\n      \"name\": \"be8d9b12-2e00-4745-b95e-47c6bd622853;134052192960000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb7\",\r\n        \"backupTime\": \"2025-10-20T12:03:34Z\",\r\n        \"backupExpirationTime\": \"2025-10-27T12:03:34Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": true,\r\n        \"timeBasedImmutability\": \"Enabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb7/longTermRetentionBackups/651e7330-1041-483e-be92-63eb54a0988c;134054354140000000;Hot\",\r\n      \"name\": \"651e7330-1041-483e-be92-63eb54a0988c;134054354140000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb5\",\r\n        \"backupTime\": \"2025-10-22T12:06:43Z\",\r\n        \"backupExpirationTime\": \"2025-10-29T12:06:43Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": true,\r\n        \"timeBasedImmutability\": \"Enabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb5/longTermRetentionBackups/56063a96-31ab-4590-a81b-ad66b42cc08c;134056084030000000;Hot\",\r\n      \"name\": \"56063a96-31ab-4590-a81b-ad66b42cc08c;134056084030000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb3\",\r\n        \"backupTime\": \"2025-10-16T20:01:22Z\",\r\n        \"backupExpirationTime\": \"2025-10-23T20:01:22Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": true,\r\n        \"timeBasedImmutability\": \"Enabled\",\r\n        \"timeBasedImmutabilityMode\": \"Locked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb3/longTermRetentionBackups/11eafcb6-cc7d-4b22-97c1-b8185af96efe;134051184820000000;Hot\",\r\n      \"name\": \"11eafcb6-cc7d-4b22-97c1-b8185af96efe;134051184820000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb\",\r\n        \"backupTime\": \"2025-10-19T02:06:55Z\",\r\n        \"backupExpirationTime\": \"2025-10-26T02:06:55Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb/longTermRetentionBackups/3205b6fc-b9d6-456b-ab55-4fa4fa2d32d8;134053132150000000;Hot\",\r\n      \"name\": \"3205b6fc-b9d6-456b-ab55-4fa4fa2d32d8;134053132150000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-09-01T14:03:31Z\",\r\n        \"backupExpirationTime\": \"2025-10-27T14:03:31Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134012090110000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134012090110000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-09-08T14:04:09Z\",\r\n        \"backupExpirationTime\": \"2025-11-03T14:04:09Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134018138490000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134018138490000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-09-15T14:01:33Z\",\r\n        \"backupExpirationTime\": \"2025-11-10T14:01:33Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134024184930000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134024184930000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-09-22T14:05:49Z\",\r\n        \"backupExpirationTime\": \"2025-11-17T14:05:49Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134030235490000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134030235490000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-09-29T14:06:04Z\",\r\n        \"backupExpirationTime\": \"2025-11-24T14:06:04Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134036283640000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134036283640000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-10-06T14:09:30Z\",\r\n        \"backupExpirationTime\": \"2025-12-01T14:09:30Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134042333700000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134042333700000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-10-13T14:09:46Z\",\r\n        \"backupExpirationTime\": \"2025-12-08T14:09:46Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134048381860000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134048381860000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testdb2\",\r\n        \"backupTime\": \"2025-10-20T14:00:49Z\",\r\n        \"backupExpirationTime\": \"2025-12-15T14:00:49Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb2/longTermRetentionBackups/ddce125a-339f-4f34-9b74-93b439813ddd;134054424490000000;Hot\",\r\n      \"name\": \"ddce125a-339f-4f34-9b74-93b439813ddd;134054424490000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testvldb\",\r\n        \"backupTime\": \"2025-10-21T17:31:15Z\",\r\n        \"backupExpirationTime\": \"2025-10-28T17:31:15Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": false,\r\n        \"timeBasedImmutability\": \"Disabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testvldb/longTermRetentionBackups/ad7bc1d8-9307-44ca-a4d6-1519b06250dd;134055414750000000;Hot\",\r\n      \"name\": \"ad7bc1d8-9307-44ca-a4d6-1519b06250dd;134055414750000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serverName\": \"brandong-ltr-ps-test\",\r\n        \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n        \"databaseName\": \"testvldb_pp1\",\r\n        \"backupTime\": \"2025-10-20T05:25:37Z\",\r\n        \"backupExpirationTime\": \"2025-10-27T05:25:37Z\",\r\n        \"backupStorageRedundancy\": \"Geo\",\r\n        \"isBackupImmutable\": true,\r\n        \"timeBasedImmutability\": \"Enabled\",\r\n        \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n        \"legalHoldImmutability\": \"Disabled\"\r\n      },\r\n      \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testvldb_pp1/longTermRetentionBackups/3468a3d5-6cf9-4a68-a8a9-103ab36cfe4b;134054115370000000;Hot\",\r\n      \"name\": \"3468a3d5-6cf9-4a68-a8a9-103ab36cfe4b;134054115370000000;Hot\",\r\n      \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb7/longTermRetentionBackups/651e7330-1041-483e-be92-63eb54a0988c%3B134054354140000000%3BHot?api-version=2024-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1KYXBhbldlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL2xvbmdUZXJtUmV0ZW50aW9uU2VydmVycy9icmFuZG9uZy1sdHItcHMtdGVzdC9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy90ZXN0ZGI3L2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcy82NTFlNzMzMC0xMDQxLTQ4M2UtYmU5Mi02M2ViNTRhMDk4OGMlM0IxMzQwNTQzNTQxNDAwMDAwMDAlM0JIb3Q/YXBpLXZlcnNpb249MjAyNC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "39b2ebbe-dda9-41ae-96b6-2474dbfc3e6c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2125.47513",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5ec0af2d-a185-4632-b453-0dce7f4fda34"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=49ff0ff1-152e-4cc6-b4b7-5f2cb703bb9a/japanwest/bfa112f3-3c7f-4481-8bc6-764326845030"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc83d38c-20b1-4905-9b68-809e36e00bd2"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANWEST:20251023T185712Z:dc83d38c-20b1-4905-9b68-809e36e00bd2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: ED60CE6D3DA2408BABDED99362FC5717 Ref B: BY1AA1072316034 Ref C: 2025-10-23T18:57:11Z"
+        ],
+        "Date": [
+          "Thu, 23 Oct 2025 18:57:11 GMT"
+        ],
+        "Content-Length": [
+          "864"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"serverName\": \"brandong-ltr-ps-test\",\r\n    \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n    \"databaseName\": \"testdb7\",\r\n    \"backupTime\": \"2025-10-20T12:03:34Z\",\r\n    \"backupExpirationTime\": \"2025-10-27T12:03:34Z\",\r\n    \"backupStorageRedundancy\": \"Geo\",\r\n    \"isBackupImmutable\": true,\r\n    \"timeBasedImmutability\": \"Enabled\",\r\n    \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n    \"legalHoldImmutability\": \"Disabled\"\r\n  },\r\n  \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb7/longTermRetentionBackups/651e7330-1041-483e-be92-63eb54a0988c;134054354140000000;Hot\",\r\n  \"name\": \"651e7330-1041-483e-be92-63eb54a0988c;134054354140000000;Hot\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb7/longTermRetentionBackups/651e7330-1041-483e-be92-63eb54a0988c%3B134054354140000000%3BHot?api-version=2024-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1KYXBhbldlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL2xvbmdUZXJtUmV0ZW50aW9uU2VydmVycy9icmFuZG9uZy1sdHItcHMtdGVzdC9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy90ZXN0ZGI3L2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcy82NTFlNzMzMC0xMDQxLTQ4M2UtYmU5Mi02M2ViNTRhMDk4OGMlM0IxMzQwNTQzNTQxNDAwMDAwMDAlM0JIb3Q/YXBpLXZlcnNpb249MjAyNC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "39b2ebbe-dda9-41ae-96b6-2474dbfc3e6c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2125.47513",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bba0d042-cb3b-45f3-897b-24e80dff2b75"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=49ff0ff1-152e-4cc6-b4b7-5f2cb703bb9a/westus/a34ef2a7-4b22-4981-a85a-fcfa6af75feb"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "c186af5a-adb9-4622-98de-2066f2d47044"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20251023T185732Z:c186af5a-adb9-4622-98de-2066f2d47044"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0B94CEB3EDFD45B19323E1430D95A45A Ref B: BY1AA1072320042 Ref C: 2025-10-23T18:57:31Z"
+        ],
+        "Date": [
+          "Thu, 23 Oct 2025 18:57:31 GMT"
+        ],
+        "Content-Length": [
+          "866"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"serverName\": \"brandong-ltr-ps-test\",\r\n    \"serverCreateTime\": \"2025-07-29T19:28:46.497Z\",\r\n    \"databaseName\": \"testdb7\",\r\n    \"backupTime\": \"2025-10-20T12:03:34Z\",\r\n    \"backupExpirationTime\": \"2025-10-27T12:03:34Z\",\r\n    \"backupStorageRedundancy\": \"Geo\",\r\n    \"isBackupImmutable\": false,\r\n    \"timeBasedImmutability\": \"Disabled\",\r\n    \"timeBasedImmutabilityMode\": \"Unlocked\",\r\n    \"legalHoldImmutability\": \"Disabled\"\r\n  },\r\n  \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb7/longTermRetentionBackups/651e7330-1041-483e-be92-63eb54a0988c;134054354140000000;Hot\",\r\n  \"name\": \"651e7330-1041-483e-be92-63eb54a0988c;134054354140000000;Hot\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb7/longTermRetentionBackups/651e7330-1041-483e-be92-63eb54a0988c%3B134054354140000000%3BHot/removeTimeBasedImmutability?api-version=2024-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtU2VydmljZUJ1cy1KYXBhbldlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL2xvbmdUZXJtUmV0ZW50aW9uU2VydmVycy9icmFuZG9uZy1sdHItcHMtdGVzdC9sb25nVGVybVJldGVudGlvbkRhdGFiYXNlcy90ZXN0ZGI3L2xvbmdUZXJtUmV0ZW50aW9uQmFja3Vwcy82NTFlNzMzMC0xMDQxLTQ4M2UtYmU5Mi02M2ViNTRhMDk4OGMlM0IxMzQwNTQzNTQxNDAwMDAwMDAlM0JIb3QvcmVtb3ZlVGltZUJhc2VkSW1tdXRhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMjQtMTEtMDEtcHJldmlldw==",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "39b2ebbe-dda9-41ae-96b6-2474dbfc3e6c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2125.47513",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionBackupOperationResults/cb3ec3ca-c736-4b11-87d9-835bb2eeed99?api-version=2024-11-01-preview&t=638968426339520944&c=MIIHhzCCBm-gAwIBAgITHgeONrkvvDF-KOUKmQAAB442uTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUxMDIxMDkzMzMwWhcNMjYwNDE5MDkzMzMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKj8sXciRcTbwfWoj6eKyZGZZ90KjSSvPdA7RvdHQXjIgNAuK06_J7nNSIrb-LgA3hM5-dtWb3V1CUNu4HaEfEm2jBfp6_w_xL7Vecqi-h5ds51pQn2ukGV9nzAllezJdQ3U7d48iAejPlXuuLPsKcd1mfDFClEpEmDl3ShqiNWsS6lCJ4AUjtfj86gpczzOBJd_iQX-yqlgOtB482-j32czRVVjezsX1kMjlHiSnXnL-PZmNXaEN4u4qVVsvkO86kaUNcFym4gJ3LXKHyb3BRyKfdb7hAViE7LnNzksGtO9wxpiqLGYaXWIv9B-1xnStChh2HhyxZx-EXx0-t44sAUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTX452-c7wRUQoAXT3x-hp70TLqkTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM24e7LTzWG5MId16-NnoIzj-_6HciKs-bljcyHexp0vYYPcTvY59442EMiOm1HFqPNMj7u14-enLnfiMnHzSJfrqAuwt0gVL0bsMpuG99mUXfiMfeBPCIcgDY908JH-sB3wfd8rJgSN2kx9oLYrUJCDIlKbPXyunKbbPrAwc1OQiOqlDESU6JuelNzdSzrVKRbbwxhqNIyFmDsl6fXxKrN4nElhM4xNHVN1RBQ6iOnNHEVnOa0dQW0hlm8SQ2xRVfrsWNnLsGYfau5zYzP-Eag56nSQ5ZYfFvFsCKf2YRu7YmbKZBDNGIV1RbpuI5W67PuqkHq80aJhtw-ne696KDQ&s=a6BFg_D0BV5YBsE-jPWjZjyIi3X0TKV_OBU2eX1MImqO7oL9J4EZ0HMD27tLQNfeT3_sRdpR1BSn98iqDhf2FnPHQYqQe8dYhzT_CtSAb7qA1VQmXA6T3tug_fe8iHWItLYWQ-fDlqcEuKc0pqMByllguPdD25VxRIiWHICHPo_8nN7mxTXVycTAoBpb4SxnzqOyT7Io0TOws5-u0fQ6oKYQCkAHsyZ_BUXy4y6ZZRzCqPcj8ovF0T8UWJ9KP0aadw-fEZEmyJGfEAOfaXs7FwC8DBJ8jHc46Art7MA49-duTlieMGSJ5TtFJILrK4iAyytn2uy1rqjb00zUwFsS-A&h=2cqWQLFqR65DJ5Y_HBDP2QA4CecCYp_miExu_0hZJLU"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionBackupAzureAsyncOperation/cb3ec3ca-c736-4b11-87d9-835bb2eeed99?api-version=2024-11-01-preview&t=638968426339364742&c=MIIHhzCCBm-gAwIBAgITHgeONrkvvDF-KOUKmQAAB442uTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUxMDIxMDkzMzMwWhcNMjYwNDE5MDkzMzMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKj8sXciRcTbwfWoj6eKyZGZZ90KjSSvPdA7RvdHQXjIgNAuK06_J7nNSIrb-LgA3hM5-dtWb3V1CUNu4HaEfEm2jBfp6_w_xL7Vecqi-h5ds51pQn2ukGV9nzAllezJdQ3U7d48iAejPlXuuLPsKcd1mfDFClEpEmDl3ShqiNWsS6lCJ4AUjtfj86gpczzOBJd_iQX-yqlgOtB482-j32czRVVjezsX1kMjlHiSnXnL-PZmNXaEN4u4qVVsvkO86kaUNcFym4gJ3LXKHyb3BRyKfdb7hAViE7LnNzksGtO9wxpiqLGYaXWIv9B-1xnStChh2HhyxZx-EXx0-t44sAUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTX452-c7wRUQoAXT3x-hp70TLqkTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM24e7LTzWG5MId16-NnoIzj-_6HciKs-bljcyHexp0vYYPcTvY59442EMiOm1HFqPNMj7u14-enLnfiMnHzSJfrqAuwt0gVL0bsMpuG99mUXfiMfeBPCIcgDY908JH-sB3wfd8rJgSN2kx9oLYrUJCDIlKbPXyunKbbPrAwc1OQiOqlDESU6JuelNzdSzrVKRbbwxhqNIyFmDsl6fXxKrN4nElhM4xNHVN1RBQ6iOnNHEVnOa0dQW0hlm8SQ2xRVfrsWNnLsGYfau5zYzP-Eag56nSQ5ZYfFvFsCKf2YRu7YmbKZBDNGIV1RbpuI5W67PuqkHq80aJhtw-ne696KDQ&s=qJZ81nYyVeT441ATk4S1nwXXZj8A8S7nhuJj_XwKzfFnO9lloyrD-hshZGtLj2WuRnYQeu2YA51oKUKULjZoaGMcIoRDmr_-Qh_5EBWYnPJuk1wvB3Y9Slq2kjwhDiSHWS1FcS0gh14KFOISDNoqWGVeKGIFRjfHSPwADPP8vUDYfyqGzm5waVhUWznFspKLrxQPkvuFBXKVT4DK6x1ZgWHhreI6RJ4LMB2OmrEstlvuzEh0ETwi5LI_1uP7bXTtOwFOPNvouzTHNEaGZiG6LkNGBoUX7BGeEMxP8ll73UDDD3vSz_klI-b0va6rfXydWrAgJ_hp2vkFv_Ia7UQQ8w&h=_NLiqZ4b9gEHGVys0oPKdyPo9zB-Nmi5wATFlnjjRRE"
+        ],
+        "x-ms-request-id": [
+          "cb3ec3ca-c736-4b11-87d9-835bb2eeed99"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=49ff0ff1-152e-4cc6-b4b7-5f2cb703bb9a/japanwest/998c5b87-9321-4e73-bd51-99b0a476ce46"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "aa82eb7c-5bed-426c-b414-2b75e9127869"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANWEST:20251023T185713Z:aa82eb7c-5bed-426c-b414-2b75e9127869"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: AC49A745420D4904830198FDA76EC330 Ref B: BY1AA1072318042 Ref C: 2025-10-23T18:57:12Z"
+        ],
+        "Date": [
+          "Thu, 23 Oct 2025 18:57:13 GMT"
+        ],
+        "Content-Length": [
+          "73"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"RemoveImmutability\",\r\n  \"startTime\": \"2025-10-23T18:57:13.813Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionBackupAzureAsyncOperation/cb3ec3ca-c736-4b11-87d9-835bb2eeed99?api-version=2024-11-01-preview&t=638968426339364742&c=MIIHhzCCBm-gAwIBAgITHgeONrkvvDF-KOUKmQAAB442uTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUxMDIxMDkzMzMwWhcNMjYwNDE5MDkzMzMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKj8sXciRcTbwfWoj6eKyZGZZ90KjSSvPdA7RvdHQXjIgNAuK06_J7nNSIrb-LgA3hM5-dtWb3V1CUNu4HaEfEm2jBfp6_w_xL7Vecqi-h5ds51pQn2ukGV9nzAllezJdQ3U7d48iAejPlXuuLPsKcd1mfDFClEpEmDl3ShqiNWsS6lCJ4AUjtfj86gpczzOBJd_iQX-yqlgOtB482-j32czRVVjezsX1kMjlHiSnXnL-PZmNXaEN4u4qVVsvkO86kaUNcFym4gJ3LXKHyb3BRyKfdb7hAViE7LnNzksGtO9wxpiqLGYaXWIv9B-1xnStChh2HhyxZx-EXx0-t44sAUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTX452-c7wRUQoAXT3x-hp70TLqkTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM24e7LTzWG5MId16-NnoIzj-_6HciKs-bljcyHexp0vYYPcTvY59442EMiOm1HFqPNMj7u14-enLnfiMnHzSJfrqAuwt0gVL0bsMpuG99mUXfiMfeBPCIcgDY908JH-sB3wfd8rJgSN2kx9oLYrUJCDIlKbPXyunKbbPrAwc1OQiOqlDESU6JuelNzdSzrVKRbbwxhqNIyFmDsl6fXxKrN4nElhM4xNHVN1RBQ6iOnNHEVnOa0dQW0hlm8SQ2xRVfrsWNnLsGYfau5zYzP-Eag56nSQ5ZYfFvFsCKf2YRu7YmbKZBDNGIV1RbpuI5W67PuqkHq80aJhtw-ne696KDQ&s=qJZ81nYyVeT441ATk4S1nwXXZj8A8S7nhuJj_XwKzfFnO9lloyrD-hshZGtLj2WuRnYQeu2YA51oKUKULjZoaGMcIoRDmr_-Qh_5EBWYnPJuk1wvB3Y9Slq2kjwhDiSHWS1FcS0gh14KFOISDNoqWGVeKGIFRjfHSPwADPP8vUDYfyqGzm5waVhUWznFspKLrxQPkvuFBXKVT4DK6x1ZgWHhreI6RJ4LMB2OmrEstlvuzEh0ETwi5LI_1uP7bXTtOwFOPNvouzTHNEaGZiG6LkNGBoUX7BGeEMxP8ll73UDDD3vSz_klI-b0va6rfXydWrAgJ_hp2vkFv_Ia7UQQ8w&h=_NLiqZ4b9gEHGVys0oPKdyPo9zB-Nmi5wATFlnjjRRE",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9lYXN0dXMyZXVhcC9sb25nVGVybVJldGVudGlvbkJhY2t1cEF6dXJlQXN5bmNPcGVyYXRpb24vY2IzZWMzY2EtYzczNi00YjExLTg3ZDktODM1YmIyZWVlZDk5P2FwaS12ZXJzaW9uPTIwMjQtMTEtMDEtcHJldmlldyZ0PTYzODk2ODQyNjMzOTM2NDc0MiZjPU1JSUhoekNDQm0tZ0F3SUJBZ0lUSGdlT05ya3Z2REYtS09VS21RQUFCNDQydVRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01EWXdIaGNOTWpVeE1ESXhNRGt6TXpNd1doY05Nall3TkRFNU1Ea3pNek13V2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUtqOHNYY2lSY1Rid2ZXb2o2ZUt5WkdaWjkwS2pTU3ZQZEE3UnZkSFFYaklnTkF1SzA2X0o3bk5TSXJiLUxnQTNoTTUtZHRXYjNWMUNVTnU0SGFFZkVtMmpCZnA2X3dfeEw3VmVjcWktaDVkczUxcFFuMnVrR1Y5bnpBbGxlekpkUTNVN2Q0OGlBZWpQbFh1dUxQc0tjZDFtZkRGQ2xFcEVtRGwzU2hxaU5Xc1M2bENKNEFVanRmajg2Z3BjenpPQkpkX2lRWC15cWxnT3RCNDgyLWozMmN6UlZWamV6c1gxa01qbEhpU25YbkwtUFptTlhhRU40dTRxVlZzdmtPODZrYVVOY0Z5bTRnSjNMWEtIeWIzQlJ5S2ZkYjdoQVZpRTdMbk56a3NHdE85d3hwaXFMR1lhWFdJdjlCLTF4blN0Q2hoMkhoeXhaeC1FWHgwLXQ0NHNBVUNBd0VBQWFPQ0JIUXdnZ1J3TUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnaGZtUlM0V3NtVFFDQVdRQ0FRY3dnZ0hMQmdnckJnRUZCUWNCQVFTQ0FiMHdnZ0c1TUdNR0NDc0dBUVVGQnpBQ2hsZG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01pNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOaTVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXd4TG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREl1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSjBNRk1HQ0NzR0FRVUZCekFDaGtkb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeUxrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQTJMbU55ZERCVEJnZ3JCZ0VGQlFjd0FvWkhhSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNaTVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3Tmk1amNuUXdVd1lJS3dZQkJRVUhNQUtHUjJoMGRIQTZMeTlqY213MExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURJdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0owTUIwR0ExVWREZ1FXQkJUWDQ1Mi1jN3dSVVFvQVhUM3gtaHA3MFRMcWtUQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRW1CZ05WSFI4RWdnRWRNSUlCR1RDQ0FSV2dnZ0VSb0lJQkRZWV9hSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNaTVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0pzaGpGb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc01JR2RCZ05WSFNBRWdaVXdnWkl3REFZS0t3WUJCQUdDTjNzQkFUQm1CZ29yQmdFRUFZSTNld0lDTUZnd1ZnWUlLd1lCQlFVSEFnSXdTaDVJQURNQU13QmxBREFBTVFBNUFESUFNUUF0QURRQVpBQTJBRFFBTFFBMEFHWUFPQUJqQUMwQVlRQXdBRFVBTlFBdEFEVUFZZ0JrQUdFQVpnQm1BR1FBTlFCbEFETUFNd0JrTUF3R0Npc0dBUVFCZ2pkN0F3SXdEQVlLS3dZQkJBR0NOM3NFQWpBZkJnTlZIU01FR0RBV2dCVHhSbWpHOGNQd0t5MTlpMnJoc3ZtLU5melJRVEFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFNMjRlN0xUeldHNU1JZDE2LU5ub0l6ai1fNkhjaUtzLWJsamN5SGV4cDB2WVlQY1R2WTU5NDQyRU1pT20xSEZxUE5Najd1MTQtZW5MbmZpTW5IelNKZnJxQXV3dDBnVkwwYnNNcHVHOTltVVhmaU1mZUJQQ0ljZ0RZOTA4Skgtc0Izd2ZkOHJKZ1NOMmt4OW9MWXJVSkNESWxLYlBYeXVuS2JiUHJBd2MxT1FpT3FsREVTVTZKdWVsTnpkU3pyVktSYmJ3eGhxTkl5Rm1Ec2w2Zlh4S3JONG5FbGhNNHhOSFZOMVJCUTZpT25OSEVWbk9hMGRRVzBobG04U1EyeFJWZnJzV05uTHNHWWZhdTV6WXpQLUVhZzU2blNRNVpZZkZ2RnNDS2YyWVJ1N1ltYktaQkROR0lWMVJicHVJNVc2N1B1cWtIcTgwYUpodHctbmU2OTZLRFEmcz1xSlo4MW5ZeVZlVDQ0MUFUazRTMW53WFhaajhBOFM3bmh1SmpfWHdLemZGbk85bGxveXJELWhzaFpHdExqMld1Um5ZUWV1MllBNTFvS1VLVUxqWm9hR01jSW9SRG1yXy1RaF81RUJXWW5QSnVrMXd2QjNZOVNscTJrandoRGlTSFdTMUZjUzBnaDE0S0ZPSVNETm9xV0dWZUtHSUZSamZIU1B3QURQUDh2VURZZnlxR3ptNXdhVmhVV3puRnNwS0xyeFFQa3Z1RkJYS1ZUNERLNngxWmdXSGhyZUk2Uko0TE1CMk9tckVzdGx2dXpFaDBFVHdpNUxJXzF1UDdiWFR0T3dGT1BOdm91elRITkVhR1ppRzZMa05HQm9VWDdCR2VFTXhQOGxsNzNVREREM3ZTel9rbEktYjB2YTZyZlh5ZFdyQWdKX2hwMnZrRnZfSWE3VVFROHcmaD1fTkxpcVo0YjlnRUhHVnlzMG9QS2R5UG85ekItTm1pNXdBVEZsbmpqUlJF",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "39b2ebbe-dda9-41ae-96b6-2474dbfc3e6c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2125.47513",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "f487abed-55ba-4bc4-b3a6-cae91ab3bd0e"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=49ff0ff1-152e-4cc6-b4b7-5f2cb703bb9a/japanwest/d68dd813-83aa-49cf-9cbd-dedf21418955"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "af63ca4d-eea6-4348-8c74-df558abc3331"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANWEST:20251023T185729Z:af63ca4d-eea6-4348-8c74-df558abc3331"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6053DFAB9DB84870BB7922BE8CCECB57 Ref B: BY1AA1072318042 Ref C: 2025-10-23T18:57:29Z"
+        ],
+        "Date": [
+          "Thu, 23 Oct 2025 18:57:28 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"cb3ec3ca-c736-4b11-87d9-835bb2eeed99\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2025-10-23T18:57:13.813Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/providers/Microsoft.Sql/locations/eastus2euap/longTermRetentionBackupOperationResults/cb3ec3ca-c736-4b11-87d9-835bb2eeed99?api-version=2024-11-01-preview&t=638968426339520944&c=MIIHhzCCBm-gAwIBAgITHgeONrkvvDF-KOUKmQAAB442uTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjUxMDIxMDkzMzMwWhcNMjYwNDE5MDkzMzMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKj8sXciRcTbwfWoj6eKyZGZZ90KjSSvPdA7RvdHQXjIgNAuK06_J7nNSIrb-LgA3hM5-dtWb3V1CUNu4HaEfEm2jBfp6_w_xL7Vecqi-h5ds51pQn2ukGV9nzAllezJdQ3U7d48iAejPlXuuLPsKcd1mfDFClEpEmDl3ShqiNWsS6lCJ4AUjtfj86gpczzOBJd_iQX-yqlgOtB482-j32czRVVjezsX1kMjlHiSnXnL-PZmNXaEN4u4qVVsvkO86kaUNcFym4gJ3LXKHyb3BRyKfdb7hAViE7LnNzksGtO9wxpiqLGYaXWIv9B-1xnStChh2HhyxZx-EXx0-t44sAUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTX452-c7wRUQoAXT3x-hp70TLqkTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM24e7LTzWG5MId16-NnoIzj-_6HciKs-bljcyHexp0vYYPcTvY59442EMiOm1HFqPNMj7u14-enLnfiMnHzSJfrqAuwt0gVL0bsMpuG99mUXfiMfeBPCIcgDY908JH-sB3wfd8rJgSN2kx9oLYrUJCDIlKbPXyunKbbPrAwc1OQiOqlDESU6JuelNzdSzrVKRbbwxhqNIyFmDsl6fXxKrN4nElhM4xNHVN1RBQ6iOnNHEVnOa0dQW0hlm8SQ2xRVfrsWNnLsGYfau5zYzP-Eag56nSQ5ZYfFvFsCKf2YRu7YmbKZBDNGIV1RbpuI5W67PuqkHq80aJhtw-ne696KDQ&s=a6BFg_D0BV5YBsE-jPWjZjyIi3X0TKV_OBU2eX1MImqO7oL9J4EZ0HMD27tLQNfeT3_sRdpR1BSn98iqDhf2FnPHQYqQe8dYhzT_CtSAb7qA1VQmXA6T3tug_fe8iHWItLYWQ-fDlqcEuKc0pqMByllguPdD25VxRIiWHICHPo_8nN7mxTXVycTAoBpb4SxnzqOyT7Io0TOws5-u0fQ6oKYQCkAHsyZ_BUXy4y6ZZRzCqPcj8ovF0T8UWJ9KP0aadw-fEZEmyJGfEAOfaXs7FwC8DBJ8jHc46Art7MA49-duTlieMGSJ5TtFJILrK4iAyytn2uy1rqjb00zUwFsS-A&h=2cqWQLFqR65DJ5Y_HBDP2QA4CecCYp_miExu_0hZJLU",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9lYXN0dXMyZXVhcC9sb25nVGVybVJldGVudGlvbkJhY2t1cE9wZXJhdGlvblJlc3VsdHMvY2IzZWMzY2EtYzczNi00YjExLTg3ZDktODM1YmIyZWVlZDk5P2FwaS12ZXJzaW9uPTIwMjQtMTEtMDEtcHJldmlldyZ0PTYzODk2ODQyNjMzOTUyMDk0NCZjPU1JSUhoekNDQm0tZ0F3SUJBZ0lUSGdlT05ya3Z2REYtS09VS21RQUFCNDQydVRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01EWXdIaGNOTWpVeE1ESXhNRGt6TXpNd1doY05Nall3TkRFNU1Ea3pNek13V2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUtqOHNYY2lSY1Rid2ZXb2o2ZUt5WkdaWjkwS2pTU3ZQZEE3UnZkSFFYaklnTkF1SzA2X0o3bk5TSXJiLUxnQTNoTTUtZHRXYjNWMUNVTnU0SGFFZkVtMmpCZnA2X3dfeEw3VmVjcWktaDVkczUxcFFuMnVrR1Y5bnpBbGxlekpkUTNVN2Q0OGlBZWpQbFh1dUxQc0tjZDFtZkRGQ2xFcEVtRGwzU2hxaU5Xc1M2bENKNEFVanRmajg2Z3BjenpPQkpkX2lRWC15cWxnT3RCNDgyLWozMmN6UlZWamV6c1gxa01qbEhpU25YbkwtUFptTlhhRU40dTRxVlZzdmtPODZrYVVOY0Z5bTRnSjNMWEtIeWIzQlJ5S2ZkYjdoQVZpRTdMbk56a3NHdE85d3hwaXFMR1lhWFdJdjlCLTF4blN0Q2hoMkhoeXhaeC1FWHgwLXQ0NHNBVUNBd0VBQWFPQ0JIUXdnZ1J3TUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnaGZtUlM0V3NtVFFDQVdRQ0FRY3dnZ0hMQmdnckJnRUZCUWNCQVFTQ0FiMHdnZ0c1TUdNR0NDc0dBUVVGQnpBQ2hsZG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01pNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOaTVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXd4TG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREl1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSjBNRk1HQ0NzR0FRVUZCekFDaGtkb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeUxrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQTJMbU55ZERCVEJnZ3JCZ0VGQlFjd0FvWkhhSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNaTVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3Tmk1amNuUXdVd1lJS3dZQkJRVUhNQUtHUjJoMGRIQTZMeTlqY213MExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURJdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0owTUIwR0ExVWREZ1FXQkJUWDQ1Mi1jN3dSVVFvQVhUM3gtaHA3MFRMcWtUQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRW1CZ05WSFI4RWdnRWRNSUlCR1RDQ0FSV2dnZ0VSb0lJQkRZWV9hSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNaTVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0pzaGpGb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc01JR2RCZ05WSFNBRWdaVXdnWkl3REFZS0t3WUJCQUdDTjNzQkFUQm1CZ29yQmdFRUFZSTNld0lDTUZnd1ZnWUlLd1lCQlFVSEFnSXdTaDVJQURNQU13QmxBREFBTVFBNUFESUFNUUF0QURRQVpBQTJBRFFBTFFBMEFHWUFPQUJqQUMwQVlRQXdBRFVBTlFBdEFEVUFZZ0JrQUdFQVpnQm1BR1FBTlFCbEFETUFNd0JrTUF3R0Npc0dBUVFCZ2pkN0F3SXdEQVlLS3dZQkJBR0NOM3NFQWpBZkJnTlZIU01FR0RBV2dCVHhSbWpHOGNQd0t5MTlpMnJoc3ZtLU5melJRVEFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFNMjRlN0xUeldHNU1JZDE2LU5ub0l6ai1fNkhjaUtzLWJsamN5SGV4cDB2WVlQY1R2WTU5NDQyRU1pT20xSEZxUE5Najd1MTQtZW5MbmZpTW5IelNKZnJxQXV3dDBnVkwwYnNNcHVHOTltVVhmaU1mZUJQQ0ljZ0RZOTA4Skgtc0Izd2ZkOHJKZ1NOMmt4OW9MWXJVSkNESWxLYlBYeXVuS2JiUHJBd2MxT1FpT3FsREVTVTZKdWVsTnpkU3pyVktSYmJ3eGhxTkl5Rm1Ec2w2Zlh4S3JONG5FbGhNNHhOSFZOMVJCUTZpT25OSEVWbk9hMGRRVzBobG04U1EyeFJWZnJzV05uTHNHWWZhdTV6WXpQLUVhZzU2blNRNVpZZkZ2RnNDS2YyWVJ1N1ltYktaQkROR0lWMVJicHVJNVc2N1B1cWtIcTgwYUpodHctbmU2OTZLRFEmcz1hNkJGZ19EMEJWNVlCc0UtalBXalpqeUlpM1gwVEtWX09CVTJlWDFNSW1xTzdvTDlKNEVaMEhNRDI3dExRTmZlVDNfc1JkcFIxQlNuOThpcURoZjJGblBIUVlxUWU4ZFloelRfQ3RTQWI3cUExVlFtWEE2VDN0dWdfZmU4aUhXSXRMWVdRLWZEbHFjRXVLYzBwcU1CeWxsZ3VQZEQyNVZ4UklpV0hJQ0hQb184bk43bXhUWFZ5Y1RBb0JwYjRTeG56cU95VDdJbzBUT3dzNS11MGZRNm9LWVFDa0FIc3laX0JVWHk0eTZaWlJ6Q3FQY2o4b3ZGMFQ4VVdKOUtQMGFhZHctZkVaRW15SkdmRUFPZmFYczdGd0M4REJKOGpIYzQ2QXJ0N01BNDktZHVUbGllTUdTSjVUdEZKSUxySzRpQXl5dG4ydXkxcnFqYjAwelV3RnNTLUEmaD0yY3FXUUxGcVI2NURKNVlfSEJEUDJRQTRDZWNDWXBfbWlFeHVfMGhaSkxV",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "39b2ebbe-dda9-41ae-96b6-2474dbfc3e6c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2125.47513",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "daae8e9d-7480-4068-8af6-11ef95ec3d7b"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=49ff0ff1-152e-4cc6-b4b7-5f2cb703bb9a/westus/29b03cca-d704-438b-b48c-3e293a243c83"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "13a5e5ac-19cf-417f-87ce-b7af80364a68"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20251023T185730Z:13a5e5ac-19cf-417f-87ce-b7af80364a68"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 85E35B16980C4B2A88CDFE92EC2E0A8D Ref B: BY1AA1072318042 Ref C: 2025-10-23T18:57:29Z"
+        ],
+        "Date": [
+          "Thu, 23 Oct 2025 18:57:29 GMT"
+        ],
+        "Content-Length": [
+          "809"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"requestId\": \"cb3ec3ca-c736-4b11-87d9-835bb2eeed99\",\r\n    \"operationType\": \"RemoveImmutability\",\r\n    \"fromBackupResourceId\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/East US 2 EUAP/longTermRetentionServers/brandong-ltr-ps-test/longTermRetentionDatabases/testdb7/longTermRetentionBackups/651e7330-1041-483e-be92-63eb54a0988c;134057194503429963;Hot\",\r\n    \"status\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/Default-ServiceBus-JapanWest/providers/Microsoft.Sql/locations/East US 2 EUAP/longTermRetentionBackupOperationResults/cb3ec3ca-c736-4b11-87d9-835bb2eeed99\",\r\n  \"name\": \"cb3ec3ca-c736-4b11-87d9-835bb2eeed99\",\r\n  \"type\": \"Microsoft.Sql/locations/longTermRetentionBackupOperationResults\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b75889fa-6661-44e0-a844-cd96ec938991"
+  }
+}

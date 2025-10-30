@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIsDeviceMatchConditionParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleIsDeviceConditionInternal.Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IsDeviceMatchConditionParameters()); set { {_parameter = value;} } }
 
         /// <summary>Internal Acessors for ParameterOperator</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleIsDeviceConditionInternal.ParameterOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIsDeviceMatchConditionParametersInternal)Parameter).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIsDeviceMatchConditionParametersInternal)Parameter).Operator = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleIsDeviceConditionInternal.ParameterOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIsDeviceMatchConditionParametersInternal)Parameter).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIsDeviceMatchConditionParametersInternal)Parameter).Operator = value ; }
 
         /// <summary>The name of the condition for the delivery rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Constant]

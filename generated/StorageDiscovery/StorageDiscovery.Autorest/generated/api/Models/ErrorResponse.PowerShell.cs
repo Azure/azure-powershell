@@ -106,14 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetailTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Detail"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetailTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("AdditionalInfo"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            }
             if (content.Contains("Code"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
@@ -125,6 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             if (content.Contains("Target"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -147,14 +147,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetailTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Detail"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetailTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("AdditionalInfo"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
-            }
             if (content.Contains("Code"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Code, global::System.Convert.ToString);
@@ -166,6 +158,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             if (content.Contains("Target"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponseInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

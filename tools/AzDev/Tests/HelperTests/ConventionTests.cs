@@ -241,4 +241,19 @@ public class ConventionTests
         sdkModule = new Module() {Projects = new List<Project> {sdkProj, track1SdkProj}};
         Assert.Equal(ModuleType.SdkBased, Conventions.DeductModuleType(sdkModule.Projects, out _));
     }
+
+    [Theory]
+    [InlineData("", "v4")] // empty defaults to v4
+    [InlineData("3.0.0", "v3")]
+    [InlineData("3.9.1", "v3")]
+    [InlineData("3.10.1-nightly.20240801", "v3")]
+    [InlineData("4.0.0", "v4")]
+    [InlineData("4.8.2", "v4")]
+    [InlineData("preview", "Invalid")]
+    [InlineData("5.0.0", "Invalid")]
+    public void MapAutoRestPowerShellVersion_BasicCases(string input, string expected)
+    {
+        var actual = Conventions.MapAutoRestPowerShellVersion(input);
+        Assert.Equal(expected, actual);
+    }
 }

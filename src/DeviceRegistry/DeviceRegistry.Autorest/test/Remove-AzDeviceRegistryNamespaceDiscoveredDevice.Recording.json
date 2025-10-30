@@ -1,0 +1,668 @@
+{
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01",
+      "Content": "ew0KICAidGFncyI6IHsNCiAgICAic2Vuc29yIjogInRlbXBlcmF0dXJlLGh1bWlkaXR5Ig0KICB9LA0KICAibG9jYXRpb24iOiAiZWFzdHVzMiIsDQogICJleHRlbmRlZExvY2F0aW9uIjogew0KICAgICJuYW1lIjogIi9zdWJzY3JpcHRpb25zL2VmYjE1MDg2LTMzMjItNDA1ZC1hOWQwLWMzNTcxNWE5YjcyMi9yZXNvdXJjZUdyb3Vwcy9hZHItcHdzaC10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXh0ZW5kZWRMb2NhdGlvbi9jdXN0b21Mb2NhdGlvbnMvbG9jYXRpb24tbWt6a3EiLA0KICAgICJ0eXBlIjogIkN1c3RvbUxvY2F0aW9uIg0KICB9LA0KICAicHJvcGVydGllcyI6IHsNCiAgICAiZGlzY292ZXJ5SWQiOiAibXlEaXNjb3ZlcnlJZCIsDQogICAgInZlcnNpb24iOiAxLA0KICAgICJtYW51ZmFjdHVyZXIiOiAiQ29udG9zbyIsDQogICAgIm1vZGVsIjogImZvbzEyMyIsDQogICAgIm9wZXJhdGluZ1N5c3RlbSI6ICJMaW51eCIsDQogICAgIm9wZXJhdGluZ1N5c3RlbVZlcnNpb24iOiAiMTAwMCIsDQogICAgImVuZHBvaW50cyI6IHsNCiAgICAgICJvdXRib3VuZCI6IHsNCiAgICAgICAgImFzc2lnbmVkIjogew0KICAgICAgICAgICJteWVuZHBvaW50MiI6IHsNCiAgICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDIud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICAgImVuZHBvaW50VHlwZSI6ICJNaWNyb3NvZnQuRGV2aWNlcy9Jb1RIdWJzIg0KICAgICAgICAgIH0NCiAgICAgICAgfQ0KICAgICAgfSwNCiAgICAgICJpbmJvdW5kIjogew0KICAgICAgICAiZW5kcG9pbnQxIjogew0KICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDEud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICJlbmRwb2ludFR5cGUiOiAiTWljcm9zb2Z0LklvdEh1YiIsDQogICAgICAgICAgInZlcnNpb24iOiAiMS4wIg0KICAgICAgICB9LA0KICAgICAgICAiZW5kcG9pbnQyIjogew0KICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDIud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICJlbmRwb2ludFR5cGUiOiAiTWljcm9zb2Z0LklvdEh1YiIsDQogICAgICAgICAgInZlcnNpb24iOiAiMi4wIg0KICAgICAgICB9DQogICAgICB9DQogICAgfSwNCiAgICAiYXR0cmlidXRlcyI6IHsNCiAgICAgICJkZXZpY2VUeXBlIjogInNlbnNvciIsDQogICAgICAiZGV2aWNlT3duZXIiOiAiZGV2IiwNCiAgICAgICJkZXZpY2VDYXRlZ29yeSI6IDQwMDAsDQogICAgICAiaW52YWxpZCI6ICJmb28iLA0KICAgICAgIngtbXMtaW90aHViLWNyZWRlbnRpYWwtaWQiOiAiIg0KICAgIH0NCiAgfQ0KfQ0K",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1377" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"5e00d7ae-0000-0200-0000-68f1898c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/8a73e198-5fe8-4f99-a4bf-ac47da687822" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "0498a9da-0c99-4603-b54f-e11021abb102" ],
+        "mise-correlation-id": [ "a306a9c5-c813-4fa4-8b7a-c22b4ec1e485" ],
+        "x-envoy-upstream-service-time": [ "4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251017T001052Z-r1cc7c65fb6x8v2lhC1BN1uxqw0000000vg000000000pa1t" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "61a24fbe-0c76-456a-9814-9f018592313c" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001052Z:0498a9da-0c99-4603-b54f-e11021abb102" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 0EDF42981F0A4C1A8F3C88982AE6371F Ref B: MWH011020807060 Ref C: 2025-10-17T00:10:51Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:10:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete\",\"name\":\"test-ns-ddevice-delete\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:10:52.3898852Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:10:52.3898852Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "0016ce95-4ae8-4457-8674-a98a6ccdfbb2" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5e00d7ae-0000-0200-0000-68f1898c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a727d322-d261-4ce8-8b70-627796b4d7e5" ],
+        "x-ms-correlation-request-id": [ "1683452c-592a-42eb-ad3c-5237dae26893" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001123Z:1683452c-592a-42eb-ad3c-5237dae26893" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5F4696891A8843A3883A6A54F21676BB Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:23Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete\",\"name\":\"test-ns-ddevice-delete\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:10:52.3898852Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:10:52.3898852Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "0016ce95-4ae8-4457-8674-a98a6ccdfbb2" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5e00d7ae-0000-0200-0000-68f1898c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "dae68261-663a-4956-a3a3-d03f055dcaf2" ],
+        "x-ms-correlation-request-id": [ "5457f00c-425e-48c4-a715-65fe3d4f1811" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001123Z:5457f00c-425e-48c4-a715-65fe3d4f1811" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 66BF70407DDD43BEA2D26B45CEF17A89 Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:23Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete\",\"name\":\"test-ns-ddevice-delete\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:10:52.3898852Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:10:52.3898852Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "6c20b228-378b-4169-8416-860ebc6c5ee1" ],
+        "CommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredDevice_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "64003854-b9e7-4ece-a310-3e871aca0544" ],
+        "mise-correlation-id": [ "f3c3f4e1-8dfc-46d0-98a6-815eadd7f1fd" ],
+        "x-envoy-upstream-service-time": [ "2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251017T001123Z-r1cc7c65fb65bvvchC1BN1pafg000000048000000000d7m1" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/dcb9bfb5-ccfa-48f9-ad80-ed680e86b3fc" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001124Z:64003854-b9e7-4ece-a310-3e871aca0544" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: C08B7EB045E24944B9C7C608E2F92468 Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:23Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "56a5881e-b3bd-436d-802a-20aece541bdd" ],
+        "CommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredDevice_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "a1c2ace2-d8d3-4f14-a1ed-a389e602828f" ],
+        "x-ms-correlation-request-id": [ "a1c2ace2-d8d3-4f14-a1ed-a389e602828f" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001124Z:a1c2ace2-d8d3-4f14-a1ed-a389e602828f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 095AF6E69DB84E7A90BB85D9D9A50494 Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:24Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "278" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete\u0027 under resource group \u0027adr-pwsh-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentityNamespace+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": "ew0KICAidGFncyI6IHsNCiAgICAic2Vuc29yIjogInRlbXBlcmF0dXJlLGh1bWlkaXR5Ig0KICB9LA0KICAibG9jYXRpb24iOiAiZWFzdHVzMiIsDQogICJleHRlbmRlZExvY2F0aW9uIjogew0KICAgICJuYW1lIjogIi9zdWJzY3JpcHRpb25zL2VmYjE1MDg2LTMzMjItNDA1ZC1hOWQwLWMzNTcxNWE5YjcyMi9yZXNvdXJjZUdyb3Vwcy9hZHItcHdzaC10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXh0ZW5kZWRMb2NhdGlvbi9jdXN0b21Mb2NhdGlvbnMvbG9jYXRpb24tbWt6a3EiLA0KICAgICJ0eXBlIjogIkN1c3RvbUxvY2F0aW9uIg0KICB9LA0KICAicHJvcGVydGllcyI6IHsNCiAgICAiZGlzY292ZXJ5SWQiOiAibXlEaXNjb3ZlcnlJZCIsDQogICAgInZlcnNpb24iOiAxLA0KICAgICJtYW51ZmFjdHVyZXIiOiAiQ29udG9zbyIsDQogICAgIm1vZGVsIjogImZvbzEyMyIsDQogICAgIm9wZXJhdGluZ1N5c3RlbSI6ICJMaW51eCIsDQogICAgIm9wZXJhdGluZ1N5c3RlbVZlcnNpb24iOiAiMTAwMCIsDQogICAgImVuZHBvaW50cyI6IHsNCiAgICAgICJvdXRib3VuZCI6IHsNCiAgICAgICAgImFzc2lnbmVkIjogew0KICAgICAgICAgICJteWVuZHBvaW50MiI6IHsNCiAgICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDIud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICAgImVuZHBvaW50VHlwZSI6ICJNaWNyb3NvZnQuRGV2aWNlcy9Jb1RIdWJzIg0KICAgICAgICAgIH0NCiAgICAgICAgfQ0KICAgICAgfSwNCiAgICAgICJpbmJvdW5kIjogew0KICAgICAgICAiZW5kcG9pbnQxIjogew0KICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDEud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICJlbmRwb2ludFR5cGUiOiAiTWljcm9zb2Z0LklvdEh1YiIsDQogICAgICAgICAgInZlcnNpb24iOiAiMS4wIg0KICAgICAgICB9LA0KICAgICAgICAiZW5kcG9pbnQyIjogew0KICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDIud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICJlbmRwb2ludFR5cGUiOiAiTWljcm9zb2Z0LklvdEh1YiIsDQogICAgICAgICAgInZlcnNpb24iOiAiMi4wIg0KICAgICAgICB9DQogICAgICB9DQogICAgfSwNCiAgICAiYXR0cmlidXRlcyI6IHsNCiAgICAgICJkZXZpY2VUeXBlIjogInNlbnNvciIsDQogICAgICAiZGV2aWNlT3duZXIiOiAiZGV2IiwNCiAgICAgICJkZXZpY2VDYXRlZ29yeSI6IDQwMDAsDQogICAgICAiaW52YWxpZCI6ICJmb28iLA0KICAgICAgIngtbXMtaW90aHViLWNyZWRlbnRpYWwtaWQiOiAiIg0KICAgIH0NCiAgfQ0KfQ0K",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1377" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"5e00eeae-0000-0200-0000-68f189ad0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/268bd358-2f91-49ac-bddd-f29cf9ad26eb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "7d2c80cf-2e46-45fe-a347-f2860f2a765a" ],
+        "mise-correlation-id": [ "f3adc045-f90b-4ac7-816c-3f092987bcea" ],
+        "x-envoy-upstream-service-time": [ "4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251017T001125Z-r1cc7c65fb65bvvchC1BN1pafg000000048000000000d7tb" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "40ecef45-88b8-4117-ace5-4b2e28748ea4" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001125Z:7d2c80cf-2e46-45fe-a347-f2860f2a765a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 6AE6229BC5B34CBE92B0A3B80838FADE Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:24Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\",\"name\":\"test-ns-ddevice-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:11:25.3590956Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:11:25.3590956Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentityNamespace+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "99d5e884-0478-431b-bf6e-db16d224c371" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5e00eeae-0000-0200-0000-68f189ad0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "808bc248-e42c-4bfb-bb4e-ea6def9607fa" ],
+        "x-ms-correlation-request-id": [ "bd7d8d63-469a-4021-b217-cfc665305339" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001155Z:bd7d8d63-469a-4021-b217-cfc665305339" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 285E3BDF946D45E880BDE4A3F9303F9C Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:55Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\",\"name\":\"test-ns-ddevice-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:11:25.3590956Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:11:25.3590956Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentityNamespace+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "99d5e884-0478-431b-bf6e-db16d224c371" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5e00eeae-0000-0200-0000-68f189ad0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "088cc893-62ed-4e9a-b36d-6a7af65f5728" ],
+        "x-ms-correlation-request-id": [ "282860a5-f34d-4fab-9d8a-143c40a5567d" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001156Z:282860a5-f34d-4fab-9d8a-143c40a5567d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5CF49C0EEF224C859F428B393DA363E6 Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:55Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\",\"name\":\"test-ns-ddevice-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:11:25.3590956Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:11:25.3590956Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentityNamespace+$DELETE+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "de05180d-98d3-4744-83c4-d6b4b8abef0e" ],
+        "CommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredDevice_DeleteViaIdentityNamespace" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "31cee3fb-a4d6-4967-a4dd-ea525ed54c7a" ],
+        "mise-correlation-id": [ "75a9ebf0-7bf2-431a-82b6-08dab98ca790" ],
+        "x-envoy-upstream-service-time": [ "3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251017T001156Z-r1cc7c65fb65bvvchC1BN1pafg000000048000000000db10" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/2a4e54c7-49a2-442b-8cda-e5a774fb6ee2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001156Z:31cee3fb-a4d6-4967-a4dd-ea525ed54c7a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 4986597A7296417CA2FBCB88140AF2BC Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:56Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentityNamespace+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "efa270ad-82cf-4e2e-9db0-3ad0ae3c9a4b" ],
+        "CommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredDevice_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "abbb56c5-20a6-41b3-a7a4-013b1efd275e" ],
+        "x-ms-correlation-request-id": [ "abbb56c5-20a6-41b3-a7a4-013b1efd275e" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001156Z:abbb56c5-20a6-41b3-a7a4-013b1efd275e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 05C4CAE03D314BB6B186184AE669278E Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:56Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "291" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\u0027 under resource group \u0027adr-pwsh-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": "ew0KICAidGFncyI6IHsNCiAgICAic2Vuc29yIjogInRlbXBlcmF0dXJlLGh1bWlkaXR5Ig0KICB9LA0KICAibG9jYXRpb24iOiAiZWFzdHVzMiIsDQogICJleHRlbmRlZExvY2F0aW9uIjogew0KICAgICJuYW1lIjogIi9zdWJzY3JpcHRpb25zL2VmYjE1MDg2LTMzMjItNDA1ZC1hOWQwLWMzNTcxNWE5YjcyMi9yZXNvdXJjZUdyb3Vwcy9hZHItcHdzaC10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuRXh0ZW5kZWRMb2NhdGlvbi9jdXN0b21Mb2NhdGlvbnMvbG9jYXRpb24tbWt6a3EiLA0KICAgICJ0eXBlIjogIkN1c3RvbUxvY2F0aW9uIg0KICB9LA0KICAicHJvcGVydGllcyI6IHsNCiAgICAiZGlzY292ZXJ5SWQiOiAibXlEaXNjb3ZlcnlJZCIsDQogICAgInZlcnNpb24iOiAxLA0KICAgICJtYW51ZmFjdHVyZXIiOiAiQ29udG9zbyIsDQogICAgIm1vZGVsIjogImZvbzEyMyIsDQogICAgIm9wZXJhdGluZ1N5c3RlbSI6ICJMaW51eCIsDQogICAgIm9wZXJhdGluZ1N5c3RlbVZlcnNpb24iOiAiMTAwMCIsDQogICAgImVuZHBvaW50cyI6IHsNCiAgICAgICJvdXRib3VuZCI6IHsNCiAgICAgICAgImFzc2lnbmVkIjogew0KICAgICAgICAgICJteWVuZHBvaW50MiI6IHsNCiAgICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDIud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICAgImVuZHBvaW50VHlwZSI6ICJNaWNyb3NvZnQuRGV2aWNlcy9Jb1RIdWJzIg0KICAgICAgICAgIH0NCiAgICAgICAgfQ0KICAgICAgfSwNCiAgICAgICJpbmJvdW5kIjogew0KICAgICAgICAiZW5kcG9pbnQxIjogew0KICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDEud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICJlbmRwb2ludFR5cGUiOiAiTWljcm9zb2Z0LklvdEh1YiIsDQogICAgICAgICAgInZlcnNpb24iOiAiMS4wIg0KICAgICAgICB9LA0KICAgICAgICAiZW5kcG9pbnQyIjogew0KICAgICAgICAgICJhZGRyZXNzIjogImh0dHBzOi8vbXllbmRwb2ludDIud2VzdGV1cm9wZS0xLmlvdGh1Yi5henVyZS5uZXQiLA0KICAgICAgICAgICJlbmRwb2ludFR5cGUiOiAiTWljcm9zb2Z0LklvdEh1YiIsDQogICAgICAgICAgInZlcnNpb24iOiAiMi4wIg0KICAgICAgICB9DQogICAgICB9DQogICAgfSwNCiAgICAiYXR0cmlidXRlcyI6IHsNCiAgICAgICJkZXZpY2VUeXBlIjogInNlbnNvciIsDQogICAgICAiZGV2aWNlT3duZXIiOiAiZGV2IiwNCiAgICAgICJkZXZpY2VDYXRlZ29yeSI6IDQwMDAsDQogICAgICAiaW52YWxpZCI6ICJmb28iLA0KICAgICAgIngtbXMtaW90aHViLWNyZWRlbnRpYWwtaWQiOiAiIg0KICAgIH0NCiAgfQ0KfQ0K",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1377" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"5e001daf-0000-0200-0000-68f189cd0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/ba5cc93a-4e78-4b31-9be2-2b3dfb553ccb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "d86d5695-510b-4561-9b24-ac845fdbdf16" ],
+        "mise-correlation-id": [ "0f291731-3f2f-43d4-bcbe-ebb4a40dc61d" ],
+        "x-envoy-upstream-service-time": [ "5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251017T001157Z-r1cc7c65fb62mpk5hC1BN1f3v400000005xg000000008198" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "ab0708f3-91af-426c-b956-0f73a2ebc648" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001157Z:d86d5695-510b-4561-9b24-ac845fdbdf16" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: F9C3BE05110B42FB9E4A14EF15C7067B Ref B: MWH011020807060 Ref C: 2025-10-17T00:11:56Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:11:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\",\"name\":\"test-ns-ddevice-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:11:57.6665689Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:11:57.6665689Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "01659f97-a8b6-431d-be8b-40809161611b" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5e001daf-0000-0200-0000-68f189cd0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "990c140c-a165-43b2-8d4c-6913cd527889" ],
+        "x-ms-correlation-request-id": [ "ac049132-2b9f-4b71-a5fa-d10225623cf6" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001228Z:ac049132-2b9f-4b71-a5fa-d10225623cf6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 181BCABF6CFB4C76ABF60B8A1A7DAEDA Ref B: MWH011020807060 Ref C: 2025-10-17T00:12:28Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:12:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\",\"name\":\"test-ns-ddevice-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:11:57.6665689Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:11:57.6665689Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "01659f97-a8b6-431d-be8b-40809161611b" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredDevice_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5e001daf-0000-0200-0000-68f189cd0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f50b7737-66fb-4eb9-a2ed-0c409c3bc01e" ],
+        "x-ms-correlation-request-id": [ "16f9aa50-6472-4dee-a131-69c0472b0fc0" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001228Z:16f9aa50-6472-4dee-a131-69c0472b0fc0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EE85EDA5321643558431A82EBB103779 Ref B: MWH011020807060 Ref C: 2025-10-17T00:12:28Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:12:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\",\"name\":\"test-ns-ddevice-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discovereddevices\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-17T00:11:57.6665689Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T00:11:57.6665689Z\"},\"properties\":{\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"attributes\":{\"deviceType\":\"sensor\",\"deviceOwner\":\"dev\",\"deviceCategory\":4000,\"invalid\":\"foo\",\"x-ms-iothub-credential-id\":\"\"},\"endpoints\":{\"outbound\":{\"assigned\":{\"myendpoint2\":{\"endpointType\":\"Microsoft.Devices/IoTHubs\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\"}}},\"inbound\":{\"endpoint1\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"version\":\"1.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null},\"endpoint2\":{\"endpointType\":\"Microsoft.IotHub\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"version\":\"2.0\",\"additionalConfiguration\":null,\"supportedAuthenticationMethods\":null,\"lastUpdatedOn\":null}}},\"externalDeviceId\":null,\"manufacturer\":\"Contoso\",\"model\":\"foo123\",\"operatingSystem\":\"Linux\",\"operatingSystemVersion\":\"1000\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "e1a77ff9-23f4-45b1-8c47-9cc0516c5bbd" ],
+        "CommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredDevice_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "c4e9a52f-344e-41b3-bfd6-34a4002b38b7" ],
+        "mise-correlation-id": [ "c1f7a369-f61b-4140-ab88-91b4bd4eaa0f" ],
+        "x-envoy-upstream-service-time": [ "7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251017T001228Z-r1cc7c65fb6x8v2lhC1BN1uxqw0000000vg000000000ph6v" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/65bc56aa-c63e-4fa9-884a-335ff029fb82" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001229Z:c4e9a52f-344e-41b3-bfd6-34a4002b38b7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 1F986CB7E6CC487EB94769109CB88922 Ref B: MWH011020807060 Ref C: 2025-10-17T00:12:28Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:12:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredDevice+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "cbdb0aa0-ecb8-4bd4-a9e0-d4ee7c85a47c" ],
+        "CommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredDevice" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredDevice_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.5.3", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "9e6d8666-153b-4681-9328-a82e2b346263" ],
+        "x-ms-correlation-request-id": [ "9e6d8666-153b-4681-9328-a82e2b346263" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20251017T001229Z:9e6d8666-153b-4681-9328-a82e2b346263" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F576A90AFC7A4C18BB0A5D29658B2152 Ref B: MWH011020807060 Ref C: 2025-10-17T00:12:29Z" ],
+        "Date": [ "Fri, 17 Oct 2025 00:12:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "291" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-delete-via-identity\u0027 under resource group \u0027adr-pwsh-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1268,7 +1268,7 @@ function Test-ExtenalReplicationFails
             RemotePath = $remotePath
         }
         $volumeType = "Migration"
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes -VolumeType $volumeType -ReplicationObject $externalReplication
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -NetworkFeature "Standard" -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes -VolumeType $volumeType -ReplicationObject $externalReplication
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
         Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)

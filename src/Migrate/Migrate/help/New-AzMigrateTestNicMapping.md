@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratetestnicmapping
 schema: 2.0.0
@@ -13,7 +13,8 @@ Creates an object to update NIC properties of a test migrating server.
 ## SYNTAX
 
 ```
-New-AzMigrateTestNicMapping -NicID <String> -TestNicSubnet <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMigrateTestNicMapping -NicID <String> -TestNicSubnet <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,4 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
