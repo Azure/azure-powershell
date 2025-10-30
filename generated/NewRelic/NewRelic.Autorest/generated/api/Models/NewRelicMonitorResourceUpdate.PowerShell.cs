@@ -149,6 +149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).NewRelicAccountProperty = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountProperties) content.GetValueForProperty("NewRelicAccountProperty",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).NewRelicAccountProperty, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicAccountPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("OrgCreationSource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).OrgCreationSource = (string) content.GetValueForProperty("OrgCreationSource",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).OrgCreationSource, global::System.Convert.ToString);
@@ -224,6 +228,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("SingleSignOnPropertyProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SingleSignOnPropertyProvisioningState = (string) content.GetValueForProperty("SingleSignOnPropertyProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SingleSignOnPropertyProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             if (content.Contains("AccountInfoIngestionKey"))
             {
@@ -298,6 +306,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).NewRelicAccountProperty = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountProperties) content.GetValueForProperty("NewRelicAccountProperty",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).NewRelicAccountProperty, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicAccountPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("OrgCreationSource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).OrgCreationSource = (string) content.GetValueForProperty("OrgCreationSource",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).OrgCreationSource, global::System.Convert.ToString);
@@ -373,6 +385,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("SingleSignOnPropertyProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SingleSignOnPropertyProvisioningState = (string) content.GetValueForProperty("SingleSignOnPropertyProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SingleSignOnPropertyProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdateInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             if (content.Contains("AccountInfoIngestionKey"))
             {

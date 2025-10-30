@@ -14,25 +14,31 @@ namespace Microsoft.Azure.Management.Search
     public partial interface ISharedPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Initiates the creation or update of a shared private link resource managed by the search service in the given resource group.
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
         /// </summary>
         /// <remarks>
-        /// Initiates the creation or update of a shared private link resource managed by the search service in the given resource group.
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='properties'>
-        /// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+        /// Describes the properties of a shared private link resource managed by the
+        /// Azure AI Search service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,22 +55,27 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the details of the shared private link resource managed by the search service in the given resource group.
+        /// Gets the details of the shared private link resource managed by the search
+        /// service in the given resource group.
         /// </summary>
         /// <remarks>
-        /// Gets the details of the shared private link resource managed by the search service in the given resource group.
+        /// Gets the details of the shared private link resource managed by the search
+        /// service in the given resource group.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -81,22 +92,27 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Initiates the deletion of the shared private link resource from the search service.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
         /// </summary>
         /// <remarks>
-        /// Initiates the deletion of the shared private link resource from the search service.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -110,19 +126,23 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of all shared private link resources managed by the given service.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </summary>
         /// <remarks>
-        /// Gets a list of all shared private link resources managed by the given service.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -139,25 +159,31 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Initiates the creation or update of a shared private link resource managed by the search service in the given resource group.
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
         /// </summary>
         /// <remarks>
-        /// Initiates the creation or update of a shared private link resource managed by the search service in the given resource group.
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='properties'>
-        /// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+        /// Describes the properties of a shared private link resource managed by the
+        /// Azure AI Search service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -174,22 +200,27 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Initiates the deletion of the shared private link resource from the search service.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
         /// </summary>
         /// <remarks>
-        /// Initiates the deletion of the shared private link resource from the search service.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -203,10 +234,12 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of all shared private link resources managed by the given service.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </summary>
         /// <remarks>
-        /// Gets a list of all shared private link resources managed by the given service.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

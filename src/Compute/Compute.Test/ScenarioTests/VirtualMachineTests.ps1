@@ -2129,20 +2129,20 @@ function Test-VMImageCmdletOutputFormat
     $sku = $imgRef.Skus;
     $ver = $imgRef.Version;
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr'" @('Id', 'Location', 'PublisherName');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr } @('Id', 'Location', 'PublisherName');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } " @('Id', 'Location', 'PublisherName');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } } @('Id', 'Location', 'PublisherName');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer " @('Id', 'Location', 'PublisherName', 'Offer');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer } @('Id', 'Location', 'PublisherName', 'Offer');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer | Get-AzVMImageSku } @('Publisher', 'Offer', 'Skus');
 
     # Updated Get-AzVmImage list output. No need to output sku when user inputed that. There are more valuable information to display.
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Location');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage } @('Version', 'Location');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
 
 # Test Image Cmdlet Output Format with EdgeZone
@@ -2159,15 +2159,15 @@ function Test-VMImageEdgeZoneCmdletOutputFormat
     $ver = "14393.4048.2011170655";
     $edgeZone = "microsoftlosangeles1";
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Select EdgeZone, Location " @('microsoftlosangeles1', 'westus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Select EdgeZone, Location } @('microsoftlosangeles1', 'westus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone'| Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Get-AzVMImageSku } @('Publisher', 'Offer', 'Skus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Location');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Get-AzVMImageSku | Get-AzVMImage } @('Version', 'Location');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -EdgeZone $edgeZone -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -EdgeZone $edgeZone -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
 
 function get_all_vm_locations
@@ -7915,7 +7915,7 @@ function Test-VirtualMachinePlacement
         $user = Get-ComputeTestResourceName;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        # create VM with placement feature 
+        # create VM with placement feature
         $vmname = '1' + $rgname;
         $domainNameLabel = "d1" + $rgname;
         $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS85Gen2 -DomainNameLabel $domainNameLabel -ZonePlacementPolicy "Any" -IncludeZone "1","2" -AlignRegionalDisksToVMZone
@@ -7937,5 +7937,41 @@ function Test-VirtualMachinePlacement
     {
         # Cleanup
         Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test-VirtualMachineAddProxyAgentExtension creates a VM with Enabled ProxyAgent and added ProxyAgentExtension
+#>
+function Test-VirtualMachineAddProxyAgentExtension
+{
+    # Setup
+    $resourceGroupName = Get-ComputeTestResourceName;
+    $adminUsername = Get-ComputeTestResourceName;
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+    $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+    $vmName = 'VM1';
+    $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
+    $domainNameLabel = "d1" + $resourceGroupName;
+
+
+    try
+    {
+        New-AzVM -ResourceGroupName $resourceGroupName -Name $VMName -Credential $cred -image $imageName -DomainNameLabel $domainNameLabel -Location 'eastus2' -EnableProxyAgent -AddProxyAgentExtension
+
+        # Update vm to add proxy agent extension 
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -VMName $vmName
+        $VM = Set-AzVMProxyAgentSetting -VM $VM -EnableProxyAgent $true -AddProxyAgentExtension $false
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+        # Validate 
+        Assert-AreEqual $VM.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $VM.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName;
     }
 }

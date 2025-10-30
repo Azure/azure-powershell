@@ -33,12 +33,16 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="customerVirtualNetwork">The name of virtual network to which Azure-SSIS integration runtime will
         /// join
         /// </param>
-        public ManagedIntegrationRuntimeTypeProperties(IntegrationRuntimeComputeProperties computeProperties = default(IntegrationRuntimeComputeProperties), IntegrationRuntimeSsisProperties ssisProperties = default(IntegrationRuntimeSsisProperties), IntegrationRuntimeCustomerVirtualNetwork customerVirtualNetwork = default(IntegrationRuntimeCustomerVirtualNetwork))
+
+        /// <param name="interactiveQuery">Interactive authoring capability reference.
+        /// </param>
+        public ManagedIntegrationRuntimeTypeProperties(IntegrationRuntimeComputeProperties computeProperties = default(IntegrationRuntimeComputeProperties), IntegrationRuntimeSsisProperties ssisProperties = default(IntegrationRuntimeSsisProperties), IntegrationRuntimeCustomerVirtualNetwork customerVirtualNetwork = default(IntegrationRuntimeCustomerVirtualNetwork), InteractiveQueryProperties interactiveQuery = default(InteractiveQueryProperties))
 
         {
             this.ComputeProperties = computeProperties;
             this.SsisProperties = ssisProperties;
             this.CustomerVirtualNetwork = customerVirtualNetwork;
+            this.InteractiveQuery = interactiveQuery;
             CustomInit();
         }
 
@@ -66,6 +70,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customerVirtualNetwork")]
         public IntegrationRuntimeCustomerVirtualNetwork CustomerVirtualNetwork {get; set; }
+
+        /// <summary>
+        /// Gets or sets interactive authoring capability reference.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interactiveQuery")]
+        public InteractiveQueryProperties InteractiveQuery {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -82,6 +92,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.SsisProperties.Validate();
             }
+
 
         }
     }

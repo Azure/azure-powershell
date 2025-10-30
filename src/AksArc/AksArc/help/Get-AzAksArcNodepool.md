@@ -24,12 +24,6 @@ Get-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> [-Subscri
  -Name <String> [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -InputObject <IAksArcIdentity> [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets the specified agent pool in the provisioned cluster
 
@@ -70,21 +64,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

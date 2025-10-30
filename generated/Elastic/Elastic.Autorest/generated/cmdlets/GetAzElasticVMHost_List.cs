@@ -11,16 +11,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using System;
 
     /// <summary>
-    /// List the vm resources currently being monitored by the Elastic monitor resource.
+    /// List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listVMHost"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticVMHost_List", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMResources))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List the vm resources currently being monitored by the Elastic monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listVMHost", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listVMHost", ApiVersion = "2025-06-01")]
     public partial class GetAzElasticVMHost_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext
