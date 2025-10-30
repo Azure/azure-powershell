@@ -15,25 +15,27 @@ Create a Network Virtual Appliance resource.
 ### ResourceNameParameterSet (Default)
 ```
 New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Location <String>
- -VirtualHubId <String> -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
+ [-VirtualHubId <String>] -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
  [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>]
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
- [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
+ [-NvaInterfaceConfigurations <PSNetworkVirtualApplianceInterfaceConfig>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHubId <String>
+New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> [-VirtualHubId <String>]
  -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32> [-Identity <PSManagedServiceIdentity>]
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
  [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
- [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
+ [-NvaInterfaceConfigurations <PSNetworkVirtualApplianceInterfaceConfig>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -279,6 +281,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -NvaInterfaceConfigurations
+Interface configurations for NVA deployed in VNet.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfig
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -362,7 +379,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -416,6 +433,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String[]
 
 ### System.Collections.Hashtable
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceAdditionalNicProperties[]
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceInternetIngressIpsProperties[]
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceNetworkProfile
+
+### Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfig
 
 ## OUTPUTS
 
