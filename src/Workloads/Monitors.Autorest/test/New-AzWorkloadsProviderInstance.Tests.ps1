@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderInstan
 
 Describe 'New-AzWorkloadsProviderInstance' {
     It 'CreateExpanded' {
-        $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.osProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting '{"sslPreference":"Disabled","providerType":"PrometheusOS","prometheusUrl":"http://10.1.0.4:9100/metrics","sapSid":"X00"}'
+        $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.osProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting '{"sslPreference":"Disabled","providerType":"PrometheusOS","prometheusUrl":"http://10.8.1.37:9100/metrics","sapSid":"CHA"}'
         $response.ProvisioningState | Should -Be "Succeeded"
     }
 }
