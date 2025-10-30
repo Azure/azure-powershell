@@ -21,7 +21,9 @@
 -->
 ## Upcoming Release
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Updated Azure.Core from 1.45.0 to 1.47.3
 * Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
+* Added `-SupportedSecurityOption` parameter to `New-AzDiskConfig` cmdlet.
 * ComputeRP related cmdlets will now use 2025-04-01 version of the ComputeRP API.
 * Added `-AddProxyAgentExtension` parameter (Switch) to `New-AzVmss` and `New-AzVM`
 * Added `-AddProxyAgentExtension` parameter (Bool) to `Set-AzVMProxyAgentSetting` and  `Set-AzVmssProxyAgentSetting`

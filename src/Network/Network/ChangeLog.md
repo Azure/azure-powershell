@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+
+* Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
+
+## Version 7.22.0
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
   - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
   - Updated `Set-AzNetworkManagerRoutingConfiguration` cmdlet
@@ -35,6 +39,7 @@
     - `Set-AzApplicationGatewayProbeConfig`
 	- `Add-AzApplicationGatewayProbeConfig`
 	- `New-AzApplicationGatewayProbeConfig`
+* Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 
 ## Version 7.21.0
 * Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
