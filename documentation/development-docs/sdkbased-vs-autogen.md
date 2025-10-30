@@ -1,6 +1,6 @@
 # Description
 
-The document is for those, who are familiar with SDK-based modules and want to give a try with auto-gen modules. The content will contain the comparation between these two kinds of modules from architecture, cmdlets differences, and onboard process, etc.
+The document is for those, who are familiar with SDK-based modules and want to give a try with auto-gen modules. The content will contain the comparison between these two kinds of modules from architecture, cmdlets differences, and onboard process, etc.
 
 # Architecture
 
@@ -65,7 +65,7 @@ Customization could be done through three ways.
 
 ### SDK-based Module
 
-If your module relies on some other modules, you will need to rely on dotnet SDK of these modules, which could put in your module if only your module depends on them or in Az.Accouts they are some common modules required by several modules. 
+If your module relies on some other modules, you will need to rely on dotnet SDK of these modules, which could put in your module if only your module depends on them or in Az.Accounts they are some common modules required by several modules. 
 
 ### Auto-gen Module
 

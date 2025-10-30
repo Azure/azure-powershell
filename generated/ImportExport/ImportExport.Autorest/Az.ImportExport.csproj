@@ -3,6 +3,7 @@
     <PsModuleName>ImportExport</PsModuleName>
     <PsRootModuleName>ImportExport</PsRootModuleName>
     <PsModuleFolder>ImportExport.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ImportExport</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

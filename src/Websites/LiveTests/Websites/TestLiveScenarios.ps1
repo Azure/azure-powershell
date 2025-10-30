@@ -142,7 +142,7 @@ Invoke-LiveTestScenario -Name "Start, Stop and Restart WebApp" -Description "Tes
     $webApp = Start-AzWebApp -ResourceGroupName $rgName -Name $webAppName
     Assert-AreEqual "Running" $webApp.State
 
-    # Retart web app
+    # Restart web app
     $webApp = Restart-AzWebApp -ResourceGroupName $rgName -Name $webAppName
     Assert-AreEqual "Running" $webApp.State
 }

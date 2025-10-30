@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Search.Models;
+
 namespace Microsoft.Azure.Commands.Management.Search.Models
 {
     public enum PSSharedPrivateLinkResourceProvisioningState
@@ -20,6 +22,45 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         Deleting = 1,
         Failed = 2,
         Succeeded = 3,
-        Incomplete = 3
+        Incomplete = 4
+    }
+
+    internal static class PSSharedPrivateLinkResourceProvisioningStateEnumExtension
+    {
+        internal static PSSharedPrivateLinkResourceProvisioningState? ParsePSSharedPrivateLinkResourceProvisioningState(this string value)
+        {
+            switch (value)
+            {
+                case "Updating":
+                    return PSSharedPrivateLinkResourceProvisioningState.Updating;
+                case "Deleting":
+                    return PSSharedPrivateLinkResourceProvisioningState.Deleting;
+                case "Failed":
+                    return PSSharedPrivateLinkResourceProvisioningState.Failed;
+                case "Succeeded":
+                    return PSSharedPrivateLinkResourceProvisioningState.Succeeded;
+                case "Incomplete":
+                    return PSSharedPrivateLinkResourceProvisioningState.Incomplete;
+            }
+            return null;
+        }
+
+        internal static string ToString(this PSSharedPrivateLinkResourceProvisioningState value)
+        {
+            switch (value)
+            {
+                case PSSharedPrivateLinkResourceProvisioningState.Updating:
+                    return "Updating";
+                case PSSharedPrivateLinkResourceProvisioningState.Deleting:
+                    return "Deleting";
+                case PSSharedPrivateLinkResourceProvisioningState.Failed:
+                    return "Failed";
+                case PSSharedPrivateLinkResourceProvisioningState.Succeeded:
+                    return "Succeeded";
+                case PSSharedPrivateLinkResourceProvisioningState.Incomplete:
+                    return "Incomplete";
+            }
+            return null;
+        }
     }
 }

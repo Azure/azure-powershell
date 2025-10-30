@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Utilities
         /// </summary>
         public const string StorageCacheResourceProviderPrincipalId = "831d4223-7a3c-4121-a445-1e423591e57b";
 
-        // If you want to use existing cache then uncomment below parameters and substitue proper values.
+        // If you want to use existing cache then uncomment below parameters and substitute proper values.
 
         /// <summary>
-        /// Resouce group name.
+        /// Resource group name.
         /// </summary>
         // public static readonly string ResourceGroupName = "test-rg";
 

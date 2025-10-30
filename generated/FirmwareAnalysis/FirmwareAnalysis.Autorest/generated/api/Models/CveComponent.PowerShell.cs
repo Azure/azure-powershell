@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PowerShell;
 
-    /// <summary>Properties of the SBOM component for a CVE.</summary>
+    /// <summary>Legacy component of a CVE result.</summary>
     [System.ComponentModel.TypeConverter(typeof(CveComponentTypeConverter))]
     public partial class CveComponent
     {
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             return ToJsonString();
         }
     }
-    /// Properties of the SBOM component for a CVE.
+    /// Legacy component of a CVE result.
     [System.ComponentModel.TypeConverter(typeof(CveComponentTypeConverter))]
     public partial interface ICveComponent
 

@@ -19,9 +19,9 @@ New-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-DataDiskImage <GalleryDataDiskImage[]>] [-OSDiskImage <GalleryOSDiskImage>]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
  [-SourceImageId <String>] [-SourceImageVMId <String>] [-StorageAccountType <String>] [-Tag <Hashtable>]
- [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>] [-BlockDeletionBeforeEndOfLife]
+ [-ReplicationMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -235,7 +235,7 @@ $endOfLifeDate = "2024-08-02T00:00:00+00:00"
 New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -PublishingProfileEndOfLifeDate $endOfLifeDate
 ```
 
-This example has the end-of-life date for image version set to August 2, 2024 at mignight UTC. End-of-life dates can be specified for both the image definitions and image versions. Image versions can still be used after the end-of-life dates.
+This example has the end-of-life date for image version set to August 2, 2024 at midnight UTC. End-of-life dates can be specified for both the image definitions and image versions. Image versions can still be used after the end-of-life dates.
 
 ### Example 13: Create an image version for Confidential VM
 
@@ -299,6 +299,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlockDeletionBeforeEndOfLife
+This boolean will be passed by the customers to enable their GalleryImageVersion resources from accidental deletions. If this boolean is set to true, the image deletions will be blocked before its EndOfLife date.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -452,6 +467,21 @@ The number of replicas of the Image Version to be created per region.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ReplicationMode
+To achieve parity with managed images, the Gallery service allows customers to designate an image version as being used for 'testing' by choosing ReplicationMode = Shallow. When choosing Shallow replication, the gallery image version is provisioned much quicker as a full copy of the source image is not made.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

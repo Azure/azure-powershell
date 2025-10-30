@@ -1,11 +1,11 @@
 ## PR Review Knowledge Share
 
-### Dependency Assemlby Version Confliction
+### Dependency Assembly Version Confliction
 If one assembly has been referenced by more than one module, we should let Az.Accounts to handle the dependency.
 
 **RED** flag
 - Update assembly version for common Microsoft.Extensions.*
-- Add new dependency assemlby for one module, the assembly may be referenced by other module already.
+- Add new dependency assembly for one module, the assembly may be referenced by other module already.
 - Contains version update for dependency assembly in module other than Az.Accounts
 
 ### Resource ID **MUST** start with a slash 

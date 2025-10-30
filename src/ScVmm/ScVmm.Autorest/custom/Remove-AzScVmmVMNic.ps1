@@ -172,23 +172,23 @@ function Remove-AzScVmmVMNic {
             }
 
             try {
-              $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $vmName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+              $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $vmName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction Stop
               if ($null -eq $machineObj) {
                 throw "Virtual Machine $vmName not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
               }
             }
             catch {
-              throw "Virtual Machine $vmName not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+              throw "Failed to get VM '$vmName' in Resource Group '$ResourceGroupName' (SubscriptionId '$SubscriptionId'). Exception: $($_.Exception.Message)"
             }
   
             try {
-              $vmObj = Az.ScVmm.internal\Get-AzScVmmVM -MachineId $machineObj.Id
-              if ($null -eq $machineObj) {
-                throw "Failed to fetch Virtual Machine Object for Virtual Machine $vmName"
+              $vmObj = Az.ScVmm.internal\Get-AzScVmmVM -MachineId $machineObj.Id -ErrorAction Stop
+              if ($null -eq $vmObj) {
+                throw "Failed to fetch Virtual Machine Object using MachineId $($machineObj.Id) for Virtual Machine '$vmName'."
               }
             }
             catch {
-              throw "Failed to fetch Virtual Machine Object for Virtual Machine $vmName"
+              throw "Failed to fetch Virtual Machine Object using MachineId $($machineObj.Id) for Virtual Machine '$vmName'. Exception: $($_.Exception.Message)"
             }
 
           if (-not $diskFound) {

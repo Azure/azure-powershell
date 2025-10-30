@@ -220,6 +220,12 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter EnableFatFlowLogging { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "Enable Dnstap Logging. By default it is false."
+       )]
+        public SwitchParameter EnableDnstapLogging { get; set; }
+
+        [Parameter(
              Mandatory = false,
              HelpMessage = "Enable UDP Log Optimization. By default it is false."
        )]
@@ -332,6 +338,7 @@ namespace Microsoft.Azure.Commands.Network
                     HubIPAddresses = this.HubIPAddress,
                     Zones = this.Zone == null ? null : this.Zone.ToList(),
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
                     EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
 
@@ -359,6 +366,7 @@ namespace Microsoft.Azure.Commands.Network
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
                     EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
                     RouteServerId = this.RouteServerId
                 };

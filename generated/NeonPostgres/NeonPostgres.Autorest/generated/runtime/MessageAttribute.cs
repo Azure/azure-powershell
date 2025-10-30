@@ -16,8 +16,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime
     public class GenericBreakingChangeAttribute : Attribute
     {
         private string _message;
-        //A dexcription of what the change is about, non mandatory
+        //A description of what the change is about, non mandatory
         public string ChangeDescription { get; set; } = null;
+
+        //Name of the module that is being deprecated
+        public string moduleName { get; set; } = String.IsNullOrEmpty(@"") ? @"Az.NeonPostgres" : @"";
 
         //The version the change is effective from, non mandatory
         public string DeprecateByVersion { get; }
@@ -82,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime
             }
 
             writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByAzVersion, this.DeprecateByAzVersion));
-            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
+            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.moduleName, this.DeprecateByVersion));
 
             if (OldWay != null && NewWay != null)
             {
@@ -191,11 +194,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime
                 this.IsEstimatedGaDateSet = true;
             }
         }
-        
+
         public void PrintCustomAttributeInfo(Action<string> writeOutput)
         {
             writeOutput(this._message);
-            
+
             if (IsEstimatedGaDateSet)
             {
                 writeOutput(string.Format(Resources.PreviewCmdletETAMessage, this.EstimatedGaDate.ToShortDateString()));

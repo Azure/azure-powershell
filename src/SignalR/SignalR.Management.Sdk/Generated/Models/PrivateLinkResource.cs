@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the PrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="groupId">Group Id of the private link resource
@@ -45,9 +51,9 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
         /// <param name="shareablePrivateLinkResourceTypes">The list of resources that are onboarded to private link service
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ShareablePrivateLinkResourceType> shareablePrivateLinkResourceTypes = default(System.Collections.Generic.IList<ShareablePrivateLinkResourceType>))
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ShareablePrivateLinkResourceType> shareablePrivateLinkResourceTypes = default(System.Collections.Generic.IList<ShareablePrivateLinkResourceType>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;

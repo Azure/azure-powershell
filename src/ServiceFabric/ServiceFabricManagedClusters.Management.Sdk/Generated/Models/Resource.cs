@@ -8,8 +8,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource model definition.
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
     /// </summary>
+    /// <remarks>
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
+    /// </remarks>
     public partial class Resource : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
@@ -24,35 +29,26 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Initializes a new instance of the Resource class.
         /// </summary>
 
-        /// <param name="id">Azure resource identifier.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Azure resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Azure resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Azure resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
-
-        /// <param name="tags">Azure resource tags.
-        /// </param>
-
-        /// <param name="etag">Azure resource etag.
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
-        /// </param>
-        public Resource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData))
+        public Resource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
-            this.Location = location;
-            this.Tags = tags;
-            this.Etag = etag;
             this.SystemData = systemData;
             CustomInit();
         }
@@ -64,65 +60,30 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
         /// <summary>
-        /// Gets azure resource identifier.
+        /// Gets fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; private set; }
 
         /// <summary>
-        /// Gets azure resource name.
+        /// Gets the name of the resource
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; private set; }
 
         /// <summary>
-        /// Gets azure resource type.
+        /// Gets the type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets or sets azure resource location.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets azure resource tags.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
-
-        /// <summary>
-        /// Gets azure resource etag.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
+        /// Gets azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
         public SystemData SystemData {get; private set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (this.Location == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Location");
-            }
-
-
-
-
-
-
-
-        }
     }
 }

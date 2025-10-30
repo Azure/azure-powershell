@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzLambdaTestOrganization
 
 ## SYNOPSIS
-create a OrganizationResource
+Create a OrganizationResource
 
 ## SYNTAX
 
@@ -29,18 +29,19 @@ New-AzLambdaTestOrganization -Name <String> -ResourceGroupName <String> [-Subscr
 ### CreateViaJsonFilePath
 ```
 New-AzLambdaTestOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzLambdaTestOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a OrganizationResource
+Create a OrganizationResource
 
 ## EXAMPLES
 

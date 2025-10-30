@@ -88,6 +88,31 @@ param(
     ${SkuName},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Enable or Disable scale up setting on Elastic San Appliance.
+    ${AutoScalePolicyEnforcement},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Maximum scale up size on Elastic San appliance in TiB.
+    ${CapacityUnitScaleUpLimitTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unit to increase Capacity Unit on Elastic San appliance in TiB.
+    ${IncreaseCapacityUnitByTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unused size on Elastic San appliance in TiB.
+    ${UnusedSizeTiB},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String[]]
@@ -97,13 +122,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
-    # Base size of the Elastic San appliance in TiB. Default vaule is 20.
+    # Base size of the Elastic San appliance in TiB. Default value is 20.
     ${BaseSizeTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
-    # Extended size of the Elastic San appliance in TiB. Default vaule is 0.
+    # Extended size of the Elastic San appliance in TiB. Default value is 0.
     ${ExtendedCapacitySizeTiB},
 
     [Parameter()]

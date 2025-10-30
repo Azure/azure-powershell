@@ -8,23 +8,36 @@ schema: 2.0.0
 # New-AzPurviewTrigger
 
 ## SYNOPSIS
-Creates an instance of a trigger
+Create an instance of a trigger
 
 ## SYNTAX
 
+### Create (Default)
 ```
 New-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String> -Body <ITrigger>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates an instance of a trigger
+Create an instance of a trigger
 
 ## EXAMPLES
 
 ### Example 1: Create trigger schedule for scan run
 ```powershell
-$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -RecurrenceScheduleHour $(9) -RecurrenceScheduleMinute $(0) -RecurrenceScheduleMonthDay $(10)
 New-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK' -Body $obj
 ```
 
@@ -52,17 +65,16 @@ ScheduleMonthlyOccurrence  :
 ScheduleWeekDay            :
 ```
 
-Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/2022 12:00:00 AM, occuring every 1 month, on 10th of the month, at 09:00 AM UTC
+Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/2022 12:00:00 AM, occurring every 1 month, on 10th of the month, at 09:00 AM UTC
 
 ## PARAMETERS
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -110,6 +122,36 @@ Example: https://{accountName}.purview.azure.com
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -170,11 +212,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 
 ## NOTES
 

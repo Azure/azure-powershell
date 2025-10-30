@@ -13,6 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
     /// [OpenAPI] Analysis=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}/analyze"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzNginxAnalysisConfiguration_Analysis", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ParameterSetBreakingChange(new string[] {"Analysis"}, "15.0.0", "7.0.0", "2025/11/03", ChangeDescription="The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"DataError"}, NewOutputProperties=new string[] {"DataError"}, ChangeDescription="The type of the property DataError will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Description(@"Analyze an NGINX configuration without applying it to the NGINXaaS deployment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Generated]

@@ -164,7 +164,7 @@ Accept wildcard characters: False
 
 ### -Tag
 A hashtable representing certificate tags.
-If not specified, the existing tags of the sertificate remain unchanged.
+If not specified, the existing tags of the certificate remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
 ```yaml

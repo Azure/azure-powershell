@@ -24,22 +24,22 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
     public class ThresholdRuleCondition : RuleCondition
     {
         /// <summary>
-        /// Gets or sets the OperatorProperty of the TheresholdRuleCondition
+        /// Gets or sets the OperatorProperty of the ThresholdRuleCondition
         /// </summary>
         public ConditionOperator OperatorProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets the Theshold of the TheresholdRuleCondition
+        /// Gets or sets the Threshold of the ThresholdRuleCondition
         /// </summary>
         public double Threshold { get; set; }
 
         /// <summary>
-        /// Gets or sets the WindowsSize of the TheresholdRuleCondition
+        /// Gets or sets the WindowsSize of the ThresholdRuleCondition
         /// </summary>
         public TimeSpan? WindowSize { get; set; }
 
         /// <summary>
-        /// Gtes or sets the TimeAggregation of the TheresholdRuleCondition
+        /// Gets or sets the TimeAggregation of the ThresholdRuleCondition
         /// </summary>
         public TimeAggregationOperator? TimeAggregation { get; set; }
 

@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <returns>ServerRegistrationData.</returns>
         ServerRegistrationData UpdateServerRegistrationData(ServerRegistrationData pServerRegistrationData);
         /// <summary>
-        /// Waits for access propogation.
+        /// Waits for access propagation.
         /// </summary>
         void Wait();
 

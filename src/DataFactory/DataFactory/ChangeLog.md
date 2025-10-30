@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for clusterResourceGroupAuthType property in HDInsightOnDemand linked services properties.
+
+## Version 1.19.5
+* Added support for Salesforce V2 partitionOption feature.
+* Added support MI In Lakehouse And Warehouse connection.
+
+## Version 1.19.4
+* Added support for Databricks Job Activity.
+* Added more support for QuickBooks connection properties.
 
 ## Version 1.19.3
 * Added more support for SparkV2 and HiveV2 connection properties.

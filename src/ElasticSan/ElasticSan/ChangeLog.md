@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported auto scale when creating and updating an Elastic SAN.
+    - `New-AzElasticSan`
+    - `Update-AzElasticSan`
+* Supported checking whether disk snapshot backup can be taken for volumes.
+    - `Test-AzElasticSanVolumeBackup`
+    - `Test-AzElasticSanVolumeRestore`
+    
+## Version 1.4.1
+* Added warning message for data integrity checking when create/update a volume group.
+    - `New-AzElasticSanVolumeGroup`
+    - `Update-AzElasticSanVolumeGroup`
 
 ## Version 1.4.0
 * Changed parameters `BaseSizeTiB` and `ExtendedCapacitySizeTiB` in cmdlet `New-AzElasticSan` to be optional.

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzManagedServicesAssignment_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Authorization[]","EligibleAuthorization[]"}, NewOutputProperties=new string[] {"List[Authorization]","List[EligibleAuthorization]"})]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Description(@"Creates or updates a registration assignment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Generated]

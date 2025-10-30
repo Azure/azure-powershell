@@ -42,7 +42,7 @@ StartTime  : 2021-03-25T14:27:31.0000000Z
 Set $startTime and $endTime.
 Fetch the backup instance.
 Fetch valid time ranges for Backup Instance $instance[0].
-Dispaly RestorableTimeRange, note that this can be multiple dicrete ranges.
+Display RestorableTimeRange, note that this can be multiple discrete ranges.
 
 ## PARAMETERS
 
@@ -209,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupFindRestorableTimeRangesResponseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupFindRestorableTimeRangesResponseResource
 
 ## NOTES
 

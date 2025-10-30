@@ -59,15 +59,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal.Name { get => this._name; set { {_name = value;} } }
 
-        /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelProperties()); set { {_property = value;} } }
-
-        /// <summary>Internal Acessors for ProvisioningState</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).ProvisioningState = value; }
-
-        /// <summary>Internal Acessors for ServiceResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal.ServiceResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).ServiceResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).ServiceResourceId = value; }
-
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.SystemData()); set { {_systemData = value;} } }
 
@@ -86,15 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
         /// <summary>Vault properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelProperties()); set => this._property = value; }
-
-        /// <summary>Gets or sets the provisioning state of the vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState? ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).ProvisioningState; }
-
-        /// <summary>Gets or sets the service resource Id.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ServiceResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).ServiceResourceId; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelProperties()); set => this._property = value; }
 
         /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.ISystemData _systemData;
@@ -140,10 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         /// <summary>Gets or sets the type of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
-
-        /// <summary>Gets or sets the type of vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType? VaultType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).VaultType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelPropertiesInternal)Property).VaultType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType)""); }
 
         /// <summary>Creates an new <see cref="VaultModelUpdate" /> instance.</summary>
         public VaultModelUpdate()
@@ -200,22 +179,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
-        /// <summary>Gets or sets the provisioning state of the vault.</summary>
+        /// <summary>Vault properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
-        ReadOnly = true,
-        Description = @"Gets or sets the provisioning state of the vault.",
-        SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState? ProvisioningState { get;  }
-        /// <summary>Gets or sets the service resource Id.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Description = @"Gets or sets the service resource Id.",
-        SerializedName = @"serviceResourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ServiceResourceId { get;  }
+        ReadOnly = false,
+        Description = @"Vault properties.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties Property { get; set; }
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -280,14 +251,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string Type { get;  }
-        /// <summary>Gets or sets the type of vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Gets or sets the type of vault.",
-        SerializedName = @"vaultType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType? VaultType { get; set; }
 
     }
     /// Vault model update.
@@ -313,10 +276,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         string Name { get; set; }
         /// <summary>Vault properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties Property { get; set; }
-        /// <summary>Gets or sets the provisioning state of the vault.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState? ProvisioningState { get; set; }
-        /// <summary>Gets or sets the service resource Id.</summary>
-        string ServiceResourceId { get; set; }
         /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.ISystemData SystemData { get; set; }
         /// <summary>The timestamp of resource creation (UTC).</summary>
@@ -335,8 +294,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateTags Tag { get; set; }
         /// <summary>Gets or sets the type of the resource.</summary>
         string Type { get; set; }
-        /// <summary>Gets or sets the type of vault.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType? VaultType { get; set; }
 
     }
 }

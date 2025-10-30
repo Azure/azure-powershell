@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzWebAppAccessRestrictionConfig
 
 ## SYNOPSIS
-Updates the inheritance of Main site Access Restiction config to SCM Site for an Azure Web App.
+Updates the inheritance of Main site Access Restriction config to SCM Site for an Azure Web App.
 
 ## SYNTAX
 

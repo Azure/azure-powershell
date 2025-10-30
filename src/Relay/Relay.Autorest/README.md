@@ -35,6 +35,31 @@ require:
 title: Relay
 
 directive:
+  - where:
+      verb: Get
+      subject: NameSpace
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - PrivateEndpointConnection
+        new-output-properties:
+          - List[PrivateEndpointConnection]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      subject: NamespaceNetworkRuleSet
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - IPRule
+        new-output-properties:
+          - List[IPRule]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
   # Namespace Authorization Rule
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}"].put.operationId

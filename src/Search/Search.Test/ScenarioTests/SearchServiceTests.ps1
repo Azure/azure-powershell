@@ -22,7 +22,7 @@ function Test-NewAzSearchService
 	$rgname = getAssetName
 	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
-	$sku = "Standard"
+	$sku = "standard"
 	$partitionCount = 1
 	$replicaCount = 1
 	$hostingMode = "Default"
@@ -42,6 +42,46 @@ function Test-NewAzSearchService
 		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
 		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
 		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceComputeType
+#>
+function Test-NewAzSearchServiceComputeType
+{
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "standard"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$computeType = "default"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -ComputeType $computeType
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-AreEqual $computeType $newSearchService.ComputeType
 	}
 	finally
     {
@@ -337,7 +377,7 @@ function Test-NewAzSearchServiceL1
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Storage_Optimized_L1"
 	$partitionCount = 1
@@ -417,7 +457,7 @@ function Test-NewAzSearchServicePublicNetworkAccessDisabled
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -484,7 +524,184 @@ function Test-NewAzSearchServiceIpRules
 		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
 		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
 		Assert-AreEqual $hostingMode $newSearchService.HostingMode
-		Assert-AreEqual 3 $newSearchService.NetworkRuleSet.Count
+		Assert-AreEqual 3 $newSearchService.NetworkRuleSet.IpRules.Count
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceIpRulesWithBypass
+#>
+function Test-NewAzSearchServiceIpRulesWithBypass
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$ipRules = 
+		@([pscustomobject]@{Value="55.5.64.73"},
+		[pscustomobject]@{Value="52.228.216.197"},
+		[pscustomobject]@{Value="101.37.222.205"})
+	$bypass = "AzureServices"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -IpRuleList $ipRules -Bypass $bypass
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-AreEqual 3 $newSearchService.NetworkRuleSet.IpRules.Count
+		Assert-AreEqual $bypass $newSearchService.NetworkRuleSet.Bypass
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceDataExfiltrationProtection
+#>
+function Test-NewAzSearchServiceDataExfiltrationProtection
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$dataExfiltrationProtections = @("BlockAll")
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -DataExfiltrationProtectionList $dataExfiltrationProtections
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-AreEqual 1 $newSearchService.DataExfiltrationProtections.Count
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzSearchNetworkSecurityPerimeterConfiguration
+#>
+function Test-GetAzSearchNetworkSecurityPerimeterConfiguration
+{
+    # Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$nsp = @{ 
+        Name = $rgname + '-nsp' 
+        location = "East US" 
+        ResourceGroupName = $rgname
+        }
+
+	$nspProfile = @{ 
+        Name = 'nsp-profile' 
+        ResourceGroupName = $rgname
+        SecurityPerimeterName = $nsp.Name 
+        }
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$testNSP = New-AzNetworkSecurityPerimeter @nsp
+		$nspId = $testNSP.Id
+
+		$testProfileNSP = New-AzNetworkSecurityPerimeterProfile @nspprofile
+
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc
+
+		$nspAssociation = @{ 
+			AssociationName = 'nspassociation' 
+			ResourceGroupName = $rgname 
+			SecurityPerimeterName = $nsp.Name 
+			AccessMode = 'Learning'  
+			ProfileId = $testProfileNSP.Id 
+			PrivateLinkResourceId = $newSearchService.Id
+        }
+
+		$testassociation = New-AzNetworkSecurityPerimeterAssociation @nspassociation
+
+		$nspConfigName = $testNSP.PerimeterGuid + "." + $nspAssociation.AssociationName
+
+		$stopwatch =  [system.diagnostics.stopwatch]::StartNew()
+		while ($true)
+		{
+			if ($stopwatch.Elapsed.TotalMinutes -gt 10)
+			{
+				throw [System.InvalidOperationException] "Took too long to create network security perimeter resource association"
+			}
+
+			$association = Get-AzNetworkSecurityPerimeterAssociation -Name $nspAssociation.AssociationName -ResourceGroupName $rgname -SecurityPerimeterName $nsp.Name
+			if ($association.ProvisioningState -ne "Succeeded")
+			{
+				Start-TestSleep -Seconds 60
+			}
+			else
+			{
+				break
+			}
+		}$stopwatch.Stop()
+
+		#Get
+		$retrievedNSPConfiguration = Get-AzSearchNetworkSecurityPerimeterConfiguration -ResourceGroupName $rgname -ServiceName $svcName -Name $nspConfigName
+
+		#List
+		$retrievedNSPConfigurations = Get-AzSearchNetworkSecurityPerimeterConfiguration -ResourceGroupName $rgname -ServiceName $svcName
+		
+		# Assert
+		Assert-NotNull $retrievedNSPConfiguration
+		Assert-AreEqual $retrievedNSPConfiguration.Name $nspConfigName
+		Assert-AreEqual $retrievedNSPConfiguration.Profile.Name $nspProfile.Name
+		Assert-AreEqual $retrievedNSPConfiguration.ResourceAssociation.Name $nspAssociation.AssociationName
+
+		Assert-NotNull $retrievedNSPConfigurations
+		Assert-AreEqual 1 $retrievedNSPConfigurations.Count
+
 	}
 	finally
     {
@@ -964,12 +1181,12 @@ function Test-ManageAzSearchSharedPrivateLinkResources
 
 		$resource1 = "blob-pe"
 		$storageAccount1 = "pssweanzmd"
-		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId1 = $resourceObj1.Id
 
 		$resource2 = "blob-pe2"
 		$storageAccount2 = "pslnuvtdhp"
-		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId2 = $resourceObj2.Id
 
 		$groupId = "blob"
@@ -1080,12 +1297,12 @@ function Test-ManageAzSearchSharedPrivateLinkResourcePipeline
 
 		$resource1 = "blob-pe"
 		$storageAccount1 = "pstalexsmn"
-		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId1 = $resourceObj1.Id
 
 		$resource2 = "blob-pe2"
 		$storageAccount2 = "psotjpehnm"
-		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId2 = $resourceObj2.Id
 
 		$groupId = "blob"
@@ -1183,7 +1400,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 
 		# A random name
 		$storageAccount1 = "psjiuxstbg"
-		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation)
+		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId1 = $resourceObj1.Id
 
 		$groupId = "blob"
