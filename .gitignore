@@ -233,6 +233,7 @@ launchSettings.json
 /tools/Modules/tmp
 /tools/Az/Az.psm1
 /tools/AzPreview/AzPreview.psm1
+/tools/Mcp/.logs
 /Azure.PowerShell.sln
 
 # Added due to scan

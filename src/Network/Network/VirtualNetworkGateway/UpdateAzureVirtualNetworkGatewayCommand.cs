@@ -14,18 +14,19 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security;
-using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
-using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using System.Linq;
-using System.Collections;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -247,8 +248,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Determines whether this gateway should accept traffic from other VNets.")]
         public bool? AllowRemoteVnetTraffic { get; set; }
-		
-		[Parameter(
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Property to indicate the resiliency model of Express Route Gateway: SingleHomed/MultiHomed")]
@@ -262,6 +263,20 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Determines whether this gateway should accept traffic from other Virtual WAN networks.")]
         public bool? AllowVirtualWanTraffic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to virtual network gateway.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The managed identity configuration for the virtual network gateway.")]
+        public PSManagedServiceIdentity Identity { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -279,6 +294,28 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkGateway.Name));
+            }
+
+            // For VPN VirtualNetworkGateway with P2SVpnClientConfiguration set, fetch Radius server secrets using new Post API and backfill before calling PUT.
+            if (this.VirtualNetworkGateway.VpnClientConfiguration != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
+            {
+                var radiusAuthServers = (List<RadiusAuthServer>)this.VirtualNetworkGatewayClient.ListRadiusSecrets(VirtualNetworkGateway.ResourceGroupName, VirtualNetworkGateway.Name).Value;
+
+                if (radiusAuthServers != null && radiusAuthServers.Any())
+                {
+                    if (!string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress) && string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret))
+                    {
+                        this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress).RadiusServerSecret ?? "";
+                    }
+
+                    if (this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers != null && this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers.Any())
+                    {
+                        foreach (var radiusServer in this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers)
+                        {
+                            radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret ?? "";
+                        }
+                    }
+                }
             }
 
             if (this.EnableActiveActiveFeature.IsPresent && this.DisableActiveActiveFeature.IsPresent)
@@ -332,7 +369,7 @@ namespace Microsoft.Azure.Commands.Network
                  this.RadiusServerSecret != null ||
                  this.RadiusServerList != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
-                 this.AadTenantUri != null || 
+                 this.AadTenantUri != null ||
                  this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Count() > 0) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
@@ -430,7 +467,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.VirtualNetworkGateway.VpnClientConfiguration?.VpnAuthenticationTypes != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Count() > 0)
             {
-                
+
                 if (!this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
                 {
                     this.VirtualNetworkGateway.VpnClientConfiguration.AadTenant = string.Empty;
@@ -491,30 +528,30 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("PeerWeight must be a positive integer");
             }
 
-            if(this.IpConfigurationBgpPeeringAddresses != null)
+            if (this.IpConfigurationBgpPeeringAddresses != null)
             {
-               if(this.VirtualNetworkGateway.BgpSettings == null)
-               {
+                if (this.VirtualNetworkGateway.BgpSettings == null)
+                {
                     this.VirtualNetworkGateway.BgpSettings = new PSBgpSettings();
-               }
+                }
 
-               if (this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses == null)
-               {
+                if (this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses == null)
+                {
                     this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
 
                     foreach (var address in this.IpConfigurationBgpPeeringAddresses)
                     {
                         this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
                     }
-               }
-               else
-               {
+                }
+                else
+                {
                     foreach (var address in this.IpConfigurationBgpPeeringAddresses)
                     {
                         bool isGatewayIpConfigurationExists = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Any(
                         ipconfaddress => ipconfaddress.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
 
-                        if(isGatewayIpConfigurationExists)
+                        if (isGatewayIpConfigurationExists)
                         {
                             var bgpPeeringPropertiesInRequest = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.FirstOrDefault(
                                 x => x.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
@@ -526,7 +563,7 @@ namespace Microsoft.Azure.Commands.Network
                             this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
                         }
                     }
-               }
+                }
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())
@@ -546,15 +583,15 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.VirtualNetworkGateway.Sku.Name) && (this.VirtualNetworkGateway.Sku.Name.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale) && (this.MinScaleUnit > 0 || this.MaxScaleUnit > 0)))
             {
-                if (this.MinScaleUnit > this.MaxScaleUnit) 
+                if (this.MinScaleUnit > this.MaxScaleUnit)
                 {
 
-                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));          
+                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
                 }
 
                 if (this.MaxScaleUnit > 40)
                 {
-                    throw new PSArgumentException(Properties.Resources.InvalidAutoScaleConfigurationBounds);          
+                    throw new PSArgumentException(Properties.Resources.InvalidAutoScaleConfigurationBounds);
                 }
 
                 this.VirtualNetworkGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
@@ -573,7 +610,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.AdminState = AdminState;
             }
 
-			if (ResiliencyModel != null)
+            if (ResiliencyModel != null)
             {
                 this.VirtualNetworkGateway.ResiliencyModel = ResiliencyModel;
             }
@@ -586,6 +623,22 @@ namespace Microsoft.Azure.Commands.Network
             if (AllowVirtualWanTraffic.HasValue)
             {
                 this.VirtualNetworkGateway.AllowVirtualWanTraffic = AllowVirtualWanTraffic.Value;
+            }
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                this.VirtualNetworkGateway.Identity = new PSManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+            }
+            else if (this.Identity != null)
+            {
+                this.VirtualNetworkGateway.Identity = this.Identity;
             }
 
             // Map to the sdk object

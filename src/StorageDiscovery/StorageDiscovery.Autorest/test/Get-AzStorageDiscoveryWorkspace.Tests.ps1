@@ -15,16 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageDiscoveryWorkspa
 }
 
 Describe 'Get-AzStorageDiscoveryWorkspace' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            $list_sub = Get-AzStorageDiscoveryWorkspace
+            $list_sub.count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $workspace = Get-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName1 -ResourceGroupName $env.resourceGroup
+            $workspace.Name | Should -Be $env.testWorkspaceName1
+        } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $list_rg = Get-AzStorageDiscoveryWorkspace -ResourceGroupName $env.resourceGroup
+            $list_rg.count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

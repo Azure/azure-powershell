@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             }
             {_openAiResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("openAIResourceId"), out var __jsonOpenAiResourceId) ? (string)__jsonOpenAiResourceId : (string)_openAiResourceId;}
             {_openAiResourceEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("openAIResourceEndpoint"), out var __jsonOpenAiResourceEndpoint) ? (string)__jsonOpenAiResourceEndpoint : (string)_openAiResourceEndpoint;}
+            {_openAiConnectorId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("openAIConnectorId"), out var __jsonOpenAiConnectorId) ? (string)__jsonOpenAiConnectorId : (string)_openAiConnectorId;}
             {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("key"), out var __jsonKey) ? (string)__jsonKey : (string)_key;}
             {_lastRefreshAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("lastRefreshAt"), out var __jsonLastRefreshAt) ? global::System.DateTime.TryParse((string)__jsonLastRefreshAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastRefreshAtValue) ? __jsonLastRefreshAtValue : _lastRefreshAt : _lastRefreshAt;}
             AfterFromJson(json);
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             }
             AddIf( null != (((object)this._openAiResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._openAiResourceId.ToString()) : null, "openAIResourceId" ,container.Add );
             AddIf( null != (((object)this._openAiResourceEndpoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._openAiResourceEndpoint.ToString()) : null, "openAIResourceEndpoint" ,container.Add );
+            AddIf( null != (((object)this._openAiConnectorId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._openAiConnectorId.ToString()) : null, "openAIConnectorId" ,container.Add );
             AddIf( null != (((object)this._key)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._key.ToString()) : null, "key" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeRead))
             {

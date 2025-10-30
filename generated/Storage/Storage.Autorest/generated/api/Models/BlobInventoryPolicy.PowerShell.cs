@@ -130,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("PolicyEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled = (bool) content.GetValueForProperty("PolicyEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled = (bool?) content.GetValueForProperty("PolicyEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PolicyDestination"))
             {
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("PolicyEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled = (bool) content.GetValueForProperty("PolicyEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled = (bool?) content.GetValueForProperty("PolicyEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyInternal)this).PolicyEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PolicyDestination"))
             {

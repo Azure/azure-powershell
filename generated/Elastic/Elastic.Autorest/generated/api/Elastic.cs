@@ -13,7 +13,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
     public partial class Elastic
     {
 
-        /// <summary>Get the list of all traffic filters for the account.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -27,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task AllTrafficFiltersList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57,7 +59,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the list of all traffic filters for the account.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task AllTrafficFiltersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -111,7 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the list of all traffic filters for the account.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -121,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse> AllTrafficFiltersListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -163,7 +169,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the list of all traffic filters for the account.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -175,7 +183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse> AllTrafficFiltersListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -336,14 +344,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>Associate traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// Associate a traffic filter with your Elastic monitor resource to control and manage network traffic.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -351,9 +363,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -381,13 +393,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociateTrafficFilterAssociate_Call (request, onDefault,eventListener,sender);
+                await this.AssociateTrafficFilterAssociate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Associate traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// Associate a traffic filter with your Elastic monitor resource to control and manage network traffic.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -395,9 +410,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -437,12 +452,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociateTrafficFilterAssociate_Call (request, onDefault,eventListener,sender);
+                await this.AssociateTrafficFilterAssociate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "AssociateTrafficFilterAssociate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -450,7 +466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AssociateTrafficFilterAssociate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -559,6 +575,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -599,11 +621,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(rulesetId),rulesetId);
             }
         }
 
-        /// <summary>Get marketplace and organization info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -617,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingInfoGet(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IBillingInfoResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -647,7 +672,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get marketplace and organization info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -659,7 +686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingInfoGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IBillingInfoResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -701,7 +728,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get marketplace and organization info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -711,7 +740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IBillingInfoResponse> BillingInfoGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -753,7 +782,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get marketplace and organization info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -765,7 +796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IBillingInfoResponse> BillingInfoGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -926,11 +957,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
         /// <summary>
-        /// List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+        /// List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -945,7 +977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedPartnerResourcesList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -976,7 +1008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+        /// List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -989,7 +1021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedPartnerResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1032,7 +1064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+        /// List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1043,7 +1075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcesListResponse> ConnectedPartnerResourcesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1086,7 +1118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+        /// List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1099,7 +1131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcesListResponse> ConnectedPartnerResourcesListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1262,10 +1294,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>create and Associate IP traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// create and associate an IP filter with your Elastic monitor resource to control and manage network traffic.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -1281,7 +1316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateAndAssociateIPFilterCreate(string subscriptionId, string resourceGroupName, string monitorName, string ips, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1315,7 +1350,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>create and Associate IP traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// create and associate an IP filter with your Elastic monitor resource to control and manage network traffic.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ips">List of ips</param>
         /// <param name="name">Name of the traffic filter</param>
@@ -1329,7 +1366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateAndAssociateIPFilterCreateViaIdentity(global::System.String viaIdentity, string ips, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1541,12 +1578,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(ips),ips);
                 await eventListener.AssertNotNull(nameof(name),name);
             }
         }
 
-        /// <summary>create and Associate private link traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -1563,7 +1603,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateAndAssociatePlFilterCreate(string subscriptionId, string resourceGroupName, string monitorName, string name, string privateEndpointGuid, string privateEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1599,7 +1639,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>create and Associate private link traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="name">Name of the traffic filter</param>
         /// <param name="privateEndpointGuid">Guid of the private endpoint</param>
@@ -1614,7 +1656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateAndAssociatePlFilterCreateViaIdentity(global::System.String viaIdentity, string name, string privateEndpointGuid, string privateEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1829,6 +1871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(name),name);
                 await eventListener.AssertNotNull(nameof(privateEndpointGuid),privateEndpointGuid);
                 await eventListener.AssertNotNull(nameof(privateEndpointName),privateEndpointName);
@@ -1836,7 +1879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+        /// Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1851,7 +1894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task DeploymentInfoList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1882,7 +1925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+        /// Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1895,7 +1938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task DeploymentInfoListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1938,7 +1981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+        /// Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1949,7 +1992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponse> DeploymentInfoListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1992,7 +2035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+        /// Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2005,7 +2048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponse> DeploymentInfoListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2166,10 +2209,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>Detach and Delete traffic filter from the given deployment.</summary>
+        /// <summary>
+        /// Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control
+        /// capabilities.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -2184,7 +2231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task DetachAndDeleteTrafficFilterDelete(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2216,7 +2263,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Detach and Delete traffic filter from the given deployment.</summary>
+        /// <summary>
+        /// Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control
+        /// capabilities.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2229,7 +2279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task DetachAndDeleteTrafficFilterDeleteViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2345,15 +2395,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(rulesetId),rulesetId);
             }
         }
 
-        /// <summary>Detach traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// Detach an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2361,9 +2415,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2391,13 +2445,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DetachTrafficFilterUpdate_Call (request, onDefault,eventListener,sender);
+                await this.DetachTrafficFilterUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Detach traffic filter for the given deployment.</summary>
+        /// <summary>
+        /// Detach an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2405,9 +2462,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DetachTrafficFilterUpdateViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2447,12 +2504,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DetachTrafficFilterUpdate_Call (request, onDefault,eventListener,sender);
+                await this.DetachTrafficFilterUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "DetachTrafficFilterUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2460,7 +2518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DetachTrafficFilterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2569,6 +2627,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2609,11 +2673,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(rulesetId),rulesetId);
             }
         }
 
-        /// <summary>Get a list of available versions for a region.</summary>
+        /// <summary>
+        /// Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your
+        /// deployment.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="region">Region where elastic deployment will take place.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2626,7 +2694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ElasticVersionsList(string subscriptionId, string region, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticVersionsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2654,7 +2722,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get a list of available versions for a region.</summary>
+        /// <summary>
+        /// Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your
+        /// deployment.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="region">Region where elastic deployment will take place.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2667,7 +2738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ElasticVersionsListViaIdentity(global::System.String viaIdentity, string region, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticVersionsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2705,7 +2776,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get a list of available versions for a region.</summary>
+        /// <summary>
+        /// Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your
+        /// deployment.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="region">Region where elastic deployment will take place.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2716,7 +2790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticVersionsListResponse> ElasticVersionsListViaIdentityWithResult(global::System.String viaIdentity, string region, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2754,7 +2828,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get a list of available versions for a region.</summary>
+        /// <summary>
+        /// Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your
+        /// deployment.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="region">Region where elastic deployment will take place.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2765,7 +2842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticVersionsListResponse> ElasticVersionsListWithResult(string subscriptionId, string region, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2924,7 +3001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+        /// update external user configurations for your Elastic monitor resource, enabling access and management by external users.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2941,7 +3018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ExternalUserCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2976,7 +3053,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+        /// update external user configurations for your Elastic monitor resource, enabling access and management by external users.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic External User Creation Parameters</param>
@@ -2991,7 +3068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ExternalUserCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3038,7 +3115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+        /// update external user configurations for your Elastic monitor resource, enabling access and management by external users.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic External User Creation Parameters</param>
@@ -3051,7 +3128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse> ExternalUserCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3098,7 +3175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+        /// update external user configurations for your Elastic monitor resource, enabling access and management by external users.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3114,7 +3191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ExternalUserCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3149,7 +3226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+        /// update external user configurations for your Elastic monitor resource, enabling access and management by external users.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3163,7 +3240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse> ExternalUserCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3198,7 +3275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+        /// update external user configurations for your Elastic monitor resource, enabling access and management by external users.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3213,7 +3290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse> ExternalUserCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3381,12 +3458,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>Get the list of all associated traffic filters for the given deployment.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -3400,7 +3480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ListAssociatedTrafficFiltersList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3430,7 +3510,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the list of all associated traffic filters for the given deployment.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3442,7 +3524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task ListAssociatedTrafficFiltersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3484,7 +3566,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the list of all associated traffic filters for the given deployment.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3494,7 +3578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse> ListAssociatedTrafficFiltersListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3536,7 +3620,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the list of all associated traffic filters for the given deployment.</summary>
+        /// <summary>
+        /// List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -3548,7 +3634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse> ListAssociatedTrafficFiltersListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3711,14 +3797,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>Upgradable version for a monitor resource.</summary>
+        /// <summary>
+        /// Upgrade the Elastic monitor resource to a newer version, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">Elastic Monitor Upgrade Parameters</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3727,9 +3817,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorUpgrade(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task MonitorUpgrade(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3759,13 +3849,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorUpgrade_Call (request, onDefault,eventListener,sender);
+                await this.MonitorUpgrade_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Upgradable version for a monitor resource.</summary>
+        /// <summary>
+        /// Upgrade the Elastic monitor resource to a newer version, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic Monitor Upgrade Parameters</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3774,9 +3867,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task MonitorUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3818,15 +3911,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorUpgrade_Call (request, onDefault,eventListener,sender);
+                await this.MonitorUpgrade_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Upgradable version for a monitor resource.</summary>
+        /// <summary>
+        /// Upgrade the Elastic monitor resource to a newer version, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorUpgrade operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3834,9 +3930,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorUpgradeViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorUpgradeViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3866,12 +3962,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorUpgrade_Call (request, onDefault,eventListener,sender);
+                await this.MonitorUpgrade_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "MonitorUpgrade" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3879,7 +3976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MonitorUpgrade_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MonitorUpgrade_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3991,6 +4088,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4031,12 +4134,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>List the resources currently being monitored by the Elastic monitor resource.</summary>
+        /// <summary>
+        /// List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -4050,7 +4156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitoredResourcesList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4080,7 +4186,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List the resources currently being monitored by the Elastic monitor resource.</summary>
+        /// <summary>
+        /// List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4092,7 +4200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitoredResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4134,7 +4242,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List the resources currently being monitored by the Elastic monitor resource.</summary>
+        /// <summary>
+        /// List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4144,7 +4254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredResourceListResponse> MonitoredResourcesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4186,7 +4296,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List the resources currently being monitored by the Elastic monitor resource.</summary>
+        /// <summary>
+        /// List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -4198,7 +4310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredResourceListResponse> MonitoredResourcesListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4359,10 +4471,2328 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>create a monitor resource.</summary>
+        /// <summary>
+        /// Add subscriptions to be monitored by the Elastic monitor resource, enabling observability and monitoring.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateorUpdate(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsCreateorUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add subscriptions to be monitored by the Elastic monitor resource, enabling observability and monitoring.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateorUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/(?<configurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsCreateorUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add subscriptions to be monitored by the Elastic monitor resource, enabling observability and monitoring.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateorUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/(?<configurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsCreateorUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add subscriptions to be monitored by the Elastic monitor resource, enabling observability and monitoring.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsCreateorUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateorUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsCreateorUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add subscriptions to be monitored by the Elastic monitor resource, enabling observability and monitoring.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsCreateorUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateorUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsCreateorUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add subscriptions to be monitored by the Elastic monitor resource, enabling observability and monitoring.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateorUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsCreateorUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsCreateorUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateorUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsCreateorUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateorUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsCreateorUpdate" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateorUpdate_Validate(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+                await eventListener.AssertRegEx(nameof(configurationName), configurationName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Delete subscriptions being monitored by the Elastic monitor resource, removing their observability and monitoring capabilities.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Delete subscriptions being monitored by the Elastic monitor resource, removing their observability and monitoring capabilities.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/(?<configurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsDelete" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete_Validate(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+                await eventListener.AssertRegEx(nameof(configurationName), configurationName, @"^.*$");
+            }
+        }
+
+        /// <summary>
+        /// Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsGet(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/(?<configurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/(?<configurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsGet" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsGet_Validate(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+                await eventListener.AssertRegEx(nameof(configurationName), configurationName, @"^.*$");
+            }
+        }
+
+        /// <summary>
+        /// List all subscriptions currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List all subscriptions currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List all subscriptions currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List all subscriptions currently being monitored by the Elastic monitor resource, helping you manage observability.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionPropertiesList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionPropertiesList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsList" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsList_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+            }
+        }
+
+        /// <summary>
+        /// update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdate(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/(?<configurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/(?<configurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                var configurationName = _match.Groups["configurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/"
+                        + configurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/"
+                        + global::System.Uri.EscapeDataString(configurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsUpdate" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="configurationName">The configuration name. Only 'default' value is supported.</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Elastic monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdate_Validate(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+                await eventListener.AssertRegEx(nameof(configurationName), configurationName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure
+        /// resources through Elastic.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -4378,7 +6808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4411,7 +6841,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>create a monitor resource.</summary>
+        /// <summary>
+        /// create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure
+        /// resources through Elastic.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic monitor resource model</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4425,7 +6858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4470,7 +6903,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>create a monitor resource.</summary>
+        /// <summary>
+        /// create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure
+        /// resources through Elastic.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic monitor resource model</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4482,7 +6918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4527,7 +6963,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>create a monitor resource.</summary>
+        /// <summary>
+        /// create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure
+        /// resources through Elastic.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -4542,7 +6981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4575,7 +7014,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>create a monitor resource.</summary>
+        /// <summary>
+        /// create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure
+        /// resources through Elastic.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -4588,7 +7030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4621,7 +7063,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>create a monitor resource.</summary>
+        /// <summary>
+        /// create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure
+        /// resources through Elastic.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -4635,7 +7080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsCreateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4984,12 +7429,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>Delete a monitor resource.</summary>
+        /// <summary>
+        /// Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -5004,7 +7452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsDelete(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5033,7 +7481,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Delete a monitor resource.</summary>
+        /// <summary>
+        /// Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -5046,7 +7496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5261,10 +7711,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>Get the properties of a specific monitor resource.</summary>
+        /// <summary>
+        /// Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -5278,7 +7731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGet(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5307,7 +7760,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the properties of a specific monitor resource.</summary>
+        /// <summary>
+        /// Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5319,7 +7774,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5360,7 +7815,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the properties of a specific monitor resource.</summary>
+        /// <summary>
+        /// Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5370,7 +7827,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5411,7 +7868,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get the properties of a specific monitor resource.</summary>
+        /// <summary>
+        /// Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -5423,7 +7882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5583,10 +8042,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>List all monitors under the specified subscription.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified subscription, helping you audit and manage your monitoring setup.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5598,7 +8060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5624,7 +8086,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List all monitors under the specified resource group.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified resource group of the subscription, helping you audit and manage
+        /// your monitoring setup.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5637,7 +8102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5665,7 +8130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List all monitors under the specified resource group.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified resource group of the subscription, helping you audit and manage
+        /// your monitoring setup.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5677,7 +8145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5716,7 +8184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List all monitors under the specified resource group.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified resource group of the subscription, helping you audit and manage
+        /// your monitoring setup.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5726,7 +8197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse> MonitorsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5765,7 +8236,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List all monitors under the specified resource group.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified resource group of the subscription, helping you audit and manage
+        /// your monitoring setup.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5776,7 +8250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse> MonitorsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5938,7 +8412,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List all monitors under the specified subscription.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified subscription, helping you audit and manage your monitoring setup.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5950,7 +8426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5986,7 +8462,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List all monitors under the specified subscription.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified subscription, helping you audit and manage your monitoring setup.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5996,7 +8474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse> MonitorsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6032,7 +8510,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List all monitors under the specified subscription.</summary>
+        /// <summary>
+        /// List all Elastic monitor resources within a specified subscription, helping you audit and manage your monitoring setup.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -6042,7 +8522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceListResponse> MonitorsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6196,7 +8676,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a monitor resource.</summary>
+        /// <summary>
+        /// update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6210,9 +8692,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task MonitorsUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6245,7 +8727,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a monitor resource.</summary>
+        /// <summary>
+        /// update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic resource model update parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6257,9 +8741,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task MonitorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6304,7 +8788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a monitor resource.</summary>
+        /// <summary>
+        /// update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic resource model update parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6316,7 +8802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6361,7 +8847,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a monitor resource.</summary>
+        /// <summary>
+        /// update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6374,9 +8862,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6409,7 +8897,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a monitor resource.</summary>
+        /// <summary>
+        /// update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6422,7 +8912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6455,7 +8945,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a monitor resource.</summary>
+        /// <summary>
+        /// update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6469,7 +8961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> MonitorsUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResourceUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6517,10 +9009,103 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -6535,14 +9120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -6572,17 +9157,110 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MonitorsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MonitorsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -6597,7 +9275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6634,12 +9312,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>update a OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6657,7 +9339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6692,7 +9374,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Capture properties of Open AI resource Integration.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6707,7 +9392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6755,7 +9440,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Capture properties of Open AI resource Integration.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6767,7 +9455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel> OpenAiCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6815,7 +9503,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6832,7 +9523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6867,7 +9558,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6881,7 +9575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel> OpenAiCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6916,7 +9610,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -6931,7 +9628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel> OpenAiCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7112,6 +9809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(integrationName),integrationName);
                 await eventListener.AssertRegEx(nameof(integrationName), integrationName, @"^[a-z][a-z0-9]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -7119,7 +9817,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Delete OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring
+        /// capabilities.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -7135,7 +9836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiDelete(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7166,7 +9867,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Delete OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring
+        /// capabilities.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -7179,7 +9883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7302,12 +10006,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(integrationName),integrationName);
                 await eventListener.AssertRegEx(nameof(integrationName), integrationName, @"^[a-z][a-z0-9]*$");
             }
         }
 
-        /// <summary>Get OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -7322,7 +10029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiGet(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7353,7 +10060,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get OpenAI integration status for a given integration.</summary>
+        /// <summary>
+        /// Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -7368,7 +10077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiGetStatus(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7400,7 +10109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get OpenAI integration status for a given integration.</summary>
+        /// <summary>
+        /// Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7412,7 +10123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiGetStatusViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7457,7 +10168,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get OpenAI integration status for a given integration.</summary>
+        /// <summary>
+        /// Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -7467,7 +10180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationStatusResponse> OpenAiGetStatusViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7512,7 +10225,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get OpenAI integration status for a given integration.</summary>
+        /// <summary>
+        /// Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -7525,7 +10240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationStatusResponse> OpenAiGetStatusWithResult(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7689,12 +10404,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(integrationName),integrationName);
                 await eventListener.AssertRegEx(nameof(integrationName), integrationName, @"^[a-z][a-z0-9]*$");
             }
         }
 
-        /// <summary>Get OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7706,7 +10424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7750,7 +10468,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -7760,7 +10480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel> OpenAiGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7804,7 +10524,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -7817,7 +10539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel> OpenAiGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, string integrationName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7980,12 +10702,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(integrationName),integrationName);
                 await eventListener.AssertRegEx(nameof(integrationName), integrationName, @"^[a-z][a-z0-9]*$");
             }
         }
 
-        /// <summary>List OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// List all OpenAI integration rules for a given Elastic monitor resource, helping you manage AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -7999,7 +10725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8029,7 +10755,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// List all OpenAI integration rules for a given Elastic monitor resource, helping you manage AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8041,7 +10770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OpenAiListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8083,7 +10812,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// List all OpenAI integration rules for a given Elastic monitor resource, helping you manage AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8093,7 +10825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelListResponse> OpenAiListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8135,7 +10867,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List OpenAI integration rule for a given monitor resource.</summary>
+        /// <summary>
+        /// List all OpenAI integration rules for a given Elastic monitor resource, helping you manage AI-driven observability and
+        /// monitoring.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -8147,7 +10882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelListResponse> OpenAiListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8308,6 +11043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
@@ -8322,7 +11058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8358,7 +11094,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8401,7 +11137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8443,7 +11179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8594,7 +11330,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+        /// Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch
+        /// Organization.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="body">Email Id parameter of the User Organization, of which the API Key must be returned</param>
@@ -8609,7 +11346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsGetApiKey(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8640,7 +11377,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+        /// Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch
+        /// Organization.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Email Id parameter of the User Organization, of which the API Key must be returned</param>
@@ -8655,7 +11393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsGetApiKeyViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8696,7 +11434,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+        /// Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch
+        /// Organization.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Email Id parameter of the User Organization, of which the API Key must be returned</param>
@@ -8709,7 +11448,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse> OrganizationsGetApiKeyViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8750,7 +11489,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+        /// Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch
+        /// Organization.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the OrganizationsGetApiKey operation</param>
@@ -8764,7 +11504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsGetApiKeyViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8795,7 +11535,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+        /// Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch
+        /// Organization.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the OrganizationsGetApiKey operation</param>
@@ -8807,7 +11548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse> OrganizationsGetApiKeyViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8838,7 +11579,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+        /// Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch
+        /// Organization.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="body">Email Id parameter of the User Organization, of which the API Key must be returned</param>
@@ -8851,7 +11593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse> OrganizationsGetApiKeyWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9013,7 +11755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+        /// Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9026,7 +11768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsGetElasticToAzureSubscriptionMapping(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9053,7 +11795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+        /// Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9066,7 +11808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsGetElasticToAzureSubscriptionMappingViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9103,7 +11845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+        /// Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9114,7 +11856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponse> OrganizationsGetElasticToAzureSubscriptionMappingViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9151,7 +11893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+        /// Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9162,7 +11904,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponse> OrganizationsGetElasticToAzureSubscriptionMappingWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9320,7 +12062,646 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a tag rule set for a given monitor resource.</summary>
+        /// <summary>Resubscribe the Elasticsearch Organization.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OrganizationsResubscribe(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResubscribeProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OrganizationsResubscribe_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Resubscribe the Elasticsearch Organization.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OrganizationsResubscribeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResubscribeProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OrganizationsResubscribe_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Resubscribe the Elasticsearch Organization.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> OrganizationsResubscribeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResubscribeProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Elastic/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + monitorName
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OrganizationsResubscribeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Resubscribe the Elasticsearch Organization.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the OrganizationsResubscribe operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OrganizationsResubscribeViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OrganizationsResubscribe_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Resubscribe the Elasticsearch Organization.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the OrganizationsResubscribe operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> OrganizationsResubscribeViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OrganizationsResubscribeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Resubscribe the Elasticsearch Organization.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> OrganizationsResubscribeWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResubscribeProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-06-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Elastic/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OrganizationsResubscribeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OrganizationsResubscribeWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource> OrganizationsResubscribeWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OrganizationsResubscribe" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task OrganizationsResubscribe_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="OrganizationsResubscribe" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task OrganizationsResubscribe_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResubscribeProperties body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -9337,7 +12718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9372,7 +12753,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">request body of MonitoringTagRules</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9386,7 +12770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9434,7 +12818,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">request body of MonitoringTagRules</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9446,7 +12833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules> TagRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9494,7 +12881,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -9510,7 +12900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9545,7 +12935,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -9559,7 +12952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules> TagRulesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9594,7 +12987,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -9609,7 +13005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules> TagRulesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules body, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9777,13 +13173,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(ruleSetName),ruleSetName);
+                await eventListener.AssertRegEx(nameof(ruleSetName), ruleSetName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>Delete a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// Delete a tag rule set for a given Elastic monitor resource, removing fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -9799,7 +13200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesDelete(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9830,7 +13231,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Delete a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// Delete a tag rule set for a given Elastic monitor resource, removing fine-grained control over observability based on
+        /// resource tags.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -9843,7 +13247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10062,11 +13466,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(ruleSetName),ruleSetName);
+                await eventListener.AssertRegEx(nameof(ruleSetName), ruleSetName, @"^.*$");
             }
         }
 
-        /// <summary>Get a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about a tag rule set for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -10081,7 +13489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesGet(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10112,7 +13520,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about a tag rule set for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10124,7 +13534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10168,7 +13578,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about a tag rule set for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10178,7 +13590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules> TagRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10222,7 +13634,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Get a tag rule set for a given monitor resource.</summary>
+        /// <summary>
+        /// Get detailed information about a tag rule set for a given Elastic monitor resource.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -10235,7 +13649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules> TagRulesGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10398,11 +13812,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(ruleSetName),ruleSetName);
+                await eventListener.AssertRegEx(nameof(ruleSetName), ruleSetName, @"^.*$");
             }
         }
 
-        /// <summary>List the tag rules for a given monitor resource.</summary>
+        /// <summary>
+        /// List all tag rules for a given Elastic monitor resource, helping you manage fine-grained control over observability based
+        /// on resource tags.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -10416,7 +13835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRulesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10446,7 +13865,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List the tag rules for a given monitor resource.</summary>
+        /// <summary>
+        /// List all tag rules for a given Elastic monitor resource, helping you manage fine-grained control over observability based
+        /// on resource tags.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10458,7 +13880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRulesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10500,7 +13922,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List the tag rules for a given monitor resource.</summary>
+        /// <summary>
+        /// List all tag rules for a given Elastic monitor resource, helping you manage fine-grained control over observability based
+        /// on resource tags.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10510,7 +13935,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRulesListResponse> TagRulesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10552,7 +13977,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List the tag rules for a given monitor resource.</summary>
+        /// <summary>
+        /// List all tag rules for a given Elastic monitor resource, helping you manage fine-grained control over observability based
+        /// on resource tags.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -10564,7 +13992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRulesListResponse> TagRulesListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10725,10 +14153,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>Delete traffic filter from the account.</summary>
+        /// <summary>
+        /// Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control
+        /// capabilities.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -10743,7 +14175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TrafficFiltersDelete(string subscriptionId, string resourceGroupName, string monitorName, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10775,7 +14207,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>Delete traffic filter from the account.</summary>
+        /// <summary>
+        /// Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control
+        /// capabilities.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="rulesetId">Ruleset Id of the filter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10788,7 +14223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task TrafficFiltersDeleteViaIdentity(global::System.String viaIdentity, string rulesetId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10904,11 +14339,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(rulesetId),rulesetId);
             }
         }
 
-        /// <summary>List of upgradable versions for a given monitor resource.</summary>
+        /// <summary>
+        /// List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -10922,7 +14360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task UpgradableVersionsDetails(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUpgradableVersionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10952,7 +14390,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List of upgradable versions for a given monitor resource.</summary>
+        /// <summary>
+        /// List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10964,7 +14404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task UpgradableVersionsDetailsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUpgradableVersionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11006,7 +14446,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List of upgradable versions for a given monitor resource.</summary>
+        /// <summary>
+        /// List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -11016,7 +14458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUpgradableVersionsList> UpgradableVersionsDetailsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11058,7 +14500,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>List of upgradable versions for a given monitor resource.</summary>
+        /// <summary>
+        /// List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -11070,7 +14514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUpgradableVersionsList> UpgradableVersionsDetailsWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11233,10 +14677,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
-        /// <summary>update the vm details that will be monitored by the Elastic monitor resource.</summary>
+        /// <summary>
+        /// update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -11252,7 +14699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task VMCollectionUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMCollectionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11286,7 +14733,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update the vm details that will be monitored by the Elastic monitor resource.</summary>
+        /// <summary>
+        /// update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">VM resource Id</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11300,7 +14749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task VMCollectionUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMCollectionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11346,7 +14795,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
             }
         }
 
-        /// <summary>update the vm details that will be monitored by the Elastic monitor resource.</summary>
+        /// <summary>
+        /// update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
@@ -11361,7 +14812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task VMCollectionUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11467,13 +14918,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>
-        /// List the vm resources currently being monitored by the Elastic monitor resource.
+        /// List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11488,7 +14940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task VMHostList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMHostListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11519,7 +14971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List the vm resources currently being monitored by the Elastic monitor resource.
+        /// List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11532,7 +14984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task VMHostListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMHostListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11575,7 +15027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List the vm resources currently being monitored by the Elastic monitor resource.
+        /// List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11586,7 +15038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMHostListResponse> VMHostListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11629,7 +15081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List the vm resources currently being monitored by the Elastic monitor resource.
+        /// List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11642,7 +15094,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMHostListResponse> VMHostListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11803,11 +15255,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
 
         /// <summary>
-        /// List the vm ingestion details that will be monitored by the Elastic monitor resource.
+        /// List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal
+        /// observability and performance.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11822,7 +15276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task VMIngestionDetails(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11853,7 +15307,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List the vm ingestion details that will be monitored by the Elastic monitor resource.
+        /// List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal
+        /// observability and performance.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11866,7 +15321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task VMIngestionDetailsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11909,7 +15364,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List the vm ingestion details that will be monitored by the Elastic monitor resource.
+        /// List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal
+        /// observability and performance.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11920,7 +15376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse> VMIngestionDetailsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11963,7 +15419,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         }
 
         /// <summary>
-        /// List the vm ingestion details that will be monitored by the Elastic monitor resource.
+        /// List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal
+        /// observability and performance.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11976,7 +15433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse> VMIngestionDetailsWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-03-01";
+            var apiVersion = @"2025-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12137,6 +15594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
             }
         }
     }

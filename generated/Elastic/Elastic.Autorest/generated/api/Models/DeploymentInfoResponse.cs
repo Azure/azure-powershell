@@ -15,6 +15,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal
     {
 
+        /// <summary>Backing field for <see cref="ConfigurationType" /> property.</summary>
+        private string _configurationType;
+
+        /// <summary>ConfigurationType Type - Applicable for Serverless only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string ConfigurationType { get => this._configurationType; }
+
         /// <summary>Backing field for <see cref="DeploymentUrl" /> property.</summary>
         private string _deploymentUrl;
 
@@ -72,12 +79,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
         public string MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId; }
 
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string MarketplaceSubscriptionOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionOfferId; }
+
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string MarketplaceSubscriptionPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionPublisherId; }
+
         /// <summary>Backing field for <see cref="MemoryCapacity" /> property.</summary>
         private string _memoryCapacity;
 
         /// <summary>RAM capacity of the elasticsearch in Elastic cloud deployment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public string MemoryCapacity { get => this._memoryCapacity; }
+
+        /// <summary>Internal Acessors for ConfigurationType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.ConfigurationType { get => this._configurationType; set { {_configurationType = value;} } }
 
         /// <summary>Internal Acessors for DeploymentUrl</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.DeploymentUrl { get => this._deploymentUrl; set { {_deploymentUrl = value;} } }
@@ -89,37 +107,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.ElasticsearchEndPoint { get => this._elasticsearchEndPoint; set { {_elasticsearchEndPoint = value;} } }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoBilledAzureSubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoBilledAzureSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoBilledAzureSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceSubscription</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceSubscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoMarketplaceSubscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoSubscribed</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoSubscribed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaaInfoSubscribed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed = value ?? default(bool); }
 
         /// <summary>Internal Acessors for MarketplaceSaasInfo</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfo Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSaasInfo { get => (this._marketplaceSaasInfo = this._marketplaceSaasInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfo()); set { {_marketplaceSaasInfo = value;} } }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId = value ?? null; }
+
+        /// <summary>Internal Acessors for MarketplaceSubscriptionOfferId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSubscriptionOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionOfferId = value ?? null; }
+
+        /// <summary>Internal Acessors for MarketplaceSubscriptionPublisherId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MarketplaceSubscriptionPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionPublisherId = value ?? null; }
 
         /// <summary>Internal Acessors for MemoryCapacity</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.MemoryCapacity { get => this._memoryCapacity; set { {_memoryCapacity = value;} } }
+
+        /// <summary>Internal Acessors for ProjectType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.ProjectType { get => this._projectType; set { {_projectType = value;} } }
 
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.Status { get => this._status; set { {_status = value;} } }
 
         /// <summary>Internal Acessors for Version</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal.Version { get => this._version; set { {_version = value;} } }
+
+        /// <summary>Backing field for <see cref="ProjectType" /> property.</summary>
+        private string _projectType;
+
+        /// <summary>Project Type - Applicable for Serverless only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string ProjectType { get => this._projectType; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private string _status;
@@ -145,6 +179,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
     public partial interface IDeploymentInfoResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IJsonSerializable
     {
+        /// <summary>ConfigurationType Type - Applicable for Serverless only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"ConfigurationType Type - Applicable for Serverless only.",
+        SerializedName = @"configurationType",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConfigurationType { get;  }
         /// <summary>Deployment URL of the elasticsearch in Elastic cloud deployment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -249,6 +294,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceSubscriptionId { get;  }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Offer Id of the Marketplace offer,",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSubscriptionOfferId { get;  }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Publisher Id of the Marketplace offer.",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSubscriptionPublisherId { get;  }
         /// <summary>RAM capacity of the elasticsearch in Elastic cloud deployment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -260,6 +327,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"memoryCapacity",
         PossibleTypes = new [] { typeof(string) })]
         string MemoryCapacity { get;  }
+        /// <summary>Project Type - Applicable for Serverless only.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Project Type - Applicable for Serverless only.",
+        SerializedName = @"projectType",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProjectType { get;  }
         /// <summary>The Elastic deployment status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -289,6 +367,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
     internal partial interface IDeploymentInfoResponseInternal
 
     {
+        /// <summary>ConfigurationType Type - Applicable for Serverless only.</summary>
+        string ConfigurationType { get; set; }
         /// <summary>Deployment URL of the elasticsearch in Elastic cloud deployment.</summary>
         string DeploymentUrl { get; set; }
         /// <summary>Disk capacity of the elasticsearch in Elastic cloud deployment.</summary>
@@ -316,8 +396,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfo MarketplaceSaasInfo { get; set; }
         /// <summary>Marketplace Subscription Id. This is a GUID-formatted string.</summary>
         string MarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        string MarketplaceSubscriptionOfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        string MarketplaceSubscriptionPublisherId { get; set; }
         /// <summary>RAM capacity of the elasticsearch in Elastic cloud deployment.</summary>
         string MemoryCapacity { get; set; }
+        /// <summary>Project Type - Applicable for Serverless only.</summary>
+        string ProjectType { get; set; }
         /// <summary>The Elastic deployment status.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Healthy", "Unhealthy")]
         string Status { get; set; }

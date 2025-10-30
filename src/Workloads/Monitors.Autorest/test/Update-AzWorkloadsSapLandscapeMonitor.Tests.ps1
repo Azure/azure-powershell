@@ -16,18 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWorkloadsSapLandscap
 
 Describe 'Update-AzWorkloadsSapLandscapeMonitor' {
     It 'UpdateExpanded' {
-        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"Prod","topSid":["SID1","SID2"]}' -GroupingSapApplication '{"name":"ERP1","topSid":["SID1","SID2"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
-        $response.GroupingLandscape.Name | Should -Be "Prod"
-
-        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"NonProd","topSid":["SID1","SID2"]}' -GroupingSapApplication '{"name":"ERP1","topSid":["SID1","SID2"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
+        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"NonProd","topSid":["CHA"]}' -GroupingSapApplication '{"name":"NonProd","topSid":["CHA"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
         $response.GroupingLandscape.Name | Should -Be "NonProd"
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"Prod","topSid":["SID1","SID2"]}' -GroupingSapApplication '{"name":"ERP1","topSid":["SID1","SID2"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
-        $response.GroupingLandscape.Name | Should -Be "Prod"
-
-        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"NonProd","topSid":["SID1","SID2"]}' -GroupingSapApplication '{"name":"ERP1","topSid":["SID1","SID2"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
+        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"NonProd","topSid":["CHA"]}' -GroupingSapApplication '{"name":"NonProd","topSid":["CHA"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
         $response.GroupingLandscape.Name | Should -Be "NonProd"
     }
 }

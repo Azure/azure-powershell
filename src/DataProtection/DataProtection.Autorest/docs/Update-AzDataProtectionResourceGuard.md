@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-This parameter is no longer in use and will be depricated
+This parameter is no longer in use and will be deprecated
 
 ```yaml
 Type: System.String
@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardResource
 
 ## NOTES
 
