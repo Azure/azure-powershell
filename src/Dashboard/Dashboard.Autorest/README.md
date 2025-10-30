@@ -31,7 +31,7 @@ commit: a6ef905ba314503e8cfac82d63a2e790fae7991b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2023-09-01/grafana.json
+  - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2025-08-01/grafana.json
 
 title: Dashboard
 module-version: 0.2.0
@@ -75,12 +75,6 @@ directive:
     remove: true
   - where:
       subject: PrivateLinkResource
-    remove: true
-  - where:
-      subject: IntegrationFabrics
-    remove: true
-  - where:
-      subject: ManagedPrivateEndpoints
     remove: true
   - where:
       verb: New
