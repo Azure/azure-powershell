@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes a Shared Private Link Resource managed by the Azure Cognitive
-    /// Search service.
+    /// Describes a shared private link resource managed by the Azure AI Search
+    /// service.
     /// </summary>
     public partial class SharedPrivateLinkResource : Resource
     {
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the SharedPrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -36,12 +36,16 @@ namespace Microsoft.Azure.Management.Search.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="properties">Describes the properties of a Shared Private Link Resource managed by the
-        /// Azure Cognitive Search service.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
-        public SharedPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties))
 
-        : base(id, name, type)
+        /// <param name="properties">Describes the properties of a shared private link resource managed by the
+        /// Azure AI Search service.
+        /// </param>
+        public SharedPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties))
+
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
             CustomInit();
@@ -54,8 +58,8 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets describes the properties of a Shared Private Link Resource
-        /// managed by the Azure Cognitive Search service.
+        /// Gets or sets describes the properties of a shared private link resource
+        /// managed by the Azure AI Search service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public SharedPrivateLinkResourceProperties Properties {get; set; }

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for LastRefreshAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.LastRefreshAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.LastRefreshAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).LastRefreshAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal.Name { get => this._name; set { {_name = value;} } }
@@ -49,6 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         /// <summary>Name of the integration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public string Name { get => this._name; }
+
+        /// <summary>The connector id of Open AI resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string OpenAiConnectorId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).OpenAiConnectorId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal)Property).OpenAiConnectorId = value ?? null; }
 
         /// <summary>The API endpoint for Open AI resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
@@ -130,6 +134,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
+        /// <summary>The connector id of Open AI resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The connector id of Open AI resource",
+        SerializedName = @"openAIConnectorId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OpenAiConnectorId { get; set; }
         /// <summary>The API endpoint for Open AI resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -177,6 +192,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         global::System.DateTime? LastRefreshAt { get; set; }
         /// <summary>Name of the integration.</summary>
         string Name { get; set; }
+        /// <summary>The connector id of Open AI resource</summary>
+        string OpenAiConnectorId { get; set; }
         /// <summary>The API endpoint for Open AI resource</summary>
         string OpenAiResourceEndpoint { get; set; }
         /// <summary>The resource name of Open AI resource</summary>

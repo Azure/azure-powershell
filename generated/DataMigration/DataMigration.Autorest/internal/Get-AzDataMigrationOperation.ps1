@@ -25,12 +25,12 @@ Lists all of the available SQL Migration REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IOperationsDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IOperationsDefinition
 .Link
 https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationoperation
 #>
 function Get-AzDataMigrationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IOperationsDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IOperationsDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new ValidationException(ValidationRules.MinLength, "location", 1);
                 }
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1375,7 +1375,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1761,7 +1761,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1993,7 +1993,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2203,7 +2203,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2430,7 +2430,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 parameters.Validate();
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2708,7 +2708,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2951,7 +2951,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3143,7 +3143,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3360,7 +3360,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 parameters.Validate();
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3597,7 +3597,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 parameters.Validate();
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3807,7 +3807,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3995,7 +3995,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4198,7 +4198,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 installPatchesInput.Validate();
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4411,7 +4411,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4602,7 +4602,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4793,7 +4793,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4982,7 +4982,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5167,7 +5167,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5360,7 +5360,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5551,7 +5551,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5749,7 +5749,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 parameters.Validate();
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5958,7 +5958,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vmName");
             }
-            string apiVersion = "2024-11-01";
+            string apiVersion = "2025-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
