@@ -16,7 +16,7 @@
       "properties": {
         "iotHubNamespace": "iothubpsmaqx",
         "sharedAccessPolicyName": "iothubowner",
-        "sharedAccessPolicyKey": "MsUL6lEeJKN1r8vS7/pfsm3BMIDk15u7CAIoTJZyT4k=",
+        "sharedAccessPolicyKey": "REDACTED",
         "consumerGroupName": "$Default",
         "endpoint": "messages/events"
       }
