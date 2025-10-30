@@ -27,14 +27,14 @@ For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
+commit: a6ef905ba314503e8cfac82d63a2e790fae7991b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/grafana.json
+  - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2023-09-01/grafana.json
 
 title: Dashboard
-module-version: 0.1.0
+module-version: 0.2.0
 subject-prefix: Grafana
 
 directive:
@@ -65,6 +65,7 @@ directive:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   - where:
+      subject: Grafana
       parameter-name: WorkspaceName
     set:
       parameter-name: Name
@@ -74,6 +75,12 @@ directive:
     remove: true
   - where:
       subject: PrivateLinkResource
+    remove: true
+  - where:
+      subject: IntegrationFabrics
+    remove: true
+  - where:
+      subject: ManagedPrivateEndpoints
     remove: true
   - where:
       verb: New
