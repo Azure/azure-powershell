@@ -1,101 +1,64 @@
 ---
 external help file: Az.Automanage-help.xml
 Module Name: Az.Automanage
-online version: https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehciassignment
+online version: https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofilehcrpassignment
 schema: 2.0.0
 ---
 
-# New-AzAutomanageConfigProfileHciAssignment
+# Update-AzAutomanageConfigProfileHcrpAssignment
 
 ## SYNOPSIS
-Create an association between a AzureStackHCI cluster and Automanage configuration profile
+Update an association between a ARC machine and Automanage configuration profile
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzAutomanageConfigProfileHciAssignment -ClusterName <String> -ResourceGroupName <String>
+Update-AzAutomanageConfigProfileHcrpAssignment -MachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityExpanded
 ```
-New-AzAutomanageConfigProfileHciAssignment -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzAutomanageConfigProfileHciAssignment -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAutomanageConfigProfileHcrpAssignment -InputObject <IAutomanageIdentity>
+ [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityClusterExpanded
+### UpdateViaIdentityMachineExpanded
 ```
-New-AzAutomanageConfigProfileHciAssignment -ClusterInputObject <IAutomanageIdentity>
+Update-AzAutomanageConfigProfileHcrpAssignment -MachineInputObject <IAutomanageIdentity>
  [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an association between a AzureStackHCI cluster and Automanage configuration profile
+Update an association between a ARC machine and Automanage configuration profile
 
 ## EXAMPLES
 
-### Example 1: Creates an association between a AzureStackHCI cluster and Automanage configuration profile
+### Example 1: Update an association between a ARC machine and Automanage configuration profile
 ```powershell
-New-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -ClusterName aglinuxcluster -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+Update-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -MachineName aglinuxmachines -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 ```
 
 ```output
 Name    ResourceGroupName ManagedBy Status  TargetId
 ----    ----------------- --------- ------  --------
-default automangerg                 Unknown /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.AzureStackHci/clusters/aglinuxcluster
+default automangerg                 Unknown /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.HybridCompute/machines/aglinuxmachines
 ```
 
-This command creates an association between a AzureStackHCI cluster and Automanage configuration profile.
+Update an association between a ARC machine and Automanage configuration profile
 
 ## PARAMETERS
-
-### -ClusterInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
-Parameter Sets: CreateViaIdentityClusterExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ClusterName
-The name of the Arc machine.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ConfigurationProfile
 The Automanage configurationProfile ARM Resource URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -121,27 +84,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Create operation
+### -MachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: UpdateViaIdentityMachineExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MachineName
+The name of the Arc machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -157,7 +135,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -172,7 +150,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
