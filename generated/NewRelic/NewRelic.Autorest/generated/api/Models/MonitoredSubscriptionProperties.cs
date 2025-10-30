@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISubscriptionList Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SubscriptionList()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISubscriptionListInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISubscriptionListInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISubscriptionListInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISubscriptionListInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesInternal.Type { get => this._type; set { {_type = value;} } }

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 4.3.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
