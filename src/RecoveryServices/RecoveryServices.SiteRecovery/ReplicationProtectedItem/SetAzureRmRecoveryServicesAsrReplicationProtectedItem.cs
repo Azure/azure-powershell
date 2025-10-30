@@ -311,7 +311,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the platform fault domain for replication protected item after failover.
         /// </summary>
         [Parameter]
-        [ValidateNotNullOrEmpty]
         public int? PlatformFaultDomain { get; set; }
 
         /// <summary>

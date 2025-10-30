@@ -582,7 +582,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the platform fault domain to be used by the failover Vm in target recovery region.")]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the platform fault domain to be used by the failover Vm in target recovery region.")]
-        [ValidateNotNullOrEmpty]
         public int? PlatformFaultDomain { get; set; }
 
         /// <summary>

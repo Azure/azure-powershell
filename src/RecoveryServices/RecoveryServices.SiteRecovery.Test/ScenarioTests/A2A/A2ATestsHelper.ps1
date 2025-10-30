@@ -193,6 +193,11 @@ function getPlatformUpdateDomain1
     return 1
 }
 
+function getPlatformUpdateDomain2
+{
+    return 2
+}
+
 function Get-RandomSuffix(
 	[int] $size = 8)
 {
