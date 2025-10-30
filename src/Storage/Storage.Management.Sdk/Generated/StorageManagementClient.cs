@@ -328,6 +328,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -376,7 +379,7 @@ namespace Microsoft.Azure.Management.Storage
             this.FileServices = new FileServicesOperations(this);
             this.FileShares = new FileSharesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-01-01";
+            this.ApiVersion = "2025-06-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

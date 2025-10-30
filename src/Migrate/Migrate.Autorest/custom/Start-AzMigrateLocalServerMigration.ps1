@@ -100,8 +100,10 @@ function Start-AzMigrateLocalServerMigration {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
 
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency

@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {_context = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("context"), out var __jsonContext) ? (string)__jsonContext : (string)_context;}
             {_username = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("username"), out var __jsonUsername) ? (string)__jsonUsername : (string)_username;}
             {_algorithm = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("algorithm"), out var __jsonAlgorithm) ? (string)__jsonAlgorithm : (string)_algorithm;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
 
@@ -113,6 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             AddIf( null != (((object)this._context)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._context.ToString()) : null, "context" ,container.Add );
             AddIf( null != (((object)this._username)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._username.ToString()) : null, "username" ,container.Add );
             AddIf( null != (((object)this._algorithm)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._algorithm.ToString()) : null, "algorithm" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

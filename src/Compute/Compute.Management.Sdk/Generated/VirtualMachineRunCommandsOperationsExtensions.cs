@@ -65,7 +65,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of Azure region.
             /// </param>
             /// <param name='commandId'>
-            /// The command id.
+            /// Specifies a commandId of predefined built-in script. Command IDs available
+            /// for Linux are listed at
+            /// https://aka.ms/RunCommandManagedLinux#available-commands, Windows at
+            /// https://aka.ms/RunCommandManagedWindows#available-commands.
             /// </param>
             public static RunCommandDocument Get(this IVirtualMachineRunCommandsOperations operations, string location, string commandId)
             {
@@ -82,7 +85,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of Azure region.
             /// </param>
             /// <param name='commandId'>
-            /// The command id.
+            /// Specifies a commandId of predefined built-in script. Command IDs available
+            /// for Linux are listed at
+            /// https://aka.ms/RunCommandManagedLinux#available-commands, Windows at
+            /// https://aka.ms/RunCommandManagedWindows#available-commands.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

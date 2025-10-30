@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SapVirtualInstance
-Module Guid: afd2bdc9-d7ac-4bb4-941e-b8371d57b833
+Module Guid: ef2fac55-c936-4613-9618-a7795408b0e7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance
 Help Version: 1.0.0.0
 Locale: en-US
@@ -74,3 +74,4 @@ Updates the Database resource.
 
 ### [Update-AzWorkloadsSapVirtualInstance](Update-AzWorkloadsSapVirtualInstance.md)
 Updates a Virtual Instance for SAP solutions resource
+

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitorTagRule
 
 ## SYNOPSIS
-Get a TagRule
+Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and status
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Get-AzNewRelicMonitorTagRule -InputObject <INewRelicIdentity> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-Get a TagRule
+Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and status
 
 ## EXAMPLES
 

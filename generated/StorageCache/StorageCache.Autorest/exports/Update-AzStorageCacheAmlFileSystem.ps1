@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an AML file system instance.
+Update an AML file system instance.
 .Description
-update an AML file system instance.
+Update an AML file system instance.
 .Example
 Update-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_test_gp_storagecache -KeyEncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/azps-kv/4cc795e46f114ce2a65b82b312964e0e" -MaintenanceWindowDayOfWeek 'Monday' -MaintenanceWindowTimeOfDayUtc "03:00" -SourceVaultId "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.KeyVault/vaults/azps-keyvault"
 
@@ -33,7 +33,10 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
@@ -99,6 +102,38 @@ param(
     [System.String]
     # The time of day (in UTC) to start the maintenance window.
     ${MaintenanceWindowTimeOfDayUtc},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Squash mode of the AML file system.
+    # 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+    # 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+    # 'None': No squashing of User and Group IDs is performed for any users on any systems.
+    ${RootSquashSettingMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+    ${RootSquashSettingNoSquashNidList},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # Group ID to squash to.
+    ${RootSquashSettingSquashGid},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # User ID to squash to.
+    ${RootSquashSettingSquashUid},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

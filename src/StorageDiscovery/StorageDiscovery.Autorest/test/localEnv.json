@@ -1,0 +1,11 @@
+{
+  "SubscriptionId": "d0fe5891-b68c-45a0-8d80-4d66d57f3859",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "testWorkspaceName2": "pshtestworkspace2",
+  "region": "eastus2",
+  "testWorkspaceName1": "pshtestworkspace1",
+  "workspaceRoot": [
+    "/subscriptions/d0fe5891-b68c-45a0-8d80-4d66d57f3859"
+  ],
+  "resourceGroup": "storageDiscoveryTestRg"
+}

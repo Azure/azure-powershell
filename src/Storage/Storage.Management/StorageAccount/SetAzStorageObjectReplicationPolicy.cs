@@ -126,6 +126,48 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string DestinationAccount { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication metrics feature is enabled for the policy.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication metrics feature is enabled for the policy.",
+            ParameterSetName = AccountObjectParameterSet)]
+        public bool EnableMetric
+        {
+            get
+            {
+                return enableMetric.Value;
+            }
+            set
+            {
+                enableMetric = value;
+            }
+        }
+        private bool? enableMetric = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication priority replication feature is enabled for the policy.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication priority replication feature is enabled for the policy.",
+            ParameterSetName = AccountObjectParameterSet)]
+        public bool EnablePriorityReplication
+        {
+            get
+            {
+                return enablePriorityReplication.Value;
+            }
+            set
+            {
+                enablePriorityReplication = value;
+            }
+        }
+        private bool? enablePriorityReplication = null;
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "Object Replication Policy Rules.",
             ParameterSetName = AccountNameParameterSet)]
@@ -182,6 +224,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         DestinationAccount = this.DestinationAccount,
                         Rules = PSObjectReplicationPolicyRule.ParseObjectReplicationPolicyRules(this.Rule)
                     };
+                    if (this.enableMetric != null)
+                    {
+                        policyToSet.Metrics = new ObjectReplicationPolicyPropertiesMetrics()
+                        {
+                            Enabled = this.enableMetric
+                        };
+                    }
+                    if (this.enablePriorityReplication != null)
+                    {
+                        policyToSet.PriorityReplication = new ObjectReplicationPolicyPropertiesPriorityReplication()
+                        {
+                            Enabled = this.enablePriorityReplication
+                        };
+                    }
                 }
 
                 ObjectReplicationPolicy policy = this.StorageClient.ObjectReplicationPolicies.CreateOrUpdate(
