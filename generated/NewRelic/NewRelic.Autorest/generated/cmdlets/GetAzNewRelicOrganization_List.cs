@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List all the existing organizations</summary>
+    /// <summary>
+    /// Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations
+    /// that have been created
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/NewRelic.Observability/organizations"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicOrganization_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"List all the existing organizations")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations that have been created")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/NewRelic.Observability/organizations", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/NewRelic.Observability/organizations", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzNewRelicOrganization_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

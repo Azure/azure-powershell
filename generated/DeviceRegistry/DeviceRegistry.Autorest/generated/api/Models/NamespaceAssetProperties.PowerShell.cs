@@ -221,9 +221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Dataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDataset>) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("Event"))
+            if (content.Contains("EventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).EventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup>) content.GetValueForProperty("EventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).EventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("Stream"))
             {
@@ -253,9 +253,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusDataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset>) content.GetValueForProperty("StatusDataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusDataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("StatusEvent"))
+            if (content.Contains("StatusEventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEvent = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>) content.GetValueForProperty("StatusEvent",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEvent, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup>) content.GetValueForProperty("StatusEventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("StatusStream"))
             {
@@ -418,9 +418,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Dataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDataset>) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("Event"))
+            if (content.Contains("EventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).EventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup>) content.GetValueForProperty("EventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).EventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("Stream"))
             {
@@ -450,9 +450,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusDataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset>) content.GetValueForProperty("StatusDataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusDataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("StatusEvent"))
+            if (content.Contains("StatusEventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEvent = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>) content.GetValueForProperty("StatusEvent",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEvent, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup>) content.GetValueForProperty("StatusEventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal)this).StatusEventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("StatusStream"))
             {

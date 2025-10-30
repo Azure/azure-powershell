@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Supported Blob Geo Replication SLA on Storage accounts
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported enable Priority Replication when set object replication policy
+    - `Set-AzStorageObjectReplicationPolicy`
+* Supported get and reconcile NSP Configuration on a Storage account: 
+    - `Get-AzStorageNetworkSecurityPerimeterConfiguration`
+    - `Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration`
 
 ## Version 9.2.0
 * Supported Zone and ZonePlacementPolicy on Storage accounts: `New-AzStorageAccount`, `Set-AzStorageAccount`
@@ -991,10 +1000,10 @@
 * Fixed miscellaneous typos across module
 * Update help for Get/Close-AzStorageFileHandle, by add more scenarios to cmdlet examples and update parameter descriptions
 * Support StandardBlobTier in upload blob and copy blob
-    -  Set-AzStorageBlobContent
-    -  Start-AzStorageBlobCopy
+    -  `Set-AzStorageBlobContent`
+    -  `Start-AzStorageBlobCopy`
 * Support Rehydrate Priority in copy blob
-    -  Start-AzStorageBlobCopy
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 1.5.1
 * Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name

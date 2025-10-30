@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Commands.SignalR
         public const string SignalRResourceType = "Microsoft.SignalRService/SignalR";
         public const string SignalRCustomDomainResourceType = "Microsoft.SignalRService/SignalR/customDomains";
         public const string SignalRCustomCertificateResourceType = "Microsoft.SignalRService/SignalR/customCertificates";
+        public const string SignalRReplicaResourceType = "Microsoft.SignalRService/SignalR/replicas";
     }
 }
