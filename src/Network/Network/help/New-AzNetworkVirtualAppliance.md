@@ -99,6 +99,20 @@ $nva = New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Locati
 
 Creates a new Network Virtual Appliance resource in resource group: testrg with network profile containing 2 IP configurations on both network interfaces.
 
+### Example 5
+```powershell
+$sku = New-AzVirtualApplianceSkuProperty -VendorName "ciscosdwantest" -BundledScaleUnit 4 -MarketPlaceVersion '17.6.03'
+
+$$config1 = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
+$config2 = New-AzNvaInterfaceConfiguration -NicType "PublicNic" -Name "publicInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{anotherSubnetName}"
+
+$finalConfig = New-AzNvaInterfaceConfigurations -NvaInterfaceConfigs $config1,$config2
+
+$nva = New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -NvaInterfaceConfigurations $finalConfig -Sku $sku -CloudInitConfiguration "echo Hello World!"
+```
+
+Creates a new Network Virtual Appliance resource deployed in VNet with PrivateNic & PublicNic type.
+
 ## PARAMETERS
 
 ### -AdditionalNic

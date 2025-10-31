@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNvaInterfaceConfigurations
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a NVA Interface configurations
 
 ## SYNTAX
 
@@ -18,16 +18,19 @@ New-AzNvaInterfaceConfigurations -NvaInterfaceConfigs <PSNetworkVirtualAppliance
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNvaInterfaceConfigurations** defines a list of interface configuration for virtual appliance deployed in VNet.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$config1 = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
+$config2 = New-AzNvaInterfaceConfiguration -NicType "PublicNic" -Name "publicInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{anotherSubnetName}"
+
+$finalConfig = New-AzNvaInterfaceConfigurations -NvaInterfaceConfigs $config1,$config2
 ```
 
-{{ Add example description here }}
+Create an interface configuration for virtual appliance to be used with New-AzNetworkVirtualAppliance command.
 
 ## PARAMETERS
 
