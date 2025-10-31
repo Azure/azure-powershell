@@ -112,6 +112,12 @@ namespace Microsoft.Azure.Commands.Network
         public string EnabledFilteringCriteria { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs based on flow states.")]
+        [ValidateNotNullOrEmpty]
+        public string RecordType { get; set; }
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.")]
         [ValidateNotNullOrEmpty]
@@ -250,7 +256,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSFlowLogResource CreateFlowLog()
         {
-            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.EnabledFilteringCriteria, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
+            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.EnabledFilteringCriteria, this.RecordType, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
                 this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays, this.UserAssignedIdentityId);
 
             MNM.FlowLog flowLogParameters = GetFlowLogParametersFromRequest();
@@ -270,6 +276,7 @@ namespace Microsoft.Azure.Commands.Network
                 StorageId = this.StorageId,
                 Enabled = this.Enabled,
                 EnabledFilteringCriteria = this.EnabledFilteringCriteria ?? "",
+                RecordTypes = this.RecordType ?? "",
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 

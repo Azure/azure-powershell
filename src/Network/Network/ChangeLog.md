@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for `RecordType` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 
 ## Version 7.22.0
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
