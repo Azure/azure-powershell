@@ -2410,14 +2410,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.NetworkVirtualAppliancePropertiesFormatNetworkProfile, CNM.PSVirtualApplianceNetworkProfile>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceConnection,CNM.PSNetworkVirtualApplianceConnection>();
                 cfg.CreateMap<MNM.DelegationProperties, CNM.PSNetworkVirtualApplianceDelegationProperties>();
-							  cfg.CreateMap<MNM.NvaInterfaceConfigurationsProperties, CNM.PSNetworkVirtualApplianceInterfaceConfigProperties>()
-									  .ForMember(
+                cfg.CreateMap<MNM.NvaInterfaceConfigurationsProperties, CNM.PSNetworkVirtualApplianceInterfaceConfigProperties>()
+                    .ForMember(
                         dest => dest.Subnet,
                         opt => opt.MapFrom(src => src.Subnet != null ? new CNM.PSResourceId { Id = src.Subnet.Id } : null))
-									  .ForMember(
+                    .ForMember(
                         dest => dest.NicType,
                         opt => opt.MapFrom(src => src.Type != null && src.Type.Count > 0 ? src.Type.ToList() : new List<string>()))
-									  .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
 
                 cfg.CreateMap<List<MNM.NvaInterfaceConfigurationsProperties>, CNM.PSNetworkVirtualApplianceInterfaceConfig>()
                     .ConvertUsing(src => new CNM.PSNetworkVirtualApplianceInterfaceConfig
