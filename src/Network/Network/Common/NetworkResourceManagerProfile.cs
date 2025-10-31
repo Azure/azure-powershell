@@ -2384,10 +2384,10 @@ namespace Microsoft.Azure.Commands.Network
                       : new List<MNM.NvaInterfaceConfigurationsProperties>());
 
 
-							// MNM to CNM
-							// Where CNM - models from Powershell
-							//       MNM - models from Sdk
-							cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
+                    // MNM to CNM
+                    // Where CNM - models from Powershell
+                    //       MNM - models from Sdk
+                    cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSku, CNM.PSNetworkVirtualApplianceSku>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSkuInstances, CNM.PSNetworkVirtualApplianceSkuInstances>();
                 cfg.CreateMap<MNM.Office365PolicyProperties, CNM.PSOffice365PolicyProperties>();
