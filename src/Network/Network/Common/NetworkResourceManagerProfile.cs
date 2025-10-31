@@ -2378,8 +2378,8 @@ namespace Microsoft.Azure.Commands.Network
                         dest => dest.Name,
                         opt => opt.MapFrom(src => src.Name)
                     );
-							  cfg.CreateMap<PSNetworkVirtualApplianceInterfaceConfig, List<MNM.NvaInterfaceConfigurationsProperties>>()
-									.ConvertUsing(src => src.NvaNicInterfaceConfigProperties != null 
+                cfg.CreateMap<PSNetworkVirtualApplianceInterfaceConfig, List<MNM.NvaInterfaceConfigurationsProperties>>()
+                    .ConvertUsing(src => src.NvaNicInterfaceConfigProperties != null 
                       ? src.NvaNicInterfaceConfigProperties.Select(x => Mapper.Map<MNM.NvaInterfaceConfigurationsProperties>(x)).ToList()
                       : new List<MNM.NvaInterfaceConfigurationsProperties>());
 
