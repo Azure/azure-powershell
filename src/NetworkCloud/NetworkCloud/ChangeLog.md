@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed parameters `-IdentityType`  for below commands to support for new Managed Identity setting. And `-IdentityUserAssignedIdentity` is renamed to `-UserAssignedIdentity`. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.
+* Below commands to support for new Managed Identity setting.
   * Cmdlet `New-AzNetworkCloudCluster`
   * Cmdlet `New-AzNetworkCloudClusterManager`
   * Cmdlet `Update-AzNetworkCloudCluster`
