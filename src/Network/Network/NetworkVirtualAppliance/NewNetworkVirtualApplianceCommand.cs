@@ -152,13 +152,13 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualApplianceNetworkProfile NetworkProfile { get; set; }
 
 
-		    [Parameter(
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Interface configurations for NVA deployed in VNet.")]
-		    public PSNetworkVirtualApplianceInterfaceConfig NvaInterfaceConfigurations { get; set; }
+        public PSNetworkVirtualApplianceInterfaceConfig NvaInterfaceConfigurations { get; set; }
 
-		    public override void Execute()
+        public override void Execute()
         {
             base.Execute();
 
