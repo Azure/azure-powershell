@@ -171,10 +171,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Specifies the job object of the replicating server.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 Parameter Sets: GetByInputObject
 Aliases:
 
@@ -297,7 +296,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 
 ## NOTES
 

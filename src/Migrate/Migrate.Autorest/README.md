@@ -58,9 +58,6 @@ module-version: 3.0.13
 title: Migrate 
 subject-prefix: 'Migrate'
 
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Correct some swagger operationIds
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
@@ -167,7 +164,7 @@ directive:
     where:
       verb: Invoke$
       subject: ^ResyncReplicationMigrationItem
-      variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
+      variant: ^(?!ResyncExpanded$).*
     remove: true
   - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
     where:
@@ -272,6 +269,16 @@ directive:
     where:
       verb: Update$
       subject: Project$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Remove
+      subject: VCenterVcenter
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Update
+      subject: ReplicationRecoveryServicesProvider|VCenter
     remove: true
   - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
     where:
