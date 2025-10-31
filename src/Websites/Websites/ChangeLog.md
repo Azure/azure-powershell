@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
 ## Version 3.4.1
 * Added AppServicePlan management support for Pv4 and Pmv4 tiers.
