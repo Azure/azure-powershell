@@ -4230,9 +4230,9 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetType "Microsoft_HTTPDDoSRuleSet"
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetVersion "1.0"
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].RuleGroupName $ruleGroupOverrideEntry.RuleGroupName
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Sensitivity $ruleOverrideEntry1.Sensitivity
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Sensitivity High
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Action $ruleOverrideEntry1.Action
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[1].Sensitivity $ruleOverrideEntry2.Sensitivity
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[1].Sensitivity Medium
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[1].Action $ruleOverrideEntry2.Action
 	}
 	finally
