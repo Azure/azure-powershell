@@ -1,26 +1,22 @@
-### Example 1: Create a new MySql server replica
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | New-AzMySqlFlexibleServerReplica -Replica mysql-test-replica -ResourceGroupName PowershellMySqlTest
+{{ Add code here }}
 ```
 
 ```output
-Name                 Location  SkuName             SkuTier          AdministratorLogin Version StorageSizeGb
-----                 --------  -------             -------          ------------------ ------- -------------
-mysql-test-replica   West US 2 Standard_D2ds_v4    GeneralPurpose   admin              5.7     32
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet creates a new MySql server replica.
+{{ Add description here }}
 
-### Example 2: Create a new MySql server replica
+### Example 2: {{ Add title here }}
 ```powershell
-$mysql = Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
-New-AzMySqlFlexibleServerReplica -Master $mysql -Replica mysql-test-replica -ResourceGroupName PowershellMySqlTest
+{{ Add code here }}
 ```
 
 ```output
-Name                 Location  SkuName             SkuTier          AdministratorLogin Version StorageSizeGb
-----                 --------  -------             -------          ------------------ ------- -------------
-mysql-test-replica   West US 2 Standard_D2ds_v4    GeneralPurpose   admin              5.7     32
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet with parameter master(inputobject) creates a new MySql server replica.
+{{ Add description here }}
+

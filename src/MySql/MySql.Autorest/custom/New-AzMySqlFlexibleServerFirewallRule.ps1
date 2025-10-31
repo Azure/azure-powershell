@@ -21,7 +21,7 @@ Creates a new firewall rule for MySQL flexible server
 #>
 
 function New-AzMySqlFlexibleServerFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PreviewMessage("**********************************************************************************************`n
 * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on November 19th 2025. *`n

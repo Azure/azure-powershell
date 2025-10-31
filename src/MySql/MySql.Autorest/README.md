@@ -48,94 +48,62 @@ commit: 7af6056c5682b12ccfc2bb358b290158e9fce917
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
-  - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
   - https://github.com/Azure/azure-rest-api-specs/blob/2d973fccf9f28681a481e9760fa12b2334216e21/specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/AdvancedThreatProtectionSettings.json
+# commit: 8dbe725fc8ce4873c0848071151de4bdf7bc0af8
+# tag: package-flexibleserver-2023-12-30
+# require:
+#   - $(this-folder)/../../readme.azure.noprofile.md
+#   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/readme.md
 
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^CheckNameAvailability_Execute$/g, "NameAvailability_Test")
-  - from: Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
-    where: $.definitions.VirtualNetworkRule
-    transform: $['required'] = ['properties']
-  - from: Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
-    where: $.paths..operationId
-    transform: return $.replace(/^ServerParameters_ListUpdateConfigurations$/g, "ServerConfigurationsList_Update")
-  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
+  - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^(Servers|ServerKeys)_/g, "flexible$1_")
-  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
+  - from: swagger-document
     where: $.paths..operationId
-    transform: return $.replace(/^(Replicas|FirewallRules|Databases|Configurations|NameAvailability|LocationBasedCapabilities)_/g, "flexibleServer$1_")
-  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
+    transform: return $.replace(/^(AzureADAdministrators|Configurations|Databases|FirewallRules|AdvancedThreatProtectionSettings|Replicas|LocationBasedCapabilities)_/g, "flexibleServer$1_")
+  - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^CheckVirtualNetworkSubnetUsage_Execute$/g,"flexibleServerVirtualNetworkSubnetUsage_Get")
-  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
-    where: 
+  - where: 
       verb: Restore$
       subject: ^FlexibleServer$
     hide: true
   - where:
       verb: Get$
-      subject: ^FlexibleServerVirtualNetworkSubnetUsage$|^FlexibleServerLocationBasedCapability$|^RecoverableServer$|^ServerBasedPerformanceTier$|^Backup$
+      subject: ^FlexibleServerVirtualNetworkSubnetUsage$|^FlexibleServerLocationBasedCapability$|^Backup$
     hide: true
   - where:
-      verb: Test$
-      subject: ^FlexibleServerNameAvailability$
+      verb: Test
+      subject: ^NameAvailability$
     hide: true
-  - where:
-      verb: Set
-      subject: ^Configuration$|^FirewallRule$|^VirtualNetworkRule$|^flexibleServerDatabase$|^flexibleServerFirewallRule$|^flexibleServer$
-    set:
-      verb: Update
-  - where:
-      subject: ^Database$|^LocationBasedPerformanceTier$|^LogFile$|SecurityAlertPolicy$|Administrator$|NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$
-    hide: true
+
   - where:
       verb: New$|Update$
-      subject: ^Server$|^Configuration$|^FirewallRule$|^FlexibleServer$|^FlexibleServerFirewallRule$
+      subject: ^FlexibleServer$|^FlexibleServerFirewallRule$
     hide: true
   - where:
       verb: Update$
       subject: ^FlexibleServerConfiguration$|^flexibleServerDatabase$
     hide: true
   - where:
-      verb: New$
-      variant: ^Create$|^CreateViaIdentity
-      subject: ^Server$|^Configuration$|^FirewallRule$|^Database$|^LocationBasedPerformanceTier$|^LogFile$|SecurityAlertPolicy$|Administrator$|NameAvailability$|^VirtualNetworkRule$
-    hide: true
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
   - where:
-      verb: New$|Update$
-      variant: ^(?!.*?Expanded)
-    hide: true
+      verb: Set
+    remove: true
   - where:
       verb: Invoke$
       subject: ^BatchFlexibleServerConfigurationUpdate$|^ExecuteGetPrivateDnsZoneSuffix$
     hide: true
-  - where:
-      parameter-name: VirtualNetworkSubnetId
-      subject: VirtualNetworkRule
-    set:
-      parameter-name: SubnetId
-
-  - where:
-      verb: Set
-      subject: AdvancedThreatProtectionSettingPut
-    hide: true
-  - where:
-      subject: ^AdvancedThreatProtectionSetting$
-    set:
-      subject: FlexibleServerAdvancedThreatProtectionSetting
   - where:
       verb: Get
       subject: FlexibleServerAdvancedThreatProtectionSetting
@@ -155,19 +123,6 @@ directive:
         properties:
           - Name
           - Location
-          - AdministratorLogin
-          - Version
-          - StorageSizeGb
-          - SkuName
-          - SkuTier
-          - SslEnforcement
-  - where:
-      model-name: ServerAutoGenerated
-    set:
-      format-table:
-        properties:
-          - Name
-          - Location
           - SkuName
           - SkuTier
           - AdministratorLogin
@@ -175,16 +130,6 @@ directive:
           - StorageSizeGb
   - where:
       model-name: Configuration
-    set:
-      format-table:
-        properties:
-          - Name
-          - Value
-          - AllowedValue
-          - Source
-          - DefaultValue
-  - where:
-      model-name: ConfigurationAutoGenerated
     set:
       format-table:
         properties:
@@ -202,24 +147,7 @@ directive:
           - StartIPAddress
           - EndIPAddress
   - where:
-      model-name: FirewallRuleAutoGenerated
-    set:
-      format-table:
-        properties:
-          - Name
-          - StartIPAddress
-          - EndIPAddress
-  - where:
       model-name: Database
-    set:
-      format-table:
-        properties:
-          - Name
-          - Charset
-          - Collation
-          - Id
-  - where:
-      model-name: DatabaseAutogenerated
     set:
       format-table:
         properties:
@@ -252,22 +180,10 @@ directive:
       parameter-name: Name
       alias: ConfigurationName
   - where:
-      subject: ^CapabilityProperty$
-      parameter-name: LocationName
-    set:
-      parameter-name: Location
-      alias: LocationName
-  - where:
       parameter-name: StorageProfileBackupRetentionDay
       subject: Server
     set:
       parameter-description: Backup retention days for the server. Day count is between 7 and 35.
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesForCreate Property', 'public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerPropertiesForCreate Property');
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');

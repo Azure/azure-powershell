@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; })
 RequiredAssemblies = 'MySql.Autorest/bin/Az.MySql.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'MySql.Autorest/Az.MySql.format.ps1xml'
@@ -69,35 +69,25 @@ FormatsToProcess = 'MySql.Autorest/Az.MySql.format.ps1xml'
 NestedModules = @('MySql.Autorest/Az.MySql.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzMySqlConfiguration', 'Get-AzMySqlConnectionString', 
-               'Get-AzMySqlFirewallRule', 'Get-AzMySqlFlexibleServer', 
+FunctionsToExport = 'Get-AzMySqlFlexibleServer', 
                'Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting', 
                'Get-AzMySqlFlexibleServerConfiguration', 
                'Get-AzMySqlFlexibleServerConnectionString', 
                'Get-AzMySqlFlexibleServerDatabase', 
                'Get-AzMySqlFlexibleServerFirewallRule', 
                'Get-AzMySqlFlexibleServerLocationBasedCapability', 
-               'Get-AzMySqlFlexibleServerReplica', 'Get-AzMySqlReplica', 
-               'Get-AzMySqlServer', 'Get-AzMySqlVirtualNetworkRule', 
-               'New-AzMySqlFirewallRule', 'New-AzMySqlFlexibleServer', 
+               'Get-AzMySqlFlexibleServerReplica', 'New-AzMySqlFlexibleServer', 
                'New-AzMySqlFlexibleServerDatabase', 
                'New-AzMySqlFlexibleServerFirewallRule', 
-               'New-AzMySqlFlexibleServerReplica', 'New-AzMySqlReplica', 
-               'New-AzMySqlServer', 'New-AzMySqlVirtualNetworkRule', 
-               'Remove-AzMySqlFirewallRule', 'Remove-AzMySqlFlexibleServer', 
+               'New-AzMySqlFlexibleServerReplica', 'Remove-AzMySqlFlexibleServer', 
                'Remove-AzMySqlFlexibleServerDatabase', 
-               'Remove-AzMySqlFlexibleServerFirewallRule', 'Remove-AzMySqlServer', 
-               'Remove-AzMySqlVirtualNetworkRule', 'Restart-AzMySqlFlexibleServer', 
-               'Restart-AzMySqlServer', 'Restore-AzMySqlFlexibleServer', 
-               'Restore-AzMySqlServer', 'Start-AzMySqlFlexibleServer', 
-               'Stop-AzMySqlFlexibleServer', 'Test-AzMySqlFlexibleServerConnect', 
-               'Update-AzMySqlConfiguration', 'Update-AzMySqlFirewallRule', 
-               'Update-AzMySqlFlexibleServer', 
+               'Remove-AzMySqlFlexibleServerFirewallRule', 
+               'Restart-AzMySqlFlexibleServer', 'Restore-AzMySqlFlexibleServer', 
+               'Start-AzMySqlFlexibleServer', 'Stop-AzMySqlFlexibleServer', 
+               'Test-AzMySqlFlexibleServerConnect', 'Update-AzMySqlFlexibleServer', 
                'Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting', 
                'Update-AzMySqlFlexibleServerConfiguration', 
-               'Update-AzMySqlFlexibleServerFirewallRule', 'Update-AzMySqlServer', 
-               'Update-AzMySqlServerConfigurationsList', 
-               'Update-AzMySqlVirtualNetworkRule'
+               'Update-AzMySqlFlexibleServerFirewallRule'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -123,7 +113,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','PSModule','MySql'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'MySql'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -149,7 +139,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
