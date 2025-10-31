@@ -23,7 +23,7 @@
   * Cmdlet `New-AzNetworkCloudClusterManager`
   * Cmdlet `Update-AzNetworkCloudCluster`
   * Cmdlet `Update-AzNetworkCloudClusterManager`
-* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).).
 
 ## Version 1.2.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
