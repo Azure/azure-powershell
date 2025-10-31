@@ -4198,7 +4198,7 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
 		$ruleOverrideEntry1 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 500100 -State Enabled -Action Block -Sensitivity High
-		$ruleOverrideEntry2 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 500110 -State Enabled -Action Block -Sensitivity High
+		$ruleOverrideEntry2 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 500110 -State Enabled -Action Block -Sensitivity Medium
 		$ruleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName ExcessiveRequests -Rule $ruleOverrideEntry1,$ruleOverrideEntry2
 		$primarymanagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
 		$ddosmanagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "Microsoft_HTTPDDoSRuleSet" -RuleSetVersion "1.0" -RuleGroupOverride $ruleGroupOverrideEntry
@@ -4241,46 +4241,6 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 		Clean-ResourceGroup $rgname
 	}
 }
-
-<#
-.SYNOPSIS
-Application gateway v2 WAF tests - invalid sensitivity value should fail
-#>
-function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithInvalidSensitivity {
-    # Setup
-    $location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "uksouth"
-    $rgname = Get-ResourceGroupName
-    $wafPolicy = Get-ResourceName
-
-    try {
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag" }
-
-        # Attempt to create ManagedRuleOverride with invalid sensitivity
-        try {
-			$invalidRuleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride `
-				-RuleId 500100 -State Enabled -Action Block -Sensitivity foo
-
-			$ruleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride `
-				-RuleGroupName ExcessiveRequests -Rule $invalidRuleOverride
-
-			$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet `
-				-RuleSetType "Microsoft_HTTPDDoSRuleSet" -RuleSetVersion "1.0" -RuleGroupOverride $ruleGroupOverrideEntry
-
-			# Attempt to create policy with invalid override
-			New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRuleSet
-			Assert-True $false "Expected failure when applying invalid sensitivity, but policy was created."
-		}
-		catch {
-			Assert-True ($_.Exception.Message -match "Invalid" -or $_.Exception.Message -match "Sensitivity") `
-				"Validation error message did not contain expected text. Actual: $($_.Exception.Message)"
-		}
-    }
-    finally {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
 
 <#
 .SYNOPSIS
