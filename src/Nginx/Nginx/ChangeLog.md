@@ -18,11 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * The parameters of the `New-AzNginxDeployment` and `Update-AzNginxDeployment` cmdlets will be changed by new Managed Identity settings.
-    - Removed `-IdentityType` and `-IdentityUserAssignedIdentity` parameters.
-    - Added `-UserAssignedIdentity` parameter. The type of `UserAssignedIdentity` is simplified to a list of strings that is used to specify the user's assigned identity.
-    - Added `EnableSystemAssignedIdentity` to enable/disable system-assigned identities.
 
 ## Version 1.2.1
 * Added breaking change announcement for below cmdlets from fixed array to list.
