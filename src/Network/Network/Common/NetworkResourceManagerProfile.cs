@@ -2419,13 +2419,13 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.Type != null && src.Type.Count > 0 ? src.Type.ToList() : new List<string>()))
 									  .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
 
-							  cfg.CreateMap<List<MNM.NvaInterfaceConfigurationsProperties>, CNM.PSNetworkVirtualApplianceInterfaceConfig>()
-									  .ConvertUsing(src => new CNM.PSNetworkVirtualApplianceInterfaceConfig
-									  {
-										  NvaNicInterfaceConfigProperties = src != null
-													  ? src.Select(x => Mapper.Map<CNM.PSNetworkVirtualApplianceInterfaceConfigProperties>(x)).ToList()
-													  : new List<CNM.PSNetworkVirtualApplianceInterfaceConfigProperties>()
-									  });
+                cfg.CreateMap<List<MNM.NvaInterfaceConfigurationsProperties>, CNM.PSNetworkVirtualApplianceInterfaceConfig>()
+                    .ConvertUsing(src => new CNM.PSNetworkVirtualApplianceInterfaceConfig
+                    {
+                        NvaNicInterfaceConfigProperties = src != null
+                            ? src.Select(x => Mapper.Map<CNM.PSNetworkVirtualApplianceInterfaceConfigProperties>(x)).ToList()
+                            : new List<CNM.PSNetworkVirtualApplianceInterfaceConfigProperties>()
+                    });
 
 
                 // NetworkManager
