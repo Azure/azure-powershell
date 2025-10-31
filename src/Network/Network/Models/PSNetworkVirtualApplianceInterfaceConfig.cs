@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     }
 
     public class PSNetworkVirtualApplianceInterfaceConfigProperties
-	  {
+        {
         public PSResourceId Subnet { get; set; }
-				public List<string> NicType { get; set; }
+        public List<string> NicType { get; set; }
         public string Name { get; set; }
     }
 }
