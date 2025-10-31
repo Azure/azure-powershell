@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
   - Correct AMH solution tool name of "ServerMigration_DataReplication" is now being passed in to address replication count missing and UX experience load issues in Azure Migrate on Azure portal.
 * Address Join-Path compatibility issue in older version of PowerShell environment such as PowerShell 5.1 in the following commands
