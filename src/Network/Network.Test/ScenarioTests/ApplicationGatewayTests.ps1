@@ -4242,7 +4242,6 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 	}
 }
 
-
 <#
 .SYNOPSIS
 Application gateway v2 WAF tests - invalid sensitivity value should fail
@@ -4258,20 +4257,20 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithInvali
 
         # Attempt to create ManagedRuleOverride with invalid sensitivity
         try {
-            $invalidRuleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride `
-                -RuleId 500100 `
-                -State Enabled `
-                -Action Block `
-                -Sensitivity foo  # Invalid enum value
+			$invalidRuleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride `
+				-RuleId 500100 `
+				-State Enabled `
+				-Action Block `
+				-Sensitivity foo  # Invalid enum value
 
-            # If no error is thrown, fail the test
-            throw "Expected validation error for invalid Sensitivity value 'foo', but command succeeded."
-        }
-        catch {
-            # Assert that the error message contains expected validation text
-            Assert-True ($_.Exception.Message -match "Invalid" -or $_.Exception.Message -match "Sensitivity") `
-                "Validation error message did not contain expected text. Actual: $($_.Exception.Message)"
-        }
+			# If command succeeds, fail using Assert
+			Assert-True $false "Expected validation error for invalid Sensitivity value 'foo', but command succeeded."
+		}
+		catch {
+			# Validate error message
+			Assert-True ($_.Exception.Message -match "Invalid" -or $_.Exception.Message -match "Sensitivity") `
+				"Validation error message did not contain expected text. Actual: $($_.Exception.Message)"
+		}
     }
     finally {
         # Cleanup
