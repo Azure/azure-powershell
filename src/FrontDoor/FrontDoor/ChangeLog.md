@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Migrated to autorest V4
+
 ## Version 1.13.0
 * Added support for Captcha
 
