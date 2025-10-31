@@ -21,25 +21,25 @@ namespace Microsoft.Azure.Commands.Network
 {
 
 
-		[Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NvaInterfaceConfigurations",
-			 SupportsShouldProcess = true),
-			 OutputType(typeof(PSNetworkVirtualApplianceInterfaceConfig))]
-		public class NewNvaInterfaceConfigurationsCommand : NvaInVnetBaseCmdlet
-		{
-				[Parameter(
-						Mandatory = true,
-						ValueFromPipelineByPropertyName = false,
-						HelpMessage = "The network interface configuration")]
-				[ValidateNotNullOrEmpty]
-				public PSNetworkVirtualApplianceInterfaceConfigProperties[] NvaInterfaceConfigs { get; set; }
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NvaInterfaceConfigurations",
+        SupportsShouldProcess = true),
+        OutputType(typeof(PSNetworkVirtualApplianceInterfaceConfig))]
+    public class NewNvaInterfaceConfigurationsCommand : NvaInVnetBaseCmdlet
+    {
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The network interface configuration")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkVirtualApplianceInterfaceConfigProperties[] NvaInterfaceConfigs { get; set; }
 
-				public override void ExecuteCmdlet()
-				{
-						var nvaInterfaceConfigs = new PSNetworkVirtualApplianceInterfaceConfig
-						{
-							NvaNicInterfaceConfigProperties = this.NvaInterfaceConfigs.ToList()
-						};
-						WriteObject(nvaInterfaceConfigs);
-				}
-		}
+        public override void ExecuteCmdlet()
+        {
+            var nvaInterfaceConfigs = new PSNetworkVirtualApplianceInterfaceConfig
+            {
+                NvaNicInterfaceConfigProperties = this.NvaInterfaceConfigs.ToList()
+            };
+            WriteObject(nvaInterfaceConfigs);
+        }
+    }
 }
