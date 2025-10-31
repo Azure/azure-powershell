@@ -2371,8 +2371,8 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => new MNM.NvaInVnetSubnetReferenceProperties { Id = src.Subnet.Id})
                     )
                     .ForMember(
-										    dest => dest.Type,
-												opt => opt.MapFrom(src => src.NicType != null ? src.NicType : new List<string>())
+                        dest => dest.Type,
+                        opt => opt.MapFrom(src => src.NicType != null ? src.NicType : new List<string>())
                     )
                     .ForMember(
                         dest => dest.Name,
