@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-		    [Parameter(
-				    Mandatory = true,
-				    ValueFromPipelineByPropertyName = false,
-				    HelpMessage = "The subnet resource id")]
-		    [ValidateNotNullOrEmpty]
-		    public string SubnetId { get; set; }
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The subnet resource id")]
+        [ValidateNotNullOrEmpty]
+        public string SubnetId { get; set; }
 
-		public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             var networkInterfaceConfiguration = new PSNetworkVirtualApplianceInterfaceConfigProperties
 						{
