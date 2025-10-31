@@ -20,7 +20,7 @@ function Assert-ExitCodeSuccess {
     param(
         [string]$Operation = "Command"
     )
-    if ($LASTEXITCODE -ne 0) {
+    if (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null)) {
         Write-Error "$Operation failed with exit code $LASTEXITCODE"
         exit $LASTEXITCODE
     }
