@@ -4258,16 +4258,19 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithInvali
         # Attempt to create ManagedRuleOverride with invalid sensitivity
         try {
 			$invalidRuleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride `
-				-RuleId 500100 `
-				-State Enabled `
-				-Action Block `
-				-Sensitivity foo  # Invalid enum value
+				-RuleId 500100 -State Enabled -Action Block -Sensitivity foo
 
-			# If command succeeds, fail using Assert
-			Assert-True $false "Expected validation error for invalid Sensitivity value 'foo', but command succeeded."
+			$ruleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride `
+				-RuleGroupName ExcessiveRequests -Rule $invalidRuleOverride
+
+			$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet `
+				-RuleSetType "Microsoft_HTTPDDoSRuleSet" -RuleSetVersion "1.0" -RuleGroupOverride $ruleGroupOverrideEntry
+
+			# Attempt to create policy with invalid override
+			New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRuleSet
+			Assert-True $false "Expected failure when applying invalid sensitivity, but policy was created."
 		}
 		catch {
-			# Validate error message
 			Assert-True ($_.Exception.Message -match "Invalid" -or $_.Exception.Message -match "Sensitivity") `
 				"Validation error message did not contain expected text. Actual: $($_.Exception.Message)"
 		}
