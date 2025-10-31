@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public IList<PSNetworkVirtualApplianceInterfaceConfigProperties> NvaInterfaceConfigurations { get; set; }
 
-				[JsonIgnore]
+        [JsonIgnore]
         public string VirtualHubText
         {
             get { return JsonConvert.SerializeObject(VirtualHub, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
