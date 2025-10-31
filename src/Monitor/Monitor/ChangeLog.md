@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
 ## Version 6.0.3
 * Added breaking change announcement for below cmdlets from single object or fixed array to list.
