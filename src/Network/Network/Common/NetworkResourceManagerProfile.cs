@@ -2428,9 +2428,9 @@ namespace Microsoft.Azure.Commands.Network
 									  });
 
 
-							// NetworkManager
-							// CNM to MNMs
-							cfg.CreateMap<ANM.PSNetworkManager, MNM.NetworkManager>();
+                // NetworkManager
+                // CNM to MNMs
+                cfg.CreateMap<ANM.PSNetworkManager, MNM.NetworkManager>();
                 cfg.CreateMap<ANM.PSNetworkManagerScopes, MNM.NetworkManagerPropertiesNetworkManagerScopes>();
                 cfg.CreateMap<ANM.PSNetworkManagerCrossTenantScopes, MNM.CrossTenantScopes>();
                 cfg.CreateMap<ANM.PSSystemData, MNM.SystemData>();
