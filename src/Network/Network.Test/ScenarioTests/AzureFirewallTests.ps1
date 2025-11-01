@@ -2657,6 +2657,19 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
 
         # Delete the firewall
         Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewall3Name -Force
+
+        # Test 5: Test Set-AzFirewall with EdgeZone and Zones validation
+        # Create a firewall with EdgeZone
+        $azureFirewall4Name = Get-ResourceName
+        $azureFirewall4 = New-AzFirewall -Name $azureFirewall4Name -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
+        
+        # Try to add zones using Set-AzFirewall (should fail)
+        $getAzureFirewall4 = Get-AzFirewall -name $azureFirewall4Name -ResourceGroupName $rgname
+        $getAzureFirewall4.Zones = @("1", "2", "3")
+        Assert-ThrowsLike { Set-AzFirewall -AzureFirewall $getAzureFirewall4 } "*Zones cannot be specified when EdgeZone is provided*"
+        
+        # Clean up
+        Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewall4Name -Force
     }
     finally {
         # Cleanup
