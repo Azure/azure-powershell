@@ -19,10 +19,15 @@
 --->
 
 ## Upcoming Release
+
+* Added EdgeZone (Extended Location) parameter support for Azure Firewall
+  * Added -EdgeZone parameter to New-AzFirewall cmdlet
+  * When EdgeZone is specified, zones property is automatically set to null
 * Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 * Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
 
 ## Version 7.22.0
+
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
   - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
   - Updated `Set-AzNetworkManagerRoutingConfiguration` cmdlet
