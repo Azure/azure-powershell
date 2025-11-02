@@ -1783,9 +1783,9 @@ function GetBuiltInFunctionAppStacksDefinition
 
     if (-not $DoNotShowWarning)
     {
-        $warmingMessage = "Failed to get Function App Stack definitions from ARM API. "
-        $warmingMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues with the following title: "
-        $warmingMessage += "[Az.Functions] Failed to get Function App Stack definitions from ARM API."
+        $warmingMessage = "Failed to retrieve Function App stack definitions from the ARM API. "
+        $warmingMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues, including the region, and use the following title: "
+        $warmingMessage += "[Az.Functions] Failed to retrieve Function App stack definitions from ARM API."
         Write-Warning $warmingMessage
     }
 
@@ -1800,13 +1800,28 @@ function GetBuiltInFunctionAppStacksDefinition
 function GetFunctionAppStackDefinition
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param ()
+    param (
+        [Parameter(Mandatory=$false)]
+        [ValidateSet("PremiumAndConsumption", "FlexConsumption")]
+        $StackType = "PremiumAndConsumption",
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $Location,
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $Runtime
+    )
 
     if ($env:FunctionsTestMode -or ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT))
     {
-        Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
-        $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
-        return $json
+        if ($StackType -eq "PremiumAndConsumption")
+        {
+            Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
+            $json = Get-BuiltInFunctionAppStacksDefinition -DoNotShowWarning
+            return $json
+        }
     }
 
     # Make sure there is an active Azure session
@@ -1837,16 +1852,30 @@ function GetFunctionAppStackDefinition
 
     Write-Debug "$DEBUG_PREFIX Get AccessToken."
     $token =  . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
+
     $headers = @{
         Authorization="Bearer $token"
     }
 
-    $params = @{
-        stackOsType = 'All'
-        removeDeprecatedStacks = 'true'
-    }
+    $apiEndPoint = $null
+    $params = @{}
 
-    $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/functionAppStacks?api-version=2020-10-01"
+    if ($StackType -eq "PremiumAndConsumption")
+    {
+        $params = @{
+            stackOsType = 'All'
+            removeDeprecatedStacks = 'true'
+        }
+        $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/functionAppStacks?api-version=2020-10-01"
+    }
+    elseif ($StackType -eq "FlexConsumption")
+    {
+        $ApiVersion = "2023-12-01"
+        $removeDeprecatedStacks = $true
+        $removeHiddenStacks = $true
+        $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/locations/{0}/functionAppStacks?api-version={1}&removeHiddenStacks={2}&removeDeprecatedStacks={3}&stack={4}" -f `
+                                             $Location, $ApiVersion, ($removeHiddenStacks.ToString().ToLower()), ($removeDeprecatedStacks.ToString().ToLower()), $Runtime
+    }
 
     $maxNumberOfTries = 3
     $currentCount = 1
@@ -1859,7 +1888,7 @@ function GetFunctionAppStackDefinition
         $result = $null
         try
         {
-            Write-Debug "$DEBUG_PREFIX Pull down Function App Stack definitions from ARM API. Attempt $currentCount of $maxNumberOfTries."
+            Write-Debug "$DEBUG_PREFIX Get Function App Stack definitions from ARM API. Attempt $currentCount of $maxNumberOfTries."
             $result = Invoke-WebRequest -Uri $apiEndPoint -Method Get -Headers $headers -body $params -ErrorAction Stop
         }
         catch
@@ -1893,11 +1922,13 @@ function GetFunctionAppStackDefinition
 
     } while ($currentCount -le $maxNumberOfTries)
 
-
-    # At this point, we failed to get the stack definition from the ARM API.
-    # Return the built in json file definition
-    $json = GetBuiltInFunctionAppStacksDefinition
-    return $json
+    if ($StackType -eq "PremiumAndConsumption")
+    {
+        # At this point, we failed to get the stack definition from the ARM API.
+        # Return the built in json file definition
+        $json = GetBuiltInFunctionAppStacksDefinition
+        return $json
+    }
 }
 
 function ContainsProperty
@@ -2747,4 +2778,181 @@ function Format-FlexConsumptionLocation
 
     $normalizedLocation = $Location.ToLower().Replace(" ", "")
     return $normalizedLocation
+}
+
+function Resolve-UserAssignedIdentity
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [System.String]
+        $IdentityResourceId,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    $paramsToRemove = @(
+        "IdentityResourceId"
+    )
+    foreach ($paramName in $paramsToRemove)
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    # Parse the resource ID using regex
+    if ($IdentityResourceId -match "^/subscriptions/(?<SubscriptionId>[^/]+)/resourceGroups/(?<ResourceGroup>[^/]+)/providers/Microsoft\.ManagedIdentity/userAssignedIdentities/(?<IdentityName>[^/]+)$") {
+        $subscriptionId = $matches['SubscriptionId']
+        $resourceGroup = $matches['ResourceGroup']
+        $identityName   = $matches['IdentityName']
+
+        if ((-not [string]::IsNullOrEmpty($resourceGroup)) -or (-not [string]::IsNullOrEmpty($identityName)) -or (-not [string]::IsNullOrEmpty($subscriptionId)))
+        {
+            $errorMessage = "Invalid identity resource ID: '$IdentityResourceId'. Unable to parse resource group name and identity name."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "InvalidIdentityResourceId" `
+                                -ErrorMessage $errorMessage `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+        }
+
+        # Check if identity exists
+        $identity = Get-AzUserAssignedIdentity -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroup -ResourceName $identityName -ErrorAction SilentlyContinue
+
+        if (-not $identity)
+        {
+            $errorMessage = "User-assigned identity '$identityName' does not exist in resource group '$resourceGroup' in subscription '$subscriptionId'."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "StorageAccountHasNoKeyValue" `
+                                -ErrorMessage $errorMessage `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+
+        }
+
+        return $identity
+    }
+    else
+    {
+        $errorMessage = "Invalid resource ID format: '$IdentityResourceId'."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountHasNoKeyValue" `
+                            -ErrorMessage $errorMessage `
+                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                            -Exception $exception
+    }
+}
+
+function Get-FlexFunctionAppRuntime
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $Location,
+
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $Runtime,
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $Version
+    )
+
+    # Map dotnet-isolated → dotnet for this endpoint
+    $Runtime = if ($Runtime -eq 'dotnet-isolated') { 'dotnet' } else { $Runtime }
+
+    # Get Flex Consumption Function App Runtime Definitions
+    $json = GetFunctionAppStackDefinition -StackType FlexConsumption -Location $Location -Runtime $Runtime
+
+    if (-not $json)
+    {
+        $errorMessage = "Failed to retrieve Flex Consumption Function App stack definitions from the ARM API. "
+        $errorMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues, including the region, and use the following title: "
+        $errorMessage += "[Az.Functions] Failed to retrieve Flex Consumption Function App stack definitions from ARM API."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToGetFlexConsumptionFunctionAppStackDefinitionFromARMAPI" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $functionAppStackDefinition = $json | ConvertFrom-Json
+
+    # Flatten: runtime → majorVersions → minorVersions
+    $stacks = foreach ($item in $functionAppStackDefinition)
+    {
+        $runtimeName = $item.name
+        foreach ($maj in ($item.properties.majorVersions | Where-Object { $_ }))
+        {
+            foreach ($min in ($maj.minorVersions | Where-Object { $_ }))
+            {
+                # We only consider linuxRuntimeSettings for Flex Consumption
+                $linux = $min.stackSettings.linuxRuntimeSettings
+
+                if (-not $linux) { continue }
+
+                # Only FC1 (Flex Consumption)
+                $sku = @($linux.Sku) | Where-Object {
+                    $_.skuCode -eq 'FC1'
+                }
+
+                if (-not $sku) { continue }
+
+                # Name preference: FUNCTIONS_WORKER_RUNTIME if present
+                $name = if ($linux.appSettingsDictionary.FUNCTIONS_WORKER_RUNTIME) {
+                    $linux.appSettingsDictionary.FUNCTIONS_WORKER_RUNTIME
+                }
+
+                # Set runtime name and version
+                if ($sku.skuCode -eq 'FC1') {
+                    if (-not $name) {
+                        $name = $sku.functionAppConfigProperties.Runtime.Name
+                    }
+                    $version = $sku.functionAppConfigProperties.Runtime.Version
+                }
+
+                # Parse end of life date
+                $runtimeEndOfLifeDate = if ($linux.endOfLifeDate) {  ParseEndOfLifeDate -Runtime $name -DateString $linux.endOfLifeDate } else { $null }
+
+                # Create runtime object
+                $result = [pscustomobject]@{
+                    Name               = $name
+                    Version            = $version
+                    IsDefault          = ([bool]$linux.isDefault)
+                    EndOfLifeDate      = $runtimeEndOfLifeDate
+                    Sku                = $sku
+                    #AppInsightsSupported = [bool]$linux.appInsightsSettings.isSupported
+                    #GitHubActions_IsSupported = [bool]$linux.gitHubActionSettings.isSupported
+                    #GitHubActions_Version     = $linux.gitHubActionSettings.supportedVersion
+                }
+
+                $result.PSTypeNames.Insert(0,'Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime')
+            }
+        }
+
+        if ($Version)
+        {
+            $versionRecord = $stacks | Where-Object { $_.Version -eq $Version }
+            if (-not $versionRecord)
+            {
+                $supportedVersions = $stacks | ForEach-Object { $_.Version } | Sort-Object | Get-Unique
+                $supportedVersionsString = $supportedVersions -join ", "
+                $errorMessage = "Runtime '{0}' version '{1}' not supported for function apps on the Flex Consumption plan." -f $Runtime, $Version
+                $errorMessage += "Supported versions are: {0}." -f $supportedVersionsString
+                $exception = [System.InvalidOperationException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId "RuntimeVersionNotSupportedInFlexConsumption" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+            }
+        }
+
+        return $stacks
+    }
 }
