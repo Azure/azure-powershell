@@ -255,7 +255,7 @@ Example:
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Parameter(ParameterSetName="FlexConsumption")]
         [System.Management.Automation.SwitchParameter]
-        ${EnableHttpsOnly},
+        ${DisableHttpsOnly},
 
         [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp", HelpMessage='Name of the container app environment.')]
         [ValidateNotNullOrEmpty()]
@@ -400,10 +400,8 @@ Example:
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
 
-        if ($EnableHttpsOnly.IsPresent)
-        {
-            $functionAppDef.HttpsOnly = $true
-        }
+        #$siteConfig.PublicNetworkAccess = 'Disabled'
+        $functionAppDef.HttpsOnly = (-not $DisableHttpsOnly.IsPresent)
 
         ValidateFunctionAppNameAvailability -Name $Name @params
 
@@ -711,7 +709,6 @@ Example:
                 # Check if container exists; create if missing
                 $StorageAccountInfo = Get-StorageAccountInfo -Name $DeploymentStorageName @params
 
-                $ctx = $StorageAccountInfo.Context
                 $container = Get-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
                                                  -AccountName $DeploymentStorageName `
                                                  -ResourceGroupName $ResourceGroupName `
@@ -776,12 +773,12 @@ Example:
                                                 -ErrorMessage $errorMessage `
                                                 -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                                                 -Exception $exception
-
-                        # $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                        # $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
                     }
 
-                    $functionAppDef.AuthenticationUserAssignedIdentityResourceId = $DeploymentStorageAuthValue
+                    # $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                    # $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                    $identity = Resolve-UserAssignedIdentity -IdentityResourceId $DeploymentStorageAuthValue @params
+                    $functionAppDef.AuthenticationUserAssignedIdentityResourceId = $identity.Id
                 }
 
                 # Parse the version from LinuxFxVersion
@@ -969,11 +966,11 @@ Example:
         }
 
         # Add user app settings
-        if ($appSetting.Count -gt 0)
+        if ($AppSetting.Count -gt 0)
         {
-            foreach ($keyName in $appSetting.Keys)
+            foreach ($keyName in $AppSetting.Keys)
             {
-                $appSettings.Add((NewAppSetting -Name $keyName -Value $appSetting[$keyName]))
+                $appSettings.Add((NewAppSetting -Name $keyName -Value $AppSetting[$keyName]))
             }
         }
 
