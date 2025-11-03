@@ -151,4 +151,60 @@ function Test-VirtualApplianceSiteCRUD
 	}
 }
 
+<#
+.SYNOPSIS
+Test creating new NVA in VNet
+#>
+function Test-NVAInVnetCRUD
+{
+    $rgname = Get-ResourceGroupName
+    $location = "eastus2"
+    $nvaname = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/networkVirtualAppliance"
+    $vendor = "barracuda sdwan release"
+    $scaleunit = 2
+    $version = 'latest'    
+    $asn = 1270
+    $vnetName = "MyVNet"
+    $vnetAddressPrefix = "10.1.0.0/16"
+    $publicSubnetName = "publicSubnet"
+    $publicSubnetPrefix = "10.1.1.0/24"
+    $privateSubnetName = "privateSubnet"
+    $privateSubnetPrefix = "10.1.2.0/24"
+
+    try{
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+        $sku = New-AzVirtualApplianceSkuProperty -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
+        Assert-NotNull $sku
+
+         # Create the subnets
+        $publicSubnet = New-AzVirtualNetworkSubnetConfig -Name $publicSubnetName -AddressPrefix $publicSubnetPrefix
+        $privateSubnet = New-AzVirtualNetworkSubnetConfig -Name $privateSubnetName -AddressPrefix $privateSubnetPrefix
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $publicSubnet, $privateSubnet
+
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        # Get Subnet Resource IDs
+        $publicSubnetId = ($vnet.Subnets | Where-Object { $_.Name -eq $publicSubnetName }).Id
+        $privateSubnetId = ($vnet.Subnets | Where-Object { $_.Name -eq $privateSubnetName }).Id
+        Assert-NotNull $publicSubnetId
+        Assert-NotNull $privateSubnetId
+
+        $privateNicConfig = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId $privateSubnetId
+        $publicNicConfig = New-AzNvaInterfaceConfiguration -NicType "PublicNic" -Name "publicInterface" -SubnetId $publicSubnetId
+        $nvaNicConfig = New-AzNvaInterfaceConfigurations -NvaInterfaceConfigs $privateNicConfig,$publicNicConfig
+
+        $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -NvaInterfaceConfigurations $nvaNicConfig -Sku $sku -CloudInitConfiguration "echo hi" 
+        $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname
+        Assert-NotNull $getnva
+        Assert-NotNull $getnva.NvaInterfaceConfigurations
+
+        Start-Sleep -Seconds 600
+        Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force
+   	}   
+    finally{
+        # Clean up.
+        Clean-ResourceGroup $rgname
+	  }
+}
+
 
