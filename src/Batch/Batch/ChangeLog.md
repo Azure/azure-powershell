@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 4.0.0
 * Removed command `Get-AzBatchRemoteDesktopProtocolFile`.
 * Removed command `Get-AzBatchCertificate`.
 * Removed command `New-AzBatchCertificate`.
