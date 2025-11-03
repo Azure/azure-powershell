@@ -248,10 +248,24 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
-        public void TestApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensitivity()
+        public void TestApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithLowSensitivity()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithLowSensitivity -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithMediumSensitivity()
+        {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithMediumSensitivity -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithHighSensitivity()
+        {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithHighSensitivity -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
