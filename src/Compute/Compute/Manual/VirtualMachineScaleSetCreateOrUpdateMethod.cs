@@ -31,13 +31,13 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform", vmSizeMix = "Mix";
-        // SimpleParameterSet
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
@@ -285,7 +285,85 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
         public string SkuProfileAllocationStrategy { get; set; }
 
-        const int FirstPortRangeStart = 50000;
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
+        public SwitchParameter EnableProxyAgent { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
+        public SwitchParameter AddProxyAgentExtension { get; set; }
+
+        private void ConfigureSecuritySettings()
+        {
+            if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
+                SecurityType?.ToLower() == SecurityTypes.ConfidentialVM)
+            {
+                EnableVtpm = EnableVtpm ?? true;
+                EnableSecureBoot = EnableSecureBoot ?? true;
+            }
+        }
+
+        private void SetupLoadBalancerRules(
+            ResourceConfig<LoadBalancer> loadBalancer,
+            NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> frontendIpConfiguration,
+            NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAddressPool)
+        {
+            if (BackendPort != null)
+            {
+                var loadBalancingRuleName = LoadBalancerName;
+                foreach (var backendPort in BackendPort)
+                {
+                    loadBalancer.CreateLoadBalancingRule(
+                        name: loadBalancingRuleName + backendPort.ToString(),
+                        fronendIpConfiguration: frontendIpConfiguration,
+                        backendAddressPool: backendAddressPool,
+                        frontendPort: backendPort,
+                        backendPort: backendPort);
+                }
+            }
+        }
+        
+        private Dictionary<string, List<string>> GetCrossSubscriptionGalleryAuthHeaders(string imageReferenceId)
+        {
+            if (string.IsNullOrEmpty(imageReferenceId))
+            {
+                return null;
+            }
+
+            var resourceId = ResourceId.TryParse(imageReferenceId);
+            if (resourceId == null)
+            {
+                return null;
+            }
+
+            // Check if this is a cross-subscription gallery image reference
+            if (!IsCrossSubscriptionGalleryImage(resourceId))
+            {
+                return null;
+            }
+
+            var resourceIds = new List<string> { imageReferenceId };
+            var auxHeaderDictionary = this.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+            
+            return auxHeaderDictionary?.Count > 0 
+                ? new Dictionary<string, List<string>>(auxHeaderDictionary) 
+                : null;
+        }
+
+        private bool IsCrossSubscriptionGalleryImage(IResourceId resourceId)
+        {
+            const string GalleriesProvider = "galleries";
+            
+            return string.Equals(ComputeStrategy.Namespace, resourceId.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                && string.Equals(GalleriesProvider, resourceId.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId.SubscriptionId, StringComparison.OrdinalIgnoreCase);
+        }
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
         {
@@ -311,7 +389,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
-                if (_cmdlet.OrchestrationMode == uniformOrchestrationMode)
+                if (_cmdlet.OrchestrationMode == OrchestrationModes.Uniform)
                 {
                     return await SimpleParameterSetNormalMode();
                 }
@@ -371,30 +449,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var backendAddressPool = loadBalancer.CreateBackendAddressPool(
                     name: _cmdlet.BackendPoolName);
 
-                if (_cmdlet.BackendPort != null)
-                {
-                    var loadBalancingRuleName = _cmdlet.LoadBalancerName;
-                    foreach (var backendPort in _cmdlet.BackendPort)
-                    {
-                        loadBalancer.CreateLoadBalancingRule(
-                            name: loadBalancingRuleName + backendPort.ToString(),
-                            fronendIpConfiguration: frontendIpConfiguration,
-                            backendAddressPool: backendAddressPool,
-                            frontendPort: backendPort,
-                            backendPort: backendPort);
-                    }
-                }
+                _cmdlet.SetupLoadBalancerRules(loadBalancer, frontendIpConfiguration, backendAddressPool);
+
 
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var inboundNatPoolName = _cmdlet.VMScaleSetName;
-                var PortRangeSize = _cmdlet.InstanceCount * 2;
+                var PortRangeSize = _cmdlet.InstanceCount * DefaultPortRangeMultiplier;
 
                 var ports = _cmdlet
                     .NatBackendPort
                     ?.Select((port, i) => Tuple.Create(
                         port,
-                        FirstPortRangeStart + i * 2000))
+                        FirstPortRangeStart + i * DefaultPortRangeSize))
                     .ToList();
 
                 var inboundNatPools = ports
@@ -427,12 +494,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
-                    {
-                        _cmdlet.SecurityType = _cmdlet.SecurityType;
-                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
-                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
-                    }
+                    _cmdlet.ConfigureSecuritySettings();
                 }
 
                 SkuProfileVMSize[] skuProfileVmSizes = null;
@@ -449,24 +511,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileVmSizes = skuProfileVMSizeList.ToArray();
                 }
 
-                Dictionary<string, List<string>> auxAuthHeader = null;
-                if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
-                {
-                    var resourceId = ResourceId.TryParse(_cmdlet.ImageReferenceId);
-
-                    if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
-                     && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
-                     && !string.Equals(_cmdlet.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
-                    {
-                        List<string> resourceIds = new List<string>();
-                        resourceIds.Add(_cmdlet.ImageReferenceId);
-                        var auxHeaderDictionary = _cmdlet.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                        {
-                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                        }
-                    }
-                }
+                Dictionary<string, List<string>> auxAuthHeader = _cmdlet.GetCrossSubscriptionGalleryAuthHeaders(_cmdlet.ImageReferenceId);
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
@@ -513,13 +558,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
-                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
                     );
             }
 
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationModeFlexible()
             {
-                int platformFaultDomainCountFlexibleDefault = 1;
+                int platformFaultDomainCountFlexibleDefault = FlexibleModeDefaultFaultDomainCount;
 
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -569,29 +616,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var backendAddressPool = loadBalancer.CreateBackendAddressPool(
                     name: _cmdlet.BackendPoolName);
 
-                if (_cmdlet.BackendPort != null)
-                {
-                    var loadBalancingRuleName = _cmdlet.LoadBalancerName;
-                    foreach (var backendPort in _cmdlet.BackendPort)
-                    {
-                        loadBalancer.CreateLoadBalancingRule(
-                            name: loadBalancingRuleName + backendPort.ToString(),
-                            fronendIpConfiguration: frontendIpConfiguration,
-                            backendAddressPool: backendAddressPool,
-                            frontendPort: backendPort,
-                            backendPort: backendPort);
-                    }
-                }
+                _cmdlet.SetupLoadBalancerRules(loadBalancer, frontendIpConfiguration, backendAddressPool);
 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType)
-                    && _cmdlet.SecurityType != null)
+                _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
+
+                var networkSecurityGroup = noZones
+                    ? null
+                    : resourceGroup.CreateNetworkSecurityGroupConfig(
+                        _cmdlet.VMScaleSetName,
+                        _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
+
+                if (_cmdlet.IsParameterBound(c => c.SecurityType) && _cmdlet.SecurityType != null)
                 {
-                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
-                    {
-                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
-                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
-                    }
-                    else if (_cmdlet.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                    _cmdlet.ConfigureSecuritySettings();
+
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                     {
                         // default the imagereference or image parameter to Win2022AzureEdition img.
                         if (!_cmdlet.IsParameterBound(c => c.ImageName) && !_cmdlet.IsParameterBound(c => c.ImageReferenceId)
@@ -601,14 +640,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
                 }
-
-                _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
-
-                var networkSecurityGroup = noZones
-                    ? null
-                    : resourceGroup.CreateNetworkSecurityGroupConfig(
-                        _cmdlet.VMScaleSetName,
-                        _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
@@ -628,24 +659,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileVmSizes = skuProfileVMSizeList.ToArray();
                 }
 
-                Dictionary<string, List<string>> auxAuthHeader = null;
-                if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
-                {
-                    var resourceId = ResourceId.TryParse(_cmdlet.ImageReferenceId);
+                Dictionary<string, List<string>> auxAuthHeader = _cmdlet.GetCrossSubscriptionGalleryAuthHeaders(_cmdlet.ImageReferenceId);
 
-                    if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
-                     && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
-                     && !string.Equals(_cmdlet.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
-                    {
-                        List<string> resourceIds = new List<string>();
-                        resourceIds.Add(_cmdlet.ImageReferenceId);
-                        var auxHeaderDictionary = _cmdlet.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                        {
-                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                        }
-                    }
-                }
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
                     name: _cmdlet.VMScaleSetName,
@@ -672,7 +687,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     encryptionAtHost: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
-                    orchestrationMode: flexibleOrchestrationMode,
+                    orchestrationMode: OrchestrationModes.Flexible,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
@@ -684,8 +699,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
-                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
-                    );
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
+                );
             }
         }
 
@@ -722,7 +739,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 && !this.IsParameterBound(c => c.ImageReferenceId)
                 && !this.IsParameterBound(c => c.SharedGalleryImageId))
             {
-                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                this.SecurityType = SecurityTypes.TrustedLaunch;
                 if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId)
                     && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
@@ -758,7 +775,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             //TrustedLaunch value defaulting for UEFI values.
             if (this.IsParameterBound(c => c.SecurityType))
             {
-                if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                if (this.SecurityType?.ToLower() == SecurityTypes.TrustedLaunch || this.SecurityType?.ToLower() == SecurityTypes.ConfidentialVM)
                 {
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
@@ -767,7 +784,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
-            if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
+            if (parameters?.ImageAndOsType?.Image?.Version != null && parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest") 
             {
                 WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
@@ -792,7 +809,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var range =
                     FirstPortRangeStart.ToString() +
                     ".." +
-                    (FirstPortRangeStart + InstanceCount * 2 - 1).ToString();
+                    (FirstPortRangeStart + InstanceCount * DefaultPortRangeMultiplier - 1).ToString();
 
                 asyncCmdlet.WriteVerbose(
                     Resources.VmssUseConnectionString,

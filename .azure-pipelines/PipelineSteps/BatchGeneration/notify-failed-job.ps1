@@ -15,7 +15,10 @@ $notificationContent = $notificationTemplate -replace "{{ pipelineName }}", $pip
                                             -replace "{{ pipelineUrl }}", $pipelineUrl `
                                             -replace "{{ runUrl }}", $runUrl
 
+$notificationReceivers = if ($env:NotificationReceiversOverride -and $env:NotificationReceiversOverride -ne 'none') { $env:NotificationReceiversOverride } else { $env:FailedJobNotificationReceivers }
+Write-Host "Notification receivers: $notificationReceivers"
+
 Send-Teams `
-    -to $env:FailedJobNotificationReceivers `
+    -to $notificationReceivers `
     -title "Batch Generation Job Failed" `
     -content $notificationContent

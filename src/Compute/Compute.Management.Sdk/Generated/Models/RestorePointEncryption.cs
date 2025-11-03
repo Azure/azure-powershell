@@ -31,7 +31,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RestorePointEncryption class.
         /// </summary>
-        /// <param name="type">Possible values include:
+        /// <param name="diskEncryptionSet">Describes the parameter of customer
+        /// managed disk encryption set resource id that can be specified for
+        /// disk. **Note:** The disk encryption set resource id can only be
+        /// specified for managed disk. Please refer
+        /// https://aka.ms/mdssewithcmkoverview for more details.</param>
+        /// <param name="type">The type of key used to encrypt the data of the
+        /// disk restore point. Possible values include:
         /// 'EncryptionAtRestWithPlatformKey',
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys'</param>
@@ -48,12 +54,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets describes the parameter of customer managed disk
+        /// encryption set resource id that can be specified for disk.
+        /// **Note:** The disk encryption set resource id can only be specified
+        /// for managed disk. Please refer https://aka.ms/mdssewithcmkoverview
+        /// for more details.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSet")]
         public DiskEncryptionSetParameters DiskEncryptionSet { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include:
+        /// Gets or sets the type of key used to encrypt the data of the disk
+        /// restore point. Possible values include:
         /// 'EncryptionAtRestWithPlatformKey',
         /// 'EncryptionAtRestWithCustomerKey',
         /// 'EncryptionAtRestWithPlatformAndCustomerKeys'

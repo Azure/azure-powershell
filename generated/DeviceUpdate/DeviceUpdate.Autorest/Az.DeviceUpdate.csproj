@@ -3,6 +3,7 @@
     <PsModuleName>DeviceUpdate</PsModuleName>
     <PsRootModuleName>DeviceUpdate</PsRootModuleName>
     <PsModuleFolder>DeviceUpdate.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

@@ -41,7 +41,7 @@ namespace Commands.StorageSync.Interop.Clients
         protected IEcsManagement EcsManagementInteropClient { get; private set; }
 
         /// <summary>
-        /// Parameterzed constructor for Sync Server certificate rollover Client
+        /// Parameterized constructor for Sync Server certificate rollover Client
         /// </summary>
         /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
         public SyncServerCertificateRolloverClient(IEcsManagement ecsManagementInteropClient)

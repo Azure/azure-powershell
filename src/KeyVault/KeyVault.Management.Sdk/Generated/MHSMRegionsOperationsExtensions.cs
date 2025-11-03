@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.KeyVault
     public static partial class MhsmRegionsOperationsExtensions
     {
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -66,7 +69,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

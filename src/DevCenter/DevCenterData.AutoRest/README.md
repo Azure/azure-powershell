@@ -36,6 +36,7 @@ input-file:
   - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2025-04-01-preview/devcenter.json
 title: DevCenterdata
 subject-prefix: DevCenter
+root-module-name: $(prefix).DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
 root-module-name: $(prefix).DevCenter
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option

@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzActivityLogAlert_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"ActionGroup","ConditionAllOf","Scope","AnyOf"}, NewOutputProperties=new string[] {"ActionGroup","ConditionAllOf","Scope","AnyOf"}, ChangeDescription="The types of the properties ActionGroup, ConditionAllOf, Scope and AnyOf will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Description(@"Create a new Activity Log Alert rule or update an existing one.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Generated]
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         Description = @"The list of the Action Groups.",
         SerializedName = @"actionGroups",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.ParameterBreakingChange("ActionGroup", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup[] Action { get => _activityLogAlertRuleBody.ActionGroup ?? null /* arrayOf */; set => _activityLogAlertRuleBody.ActionGroup = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
@@ -68,6 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         Description = @"The list of Activity Log Alert rule conditions.",
         SerializedName = @"allOf",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.ParameterBreakingChange("ConditionAllOf", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[] Condition { get => _activityLogAlertRuleBody.ConditionAllOf ?? null /* arrayOf */; set => _activityLogAlertRuleBody.ConditionAllOf = value; }
 
         /// <summary>
@@ -205,6 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
         Description = @"A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.",
         SerializedName = @"scopes",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.ParameterBreakingChange("Scope", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         public string[] Scope { get => _activityLogAlertRuleBody.Scope ?? null /* arrayOf */; set => _activityLogAlertRuleBody.Scope = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>

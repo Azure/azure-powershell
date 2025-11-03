@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFirmwareAnalysisWorkspa
 Describe 'New-AzFirmwareAnalysisWorkspaceUploadUrl' {
     It 'Generate' {
         { 
-            $config = New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default' -FirmwareId 'e0a16256-d186-4d4f-87fc-24bd0dab91cf'
+            $config = New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName -FirmwareId (New-Guid).ToString()
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

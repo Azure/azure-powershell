@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated with support for Immutable Long-Term Retention Backups
+    - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.
+    - Updated `AzureSqlDatabaseBackupLongTermRetentionPolicyModel` to add `TimeBasedImmutability` and `TimeBasedImmutabilityMode` properties.
+    - Updated `AzureSqlDatabaseLongTermRetentionBackupModel` to add `TimeBasedImmutability`, `TimeBasedImmutabilityMode`, and `LegalHoldImmutability` properties.
+    - Added new cmdlets `Lock-AzSqlDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlDatabaseLongTermRetentionBackupImmutability` for managing time-based immutability on LTR backups.
+    - Added new cmdlets `Set-AzSqlDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold` for managing legal hold immutability on LTR backups.
+
+## Version 6.2.0
+* Improved parameter validation for the EnableSoftDelete and SoftDeleteRetentionDays parameters.
+* Added `EnableSoftDelete` and `SoftDeleteRetentionDays` to `New-AzSqlServer` to support soft-delete retention
+* Added `EnableSoftDelete` and `SoftDeleteRetentionDays` to `Set-AzSqlServer` to support soft-delete retention
+* Added `Restore-AzSqlServer` cmdlet to restore a deleted Azure SQL server within the retention period
+
+## Version 6.1.0
+* Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
+* Added `MemorySizeInGB` parameter to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of instances with flexible memory
+* Added `MemorySizeInGB` field to the model of the managed instance so that it displays information about flexible memory instances that are returned by `Get-AzSqlInstance`.
+
+## Version 6.0.5
+* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
 
 ## Version 6.0.4
 * Added server level action groups in enum of action groups to be able to be configured via auditing.
