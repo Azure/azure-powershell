@@ -1272,7 +1272,7 @@ function Test-EnableAHUB {
     try {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-        $SecurePassword = ConvertTo-SecureString 'Abcdefg@123456' -AsPlainText -Force
+        $SecurePassword = ConvertTo-SecureString 'Sanitized@Sanitized' -AsPlainText -Force
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -WindowsProfileAdminUserName azure -WindowsProfileAdminUserPassword $SecurePassword -EnableAHUB
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual 'Windows_Server' $cluster.WindowsProfile.LicenseType
