@@ -207,6 +207,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable Azure Hybrid User Benefits (AHUB) for Windows VMs.")]
         public SwitchParameter EnableAHUB { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The request should only proceed if an entity matches this string.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The request should only proceed if no entity matches this string.")]
+        public string ifNoneMatch { get; set; }
+
         protected void BeforeBuildNewCluster()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))
@@ -456,7 +462,7 @@ namespace Microsoft.Azure.Commands.Aks
                 WriteVerbose(string.Format(Resources.ClusterExists, exists));
                 return exists;
             }
-            catch (CloudException)
+            catch (ErrorResponseException)
             {
                 WriteVerbose(Resources.ClusterDoesNotExist);
                 return false;
@@ -710,7 +716,7 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AksCustomHeader))
             {
                 Dictionary<string, List<string>> customHeaders = Utilities.HashtableToDictionary(AksCustomHeader);
-                return Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, customHeaders).GetAwaiter().GetResult().Body;
+                return Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, IfMatch, ifNoneMatch, customHeaders).GetAwaiter().GetResult().Body;
             }
             else
             {

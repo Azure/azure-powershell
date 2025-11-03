@@ -22,8 +22,9 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
  [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-GpuInstanceProfile <String>]
  [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
  [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
- [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-IfMatch <String>] [-ifNoneMatch <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
@@ -36,8 +37,9 @@ New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <I
  [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-GpuInstanceProfile <String>]
  [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
  [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
- [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-IfMatch <String>] [-ifNoneMatch <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -284,6 +286,36 @@ Accept wildcard characters: False
 
 ### -HostGroupID
 The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+The request should only proceed if an entity matches this string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ifNoneMatch
+The request should only proceed if no entity matches this string.
 
 ```yaml
 Type: System.String

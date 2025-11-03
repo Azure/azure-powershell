@@ -58,12 +58,18 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Aks custom headers")]
         public Hashtable AksCustomHeader { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The request should only proceed if an entity matches this string.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The request should only proceed if no entity matches this string.")]
+        public string ifNoneMatch { get; set; }
+
         private protected AgentPool CreateOrUpdate(string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters)
         {
             if (this.IsParameterBound(c => c.AksCustomHeader))
             {
                 Dictionary<string, List<string>> customHeaders = Utilities.HashtableToDictionary(AksCustomHeader);
-                return Client.AgentPools.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, parameters, customHeaders).GetAwaiter().GetResult().Body;
+                return Client.AgentPools.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, parameters, IfMatch, ifNoneMatch, customHeaders).GetAwaiter().GetResult().Body;
             }
             else
             {

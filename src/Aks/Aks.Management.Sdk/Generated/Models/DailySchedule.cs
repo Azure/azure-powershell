@@ -8,32 +8,28 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// OS option property.
+    /// For schedules like: &#39;recur every day&#39; or &#39;recur every 3 days&#39;.
     /// </summary>
-    public partial class OSOptionProperty
+    public partial class DailySchedule
     {
         /// <summary>
-        /// Initializes a new instance of the OSOptionProperty class.
+        /// Initializes a new instance of the DailySchedule class.
         /// </summary>
-        public OSOptionProperty()
+        public DailySchedule()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OSOptionProperty class.
+        /// Initializes a new instance of the DailySchedule class.
         /// </summary>
 
-        /// <param name="osType">The OS type.
+        /// <param name="intervalDays">Specifies the number of days between each set of occurrences.
         /// </param>
-
-        /// <param name="enableFipsImage">Whether the image is FIPS-enabled.
-        /// </param>
-        public OSOptionProperty(string osType, bool enableFipsImage)
+        public DailySchedule(int intervalDays)
 
         {
-            this.OSType = osType;
-            this.EnableFipsImage = enableFipsImage;
+            this.IntervalDays = intervalDays;
             CustomInit();
         }
 
@@ -44,16 +40,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets the OS type.
+        /// Gets or sets specifies the number of days between each set of occurrences.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "os-type")]
-        public string OSType {get; set; }
-
-        /// <summary>
-        /// Gets or sets whether the image is FIPS-enabled.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "enable-fips-image")]
-        public bool EnableFipsImage {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "intervalDays")]
+        public int IntervalDays {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -62,11 +52,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.OSType == null)
+            if (this.IntervalDays > 7)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "OSType");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "IntervalDays", 7);
             }
-
+            if (this.IntervalDays < 1)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "IntervalDays", 1);
+            }
         }
     }
 }
