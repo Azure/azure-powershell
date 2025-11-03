@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitoredSubscription
 
 ## SYNOPSIS
-List the subscriptions currently being monitored by the NewRelic monitor resource.
+Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzNewRelicMonitoredSubscription -InputObject <INewRelicIdentity> [-DefaultPr
 ```
 
 ## DESCRIPTION
-List the subscriptions currently being monitored by the NewRelic monitor resource.
+Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
 
 ## EXAMPLES
 
