@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevCenter", "DevCenter\DevC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenterData", "..\..\generated\DevCenter\DevCenterData.AutoRest\Az.DevCenterData.csproj", "{08A933F1-0B41-4B5C-A247-640EF2F87C37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenter", "..\..\generated\DevCenter\DevCenter.AutoRest\Az.DevCenter.csproj", "{4A078E3A-EA35-4021-BCD7-40D8B2009AB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DevCenter", "..\..\generated\DevCenter\DevCenter.AutoRest\Az.DevCenter.csproj", "{A8AB5F40-BD49-47B9-91B6-06F324ED8ADC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +64,10 @@ Global
 		{08A933F1-0B41-4B5C-A247-640EF2F87C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08A933F1-0B41-4B5C-A247-640EF2F87C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08A933F1-0B41-4B5C-A247-640EF2F87C37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A078E3A-EA35-4021-BCD7-40D8B2009AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A078E3A-EA35-4021-BCD7-40D8B2009AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A078E3A-EA35-4021-BCD7-40D8B2009AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A078E3A-EA35-4021-BCD7-40D8B2009AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8AB5F40-BD49-47B9-91B6-06F324ED8ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8AB5F40-BD49-47B9-91B6-06F324ED8ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8AB5F40-BD49-47B9-91B6-06F324ED8ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8AB5F40-BD49-47B9-91B6-06F324ED8ADC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{47E4694E-AFFE-4BE1-8F20-2C604F612C22} = {139FAA20-2493-460E-BB57-1C7D892C9614}
