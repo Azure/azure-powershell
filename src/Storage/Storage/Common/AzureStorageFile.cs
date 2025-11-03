@@ -73,9 +73,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public global::Azure.Storage.Files.Shares.Models.ShareFileItem ListFileProperties { get; private set; }
 
         /// <summary>
-        /// XSCL Track2 File Hardlink create returned properties
+        /// XSCL Track2 File Hardlink/SymbolicLink create returned properties
         /// </summary>
         public global::Azure.Storage.Files.Shares.Models.ShareFileInfo ShareFileInfo { get; private set; }
+
+        /// <summary>
+        /// XSCL Track2 File SymbolicLink get returned properties
+        /// </summary>
+        public global::Azure.Storage.Files.Shares.Models.ShareFileSymbolicLinkInfo ShareFileSymbolicLinkInfo { get; private set; }       
 
 
         private ShareClientOptions shareClientOptions { get; set; }
@@ -94,6 +99,26 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             if (info != null)
             {
                 ShareFileInfo = info;
+                LastModified = info.LastModified;
+            }
+            Context = storageContext;
+            shareClientOptions = clientOptions;
+        }
+
+        /// <summary>
+        /// Azure storage file constructor from Track2 list file item
+        /// </summary>
+        /// <param name="shareFileClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="info"></param>
+        /// <param name="clientOptions"></param>
+        public AzureStorageFile(ShareFileClient shareFileClient, AzureStorageContext storageContext, ShareFileSymbolicLinkInfo info, ShareClientOptions clientOptions = null)
+        {
+            Name = shareFileClient.Name;
+            this.privateFileClient = shareFileClient;
+            if (info != null)
+            {
+                ShareFileSymbolicLinkInfo = info;
                 LastModified = info.LastModified;
             }
             Context = storageContext;
@@ -161,7 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 return new InvalidCloudFile(shareFileClient.Uri, credentials);
             }
-            if (credentials.IsSAS) // the Uri already contains credentail.
+            if (credentials.IsSAS) // the Uri already contains credential.
             {
                 credentials = null;
             }

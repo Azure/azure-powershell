@@ -15,11 +15,52 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzStorageCacheAmlFilesys
 }
 
 Describe 'Stop-AzStorageCacheAmlFilesystemArchive' {
-    It 'Cancel' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Cancel' {
+        {
+            # Start archive operation first
+            $result = Invoke-AzStorageCacheAmlFileSystemArchive -AmlFilesystemName "acctest43511" -ResourceGroupName "acctest43511" -FilesystemPath "/" -PassThru
+            $result | Should -Not -Be $null
+            
+            # Wait 10 seconds for the archive operation to start
+            Start-Sleep -Seconds 10
+            
+            # Stop the archive operation
+            $stopResult = Stop-AzStorageCacheAmlFilesystemArchive -AmlFilesystemName "acctest43511" -ResourceGroupName "acctest43511" -PassThru
+            $stopResult | Should -Not -Be $null
+            
+            # Poll until HsmArchiveStatus becomes null
+            do {
+                Start-Sleep -Seconds 10
+                $filesystem = Get-AzStorageCacheAmlFileSystem -Name "acctest43511" -ResourceGroupName "acctest43511"
+            } while ($null -ne $filesystem.HsmArchiveStatus)
+        } | Should -Not -Throw
     }
 
-    It 'CancelViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CancelViaIdentity' {
+        {
+            # Create identity object for the AML filesystem
+            $identity = @{
+                SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
+                ResourceGroupName = "acctest43511"
+                AmlFilesystemName = "acctest43511"
+            }
+            
+            # Start archive operation using identity
+            $result = Invoke-AzStorageCacheAmlFileSystemArchive -InputObject $identity -FilesystemPath "/" -PassThru
+            $result | Should -Not -Be $null
+            
+            # Wait 10 seconds for the archive operation to start
+            Start-Sleep -Seconds 10
+            
+            # Stop the archive operation using identity
+            $stopResult = Stop-AzStorageCacheAmlFilesystemArchive -InputObject $identity -PassThru
+            $stopResult | Should -Not -Be $null
+            
+            # Poll until HsmArchiveStatus becomes null
+            do {
+                Start-Sleep -Seconds 10
+                $filesystem = Get-AzStorageCacheAmlFileSystem -Name "acctest43511" -ResourceGroupName "acctest43511"
+            } while ($null -ne $filesystem.HsmArchiveStatus)
+        } | Should -Not -Throw
     }
 }

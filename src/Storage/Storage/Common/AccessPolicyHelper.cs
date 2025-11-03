@@ -130,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 if (typeof(T) == typeof(SharedAccessTablePolicy))
                 {
-                    //PowerShell will convert q to r in genreate table SAS. Add this to avoid regression
+                    //PowerShell will convert q to r in generate table SAS. Add this to avoid regression
                     string convertedPermission = permission.Replace('q', 'r');
                     ((SharedAccessTablePolicy)(Object)policy).Permissions = SharedAccessTablePolicy.PermissionsFromString(convertedPermission);
                 }

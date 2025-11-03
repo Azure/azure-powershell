@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNginxDeployment_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateIPAddress","PublicIPAddress","AutoScaleSettingProfile"}, NewOutputProperties=new string[] {"PrivateIPAddress","PublicIPAddress","AutoScaleSettingProfile"}, ChangeDescription="The types of the properties PrivateIPAddress, ProtectedFile and AutoScaleSettingProfile will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Description(@"Create or update the NGINX deployment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Generated]
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
         Description = @".",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ParameterBreakingChange("IdentityType", "15.0.0", "2.0.0", "2025/11/03", ChangeDescription="The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity.")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType))]
         public Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType IdentityType { get => _body.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType)""); set => _body.IdentityType = value; }
 
@@ -116,6 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
         Description = @"Dictionary of <UserIdentityProperties>",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ParameterBreakingChange("IdentityUserAssignedIdentity", "15.0.0", "2.0.0", "2025/11/03", ChangeDescription="The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity.")]
         public Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities IdentityUserAssignedIdentity { get => _body.IdentityUserAssignedIdentity ?? null /* object */; set => _body.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>

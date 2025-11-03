@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a pipeline group instance.
+Create a pipeline group instance.
 .Description
-create a pipeline group instance.
+Create a pipeline group instance.
 .Example
 New-AzPipelineGroup -JsonFilePath CreatePipelineGroupBody.json -Name testgroup -ResourceGroupName kubetest -SubscriptionId 00000000-0000-0000-0000-000000000000
 .Example

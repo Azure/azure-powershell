@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? MinServers { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public int? Port { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableProbeProxyProtocolHeader { get; set; }
         public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }

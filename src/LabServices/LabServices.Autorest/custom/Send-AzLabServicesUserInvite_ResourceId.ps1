@@ -12,16 +12,30 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to invite a user to a lab.
+.Description
+Operation to invite a user to a lab.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
+#>
 function Send-AzLabServicesUserInvite_ResourceId {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service user.
         ${ResourceId},
 
         [Parameter()]
         [System.String]
+        # Custom text for the invite email.
         ${Text},
 
         [Parameter()]
@@ -91,7 +105,8 @@ function Send-AzLabServicesUserInvite_ResourceId {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
+        $HandleUserResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleUserResourceId.ps1'
+        $resourceHash = . $HandleUserResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId")
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {

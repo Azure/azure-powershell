@@ -334,7 +334,6 @@ function New-AzDevCenterAdminPool {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-
     
     process {
         # Call the validation function before creating the pool

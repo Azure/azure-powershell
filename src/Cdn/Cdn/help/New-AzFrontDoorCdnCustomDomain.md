@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-create a new domain within the specified profile.
+Create a new domain within the specified profile.
 
 ## SYNTAX
 
@@ -52,15 +52,15 @@ New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <I
 ```
 
 ## DESCRIPTION
-create a new domain within the specified profile.
+Create a new domain within the specified profile.
 
 ## EXAMPLES
 
 ### Example 1: Creates an AzureFrontDoor domain within the specified AzureFrontDoor profile
 ```powershell
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResource = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResource
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 ```
 

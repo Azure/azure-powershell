@@ -23,8 +23,9 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
- [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AuthenticationType <String>]
+ [-CertificateAuthentication <PSCertificateAuthentication>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,8 +39,9 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
- [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AuthenticationType <String>]
+ [-CertificateAuthentication <PSCertificateAuthentication>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -82,6 +84,32 @@ The two command gets a local network gateway and virtual network gateway.
 The third command creates a AzGatewayCustomBgpIpConfigurationObject.
 The third command creates this new virtual Network gateway connection with GatewayCustomBgpIpAddress.
 
+### Example 4 Create a new virtual network gateway connection with certificate-based authentication
+```powershell
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myVnetGateway"
+$localGateway = Get-AzLocalNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myLocalGateway"
+
+# Create certificate chain array with base64-encoded certificates (without BEGIN/END CERTIFICATE headers)
+$certChain = @(
+    "MIIDfzCCAmegAwIBAgIQIFxjNWTuGjYGa8zJVnpfnDANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1DZXJ0QmFzZWRBdXRoMB4XDTI0MTIxODA1MjkzOVoXDTI1MTIxODA2MDk...",
+    "MIIDezCCAmOgAwIBAgIQQIpJdJF8D8JwkqF6fJ6zGDANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1DZXJ0QmFzZWRBdXRoMB4XDTI0MTIxODA1MjkzOVoXDTI1MTIxODA2MDk..."
+)
+
+$certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication `
+    -OutboundAuthCertificate "https://myvault.vault.azure.net/certificates/mycert/abc123" `
+    -InboundAuthCertificateSubjectName "MyCertSubject" `
+    -InboundAuthCertificateChain $certChain
+
+New-AzVirtualNetworkGatewayConnection -Name "myCertConnection" -ResourceGroupName "myResourceGroup" -Location "eastus" `
+    -VirtualNetworkGateway1 $gateway -LocalNetworkGateway2 $localGateway -ConnectionType IPsec `
+    -AuthenticationType "Certificate" -CertificateAuthentication $certAuth
+```
+
+This example creates a new virtual network gateway connection with certificate-based authentication. 
+The first two commands get the virtual network gateway and local network gateway.
+The New-AzVirtualNetworkGatewayCertificateAuthentication cmdlet creates the certificate authentication configuration with the Key Vault certificate URL for outbound authentication, the certificate subject name for inbound authentication, and the certificate chain.
+The final command creates the new connection with certificate-based authentication instead of a pre-shared key.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -99,11 +127,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AuthenticationType
+Gateway connection authentication type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: PSK, Certificate
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -AuthorizationKey
 AuthorizationKey.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CertificateAuthentication
+Certificate Authentication information for certificate based authentication connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSCertificateAuthentication
 Parameter Sets: (All)
 Aliases:
 
@@ -384,6 +443,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

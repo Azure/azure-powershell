@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Direction { get; set; }
 
         /// <summary>
-        ///     Gets or sets a custom clster recovery point to test failover the protected cluster to.
+        ///     Gets or sets a custom cluster recovery point to test failover the protected cluster to.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Starts replication protection clustrer test failover.
+        ///     Starts replication protection cluster test failover.
         /// </summary>
         private void StartRPCTestFailover()
         {

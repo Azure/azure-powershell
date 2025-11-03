@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigrateloc
 #>
 
 function Initialize-AzMigrateLocalReplicationInfrastructure {
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
     [OutputType([System.Boolean], ParameterSetName = 'AzLocal')]
     [CmdletBinding(DefaultParameterSetName = 'AzLocal', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -120,16 +120,18 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
     )
 
     process {
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
 
         CheckResourcesModuleDependency
         CheckStorageModuleDependency
         Import-Module Az.Resources
         Import-Module Az.Storage
 
+        # Get subscription Id
         $context = Get-AzContext
-        # Get SubscriptionId
         if ([string]::IsNullOrEmpty($SubscriptionId)) {
             Write-Host "No -SubscriptionId provided. Using the one from Get-AzContext."
 
@@ -178,14 +180,50 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         # Get Migrate Project
         $migrateProject = InvokeAzMigrateGetCommandWithRetries `
             -CommandName "Az.Migrate\Get-AzMigrateProject" `
-            -Parameters @{"Name" = $ProjectName; "ResourceGroupName" = $ResourceGroupName} `
-            -ErrorMessage "Migrate project '$($ProjectName)' not found."
+            -Parameters @{
+                "Name" = $ProjectName;
+                "ResourceGroupName" = $ResourceGroupName
+            } `
+            -ErrorMessage "Migrate project '$ProjectName' not found."
+        if ($migrateProject.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "Migrate project '$ProjectName' is not in a valid state. The provisioning state is '$($migrateProject.Property.ProvisioningState)'. Please verify your Azure Migrate project setup."
+        }
+
+        # Get Data Replication Service, or the AMH solution
+        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -Parameters @{
+                "SubscriptionId" = $SubscriptionId;
+                "ResourceGroupName" = $ResourceGroupName;
+                "MigrateProjectName" = $ProjectName;
+                "Name" = $amhSolutionName
+            } `
+            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
+
+        # Validate Replication Vault
+        $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]
+        if ([string]::IsNullOrEmpty($replicationVaultName)) {
+            throw "No Replication Vault found. Please verify your Azure Migrate project setup."
+        }
+        $replicationVault = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateVault" `
+            -Parameters @{
+                "ResourceGroupName" = $ResourceGroupName;
+                "Name" = $replicationVaultName
+            } `
+            -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup"
 
         # Access Discovery Service
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
         $discoverySolution = InvokeAzMigrateGetCommandWithRetries `
             -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-            -Parameters @{"SubscriptionId" = $SubscriptionId; "ResourceGroupName" = $ResourceGroupName; "MigrateProjectName" = $ProjectName; "Name" = $discoverySolutionName} `
+            -Parameters @{
+                "SubscriptionId" = $SubscriptionId;
+                "ResourceGroupName" = $ResourceGroupName;
+                "MigrateProjectName" = $ProjectName;
+                "Name" = $discoverySolutionName
+            } `
             -ErrorMessage "Server Discovery Solution '$discoverySolutionName' not found."
 
         # Get Appliances Mapping
@@ -219,78 +257,90 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         $targetSiteId = $appMap[$TargetApplianceName.ToLower()]
         if ($sourceSiteId -match $hyperVSiteTypeRegex -and $targetSiteId -match $hyperVSiteTypeRegex) {
             $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal
+            $fabricInstanceType = $FabricInstanceTypes.HyperVInstance
         }
         elseif ($sourceSiteId -match $vmwareSiteTypeRegex -and $targetSiteId -match $hyperVSiteTypeRegex) {
             $instanceType = $AzLocalInstanceTypes.VMwareToAzLocal
+            $fabricInstanceType = $FabricInstanceTypes.VmwareInstance
         }
         else {
             throw "Error encountered in matching the given source appliance name '$SourceApplianceName' and target appliance name '$TargetApplianceName'. Please verify the VM site type to be either for HyperV or VMware for both source and target appliances, and the appliance names are correct."
         }
 
-        # Get Data Replication Service, or the AMH solution
-        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
-        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-            -Parameters @{"SubscriptionId" = $SubscriptionId; "ResourceGroupName" = $ResourceGroupName; "MigrateProjectName" = $ProjectName; "Name" = $amhSolutionName} `
-            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
-
-        # Get Source and Target Fabrics
-        $allFabrics = Az.Migrate\Get-AzMigrateLocalReplicationFabric -ResourceGroupName $ResourceGroupName
-        foreach ($fabric in $allFabrics) {
-            if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $amhSolution.Id) {
-                continue
-            }
-
-            if (($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) -and
-                ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance)) {
-                $sourceFabric = $fabric
-            }
-            elseif (($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) -and
-                ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.VMwareInstance)) {
-                $sourceFabric = $fabric
-            }
-            elseif ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.AzLocalInstance) {
-                $targetFabric = $fabric
-            }
-
-            if (($null -ne $sourceFabric) -and ($null -ne $targetFabric)) {
-                break
-            }
+        # Get healthy asrv2 fabrics in the resource group
+        $allFabrics = Az.Migrate\Get-AzMigrateLocalReplicationFabric -ResourceGroupName $ResourceGroupName | Where-Object {
+            $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
+            $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
         }
 
-        if ($null -eq $sourceFabric) {
-            throw "No source Fabric found. Please verify your appliance setup."
+        # Filter for source fabric
+        $sourceFabric = $allFabrics | Where-Object {
+            $_.Property.CustomProperty.InstanceType -ceq $fabricInstanceType -and
+            $_.Name.StartsWith($SourceApplianceName, [System.StringComparison]::InvariantCultureIgnoreCase)
+        }
+
+        if ($null -eq $sourceFabric)
+        {
+            throw "Couldn't find connected source appliance with the name '$SourceApplianceName'. Deploy a source appliance by completing the Discover step of migration for your on-premises environment."
         }
         Write-Host "*Selected Source Fabric: '$($sourceFabric.Name)'"
 
-        if ($null -eq $targetFabric) {
-            throw "No target Fabric found. Please verify your appliance setup."
-        }
-        Write-Host "*Selected Target Fabric: '$($targetFabric.Name)'"
-
-        # Get Source and Target Dras from Fabrics
+        # Get source fabric agent (dra)
+        $sourceDraErrorMessage = "The source appliance '$SourceApplianceName' is in a disconnected state. Ensure that the source appliance is running and has connectivity before proceeding."
         $sourceDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateFabricAgent" `
-            -Parameters @{"FabricName" = $sourceFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
-            -ErrorMessage "No source Fabric Agent (DRA) found. Please verify your appliance setup."
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
+            -Parameters @{
+                FabricName = $sourceFabric.Name;
+                ResourceGroupName = $ResourceGroupName
+            } `
+            -ErrorMessage $sourceDraErrorMessage
+        $sourceDra = $sourceDras | Where-Object {
+            $_.Property.MachineName -eq $SourceApplianceName -and
+            $_.Property.CustomProperty.InstanceType -eq $fabricInstanceType -and
+            $_.Property.IsResponsive -eq $true
+        }
 
-        $sourceDra = $sourceDras[0]
-        Write-Host "*Selected Source Dra: '$($sourceDra.Name)'"
+        if ($null -eq $sourceDra)
+        {
+            throw $sourceDraErrorMessage
+        }
+        $sourceDra = $sourceDra[0]
+        Write-Host "*Selected Source Fabric Agent: '$($sourceDra.Name)'"
 
+        # Filter for target fabric
+        $fabricInstanceType = $FabricInstanceTypes.AzLocalInstance
+        $targetFabric = $allFabrics | Where-Object {
+            $_.Property.CustomProperty.InstanceType -ceq $fabricInstanceType -and
+            $_.Name.StartsWith($TargetApplianceName, [System.StringComparison]::InvariantCultureIgnoreCase)
+        }
+
+        if ($null -eq $targetFabric)
+        {
+            throw "Couldn't find connected target appliance with the name '$TargetApplianceName'. Deploy a target appliance by completing the Configuration step of migration for your Azure Local environment."
+        }
+        "*Selected Target Fabric: '$($targetFabric.Name)'"
+
+        # Get target fabric agent (dra)
+        $targetDraErrorMessage = "The target appliance '$TargetApplianceName' is in a disconnected state. Ensure that the target appliance is running and has connectivity before proceeding."
         $targetDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateFabricAgent" `
-            -Parameters @{"FabricName" = $targetFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
-            -ErrorMessage "No target Fabric Agent (DRA) found. Please verify your appliance setup."
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
+            -Parameters @{
+                FabricName = $($targetFabric.Name);
+                ResourceGroupName = $ResourceGroupName
+            } `
+            -ErrorMessage $targetDraErrorMessage
+        $targetDra = $targetDras | Where-Object {
+            $_.Property.MachineName -eq $TargetApplianceName -and
+            $_.Property.CustomProperty.InstanceType -eq $fabricInstanceType -and
+            $_.Property.IsResponsive -eq $true
+        }
 
+        if ($null -eq $targetDra)
+        {
+            throw $targetDraErrorMessage
+        }
         $targetDra = $targetDras[0]
-        Write-Host "*Selected Target Dra: '$($targetDra.Name)'"
-        
-        # Get Replication Vault
-        $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]
-        $replicationVault = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateVault" `
-            -Parameters @{"ResourceGroupName" = $ResourceGroupName; "Name" = $replicationVaultName} `
-            -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'."
+        Write-Host "*Selected Target Fabric Agent: '$($targetDra.Name)'"
 
         # Put Policy
         $policyName = $replicationVault.Name + $instanceType + "policy"
@@ -492,16 +542,15 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         # Put Cache Storage Account
-        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
-            -ResourceGroupName $ResourceGroupName `
-            -MigrateProjectName $ProjectName `
-            -Name "Servers-Migration-ServerMigration_DataReplication" `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $amhSolution) {
-            throw "No Data Replication Service Solution found. Please verify your appliance setup."
-        }
+        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -Parameters @{
+                "SubscriptionId" = $SubscriptionId;
+                "ResourceGroupName" = $ResourceGroupName;
+                "MigrateProjectName" = $ProjectName;
+                "Name" = $amhSolutionName
+            } `
+            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
 
         $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
         
@@ -537,43 +586,64 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             
             # amhStoredStorageAccount exists and in Succeeded state
             if ($null -ne $amhStoredStorageAccount -and
-                $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
+                $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded)
+            {
                 # Use amhStoredStorageAccount and ignore user provided Cache Storage Account Id
-                if (![string]::IsNullOrEmpty($CacheStorageAccountId) -and $amhStoredStorageAccount.Id -ne $CacheStorageAccountId) {
+                if (![string]::IsNullOrEmpty($CacheStorageAccountId) -and $amhStoredStorageAccount.Id -ne $CacheStorageAccountId)
+                {
                     Write-Host "A Cache Storage Account '$($amhStoredStorageAccountName)' has been linked already. The given -CacheStorageAccountId '$($CacheStorageAccountId)' will be ignored."
                 }
 
                 $cacheStorageAccount = $amhStoredStorageAccount
+
+                # This will fix brownfield issue where AMH solution tool is set incorrectly that causes UX bifurcation to go to the wrong experience;
+                # for new projects that are set correctly from the start, this will essentially be a no-op.
+                Az.Migrate.Internal\Set-AzMigrateSolution `
+                    -MigrateProjectName $ProjectName `
+                    -Name $amhSolution.Name `
+                    -ResourceGroupName $ResourceGroupName `
+                    -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
+                    -Tool "ServerMigration_DataReplication" `
+                    -Purpose "Migration" | Out-Null
             }
-            elseif ($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) {
+            elseif ($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState)
+            {
                 # amhStoredStorageAccount is found but in a bad state, so log to ask user to remove
-                if ($null -ne $amhStoredStorageAccount -and $null -eq $amhStoredStorageAccount.ProvisioningState) {
+                if ($null -ne $amhStoredStorageAccount -and $null -eq $amhStoredStorageAccount.ProvisioningState)
+                {
                     Write-Host "A previously linked Cache Storage Account with Id '$($amhStoredStorageAccountId)' is found but in a unusable state. Please remove it manually and re-run this command."
                 }
 
                 # amhStoredStorageAccount is not found or in a bad state but AMH has a record of it, so remove the record
-                if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
+                if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId"))
+                {
                     $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId") | Out-Null
                     $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $null) | Out-Null
+
                     Az.Migrate.Internal\Set-AzMigrateSolution `
                         -MigrateProjectName $ProjectName `
                         -Name $amhSolution.Name `
                         -ResourceGroupName $ResourceGroupName `
-                        -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
+                        -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
+                        -Tool "ServerMigration_DataReplication" `
+                        -Purpose "Migration" | Out-Null
                 }
             }
-            else {
+            else
+            {
                 throw "A linked Cache Storage Account with Id '$($amhStoredStorageAccountId)' times out with Provisioning State: '$($amhStoredStorageAccount.ProvisioningState)'. Please re-run this command or contact support if help needed."
             }
 
-            $amhSolution = Az.Migrate\Get-AzMigrateSolution `
-                -ResourceGroupName $ResourceGroupName `
-                -MigrateProjectName $ProjectName `
-                -Name "Servers-Migration-ServerMigration_DataReplication" `
-                -SubscriptionId $SubscriptionId `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-                # Check if AMH record is removed
+            $amhSolution = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+                -Parameters @{
+                    "SubscriptionId" = $SubscriptionId;
+                    "ResourceGroupName" = $ResourceGroupName;
+                    "MigrateProjectName" = $ProjectName;
+                    "Name" = $amhSolutionName
+                } `
+                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
+            # Check if AMH record is removed
             if (($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) -and
                 ![string]::IsNullOrEmpty($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])) {
                 throw "Unexpected error occurred in unlinking Cache Storage Account with Id '$($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])'. Please re-run this command or contact support if help needed."
@@ -711,8 +781,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         $params = @{
             contributorRoleDefId                = [System.Guid]::parse($RoleDefinitionIds.ContributorId);
             storageBlobDataContributorRoleDefId = [System.Guid]::parse($RoleDefinitionIds.StorageBlobDataContributorId);
-            sourceAppAadId                      = $sourceDra.ResourceAccessIdentityObjectId;
-            targetAppAadId                      = $targetDra.ResourceAccessIdentityObjectId;
+            sourceAppAadId                      = $sourceDra.Property.ResourceAccessIdentity.ObjectId;
+            targetAppAadId                      = $targetDra.Property.ResourceAccessIdentity.ObjectId;
         }
 
         # Grant vault Identity Aad access to Cache Storage Account
@@ -855,11 +925,15 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Failed to grant Cache Storage Account permissions. Please re-run this command or contact support if help needed."
         }
 
-        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
-            -ResourceGroupName $ResourceGroupName `
-            -MigrateProjectName $ProjectName `
-            -Name "Servers-Migration-ServerMigration_DataReplication" `
-            -SubscriptionId $SubscriptionId
+        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -Parameters @{
+                "SubscriptionId" = $SubscriptionId;
+                "ResourceGroupName" = $ResourceGroupName;
+                "MigrateProjectName" = $ProjectName;
+                "Name" = $amhSolutionName
+            } `
+            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
         if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
             $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
             if ([string]::IsNullOrEmpty($amhStoredStorageAccountId)) {
@@ -873,13 +947,17 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         # Update AMH record with chosen Cache Storage Account
-        if (!$amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
+        if (!$amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId"))
+        {
             $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $cacheStorageAccount.Id)
+
             Az.Migrate.Internal\Set-AzMigrateSolution `
                 -MigrateProjectName $ProjectName `
                 -Name $amhSolution.Name `
                 -ResourceGroupName $ResourceGroupName `
-                -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
+                -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
+                -Tool "ServerMigration_DataReplication" `
+                -Purpose "Migration" | Out-Null
         }
 
         Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'"

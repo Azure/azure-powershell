@@ -24,20 +24,24 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
 
-        /// <param name="provisioningState">Provisioning state of the private endpoint connection
+        /// <param name="provisioningState">Provisioning state of the resource.
         /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
         /// &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
 
-        /// <param name="privateEndpoint">Private endpoint associated with the private endpoint connection
+        /// <param name="privateEndpoint">Private endpoint
         /// </param>
 
-        /// <param name="privateLinkServiceConnectionState">Connection state
+        /// <param name="groupIds">Group IDs
         /// </param>
-        public PrivateEndpointConnectionProperties(string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+
+        /// <param name="privateLinkServiceConnectionState">Connection state of the private endpoint connection
+        /// </param>
+        public PrivateEndpointConnectionProperties(string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
         {
             this.ProvisioningState = provisioningState;
             this.PrivateEndpoint = privateEndpoint;
+            this.GroupIds = groupIds;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             CustomInit();
         }
@@ -49,20 +53,25 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets provisioning state of the private endpoint connection Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
+        /// Gets provisioning state of the resource. Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets private endpoint associated with the private endpoint
-        /// connection
+        /// Gets or sets private endpoint
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
 
         /// <summary>
-        /// Gets or sets connection state
+        /// Gets group IDs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "groupIds")]
+        public System.Collections.Generic.IList<string> GroupIds {get; private set; }
+
+        /// <summary>
+        /// Gets or sets connection state of the private endpoint connection
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
