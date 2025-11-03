@@ -67,176 +67,165 @@ function Enable-AzFrontDoorCustomDomainHttps {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='EnableExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='Enable', Mandatory)]
-        [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-        [System.String]
-        # Name of the Front Door which is globally unique.
-        ${FrontDoorName},
-    
-        [Parameter(ParameterSetName='Enable', Mandatory)]
-        [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoor', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-        [System.String]
-        # Name of the Frontend endpoint which is unique within the Front Door.
-        ${FrontendEndpointName},
-    
-        [Parameter(ParameterSetName='Enable', Mandatory)]
-        [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-        [System.String]
-        # Name of the Resource group within the Azure subscription.
-        ${ResourceGroupName},
-    
-        [Parameter(ParameterSetName='Enable')]
-        [Parameter(ParameterSetName='EnableExpanded')]
-        [Parameter(ParameterSetName='EnableViaJsonFilePath')]
-        [Parameter(ParameterSetName='EnableViaJsonString')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-        # The subscription ID forms part of the URI for every service call.
-        ${SubscriptionId},
-    
-        [Parameter(ParameterSetName='EnableViaIdentity', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='EnableViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
-        # Identity Parameter
-        ${InputObject},
-    
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoor', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
-        # Identity Parameter
-        ${FrontDoorInputObject},
-    
-        [Parameter(ParameterSetName='EnableExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
-        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("1.0", "1.2")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='1.2')]
-        [System.String]
-        # The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
-        ${MinimumTlsVersion},
-    
-        [Parameter(ParameterSetName='EnableExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
-        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-        [System.String]
-        # The name of the Key Vault secret representing the full certificate PFX
-        ${SecretName},
-    
-        [Parameter(ParameterSetName='EnableExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
-        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-        [System.String]
-        # The version of the Key Vault secret representing the full certificate PFX
-        ${SecretVersion},
-    
-        [Parameter(ParameterSetName='EnableExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
-        [Parameter(ParameterSetName='EnableViaIdentityFrontDoorExpanded')]
-        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-        [System.String]
-        # Resource ID.
-        ${VaultId},
-    
-        [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-        [System.String]
-        # Path of Json file supplied to the Enable operation
-        ${JsonFilePath},
-    
-        [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-        [System.String]
-        # Json string supplied to the Enable operation
-        ${JsonString},
-    
-        [Parameter()]
-        [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The DefaultProfile parameter is not functional.
-        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-        ${DefaultProfile},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
-    
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${Break},
-    
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-    
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Returns true when the command succeeds
-        ${PassThru},
-    
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
-    
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
-    
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+      [Parameter(ParameterSetName='Enable', Mandatory)]
+      [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
+      [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+      [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+      [System.String]
+      # Name of the Front Door which is globally unique.
+      ${FrontDoorName},
+
+      [Parameter(ParameterSetName='Enable', Mandatory)]
+      [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
+      [Parameter(ParameterSetName='EnableViaIdentityFrontDoor', Mandatory)]
+      [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+      [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+      [System.String]
+      # Name of the Frontend endpoint which is unique within the Front Door.
+      ${FrontendEndpointName},
+
+      [Parameter(ParameterSetName='Enable', Mandatory)]
+      [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
+      [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+      [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+      [System.String]
+      # Name of the Resource group within the Azure subscription.
+      ${ResourceGroupName},
+
+      [Parameter(ParameterSetName='Enable')]
+      [Parameter(ParameterSetName='EnableExpanded')]
+      [Parameter(ParameterSetName='EnableViaJsonFilePath')]
+      [Parameter(ParameterSetName='EnableViaJsonString')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+      [System.String]
+      # The subscription credentials which uniquely identify the Microsoft Azure subscription.
+      # The subscription ID forms part of the URI for every service call.
+      ${SubscriptionId},
+
+      [Parameter(ParameterSetName='EnableViaIdentity', Mandatory, ValueFromPipeline)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+      # Identity Parameter
+      ${InputObject},
+
+      [Parameter(ParameterSetName='EnableViaIdentityFrontDoor', Mandatory, ValueFromPipeline)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity]
+      # Identity Parameter
+      ${FrontDoorInputObject},
+
+      [Parameter(ParameterSetName='EnableExpanded')]
+      [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("1.0", "1.2")]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='1.2')]
+      [System.String]
+      # The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
+      ${MinimumTlsVersion},
+
+      [Parameter(ParameterSetName='EnableExpanded')]
+      [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+      [System.String]
+      # The name of the Key Vault secret representing the full certificate PFX
+      ${SecretName},
+
+      [Parameter(ParameterSetName='EnableExpanded')]
+      [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+      [System.String]
+      # The version of the Key Vault secret representing the full certificate PFX
+      ${SecretVersion},
+
+      [Parameter(ParameterSetName='EnableExpanded')]
+      [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+      [System.String]
+      # Resource ID.
+      ${VaultId},
+
+      [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+      [System.String]
+      # Path of Json file supplied to the Enable operation
+      ${JsonFilePath},
+
+      [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+      [System.String]
+      # Json string supplied to the Enable operation
+      ${JsonString},
+
+      [Parameter()]
+      [Parameter(ParameterSetName='ByResourceIdWithVaultParameterSet')]
+      [Alias('AzureRMContext', 'AzureCredential')]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Azure')]
+      [System.Management.Automation.PSObject]
+      # The DefaultProfile parameter is not functional.
+      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+      ${DefaultProfile},
+
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Run the command as a job
+      ${AsJob},
+
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Wait for .NET debugger to attach
+      ${Break},
+
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be appended to the front of the pipeline
+      ${HttpPipelineAppend},
+
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+      ${HttpPipelinePrepend},
+
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Run the command asynchronously
+      ${NoWait},
+
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Returns true when the command succeeds
+      ${PassThru},
+
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [System.Uri]
+      # The URI for the proxy server to use
+      ${Proxy},
+
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [System.Management.Automation.PSCredential]
+      # Credentials for a proxy server to use for the remote call
+      ${ProxyCredential},
+
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Use the default credentials for the proxy
+      ${ProxyUseDefaultCredentials}
     )
     
     process {

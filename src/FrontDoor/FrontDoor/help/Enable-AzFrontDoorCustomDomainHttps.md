@@ -48,24 +48,9 @@ Enable-AzFrontDoorCustomDomainHttps -FrontendEndpointName <String> -FrontDoorInp
  [-Confirm] [<CommonParameters>]
 ```
 
-### EnableViaIdentityFrontDoorExpanded
-```
-Enable-AzFrontDoorCustomDomainHttps -FrontendEndpointName <String> -FrontDoorInputObject <IFrontDoorIdentity>
- [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### EnableViaIdentity
 ```
 Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### EnableViaIdentityExpanded
-```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> [-MinimumTlsVersion <String>]
- [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -207,7 +192,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
-Parameter Sets: EnableViaIdentityFrontDoor, EnableViaIdentityFrontDoorExpanded
+Parameter Sets: EnableViaIdentityFrontDoor
 Aliases:
 
 Required: True
@@ -237,7 +222,7 @@ Name of the Frontend endpoint which is unique within the Front Door.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, Enable, EnableViaJsonFilePath, EnableViaJsonString, EnableViaIdentityFrontDoor, EnableViaIdentityFrontDoorExpanded
+Parameter Sets: EnableExpanded, Enable, EnableViaJsonFilePath, EnableViaJsonString, EnableViaIdentityFrontDoor
 Aliases:
 
 Required: True
@@ -252,7 +237,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
-Parameter Sets: EnableViaIdentity, EnableViaIdentityExpanded
+Parameter Sets: EnableViaIdentity
 Aliases:
 
 Required: True
@@ -297,7 +282,7 @@ The minimum TLS version required from the clients to establish an SSL handshake 
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityFrontDoorExpanded, EnableViaIdentityExpanded, ByResourceIdWithVaultParameterSet
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
 Aliases:
 
 Required: False
@@ -357,7 +342,7 @@ The name of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityFrontDoorExpanded, EnableViaIdentityExpanded, ByResourceIdWithVaultParameterSet
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
 Aliases:
 
 Required: False
@@ -372,7 +357,7 @@ The version of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityFrontDoorExpanded, EnableViaIdentityExpanded, ByResourceIdWithVaultParameterSet
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
 Aliases:
 
 Required: False
@@ -403,7 +388,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityFrontDoorExpanded, EnableViaIdentityExpanded, ByResourceIdWithVaultParameterSet
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
 Aliases:
 
 Required: False

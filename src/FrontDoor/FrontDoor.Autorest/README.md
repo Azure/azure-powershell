@@ -64,6 +64,13 @@ directive:
   - where:
       variant: ^CreateViaIdentity.*$
     remove: true
+
+  - where:
+      variant: ^EnableViaIdentityFrontDoorExpanded$
+    remove: true
+  - where:
+      variant: ^EnableViaIdentityExpanded$
+    remove: true
   - no-inline:  # choose ONE of these models to disable inlining
     - BackendPoolsSettings
     - RouteConfiguration
