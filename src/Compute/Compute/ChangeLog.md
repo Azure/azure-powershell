@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Updated Azure.Core from 1.45.0 to 1.47.3
 * Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
 * Added `-SupportedSecurityOption` parameter to `New-AzDiskConfig` cmdlet.
