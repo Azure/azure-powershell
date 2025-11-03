@@ -325,4 +325,54 @@ Describe 'Get-AzFunctionAppAvailableLocation' {
         Write-Verbose "Validate Exception.Message" -Verbose
         $myError.Exception.Message | Should Match $expectedErrorMessage
     }
+
+    It 'Validate output for -PlanType FlexConsumption -ZoneRedundant' {
+
+        $expectedRegions = @(
+            'Canada Central'
+            'Southeast Asia'
+            'East Asia'
+            'Australia East'
+            'East US'
+            'Central India'
+            'UK South'
+            'East US 2 EUAP'
+            'South Africa North'
+            'Germany West Central'
+            'UAE North'
+            'Norway East'
+            'West US 3'
+            'Sweden Central'
+            'Italy North'
+            'Israel Central'
+        )
+
+        $actualRegions = @(Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant | ForEach-Object { $_.Name })
+        ValidateAvailableLocation -ActualRegions $actualRegions -ExpectedRegions $expectedRegions
+    }
+
+    foreach ($osType in @('Linux', 'Windows'))
+    {
+            It "Validate -PlanType FlexConsumption -OSType $osType -ZoneRedundant fails" {
+
+            $expectedErrorMessage = "ZoneRedundant parameter is only applicable for FlexConsumption plan type."
+            $expectedErrorId = "ZoneRedundantIsOnlyApplicableForFlexConsumption"
+
+            $myError = $null
+            try
+            {
+                Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -OSType $osType -ErrorAction Stop
+            }
+            catch
+            {
+                Write-Verbose "Catch the expected exception" -Verbose
+                $myError = $_
+            }
+
+            Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
+            $myError.FullyQualifiedErrorId | Should Be $expectedErrorId
+            Write-Verbose "Validate Exception.Message" -Verbose
+            $myError.Exception.Message | Should Match $expectedErrorMessage
+        }
+    }
 }
