@@ -6084,6 +6084,11 @@ function Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement
 
         # Assert the HighSpeedInterconnectPlacement from the vmssResult
         Assert-AreEqual $vmssResult.HighSpeedInterconnectPlacement "None";
+
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newtestVmss"
+        $vmssUpdated = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newtestVmss" -VirtualMachineScaleSet $vmssGet -HighSpeedInterconnectPlacement "Null";
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newtestVmss"
+        Assert-AreEqual $vmssGet.HighSpeedInterconnectPlacement "None";
     }
     finally
     {

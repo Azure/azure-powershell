@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
-        [PSArgumentCompleter("None", "Trunk")]
+        [PSArgumentCompleter("None", "Null", "Trunk")]
         public string HighSpeedInterconnectPlacement { get; set; }
 
         private void ConfigureSecuritySettings()

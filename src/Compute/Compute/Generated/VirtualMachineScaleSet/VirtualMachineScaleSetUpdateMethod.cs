@@ -463,6 +463,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("CreateBeforeDelete")]
         public string AutomaticZoneRebalanceBehavior { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
+        [PSArgumentCompleter("None", "Trunk")]
+        public string HighSpeedInterconnectPlacement { get; set; }
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
