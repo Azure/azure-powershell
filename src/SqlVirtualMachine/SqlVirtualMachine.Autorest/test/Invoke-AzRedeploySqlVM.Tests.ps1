@@ -15,11 +15,11 @@ if (($null -eq $TestName) -or ($TestName -contains 'Invoke-AzRedeploySqlVM')) {
 
 Describe 'Invoke-AzRedeploySqlVM' {
     It 'Redeploy' {
-        Invoke-AzRedeploySqlVM -ResourceGroupName $env.ResourceGroupName -SqlVirtualMachineName $env.SqlVMName
+        Invoke-AzRedeploySqlVM -ResourceGroupName $env.ResourceGroupName2 -SqlVirtualMachineName $env.SqlVMName
     }
 
     It 'RedeployViaIdentity' {
-        $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
         Invoke-AzRedeploySqlVM -InputObject $sqlvm 
     }
 }

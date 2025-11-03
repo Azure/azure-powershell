@@ -8,24 +8,24 @@ schema: 2.0.0
 # Update-AzSqlVMGroup
 
 ## SYNOPSIS
-Updates SQL virtual machine group.
+Update SQL virtual machine group.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>]
- [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
- [-OuPath <String>] [-SqlServiceAccount <String>] [-StorageAccountPrimaryKey <SecureString>]
- [-StorageAccountUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>] [-ClusterSubnetType <String>]
+ [-DomainFqdn <String>] [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
+ [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### UpdateViaIdentityExpanded
 ```
 Update-AzSqlVMGroup -InputObject <ISqlVirtualMachineIdentity> [-ClusterBootstrapAccount <String>]
- [-ClusterOperatorAccount <String>] [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>]
+ [-ClusterOperatorAccount <String>] [-ClusterSubnetType <String>] [-DomainFqdn <String>]
  [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
  [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -33,32 +33,31 @@ Update-AzSqlVMGroup -InputObject <ISqlVirtualMachineIdentity> [-ClusterBootstrap
 ```
 
 ## DESCRIPTION
-Updates SQL virtual machine group.
+Update SQL virtual machine group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
+{{ Add code here }}
 ```
 
 ```output
-Location Name           ResourceGroupName
--------- ----           -----------------
-eastus   sqlvmgroup01	ResourceGroup01
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-### Example 2
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
-$group = Get-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01'
-$group | Update-AzSqlVMGroup -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
+{{ Add code here }}
 ```
 
 ```output
-Location Name           ResourceGroupName
--------- ----           -----------------
-eastus   sqlvmgroup01	ResourceGroup01
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -112,7 +111,7 @@ Accept wildcard characters: False
 Cluster subnet type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -170,11 +170,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -360,7 +359,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 
 ## NOTES
 

@@ -15,19 +15,18 @@ if (($null -eq $TestName) -or ($TestName -contains 'Update-AzSqlVMGroup')) {
 
 Describe 'Update-AzSqlVMGroup' {
     It 'UpdateExpanded' {
-        $Offer = "SQL2022-WS2022"
         $Sku = "Developer"
         $DomainFqdn = 'azpstestsqlvm.com'
         $ClusterSubnetType = 'SingleSubnet'
 
         $SqlVMGroupName = "updateGroup1"
 
-        $group = New-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -Location $env.Location -Offer $Offer -Sku $Sku -DomainFqdn  $DomainFqdn -ClusterSubnetType $ClusterSubnetType
+        $group = New-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -Location $env.Location -Offer $env.SqlImageOffer -Sku $Sku -DomainFqdn $DomainFqdn -ClusterSubnetType $ClusterSubnetType
 
         $group = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
 
         $group.Name | Should -Be $SqlVMGroupName
-        $group.SqlImageOffer | Should -Be $Offer
+        $group.SqlImageOffer | Should -Be $env.SqlImageOffer
         $group.SqlImageSku | Should -Be $Sku
         $group.WsfcDomainProfileClusterBootstrapAccount | Should -BeNullOrEmpty 
         $group.WsfcDomainProfileClusterOperatorAccount | Should -BeNullOrEmpty 
@@ -42,43 +41,39 @@ Describe 'Update-AzSqlVMGroup' {
         $DomainFqdn = 'azpstestsqlvm2.com'
         $OuPath = "OU=path1,DC=azpstestsqlvm2,DC=com"
         $SqlServiceAccount = "sqluser@azpstestsqlvm2.com"
-        $StorageAccountUrl = "https://azpstestsqlvmstorage.blob.core.windows.net/"
-        $storageAccountPrimaryKey = ConvertTo-SecureString -String "akeyvalue" -AsPlainText -Force
+        $storageAccountPrimaryKey = ConvertTo-SecureString -String "REDACTED " -AsPlainText
         $Tag = @{'IT' = '8888' }
 
-        Update-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -ClusterBootstrapAccount $ClusterBootstrapAccount -ClusterOperatorAccount $ClusterOperatorAccount -ClusterSubnetType $ClusterSubnetType -DomainFqdn $DomainFqdn -OuPath $OuPath -SqlServiceAccount $SqlServiceAccount -StorageAccountUrl $StorageAccountUrl -storageAccountPrimaryKey $storageAccountPrimaryKey -Tag $Tag
+        Update-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -ClusterBootstrapAccount $ClusterBootstrapAccount -ClusterOperatorAccount $ClusterOperatorAccount -ClusterSubnetType $ClusterSubnetType -DomainFqdn $DomainFqdn -OuPath $OuPath -SqlServiceAccount $SqlServiceAccount -StorageAccountUrl $env.StorageAccountUrl -storageAccountPrimaryKey $storageAccountPrimaryKey -Tag $Tag
 
         $group = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
 
         $group.Name | Should -Be $SqlVMGroupName
-        $group.SqlImageOffer | Should -Be $Offer
+        $group.SqlImageOffer | Should -Be $env.SqlImageOffer
         $group.SqlImageSku | Should -Be $Sku
         $group.WsfcDomainProfileClusterBootstrapAccount | Should -Be $ClusterBootstrapAccount 
         $group.WsfcDomainProfileClusterOperatorAccount | Should -Be $ClusterOperatorAccount
         $group.WsfcDomainProfileClusterSubnetType | Should -Be 'SingleSubnet' # not changed
         $group.WsfcDomainProfileDomainFqdn | Should -Be $DomainFqdn
         $group.WsfcDomainProfileSqlServiceAccount | Should -Be $SqlServiceAccount
-        $group.WsfcDomainProfileStorageAccountUrl | Should -Be $StorageAccountUrl
+        $group.WsfcDomainProfileStorageAccountUrl | Should -Be $env.StorageAccountUrl
 
         Remove-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
     }
 
     It 'UpdateViaIdentityExpanded' {
-        
-
-        $Offer = "SQL2022-WS2022"
         $Sku = "Developer"
         $DomainFqdn = 'azpstestsqlvm.com'
         $ClusterSubnetType = 'SingleSubnet'
 
         $SqlVMGroupName = "updateGroup2"
 
-        $group = New-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -Location $env.Location -Offer $Offer -Sku $Sku -DomainFqdn  $DomainFqdn -ClusterSubnetType $ClusterSubnetType
+        $group = New-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -Location $env.Location -Offer $env.SqlImageOffer -Sku $Sku -DomainFqdn $DomainFqdn -ClusterSubnetType $ClusterSubnetType
 
         $group = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
 
         $group.Name | Should -Be $SqlVMGroupName
-        $group.SqlImageOffer | Should -Be $Offer
+        $group.SqlImageOffer | Should -Be $env.SqlImageOffer
         $group.SqlImageSku | Should -Be $Sku
         $group.WsfcDomainProfileClusterBootstrapAccount | Should -BeNullOrEmpty 
         $group.WsfcDomainProfileClusterOperatorAccount | Should -BeNullOrEmpty 
@@ -93,26 +88,23 @@ Describe 'Update-AzSqlVMGroup' {
         $DomainFqdn = 'azpstestsqlvm2.com'
         $OuPath = "OU=path1,DC=azpstestsqlvm2,DC=com"
         $SqlServiceAccount = "sqluser@azpstestsqlvm2.com"
-        $StorageAccountUrl = "https://azpstestsqlvmstorage.blob.core.windows.net/"
-        $storageAccountPrimaryKey = ConvertTo-SecureString -String "akeyvalue" -AsPlainText -Force
+        $storageAccountPrimaryKey = ConvertTo-SecureString -String "REDACTED" -AsPlainText -Force
         $Tag = @{'IT' = '8888' }
 
-        Update-AzSqlVMGroup -InputObject $group -ClusterBootstrapAccount $ClusterBootstrapAccount -ClusterOperatorAccount $ClusterOperatorAccount -ClusterSubnetType $ClusterSubnetType -DomainFqdn $DomainFqdn -OuPath $OuPath -SqlServiceAccount $SqlServiceAccount -StorageAccountUrl $StorageAccountUrl -storageAccountPrimaryKey $storageAccountPrimaryKey -Tag $Tag
+        Update-AzSqlVMGroup -InputObject $group -ClusterBootstrapAccount $ClusterBootstrapAccount -ClusterOperatorAccount $ClusterOperatorAccount -ClusterSubnetType $ClusterSubnetType -DomainFqdn $DomainFqdn -OuPath $OuPath -SqlServiceAccount $SqlServiceAccount -StorageAccountUrl $env.StorageAccountUrl -storageAccountPrimaryKey $storageAccountPrimaryKey -Tag $Tag
 
         $group = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
 
         $group.Name | Should -Be $SqlVMGroupName
-        $group.SqlImageOffer | Should -Be $Offer
+        $group.SqlImageOffer | Should -Be $env.SqlImageOffer
         $group.SqlImageSku | Should -Be $Sku
         $group.WsfcDomainProfileClusterBootstrapAccount | Should -Be $ClusterBootstrapAccount 
         $group.WsfcDomainProfileClusterOperatorAccount | Should -Be $ClusterOperatorAccount
         $group.WsfcDomainProfileClusterSubnetType | Should -Be 'SingleSubnet' # not changed
         $group.WsfcDomainProfileDomainFqdn | Should -Be $DomainFqdn
         $group.WsfcDomainProfileSqlServiceAccount | Should -Be $SqlServiceAccount
-        $group.WsfcDomainProfileStorageAccountUrl | Should -Be $StorageAccountUrl
+        $group.WsfcDomainProfileStorageAccountUrl | Should -Be $env.StorageAccountUrl
 
         Remove-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
-        
-        
     }
 }

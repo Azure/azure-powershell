@@ -8,22 +8,46 @@ schema: 2.0.0
 # New-AzAvailabilityGroupListener
 
 ## SYNOPSIS
-Creates or updates an availability group listener.
+Create an availability group listener.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
  [-SubscriptionId <String>] [-AvailabilityGroupConfigurationReplica <IAgReplica[]>]
- [-AvailabilityGroupName <String>] [-CreateDefaultAvailabilityGroupIfNotExist] [-IpAddress <String>]
+ [-AvailabilityGroupName <String>] [-CreateDefaultAvailabilityGroupIfNotExist]
+ [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>] [-Port <Int32>] [-IpAddress <String>]
  [-LoadBalancerResourceId <String>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>]
- [-SqlVirtualMachineId <String[]>] [-SubnetId <String>]
+ [-SqlVirtualMachineId <String[]>] [-SubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentitySqlVirtualMachineGroupExpanded
+```
+New-AzAvailabilityGroupListener -Name <String> -SqlVirtualMachineGroupInputObject <ISqlVirtualMachineIdentity>
+ [-AvailabilityGroupConfigurationReplica <IAgReplica[]>] [-AvailabilityGroupName <String>]
+ [-CreateDefaultAvailabilityGroupIfNotExist] [-LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]
  [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates an availability group listener.
+Create an availability group listener.
 
 ## EXAMPLES
 
@@ -75,11 +99,10 @@ Accept wildcard characters: False
 
 ### -AvailabilityGroupConfigurationReplica
 Replica configurations.
-To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAgReplica[]
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineGroupExpanded
 Aliases:
 
 Required: False
@@ -94,7 +117,7 @@ Name of the availability group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineGroupExpanded
 Aliases:
 
 Required: False
@@ -109,7 +132,7 @@ Create a default availability group if it does not exist.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineGroupExpanded
 Aliases:
 
 Required: False
@@ -120,7 +143,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -139,7 +163,52 @@ Private IP address bound to the availability group listener.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerConfiguration
+List of load balancer configurations for an availability group listener.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ILoadBalancerConfiguration[]
+Parameter Sets: CreateViaIdentitySqlVirtualMachineGroupExpanded
 Aliases:
 
 Required: False
@@ -154,7 +223,7 @@ Resource id of the load balancer.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -166,11 +235,10 @@ Accept wildcard characters: False
 
 ### -MultiSubnetIPConfiguration
 List of multi subnet IP configurations for an AG listener.
-To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IMultiSubnetIPConfiguration[]
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineGroupExpanded
 Aliases:
 
 Required: False
@@ -215,12 +283,12 @@ Listener port.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineGroupExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: 1433
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -230,7 +298,7 @@ Probe port.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -245,7 +313,7 @@ Resource id of the public IP.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -261,7 +329,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -271,12 +339,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SqlVirtualMachineGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
+Parameter Sets: CreateViaIdentitySqlVirtualMachineGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlVirtualMachineId
 List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -291,7 +374,7 @@ Name of the SQL virtual machine group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: GroupName
 
 Required: True
@@ -306,7 +389,7 @@ Subnet used to include private IP.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -321,7 +404,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -367,9 +450,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 
 ## NOTES
 

@@ -16,6 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSqlVirtualMachineMultiS
 
 Describe 'New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $msconfig1 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $env.SubnetId1 -PrivateIPAddressIpaddress $env.IPAddress2 -SqlVirtualMachineInstance $env.SqlVMName_HA1Id
+            $msconfig2 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $env.SubnetId2 -PrivateIPAddressIpaddress $env.IPAddress3 -SqlVirtualMachineInstance $env.SqlVMName_HA2Id
+        } | Should -Not -Throw
     }
 }

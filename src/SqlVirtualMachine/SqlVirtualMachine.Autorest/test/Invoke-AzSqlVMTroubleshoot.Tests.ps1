@@ -15,13 +15,13 @@ if (($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSqlVMTroubleshoot')
 
 Describe 'Invoke-AzSqlVMTroubleshoot' {
     It 'TroubleshootExpanded' {
-        $SqlVMTroubleshootingResult = Invoke-AzSqlVMTroubleshoot -ResourceGroupName $env.ResourceGroupName -SqlVirtualMachineName $env.SqlVMName -StartTimeUtc '2023-03-15T17:10:00Z' -EndTimeUtc '2023-03-16T08:30:10Z' -TroubleshootingScenario 'UnhealthyReplica'
+        $SqlVMTroubleshootingResult = Invoke-AzSqlVMTroubleshoot -ResourceGroupName $env.ResourceGroupName2 -SqlVirtualMachineName $env.SqlVMName -StartTimeUtc '2025-09-16T17:10:00Z' -EndTimeUtc '2025-09-16T08:30:10Z' -TroubleshootingScenario 'UnhealthyReplica'
         $SqlVMTroubleshootingResult.TroubleshootingScenario | Should -BeNullOrEmpty
     }
 
     It 'TroubleshootViaIdentityExpanded' {
-        $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-        $SqlVMTroubleshootingResult = Invoke-AzSqlVMTroubleshoot -InputObject $sqlvm -StartTimeUtc '2023-03-15T17:10:00Z' -EndTimeUtc '2023-03-16T08:30:10Z' -TroubleshootingScenario 'UnhealthyReplica'
+        $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
+        $SqlVMTroubleshootingResult = Invoke-AzSqlVMTroubleshoot -InputObject $sqlvm -StartTimeUtc '2025-09-15T17:10:00Z' -EndTimeUtc '2025-09-16T08:30:10Z' -TroubleshootingScenario 'UnhealthyReplica'
         $SqlVMTroubleshootingResult.TroubleshootingScenario | Should -BeNullOrEmpty
     }
 

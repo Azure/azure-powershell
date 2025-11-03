@@ -15,7 +15,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzSqlVMGroup')) {
 
 Describe 'Remove-AzSqlVMGroup' {
     It 'Delete' {
-        $Offer = "SQL2022-WS2022"
+        $Offer = $env.SqlImageOffer
         $Sku = "Developer"
         $DomainFqdn = 'azpstestsqlvm.com'
         $ClusterSubnetType = 'SingleSubnet'
@@ -26,11 +26,11 @@ Describe 'Remove-AzSqlVMGroup' {
 
         Remove-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
 
-        { Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName } | Should -Throw -ExpectedMessage "The requested resource of type 'Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups' with name 'removeGroup1' was not found."
+        { Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName } | Should -Throw -ExpectedMessage "[ResourceNotFound] : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/removeGroup1' under resource group 'sqlvmtest-gp' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"
     }
 
     It 'DeleteViaIdentity' {
-        $Offer = "SQL2022-WS2022"
+        $Offer = $env.SqlImageOffer
         $Sku = "Developer"
         $DomainFqdn = 'azpstestsqlvm.com'
         $ClusterSubnetType = 'SingleSubnet'
@@ -40,6 +40,6 @@ Describe 'Remove-AzSqlVMGroup' {
         $group = New-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -Location $env.Location -Offer $Offer -Sku $Sku -DomainFqdn  $DomainFqdn -ClusterSubnetType $ClusterSubnetType
         Remove-AzSqlVMGroup -InputObject $group
 
-        { Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName } | Should -Throw -ExpectedMessage "The requested resource of type 'Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups' with name 'removeGroup2' was not found."
+        { Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName } | Should -Throw -ExpectedMessage "[ResourceNotFound] : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/removeGroup2' under resource group 'sqlvmtest-gp' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"
     }
 }

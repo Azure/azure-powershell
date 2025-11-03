@@ -37,15 +37,27 @@ try-require:
   - $(repo)/specification/sqlvirtualmachine/resource-manager/readme.powershell.md
 
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-identity-correction-for-post: true
-	
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+
+#Disable Managed Identity transform
+disable-transform-identity-type: true
 
 directive:
+  - remove-operation: 
+    - SqlVirtualMachineGroups_Update
+  - from: swagger-document
+    where: $.definitions.SqlVirtualMachineGroupProperties.properties.wsfcDomainProfile
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.WsfcDomainProfile.properties..x-ms-mutability
+    transform: >-
+      return [
+        "read",
+        "update",
+        "create"
+      ]
+  - from: swagger-document
+    where: $.definitions.SqlVirtualMachineProperties.properties.sqlVirtualMachineGroupResourceId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
   #1. [swagger] define password parameters as password type
   - from: swagger-document
     where: $.definitions..storageAccountPrimaryKey
@@ -74,7 +86,7 @@ directive:
     transform: $["final-state-via"] = "azure-async-operation"
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/troubleshoot"].post["x-ms-long-running-operation-options"]
-    transform: $["final-state-via"] = "azure-async-operation"  
+    transform: $["final-state-via"] = "azure-async-operation"
   #3. [cmdlet] remove or simplify the subject prefix
   - where:  
       subject: ^SqlVirtualMachine$|^SqlVirtualMachineGroup$|^AvailabilityGroupListener$|^RedeploySqlVirtualMachine$
@@ -107,12 +119,12 @@ directive:
       subject: Assessment
   #5. [cmdlet] remove unnecessary variants
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Troubleshoot$|^TroubleshootViaIdentity$|^UpdateViaIdentityExpanded$|^UpdateExpanded$
-      subject: ^SqlVM$|^SqlVMGroup$|^AvailabilityGroupListener$
+      variant: ^(Create|Troubleshoot)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+      subject: ^AvailabilityGroupListener$|^RedeploySqlVM$|^Troubleshoot$
     remove: true
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Troubleshoot$|^TroubleshootViaIdentity$
-      subject: ^RedeploySqlVM$|^Troubleshoot$
+      variant: ^(Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^Create$|^CreateViaIdentityExpanded$
+      subject: ^SqlVMGroup$|^SqlVM$
     remove: true
   #6. [cmdlet] remove set cmdlets
   - where:  
@@ -120,22 +132,22 @@ directive:
       verb: Set
     remove: true
   #7. [cmdlet] hide cmdlets for customization
-  - where:  
+  - where:
       subject: ^SqlVM$
       verb: New|Update
     hide: true
-  - where:  
-      subject: ^SqlVMGroup$|^AvailabilityGroupListener$
-      variant: ^CreateViaIdentity$
+  - where:
+      subject: ^SqlVMGroup$
+      variant: Update|^CreateViaIdentity$
     hide: true
-  - where:  
+  - where:
       subject: ^AvailabilityGroupListener$
-      verb: New
+      variant: ^CreateExpanded$
     hide: true
   #8. [cmdlet] add model cmdlet
   - model-cmdlet:
-    - AgReplica
-    - MultiSubnetIPConfiguration
+    - model-name: AgReplica
+    - model-name: MultiSubnetIPConfiguration
   #9. [parameter] rename parameters
   - where:  
       parameter-name: SqlVirtualMachineGroupName

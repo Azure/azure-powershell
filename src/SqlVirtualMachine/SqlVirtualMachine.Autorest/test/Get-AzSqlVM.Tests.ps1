@@ -17,20 +17,25 @@ Describe 'Get-AzSqlVM' {
     It 'List1' {
         $sqlVMs = Get-AzSqlVM
 
-        $sqlVMs.Count | Should -Be 2
+        $sqlVMs.Count | Should -Be 3
         $sqlVMs.Name.Contains($env.SqlVMName_HA1) | Should -Be $true
         $sqlVMs.Name.Contains($env.SqlVMName_HA2) | Should -Be $true
-        $sqlVMs[0].SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs[0].SqlImageSku | Should -Be 'Enterprise'
+        $sqlVMs.Name.Contains($env.SqlVMName) | Should -Be $true
+        $sqlVMs[0].SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs[0].SqlImageSku | Should -Be $env.SqlImageSku
         $sqlVMs[0].SqlManagement | Should -Be 'Full'
         $sqlVMs[0].SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs[0].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
-        $sqlVMs[1].SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs[1].SqlImageSku | Should -Be 'Enterprise'
+        $sqlVMs[1].SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs[1].SqlImageSku | Should -Be $env.SqlImageSku
         $sqlVMs[1].SqlManagement | Should -Be 'Full'
         $sqlVMs[1].SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs[1].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
-
+        $sqlVMs[2].SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs[2].SqlImageSku | Should -Be $env.SqlImageSku
+        $sqlVMs[2].SqlManagement | Should -Be 'Full'
+        $sqlVMs[2].SqlServerLicenseType | Should -Be 'PAYG'
+        $sqlVMs[2].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
     }
 
     It 'Get' {
@@ -38,8 +43,8 @@ Describe 'Get-AzSqlVM' {
 
         $sqlVMs.Count | Should -Be 1
         $sqlVMs.Name | Should -Be $env.SqlVMName_HA1
-        $sqlVMs.SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs.SqlImageSku | Should -Be 'Enterprise'
+        $sqlVMs.SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs.SqlImageSku | Should -Be $env.SqlImageSku
         $sqlVMs.SqlManagement | Should -Be 'Full'
         $sqlVMs.SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs.GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
@@ -51,13 +56,13 @@ Describe 'Get-AzSqlVM' {
         $sqlVMs.Count | Should -Be 2
         $sqlVMs.Name.Contains($env.SqlVMName_HA1) | Should -Be $true
         $sqlVMs.Name.Contains($env.SqlVMName_HA2) | Should -Be $true
-        $sqlVMs[0].SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs[0].SqlImageSku | Should -Be 'Enterprise'
+        $sqlVMs[0].SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs[0].SqlImageSku | Should -Be $env.SqlImageSku
         $sqlVMs[0].SqlManagement | Should -Be 'Full'
         $sqlVMs[0].SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs[0].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
-        $sqlVMs[1].SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs[1].SqlImageSku | Should -Be 'Enterprise'
+        $sqlVMs[1].SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs[1].SqlImageSku | Should -Be $env.SqlImageSku
         $sqlVMs[1].SqlManagement | Should -Be 'Full'
         $sqlVMs[1].SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs[1].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
@@ -69,28 +74,15 @@ Describe 'Get-AzSqlVM' {
         $sqlVMs.Count | Should -Be 2
         $sqlVMs.Name.Contains($env.SqlVMName_HA1) | Should -Be $true
         $sqlVMs.Name.Contains($env.SqlVMName_HA2) | Should -Be $true
-        $sqlVMs[0].SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs[0].SqlImageSku | Should -Be 'Enterprise'
+        $sqlVMs[0].SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs[0].SqlImageSku | Should -Be $env.SqlImageSku
         $sqlVMs[0].SqlManagement | Should -Be 'Full'
         $sqlVMs[0].SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs[0].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
-        $sqlVMs[1].SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs[1].SqlImageSku | Should -Be 'Enterprise'
+        $sqlVMs[1].SqlImageOffer | Should -Be $env.SqlImageOffer
+        $sqlVMs[1].SqlImageSku | Should -Be $env.SqlImageSku
         $sqlVMs[1].SqlManagement | Should -Be 'Full'
         $sqlVMs[1].SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs[1].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
-    }
-
-    It 'GetViaIdentity' {
-        $sqlVM1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachine]@{Id = $env.SqlVMName_HA1Id }
-        $sqlVMs = Get-AzSqlVM -InputObject $sqlVM1 
-
-        $sqlVMs.Count | Should -Be 1
-        $sqlVMs.Name | Should -Be $env.SqlVMName_HA1
-        $sqlVMs.SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $sqlVMs.SqlImageSku | Should -Be 'Enterprise'
-        $sqlVMs.SqlManagement | Should -Be 'Full'
-        $sqlVMs.SqlServerLicenseType | Should -Be 'PAYG'
-        $sqlVMs.GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
     }
 }

@@ -16,274 +16,391 @@
 
 <#
 .Synopsis
-Creates or updates a SQL virtual machine.
+Create a SQL virtual machine.
 .Description
-Creates or updates a SQL virtual machine.
-
-If you are updating an existing SQL virtual machine and a parameter such as -Tag is omitted, then the previously defined values may be removed. For this reason, it is recommended to use [Update-AzSqlVM](https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm) to prevent overwriting of unintended parameters.
+Create a SQL virtual machine.
 .Example
-{{ Add code here }}
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus'
 .Example
-{{ Add code here }}
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -Sku 'Developer' -LicenseType 'PAYG'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -LicenseType 'AHUB'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -LicenseType 'DR'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoBackupSettingEnable `
+-AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 `
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl `
+'https://storagename.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 `
+-AutoBackupSettingStorageContainerName 'storagecontainername'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoPatchingSettingDayOfWeek Thursday `
+-AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AssessmentSettingEnable
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AsJob
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
+  [AvailabilityGroupListenerName <String>]: Name of the availability group listener.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [SqlVirtualMachineGroupName <String>]: Name of the SQL virtual machine group.
+  [SqlVirtualMachineName <String>]: Name of the SQL virtual machine.
+  [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
+
+PARAMETER <ISqlVirtualMachine>: A SQL virtual machine.
+  [Location <String>]: Resource location.
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [AdditionalFeatureServerConfigurationIsRServicesEnabled <Boolean?>]: Enable or disable R services (SQL 2016 onwards).
+  [AssessmentSettingEnable <Boolean?>]: Enable or disable SQL best practices Assessment feature on SQL virtual machine.
+  [AssessmentSettingRunImmediately <Boolean?>]: Run SQL best practices Assessment immediately on SQL virtual machine.
+  [AutoBackupSettingBackupScheduleType <String>]: Backup schedule type.
+  [AutoBackupSettingBackupSystemDb <Boolean?>]: Include or exclude system databases from auto backup.
+  [AutoBackupSettingDaysOfWeek <List<String>>]: Days of the week for the backups when FullBackupFrequency is set to Weekly.
+  [AutoBackupSettingEnable <Boolean?>]: Enable or disable autobackup on SQL virtual machine.
+  [AutoBackupSettingEnableEncryption <Boolean?>]: Enable or disable encryption for backup on SQL virtual machine.
+  [AutoBackupSettingFullBackupFrequency <String>]: Frequency of full backups. In both cases, full backups begin during the next scheduled time window.
+  [AutoBackupSettingFullBackupStartTime <Int32?>]: Start time of a given day during which full backups can take place. 0-23 hours.
+  [AutoBackupSettingFullBackupWindowHour <Int32?>]: Duration of the time window of a given day during which full backups can take place. 1-23 hours.
+  [AutoBackupSettingLogBackupFrequency <Int32?>]: Frequency of log backups. 5-60 minutes.
+  [AutoBackupSettingPassword <SecureString>]: Password for encryption on backup.
+  [AutoBackupSettingRetentionPeriod <Int32?>]: Retention period of backup: 1-90 days.
+  [AutoBackupSettingStorageAccessKey <String>]: Storage account key where backup will be taken to.
+  [AutoBackupSettingStorageAccountUrl <String>]: Storage account url where backup will be taken to.
+  [AutoBackupSettingStorageContainerName <String>]: Storage container name where backup will be taken to.
+  [AutoPatchingSettingDayOfWeek <String>]: Day of week to apply the patch on.
+  [AutoPatchingSettingEnable <Boolean?>]: Enable or disable autopatching on SQL virtual machine.
+  [AutoPatchingSettingMaintenanceWindowDuration <Int32?>]: Duration of patching.
+  [AutoPatchingSettingMaintenanceWindowStartingHour <Int32?>]: Hour of the day when patching is initiated. Local VM time.
+  [AzureAdAuthenticationSettingClientId <String>]: The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+  [EnableAutomaticUpgrade <Boolean?>]: Enable automatic upgrade of Sql IaaS extension Agent.
+  [GroupResourceId <String>]: ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
+  [IdentityType <String>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  [KeyVaultCredentialSettingAzureKeyVaultUrl <String>]: Azure Key Vault url.
+  [KeyVaultCredentialSettingCredentialName <String>]: Credential name.
+  [KeyVaultCredentialSettingEnable <Boolean?>]: Enable or disable key vault credential setting.
+  [KeyVaultCredentialSettingServicePrincipalName <String>]: Service principal name to access key vault.
+  [KeyVaultCredentialSettingServicePrincipalSecret <String>]: Service principal name secret to access key vault.
+  [LeastPrivilegeMode <String>]: SQL IaaS Agent least privilege mode.
+  [ScheduleDayOfWeek <String>]: Day of the week to run assessment.
+  [ScheduleEnable <Boolean?>]: Enable or disable assessment schedule on SQL virtual machine.
+  [ScheduleMonthlyOccurrence <Int32?>]: Occurrence of the DayOfWeek day within a month to schedule assessment. Takes values: 1,2,3,4 and -1. Use -1 for last DayOfWeek day of the month
+  [ScheduleStartTime <String>]: Time of the day in HH:mm format. Eg. 17:30
+  [ScheduleWeeklyInterval <Int32?>]: Number of weeks to schedule between 2 assessment runs. Takes value from 1-6
+  [SqlConnectivityUpdateSettingConnectivityType <String>]: SQL Server connectivity option.
+  [SqlConnectivityUpdateSettingPort <Int32?>]: SQL Server port.
+  [SqlConnectivityUpdateSettingSqlAuthUpdatePassword <SecureString>]: SQL Server sysadmin login password.
+  [SqlConnectivityUpdateSettingSqlAuthUpdateUserName <String>]: SQL Server sysadmin login to create.
+  [SqlDataSettingDefaultFilePath <String>]: SQL Server default file path
+  [SqlDataSettingLun <List<Int32>>]: Logical Unit Numbers for the disks.
+  [SqlImageOffer <String>]: SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
+  [SqlImageSku <String>]: SQL Server edition type.
+  [SqlInstanceSettingCollation <String>]: SQL Server Collation.
+  [SqlInstanceSettingIsIfiEnabled <Boolean?>]: SQL Server IFI.
+  [SqlInstanceSettingIsLpimEnabled <Boolean?>]: SQL Server LPIM.
+  [SqlInstanceSettingIsOptimizeForAdHocWorkloadsEnabled <Boolean?>]: SQL Server Optimize for Adhoc workloads.
+  [SqlInstanceSettingMaxDop <Int32?>]: SQL Server MAXDOP.
+  [SqlInstanceSettingMaxServerMemoryMb <Int32?>]: SQL Server maximum memory.
+  [SqlInstanceSettingMinServerMemoryMb <Int32?>]: SQL Server minimum memory.
+  [SqlLogSettingDefaultFilePath <String>]: SQL Server default file path
+  [SqlLogSettingLun <List<Int32>>]: Logical Unit Numbers for the disks.
+  [SqlManagement <String>]: SQL Server Management type.
+  [SqlServerLicenseType <String>]: SQL Server license type.
+  [SqlStorageUpdateSettingDiskConfigurationType <String>]: Disk configuration to apply to SQL Server.
+  [SqlStorageUpdateSettingDiskCount <Int32?>]: Virtual machine disk count.
+  [SqlStorageUpdateSettingStartingDeviceId <Int32?>]: Device id of the first disk to be updated.
+  [SqlTempDbSettingDataFileCount <Int32?>]: SQL Server tempdb data file count
+  [SqlTempDbSettingDataFileSize <Int32?>]: SQL Server tempdb data file size
+  [SqlTempDbSettingDataGrowth <Int32?>]: SQL Server tempdb data file autoGrowth size
+  [SqlTempDbSettingDefaultFilePath <String>]: SQL Server default file path
+  [SqlTempDbSettingLogFileSize <Int32?>]: SQL Server tempdb log file size
+  [SqlTempDbSettingLogGrowth <Int32?>]: SQL Server tempdb log file autoGrowth size
+  [SqlTempDbSettingLun <List<Int32>>]: Logical Unit Numbers for the disks.
+  [SqlTempDbSettingPersistFolder <Boolean?>]: SQL Server tempdb persist folder choice
+  [SqlTempDbSettingPersistFolderPath <String>]: SQL Server tempdb persist folder location
+  [SqlWorkloadTypeUpdateSettingSqlWorkloadType <String>]: SQL Server workload type.
+  [StorageConfigurationSettingDiskConfigurationType <String>]: Disk configuration to apply to SQL Server.
+  [StorageConfigurationSettingSqlSystemDbOnDataDisk <Boolean?>]: SQL Server SystemDb Storage on DataPool if true.
+  [StorageConfigurationSettingStorageWorkloadType <String>]: Storage workload type.
+  [VirtualMachineResourceId <String>]: ARM Resource id of underlying virtual machine created from SQL marketplace image.
+  [WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]: Cluster bootstrap account password.
+  [WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]: Cluster operator account password.
+  [WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>]: SQL service account password.
+  [WsfcStaticIP <String>]: Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
 .Link
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvm
 #>
 function New-AzSqlVM {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
-    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine])]
+    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Alias('SqlVirtualMachineName', 'SqlVMName')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
         [System.String]
         # Name of the SQL virtual machine.
         ${Name},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
         [System.String]
         # Name of the resource group that contains the resource.
         # You can obtain this value from the Azure Resource Manager API or the portal.
         ${ResourceGroupName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+        [Parameter(ParameterSetName='CreateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Subscription ID that identifies an Azure subscription.
         ${SubscriptionId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Resource location.
         ${Location},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable or disable R services (SQL 2016 onwards).
         ${AdditionalFeatureServerConfigurationIsRServicesEnabled},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable or disable SQL best practices Assessment feature on SQL virtual machine.
         ${AssessmentSettingEnable},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Run SQL best practices Assessment immediately on SQL virtual machine.
         ${AssessmentSettingRunImmediately},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Manual", "Automated")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+        [System.String]
         # Backup schedule type.
         ${AutoBackupSettingBackupScheduleType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Include or exclude system databases from auto backup.
         ${AutoBackupSettingBackupSystemDb},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [AllowEmptyCollection()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+        [System.String[]]
         # Days of the week for the backups when FullBackupFrequency is set to Weekly.
         ${AutoBackupSettingDaysOfWeek},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable or disable autobackup on SQL virtual machine.
         ${AutoBackupSettingEnable},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable or disable encryption for backup on SQL virtual machine.
         ${AutoBackupSettingEnableEncryption},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Daily", "Weekly")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+        [System.String]
         # Frequency of full backups.
         # In both cases, full backups begin during the next scheduled time window.
         ${AutoBackupSettingFullBackupFrequency},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Start time of a given day during which full backups can take place.
         # 0-23 hours.
         ${AutoBackupSettingFullBackupStartTime},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Duration of the time window of a given day during which full backups can take place.
         # 1-23 hours.
         ${AutoBackupSettingFullBackupWindowHour},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Frequency of log backups.
         # 5-60 minutes.
         ${AutoBackupSettingLogBackupFrequency},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Security.SecureString]
         # Password for encryption on backup.
         ${AutoBackupSettingPassword},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Retention period of backup: 1-90 days.
         ${AutoBackupSettingRetentionPeriod},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Storage account key where backup will be taken to.
         ${AutoBackupSettingStorageAccessKey},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Storage account url where backup will be taken to.
         ${AutoBackupSettingStorageAccountUrl},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Storage container name where backup will be taken to.
         ${AutoBackupSettingStorageContainerName},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Everyday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+        [System.String]
         # Day of week to apply the patch on.
         ${AutoPatchingSettingDayOfWeek},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable or disable autopatching on SQL virtual machine.
         ${AutoPatchingSettingEnable},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Duration of patching.
         ${AutoPatchingSettingMaintenanceWindowDuration},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Hour of the day when patching is initiated.
         # Local VM time.
         ${AutoPatchingSettingMaintenanceWindowStartingHour},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # The client Id of the Managed Identity to query Microsoft Graph API.
         # An empty string must be used for the system assigned Managed Identity
         ${AzureAdAuthenticationSettingClientId},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable automatic upgrade of Sql IaaS extension Agent.
         ${EnableAutomaticUpgrade},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType]
-        # The identity type.
-        # Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+        [System.String]
+        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Azure Key Vault url.
         ${KeyVaultCredentialSettingAzureKeyVaultUrl},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Credential name.
         ${KeyVaultCredentialSettingCredentialName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable or disable key vault credential setting.
         ${KeyVaultCredentialSettingEnable},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Service principal name to access key vault.
         ${KeyVaultCredentialSettingServicePrincipalName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Service principal name secret to access key vault.
         ${KeyVaultCredentialSettingServicePrincipalSecret},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Enabled", "NotSet")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode]
+        [System.String]
         # SQL IaaS Agent least privilege mode.
         ${LeastPrivilegeMode},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("PAYG", "AHUB", "DR")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
+        [System.String]
         # SQL Server license type.
         ${LicenseType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # SQL image offer.
         # Examples include SQL2016-WS2016, SQL2017-WS2016.
         ${Offer},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+        [System.String]
         # Day of the week to run assessment.
         ${ScheduleDayOfWeek},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable or disable assessment schedule on SQL virtual machine.
         ${ScheduleEnable},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Occurrence of the DayOfWeek day within a month to schedule assessment.
@@ -291,7 +408,7 @@ function New-AzSqlVM {
         # Use -1 for last DayOfWeek day of the month
         ${ScheduleMonthlyOccurrence},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Time of the day in HH:mm format.
@@ -299,264 +416,277 @@ function New-AzSqlVM {
         # 17:30
         ${ScheduleStartTime},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Number of weeks to schedule between 2 assessment runs.
         # Takes value from 1-6
         ${ScheduleWeeklyInterval},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Developer", "Express", "Standard", "Enterprise", "Web")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
+        [System.String]
         # SQL Server edition type.
         ${Sku},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("LOCAL", "PRIVATE", "PUBLIC")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType]
+        [System.String]
         # SQL Server connectivity option.
         ${SqlConnectivityUpdateSettingConnectivityType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server port.
         ${SqlConnectivityUpdateSettingPort},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Security.SecureString]
         # SQL Server sysadmin login password.
         ${SqlConnectivityUpdateSettingSqlAuthUpdatePassword},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # SQL Server sysadmin login to create.
         ${SqlConnectivityUpdateSettingSqlAuthUpdateUserName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # SQL Server default file path
         ${SqlDataSettingDefaultFilePath},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32[]]
         # Logical Unit Numbers for the disks.
         ${SqlDataSettingLun},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # SQL Server Collation.
         ${SqlInstanceSettingCollation},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # SQL Server IFI.
         ${SqlInstanceSettingIsIfiEnabled},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # SQL Server LPIM.
         ${SqlInstanceSettingIsLpimEnabled},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # SQL Server Optimize for Adhoc workloads.
         ${SqlInstanceSettingIsOptimizeForAdHocWorkloadsEnabled},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server MAXDOP.
         ${SqlInstanceSettingMaxDop},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server maximum memory.
         ${SqlInstanceSettingMaxServerMemoryMb},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server minimum memory.
         ${SqlInstanceSettingMinServerMemoryMb},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # SQL Server default file path
         ${SqlLogSettingDefaultFilePath},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32[]]
         # Logical Unit Numbers for the disks.
         ${SqlLogSettingLun},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Full", "LightWeight", "NoAgent")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
+        [System.String]
         # SQL Server Management type.
         ${SqlManagementType},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("NEW", "EXTEND", "ADD")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+        [System.String]
         # Disk configuration to apply to SQL Server.
         ${SqlStorageUpdateSettingDiskConfigurationType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Virtual machine disk count.
         ${SqlStorageUpdateSettingDiskCount},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # Device id of the first disk to be updated.
         ${SqlStorageUpdateSettingStartingDeviceId},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server tempdb data file count
         ${SqlTempDbSettingDataFileCount},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server tempdb data file size
         ${SqlTempDbSettingDataFileSize},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server tempdb data file autoGrowth size
         ${SqlTempDbSettingDataGrowth},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # SQL Server default file path
         ${SqlTempDbSettingDefaultFilePath},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server tempdb log file size
         ${SqlTempDbSettingLogFileSize},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32]
         # SQL Server tempdb log file autoGrowth size
         ${SqlTempDbSettingLogGrowth},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Int32[]]
         # Logical Unit Numbers for the disks.
         ${SqlTempDbSettingLun},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # SQL Server tempdb persist folder choice
         ${SqlTempDbSettingPersistFolder},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # SQL Server tempdb persist folder location
         ${SqlTempDbSettingPersistFolderPath},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
         ${SqlVirtualMachineGroupResourceId},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("GENERAL", "OLTP", "DW")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType]
+        [System.String]
         # SQL Server workload type.
         ${SqlWorkloadTypeUpdateSettingSqlWorkloadType},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("NEW", "EXTEND", "ADD")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+        [System.String]
         # Disk configuration to apply to SQL Server.
         ${StorageConfigurationSettingDiskConfigurationType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # SQL Server SystemDb Storage on DataPool if true.
         ${StorageConfigurationSettingSqlSystemDbOnDataDisk},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("GENERAL", "OLTP", "DW")]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType]
+        [System.String]
         # Storage workload type.
         ${StorageConfigurationSettingStorageWorkloadType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Security.SecureString]
         # Cluster bootstrap account password.
         ${WsfcDomainCredentialsClusterBootstrapAccountPassword},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Security.SecureString]
         # Cluster operator account password.
         ${WsfcDomainCredentialsClusterOperatorAccountPassword},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Security.SecureString]
         # SQL service account password.
         ${WsfcDomainCredentialsSqlServiceAccountPassword},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.String]
         # Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
         ${WsfcStaticIP},
+
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]

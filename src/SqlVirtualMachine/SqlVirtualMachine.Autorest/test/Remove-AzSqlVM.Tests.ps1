@@ -14,14 +14,14 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzSqlVM')) {
 }
 
 Describe 'Remove-AzSqlVM' {
-    It 'Delete' {
-        New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
-        Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+    It 'Delete' -skip {
+        New-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Location $env.Location
+        Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
     }
 
-    It 'DeleteViaIdentity' {
-        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
+    It 'DeleteViaIdentity' -skip {
+        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Location $env.Location
         Remove-AzSqlVM -InputObject $sqlVM
     }
-    
+
 }

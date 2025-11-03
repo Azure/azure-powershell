@@ -16,36 +16,24 @@
 
 <#
 .Synopsis
-Updates SQL virtual machine group.
+Update SQL virtual machine group.
 .Description
-Updates SQL virtual machine group.
+Update SQL virtual machine group.
 .Example
-{{ Add code here }}
+Update-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
 .Example
-{{ Add code here }}
+$group = Get-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01'
+$group | Update-AzSqlVMGroup -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
-  [AvailabilityGroupListenerName <String>]: Name of the availability group listener.
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SqlVirtualMachineGroupName <String>]: Name of the SQL virtual machine group.
-  [SqlVirtualMachineName <String>]: Name of the SQL virtual machine.
-  [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
-
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 .Link
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvmgroup
 #>
 function Update-AzSqlVMGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -69,11 +57,10 @@ param(
     # Subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -90,9 +77,9 @@ param(
     ${ClusterOperatorAccount},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("SingleSubnet", "MultiSubnet")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType]
+    [System.String]
     # Cluster subnet type.
     ${ClusterSubnetType},
 
@@ -134,7 +121,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroupUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroupUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -144,7 +131,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -219,9 +207,9 @@ process {
         $null = $PSBoundParameters.Remove('Confirm')
 
         if($hasInputObject){
-            $sqlvmgroup = Get-AzSqlVMGroup -InputObject $InputObject @PSBoundParameters
+            $sqlvmgroup = Az.SqlVirtualMachine.private\Get-AzSqlVMGroup_GetViaIdentity -InputObject $InputObject @PSBoundParameters
         }else{
-		    $sqlvmgroup = Get-AzSqlVMGroup @PSBoundParameters
+		    $sqlvmgroup = Az.SqlVirtualMachine.private\Get-AzSqlVMGroup_Get @PSBoundParameters
         }
 
         $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -264,9 +252,8 @@ process {
         }
 		
         if ($PSCmdlet.ShouldProcess("SQL virtual machine group $($sqlvmgroup.Name)", "Update")) {
-            New-AzSqlVMGroup -InputObject $sqlvmgroup -Parameter $sqlvmgroup @PSBoundParameters
+            Az.SqlVirtualMachine.internal\New-AzSqlVMGroup -InputObject $sqlvmgroup -Parameter $sqlvmgroup @PSBoundParameters
         }
-        
     } catch {
         throw
     }

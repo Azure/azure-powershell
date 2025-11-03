@@ -16,26 +16,33 @@
 
 <#
 .Synopsis
-Creates or updates an availability group listener.
+Create an availability group listener.
 .Description
-Creates or updates an availability group listener.
+Create an availability group listener.
 .Example
-{{ Add code here }}
+New-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -Name 'AgListener01' -AvailabilityGroupName 'AG01' -IpAddress '192.168.16.7' -LoadBalancerResourceId $LoadBalancerResourceId -SubnetId $SubnetResourceId -ProbePort 9999 -SqlVirtualMachineId $sqlvmResourceId1,$sqlvmResourceId2
 .Example
-{{ Add code here }}
+$msconfig1 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $SubnetResourceId1 -PrivateIPAddressIpaddress '192.168.16.9' -SqlVirtualMachineInstance $sqlvmResourceId1
+$msconfig2 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $SubnetResourceId2 -PrivateIPAddressIpaddress '192.168.17.9' -SqlVirtualMachineInstance $sqlvmResourceId2
 
+New-AzAvailabilityGroupListener -Name 'AgListener02' -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -AvailabilityGroupName 'AG02' -MultiSubnetIPConfiguration $msconfig1,$msconfig2
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>: Replica configurations.
-  [Commit <Commit?>]: Replica commit mode in availability group.
-  [Failover <Failover?>]: Replica failover mode in availability group.
-  [ReadableSecondary <ReadableSecondary?>]: Replica readable secondary mode in availability group.
-  [Role <Role?>]: Replica Role in availability group.
+  [Commit <String>]: Replica commit mode in availability group.
+  [Failover <String>]: Replica failover mode in availability group.
+  [ReadableSecondary <String>]: Replica readable secondary mode in availability group.
+  [Role <String>]: Replica Role in availability group.
   [SqlVirtualMachineInstanceId <String>]: Sql VirtualMachine Instance Id.
 
 LOADBALANCERCONFIGURATION <ILoadBalancerConfiguration[]>: List of load balancer configurations for an availability group listener.
@@ -44,7 +51,7 @@ LOADBALANCERCONFIGURATION <ILoadBalancerConfiguration[]>: List of load balancer 
   [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
   [ProbePort <Int32?>]: Probe port.
   [PublicIPAddressResourceId <String>]: Resource id of the public IP.
-  [SqlVirtualMachineInstance <String[]>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
+  [SqlVirtualMachineInstance <List<String>>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
 
 MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet IP configurations for an AG listener.
   SqlVirtualMachineInstance <String>: SQL virtual machine instance resource id that are enrolled into the availability group listener.
@@ -54,205 +61,203 @@ MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 #>
 function New-AzAvailabilityGroupListener {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener])]
-    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-    param(
-        [Parameter(Mandatory)]
-        [Alias('AvailabilityGroupListenerName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
-        [System.String]
-        # Name of the availability group listener.
-        ${Name},
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener])]
+  [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+  param(
+      [Parameter(Mandatory)]
+      [Alias('AvailabilityGroupListenerName')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+      [System.String]
+      # Name of the availability group listener.
+      ${Name},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
-        [System.String]
-        # Name of the resource group that contains the resource.
-        # You can obtain this value from the Azure Resource Manager API or the portal.
-        ${ResourceGroupName},
+      [Parameter(Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+      [System.String]
+      # Name of the resource group that contains the resource.
+      # You can obtain this value from the Azure Resource Manager API or the portal.
+      ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Alias('GroupName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
-        [System.String]
-        # Name of the SQL virtual machine group.
-        ${SqlVMGroupName},
+      [Parameter(Mandatory)]
+      [Alias('GroupName')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+      [System.String]
+      # Name of the SQL virtual machine group.
+      ${SqlVMGroupName},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # Subscription ID that identifies an Azure subscription.
-        ${SubscriptionId},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+      [System.String]
+      # Subscription ID that identifies an Azure subscription.
+      ${SubscriptionId},
 
-        [Parameter()]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]]
-        # Replica configurations.
-        # To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
-        ${AvailabilityGroupConfigurationReplica},
+      [Parameter()]
+      [AllowEmptyCollection()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAgReplica[]]
+      # Replica configurations.
+      ${AvailabilityGroupConfigurationReplica},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String]
-        # Name of the availability group.
-        ${AvailabilityGroupName},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.String]
+      # Name of the availability group.
+      ${AvailabilityGroupName},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Create a default availability group if it does not exist.
-        ${CreateDefaultAvailabilityGroupIfNotExist},
-	
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String]
-        # Private IP address bound to the availability group listener.
-        ${IpAddress},
-	
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String]
-        # Resource id of the load balancer.
-        ${LoadBalancerResourceId},
-	
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.Int32]
-        # Probe port.
-        ${ProbePort},
-	
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String]
-        # Resource id of the public IP.
-        ${PublicIpAddressResourceId},
-	
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String[]]
-        # List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
-        ${SqlVirtualMachineId},
-	
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String]
-        # Subnet used to include private IP.
-        ${SubnetId},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.Management.Automation.SwitchParameter]
+      # Create a default availability group if it does not exist.
+      ${CreateDefaultAvailabilityGroupIfNotExist},
 
-        [Parameter()]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]]
-        # List of multi subnet IP configurations for an AG listener.
-        # To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
-        ${MultiSubnetIPConfiguration},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.String]
+      # Private IP address bound to the availability group listener.
+      ${IpAddress},
 
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script = '1433')]
-        [System.Int32]
-        # Listener port.
-        ${Port},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.String]
+      # Resource id of the load balancer.
+      ${LoadBalancerResourceId},
 
-        [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${DefaultProfile},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.Int32]
+      # Probe port.
+      ${ProbePort},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.String]
+      # Resource id of the public IP.
+      ${PublicIpAddressResourceId},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${Break},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.String[]]
+      # List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
+      ${SqlVirtualMachineId},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [System.String]
+      # Subnet used to include private IP.
+      ${SubnetId},
+      [Parameter()]
+      [AllowEmptyCollection()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IMultiSubnetIPConfiguration[]]
+      # List of multi subnet IP configurations for an AG listener.
+      ${MultiSubnetIPConfiguration},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='1433')]
+      [System.Int32]
+      # Listener port.
+      ${Port},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
+      [Parameter()]
+      [Alias('AzureRMContext', 'AzureCredential')]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Azure')]
+      [System.Management.Automation.PSObject]
+      # The DefaultProfile parameter is not functional.
+      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+      ${DefaultProfile},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Run the command as a job
+      ${AsJob},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Wait for .NET debugger to attach
+      ${Break},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
-    )
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be appended to the front of the pipeline
+      ${HttpPipelineAppend},
 
-    process {
-        try {
-            $hasIpAddress = $PSBoundParameters.Remove('IpAddress')
-            $hasLoadBalancerResourceId = $PSBoundParameters.Remove('LoadBalancerResourceId')
-            $hasSubnetId = $PSBoundParameters.Remove('SubnetId')
-            $hasProbePort = $PSBoundParameters.Remove('ProbePort')
-            $hasPublicIpAddressResourceId = $PSBoundParameters.Remove('PublicIpAddressResourceId')
-            $hasSqlVirtualMachineId = $PSBoundParameters.Remove('SqlVirtualMachineId')
-		
-            if ($hasIpAddress -or $hasLoadBalancerResourceId -or $hasSubnetId -or $hasProbePort -or $hasPublicIpAddressResourceId -or $hasSqlVirtualMachineId) {
-                $LoadBalancerConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.LoadBalancerConfiguration]@{}
-                if ($hasIpAddress) {
-                    $LoadBalancerConfiguration.PrivateIPAddressIpaddress = $IpAddress
-                }
-                if ($hasLoadBalancerResourceId) {
-                    $LoadBalancerConfiguration.LoadBalancerResourceId = $LoadBalancerResourceId
-                }
-                if ($hasSubnetId) {
-                    $LoadBalancerConfiguration.PrivateIPAddressSubnetResourceId = $SubnetId
-                }
-                if ($hasProbePort) {
-                    $LoadBalancerConfiguration.ProbePort = $ProbePort
-                }
-                if ($hasPublicIpAddressResourceId) {
-                    $LoadBalancerConfiguration.PublicIPAddressResourceId = $PublicIpAddressResourceId
-                }
-                if ($hasSqlVirtualMachineId) {
-                    $LoadBalancerConfiguration.SqlVirtualMachineInstance = $SqlVirtualMachineId
-                }
-                $PSBoundParameters.Add("LoadBalancerConfiguration", $LoadBalancerConfiguration)
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+      ${HttpPipelinePrepend},
+
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Run the command asynchronously
+      ${NoWait},
+
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [System.Uri]
+      # The URI for the proxy server to use
+      ${Proxy},
+
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [System.Management.Automation.PSCredential]
+      # Credentials for a proxy server to use for the remote call
+      ${ProxyCredential},
+
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Use the default credentials for the proxy
+      ${ProxyUseDefaultCredentials}
+  )
+
+  process {
+    try {
+        $hasIpAddress = $PSBoundParameters.Remove('IpAddress')
+        $hasLoadBalancerResourceId = $PSBoundParameters.Remove('LoadBalancerResourceId')
+        $hasSubnetId = $PSBoundParameters.Remove('SubnetId')
+        $hasProbePort = $PSBoundParameters.Remove('ProbePort')
+        $hasPublicIpAddressResourceId = $PSBoundParameters.Remove('PublicIpAddressResourceId')
+        $hasSqlVirtualMachineId = $PSBoundParameters.Remove('SqlVirtualMachineId')
+
+        if ($hasIpAddress -or $hasLoadBalancerResourceId -or $hasSubnetId -or $hasProbePort -or $hasPublicIpAddressResourceId -or $hasSqlVirtualMachineId) {
+            $LoadBalancerConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.LoadBalancerConfiguration]@{}
+            if ($hasIpAddress) {
+                $LoadBalancerConfiguration.PrivateIPAddressIpaddress = $IpAddress
             }
-            Az.SqlVirtualMachine.internal\New-AzAvailabilityGroupListener @PSBoundParameters
-		
+            if ($hasLoadBalancerResourceId) {
+                $LoadBalancerConfiguration.LoadBalancerResourceId = $LoadBalancerResourceId
+            }
+            if ($hasSubnetId) {
+                $LoadBalancerConfiguration.PrivateIPAddressSubnetResourceId = $SubnetId
+            }
+            if ($hasProbePort) {
+                $LoadBalancerConfiguration.ProbePort = $ProbePort
+            }
+            if ($hasPublicIpAddressResourceId) {
+                $LoadBalancerConfiguration.PublicIPAddressResourceId = $PublicIpAddressResourceId
+            }
+            if ($hasSqlVirtualMachineId) {
+                $LoadBalancerConfiguration.SqlVirtualMachineInstance = $SqlVirtualMachineId
+            }
+            $PSBoundParameters.Add("LoadBalancerConfiguration", $LoadBalancerConfiguration)
         }
-        catch {
-            throw
-        }
+        Az.SqlVirtualMachine.internal\New-AzAvailabilityGroupListener @PSBoundParameters
 
     }
+    catch {
+        throw
+    }
+
+  }
 }

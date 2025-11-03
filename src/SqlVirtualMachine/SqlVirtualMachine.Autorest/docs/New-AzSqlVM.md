@@ -8,32 +8,31 @@ schema: 2.0.0
 # New-AzSqlVM
 
 ## SYNOPSIS
-Creates or updates a SQL virtual machine.
+Create a SQL virtual machine.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AdditionalFeatureServerConfigurationIsRServicesEnabled] [-AssessmentSettingEnable]
- [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <BackupScheduleType>]
- [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>]
- [-AutoBackupSettingEnable] [-AutoBackupSettingEnableEncryption]
- [-AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType>]
+ [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <String>]
+ [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <String[]>] [-AutoBackupSettingEnable]
+ [-AutoBackupSettingEnableEncryption] [-AutoBackupSettingFullBackupFrequency <String>]
  [-AutoBackupSettingFullBackupStartTime <Int32>] [-AutoBackupSettingFullBackupWindowHour <Int32>]
  [-AutoBackupSettingLogBackupFrequency <Int32>] [-AutoBackupSettingPassword <SecureString>]
  [-AutoBackupSettingRetentionPeriod <Int32>] [-AutoBackupSettingStorageAccessKey <String>]
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
- [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
+ [-AutoPatchingSettingDayOfWeek <String>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
  [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
- [-EnableAutomaticUpgrade] [-IdentityType <IdentityType>]
- [-KeyVaultCredentialSettingAzureKeyVaultUrl <String>] [-KeyVaultCredentialSettingCredentialName <String>]
- [-KeyVaultCredentialSettingEnable] [-KeyVaultCredentialSettingServicePrincipalName <String>]
- [-KeyVaultCredentialSettingServicePrincipalSecret <String>] [-LeastPrivilegeMode <LeastPrivilegeMode>]
- [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
- [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
- [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>]
- [-SqlConnectivityUpdateSettingConnectivityType <ConnectivityType>]
+ [-EnableAutomaticUpgrade] [-IdentityType <String>] [-KeyVaultCredentialSettingAzureKeyVaultUrl <String>]
+ [-KeyVaultCredentialSettingCredentialName <String>] [-KeyVaultCredentialSettingEnable]
+ [-KeyVaultCredentialSettingServicePrincipalName <String>]
+ [-KeyVaultCredentialSettingServicePrincipalSecret <String>] [-LeastPrivilegeMode <String>]
+ [-LicenseType <String>] [-Offer <String>] [-ScheduleDayOfWeek <String>] [-ScheduleEnable]
+ [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
+ [-Sku <String>] [-SqlConnectivityUpdateSettingConnectivityType <String>]
  [-SqlConnectivityUpdateSettingPort <Int32>]
  [-SqlConnectivityUpdateSettingSqlAuthUpdatePassword <SecureString>]
  [-SqlConnectivityUpdateSettingSqlAuthUpdateUserName <String>] [-SqlDataSettingDefaultFilePath <String>]
@@ -41,28 +40,37 @@ New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-Subs
  [-SqlInstanceSettingIsLpimEnabled] [-SqlInstanceSettingIsOptimizeForAdHocWorkloadsEnabled]
  [-SqlInstanceSettingMaxDop <Int32>] [-SqlInstanceSettingMaxServerMemoryMb <Int32>]
  [-SqlInstanceSettingMinServerMemoryMb <Int32>] [-SqlLogSettingDefaultFilePath <String>]
- [-SqlLogSettingLun <Int32[]>] [-SqlManagementType <SqlManagementMode>]
- [-SqlStorageUpdateSettingDiskConfigurationType <DiskConfigurationType>]
- [-SqlStorageUpdateSettingDiskCount <Int32>] [-SqlStorageUpdateSettingStartingDeviceId <Int32>]
- [-SqlTempDbSettingDataFileCount <Int32>] [-SqlTempDbSettingDataFileSize <Int32>]
- [-SqlTempDbSettingDataGrowth <Int32>] [-SqlTempDbSettingDefaultFilePath <String>]
- [-SqlTempDbSettingLogFileSize <Int32>] [-SqlTempDbSettingLogGrowth <Int32>] [-SqlTempDbSettingLun <Int32[]>]
- [-SqlTempDbSettingPersistFolder] [-SqlTempDbSettingPersistFolderPath <String>]
- [-SqlVirtualMachineGroupResourceId <String>] [-SqlWorkloadTypeUpdateSettingSqlWorkloadType <SqlWorkloadType>]
- [-StorageConfigurationSettingDiskConfigurationType <DiskConfigurationType>]
+ [-SqlLogSettingLun <Int32[]>] [-SqlManagementType <String>]
+ [-SqlStorageUpdateSettingDiskConfigurationType <String>] [-SqlStorageUpdateSettingDiskCount <Int32>]
+ [-SqlStorageUpdateSettingStartingDeviceId <Int32>] [-SqlTempDbSettingDataFileCount <Int32>]
+ [-SqlTempDbSettingDataFileSize <Int32>] [-SqlTempDbSettingDataGrowth <Int32>]
+ [-SqlTempDbSettingDefaultFilePath <String>] [-SqlTempDbSettingLogFileSize <Int32>]
+ [-SqlTempDbSettingLogGrowth <Int32>] [-SqlTempDbSettingLun <Int32[]>] [-SqlTempDbSettingPersistFolder]
+ [-SqlTempDbSettingPersistFolderPath <String>] [-SqlVirtualMachineGroupResourceId <String>]
+ [-SqlWorkloadTypeUpdateSettingSqlWorkloadType <String>]
+ [-StorageConfigurationSettingDiskConfigurationType <String>]
  [-StorageConfigurationSettingSqlSystemDbOnDataDisk]
- [-StorageConfigurationSettingStorageWorkloadType <StorageWorkloadType>] [-Tag <Hashtable>]
+ [-StorageConfigurationSettingStorageWorkloadType <String>] [-Tag <Hashtable>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-## DESCRIPTION
-Creates or updates a SQL virtual machine.
+### CreateViaJsonFilePath
+```
+New-AzSqlVM -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
 
-If you are updating an existing SQL virtual machine and a parameter such as -Tag is omitted, then the previously defined values may be removed.
-For this reason, it is recommended to use [Update-AzSqlVM](https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm) to prevent overwriting of unintended parameters.
+### CreateViaJsonString
+```
+New-AzSqlVM -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create a SQL virtual machine.
 
 ## EXAMPLES
 
@@ -182,7 +190,7 @@ Enable or disable R services (SQL 2016 onwards).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -212,7 +220,7 @@ Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -227,7 +235,7 @@ Run SQL best practices Assessment immediately on SQL virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,8 +249,8 @@ Accept wildcard characters: False
 Backup schedule type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -257,7 +265,7 @@ Include or exclude system databases from auto backup.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -271,8 +279,8 @@ Accept wildcard characters: False
 Days of the week for the backups when FullBackupFrequency is set to Weekly.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -287,7 +295,7 @@ Enable or disable autobackup on SQL virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -302,7 +310,7 @@ Enable or disable encryption for backup on SQL virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -317,8 +325,8 @@ Frequency of full backups.
 In both cases, full backups begin during the next scheduled time window.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -334,7 +342,7 @@ Start time of a given day during which full backups can take place.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -350,7 +358,7 @@ Duration of the time window of a given day during which full backups can take pl
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -366,7 +374,7 @@ Frequency of log backups.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -381,7 +389,7 @@ Password for encryption on backup.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -396,7 +404,7 @@ Retention period of backup: 1-90 days.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -411,7 +419,7 @@ Storage account key where backup will be taken to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -426,7 +434,7 @@ Storage account url where backup will be taken to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -441,7 +449,7 @@ Storage container name where backup will be taken to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -455,8 +463,8 @@ Accept wildcard characters: False
 Day of week to apply the patch on.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -471,7 +479,7 @@ Enable or disable autopatching on SQL virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -486,7 +494,7 @@ Duration of patching.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -502,7 +510,7 @@ Local VM time.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -518,7 +526,7 @@ An empty string must be used for the system assigned Managed Identity
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -529,7 +537,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -548,7 +557,7 @@ Enable automatic upgrade of Sql IaaS extension Agent.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -559,15 +568,44 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
-Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -579,7 +617,7 @@ Azure Key Vault url.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -594,7 +632,7 @@ Credential name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -609,7 +647,7 @@ Enable or disable key vault credential setting.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -624,7 +662,7 @@ Service principal name to access key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -639,7 +677,7 @@ Service principal name secret to access key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -653,8 +691,8 @@ Accept wildcard characters: False
 SQL IaaS Agent least privilege mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -668,8 +706,8 @@ Accept wildcard characters: False
 SQL Server license type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -684,7 +722,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -730,7 +768,7 @@ Examples include SQL2016-WS2016, SQL2017-WS2016.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -760,8 +798,8 @@ Accept wildcard characters: False
 Day of the week to run assessment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -776,7 +814,7 @@ Enable or disable assessment schedule on SQL virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -793,7 +831,7 @@ Use -1 for last DayOfWeek day of the month
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -810,7 +848,7 @@ Eg.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -826,7 +864,7 @@ Takes value from 1-6
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -840,8 +878,8 @@ Accept wildcard characters: False
 SQL Server edition type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -855,8 +893,8 @@ Accept wildcard characters: False
 SQL Server connectivity option.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -871,7 +909,7 @@ SQL Server port.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -886,7 +924,7 @@ SQL Server sysadmin login password.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -901,7 +939,7 @@ SQL Server sysadmin login to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -916,7 +954,7 @@ SQL Server default file path
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -931,7 +969,7 @@ Logical Unit Numbers for the disks.
 
 ```yaml
 Type: System.Int32[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -946,7 +984,7 @@ SQL Server Collation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -961,7 +999,7 @@ SQL Server IFI.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -976,7 +1014,7 @@ SQL Server LPIM.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -991,7 +1029,7 @@ SQL Server Optimize for Adhoc workloads.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1006,7 +1044,7 @@ SQL Server MAXDOP.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1021,7 +1059,7 @@ SQL Server maximum memory.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1036,7 +1074,7 @@ SQL Server minimum memory.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1051,7 +1089,7 @@ SQL Server default file path
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1066,7 +1104,7 @@ Logical Unit Numbers for the disks.
 
 ```yaml
 Type: System.Int32[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1080,8 +1118,8 @@ Accept wildcard characters: False
 SQL Server Management type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1095,8 +1133,8 @@ Accept wildcard characters: False
 Disk configuration to apply to SQL Server.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1111,7 +1149,7 @@ Virtual machine disk count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1126,7 +1164,7 @@ Device id of the first disk to be updated.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1141,7 +1179,7 @@ SQL Server tempdb data file count
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1156,7 +1194,7 @@ SQL Server tempdb data file size
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1171,7 +1209,7 @@ SQL Server tempdb data file autoGrowth size
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1186,7 +1224,7 @@ SQL Server default file path
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1201,7 +1239,7 @@ SQL Server tempdb log file size
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1216,7 +1254,7 @@ SQL Server tempdb log file autoGrowth size
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1231,7 +1269,7 @@ Logical Unit Numbers for the disks.
 
 ```yaml
 Type: System.Int32[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1246,7 +1284,7 @@ SQL Server tempdb persist folder choice
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1261,7 +1299,7 @@ SQL Server tempdb persist folder location
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1276,7 +1314,7 @@ ARM resource id of the SQL virtual machine group this SQL virtual machine is or 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1290,8 +1328,8 @@ Accept wildcard characters: False
 SQL Server workload type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1305,8 +1343,8 @@ Accept wildcard characters: False
 Disk configuration to apply to SQL Server.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1321,7 +1359,7 @@ SQL Server SystemDb Storage on DataPool if true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1335,8 +1373,8 @@ Accept wildcard characters: False
 Storage workload type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1366,7 +1404,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1381,7 +1419,7 @@ Cluster bootstrap account password.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1396,7 +1434,7 @@ Cluster operator account password.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1411,7 +1449,7 @@ SQL service account password.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1426,7 +1464,7 @@ Domain credentials for setting up Windows Server Failover Cluster for SQL availa
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -1472,9 +1510,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
+
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
 
 ## NOTES
 

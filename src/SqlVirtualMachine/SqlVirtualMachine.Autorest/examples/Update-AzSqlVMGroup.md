@@ -1,23 +1,22 @@
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
+{{ Add code here }}
 ```
 
 ```output
-Location Name           ResourceGroupName
--------- ----           -----------------
-eastus   sqlvmgroup01	ResourceGroup01
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-### Example 2
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
-$group = Get-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01'
-$group | Update-AzSqlVMGroup -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
+{{ Add code here }}
 ```
 
 ```output
-Location Name           ResourceGroupName
--------- ----           -----------------
-eastus   sqlvmgroup01	ResourceGroup01
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
+
+{{ Add description here }}
 

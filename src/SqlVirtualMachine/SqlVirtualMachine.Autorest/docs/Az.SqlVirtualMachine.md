@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SqlVirtualMachine
-Module Guid: b0fb9454-c75f-4eb7-ab6a-aaae12f8bde3
+Module Guid: fff69882-6ea3-427c-a304-3a2b1023ab57
 Download Help Link: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine
 Help Version: 1.0.0.0
 Locale: en-US
@@ -30,7 +30,7 @@ Uninstalls and reinstalls the SQL IaaS Extension.
 Starts SQL virtual machine troubleshooting.
 
 ### [New-AzAvailabilityGroupListener](New-AzAvailabilityGroupListener.md)
-Creates or updates an availability group listener.
+Create an availability group listener.
 
 ### [New-AzSqlVirtualMachineAgReplicaObject](New-AzSqlVirtualMachineAgReplicaObject.md)
 Create an in-memory object for AgReplica.
@@ -39,10 +39,10 @@ Create an in-memory object for AgReplica.
 Create an in-memory object for MultiSubnetIPConfiguration.
 
 ### [New-AzSqlVM](New-AzSqlVM.md)
-Creates or updates a SQL virtual machine.
+Create a SQL virtual machine.
 
 ### [New-AzSqlVMGroup](New-AzSqlVMGroup.md)
-Creates or updates a SQL virtual machine group.
+Create a SQL virtual machine group.
 
 ### [Remove-AzAvailabilityGroupListener](Remove-AzAvailabilityGroupListener.md)
 Deletes an availability group listener.
@@ -57,8 +57,8 @@ Deletes a SQL virtual machine group.
 Starts SQL best practices Assessment on SQL virtual machine.
 
 ### [Update-AzSqlVM](Update-AzSqlVM.md)
-Updates a SQL virtual machine.
+Update a SQL virtual machine.
 
 ### [Update-AzSqlVMGroup](Update-AzSqlVMGroup.md)
-Updates SQL virtual machine group.
+Update SQL virtual machine group.
 

@@ -15,34 +15,34 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzSqlVM')) {
 
 Describe 'New-AzSqlVM' {
 	It 'CreateExpanded-Simple' {
-		$sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
-		$sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
-		$sqlVM.SqlImageSku | Should -Be 'Enterprise'
+		$sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Location $env.Location
+		$sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
+		$sqlVM.SqlImageSku | Should -Be $env.SqlImageSku
 		$sqlVM.SqlManagement | Should -Be 'Full'
 		$sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
 		
-		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-		$sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
-		$sqlVM.SqlImageSku | Should -Be 'Enterprise'
+		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
+		$sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
+		$sqlVM.SqlImageSku | Should -Be $env.SqlImageSku
 		$sqlVM.SqlManagement | Should -Be 'Full'
 		$sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
 
-		Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+		Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
 	}
 
 	It 'CreateExpanded-LicenseType' {
-		$sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -LicenseType 'AHUB'
-		$sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
-		$sqlVM.SqlImageSku | Should -Be 'Enterprise'
+		$sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Location $env.Location -LicenseType 'AHUB'
+		$sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
+		$sqlVM.SqlImageSku | Should -Be $env.SqlImageSku
 		$sqlVM.SqlManagement | Should -Be 'Full'
 		$sqlVM.SqlServerLicenseType | Should -Be 'AHUB'
 
-		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-		$sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
-		$sqlVM.SqlImageSku | Should -Be 'Enterprise'
+		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
+		$sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
+		$sqlVM.SqlImageSku | Should -Be $env.SqlImageSku
 		$sqlVM.SqlManagement | Should -Be 'Full'
 		$sqlVM.SqlServerLicenseType | Should -Be 'AHUB'
 
-		Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+		Remove-AzSqlVM -InputObject $sqlVM
 	}
 }

@@ -18,15 +18,15 @@ Describe 'Get-AzSqlVMGroup' {
         $groups = Get-AzSqlVMGroup
 
         $groups.Count | Should -Be 1
-        $groups.Name | Should -Be 'azpssqlcluster'
-        $groups.SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $groups.SqlImageSku | Should -Be 'Enterprise'
-        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@azpstestsql.com'
+        $groups.Name | Should -Be $env.SqlVMGroupName
+        $groups.SqlImageOffer | Should -Be $env.SqlImageOffer
+        $groups.SqlImageSku | Should -Be $env.SqlImageSku
+        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
+        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
         $groups.WsfcDomainProfileClusterSubnetType | Should -Be 'MultiSubnet'
-        $groups.WsfcDomainProfileDomainFqdn | Should -Be 'azpstestsql.com'
-        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be 'https://azpstestsqlstorage.blob.core.windows.net/'
+        $groups.WsfcDomainProfileDomainFqdn | Should -Be $env.DomainFqdn
+        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin'
+        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be $env.StorageAccountUrl
 
     }
 
@@ -34,45 +34,45 @@ Describe 'Get-AzSqlVMGroup' {
         $groups = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMGroupName
 
         $groups.Count | Should -Be 1
-        $groups.Name | Should -Be 'azpssqlcluster'
-        $groups.SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $groups.SqlImageSku | Should -Be 'Enterprise'
-        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@azpstestsql.com'
+        $groups.Name | Should -Be $env.SqlVMGroupName
+        $groups.SqlImageOffer | Should -Be $env.SqlImageOffer
+        $groups.SqlImageSku | Should -Be $env.SqlImageSku
+        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
+        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
         $groups.WsfcDomainProfileClusterSubnetType | Should -Be 'MultiSubnet'
-        $groups.WsfcDomainProfileDomainFqdn | Should -Be 'azpstestsql.com'
-        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be 'https://azpstestsqlstorage.blob.core.windows.net/'
+        $groups.WsfcDomainProfileDomainFqdn | Should -Be $env.DomainFqdn
+        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin'
+        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be $env.StorageAccountUrl
     }
 
     It 'List' {
         $groups = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName
 
         $groups.Count | Should -Be 1
-        $groups.Name | Should -Be 'azpssqlcluster'
-        $groups.SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $groups.SqlImageSku | Should -Be 'Enterprise'
-        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@azpstestsql.com'
+        $groups.Name | Should -Be $env.SqlVMGroupName
+        $groups.SqlImageOffer | Should -Be $env.SqlImageOffer
+        $groups.SqlImageSku | Should -Be $env.SqlImageSku
+        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
+        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
         $groups.WsfcDomainProfileClusterSubnetType | Should -Be 'MultiSubnet'
-        $groups.WsfcDomainProfileDomainFqdn | Should -Be 'azpstestsql.com'
-        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be 'https://azpstestsqlstorage.blob.core.windows.net/'
+        $groups.WsfcDomainProfileDomainFqdn | Should -Be $env.DomainFqdn
+        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin'
+        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be $env.StorageAccountUrl
     }
 
     It 'GetViaIdentity' {
-        $group1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroup]@{Id = $env.SqlVMGroupId }
+        $group1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroup]@{Id = $env.SqlVMGroupId }
         $groups = Get-AzSqlVMGroup  -InputObject $group1
 
         $groups.Count | Should -Be 1
-        $groups.Name | Should -Be 'azpssqlcluster'
-        $groups.SqlImageOffer | Should -Be 'SQL2022-WS2022'
-        $groups.SqlImageSku | Should -Be 'Enterprise'
-        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@azpstestsql.com'
+        $groups.Name | Should -Be $env.SqlVMGroupName
+        $groups.SqlImageOffer | Should -Be $env.SqlImageOffer
+        $groups.SqlImageSku | Should -Be $env.SqlImageSku
+        $groups.WsfcDomainProfileClusterBootstrapAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
+        $groups.WsfcDomainProfileClusterOperatorAccount | Should -Be 'azureadmin@corp.azpstestsql.com'
         $groups.WsfcDomainProfileClusterSubnetType | Should -Be 'MultiSubnet'
-        $groups.WsfcDomainProfileDomainFqdn | Should -Be 'azpstestsql.com'
-        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin@azpstestsql.com'
-        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be 'https://azpstestsqlstorage.blob.core.windows.net/'
+        $groups.WsfcDomainProfileDomainFqdn | Should -Be $env.DomainFqdn
+        $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin'
+        $groups.WsfcDomainProfileStorageAccountUrl | Should -Be $env.StorageAccountUrl
     }
 }

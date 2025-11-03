@@ -15,32 +15,32 @@ if (($null -eq $TestName) -or ($TestName -contains 'Update-AzSqlVM')) {
 
 Describe 'Update-AzSqlVM' {
     It 'UpdateExpanded' {
-        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'LightWeight'
+        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'LightWeight'
 
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'LightWeight'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
 
-        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'IT' = '8888' }
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'IT' = '8888' }
 
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'AHUB'
         $sqlVM.tag.Count | Should -Be 1
         $sqlVM.tag["IT"] | Should -Be '8888'
 
-        Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'LightWeight'
+        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'LightWeight'
 
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'LightWeight'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
@@ -49,28 +49,31 @@ Describe 'Update-AzSqlVM' {
         $sqlVM = Update-AzSqlVM -InputObject $sqlVM -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'IT' = '8888' }
 
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'AHUB'
         $sqlVM.tag.Count | Should -Be 1
         $sqlVM.tag["IT"] | Should -Be '8888'
 
-        Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
     }
 
     It 'Update-AutopatchingEnable' {
-        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
+        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Location $env.Location
 
-        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AutoPatchingSettingDayOfWeek Thursday -AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -AutoPatchingSettingDayOfWeek Thursday -AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
 
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
 
-        $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
+        $sqlVM1 = Get-AzSqlVM -InputObject $sqlVM -Expand *
+        
+        $sqlVM1.Count | Should -Be 1
+        $sqlVM1.GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
         $sqlVM1.AutoPatchingSettingDayOfWeek | Should -Be 'Thursday'
         $sqlVM1.AutoPatchingSettingMaintenanceWindowDuration | Should -Be 120
         $sqlVM1.AutoPatchingSettingMaintenanceWindowStartingHour | Should -Be 3
@@ -82,16 +85,16 @@ Describe 'Update-AzSqlVM' {
     It 'Update-AssessmentSchedule' {
         # $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'Full'
 
-        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AssessmentSettingEnable `
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -AssessmentSettingEnable `
             -ScheduleEnable -ScheduleDayOfWeek Sunday -ScheduleMonthlyOccurrence 2 -ScheduleStartTime "23:00"
 
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
 
-        $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
+        $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -Expand *
         $sqlVM1.AssessmentSettingEnable | Should -Be $true
         $sqlVM1.ScheduleEnable | Should -Be $true
         $sqlVM1.ScheduleDayOfWeek | Should -Be Sunday
@@ -103,13 +106,12 @@ Describe 'Update-AzSqlVM' {
 
     It 'Update-AutobackupEnable' {
         # $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'Full'
-        $StorageAccountUrl = "https://veppalastorageacc.blob.core.windows.net/"
-        $storageAccountPrimaryKey = "anaccesskey"
-        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AutoBackupSettingEnable `
-            -AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 -AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey $storageAccountPrimaryKey -AutoBackupSettingStorageAccountUrl $StorageAccountUrl -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60
+        $storageAccountPrimaryKey = ConvertTo-SecureString -String "REDACTED " -AsPlainText
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName -AutoBackupSettingEnable `
+            -AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 -AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey $storageAccountPrimaryKey -AutoBackupSettingStorageAccountUrl $env.StorageAccountUrl -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60
 
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
@@ -127,7 +129,7 @@ Describe 'Update-AzSqlVM' {
 
     It 'Update-AddSqlVMtoGroup' {
         # Assuming Group $env.SqlVMGroupId exists at this time and $env.SqlVMName_HA2 is created
-        $pwd = 'xxxxxx' # Replace with the original password
+        $pwd = 'azword02!!pass' # Replace with the original password
         $securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 `
@@ -158,7 +160,7 @@ Describe 'Update-AzSqlVM-EntraAuth' -Tag 'LiveOnly' {
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'UserAssigned' -ManagedIdentityClientId '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
         # note: user assigned managed identity is associated to sql vm and it has the required permissions
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlManagement | Should -Be 'Full'
 
         Start-TestSleep -Seconds 60
@@ -174,7 +176,7 @@ Describe 'Update-AzSqlVM-EntraAuth' -Tag 'LiveOnly' {
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'SystemAssigned'
         # note: system managed identity is enabled on sql vm and it has the required permissions
         $sqlVM.Name | Should -Be $env.SqlVMName
-        $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
+        $sqlVM.SqlImageOffer | Should -Be $env.SqlImageOffer
         $sqlVM.SqlManagement | Should -Be 'Full'
 
         Start-TestSleep -Seconds 60

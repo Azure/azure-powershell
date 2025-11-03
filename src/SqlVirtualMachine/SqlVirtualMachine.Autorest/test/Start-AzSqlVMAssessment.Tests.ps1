@@ -15,11 +15,13 @@ if (($null -eq $TestName) -or ($TestName -contains 'Start-AzSqlVMAssessment')) {
 
 Describe 'Start-AzSqlVMAssessment' {
     It 'Start' {
-        Start-AzSqlVMAssessment -ResourceGroupName $env.ResourceGroupName -SqlVirtualMachineName $env.SqlVMName
+        Start-AzSqlVMAssessment -ResourceGroupName $env.ResourceGroupName2 -SqlVirtualMachineName $env.SqlVMName
+        Start-TestSleep -Seconds 30
     }
 
     It 'StartViaIdentity' {
-        $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        Start-TestSleep -Seconds 30
+        $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName2 -Name $env.SqlVMName
         Start-AzSqlVMAssessment -InputObject $sqlvm
     }
 }
