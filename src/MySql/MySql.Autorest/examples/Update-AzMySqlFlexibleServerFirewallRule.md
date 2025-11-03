@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql Firewall Rule by name
 ```powershell
-{{ Add code here }}
+Update-AzMySqlFlexibleServerFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql Firewall Rule by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql Firewall Rule by identity.
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/firewallRules/rule"
+Update-AzMySqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 ```
 
-{{ Add description here }}
-
+These cmdlets update MySql Firewall Rule by identity.
