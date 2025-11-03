@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-200?api-version=2021-05-01",
-      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ms\",\r\n    \"tier\": \"Burstable\"\r\n  },\r\n  \"properties\": {\r\n    \"storage\": {\r\n      \"storageSizeGB\": 32\r\n    },\r\n    \"backup\": {\r\n      \"backupRetentionDays\": 7\r\n    },\r\n    \"administratorLogin\": \"cockyhare4\",\r\n    \"administratorLoginPassword\": \"9GxGA9eccHEX0oe3\",\r\n    \"version\": \"8.0.21\",\r\n    \"createMode\": \"Default\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ms\",\r\n    \"tier\": \"Burstable\"\r\n  },\r\n  \"properties\": {\r\n    \"storage\": {\r\n      \"storageSizeGB\": 32\r\n    },\r\n    \"backup\": {\r\n      \"backupRetentionDays\": 7\r\n    },\r\n    \"administratorLogin\": \"cockyhare4\",\r\n    \"administratorLoginPassword\": \"REDACTED\",\r\n    \"version\": \"8.0.21\",\r\n    \"createMode\": \"Default\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -492,7 +492,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/MySqlTestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysql-flexible-test-300?api-version=2021-05-01",
-      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ms\",\r\n    \"tier\": \"Burstable\"\r\n  },\r\n  \"properties\": {\r\n    \"storage\": {\r\n      \"storageSizeGB\": 32\r\n    },\r\n    \"backup\": {\r\n      \"backupRetentionDays\": 7\r\n    },\r\n    \"administratorLogin\": \"fixedferret3\",\r\n    \"administratorLoginPassword\": \"MNUld9NVxw1YLt0Y\",\r\n    \"version\": \"8.0.21\",\r\n    \"createMode\": \"Default\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ms\",\r\n    \"tier\": \"Burstable\"\r\n  },\r\n  \"properties\": {\r\n    \"storage\": {\r\n      \"storageSizeGB\": 32\r\n    },\r\n    \"backup\": {\r\n      \"backupRetentionDays\": 7\r\n    },\r\n    \"administratorLogin\": \"fixedferret3\",\r\n    \"administratorLoginPassword\": \"REDACTED\",\r\n    \"version\": \"8.0.21\",\r\n    \"createMode\": \"Default\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
