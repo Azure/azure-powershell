@@ -27,8 +27,7 @@ Creates a local PSVMGalleryApplication object.
 ### Example 1
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName $rgName -Name $vmssName
-$vmGal = New-AzVmssGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
--EnableAutomaticUpgrade $true -TreatFailureAsDeploymentFailure $true
+$vmGal = New-AzVmssGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId -EnableAutomaticUpgrade $true -TreatFailureAsDeploymentFailure $true
 Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmss.VirtualMachineProfile -GalleryApplication $vmGal -Order 1
 ```
 
@@ -85,7 +84,7 @@ Accept wildcard characters: False
 Specifies whether the underlying VMSS should automatically update when a new version of the Gallery Application becomes available in the Public Image Repository (PIR) or Shared Image Gallery (SIG).
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +99,7 @@ Accept wildcard characters: False
 Determines whether a failure encountered during the application process should be treated as a deployment failure.
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
