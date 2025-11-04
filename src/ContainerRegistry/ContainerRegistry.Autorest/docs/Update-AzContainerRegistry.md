@@ -8,45 +8,43 @@ schema: 2.0.0
 # Update-AzContainerRegistry
 
 ## SYNOPSIS
-Updates a container registry with the specified parameters.
+Update a container registry with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerRegistry -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AnonymousPullEnabled] [-AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus>]
- [-DataEndpointEnabled] [-EnableAdminUser] [-EncryptionStatus <EncryptionStatus>]
- [-ExportPolicyStatus <ExportPolicyStatus>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-AnonymousPullEnabled] [-AzureAdAuthenticationAsArmPolicyStatus <String>] [-DataEndpointEnabled]
+ [-EnableAdminUser] [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionStatus <String>]
+ [-ExportPolicyStatus <String>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
  [-KeyVaultPropertyIdentity <String>] [-KeyVaultPropertyKeyIdentifier <String>]
- [-NetworkRuleBypassOption <NetworkRuleBypassOptions>] [-NetworkRuleSetDefaultAction <DefaultAction>]
- [-NetworkRuleSetIPRule <IIPRule[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-QuarantinePolicyStatus <PolicyStatus>] [-RetentionPolicyDay <Int32>]
- [-RetentionPolicyStatus <PolicyStatus>] [-Sku <SkuName>] [-SoftDeletePolicyRetentionDay <Int32>]
- [-SoftDeletePolicyStatus <PolicyStatus>] [-Tag <Hashtable>] [-TrustPolicyStatus <PolicyStatus>]
- [-TrustPolicyType <TrustPolicyType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-NetworkRuleBypassOption <String>] [-NetworkRuleSetDefaultAction <String>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-PublicNetworkAccess <String>] [-QuarantinePolicyStatus <String>]
+ [-RetentionPolicyDay <Int32>] [-RetentionPolicyStatus <String>] [-Sku <String>]
+ [-SoftDeletePolicyRetentionDay <Int32>] [-SoftDeletePolicyStatus <String>] [-Tag <Hashtable>]
+ [-TrustPolicyStatus <String>] [-TrustPolicyType <String>] [-UserAssignedIdentity <String[]>]
+ [-ZoneRedundancy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerRegistry -InputObject <IContainerRegistryIdentity> [-AnonymousPullEnabled]
- [-AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus>] [-DataEndpointEnabled]
- [-EnableAdminUser] [-EncryptionStatus <EncryptionStatus>] [-ExportPolicyStatus <ExportPolicyStatus>]
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyVaultPropertyIdentity <String>]
- [-KeyVaultPropertyKeyIdentifier <String>] [-NetworkRuleBypassOption <NetworkRuleBypassOptions>]
- [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-QuarantinePolicyStatus <PolicyStatus>]
- [-RetentionPolicyDay <Int32>] [-RetentionPolicyStatus <PolicyStatus>] [-Sku <SkuName>]
- [-SoftDeletePolicyRetentionDay <Int32>] [-SoftDeletePolicyStatus <PolicyStatus>] [-Tag <Hashtable>]
- [-TrustPolicyStatus <PolicyStatus>] [-TrustPolicyType <TrustPolicyType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureAdAuthenticationAsArmPolicyStatus <String>] [-DataEndpointEnabled] [-EnableAdminUser]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionStatus <String>] [-ExportPolicyStatus <String>]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-KeyVaultPropertyIdentity <String>]
+ [-KeyVaultPropertyKeyIdentifier <String>] [-NetworkRuleBypassOption <String>]
+ [-NetworkRuleSetDefaultAction <String>] [-NetworkRuleSetIPRule <IIPRule[]>] [-PublicNetworkAccess <String>]
+ [-QuarantinePolicyStatus <String>] [-RetentionPolicyDay <Int32>] [-RetentionPolicyStatus <String>]
+ [-Sku <String>] [-SoftDeletePolicyRetentionDay <Int32>] [-SoftDeletePolicyStatus <String>] [-Tag <Hashtable>]
+ [-TrustPolicyStatus <String>] [-TrustPolicyType <String>] [-UserAssignedIdentity <String[]>]
+ [-ZoneRedundancy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a container registry with the specified parameters.
+Update a container registry with the specified parameters.
 
 ## EXAMPLES
 
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 The value that indicates whether the policy is enabled or not.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AzureAdAuthenticationAsArmPolicyStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,11 +154,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionStatus
 Indicates whether or not the encryption is enabled for container registry.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.EncryptionStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +188,7 @@ Accept wildcard characters: False
 The value that indicates whether the policy is enabled or not.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ExportPolicyStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -216,40 +229,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with the resource.
-The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
@@ -312,7 +293,7 @@ Accept wildcard characters: False
 Whether to allow trusted Azure services to access a network restricted registry.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.NetworkRuleBypassOptions
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -327,7 +308,7 @@ Accept wildcard characters: False
 The default action of allow or deny when no other rules match.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.DefaultAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -340,10 +321,9 @@ Accept wildcard characters: False
 
 ### -NetworkRuleSetIPRule
 The IP ACL rules.
-To construct, see NOTES section for NETWORKRULESETIPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IIPRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IIPRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -373,7 +353,7 @@ Accept wildcard characters: False
 Whether or not public network access is allowed for the container registry.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -388,7 +368,7 @@ Accept wildcard characters: False
 The value that indicates whether the policy is enabled or not.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -434,7 +414,7 @@ Accept wildcard characters: False
 The value that indicates whether the policy is enabled or not.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -450,7 +430,7 @@ The SKU name of the container registry.
 Required for registry creation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -480,7 +460,7 @@ Accept wildcard characters: False
 The value that indicates whether the policy is enabled or not.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -508,7 +488,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags for the container registry.
+The tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -526,7 +506,7 @@ Accept wildcard characters: False
 The value that indicates whether the policy is enabled or not.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -541,7 +521,38 @@ Accept wildcard characters: False
 The type of trust policy.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TrustPolicyType
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneRedundancy
+Whether or not zone redundancy is enabled for this container registry
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -592,7 +603,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 
 ## NOTES
 

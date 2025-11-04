@@ -47,16 +47,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         public int? MemoryMb { get => this._memoryMb; }
 
         /// <summary>Internal Acessors for InventoryItemName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.InventoryItemName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).InventoryItemName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).InventoryItemName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.InventoryItemName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).InventoryItemName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).InventoryItemName = value ?? null; }
 
         /// <summary>Internal Acessors for ManagedResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.ManagedResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.ManagedResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Uuid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).Uuid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).Uuid = value ?? null; }
 
         /// <summary>Internal Acessors for CpuCount</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineTemplateInventoryItemInternal.CpuCount { get => this._cpuCount; set { {_cpuCount = value;} } }

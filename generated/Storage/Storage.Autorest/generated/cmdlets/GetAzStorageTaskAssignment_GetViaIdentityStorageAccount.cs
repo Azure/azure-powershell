@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Get the storage task assignment properties")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}", ApiVersion = "2025-01-01")]
     public partial class GetAzStorageTaskAssignment_GetViaIdentityStorageAccount : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IContext

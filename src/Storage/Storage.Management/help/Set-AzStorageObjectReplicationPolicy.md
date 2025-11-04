@@ -15,24 +15,24 @@ Creates or updates the specified object replication policy in a Storage account.
 ### AccountName (Default)
 ```
 Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-PolicyId <String>] -SourceAccount <String> [-DestinationAccount <String>]
- -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicyId <String>] -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
+ [-EnablePriorityReplication <Boolean>] -Rule <PSObjectReplicationPolicyRule[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyObject
 ```
 Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -InputObject <PSObjectReplicationPolicy> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -InputObject <PSObjectReplicationPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Set-AzStorageObjectReplicationPolicy -StorageAccount <PSStorageAccount> [-PolicyId <String>]
- -SourceAccount <String> [-DestinationAccount <String>] -Rule <PSObjectReplicationPolicyRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
+ [-EnablePriorityReplication <Boolean>] -Rule <PSObjectReplicationPolicyRule[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,23 +51,23 @@ $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -Destinat
 
 $srcAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mysourceaccount"
 
-Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccount.Id  -Rule $rule1,$rule2
+Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccount.Id  -Rule $rule1,$rule2 -EnableMetric $true -EnablePriorityReplication $true
 
-ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
------------------ ------------------ --------                             ----------- -------------   ------------------ -----   
-myresourcegroup   mydestaccount      56bfa11c-81ef-4f8d-b307-5e5386e16fba             mysourceaccount mydestaccount      [5fa8b1d6-4985-4abd-a0b3-ec4d07295a43,...]
+ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Metrics PriorityReplication Rules                                     
+----------------- ------------------ --------                             ----------- -------------   ------------------ ------- ------------------- -----   
+myresourcegroup   mydestaccount      56bfa11c-81ef-4f8d-b307-5e5386e16fba             mysourceaccount mydestaccount      Enabled Enabled             [5fa8b1d6-4985-4abd-a0b3-ec4d07295a43,...]
 
 $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" 
 
 Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mysourceaccount" -InputObject $destPolicy
 
-ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
------------------ ------------------ --------                             ----------- -------------   ------------------ -----                                     
-myresourcegroup   mysourceaccount    56bfa11c-81ef-4f8d-b307-5e5386e16fba             mysourceaccount mydestaccount      [5fa8b1d6-4985-4abd-a0b3-ec4d07295a43,...]
+ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Metrics PriorityReplication Rules                                     
+----------------- ------------------ --------                             ----------- -------------   ------------------ ------- ------------------- -----                                     
+myresourcegroup   mysourceaccount    56bfa11c-81ef-4f8d-b307-5e5386e16fba             mysourceaccount mydestaccount      Enabled Enabled             [5fa8b1d6-4985-4abd-a0b3-ec4d07295a43,...]
 ```
 
 This command sets object replication policy to both destination and source account.
-First create 2 object replication policy rules, and set policy to destination account with the 2 rules and source account resource Id. Then get the object replication policy from destination account and set to source account.
+First create 2 object replication policy rules, and set policy to destination account with the 2 rules and source account resource Id, and enable metrics, enable priority replication. Then get the object replication policy from destination account and set to source account.
 Please note, when storage account has AllowCrossTenantReplication as false, SourceAccount and DestinationAccount should be account resource Id.
 
 ## PARAMETERS
@@ -92,6 +92,37 @@ Object Replication Policy DestinationAccount, if SourceAccount is account name i
 
 ```yaml
 Type: System.String
+Parameter Sets: AccountName, AccountObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableMetric
+Indicates whether object replication metrics feature is enabled for the policy.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AccountName, AccountObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePriorityReplication
+Indicates whether object replication priority replication feature is enabled for the policy. 
+This feature provides enhanced replication performance and reduces recovery time objectives (RTO) for critical data replication scenarios.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: AccountName, AccountObject
 Aliases:
 

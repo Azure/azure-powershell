@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Description(@"create a network profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}", ApiVersion = "2025-01-01")]
     public partial class NewAzNetworkSecurityPerimeterProfile_CreateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IContext

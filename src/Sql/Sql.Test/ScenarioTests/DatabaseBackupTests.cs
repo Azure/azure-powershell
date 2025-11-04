@@ -57,15 +57,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestorePointInTimeBackup()
         {
-            // TODO Rewrite SQL backup tests to be recordable
-            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
-                TestRunner.RunTestScript("Test-RestorePointInTimeBackup");
+                TestRunner.RunTestScript($"Test-RestorePointInTimeBackup");
+            }
+            else
+            {
+                TestRunner.RunTestScript($"Test-RestorePointInTimeBackup -isRecording");
             }
         }
 
@@ -136,13 +138,44 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
+        #region Semi-recordable tests
+        // Tests in this region require manual creation of LTR backups a day ahead of time
+        // They only need to be re-recorded when LTR CmdLets are being changed specifically. 
 
-        [Fact(Skip = "This is not recordable test")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2ResourceGroupBased()
         {
-            TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBased");
+            // This test requires manual setup to create LTR backups
+            // To re-record this test, follow directions in DatabaseBackupTests.ps1, and
+            // then remove the below check before running.
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBased");
+            }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionLockImmutability()
+        {
+            // This test requires manual setup to create LTR backups
+            // To re-record this test, follow directions in DatabaseBackupTests.ps1, and
+            // then remove the below check before running.
+            TestRunner.RunTestScript("Test-LongTermRetentionLockImmutability");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionRemoveImmutability()
+        {
+            // This test requires manual setup to create LTR backups
+            // To re-record this test, follow directions in DatabaseBackupTests.ps1, and
+            // then remove the below check before running.
+            TestRunner.RunTestScript("Test-LongTermRetentionRemoveImmutability");
+        }
+
+        #endregion
 
         [Fact(Skip = "Not recordable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -180,14 +213,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestShortTermRetentionPolicy()
         {
-            if (TestMockSupport.RunningMocked)
-            {
-                TestRunner.RunTestScript("Test-ShortTermRetentionPolicy");
-            }
+            TestRunner.RunTestScript("Test-ShortTermRetentionPolicy");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]

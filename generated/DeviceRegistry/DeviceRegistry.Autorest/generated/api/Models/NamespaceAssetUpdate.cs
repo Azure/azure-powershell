@@ -84,10 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         public bool? Enabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdatePropertiesInternal)Property).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdatePropertiesInternal)Property).Enabled = value ?? default(bool); }
 
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdatePropertiesInternal)Property).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdatePropertiesInternal)Property).Event = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdatePropertiesInternal)Property).EventGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdatePropertiesInternal)Property).EventGroup = value ?? null /* arrayOf */; }
 
         /// <summary>Asset hardware revision number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? Enabled { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -333,10 +333,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of events that are part of the asset. Each event can have per-event configuration.",
-        SerializedName = @"events",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get; set; }
+        Description = @"Array of event groups that are part of the asset. Each event group can have per-event group configuration.",
+        SerializedName = @"eventGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get; set; }
         /// <summary>Asset hardware revision number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -500,9 +500,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Enabled/disabled status of the asset.</summary>
         bool? Enabled { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get; set; }
         /// <summary>Asset hardware revision number.</summary>
         string HardwareRevision { get; set; }
         /// <summary>

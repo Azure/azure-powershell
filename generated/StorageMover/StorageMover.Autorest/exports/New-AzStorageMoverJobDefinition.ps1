@@ -23,9 +23,9 @@ Creates or updates a Job Definition resource, which contains configuration for a
 New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive" -Description "job definition"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,14 +42,15 @@ JOBDEFINITION <IJobDefinition>: The Job Definition resource.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [AgentName <String>]: Name of the Agent to assign for new Job Runs of this Job Definition.
-  [Description <String>]: A description for the Job Definition.
+  [Description <String>]: A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
+  [JobType <JobType?>]: The type of the Job.
   [SourceSubpath <String>]: The subpath to use when reading from the source Endpoint.
   [TargetSubpath <String>]: The subpath to use when writing to the target Endpoint.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
 #>
 function New-AzStorageMoverJobDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -87,7 +88,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition]
     # The Job Definition resource.
     # To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
     ${JobDefinition},
@@ -121,7 +122,16 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # A description for the Job Definition.
+    # OnPremToCloud is for migrating data from on-premises to cloud.
+    # CloudToCloud is for migrating data between cloud to cloud.
     ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType]
+    # The type of the Job.
+    ${JobType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]

@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added BreakingChange announcements for commands below:
-  * `Get-AzConfidentialLedger`
-  * `New-AzConfidentialLedger`
-  * `Update-AzConfidentialLedger`
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+## Version 1.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.

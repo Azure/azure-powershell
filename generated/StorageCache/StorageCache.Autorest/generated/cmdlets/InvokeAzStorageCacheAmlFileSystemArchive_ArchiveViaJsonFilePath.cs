@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Description(@"Archive data from the AML file system.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive", ApiVersion = "2023-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/archive", ApiVersion = "2025-07-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.NotSuggestDefaultParameterSet]
     public partial class InvokeAzStorageCacheAmlFileSystemArchive_ArchiveViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener,
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

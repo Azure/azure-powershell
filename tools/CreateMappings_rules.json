@@ -987,5 +987,17 @@
   {
     "alias": "StorageDiscovery",
     "module": "StorageDiscovery"
+  },
+  {
+    "alias": "Sftp",
+    "module": "Sftp"
+  },
+  {
+    "module": "Site",
+    "alias": "Site"
+  },
+  {
+    "alias": "DnsResolver",
+    "module": "DnsResolver"
   }
 ]

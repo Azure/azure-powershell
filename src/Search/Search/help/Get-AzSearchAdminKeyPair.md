@@ -8,30 +8,30 @@ schema: 2.0.0
 # Get-AzSearchAdminKeyPair
 
 ## SYNOPSIS
-Gets admin key pair of the Azure Cognitive Search service.
+Gets admin key pair of the Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 Get-AzSearchAdminKeyPair [-ResourceGroupName] <String> [-ServiceName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Get-AzSearchAdminKeyPair [-ParentObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
 Get-AzSearchAdminKeyPair [-ParentResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchAdminKeyPair** cmdlet gets the admin key pair of the Azure Cognitive Search service.
+The **Get-AzSearchAdminKeyPair** cmdlet gets the admin key pair of the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ Primary                          Secondary
 3B06A25BDADFF72EC132736BAA2547A1 E643B75A52E04DF13EB690807C451C55
 ```
 
-The example gets admin key pair of the Azure Cognitive Search service.
+The example gets admin key pair of the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-Azure Cognitive Search Service Resource Id.
+Azure AI Search Service Resource Id.
 
 ```yaml
 Type: System.String
@@ -92,6 +92,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

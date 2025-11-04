@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
     /// <summary>
     /// Describes an resource type that has been onboarded to private link service,
-    /// supported by Azure Cognitive Search.
+    /// supported by Azure AI Search.
     /// </summary>
     public partial class ShareablePrivateLinkResourceType
     {
@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
 
         /// <param name="name">The name of the resource type that has been onboarded to private link
-        /// service, supported by Azure Cognitive Search.
+        /// service, supported by Azure AI Search.
         /// </param>
 
         /// <param name="properties">Describes the properties of a resource type that has been onboarded to
-        /// private link service, supported by Azure Cognitive Search.
+        /// private link service, supported by Azure AI Search.
         /// </param>
         public ShareablePrivateLinkResourceType(string name = default(string), ShareablePrivateLinkResourceProperties properties = default(ShareablePrivateLinkResourceProperties))
 
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Management.Search.Models
 
         /// <summary>
         /// Gets the name of the resource type that has been onboarded to private link
-        /// service, supported by Azure Cognitive Search.
+        /// service, supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; private set; }
 
         /// <summary>
         /// Gets describes the properties of a resource type that has been onboarded to
-        /// private link service, supported by Azure Cognitive Search.
+        /// private link service, supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public ShareablePrivateLinkResourceProperties Properties {get; private set; }

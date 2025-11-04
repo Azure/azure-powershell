@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="protocol">The reference to the transport protocol used by the inbound NAT rule.
-        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;</param>
+        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;</param>
 
         /// <param name="frontendPort">Frontend port.
         /// </param>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string InboundNatRuleName {get; private set; }
 
         /// <summary>
-        /// Gets the reference to the transport protocol used by the inbound NAT rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;
+        /// Gets the reference to the transport protocol used by the inbound NAT rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
         public string Protocol {get; private set; }

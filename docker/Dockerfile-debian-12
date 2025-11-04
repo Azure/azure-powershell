@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:debian-12
+FROM mcr.microsoft.com/dotnet/sdk:9.0-bookworm-slim
 RUN apt-get update && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ARG REPOSITORY=PSGallery

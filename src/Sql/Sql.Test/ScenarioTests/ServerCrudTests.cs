@@ -129,5 +129,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateandUpdateServerWithMinimalTlsVersion");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateWithDefaultSoftRetentionEnabled()
+        {
+            TestRunner.RunTestScript("Test-CreateServerWithDefaultSoftDeleteRetentionEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateWithCustomSoftRetentionEnabled()
+        {
+            TestRunner.RunTestScript("Test-CreateServerWithCustomSoftDeleteRetentionEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithSoftRetentionEnabled()
+        {
+            TestRunner.RunTestScript("Test-UpdateServerWithSoftDeleteRetentionEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerRestoreDeletedServer()
+        {
+            TestRunner.RunTestScript("Test-RestoreDeletedServer");
+        }
     }
 }

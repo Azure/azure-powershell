@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 2.0.8
 * Fixed issue where the restore command failed to detect the source account, even when it existed.
