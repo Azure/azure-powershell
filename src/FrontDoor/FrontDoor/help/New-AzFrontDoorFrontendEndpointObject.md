@@ -1,31 +1,31 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorfrontendendpointobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendendpointobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorFrontendEndpointObject
 
 ## SYNOPSIS
-Create a PSFrontendEndpoint Object for Front Door creation
+Create an in-memory object for FrontendEndpoint.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendEndpointObject -Name <String> -HostName <String>
- [-SessionAffinityEnabledState <PSEnabledState>] [-SessionAffinityTtlInSeconds <Int32>]
- [-WebApplicationFirewallPolicyLink <String>] [-CertificateSource <String>] [-MinimumTlsVersion <String>]
- [-ProtocolType <String>] [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>]
- [-CertificateType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorFrontendEndpointObject [-CertificateSource <String>] [-MinimumTlsVersion <String>]
+ [-CertificateType <String>] [-HostName <String>] [-SecretName <String>] [-SecretVersion <String>]
+ [-Name <String>] [-SessionAffinityEnabledState <String>] [-SessionAffinityTtlInSeconds <Int32>]
+ [-Vault <String>] [-WebApplicationFirewallPolicyLinkId <String>] [-Id <String>] [-ProtocolType <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a PSFrontendEndpoint Object for Front Door creation
+Create an in-memory object for FrontendEndpoint.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a PSFrontendEndpoint Object for Front Door creation
 ```powershell
 New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
 ```
@@ -51,12 +51,12 @@ Type                             :
 ProtocolType                     : ServerNameIndication
 ```
 
-Create a PSFrontendEndpoint Object for Front Door creation.
+Create a PSFrontendEndpoint Object for Front Door creation
 
 ## PARAMETERS
 
 ### -CertificateSource
-The source of the SSL certificate
+Defines the source of the SSL certificate.
 
 ```yaml
 Type: System.String
@@ -71,27 +71,12 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateType
-the type of the certificate used for secure connections to a frontendEndpoint
+Defines the type of the certificate used for secure connections to a frontendEndpoint.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -109,7 +94,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,14 +132,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Frontend endpoint name.
+Resource name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretName
-The name of the Key Vault secret representing the full certificate PFX
+The name of the Key Vault secret representing the full certificate PFX.
 
 ```yaml
 Type: System.String
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretVersion
-The version of the Key Vault secret representing the full certificate PFX
+The version of the Key Vault secret representing the full certificate PFX.
 
 ```yaml
 Type: System.String
@@ -193,13 +193,12 @@ Accept wildcard characters: False
 
 ### -SessionAffinityEnabledState
 Whether to allow session affinity on this host.
-Default value is Disabled
+Valid options are 'Enabled' or 'Disabled'.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -209,8 +208,9 @@ Accept wildcard characters: False
 ```
 
 ### -SessionAffinityTtlInSeconds
-The TTL to use in seconds for session affinity, if applicable. 
-Default value is 0
+UNUSED.
+This field will be ignored.
+The TTL to use in seconds for session affinity, if applicable.
 
 ```yaml
 Type: System.Int32
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -Vault
-The Key Vault containing the SSL certificate
+Resource ID.
 
 ```yaml
 Type: System.String
@@ -239,13 +239,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WebApplicationFirewallPolicyLink
-The resource id of Web Application Firewall policy for each host (if applicable)
+### -WebApplicationFirewallPolicyLinkId
+Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: WebApplicationFirewallPolicyLink
 
 Required: False
 Position: Named
@@ -259,13 +259,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpoint
+
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoor](./New-AzFrontDoor.md)
-[Set-AzFrontDoor](./Set-AzFrontDoor.md)

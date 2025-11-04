@@ -995,5 +995,9 @@
   {
     "module": "Site",
     "alias": "Site"
+  },
+  {
+    "alias": "DnsResolver",
+    "module": "DnsResolver"
   }
 ]

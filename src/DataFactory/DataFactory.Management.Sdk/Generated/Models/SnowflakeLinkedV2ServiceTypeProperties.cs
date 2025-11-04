@@ -81,7 +81,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SnowflakeLinkedV2ServiceTypeProperties(object accountIdentifier, object database, object warehouse, object user = default(object), SecretBase password = default(SecretBase), string authenticationType = default(string), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tenantId = default(object), object scope = default(object), SecretBase privateKey = default(SecretBase), SecretBase privateKeyPassphrase = default(SecretBase), object role = default(object), object host = default(object), object schema = default(object), string encryptedCredential = default(string))
+
+        /// <param name="useUtcTimestamps">Indicates whether to use UTC timezone for timestamp data types. Type:
+        /// boolean.
+        /// </param>
+        public SnowflakeLinkedV2ServiceTypeProperties(object accountIdentifier, object database, object warehouse, object user = default(object), SecretBase password = default(SecretBase), string authenticationType = default(string), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tenantId = default(object), object scope = default(object), SecretBase privateKey = default(SecretBase), SecretBase privateKeyPassphrase = default(SecretBase), object role = default(object), object host = default(object), object schema = default(object), string encryptedCredential = default(string), object useUtcTimestamps = default(object))
 
         {
             this.AccountIdentifier = accountIdentifier;
@@ -100,6 +104,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Host = host;
             this.Schema = schema;
             this.EncryptedCredential = encryptedCredential;
+            this.UseUtcTimestamps = useUtcTimestamps;
             CustomInit();
         }
 
@@ -217,6 +222,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "encryptedCredential")]
         public string EncryptedCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether to use UTC timezone for timestamp data
+        /// types. Type: boolean.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "useUtcTimestamps")]
+        public object UseUtcTimestamps {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -237,6 +249,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Warehouse");
             }
+
 
 
 
