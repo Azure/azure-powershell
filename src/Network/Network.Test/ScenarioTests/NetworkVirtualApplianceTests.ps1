@@ -191,12 +191,11 @@ function Test-NVAInVnetCRUD
 
         $privateNicConfig = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId $privateSubnetId
         $publicNicConfig = New-AzNvaInterfaceConfiguration -NicType "PublicNic" -Name "publicInterface" -SubnetId $publicSubnetId
-        $nvaNicConfig = New-AzNvaInterfaceConfigurations -NvaInterfaceConfigs $privateNicConfig,$publicNicConfig
 
-        $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -NvaInterfaceConfigurations $nvaNicConfig -Sku $sku -CloudInitConfiguration "echo hi" 
+        $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -NvaInterfaceConfiguration $privateNicConfig,$publicNicConfig -Sku $sku -CloudInitConfiguration "echo hi" 
         $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname
         Assert-NotNull $getnva
-        Assert-NotNull $getnva.NvaInterfaceConfigurations
+        Assert-NotNull $getnva.NvaInterfaceConfiguration
 
         Start-Sleep -Seconds 600
         Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force
