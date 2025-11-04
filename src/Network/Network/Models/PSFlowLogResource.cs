@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string EnabledFilteringCriteria { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public string RecordType { get; set; }
+        public string RecordTypes { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? Enabled { get; set; }

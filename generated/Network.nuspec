@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Network</id>
+    <version>0.1.0</version>
+    <authors></authors>
+    <owners></owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <description></description>
+    <releaseNotes></releaseNotes>
+    <copyright></copyright>
+    <tags></tags>
+  </metadata>
+  <files>
+    <file src="Network.format.ps1xml" />
+    <file src="Network.psd1" />
+    <file src="Network.psm1" />
+    <!-- https://github.com/NuGet/Home/issues/3584 -->
+    <file src="bin/Network.private.dll" target="bin" />
+    <file src="bin\Network.private.deps.json" target="bin" />
+    <file src="internal\**\*.*" exclude="internal\README.md" target="internal" />
+    <file src="custom\**\*.*" exclude="custom\README.md;custom\**\*.cs" target="custom" />
+    <file src="docs\**\*.md" exclude="docs\README.md" target="docs" />
+    <file src="exports\**\ProxyCmdletDefinitions.ps1" target="exports" />
+    <file src="utils\**\*.*" target="utils" />
+  </files>
+</package>

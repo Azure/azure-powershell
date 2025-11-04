@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Optional field to filter network traffic logs based on flow states.")]
         [ValidateNotNull]
-        public string RecordType { get; set; }
+        public string RecordTypes { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSFlowLogResource CreateFlowLog()
         {
-            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.EnabledFilteringCriteria, this.RecordType, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
+            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.EnabledFilteringCriteria, this.RecordTypes, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
                 this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays, this.UserAssignedIdentityId);
 
             MNM.FlowLog flowLogParameters = GetFlowLogParametersFromRequest();
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.Network
                 StorageId = this.StorageId,
                 Enabled = this.Enabled,
                 EnabledFilteringCriteria = this.EnabledFilteringCriteria ?? "",
-                RecordTypes = this.RecordType ?? "",
+                RecordTypes = this.RecordTypes ?? "",
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
