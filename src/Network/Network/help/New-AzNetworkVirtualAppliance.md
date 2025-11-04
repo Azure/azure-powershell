@@ -21,7 +21,7 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
- [-NvaInterfaceConfigurations <PSNetworkVirtualApplianceInterfaceConfig>]
+ [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfig>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> [-VirtualH
  [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
- [-NvaInterfaceConfigurations <PSNetworkVirtualApplianceInterfaceConfig>]
+ [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfig>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -103,12 +103,10 @@ Creates a new Network Virtual Appliance resource in resource group: testrg with 
 ```powershell
 $sku = New-AzVirtualApplianceSkuProperty -VendorName "ciscosdwantest" -BundledScaleUnit 4 -MarketPlaceVersion '17.6.03'
 
-$$config1 = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
+$config1 = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
 $config2 = New-AzNvaInterfaceConfiguration -NicType "PublicNic" -Name "publicInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{anotherSubnetName}"
 
-$finalConfig = New-AzNvaInterfaceConfigurations -NvaInterfaceConfigs $config1,$config2
-
-$nva = New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -NvaInterfaceConfigurations $finalConfig -Sku $sku -CloudInitConfiguration "echo Hello World!"
+$nva = New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -NvaInterfaceConfiguration $config1,$config2 -Sku $sku -CloudInitConfiguration "echo Hello World!"
 ```
 
 Creates a new Network Virtual Appliance resource deployed in VNet with PrivateNic & PublicNic type.
@@ -295,7 +293,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NvaInterfaceConfigurations
+### -NvaInterfaceConfiguration
 Interface configurations for NVA deployed in VNet.
 
 ```yaml

@@ -17,11 +17,6 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSNetworkVirtualApplianceInterfaceConfig
-    {
-        public List<PSNetworkVirtualApplianceInterfaceConfigProperties> NvaNicInterfaceConfigProperties { get; set; }
-    }
-
     public class PSNetworkVirtualApplianceInterfaceConfigProperties
         {
         public PSResourceId Subnet { get; set; }

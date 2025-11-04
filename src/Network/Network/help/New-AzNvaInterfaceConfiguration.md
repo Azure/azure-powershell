@@ -26,7 +26,7 @@ The **New-AzNvaInterfaceConfiguration** defines an interface configuration for v
 ```powershell
 $config1 = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
 ```
-Create an interface configuration for virtual appliance to be used with New-AzNvaInterfaceConfigurations command.
+Create an interface configuration for virtual appliance to be used with New-AzNetworkVirtualAppliance command.
 
 ## PARAMETERS
 

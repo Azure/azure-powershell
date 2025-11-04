@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -156,13 +157,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Interface configurations for NVA deployed in VNet.")]
-        public PSNetworkVirtualApplianceInterfaceConfig NvaInterfaceConfigurations { get; set; }
+        public List<PSNetworkVirtualApplianceInterfaceConfigProperties> NvaInterfaceConfiguration { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-			      if (!string.IsNullOrEmpty(VirtualHubId) && NvaInterfaceConfigurations != null)
+			      if (!string.IsNullOrEmpty(VirtualHubId) && NvaInterfaceConfiguration != null)
 			      {
 				      throw new PSArgumentException("Specify either VirtualHubId or NvaInterfaceConfigurations, but not both.");
 			      }
@@ -219,9 +220,9 @@ namespace Microsoft.Azure.Commands.Network
                 networkVirtualAppliance.NetworkProfile = NetworkProfile;
             }
             
-            if (this.NvaInterfaceConfigurations != null)
+            if (this.NvaInterfaceConfiguration != null)
             {
-                networkVirtualAppliance.NvaInterfaceConfigurations = this.NvaInterfaceConfigurations.NvaNicInterfaceConfigProperties;
+                networkVirtualAppliance.NvaInterfaceConfigurations = this.NvaInterfaceConfiguration;
             }
 
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);
