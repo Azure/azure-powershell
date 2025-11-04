@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
     {
         
         internal Microsoft.Azure.Batch.AutoScaleRunError omObject;
-        
+        internal Microsoft.Azure.Management.Batch.Models.AutoScaleRunError mgmtObject;
+
         private IReadOnlyList<PSNameValuePair> values;
         
         internal PSAutoScaleRunError(Microsoft.Azure.Batch.AutoScaleRunError omObject)
@@ -44,11 +45,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             this.omObject = omObject;
         }
-        
+        internal PSAutoScaleRunError(Microsoft.Azure.Management.Batch.Models.AutoScaleRunError mgmtObject)
+        {
+            if ((mgmtObject == null))
+            {
+                throw new System.ArgumentNullException("mgmtObject");
+            }
+            this.mgmtObject = mgmtObject;
+        }
+
         public string Code
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.Code;
+                }
                 return this.omObject.Code;
             }
         }
@@ -57,6 +70,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.Message;
+                }
                 return this.omObject.Message;
             }
         }
@@ -65,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                if (((this.values == null) 
+                if (((this.values == null) && (this.omObject != null)
                             && (this.omObject.Values != null)))
                 {
                     List<PSNameValuePair> list;
@@ -80,6 +97,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
                     this.values = list;
                 }
+
+                if (((this.values == null) && (this.mgmtObject != null)
+                            && (this.mgmtObject.Details != null)))
+                {
+                    List<PSNameValuePair> list;
+                    list = new List<PSNameValuePair>();
+                    IEnumerator<Microsoft.Azure.Management.Batch.Models.AutoScaleRunError> enumerator;
+                    enumerator = this.mgmtObject.Details.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSNameValuePair(enumerator.Current.Code, enumerator.Current.Message));
+                    }
+                    this.values = list;
+                }
+
                 return this.values;
             }
         }

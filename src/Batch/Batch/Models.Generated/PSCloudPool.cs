@@ -23,26 +23,20 @@
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
+    using Microsoft.Azure.Batch;
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using Microsoft.Azure.Batch;
-    
-    
+    using Microsoft.Azure.Management.Batch.Models;
+
     public partial class PSCloudPool
     {
         
         internal Microsoft.Azure.Batch.CloudPool omObject;
         
-        private IList<System.String> applicationLicenses;
-        
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
         private PSAutoScaleRun autoScaleRun;
-        
-        private IList<PSCertificateReference> certificateReferences;
-        
-        private PSCloudServiceConfiguration cloudServiceConfiguration;
         
         private PSBatchPoolIdentity identity;
         
@@ -54,11 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IReadOnlyList<PSResizeError> resizeErrors;
         
-        private IDictionary resourceTags;
-        
         private PSStartTask startTask;
-        
-        private PSPoolStatistics statistics;
         
         private PSTaskSchedulingPolicy taskSchedulingPolicy;
         
@@ -67,7 +57,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private IList<PSUserAccount> userAccounts;
         
         private PSVirtualMachineConfiguration virtualMachineConfiguration;
-        
+
+        internal Pool mgmtObject;
+
+        internal PSCloudPool(Pool mgmtObject)
+        {
+            if ((mgmtObject == null))
+            {
+                throw new System.ArgumentNullException("mgmtObject");
+            }
+            this.mgmtObject = mgmtObject;
+        }
+
         internal PSCloudPool(Microsoft.Azure.Batch.CloudPool omObject)
         {
             if ((omObject == null))
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.AllocationState;
+                return Utils.Utils.ToPSAllocationState(this.mgmtObject.AllocationState);
             }
         }
         
@@ -89,42 +90,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.AllocationStateTransitionTime;
-            }
-        }
-        
-        public IList<System.String> ApplicationLicenses
-        {
-            get
-            {
-                if (((this.applicationLicenses == null) 
-                            && (this.omObject.ApplicationLicenses != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.ApplicationLicenses.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.applicationLicenses = list;
-                }
-                return this.applicationLicenses;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.ApplicationLicenses = null;
-                }
-                else
-                {
-                    this.omObject.ApplicationLicenses = new List<System.String>();
-                }
-                this.applicationLicenses = value;
+                return this.mgmtObject.AllocationStateTransitionTime;
             }
         }
         
@@ -133,17 +99,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.applicationPackageReferences == null) 
-                            && (this.omObject.ApplicationPackageReferences != null)))
+                            && (this.mgmtObject.ApplicationPackages != null)))
                 {
                     List<PSApplicationPackageReference> list;
                     list = new List<PSApplicationPackageReference>();
-                    IEnumerator<Microsoft.Azure.Batch.ApplicationPackageReference> enumerator;
-                    enumerator = this.omObject.ApplicationPackageReferences.GetEnumerator();
+                    IEnumerator<Microsoft.Azure.Management.Batch.Models.ApplicationPackageReference> enumerator;
+                    enumerator = this.mgmtObject.ApplicationPackages.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSApplicationPackageReference(enumerator.Current));
+                        list.Add(PSApplicationPackageReference.fromMgmtApplicationPackageReference(enumerator.Current));
                     }
                     this.applicationPackageReferences = list;
                 }
@@ -153,11 +119,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.ApplicationPackageReferences = null;
+                    this.mgmtObject.ApplicationPackages = null;
                 }
                 else
                 {
-                    this.omObject.ApplicationPackageReferences = new List<Microsoft.Azure.Batch.ApplicationPackageReference>();
+                    this.mgmtObject.ApplicationPackages = new List<Microsoft.Azure.Management.Batch.Models.ApplicationPackageReference>();
+                    foreach (var item in value)
+                    {
+                        this.mgmtObject.ApplicationPackages.Add(item.toMgmtApplicationPackageReference());
+                    }
                 }
                 this.applicationPackageReferences = value;
             }
@@ -167,11 +137,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.AutoScaleEnabled;
+                return this.mgmtObject.ScaleSettings?.AutoScale?.Formula != null;
             }
             set
             {
-                this.omObject.AutoScaleEnabled = value;
+                //this.omObject.AutoScaleEnabled = value;
             }
         }
         
@@ -179,11 +149,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.AutoScaleEvaluationInterval;
+                return this.mgmtObject.ScaleSettings?.AutoScale?.EvaluationInterval;
             }
             set
             {
-                this.omObject.AutoScaleEvaluationInterval = value;
+                if (this.mgmtObject.ScaleSettings == null)
+                {
+                    this.mgmtObject.ScaleSettings = new ScaleSettings();
+                }
+                if (this.mgmtObject.ScaleSettings.AutoScale == null)
+                {
+                    this.mgmtObject.ScaleSettings.AutoScale = new AutoScaleSettings();
+                }
+                this.mgmtObject.ScaleSettings.AutoScale.EvaluationInterval = value;
             }
         }
         
@@ -191,11 +169,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.AutoScaleFormula;
+                return this.mgmtObject.ScaleSettings?.AutoScale?.Formula;
             }
             set
             {
-                this.omObject.AutoScaleFormula = value;
+                if (this.mgmtObject.ScaleSettings == null)
+                {
+                    this.mgmtObject.ScaleSettings = new ScaleSettings();
+                }
+                if (this.mgmtObject.ScaleSettings.AutoScale == null)
+                {
+                    this.mgmtObject.ScaleSettings.AutoScale = new AutoScaleSettings();
+                }
+                this.mgmtObject.ScaleSettings.AutoScale.Formula = value;
             }
         }
         
@@ -203,72 +189,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                if (((this.autoScaleRun == null) 
-                            && (this.omObject.AutoScaleRun != null)))
+                if (((this.autoScaleRun == null)
+                            && (this.mgmtObject.AutoScaleRun != null)))
                 {
-                    this.autoScaleRun = new PSAutoScaleRun(this.omObject.AutoScaleRun);
+                    this.autoScaleRun = PSAutoScaleRun.fromMgmtAutoScaleRun(this.mgmtObject.AutoScaleRun);
                 }
                 return this.autoScaleRun;
-            }
-        }
-        
-        public IList<PSCertificateReference> CertificateReferences
-        {
-            get
-            {
-                if (((this.certificateReferences == null) 
-                            && (this.omObject.CertificateReferences != null)))
-                {
-                    List<PSCertificateReference> list;
-                    list = new List<PSCertificateReference>();
-                    IEnumerator<Microsoft.Azure.Batch.CertificateReference> enumerator;
-                    enumerator = this.omObject.CertificateReferences.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSCertificateReference(enumerator.Current));
-                    }
-                    this.certificateReferences = list;
-                }
-                return this.certificateReferences;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CertificateReferences = null;
-                }
-                else
-                {
-                    this.omObject.CertificateReferences = new List<Microsoft.Azure.Batch.CertificateReference>();
-                }
-                this.certificateReferences = value;
-            }
-        }
-        
-        public PSCloudServiceConfiguration CloudServiceConfiguration
-        {
-            get
-            {
-                if (((this.cloudServiceConfiguration == null) 
-                            && (this.omObject.CloudServiceConfiguration != null)))
-                {
-                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
-                }
-                return this.cloudServiceConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CloudServiceConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.CloudServiceConfiguration = value.omObject;
-                }
-                this.cloudServiceConfiguration = value;
             }
         }
         
@@ -276,7 +202,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.CreationTime;
+                return this.mgmtObject.CreationTime;
             }
         }
         
@@ -284,7 +210,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.CurrentDedicatedComputeNodes;
+                return this.mgmtObject.CurrentDedicatedNodes;
             }
         }
         
@@ -292,15 +218,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.CurrentLowPriorityComputeNodes;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.NodeCommunicationMode? CurrentNodeCommunicationMode
-        {
-            get
-            {
-                return this.omObject.CurrentNodeCommunicationMode;
+                return this.mgmtObject.CurrentLowPriorityNodes;
             }
         }
         
@@ -308,11 +226,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.DisplayName;
+                return this.mgmtObject.DisplayName;
             }
             set
             {
-                this.omObject.DisplayName = value;
+                this.mgmtObject.DisplayName = value;
             }
         }
         
@@ -320,7 +238,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.ETag;
+                return this.mgmtObject.Etag;
             }
         }
         
@@ -328,11 +246,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.Id;
-            }
-            set
-            {
-                this.omObject.Id = value;
+                return this.mgmtObject.Id;
             }
         }
         
@@ -341,23 +255,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.identity == null) 
-                            && (this.omObject.Identity != null)))
+                            && (this.mgmtObject.Identity != null)))
                 {
-                    this.identity = new PSBatchPoolIdentity(this.omObject.Identity);
+                    this.identity = new PSBatchPoolIdentity(this.mgmtObject.Identity);
                 }
                 return this.identity;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.Identity = null;
-                }
-                else
-                {
-                    this.omObject.Identity = value.omObject;
-                }
-                this.identity = value;
             }
         }
         
@@ -365,11 +267,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.InterComputeNodeCommunicationEnabled;
+                if (this.mgmtObject.InterNodeCommunication == null)
+                {
+                    return this.mgmtObject.InterNodeCommunication == InterNodeCommunicationState.Enabled;
+                }
+                return false;
             }
             set
             {
-                this.omObject.InterComputeNodeCommunicationEnabled = value;
+                if ((value != null) && (value == true))
+                {
+                    this.mgmtObject.InterNodeCommunication = InterNodeCommunicationState.Enabled;
+                }
+                else
+                {
+                    this.mgmtObject.InterNodeCommunication = InterNodeCommunicationState.Disabled;
+                }
+
             }
         }
         
@@ -377,7 +291,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.LastModified;
+                return this.mgmtObject.LastModified;
             }
         }
         
@@ -386,12 +300,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.metadata == null) 
-                            && (this.omObject.Metadata != null)))
+                            && (this.mgmtObject.Metadata != null)))
                 {
                     Dictionary<string, string> dict;
                     dict = new Dictionary<string, string>();
-                    IEnumerator<Microsoft.Azure.Batch.MetadataItem> enumerator;
-                    enumerator = this.omObject.Metadata.GetEnumerator();
+                    IEnumerator<Management.Batch.Models.MetadataItem> enumerator;
+                    enumerator = this.mgmtObject.Metadata.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
@@ -406,11 +320,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.Metadata = null;
+                    this.mgmtObject.Metadata = null;
                 }
                 else
                 {
-                    this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
+                    this.mgmtObject.Metadata = new List<Management.Batch.Models.MetadataItem>();
                 }
                 this.metadata = value;
             }
@@ -421,17 +335,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.mountConfiguration == null) 
-                            && (this.omObject.MountConfiguration != null)))
+                            && (this.mgmtObject.MountConfiguration != null)))
                 {
                     List<PSMountConfiguration> list;
                     list = new List<PSMountConfiguration>();
-                    IEnumerator<Microsoft.Azure.Batch.MountConfiguration> enumerator;
-                    enumerator = this.omObject.MountConfiguration.GetEnumerator();
+                    IEnumerator<Management.Batch.Models.MountConfiguration> enumerator;
+                    enumerator = this.mgmtObject.MountConfiguration.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSMountConfiguration(enumerator.Current));
+                        list.Add(PSMountConfiguration.fromMgmtMountConfiguration(enumerator.Current));
                     }
                     this.mountConfiguration = list;
                 }
@@ -441,11 +355,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.MountConfiguration = null;
+                    this.mgmtObject.MountConfiguration = null;
                 }
                 else
                 {
-                    this.omObject.MountConfiguration = new List<Microsoft.Azure.Batch.MountConfiguration>();
+                    this.mgmtObject.MountConfiguration = new List<Management.Batch.Models.MountConfiguration>();
                 }
                 this.mountConfiguration = value;
             }
@@ -456,9 +370,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.networkConfiguration == null) 
-                            && (this.omObject.NetworkConfiguration != null)))
+                            && (this.mgmtObject.NetworkConfiguration != null)))
                 {
-                    this.networkConfiguration = new PSNetworkConfiguration(this.omObject.NetworkConfiguration);
+                    this.networkConfiguration = PSNetworkConfiguration.fromMgmtNetworkConfiguration(this.mgmtObject.NetworkConfiguration);
                 }
                 return this.networkConfiguration;
             }
@@ -466,11 +380,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.NetworkConfiguration = null;
+                    this.mgmtObject.NetworkConfiguration = null;
                 }
                 else
                 {
-                    this.omObject.NetworkConfiguration = value.omObject;
+                    this.mgmtObject.NetworkConfiguration = value.toMgmtNetworkConfiguration();
                 }
                 this.networkConfiguration = value;
             }
@@ -481,12 +395,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.resizeErrors == null) 
-                            && (this.omObject.ResizeErrors != null)))
+                            && (this.mgmtObject.ResizeOperationStatus.Errors != null)))
                 {
                     List<PSResizeError> list;
                     list = new List<PSResizeError>();
-                    IEnumerator<Microsoft.Azure.Batch.ResizeError> enumerator;
-                    enumerator = this.omObject.ResizeErrors.GetEnumerator();
+                    IEnumerator<Management.Batch.Models.ResizeError> enumerator;
+                    enumerator = this.mgmtObject.ResizeOperationStatus.Errors.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
@@ -503,46 +417,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.ResizeTimeout;
+                return this.mgmtObject.ScaleSettings?.FixedScale?.ResizeTimeout;
             }
             set
             {
-                this.omObject.ResizeTimeout = value;
-            }
-        }
-        
-        public IDictionary ResourceTags
-        {
-            get
-            {
-                if (((this.resourceTags == null) 
-                            && (this.omObject.ResourceTags != null)))
+                if (this.mgmtObject.ScaleSettings == null)
                 {
-                    Dictionary<string, string> dict;
-                    dict = new Dictionary<string, string>();
-                    IEnumerator<KeyValuePair<System.String, System.String>> enumerator;
-                    enumerator = this.omObject.ResourceTags.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        dict.Add(enumerator.Current.Key, enumerator.Current.Value);
-                    }
-                    this.resourceTags = dict;
+                    this.mgmtObject.ScaleSettings = new ScaleSettings();
                 }
-                return this.resourceTags;
-            }
-            set
-            {
-                if ((value == null))
+                if (this.mgmtObject.ScaleSettings.FixedScale == null)
                 {
-                    this.omObject.ResourceTags = null;
+                    this.mgmtObject.ScaleSettings.FixedScale = new FixedScaleSettings();
                 }
-                else
-                {
-                    this.omObject.ResourceTags = new Dictionary<System.String, System.String>();
-                }
-                this.resourceTags = value;
+                this.mgmtObject.ScaleSettings.FixedScale.ResizeTimeout = value;
             }
         }
         
@@ -551,9 +438,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.startTask == null) 
-                            && (this.omObject.StartTask != null)))
+                            && (this.mgmtObject.StartTask != null)))
                 {
-                    this.startTask = new PSStartTask(this.omObject.StartTask);
+                    this.startTask = PSStartTask.fromMgmtStartTask(this.mgmtObject.StartTask);
                 }
                 return this.startTask;
             }
@@ -561,11 +448,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.StartTask = null;
+                    this.mgmtObject.StartTask = null;
                 }
                 else
                 {
-                    this.omObject.StartTask = value.omObject;
+                    this.mgmtObject.StartTask = value.toMgmtStartTask();
                 }
                 this.startTask = value;
             }
@@ -575,7 +462,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.State;
+                return Utils.Utils.toPoolState(this.mgmtObject.ProvisioningState);
             }
         }
         
@@ -583,20 +470,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.StateTransitionTime;
-            }
-        }
-        
-        public PSPoolStatistics Statistics
-        {
-            get
-            {
-                if (((this.statistics == null) 
-                            && (this.omObject.Statistics != null)))
-                {
-                    this.statistics = new PSPoolStatistics(this.omObject.Statistics);
-                }
-                return this.statistics;
+                return this.mgmtObject.AllocationStateTransitionTime;
             }
         }
         
@@ -604,11 +478,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.TargetDedicatedComputeNodes;
+                return this.mgmtObject.ScaleSettings?.FixedScale?.TargetDedicatedNodes;
             }
             set
             {
-                this.omObject.TargetDedicatedComputeNodes = value;
+                if (this.mgmtObject.ScaleSettings == null)
+                {
+                    this.mgmtObject.ScaleSettings = new ScaleSettings();
+                }
+                if (this.mgmtObject.ScaleSettings.FixedScale == null)
+                {
+                    this.mgmtObject.ScaleSettings.FixedScale = new FixedScaleSettings();
+                }
+                this.mgmtObject.ScaleSettings.FixedScale.TargetDedicatedNodes = value;
             }
         }
         
@@ -616,23 +498,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.TargetLowPriorityComputeNodes;
+                return this.mgmtObject.ScaleSettings?.FixedScale?.TargetLowPriorityNodes;
             }
             set
             {
-                this.omObject.TargetLowPriorityComputeNodes = value;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.NodeCommunicationMode? TargetNodeCommunicationMode
-        {
-            get
-            {
-                return this.omObject.TargetNodeCommunicationMode;
-            }
-            set
-            {
-                this.omObject.TargetNodeCommunicationMode = value;
+                if (this.mgmtObject.ScaleSettings == null)
+                {
+                    this.mgmtObject.ScaleSettings = new ScaleSettings();
+                }
+                if (this.mgmtObject.ScaleSettings.FixedScale == null)
+                {
+                    this.mgmtObject.ScaleSettings.FixedScale = new FixedScaleSettings();
+                }
+                this.mgmtObject.ScaleSettings.FixedScale.TargetLowPriorityNodes = value;
             }
         }
         
@@ -641,9 +519,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.taskSchedulingPolicy == null) 
-                            && (this.omObject.TaskSchedulingPolicy != null)))
+                            && (this.mgmtObject.TaskSchedulingPolicy != null)))
                 {
-                    this.taskSchedulingPolicy = new PSTaskSchedulingPolicy(this.omObject.TaskSchedulingPolicy);
+                    this.taskSchedulingPolicy = PSTaskSchedulingPolicy.fromMgmtTaskSchedulingPolicy(this.mgmtObject.TaskSchedulingPolicy);
                 }
                 return this.taskSchedulingPolicy;
             }
@@ -651,11 +529,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.TaskSchedulingPolicy = null;
+                    this.mgmtObject.TaskSchedulingPolicy = null;
                 }
                 else
                 {
-                    this.omObject.TaskSchedulingPolicy = value.omObject;
+                    this.mgmtObject.TaskSchedulingPolicy = value.toMgmtTaskSchedulingPolicy();
                 }
                 this.taskSchedulingPolicy = value;
             }
@@ -665,11 +543,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.TaskSlotsPerNode;
+                return this.mgmtObject.TaskSlotsPerNode;
             }
             set
             {
-                this.omObject.TaskSlotsPerNode = value;
+                this.mgmtObject.TaskSlotsPerNode = value;
             }
         }
         
@@ -678,9 +556,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.upgradePolicy == null) 
-                            && (this.omObject.UpgradePolicy != null)))
+                            && (this.mgmtObject.UpgradePolicy != null)))
                 {
-                    this.upgradePolicy = new PSUpgradePolicy(this.omObject.UpgradePolicy);
+                    this.upgradePolicy = PSUpgradePolicy.fromMgmtUpgradePolicy(this.mgmtObject.UpgradePolicy);
                 }
                 return this.upgradePolicy;
             }
@@ -688,21 +566,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.UpgradePolicy = null;
+                    this.mgmtObject.UpgradePolicy = null;
                 }
                 else
                 {
-                    this.omObject.UpgradePolicy = value.omObject;
+                    this.mgmtObject.UpgradePolicy = value.toMgmtUpgradePolicy();
                 }
                 this.upgradePolicy = value;
-            }
-        }
-        
-        public string Url
-        {
-            get
-            {
-                return this.omObject.Url;
             }
         }
         
@@ -711,17 +581,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 if (((this.userAccounts == null) 
-                            && (this.omObject.UserAccounts != null)))
+                            && (this.mgmtObject.UserAccounts != null)))
                 {
                     List<PSUserAccount> list;
                     list = new List<PSUserAccount>();
-                    IEnumerator<Microsoft.Azure.Batch.UserAccount> enumerator;
-                    enumerator = this.omObject.UserAccounts.GetEnumerator();
+                    IEnumerator<Management.Batch.Models.UserAccount> enumerator;
+                    enumerator = this.mgmtObject.UserAccounts.GetEnumerator();
                     for (
                     ; enumerator.MoveNext(); 
                     )
                     {
-                        list.Add(new PSUserAccount(enumerator.Current));
+                        list.Add( PSUserAccount.fromMgmtUserAccount(enumerator.Current));
                     }
                     this.userAccounts = list;
                 }
@@ -731,11 +601,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.UserAccounts = null;
+                    this.mgmtObject.UserAccounts = null;
                 }
                 else
                 {
-                    this.omObject.UserAccounts = new List<Microsoft.Azure.Batch.UserAccount>();
+                    this.mgmtObject.UserAccounts = new List<Management.Batch.Models.UserAccount>();
+                    foreach (var item in value)
+                    {
+                        this.mgmtObject.UserAccounts.Add(item.toMgmtUserAccount());
+                    }
                 }
                 this.userAccounts = value;
             }
@@ -745,10 +619,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                if (((this.virtualMachineConfiguration == null) 
-                            && (this.omObject.VirtualMachineConfiguration != null)))
+                if (((this.virtualMachineConfiguration == null) && (this.mgmtObject.DeploymentConfiguration != null)
+                            && (this.mgmtObject.DeploymentConfiguration.VirtualMachineConfiguration != null)))
                 {
-                    this.virtualMachineConfiguration = new PSVirtualMachineConfiguration(this.omObject.VirtualMachineConfiguration);
+                    this.virtualMachineConfiguration = PSVirtualMachineConfiguration.fromMgmtPSVirtualMachineConfiguration(this.mgmtObject.DeploymentConfiguration.VirtualMachineConfiguration);
                 }
                 return this.virtualMachineConfiguration;
             }
@@ -756,11 +630,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if ((value == null))
                 {
-                    this.omObject.VirtualMachineConfiguration = null;
+                    if (this.mgmtObject.DeploymentConfiguration == null)
+                    {
+                        this.mgmtObject.DeploymentConfiguration = new Management.Batch.Models.DeploymentConfiguration();
+                    }
+                    this.mgmtObject.DeploymentConfiguration.VirtualMachineConfiguration = null;
                 }
                 else
                 {
-                    this.omObject.VirtualMachineConfiguration = value.omObject;
+                    if (this.mgmtObject.DeploymentConfiguration == null)
+                    {
+                        this.mgmtObject.DeploymentConfiguration = new Management.Batch.Models.DeploymentConfiguration();
+                    }
+                    this.mgmtObject.DeploymentConfiguration.VirtualMachineConfiguration = value.toMgmtVirtualMachineConfiguration();
                 }
                 this.virtualMachineConfiguration = value;
             }
@@ -770,11 +652,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                return this.omObject.VirtualMachineSize;
+                return this.mgmtObject.VMSize;
             }
             set
             {
-                this.omObject.VirtualMachineSize = value;
+                this.mgmtObject.VMSize = value;
             }
         }
     }

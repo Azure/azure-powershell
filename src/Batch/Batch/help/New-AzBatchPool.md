@@ -13,52 +13,17 @@ Creates a pool in the Batch service.
 
 ## SYNTAX
 
-### CloudServiceAndTargetDedicated (Default)
+### VirtualMachineAndTargetDedicated (Default)
 ```
 New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>] [-ResizeTimeout <TimeSpan>]
  [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>] [-TaskSlotsPerNode <Int32>]
  [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
- [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
- [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
- [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
- [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
- [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- [-MountConfiguration <PSMountConfiguration[]>] [-UserAccount <PSUserAccount[]>]
- [-CurrentNodeCommunicationMode <NodeCommunicationMode>] [-TargetNodeCommunicationMode <NodeCommunicationMode>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### VirtualMachineAndTargetDedicated
-```
-New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>] [-ResizeTimeout <TimeSpan>]
- [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>] [-TaskSlotsPerNode <Int32>]
- [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
- [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
- [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
- [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
- [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
+ [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
+ [-StartTask <PSStartTask>]  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
  [-NetworkConfiguration <PSNetworkConfiguration>] [-MountConfiguration <PSMountConfiguration[]>]
- [-UserAccount <PSUserAccount[]>] [-CurrentNodeCommunicationMode <NodeCommunicationMode>]
- [-TargetNodeCommunicationMode <NodeCommunicationMode>] -BatchContext <BatchAccountContext>
+ [-UserAccount <PSUserAccount[]>]  -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CloudServiceAndAutoScale
-```
-New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
- [-AutoScaleEvaluationInterval <TimeSpan>] [-AutoScaleFormula <String>] [-TaskSlotsPerNode <Int32>]
- [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
- [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
- [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
- [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
- [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
- [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
- [-MountConfiguration <PSMountConfiguration[]>] [-UserAccount <PSUserAccount[]>]
- [-CurrentNodeCommunicationMode <NodeCommunicationMode>] [-TargetNodeCommunicationMode <NodeCommunicationMode>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### VirtualMachineAndAutoScale
@@ -66,14 +31,11 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
 New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
  [-AutoScaleEvaluationInterval <TimeSpan>] [-AutoScaleFormula <String>] [-TaskSlotsPerNode <Int32>]
  [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
- [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
- [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
- [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
- [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
+ [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
+ [-StartTask <PSStartTask>]  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
  [-NetworkConfiguration <PSNetworkConfiguration>] [-MountConfiguration <PSMountConfiguration[]>]
- [-UserAccount <PSUserAccount[]>] [-CurrentNodeCommunicationMode <NodeCommunicationMode>]
- [-TargetNodeCommunicationMode <NodeCommunicationMode>] -BatchContext <BatchAccountContext>
+ [-UserAccount <PSUserAccount[]>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -82,15 +44,9 @@ The **New-AzBatchPool** cmdlet creates a pool in the Azure Batch service under t
 
 ## EXAMPLES
 
-### Example 1: Create a new pool using the TargetDedicated parameter set using CloudServiceConfiguration
-```powershell
-$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(4,"*")
-New-AzBatchPool -Id "MyPool" -VirtualMachineSize "STANDARD_D1_V2" -CloudServiceConfiguration $configuration  -TargetDedicatedComputeNodes 3 -BatchContext $Context
-```
-
 The pool is configured to use STANDARD_D1_V2 virtual machines with operating system version of family four.
 
-### Example 2: Create a new pool using the TargetDedicated parameter set using VirtualMachineConfiguration
+### Example 1: Create a new pool using the TargetDedicated parameter set using VirtualMachineConfiguration
 ```powershell
 $imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
 $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
@@ -101,7 +57,7 @@ This command creates a new pool with ID MyPool using the TargetDedicated paramet
 The target allocation is three compute nodes.
 The pool is configured to use STANDARD_D1_V2 virtual machines with the Windows-2016-Datacenter operating system image.
 
-### Example 3: Create a new pool using the AutoScale parameter set
+### Example 2: Create a new pool using the AutoScale parameter set
 ```powershell
 $imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
 $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
@@ -111,7 +67,7 @@ New-AzBatchPool -Id "AutoScalePool" -VirtualMachineSize "STANDARD_D1_V2" -Virtua
 This command creates a new pool with ID AutoScalePool using the AutoScale parameter set.
 The pool is configured to use STANDARD_D1_V2 virtual machines with the Windows-2016-Datacenter operating system image, and the target number of compute nodes are determined by the Autoscale formula.
 
-### Example 4: Create a pool with nodes in a subnet
+### Example 3: Create a pool with nodes in a subnet
 ```powershell
 $imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
 $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
@@ -120,7 +76,7 @@ $networkConfig.SubnetId = "/subscriptions/{subscription}/resourceGroups/{group}/
 New-AzBatchPool -Id "AutoScalePool" -VirtualMachineSize "STANDARD_D1_V2" -VirtualMachineConfiguration $configuration -TargetDedicatedComputeNodes 3 -NetworkConfiguration $networkConfig -BatchContext $Context
 ```
 
-### Example 5: Create a pool with custom user accounts
+### Example 4: Create a pool with custom user accounts
 ```powershell
 $imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
 $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
@@ -129,21 +85,6 @@ New-AzBatchPool -Id "AutoScalePool" -VirtualMachineSize "STANDARD_D1_V2" -Virtua
 ```
 
 ## PARAMETERS
-
-### -ApplicationLicenses
-The list of application licenses the Batch service will make available on each compute node in the pool.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: ApplicationLicense
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ApplicationPackageReferences
 ```yaml
@@ -164,7 +105,7 @@ The default value is 15 minutes, and the minimum value is 5 minutes.
 
 ```yaml
 Type: System.Nullable`1[System.TimeSpan]
-Parameter Sets: CloudServiceAndAutoScale, VirtualMachineAndAutoScale
+Parameter Sets: VirtualMachineAndAutoScale
 Aliases:
 
 Required: False
@@ -179,7 +120,7 @@ Specifies the formula for automatically scaling the pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: CloudServiceAndAutoScale, VirtualMachineAndAutoScale
+Parameter Sets: VirtualMachineAndAutoScale
 Aliases:
 
 Required: False
@@ -202,53 +143,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CertificateReferences
-Specifies certificates associated with the pool.
-The Batch service installs the referenced certificates on each compute node of the pool.
-
-```yaml
-Type: Microsoft.Azure.Commands.Batch.Models.PSCertificateReference[]
-Parameter Sets: (All)
-Aliases: CertificateReference
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CloudServiceConfiguration
-Specifies configuration settings for a pool based on the Azure cloud service platform.
-
-```yaml
-Type: Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration
-Parameter Sets: CloudServiceAndTargetDedicated, CloudServiceAndAutoScale
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CurrentNodeCommunicationMode
-The current pool communication mode.
-
-```yaml
-Type: Microsoft.Azure.Batch.Common.NodeCommunicationMode
-Parameter Sets: (All)
-Aliases:
-Accepted values: Default, Classic, Simplified
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -364,22 +258,7 @@ Specifies the time-out for allocating compute nodes to the pool.
 
 ```yaml
 Type: System.Nullable`1[System.TimeSpan]
-Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceTag
-The user  defined tags to be associated with the Azure Batch Pool.When specified, these tags are propagated to the backing Azure resources associated with the pool.This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
-
-```yaml
-Type: System.Collections.IDictionary
-Parameter Sets: (All)
+Parameter Sets: VirtualMachineAndTargetDedicated
 Aliases:
 
 Required: False
@@ -410,7 +289,7 @@ Specifies the target number of dedicated compute nodes to allocate to the pool.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
+Parameter Sets: VirtualMachineAndTargetDedicated
 Aliases: TargetDedicated
 
 Required: False
@@ -425,24 +304,8 @@ Specifies the target number of low-priority compute nodes to allocate to the poo
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
+Parameter Sets: VirtualMachineAndTargetDedicated
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetNodeCommunicationMode
-The desired node communication mode for the pool.
-
-```yaml
-Type: Microsoft.Azure.Batch.Common.NodeCommunicationMode
-Parameter Sets: (All)
-Aliases:
-Accepted values: Default, Classic, Simplified
 
 Required: False
 Position: Named

@@ -31,9 +31,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
     
     public partial class PSNameValuePair
     {
-        
+        internal string _name;
+        internal string _value;
+
         internal Microsoft.Azure.Batch.NameValuePair omObject;
-        
+
         internal PSNameValuePair(Microsoft.Azure.Batch.NameValuePair omObject)
         {
             if ((omObject == null))
@@ -42,11 +44,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             this.omObject = omObject;
         }
+
+        internal PSNameValuePair(string name, string value)
+        {
+            this._name = name;
+            this._value = value;
+        }
         
         public string Name
         {
             get
             {
+                if (this.omObject == null)
+                {
+                    return this._name;
+                }
                 return this.omObject.Name;
             }
         }
@@ -55,6 +67,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
+                if (this.omObject == null)
+                {
+                    return this._value;
+                }
                 return this.omObject.Value;
             }
         }

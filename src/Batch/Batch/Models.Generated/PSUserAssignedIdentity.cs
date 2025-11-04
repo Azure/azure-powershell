@@ -27,13 +27,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
-    
-    
+    using Microsoft.Azure.Management.Batch.Models;
+
     public partial class PSUserAssignedIdentity
     {
         
         internal Microsoft.Azure.Batch.UserAssignedIdentity omObject;
-        
+        internal Microsoft.Azure.Management.Batch.Models.UserAssignedIdentities mgmtObject;
+        internal string mgmtResourceId;
+
         public PSUserAssignedIdentity(string resourceId)
         {
             this.omObject = new Microsoft.Azure.Batch.UserAssignedIdentity(resourceId);
@@ -47,11 +49,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             this.omObject = omObject;
         }
-        
+        internal PSUserAssignedIdentity(string resourceId, Microsoft.Azure.Management.Batch.Models.UserAssignedIdentities mgmtObject)
+        {
+            if ((mgmtObject == null))
+            {
+                throw new System.ArgumentNullException("mgmtObject");
+            }
+            this.mgmtObject = mgmtObject;
+            this.mgmtResourceId = resourceId;
+        }
+
         public string ClientId
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.ClientId;
+                }
                 return this.omObject.ClientId;
             }
         }
@@ -60,6 +75,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.PrincipalId;
+                }
                 return this.omObject.PrincipalId;
             }
         }
@@ -68,12 +87,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
+                if (mgmtResourceId != null)
+                {
+                    return mgmtResourceId;
+                }
                 return this.omObject.ResourceId;
             }
             set
             {
-                this.omObject.ResourceId = value;
+                if (this.omObject != null) { 
+                    this.omObject.ResourceId = value;
+                    return;
+                }
+
+                mgmtResourceId = value;
             }
+
         }
     }
 }

@@ -27,15 +27,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
-    
-    
+
     public partial class PSResizeError
     {
         
         internal Microsoft.Azure.Batch.ResizeError omObject;
         
         private IReadOnlyList<PSNameValuePair> values;
-        
+        internal Management.Batch.Models.ResizeError mgmtObject;
+
         internal PSResizeError(Microsoft.Azure.Batch.ResizeError omObject)
         {
             if ((omObject == null))
@@ -44,11 +44,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             this.omObject = omObject;
         }
-        
+
+        internal PSResizeError(Microsoft.Azure.Management.Batch.Models.ResizeError mgmtObject)
+        {
+            if ((mgmtObject == null))
+            {
+                throw new System.ArgumentNullException("mgmtObject");
+            }
+            this.mgmtObject = mgmtObject;
+        }
+
         public string Code
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.Code;
+                }
                 return this.omObject.Code;
             }
         }
@@ -57,6 +70,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.Message;
+                }
                 return this.omObject.Message;
             }
         }
@@ -65,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                if (((this.values == null) 
+                if (((this.values == null) && (this.omObject != null)
                             && (this.omObject.Values != null)))
                 {
                     List<PSNameValuePair> list;
@@ -80,6 +97,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
                     this.values = list;
                 }
+
+                if (((this.values == null) && (this.mgmtObject != null)
+                            && (this.mgmtObject.Details != null)))
+                {
+                    List<PSNameValuePair> list;
+                    list = new List<PSNameValuePair>();
+                    IEnumerator<Management.Batch.Models.ResizeError> enumerator;
+                    enumerator = this.mgmtObject.Details.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext();
+                    )
+                    {
+                        list.Add(new PSNameValuePair(enumerator.Current.Code, enumerator.Current.Message));
+                    }
+                    this.values = list;
+                }
+
                 return this.values;
             }
         }

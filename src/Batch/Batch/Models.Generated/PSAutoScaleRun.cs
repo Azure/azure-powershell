@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
     {
         
         internal Microsoft.Azure.Batch.AutoScaleRun omObject;
-        
+        internal Microsoft.Azure.Management.Batch.Models.AutoScaleRun mgmtObject;
+
         private PSAutoScaleRunError error;
         
         internal PSAutoScaleRun(Microsoft.Azure.Batch.AutoScaleRun omObject)
@@ -44,16 +45,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             this.omObject = omObject;
         }
-        
+
+        internal PSAutoScaleRun(Microsoft.Azure.Management.Batch.Models.AutoScaleRun mgmtObject)
+        {
+            if ((mgmtObject == null))
+            {
+                throw new System.ArgumentNullException("mgmtObject");
+            }
+            this.mgmtObject = mgmtObject;
+        }
+
         public PSAutoScaleRunError Error
         {
             get
             {
-                if (((this.error == null) 
-                            && (this.omObject.Error != null)))
+                if (((this.error == null)
+                            && (this.omObject != null) && (this.omObject.Error != null)))
                 {
                     this.error = new PSAutoScaleRunError(this.omObject.Error);
                 }
+                if (((this.error == null) && (this.mgmtObject != null)
+                            && (this.mgmtObject.Error != null)))
+                {
+                    this.error = new PSAutoScaleRunError(this.mgmtObject.Error);
+                }
+
                 return this.error;
             }
         }
@@ -62,6 +78,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.Results;
+                }
                 return this.omObject.Results;
             }
         }
@@ -70,6 +90,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
+                if (this.mgmtObject != null)
+                {
+                    return this.mgmtObject.EvaluationTime;
+                }
                 return this.omObject.Timestamp;
             }
         }

@@ -27,15 +27,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Batch;
-    
-    
+
     public partial class PSBatchPoolIdentity
     {
         
         internal Microsoft.Azure.Batch.BatchPoolIdentity omObject;
         
         private IList<PSUserAssignedIdentity> userAssignedIdentities;
-        
+        internal Management.Batch.Models.BatchPoolIdentity mgmtObject;
+
         internal PSBatchPoolIdentity(Microsoft.Azure.Batch.BatchPoolIdentity omObject)
         {
             if ((omObject == null))
@@ -44,15 +44,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             this.omObject = omObject;
         }
-        
+
+        internal PSBatchPoolIdentity(Microsoft.Azure.Management.Batch.Models.BatchPoolIdentity mgmtObject)
+        {
+            if ((mgmtObject == null))
+            {
+                throw new System.ArgumentNullException("mgmtObject");
+            }
+            this.mgmtObject = mgmtObject;
+        }
+
         public Microsoft.Azure.Batch.Common.PoolIdentityType Type
         {
             get
             {
+                if ((this.mgmtObject != null)) {
+                    return (Microsoft.Azure.Batch.Common.PoolIdentityType)Enum.Parse(typeof(Microsoft.Azure.Batch.Common.PoolIdentityType), this.mgmtObject.Type.ToString());
+                }
                 return this.omObject.Type;
             }
             set
             {
+                if (this.mgmtObject != null) {
+                    this.mgmtObject.Type = (Management.Batch.Models.PoolIdentityType)Enum.Parse(typeof(Management.Batch.Models.PoolIdentityType), value.ToString());
+                    return;
+                }
                 this.omObject.Type = value;
             }
         }
@@ -61,7 +77,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             get
             {
-                if (((this.userAssignedIdentities == null) 
+                if (((this.userAssignedIdentities == null) && (this.omObject != null)
                             && (this.omObject.UserAssignedIdentities != null)))
                 {
                     List<PSUserAssignedIdentity> list;
@@ -76,17 +92,36 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
                     this.userAssignedIdentities = list;
                 }
+
+                if (((this.userAssignedIdentities == null) && (this.mgmtObject != null)
+                            && (this.mgmtObject.UserAssignedIdentities != null)))
+                {
+                    List<PSUserAssignedIdentity> list;
+                    list = new List<PSUserAssignedIdentity>();
+                    IEnumerator<KeyValuePair<string, Management.Batch.Models.UserAssignedIdentities>> enumerator;
+                    enumerator = this.mgmtObject.UserAssignedIdentities.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext();
+                    )
+                    {
+                        list.Add(new PSUserAssignedIdentity(enumerator.Current.Key, enumerator.Current.Value));
+                    }
+                    this.userAssignedIdentities = list;
+                }
+
                 return this.userAssignedIdentities;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.UserAssignedIdentities = null;
+                    if(this.mgmtObject != null) this.mgmtObject.UserAssignedIdentities = null;
+                    if(this.omObject != null) this.omObject.UserAssignedIdentities = null;
                 }
                 else
                 {
-                    this.omObject.UserAssignedIdentities = new List<Microsoft.Azure.Batch.UserAssignedIdentity>();
+                    if(this.mgmtObject != null) this.mgmtObject.UserAssignedIdentities = new Dictionary<string, Management.Batch.Models.UserAssignedIdentities>();
+                    if(this.omObject != null) this.omObject.UserAssignedIdentities = new List<Microsoft.Azure.Batch.UserAssignedIdentity>();
                 }
                 this.userAssignedIdentities = value;
             }

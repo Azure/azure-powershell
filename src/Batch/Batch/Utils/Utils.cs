@@ -14,9 +14,11 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Utils
@@ -37,11 +39,6 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 (apr) =>
                 {
                     return ConvertApplicationPackageReference(apr);
-                });
-                pool.omObject.CertificateReferences = CreateSyncedList(pool.CertificateReferences,
-                (c) =>
-                {
-                    return ConvertCertificateReference(c);
                 });
 
                 pool.omObject.Metadata = CreateSyncedDict(pool.Metadata, ConvertMetadataItem);
@@ -135,7 +132,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
                     a =>
                     {
-                        ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference
+                        Microsoft.Azure.Batch.ApplicationPackageReference applicationPackageReference = new Microsoft.Azure.Batch.ApplicationPackageReference
                         {
                             ApplicationId = a.ApplicationId,
                             Version = a.Version
@@ -210,12 +207,6 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (spec != null)
             {
-                spec.omObject.CertificateReferences = CreateSyncedList(spec.CertificateReferences,
-                    (c) =>
-                    {
-                        return ConvertCertificateReference(c);
-                    });
-
                 spec.omObject.Metadata = CreateSyncedDict(
                     spec.Metadata,
                     ConvertMetadataItem);
@@ -223,7 +214,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 spec.omObject.ApplicationPackageReferences = CreateSyncedList(spec.ApplicationPackageReferences,
                     (apr) =>
                     {
-                        return new ApplicationPackageReference()
+                        return new Microsoft.Azure.Batch.ApplicationPackageReference()
                         {
                             ApplicationId = apr.ApplicationId,
                             Version = apr.Version
@@ -233,7 +224,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 spec.omObject.UserAccounts = CreateSyncedList(spec.UserAccounts,
                     (user) =>
                     {
-                        return new UserAccount(
+                        return new Microsoft.Azure.Batch.UserAccount(
                             user.Name,
                             user.Password,
                             user.ElevationLevel,
@@ -293,7 +284,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             {
                 if (virtualMachineConfiguration.omObject.ContainerConfiguration != null)
                 {
-                    virtualMachineConfiguration.omObject.ContainerConfiguration.ContainerImageNames = 
+                    virtualMachineConfiguration.omObject.ContainerConfiguration.ContainerImageNames =
                         CreateSyncedList(virtualMachineConfiguration.ContainerConfiguration.ContainerImageNames, s => s);
 
                     virtualMachineConfiguration.omObject.ContainerConfiguration.ContainerRegistries =
@@ -356,33 +347,16 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             return omList;
         }
 
-        /// <summary>
-        /// Converts a PSCertificateReference to a CertificateReference
-        /// </summary>
-        private static MetadataItem ConvertMetadataItem(string key, string value) => new MetadataItem(key, value);
+        private static Microsoft.Azure.Batch.MetadataItem ConvertMetadataItem(string key, string value) => new Microsoft.Azure.Batch.MetadataItem(key, value);
 
-        private static EnvironmentSetting ConvertEnvironmentSetting(string key, string value) => new EnvironmentSetting(key, value);
-
-        /// <summary>
-        /// Converts a PSCertificateReference to a CertificateReference
-        /// </summary>
-        private static CertificateReference ConvertCertificateReference(PSCertificateReference psCert)
-        {
-            CertificateReference certReference = new CertificateReference();
-            certReference.StoreLocation = psCert.StoreLocation;
-            certReference.StoreName = psCert.StoreName;
-            certReference.Thumbprint = psCert.Thumbprint;
-            certReference.ThumbprintAlgorithm = psCert.ThumbprintAlgorithm;
-            certReference.Visibility = psCert.Visibility;
-            return certReference;
-        }
+        private static Microsoft.Azure.Batch.EnvironmentSetting ConvertEnvironmentSetting(string key, string value) => new Microsoft.Azure.Batch.EnvironmentSetting(key, value);
 
         /// <summary>
         /// Converts a PSApplicationPackageReference to a ApplicationPackageReference
         /// </summary>
-        private static ApplicationPackageReference ConvertApplicationPackageReference(PSApplicationPackageReference psApr)
+        private static Microsoft.Azure.Batch.ApplicationPackageReference ConvertApplicationPackageReference(PSApplicationPackageReference psApr)
         {
-            ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference()
+            Microsoft.Azure.Batch.ApplicationPackageReference applicationPackageReference = new Microsoft.Azure.Batch.ApplicationPackageReference()
             {
                 ApplicationId = psApr.ApplicationId,
                 Version = psApr.Version
@@ -398,8 +372,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     exitConditions.ExitCodeRanges,
                     (e) =>
                     {
-                            ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, e.omObject.ExitOptions);
-                            return exitCodeRangeMapping;
+                        ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, e.omObject.ExitOptions);
+                        return exitCodeRangeMapping;
                     });
                 exitConditions.omObject.ExitCodes = CreateSyncedList(exitConditions.ExitCodes,
                     (e) =>
@@ -410,27 +384,27 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             }
         }
 
-        internal static ResourceFile ConvertResourceFile(PSResourceFile psResourceFile)
+        internal static Microsoft.Azure.Batch.ResourceFile ConvertResourceFile(PSResourceFile psResourceFile)
         {
             if (!string.IsNullOrEmpty(psResourceFile.AutoStorageContainerName))
             {
-                return ResourceFile.FromAutoStorageContainer(
+                return Microsoft.Azure.Batch.ResourceFile.FromAutoStorageContainer(
                     psResourceFile.AutoStorageContainerName,
                     filePath: psResourceFile.FilePath,
                     blobPrefix: psResourceFile.BlobPrefix,
                     fileMode: psResourceFile.FileMode);
             }
-            else if(!string.IsNullOrEmpty(psResourceFile.StorageContainerUrl))
+            else if (!string.IsNullOrEmpty(psResourceFile.StorageContainerUrl))
             {
-                return ResourceFile.FromStorageContainerUrl(
+                return Microsoft.Azure.Batch.ResourceFile.FromStorageContainerUrl(
                     psResourceFile.StorageContainerUrl,
                     filePath: psResourceFile.FilePath,
                     blobPrefix: psResourceFile.BlobPrefix,
                     fileMode: psResourceFile.FileMode);
             }
-            else if(!string.IsNullOrEmpty(psResourceFile.HttpUrl))
+            else if (!string.IsNullOrEmpty(psResourceFile.HttpUrl))
             {
-                return ResourceFile.FromUrl(
+                return Microsoft.Azure.Batch.ResourceFile.FromUrl(
                    psResourceFile.HttpUrl,
                    filePath: psResourceFile.FilePath,
                    fileMode: psResourceFile.FileMode);
@@ -440,5 +414,458 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 throw new ArgumentException($"ResourceFile missing expected fields");
             }
         }
+
+        internal static UpgradeMode toMgmtUpgradeMode(Azure.Batch.Common.UpgradeMode psUpgradeMode)
+        {
+            switch (psUpgradeMode)
+            {
+                case Azure.Batch.Common.UpgradeMode.Manual:
+                    return UpgradeMode.Manual;
+                case Azure.Batch.Common.UpgradeMode.Automatic:
+                    return UpgradeMode.Automatic;
+                case Azure.Batch.Common.UpgradeMode.Rolling:
+                    return UpgradeMode.Rolling;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(psUpgradeMode), psUpgradeMode, null);
+            }
+        }
+
+        internal static Azure.Batch.Common.UpgradeMode fromMgmtUpgradeMode(UpgradeMode mgmtUpgradeMode)
+        {
+            switch (mgmtUpgradeMode)
+            {
+                case UpgradeMode.Manual:
+                    return Azure.Batch.Common.UpgradeMode.Manual;
+                case UpgradeMode.Automatic:
+                    return Azure.Batch.Common.UpgradeMode.Automatic;
+                case UpgradeMode.Rolling:
+                    return Azure.Batch.Common.UpgradeMode.Rolling;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mgmtUpgradeMode), mgmtUpgradeMode, null);
+            }
+        }
+
+        internal static ComputeNodeFillType toMgmtComputeNodeFillType(Azure.Batch.Common.ComputeNodeFillType psComputeNodeFillType)
+        {
+            switch (psComputeNodeFillType)
+            {
+                case Azure.Batch.Common.ComputeNodeFillType.Pack:
+                    return ComputeNodeFillType.Pack;
+                case Azure.Batch.Common.ComputeNodeFillType.Spread:
+                    return ComputeNodeFillType.Spread;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(psComputeNodeFillType), psComputeNodeFillType, null);
+            }
+        }
+
+        internal static Azure.Batch.Common.ComputeNodeFillType fromMgmtComputeNodeFillType(ComputeNodeFillType mgmtComputeNodeFillType)
+        {
+            switch (mgmtComputeNodeFillType)
+            {
+                case ComputeNodeFillType.Pack:
+                    return Azure.Batch.Common.ComputeNodeFillType.Pack;
+                case ComputeNodeFillType.Spread:
+                    return Azure.Batch.Common.ComputeNodeFillType.Spread;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mgmtComputeNodeFillType), mgmtComputeNodeFillType, null);
+            }
+        }
+
+        internal static ContainerWorkingDirectory? toMgmtContainerWorkingDirectory(Azure.Batch.Common.ContainerWorkingDirectory? value)
+        {
+            if (!value.HasValue)
+            {
+                return null;
+            }
+            switch (value)
+            {
+                case Azure.Batch.Common.ContainerWorkingDirectory.TaskWorkingDirectory:
+                    return ContainerWorkingDirectory.TaskWorkingDirectory;
+                case Azure.Batch.Common.ContainerWorkingDirectory.ContainerImageDefault:
+                    return ContainerWorkingDirectory.ContainerImageDefault;
+                default:
+                    return null;
+            }
+        }
+
+        internal static Azure.Batch.Common.ContainerWorkingDirectory? fromMgmtContainerWorkingDirectory(ContainerWorkingDirectory? value)
+        {
+            if (!value.HasValue)
+            {
+                return null;
+            }
+            switch (value.Value)
+            {
+                case ContainerWorkingDirectory.TaskWorkingDirectory:
+                    return Azure.Batch.Common.ContainerWorkingDirectory.TaskWorkingDirectory;
+                case ContainerWorkingDirectory.ContainerImageDefault:
+                    return Azure.Batch.Common.ContainerWorkingDirectory.ContainerImageDefault;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
+            }
+        }
+
+        internal static IList<Management.Batch.Models.ContainerHostBatchBindMountEntry> toMgmtContainerHostBatchBindMounts(IList<PSContainerHostBatchBindMountEntry> containerHostBatchBindMounts)
+        {
+            if (containerHostBatchBindMounts == null)
+            {
+                return null;
+            }
+            List<Management.Batch.Models.ContainerHostBatchBindMountEntry> mgmtContainerHostBatchBindMounts = new List<Management.Batch.Models.ContainerHostBatchBindMountEntry>();
+
+            foreach (var mount in containerHostBatchBindMounts)
+            {
+                mgmtContainerHostBatchBindMounts.Add(new Management.Batch.Models.ContainerHostBatchBindMountEntry
+                {
+                    Source = mount.Source,
+                    IsReadOnly = mount.IsReadOnly
+                });
+            }
+            return mgmtContainerHostBatchBindMounts;
+        }
+
+        internal static IList<PSContainerHostBatchBindMountEntry> fromMgmtContainerHostBatchBindMounts(IList<Management.Batch.Models.ContainerHostBatchBindMountEntry> containerHostBatchBindMounts)
+        {
+            if (containerHostBatchBindMounts == null)
+            {
+                return null;
+            }
+            List<PSContainerHostBatchBindMountEntry> psContainerHostBatchBindMounts = new List<PSContainerHostBatchBindMountEntry>();
+            foreach (var mount in containerHostBatchBindMounts)
+            {
+                psContainerHostBatchBindMounts.Add(new PSContainerHostBatchBindMountEntry
+                {
+                    Source = mount.Source,
+                    IsReadOnly = mount.IsReadOnly
+                });
+            }
+            return psContainerHostBatchBindMounts;
+        }
+
+        internal static IList<Management.Batch.Models.EnvironmentSetting> toMgmtEnvironmentSettings(IDictionary psEnvironmentSettings)
+        {
+            if (psEnvironmentSettings == null)
+            {
+                return null;
+            }
+
+            List<Management.Batch.Models.EnvironmentSetting> mgmtEnvironmentSettings = new List<Management.Batch.Models.EnvironmentSetting>();
+            foreach (DictionaryEntry item in psEnvironmentSettings)
+            {
+                if (!(item.Key is string) || !(item.Value is string))
+                {
+                    throw new ArgumentException("EnvironmentSettings dictionary must have string keys and string values");
+                }
+                mgmtEnvironmentSettings.Add(new Management.Batch.Models.EnvironmentSetting
+                {
+                    Name = (string)item.Key,
+                    Value = (string)item.Value
+                });
+            }
+            return mgmtEnvironmentSettings;
+        }
+
+        internal static IDictionary fromMgmtEnvironmentSettings(IList<Management.Batch.Models.EnvironmentSetting> mgmtEnvironmentSettings)
+        {
+            if (mgmtEnvironmentSettings == null)
+            {
+                return null;
+            }
+            Dictionary<string, string> psEnvironmentSettings = new Dictionary<string, string>();
+            foreach (var item in mgmtEnvironmentSettings)
+            {
+                psEnvironmentSettings.Add(item.Name, item.Value);
+            }
+            return psEnvironmentSettings;
+        }
+
+        internal static IList<Management.Batch.Models.ResourceFile> toMgmtResourceFiles(IList<PSResourceFile> resourceFiles)
+        {
+            if (resourceFiles == null)
+            {
+                return null;
+            }
+            List<Management.Batch.Models.ResourceFile> mgmtResourceFiles = new List<Management.Batch.Models.ResourceFile>();
+            foreach (var psResourceFile in resourceFiles)
+            {
+                mgmtResourceFiles.Add(new Management.Batch.Models.ResourceFile
+                {
+                    AutoStorageContainerName = psResourceFile.AutoStorageContainerName,
+                    StorageContainerUrl = psResourceFile.StorageContainerUrl,
+                    HttpUrl = psResourceFile.HttpUrl,
+                    BlobPrefix = psResourceFile.BlobPrefix,
+                    FilePath = psResourceFile.FilePath,
+                    FileMode = psResourceFile.FileMode,
+                    IdentityReference = psResourceFile.IdentityReference.toMgmtIdentityReference()
+                });
+            }
+            return mgmtResourceFiles;
+        }
+
+        internal static IList<PSResourceFile> fromMgmtResourceFiles(IList<Management.Batch.Models.ResourceFile> resourceFiles)
+        {
+            if (resourceFiles == null)
+            {
+                return null;
+            }
+            List<PSResourceFile> psResourceFiles = new List<PSResourceFile>();
+            foreach (var mgmtResourceFile in resourceFiles)
+            {
+                Microsoft.Azure.Batch.ComputeNodeIdentityReference identityReference = PSComputeNodeIdentityReference.fromMgmtIdentityReference(mgmtResourceFile.IdentityReference);
+                Microsoft.Azure.Batch.ResourceFile resourceFile;
+                if (!string.IsNullOrEmpty(mgmtResourceFile.HttpUrl))
+                {
+                    resourceFile = Microsoft.Azure.Batch.ResourceFile.FromUrl(mgmtResourceFile.HttpUrl, mgmtResourceFile.FilePath, fileMode: mgmtResourceFile.FileMode);
+                }
+                else if (!string.IsNullOrEmpty(mgmtResourceFile.StorageContainerUrl))
+                {
+                    resourceFile = Microsoft.Azure.Batch.ResourceFile.FromStorageContainerUrl(
+                        storageContainerUrl: mgmtResourceFile.StorageContainerUrl,
+                        identityReference: identityReference,
+                        mgmtResourceFile.FilePath,
+                        blobPrefix: mgmtResourceFile.BlobPrefix,
+                        fileMode: mgmtResourceFile.FileMode);
+                }
+                else
+                {
+                    resourceFile = Microsoft.Azure.Batch.ResourceFile.FromAutoStorageContainer(mgmtResourceFile.AutoStorageContainerName, mgmtResourceFile.FilePath, blobPrefix: mgmtResourceFile.BlobPrefix, fileMode: mgmtResourceFile.FileMode);
+                }
+
+
+                psResourceFiles.Add(new PSResourceFile(resourceFile));
+            }
+            return psResourceFiles;
+        }
+
+        internal static ElevationLevel? toMgmtElevationLevel(Azure.Batch.Common.ElevationLevel? elevationLevel)
+        {
+            if (!elevationLevel.HasValue)
+            {
+                return null;
+            }
+            return (ElevationLevel)elevationLevel.Value;
+        }
+
+        internal static Azure.Batch.Common.ElevationLevel? fromMgmtElevationLevel(ElevationLevel? elevationLevel)
+        {
+            if (!elevationLevel.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.ElevationLevel)elevationLevel.Value;
+        }
+
+        internal static AutoUserScope? toMgmtAutoUserScope(Azure.Batch.Common.AutoUserScope? scope)
+        {
+            if (!scope.HasValue)
+            {
+                return null;
+            }
+            return (AutoUserScope)scope.Value;
+        }
+
+        internal static Azure.Batch.Common.AutoUserScope fromMgmtAutoUserScope(AutoUserScope? scope)
+        {
+            return (Azure.Batch.Common.AutoUserScope)scope.Value;
+        }
+
+        internal static CachingType? toMgmtCaching(Azure.Batch.Common.CachingType? caching)
+        {
+            if (!caching.HasValue)
+            {
+                return null;
+            }
+            return (CachingType)caching.Value;
+        }
+
+        internal static Azure.Batch.Common.CachingType? fromMgmtCaching(CachingType? caching)
+        {
+            if (!caching.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.CachingType)caching.Value;
+        }
+
+        internal static StorageAccountType? toMgmtStorageAccountType(Azure.Batch.Common.StorageAccountType? storageAccountType)
+        {
+            if (!storageAccountType.HasValue)
+            {
+                return null;
+            }
+            return (StorageAccountType)storageAccountType.Value;
+        }
+
+        internal static Azure.Batch.Common.StorageAccountType? fromMgmtStorageAccountType(StorageAccountType? storageAccountType)
+        {
+            if (!storageAccountType.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.StorageAccountType)storageAccountType.Value;
+        }
+
+        internal static DiskEncryptionTarget toMgmtDiskEncryptionTarget(Azure.Batch.Common.DiskEncryptionTarget md)
+        {
+            return (DiskEncryptionTarget)md;
+        }
+
+        internal static Azure.Batch.Common.DiskEncryptionTarget fromMgmtDiskEncryptionTarget(DiskEncryptionTarget md)
+        {
+            return (Azure.Batch.Common.DiskEncryptionTarget)md;
+        }
+
+        internal static NodePlacementPolicyType? toMgmtNodePlacementPolicyType(Azure.Batch.Common.NodePlacementPolicyType? policy)
+        {
+            return (NodePlacementPolicyType?)policy;
+        }
+
+        internal static Azure.Batch.Common.NodePlacementPolicyType? fromMgmtNodePlacementPolicyType(NodePlacementPolicyType? policy)
+        {
+            return (Azure.Batch.Common.NodePlacementPolicyType?)policy;
+        }
+
+        internal static StorageAccountType? ToMgmtStorageAccountType(Azure.Batch.Common.StorageAccountType? storageAccountType)
+        {
+            return (StorageAccountType?)storageAccountType;
+        }
+
+        internal static Azure.Batch.Common.StorageAccountType? FromMgmtStorageAccountType(StorageAccountType? storageAccountType)
+        {
+            return (Azure.Batch.Common.StorageAccountType?)storageAccountType;
+        }
+
+        internal static Azure.Batch.Common.DiffDiskPlacement? FromMgmtPlacement(DiffDiskPlacement? placement)
+        {
+            return (Azure.Batch.Common.DiffDiskPlacement?)placement;
+        }
+
+        internal static DiffDiskPlacement? ToMgmtPlacement(Azure.Batch.Common.DiffDiskPlacement? placement)
+        {
+            return (DiffDiskPlacement?)placement;
+        }
+
+        internal static SecurityTypes? ToMgmtSecurityType(Azure.Batch.Common.SecurityTypes? securityType)
+        {
+            if (!securityType.HasValue)
+            {
+                return null;
+            }
+            return (SecurityTypes?)securityType;
+        }
+
+        internal static Azure.Batch.Common.SecurityTypes? fromMgmtSecurityType(SecurityTypes? securityType)
+        {
+            if (!securityType.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.SecurityTypes?)securityType;
+        }
+
+        internal static Azure.Batch.Common.IPAddressProvisioningType? toIPAddressProvisioningType(IPAddressProvisioningType? provision)
+        {
+            if (!provision.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.IPAddressProvisioningType)provision;
+        }
+
+        internal static IPAddressProvisioningType? toMgmtIPAddressProvisioningType(Azure.Batch.Common.IPAddressProvisioningType? provision)
+        {
+            if (!provision.HasValue)
+            {
+                return null;
+            }
+            return (IPAddressProvisioningType)provision;
+        }
+
+        internal static DynamicVNetAssignmentScope? toMgmtDynamicVNetAssignmentScope(Azure.Batch.Common.DynamicVNetAssignmentScope? dynamicVNetAssignmentScope)
+        {
+            if (!dynamicVNetAssignmentScope.HasValue)
+            {
+                return null;
+            }
+            return (DynamicVNetAssignmentScope)dynamicVNetAssignmentScope;
+        }
+
+        internal static Azure.Batch.Common.DynamicVNetAssignmentScope? fromMgmtDynamicVNetAssignmentScope(DynamicVNetAssignmentScope? dynamicVnetAssignmentScope)
+        {
+            if (!dynamicVnetAssignmentScope.HasValue)
+            {
+                return null;
+            }
+            return (Azure.Batch.Common.DynamicVNetAssignmentScope)dynamicVnetAssignmentScope;
+        }
+
+        internal static InboundEndpointProtocol ToMgmtInboundEndpointProtocol(Azure.Batch.Common.InboundEndpointProtocol protocol)
+        {
+            return (InboundEndpointProtocol)protocol;
+        }
+
+        internal static Azure.Batch.Common.InboundEndpointProtocol FromMgmtInboundEndpointProtocol(InboundEndpointProtocol protocol)
+        {
+            return (Azure.Batch.Common.InboundEndpointProtocol)protocol;
+        }
+
+        internal static NetworkSecurityGroupRuleAccess ToMgmtNetworkSecurityRuleAccess(Azure.Batch.Common.NetworkSecurityGroupRuleAccess access)
+        {
+            return (NetworkSecurityGroupRuleAccess)access;
+        }
+
+        internal static Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess FromMgmtNetworkSecurityRuleAccess(NetworkSecurityGroupRuleAccess access)
+        {
+            return (Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess)access;
+        }
+
+        internal static ElevationLevel? ToMgmtElevationLevel(Azure.Batch.Common.ElevationLevel? elevationLevel)
+        {
+            return (ElevationLevel?)elevationLevel;
+        }
+
+        internal static Azure.Batch.Common.ElevationLevel? FromMgmtElevationLevel(ElevationLevel? elevationLevel)
+        {
+            return (Azure.Batch.Common.ElevationLevel?)elevationLevel;
+        }
+
+        internal static LoginMode? ToMgmtLoginMode(Azure.Batch.Common.LoginMode? loginMode)
+        {
+            return (LoginMode?)loginMode;
+        }
+
+        internal static Azure.Batch.Common.LoginMode? FromMgmtLoginMode(LoginMode? loginMode)
+        {
+            return (Azure.Batch.Common.LoginMode?)loginMode;
+        }
+
+        internal static Azure.Batch.Common.AllocationState? ToPSAllocationState(AllocationState? allocationState)
+        {
+            return (Azure.Batch.Common.AllocationState?)allocationState;
+        }
+
+        internal static AllocationState? FromPSAllocationState(Azure.Batch.Common.AllocationState? allocationState)
+        {
+            return (AllocationState?)allocationState;
+        }
+
+        internal static Azure.Batch.Common.PoolState? toPoolState(PoolProvisioningState? provisioningState)
+        {
+            if (!provisioningState.HasValue)
+            {
+                return null;
+            }
+
+            switch (provisioningState)
+            {
+                case PoolProvisioningState.Succeeded:
+                    return Azure.Batch.Common.PoolState.Active;
+                case PoolProvisioningState.Deleting:
+                    return Azure.Batch.Common.PoolState.Deleting;
+                default:
+                    return null;
+            }
+        }
     }
 }
+    

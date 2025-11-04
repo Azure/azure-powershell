@@ -5,19 +5,19 @@
       "EncodedRequestUri": "L3Bvb2xzL21waVBvb2w/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "2296abaa-2232-4a1e-81c4-39184a905dd0"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "b5b5d553-a00c-4b91-a779-4b0bfb82be43"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -28,7 +28,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "bc0db366-3383-46b7-8101-249ef24fe254"
+          "b6a11b89-7136-4042-ad72-6c8ed2b3d3c0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -40,16 +40,16 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "Content-Length": [
-          "334"
+          "344"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"PoolNotFound\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified pool does not exist.\\nRequestId:bc0db366-3383-46b7-8101-249ef24fe254\\nTime:2024-11-13T21:27:03.9654679Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"PoolNotFound\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified pool does not exist.\\nRequestId:b6a11b89-7136-4042-ad72-6c8ed2b3d3c0\\nTime:2025-09-11T22:43:31.3770013Z\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -57,19 +57,19 @@
       "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "POST",
       "RequestHeaders": {
-        "client-request-id": [
-          "acf32b30-779b-45a9-803a-c4b898a80f01"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "46492e0f-d8d6-4b37-9c6a-a46217ca3663"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
@@ -86,16 +86,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DD0429EB106F6E"
+          "0x8DDF184A22F7097"
         ],
         "Location": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "21e9f048-d9ec-41d2-92c8-102f2e14d340"
+          "14e21af5-e26a-4037-bde9-a84f192bf034"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -107,13 +107,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ]
       },
       "ResponseBody": "",
@@ -124,19 +124,19 @@
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "POST",
       "RequestHeaders": {
-        "client-request-id": [
-          "ae8755a3-dc15-48a1-bd51-f1c830531e42"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "c31c1a9f-a22c-442f-9ee5-555b6802ec7b"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
@@ -153,16 +153,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DD0429EB3C68F0"
+          "0x8DDF184A278E397"
         ],
         "Location": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/jobs/job-1"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/jobs/job-1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "63e2e4e7-3b5e-4bd4-b762-1a2afd7db75d"
+          "aedf22d6-9da3-4523-a561-91a54a5df591"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -174,13 +174,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/jobs/job-1"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/jobs/job-1"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ]
       },
       "ResponseBody": "",
@@ -191,19 +191,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "POST",
       "RequestHeaders": {
-        "client-request-id": [
-          "b1f94052-a22c-4f62-ab28-bcfcd48d9fe6"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "8453c729-7f49-42d3-a2c9-fab4f83ddc25"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
@@ -220,16 +220,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DD0429EB44D21D"
+          "0x8DDF184A2886C3A"
         ],
         "Location": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c5d3a76c-c0d8-48d7-b3a3-426bc1b7bd01"
+          "61b94fd9-90b2-4000-97a5-a32c29782d47"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -241,13 +241,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://dawatrouhobo.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask"
+          "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ]
       },
       "ResponseBody": "",
@@ -258,19 +258,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3MvdGVzdFRhc2s/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "eb93be05-7d1b-466e-869e-9688e9ead191"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "34588ad0-32aa-4603-82ed-01d826a5c6aa"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -281,13 +281,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DD0429EB44D21D"
+          "0x8DDF184A2886C3A"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "f79a0857-c446-4559-b0bb-fcecdb9301d6"
+          "99721b90-d733-4a66-a898-ee83128f7864"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -299,16 +299,16 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:31 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://dawatrouhobo.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask\",\r\n  \"eTag\": \"0x8DD0429EB44D21D\",\r\n  \"creationTime\": \"2024-11-13T21:27:04.3804701Z\",\r\n  \"lastModified\": \"2024-11-13T21:27:04.3804701Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2024-11-13T21:27:04.3804701Z\",\r\n  \"commandLine\": \"/bin/bash -c 'echo task'\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"nonadmin\"\r\n    }\r\n  },\r\n  \"multiInstanceSettings\": {\r\n    \"numberOfInstances\": 3,\r\n    \"coordinationCommandLine\": \"/bin/bash -c 'echo coordinating'\"\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"requiredSlots\": 1,\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask\",\r\n  \"eTag\": \"0x8DDF184A2886C3A\",\r\n  \"creationTime\": \"2025-09-11T22:43:32.1305146Z\",\r\n  \"lastModified\": \"2025-09-11T22:43:32.1305146Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2025-09-11T22:43:32.1305146Z\",\r\n  \"commandLine\": \"/bin/bash -c 'echo task'\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"nonadmin\"\r\n    }\r\n  },\r\n  \"multiInstanceSettings\": {\r\n    \"numberOfInstances\": 3,\r\n    \"coordinationCommandLine\": \"/bin/bash -c 'echo coordinating'\"\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"requiredSlots\": 1,\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -316,22 +316,22 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3MvdGVzdFRhc2s/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "b09c5b80-1e30-4622-b8a4-443980288663"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "a059f37b-53a3-482e-9c25-b52979a84255"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:33 GMT"
+          "Thu, 11 Sep 2025 22:44:51 GMT"
         ],
         "x-ms-client-request-id": [
-          "50b394ce-423d-4492-b61e-94d0f4363e4e"
+          "6c2e910b-5cb4-49f9-9310-dfb394f848e3"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -342,13 +342,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DD0429EB44D21D"
+          "0x8DDF184A2886C3A"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b9595ef5-79db-4e7d-9801-b51c31e3b391"
+          "d87c270b-1289-4204-b994-3024e5bdfa42"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -360,16 +360,16 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:33 GMT"
+          "Thu, 11 Sep 2025 22:44:50 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://dawatrouhobo.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask\",\r\n  \"eTag\": \"0x8DD0429EB44D21D\",\r\n  \"creationTime\": \"2024-11-13T21:27:04.3804701Z\",\r\n  \"lastModified\": \"2024-11-13T21:27:04.3804701Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2024-11-13T21:28:30.571865Z\",\r\n  \"previousState\": \"running\",\r\n  \"previousStateTransitionTime\": \"2024-11-13T21:28:28.386475Z\",\r\n  \"commandLine\": \"/bin/bash -c 'echo task'\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"nonadmin\"\r\n    }\r\n  },\r\n  \"multiInstanceSettings\": {\r\n    \"numberOfInstances\": 3,\r\n    \"coordinationCommandLine\": \"/bin/bash -c 'echo coordinating'\"\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"requiredSlots\": 1,\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2024-11-13T21:28:28.558282Z\",\r\n    \"endTime\": \"2024-11-13T21:28:30.571865Z\",\r\n    \"exitCode\": 0,\r\n    \"result\": \"success\",\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  },\r\n  \"nodeInfo\": {\r\n    \"affinityId\": \"TVM:tvmps_59f54c11e29d5675b0dbbf771139c4b361edf8b4933b14d2e7046f0d1db2e1a4_d\",\r\n    \"nodeUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_59f54c11e29d5675b0dbbf771139c4b361edf8b4933b14d2e7046f0d1db2e1a4_d\",\r\n    \"poolId\": \"mpiPool\",\r\n    \"nodeId\": \"tvmps_59f54c11e29d5675b0dbbf771139c4b361edf8b4933b14d2e7046f0d1db2e1a4_d\",\r\n    \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n    \"taskRootDirectoryUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_59f54c11e29d5675b0dbbf771139c4b361edf8b4933b14d2e7046f0d1db2e1a4_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/jobs/listSubtaskJob/tasks/testTask\",\r\n  \"eTag\": \"0x8DDF184A2886C3A\",\r\n  \"creationTime\": \"2025-09-11T22:43:32.1305146Z\",\r\n  \"lastModified\": \"2025-09-11T22:43:32.1305146Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2025-09-11T22:44:48.585306Z\",\r\n  \"previousState\": \"running\",\r\n  \"previousStateTransitionTime\": \"2025-09-11T22:44:46.383098Z\",\r\n  \"commandLine\": \"/bin/bash -c 'echo task'\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"nonadmin\"\r\n    }\r\n  },\r\n  \"multiInstanceSettings\": {\r\n    \"numberOfInstances\": 3,\r\n    \"coordinationCommandLine\": \"/bin/bash -c 'echo coordinating'\"\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"requiredSlots\": 1,\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2025-09-11T22:44:46.566688Z\",\r\n    \"endTime\": \"2025-09-11T22:44:48.585306Z\",\r\n    \"exitCode\": 0,\r\n    \"result\": \"success\",\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  },\r\n  \"nodeInfo\": {\r\n    \"affinityId\": \"TVM:tvmps_d4f2721be02716048830e4142aa7901cb9f27bc100c45deb6be2004791ba1d4f_d\",\r\n    \"nodeUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_d4f2721be02716048830e4142aa7901cb9f27bc100c45deb6be2004791ba1d4f_d\",\r\n    \"poolId\": \"mpiPool\",\r\n    \"nodeId\": \"tvmps_d4f2721be02716048830e4142aa7901cb9f27bc100c45deb6be2004791ba1d4f_d\",\r\n    \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n    \"taskRootDirectoryUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_d4f2721be02716048830e4142aa7901cb9f27bc100c45deb6be2004791ba1d4f_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -377,19 +377,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "1556ee07-694a-4c73-87b2-8c90a70b2da0"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "7513b9aa-19c1-4d0e-bee4-6d556ef8ae12"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:04 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -403,7 +403,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e8576fc8-6553-49a4-bac3-d7d42941a8bc"
+          "ef236fd6-2edf-438d-86b5-50108ec6ba5a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -415,13 +415,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:03 GMT"
+          "Thu, 11 Sep 2025 22:43:32 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -429,19 +429,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "0e1a4c38-5978-4bbf-870e-19ac202148fc"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "a1a17b86-111e-46ac-822e-ef23edd5c687"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:06 GMT"
+          "Thu, 11 Sep 2025 22:43:34 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -455,7 +455,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "aa9036b0-7f3a-4c74-936d-7bec2629a9b6"
+          "aff723be-c6ef-49ee-bfbe-6686bd5dbdf3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -467,13 +467,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:05 GMT"
+          "Thu, 11 Sep 2025 22:43:34 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -481,19 +481,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "4512b7c8-92b6-4b81-88da-0e0d8b17128a"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "abd08e8a-a656-4288-b397-c94bf5532faa"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:08 GMT"
+          "Thu, 11 Sep 2025 22:43:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -507,7 +507,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "3d0793f3-a2aa-4c94-b77f-e7709f2624ca"
+          "f45c8d29-3182-4e77-ad8c-a750eb67103e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -519,13 +519,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:07 GMT"
+          "Thu, 11 Sep 2025 22:43:36 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -533,19 +533,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "4d42843a-72ac-40c5-8e67-4e4dddc0220f"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "16274215-2527-4ef3-be5a-9f71e45f0daa"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:10 GMT"
+          "Thu, 11 Sep 2025 22:43:38 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -559,7 +559,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b4759bc1-ac5e-4d0c-8b97-b8ece46b6e95"
+          "02dd9204-ed6c-4648-92a8-f1f494894de6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -571,13 +571,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:09 GMT"
+          "Thu, 11 Sep 2025 22:43:38 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -585,19 +585,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "3adf0753-8898-420a-99a2-1d94d4f32196"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "36d6f0aa-ca12-44c8-bcee-607beb4cf397"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:12 GMT"
+          "Thu, 11 Sep 2025 22:43:40 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -611,7 +611,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c6d9702c-0715-484e-a300-86d67caaa606"
+          "32fd6621-927c-4aaa-96e7-60def825e898"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -623,13 +623,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:11 GMT"
+          "Thu, 11 Sep 2025 22:43:40 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -637,19 +637,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "35085a4a-795d-4f20-8ea7-3b14ac89cda0"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "8197390e-38e4-46b5-b237-b04fcb650f09"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:14 GMT"
+          "Thu, 11 Sep 2025 22:43:43 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -663,7 +663,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "91c864db-b610-445d-815f-979852cb11b1"
+          "632f4177-6e1d-4baa-b78d-89aa112971b9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -675,13 +675,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:13 GMT"
+          "Thu, 11 Sep 2025 22:43:42 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -689,19 +689,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "66871ca4-1877-4704-a442-3752c5c0a244"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "5494876c-e4bb-421b-9162-73b81c03ab9a"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:16 GMT"
+          "Thu, 11 Sep 2025 22:43:45 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -715,7 +715,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "abbd0e45-ecd7-45dc-a9e3-f1ef67d7da68"
+          "bafa1e3a-ef65-4991-b383-cde4f4de4a2e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -727,13 +727,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:15 GMT"
+          "Thu, 11 Sep 2025 22:43:44 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -741,19 +741,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "43dff443-8e4a-40d9-a6c5-147f8fae20d3"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "77cb5250-43d1-4dc6-abbc-b5c431c82227"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:18 GMT"
+          "Thu, 11 Sep 2025 22:43:47 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -767,7 +767,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "de75d224-edff-484c-8444-c273f59388d4"
+          "27b0420b-a377-49da-a988-83a0da1a4b29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -779,13 +779,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:18 GMT"
+          "Thu, 11 Sep 2025 22:43:47 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -793,19 +793,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "58e6d8c2-59f4-44fe-8b07-bb64a42bf4a8"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "f0e77657-50a4-4e2c-b5ca-2808eb96ecfb"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:20 GMT"
+          "Thu, 11 Sep 2025 22:43:49 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -819,7 +819,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "3d95f549-9175-4433-82d7-3ea23159967c"
+          "f9077d61-bc4d-4209-aac0-5a696a8512aa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -831,13 +831,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:20 GMT"
+          "Thu, 11 Sep 2025 22:43:49 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -845,19 +845,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "79486550-a177-4f7a-9e97-aa9f457b6a57"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "ae9929ac-a3b1-45b3-91de-b944845ed275"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:22 GMT"
+          "Thu, 11 Sep 2025 22:43:51 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -871,7 +871,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b73f3ad7-3365-407c-a0b9-d34993bed11f"
+          "54118a2c-af05-4524-85bb-f1bb9fad5d83"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -883,13 +883,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:22 GMT"
+          "Thu, 11 Sep 2025 22:43:51 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -897,19 +897,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "b81a8b8a-57ac-4bfb-a44f-09c7e9904cd2"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "34423906-8868-4566-bdb4-84949677a33e"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:24 GMT"
+          "Thu, 11 Sep 2025 22:43:53 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -923,7 +923,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "43896dbb-d781-44b4-b31a-3b725086d26e"
+          "98f136c7-9935-496e-9b5c-a89c3eb9ab05"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -935,13 +935,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:24 GMT"
+          "Thu, 11 Sep 2025 22:43:53 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -949,19 +949,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "2f075a47-3149-4208-9b27-c60494065123"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "87eedf53-ddeb-47d3-b750-9eddfb1d5c08"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:26 GMT"
+          "Thu, 11 Sep 2025 22:43:56 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -975,7 +975,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b4bfaa8e-d7b3-40e5-836c-6ced9bed8e4c"
+          "b08471bd-4d36-4d65-b4df-b443374c0505"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -987,13 +987,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:26 GMT"
+          "Thu, 11 Sep 2025 22:43:56 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1001,19 +1001,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "3c3b8d9d-d1dd-428f-847e-83bc90fa4bed"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "ddbdfa2e-d5bc-45ba-b8bf-9d2d5b0aadaa"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:28 GMT"
+          "Thu, 11 Sep 2025 22:43:58 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1027,7 +1027,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b4e31d12-895a-485a-9777-0f2d986b2bf9"
+          "24a944bc-edb3-4551-8dcb-05690f20f44a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1039,13 +1039,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:28 GMT"
+          "Thu, 11 Sep 2025 22:43:58 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1053,19 +1053,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "38735bde-db38-460f-a67d-f21eac439b69"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "933d6c29-0f93-4c3f-9807-5c65431d91ea"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:31 GMT"
+          "Thu, 11 Sep 2025 22:44:00 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1079,7 +1079,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "0685791b-cffe-4bc6-aa1a-6ff988d9f089"
+          "2c000425-e764-43a9-b003-1c781acd6510"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1091,13 +1091,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:30 GMT"
+          "Thu, 11 Sep 2025 22:44:00 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1105,19 +1105,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "5074b8aa-8f32-4cb0-9c13-13a25e0a6d81"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "4677521a-6c61-49b2-a511-21274c54bba2"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:33 GMT"
+          "Thu, 11 Sep 2025 22:44:02 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1131,7 +1131,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "52b8ac0d-4d5f-4f63-a0a5-284a155ad5a6"
+          "42a44ed9-07ba-4744-be1e-bd2375a508b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1143,13 +1143,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:32 GMT"
+          "Thu, 11 Sep 2025 22:44:01 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1157,19 +1157,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "e6148e4a-4f1c-4739-bf37-3ff71b1e59de"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "07570603-b55c-4a52-993d-77b420a0b13c"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:35 GMT"
+          "Thu, 11 Sep 2025 22:44:04 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1183,7 +1183,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "1221b046-8116-4f92-9129-a0dfa4451368"
+          "4f28720a-4e24-45e6-acab-403d707c6713"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1195,13 +1195,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:34 GMT"
+          "Thu, 11 Sep 2025 22:44:03 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1209,19 +1209,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "155a64fa-cc64-4504-bb0a-5f93d4d7919e"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "c01cb986-13de-4c53-a522-eee39f67e8f8"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:37 GMT"
+          "Thu, 11 Sep 2025 22:44:06 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1235,7 +1235,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b95597b3-18e5-4fe3-8679-6055e278d812"
+          "cc378394-c5eb-4725-9bf2-7c8251c0c459"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1247,13 +1247,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:37 GMT"
+          "Thu, 11 Sep 2025 22:44:06 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1261,19 +1261,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "76f4a161-41f1-42a6-aa04-de3e39295ba8"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "abf596af-8d89-439d-832b-c999f89c10ae"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:39 GMT"
+          "Thu, 11 Sep 2025 22:44:08 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1287,7 +1287,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "09952db1-957f-4e1b-9df6-b19543190ed9"
+          "686e06e8-b1a5-4f05-9207-8f0d7264914f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1299,13 +1299,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:39 GMT"
+          "Thu, 11 Sep 2025 22:44:08 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1313,19 +1313,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "96a2f310-09a1-4249-a4a0-5e9c32e26ce2"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "17c2317d-1c7f-400f-bb12-58b193dedf0e"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:41 GMT"
+          "Thu, 11 Sep 2025 22:44:11 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1339,7 +1339,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "05cdd9fd-f096-444a-999b-bcb0be5dd586"
+          "0f8e9372-17a2-4126-b844-5dce969224d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1351,13 +1351,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:41 GMT"
+          "Thu, 11 Sep 2025 22:44:10 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1365,19 +1365,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "50170891-0e6a-4d64-bc21-65a59d01063b"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "4189dc3d-2900-4100-99f8-727a58f9cdd3"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:43 GMT"
+          "Thu, 11 Sep 2025 22:44:13 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1391,7 +1391,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c7216f61-68c8-4590-a4f3-c2b88535fddd"
+          "b20b95fb-a67c-4b68-afb8-792e34e2553e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1403,13 +1403,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:43 GMT"
+          "Thu, 11 Sep 2025 22:44:13 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1417,19 +1417,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "1bf346d7-0e6d-4161-8505-598c48693ade"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "38a4064f-99d9-436b-a284-56bae52bea90"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:45 GMT"
+          "Thu, 11 Sep 2025 22:44:15 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1443,7 +1443,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b40d2d23-3c12-4ab4-822f-18c09a8d4bf8"
+          "18e50244-518c-4ff9-88b5-cb09ae72c1ce"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1455,13 +1455,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:45 GMT"
+          "Thu, 11 Sep 2025 22:44:15 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1469,19 +1469,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "7000ec16-9c71-41ec-86c6-600569a89da6"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "a76c782c-3b18-4cb2-a32e-41a4ce5d7571"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:47 GMT"
+          "Thu, 11 Sep 2025 22:44:17 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1495,7 +1495,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "11b2cff0-f371-48c8-acd1-d8fd9c1d531c"
+          "1aa5b8cf-834b-4267-872a-d823360f6d8f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1507,13 +1507,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:47 GMT"
+          "Thu, 11 Sep 2025 22:44:17 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1521,19 +1521,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "b4fcd90f-97da-441d-b138-8196925d8dd0"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "48c48b54-4b8c-4397-82f0-7ec543ad4394"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:49 GMT"
+          "Thu, 11 Sep 2025 22:44:19 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1547,7 +1547,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e22b8494-8ddf-4a11-a614-fa6239b91b1f"
+          "85fd2500-9be1-4671-ae30-018c3297abaa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1559,13 +1559,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:49 GMT"
+          "Thu, 11 Sep 2025 22:44:19 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1573,19 +1573,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "7676266c-df95-4443-9dd2-d44d24f7eded"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "e5f43a63-d7df-4c08-8f23-f426905fb25a"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:51 GMT"
+          "Thu, 11 Sep 2025 22:44:21 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1599,7 +1599,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "5ba2e70b-ce46-4a4f-8b38-740a005b870d"
+          "7c91b3a1-7d1f-4885-ad0d-5c8b42b358ad"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1611,13 +1611,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:51 GMT"
+          "Thu, 11 Sep 2025 22:44:21 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1625,19 +1625,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "a0865ab4-1a56-463d-882a-e7c4cb0e7eb1"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "b66fc878-05b5-4aa8-9049-999901b4660c"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:53 GMT"
+          "Thu, 11 Sep 2025 22:44:24 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1651,7 +1651,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "287ef96e-987f-452b-8efd-abcca0d3594d"
+          "beaf7e90-b26a-47bb-b464-c222e57d4a92"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1663,13 +1663,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:53 GMT"
+          "Thu, 11 Sep 2025 22:44:23 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1677,19 +1677,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "515a17ea-f8a9-4a15-a765-bb7e6c5252e8"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "b8894567-ba64-420f-814d-9255cd10e46e"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:55 GMT"
+          "Thu, 11 Sep 2025 22:44:26 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1703,7 +1703,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "04452df8-b60d-49f8-a5d1-438f2cf0a857"
+          "676a5938-70c6-4659-ad80-bae55bd01f61"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1715,13 +1715,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:55 GMT"
+          "Thu, 11 Sep 2025 22:44:25 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1729,19 +1729,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "b31c2995-1855-4392-91e3-1ffcfd555dae"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "68f8bff0-fd4f-43c2-9d0e-a6cd36a87387"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:57 GMT"
+          "Thu, 11 Sep 2025 22:44:28 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1755,7 +1755,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "80b343d6-66c6-4ff0-93e3-28cfbb691260"
+          "5ed2dd52-0532-46e0-b1db-ed8d568c5e56"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1767,13 +1767,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:57 GMT"
+          "Thu, 11 Sep 2025 22:44:27 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1781,19 +1781,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "995c73fb-698a-4bf4-a447-ed4a972da0bb"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "9ee68a0e-ba5a-4c69-a1b0-6b91b8b8d84c"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:27:59 GMT"
+          "Thu, 11 Sep 2025 22:44:30 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1807,7 +1807,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c0e54370-5058-4910-8386-c48b97af4376"
+          "6e4b08e8-c4a9-4637-8dd8-adb6f0c5eb34"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1819,13 +1819,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:27:59 GMT"
+          "Thu, 11 Sep 2025 22:44:29 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1833,19 +1833,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "a593cc47-a104-48a3-8352-1d214e0c1fdf"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "ad9ca79e-d603-48ad-8e81-4c76447f0feb"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:01 GMT"
+          "Thu, 11 Sep 2025 22:44:32 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1859,7 +1859,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "bdab972b-894c-48e7-bb14-0caf048e25c8"
+          "fb30b96f-ae1d-4447-8b10-4ab6422d9812"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1871,13 +1871,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:01 GMT"
+          "Thu, 11 Sep 2025 22:44:31 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1885,19 +1885,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "8c139fc9-3f8e-4529-9f62-5e19bb73d5cd"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "1db22d1c-7f4f-48fb-a348-af4ddfeb24cd"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:03 GMT"
+          "Thu, 11 Sep 2025 22:44:34 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1911,7 +1911,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b8bccecf-f8b4-4760-a4b9-e7c1b4cc726c"
+          "72d8d0f3-ccf7-42b7-af2a-2053a00bc14b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1923,13 +1923,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:03 GMT"
+          "Thu, 11 Sep 2025 22:44:34 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1937,19 +1937,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "74c54319-1725-4cce-800c-5ae50ac0fd4b"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "bd897b94-2485-4267-83dc-53fb48a2e5f1"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:05 GMT"
+          "Thu, 11 Sep 2025 22:44:36 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -1963,7 +1963,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e7e80afc-1ff3-472d-aaa9-da4153297a55"
+          "b9c501fc-5f83-496b-9cde-feb329747ddc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1975,13 +1975,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:05 GMT"
+          "Thu, 11 Sep 2025 22:44:36 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1989,19 +1989,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "11608363-e04e-468c-9c8e-c9348b71688e"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "5c0ae919-aa67-4424-9ee3-017cd1b44a5e"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:07 GMT"
+          "Thu, 11 Sep 2025 22:44:39 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2015,7 +2015,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "357be852-1ee1-4737-a1ce-9037ab4cab28"
+          "aabdb560-cb8d-40da-b355-5b8eb2657185"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2027,13 +2027,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:07 GMT"
+          "Thu, 11 Sep 2025 22:44:39 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2041,19 +2041,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "dd67b97c-a0ac-43c6-82dd-4d130151b099"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "5634a9ec-784c-498a-aad0-222faf1b8d5a"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:09 GMT"
+          "Thu, 11 Sep 2025 22:44:41 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2067,7 +2067,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b649b71e-ba5b-4357-9341-24ce3c241767"
+          "2d59da2c-101f-453c-acc9-e8a0e87bc2b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2079,13 +2079,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:09 GMT"
+          "Thu, 11 Sep 2025 22:44:41 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2093,19 +2093,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "d825352a-4e0f-4ce2-b80b-cd614fe5dc40"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "6175946e-78ad-4c9f-8b04-1fe5619e19bf"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:11 GMT"
+          "Thu, 11 Sep 2025 22:44:43 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2119,7 +2119,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "4a1614a6-fe9f-4311-bbfc-85480451efd6"
+          "35bf7713-3e60-4db3-9496-d6f35d346d47"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2131,13 +2131,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:11 GMT"
+          "Thu, 11 Sep 2025 22:44:43 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2145,19 +2145,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "9c226336-cbe1-410e-8f88-d986c56639f9"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "342e8eb6-c2c4-4394-9460-35c73bcd9276"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:13 GMT"
+          "Thu, 11 Sep 2025 22:44:45 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2171,7 +2171,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "088d2c1b-9871-465c-8221-3d6efc197ac9"
+          "8bb0364e-d0e5-4843-927d-a1a9345c5b5f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2183,13 +2183,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:13 GMT"
+          "Thu, 11 Sep 2025 22:44:45 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2197,19 +2197,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "ae55d6d4-2ba3-4a7c-a06d-2ccb170aff68"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "f2a5040e-f118-420a-b682-482e5fb35980"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:15 GMT"
+          "Thu, 11 Sep 2025 22:44:47 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2223,7 +2223,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "9095941c-b517-4513-8547-97172edb5266"
+          "4f4c97d8-ef29-488d-ab82-e206a94b9ae5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2235,13 +2235,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:15 GMT"
+          "Thu, 11 Sep 2025 22:44:47 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"running\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2249,19 +2249,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "86bb20e9-1a05-40c6-a2ae-0770374a6972"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "02ae0812-d664-4917-a140-e936f0f7e09e"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:18 GMT"
+          "Thu, 11 Sep 2025 22:44:49 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2275,7 +2275,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "fa8e628a-0f85-4a9c-be0e-72f42951d376"
+          "0b48e270-946a-4904-b971-19076537eaa6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2287,377 +2287,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:17 GMT"
+          "Thu, 11 Sep 2025 22:44:49 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listSubtaskJob/tasks?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testTask%27&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "client-request-id": [
-          "34d4af69-a981-4a65-abd3-11baf2eccd73"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:20 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.3524.45918",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "590a0e3d-ceae-4a28-856c-46fbc9efd2ac"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Wed, 13 Nov 2024 21:28:19 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listSubtaskJob/tasks?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testTask%27&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "client-request-id": [
-          "e40304b4-3174-479f-bc3a-5a31f8c49d8f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:22 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.3524.45918",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "725cd45d-a268-48b1-8ede-cf909d0be701"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Wed, 13 Nov 2024 21:28:21 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listSubtaskJob/tasks?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testTask%27&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "client-request-id": [
-          "94109485-e0f9-4fe4-ae87-261400e5ed99"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:24 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.3524.45918",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "6dbcd4e8-2996-4ed0-beaa-5702e49724d7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Wed, 13 Nov 2024 21:28:23 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listSubtaskJob/tasks?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testTask%27&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "client-request-id": [
-          "7cc97e50-8821-4ec1-a66f-c4b88c142d11"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:26 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.3524.45918",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "3dc8807d-3d0d-42e8-a453-a97f4abd6950"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Wed, 13 Nov 2024 21:28:25 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listSubtaskJob/tasks?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testTask%27&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "client-request-id": [
-          "31b10fa6-92fa-460e-8494-62d00d67bf6f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:28 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.3524.45918",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "aa938de3-3d97-46bc-927f-e595d4e17bc0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Wed, 13 Nov 2024 21:28:27 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listSubtaskJob/tasks?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testTask%27&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "client-request-id": [
-          "3ba6c4a1-34ac-4009-b0a9-44186230438d"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:30 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.3524.45918",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "5680a140-494a-438c-872a-0b1a690ecbd1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Wed, 13 Nov 2024 21:28:29 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"running\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listSubtaskJob/tasks?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testTask%27&$select=id%2Cstate",
-      "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3M/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "client-request-id": [
-          "3a2c9392-a43c-49ae-bc5a-6fac3ad97698"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:32 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.3524.45918",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
-          "AzurePowershell/Az1.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "request-id": [
-          "dc648e30-fee8-42bd-861b-e78a7b3a896b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Wed, 13 Nov 2024 21:28:31 GMT"
-        ],
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2665,22 +2301,22 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3MvdGVzdFRhc2svc3VidGFza3NpbmZvP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "bfc7b5c0-040b-45f4-a834-10b2b087f4d9"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "bfcf2832-10b6-4836-a593-a667a65f5e02"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:32 GMT"
+          "Thu, 11 Sep 2025 22:44:51 GMT"
         ],
         "x-ms-client-request-id": [
-          "0086effe-0dab-42fb-90ad-2eec50bfaad4"
+          "727232f5-8aab-4be2-8175-3de9c82a2b5d"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2694,7 +2330,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "ca67bd78-c613-4f69-a388-9929dc54eec2"
+          "c5aa8a0f-2955-4035-a0a3-a4136e2627a0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2706,13 +2342,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:33 GMT"
+          "Thu, 11 Sep 2025 22:44:50 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#subtaskinfo\",\r\n  \"value\": [\r\n    {\r\n      \"id\": 1,\r\n      \"startTime\": \"2024-11-13T21:28:28.959913Z\",\r\n      \"endTime\": \"2024-11-13T21:28:30.571769Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2024-11-13T21:28:30.571769Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2024-11-13T21:28:28.355894Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d\",\r\n        \"nodeUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"startTime\": \"2024-11-13T21:28:28.502318Z\",\r\n      \"endTime\": \"2024-11-13T21:28:30.694816Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2024-11-13T21:28:30.694816Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2024-11-13T21:28:28.358583Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d\",\r\n        \"nodeUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#subtaskinfo\",\r\n  \"value\": [\r\n    {\r\n      \"id\": 1,\r\n      \"startTime\": \"2025-09-11T22:44:46.48799Z\",\r\n      \"endTime\": \"2025-09-11T22:44:48.562408Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2025-09-11T22:44:48.562408Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2025-09-11T22:44:46.354484Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d\",\r\n        \"nodeUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"startTime\": \"2025-09-11T22:44:46.641104Z\",\r\n      \"endTime\": \"2025-09-11T22:44:48.565941Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2025-09-11T22:44:48.565941Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2025-09-11T22:44:46.35985Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d\",\r\n        \"nodeUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2720,22 +2356,22 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2IvdGFza3MvdGVzdFRhc2svc3VidGFza3NpbmZvP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "client-request-id": [
-          "3a8d3e4a-c57a-4e2a-87c6-7e3171372f32"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "77c0ab2d-b0c5-4815-a93b-87e491d6063e"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:33 GMT"
+          "Thu, 11 Sep 2025 22:44:51 GMT"
         ],
         "x-ms-client-request-id": [
-          "50b394ce-423d-4492-b61e-94d0f4363e4e"
+          "6c2e910b-5cb4-49f9-9310-dfb394f848e3"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
@@ -2749,7 +2385,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "90ceee03-e206-49e3-a9f8-5369305aa92f"
+          "799bbc45-7697-481f-bb7b-11c78093b850"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2761,13 +2397,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:33 GMT"
+          "Thu, 11 Sep 2025 22:44:51 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dawatrouhobo.eastus2.batch.azure.com/$metadata#subtaskinfo\",\r\n  \"value\": [\r\n    {\r\n      \"id\": 1,\r\n      \"startTime\": \"2024-11-13T21:28:28.959913Z\",\r\n      \"endTime\": \"2024-11-13T21:28:30.571769Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2024-11-13T21:28:30.571769Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2024-11-13T21:28:28.355894Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d\",\r\n        \"nodeUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_ac1b1b44355a9c5a1dc848f8044068c9c3dfd8564fdd1281c476a12c58773f99_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"startTime\": \"2024-11-13T21:28:28.502318Z\",\r\n      \"endTime\": \"2024-11-13T21:28:30.694816Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2024-11-13T21:28:30.694816Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2024-11-13T21:28:28.358583Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d\",\r\n        \"nodeUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dawatrouhobo.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_44cf82a9b584b57d7dae60febbba3d89b97848c439f57561e11512f706496dff_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#subtaskinfo\",\r\n  \"value\": [\r\n    {\r\n      \"id\": 1,\r\n      \"startTime\": \"2025-09-11T22:44:46.48799Z\",\r\n      \"endTime\": \"2025-09-11T22:44:48.562408Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2025-09-11T22:44:48.562408Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2025-09-11T22:44:46.354484Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d\",\r\n        \"nodeUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_77015d7ff81a4cca8cdfc5d0900844284b68a4bb33688737c081b3807ba7094b_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"startTime\": \"2025-09-11T22:44:46.641104Z\",\r\n      \"endTime\": \"2025-09-11T22:44:48.565941Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2025-09-11T22:44:48.565941Z\",\r\n      \"previousState\": \"running\",\r\n      \"previousStateTransitionTime\": \"2025-09-11T22:44:46.35985Z\",\r\n      \"result\": \"success\",\r\n      \"exitCode\": 0,\r\n      \"nodeInfo\": {\r\n        \"affinityId\": \"TVM:tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d\",\r\n        \"nodeUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d\",\r\n        \"poolId\": \"mpiPool\",\r\n        \"nodeId\": \"tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d\",\r\n        \"taskRootDirectory\": \"workitems/listSubtaskJob/job-1/testTask\",\r\n        \"taskRootDirectoryUrl\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/mpiPool/nodes/tvmps_359f6cc561b9bc6011025adf9107df38bb417c27ac6fa22ded624fc0cfeae303_d/files/workitems/listSubtaskJob/job-1/testTask\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2775,19 +2411,19 @@
       "EncodedRequestUri": "L2pvYnMvbGlzdFN1YnRhc2tKb2I/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
-        "client-request-id": [
-          "1221af28-6aaf-42f2-9319-2d95515a9045"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "client-request-id": [
+          "cfbaa3c8-5191-4ca7-9caa-340e8741adfc"
+        ],
         "ocp-date": [
-          "Wed, 13 Nov 2024 21:28:33 GMT"
+          "Thu, 11 Sep 2025 22:44:52 GMT"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3524.45918",
+          "FxVersion/8.0.2025.41914",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26120",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
@@ -2804,7 +2440,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c520e855-fc11-47df-a1a2-523c3c482f73"
+          "f1473455-ce9e-44bf-a875-c8dc54455066"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2816,7 +2452,7 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 13 Nov 2024 21:28:32 GMT"
+          "Thu, 11 Sep 2025 22:44:51 GMT"
         ]
       },
       "ResponseBody": "",
@@ -2825,9 +2461,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
-    "AZURE_BATCH_ACCOUNT": "dawatrouhobo",
-    "AZURE_BATCH_ENDPOINT": "https://dawatrouhobo.eastus2.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "dawatrou-rg"
+    "SubscriptionId": "94bd7ded-68b4-4ffa-82a5-37ac72caa2ec",
+    "AZURE_BATCH_ACCOUNT": "dotnotsdkbatchaccount2",
+    "AZURE_BATCH_ENDPOINT": "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "automation"
   }
 }
