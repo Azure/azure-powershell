@@ -13,17 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 
+using System.Collections;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Management.Automation.Remoting;
-using System.Text;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -157,7 +153,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Interface configurations for NVA deployed in VNet.")]
-        public List<PSNetworkVirtualApplianceInterfaceConfigProperties> NvaInterfaceConfiguration { get; set; }
+        public PSNetworkVirtualApplianceInterfaceConfigProperties[] NvaInterfaceConfiguration { get; set; }
 
         public override void Execute()
         {

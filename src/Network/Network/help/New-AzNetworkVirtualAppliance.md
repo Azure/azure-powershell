@@ -21,7 +21,7 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
- [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfig>]
+ [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> [-VirtualH
  [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
- [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfig>]
+ [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
