@@ -229,17 +229,17 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestVnetFlowLogWithRecordTypes()
+        public void TestVnetFlowLogWithRecordType()
         {
-            TestRunner.RunTestScript("Test-VnetFlowLogWithRecordTypes");
+            TestRunner.RunTestScript("Test-VnetFlowLogWithRecordType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestVnetFlowLogWithEmptyRecordTypesCondition()
+        public void TestVnetFlowLogWithEmptyRecordTypeCondition()
         {
-            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyRecordTypesCondition");
+            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyRecordTypeCondition");
         }
     }
 }

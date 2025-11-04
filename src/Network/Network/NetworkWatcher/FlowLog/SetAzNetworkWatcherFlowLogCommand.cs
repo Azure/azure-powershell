@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Optional field to filter network traffic logs.",
             ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
-        public string RecordTypes { get; set; }
+        public string RecordType { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Commands.Network
             this.StorageId = this.InputObject.StorageId;
             this.Enabled = this.InputObject.Enabled ?? true;
             this.EnabledFilteringCriteria = this.InputObject.EnabledFilteringCriteria ?? "";
-            this.RecordTypes = this.InputObject.RecordTypes ?? "";
+            this.RecordType = this.InputObject.RecordType ?? "";
 
             if (this.InputObject.FlowAnalyticsConfiguration?.NetworkWatcherFlowAnalyticsConfiguration != null)
             {
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSFlowLogResource CreateFlowLog()
         {
-            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.EnabledFilteringCriteria, this.RecordTypes, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
+            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.EnabledFilteringCriteria, this.RecordType, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
                 this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays, this.UserAssignedIdentityId);
 
             MNM.FlowLog flowLogParameters = GetFlowLogParametersFromRequest();
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Commands.Network
                 StorageId = this.StorageId,
                 Enabled = this.Enabled,
                 EnabledFilteringCriteria = this.EnabledFilteringCriteria ?? "",
-                RecordTypes = this.RecordTypes ?? "",
+                RecordTypes = this.RecordType ?? "",
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
