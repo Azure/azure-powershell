@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Optional field to filter network traffic logs based on flow states.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string RecordType { get; set; }
 
         [Parameter(
