@@ -4,25 +4,7 @@ Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDo
 ```
 
 ```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Enabling
-CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
-CertificateSource                : FrontDoor
-ProtocolType                     : ServerNameIndication
-MinimumTlsVersion                : 1.2
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
+$true
 ```
 
 Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of Front Door "frontdoor1" in resource group "resourcegroup1" using Front Door managed certificate.
@@ -34,25 +16,7 @@ Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDo
 ```
 
 ```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Enabling
-CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
-CertificateSource                : AzureKeyVault
-ProtocolType                     : ServerNameIndication
-MinimumTlsVersion                : 1.0
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
+$true
 ```
 
 Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of Front Door "frontdoor1" in resource group "resourcegroup1" using customer's own certificate in Key Vault with the specific version.
@@ -63,25 +27,7 @@ Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorNa
 ```
 
 ```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Enabling
-CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
-CertificateSource                : FrontDoor
-ProtocolType                     : ServerNameIndication
-MinimumTlsVersion                : 1.2
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
+$true
 ```
 
 Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.

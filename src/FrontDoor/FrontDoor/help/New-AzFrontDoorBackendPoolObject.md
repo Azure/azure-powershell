@@ -29,16 +29,13 @@ New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -Reso
 ```
 
 ```output
-Backends                : {Microsoft.Azure.Commands.FrontDoor.Models.PSBackend}
-LoadBalancingSettingRef : /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers
-                          /Microsoft.Network/frontDoors/frontdoor5/LoadBalancingSettings/loadBalancingSetting1
-HealthProbeSettingRef   : /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers
-                          /Microsoft.Network/frontDoors/frontdoor5/HealthProbeSettings/healthProbeSetting1
-EnabledState            : Enabled
-ResourceState           :
-Id                      :
-Name                    : backendpool1
-Type                    :
+Backend                :
+HealthProbeSettingId   : /subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups//providers/Microsoft.Network/frontDoors//HealthProbeSettings/healthProbeSetting1
+Id                     :
+LoadBalancingSettingId : /subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups//providers/Microsoft.Network/frontDoors//LoadBalancingSettings/loadBalancingSetting1
+Name                   : backendpool1
+ResourceState          :
+Type                   :
 ```
 
 Create a PSBackendPool object for Front Door creation

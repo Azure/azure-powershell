@@ -4,9 +4,12 @@ New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorPro
 ```
 
 ```output
-MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
-------------- ---------------- ---------- --------   --------------- ---------
-RequestHeader Contains         {Windows}  User-Agent           False
+MatchValue       : {Windows}
+MatchVariable    : RequestHeader
+NegateCondition  :
+OperatorProperty : Contains
+Selector         : User-Agent
+Transform        :
 
 ```
 
@@ -19,9 +22,12 @@ New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorPro
 ```
 
 ```output
-MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
-------------- ---------------- ---------- --------   --------------- ---------
-RequestHeader Contains         {WINDOWS}  User-Agent           False {Uppercase}
+MatchValue       : {WINDOWS}
+MatchVariable    : RequestHeader
+NegateCondition  :
+OperatorProperty : Contains
+Selector         : User-Agent
+Transform        : {Uppercase}
 ```
 
 Create a MatchCondition object
