@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzContainerRegistryBuildSourceUploadUrl'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzContainerRegistryExportPipeline'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzContainerRegistryBuildSourceUploadUrl.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzContainerRegistryExportPipeline.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzContainerRegistryBuildS
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzContainerRegistryBuildSourceUploadUrl' {
-    It 'Get' -skip {
+Describe 'Update-AzContainerRegistryExportPipeline' {
+    It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'UpdateViaIdentityRegistryExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
