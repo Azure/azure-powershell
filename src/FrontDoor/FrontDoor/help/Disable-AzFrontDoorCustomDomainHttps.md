@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/disable-azfrontdoorcustomdomainhttps
 schema: 2.0.0
@@ -8,31 +8,32 @@ schema: 2.0.0
 # Disable-AzFrontDoorCustomDomainHttps
 
 ## SYNOPSIS
-Disable HTTPS for a custom domain
+Disables a frontendEndpoint for HTTPS traffic
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### Disable (Default)
 ```
-Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Disable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### DisableViaIdentityFrontDoor
 ```
-Disable-AzFrontDoorCustomDomainHttps -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Disable-AzFrontDoorCustomDomainHttps -FrontendEndpointName <String> -FrontDoorInputObject <IFrontDoorIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### DisableViaIdentity
 ```
-Disable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzFrontDoorCustomDomainHttps** disables HTTPS for a custom domain.
+Disables a frontendEndpoint for HTTPS traffic
 
 ## EXAMPLES
 
@@ -66,7 +67,7 @@ Disable HTTPS for a custom domain "frontendpointname1-custom-xyz" with FrontDoor
 
 ### Example 2: Disable HTTPS for a custom domain with PSFrontendEndpoint object.
 ```powershell
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Disable-AzFrontDoorCustomDomainHttps -InputObject $frontendEndpointObj 
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Disable-AzFrontDoorCustomDomainHttps -InputObject $frontendEndpointObj
 ```
 
 ```output
@@ -92,43 +93,15 @@ Type                             : Microsoft.Network/frontdoors/frontendendpoint
 
 Disable HTTPS for a custom domain with PSFrontendEndpoint object.
 
-### Example 3: Disable HTTPS for a custom domain with ResourceId.
-```powershell
-Disable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId 
-```
-
-```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Disabling
-CustomHttpsProvisioningSubstate  : DeletingCertificate
-CertificateSource                : FrontDoor
-ProtocolType                     : ServerNameIndication
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
-```
-
-Disable HTTPS for a custom domain "frontendpointname1-custom-xyz" with ResourceId as $resourceId.
-
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -137,12 +110,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontDoorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: DisableViaIdentityFrontDoor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -FrontDoorName
-The name of the Front Door.
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: Disable
 Aliases:
 
 Required: True
@@ -153,11 +157,11 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendEndpointName
-Frontend endpoint name.
+Name of the Frontend endpoint which is unique within the Front Door.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: Disable, DisableViaIdentityFrontDoor
 Aliases:
 
 Required: True
@@ -168,11 +172,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Frontend endpoint object to update.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
-Parameter Sets: ByObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: DisableViaIdentity
 Aliases:
 
 Required: True
@@ -182,12 +186,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The resource group to which the Front Door belongs.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: Disable
 Aliases:
 
 Required: True
@@ -197,18 +231,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Id of the Front Door endpoint to disable https
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: Disable
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -228,7 +263,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -247,11 +283,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
+### System.Boolean
 
 ## NOTES
 

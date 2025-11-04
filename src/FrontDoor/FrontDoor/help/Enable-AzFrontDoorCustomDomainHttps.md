@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/enable-azfrontdoorcustomdomainhttps
 schema: 2.0.0
@@ -8,53 +8,61 @@ schema: 2.0.0
 # Enable-AzFrontDoorCustomDomainHttps
 
 ## SYNOPSIS
-Enable HTTPS for a custom domain using Front Door managed certificate or using own certificate from Azure Key Vault.
+Enables a frontendEndpoint for HTTPS traffic
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### EnableExpanded (Default)
 ```
-Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>]
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-MinimumTlsVersion <String>] [-SecretName <String>]
+ [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByFieldsWithVaultParameterSet
+### Enable
 ```
-Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> -VaultId <String> -SecretName <String> [-SecretVersion <String>]
- [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### EnableViaJsonFilePath
 ```
-Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> [-MinimumTlsVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableViaJsonString
+```
+Enable-AzFrontDoorCustomDomainHttps -FrontDoorName <String> -FrontendEndpointName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableViaIdentityFrontDoor
+```
+Enable-AzFrontDoorCustomDomainHttps -FrontendEndpointName <String> -FrontDoorInputObject <IFrontDoorIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### EnableViaIdentity
+```
+Enable-AzFrontDoorCustomDomainHttps -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdWithVaultParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -VaultId <String> -SecretName <String>
- [-SecretVersion <String>] [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> [-MinimumTlsVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectWithVaultParameterSet
-```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> -VaultId <String> -SecretName <String>
- [-SecretVersion <String>] [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps [-MinimumTlsVersion <String>] [-SecretName <String>]
+ [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzFrontDoorCustomDomainHttps** enables HTTPS for a custom domain.
+Enables a frontendEndpoint for HTTPS traffic
 
 ## EXAMPLES
 
@@ -119,7 +127,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 
 ### Example 3: Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.
 ```powershell
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps
 ```
 
 ```output
@@ -146,74 +154,15 @@ Type                             : Microsoft.Network/frontdoors/frontendendpoint
 
 Enable HTTPS for a custom domain with PSFrontendEndpoint object using Front Door managed certificate.
 
-### Example 4: Enable HTTPS for a custom domain with resource id using Front Door managed certificate.
-```powershell
-Enable-AzFrontDoorCustomDomainHttps -ResourceId $resourceId
-```
-
-```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Enabling
-CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
-CertificateSource                : FrontDoor
-ProtocolType                     : ServerNameIndication
-MinimumTlsVersion                : 1.2
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
-```
-
-Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" with resource id $resourceId using Front Door managed certificate.
-
-### Example 5: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using customer's own certificate in Key Vault with the latest version to enable certificate auto-rotation.
-```powershell
-$vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -VaultId $vaultId -secretName $secretName -MinimumTlsVersion "1.0"
-```
-
-```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Enabling
-CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
-CertificateSource                : AzureKeyVault
-ProtocolType                     : ServerNameIndication
-MinimumTlsVersion                : 1.0
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
-```
-
-Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of Front Door "frontdoor1" in resource group "resourcegroup1" using customer's own certificate in Key Vault with the latest version to enable certificate auto-rotation.
-
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -222,12 +171,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontDoorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: EnableViaIdentityFrontDoor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -FrontDoorName
-The name of the Front Door.
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByFieldsWithVaultParameterSet
+Parameter Sets: EnableExpanded, Enable, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -238,11 +218,11 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendEndpointName
-Frontend endpoint name.
+Name of the Frontend endpoint which is unique within the Front Door.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByFieldsWithVaultParameterSet
+Parameter Sets: EnableExpanded, Enable, EnableViaJsonFilePath, EnableViaJsonString, EnableViaIdentityFrontDoor
 Aliases:
 
 Required: True
@@ -253,11 +233,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Frontend endpoint object to update.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
-Parameter Sets: ByObjectParameterSet, ByObjectWithVaultParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: EnableViaIdentity
 Aliases:
 
 Required: True
@@ -267,11 +247,71 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Enable operation
+
+```yaml
+Type: System.String
+Parameter Sets: EnableViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Enable operation
+
+```yaml
+Type: System.String
+Parameter Sets: EnableViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MinimumTlsVersion
 The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
 
 ```yaml
 Type: System.String
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: 1.2
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -283,32 +323,17 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group to which the Front Door belongs.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByFieldsWithVaultParameterSet
+Parameter Sets: EnableExpanded, Enable, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource Id of the Front Door endpoint to enable https
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithVaultParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -317,23 +342,7 @@ The name of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsWithVaultParameterSet, ByResourceIdWithVaultParameterSet, ByObjectWithVaultParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecretVersion
-The version of the Key Vault secret representing the full certificate PFX.
-If not specified, the 'Latest' version will always been used and the deployed certificate will be automatically rotated to the latest version when a newer version of the certificate is available.
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsWithVaultParameterSet, ByResourceIdWithVaultParameterSet, ByObjectWithVaultParameterSet
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
 Aliases:
 
 Required: False
@@ -343,15 +352,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultId
-The Key Vault id containing the SSL certificate
+### -SecretVersion
+The version of the Key Vault secret representing the full certificate PFX
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsWithVaultParameterSet, ByResourceIdWithVaultParameterSet, ByObjectWithVaultParameterSet
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: EnableExpanded, Enable, EnableViaJsonFilePath, EnableViaJsonString
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: EnableExpanded, ByResourceIdWithVaultParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -374,7 +414,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -393,10 +434,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS
