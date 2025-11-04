@@ -58,7 +58,7 @@ $inputObject = @{
     ProjectName = "DevProject"
     CatalogName = "CentralCatalog"
     ImageDefinitionName = "DefaultDevImage"
-    SubscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff",
+    SubscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"
     BuildName = "0a28fc61-6f87-4611-8fe2-32df44ab93b7"
 }
 Get-AzDevCenterAdminProjectCatalogImageDefinitionBuild -InputObject $inputObject
