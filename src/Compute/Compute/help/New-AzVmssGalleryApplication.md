@@ -14,6 +14,7 @@ Create a local PSVMGalleryApplication object.
 
 ```
 New-AzVmssGalleryApplication -PackageReferenceId <String> [-ConfigReferenceId <String>]
+ [-EnableAutomaticUpgrade <Bool>] [-TreatFailureAsDeploymentFailure <Bool>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -27,6 +28,7 @@ Creates a local PSVMGalleryApplication object.
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName $rgName -Name $vmssName
 $vmGal = New-AzVmssGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
+-EnableAutomaticUpgrade $true -TreatFailureAsDeploymentFailure $true
 Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmss.VirtualMachineProfile -GalleryApplication $vmGal -Order 1
 ```
 
@@ -73,6 +75,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticUpgrade
+Specifies whether the underlying VMSS should automatically update when a new version of the Gallery Application becomes available in the Public Image Repository (PIR) or Shared Image Gallery (SIG).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TreatFailureAsDeploymentFailure
+Determines whether a failure encountered during the application process should be treated as a deployment failure.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
