@@ -1727,9 +1727,9 @@ function Test-VnetFlowLogWithEmptyFilteringCondition {
 
 <#
 .SYNOPSIS
-Test Flow log with RecordType parameter.
+Test Flow log with RecordTypes parameter.
 #>
-function Test-VnetFlowLogWithRecordType
+function Test-VnetFlowLogWithRecordTypes
 {
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
@@ -1769,7 +1769,7 @@ function Test-VnetFlowLogWithRecordType
         Start-Sleep -Seconds 10
 
         # Create flow log
-        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordType "B,E"
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordTypes "B,E"
         Start-Sleep -Seconds 5
 
         # Validation set operation
@@ -1785,7 +1785,7 @@ function Test-VnetFlowLogWithRecordType
         # Validation get operation
         Assert-AreEqual $flowLog.TargetResourceId $vnet.Id
         Assert-AreEqual $flowLog.StorageId $sto.Id
-        Assert-AreEqual $flowLog.RecordType "B,E"
+        Assert-AreEqual $flowLog.RecordTypes "B,E"
         Assert-AreEqual $flowLog.Enabled $true
         Assert-AreEqual $flowLog.Format.Type "FlowLogJSON"
         Assert-AreEqual $flowLog.Format.Version 2
@@ -1811,9 +1811,9 @@ function Test-VnetFlowLogWithRecordType
 
 <#
 .SYNOPSIS
-Test Flow log with empty RecordType parameter.
+Test Flow log with empty RecordTypes parameter.
 #>
-function Test-VnetFlowLogWithEmptyRecordTypeCondition
+function Test-VnetFlowLogWithEmptyRecordTypesCondition
 {
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
@@ -1853,7 +1853,7 @@ function Test-VnetFlowLogWithEmptyRecordTypeCondition
         Start-Sleep -Seconds 10
 
         # Create flow log
-        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordType ""
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordTypes ""
         Start-Sleep -Seconds 5
 
         # Validation set operation
@@ -1869,7 +1869,7 @@ function Test-VnetFlowLogWithEmptyRecordTypeCondition
         # Validation get operation
         Assert-AreEqual $flowLog.TargetResourceId $vnet.Id
         Assert-AreEqual $flowLog.StorageId $sto.Id
-        Assert-AreEqual $flowLog.RecordType ""
+        Assert-AreEqual $flowLog.RecordTypes ""
         Assert-AreEqual $flowLog.Enabled $true
         Assert-AreEqual $flowLog.Format.Type "FlowLogJSON"
         Assert-AreEqual $flowLog.Format.Version 2
