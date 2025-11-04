@@ -5496,7 +5496,7 @@
 							  <PropertyName>Tag</PropertyName>
 						  </ListItem>
 							<ListItem>
-								<Label>NvaInterfaceConfiguration</Label>
+								<Label>NvaInterfaceConfigurations</Label>
 								<PropertyName>NvaInterfaceConfigurations</PropertyName>
 							</ListItem>
 					  </ListItems>
