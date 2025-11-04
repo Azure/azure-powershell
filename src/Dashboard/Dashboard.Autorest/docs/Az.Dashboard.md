@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Dashboard
-Module Guid: d7271e13-06f6-4847-8499-12633a408ce4
+Module Guid: 487b2a68-08f0-4985-800d-ecdca1b8bf8a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dashboard
 Help Version: 1.0.0.0
 Locale: en-US
@@ -14,9 +14,25 @@ Microsoft Azure PowerShell: Dashboard cmdlets
 ### [Get-AzGrafana](Get-AzGrafana.md)
 Get the properties of a specific workspace for Grafana resource.
 
+### [Get-AzGrafanaDashboard](Get-AzGrafanaDashboard.md)
+Get the properties of a specific dashboard for grafana resource.
+
+### [Get-AzGrafanaIntegrationFabric](Get-AzGrafanaIntegrationFabric.md)
+Get a IntegrationFabric
+
+### [Invoke-AzGrafanaFetchGrafanaAvailablePlugin](Invoke-AzGrafanaFetchGrafanaAvailablePlugin.md)
+A synchronous resource action.
+
 ### [New-AzGrafana](New-AzGrafana.md)
 Create or update a workspace for Grafana resource.
 This API is idempotent, so user can either create a new grafana or update an existing grafana.
+
+### [New-AzGrafanaIntegrationFabric](New-AzGrafanaIntegrationFabric.md)
+Create a IntegrationFabric
+
+### [New-AzGrafanaManagedDashboard](New-AzGrafanaManagedDashboard.md)
+Create a dashboard for grafana resource.
+This API is idempotent, so user can either create a new dashboard or create an existing dashboard.
 
 ### [New-AzGrafanaMonitorWorkspaceIntegrationObject](New-AzGrafanaMonitorWorkspaceIntegrationObject.md)
 Create an in-memory object for AzureMonitorWorkspaceIntegration.
@@ -24,7 +40,22 @@ Create an in-memory object for AzureMonitorWorkspaceIntegration.
 ### [Remove-AzGrafana](Remove-AzGrafana.md)
 Delete a workspace for Grafana resource.
 
+### [Remove-AzGrafanaIntegrationFabric](Remove-AzGrafanaIntegrationFabric.md)
+Delete a IntegrationFabric
+
+### [Remove-AzGrafanaManagedDashboard](Remove-AzGrafanaManagedDashboard.md)
+Delete a dashboard for Grafana resource.
+
+### [Test-AzGrafanaEnterpriseDetail](Test-AzGrafanaEnterpriseDetail.md)
+Retrieve enterprise add-on details information
+
 ### [Update-AzGrafana](Update-AzGrafana.md)
-update a workspace for Grafana resource.
+Update a workspace for Grafana resource.
 This API is idempotent, so user can either update a new grafana or update an existing grafana.
+
+### [Update-AzGrafanaIntegrationFabric](Update-AzGrafanaIntegrationFabric.md)
+Update a IntegrationFabric
+
+### [Update-AzGrafanaManagedDashboard](Update-AzGrafanaManagedDashboard.md)
+Update a dashboard for Grafana resource.
 
