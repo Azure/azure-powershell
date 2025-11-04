@@ -1,6 +1,6 @@
 ### Example 1: Update Edge Action Version with expanded parameters
 ```powershell
-Update-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1" -DeploymentType "zip" -IsDefaultVersion $False
+Update-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1" -DeploymentType "zip" -IsDefaultVersion "False"
 ```
 
 ```output

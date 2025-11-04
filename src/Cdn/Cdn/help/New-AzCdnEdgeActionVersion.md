@@ -41,7 +41,7 @@ Create EdgeActionVersion version
 
 ### Example 1: Create a new Edge Action Version
 ```powershell
-New-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1" -Location "global" -DeploymentType "zip" -IsDefaultVersion $True
+New-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1" -Location "global" -DeploymentType "zip" -IsDefaultVersion "True"
 ```
 
 ```output
