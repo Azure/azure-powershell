@@ -29,27 +29,31 @@ Retrieve enterprise add-on details information
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Retrieve enterprise add-on details for a Grafana workspace
 ```powershell
-{{ Add code here }}
+Test-AzGrafanaEnterpriseDetail -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+MarketplaceTrialQuota SaasSubscriptionDetail
+--------------------- ----------------------
+14                    Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SubscriptionDetails
 ```
 
-{{ Add description here }}
+Retrieves the enterprise add-on details and subscription information for the specified Azure Managed Grafana workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Retrieve enterprise details using pipeline input
 ```powershell
-{{ Add code here }}
+Get-AzGrafana -ResourceGroupName azpstest-gp -Name azpstest-grafana | Test-AzGrafanaEnterpriseDetail
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+MarketplaceTrialQuota SaasSubscriptionDetail
+--------------------- ----------------------
+14                    Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SubscriptionDetails
 ```
 
-{{ Add description here }}
+Retrieves enterprise add-on details by piping a Grafana workspace object from Get-AzGrafana.
 
 ## PARAMETERS
 

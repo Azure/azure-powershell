@@ -30,27 +30,19 @@ Delete a dashboard for Grafana resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Grafana managed dashboard
 ```powershell
-{{ Add code here }}
+Remove-AzGrafanaManagedDashboard -DashboardName dashboard-01 -ResourceGroupName azpstest-gp
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the specified Azure Managed Grafana dashboard from the resource group.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Grafana dashboard using pipeline input
 ```powershell
-{{ Add code here }}
+Get-AzGrafanaDashboard -ResourceGroupName azpstest-gp -Name dashboard-02 | Remove-AzGrafanaManagedDashboard
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the Azure Managed Grafana dashboard by piping the dashboard object from Get-AzGrafanaDashboard.
 
 ## PARAMETERS
 

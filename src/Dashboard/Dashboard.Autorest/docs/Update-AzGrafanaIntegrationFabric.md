@@ -51,27 +51,31 @@ Update a IntegrationFabric
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update tags for a Grafana integration fabric
 ```powershell
-{{ Add code here }}
+Update-AzGrafanaIntegrationFabric -Name fabric-integration1 -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana -Tag @{"Environment"="Production"; "Team"="DataEngineering"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location ResourceGroupName
+----                -------- -----------------
+fabric-integration1 eastus   azpstest-gp
 ```
 
-{{ Add description here }}
+Updates the tags of an existing integration fabric in the Azure Managed Grafana workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update scenarios for a Grafana integration fabric
 ```powershell
-{{ Add code here }}
+Update-AzGrafanaIntegrationFabric -Name fabric-integration2 -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana -Scenario @("DataExploration", "Monitoring")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location ResourceGroupName
+----                -------- -----------------
+fabric-integration2 eastus   azpstest-gp
 ```
 
-{{ Add description here }}
+Updates the scenarios for an existing integration fabric to enable additional functionality.
 
 ## PARAMETERS
 

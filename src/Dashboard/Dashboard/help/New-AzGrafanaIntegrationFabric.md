@@ -47,27 +47,31 @@ Create a IntegrationFabric
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Grafana integration fabric
 ```powershell
-{{ Add code here }}
+New-AzGrafanaIntegrationFabric -Name fabric-integration1 -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana -Location eastus -Tag @{"Environment"="Production"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location ResourceGroupName
+----                -------- -----------------
+fabric-integration1 eastus   azpstest-gp
 ```
 
-{{ Add description here }}
+Creates a new integration fabric for an Azure Managed Grafana workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a Grafana integration fabric with scenarios
 ```powershell
-{{ Add code here }}
+New-AzGrafanaIntegrationFabric -Name fabric-integration2 -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana -Location eastus -Scenario @("DataExploration")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location ResourceGroupName
+----                -------- -----------------
+fabric-integration2 eastus   azpstest-gp
 ```
 
-{{ Add description here }}
+Creates a new integration fabric for the Grafana workspace with specified scenarios.
 
 ## PARAMETERS
 
