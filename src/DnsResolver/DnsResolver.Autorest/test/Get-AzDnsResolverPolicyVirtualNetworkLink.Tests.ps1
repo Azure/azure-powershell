@@ -41,7 +41,10 @@ Describe 'Get-AzDnsResolverPolicyVirtualNetworkLink' {
         Start-Sleep -Seconds 5
         Remove-AzDnsResolverPolicyVirtualNetworkLink -Name $dnsResolverPolicyLinkName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
         Start-Sleep -Seconds 5
-        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        if ($TestMode -eq "Record")
+        {
+            Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        }
         Start-Sleep -Seconds 5
         Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
@@ -72,7 +75,10 @@ Describe 'Get-AzDnsResolverPolicyVirtualNetworkLink' {
         Start-Sleep -Seconds 5
         Remove-AzDnsResolverPolicyVirtualNetworkLink -Name $dnsResolverPolicyLinkName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
         Start-Sleep -Seconds 5
-        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        if ($TestMode -eq "Record")
+        {
+            Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        }
         Start-Sleep -Seconds 5
         Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }

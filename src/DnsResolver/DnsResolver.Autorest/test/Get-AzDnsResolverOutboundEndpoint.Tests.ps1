@@ -56,7 +56,10 @@ Describe 'Get-AzDnsResolverOutboundEndpoint' {
         Start-Sleep -Seconds 5
         Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
         Start-Sleep -Seconds 5
-        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        if ($TestMode -eq "Record")
+        {
+            Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        }
     }
 
     It 'List Outbound Endpoints under a DNS Resolver name, expected exact number of outbound endpoints retrieved' {
@@ -81,6 +84,9 @@ Describe 'Get-AzDnsResolverOutboundEndpoint' {
         Start-Sleep -Seconds 5
         Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
         Start-Sleep -Seconds 5
-        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        if ($TestMode -eq "Record")
+        {
+            Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        }
     }
 }

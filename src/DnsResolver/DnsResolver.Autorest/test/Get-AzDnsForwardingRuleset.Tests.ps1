@@ -36,10 +36,10 @@ function CreateDnsForwardingRuleset([String]$DnsForwardingRulesetName, [String]$
 Describe 'Get-AzDnsForwardingRuleset' {
     It 'Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved' {
         # ARRANGE
-        $dnsResolverName = "psdnsresolvername28";
-        $outboundEndpointName =  "psoutboundendpointname28";
-        $dnsForwardingRulesetName = "psdnsforwardingrulesetname28"
-        $virtualNetworkName = "psvirtualnetworkname28";
+        $dnsResolverName = "psdnsresolvername282";
+        $outboundEndpointName =  "psoutboundendpointname282";
+        $dnsForwardingRulesetName = "psdnsforwardingrulesetname282"
+        $virtualNetworkName = "psvirtualnetworkname282";
         $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
         $subnetId = $virtualNetworkId + "/subnets/" + $SUBNET_NAME;
 
@@ -59,15 +59,18 @@ Describe 'Get-AzDnsForwardingRuleset' {
         Start-Sleep -Seconds 5
         Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
         Start-Sleep -Seconds 5
-        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        if ($TestMode -eq "Record")
+        {
+            Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        }
     }
 
     It 'List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved' {
         # ARRANGE
-        $dnsResolverName = "psdnsresolvername29";
-        $outboundEndpointName =  "psoutboundendpointname29";
-        $dnsForwardingRulesetName = "psdnsforwardingrulesetname29"
-        $virtualNetworkName = "psvirtualnetworkname29";
+        $dnsResolverName = "psdnsresolvername292";
+        $outboundEndpointName =  "psoutboundendpointname292";
+        $dnsForwardingRulesetName = "psdnsforwardingrulesetname292"
+        $virtualNetworkName = "psvirtualnetworkname292";
         $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
         $subnetId = $virtualNetworkId + "/subnets/" + $SUBNET_NAME;
         
@@ -87,6 +90,9 @@ Describe 'Get-AzDnsForwardingRuleset' {
         Start-Sleep -Seconds 5
         Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
         Start-Sleep -Seconds 5
-        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        if ($TestMode -eq "Record")
+        {
+            Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        }
     }
 }
