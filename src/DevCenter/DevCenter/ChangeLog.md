@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* Update control plane to 2025-04-01-preview
+
 ## Version 2.0.2
 * Added preannouncement breaking change messages.
 
