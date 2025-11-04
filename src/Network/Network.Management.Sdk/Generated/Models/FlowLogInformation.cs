@@ -44,14 +44,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// specified, all network traffic will be logged.
         /// </param>
 
-        /// <param name="recordTypes">Optional field to filter network traffic logs based on flow states. Value
-        /// of this field could be any comma separated combination string of letters
-        /// B,C,E or D. B represents Begin, when a flow is created. C represents
-        /// Continue for an ongoing flow generated at every five-minute interval. E
-        /// represents End, when a flow is terminated. D represents Deny, when a flow
-        /// is denied. If not specified, all network traffic will be logged.
-        /// </param>
-
         /// <param name="enabled">Flag to enable/disable flow logging.
         /// </param>
 
@@ -60,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="format">Parameters that define the flow log format.
         /// </param>
-        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string enabledFilteringCriteria = default(string), string recordTypes = default(string), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
+        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string enabledFilteringCriteria = default(string), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
 
         {
             this.TargetResourceId = targetResourceId;
@@ -68,7 +60,6 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Identity = identity;
             this.StorageId = storageId;
             this.EnabledFilteringCriteria = enabledFilteringCriteria;
-            this.RecordTypes = recordTypes;
             this.Enabled = enabled;
             this.RetentionPolicy = retentionPolicy;
             this.Format = format;
@@ -115,18 +106,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public string EnabledFilteringCriteria {get; set; }
 
         /// <summary>
-        /// Gets or sets optional field to filter network traffic logs based on flow
-        /// states. Value of this field could be any comma separated combination string
-        /// of letters B,C,E or D. B represents Begin, when a flow is created. C
-        /// represents Continue for an ongoing flow generated at every five-minute
-        /// interval. E represents End, when a flow is terminated. D represents Deny,
-        /// when a flow is denied. If not specified, all network traffic will be
-        /// logged.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.recordTypes")]
-        public string RecordTypes {get; set; }
-
-        /// <summary>
         /// Gets or sets flag to enable/disable flow logging.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enabled")]
@@ -159,7 +138,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "StorageId");
             }
-
 
 
 

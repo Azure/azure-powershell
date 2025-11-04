@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayWafRuleSensitivityTypes
     {
+        public const string None = "None";
         public const string Low = "Low";
         public const string Medium = "Medium";
         public const string High = "High";
