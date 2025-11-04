@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Grafana integration fabric
 ```powershell
-{{ Add code here }}
+Remove-AzGrafanaIntegrationFabric -Name fabric-integration1 -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the specified integration fabric from the Azure Managed Grafana workspace.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Grafana integration fabric using pipeline input
 ```powershell
-{{ Add code here }}
+Get-AzGrafanaIntegrationFabric -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana -Name fabric-integration2 | Remove-AzGrafanaIntegrationFabric
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the integration fabric by piping the object from Get-AzGrafanaIntegrationFabric.
 

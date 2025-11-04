@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all Grafana integration fabrics in a workspace
 ```powershell
-{{ Add code here }}
+Get-AzGrafanaIntegrationFabric -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location ResourceGroupName
+----                -------- -----------------
+fabric-integration1 eastus   azpstest-gp
+fabric-integration2 eastus   azpstest-gp
 ```
 
-{{ Add description here }}
+Lists all integration fabrics for the specified Azure Managed Grafana workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Grafana integration fabric
 ```powershell
-{{ Add code here }}
+Get-AzGrafanaIntegrationFabric -Name fabric-integration1 -ResourceGroupName azpstest-gp -WorkspaceName azpstest-grafana
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location ResourceGroupName
+----                -------- -----------------
+fabric-integration1 eastus   azpstest-gp
 ```
 
-{{ Add description here }}
+Gets the properties of a specific integration fabric in an Azure Managed Grafana workspace.
 
