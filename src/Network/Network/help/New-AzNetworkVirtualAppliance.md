@@ -297,7 +297,7 @@ Accept wildcard characters: False
 Interface configurations for NVA deployed in VNet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfig
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfigProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -452,7 +452,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceNetworkProfile
 
-### Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfig
+### Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfigProperties[]
 
 ## OUTPUTS
 
