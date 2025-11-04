@@ -144,8 +144,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+<<<<<<< HEAD
 The ID of the target subscription.
 The value must be an UUID.
+=======
+Azure Subscription ID.
+>>>>>>> main
 
 ```yaml
 Type: System.String

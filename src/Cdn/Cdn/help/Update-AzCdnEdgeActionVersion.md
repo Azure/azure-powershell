@@ -41,7 +41,7 @@ Update EdgeActionVersion resource
 
 ### Example 1: Update Edge Action Version with expanded parameters
 ```powershell
-Update-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1" -DeploymentType "zip" -IsDefaultVersion $False
+Update-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1" -DeploymentType "zip" -IsDefaultVersion "False"
 ```
 
 ```output
@@ -199,8 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
+Azure Subscription ID.
 
 ```yaml
 Type: System.String

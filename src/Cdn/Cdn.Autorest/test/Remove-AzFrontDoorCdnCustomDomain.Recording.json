@@ -216,11 +216,10 @@
         "Date": [ "Wed, 29 Oct 2025 05:45:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "62" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
       },
-      "Content": "{\"status\":\"InProgress\",\"error\":{\"code\":\"None\",\"message\":null}}",
+      "Content": null,
       "isContentBase64": false
     }
   },
@@ -235,7 +234,7 @@
         "x-ms-unique-id": [ "624" ],
         "x-ms-client-request-id": [ "8a20f1aa-551f-4cc5-bffa-5945146ef7ed" ],
         "CommandName": [ "Remove-AzFrontDoorCdnCustomDomain" ],
-        "FullCommandName": [ "Remove-AzFrontDoorCdnCustomDomain_DeleteViaIdentity" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnCustomDomain_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ]
       },
@@ -306,11 +305,11 @@
         "Date": [ "Wed, 29 Oct 2025 05:46:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "61" ],
+        "Content-Length": [ "62" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"status\":\"Succeeded\",\"error\":{\"code\":\"None\",\"message\":null}}",
+      "Content": "{\"status\":\"InProgress\",\"error\":{\"code\":\"None\",\"message\":null}}",
       "isContentBase64": false
     }
   },
@@ -325,7 +324,7 @@
         "x-ms-unique-id": [ "626" ],
         "x-ms-client-request-id": [ "8a20f1aa-551f-4cc5-bffa-5945146ef7ed" ],
         "CommandName": [ "Remove-AzFrontDoorCdnCustomDomain" ],
-        "FullCommandName": [ "Remove-AzFrontDoorCdnCustomDomain_Delete" ],
+        "FullCommandName": [ "Remove-AzFrontDoorCdnCustomDomain_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ]
       },

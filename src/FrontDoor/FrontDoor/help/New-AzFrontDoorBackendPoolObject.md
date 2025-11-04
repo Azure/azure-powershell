@@ -1,25 +1,25 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorbackendpoolobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorBackendPoolObject
 
 ## SYNOPSIS
-Create a PSBackendPool object for Front Door creation
+Create an in-memory object for BackendPool.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorBackendPoolObject -ResourceGroupName <String> -Name <String> -FrontDoorName <String>
- -Backend <PSBackend[]> -LoadBalancingSettingsName <String> -HealthProbeSettingsName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorBackendPoolObject [-Backend <IBackend[]>] [-HealthProbeSettingsName <String>]
+ [-LoadBalancingSettingsName <String>] [-Name <String>] [-Id <String>] [-FrontDoorName <String>]
+ [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a PSBackendPool object for Front Door creation
+Create an in-memory object for BackendPool.
 
 ## EXAMPLES
 
@@ -49,24 +49,9 @@ Create a PSBackendPool object for Front Door creation
 The set of backends for this pool.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackend[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackend[]
 Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -76,14 +61,14 @@ Accept wildcard characters: False
 ```
 
 ### -FrontDoorName
-The name of the Front Door to which this routing rule belongs.
+Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,14 +76,29 @@ Accept wildcard characters: False
 ```
 
 ### -HealthProbeSettingsName
-The name of the health probe settings for this backend pool
+Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,14 +106,14 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancingSettingsName
-The name of the load balancing settings for this backend pool
+Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,14 +121,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-BackendPool name.
+Resource name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,14 +136,14 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name that the RoutingRule will be created in.
+Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,16 +155,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPool
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoor](./New-AzFrontDoor.md)
-[Set-AzFrontDoor](./Set-AzFrontDoor.md)
-[New-AzFrontDoorBackendObject](./New-AzFrontDoorBackendObject.md)

@@ -407,7 +407,7 @@
         "x-ms-unique-id": [ "297" ],
         "x-ms-client-request-id": [ "1ad8beea-9e03-45ad-bebb-6a359b2d61ce" ],
         "CommandName": [ "Get-AzFrontDoorCdnSecurityPolicy" ],
-        "FullCommandName": [ "Get-AzFrontDoorCdnSecurityPolicy_GetViaIdentity" ],
+        "FullCommandName": [ "Get-AzFrontDoorCdnSecurityPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
         "Authorization": [ "[Filtered]" ]

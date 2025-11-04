@@ -1,24 +1,24 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorbackendpoolssettingobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolssettingsobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorBackendPoolsSettingObject
 
 ## SYNOPSIS
-Create a PSBackendPoolsSetting object for Front Door creation.
+Create an in-memory object for BackendPoolsSettings.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorBackendPoolsSettingObject [-EnforceCertificateNameCheck <PSEnabledState>]
- [-SendRecvTimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorBackendPoolsSettingObject [-EnforceCertificateNameCheck <String>]
+ [-SendRecvTimeoutInSeconds <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzFrontDoorBackendPoolsSettingObject** cmdlet creates a new PSBackendPoolsSettings object for Front Door creation.
+Create an in-memory object for BackendPoolsSettings.
 
 ## EXAMPLES
 
@@ -35,6 +35,8 @@ Name                        :
 Type                        :
 ```
 
+Create BackendPoolsSettings object using defaults
+
 ### Example 2: Create BackendPoolsSettings object with user specified values
 ```powershell
 New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
@@ -48,32 +50,18 @@ Name                        :
 Type                        :
 ```
 
+Create BackendPoolsSettings object with user specified values
+
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -EnforceCertificateNameCheck
 Whether to enforce certificate name check on HTTPS requests to all backend pools.
 No effect on non-HTTPS requests.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -83,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -SendRecvTimeoutInSeconds
-Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
+Send and receive timeout on forwarding request to the backend.
+When timeout is reached, the request fails and returns.
 
 ```yaml
 Type: System.Int32
@@ -102,11 +91,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings
 
 ## NOTES
 

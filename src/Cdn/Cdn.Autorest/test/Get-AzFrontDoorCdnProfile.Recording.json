@@ -9,7 +9,7 @@
         "x-ms-unique-id": [ "237" ],
         "x-ms-client-request-id": [ "10f9d5a1-e155-44f8-b75e-53247ee7fb63" ],
         "CommandName": [ "Az.Cdn.internal\\Get-AzCdnProfile" ],
-        "FullCommandName": [ "Get-AzCdnProfile_Get" ],
+        "FullCommandName": [ "Get-AzCdnProfile_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -36,7 +36,7 @@
         "Date": [ "Wed, 29 Oct 2025 04:21:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "479" ],
+        "Content-Length": [ "1207" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
@@ -67,6 +67,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "89ad9bc7-4023-4944-aef8-69acb5302f5a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-request-id": [ "b166f15d-dee4-4ec4-9984-d2bee43aef65" ],
         "x-ms-client-request-id": [ "ae328aa2-54dd-4499-a131-f4f6fdeed3bd" ],

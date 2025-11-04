@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for edge action
 
 ## Version 5.1.0
 
