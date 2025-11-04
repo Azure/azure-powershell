@@ -24,11 +24,6 @@
 * API version updates across all resource types from 2025-03-01 to 2025-09-01
 * Parameter changes in existing cmdlets, particularly around scheduled operations handling
 
-## Version 1.3.0
-
-* Upgraded to the stable version 2025-09-01
-* Preannounced breaking changes. Please refer to https://github.com/Azure/azure-powershell/blob/c3412a913b59a5445cd9f23c339eda321eb2b136/documentation/development-docs/breakingchange-for-autogen-module.md
-
 ## Version 1.2.0
 
 * Upgraded to the stable version 2025-03-01
