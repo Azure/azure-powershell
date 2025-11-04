@@ -20,25 +20,30 @@ Describe 'Update-AzDnsResolverPolicyVirtualNetworkLink' {
         $dnsResolverPolicyName = "psdnsresolverpolicyforlinknamef2rcmjh";
         $dnsResolverPolicyLinkName = "psdnsresolverpolicylinknamef2rcmjh";
         $virtualNetworkName = "psvirtualnetworkforlinknamef2rcmjh";
-        $resourceGroupName = "powershell-test-rg-debug-update";
-        $location = "westus2";
-        $subscriptionId = "91ab65d2-c73f-4768-89d0-b061815f258b";
-        $virtualNetworkId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
 
         if ($TestMode -eq "Record")
         {
             $defaultSubnet = New-AzVirtualNetworkSubnetConfig -Name "default" -AddressPrefix "10.0.0.0/24"
-            $vnet = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $defaultSubnet
+            $vnet = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $defaultSubnet -Force
         }
 
-        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
-        $resolverPolicyLink = New-AzDnsResolverPolicyVirtualNetworkLink -Name $dnsResolverPolicyLinkName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location -VirtualNetworkId $virtualNetworkId
+        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
+        $resolverPolicyLink = New-AzDnsResolverPolicyVirtualNetworkLink -Name $dnsResolverPolicyLinkName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -VirtualNetworkId $virtualNetworkId
         $tag  = GetRandomHashtable -size 5
 
         # ACT
-        $updatedDnsResolverPolicyLink = Update-AzDnsResolverPolicyVirtualNetworkLink -Name $dnsResolverPolicyLinkName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Tag $tag
+        $updatedDnsResolverPolicyLink = Update-AzDnsResolverPolicyVirtualNetworkLink -Name $dnsResolverPolicyLinkName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Tag $tag
 
         # ASSERT
         $updatedDnsResolverPolicyLink.Tag.Count | Should -Be $tag.Count
+    
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverPolicyVirtualNetworkLink -Name $dnsResolverPolicyLinkName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }

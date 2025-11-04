@@ -18,22 +18,22 @@ Describe 'Invoke-AzDnsResolverBulkDnsResolverDomainList' {
     It 'Uploads to the domain list (skipped due to requiring sas token credentials in command)' -skip {
         # ARRANGE
         $dnsResolverDomainListName = "psdnsresolverdomainlistbulkname0j0cdzg";
-        $resourceGroupName = "powershell-test-rg-debug-new";
-        $location = "westus2";
-        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location
+        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
         # ACT
-        Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName $resourceGroupName -DnsResolverDomainListName $dnsResolverDomainListName -Action "Upload" -StorageUrl https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}
+        Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName $RESOURCE_GROUP_NAME -DnsResolverDomainListName $dnsResolverDomainListName -Action "Upload" -StorageUrl https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}
     }
 
     It 'Downloads the domains to the storage url (skipped due to requiring sas token credentials in command)' -skip {
         # ARRANGE
         $dnsResolverDomainListName = "psdnsresolverdomainlistbulkname0j0bihd";
-        $resourceGroupName = "powershell-test-rg-debug-new";
-        $location = "westus2";
-        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location
+        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
         # ACT
-        Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName $resourceGroupName -DnsResolverDomainListName $dnsResolverDomainListName -Action "Upload" -StorageUrl https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}
+        Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName $RESOURCE_GROUP_NAME -DnsResolverDomainListName $dnsResolverDomainListName -Action "Upload" -StorageUrl https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}
+    
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }

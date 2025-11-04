@@ -26,12 +26,12 @@ Describe 'Update-AzDnsForwardingRuleset' {
         $dnsForwardingRulesetName = "psdnsforwardingrulesetname54";
         $virtualNetworkName = "psvirtualnetworkname54";
         $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
+        $subnetId = $virtualNetworkId + "/subnets/" + $SUBNET_NAME;
 
         if ($TestMode -eq "Record")
         {
-            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
-            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+            $defaultSubnet = New-AzVirtualNetworkSubnetConfig -Name "default" -AddressPrefix "10.0.0.0/24"
+            $vnet = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $defaultSubnet -Force
         }
 
         New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
@@ -47,5 +47,15 @@ Describe 'Update-AzDnsForwardingRuleset' {
         # ASSERT
         $updatedDnsForwardingRuleset | Should -BeSuccessfullyCreatedDnsForwardingRuleset
         $updatedDnsForwardingRuleset.Tag.Count | Should -Be $tag.Count
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
     }
 }

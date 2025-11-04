@@ -33,23 +33,23 @@ function setupEnv() {
     # as default. You could change them if needed.
     Import-Module -Name Az.Resources
 
-    # ITE Validation
-    Select-AzSubscription -SubscriptionObject (Get-AzSubscription -SubscriptionId 91ab65d2-c73f-4768-89d0-b061815f258b)
+    # Corp Validation
+    Select-AzSubscription -SubscriptionObject (Get-AzSubscription -SubscriptionId 97db216c-169d-4ea9-9d98-114adba0aa20)
 
     Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 
-    $subscriptionId = (Get-AzContext).Subscription.Id
+    $SUBSCRIPTION_ID = (Get-AzContext).Subscription.Id
 
-    write-host "subscriptionId" $subscriptionId
+    write-host "subscriptionId" $SUBSCRIPTION_ID
 
-    $env.SubscriptionId = $subscriptionId
+    $env.SubscriptionId = $SUBSCRIPTION_ID
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
     write-host "creating test resource group..."
-    $resourceGroupName = "powershelldnsresolvertestrg" + (RandomString -allChars $false -len 6)
-    New-AzResourceGroup -Name $resourceGroupName -Location westus2 -SubscriptionId $subscriptionId
-    $env.Add("ResourceGroupName", $resourceGroupName)
+    $RESOURCE_GROUP_NAME = "powershelldnsresolvertestrg" + (RandomString -allChars $false -len 6)
+    New-AzResourceGroup -Name $RESOURCE_GROUP_NAME -Location westus2 -SubscriptionId $SUBSCRIPTION_ID
+    $env.Add("ResourceGroupName", $RESOURCE_GROUP_NAME)
 
     $null = $env.Add("DnsResolverNamePrefix", "psdnsresolvername");
     $null = $env.Add("VirtualNetworkNamePrefix", "psvirtualnetworkname");

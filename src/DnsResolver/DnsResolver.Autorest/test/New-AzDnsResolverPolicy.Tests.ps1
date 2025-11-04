@@ -18,30 +18,34 @@ Describe 'New-AzDnsResolverPolicy' {
     It 'Create DNS resolver policy' {
         # ARRANGE
         $dnsResolverPolicyName = "psdnsresolverpolicyname0j0cdzg";
-        $resourceGroupName = "powershell-test-rg-debug-new";
-        $location = "westus2";
 
         # ACT
-        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
         # ASSERT
         $resolverPolicy | Should -BeSuccessfullyCreated
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 
     It 'Update DNS Resolver Policy with new tags.' {
         # ARRANGE
         $dnsResolverPolicyName = "psdnsresolverpolicyname4c7glpm";
-        $resourceGroupName = "powershell-test-rg-debug-new";
-        $location = "westus2";
 
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
         $tag = GetRandomHashtable -size 2
 
         # ACT
-        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag
+        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Tag $tag
 
         # ASSERT
         $resolverPolicy.ProvisioningState  | Should -Be "Succeeded"
         $resolverPolicy.Tag.Count | Should -Be $tag.Count
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }

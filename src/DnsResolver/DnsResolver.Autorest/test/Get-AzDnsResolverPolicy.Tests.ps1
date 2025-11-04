@@ -17,43 +17,52 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDnsResolverPolicy'))
 Describe 'Get-AzDnsResolverPolicy' {
     It 'Get single DNS resolver policy by name, expect DNS resolver policy by name retrieved' {
         # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyname62";
-        $resourceGroupName = "powershell-test-rg-debug-get";
+        $dnsResolverPolicyName = "psdnsresolverpolicyname662";
         
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
         # ACT
-        $dnsResolver =  Get-AzDnsResolverPolicy -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName
+        $dnsResolver =  Get-AzDnsResolverPolicy -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
 
         # ASSERT
         $dnsResolver | Should -BeSuccessfullyCreated
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 
     It 'List DNS resolver policies in a resource group, expected least number of DNS resolver policies retrieved' {
         # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyname63";
-        $resourceGroupName = "powershell-test-rg-debug-get";
+        $dnsResolverPolicyName = "psdnsresolverpolicyname663";
 
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
         # ACT
-        $dnsResolvers =  Get-AzDnsResolverPolicy -ResourceGroupName $resourceGroupName
+        $dnsResolvers =  Get-AzDnsResolverPolicy -ResourceGroupName $RESOURCE_GROUP_NAME
 
         # ASSERT
         $dnsResolvers.Count | Should -BeGreaterThan 0
+        
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 
     It 'List DNS resolver policies in a subscription, expected least number of DNS resolver policies retrieved' {
         # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyname64";
-        $resourceGroupName = "powershell-test-rg-debug-get";
+        $dnsResolverPolicyName = "psdnsresolverpolicyname664";
 
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
         # ACT
         $dnsResolvers =  Get-AzDnsResolverPolicy
 
         # ASSERT
         $dnsResolvers.Count | Should -BeGreaterThan 0
+        
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }

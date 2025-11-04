@@ -22,8 +22,8 @@ function CreateForwardingRule([String]$ForwardingRuleName, [String]$DomainName, 
 {
     if ($TestMode -eq "Record")
     {
-        $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
-        $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
+        $defaultSubnet = New-AzVirtualNetworkSubnetConfig -Name "default" -AddressPrefix "10.0.0.0/24"
+        $vnet = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $defaultSubnet -Force
     }
 
     New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
@@ -46,7 +46,7 @@ Describe 'Get-AzDnsForwardingRulesetForwardingRule' {
         $domainName = "psdomainName40.com."
         $virtualNetworkName = "psvirtualnetworkname40";
         $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
+        $subnetId = $virtualNetworkId + "/subnets/" + $SUBNET_NAME;
         
         CreateForwardingRule -ForwardingRuleName $forwardingRuleName -DomainName $domainName -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 
@@ -55,6 +55,18 @@ Describe 'Get-AzDnsForwardingRulesetForwardingRule' {
 
         # ASSERT
         $forwardingRule | Should -BeSuccessfullyCreatedForwardingRule
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsForwardingRulesetForwardingRule -Name $forwardingRuleName -DnsForwardingRulesetName $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
     }
 
     It 'List all forwarding rules under the DNS forwarding ruleset, expect all forwarding rules retrieved' {
@@ -66,7 +78,7 @@ Describe 'Get-AzDnsForwardingRulesetForwardingRule' {
         $domainName = "psdomainName41.com."
         $virtualNetworkName = "psvirtualnetworkname41";
         $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
+        $subnetId = $virtualNetworkId + "/subnets/" + $SUBNET_NAME;
         
         CreateForwardingRule -ForwardingRuleName $forwardingRuleName -DomainName $domainName -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 
@@ -75,5 +87,17 @@ Describe 'Get-AzDnsForwardingRulesetForwardingRule' {
 
         # ASSERT
         $forwardingRule.Count | Should -Be "1"
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsForwardingRulesetForwardingRule -Name $forwardingRuleName -DnsForwardingRulesetName $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
+        Start-Sleep -Seconds 5
+        Remove-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $RESOURCE_GROUP_NAME -Force
     }
 }

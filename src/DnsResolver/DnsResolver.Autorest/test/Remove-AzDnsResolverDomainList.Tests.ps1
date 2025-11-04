@@ -18,30 +18,34 @@ Describe 'Remove-AzDnsResolverDomainList' {
     It 'Delete a DNS resolver domain list by name, expected DNS resolver domain list deleted' {
         # ARRANGE
        $dnsResolverDomainListName = "psdnsresolverdomainlistname65";
-       $resourceGroupName = "powershell-test-rg-debug-remove";
-       $location = "westus2";
 
-       New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+       New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
 
        # ACT
-       Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName
+       Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
 
        # ASSERT 
-        {Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $resourceGroupName } | Should -Throw
+        {Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
    }
 
    It 'Delete a DNS resolver domain list via identity, expected DNS resolver domain list deleted' {
         # ARRANGE
         $dnsResolverDomainListName = "psdnsresolverdomainlistname66";
-        $resourceGroupName = "powershell-test-rg-debug-remove";
-        $location = "westus2";
 
-        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
 
         # ACT
-        Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $resourceGroupName | Remove-AzDnsResolverDomainList
+        Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME | Remove-AzDnsResolverDomainList
 
         # ASSERT
-        {Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $resourceGroupName } | Should -Throw
+        {Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }

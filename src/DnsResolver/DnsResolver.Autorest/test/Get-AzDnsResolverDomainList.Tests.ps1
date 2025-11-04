@@ -17,13 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDnsResolverDomainList')
 Describe 'Get-AzDnsResolverDomainList' {
     It 'Get single DNS resolver domain list by name, expect DNS resolver domain list by name retrieved' {
         # ARRANGE
-        $dnsResolverDomainListName = "psdnsresolverdomainlistname62";
-        $resourceGroupName = "powershell-test-rg-debug-get";
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname662";
         
-        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
 
         # ACT
-        $dnsResolver =  Get-AzDnsResolverDomainList -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $resourceGroupName
+        $dnsResolver =  Get-AzDnsResolverDomainList -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
 
         # ASSERT
         $dnsResolver | Should -BeSuccessfullyCreated
@@ -31,29 +30,35 @@ Describe 'Get-AzDnsResolverDomainList' {
 
     It 'List DNS resolver domain lists in a resource group, expected least number of DNS resolver domain lists retrieved' {
         # ARRANGE
-        $dnsResolverDomainListName = "psdnsresolverdomainlistname63";
-        $resourceGroupName = "powershell-test-rg-debug-get";
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname663";
 
-        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
 
         # ACT
-        $dnsResolvers =  Get-AzDnsResolverDomainList -ResourceGroupName $resourceGroupName
+        $dnsResolverDomainLists =  Get-AzDnsResolverDomainList -ResourceGroupName $RESOURCE_GROUP_NAME
 
         # ASSERT
-        $dnsResolvers.Count | Should -BeGreaterThan 0
+        $dnsResolverDomainLists.Count | Should -BeGreaterThan 0
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 
     It 'List DNS resolver domain lists in a subscription, expected least number of DNS resolver domain lists retrieved' {
         # ARRANGE
-        $dnsResolverDomainListName = "psdnsresolverdomainlistname64";
-        $resourceGroupName = "powershell-test-rg-debug-get";
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname664";
 
-        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
 
         # ACT
-        $dnsResolvers =  Get-AzDnsResolverDomainList
+        $dnsResolverDomainLists =  Get-AzDnsResolverDomainList
 
         # ASSERT
-        $dnsResolvers.Count | Should -BeGreaterThan 0
+        $dnsResolverDomainLists.Count | Should -BeGreaterThan 0
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }
