@@ -15,21 +15,21 @@ Remove one or more IP rules from the Network ACLs of an Azure SignalR Service in
 ### ResourceGroupParameterSet (Default)
 ```
 Remove-AzSignalRNetworkIpRule [-ResourceGroupName <String>] [-Name] <String> -IpRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzSignalRNetworkIpRule -ResourceId <String> -IpRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzSignalRNetworkIpRule -InputObject <PSSignalRResource> -IpRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -120,21 +120,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-Determines how PowerShell handles progress updates for the cmdlet. Specify SilentlyContinue to suppress progress output.
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

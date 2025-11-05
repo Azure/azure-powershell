@@ -30,7 +30,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
  [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
  [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] -Tag <Hashtable> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -886,21 +886,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

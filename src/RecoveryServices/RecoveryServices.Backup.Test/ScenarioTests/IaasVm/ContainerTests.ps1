@@ -29,9 +29,11 @@ function Test-AzureVMGetContainers
 		# Setup
 		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName  # Create-VM $resourceGroupName $location
 		$vault =  Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName # Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+		# Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		$item = Enable-Protection $vault $vm
-		
+		Assert-True { $item -ne $null}
+		Assert-True { $item.Count -eq 1 }
+
 		# VARIATION-1: Get All Containers with only mandatory parameters
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
@@ -66,9 +68,9 @@ function Test-AzureVMGetContainers
 		# Cleanup-ResourceGroup $resourceGroupName
 
 		#disable protection with RemoveRecoveryPoints
-		Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -VaultId $vault.ID -Force
+		Disable-AzRecoveryServicesBackupProtection -Item $item[0] -RemoveRecoveryPoints -VaultId $vault.ID -Force
 
 		# enable soft delete 
-		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
+		# Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
 	}
 }

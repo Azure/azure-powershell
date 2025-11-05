@@ -19,6 +19,20 @@ Stop-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### StopViaJsonString
+```
+Stop-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaJsonFilePath
+```
+Stop-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### StopViaIdentityExpanded
 ```
 Stop-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
@@ -153,7 +167,7 @@ The boolean value indicates whether to Stop and deallocate the virtual machines 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: StopExpanded, StopViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +195,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -195,12 +208,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Stop operation
+
+```yaml
+Type: System.String
+Parameter Sets: StopViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Stop operation
+
+```yaml
+Type: System.String
+Parameter Sets: StopViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath
 Aliases: SapVirtualInstanceName
 
 Required: True
@@ -231,7 +274,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath
 Aliases:
 
 Required: True
@@ -248,7 +291,7 @@ hard stop.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: StopExpanded, StopViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -264,7 +307,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath
 Aliases:
 
 Required: False
@@ -314,7 +357,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IOperationStatusResult
 
 ## NOTES
 
