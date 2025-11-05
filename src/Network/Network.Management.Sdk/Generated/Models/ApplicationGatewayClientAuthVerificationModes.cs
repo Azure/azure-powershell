@@ -7,14 +7,13 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ApplicationGatewayWafRuleSensitivityTypes.
+    /// Defines values for ApplicationGatewayClientAuthVerificationModes.
     /// </summary>
 
 
-    public static class ApplicationGatewayWafRuleSensitivityTypes
+    public static class ApplicationGatewayClientAuthVerificationModes
     {
-        public const string Low = "Low";
-        public const string Medium = "Medium";
-        public const string High = "High";
+        public const string Strict = "Strict";
+        public const string Passthrough = "Passthrough";
     }
 }

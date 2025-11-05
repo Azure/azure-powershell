@@ -7,14 +7,13 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ApplicationGatewayWafRuleSensitivityTypes.
+    /// Defines values for ApplicationGatewayUnAuthorizedRequestAction.
     /// </summary>
 
 
-    public static class ApplicationGatewayWafRuleSensitivityTypes
+    public static class ApplicationGatewayUnAuthorizedRequestAction
     {
-        public const string Low = "Low";
-        public const string Medium = "Medium";
-        public const string High = "High";
+        public const string Deny = "Deny";
+        public const string Allow = "Allow";
     }
 }
