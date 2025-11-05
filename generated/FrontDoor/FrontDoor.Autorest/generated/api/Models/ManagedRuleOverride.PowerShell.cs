@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Action, global::System.Convert.ToString);
             }
+            if (content.Contains("Sensitivity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Sensitivity = (string) content.GetValueForProperty("Sensitivity",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Sensitivity, global::System.Convert.ToString);
+            }
             if (content.Contains("Exclusion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Exclusion = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion>) content.GetValueForProperty("Exclusion",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Exclusion, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleExclusionTypeConverter.ConvertFrom));
@@ -153,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (content.Contains("Action"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Action, global::System.Convert.ToString);
+            }
+            if (content.Contains("Sensitivity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Sensitivity = (string) content.GetValueForProperty("Sensitivity",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverrideInternal)this).Sensitivity, global::System.Convert.ToString);
             }
             if (content.Contains("Exclusion"))
             {

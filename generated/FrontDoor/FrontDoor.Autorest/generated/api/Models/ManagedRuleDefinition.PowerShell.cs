@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultAction, global::System.Convert.ToString);
             }
+            if (content.Contains("DefaultSensitivity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultSensitivity = (string) content.GetValueForProperty("DefaultSensitivity",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultSensitivity, global::System.Convert.ToString);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).Description, global::System.Convert.ToString);
@@ -153,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (content.Contains("DefaultAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultAction, global::System.Convert.ToString);
+            }
+            if (content.Contains("DefaultSensitivity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultSensitivity = (string) content.GetValueForProperty("DefaultSensitivity",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal)this).DefaultSensitivity, global::System.Convert.ToString);
             }
             if (content.Contains("Description"))
             {
