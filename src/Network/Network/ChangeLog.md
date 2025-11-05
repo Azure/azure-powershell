@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added property "NvaInterfaceConfiguration" to Network Virtual Appliances, as well as support for them in following cmdlets:
+    - `New-AzNetworkVirtualAppliance`
+    - `Get-AzNetworkVirtualAppliance`
+* Added cmdlet to take the NvaInterfaceConfigurations properties on the Network Virtual Appliance:
+    - `New-AzNvaInterfaceConfiguration`  to build individual interface configuration for network virtual appliance.
 
 ## Version 7.22.0
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
@@ -37,11 +42,6 @@
     - `Set-AzApplicationGatewayProbeConfig`
 	- `Add-AzApplicationGatewayProbeConfig`
 	- `New-AzApplicationGatewayProbeConfig`
-* Added property "NvaInterfaceConfiguration" to Network Virtual Appliances, as well as support for them in following cmdlets:
-    - `New-AzNetworkVirtualAppliance`
-    - `Get-AzNetworkVirtualAppliance`
-* Added cmdlet to take the NvaInterfaceConfigurations properties on the Network Virtual Appliance:
-    - `New-AzNvaInterfaceConfiguration`  to build individual interface configuration for network virtual appliance.
 
 ## Version 7.21.0
 * Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
