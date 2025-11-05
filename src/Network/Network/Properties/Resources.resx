@@ -837,7 +837,7 @@
   <data name="BastionShareableLinkNotEnabled" xml:space="preserve">
     <value>Shareable link feature is not enabled</value>
   </data>
-  <data name="FlowLogRecordTypesExceedsLimit" xml:space="preserve">
+  <data name="FlowLogRecordTypeExceedsLimit" xml:space="preserve">
     <value>RecordType string can be maximum of 20 characters in length.</value>
   </data>
 </root>
