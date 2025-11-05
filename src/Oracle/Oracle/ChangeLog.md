@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced breaking changes
 
 ## Version 1.2.0
 * Upgraded to the stable version 2025-03-01
