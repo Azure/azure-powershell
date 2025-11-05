@@ -48,14 +48,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="fleetspaceApiKind">The kind of API this fleetspace belongs to. Acceptable values: &#39;NoSQL&#39;
         /// Possible values include: &#39;NoSQL&#39;</param>
 
+        /// <param name="serviceTier">Service Tier for the fleetspace. GeneralPurpose types refers to single
+        /// write region accounts that can be added to this fleetspace, whereas
+        /// BusinessCritical refers to multi write region.
+        /// Possible values include: &#39;GeneralPurpose&#39;, &#39;BusinessCritical&#39;</param>
+
+        /// <param name="dataRegions">List of data regions assigned to the fleetspace. Eg [westus2]
+        /// </param>
+
         /// <param name="throughputPoolConfiguration">Configuration for throughput pool in the fleetspace.
         /// </param>
-        public FleetspaceResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string fleetspaceApiKind = default(string), FleetspacePropertiesThroughputPoolConfiguration throughputPoolConfiguration = default(FleetspacePropertiesThroughputPoolConfiguration))
+        public FleetspaceResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string fleetspaceApiKind = default(string), string serviceTier = default(string), System.Collections.Generic.IList<string> dataRegions = default(System.Collections.Generic.IList<string>), FleetspacePropertiesThroughputPoolConfiguration throughputPoolConfiguration = default(FleetspacePropertiesThroughputPoolConfiguration))
 
         : base(id, name, type, systemData)
         {
             this.ProvisioningState = provisioningState;
             this.FleetspaceApiKind = fleetspaceApiKind;
+            this.ServiceTier = serviceTier;
+            this.DataRegions = dataRegions;
             this.ThroughputPoolConfiguration = throughputPoolConfiguration;
             CustomInit();
         }
@@ -80,6 +90,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string FleetspaceApiKind {get; set; }
 
         /// <summary>
+        /// Gets or sets service Tier for the fleetspace. GeneralPurpose types refers
+        /// to single write region accounts that can be added to this fleetspace,
+        /// whereas BusinessCritical refers to multi write region. Possible values include: &#39;GeneralPurpose&#39;, &#39;BusinessCritical&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceTier")]
+        public string ServiceTier {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of data regions assigned to the fleetspace. Eg [westus2]
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dataRegions")]
+        public System.Collections.Generic.IList<string> DataRegions {get; set; }
+
+        /// <summary>
         /// Gets or sets configuration for throughput pool in the fleetspace.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.throughputPoolConfiguration")]
@@ -94,10 +118,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         {
 
 
-            if (this.ThroughputPoolConfiguration != null)
+
+            if (this.DataRegions != null)
             {
-                this.ThroughputPoolConfiguration.Validate();
+                if (this.DataRegions.Count < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinItems, "DataRegions", 1);
+                }
             }
+
         }
     }
 }

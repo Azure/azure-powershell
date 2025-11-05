@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// autoscale) that can be specified
         /// </param>
 
-        /// <param name="throughputBuckets">Array of Throughput Bucket limits to be applied to the Cosmos DB container
+        /// <param name="throughputBuckets">Array of throughput bucket limits to be applied to the Cosmos DB container
         /// </param>
 
         /// <param name="rid">A system generated property. A unique identifier.
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string SoftAllowedMaximumThroughput {get; private set; }
 
         /// <summary>
-        /// Gets or sets array of Throughput Bucket limits to be applied to the Cosmos
+        /// Gets or sets array of throughput bucket limits to be applied to the Cosmos
         /// DB container
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "throughputBuckets")]

@@ -30,20 +30,23 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="maxThroughput">Maximum throughput for the pool.
         /// </param>
 
-        /// <param name="serviceTier">Service Tier for the fleetspace. GeneralPurpose types refers to single
-        /// write region accounts that can be added to this fleetspace, whereas
-        /// BusinessCritical refers to multi write region.
-        /// Possible values include: &#39;GeneralPurpose&#39;, &#39;BusinessCritical&#39;</param>
-
-        /// <param name="dataRegions">List of data regions assigned to the fleetspace. Eg [westus2]
+        /// <param name="dedicatedRUs">Total dedicated throughput (RU/s) for fleetspace. Represents the sum of all
+        /// manual provisioned throughput and all autoscale max RU/s across all shared
+        /// throughput databases and dedicated throughput containers across all
+        /// accounts in the fleetspace for 1 region.
         /// </param>
-        public FleetspacePropertiesThroughputPoolConfiguration(int? minThroughput = default(int?), int? maxThroughput = default(int?), string serviceTier = default(string), System.Collections.Generic.IList<string> dataRegions = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="maxConsumableRUs">Maximum consumable throughput (RU/s) for fleetspace. Represents the maximum
+        /// throughput that resources in the fleetspace can consume from the
+        /// fleetspace&#39;s pool in 1 region.
+        /// </param>
+        public FleetspacePropertiesThroughputPoolConfiguration(int? minThroughput = default(int?), int? maxThroughput = default(int?), long? dedicatedRUs = default(long?), long? maxConsumableRUs = default(long?))
 
         {
             this.MinThroughput = minThroughput;
             this.MaxThroughput = maxThroughput;
-            this.ServiceTier = serviceTier;
-            this.DataRegions = dataRegions;
+            this.DedicatedRUs = dedicatedRUs;
+            this.MaxConsumableRUs = maxConsumableRUs;
             CustomInit();
         }
 
@@ -66,34 +69,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public int? MaxThroughput {get; set; }
 
         /// <summary>
-        /// Gets or sets service Tier for the fleetspace. GeneralPurpose types refers
-        /// to single write region accounts that can be added to this fleetspace,
-        /// whereas BusinessCritical refers to multi write region. Possible values include: &#39;GeneralPurpose&#39;, &#39;BusinessCritical&#39;
+        /// Gets or sets total dedicated throughput (RU/s) for fleetspace. Represents
+        /// the sum of all manual provisioned throughput and all autoscale max RU/s
+        /// across all shared throughput databases and dedicated throughput containers
+        /// across all accounts in the fleetspace for 1 region.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceTier")]
-        public string ServiceTier {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dedicatedRUs")]
+        public long? DedicatedRUs {get; set; }
 
         /// <summary>
-        /// Gets or sets list of data regions assigned to the fleetspace. Eg [westus2]
+        /// Gets or sets maximum consumable throughput (RU/s) for fleetspace.
+        /// Represents the maximum throughput that resources in the fleetspace can
+        /// consume from the fleetspace&#39;s pool in 1 region.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "dataRegions")]
-        public System.Collections.Generic.IList<string> DataRegions {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-
-            if (this.DataRegions != null)
-            {
-                if (this.DataRegions.Count < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinItems, "DataRegions", 1);
-                }
-            }
-        }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxConsumableRUs")]
+        public long? MaxConsumableRUs {get; set; }
     }
 }
