@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Send the invoked PowerShell command (ps_script) and subscription id to a remote endpoint without executing the real operation.")]
         public SwitchParameter DryRun { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "When used together with -DryRun, exports generated Bicep template to the specified file or directory path.")]
+        public string ExportTemplateToPath { get; set; }
+
         public ComputeClient ComputeClient
         {
             get
@@ -90,6 +93,16 @@ namespace Microsoft.Azure.Commands.Compute
         {
             StartTime = DateTime.Now;
 
+            // Validate ExportTemplateToPath usage
+            if (MyInvocation?.BoundParameters?.ContainsKey("ExportTemplateToPath") == true && !DryRun.IsPresent)
+            {
+                ThrowTerminatingError(new ErrorRecord(
+                    new ArgumentException("-ExportTemplateToPath must be used together with -DryRun"),
+                    "ExportTemplateRequiresDryRun",
+                    ErrorCategory.InvalidArgument,
+                    null));
+            }
+
             // Intercept early if DryRun requested
             if (DryRun.IsPresent && TryHandleDryRun())
             {
@@ -99,57 +112,127 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         /// <summary>
-        /// Handles DryRun processing: capture command text and subscription id and POST to endpoint.
+        /// Handles DryRun processing: optionally prepend a custom PowerShell script segment (e.g. flattened object definition)
+        /// before the original invocation line. Captures subscription id and posts to remote endpoint.
+        /// If -ExportTemplateToPath is provided, sets export_bicep=True in payload and writes the returned bicep template
+        /// (bicep_template.main_template) to the target path (file or directory).
         /// Returns true if DryRun was processed (and normal execution should stop).
         /// </summary>
-        protected virtual bool TryHandleDryRun()
+        /// <param name="prePsInvocationScript">Optional PowerShell script lines to prepend before the actual invocation.</param>
+        protected virtual bool TryHandleDryRun(string prePsInvocationScript = null)
         {
             try
             {
-                string psScript = this.MyInvocation?.Line ?? this.MyInvocation?.InvocationName ?? string.Empty;
+                string invocationLine = this.MyInvocation?.Line ?? this.MyInvocation?.InvocationName ?? string.Empty;
+                string psScript = string.IsNullOrWhiteSpace(prePsInvocationScript)
+                    ? invocationLine
+                    : prePsInvocationScript + "\n" + invocationLine;
                 string subscriptionId = this.DefaultContext?.Subscription?.Id ?? DefaultProfile.DefaultContext?.Subscription?.Id ?? string.Empty;
+
+                bool exportBicep = MyInvocation?.BoundParameters?.ContainsKey("ExportTemplateToPath") == true;
 
                 var payload = new
                 {
                     ps_script = psScript,
                     subscription_id = subscriptionId,
                     timestamp_utc = DateTime.UtcNow.ToString("o"),
-                    source = "Az.Compute.DryRun"
+                    source = "Az.Compute.DryRun",
+                    export_bicep = exportBicep ? "True" : "False"
                 };
 
-                // Endpoint + token provided via environment variables to avoid changing all cmdlet signatures
                 string endpoint = Environment.GetEnvironmentVariable("AZURE_POWERSHELL_DRYRUN_ENDPOINT");
                 if (string.IsNullOrWhiteSpace(endpoint))
                 {
-                    // Default local endpoint (e.g., local Azure Function) if not provided via environment variable
-                    endpoint = "http://localhost:7071/api/what_if_ps_preview";
+                    endpoint = "https://azcli-script-insight.azurewebsites.net/api/what_if_ps_preview";
                 }
-                // Acquire token via Azure Identity (DefaultAzureCredential). Optional scope override via AZURE_POWERSHELL_DRYRUN_SCOPE
                 string token = GetDryRunAuthToken();
 
-                // endpoint is always non-empty now (falls back to local default)
-
                 var dryRunResult = PostDryRun(endpoint, token, payload);
+                JToken resultToken = null;
+                try
+                {
+                    if (dryRunResult is JToken jt)
+                    {
+                        resultToken = jt;
+                    }
+                    else if (dryRunResult is string s && !string.IsNullOrWhiteSpace(s))
+                    {
+                        resultToken = JToken.Parse(s);
+                    }
+                    else
+                    {
+                        resultToken = dryRunResult != null ? JToken.FromObject(dryRunResult) : null;
+                    }
+                }
+                catch { /* ignore parse errors */ }
+
+                // If export requested, attempt to extract and persist bicep template
+                if (exportBicep && resultToken != null)
+                {
+                    var bicepContent = resultToken.SelectToken("bicep_template.main_template")?.Value<string>();
+                    if (!string.IsNullOrWhiteSpace(bicepContent))
+                    {
+                        try
+                        {
+                            string targetPathInput = ExportTemplateToPath;
+                            string resolvedPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(targetPathInput);
+                            string filePath;
+                            if (System.IO.Directory.Exists(resolvedPath) || resolvedPath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()) || resolvedPath.EndsWith("/"))
+                            {
+                                // Treat as directory
+                                if (!System.IO.Directory.Exists(resolvedPath))
+                                {
+                                    System.IO.Directory.CreateDirectory(resolvedPath);
+                                }
+                                filePath = System.IO.Path.Combine(resolvedPath, "export.bicep");
+                            }
+                            else
+                            {
+                                // Treat as file path
+                                string dir = System.IO.Path.GetDirectoryName(resolvedPath);
+                                if (!string.IsNullOrWhiteSpace(dir) && !System.IO.Directory.Exists(dir))
+                                {
+                                    System.IO.Directory.CreateDirectory(dir);
+                                }
+                                filePath = resolvedPath;
+                                // Ensure extension
+                                if (System.IO.Path.GetExtension(filePath).Equals(string.Empty, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    filePath += ".bicep";
+                                }
+                            }
+
+                            System.IO.File.WriteAllText(filePath, bicepContent, Encoding.UTF8);
+                            WriteVerbose($"Bicep template exported to: {filePath}");
+                            WriteInformation($"Bicep template exported to: {filePath}", new string[] { "PSHOST" });
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteWarning($"Failed to write Bicep template: {ex.Message}");
+                        }
+                    }
+                    else
+                    {
+                        WriteWarning("bicep_template.main_template not found in DryRun response");
+                    }
+                }
+
                 if (dryRunResult != null)
                 {
-                    // Try to format using the shared WhatIf formatter
                     try
                     {
-                        // Try to parse as WhatIf result and format it
                         var whatIfResult = TryAdaptDryRunToWhatIf(dryRunResult);
                         if (whatIfResult != null)
                         {
                             WriteVerbose("========== DryRun Response (Formatted) ==========");
                             string formattedOutput = WhatIfOperationResultFormatter.Format(
                                 whatIfResult,
-                                noiseNotice: "Note: DryRun preview - actual deployment behavior may differ."
-                            );
+                                noiseNotice: "Note: DryRun preview - actual deployment behavior may differ.");
                             WriteObject(formattedOutput);
                             WriteVerbose("=================================================");
                         }
                         else
                         {
-                            // Fallback: display as JSON
                             WriteVerbose("========== DryRun Response ==========");
                             string formattedJson = JsonConvert.SerializeObject(dryRunResult, Formatting.Indented);
                             WriteObject(formattedJson);
@@ -159,7 +242,6 @@ namespace Microsoft.Azure.Commands.Compute
                     catch (Exception formatEx)
                     {
                         WriteVerbose($"DryRun formatting failed: {formatEx.Message}");
-                        // Fallback: just output the raw result
                         WriteVerbose("========== DryRun Response ==========");
                         try
                         {
