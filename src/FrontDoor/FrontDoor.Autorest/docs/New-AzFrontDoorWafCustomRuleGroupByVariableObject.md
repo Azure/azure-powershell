@@ -26,6 +26,12 @@ Create an in-memory object for GroupByVariable.
 New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName SocketAddr
 ```
 
+```output
+VariableName
+------------
+SocketAddr
+```
+
 Create CustomRuleGroupByVariable object for custom rule object
 Use cmdlet "New-AzFrontDoorWafCustomRuleGroupByVariableObject" to pass -CustomRule parameter
 

@@ -47,22 +47,30 @@ New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routin
 ```
 
 ```output
-FriendlyName                : frontdoor1
-RoutingRules                : {routingrule1}
-BackendPools                : {backendpool1}
-BackendPoolsSetting         : {backendPoolsSetting1}
-EnforceCertificateNameCheck : {backendPoolsSetting1.EnforceCertificateNameCheck}
-HealthProbeSettings         : {healthProbeSetting1}
-LoadBalancingSettings       : {loadbalancingsetting1}
-FrontendEndpoints           : {frontendendpoint1}
-EnabledState                : Enabled
-ResourceState               : Enabled
-ProvisioningState           : Succeeded
-Cname                       :
-Tags                        : {tag1, tag2}
-Id                          : /subscriptions/{guid}/resourcegroups/rg1/providers/Microsoft.Network/frontdoors/frontdoor1
-Name                        : frontdoor1
-Type                        : Microsoft.Network/frontdoors
+BackendPool          : {backendpool1}
+BackendPoolsSetting  : {backendPoolsSetting1}
+Cname                :
+EnabledState         : Disabled
+ExtendedProperty     : {
+                         "MigratedTo": {link0}
+                       }
+FriendlyName         : frontDoor1
+FrontdoorId          : {guid0}
+FrontendEndpoint     : {frontendEndpoint1}
+HealthProbeSetting   : {HealthProbeSetting1}
+Id                   : /subscriptions/{guid}/resourcegroups/rg1/providers/M
+                        icrosoft.Network/frontdoors/frontdoor1
+LoadBalancingSetting : {LoadBalancingSetting1}
+Location             : Global
+Name                 : frontDoor1
+ProvisioningState    : Succeeded
+ResourceGroupName    : {rg1}
+ResourceState        : Migrated
+RoutingRule          : {RoutingRule1}
+RulesEngine          : {RulesEngine0,RulesEngine1}
+Tag                  : {
+                       }
+Type                 : Microsoft.Network/frontdoors
 ```
 
 Create a Front Door based on given parameters.

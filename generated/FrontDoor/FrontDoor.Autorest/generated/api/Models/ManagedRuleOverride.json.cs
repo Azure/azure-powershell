@@ -80,6 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {_ruleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("ruleId"), out var __jsonRuleId) ? (string)__jsonRuleId : (string)_ruleId;}
             {_enabledState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("enabledState"), out var __jsonEnabledState) ? (string)__jsonEnabledState : (string)_enabledState;}
             {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)_action;}
+            {_sensitivity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("sensitivity"), out var __jsonSensitivity) ? (string)__jsonSensitivity : (string)_sensitivity;}
             {_exclusion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonArray>("exclusions"), out var __jsonExclusions) ? If( __jsonExclusions as Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion) (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleExclusion.FromJson(__u) )) ))() : null : _exclusion;}
             AfterFromJson(json);
         }
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             AddIf( null != (((object)this._ruleId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._ruleId.ToString()) : null, "ruleId" ,container.Add );
             AddIf( null != (((object)this._enabledState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._enabledState.ToString()) : null, "enabledState" ,container.Add );
             AddIf( null != (((object)this._action)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._action.ToString()) : null, "action" ,container.Add );
+            AddIf( null != (((object)this._sensitivity)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._sensitivity.ToString()) : null, "sensitivity" ,container.Add );
             if (null != this._exclusion)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.XNodeArray();

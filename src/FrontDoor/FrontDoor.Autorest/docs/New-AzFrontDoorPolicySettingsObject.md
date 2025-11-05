@@ -31,14 +31,16 @@ New-AzFrontDoorPolicySettingsObject -EnabledState "Enabled" -Mode "Prevention" -
 ```
 
 ```output
-CustomBlockResponseBody                  : PGh0bWw+PGJvZHk+QmxvY2tlZDwvYm9keT48L2h0bWw+
-CustomBlockResponseStatusCode            : 403
-EnabledState                            : Enabled
-JavascriptChallengeExpirationInMinutes  : 30
-LogScrubbingSetting                     : Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettingsLogScrubbing
-Mode                                    : Prevention
-RedirectUrl                             : https://www.example.com/blocked
-RequestBodyCheck                        : Enabled
+CaptchaExpirationInMinutes             :
+CustomBlockResponseBody                : PGh0bWw+PGJvZHk+QmxvY2tlZDwvYm9keT48L2h0bWw+
+CustomBlockResponseStatusCode          : 403
+EnabledState                           : Enabled
+JavascriptChallengeExpirationInMinutes : 30
+LogScrubbingSetting                    : {
+                                         }
+Mode                                   : Prevention
+RedirectUrl                            : https://www.example.com/blocked
+RequestBodyCheck                       : Enabled
 ```
 
 Create a comprehensive WAF policy settings object with prevention mode enabled, custom block response, redirect URL, and log scrubbing configuration.

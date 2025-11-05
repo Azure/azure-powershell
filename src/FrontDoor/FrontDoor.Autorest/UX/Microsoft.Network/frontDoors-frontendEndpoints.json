@@ -1,6 +1,6 @@
 {
   "resourceType": "frontDoors/frontendEndpoints",
-  "apiVersion": "2021-06-01",
+  "apiVersion": "2025-10-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.frontdoor"
   },

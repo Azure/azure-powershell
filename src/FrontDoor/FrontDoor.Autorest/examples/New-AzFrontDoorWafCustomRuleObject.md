@@ -4,9 +4,19 @@ New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondi
 ```
 
 ```output
-Name   RuleType Action Priority RateLimitDurationInMinutes
-----   -------- ------ -------- --------------------------
-Rule1 MatchRule  Block        2                          1
+Action                     : Block
+EnabledState               : Enabled
+GroupByCustomRule          :
+MatchCondition             : {{
+                               "selector": "Rules-Engine-Route-Forward",
+                               "negateCondition": false,
+                               "transforms": [ "LowerCase", "UpperCase" ]
+                             }}
+Name                       : Rule1
+Priority                   : 2
+RateLimitDurationInMinutes : 1
+RateLimitThreshold         :
+RuleType                   : MatchRule
 ```
 
 Create a CustomRule Object

@@ -21,8 +21,6 @@ Create an in-memory object for RulesEngineRule.
 Create an in-memory object for RulesEngineRule.
 .Example
 New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
-.Example
-New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineRule

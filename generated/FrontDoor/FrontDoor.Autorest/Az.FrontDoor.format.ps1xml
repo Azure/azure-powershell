@@ -1292,6 +1292,9 @@
             <Label>DefaultAction</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DefaultSensitivity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DefaultState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1306,6 +1309,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>DefaultAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DefaultSensitivity</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DefaultState</PropertyName>
@@ -1421,6 +1427,9 @@
           <TableColumnHeader>
             <Label>RuleId</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sensitivity</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1433,6 +1442,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RuleId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Sensitivity</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

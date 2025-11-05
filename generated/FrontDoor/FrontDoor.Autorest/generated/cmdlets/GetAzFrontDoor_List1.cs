@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"Lists all of the Front Doors within a resource group under a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors", ApiVersion = "2021-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors", ApiVersion = "2025-10-01")]
     public partial class GetAzFrontDoor_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IContext

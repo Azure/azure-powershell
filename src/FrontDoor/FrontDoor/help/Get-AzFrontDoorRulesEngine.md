@@ -48,40 +48,46 @@ Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName 
 ```
 
 ```output
-Name         RulesEngineRules
-----         ----------------
-rulesEngine3 {rules1}
+Id                : /subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoors/{frontDoorName}/rulesengines/rulesengine3
+Name              : rulesengine3
+ResourceGroupName : {resourceGroupName}
+ResourceState     : Enabled
+Rule              : {{
+                      "name": "rule111",
+                      "priority": 0,
+                      "action": {
+                        "requestHeaderActions": [ ],
+                        "responseHeaderActions": [
+                          {
+                            "headerActionType": "Overwrite",
+                            "headerName": "ff",
+                            "value": "ff"
+                          }
+                        ]
+                      },
+                      "matchConditions": [
+                        {
+                          "rulesEngineMatchVariable": "QueryString",
+                          "rulesEngineOperator": "Contains",
+                          "negateCondition": false,
+                          "rulesEngineMatchValue": [ "fdfd" ],
+                          "transforms": [ ]
+                        }
+                      ],
+                      "matchProcessingBehavior": "Continue"
+                    }}
+Type              : Microsoft.Network/frontdoors/rulesengines
 ```
 
 Get specific rules engine configuration.
 
 ### Example 2
 ```powershell
-Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName
-```
-
-```output
-Name         RulesEngineRules
-----         ----------------
-rulesEngine1 {Rule1}
-rulesEngine2 {Rule1}
-rulesEngine3 {rules1}
-```
-
-Get all rules engine configurations in a front door.
-
-### Example 3
-```powershell
 Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistent
 ```
 
 ```output
-Get-AzFrontDoorRulesEngine : Rules Engine with name 'nonexistent' in Front Door 'frontDoorName' is not found.
-At line:1 char:1
-+ Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontD ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+ CategoryInfo          : CloseError: (:) [Get-AzFrontDoorRulesEngine], PSArgumentException
-+ FullyQualifiedErrorId : Microsoft.Azure.Commands.FrontDoor.Cmdlets.GetFrontDoorRulesEngine
+Get-AzFrontDoorRulesEngine_Get: The requested resource was not found.
 ```
 
 Expected output when getting a nonexistent rules engine.

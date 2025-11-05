@@ -29,9 +29,9 @@ New-AzFrontDoorCacheConfigurationObject -CacheDuration "0.12:00:00" -DynamicComp
 ```
 
 ```output
-CacheDuration                : 0.12:00:00
-DynamicCompression          : Enabled
-QueryParameterStripDirective : StripAllExcept
+CacheDuration DynamicCompression QueryParameter QueryParameterStripDirective
+------------- ------------------ -------------- ----------------------------
+12:00:00      Enabled                           StripAllExcept
 ```
 
 Create a cache configuration object.

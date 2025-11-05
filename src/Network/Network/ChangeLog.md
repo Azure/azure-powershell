@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 
+## Version 7.23.0
+* Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 * Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
 
 ## Version 7.22.0
@@ -39,7 +41,6 @@
     - `Set-AzApplicationGatewayProbeConfig`
 	- `Add-AzApplicationGatewayProbeConfig`
 	- `New-AzApplicationGatewayProbeConfig`
-* Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 
 ## Version 7.21.0
 * Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`

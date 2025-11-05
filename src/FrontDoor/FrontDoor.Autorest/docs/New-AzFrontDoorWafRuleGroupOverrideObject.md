@@ -31,9 +31,9 @@ New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverri
 ```
 
 ```output
-RuleGroupName ManagedRuleOverrides
-------------- --------------------
-SQLI          {942250, 942251}
+Exclusion ManagedRuleOverride                                                                              RuleGroupName
+--------- -------------------                                                                              -------------
+          {{…                                                                                              SQLI
 ```
 
 Create a RuleGroupOverride Object
