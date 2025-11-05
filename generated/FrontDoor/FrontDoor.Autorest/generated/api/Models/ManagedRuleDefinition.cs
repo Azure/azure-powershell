@@ -20,6 +20,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string DefaultAction { get => this._defaultAction; }
 
+        /// <summary>Backing field for <see cref="DefaultSensitivity" /> property.</summary>
+        private string _defaultSensitivity;
+
+        /// <summary>Describes the default sensitivity to be applied when the managed rule matches.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
+        public string DefaultSensitivity { get => this._defaultSensitivity; }
+
         /// <summary>Backing field for <see cref="DefaultState" /> property.</summary>
         private string _defaultState;
 
@@ -36,6 +43,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
         /// <summary>Internal Acessors for DefaultAction</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal.DefaultAction { get => this._defaultAction; set { {_defaultAction = value;} } }
+
+        /// <summary>Internal Acessors for DefaultSensitivity</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal.DefaultSensitivity { get => this._defaultSensitivity; set { {_defaultSensitivity = value;} } }
 
         /// <summary>Internal Acessors for DefaultState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal.DefaultState { get => this._defaultState; set { {_defaultState = value;} } }
@@ -75,6 +85,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect", "AnomalyScoring", "JSChallenge", "CAPTCHA")]
         string DefaultAction { get;  }
+        /// <summary>Describes the default sensitivity to be applied when the managed rule matches.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Describes the default sensitivity to be applied when the managed rule matches.",
+        SerializedName = @"defaultSensitivity",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Low", "Medium", "High")]
+        string DefaultSensitivity { get;  }
         /// <summary>Describes the default state for the managed rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
@@ -118,6 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Describes the default action to be applied when the managed rule matches.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect", "AnomalyScoring", "JSChallenge", "CAPTCHA")]
         string DefaultAction { get; set; }
+        /// <summary>Describes the default sensitivity to be applied when the managed rule matches.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Low", "Medium", "High")]
+        string DefaultSensitivity { get; set; }
         /// <summary>Describes the default state for the managed rule.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
         string DefaultState { get; set; }

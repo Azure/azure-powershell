@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"Check the availability of a Front Door resource name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/providers/Microsoft.Network/checkFrontDoorNameAvailability", ApiVersion = "2021-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/providers/Microsoft.Network/checkFrontDoorNameAvailability", ApiVersion = "2025-10-01")]
     public partial class TestAzFrontDoorNameAvailability_Check : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IContext

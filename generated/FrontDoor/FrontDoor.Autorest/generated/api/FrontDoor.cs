@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsPurgeContent(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsPurgeContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsPurgeContentViaJsonString(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorNameAvailabilityCheck(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorNameAvailabilityCheckViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput> FrontDoorNameAvailabilityCheckViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorNameAvailabilityCheckViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput> FrontDoorNameAvailabilityCheckViaJsonStringWithResult(global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput> FrontDoorNameAvailabilityCheckWithResult(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorNameAvailabilityWithSubscriptionCheck(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorNameAvailabilityWithSubscriptionCheckViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput> FrontDoorNameAvailabilityWithSubscriptionCheckViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorNameAvailabilityWithSubscriptionCheckViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -947,7 +947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput> FrontDoorNameAvailabilityWithSubscriptionCheckViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -990,7 +990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityOutput> FrontDoorNameAvailabilityWithSubscriptionCheckWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsCreateOrUpdate(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1223,7 +1223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1282,7 +1282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> FrontDoorsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1345,7 +1345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1394,7 +1394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> FrontDoorsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1444,7 +1444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> FrontDoorsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1818,7 +1818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsDelete(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1860,7 +1860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2096,7 +2096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsGet(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2139,7 +2139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2192,7 +2192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> FrontDoorsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2248,7 +2248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> FrontDoorsGetWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2428,7 +2428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2468,7 +2468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2508,7 +2508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2557,7 +2557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult> FrontDoorsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2608,7 +2608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult> FrontDoorsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2783,7 +2783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2829,7 +2829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult> FrontDoorsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2876,7 +2876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult> FrontDoorsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3049,7 +3049,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsValidateCustomDomain(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3099,7 +3099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsValidateCustomDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3159,7 +3159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainOutput> FrontDoorsValidateCustomDomainViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3223,7 +3223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontDoorsValidateCustomDomainViaJsonString(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3273,7 +3273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainOutput> FrontDoorsValidateCustomDomainViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3324,7 +3324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainOutput> FrontDoorsValidateCustomDomainWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3517,7 +3517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsDisableHttps(string subscriptionId, string resourceGroupName, string frontDoorName, string frontendEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3561,7 +3561,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsDisableHttpsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3800,7 +3800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsEnableHttps(string subscriptionId, string resourceGroupName, string frontDoorName, string frontendEndpointName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomHttpsConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3850,7 +3850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsEnableHttpsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomHttpsConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3916,7 +3916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsEnableHttpsViaJsonString(string subscriptionId, string resourceGroupName, string frontDoorName, string frontendEndpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4149,7 +4149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsGet(string subscriptionId, string resourceGroupName, string frontDoorName, string frontendEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4194,7 +4194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4250,7 +4250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint> FrontendEndpointsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4310,7 +4310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint> FrontendEndpointsGetWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, string frontendEndpointName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4499,7 +4499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsListByFrontDoor(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4541,7 +4541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task FrontendEndpointsListByFrontDoorViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4593,7 +4593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointsListResult> FrontendEndpointsListByFrontDoorViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4648,7 +4648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointsListResult> FrontendEndpointsListByFrontDoorWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4831,7 +4831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedRuleSetsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4869,7 +4869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedRuleSetsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4915,7 +4915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionList> ManagedRuleSetsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4962,7 +4962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionList> ManagedRuleSetsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5133,7 +5133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5180,7 +5180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5237,7 +5237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> PoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5298,7 +5298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string policyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5345,7 +5345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> PoliciesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string policyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5393,7 +5393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> PoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5769,7 +5769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesDelete(string subscriptionId, string resourceGroupName, string policyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5809,7 +5809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6040,7 +6040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesGet(string subscriptionId, string resourceGroupName, string policyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6081,7 +6081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6132,7 +6132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> PoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6186,7 +6186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy> PoliciesGetWithResult(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6365,7 +6365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6406,7 +6406,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6444,7 +6444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6490,7 +6490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList> PoliciesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6537,7 +6537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList> PoliciesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6705,7 +6705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6754,7 +6754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList> PoliciesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6805,7 +6805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyList> PoliciesListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6986,7 +6986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesCreateOrUpdate(string subscriptionId, string resourceGroupName, string frontDoorName, string rulesEngineName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7037,7 +7037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7099,7 +7099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> RulesEnginesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7166,7 +7166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string frontDoorName, string rulesEngineName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7218,7 +7218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> RulesEnginesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, string rulesEngineName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7271,7 +7271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> RulesEnginesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, string rulesEngineName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine body, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7655,7 +7655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesDelete(string subscriptionId, string resourceGroupName, string frontDoorName, string rulesEngineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7699,7 +7699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7944,7 +7944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesGet(string subscriptionId, string resourceGroupName, string frontDoorName, string rulesEngineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7989,7 +7989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8045,7 +8045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> RulesEnginesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8105,7 +8105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine> RulesEnginesGetWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, string rulesEngineName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8294,7 +8294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesListByFrontDoor(string subscriptionId, string resourceGroupName, string frontDoorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8336,7 +8336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesEnginesListByFrontDoorViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8388,7 +8388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineListResult> RulesEnginesListByFrontDoorViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8443,7 +8443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineListResult> RulesEnginesListByFrontDoorWithResult(string subscriptionId, string resourceGroupName, string frontDoorName, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
