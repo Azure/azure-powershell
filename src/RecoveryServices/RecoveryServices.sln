@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{F088516D-127C-4B07-9ACB-C636D3E121DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecoveryServices.Helper", "RecoveryServices.Helper\RecoveryServices.Helper.csproj", "{91134B2C-68C4-1B02-F2D3-6B942FF713C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -192,6 +194,10 @@ Global
 		{F088516D-127C-4B07-9ACB-C636D3E121DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F088516D-127C-4B07-9ACB-C636D3E121DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F088516D-127C-4B07-9ACB-C636D3E121DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91134B2C-68C4-1B02-F2D3-6B942FF713C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91134B2C-68C4-1B02-F2D3-6B942FF713C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91134B2C-68C4-1B02-F2D3-6B942FF713C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91134B2C-68C4-1B02-F2D3-6B942FF713C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34F69ECD-95B8-49DB-9D78-2B9D5C34D405} = {81B2982D-240C-47B0-9DB4-2D94D4DF8C6E}
