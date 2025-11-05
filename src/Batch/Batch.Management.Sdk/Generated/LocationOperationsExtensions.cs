@@ -95,53 +95,6 @@ namespace Microsoft.Azure.Management.Batch
             }
         }
         /// <summary>
-        /// Gets the list of Batch supported Cloud Service VM sizes available at the
-        /// given location.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='locationName'>
-        /// The region for which to retrieve Batch service supported SKUs.
-        /// </param>
-        /// <param name='maxresults'>
-        /// The maximum number of items to return in the response.
-        /// </param>
-        /// <param name='filter'>
-        /// OData filter expression. Valid properties for filtering are &#34;familyName&#34;.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SupportedSku> ListSupportedCloudServiceSkus(this ILocationOperations operations, string locationName, int? maxresults = default(int?), string filter = default(string))
-        {
-                return ((ILocationOperations)operations).ListSupportedCloudServiceSkusAsync(locationName, maxresults, filter).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the list of Batch supported Cloud Service VM sizes available at the
-        /// given location.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='locationName'>
-        /// The region for which to retrieve Batch service supported SKUs.
-        /// </param>
-        /// <param name='maxresults'>
-        /// The maximum number of items to return in the response.
-        /// </param>
-        /// <param name='filter'>
-        /// OData filter expression. Valid properties for filtering are &#34;familyName&#34;.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SupportedSku>> ListSupportedCloudServiceSkusAsync(this ILocationOperations operations, string locationName, int? maxresults = default(int?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListSupportedCloudServiceSkusWithHttpMessagesAsync(locationName, maxresults, filter, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Checks whether the Batch account name is available in the specified region.
         /// </summary>
         /// <param name='operations'>
@@ -205,41 +158,6 @@ namespace Microsoft.Azure.Management.Batch
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SupportedSku>> ListSupportedVirtualMachineSkusNextAsync(this ILocationOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSupportedVirtualMachineSkusNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the list of Batch supported Cloud Service VM sizes available at the
-        /// given location.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SupportedSku> ListSupportedCloudServiceSkusNext(this ILocationOperations operations, string nextPageLink)
-        {
-                return ((ILocationOperations)operations).ListSupportedCloudServiceSkusNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the list of Batch supported Cloud Service VM sizes available at the
-        /// given location.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SupportedSku>> ListSupportedCloudServiceSkusNextAsync(this ILocationOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListSupportedCloudServiceSkusNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
