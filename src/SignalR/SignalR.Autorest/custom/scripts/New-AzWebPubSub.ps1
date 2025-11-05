@@ -64,14 +64,14 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 2021-10-12 7:21:58 AM
 SystemDataLastModifiedBy     : testuser@microsoft.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.TrackedResourceTags
 Type                         : Microsoft.SignalRService/WebPubSub
-UserAssignedIdentity         : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ManagedIdentityUserAssig
+UserAssignedIdentity         : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ManagedIdentityUserAssig
                                nedIdentities
 Version                      : 1.0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -92,7 +92,7 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
 #>
 function New-AzWebPubSub
 {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource])]
   [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
     [Parameter(Mandatory)]
@@ -117,46 +117,44 @@ function New-AzWebPubSub
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # DisableLocalAuthEnable or disable aad authWhen set as true, connection with AuthType=aad won't work.
     ${DisableAadAuth},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # DisableLocalAuthEnable or disable local auth with AccessKeyWhen set as true, connection with AccessKey=xxx won't work.
     ${DisableLocalAuth},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Request client certificate during TLS handshake if enabled
     ${EnableTlsClientCert},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
-    # Represent the identity type: systemAssigned, userAssigned, None
-    ${IdentityType},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ILiveTraceCategory[]]
     # Gets or sets the list of category configurations.
-    # To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
     ${LiveTraceCategory},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # Indicates whether or not enable live trace.When it's set to true, live trace client can connect to the service.Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".Available values: true, false.Case insensitive.
     ${LiveTraceEnabled},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # The GEO location of the resource.
@@ -164,98 +162,110 @@ function New-AzWebPubSub
     # West US | East US | North Central US | South Central US.
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]
-    # Default action when no other rule matches
+    [System.String]
+    # Azure Networking ACL Action.
     ${NetworkAcLDefaultAction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IPrivateEndpointAcl[]]
     # ACLs for requests from private endpoints
-    # To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
     ${PrivateEndpointAcl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # Enable or disable public network access.
     # Default to "Enabled".When it's Enabled, network ACLs still apply.When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("ClientConnection", "ServerConnection", "RESTAPI", "Trace")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
     # Allowed request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkAllow},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("ClientConnection", "ServerConnection", "RESTAPI", "Trace")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
     # Denied request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkDeny},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceLogCategory[]]
     # Gets or sets the list of category configurations.
-    # To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
     ${ResourceLogCategory},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.Int32]
     # Optional, integer.
     # The unit count of the resource.
-    # 1 by default.If present, following values are allowed: Free: 1 Standard: 1,2,5,10,20,50,100
+    # 1 by default.If present, following values are allowed: Free: 1; Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
     ${SkuCapacity},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Required.Allowed values: Standard_S1, Free_F1
+    # Required.Allowed values: Standard_S1, Free_F1, Premium_P1
     ${SkuName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]
+    [System.String]
     # Optional tier of this particular SKU.
     # 'Standard' or 'Free'.
     # `Basic` is deprecated, use `Standard` instead.
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IManagedIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # Get or set the user assigned identities
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
