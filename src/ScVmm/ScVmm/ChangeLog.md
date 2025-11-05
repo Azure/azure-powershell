@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Suppressed expected MachineResourceNotFound exceptions from being printed on the console.
+
 ## Version 0.1.0
 * First preview release for module Az.ScVmm
 

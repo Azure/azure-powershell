@@ -15,19 +15,40 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageCacheAmlFileS
 }
 
 Describe 'Update-AzStorageCacheAmlFileSystem' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            # Update AML filesystem with tags using expanded parameters
+            Update-AzStorageCacheAmlFileSystem -Name 'acctest43511' -ResourceGroupName 'acctest43511' -Tag @{'Environment'='Test'; 'Purpose'='AmlFileSystem'; 'Updated'='True'}
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonString' {
+        {
+            # Update AML filesystem with tags using JSON string
+            $jsonString = '{"tags":{"Environment":"Production","Purpose":"AmlFileSystem","Method":"JsonString"}}'
+            Update-AzStorageCacheAmlFileSystem -Name 'acctest43511' -ResourceGroupName 'acctest43511' -JsonString $jsonString
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonFilePath' {
+        {
+            # Update AML filesystem with tags using JSON file path
+            $jsonFilePath = Join-Path $PSScriptRoot 'update-amlfilesystem.json'
+            '{"tags":{"Environment":"Staging","Purpose":"AmlFileSystem","Method":"JsonFile"}}' | Out-File -FilePath $jsonFilePath -Encoding utf8
+            Update-AzStorageCacheAmlFileSystem -Name 'acctest43511' -ResourceGroupName 'acctest43511' -JsonFilePath $jsonFilePath
+            Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {
+            # Update AML filesystem with tags using identity object
+            $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
+
+            Update-AzStorageCacheAmlFileSystem -InputObject $identity -Tag @{'Environment'='Development'; 'Purpose'='AmlFileSystem'; 'Method'='Identity'}
+        } | Should -Not -Throw
     }
 }

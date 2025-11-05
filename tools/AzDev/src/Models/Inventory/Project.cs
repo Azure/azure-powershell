@@ -23,6 +23,7 @@ namespace AzDev.Models.Inventory
         public string Path { get; internal set; }
         public ProjectType Type { get; internal set; }
         public string TypeDeductionReason { get; internal set; }
+        public string SubType { get; internal set; }
 
         protected IFileSystem FileSystem { get; }
 

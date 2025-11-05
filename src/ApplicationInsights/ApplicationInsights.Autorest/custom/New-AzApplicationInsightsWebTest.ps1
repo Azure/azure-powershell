@@ -46,6 +46,7 @@ https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azappli
 #>
 function New-AzApplicationInsightsWebTest {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest", DeprecatedOutputProperties = ("RequestHeader System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField]"), NewOutputProperties = ("RequestHeader System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField]"))]
     [CmdletBinding(DefaultParameterSetName='CreateStandard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]

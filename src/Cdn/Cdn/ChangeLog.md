@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added support for edge action
+
+## Version 5.0.1
 * Fixed content types comtent bug with null content
 * Added breaking change message for 2025-06-01
 

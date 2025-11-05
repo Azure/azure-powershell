@@ -28,7 +28,6 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -254,6 +253,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.")]
         public bool? OptimizedForFrequentAttach { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM.")]
+        public string SecurityMetadataUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.")]
+        public string SecurityDataUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.")]
+        [PSArgumentCompleter("TrustedLaunchSupported", "TrustedLaunchAndConfidentialVMSupported")]
+        public string SupportedSecurityOption { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -372,6 +390,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.PerformancePlus = this.PerformancePlus;
             }
 
+            if(this.IsParameterBound((c => c.SecurityDataUri)))
+            {
+                if (vCreationData == null)
+                { 
+                    vCreationData = new CreationData();
+                }
+                vCreationData.SecurityDataUri = this.SecurityDataUri;
+            }
+            
+            if (this.IsParameterBound((c => c.SecurityMetadataUri)))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.SecurityMetadataUri = this.SecurityMetadataUri;
+            }
+
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
                 if (vEncryptionSettingsCollection == null)
@@ -460,6 +496,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSupportedCapabilities = new SupportedCapabilities();
                 }
                 vSupportedCapabilities.Architecture = this.Architecture;
+            }
+
+            if (this.IsParameterBound(c => c.SupportedSecurityOption))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.SupportedSecurityOption = this.SupportedSecurityOption;
             }
 
             var vDisk = new PSDisk

@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             }
             {_elasticProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject>("elasticProperties"), out var __jsonElasticProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticProperties.FromJson(__jsonElasticProperties) : _elasticProperty;}
             {_planDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject>("planDetails"), out var __jsonPlanDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PlanDetails.FromJson(__jsonPlanDetails) : _planDetail;}
+            {_projectDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonObject>("projectDetails"), out var __jsonProjectDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ProjectDetails.FromJson(__jsonProjectDetails) : _projectDetail;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_monitoringStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("monitoringStatus"), out var __jsonMonitoringStatus) ? (string)__jsonMonitoringStatus : (string)_monitoringStatus;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)_version;}
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {_liftrResourceCategory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("liftrResourceCategory"), out var __jsonLiftrResourceCategory) ? (string)__jsonLiftrResourceCategory : (string)_liftrResourceCategory;}
             {_liftrResourcePreference = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNumber>("liftrResourcePreference"), out var __jsonLiftrResourcePreference) ? (int?)__jsonLiftrResourcePreference : _liftrResourcePreference;}
             {_generateApiKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonBoolean>("generateApiKey"), out var __jsonGenerateApiKey) ? (bool?)__jsonGenerateApiKey : _generateApiKey;}
+            {_hostingType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("hostingType"), out var __jsonHostingType) ? (string)__jsonHostingType : (string)_hostingType;}
             AfterFromJson(json);
         }
 
@@ -117,6 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
                 AddIf( null != this._userInfo ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) this._userInfo.ToJson(null,serializationMode) : null, "userInfo" ,container.Add );
             }
             AddIf( null != this._planDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) this._planDetail.ToJson(null,serializationMode) : null, "planDetails" ,container.Add );
+            AddIf( null != this._projectDetail ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) this._projectDetail.ToJson(null,serializationMode) : null, "projectDetails" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
@@ -136,6 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
                 AddIf( null != this._liftrResourcePreference ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNumber((int)this._liftrResourcePreference) : null, "liftrResourcePreference" ,container.Add );
             }
             AddIf( null != this._generateApiKey ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonBoolean((bool)this._generateApiKey) : null, "generateApiKey" ,container.Add );
+            AddIf( null != (((object)this._hostingType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._hostingType.ToString()) : null, "hostingType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
