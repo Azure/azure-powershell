@@ -1,78 +1,57 @@
 function Get-AzFunctionAppFlexConsumptionRuntime {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the Flex Consumption function app runtimes supported at the specified location.')]
-    [CmdletBinding(DefaultParameterSetName='ByLocation')]
+    [CmdletBinding(DefaultParameterSetName='AllRuntimes')]
     param(
-        [Parameter(ParameterSetName='ByLocation', Mandatory=$true, HelpMessage='The location where Flex Consumption function apps are supported.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [Parameter(ParameterSetName='AllRuntimes', Mandatory=$true, HelpMessage='The location where Flex Consumption function apps are supported.')]
+        [Parameter(ParameterSetName='AllVersions', Mandatory=$true)]
+        [Parameter(ParameterSetName='ByVersion', Mandatory=$true)]
+        [Parameter(ParameterSetName='DefaultOrLatest', Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${Location},
 
-        # [Parameter(ParameterSetName='ByLocation', Mandatory=$true, HelpMessage='Name of the resource group to which the resource belongs.')]
-        # [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-        # [ValidateNotNullOrEmpty()]
-        # [System.String]
-        # ${ResourceGroupName},
-
-        # [Parameter(ParameterSetName='ByLocation', HelpMessage='The Azure subscription ID.')]
-        # [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-        # [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        # [ValidateNotNullOrEmpty()]
-        # [System.String[]]
-        # ${SubscriptionId},
-
-        [Parameter(ParameterSetName='ByLocation', Mandatory=$true, HelpMessage='The Flex Consumption function app runtime.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [Parameter(ParameterSetName='ByVersion', Mandatory=$true, HelpMessage='The Flex Consumption function app runtime.')]
+        [Parameter(ParameterSetName='AllVersions', Mandatory=$true)]
+        [Parameter(ParameterSetName='DefaultOrLatest', Mandatory=$true)]
         [ValidateSet("DotNet-Isolated", "Node", "Java", "Python", "PowerShell", "Custom")]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${Runtime},
 
-        [Parameter(ParameterSetName='ByLocation', HelpMessage='The function app runtime version.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+        [Parameter(ParameterSetName='ByVersion', Mandatory=$true, HelpMessage='The function app runtime version.')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${Version},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend}
+        [Parameter(ParameterSetName='DefaultOrLatest', Mandatory=$true, HelpMessage='Get the default or latest version of the specified runtime.')]
+        [switch]
+        $DefaultOrLatest
     )
     
     process {
 
-        # RegisterFunctionsTabCompleters
-        
-        # if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
-        # {            
-        #     if ($PSBoundParameters.ContainsKey("InputObject"))
-        #     {
-        #         $PSBoundParameters.Remove("InputObject")  | Out-Null
-        #     }
+        RegisterFunctionsTabCompleters
 
-        #     $Name = $InputObject.Name
-            
-        #     $PSBoundParameters.Add("Name", $Name)  | Out-Null
-        #     $PSBoundParameters.Add("ResourceGroupName", $InputObject.ResourceGroupName)  | Out-Null
-        #     $PSBoundParameters.Add("SubscriptionId", $InputObject.SubscriptionId)  | Out-Null
-        # }
-
-        # if ($PsCmdlet.ShouldProcess($Name, "Get function app settings"))
-        # {
-        #     $settings = Az.Functions.internal\Get-AzWebAppApplicationSetting @PSBoundParameters
-        #     if ($settings)
-        #     {
-        #         ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -ShowAllAppSettings
-        #     }
-        # }
-        Get-FlexFunctionAppRuntime -Location $Location -Runtime $Runtime -VersionFilter $Version
+        switch ($PSCmdlet.ParameterSetName) {
+            'AllRuntimes' {
+                # Return all runtimes
+                foreach ($runtimeName in @("DotNet-Isolated", "Node", "Java", "Python", "PowerShell", "Custom"))
+                {
+                    Get-FlexFunctionAppRuntime -Location $Location -Runtime $runtimeName
+                }
+            }
+            'AllVersions' {
+                # Return all versions for the specified runtime
+                Get-FlexFunctionAppRuntime -Location $Location -Runtime $Runtime
+            }
+            'ByVersion' {
+                # Return specific version
+                Get-FlexFunctionAppRuntime -Location $Location -Runtime $Runtime -Version $Version
+            }
+            'DefaultOrLatest' {
+                # Return default/latest version
+                Get-FlexFunctionAppRuntime -Location $Location -Runtime $Runtime -DefaultOrLatest:$true
+            }
+        }
     }
 }

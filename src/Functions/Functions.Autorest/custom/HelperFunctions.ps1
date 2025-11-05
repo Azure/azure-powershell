@@ -1870,11 +1870,11 @@ function GetFunctionAppStackDefinition
     }
     elseif ($StackType -eq "FlexConsumption")
     {
-        $ApiVersion = "2023-12-01"
+        $ApiVersion = '2020-10-01'
         $removeDeprecatedStacks = $true
         $removeHiddenStacks = $true
         $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/locations/{0}/functionAppStacks?api-version={1}&removeHiddenStacks={2}&removeDeprecatedStacks={3}&stack={4}" -f `
-                                             $Location, $ApiVersion, ($removeHiddenStacks.ToString().ToLower()), ($removeDeprecatedStacks.ToString().ToLower()), $Runtime
+                                             $Location, $ApiVersion, $removeHiddenStacks.ToString().ToLower(), $removeDeprecatedStacks.ToString().ToLower(), $Runtime.ToString().ToLower()
     }
 
     $maxNumberOfTries = 3
@@ -1889,7 +1889,14 @@ function GetFunctionAppStackDefinition
         try
         {
             Write-Debug "$DEBUG_PREFIX Get Function App Stack definitions from ARM API. Attempt $currentCount of $maxNumberOfTries."
-            $result = Invoke-WebRequest -Uri $apiEndPoint -Method Get -Headers $headers -body $params -ErrorAction Stop
+            if ($StackType -eq "FlexConsumption")
+            {
+                $result = Invoke-WebRequest -Uri $apiEndPoint -Method Get -Headers $headers -ErrorAction Stop
+            }
+            else
+            {
+                $result = Invoke-WebRequest -Uri $apiEndPoint -Method Get -Headers $headers -body $params -ErrorAction Stop
+            }
         }
         catch
         {
@@ -2344,7 +2351,7 @@ function RegisterFunctionsTabCompleters
             $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
         }
 
-        # New-AzFunction app ArgumentCompleter for the Runtime parameter
+        # New-AzFunction app ArgumentCompleter for the FunctionsVersion parameter
         $GetAllFunctionsVersionsCompleter = {
 
             param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
@@ -2354,10 +2361,22 @@ function RegisterFunctionsTabCompleters
             $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
         }
 
+        # Get-AzFunctionFlexConsumptionRuntime app ArgumentCompleter for the Runtime parameter
+        $GetFlexConsumptionRuntimeCompleter = {
+
+            param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+            $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { if ($_ -ne "dotnet") { $_ } }
+
+            $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
+        }
+
         # Register tab completers
         Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
         Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
         Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
+
+        Register-ArgumentCompleter -CommandName Get-AzFunctionAppFlexConsumptionRuntime -ParameterName Runtime -ScriptBlock $GetFlexConsumptionRuntimeCompleter
 
         $global:StacksAndTabCompletersInitialized = $true
     }
@@ -2587,7 +2606,6 @@ function New-FlexConsumptionAppPlan
             $PSBoundParameters.Remove($paramName)  | Out-Null
         }
     }
-
 
     $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.AppServicePlan
     $servicePlan.Location = $Location
@@ -2851,41 +2869,55 @@ function Get-FlexFunctionAppRuntime
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(ParameterSetName = 'AllVersions', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'ByVersion', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'DefaultOrLatest', Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $Location,
 
-        [Parameter(Mandatory=$true)]
+        [Parameter(ParameterSetName = 'AllVersions', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'ByVersion', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'DefaultOrLatest', Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $Runtime,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(ParameterSetName = 'ByVersion', Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
-        $Version
+        $Version,
+
+        [Parameter(ParameterSetName = 'DefaultOrLatest', Mandatory = $true)]
+        [switch]
+        $DefaultOrLatest
     )
 
-    # Map dotnet-isolated → dotnet for this endpoint
-    $Runtime = if ($Runtime -eq 'dotnet-isolated') { 'dotnet' } else { $Runtime }
+    # Map dotnet-isolated -> dotnet for this endpoint
+    $runtimeForAPI = if ($Runtime -eq 'dotnet-isolated') { 'dotnet' } else { $Runtime }
+
+    # Format location for Flex Consumption (remove spaces and make lowercase)
+    $formattedLocation = Format-FlexConsumptionLocation -Location $Location
 
     # Get Flex Consumption Function App Runtime Definitions
-    $json = GetFunctionAppStackDefinition -StackType FlexConsumption -Location $Location -Runtime $Runtime
+    $json = GetFunctionAppStackDefinition -StackType FlexConsumption -Location $formattedLocation -Runtime $runtimeForAPI
 
     if (-not $json)
     {
-        $errorMessage = "Failed to retrieve Flex Consumption Function App stack definitions from the ARM API. "
-        $errorMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues, including the region, and use the following title: "
-        $errorMessage += "[Az.Functions] Failed to retrieve Flex Consumption Function App stack definitions from ARM API."
-        $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "FailedToGetFlexConsumptionFunctionAppStackDefinitionFromARMAPI" `
+        $errorMessage = "Failed to retrieve Flex Consumption Function App stack definitions from the ARM API for runtime '{0}' in location '{1}'. Please try a different region." -f
+                        $Runtime, $Location
+        $exception = [System.InvalidOperationException]::new($errorMessage)
+        ThrowTerminatingError -ErrorId "FlexConsumptionStackRetrievalFailed" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
     }
 
     $functionAppStackDefinition = $json | ConvertFrom-Json
+    $stacks = New-Object -TypeName 'System.Collections.Generic.List[PSCustomObject]'
 
-    # Flatten: runtime → majorVersions → minorVersions
-    $stacks = foreach ($item in $functionAppStackDefinition)
+    # Flatten: runtime -> majorVersions -> minorVersions
+    foreach ($item in $functionAppStackDefinition)
     {
         $runtimeName = $item.name
         foreach ($maj in ($item.properties.majorVersions | Where-Object { $_ }))
@@ -2905,25 +2937,25 @@ function Get-FlexFunctionAppRuntime
                 if (-not $sku) { continue }
 
                 # Name preference: FUNCTIONS_WORKER_RUNTIME if present
-                $name = if ($linux.appSettingsDictionary.FUNCTIONS_WORKER_RUNTIME) {
+                $runtimeName = if ($linux.appSettingsDictionary.FUNCTIONS_WORKER_RUNTIME) {
                     $linux.appSettingsDictionary.FUNCTIONS_WORKER_RUNTIME
                 }
 
                 # Set runtime name and version
                 if ($sku.skuCode -eq 'FC1') {
-                    if (-not $name) {
-                        $name = $sku.functionAppConfigProperties.Runtime.Name
+                    if (-not $runtimeName) {
+                        $runtimeName = $sku.functionAppConfigProperties.Runtime.Name
                     }
-                    $version = $sku.functionAppConfigProperties.Runtime.Version
+                    $runtimeVersion = $sku.functionAppConfigProperties.Runtime.Version
                 }
 
                 # Parse end of life date
-                $runtimeEndOfLifeDate = if ($linux.endOfLifeDate) {  ParseEndOfLifeDate -Runtime $name -DateString $linux.endOfLifeDate } else { $null }
+                $runtimeEndOfLifeDate = if ($linux.endOfLifeDate) {  ParseEndOfLifeDate -Runtime $runtimeName -DateString $linux.endOfLifeDate } else { $null }
 
                 # Create runtime object
                 $result = [pscustomobject]@{
-                    Name               = $name
-                    Version            = $version
+                    Name               = $runtimeName
+                    Version            = $runtimeVersion
                     IsDefault          = ([bool]$linux.isDefault)
                     EndOfLifeDate      = $runtimeEndOfLifeDate
                     Sku                = $sku
@@ -2933,26 +2965,187 @@ function Get-FlexFunctionAppRuntime
                 }
 
                 $result.PSTypeNames.Insert(0,'Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime')
+                $stacks.Add($result)
             }
         }
 
-        if ($Version)
-        {
-            $versionRecord = $stacks | Where-Object { $_.Version -eq $Version }
-            if (-not $versionRecord)
-            {
-                $supportedVersions = $stacks | ForEach-Object { $_.Version } | Sort-Object | Get-Unique
-                $supportedVersionsString = $supportedVersions -join ", "
-                $errorMessage = "Runtime '{0}' version '{1}' not supported for function apps on the Flex Consumption plan." -f $Runtime, $Version
-                $errorMessage += "Supported versions are: {0}." -f $supportedVersionsString
-                $exception = [System.InvalidOperationException]::New($errorMessage)
-                ThrowTerminatingError -ErrorId "RuntimeVersionNotSupportedInFlexConsumption" `
-                                    -ErrorMessage $errorMessage `
-                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                    -Exception $exception
+        switch ($PSCmdlet.ParameterSetName) {
+
+            'AllVersions' {
+                # Return all versions for $Runtime
+                return $stacks
+            }
+
+            'ByVersion' {
+                # Return specific version
+                $matched = $stacks | Where-Object { $_.Version -eq $Version } | Select-Object -First 1
+                if (-not $matched)
+                {
+                    $map = @{
+                        '11'  = '11.0'
+                        '8'   = '8.0'
+                        '8.0' = '8'
+                        '7'   = '7.0'
+                        '6.0' = '6'
+                        '1.8' = '8.0'
+                        '17'  = '17.0'
+                    }
+
+                    if ($map.ContainsKey($Version))
+                    {
+                        $newVersion = $map[$Version]
+                        $matched = $stacks | Where-Object { $_.Version -eq $newVersion } | Select-Object -First 1
+                    }
+                }
+
+                if (-not $matched)
+                {
+                    $supportedVersions = $stacks | ForEach-Object { $_.Version } | Sort-Object | Get-Unique
+                    $supportedVersionsString = $supportedVersions -join ", "
+                    $errorMessage = "Invalid version {0} for runtime {1} for function apps on the Flex Consumption plan. Supported versions for runtime {1} are {2}." -f
+                                    $Version, $Runtime, $supportedVersionsString
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "RuntimeVersionNotSupportedInFlexConsumption" `
+                                          -ErrorMessage $errorMessage `
+                                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                          -Exception $exception
+                }
+
+                return $matched
+            }
+
+            'DefaultOrLatest' {
+                # Return default/latest version
+                $defaultStack = $stacks | Where-Object { $_.IsDefault } | Sort-Object -Property Version -Descending | Select-Object -First 1
+
+                if (-not $defaultStack)
+                {
+                    # Fallback: get latest version
+                    $defaultStack = $stacks | Sort-Object -Property Version -Descending | Select-Object -First 1
+
+                    if (-not $defaultStack)
+                    {
+                        $errorMessage = "No runtime versions found for runtime '$Runtime' in location '$Location'."
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId "NoRuntimeVersionsFoundInFlexConsumption" `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
+                    }
+                }
+
+                return $defaultStack
             }
         }
-
-        return $stacks
     }
+}
+
+function ValidateIntanceMemoryMB
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [hashtable]
+        $SkuInstanceMemoryMB,
+
+        [Parameter(Mandatory=$false)]
+        $InstanceMemoryMB
+    )
+
+    $skuMemEntries = @($SkuInstanceMemoryMB) | Where-Object { $_ -ne $null }
+
+    if (-not $skuMemEntries)
+    {
+        $errorMessage = "No instance memory sizes were returned by the SKU payload. Unable to determine a default size."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "NoInstanceMemorySizesFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    # Normalize and dedupe sizes (ints)
+    $allowedSizes = $skuMemEntries | ForEach-Object { [int]$_.size } | Where-Object { $_ -gt 0 } | Sort-Object -Unique
+
+    # Find default; if none is flagged, fall back to the smallest size (common platform pattern)
+    $defaultSize = $skuMemEntries | Where-Object { $_.isDefault -eq $true } | Select-Object -ExpandProperty size -First 1
+
+    if ($null -eq $defaultSize)
+    {
+        $defaultSize = $allowedSizes | Select-Object -First 1
+    }
+
+    if ($InstanceMemoryMB -gt 0)
+    {
+        # Strict validation: must be one of the discrete supported sizes for this runtime/region
+        if ($allowedSizes -notcontains [int]$InstanceMemoryMB)
+        {
+            $errorMessage = "Invalid InstanceMemoryMB '{0}'. Allowed values for this runtime are: {1}. " +
+                            "Use one of the supported sizes." -f $InstanceMemoryMB, ($allowedSizes -join ', ')
+            $exception = [System.ArgumentOutOfRangeException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "InstanceMemoryMBNotSupported" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidArgument) `
+                                  -Exception $exception
+        }
+    }
+    else
+    {
+        # If not provided, set to default size
+        $InstanceMemoryMB = [int]$defaultSize
+    }
+
+    return $InstanceMemoryMB
+}
+
+function ValidateMaximumInstanceCount
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [hashtable]
+        $SkuMaximumInstanceCount,   # expects keys: lowestMaximumInstanceCount, highestMaximumInstanceCount, defaultValue
+
+        [Parameter(Mandatory = $false)]
+        [int]
+        $MaximumInstanceCount
+    )
+
+    # Validate SKU payload
+    if (-not $SkuMaximumInstanceCount -or
+        -not $SkuMaximumInstanceCount.lowestMaximumInstanceCount -or
+        -not $SkuMaximumInstanceCount.highestMaximumInstanceCount) {
+        $errorMessage = "No maximum instance count range was returned by the SKU payload. Unable to determine a default value."
+        $exception = [System.InvalidOperationException]::new($errorMessage)
+        ThrowTerminatingError -ErrorId "NoMaximumInstanceCountFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    # Extract range and default
+    $min = [int]$SkuMaximumInstanceCount.lowestMaximumInstanceCount
+    $max = [int]$SkuMaximumInstanceCount.highestMaximumInstanceCount
+    $default = [int]$SkuMaximumInstanceCount.defaultValue
+
+    if ($MaximumInstanceCount -gt 0) {
+        # Validate range
+        if ($MaximumInstanceCount -lt $min -or $MaximumInstanceCount -gt $max) {
+            $errorMessage = "Invalid MaximumInstanceCount '{0}'. Allowed range for this runtime is {1} - {2}. " +
+                            "Use a value within the supported range." -f $MaximumInstanceCount, $min, $max
+            $exception = [System.ArgumentOutOfRangeException]::new('MaximumInstanceCount', $MaximumInstanceCount, $errorMessage)
+            ThrowTerminatingError -ErrorId "MaximumInstanceCountOutOfRange" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidArgument) `
+                                  -Exception $exception
+        }
+    }
+    else
+    {
+        # If not provided, set to default
+        $MaximumInstanceCount = $default
+    }
+
+    return $MaximumInstanceCount
 }
