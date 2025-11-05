@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.FleetspaceAccount = new FleetspaceAccountOperations(this);
             this.MongoMiResources = new MongoMiResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-05-01-preview";
+            this.ApiVersion = "2025-11-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

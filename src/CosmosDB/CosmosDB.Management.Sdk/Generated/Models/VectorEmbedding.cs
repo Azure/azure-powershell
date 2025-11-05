@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="dataType">Indicates the data type of vector.
-        /// Possible values include: &#39;float32&#39;, &#39;uint8&#39;, &#39;int8&#39;</param>
+        /// Possible values include: &#39;float32&#39;, &#39;uint8&#39;, &#39;int8&#39;, &#39;float16&#39;</param>
 
         /// <param name="distanceFunction">The distance function to use for distance calculation in between vectors.
         /// Possible values include: &#39;euclidean&#39;, &#39;cosine&#39;, &#39;dotproduct&#39;</param>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Path {get; set; }
 
         /// <summary>
-        /// Gets or sets indicates the data type of vector. Possible values include: &#39;float32&#39;, &#39;uint8&#39;, &#39;int8&#39;
+        /// Gets or sets indicates the data type of vector. Possible values include: &#39;float32&#39;, &#39;uint8&#39;, &#39;int8&#39;, &#39;float16&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dataType")]
         public string DataType {get; set; }

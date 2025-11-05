@@ -179,6 +179,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// case there are errors, the property provides troubleshooting guidance.
         /// </param>
 
+        /// <param name="keyVaultKeyUriVersion">The version of the Customer Managed Key currently being used by the account
+        /// </param>
+
         /// <param name="enablePriorityBasedExecution">Flag to indicate enabling/disabling of Priority Based Execution Preview
         /// feature on the account
         /// </param>
@@ -194,7 +197,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="enableAllVersionsAndDeletesChangeFeed">Flag to indicate if All Versions and Deletes Change feed feature is enabled
         /// on the account
         /// </param>
-        public DatabaseAccountGetProperties(string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<Location> writeLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> readLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<FailoverPolicy> failoverPolicies = default(System.Collections.Generic.IList<FailoverPolicy>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), string instanceId = default(string), string createMode = default(string), RestoreParameters restoreParameters = default(RestoreParameters), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), string capacityMode = default(string), CapacityModeChangeTransitionState capacityModeChangeTransitionState = default(CapacityModeChangeTransitionState), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?))
+
+        /// <param name="throughputPoolDedicatedRUs">Total dedicated throughput (RU/s) for database account. Represents the sum
+        /// of all manual provisioned throughput and all autoscale max RU/s across all
+        /// shared throughput databases and dedicated throughput containers in the
+        /// account for 1 region. READ ONLY.
+        /// </param>
+
+        /// <param name="throughputPoolMaxConsumableRUs">When this account is part of a fleetspace with throughput pooling enabled,
+        /// this is the maximum additional throughput (RU/s) that can be consumed from
+        /// the pool, summed across all shared throughput databases and dedicated
+        /// throughput containers in the account for 1 region.  READ ONLY.
+        /// </param>
+        public DatabaseAccountGetProperties(string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<Location> writeLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> readLocations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<FailoverPolicy> failoverPolicies = default(System.Collections.Generic.IList<FailoverPolicy>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), string instanceId = default(string), string createMode = default(string), RestoreParameters restoreParameters = default(RestoreParameters), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), string capacityMode = default(string), CapacityModeChangeTransitionState capacityModeChangeTransitionState = default(CapacityModeChangeTransitionState), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), string keyVaultKeyUriVersion = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?), long? throughputPoolDedicatedRUs = default(long?), long? throughputPoolMaxConsumableRUs = default(long?))
 
         {
             this.ProvisioningState = provisioningState;
@@ -240,10 +255,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.EnableBurstCapacity = enableBurstCapacity;
             this.MinimalTlsVersion = minimalTlsVersion;
             this.CustomerManagedKeyStatus = customerManagedKeyStatus;
+            this.KeyVaultKeyUriVersion = keyVaultKeyUriVersion;
             this.EnablePriorityBasedExecution = enablePriorityBasedExecution;
             this.DefaultPriorityLevel = defaultPriorityLevel;
             this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
             this.EnableAllVersionsAndDeletesChangeFeed = enableAllVersionsAndDeletesChangeFeed;
+            this.ThroughputPoolDedicatedRUs = throughputPoolDedicatedRUs;
+            this.ThroughputPoolMaxConsumableRUs = throughputPoolMaxConsumableRUs;
             CustomInit();
         }
 
@@ -547,6 +565,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string CustomerManagedKeyStatus {get; set; }
 
         /// <summary>
+        /// Gets the version of the Customer Managed Key currently being used by the
+        /// account
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "keyVaultKeyUriVersion")]
+        public string KeyVaultKeyUriVersion {get; private set; }
+
+        /// <summary>
         /// Gets or sets flag to indicate enabling/disabling of Priority Based
         /// Execution Preview feature on the account
         /// </summary>
@@ -573,6 +598,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableAllVersionsAndDeletesChangeFeed")]
         public bool? EnableAllVersionsAndDeletesChangeFeed {get; set; }
+
+        /// <summary>
+        /// Gets or sets total dedicated throughput (RU/s) for database account.
+        /// Represents the sum of all manual provisioned throughput and all autoscale
+        /// max RU/s across all shared throughput databases and dedicated throughput
+        /// containers in the account for 1 region. READ ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputPoolDedicatedRUs")]
+        public long? ThroughputPoolDedicatedRUs {get; set; }
+
+        /// <summary>
+        /// Gets or sets when this account is part of a fleetspace with throughput
+        /// pooling enabled, this is the maximum additional throughput (RU/s) that can
+        /// be consumed from the pool, summed across all shared throughput databases
+        /// and dedicated throughput containers in the account for 1 region.  READ
+        /// ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputPoolMaxConsumableRUs")]
+        public long? ThroughputPoolMaxConsumableRUs {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -659,6 +703,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.Capacity.Validate();
             }
+
 
 
 

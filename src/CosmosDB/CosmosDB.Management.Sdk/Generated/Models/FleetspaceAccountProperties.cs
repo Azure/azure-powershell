@@ -30,18 +30,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Creating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
         /// &#39;Canceled&#39;, &#39;Updating&#39;</param>
 
-        /// <param name="accountResourceIdentifier">The resource identifier of global database account in the Fleetspace
-        /// Account.
+        /// <param name="globalDatabaseAccountProperties">Configuration for fleetspace Account in the fleetspace.
         /// </param>
-
-        /// <param name="accountLocation">The location of  global database account in the Fleetspace Account.
-        /// </param>
-        public FleetspaceAccountProperties(string provisioningState = default(string), string accountResourceIdentifier = default(string), string accountLocation = default(string))
+        public FleetspaceAccountProperties(string provisioningState = default(string), FleetspaceAccountPropertiesGlobalDatabaseAccountProperties globalDatabaseAccountProperties = default(FleetspaceAccountPropertiesGlobalDatabaseAccountProperties))
 
         {
             this.ProvisioningState = provisioningState;
-            this.AccountResourceIdentifier = accountResourceIdentifier;
-            this.AccountLocation = accountLocation;
+            this.GlobalDatabaseAccountProperties = globalDatabaseAccountProperties;
             CustomInit();
         }
 
@@ -58,17 +53,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string ProvisioningState {get; set; }
 
         /// <summary>
-        /// Gets or sets the resource identifier of global database account in the
-        /// Fleetspace Account.
+        /// Gets or sets configuration for fleetspace Account in the fleetspace.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "accountResourceIdentifier")]
-        public string AccountResourceIdentifier {get; set; }
-
-        /// <summary>
-        /// Gets or sets the location of  global database account in the Fleetspace
-        /// Account.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "accountLocation")]
-        public string AccountLocation {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "globalDatabaseAccountProperties")]
+        public FleetspaceAccountPropertiesGlobalDatabaseAccountProperties GlobalDatabaseAccountProperties {get; set; }
     }
 }
