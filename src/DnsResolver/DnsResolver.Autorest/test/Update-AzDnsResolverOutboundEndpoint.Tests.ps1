@@ -5,18 +5,21 @@
 
 Add-AssertionOperator -Name 'BeSuccessfullyCreatedOutboundEndpoint' -Test $Function:BeSuccessfullyCreatedOutboundEndpoint
 
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDnsResolverOutboundEndpoint'))
+{
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDnsResolverOutboundEndpoint.Recording.json'
+    $currentPath = $PSScriptRoot
+    while(-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
-. ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDnsResolverOutboundEndpoint.Recording.json'
-$currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
-}
-. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDnsResolverOutboundEndpoint' {
     It 'Update outbound endpoint by adding tag, expect outbound endpoint updated' {

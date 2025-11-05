@@ -6,18 +6,21 @@
 Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
 Add-AssertionOperator -Name 'BeSameAsExpected' -Test $Function:BeSameAsExpected
 
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDnsResolver'))
+{
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDnsResolver.Recording.json'
+    $currentPath = $PSScriptRoot
+    while(-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
-. ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDnsResolver.Recording.json'
-$currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
-}
-. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDnsResolver' {
     It 'Update DNS Resolver by adding tag, expect DNS resolver updated' {
