@@ -330,6 +330,11 @@ directive:
     set:
       parameter-name: Name
       alias: CertificateName
+  - where:
+      subject: WebPubSubCustomCertificate
+      verb: Update
+    remove: true
+
 # Disable Inline on the Baseclass(Model).
   - no-inline:
     - EventListenerEndpoint

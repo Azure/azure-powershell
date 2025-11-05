@@ -159,9 +159,6 @@ Update properties of a SignalR replica.
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
 Update a resource.
 
-### [Update-AzWebPubSubCustomCertificate](Update-AzWebPubSubCustomCertificate.md)
-Update a custom certificate.
-
 ### [Update-AzWebPubSubCustomDomain](Update-AzWebPubSubCustomDomain.md)
 Update a custom domain.
 

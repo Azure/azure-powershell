@@ -85,8 +85,8 @@ FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubCustomCertificate',
                'Remove-AzWebPubSubCustomCertificate', 
                'Remove-AzWebPubSubCustomDomain', 'Remove-AzWebPubSubHub', 
                'Restart-AzWebPubSub', 'Test-AzWebPubSubNameAvailability', 
-               'Update-AzWebPubSub', 'Update-AzWebPubSubCustomCertificate', 
-               'Update-AzWebPubSubCustomDomain', 'Update-AzWebPubSubHub'
+               'Update-AzWebPubSub', 'Update-AzWebPubSubCustomDomain', 
+               'Update-AzWebPubSubHub'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Add-AzSignalRNetworkIpRule', 'Get-AzSignalR', 

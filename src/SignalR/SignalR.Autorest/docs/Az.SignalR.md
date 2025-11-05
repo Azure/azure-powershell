@@ -75,9 +75,6 @@ Checks that the resource name is valid and is not already in use.
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
 Update a resource.
 
-### [Update-AzWebPubSubCustomCertificate](Update-AzWebPubSubCustomCertificate.md)
-Update a custom certificate.
-
 ### [Update-AzWebPubSubCustomDomain](Update-AzWebPubSubCustomDomain.md)
 Update a custom domain.
 
