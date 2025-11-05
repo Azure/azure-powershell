@@ -276,6 +276,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Optional field to filter network traffic logs.",
             ParameterSetName = SetByResourceIdWithTA)]
         [ValidateNotNull]
+        [Alias("RecordTypes")]
         public string RecordType { get; set; }
 
         [Parameter(
