@@ -1,0 +1,67 @@
+{
+  "resourceType": "vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionClusters/operationResults",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.migrate"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMigrateReplicationProtectionClusterOperationResult",
+      "description": "Track the results of an asynchronous operation on the replication protection cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/operationResults/{jobId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectionclusteroperationresult"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FabricName <String>",
+              "-JobId <String>",
+              "-ProtectionContainerName <String>",
+              "-ReplicationProtectionClusterName <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Track the results of an asynchronous operation on the replication protection cluster.",
+          "parameters": [
+            {
+              "name": "-FabricName",
+              "value": "[Path.fabricName]"
+            },
+            {
+              "name": "-JobId",
+              "value": "[Path.jobId]"
+            },
+            {
+              "name": "-ProtectionContainerName",
+              "value": "[Path.protectionContainerName]"
+            },
+            {
+              "name": "-ReplicationProtectionClusterName",
+              "value": "[Path.replicationProtectionClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
