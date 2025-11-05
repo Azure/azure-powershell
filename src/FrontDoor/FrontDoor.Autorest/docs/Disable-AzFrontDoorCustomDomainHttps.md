@@ -42,24 +42,7 @@ Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontD
 ```
 
 ```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Disabling
-CustomHttpsProvisioningSubstate  : DeletingCertificate
-CertificateSource                : FrontDoor
-ProtocolType                     : ServerNameIndication
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
+$true
 ```
 
 Disable HTTPS for a custom domain "frontendpointname1-custom-xyz" with FrontDoorName as "frontdoor1" and ResourceGroupName as "resourcegroup1".
@@ -70,24 +53,7 @@ Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorNa
 ```
 
 ```output
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Disabling
-CustomHttpsProvisioningSubstate  : DeletingCertificate
-CertificateSource                : FrontDoor
-ProtocolType                     : ServerNameIndication
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
+$true
 ```
 
 Disable HTTPS for a custom domain with PSFrontendEndpoint object.

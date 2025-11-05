@@ -55,9 +55,36 @@ Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupN
 ```
 
 ```output
-Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
-----         ---------- ------------------ ----------------------------- -----------
-{policyName} Prevention            Enabled                           403 https://www.bing.com/
+Customrule           : {customrule0, customrule01}
+Etag                 :
+FrontendEndpointLink : {}
+Id                   : /subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Location             : Global
+ManagedRuleSet       : {{
+                         "ruleSetType": "Microsoft_DefaultRuleSet",
+                         "ruleSetVersion": "2.0",
+                         "ruleSetAction": "Block",
+                         "exclusions": [ ],
+                         "ruleGroupOverrides": [ ]
+                       }}
+Name                 : {policyName}
+PolicySetting        : {
+                         "enabledState": "Enabled",
+                         "mode": "Detection",
+                         "customBlockResponseStatusCode": 403,
+                         "requestBodyCheck": "Enabled"
+                       }
+ProvisioningState    : Succeeded
+ResourceGroupName    : {rg}
+ResourceState        : Enabled
+RoutingRuleLink      :
+SecurityPolicyLink   : {{
+                         "id": "/subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Cdn/profiles/hdis-fe/securitypolicies/premium"
+                       }}
+SkuName              : Premium_AzureFrontDoor
+Tag                  : {
+                       }
+Type                 : Microsoft.Network/frontdoorwebapplicationfirewallpolicies
 ```
 
 Update an existing WAF policy custom status code.
@@ -68,9 +95,36 @@ Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupN
 ```
 
 ```output
-Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
-----         ---------- ------------------ ----------------------------- -----------
-{policyName} Detection            Enabled                           403 https://www.bing.com/
+Customrule           : {customrule0, customrule01}
+Etag                 :
+FrontendEndpointLink : {}
+Id                   : /subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Location             : Global
+ManagedRuleSet       : {{
+                         "ruleSetType": "Microsoft_DefaultRuleSet",
+                         "ruleSetVersion": "2.0",
+                         "ruleSetAction": "Block",
+                         "exclusions": [ ],
+                         "ruleGroupOverrides": [ ]
+                       }}
+Name                 : {policyName}
+PolicySetting        : {
+                         "enabledState": "Enabled",
+                         "mode": "Detection",
+                         "customBlockResponseStatusCode": 403,
+                         "requestBodyCheck": "Enabled"
+                       }
+ProvisioningState    : Succeeded
+ResourceGroupName    : {rg}
+ResourceState        : Enabled
+RoutingRuleLink      :
+SecurityPolicyLink   : {{
+                         "id": "/subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Cdn/profiles/hdis-fe/securitypolicies/premium"
+                       }}
+SkuName              : Premium_AzureFrontDoor
+Tag                  : {
+                       }
+Type                 : Microsoft.Network/frontdoorwebapplicationfirewallpolicies
 ```
 
 Update an existing WAF policy mode.
@@ -81,9 +135,36 @@ Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupN
 ```
 
 ```output
-Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
-----          ---------- ------------------ ----------------------------- -----------
-{policyName}  Detection           Disabled                           403 https://www.bing.com/
+Customrule           : {customrule0, customrule01}
+Etag                 :
+FrontendEndpointLink : {}
+Id                   : /subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Location             : Global
+ManagedRuleSet       : {{
+                         "ruleSetType": "Microsoft_DefaultRuleSet",
+                         "ruleSetVersion": "2.0",
+                         "ruleSetAction": "Block",
+                         "exclusions": [ ],
+                         "ruleGroupOverrides": [ ]
+                       }}
+Name                 : {policyName}
+PolicySetting        : {
+                         "enabledState": "Enabled",
+                         "mode": "Detection",
+                         "customBlockResponseStatusCode": 403,
+                         "requestBodyCheck": "Enabled"
+                       }
+ProvisioningState    : Succeeded
+ResourceGroupName    : {rg}
+ResourceState        : Disabled
+RoutingRuleLink      :
+SecurityPolicyLink   : {{
+                         "id": "/subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Cdn/profiles/hdis-fe/securitypolicies/premium"
+                       }}
+SkuName              : Premium_AzureFrontDoor
+Tag                  : {
+                       }
+Type                 : Microsoft.Network/frontdoorwebapplicationfirewallpolicies
 ```
 
 Update an existing WAF policy enabled state and mode.

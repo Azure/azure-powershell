@@ -4,17 +4,25 @@ New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoo
 ```
 
 ```output
-FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
-                               viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
-AcceptedProtocols            : {Http, Https}
-PatternsToMatch              : {/*}
-HealthProbeSettings          :
-RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
-EnabledState                 : Enabled
-ResourceState                :
-Id                           :
-Name                         : {routingRuleName}
-Type                         :
+AcceptedProtocol                   : {Http, Https}
+EnabledState                       : Enabled
+FrontendEndpoint                   : {{
+                                       "id": "/subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Network/frontDoors/{fname}/FrontendEndpoints/frontendEndpoint1"
+                                     }}
+Id                                 :
+Name                               :
+PatternsToMatch                    : {/*}
+ResourceState                      :
+RouteConfiguration                 : {
+                                       "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+                                       "backendPool": {
+                                         "id": "/subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Network/frontDoors/{fname}/BackendPools/backendPool1"
+                                       },
+                                       "forwardingProtocol": "MatchRequest"
+                                     }
+RuleEngineId                       :
+Type                               :
+WebApplicationFirewallPolicyLinkId :
 ```
 
 Create a PSRoutingRuleObject for Front Door creation with a forwarding rule
@@ -29,17 +37,27 @@ New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoo
 ```
 
 ```output
-FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
-                               viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
-AcceptedProtocols            : {Http, Https}
-PatternsToMatch              : {/*}
-HealthProbeSettings          :
-RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectConfiguration
-EnabledState                 : Enabled
-ResourceState                :
-Id                           :
-Name                         : {routingRuleName}
-Type                         :
+AcceptedProtocol                   : {Http, Https}
+EnabledState                       : Enabled
+FrontendEndpoint                   : {{
+                                       "id": "/subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Network/frontDoors/{fname}/FrontendEndpoints/frontendEndpoint1"
+                                     }}
+Id                                 :
+Name                               :
+PatternsToMatch                    : {/*}
+ResourceState                      :
+RouteConfiguration                 : {
+                                       "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration",
+                                       "redirectType": "Moved",
+                                       "redirectProtocol": "MatchRequest",
+                                       "customHost": "www.contoso.com",
+                                       "customPath": "/images/contoso.png",
+                                       "customFragment": "section-header-2",
+                                       "customQueryString": "field1=value1\u0026field2=value2"
+                                     }
+RuleEngineId                       :
+Type                               :
+WebApplicationFirewallPolicyLinkId :
 ```
 
 Create a PSRoutingRuleObject for Front Door creation
