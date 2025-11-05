@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Bumped swagger version to 2025-10-01
+* Added support for DDos RuleSet
 * Migrated to AutoRest PowerShell V4
 
 ## Version 1.13.0
