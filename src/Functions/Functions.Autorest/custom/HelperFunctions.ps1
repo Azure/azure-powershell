@@ -3046,10 +3046,11 @@ function ValidateIntanceMemoryMB
     param
     (
         [Parameter(Mandatory=$true)]
-        [hashtable]
+        [PSCustomObject]
         $SkuInstanceMemoryMB,
 
         [Parameter(Mandatory=$false)]
+        [int]
         $InstanceMemoryMB
     )
 
@@ -3104,7 +3105,7 @@ function ValidateMaximumInstanceCount
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
-        [hashtable]
+        [PSCustomObject]
         $SkuMaximumInstanceCount,   # expects keys: lowestMaximumInstanceCount, highestMaximumInstanceCount, defaultValue
 
         [Parameter(Mandatory = $false)]
