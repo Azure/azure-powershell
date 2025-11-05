@@ -19,7 +19,10 @@
 --->
 
 ## Upcoming Release
-* Added support for `RecordTypes` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Added support for `RecordTypes` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` comdlets.
+
+* Removed the None from the accepted value for the property 'Sensitivity'
+    - Updated `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride` cmdlet
 
 ## Version 7.22.0
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
