@@ -19,13 +19,24 @@ using System.Management.Automation;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using AzDev.Services;
 using AzDev.Models;
 using System.Text;
 using System.Diagnostics;
 
 namespace AzDev.Cmdlets.Typespec
 {
+    /*
+        TODO: 
+            0. preinstall tsc/tsp?
+            1. handle additional directories
+            2. add more try catch on file operations
+            3. add more logging
+            4. support debug
+            5. polish the try-finally block
+                5.1 cmdlet could fail before reaching try block which causes temp files not cleaned up
+                5.2 too many lines in the try block make it hard to catch exceptions
+                5.3 maybe use "using + filestream" for IO operations
+    */
     /*
         1. -tsplocation provided but no tsp-location.json, update tsp-location with -tsplocation
         2. -tsplocation provided and tsp-location.yaml exists, use -tsplocation and update tsp-location.yaml
@@ -67,6 +78,9 @@ namespace AzDev.Cmdlets.Typespec
         [Parameter(HelpMessage = "Skip cleanup of temporary files.")]
         public SwitchParameter SkipCleanTemp { get; set; }
 
+        [Parameter(HelpMessage = "The path of local emitter")]
+        public string emitterPath { get; set; }
+
         protected override void ProcessRecord()
         {
             string currentPath = this.SessionState.Path.CurrentFileSystemLocation.Path;
@@ -102,7 +116,6 @@ namespace AzDev.Cmdlets.Typespec
                 }.ToString();
             }
             //use tsp-location.yaml in current directory if no -tsplocation provided
-            bool syncTSPLocation = true;
             if (string.IsNullOrEmpty(TSPLocation))
             {
                 string tspLocationPathPWD = Path.Combine(currentPath, "tsp-location.yaml");
@@ -111,16 +124,16 @@ namespace AzDev.Cmdlets.Typespec
                     throw new ArgumentException("Please provide `-TSPLocation`");
                 }
                 TSPLocation = ConstructTSPConfigUriFromTSPLocation(tspLocationPathPWD, (RemoteDirectory, RemoteCommit, RemoteRepositoryName, RemoteForkName));
-                syncTSPLocation = false;
             }
             // resolve local path of TSP as absolute if it's relative
-            if (!IsRemoteUri(TSPLocation) && !Path.IsPathRooted(TSPLocation))
+            bool isRemote = IsRemoteUri(TSPLocation);
+            if (!isRemote && !Path.IsPathRooted(TSPLocation))
             {
                 TSPLocation = Path.GetFullPath(TSPLocation, currentPath);
             }
-            else if (IsRemoteUri(TSPLocation))
+            else if (isRemote)
             {
-                (TSPLocation, string commit, string repo, string path) = ResolveTSPConfigUri(TSPLocation);
+                (TSPLocation, RemoteCommit, RemoteRepositoryName, RemoteDirectory) = ResolveTSPConfigUri(TSPLocation);
             }
 
             /*
@@ -168,14 +181,84 @@ namespace AzDev.Cmdlets.Typespec
             }
 
             /*
-                Prepare TSP from TSP location, copy TSP to temp directory should be under current directory
-                    remote
-                        1. `--no-checkout` clone azure-rest-api-specs repo
-                        2. Sparse checkout directory in tsp location
-                    local
+                1. Prepare TSP from TSP location, copy TSP to temp directory under emitter output directory
+                    1.1 remote
+                        `--no-checkout` clone azure-rest-api-specs repo
+                        Sparse checkout directory in tsp location
+                    1.2 local
                         copy service directory to current directory
-            */
+                2. replace tspconfig.yaml in the temp directory with mergedTspConfig
+                3. replace package.json with project emitter package.json
 
+                        
+            */
+            string tempTSPLocation = isRemote ?
+                PrepareTSPFromRemote(RemoteRepositoryName, RemoteCommit, RemoteDirectory, emitterOutDir).GetAwaiter().GetResult() :
+                PrepareTSPFromLocal(TSPLocation, emitterOutDir);
+            if (!File.Exists(tempTSPLocation))
+            {
+                throw new InvalidOperationException($"The specified TSP config file [{tempTSPLocation}] does not exist.");
+            }
+            File.WriteAllText(tempTSPLocation, YamlHelper.Serialize(mergedTspConfig));
+
+            /*
+                persist tsp-location.yaml to Emitter output directory
+            */
+            if (!isRemote)
+            {
+                RemoteDirectory = TSPLocation;
+            }
+            object tspLocationData = new
+            {
+                directory = RemoteDirectory,
+                commit = RemoteCommit,
+                repo = RemoteRepositoryName
+            };
+            File.WriteAllText(Path.Combine(emitterOutDir, "tsp-location.yaml"), YamlHelper.Serialize(tspLocationData));
+
+            string emitterPackageJsonPath = Path.Combine(RepoRoot, "eng", "emitter-package.json");
+            File.Copy(emitterPackageJsonPath, Path.Combine(Path.GetDirectoryName(tempTSPLocation), "package.json"), true);
+
+            /*
+                emit from tempTSPLocation
+            */
+            try
+            {
+                installDependencies(Path.GetDirectoryName(tempTSPLocation));
+                RunCommand("tsp", $"compile ./ --emit {emitterPath ?? emitterName} --out-dir {emitterOutDir}", Path.GetDirectoryName(tempTSPLocation));
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to emit from TSP config [{tempTSPLocation}]: {ex.Message}", ex);
+            }
+            finally
+            {
+                if (!SkipCleanTemp)
+                {
+                    try
+                    {
+                        string tempDirPath = Path.Combine(emitterOutDir, tempDirName);
+                        if (Directory.Exists(tempDirPath))
+                        {
+                            Directory.Delete(tempDirPath, true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteWarning($"Failed to clean up temporary files: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        private void installDependencies(string workingDirectory)
+        {
+            if (!File.Exists(Path.Combine(workingDirectory, "package.json")))
+            {
+                throw new FileNotFoundException($"package.json not found in {workingDirectory}");
+            }
+            string args = File.Exists(Path.Combine(workingDirectory, "package-lock.json")) ? "ci" : "install";
+            RunCommand("npm", args, workingDirectory);
         }
 
         private (string, string, string, string) ResolveTSPConfigUri(string uri)
@@ -195,7 +278,7 @@ namespace AzDev.Cmdlets.Typespec
             return (uri, commit, repo, path);
         }
 
-        private async Task PrepareTSPFromRemote(string tspLocation, string repo, string commit, string path, string outDir)
+        private async Task<string> PrepareTSPFromRemote(string repo, string commit, string path, string outDir)
         {
             string tempDirPath = Path.Combine(outDir, tempDirName);
             try
@@ -211,21 +294,67 @@ namespace AzDev.Cmdlets.Typespec
                 throw new InvalidOperationException($"Failed to prepare temporary directory [{tempDirPath}]: {ex.Message}", ex);
             }
             string cloneRepo = $"https://github.com/{repo}.git";
-            await RunGitCommand($"clone {cloneRepo} {tempDirPath} --no-checkout --filter=tree:0", outDir);
-            await RunGitCommand($"sparse-checkout set {path}", tempDirPath);
-            await RunGitCommand($"sparse-checkout add {path}", tempDirPath);
-            await RunGitCommand($"checkout {commit}", tempDirPath);
-            if (Directory.Exists(Path.Combine(tempDirPath, path)))
+            RunCommand("git", $"clone {cloneRepo} {tempDirPath} --no-checkout --filter=tree:0", outDir);
+            RunCommand("git", $"sparse-checkout set {path}", tempDirPath);
+            RunCommand("git", $"sparse-checkout add {path}", tempDirPath);
+            RunCommand("git", $"checkout {commit}", tempDirPath);
+            string tempTspLocation = Path.Combine(tempDirPath, path, "tspconfig.yaml");
+            return tempTspLocation;
+        }
+
+        private string PrepareTSPFromLocal(string tspLocation, string outDir)
+        {
+            tspLocation = Path.GetDirectoryName(tspLocation);
+            string tempDirPath = Path.Combine(outDir, tempDirName);
+            try
             {
-                throw new InvalidOperationException($"The specified path [{path}] does not exist in the repository [{repo}] at commit [{commit}].");
+                if (Directory.Exists(tempDirPath))
+                {
+                    Directory.Delete(tempDirPath, true);
+                }
+                Directory.CreateDirectory(tempDirPath);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to prepare temporary directory [{tempDirPath}]: {ex.Message}", ex);
+            }
+            CopyDirectory(tspLocation, tempDirPath, ["tsp-output", "node_modules"]);
+            string tempTspLocation = Path.Combine(tempDirPath, tspLocation, "tspconfig.yaml");
+            return tempTspLocation;
+        }
+
+        //copy sourcDir and put it under destinationDir
+        private void CopyDirectory(string sourceDir, string destinationDir, string[] exclude)
+        {
+            DirectoryInfo dir = new DirectoryInfo(sourceDir);
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException($"Source directory does not exist or could not be found: {sourceDir}");
+            }
+            string currentDir = Path.Combine(destinationDir, dir.Name);
+            Directory.CreateDirectory(currentDir);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                if (exclude != null && Array.Exists(exclude, e => e.Equals(file.Name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    continue;
+                }
+                string tempPath = Path.Combine(currentDir, file.Name);
+                file.CopyTo(tempPath, false);
+            }
+            foreach (DirectoryInfo subdir in dirs)
+            {
+                CopyDirectory(subdir.FullName, currentDir, exclude);
             }
         }
 
-        private async Task RunGitCommand(string arguments, string workingDirectory)
+        private void RunCommand(string command, string arguments, string workingDirectory)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
-                FileName = "git",
+                FileName = command,
                 Arguments = arguments,
                 WorkingDirectory = workingDirectory,
                 RedirectStandardOutput = false,     // Capture output
@@ -235,13 +364,42 @@ namespace AzDev.Cmdlets.Typespec
             };
             using (Process process = Process.Start(startInfo))
             {
-                await process.WaitForExitAsync();
+                process.WaitForExit();
                 //string output = process.StandardOutput.ReadToEnd();
-                string error = await process.StandardError.ReadToEndAsync();
+                string error = process.StandardError.ReadToEnd();
                 if (process.ExitCode != 0)
                 {
-                    throw new Exception($"Git command failed: {error}");
+                    throw new Exception($"{command} command failed: {error}");
                 }
+            }
+        }
+
+        private async Task<string> RunNpmCommand(string arguments, string workingDirectory)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = "npm",
+                Arguments = arguments,
+                WorkingDirectory = workingDirectory,
+                RedirectStandardOutput = true,      // Capture output
+                RedirectStandardError = true,       // Capture errors
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (Process process = Process.Start(startInfo))
+            {
+                await process.WaitForExitAsync();
+                string output = await process.StandardOutput.ReadToEndAsync();
+                string error = await process.StandardError.ReadToEndAsync();
+
+                if (process.ExitCode != 0)
+                {
+                    throw new Exception($"NPM command '{arguments}' failed: {error}");
+                }
+
+                WriteVerbose($"NPM command '{arguments}' completed successfully");
+                return output.Trim();
             }
         }
 
@@ -315,7 +473,7 @@ namespace AzDev.Cmdlets.Typespec
                 throw new ArgumentException("Please provide either `-RemoteRepository` or `-RemoteForkName`.");
             }
             Dictionary<string, object> tspLocationPWDContent = YamlHelper.Deserialize<Dictionary<string, object>>(File.ReadAllText(tspLocationPath));
-            //if tspconfig emitted previously was from local, only record the full directory name
+            //if tspconfig emitted previously was from local, only record the absolute directory name
             if (File.Exists((string)tspLocationPWDContent["directory"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["repo"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["commit"]))
             {
                 if (remoteInfo != (null, null, null, null))
