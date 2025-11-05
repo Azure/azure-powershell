@@ -76,11 +76,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_monitorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("monitorName"), out var __jsonMonitorName) ? (string)__jsonMonitorName : (string)MonitorName;}
-            {_providerInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("providerInstanceName"), out var __jsonProviderInstanceName) ? (string)__jsonProviderInstanceName : (string)ProviderInstanceName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_monitorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("monitorName"), out var __jsonMonitorName) ? (string)__jsonMonitorName : (string)_monitorName;}
+            {_providerInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("providerInstanceName"), out var __jsonProviderInstanceName) ? (string)__jsonProviderInstanceName : (string)_providerInstanceName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

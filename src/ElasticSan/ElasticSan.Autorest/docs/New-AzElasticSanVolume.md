@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticSanVolume
 
 ## SYNOPSIS
-create a Volume.
+Create a Volume.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdenti
 ```
 
 ## DESCRIPTION
-create a Volume.
+Create a Volume.
 
 ## EXAMPLES
 

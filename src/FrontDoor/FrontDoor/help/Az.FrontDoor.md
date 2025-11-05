@@ -2,123 +2,135 @@
 Module Name: Az.FrontDoor
 Module Guid: 91832aaa-dc11-4583-8239-adb7df531604
 Download Help Link: https://learn.microsoft.com/powershell/module/az.frontdoor
-Help Version: 0.1.0
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.FrontDoor Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure Front Door Service in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.FrontDoor namespace.
+Microsoft Azure PowerShell: FrontDoor cmdlets
 
 ## Az.FrontDoor Cmdlets
 ### [Disable-AzFrontDoorCustomDomainHttps](Disable-AzFrontDoorCustomDomainHttps.md)
-Disable HTTPS for a custom domain
+Disables a frontendEndpoint for HTTPS traffic
 
 ### [Enable-AzFrontDoorCustomDomainHttps](Enable-AzFrontDoorCustomDomainHttps.md)
-Enable HTTPS for a custom domain using Front Door managed certificate or using own certificate from Azure Key Vault.
+Enables a frontendEndpoint for HTTPS traffic
 
 ### [Get-AzFrontDoor](Get-AzFrontDoor.md)
-Get Front Door load balancer
+Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
 
 ### [Get-AzFrontDoorFrontendEndpoint](Get-AzFrontDoorFrontendEndpoint.md)
-Get a front door frontend endpoint.
+Gets a Frontend endpoint with the specified name within the specified Front Door.
 
 ### [Get-AzFrontDoorRulesEngine](Get-AzFrontDoorRulesEngine.md)
-Get Rules Engine configurations.
+Gets a Rules Engine Configuration with the specified name within the specified Front Door.
 
 ### [Get-AzFrontDoorWafManagedRuleSetDefinition](Get-AzFrontDoorWafManagedRuleSetDefinition.md)
-Get WAF managed rule set definitions
+Lists all available managed rule sets.
 
 ### [Get-AzFrontDoorWafPolicy](Get-AzFrontDoorWafPolicy.md)
-Get WAF policy
+Retrieve protection policy with specified name within a resource group.
 
 ### [New-AzFrontDoor](New-AzFrontDoor.md)
-Create a new Azure Front Door load balancer
+Create a new Front Door with a Front Door name under the specified subscription and resource group.
 
 ### [New-AzFrontDoorBackendObject](New-AzFrontDoorBackendObject.md)
-Create a PSBackend object
+Create an in-memory object for Backend.
 
 ### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
-Create a PSBackendPool object for Front Door creation
+Create an in-memory object for BackendPool.
 
 ### [New-AzFrontDoorBackendPoolsSettingObject](New-AzFrontDoorBackendPoolsSettingObject.md)
-Create a PSBackendPoolsSetting object for Front Door creation.
+Create an in-memory object for BackendPoolsSettings.
+
+### [New-AzFrontDoorCacheConfigurationObject](New-AzFrontDoorCacheConfigurationObject.md)
+Create an in-memory object for CacheConfiguration.
+
+### [New-AzFrontDoorForwardingConfigurationObject](New-AzFrontDoorForwardingConfigurationObject.md)
+Create an in-memory object for ForwardingConfiguration.
 
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
-Create a PSFrontendEndpoint Object for Front Door creation
+Create an in-memory object for FrontendEndpoint.
 
 ### [New-AzFrontDoorHeaderActionObject](New-AzFrontDoorHeaderActionObject.md)
-Create PSHeaderAction object.
+Create an in-memory object for HeaderAction.
 
 ### [New-AzFrontDoorHealthProbeSettingObject](New-AzFrontDoorHealthProbeSettingObject.md)
-Create a PSHealthProbeSetting object for Front Door creation
+Create an in-memory object for HealthProbeSettingsModel.
 
 ### [New-AzFrontDoorLoadBalancingSettingObject](New-AzFrontDoorLoadBalancingSettingObject.md)
-Create a PSLoadBalancingSetting object for Front Door creation
+Create an in-memory object for LoadBalancingSettingsModel.
+
+### [New-AzFrontDoorPolicySettingsObject](New-AzFrontDoorPolicySettingsObject.md)
+Create an in-memory object for PolicySettings.
+
+### [New-AzFrontDoorRedirectConfigurationObject](New-AzFrontDoorRedirectConfigurationObject.md)
+Create an in-memory object for RedirectConfiguration.
 
 ### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
-Create a PSRoutingRuleObject for Front Door creation
+Create an in-memory object for RoutingRule.
 
 ### [New-AzFrontDoorRulesEngine](New-AzFrontDoorRulesEngine.md)
-Create a new rules engine configuration for a specified front door. 
+Create a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ### [New-AzFrontDoorRulesEngineActionObject](New-AzFrontDoorRulesEngineActionObject.md)
-Create a PSRulesEngineAction object for creating a rules engine rule.
+Create an in-memory object for RulesEngineAction.
 
 ### [New-AzFrontDoorRulesEngineMatchConditionObject](New-AzFrontDoorRulesEngineMatchConditionObject.md)
-Create a PSRulesEngineMatchCondition object for creating a rules engine rule.
+Create an in-memory object for RulesEngineMatchCondition.
 
 ### [New-AzFrontDoorRulesEngineRuleObject](New-AzFrontDoorRulesEngineRuleObject.md)
-Create a PSRulesEngineRule object for Rules Engine creation.
+Create an in-memory object for RulesEngineRule.
 
 ### [New-AzFrontDoorWafCustomRuleGroupByVariableObject](New-AzFrontDoorWafCustomRuleGroupByVariableObject.md)
-Create CustomRuleGroupByVariable object for custom rule object
+Create an in-memory object for GroupByVariable.
 
 ### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
-Create CustomRule Object for WAF policy creation
+Create an in-memory object for CustomRule.
 
 ### [New-AzFrontDoorWafLogScrubbingRuleObject](New-AzFrontDoorWafLogScrubbingRuleObject.md)
-Create LogScrubbingRule object for LogScrubbingSetting
+Create an in-memory object for WebApplicationFirewallScrubbingRules.
 
 ### [New-AzFrontDoorWafLogScrubbingSettingObject](New-AzFrontDoorWafLogScrubbingSettingObject.md)
-Create LogScrubbingSetting object for Waf policy object
+Create an in-memory object for PolicySettingsLogScrubbing.
 
 ### [New-AzFrontDoorWafManagedRuleExclusionObject](New-AzFrontDoorWafManagedRuleExclusionObject.md)
-Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
+Create an in-memory object for ManagedRuleExclusion.
 
 ### [New-AzFrontDoorWafManagedRuleObject](New-AzFrontDoorWafManagedRuleObject.md)
-Create ManagedRule Object for WAF policy creation
+Create an in-memory object for ManagedRuleSet.
 
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
-Create managed rule override object
+Create an in-memory object for ManagedRuleOverride.
 
 ### [New-AzFrontDoorWafMatchConditionObject](New-AzFrontDoorWafMatchConditionObject.md)
-Create MatchCondition Object for WAF policy creation
+Create an in-memory object for MatchCondition.
 
 ### [New-AzFrontDoorWafPolicy](New-AzFrontDoorWafPolicy.md)
-Create WAF policy
+Create policy with specified rule set name within a resource group.
 
 ### [New-AzFrontDoorWafRuleGroupOverrideObject](New-AzFrontDoorWafRuleGroupOverrideObject.md)
-Create RuleGroupOverride Object for WAF policy creation
+Create an in-memory object for ManagedRuleGroupOverride.
 
 ### [Remove-AzFrontDoor](Remove-AzFrontDoor.md)
-Remove Front Door load balancer
+Deletes an existing Front Door with the specified parameters.
 
 ### [Remove-AzFrontDoorContent](Remove-AzFrontDoorContent.md)
-Remove contents in Front Door
+Removes a content from Front Door.
 
 ### [Remove-AzFrontDoorRulesEngine](Remove-AzFrontDoorRulesEngine.md)
-Remove Rules Engine from Front Door
+Deletes an existing Rules Engine Configuration with the specified parameters.
 
 ### [Remove-AzFrontDoorWafPolicy](Remove-AzFrontDoorWafPolicy.md)
-Remove WAF policy
+Deletes Policy
 
 ### [Set-AzFrontDoor](Set-AzFrontDoor.md)
-Update a Front Door load balancer
+Update a new Front Door with a Front Door name under the specified subscription and resource group.
 
 ### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
-Update a Rules Engine.
+Update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)
-Update WAF policy
+Update policy with specified rule set name within a resource group.
 
