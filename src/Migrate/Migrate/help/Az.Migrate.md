@@ -26,9 +26,6 @@ Gets the details of the fabric.
 ### [Get-AzMigrateLocalServerReplication](Get-AzMigrateLocalServerReplication.md)
 Retrieves the details of the replicating server.
 
-### [Get-AzMigrateLocationBasedOperationResult](Get-AzMigrateLocationBasedOperationResult.md)
-Gets the location based operation result.
-
 ### [Get-AzMigrateProject](Get-AzMigrateProject.md)
 Method to get a migrate project.
 
@@ -37,12 +34,6 @@ Gets the details of an Azure Site Recovery fabric.
 
 ### [Get-AzMigrateReplicationPolicy](Get-AzMigrateReplicationPolicy.md)
 Gets the details of a replication policy.
-
-### [Get-AzMigrateReplicationProtectionCluster](Get-AzMigrateReplicationProtectionCluster.md)
-Gets the details of an ASR replication protection cluster.
-
-### [Get-AzMigrateReplicationProtectionClusterOperationResult](Get-AzMigrateReplicationProtectionClusterOperationResult.md)
-Track the results of an asynchronous operation on the replication protection cluster.
 
 ### [Get-AzMigrateReplicationProtectionContainer](Get-AzMigrateReplicationProtectionContainer.md)
 Gets the details of a protection container.
@@ -74,9 +65,6 @@ Initializes the infrastructure for the migrate project.
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
 Initialises the infrastructure for the migrate project.
 
-### [Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService](Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService.md)
-The operation to reinstall the installed mobility service software on a replication protected item to the latest available version.
-
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
 Creates a new disk mapping
 
@@ -97,9 +85,6 @@ Creates a new Migrate project.
 
 ### [New-AzMigrateReplicationPolicy](New-AzMigrateReplicationPolicy.md)
 The operation to create a replication policy.
-
-### [New-AzMigrateReplicationProtectionCluster](New-AzMigrateReplicationProtectionCluster.md)
-The operation to create an ASR replication protection cluster item.
 
 ### [New-AzMigrateReplicationProtectionContainerMapping](New-AzMigrateReplicationProtectionContainerMapping.md)
 The operation to create a protection container mapping.
@@ -122,9 +107,6 @@ Deleting non-existent project is a no-operation.
 
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
 Stops replication for the migrated server.
-
-### [Repair-AzMigrateReplicationProtectionClusterReplication](Repair-AzMigrateReplicationProtectionClusterReplication.md)
-The operation to repair replication protection cluster.
 
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
 Restarts the replication for specified server.
@@ -155,10 +137,4 @@ Cleans up the test migration for the replicating server.
 
 ### [Suspend-AzMigrateServerReplication](Suspend-AzMigrateServerReplication.md)
 Suspends the ongoing replication.
-
-### [Test-AzMigrateReplicationProtectionClusterFailover](Test-AzMigrateReplicationProtectionClusterFailover.md)
-Operation to initiate a failover of the replication protection cluster.
-
-### [Test-AzMigrateReplicationProtectionClusterFailoverCleanup](Test-AzMigrateReplicationProtectionClusterFailoverCleanup.md)
-Operation to clean up the test failover of a replication protected cluster.
 

@@ -288,7 +288,7 @@ directive:
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
       verb: New$|Remove$
-      subject: Fabric$|ProtectionContainer$|ReplicationRecoveryServicesProvider$
+      subject: Fabric$|ProtectionContainer$|ReplicationRecoveryServicesProvider$|ReplicationProtectionCluster$
     remove: true
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
@@ -319,6 +319,16 @@ directive:
     where:
       verb: New
       subject: ^ReplicationVaultSetting|^SupportedOperatingSystem|^ReplicationProtectionIntent
+    remove: true
+  - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
+    where:
+      verb: Test$
+      subject: ReplicationProtectionClusterFailover$|ReplicationProtectionClusterFailoverCleanup$
+    remove: true
+  - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
+    where:
+      verb: Repair
+      subject: ReplicationProtectionClusterReplication$
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
@@ -405,7 +415,7 @@ directive:
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
       verb: Get$
-      subject: ReplicationMigrationItem$|ReplicationJob$
+      subject: ReplicationMigrationItem$|ReplicationJob$|ReplicationProtectionCluster$|ReplicationProtectionClusterOperationResult$|LocationBasedOperationResult$
     hide: true
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
@@ -430,7 +440,7 @@ directive:
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
       verb: Invoke$
-      subject: ^ResyncReplicationMigrationItem
+      subject: ^ResyncReplicationMigrationItem|ReinstallReplicationProtectedItemMobilityService$
     hide: true
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
