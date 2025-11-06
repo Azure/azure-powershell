@@ -21,18 +21,19 @@ Create an in-memory object for NwRuleSetIPRules.
 Create an in-memory object for NwRuleSetIPRules.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.NwRuleSetIPRules
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NwRuleSetIPRules
 .Link
-https://learn.microsoft.com/powershell/module/az.Relay/new-AzRelayNetworkRuleSetIPRuleObject
+https://learn.microsoft.com/powershell/module/Az.Relay/new-azrelaynetworkrulesetipruleobject
 #>
 function New-AzRelayNetworkRuleSetIPRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.NwRuleSetIPRules')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NwRuleSetIPRules')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The IP Filter Action.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.NetworkRuleIPAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.NetworkRuleIPAction]
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Allow")]
+        [string]
         $Action,
         [Parameter(HelpMessage="IP Mask.")]
         [string]
@@ -40,7 +41,7 @@ function New-AzRelayNetworkRuleSetIPRuleObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.NwRuleSetIPRules]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NwRuleSetIPRules]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action
