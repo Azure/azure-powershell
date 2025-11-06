@@ -293,7 +293,7 @@ Accept wildcard characters: False
 ```
 
 ### -OnlyLatestPerDatabase
-Return only latest opereation per managed database
+Return only latest operation per managed database
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

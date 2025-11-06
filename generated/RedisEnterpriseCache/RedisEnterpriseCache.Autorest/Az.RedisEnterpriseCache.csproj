@@ -3,6 +3,7 @@
     <PsModuleName>RedisEnterpriseCache</PsModuleName>
     <PsRootModuleName>RedisEnterpriseCache</PsRootModuleName>
     <PsModuleFolder>RedisEnterpriseCache.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

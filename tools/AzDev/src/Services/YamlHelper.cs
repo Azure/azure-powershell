@@ -32,6 +32,20 @@ internal static class YamlHelper
         return Deserializer.Deserialize<T>(yaml);
     }
 
+    public static bool TryDeserialize<T>(string yaml, out T obj)
+    {
+        try
+        {
+            obj = Deserializer.Deserialize<T>(yaml);
+            return true;
+        }
+        catch
+        {
+            obj = default!;
+            return false;
+        }
+    }
+
     public static string Serialize<T>(T obj)
     {
         throw new NotImplementedException();

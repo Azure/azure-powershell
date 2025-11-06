@@ -20,23 +20,17 @@ Create an in-memory object for AzureSqlDatabaseDataSource.
 .Description
 Create an in-memory object for AzureSqlDatabaseDataSource.
 .Example
-New-AzPurviewAzureSqlDatabaseDataSourceObject -Kind 'AzureSqlDatabase' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
+New-AzPurviewAzureSqlDatabaseDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresqldatabasedatasourceobject
 #>
 function New-AzPurviewAzureSqlDatabaseDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-    ${Kind},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
     [System.String]
@@ -80,6 +74,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -108,6 +105,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

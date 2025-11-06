@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.DataMigration Module
 ## Description
-{{Azure DataMigration Service Module}}
+Microsoft Azure PowerShell: Azure DataMigration Service Module
 
 ## Az.DataMigration Cmdlets
 ### [Get-AzDataMigrationAssessment](Get-AzDataMigrationAssessment.md)
@@ -58,6 +58,9 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 
 ### [Invoke-AzDataMigrationCutoverToSqlVM](Invoke-AzDataMigrationCutoverToSqlVM.md)
 Initiate cutover for in-progress online database migration to SQL VM.
+
+### [Invoke-AzDataMigrationRetryToSqlDb](Invoke-AzDataMigrationRetryToSqlDb.md)
+Retry on going migration for the database.
 
 ### [New-AzDataMigrationAzureActiveDirectoryApp](New-AzDataMigrationAzureActiveDirectoryApp.md)
 Create a new instance DataMigration Microsoft Entra Application details.
@@ -138,6 +141,12 @@ Removes an Azure Database Migration Service (classic) task from Azure.
 
 ### [Remove-AzDataMigrationToSqlDb](Remove-AzDataMigrationToSqlDb.md)
 Remove the specified database migration for a given SQL Db.
+
+### [Remove-AzDataMigrationToSqlManagedInstance](Remove-AzDataMigrationToSqlManagedInstance.md)
+Delete Database Migration resource.
+
+### [Remove-AzDataMigrationToSqlVM](Remove-AzDataMigrationToSqlVM.md)
+Delete Database Migration resource.
 
 ### [Start-AzDataMigrationService](Start-AzDataMigrationService.md)
 Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 

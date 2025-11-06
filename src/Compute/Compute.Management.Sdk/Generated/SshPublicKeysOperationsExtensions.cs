@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             public static IPage<SshPublicKeyResource> ListByResourceGroup(this ISshPublicKeysOperations operations, string resourceGroupName)
             {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -88,13 +88,53 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// Retrieves information about an SSH public key.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='sshPublicKeyName'>
+            /// The name of the SSH public key.
+            /// </param>
+            public static SshPublicKeyResource Get(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName)
+            {
+                return operations.GetAsync(resourceGroupName, sshPublicKeyName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Retrieves information about an SSH public key.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='sshPublicKeyName'>
+            /// The name of the SSH public key.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<SshPublicKeyResource> GetAsync(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, sshPublicKeyName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Creates a new SSH public key resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
@@ -114,7 +154,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
@@ -140,7 +180,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
@@ -160,7 +200,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
@@ -186,7 +226,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
@@ -203,7 +243,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
@@ -217,46 +257,6 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Retrieves information about an SSH public key.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='sshPublicKeyName'>
-            /// The name of the SSH public key.
-            /// </param>
-            public static SshPublicKeyResource Get(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName)
-            {
-                return operations.GetAsync(resourceGroupName, sshPublicKeyName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about an SSH public key.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='sshPublicKeyName'>
-            /// The name of the SSH public key.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<SshPublicKeyResource> GetAsync(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, sshPublicKeyName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Generates and returns a public/private key pair and populates the SSH
             /// public key resource with the public key. The length of the key will be 3072
             /// bits. This operation can only be performed once per SSH public key
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.

@@ -1,0 +1,476 @@
+{
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+Cancel+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/archive?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/archive?api-version=2025-07-01",
+      "Content": "{\r\n  \"filesystemPath\": \"/\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "29" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "3b1e8a1f-6bd3-481b-88d5-6578d2e30509" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus2/22161c61-4cb8-4eed-bf89-e2a3708f4d63" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "bab27211-e106-4f11-88eb-1ea44055bc36" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204343Z:bab27211-e106-4f11-88eb-1ea44055bc36" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 39D089C97CD343E2BA992BD16FD896D6 Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:43:41Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:43:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+Cancel+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/cancelArchive?api-version=2025-07-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/cancelArchive?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "97a1803a-2e88-4a40-b5e9-c5b7aa48fddf" ],
+        "CommandName": [ "Stop-AzStorageCacheAmlFilesystemArchive" ],
+        "FullCommandName": [ "Stop-AzStorageCacheAmlFilesystemArchive_Cancel" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "01275cc0-a9c6-4c5d-80f7-2a4dc6a0d3d3" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus2/18cc6945-9efc-4936-b175-34b738ad9964" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "c6f6c927-687d-408c-b47c-a70f1423d25a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204354Z:c6f6c927-687d-408c-b47c-a70f1423d25a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EB9638632F3A465D90A0EDECFBCF3D79 Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:43:53Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:43:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+Cancel+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "a896cec3-291f-4f05-bd93-fb960f6ec34a" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "05f93e4d-8797-46c2-a3f8-116c10d9ded3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "39d320bc-7e6a-44dc-9dbc-002588ba3902" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204405Z:39d320bc-7e6a-44dc-9dbc-002588ba3902" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A4989035C1E14E7394529855C748B063 Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:44:04Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:44:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"acctest43511\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"Purpose\": \"AmlFileSystem\",\r\n    \"Environment\": \"Development\",\r\n    \"Method\": \"Identity\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acctest43511\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"storageCapacityTiB\": 16.0,\r\n    \"health\": {\r\n      \"state\": \"Available\",\r\n      \"statusDescription\": \"The cluster is available\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clientInfo\": {\r\n      \"mgsAddress\": \"10.0.2.5\",\r\n      \"mountCommand\": \"mount -t lustre -o noatime,user_xattr 10.0.2.5@tcp0:/lustrefs /\u003clocal path\u003e\",\r\n      \"lustreVersion\": \"2.15\",\r\n      \"containerStorageInterface\": {\r\n        \"persistentVolumeClaim\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lQ2xhaW0KbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgUFZDCiAgbmFtZTogcHZjLWx1c3RyZQpzcGVjOgogIGFjY2Vzc01vZGVzOgogICAgLSBSZWFkV3JpdGVNYW55CiAgcmVzb3VyY2VzOgogICAgcmVxdWVzdHM6CiAgICAgICMgVGhlIHJlYWwgc3RvcmFnZSBjYXBhY2l0eSBpbiB0aGUgY2xhaW0KICAgICAgc3RvcmFnZTogMTYuMFRpCiAgIyBUaGlzIGZpZWxkIG11c3QgYmUgdGhlIHNhbWUgYXMgdGhlIHN0b3JhZ2UgY2xhc3MgbmFtZSBpbiBTdG9yYWdlQ2xhc3MKICBzdG9yYWdlQ2xhc3NOYW1lOiBzYy5henVyZWx1c3RyZS5jc2kuYXp1cmUuY29tCg==\",\r\n        \"persistentVolume\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lCm1ldGFkYXRhOgogICMgVGhlIG5hbWUgb2YgdGhlIFBWCiAgbmFtZTogcHYtbHVzdHJlCnNwZWM6CiAgYWNjZXNzTW9kZXM6CiAgICAtIFJlYWRXcml0ZU1hbnkKICBjYXBhY2l0eToKICAgICMgVGhpcyBmaWVsZCBzaG91bGQgYmUgdGhlIHRydWUgc2l6ZSBvZiB0aGUgQXp1cmUgTHVzdHJlIHlvdSB3YW50CiAgICAjIHRvIHVzZWQuIFNvIHRoYXQsIGs4cyBjYW4gYWxsb2NhdGUgcmVzb3VyY2VzIGJldHRlci4KICAgIHN0b3JhZ2U6IDE2LjBUaQogIGNzaToKICAgIGRyaXZlcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQogICAgdm9sdW1lQXR0cmlidXRlczoKICAgICAgIyBUaGUgZmlsZSBzeXN0ZW0gbmFtZSBvZiB0aGUgZXhpc3RpbmcgTHVzdHJlCiAgICAgIGZzLW5hbWU6IGx1c3RyZWZzCiAgICAgICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogICAgICBtZ3MtaXAtYWRkcmVzczogMTAuMC4yLjUKICAgICMgTWFrZSBzdXJlIHRoaXMgVm9sdW1lSUQgaXMgdW5pcXVlIGluIHRoZSBjbHVzdGVyCiAgICB2b2x1bWVIYW5kbGU6IGI5ZGU5NDhiLTAwMDItNDljMy1iOTU4LTk5ZTQyMjA3YjI1ZgogICMgIkRlbGV0ZSIgaXMgbm90IHN1cHBvcnRlZCBpbiBzdGF0aWMgcHJvdmlzaW9uaW5nIFBWCiAgbW91bnRPcHRpb25zOgogICAgLSBub2F0aW1lCiAgICAtIGZsb2NrCiAgcGVyc2lzdGVudFZvbHVtZVJlY2xhaW1Qb2xpY3k6IFJldGFpbgogIHN0b3JhZ2VDbGFzc05hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20K\",\r\n        \"storageClass\": \"Ci0tLQphcGlWZXJzaW9uOiBzdG9yYWdlLms4cy5pby92MQpraW5kOiBTdG9yYWdlQ2xhc3MKbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgU3RvcmFnZUNsYXNzLgogIG5hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20KcGFyYW1ldGVyczoKICAjIFRoZSBmaWxlIHN5c3RlbSBuYW1lIG9mIHRoZSBleGlzdGluZyBMdXN0cmUsICJsdXN0cmVmcyIgaW4gY29tbW9uIGNhc2UKICBmcy1uYW1lOiBsdXN0cmVmcwogICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogIG1ncy1pcC1hZGRyZXNzOiAxMC4wLjIuNQpwcm92aXNpb25lcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQojIEF6dXJlIEx1c3RyZSBDbHVzdGVyIGlzIHJlbW92ZWQgYWZ0ZXIgUFZDIGRlbGV0aW9uIGlmIHJlY2xhaW1Qb2xpY3kgaXMgdGhlIGRlZmF1bHQgdmFsdWUgIkRlbGV0ZSIuCnJlY2xhaW1Qb2xpY3k6IFJldGFpbgp2b2x1bWVCaW5kaW5nTW9kZTogSW1tZWRpYXRlCm1vdW50T3B0aW9uczoKICAtIG5vYXRpbWUKICAtIGZsb2NrCg==\"\r\n      }\r\n    },\r\n    \"throughputProvisionedMBps\": 4000,\r\n    \"maintenanceWindow\": {\r\n      \"dayOfWeek\": \"Friday\",\r\n      \"timeOfDayUTC\": \"22:00\"\r\n    },\r\n    \"hsm\": {\r\n      \"settings\": {\r\n        \"container\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/acctest43511\",\r\n        \"loggingContainer\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/loggingcontainer\",\r\n        \"importPrefixesInitial\": [\r\n          \"/\"\r\n        ]\r\n      },\r\n      \"archiveStatus\": [\r\n        {\r\n          \"filesystemPath\": \"/\",\r\n          \"status\": {\r\n            \"state\": \"Cancelling\",\r\n            \"lastStartedTime\": \"2025-09-10T20:43:41.7205548+00:00\",\r\n            \"percentComplete\": 0\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"rootSquashSettings\": {\r\n      \"mode\": \"All\",\r\n      \"noSquashNidLists\": \"10.0.0.[5-6]@tcp;10.0.1.2@tcp\",\r\n      \"squashUID\": 99,\r\n      \"squashGID\": 99,\r\n      \"status\": \"nodemap.TrustedSystems.admin_nodemap=1\\nnodemap.TrustedSystems.audit_mode=1\\nnodemap.TrustedSystems.deny_unknown=0\\nnodemap.TrustedSystems.exports=\\n[\\n { nid: 10.0.2.9@tcp, uuid: lustrefs-MDT0000-lwp-OST0001_UUID }, { nid: 10.0.2.8@tcp, uuid: lustrefs-MDT0000-lwp-OST0000_UUID }, { nid: 10.0.2.7@tcp, uuid: 65d61560-4d55-4a07-98e4-edd5ba011b07 }, { nid: 10.0.2.7@tcp, uuid: 8bbd6782-91e4-45c9-9457-d00a895c1c6d }, { nid: 10.0.2.7@tcp, uuid: 247beca0-ecbd-4fb2-bd37-010f8947f786 }, { nid: 0@lo, uuid: lustrefs-MDT0000-lwp-MDT0000_UUID },\\n]\\nnodemap.TrustedSystems.fileset=\\nnodemap.TrustedSystems.forbid_encryption=0\\nnodemap.TrustedSystems.id=1\\nnodemap.TrustedSystems.idmap=\\n[\\n\\n]\\nnodemap.TrustedSystems.map_mode=uid,gid\\nnodemap.TrustedSystems.ranges=\\n[\\n { id: 6, start_nid: 10.0.1.2@tcp, end_nid: 10.0.1.2@tcp },\\n { id: 5, start_nid: 10.0.0.5@tcp, end_nid: 10.0.0.6@tcp },\\n { id: 4, start_nid: 10.0.2.9@tcp, end_nid: 10.0.2.9@tcp },\\n { id: 3, start_nid: 10.0.2.8@tcp, end_nid: 10.0.2.8@tcp },\\n { id: 2, start_nid: 10.0.2.7@tcp, end_nid: 10.0.2.7@tcp },\\n { id: 1, start_nid: 10.0.2.5@tcp, end_nid: 10.0.2.5@tcp }\\n]\\nnodemap.TrustedSystems.sepol=\\nnodemap.TrustedSystems.squash_gid=99\\nnodemap.TrustedSystems.squash_projid=99\\nnodemap.TrustedSystems.squash_uid=99\\nnodemap.TrustedSystems.trusted_nodemap=1\\nnodemap.active=1\\nnodemap.default.admin_nodemap=0\\nnodemap.default.audit_mode=1\\nnodemap.default.deny_unknown=0\\nnodemap.default.exports=\\n[\\n\\n]\\nnodemap.default.fileset=\\nnodemap.default.forbid_encryption=0\\nnodemap.default.id=0\\nnodemap.default.map_mode=uid,gid\\nnodemap.default.squash_gid=99\\nnodemap.default.squash_projid=99\\nnodemap.default.squash_uid=99\\nnodemap.default.trusted_nodemap=0\\n\"\r\n    },\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"amajai@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-09-04T04:15:40.6768279Z\",\r\n    \"lastModifiedBy\": \"amajai@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-09-10T17:36:01.6730117Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+Cancel+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "91434e80-913c-4322-af8a-2110e3d90025" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "c37934e5-b346-4c60-bc2e-27d04cf06823" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "754a700d-309d-4b8d-bcbd-39317f105612" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204415Z:754a700d-309d-4b8d-bcbd-39317f105612" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6C7AD2E058B84EEF9B1AA02E25BF8BB6 Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:44:15Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:44:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"acctest43511\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"Purpose\": \"AmlFileSystem\",\r\n    \"Environment\": \"Development\",\r\n    \"Method\": \"Identity\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acctest43511\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"storageCapacityTiB\": 16.0,\r\n    \"health\": {\r\n      \"state\": \"Available\",\r\n      \"statusDescription\": \"The cluster is available\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clientInfo\": {\r\n      \"mgsAddress\": \"10.0.2.5\",\r\n      \"mountCommand\": \"mount -t lustre -o noatime,user_xattr 10.0.2.5@tcp0:/lustrefs /\u003clocal path\u003e\",\r\n      \"lustreVersion\": \"2.15\",\r\n      \"containerStorageInterface\": {\r\n        \"persistentVolumeClaim\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lQ2xhaW0KbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgUFZDCiAgbmFtZTogcHZjLWx1c3RyZQpzcGVjOgogIGFjY2Vzc01vZGVzOgogICAgLSBSZWFkV3JpdGVNYW55CiAgcmVzb3VyY2VzOgogICAgcmVxdWVzdHM6CiAgICAgICMgVGhlIHJlYWwgc3RvcmFnZSBjYXBhY2l0eSBpbiB0aGUgY2xhaW0KICAgICAgc3RvcmFnZTogMTYuMFRpCiAgIyBUaGlzIGZpZWxkIG11c3QgYmUgdGhlIHNhbWUgYXMgdGhlIHN0b3JhZ2UgY2xhc3MgbmFtZSBpbiBTdG9yYWdlQ2xhc3MKICBzdG9yYWdlQ2xhc3NOYW1lOiBzYy5henVyZWx1c3RyZS5jc2kuYXp1cmUuY29tCg==\",\r\n        \"persistentVolume\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lCm1ldGFkYXRhOgogICMgVGhlIG5hbWUgb2YgdGhlIFBWCiAgbmFtZTogcHYtbHVzdHJlCnNwZWM6CiAgYWNjZXNzTW9kZXM6CiAgICAtIFJlYWRXcml0ZU1hbnkKICBjYXBhY2l0eToKICAgICMgVGhpcyBmaWVsZCBzaG91bGQgYmUgdGhlIHRydWUgc2l6ZSBvZiB0aGUgQXp1cmUgTHVzdHJlIHlvdSB3YW50CiAgICAjIHRvIHVzZWQuIFNvIHRoYXQsIGs4cyBjYW4gYWxsb2NhdGUgcmVzb3VyY2VzIGJldHRlci4KICAgIHN0b3JhZ2U6IDE2LjBUaQogIGNzaToKICAgIGRyaXZlcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQogICAgdm9sdW1lQXR0cmlidXRlczoKICAgICAgIyBUaGUgZmlsZSBzeXN0ZW0gbmFtZSBvZiB0aGUgZXhpc3RpbmcgTHVzdHJlCiAgICAgIGZzLW5hbWU6IGx1c3RyZWZzCiAgICAgICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogICAgICBtZ3MtaXAtYWRkcmVzczogMTAuMC4yLjUKICAgICMgTWFrZSBzdXJlIHRoaXMgVm9sdW1lSUQgaXMgdW5pcXVlIGluIHRoZSBjbHVzdGVyCiAgICB2b2x1bWVIYW5kbGU6IGI5ZGU5NDhiLTAwMDItNDljMy1iOTU4LTk5ZTQyMjA3YjI1ZgogICMgIkRlbGV0ZSIgaXMgbm90IHN1cHBvcnRlZCBpbiBzdGF0aWMgcHJvdmlzaW9uaW5nIFBWCiAgbW91bnRPcHRpb25zOgogICAgLSBub2F0aW1lCiAgICAtIGZsb2NrCiAgcGVyc2lzdGVudFZvbHVtZVJlY2xhaW1Qb2xpY3k6IFJldGFpbgogIHN0b3JhZ2VDbGFzc05hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20K\",\r\n        \"storageClass\": \"Ci0tLQphcGlWZXJzaW9uOiBzdG9yYWdlLms4cy5pby92MQpraW5kOiBTdG9yYWdlQ2xhc3MKbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgU3RvcmFnZUNsYXNzLgogIG5hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20KcGFyYW1ldGVyczoKICAjIFRoZSBmaWxlIHN5c3RlbSBuYW1lIG9mIHRoZSBleGlzdGluZyBMdXN0cmUsICJsdXN0cmVmcyIgaW4gY29tbW9uIGNhc2UKICBmcy1uYW1lOiBsdXN0cmVmcwogICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogIG1ncy1pcC1hZGRyZXNzOiAxMC4wLjIuNQpwcm92aXNpb25lcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQojIEF6dXJlIEx1c3RyZSBDbHVzdGVyIGlzIHJlbW92ZWQgYWZ0ZXIgUFZDIGRlbGV0aW9uIGlmIHJlY2xhaW1Qb2xpY3kgaXMgdGhlIGRlZmF1bHQgdmFsdWUgIkRlbGV0ZSIuCnJlY2xhaW1Qb2xpY3k6IFJldGFpbgp2b2x1bWVCaW5kaW5nTW9kZTogSW1tZWRpYXRlCm1vdW50T3B0aW9uczoKICAtIG5vYXRpbWUKICAtIGZsb2NrCg==\"\r\n      }\r\n    },\r\n    \"throughputProvisionedMBps\": 4000,\r\n    \"maintenanceWindow\": {\r\n      \"dayOfWeek\": \"Friday\",\r\n      \"timeOfDayUTC\": \"22:00\"\r\n    },\r\n    \"hsm\": {\r\n      \"settings\": {\r\n        \"container\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/acctest43511\",\r\n        \"loggingContainer\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/loggingcontainer\",\r\n        \"importPrefixesInitial\": [\r\n          \"/\"\r\n        ]\r\n      },\r\n      \"archiveStatus\": [\r\n        {\r\n          \"filesystemPath\": \"/\",\r\n          \"status\": {\r\n            \"state\": \"Cancelling\",\r\n            \"lastStartedTime\": \"2025-09-10T20:43:41.7205548+00:00\",\r\n            \"percentComplete\": 0\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"rootSquashSettings\": {\r\n      \"mode\": \"All\",\r\n      \"noSquashNidLists\": \"10.0.0.[5-6]@tcp;10.0.1.2@tcp\",\r\n      \"squashUID\": 99,\r\n      \"squashGID\": 99,\r\n      \"status\": \"nodemap.TrustedSystems.admin_nodemap=1\\nnodemap.TrustedSystems.audit_mode=1\\nnodemap.TrustedSystems.deny_unknown=0\\nnodemap.TrustedSystems.exports=\\n[\\n { nid: 10.0.2.9@tcp, uuid: lustrefs-MDT0000-lwp-OST0001_UUID }, { nid: 10.0.2.8@tcp, uuid: lustrefs-MDT0000-lwp-OST0000_UUID }, { nid: 10.0.2.7@tcp, uuid: 65d61560-4d55-4a07-98e4-edd5ba011b07 }, { nid: 10.0.2.7@tcp, uuid: 8bbd6782-91e4-45c9-9457-d00a895c1c6d }, { nid: 10.0.2.7@tcp, uuid: 247beca0-ecbd-4fb2-bd37-010f8947f786 }, { nid: 0@lo, uuid: lustrefs-MDT0000-lwp-MDT0000_UUID },\\n]\\nnodemap.TrustedSystems.fileset=\\nnodemap.TrustedSystems.forbid_encryption=0\\nnodemap.TrustedSystems.id=1\\nnodemap.TrustedSystems.idmap=\\n[\\n\\n]\\nnodemap.TrustedSystems.map_mode=uid,gid\\nnodemap.TrustedSystems.ranges=\\n[\\n { id: 6, start_nid: 10.0.1.2@tcp, end_nid: 10.0.1.2@tcp },\\n { id: 5, start_nid: 10.0.0.5@tcp, end_nid: 10.0.0.6@tcp },\\n { id: 4, start_nid: 10.0.2.9@tcp, end_nid: 10.0.2.9@tcp },\\n { id: 3, start_nid: 10.0.2.8@tcp, end_nid: 10.0.2.8@tcp },\\n { id: 2, start_nid: 10.0.2.7@tcp, end_nid: 10.0.2.7@tcp },\\n { id: 1, start_nid: 10.0.2.5@tcp, end_nid: 10.0.2.5@tcp }\\n]\\nnodemap.TrustedSystems.sepol=\\nnodemap.TrustedSystems.squash_gid=99\\nnodemap.TrustedSystems.squash_projid=99\\nnodemap.TrustedSystems.squash_uid=99\\nnodemap.TrustedSystems.trusted_nodemap=1\\nnodemap.active=1\\nnodemap.default.admin_nodemap=0\\nnodemap.default.audit_mode=1\\nnodemap.default.deny_unknown=0\\nnodemap.default.exports=\\n[\\n\\n]\\nnodemap.default.fileset=\\nnodemap.default.forbid_encryption=0\\nnodemap.default.id=0\\nnodemap.default.map_mode=uid,gid\\nnodemap.default.squash_gid=99\\nnodemap.default.squash_projid=99\\nnodemap.default.squash_uid=99\\nnodemap.default.trusted_nodemap=0\\n\"\r\n    },\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"amajai@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-09-04T04:15:40.6768279Z\",\r\n    \"lastModifiedBy\": \"amajai@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-09-10T17:36:01.6730117Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+Cancel+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "55f5f4d1-c2ba-4d54-a868-23597f5f46ca" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "1e6d261a-be9f-4083-8710-ad2f6c7e93a2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "cb6bc66c-88ad-434c-b33f-fab1be6d6adf" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204429Z:cb6bc66c-88ad-434c-b33f-fab1be6d6adf" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3305DC0BD5014E8997C39DD5CAE19C91 Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:44:25Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:44:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6610" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"acctest43511\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"Purpose\": \"AmlFileSystem\",\r\n    \"Environment\": \"Development\",\r\n    \"Method\": \"Identity\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acctest43511\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"storageCapacityTiB\": 16.0,\r\n    \"health\": {\r\n      \"state\": \"Available\",\r\n      \"statusDescription\": \"The cluster is available\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clientInfo\": {\r\n      \"mgsAddress\": \"10.0.2.5\",\r\n      \"mountCommand\": \"mount -t lustre -o noatime,user_xattr 10.0.2.5@tcp0:/lustrefs /\u003clocal path\u003e\",\r\n      \"lustreVersion\": \"2.15\",\r\n      \"containerStorageInterface\": {\r\n        \"persistentVolumeClaim\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lQ2xhaW0KbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgUFZDCiAgbmFtZTogcHZjLWx1c3RyZQpzcGVjOgogIGFjY2Vzc01vZGVzOgogICAgLSBSZWFkV3JpdGVNYW55CiAgcmVzb3VyY2VzOgogICAgcmVxdWVzdHM6CiAgICAgICMgVGhlIHJlYWwgc3RvcmFnZSBjYXBhY2l0eSBpbiB0aGUgY2xhaW0KICAgICAgc3RvcmFnZTogMTYuMFRpCiAgIyBUaGlzIGZpZWxkIG11c3QgYmUgdGhlIHNhbWUgYXMgdGhlIHN0b3JhZ2UgY2xhc3MgbmFtZSBpbiBTdG9yYWdlQ2xhc3MKICBzdG9yYWdlQ2xhc3NOYW1lOiBzYy5henVyZWx1c3RyZS5jc2kuYXp1cmUuY29tCg==\",\r\n        \"persistentVolume\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lCm1ldGFkYXRhOgogICMgVGhlIG5hbWUgb2YgdGhlIFBWCiAgbmFtZTogcHYtbHVzdHJlCnNwZWM6CiAgYWNjZXNzTW9kZXM6CiAgICAtIFJlYWRXcml0ZU1hbnkKICBjYXBhY2l0eToKICAgICMgVGhpcyBmaWVsZCBzaG91bGQgYmUgdGhlIHRydWUgc2l6ZSBvZiB0aGUgQXp1cmUgTHVzdHJlIHlvdSB3YW50CiAgICAjIHRvIHVzZWQuIFNvIHRoYXQsIGs4cyBjYW4gYWxsb2NhdGUgcmVzb3VyY2VzIGJldHRlci4KICAgIHN0b3JhZ2U6IDE2LjBUaQogIGNzaToKICAgIGRyaXZlcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQogICAgdm9sdW1lQXR0cmlidXRlczoKICAgICAgIyBUaGUgZmlsZSBzeXN0ZW0gbmFtZSBvZiB0aGUgZXhpc3RpbmcgTHVzdHJlCiAgICAgIGZzLW5hbWU6IGx1c3RyZWZzCiAgICAgICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogICAgICBtZ3MtaXAtYWRkcmVzczogMTAuMC4yLjUKICAgICMgTWFrZSBzdXJlIHRoaXMgVm9sdW1lSUQgaXMgdW5pcXVlIGluIHRoZSBjbHVzdGVyCiAgICB2b2x1bWVIYW5kbGU6IGI5ZGU5NDhiLTAwMDItNDljMy1iOTU4LTk5ZTQyMjA3YjI1ZgogICMgIkRlbGV0ZSIgaXMgbm90IHN1cHBvcnRlZCBpbiBzdGF0aWMgcHJvdmlzaW9uaW5nIFBWCiAgbW91bnRPcHRpb25zOgogICAgLSBub2F0aW1lCiAgICAtIGZsb2NrCiAgcGVyc2lzdGVudFZvbHVtZVJlY2xhaW1Qb2xpY3k6IFJldGFpbgogIHN0b3JhZ2VDbGFzc05hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20K\",\r\n        \"storageClass\": \"Ci0tLQphcGlWZXJzaW9uOiBzdG9yYWdlLms4cy5pby92MQpraW5kOiBTdG9yYWdlQ2xhc3MKbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgU3RvcmFnZUNsYXNzLgogIG5hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20KcGFyYW1ldGVyczoKICAjIFRoZSBmaWxlIHN5c3RlbSBuYW1lIG9mIHRoZSBleGlzdGluZyBMdXN0cmUsICJsdXN0cmVmcyIgaW4gY29tbW9uIGNhc2UKICBmcy1uYW1lOiBsdXN0cmVmcwogICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogIG1ncy1pcC1hZGRyZXNzOiAxMC4wLjIuNQpwcm92aXNpb25lcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQojIEF6dXJlIEx1c3RyZSBDbHVzdGVyIGlzIHJlbW92ZWQgYWZ0ZXIgUFZDIGRlbGV0aW9uIGlmIHJlY2xhaW1Qb2xpY3kgaXMgdGhlIGRlZmF1bHQgdmFsdWUgIkRlbGV0ZSIuCnJlY2xhaW1Qb2xpY3k6IFJldGFpbgp2b2x1bWVCaW5kaW5nTW9kZTogSW1tZWRpYXRlCm1vdW50T3B0aW9uczoKICAtIG5vYXRpbWUKICAtIGZsb2NrCg==\"\r\n      }\r\n    },\r\n    \"throughputProvisionedMBps\": 4000,\r\n    \"maintenanceWindow\": {\r\n      \"dayOfWeek\": \"Friday\",\r\n      \"timeOfDayUTC\": \"22:00\"\r\n    },\r\n    \"hsm\": {\r\n      \"settings\": {\r\n        \"container\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/acctest43511\",\r\n        \"loggingContainer\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/loggingcontainer\",\r\n        \"importPrefixesInitial\": [\r\n          \"/\"\r\n        ]\r\n      }\r\n    },\r\n    \"rootSquashSettings\": {\r\n      \"mode\": \"All\",\r\n      \"noSquashNidLists\": \"10.0.0.[5-6]@tcp;10.0.1.2@tcp\",\r\n      \"squashUID\": 99,\r\n      \"squashGID\": 99,\r\n      \"status\": \"nodemap.TrustedSystems.admin_nodemap=1\\nnodemap.TrustedSystems.audit_mode=1\\nnodemap.TrustedSystems.deny_unknown=0\\nnodemap.TrustedSystems.exports=\\n[\\n { nid: 10.0.2.9@tcp, uuid: lustrefs-MDT0000-lwp-OST0001_UUID }, { nid: 10.0.2.8@tcp, uuid: lustrefs-MDT0000-lwp-OST0000_UUID }, { nid: 10.0.2.7@tcp, uuid: 65d61560-4d55-4a07-98e4-edd5ba011b07 }, { nid: 10.0.2.7@tcp, uuid: 8bbd6782-91e4-45c9-9457-d00a895c1c6d }, { nid: 10.0.2.7@tcp, uuid: 247beca0-ecbd-4fb2-bd37-010f8947f786 }, { nid: 0@lo, uuid: lustrefs-MDT0000-lwp-MDT0000_UUID },\\n]\\nnodemap.TrustedSystems.fileset=\\nnodemap.TrustedSystems.forbid_encryption=0\\nnodemap.TrustedSystems.id=1\\nnodemap.TrustedSystems.idmap=\\n[\\n\\n]\\nnodemap.TrustedSystems.map_mode=uid,gid\\nnodemap.TrustedSystems.ranges=\\n[\\n { id: 6, start_nid: 10.0.1.2@tcp, end_nid: 10.0.1.2@tcp },\\n { id: 5, start_nid: 10.0.0.5@tcp, end_nid: 10.0.0.6@tcp },\\n { id: 4, start_nid: 10.0.2.9@tcp, end_nid: 10.0.2.9@tcp },\\n { id: 3, start_nid: 10.0.2.8@tcp, end_nid: 10.0.2.8@tcp },\\n { id: 2, start_nid: 10.0.2.7@tcp, end_nid: 10.0.2.7@tcp },\\n { id: 1, start_nid: 10.0.2.5@tcp, end_nid: 10.0.2.5@tcp }\\n]\\nnodemap.TrustedSystems.sepol=\\nnodemap.TrustedSystems.squash_gid=99\\nnodemap.TrustedSystems.squash_projid=99\\nnodemap.TrustedSystems.squash_uid=99\\nnodemap.TrustedSystems.trusted_nodemap=1\\nnodemap.active=1\\nnodemap.default.admin_nodemap=0\\nnodemap.default.audit_mode=1\\nnodemap.default.deny_unknown=0\\nnodemap.default.exports=\\n[\\n\\n]\\nnodemap.default.fileset=\\nnodemap.default.forbid_encryption=0\\nnodemap.default.id=0\\nnodemap.default.map_mode=uid,gid\\nnodemap.default.squash_gid=99\\nnodemap.default.squash_projid=99\\nnodemap.default.squash_uid=99\\nnodemap.default.trusted_nodemap=0\\n\"\r\n    },\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"amajai@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-09-04T04:15:40.6768279Z\",\r\n    \"lastModifiedBy\": \"amajai@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-09-10T17:36:01.6730117Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+CancelViaIdentity+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/archive?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/archive?api-version=2025-07-01",
+      "Content": "{\r\n  \"filesystemPath\": \"/\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "29" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "030ab7be-ef26-4b1b-8f7d-b7f87130a958" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus2/80d4a25c-37bb-47d0-964f-92e8ae5e97ed" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "0842d115-20d6-404e-99be-572207b6b8ce" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204433Z:0842d115-20d6-404e-99be-572207b6b8ce" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5EFA9CA5363C4348B0F04F8187DBFFB2 Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:44:29Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:44:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+CancelViaIdentity+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/cancelArchive?api-version=2025-07-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/cancelArchive?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "94926227-9f82-4eda-afc1-c875941212c1" ],
+        "CommandName": [ "Stop-AzStorageCacheAmlFilesystemArchive" ],
+        "FullCommandName": [ "Stop-AzStorageCacheAmlFilesystemArchive_CancelViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "867ae771-7a98-4b93-8da1-3b629ae9ce4b" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus2/b92d56c2-f951-4d0b-a9b0-82fb2c57b66c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "e0c3e83d-d6ee-4f4b-af06-d1b013f90640" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204443Z:e0c3e83d-d6ee-4f4b-af06-d1b013f90640" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FB8321B576A4FB6B909332EF75C53C7 Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:44:43Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:44:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+CancelViaIdentity+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "5cf5f381-b04b-4891-9ab6-fee95bb6c0ab" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "194ce1e8-4f70-4e71-8b99-226507c2127c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "609968ac-a3a4-4290-b107-c9a2a5d10fb7" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204454Z:609968ac-a3a4-4290-b107-c9a2a5d10fb7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A38338AF03D741BFBFDFFE930DDC633F Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:44:53Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:44:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"acctest43511\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"Purpose\": \"AmlFileSystem\",\r\n    \"Environment\": \"Development\",\r\n    \"Method\": \"Identity\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acctest43511\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"storageCapacityTiB\": 16.0,\r\n    \"health\": {\r\n      \"state\": \"Available\",\r\n      \"statusDescription\": \"The cluster is available\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clientInfo\": {\r\n      \"mgsAddress\": \"10.0.2.5\",\r\n      \"mountCommand\": \"mount -t lustre -o noatime,user_xattr 10.0.2.5@tcp0:/lustrefs /\u003clocal path\u003e\",\r\n      \"lustreVersion\": \"2.15\",\r\n      \"containerStorageInterface\": {\r\n        \"persistentVolumeClaim\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lQ2xhaW0KbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgUFZDCiAgbmFtZTogcHZjLWx1c3RyZQpzcGVjOgogIGFjY2Vzc01vZGVzOgogICAgLSBSZWFkV3JpdGVNYW55CiAgcmVzb3VyY2VzOgogICAgcmVxdWVzdHM6CiAgICAgICMgVGhlIHJlYWwgc3RvcmFnZSBjYXBhY2l0eSBpbiB0aGUgY2xhaW0KICAgICAgc3RvcmFnZTogMTYuMFRpCiAgIyBUaGlzIGZpZWxkIG11c3QgYmUgdGhlIHNhbWUgYXMgdGhlIHN0b3JhZ2UgY2xhc3MgbmFtZSBpbiBTdG9yYWdlQ2xhc3MKICBzdG9yYWdlQ2xhc3NOYW1lOiBzYy5henVyZWx1c3RyZS5jc2kuYXp1cmUuY29tCg==\",\r\n        \"persistentVolume\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lCm1ldGFkYXRhOgogICMgVGhlIG5hbWUgb2YgdGhlIFBWCiAgbmFtZTogcHYtbHVzdHJlCnNwZWM6CiAgYWNjZXNzTW9kZXM6CiAgICAtIFJlYWRXcml0ZU1hbnkKICBjYXBhY2l0eToKICAgICMgVGhpcyBmaWVsZCBzaG91bGQgYmUgdGhlIHRydWUgc2l6ZSBvZiB0aGUgQXp1cmUgTHVzdHJlIHlvdSB3YW50CiAgICAjIHRvIHVzZWQuIFNvIHRoYXQsIGs4cyBjYW4gYWxsb2NhdGUgcmVzb3VyY2VzIGJldHRlci4KICAgIHN0b3JhZ2U6IDE2LjBUaQogIGNzaToKICAgIGRyaXZlcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQogICAgdm9sdW1lQXR0cmlidXRlczoKICAgICAgIyBUaGUgZmlsZSBzeXN0ZW0gbmFtZSBvZiB0aGUgZXhpc3RpbmcgTHVzdHJlCiAgICAgIGZzLW5hbWU6IGx1c3RyZWZzCiAgICAgICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogICAgICBtZ3MtaXAtYWRkcmVzczogMTAuMC4yLjUKICAgICMgTWFrZSBzdXJlIHRoaXMgVm9sdW1lSUQgaXMgdW5pcXVlIGluIHRoZSBjbHVzdGVyCiAgICB2b2x1bWVIYW5kbGU6IGI5ZGU5NDhiLTAwMDItNDljMy1iOTU4LTk5ZTQyMjA3YjI1ZgogICMgIkRlbGV0ZSIgaXMgbm90IHN1cHBvcnRlZCBpbiBzdGF0aWMgcHJvdmlzaW9uaW5nIFBWCiAgbW91bnRPcHRpb25zOgogICAgLSBub2F0aW1lCiAgICAtIGZsb2NrCiAgcGVyc2lzdGVudFZvbHVtZVJlY2xhaW1Qb2xpY3k6IFJldGFpbgogIHN0b3JhZ2VDbGFzc05hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20K\",\r\n        \"storageClass\": \"Ci0tLQphcGlWZXJzaW9uOiBzdG9yYWdlLms4cy5pby92MQpraW5kOiBTdG9yYWdlQ2xhc3MKbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgU3RvcmFnZUNsYXNzLgogIG5hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20KcGFyYW1ldGVyczoKICAjIFRoZSBmaWxlIHN5c3RlbSBuYW1lIG9mIHRoZSBleGlzdGluZyBMdXN0cmUsICJsdXN0cmVmcyIgaW4gY29tbW9uIGNhc2UKICBmcy1uYW1lOiBsdXN0cmVmcwogICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogIG1ncy1pcC1hZGRyZXNzOiAxMC4wLjIuNQpwcm92aXNpb25lcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQojIEF6dXJlIEx1c3RyZSBDbHVzdGVyIGlzIHJlbW92ZWQgYWZ0ZXIgUFZDIGRlbGV0aW9uIGlmIHJlY2xhaW1Qb2xpY3kgaXMgdGhlIGRlZmF1bHQgdmFsdWUgIkRlbGV0ZSIuCnJlY2xhaW1Qb2xpY3k6IFJldGFpbgp2b2x1bWVCaW5kaW5nTW9kZTogSW1tZWRpYXRlCm1vdW50T3B0aW9uczoKICAtIG5vYXRpbWUKICAtIGZsb2NrCg==\"\r\n      }\r\n    },\r\n    \"throughputProvisionedMBps\": 4000,\r\n    \"maintenanceWindow\": {\r\n      \"dayOfWeek\": \"Friday\",\r\n      \"timeOfDayUTC\": \"22:00\"\r\n    },\r\n    \"hsm\": {\r\n      \"settings\": {\r\n        \"container\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/acctest43511\",\r\n        \"loggingContainer\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/loggingcontainer\",\r\n        \"importPrefixesInitial\": [\r\n          \"/\"\r\n        ]\r\n      },\r\n      \"archiveStatus\": [\r\n        {\r\n          \"filesystemPath\": \"/\",\r\n          \"status\": {\r\n            \"state\": \"Cancelling\",\r\n            \"lastStartedTime\": \"2025-09-10T20:44:29.9381844+00:00\",\r\n            \"percentComplete\": 0\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"rootSquashSettings\": {\r\n      \"mode\": \"All\",\r\n      \"noSquashNidLists\": \"10.0.0.[5-6]@tcp;10.0.1.2@tcp\",\r\n      \"squashUID\": 99,\r\n      \"squashGID\": 99,\r\n      \"status\": \"nodemap.TrustedSystems.admin_nodemap=1\\nnodemap.TrustedSystems.audit_mode=1\\nnodemap.TrustedSystems.deny_unknown=0\\nnodemap.TrustedSystems.exports=\\n[\\n { nid: 10.0.2.9@tcp, uuid: lustrefs-MDT0000-lwp-OST0001_UUID }, { nid: 10.0.2.8@tcp, uuid: lustrefs-MDT0000-lwp-OST0000_UUID }, { nid: 10.0.2.7@tcp, uuid: 65d61560-4d55-4a07-98e4-edd5ba011b07 }, { nid: 10.0.2.7@tcp, uuid: 8bbd6782-91e4-45c9-9457-d00a895c1c6d }, { nid: 10.0.2.7@tcp, uuid: 247beca0-ecbd-4fb2-bd37-010f8947f786 }, { nid: 0@lo, uuid: lustrefs-MDT0000-lwp-MDT0000_UUID },\\n]\\nnodemap.TrustedSystems.fileset=\\nnodemap.TrustedSystems.forbid_encryption=0\\nnodemap.TrustedSystems.id=1\\nnodemap.TrustedSystems.idmap=\\n[\\n\\n]\\nnodemap.TrustedSystems.map_mode=uid,gid\\nnodemap.TrustedSystems.ranges=\\n[\\n { id: 6, start_nid: 10.0.1.2@tcp, end_nid: 10.0.1.2@tcp },\\n { id: 5, start_nid: 10.0.0.5@tcp, end_nid: 10.0.0.6@tcp },\\n { id: 4, start_nid: 10.0.2.9@tcp, end_nid: 10.0.2.9@tcp },\\n { id: 3, start_nid: 10.0.2.8@tcp, end_nid: 10.0.2.8@tcp },\\n { id: 2, start_nid: 10.0.2.7@tcp, end_nid: 10.0.2.7@tcp },\\n { id: 1, start_nid: 10.0.2.5@tcp, end_nid: 10.0.2.5@tcp }\\n]\\nnodemap.TrustedSystems.sepol=\\nnodemap.TrustedSystems.squash_gid=99\\nnodemap.TrustedSystems.squash_projid=99\\nnodemap.TrustedSystems.squash_uid=99\\nnodemap.TrustedSystems.trusted_nodemap=1\\nnodemap.active=1\\nnodemap.default.admin_nodemap=0\\nnodemap.default.audit_mode=1\\nnodemap.default.deny_unknown=0\\nnodemap.default.exports=\\n[\\n\\n]\\nnodemap.default.fileset=\\nnodemap.default.forbid_encryption=0\\nnodemap.default.id=0\\nnodemap.default.map_mode=uid,gid\\nnodemap.default.squash_gid=99\\nnodemap.default.squash_projid=99\\nnodemap.default.squash_uid=99\\nnodemap.default.trusted_nodemap=0\\n\"\r\n    },\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"amajai@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-09-04T04:15:40.6768279Z\",\r\n    \"lastModifiedBy\": \"amajai@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-09-10T17:36:01.6730117Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+CancelViaIdentity+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "31158d5b-719e-4bd1-bdc2-cba2e0bfaf82" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "ce071b76-58df-4ab5-bded-d8a1b03b4861" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "6409ade4-e4cb-496c-892e-8f30f13e1be2" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204505Z:6409ade4-e4cb-496c-892e-8f30f13e1be2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AB100C556CFD4B008649EE290E681D3A Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:45:04Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:45:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"acctest43511\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"Purpose\": \"AmlFileSystem\",\r\n    \"Environment\": \"Development\",\r\n    \"Method\": \"Identity\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acctest43511\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"storageCapacityTiB\": 16.0,\r\n    \"health\": {\r\n      \"state\": \"Available\",\r\n      \"statusDescription\": \"The cluster is available\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clientInfo\": {\r\n      \"mgsAddress\": \"10.0.2.5\",\r\n      \"mountCommand\": \"mount -t lustre -o noatime,user_xattr 10.0.2.5@tcp0:/lustrefs /\u003clocal path\u003e\",\r\n      \"lustreVersion\": \"2.15\",\r\n      \"containerStorageInterface\": {\r\n        \"persistentVolumeClaim\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lQ2xhaW0KbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgUFZDCiAgbmFtZTogcHZjLWx1c3RyZQpzcGVjOgogIGFjY2Vzc01vZGVzOgogICAgLSBSZWFkV3JpdGVNYW55CiAgcmVzb3VyY2VzOgogICAgcmVxdWVzdHM6CiAgICAgICMgVGhlIHJlYWwgc3RvcmFnZSBjYXBhY2l0eSBpbiB0aGUgY2xhaW0KICAgICAgc3RvcmFnZTogMTYuMFRpCiAgIyBUaGlzIGZpZWxkIG11c3QgYmUgdGhlIHNhbWUgYXMgdGhlIHN0b3JhZ2UgY2xhc3MgbmFtZSBpbiBTdG9yYWdlQ2xhc3MKICBzdG9yYWdlQ2xhc3NOYW1lOiBzYy5henVyZWx1c3RyZS5jc2kuYXp1cmUuY29tCg==\",\r\n        \"persistentVolume\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lCm1ldGFkYXRhOgogICMgVGhlIG5hbWUgb2YgdGhlIFBWCiAgbmFtZTogcHYtbHVzdHJlCnNwZWM6CiAgYWNjZXNzTW9kZXM6CiAgICAtIFJlYWRXcml0ZU1hbnkKICBjYXBhY2l0eToKICAgICMgVGhpcyBmaWVsZCBzaG91bGQgYmUgdGhlIHRydWUgc2l6ZSBvZiB0aGUgQXp1cmUgTHVzdHJlIHlvdSB3YW50CiAgICAjIHRvIHVzZWQuIFNvIHRoYXQsIGs4cyBjYW4gYWxsb2NhdGUgcmVzb3VyY2VzIGJldHRlci4KICAgIHN0b3JhZ2U6IDE2LjBUaQogIGNzaToKICAgIGRyaXZlcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQogICAgdm9sdW1lQXR0cmlidXRlczoKICAgICAgIyBUaGUgZmlsZSBzeXN0ZW0gbmFtZSBvZiB0aGUgZXhpc3RpbmcgTHVzdHJlCiAgICAgIGZzLW5hbWU6IGx1c3RyZWZzCiAgICAgICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogICAgICBtZ3MtaXAtYWRkcmVzczogMTAuMC4yLjUKICAgICMgTWFrZSBzdXJlIHRoaXMgVm9sdW1lSUQgaXMgdW5pcXVlIGluIHRoZSBjbHVzdGVyCiAgICB2b2x1bWVIYW5kbGU6IGI5ZGU5NDhiLTAwMDItNDljMy1iOTU4LTk5ZTQyMjA3YjI1ZgogICMgIkRlbGV0ZSIgaXMgbm90IHN1cHBvcnRlZCBpbiBzdGF0aWMgcHJvdmlzaW9uaW5nIFBWCiAgbW91bnRPcHRpb25zOgogICAgLSBub2F0aW1lCiAgICAtIGZsb2NrCiAgcGVyc2lzdGVudFZvbHVtZVJlY2xhaW1Qb2xpY3k6IFJldGFpbgogIHN0b3JhZ2VDbGFzc05hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20K\",\r\n        \"storageClass\": \"Ci0tLQphcGlWZXJzaW9uOiBzdG9yYWdlLms4cy5pby92MQpraW5kOiBTdG9yYWdlQ2xhc3MKbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgU3RvcmFnZUNsYXNzLgogIG5hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20KcGFyYW1ldGVyczoKICAjIFRoZSBmaWxlIHN5c3RlbSBuYW1lIG9mIHRoZSBleGlzdGluZyBMdXN0cmUsICJsdXN0cmVmcyIgaW4gY29tbW9uIGNhc2UKICBmcy1uYW1lOiBsdXN0cmVmcwogICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogIG1ncy1pcC1hZGRyZXNzOiAxMC4wLjIuNQpwcm92aXNpb25lcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQojIEF6dXJlIEx1c3RyZSBDbHVzdGVyIGlzIHJlbW92ZWQgYWZ0ZXIgUFZDIGRlbGV0aW9uIGlmIHJlY2xhaW1Qb2xpY3kgaXMgdGhlIGRlZmF1bHQgdmFsdWUgIkRlbGV0ZSIuCnJlY2xhaW1Qb2xpY3k6IFJldGFpbgp2b2x1bWVCaW5kaW5nTW9kZTogSW1tZWRpYXRlCm1vdW50T3B0aW9uczoKICAtIG5vYXRpbWUKICAtIGZsb2NrCg==\"\r\n      }\r\n    },\r\n    \"throughputProvisionedMBps\": 4000,\r\n    \"maintenanceWindow\": {\r\n      \"dayOfWeek\": \"Friday\",\r\n      \"timeOfDayUTC\": \"22:00\"\r\n    },\r\n    \"hsm\": {\r\n      \"settings\": {\r\n        \"container\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/acctest43511\",\r\n        \"loggingContainer\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/loggingcontainer\",\r\n        \"importPrefixesInitial\": [\r\n          \"/\"\r\n        ]\r\n      },\r\n      \"archiveStatus\": [\r\n        {\r\n          \"filesystemPath\": \"/\",\r\n          \"status\": {\r\n            \"state\": \"Cancelling\",\r\n            \"lastStartedTime\": \"2025-09-10T20:44:29.9381844+00:00\",\r\n            \"percentComplete\": 0\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"rootSquashSettings\": {\r\n      \"mode\": \"All\",\r\n      \"noSquashNidLists\": \"10.0.0.[5-6]@tcp;10.0.1.2@tcp\",\r\n      \"squashUID\": 99,\r\n      \"squashGID\": 99,\r\n      \"status\": \"nodemap.TrustedSystems.admin_nodemap=1\\nnodemap.TrustedSystems.audit_mode=1\\nnodemap.TrustedSystems.deny_unknown=0\\nnodemap.TrustedSystems.exports=\\n[\\n { nid: 10.0.2.9@tcp, uuid: lustrefs-MDT0000-lwp-OST0001_UUID }, { nid: 10.0.2.8@tcp, uuid: lustrefs-MDT0000-lwp-OST0000_UUID }, { nid: 10.0.2.7@tcp, uuid: 65d61560-4d55-4a07-98e4-edd5ba011b07 }, { nid: 10.0.2.7@tcp, uuid: 8bbd6782-91e4-45c9-9457-d00a895c1c6d }, { nid: 10.0.2.7@tcp, uuid: 247beca0-ecbd-4fb2-bd37-010f8947f786 }, { nid: 0@lo, uuid: lustrefs-MDT0000-lwp-MDT0000_UUID },\\n]\\nnodemap.TrustedSystems.fileset=\\nnodemap.TrustedSystems.forbid_encryption=0\\nnodemap.TrustedSystems.id=1\\nnodemap.TrustedSystems.idmap=\\n[\\n\\n]\\nnodemap.TrustedSystems.map_mode=uid,gid\\nnodemap.TrustedSystems.ranges=\\n[\\n { id: 6, start_nid: 10.0.1.2@tcp, end_nid: 10.0.1.2@tcp },\\n { id: 5, start_nid: 10.0.0.5@tcp, end_nid: 10.0.0.6@tcp },\\n { id: 4, start_nid: 10.0.2.9@tcp, end_nid: 10.0.2.9@tcp },\\n { id: 3, start_nid: 10.0.2.8@tcp, end_nid: 10.0.2.8@tcp },\\n { id: 2, start_nid: 10.0.2.7@tcp, end_nid: 10.0.2.7@tcp },\\n { id: 1, start_nid: 10.0.2.5@tcp, end_nid: 10.0.2.5@tcp }\\n]\\nnodemap.TrustedSystems.sepol=\\nnodemap.TrustedSystems.squash_gid=99\\nnodemap.TrustedSystems.squash_projid=99\\nnodemap.TrustedSystems.squash_uid=99\\nnodemap.TrustedSystems.trusted_nodemap=1\\nnodemap.active=1\\nnodemap.default.admin_nodemap=0\\nnodemap.default.audit_mode=1\\nnodemap.default.deny_unknown=0\\nnodemap.default.exports=\\n[\\n\\n]\\nnodemap.default.fileset=\\nnodemap.default.forbid_encryption=0\\nnodemap.default.id=0\\nnodemap.default.map_mode=uid,gid\\nnodemap.default.squash_gid=99\\nnodemap.default.squash_projid=99\\nnodemap.default.squash_uid=99\\nnodemap.default.trusted_nodemap=0\\n\"\r\n    },\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"amajai@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-09-04T04:15:40.6768279Z\",\r\n    \"lastModifiedBy\": \"amajai@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-09-10T17:36:01.6730117Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+CancelViaIdentity+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "df405750-67c5-4b1d-9aca-1247289a2a90" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "3102bf3d-bbd3-49ef-b6ea-f6d779f4e395" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "5a418a40-f8b1-4606-b074-0d5a2dcccf62" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204515Z:5a418a40-f8b1-4606-b074-0d5a2dcccf62" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D0E8849977E24C9A894C8D2BFACCCA4B Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:45:15Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:45:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"acctest43511\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"Purpose\": \"AmlFileSystem\",\r\n    \"Environment\": \"Development\",\r\n    \"Method\": \"Identity\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acctest43511\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"storageCapacityTiB\": 16.0,\r\n    \"health\": {\r\n      \"state\": \"Available\",\r\n      \"statusDescription\": \"The cluster is available\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clientInfo\": {\r\n      \"mgsAddress\": \"10.0.2.5\",\r\n      \"mountCommand\": \"mount -t lustre -o noatime,user_xattr 10.0.2.5@tcp0:/lustrefs /\u003clocal path\u003e\",\r\n      \"lustreVersion\": \"2.15\",\r\n      \"containerStorageInterface\": {\r\n        \"persistentVolumeClaim\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lQ2xhaW0KbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgUFZDCiAgbmFtZTogcHZjLWx1c3RyZQpzcGVjOgogIGFjY2Vzc01vZGVzOgogICAgLSBSZWFkV3JpdGVNYW55CiAgcmVzb3VyY2VzOgogICAgcmVxdWVzdHM6CiAgICAgICMgVGhlIHJlYWwgc3RvcmFnZSBjYXBhY2l0eSBpbiB0aGUgY2xhaW0KICAgICAgc3RvcmFnZTogMTYuMFRpCiAgIyBUaGlzIGZpZWxkIG11c3QgYmUgdGhlIHNhbWUgYXMgdGhlIHN0b3JhZ2UgY2xhc3MgbmFtZSBpbiBTdG9yYWdlQ2xhc3MKICBzdG9yYWdlQ2xhc3NOYW1lOiBzYy5henVyZWx1c3RyZS5jc2kuYXp1cmUuY29tCg==\",\r\n        \"persistentVolume\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lCm1ldGFkYXRhOgogICMgVGhlIG5hbWUgb2YgdGhlIFBWCiAgbmFtZTogcHYtbHVzdHJlCnNwZWM6CiAgYWNjZXNzTW9kZXM6CiAgICAtIFJlYWRXcml0ZU1hbnkKICBjYXBhY2l0eToKICAgICMgVGhpcyBmaWVsZCBzaG91bGQgYmUgdGhlIHRydWUgc2l6ZSBvZiB0aGUgQXp1cmUgTHVzdHJlIHlvdSB3YW50CiAgICAjIHRvIHVzZWQuIFNvIHRoYXQsIGs4cyBjYW4gYWxsb2NhdGUgcmVzb3VyY2VzIGJldHRlci4KICAgIHN0b3JhZ2U6IDE2LjBUaQogIGNzaToKICAgIGRyaXZlcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQogICAgdm9sdW1lQXR0cmlidXRlczoKICAgICAgIyBUaGUgZmlsZSBzeXN0ZW0gbmFtZSBvZiB0aGUgZXhpc3RpbmcgTHVzdHJlCiAgICAgIGZzLW5hbWU6IGx1c3RyZWZzCiAgICAgICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogICAgICBtZ3MtaXAtYWRkcmVzczogMTAuMC4yLjUKICAgICMgTWFrZSBzdXJlIHRoaXMgVm9sdW1lSUQgaXMgdW5pcXVlIGluIHRoZSBjbHVzdGVyCiAgICB2b2x1bWVIYW5kbGU6IGI5ZGU5NDhiLTAwMDItNDljMy1iOTU4LTk5ZTQyMjA3YjI1ZgogICMgIkRlbGV0ZSIgaXMgbm90IHN1cHBvcnRlZCBpbiBzdGF0aWMgcHJvdmlzaW9uaW5nIFBWCiAgbW91bnRPcHRpb25zOgogICAgLSBub2F0aW1lCiAgICAtIGZsb2NrCiAgcGVyc2lzdGVudFZvbHVtZVJlY2xhaW1Qb2xpY3k6IFJldGFpbgogIHN0b3JhZ2VDbGFzc05hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20K\",\r\n        \"storageClass\": \"Ci0tLQphcGlWZXJzaW9uOiBzdG9yYWdlLms4cy5pby92MQpraW5kOiBTdG9yYWdlQ2xhc3MKbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgU3RvcmFnZUNsYXNzLgogIG5hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20KcGFyYW1ldGVyczoKICAjIFRoZSBmaWxlIHN5c3RlbSBuYW1lIG9mIHRoZSBleGlzdGluZyBMdXN0cmUsICJsdXN0cmVmcyIgaW4gY29tbW9uIGNhc2UKICBmcy1uYW1lOiBsdXN0cmVmcwogICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogIG1ncy1pcC1hZGRyZXNzOiAxMC4wLjIuNQpwcm92aXNpb25lcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQojIEF6dXJlIEx1c3RyZSBDbHVzdGVyIGlzIHJlbW92ZWQgYWZ0ZXIgUFZDIGRlbGV0aW9uIGlmIHJlY2xhaW1Qb2xpY3kgaXMgdGhlIGRlZmF1bHQgdmFsdWUgIkRlbGV0ZSIuCnJlY2xhaW1Qb2xpY3k6IFJldGFpbgp2b2x1bWVCaW5kaW5nTW9kZTogSW1tZWRpYXRlCm1vdW50T3B0aW9uczoKICAtIG5vYXRpbWUKICAtIGZsb2NrCg==\"\r\n      }\r\n    },\r\n    \"throughputProvisionedMBps\": 4000,\r\n    \"maintenanceWindow\": {\r\n      \"dayOfWeek\": \"Friday\",\r\n      \"timeOfDayUTC\": \"22:00\"\r\n    },\r\n    \"hsm\": {\r\n      \"settings\": {\r\n        \"container\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/acctest43511\",\r\n        \"loggingContainer\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/loggingcontainer\",\r\n        \"importPrefixesInitial\": [\r\n          \"/\"\r\n        ]\r\n      },\r\n      \"archiveStatus\": [\r\n        {\r\n          \"filesystemPath\": \"/\",\r\n          \"status\": {\r\n            \"state\": \"Cancelling\",\r\n            \"lastStartedTime\": \"2025-09-10T20:44:29.9381844+00:00\",\r\n            \"percentComplete\": 0\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"rootSquashSettings\": {\r\n      \"mode\": \"All\",\r\n      \"noSquashNidLists\": \"10.0.0.[5-6]@tcp;10.0.1.2@tcp\",\r\n      \"squashUID\": 99,\r\n      \"squashGID\": 99,\r\n      \"status\": \"nodemap.TrustedSystems.admin_nodemap=1\\nnodemap.TrustedSystems.audit_mode=1\\nnodemap.TrustedSystems.deny_unknown=0\\nnodemap.TrustedSystems.exports=\\n[\\n { nid: 10.0.2.9@tcp, uuid: lustrefs-MDT0000-lwp-OST0001_UUID }, { nid: 10.0.2.8@tcp, uuid: lustrefs-MDT0000-lwp-OST0000_UUID }, { nid: 10.0.2.7@tcp, uuid: 65d61560-4d55-4a07-98e4-edd5ba011b07 }, { nid: 10.0.2.7@tcp, uuid: 8bbd6782-91e4-45c9-9457-d00a895c1c6d }, { nid: 10.0.2.7@tcp, uuid: 247beca0-ecbd-4fb2-bd37-010f8947f786 }, { nid: 0@lo, uuid: lustrefs-MDT0000-lwp-MDT0000_UUID },\\n]\\nnodemap.TrustedSystems.fileset=\\nnodemap.TrustedSystems.forbid_encryption=0\\nnodemap.TrustedSystems.id=1\\nnodemap.TrustedSystems.idmap=\\n[\\n\\n]\\nnodemap.TrustedSystems.map_mode=uid,gid\\nnodemap.TrustedSystems.ranges=\\n[\\n { id: 6, start_nid: 10.0.1.2@tcp, end_nid: 10.0.1.2@tcp },\\n { id: 5, start_nid: 10.0.0.5@tcp, end_nid: 10.0.0.6@tcp },\\n { id: 4, start_nid: 10.0.2.9@tcp, end_nid: 10.0.2.9@tcp },\\n { id: 3, start_nid: 10.0.2.8@tcp, end_nid: 10.0.2.8@tcp },\\n { id: 2, start_nid: 10.0.2.7@tcp, end_nid: 10.0.2.7@tcp },\\n { id: 1, start_nid: 10.0.2.5@tcp, end_nid: 10.0.2.5@tcp }\\n]\\nnodemap.TrustedSystems.sepol=\\nnodemap.TrustedSystems.squash_gid=99\\nnodemap.TrustedSystems.squash_projid=99\\nnodemap.TrustedSystems.squash_uid=99\\nnodemap.TrustedSystems.trusted_nodemap=1\\nnodemap.active=1\\nnodemap.default.admin_nodemap=0\\nnodemap.default.audit_mode=1\\nnodemap.default.deny_unknown=0\\nnodemap.default.exports=\\n[\\n\\n]\\nnodemap.default.fileset=\\nnodemap.default.forbid_encryption=0\\nnodemap.default.id=0\\nnodemap.default.map_mode=uid,gid\\nnodemap.default.squash_gid=99\\nnodemap.default.squash_projid=99\\nnodemap.default.squash_uid=99\\nnodemap.default.trusted_nodemap=0\\n\"\r\n    },\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"amajai@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-09-04T04:15:40.6768279Z\",\r\n    \"lastModifiedBy\": \"amajai@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-09-10T17:36:01.6730117Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzStorageCacheAmlFilesystemArchive+[NoContext]+CancelViaIdentity+$GET+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "7db90621-0751-46c8-b6b4-09a73c28b767" ],
+        "CommandName": [ "Get-AzStorageCacheAmlFileSystem" ],
+        "FullCommandName": [ "Get-AzStorageCacheAmlFileSystem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.2", "Az.StorageCache/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294,e2006655-ee35-4933-86ed-4f353fb1f9b7_134014123139042294" ],
+        "x-ms-request-id": [ "dd90d6f5-b09a-4390-aded-8f56b71c2b21" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "a988528a-66f6-4c12-b823-2d121cb623a9" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250910T204525Z:a988528a-66f6-4c12-b823-2d121cb623a9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8C7FBA10296D48E28C83C8EA20841D4D Ref B: BL2AA2010204005 Ref C: 2025-09-10T20:45:25Z" ],
+        "Date": [ "Wed, 10 Sep 2025 20:45:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6610" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"acctest43511\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"Purpose\": \"AmlFileSystem\",\r\n    \"Environment\": \"Development\",\r\n    \"Method\": \"Identity\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acctest43511\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"storageCapacityTiB\": 16.0,\r\n    \"health\": {\r\n      \"state\": \"Available\",\r\n      \"statusDescription\": \"The cluster is available\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clientInfo\": {\r\n      \"mgsAddress\": \"10.0.2.5\",\r\n      \"mountCommand\": \"mount -t lustre -o noatime,user_xattr 10.0.2.5@tcp0:/lustrefs /\u003clocal path\u003e\",\r\n      \"lustreVersion\": \"2.15\",\r\n      \"containerStorageInterface\": {\r\n        \"persistentVolumeClaim\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lQ2xhaW0KbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgUFZDCiAgbmFtZTogcHZjLWx1c3RyZQpzcGVjOgogIGFjY2Vzc01vZGVzOgogICAgLSBSZWFkV3JpdGVNYW55CiAgcmVzb3VyY2VzOgogICAgcmVxdWVzdHM6CiAgICAgICMgVGhlIHJlYWwgc3RvcmFnZSBjYXBhY2l0eSBpbiB0aGUgY2xhaW0KICAgICAgc3RvcmFnZTogMTYuMFRpCiAgIyBUaGlzIGZpZWxkIG11c3QgYmUgdGhlIHNhbWUgYXMgdGhlIHN0b3JhZ2UgY2xhc3MgbmFtZSBpbiBTdG9yYWdlQ2xhc3MKICBzdG9yYWdlQ2xhc3NOYW1lOiBzYy5henVyZWx1c3RyZS5jc2kuYXp1cmUuY29tCg==\",\r\n        \"persistentVolume\": \"Ci0tLQphcGlWZXJzaW9uOiB2MQpraW5kOiBQZXJzaXN0ZW50Vm9sdW1lCm1ldGFkYXRhOgogICMgVGhlIG5hbWUgb2YgdGhlIFBWCiAgbmFtZTogcHYtbHVzdHJlCnNwZWM6CiAgYWNjZXNzTW9kZXM6CiAgICAtIFJlYWRXcml0ZU1hbnkKICBjYXBhY2l0eToKICAgICMgVGhpcyBmaWVsZCBzaG91bGQgYmUgdGhlIHRydWUgc2l6ZSBvZiB0aGUgQXp1cmUgTHVzdHJlIHlvdSB3YW50CiAgICAjIHRvIHVzZWQuIFNvIHRoYXQsIGs4cyBjYW4gYWxsb2NhdGUgcmVzb3VyY2VzIGJldHRlci4KICAgIHN0b3JhZ2U6IDE2LjBUaQogIGNzaToKICAgIGRyaXZlcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQogICAgdm9sdW1lQXR0cmlidXRlczoKICAgICAgIyBUaGUgZmlsZSBzeXN0ZW0gbmFtZSBvZiB0aGUgZXhpc3RpbmcgTHVzdHJlCiAgICAgIGZzLW5hbWU6IGx1c3RyZWZzCiAgICAgICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogICAgICBtZ3MtaXAtYWRkcmVzczogMTAuMC4yLjUKICAgICMgTWFrZSBzdXJlIHRoaXMgVm9sdW1lSUQgaXMgdW5pcXVlIGluIHRoZSBjbHVzdGVyCiAgICB2b2x1bWVIYW5kbGU6IGI5ZGU5NDhiLTAwMDItNDljMy1iOTU4LTk5ZTQyMjA3YjI1ZgogICMgIkRlbGV0ZSIgaXMgbm90IHN1cHBvcnRlZCBpbiBzdGF0aWMgcHJvdmlzaW9uaW5nIFBWCiAgbW91bnRPcHRpb25zOgogICAgLSBub2F0aW1lCiAgICAtIGZsb2NrCiAgcGVyc2lzdGVudFZvbHVtZVJlY2xhaW1Qb2xpY3k6IFJldGFpbgogIHN0b3JhZ2VDbGFzc05hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20K\",\r\n        \"storageClass\": \"Ci0tLQphcGlWZXJzaW9uOiBzdG9yYWdlLms4cy5pby92MQpraW5kOiBTdG9yYWdlQ2xhc3MKbWV0YWRhdGE6CiAgIyBUaGUgbmFtZSBvZiB0aGUgU3RvcmFnZUNsYXNzLgogIG5hbWU6IHNjLmF6dXJlbHVzdHJlLmNzaS5henVyZS5jb20KcGFyYW1ldGVyczoKICAjIFRoZSBmaWxlIHN5c3RlbSBuYW1lIG9mIHRoZSBleGlzdGluZyBMdXN0cmUsICJsdXN0cmVmcyIgaW4gY29tbW9uIGNhc2UKICBmcy1uYW1lOiBsdXN0cmVmcwogICMgVGhlIElQIGFkZHJlc3Mgb2YgdGhlIGV4aXN0aW5nIEx1c3RyZQogIG1ncy1pcC1hZGRyZXNzOiAxMC4wLjIuNQpwcm92aXNpb25lcjogYXp1cmVsdXN0cmUuY3NpLmF6dXJlLmNvbQojIEF6dXJlIEx1c3RyZSBDbHVzdGVyIGlzIHJlbW92ZWQgYWZ0ZXIgUFZDIGRlbGV0aW9uIGlmIHJlY2xhaW1Qb2xpY3kgaXMgdGhlIGRlZmF1bHQgdmFsdWUgIkRlbGV0ZSIuCnJlY2xhaW1Qb2xpY3k6IFJldGFpbgp2b2x1bWVCaW5kaW5nTW9kZTogSW1tZWRpYXRlCm1vdW50T3B0aW9uczoKICAtIG5vYXRpbWUKICAtIGZsb2NrCg==\"\r\n      }\r\n    },\r\n    \"throughputProvisionedMBps\": 4000,\r\n    \"maintenanceWindow\": {\r\n      \"dayOfWeek\": \"Friday\",\r\n      \"timeOfDayUTC\": \"22:00\"\r\n    },\r\n    \"hsm\": {\r\n      \"settings\": {\r\n        \"container\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/acctest43511\",\r\n        \"loggingContainer\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Storage/storageAccounts/acctest43511/blobServices/default/containers/loggingcontainer\",\r\n        \"importPrefixesInitial\": [\r\n          \"/\"\r\n        ]\r\n      }\r\n    },\r\n    \"rootSquashSettings\": {\r\n      \"mode\": \"All\",\r\n      \"noSquashNidLists\": \"10.0.0.[5-6]@tcp;10.0.1.2@tcp\",\r\n      \"squashUID\": 99,\r\n      \"squashGID\": 99,\r\n      \"status\": \"nodemap.TrustedSystems.admin_nodemap=1\\nnodemap.TrustedSystems.audit_mode=1\\nnodemap.TrustedSystems.deny_unknown=0\\nnodemap.TrustedSystems.exports=\\n[\\n { nid: 10.0.2.9@tcp, uuid: lustrefs-MDT0000-lwp-OST0001_UUID }, { nid: 10.0.2.8@tcp, uuid: lustrefs-MDT0000-lwp-OST0000_UUID }, { nid: 10.0.2.7@tcp, uuid: 65d61560-4d55-4a07-98e4-edd5ba011b07 }, { nid: 10.0.2.7@tcp, uuid: 8bbd6782-91e4-45c9-9457-d00a895c1c6d }, { nid: 10.0.2.7@tcp, uuid: 247beca0-ecbd-4fb2-bd37-010f8947f786 }, { nid: 0@lo, uuid: lustrefs-MDT0000-lwp-MDT0000_UUID },\\n]\\nnodemap.TrustedSystems.fileset=\\nnodemap.TrustedSystems.forbid_encryption=0\\nnodemap.TrustedSystems.id=1\\nnodemap.TrustedSystems.idmap=\\n[\\n\\n]\\nnodemap.TrustedSystems.map_mode=uid,gid\\nnodemap.TrustedSystems.ranges=\\n[\\n { id: 6, start_nid: 10.0.1.2@tcp, end_nid: 10.0.1.2@tcp },\\n { id: 5, start_nid: 10.0.0.5@tcp, end_nid: 10.0.0.6@tcp },\\n { id: 4, start_nid: 10.0.2.9@tcp, end_nid: 10.0.2.9@tcp },\\n { id: 3, start_nid: 10.0.2.8@tcp, end_nid: 10.0.2.8@tcp },\\n { id: 2, start_nid: 10.0.2.7@tcp, end_nid: 10.0.2.7@tcp },\\n { id: 1, start_nid: 10.0.2.5@tcp, end_nid: 10.0.2.5@tcp }\\n]\\nnodemap.TrustedSystems.sepol=\\nnodemap.TrustedSystems.squash_gid=99\\nnodemap.TrustedSystems.squash_projid=99\\nnodemap.TrustedSystems.squash_uid=99\\nnodemap.TrustedSystems.trusted_nodemap=1\\nnodemap.active=1\\nnodemap.default.admin_nodemap=0\\nnodemap.default.audit_mode=1\\nnodemap.default.deny_unknown=0\\nnodemap.default.exports=\\n[\\n\\n]\\nnodemap.default.fileset=\\nnodemap.default.forbid_encryption=0\\nnodemap.default.id=0\\nnodemap.default.map_mode=uid,gid\\nnodemap.default.squash_gid=99\\nnodemap.default.squash_projid=99\\nnodemap.default.squash_uid=99\\nnodemap.default.trusted_nodemap=0\\n\"\r\n    },\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"amajai@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-09-04T04:15:40.6768279Z\",\r\n    \"lastModifiedBy\": \"amajai@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-09-10T17:36:01.6730117Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

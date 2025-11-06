@@ -3,7 +3,7 @@
 Stop-AzConnectedNetworkVendorFunctionRoleInstance -LocationName centraluseuap -ServiceKey 1234-abcd-4321-dcba -SubscriptionId xxxx-3333-xxxx-3333 -VendorName myVendor -Name role1
 ```
 
-Stoping a role instance of a vendor network function with the specified serviceKey, location centraluseuap, vendor name myVendor and role instance name role1.
+Stopping a role instance of a vendor network function with the specified serviceKey, location centraluseuap, vendor name myVendor and role instance name role1.
 
 ### Example 2: Stop-AzConnectedNetworkVendorFunctionRoleInstance via Identity
 ```powershell

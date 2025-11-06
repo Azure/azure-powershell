@@ -1,7 +1,7 @@
 @{
   GUID = 'b3e01e02-1629-4884-8793-ec1494a14142'
   RootModule = './Az.NeonPostgres.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.NeonPostgres.private.dll'
   FormatsToProcess = './Az.NeonPostgres.format.ps1xml'
-  FunctionsToExport = 'Get-AzNeonPostgresOrganization', 'New-AzNeonPostgresOrganization', 'Remove-AzNeonPostgresOrganization', 'Update-AzNeonPostgresOrganization'
+  FunctionsToExport = 'Get-AzNeonPostgresBranch', 'Get-AzNeonPostgresCompute', 'Get-AzNeonPostgresEndpoint', 'Get-AzNeonPostgresNeonDatabase', 'Get-AzNeonPostgresNeonRole', 'Get-AzNeonPostgresOrganization', 'Get-AzNeonPostgresProject', 'Get-AzNeonPostgresProjectConnectionUri', 'New-AzNeonPostgresBranch', 'New-AzNeonPostgresOrganization', 'New-AzNeonPostgresProject', 'Remove-AzNeonPostgresBranch', 'Remove-AzNeonPostgresOrganization', 'Remove-AzNeonPostgresProject', 'Update-AzNeonPostgresBranch', 'Update-AzNeonPostgresOrganization', 'Update-AzNeonPostgresProject'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'NeonPostgres'

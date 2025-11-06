@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
+            HelpMessage = "P2S Client Connection Configuration that associate between address and policy group")]
         public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -342,6 +342,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")]
         public Int32 MaxScaleUnit { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to virtual network gateway.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The managed identity configuration for the virtual network gateway.")]
+        public PSManagedServiceIdentity Identity { get; set; }
 
         public override void Execute()
         {
@@ -646,6 +659,22 @@ namespace Microsoft.Azure.Commands.Network
             if (this.NatRule != null && this.NatRule.Any())
             {
                 vnetGateway.NatRules = this.NatRule?.ToList();
+            }
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                vnetGateway.Identity = new PSManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+            }
+            else if (this.Identity != null)
+            {
+                vnetGateway.Identity = this.Identity;
             }
 
             if (this.AdminState != null)

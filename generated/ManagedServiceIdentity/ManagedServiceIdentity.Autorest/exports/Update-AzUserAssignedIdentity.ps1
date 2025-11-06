@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Description
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Example
 Update-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Tag @{'key01'='value01'; 'key02'='value02'}
 .Example

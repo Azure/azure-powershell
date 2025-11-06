@@ -1599,7 +1599,7 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
     $location = "westus2"
     $vnetName = Get-ResourceName
-    $pacFile ="https://packetcapturesdev.blob.core.windows.net/explicit-proxy/pacfile.pac?sp=r&st=2022-06-02T21:14:54Z&se=2022-07-15T05:14:54Z&spr=https&sv=2021-06-08&sr=b&sig=VqX7Jfqb0P2HhuoDFDCeGLHvtM65Tu8lpkV96kCWZn0%3D"
+    $pacFile = "fake_pacfile_url"
    
     try {
 
@@ -2268,4 +2268,53 @@ function Test-AzureFirewallPolicyRCGDraft {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Tests function Test-AzureFirewallPolicyApplicationRuleFqdnTagDefaultProtocol.
+#>
+function Test-AzureFirewallPolicyApplicationRuleFqdnTagDefaultProtocol {
+    # Default protocol type
+    $expectedProtocolType = "Https"
+    $expectedProtocolPort = "443"
+
+    try {
+        $rule = New-AzFirewallPolicyApplicationRule -Name "App01" -SourceAddress "1.1.1.1" -FqdnTag "WindowsUpdate"
+
+        # Expected default value
+        Assert-AreEqual 1 $rule.Protocols.count
+        Assert-AreEqual $expectedProtocolType $rule.Protocols[0].ProtocolType
+        Assert-AreEqual $expectedProtocolPort $rule.Protocols[0].Port
+
+        # Manually setting the Protocol is not allowed
+        Assert-Throws { New-AzFirewallPolicyApplicationRule -Name "SingleCustomProtocolNotAllowedForFqdnTag" -SourceAddress "1.1.1.1" -FqdnTag "WindowsUpdate" -Protocol "http:80" }
+        Assert-Throws { New-AzFirewallPolicyApplicationRule -Name "MultipleCustomProtocolsNotAllowedForFqdnTag" -SourceAddress "1.1.1.1" -FqdnTag "WindowsUpdate" -Protocol "https:443", "http:80" }
+        Assert-Throws { New-AzFirewallPolicyApplicationRule -Name "ManuallySettingToTheDefaultProtocolNotAllowedEither" -SourceAddress "1.1.1.1" -FqdnTag "WindowsUpdate" -Protocol "https:443" } 
+    }
+    finally {
+        # No cleanup required
+    }
+}
+
+<#
+.SYNOPSIS function Test-AzureFirewallPolicyWithParentBasePolicy.
+#>
+function Test-AzureFirewallPolicyWithParentBasePolicy {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallChildPolicyName = "${azureFirewallPolicyName}-child"
+    $azureFirewallChildPolicyName2 = "${azureFirewallPolicyName}-child2"
+    $location = "canadacentral"
+     # Create the resource group
+    $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+    # Create AzureFirewallPolicy
+    $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+    # Create ChildAzureFirewallPolicy with ParentBasePolicy
+    $azureFirewallChildPolicy = New-AzFirewallPolicy -Name $azureFirewallChildPolicyName -ResourceGroupName $rgname -Location $location -BasePolicy $azureFirewallPolicy.Id
+    # Get/Set Child
+    $fwp = Get-AzFirewallPolicy -Name $azureFirewallChildPolicyName -ResourceGroupName $rgname
+    $fwp | Set-AzFirewallPolicy
+    $azureFirewallChildPolicy2 = New-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location
+    Set-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location -BasePolicy $azureFirewallPolicy.Id
 }

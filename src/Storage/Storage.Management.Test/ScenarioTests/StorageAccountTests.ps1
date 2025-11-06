@@ -1692,6 +1692,7 @@ function Test-AzureStorageAccountKeySASPolicy
     {
         # Test
         $stoname = 'sto' + $rgname;
+        $stoname2 = 'sto2' + $rgname;
         $stotype = 'Standard_LRS';
         $loc = Get-ProviderLocation ResourceManagement;
         $kind = 'StorageV2'
@@ -1701,7 +1702,7 @@ function Test-AzureStorageAccountKeySASPolicy
         New-AzResourceGroup -Name $rgname -Location $loc;
         Write-Output ("Resource Group created")
         
-        # new account
+        # new account, default SasExpirationAction is Log
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -KeyExpirationPeriodInDay $keyExpirationPeriodInDay -SasExpirationPeriod $sasExpirationPeriod
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
@@ -1711,21 +1712,88 @@ function Test-AzureStorageAccountKeySASPolicy
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $keyExpirationPeriodInDay $sto.KeyPolicy.KeyExpirationPeriodInDays;
         Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Log" $sto.SasPolicy.ExpirationAction;
         Assert-NotNull $sto.KeyCreationTime.Key1
         Assert-NotNull $sto.KeyCreationTime.Key2
 
-        # update account		
+        # update account, not set SasExpirationAction, should keep orignal value Log
         $keyExpirationPeriodInDay = 3
-        $sasExpirationPeriod = "50.00:00:00"
+        $sasExpirationPeriod = "50.00:00:12"
         Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -KeyExpirationPeriodInDay $keyExpirationPeriodInDay -SasExpirationPeriod $sasExpirationPeriod -EnableHttpsTrafficOnly $true
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $keyExpirationPeriodInDay $sto.KeyPolicy.KeyExpirationPeriodInDays;
         Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Log" $sto.SasPolicy.ExpirationAction;
         Assert-NotNull $sto.KeyCreationTime.Key1
         Assert-NotNull $sto.KeyCreationTime.Key2
 
-        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+        # update account, set SasExpirationAction to Block
+        $sasExpirationPeriod = "5.00:00:00"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SasExpirationPeriod $sasExpirationPeriod -SasExpirationAction Block 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Block" $sto.SasPolicy.ExpirationAction;
+
+        # update account, not set SasExpirationAction, should keep orignal value Block
+        $sasExpirationPeriod = "3.12:00:00"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SasExpirationPeriod $sasExpirationPeriod 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Block" $sto.SasPolicy.ExpirationAction;
+
+        # update account, set SasExpirationAction to Log
+        $sasExpirationPeriod = "4.00:12:00"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SasExpirationPeriod $sasExpirationPeriod -SasExpirationAction Log 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Log" $sto.SasPolicy.ExpirationAction;
+
+        # update account, disable sas policy
+        $sasExpirationPeriod = "0.00:00:00"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SasExpirationPeriod $sasExpirationPeriod 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-Null $sto.SasPolicy
+
+        # update account, enable sas policy with Block
+        $sasExpirationPeriod = "5.00:00:13"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SasExpirationPeriod $sasExpirationPeriod -SasExpirationAction Block 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Block" $sto.SasPolicy.ExpirationAction;
+
+        # update account, disable sas policy, then enable sas policy with only SasExpirationPeriod, should have default action as log
+        $sasExpirationPeriod = "0.00:00:00"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SasExpirationPeriod $sasExpirationPeriod 
+
+        $sasExpirationPeriod = "5.11:12:13"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SasExpirationPeriod $sasExpirationPeriod
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Log" $sto.SasPolicy.ExpirationAction;
+        
+        # remove account 
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;        
+        
+        # new account2, with  SasExpirationAction Block
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype -SasExpirationAction Block -SasExpirationPeriod $sasExpirationPeriod
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2; }
+        Assert-AreEqual $stoname2 $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-AreEqual "Block" $sto.SasPolicy.ExpirationAction;
+        
+        # remove account 2
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2;
     }
     finally
     {
@@ -2605,6 +2673,174 @@ function Test-StorageAccountDNSEndpointType
         $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
         Assert-AreEqual $account2.StorageAccountName $stoname2
         Assert-AreEqual $account2.DnsEndpointType Standard
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountEnableSmbOauth
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountEnableSmbOauth
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stoname2 = 'sto2' + $rgname
+        $stotype = 'Standard_LRS'
+        $loc = 'centraluseuap';
+        $kind = 'StorageV2' 
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EnableSmbOAuth $true
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname 
+        Assert-AreEqual $account.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $true
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableSmbOAuth $false
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname
+        Assert-AreEqual $account.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $false
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.AzureFilesIdentityBasedAuth $null 
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -EnableSmbOAuth $true
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $true
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountZonePlacement
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountZonePlacement
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stoname2 = 'sto2' + $rgname
+        $stoname3 = 'sto3' + $rgname
+        $stotype = 'Premium_LRS'
+        $loc = 'centraluseuap';
+        $kind = 'FileStorage' 
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -Kind $kind -Zone 1 
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname 
+        Assert-AreEqual $account.Zone[0] "1"
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype -Kind $kind
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Zone 1 -ZonePlacementPolicy "Any"
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.Zone[0] "1"
+        Assert-AreEqual $account2.ZonePlacementPolicy "Any"
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3 -Location $loc -SkuName $stotype -Kind $kind -ZonePlacementPolicy "None"
+        $account3 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3
+        Assert-AreEqual $account3.StorageAccountName $stoname3
+        Assert-AreEqual $account3.ZonePlacementPolicy "None"
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3 -ZonePlacementPolicy "Any"
+        $account3 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3
+        Assert-AreEqual $account3.StorageAccountName $stoname3
+        Assert-AreEqual $account3.ZonePlacementPolicy "Any"
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname3
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountGeoPriorityReplication
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountGeoPriorityReplication
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';  # Use geo-redundant storage for priority replication
+        $loc = 'centraluseuap';
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+        
+        # Create new account with EnableBlobGeoPriorityReplication enabled
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EnableBlobGeoPriorityReplication $true;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
+        
+        # Test updating account to disable EnableBlobGeoPriorityReplication
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableBlobGeoPriorityReplication $false;
+        
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $false $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
+        
+        # Test updating account to re-enable EnableBlobGeoPriorityReplication
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableBlobGeoPriorityReplication $true;
+        
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

@@ -1,0 +1,85 @@
+{
+  "resourceType": "schemaRegistries",
+  "apiVersion": "2025-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDeviceRegistrySchemaRegistry",
+      "description": "Get a SchemaRegistry",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistryschemaregistry"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SchemaRegistry",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.schemaRegistryName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDeviceRegistrySchemaRegistry",
+      "description": "Delete a SchemaRegistry",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryschemaregistry"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a SchemaRegistry",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.schemaRegistryName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

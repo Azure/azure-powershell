@@ -192,7 +192,7 @@ Name     Location Status        TransferType  SkuName     IdentityType DeliveryT
 pwshDisk WestUS   DeviceOrdered ImportToAzure DataBoxDisk None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
 ```
 
-Creates a databoxDisky job with your own Passkey.
+Creates a databoxDisk job with your own Passkey.
 For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
 
 ### Example 8: Creates a databox job with double encryption enabled

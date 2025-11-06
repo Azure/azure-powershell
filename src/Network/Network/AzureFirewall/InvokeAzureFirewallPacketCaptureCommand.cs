@@ -12,19 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using System.Linq;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletDeprecationWithVersionAttribute("Az: 15.0.0","Az.Network: 8.0.0")]
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCapture", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureParameters))]
     public class InvokeAzureFirewallPacketCaptureCommand : AzureFirewallBaseCmdlet
     {
@@ -46,6 +48,8 @@ namespace Microsoft.Azure.Commands.Network
         
         public override void Execute()
         {
+            Parameter.Operation = "Start";
+
             base.Execute();
 
             if (!this.IsAzureFirewallPresent(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name))

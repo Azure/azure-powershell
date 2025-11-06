@@ -28,13 +28,15 @@ For information on how to develop for `Az.Storage`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: ae38b76a7e681922a05b0b1e4d44cc725eb94802
+commit: 04b87408ba3b8afed159b3d3059bd1594c7f2dd3
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storage.json
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/file.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storage.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/file.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storageTaskAssignments.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/networkSecurityPerimeter.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
@@ -42,14 +44,15 @@ module-version: 5.9.1
 title: Storage
 subject-prefix: $(service-name)
 nested-object-to-string: true
-identity-correction-for-post: true
-
-# Pin to an old version to workaround a regression issue of generator. link to the issue - blabla
-use-extension:
-  "@autorest/powershell": "4.0.734"
- 
+identity-correction-for-post: true 
 
 directive:
+  - where:
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
   - from: swagger-document
     where: $.paths.["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"].post.operationId    
     transform: return "StartAccountMigration"
@@ -70,6 +73,12 @@ directive:
       parameter-name: StorageAccountMigrationDetailTargetSkuName
     set:
       parameter-name: TargetSku
+  - where:
+      verb: Get
+      subject: ^StorageTaskAssignment$
+      parameter-name: Top
+    set:
+      alias: Maxpagesize
   - where:
       subject: ^FileServiceUsage$
       parameter-name: AccountName
@@ -104,6 +113,67 @@ directive:
     set:
       property-name: StorageAccountLimitMaxProvisionedIops
   - where:
-      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
+      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
     remove: true
+  - where:
+      parameter-name: ParameterEndBy
+    set:
+      parameter-name: EndBy
+  - where:
+      parameter-name: ParameterInterval
+    set:
+      parameter-name: Interval
+  - where: 
+      parameter-name: ParameterIntervalUnit
+    set:
+      parameter-name: IntervalUnit
+  - where: 
+      parameter-name: ParameterStartFrom
+    set:
+      parameter-name: StartFrom
+  - where: 
+      parameter-name: ParameterStartOn
+    set:
+      parameter-name: StartOn
+  - where:
+      property-name: ParameterEndBy
+    set:
+      property-name: EndBy
+  - where:
+      property-name: ParameterInterval
+    set:
+      property-name: Interval
+  - where:
+      property-name: ParameterIntervalUnit
+    set:
+      property-name: IntervalUnit
+  - where:
+      property-name: ParameterStartFrom
+    set:
+      property-name: StartFrom
+  - where:
+      property-name: ParameterStartOn
+    set:
+      property-name: StartOn
+  - from: storageTaskAssignments.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports"].get
+    transform: > 
+      $["operationId"] = "StorageTaskAssignmentInstancesReport_List"
+  # Renaming the operationId to StorageTaskAssignmentInstancesReport_Get, but the operation actually lists all the reports under a specific storage task assignment. 
+  - from: storageTaskAssignments.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports"].get
+    transform: > 
+      $["operationId"] = "StorageTaskAssignmentInstancesReport_Get"
+  - from: storageTaskAssignments.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports"].get
+    transform: > 
+      $["operationId"] = "StorageTaskAssignmentInstancesReport_Get"
+  - where: 
+      model-name: StorageTaskReportInstance
+    set:
+      suppress-format: true
+  - where:
+      model-name: ^SkuInformation$
+    set:
+      suppress-format: true
 ```

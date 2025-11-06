@@ -29,29 +29,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public global::System.DateTime? LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime; }
 
         /// <summary>Internal Acessors for LastModifiedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).LastModifiedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Policy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.Policy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.Policy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).Policy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; }
 
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule> PolicyRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).PolicyRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyPropertiesInternal)Property).PolicyRule = value ?? null /* arrayOf */; }
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastModifiedTime { get;  }
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+        Description = @"The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.",
         SerializedName = @"rules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule> PolicyRule { get; set; }
@@ -129,11 +129,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Returns the date and time the ManagementPolicies was last modified.</summary>
         global::System.DateTime? LastModifiedTime { get; set; }
         /// <summary>
-        /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicySchema Policy { get; set; }
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule> PolicyRule { get; set; }
         /// <summary>Returns the Storage Account Data Policies Rules.</summary>

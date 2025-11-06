@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzDevCenterAdminSchedule_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Remove-AzDevCenterAdminSchedule", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Deletes a Scheduled.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

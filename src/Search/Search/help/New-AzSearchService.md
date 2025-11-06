@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSearchService
 
 ## SYNOPSIS
-Creates an Azure Cognitive Search service.
+Creates an Azure AI Search service.
 
 ## SYNTAX
 
@@ -17,12 +17,14 @@ New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSku
  [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
- [-SemanticSearchMode <PSSemanticSearchMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SemanticSearchMode <PSSemanticSearchMode>] [-ComputeType <PSComputeType>]
+ [-DataExfiltrationProtectionList <PSDataExfiltrationProtection[]>] [-Bypass <PSSearchBypass>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzSearchService** cmdlet creates an Azure Cognitive Search service with specified parameters.
+The **New-AzSearchService** cmdlet creates an Azure AI Search service with specified parameters.
 
 ## EXAMPLES
 
@@ -43,12 +45,12 @@ HostingMode       : Default
 Tags              :
 ```
 
-The command creates an Azure Cognitive Search service.
+The command creates an Azure AI Search service.
 
 ## PARAMETERS
 
 ### -AadAuthFailureMode
-(Optional) What status code to return when failing AAD authentication, if both api key and AAD authenticaiton are allowed for the Azure Cognitive Search service
+(Optional) What status code to return when failing AAD authentication, if both api key and AAD authentication are allowed for the Azure AI Search service
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]
@@ -64,13 +66,61 @@ Accept wildcard characters: False
 ```
 
 ### -AuthOption
-(Optional) Whether to only allow API key authentication or both API key authentication and AAD authentication for the Azure Cognitive Search service
+(Optional) Whether to only allow API key authentication or both API key authentication and AAD authentication for the Azure AI Search service
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]
 Parameter Sets: (All)
 Aliases:
 Accepted values: ApiKeyOnly, AadOrApiKey
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Bypass
+(Optional) Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSearchBypass]
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, AzureServices
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeType
+(Optional) Option to support the search service using either the Default Compute or Azure Confidential Compute
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSComputeType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, Confidential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataExfiltrationProtectionList
+(Optional) A list of data exfiltration scenarios that are explicitly disallowed for the search service
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSDataExfiltrationProtection[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: BlockAll
 
 Required: False
 Position: Named
@@ -95,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableLocalAuth
-(Optional) Disable API key authentication for the Azure Cognitive Search service (true/false/null)
+(Optional) Disable API key authentication for the Azure AI Search service (true/false/null)
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -110,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostingMode
-Azure Cognitive Search Service hosting mode.
+Azure AI Search Service hosting mode.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]
@@ -126,13 +176,13 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-(Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)
+(Optional) Azure AI Search Service Identity (None/SystemAssigned)
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, SystemAssigned
+Accepted values: None, SystemAssigned, UserAssigned, SystemAssignedUserAssigned
 
 Required: False
 Position: Named
@@ -142,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPRuleList
-(Optional) Azure Cognitive Search Service IP rules
+(Optional) Azure AI Search Service IP rules
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]
@@ -157,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Azure Cognitive Search Service location.
+Azure AI Search Service location.
 
 ```yaml
 Type: System.String
@@ -172,7 +222,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String
@@ -187,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartitionCount
-Azure Cognitive Search Service partition count.
+Azure AI Search Service partition count.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -202,13 +252,13 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-(Optional) Azure Cognitive Search Service public network access (Enabled/Disabled)
+(Optional) Azure AI Search Service public network access (Enabled/Disabled)
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
+Accepted values: Enabled, Disabled, SecuredByPerimeter
 
 Required: False
 Position: Named
@@ -218,7 +268,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicaCount
-Azure Cognitive Search Service replica count.
+Azure AI Search Service replica count.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -248,7 +298,7 @@ Accept wildcard characters: False
 ```
 
 ### -SemanticSearchMode
-(Optional) Option to control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations
+(Optional) Option to control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode]
@@ -264,7 +314,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Azure Cognitive Search Service Sku.
+Azure AI Search Service Sku.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSkuName

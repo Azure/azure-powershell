@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Upgraded to the stable api version
+
 ## Version 0.1.0
 * First preview release for module Az.MongoDB
-

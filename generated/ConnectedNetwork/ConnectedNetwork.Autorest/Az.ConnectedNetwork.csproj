@@ -3,6 +3,7 @@
     <PsModuleName>ConnectedNetwork</PsModuleName>
     <PsRootModuleName>ConnectedNetwork</PsRootModuleName>
     <PsModuleFolder>ConnectedNetwork.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

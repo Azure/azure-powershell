@@ -72,19 +72,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.EncryptionProperty { get => (this._encryptionProperty = this._encryptionProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionProperties()); set { {_encryptionProperty = value;} } }
 
         /// <summary>Internal Acessors for EncryptionPropertyEncryptionIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.EncryptionPropertyEncryptionIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).EncryptionIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).EncryptionIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.EncryptionPropertyEncryptionIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).EncryptionIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).EncryptionIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EncryptionPropertyKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.EncryptionPropertyKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.EncryptionPropertyKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for KeyVaultPropertyCurrentVersionedKeyIdentifier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.KeyVaultPropertyCurrentVersionedKeyIdentifier { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyIdentifier; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyIdentifier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.KeyVaultPropertyCurrentVersionedKeyIdentifier { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyIdentifier; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyCurrentVersionedKeyIdentifier = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyLastKeyRotationTimestamp</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.KeyVaultPropertyLastKeyRotationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyLastKeyRotationTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyLastKeyRotationTimestamp = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.KeyVaultPropertyLastKeyRotationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyLastKeyRotationTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyLastKeyRotationTimestamp = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for NetworkAcls</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.NetworkAcls { get => (this._networkAcls = this._networkAcls ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.NetworkRuleSet()); set { {_networkAcls = value;} } }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get;  }
 
     }
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
         string ProtocolType { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get; set; }
 
     }

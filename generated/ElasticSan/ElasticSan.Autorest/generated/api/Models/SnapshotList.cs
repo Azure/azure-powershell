@@ -14,20 +14,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotListInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotListInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URI to fetch the next section of the paginated response.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshot> _value;
 
-        /// <summary>An array of Snapshot objects.</summary>
+        /// <summary>The Snapshot items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshot> Value { get => this._value; set => this._value = value; }
 
@@ -41,25 +38,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     public partial interface ISnapshotList :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable
     {
-        /// <summary>URI to fetch the next section of the paginated response.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URI to fetch the next section of the paginated response.",
-        SerializedName = @"nextLink",
-        PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>An array of Snapshot objects.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"An array of Snapshot objects.",
+        Description = @"The link to the next page of items",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
+        /// <summary>The Snapshot items on this page</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The Snapshot items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshot) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshot> Value { get; set; }
@@ -69,9 +66,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     internal partial interface ISnapshotListInternal
 
     {
-        /// <summary>URI to fetch the next section of the paginated response.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>An array of Snapshot objects.</summary>
+        /// <summary>The Snapshot items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshot> Value { get; set; }
 
     }

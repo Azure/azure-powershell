@@ -16,7 +16,7 @@
 # This makes things a lot easier, since the tests require specific policies to be present in various scopes
 # as well as large number of non-compliant resources in order to test things like paging.
 # Both the tests and this script use the resource details defined in the common.ps1 script.
-# Before running env setup, make sure you have access to the MG and Subscription defined in common.ps1 (or change them to MG\subscription you do have acess to)
+# Before running env setup, make sure you have access to the MG and Subscription defined in common.ps1 (or change them to MG\subscription you do have access to)
 . "..\ScenarioTests\Common.ps1"
 
 # Note: Once the script is finished, wait for full compliance results before running the tests.
@@ -102,19 +102,19 @@ foreach ($resourceGroupName in @($resourceGroup3)) {
    }
 }
 
-# Create Subscription targetting manual policy
+# Create Subscription targeting manual policy
 $manualPolicySubcriptionDefinition = New-AzPolicyDefinition -Name $(Get-TestManualPolicyDefinitonNameSub) -Policy "$PSScriptRoot/ManualPolicySubDefinition.json" -DisplayName "PS cmdlet tests: Subscription Manual Policy" -Mode All
 
-# Create RG targetting manual policy
+# Create RG targeting manual policy
 $manualPolicyRGDefinition = New-AzPolicyDefinition -Name $(Get-TestManualPolicyDefinitonNameRG) -Policy "$PSScriptRoot/ManualPolicyRGDefinition.json" -DisplayName "PS cmdlet tests: RG Manual Policy" -Mode All
 
-# Create Resource targetting manual policy
+# Create Resource targeting manual policy
 $manualPolicyResourceDefinition = New-AzPolicyDefinition -Name $(Get-TestManualPolicyDefinitonNameResource) -Policy "$PSScriptRoot/ManualPolicyResourceDefinition.json" -DisplayName "PS cmdlet tests: Resource Manual Policy" -Mode All
 
 # Create a network security group for testing resource level attestations.
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroup3 -TemplateFile "$PSScriptRoot/CreateNSGsTemplate.json" -resourceCount 1 -resourceNamePrefix $(Get-TestResourceNamePrefix)
 
-# Assign the manual policies targetting each of Subscription, Resource Groups and Resource Types to the subscription
+# Assign the manual policies targeting each of Subscription, Resource Groups and Resource Types to the subscription
 $manualPolicySubAssignment = New-AzPolicyAssignment -Name $(Get-TestAttestationSubscriptionPolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: Subscription Manual Policy" -PolicyDefinition $manualPolicySubcriptionDefinition
 
 $manualPolicyRGAssignment = New-AzPolicyAssignment -Name $(Get-TestAttestationRGPolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: RG Manual Policy" -PolicyDefinition $manualPolicyRGDefinition

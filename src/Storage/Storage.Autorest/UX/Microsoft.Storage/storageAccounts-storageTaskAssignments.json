@@ -1,0 +1,95 @@
+{
+  "resourceType": "storageAccounts/storageTaskAssignments",
+  "apiVersion": "2025-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storage"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageTaskAssignment",
+      "description": "Get the storage task assignment properties",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstoragetaskassignment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the storage task assignment properties",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.storageTaskAssignmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageTaskAssignment",
+      "description": "Delete the storage task assignment sub-resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragetaskassignment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the storage task assignment sub-resource",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.storageTaskAssignmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

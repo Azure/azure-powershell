@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Description(@"create a workspace for Grafana resource. This API is idempotent, so user can either create a new grafana or create an existing grafana.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}", ApiVersion = "2022-08-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}", ApiVersion = "2025-08-01")]
     public partial class NewAzGrafana_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IContext
@@ -44,17 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>The grafana resource type.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana _requestBodyParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedGrafana();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>The api key setting of the Grafana instance.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The api key setting of the Grafana instance.")]
@@ -96,6 +87,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Dashboard Client => Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.ClientAPI;
 
+        /// <summary>The creator will have admin access for the Grafana instance.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The creator will have admin access for the Grafana instance.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The creator will have admin access for the Grafana instance.",
+        SerializedName = @"creatorCanAdmin",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string CreatorCanAdmin { get => _requestBodyParametersBody.CreatorCanAdmin ?? null; set => _requestBodyParametersBody.CreatorCanAdmin = value; }
+
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -122,8 +125,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _requestBodyParametersBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
 
+        /// <summary>The AutoRenew setting of the Enterprise subscription</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The AutoRenew setting of the Enterprise subscription")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The AutoRenew setting of the Enterprise subscription",
+        SerializedName = @"marketplaceAutoRenew",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string EnterpriseConfigurationMarketplaceAutoRenew { get => _requestBodyParametersBody.EnterpriseConfigurationMarketplaceAutoRenew ?? null; set => _requestBodyParametersBody.EnterpriseConfigurationMarketplaceAutoRenew = value; }
+
+        /// <summary>The Plan Id of the Azure Marketplace subscription for the Enterprise plugins</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Plan Id of the Azure Marketplace subscription for the Enterprise plugins")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Plan Id of the Azure Marketplace subscription for the Enterprise plugins",
+        SerializedName = @"marketplacePlanId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EnterpriseConfigurationMarketplacePlanId { get => _requestBodyParametersBody.EnterpriseConfigurationMarketplacePlanId ?? null; set => _requestBodyParametersBody.EnterpriseConfigurationMarketplacePlanId = value; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
+        /// <summary>The major Grafana software version to target.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The major Grafana software version to target.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The major Grafana software version to target.",
+        SerializedName = @"grafanaMajorVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GrafanaMajorVersion { get => _requestBodyParametersBody.GrafanaMajorVersion ?? null; set => _requestBodyParametersBody.GrafanaMajorVersion = value; }
+
+        /// <summary>
+        /// Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.",
+        SerializedName = @"grafanaPlugins",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesGrafanaPlugins) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesGrafanaPlugins GrafanaPlugin { get => _requestBodyParametersBody.GrafanaPlugin ?? null /* object */; set => _requestBodyParametersBody.GrafanaPlugin = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -140,13 +191,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The geo-location where the grafana resource lives</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the grafana resource lives")]
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The geo-location where the grafana resource lives",
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _requestBodyParametersBody.Location ?? null; set => _requestBodyParametersBody.Location = value; }
@@ -241,6 +292,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>
+        /// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to true to execute the CSRF check even if the login cookie is not in a request (default false).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to true to execute the CSRF check even if the login cookie is not in a request (default false).",
+        SerializedName = @"csrfAlwaysCheck",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter SecurityCsrfAlwaysCheck { get => _requestBodyParametersBody.SecurityCsrfAlwaysCheck ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBodyParametersBody.SecurityCsrfAlwaysCheck = value; }
+
         /// <summary>The Sku of the grafana resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Sku of the grafana resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
@@ -251,6 +315,114 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuName { get => _requestBodyParametersBody.SkuName ?? null; set => _requestBodyParametersBody.SkuName = value; }
+
+        /// <summary>Enable this to allow Grafana to send email. Default is false</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable this to allow Grafana to send email. Default is false")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enable this to allow Grafana to send email. Default is false",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter SmtpEnabled { get => _requestBodyParametersBody.SmtpEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBodyParametersBody.SmtpEnabled = value; }
+
+        /// <summary>Address used when sending out emailshttps://pkg.go.dev/net/mail#Address</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Address used when sending out emailshttps://pkg.go.dev/net/mail#Address")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Address used when sending out emailshttps://pkg.go.dev/net/mail#Address",
+        SerializedName = @"fromAddress",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SmtpFromAddress { get => _requestBodyParametersBody.SmtpFromAddress ?? null; set => _requestBodyParametersBody.SmtpFromAddress = value; }
+
+        /// <summary>
+        /// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"https://pkg.go.dev/net/mail#Address
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name to be used when sending out emails. Default is \"Azure Managed Grafana Notification\"https://pkg.go.dev/net/mail#Address")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name to be used when sending out emails. Default is ""Azure Managed Grafana Notification""https://pkg.go.dev/net/mail#Address",
+        SerializedName = @"fromName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SmtpFromName { get => _requestBodyParametersBody.SmtpFromName ?? null; set => _requestBodyParametersBody.SmtpFromName = value; }
+
+        /// <summary>SMTP server hostname with port, e.g. test.email.net:587</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SMTP server hostname with port, e.g. test.email.net:587")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"SMTP server hostname with port, e.g. test.email.net:587",
+        SerializedName = @"host",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SmtpHost { get => _requestBodyParametersBody.SmtpHost ?? null; set => _requestBodyParametersBody.SmtpHost = value; }
+
+        /// <summary>
+        /// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes",
+        SerializedName = @"password",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString SmtpPassword { get => _requestBodyParametersBody.SmtpPassword ?? null; set => _requestBodyParametersBody.SmtpPassword = value; }
+
+        /// <summary>
+        /// Verify SSL for SMTP server. Default is falsehttps://pkg.go.dev/crypto/tls#Config
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Verify SSL for SMTP server. Default is falsehttps://pkg.go.dev/crypto/tls#Config")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Verify SSL for SMTP server. Default is falsehttps://pkg.go.dev/crypto/tls#Config",
+        SerializedName = @"skipVerify",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter SmtpSkipVerify { get => _requestBodyParametersBody.SmtpSkipVerify ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBodyParametersBody.SmtpSkipVerify = value; }
+
+        /// <summary>
+        /// The StartTLSPolicy setting of the SMTP configurationhttps://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The StartTLSPolicy setting of the SMTP configurationhttps://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The StartTLSPolicy setting of the SMTP configurationhttps://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy",
+        SerializedName = @"startTLSPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("OpportunisticStartTLS", "MandatoryStartTLS", "NoStartTLS")]
+        public string SmtpStartTlsPolicy { get => _requestBodyParametersBody.SmtpStartTlsPolicy ?? null; set => _requestBodyParametersBody.SmtpStartTlsPolicy = value; }
+
+        /// <summary>User of SMTP auth</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User of SMTP auth")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"User of SMTP auth",
+        SerializedName = @"user",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SmtpUser { get => _requestBodyParametersBody.SmtpUser ?? null; set => _requestBodyParametersBody.SmtpUser = value; }
+
+        /// <summary>Set to false to disable external snapshot publish endpoint</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to false to disable external snapshot publish endpoint")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to false to disable external snapshot publish endpoint",
+        SerializedName = @"externalEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter SnapshotExternalEnabled { get => _requestBodyParametersBody.SnapshotExternalEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBodyParametersBody.SnapshotExternalEnabled = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -271,17 +443,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>The tags for grafana resource.</summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tags for grafana resource.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The tags for grafana resource.",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaTags Tag { get => _requestBodyParametersBody.Tag ?? null /* object */; set => _requestBodyParametersBody.Tag = value; }
+
+        /// <summary>
+        /// Set to false to disable capture screenshot in Unified Alert due to performance issue.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to false to disable capture screenshot in Unified Alert due to performance issue.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to false to disable capture screenshot in Unified Alert due to performance issue.",
+        SerializedName = @"captureEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter UnifiedAlertingScreenshotCaptureEnabled { get => _requestBodyParametersBody.UnifiedAlertingScreenshotCaptureEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBodyParametersBody.UnifiedAlertingScreenshotCaptureEnabled = value; }
 
         /// <summary>
         /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
@@ -290,6 +475,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
         [global::System.Management.Automation.AllowEmptyCollection]
         public string[] UserAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// Set to true so editors can administrate dashboards, folders and teams they create.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to true so editors can administrate dashboards, folders and teams they create.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to true so editors can administrate dashboards, folders and teams they create.",
+        SerializedName = @"editorsCanAdmin",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter UserEditorsCanAdmin { get => _requestBodyParametersBody.UserEditorsCanAdmin ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBodyParametersBody.UserEditorsCanAdmin = value; }
+
+        /// <summary>
+        /// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access
+        /// to. They cannot save their changes.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.",
+        SerializedName = @"viewersCanEdit",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter UserViewersCanEdit { get => _requestBodyParametersBody.UserViewersCanEdit ?? default(global::System.Management.Automation.SwitchParameter); set => _requestBodyParametersBody.UserViewersCanEdit = value; }
 
         /// <summary>The zone redundancy setting of the Grafana instance.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The zone redundancy setting of the Grafana instance.")]
@@ -372,11 +584,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -718,24 +925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

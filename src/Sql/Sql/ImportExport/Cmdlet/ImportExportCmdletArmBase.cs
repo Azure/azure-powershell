@@ -80,8 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <summary>
         /// Gets or sets the password of the SQL administrator
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Azure SQL Server administrator password")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "The Azure SQL Server administrator password")]
         public SecureString AdministratorLoginPassword
         {
             get; set;
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override ImportExportDatabaseAdapter InitModelAdapter()

@@ -82,8 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)_resourceType;}
             {_kind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("kind"), out var __jsonKind) ? (string)__jsonKind : (string)_kind;}
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("locations"), out var __jsonLocations) ? If( __jsonLocations as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _location;}
-            {_capability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("capabilities"), out var __jsonCapabilities) ? If( __jsonCapabilities as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuCapability>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuCapability) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuCapability.FromJson(__p) )) ))() : null : _capability;}
-            {_restriction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("restrictions"), out var __jsonRestrictions) ? If( __jsonRestrictions as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestriction>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestriction) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Restriction.FromJson(__k) )) ))() : null : _restriction;}
+            {_locationInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("locationInfo"), out var __jsonLocationInfo) ? If( __jsonLocationInfo as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuInformationLocationInfoItem.FromJson(__p) )) ))() : null : _locationInfo;}
+            {_capability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("capabilities"), out var __jsonCapabilities) ? If( __jsonCapabilities as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuCapability>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuCapability) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuCapability.FromJson(__k) )) ))() : null : _capability;}
+            {_restriction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("restrictions"), out var __jsonRestrictions) ? If( __jsonRestrictions as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestriction>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestriction) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Restriction.FromJson(__f) )) ))() : null : _restriction;}
             AfterFromJson(json);
         }
 
@@ -131,26 +132,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                     container.Add("locations",__w);
                 }
             }
+            if (null != this._locationInfo)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
+                foreach( var __s in this._locationInfo )
+                {
+                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                }
+                container.Add("locationInfo",__r);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._capability)
                 {
-                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._capability )
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._capability )
                     {
-                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                        AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
                     }
-                    container.Add("capabilities",__r);
+                    container.Add("capabilities",__m);
                 }
             }
             if (null != this._restriction)
             {
-                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
-                foreach( var __n in this._restriction )
+                var __h = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
+                foreach( var __i in this._restriction )
                 {
-                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                    AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
                 }
-                container.Add("restrictions",__m);
+                container.Add("restrictions",__h);
             }
             AfterToJson(ref container);
             return container;

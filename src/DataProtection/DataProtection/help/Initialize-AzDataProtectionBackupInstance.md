@@ -115,11 +115,11 @@ The fifth command initializes the backup instance.ype AzureDatabaseForMySQL to i
 
 ### -BackupConfiguration
 Backup configuration for backup.
-Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
+Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.
 To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupDatasourceParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupDatasourceParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
 Position: Named
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyId
-Policy Id to be assiciated to Datasource
+Policy Id to be associated to Datasource
 
 ```yaml
 Type: System.String
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotResourceGroupId
-Sanpshot Resource Group
+Snapshot Resource Group
 
 ```yaml
 Type: System.String
@@ -291,7 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupInstanceResource
 
 ## NOTES
 

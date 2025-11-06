@@ -33,8 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// class.
         /// </summary>
         /// <param name="serviceName">The name of the service. Possible values
-        /// include: 'AutomaticRepairs',
-        /// 'DummyOrchestrationServiceName'</param>
+        /// include: 'AutomaticRepairs', 'AutomaticZoneRebalancing'</param>
         /// <param name="action">The action to be performed. Possible values
         /// include: 'Resume', 'Suspend'</param>
         public OrchestrationServiceStateInput(string serviceName, string action)
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets the name of the service. Possible values include:
-        /// 'AutomaticRepairs'
+        /// 'AutomaticRepairs', 'AutomaticZoneRebalancing'
         /// </summary>
         [JsonProperty(PropertyName = "serviceName")]
         public string ServiceName { get; set; }

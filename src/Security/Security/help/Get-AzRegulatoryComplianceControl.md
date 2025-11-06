@@ -25,7 +25,7 @@ Get-AzRegulatoryComplianceControl -ResourceId <String> [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-Get a spcific control details or list all the controls under specific regulatory compliance standard.
+Get a specific control details or list all the controls under specific regulatory compliance standard.
 
 ## EXAMPLES
 

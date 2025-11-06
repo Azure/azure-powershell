@@ -50,14 +50,14 @@ The **Remove-AzFirewallPolicyRuleCollectionGroup** cmdlet removes a rule collect
 Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -FirewallPolicyObject $fp
 ```
 
-This example removes the firewall policy rule colelction group named "testRcGroup" in the firewall policy object $fp
+This example removes the firewall policy rule collection group named "testRcGroup" in the firewall policy object $fp
 
 ### Example 2
 ```powershell
 Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName
 ```
 
-This example removes the firewall policy rule colelction group named "testRcGroup" in the firewall named "fpName" frpm the resourcegroup names "testRg"
+This example removes the firewall policy rule collection group named "testRcGroup" in the firewall named "fpName" from the resourcegroup names "testRg"
 
 ## PARAMETERS
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id of the Rule collection groupy
+The resource Id of the Rule collection group
 
 ```yaml
 Type: System.String

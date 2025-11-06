@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.8.0
+* Added support for AzureDataLakeStorage workload
+
 ## Version 2.7.0
 * Added new cmdlet for validate for Modify backup - Test-AzDataProtectionBackupInstanceUpdate.
 * Added new parameters for UAMI based restore in Initialize-AzDataProtectionRestoreRequest cmdlet.
@@ -37,7 +40,7 @@
 
 ## Version 2.4.0
 * Added vault tier restore and update backup instance for blobs.
-* Added CmkEnryption parameters to Get-AzDataProtectionBackupVault, New-AzDataProtectionBackupVault and Update-AzDataProtectionBackupVault cmdlets.
+* Added CmkEncryption parameters to Get-AzDataProtectionBackupVault, New-AzDataProtectionBackupVault and Update-AzDataProtectionBackupVault cmdlets.
 * Added MUA support for DisableVaultImmutability, Restore, Stop-Protection, Suspend-backup, Disable soft delete operations.
 
 ## Version 2.3.0

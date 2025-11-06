@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// [OpenAPI] CheckNameAvailability=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/checkNameAvailability"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzHealthcareServiceNameAvailability_CheckViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.ParameterSetBreakingChange(new string[] {"CheckViaIdentity"}, "15.0.0", "9.0.0", "2025/11/03")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesNameAvailabilityInfo))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Check if a service instance name is available.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]

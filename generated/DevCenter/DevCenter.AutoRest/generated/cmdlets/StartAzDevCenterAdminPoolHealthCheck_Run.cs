@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] RunHealthChecks=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/runHealthChecks"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzDevCenterAdminPoolHealthCheck_Run", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="Start-AzDevCenterAdminPoolHealthCheck", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Triggers a refresh of the pool status.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]

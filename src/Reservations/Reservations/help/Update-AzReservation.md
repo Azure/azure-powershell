@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzReservation
 
 ## SYNOPSIS
-update the applied scopes of the `Reservation`.
+Update the applied scopes of the `Reservation`.
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ Update-AzReservation -InputObject <IReservationsIdentity> [-AppliedScope <String
 ```
 
 ## DESCRIPTION
-update the applied scopes of the `Reservation`.
+Update the applied scopes of the `Reservation`.
 
 ## EXAMPLES
 

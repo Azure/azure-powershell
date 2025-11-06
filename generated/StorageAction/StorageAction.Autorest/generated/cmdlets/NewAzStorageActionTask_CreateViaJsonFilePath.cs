@@ -11,17 +11,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
     using System;
 
     /// <summary>
-    /// Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created
+    /// Asynchronously create a new storage task resource with the specified parameters. If a storage task is already created
     /// and a subsequent create request is issued with different properties, the storage task properties will be updated. If a
-    /// storage task is already created and a subsequent create or update request is issued with the exact same set of properties,
-    /// the request will succeed.
+    /// storage task is already created and a subsequent create request is issued with the exact same set of properties, the request
+    /// will succeed.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStorageActionTask_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Asynchronously create a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}", ApiVersion = "2023-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.NotSuggestDefaultParameterSet]

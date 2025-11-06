@@ -117,73 +117,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Metadata = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Etag</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureEntityResourceInternal.Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureEntityResourceInternal)__azureEntityResource).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureEntityResourceInternal)__azureEntityResource).Etag = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureEntityResourceInternal.Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureEntityResourceInternal)__azureEntityResource).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureEntityResourceInternal)__azureEntityResource).Etag = value ?? null; }
 
         /// <summary>Internal Acessors for AccessTierChangeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.AccessTierChangeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierChangeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierChangeTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.AccessTierChangeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierChangeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierChangeTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for AccessTierStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.AccessTierStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.AccessTierStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).AccessTierStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Deleted</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.Deleted { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Deleted; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Deleted = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.Deleted { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Deleted; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Deleted = value ?? default(bool); }
 
         /// <summary>Internal Acessors for DeletedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.DeletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).DeletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).DeletedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.DeletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).DeletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).DeletedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for FileSharePaidBursting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesFileSharePaidBursting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.FileSharePaidBursting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).FileSharePaidBursting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).FileSharePaidBursting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesFileSharePaidBursting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.FileSharePaidBursting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).FileSharePaidBursting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).FileSharePaidBursting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IncludedBurstIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.IncludedBurstIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).IncludedBurstIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).IncludedBurstIop = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.IncludedBurstIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).IncludedBurstIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).IncludedBurstIop = value ?? default(int); }
 
         /// <summary>Internal Acessors for LastModifiedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LastModifiedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LastModifiedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LastModifiedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LastModifiedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for LeaseDuration</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LeaseDuration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseDuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseDuration = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LeaseDuration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseDuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseDuration = value ?? null; }
 
         /// <summary>Internal Acessors for LeaseState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LeaseState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LeaseState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseState = value ?? null; }
 
         /// <summary>Internal Acessors for LeaseStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LeaseStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.LeaseStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).LeaseStatus = value ?? null; }
 
         /// <summary>Internal Acessors for MaxBurstCreditsForIop</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.MaxBurstCreditsForIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).MaxBurstCreditsForIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).MaxBurstCreditsForIop = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.MaxBurstCreditsForIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).MaxBurstCreditsForIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).MaxBurstCreditsForIop = value ?? default(long); }
 
         /// <summary>Internal Acessors for NextAllowedProvisionedBandwidthDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedBandwidthDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedBandwidthDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedBandwidthDowngradeTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for NextAllowedProvisionedIopsDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedIopsDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedProvisionedIopsDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedProvisionedIopsDowngradeTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for NextAllowedQuotaDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedQuotaDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.NextAllowedQuotaDowngradeTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).NextAllowedQuotaDowngradeTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileShareProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RemainingRetentionDay</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.RemainingRetentionDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).RemainingRetentionDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).RemainingRetentionDay = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.RemainingRetentionDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).RemainingRetentionDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).RemainingRetentionDay = value ?? default(int); }
 
         /// <summary>Internal Acessors for ShareUsageByte</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.ShareUsageByte { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).ShareUsageByte; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).ShareUsageByte = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.ShareUsageByte { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).ShareUsageByte; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).ShareUsageByte = value ?? default(long); }
 
         /// <summary>Internal Acessors for SnapshotTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.SnapshotTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).SnapshotTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).SnapshotTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.SnapshotTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).SnapshotTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).SnapshotTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Version</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Version = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItemInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)Property).Version = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__azureEntityResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
