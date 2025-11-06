@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "153" ],
-        "x-ms-client-request-id": [ "5b9f7cc3-de5a-4b12-b7f9-2c85673a8e60" ],
+        "x-ms-client-request-id": [ "3c9a208a-62de-4901-84dd-995a02a7bcca" ],
         "CommandName": [ "Get-AzWvdSessionHostConfiguration" ],
         "FullCommandName": [ "Get-AzWvdSessionHostConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.DesktopVirtualization/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,31 +24,31 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=cb3dc86ef3009805a306b225275fb250ff50218222ae5d8b0f8e3f98108499a4;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=cb3dc86ef3009805a306b225275fb250ff50218222ae5d8b0f8e3f98108499a4;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/77332d0d-cb35-47cb-aa62-3d4b964c5aba" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/195c4f19-064b-4e94-bc53-94bda2d28723" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0Q29uZmlndXJhdGlvbnMvZGVmYXVsdA==" ],
-        "x-ms-lamport-ts": [ "10114354720" ],
-        "x-ms-correlation-id": [ "dad4979a-a45f-446b-8a79-1ef28eaf8d32" ],
-        "x-ms-request-id": [ "5b9f7cc3-de5a-4b12-b7f9-2c85673a8e60" ],
+        "x-ms-lamport-ts": [ "10197655509" ],
+        "x-ms-correlation-id": [ "6cae9ec6-00a3-4197-b26f-43afe719a917" ],
+        "x-ms-request-id": [ "3c9a208a-62de-4901-84dd-995a02a7bcca" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "246" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3746" ],
-        "x-ms-correlation-request-id": [ "71b1c71c-9326-4146-a4b4-d405053b6f5d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20251029T022519Z:71b1c71c-9326-4146-a4b4-d405053b6f5d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "ffaeddf6-22ed-4354-8d68-93714b228051" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251106T071850Z:ffaeddf6-22ed-4354-8d68-93714b228051" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 994DFF7DEA6C4C9D86E49F2761CD44F2 Ref B: SIN221080711023 Ref C: 2025-10-29T02:25:18Z" ],
-        "Date": [ "Wed, 29 Oct 2025 02:25:18 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0D5C811C0843472F826B41C6F4A56DE8 Ref B: JKT201051407060 Ref C: 2025-11-06T07:18:49Z" ],
+        "Date": [ "Thu, 06 Nov 2025 07:18:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1692" ],
+        "Content-Length": [ "1689" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostConfigurations/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations\",\"properties\":{\"version\":\"2025-10-28T17:57:44Z\",\"provisioningState\":\"Succeeded\",\"vmSizeId\":\"Standard_D2ads_v6\",\"vmLocation\":\"westus2\",\"friendlyName\":null,\"vmTags\":{\"cm-resource-parent\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/zhongjie-automated\"},\"vmResourceGroup\":\"zhongjie-rg-wus\",\"vmNamePrefix\":\"auto\",\"availabilityZones\":null,\"networkInfo\":{\"subnetId\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.Network/virtualNetworks/zhongjievirtualnetworkwestus/subnets/default\",\"securityGroupId\":null},\"diskInfo\":{\"managedDisk\":{\"type\":\"StandardSSD_LRS\"},\"diffDiskSettings\":null},\"imageInfo\":{\"type\":\"Marketplace\",\"marketplaceInfo\":{\"offer\":\"windows-11\",\"publisher\":\"microsoftwindowsdesktop\",\"sku\":\"win11-24h2-avd\",\"exactVersion\":\"26100.4652.250705\"},\"customInfo\":null},\"domainInfo\":{\"joinType\":\"AzureActiveDirectory\",\"activeDirectoryInfo\":null,\"azureActiveDirectoryInfo\":{\"mdmProviderGuid\":null}},\"vmAdminCredentials\":{\"usernameKeyVaultSecretUri\":\"https://zhongjie-kv.vault.azure.net/secrets/username\",\"passwordKeyVaultSecretUri\":\"https://zhongjie-kv.vault.azure.net/secrets/password\"},\"bootDiagnosticsInfo\":{\"enabled\":false,\"storageUri\":null},\"securityInfo\":{\"type\":\"TrustedLaunch\",\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"customConfigurationScriptUrl\":null}}",
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostConfigurations/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations\",\"properties\":{\"version\":\"2025-11-06T06:36:13Z\",\"provisioningState\":\"Succeeded\",\"vmSizeId\":\"Standard_D2alds_v6\",\"vmLocation\":\"westus2\",\"friendlyName\":null,\"vmTags\":{\"cm-resource-parent\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/zhongjie-automated\"},\"vmResourceGroup\":\"zhongjie-rg-wus\",\"vmNamePrefix\":\"auto\",\"availabilityZones\":null,\"networkInfo\":{\"subnetId\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.Network/virtualNetworks/zhongjievirtualnetworkwestus/subnets/default\",\"securityGroupId\":null},\"diskInfo\":{\"managedDisk\":{\"type\":\"Standard_LRS\"},\"diffDiskSettings\":null},\"imageInfo\":{\"type\":\"Marketplace\",\"marketplaceInfo\":{\"offer\":\"windows-11\",\"publisher\":\"microsoftwindowsdesktop\",\"sku\":\"win11-24h2-avd\",\"exactVersion\":\"26100.6899.251011\"},\"customInfo\":null},\"domainInfo\":{\"joinType\":\"AzureActiveDirectory\",\"activeDirectoryInfo\":null,\"azureActiveDirectoryInfo\":{\"mdmProviderGuid\":null}},\"vmAdminCredentials\":{\"usernameKeyVaultSecretUri\":\"https://zhongjie-kv.vault.azure.net/secrets/username\",\"passwordKeyVaultSecretUri\":\"https://zhongjie-kv.vault.azure.net/secrets/password\"},\"bootDiagnosticsInfo\":{\"enabled\":true,\"storageUri\":null},\"securityInfo\":{\"type\":\"TrustedLaunch\",\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"customConfigurationScriptUrl\":null}}",
       "isContentBase64": false
     }
   }

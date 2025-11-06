@@ -18,7 +18,7 @@ Describe 'Get-AzWvdSessionHostManagementsUpdateStatus' {
     It 'Get' {
         $sessionHostManagement = Get-AzWvdSessionHostManagementsUpdateStatus -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroupPersistent `
-            -HostPoolName $env.AutomatedHostpoolPersistent 
+            -HostPoolName $env.SHMHostPoolPersistent 
         $sessionHostManagement.Count -gt 0 | Should -Be $true
     }
 }

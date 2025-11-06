@@ -48,6 +48,9 @@ Describe 'New-AzWvdSessionHostConfiguration' {
             $assignment = New-AzRoleAssignment -ObjectId $hostPool.IdentityPrincipalId `
                 -RoleDefinitionName "Key Vault Secrets User" `
                 -Scope $env.KeyVaultPersistentArmPath
+            
+            # Wait for 1 minute to execute the SHC command
+            Start-Sleep -Seconds 60
 
             $configuration = New-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup `
                 -HostPoolName $env.HostPool -ManagedDiskType "Standard_LRS" `

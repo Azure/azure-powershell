@@ -20,13 +20,13 @@ Describe 'Invoke-AzWvdCancelSessionHostProvisioning' {
         # Get SHM first. Use the existed SHM information to test
         $existedSessionHostManagement = Get-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroupPersistent `
-                                -HostPoolName $env.SHPHostPoolPersistent
+                                -HostPoolName $env.SHMHostPoolPersistent
         
         $provisioningInstanceCount = $existedSessionHostManagement.ProvisioningInstanceCount + 1
     }
     
     It 'PostExpanded' {
-             Update-AzWvdSessionHostManagement -ProvisioningInstanceCount $provisioningInstanceCount -ResourceGroup $env.ResourceGroupPersistent -HostPoolName $env.SHPHostPoolPersistent -SubscriptionId $env.subscriptionId
-             Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName $env.SHPHostPoolPersistent -ResourceGroupName $env.ResourceGroupPersistent -SubscriptionId $env.subscriptionId -CancelMessage "Giving up" -NoWait
+             Update-AzWvdSessionHostManagement -ProvisioningInstanceCount $provisioningInstanceCount -ResourceGroup $env.ResourceGroupPersistent -HostPoolName $env.SHMHostPoolPersistent -SubscriptionId $env.subscriptionId
+             Invoke-AzWvdCancelSessionHostProvisioning -HostPoolName $env.SHMHostPoolPersistent -ResourceGroupName $env.ResourceGroupPersistent -SubscriptionId $env.subscriptionId -CancelMessage "Giving up" -NoWait
     }
 }

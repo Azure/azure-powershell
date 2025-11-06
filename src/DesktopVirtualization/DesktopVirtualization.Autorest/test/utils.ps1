@@ -54,22 +54,25 @@ function setupEnv() {
     #---------- Persistent Resources ----------
     # Todo: Remove and combine duplicated/useless parameters. And we should remove the presistent resources as much as we can. In most cases, we only need one automated hostpool with two active session hosts to finish all tests.
     # The following resources are manually created and removed by the operator.
-    $null = $env.Add("ResourceGroupPersistent", "zhongjie-rg-wus")
+    $null = $env.Add("ResourceGroupPersistent", $env.ResourceGroup)
+    # Using this HostPool to run test depending on the existed session host/user sessions, so you need to create a session host manually and connect to the VM manually.
     $null = $env.Add("HostPoolPersistent", "zhongjie-automated")
     $null = $env.Add("AutomatedHostpoolPersistent", "zhongjie-automated")
     $null = $env.Add("SessionHostNamePrefixOfAutomatedHostpoolPersistent", "auto")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "auto-0")
-    $null = $env.Add("SessionHostNameRemove", "auto-1")
     $null = $env.Add("PersistentDesktopAppGroup", "zhongjie-automated-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "zhongjie-automated-RAG")
     $null = $env.Add("VnetName", "zhongjievirtualnetworkwestus")
-    $null = $env.Add("VnetSubnetId", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.Network/virtualNetworks/" + $env.VnetName + "/subnets/default" )
-    $null = $env.Add("SHMHostPoolPersistent", "zhongjie-automated")
-    $null = $env.Add("SHPHostPoolPersistent", "zhongjie-automated")
+    $null = $env.Add("VnetSubnetId", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + $env.VnetName + "/subnets/default" )
+    # Using this HostPool to run the test related to the SHC/SHM/Session Host repovisioning, this doesn't require connect to the VM, but you still might need to create a session host manually in it.
+    $null = $env.Add("SHMHostPoolPersistent", "zhongjie-automated2")
+    $null = $env.Add("SHMSessionHostReprovisioning", "auto2-0")
+    $null = $env.Add("SHMSessionHostNameRemove", "auto2-2")
+    $null = $env.Add("SHMSessionHostNamePrefix", "auto2")
     # Key vault is used in the SHC creating: New-AzWvdSessionHostConfiguration. Todo: Create this Key vault in the SHC creating test process
     $null = $env.Add("KeyVaultPersistentResourceName", "zhongjie-kv")
-    $null = $env.Add("KeyVaultPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent)
+    $null = $env.Add("KeyVaultPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup)
     $null = $env.Add("VMAdminCredentialsPasswordKeyvaultSecretUri", "https://" +$env.KeyVaultPersistentResourceName + ".vault.azure.net/secrets/password")
     $null = $env.Add("VMAdminCredentialsUserNameKeyvaultSecretUri", "https://" +$env.KeyVaultPersistentResourceName + ".vault.azure.net/secrets/username")
     # VM information for SHC
