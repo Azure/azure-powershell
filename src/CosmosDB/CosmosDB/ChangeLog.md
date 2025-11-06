@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for specifying default throughput bucket.
 * Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 2.0.8
