@@ -44,7 +44,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"userStorageKey\": \"EyDK6+OABi0P/wJgbRaL14riU0It1+q81oyyEsPstsS9UuYqCArGVB5k7rFDDaZEACMSWQvhd4Vd+AStMt4vuA==\",\n  \"userStorageArmId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ml-test/providers/Microsoft.Storage/storageAccounts/storageaccount1104ml\",\n  \"appInsightsInstrumentationKey\": \"2f75b298-76a8-4a24-b85d-99337f1857d2\",\n  \"containerRegistryCredentials\": null,\n  \"notebookAccessKeys\": {\n    \"primaryAccessKey\": \"0e0af3d28e3648c9992a7084192c7865477f51b63bdd48a9a0e6be9274364132\",\n    \"secondaryAccessKey\": \"1a8f1945aaf44c6aa39ff7e9e669b7fcceaf9936eb164248afc35d9e423391ae\"\n  }\n}",
+      "Content": "{\n  \"userStorageKey\": \"REDACTED\",\n  \"userStorageArmId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ml-test/providers/Microsoft.Storage/storageAccounts/storageaccount1104ml\",\n  \"appInsightsInstrumentationKey\": \"2f75b298-76a8-4a24-b85d-99337f1857d2\",\n  \"containerRegistryCredentials\": null,\n  \"notebookAccessKeys\": {\n    \"primaryAccessKey\": \"REDACTED\",\n    \"secondaryAccessKey\": \"REDACTED\"\n  }\n}",
       "isContentBase64": false
     }
   }
