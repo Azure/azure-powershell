@@ -19,8 +19,7 @@
 --->
 
 ## Upcoming Release
-* Added support for `RecordType` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` comdlets.
-
+* Added support for `RecordType` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` cmdlets.
 * Removed the None from the accepted value for the property 'Sensitivity'
     - Updated `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride` cmdlet
 
