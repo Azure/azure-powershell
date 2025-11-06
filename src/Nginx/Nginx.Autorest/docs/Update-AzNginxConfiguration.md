@@ -1,54 +1,58 @@
 ---
 external help file:
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxcertificate
+online version: https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxconfiguration
 schema: 2.0.0
 ---
 
-# Remove-AzNginxCertificate
+# Update-AzNginxConfiguration
 
 ## SYNOPSIS
-Deletes a certificate from the NGINX deployment
+Update the NGINX configuration for given NGINX deployment
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
+ [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityNginxDeployment
+### UpdateViaIdentityExpanded
 ```
-Remove-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNginxConfiguration -InputObject <INginxIdentity> [-File <INginxConfigurationFile[]>]
+ [-Location <String>] [-PackageData <String>] [-PackageProtectedFile <String[]>]
+ [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityNginxDeploymentExpanded
+```
+Update-AzNginxConfiguration -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
+ [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a certificate from the NGINX deployment
+Update the NGINX configuration for given NGINX deployment
 
 ## EXAMPLES
 
-### Example 1: Remove a certificate of NGINX deployment by name
+### Example 1: Update the Nginx configuration for given Nginx deployment
 ```powershell
-Remove-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg
+Update-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg -File $confFile -RootFile nginx.conf
 ```
 
-This command removes a certificate of NGINX deployment by name
-
-### Example 2: Remove a certificate of NGINX deployment by object
-```powershell
-Get-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg | Remove-AzNginxCertificate
+```output
+Location Name
+-------- ----
+         default
 ```
 
-This command remove a certificate of NGINX deployment by object
+This command updates the Nginx configuration for given Nginx deployment.
 
 ## PARAMETERS
 
@@ -88,10 +92,25 @@ The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -File
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -103,7 +122,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -113,13 +132,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of certificate
+### -Location
+.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityNginxDeployment
-Aliases: CertificateName
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNginxDeploymentExpanded
+Aliases: ConfigurationName
 
 Required: True
 Position: Named
@@ -133,7 +167,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-Parameter Sets: DeleteViaIdentityNginxDeployment
+Parameter Sets: UpdateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -158,11 +192,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -PackageData
+.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageProtectedFile
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectedFile
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -179,10 +243,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootFile
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,7 +273,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -244,7 +323,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfiguration
 
 ## NOTES
 
