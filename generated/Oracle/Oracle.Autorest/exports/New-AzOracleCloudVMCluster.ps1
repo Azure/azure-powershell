@@ -178,6 +178,12 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
     [System.String]
+    # Exadata Database Storage Vault ID
+    ${ExascaleDbStorageVaultId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
+    [System.String]
     # Oracle Grid Infrastructure (GI) software version
     ${GiVersion},
 

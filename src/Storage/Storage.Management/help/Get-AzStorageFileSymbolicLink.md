@@ -16,21 +16,24 @@ Gets the properties of a symbolic link. Only works in NFS file share.
 ```
 Get-AzStorageFileSymbolicLink [-ShareName] <String> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Share
 ```
 Get-AzStorageFileSymbolicLink [-ShareClient] <ShareClient> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Get-AzStorageFileSymbolicLink [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String>
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +117,7 @@ $link = $shareClient | Get-AzStorageFileSymbolicLink -Path "linkdir/mylink"
 
 This command gets a symbolic link using a ShareClient object obtained from Get-AzStorageShare, demonstrating the pipeline usage with the Share parameter set.
 
-### Example 4: Get symbolic link using ShareDirectoryClient pipeline  
+### Example 4: Get symbolic link using ShareDirectoryClient pipeline
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName "myaccount" -EnableFileBackupRequestIntent
 $dirClient = Get-AzStorageFile -ShareName "nfsshare" -Path "linkdir" -Context $ctx

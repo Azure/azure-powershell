@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.signalr/add-azsignalrnetworkiprule
 schema: 2.0.0
 ---
 
@@ -15,20 +15,20 @@ Add one or more IP rules to the Network ACLs of an Azure SignalR Service instanc
 ### ResourceGroupParameterSet (Default)
 ```
 Add-AzSignalRNetworkIpRule [-ResourceGroupName <String>] [-Name] <String> -IpRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Add-AzSignalRNetworkIpRule -ResourceId <String> -IpRule <PSIpRule[]> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Add-AzSignalRNetworkIpRule -InputObject <PSSignalRResource> -IpRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -121,21 +121,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-Determines how PowerShell handles progress updates for the cmdlet. Specify SilentlyContinue to suppress progress output.
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
