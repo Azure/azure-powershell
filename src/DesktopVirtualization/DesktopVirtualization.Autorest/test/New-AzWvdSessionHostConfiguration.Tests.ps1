@@ -14,14 +14,12 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzWvdSessionHostConfigur
 }
 
 Describe 'New-AzWvdSessionHostConfiguration' {
-    It 'CreateExpanded' {
-        try {
-            
-            $vmTag = @{
-                "cm-resource-parent" = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/" + $env.HostPool
-            }
+    BeforeAll{
+        $vmTag = @{
+            "cm-resource-parent" = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/" + $env.HostPool
+        }
 
-            $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+        $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
                 -Name $env.HostPool `
                 -Location $env.Location `
@@ -38,12 +36,15 @@ Describe 'New-AzWvdSessionHostConfiguration' {
                 -StartVMOnConnect:$false `
                 -ManagementType 'Automated' `
                 -IdentityType 'SystemAssigned'
-            
+
+        # Run this only in the -record mode, as the -playback will not import Az.Resources. 
+        if (-not $env:AzPSAutorestTestPlaybackMode) {
+
             # Assign 'Desktop Virtualization Virtual Machine Contributor' role for this hostpool on the Resource Group level
             $assignment = New-AzRoleAssignment -ObjectId $hostPool.IdentityPrincipalId `
                 -RoleDefinitionName "Desktop Virtualization Virtual Machine Contributor" `
                 -Scope $env.ResourceGroupArmPath
-            
+
             # Assign 'Key Vault Secrets User' role for this hostpool on the Resource Group level
             $assignment = New-AzRoleAssignment -ObjectId $hostPool.IdentityPrincipalId `
                 -RoleDefinitionName "Key Vault Secrets User" `
@@ -51,8 +52,12 @@ Describe 'New-AzWvdSessionHostConfiguration' {
             
             # Wait for 1 minute to execute the SHC command
             Start-Sleep -Seconds 60
+        }
+    }
 
-            $configuration = New-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup `
+
+    It 'CreateExpanded' {
+        $configuration = New-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup `
                 -HostPoolName $env.HostPool -ManagedDiskType "Standard_LRS" `
                 -DomainInfoJoinType "AzureActiveDirectory" -ImageInfoImageType "Marketplace" `
                 -NetworkInfoSubnetId $env.VnetSubnetId `
@@ -68,17 +73,15 @@ Describe 'New-AzWvdSessionHostConfiguration' {
                 -VmResourceGroup $env.ResourceGroup `
                 -VmTag $vmTag
 
-            $configuration = Get-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
+        $configuration = Get-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
-                -HostPoolName $env.HostPool    
-            
-            $configuration.VMNamePrefix | Should -Be "createTest"
-        }
-        finally {
-            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                -HostPoolName $env.HostPool
+        $configuration.VMNamePrefix | Should -Be "createTest"
+    }
+
+    AfterAll{
+        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
                 -Name $env.HostPool
-        }
-
     }
 }
