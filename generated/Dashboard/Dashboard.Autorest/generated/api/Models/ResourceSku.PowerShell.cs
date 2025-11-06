@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PowerShell;
 
+    /// <summary>Represents the SKU of a resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(ResourceSkuTypeConverter))]
     public partial class ResourceSku
     {
@@ -153,6 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             return ToJsonString();
         }
     }
+    /// Represents the SKU of a resource.
     [System.ComponentModel.TypeConverter(typeof(ResourceSkuTypeConverter))]
     public partial interface IResourceSku
 
