@@ -911,6 +911,9 @@ function Test-GetAzureStorageAccountGeoReplicationStats
         Assert-AreEqual $kind $sto.Kind; 
         Assert-NotNull $sto.GeoReplicationStats.Status
         Assert-NotNull $sto.GeoReplicationStats.LastSyncTime
+        Assert-AreEqual "false" $sto.GeoReplicationStats.CanPlannedFailover
+        Assert-AreEqual "Standard_LRS" $sto.GeoReplicationStats.PostFailoverRedundancy
+        Assert-AreEqual "Standard_RAGRS" $sto.GeoReplicationStats.PostPlannedFailoverRedundancy
         
         Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
         }
