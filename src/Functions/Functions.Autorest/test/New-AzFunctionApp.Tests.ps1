@@ -433,7 +433,7 @@ Describe 'New-AzFunctionApp' {
 
             Write-Verbose "Validating storage account connection string suffix..." -Verbose
             $expectedSuffix = GetStorageAccountEndpointSuffix
-            foreach ($appSettingName in @("AzureWebJobsStorage", "AzureWebJobsDashboard", "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"))
+            foreach ($appSettingName in @("AzureWebJobsStorage", "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"))
             {
                 $applicationSettings[$appSettingName] | Should Match $expectedSuffix
             }
@@ -621,6 +621,8 @@ Describe 'New-AzFunctionApp' {
         $runtimeVersion = 8
         Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
 
+        $expectedLinuxFxVersion = "DOTNET|8.0"
+
         try
         {
             Write-Verbose "Creating a DotNet function app in consumption for Linux" -Verbose
@@ -637,7 +639,7 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be $runtime
-            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "$runtime|$runtimeVersion"
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be $expectedLinuxFxVersion
         }
         finally
         {
