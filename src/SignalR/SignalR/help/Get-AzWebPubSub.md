@@ -16,7 +16,7 @@ Get the resource and its properties.
 ```
 Get-AzWebPubSub [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
  [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
  [<CommonParameters>]
 ```
 
@@ -25,14 +25,14 @@ Get-AzWebPubSub [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Brea
 Get-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
  [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ProxyUseDefaultCredentials] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzWebPubSub -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
  [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Get-AzWebPubSub -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Defau
 ```
 Get-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-Break]
  [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
  [<CommonParameters>]
 ```
 
@@ -186,21 +186,6 @@ Parameter Sets: Get
 Aliases: ResourceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -6,21 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Creates a SAP monitor for the specified subscription, resource group, and resource name.
+    /// create a SAP monitor for the specified subscription, resource group, and resource name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzWorkloadsMonitor_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Description(@"Creates a SAP monitor for the specified subscription, resource group, and resource name.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Description(@"create a SAP monitor for the specified subscription, resource group, and resource name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}", ApiVersion = "2023-04-01")]
     public partial class NewAzWorkloadsMonitor_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -36,8 +39,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>SAP monitor info on Azure (ARM properties and SAP monitor properties)</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor _monitorParameterBody = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.Monitor();
+        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor _monitorParameterBody = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Monitor();
 
         /// <summary>
         /// The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring
@@ -63,6 +69,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Monitors Client => Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module.Instance.ClientAPI;
 
@@ -76,6 +85,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _monitorParameterBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -87,18 +103,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>Type of manage identity</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of manage identity")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of manage identity",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType IdentityType { get => _monitorParameterBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType)""); set => _monitorParameterBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -181,7 +185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -223,9 +227,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         ReadOnly = false,
         Description = @"Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.",
         SerializedName = @"routingPreference",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference RoutingPreference { get => _monitorParameterBody.RoutingPreference ?? ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference)""); set => _monitorParameterBody.RoutingPreference = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Default", "RouteAll")]
+        public string RoutingPreference { get => _monitorParameterBody.RoutingPreference ?? null; set => _monitorParameterBody.RoutingPreference = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -241,7 +245,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -254,20 +259,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.ITrackedResourceTags Tag { get => _monitorParameterBody.Tag ?? null /* object */; set => _monitorParameterBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ITrackedResourceTags Tag { get => _monitorParameterBody.Tag ?? null /* object */; set => _monitorParameterBody.Tag = value; }
 
-        /// <summary>User assigned identities dictionary</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User assigned identities dictionary")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"User assigned identities dictionary",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IUserAssignedIdentities UserAssignedIdentity { get => _monitorParameterBody.IdentityUserAssignedIdentity ?? null /* object */; set => _monitorParameterBody.IdentityUserAssignedIdentity = value; }
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created
@@ -288,24 +289,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -416,11 +417,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -432,10 +458,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -445,11 +487,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzWorkloadsMonitor_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzWorkloadsMonitor_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzWorkloadsMonitor_CreateExpanded()
         {
 
+        }
+
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _monitorParameterBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _monitorParameterBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_monitorParameterBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _monitorParameterBody.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _monitorParameterBody.IdentityType = "UserAssigned";
+                }
+            }
         }
 
         /// <summary>Performs execution of the command.</summary>
@@ -511,7 +578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -524,12 +591,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.MonitorsCreate(SubscriptionId, ResourceGroupName, Name, _monitorParameterBody, onOk, onDefault, this, Pipeline);
+                    this.PreProcessManagedIdentityParameters();
+                    await this.Client.MonitorsCreate(SubscriptionId, ResourceGroupName, Name, _monitorParameterBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_monitorParameterBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -567,12 +635,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -589,15 +657,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_monitorParameterBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_monitorParameterBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -607,12 +675,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor> response)
         {
             using( NoSynchronizationContext )
             {
@@ -624,8 +692,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

@@ -39,22 +39,27 @@ namespace Microsoft.Azure.Management.Search
         public SearchManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Updates a Private Endpoint connection to the search service in the given resource group.
+        /// Updates a private endpoint connection to the search service in the given
+        /// resource group.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         /// <param name='properties'>
-        /// Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
+        /// Describes the properties of an existing private endpoint connection to the
+        /// Azure AI Search service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -93,7 +98,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (privateEndpointConnectionName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -296,19 +307,23 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Gets the details of the private endpoint connection to the search service in the given resource group.
+        /// Gets the details of the private endpoint connection to the search service
+        /// in the given resource group.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -347,7 +362,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (privateEndpointConnectionName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -538,19 +559,23 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Disconnects the private endpoint connection and deletes it from the search service.
+        /// Disconnects the private endpoint connection and deletes it from the search
+        /// service.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -589,7 +614,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (privateEndpointConnectionName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -786,10 +817,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -840,7 +873,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             System.Guid? clientRequestId = default(System.Guid?);
             if (searchManagementRequestOptions != null)
             {

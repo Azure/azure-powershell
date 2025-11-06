@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Search.Models
     public enum ResourceType
     {
         /// <summary>
-        /// 'searchServices' is the only resource type whose name can be validated.
+        /// &#39;searchServices&#39; is the only resource type whose name can be validated.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "searchServices")]
         SearchServices

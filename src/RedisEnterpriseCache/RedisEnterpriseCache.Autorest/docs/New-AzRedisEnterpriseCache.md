@@ -464,6 +464,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Whether or not public network traffic can access the Redis cluster.
+Only 'Enabled' or 'Disabled' can be set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PublicNetworkAccess
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RdbPersistenceEnabled
 [Preview] Sets whether RDB persistence is enabled.
 After enabling RDB persistence, you will be unable to disable it.

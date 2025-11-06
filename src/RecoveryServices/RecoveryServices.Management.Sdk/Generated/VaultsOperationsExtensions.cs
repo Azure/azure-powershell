@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         public static Vault Get(this IVaultsOperations operations, string resourceGroupName, string vaultName)
         {
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -157,45 +157,6 @@ namespace Microsoft.Azure.Management.RecoveryServices
             }
         }
         /// <summary>
-        /// Deletes a vault.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        public static VaultsDeleteHeaders Delete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
-        {
-                return ((IVaultsOperations)operations).DeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a vault.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VaultsDeleteHeaders> DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
         /// Updates the vault.
         /// </summary>
         /// <param name='operations'>
@@ -205,7 +166,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -225,7 +186,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -241,6 +202,45 @@ namespace Microsoft.Azure.Management.RecoveryServices
             }
         }
         /// <summary>
+        /// Deletes a vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the Vault
+        /// </param>
+        public static VaultsDeleteHeaders Delete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
+        {
+                return ((IVaultsOperations)operations).DeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VaultsDeleteHeaders> DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Creates or updates a Recovery Services vault.
         /// </summary>
         /// <param name='operations'>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -286,45 +286,6 @@ namespace Microsoft.Azure.Management.RecoveryServices
             }
         }
         /// <summary>
-        /// Deletes a vault.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        public static VaultsDeleteHeaders BeginDelete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
-        {
-                return ((IVaultsOperations)operations).BeginDeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a vault.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VaultsDeleteHeaders> BeginDeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
         /// Updates the vault.
         /// </summary>
         /// <param name='operations'>
@@ -334,7 +295,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -354,7 +315,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -367,6 +328,45 @@ namespace Microsoft.Azure.Management.RecoveryServices
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the Vault
+        /// </param>
+        public static VaultsDeleteHeaders BeginDelete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
+        {
+                return ((IVaultsOperations)operations).BeginDeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VaultsDeleteHeaders> BeginDeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

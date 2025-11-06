@@ -15,15 +15,29 @@ Generate keys for a token of a specified container registry.
 ### GenerateExpanded (Default)
 ```
 New-AzContainerRegistryCredentials -RegistryName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Expiry <DateTime>] [-Name <TokenPasswordName>] [-TokenId <String>]
+ [-SubscriptionId <String>] [-Expiry <DateTime>] [-Name <String>] [-TokenId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded
 ```
 New-AzContainerRegistryCredentials -InputObject <IContainerRegistryIdentity> [-Expiry <DateTime>]
- [-Name <TokenPasswordName>] [-TokenId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Name <String>] [-TokenId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GenerateViaJsonFilePath
+```
+New-AzContainerRegistryCredentials -RegistryName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GenerateViaJsonString
+```
+New-AzContainerRegistryCredentials -RegistryName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +96,7 @@ The expiry date of the generated credentials after which the credentials become 
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -94,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
@@ -108,12 +121,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Generate operation
+
+```yaml
+Type: System.String
+Parameter Sets: GenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Generate operation
+
+```yaml
+Type: System.String
+Parameter Sets: GenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies name of the password which should be regenerated if any -- password1 or password2.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenPasswordName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -143,7 +186,7 @@ The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded
+Parameter Sets: GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: True
@@ -159,7 +202,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded
+Parameter Sets: GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: True
@@ -175,7 +218,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded
+Parameter Sets: GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: False
@@ -190,7 +233,7 @@ The resource ID of the token for which credentials have to be generated.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -240,7 +283,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IGenerateCredentialsResult
 
 ## NOTES
 
