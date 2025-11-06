@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for `RecordType` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` cmdlets.
 * Added property "NvaInterfaceConfiguration" to Network Virtual Appliances, as well as support for them in following cmdlets:
     - `New-AzNetworkVirtualAppliance`
     - `Get-AzNetworkVirtualAppliance`
@@ -26,6 +27,7 @@
     - `New-AzNvaInterfaceConfiguration`  to build individual interface configuration for network virtual appliance.
 * Removed the None from the accepted value for the property 'Sensitivity'
     - Updated `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride` cmdlet
+
 ## Version 7.22.0
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
   - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
