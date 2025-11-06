@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core from 1.45.0 to 1.47.3
+* Supported Storage account planned failover: `Invoke-AzStorageAccountFailover`, `Get-AzStorageAccount`
 
 ## Version 9.3.0
 * Supported Blob Geo Replication SLA on Storage accounts
@@ -31,7 +32,6 @@
     - `Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration`
 
 ## Version 9.2.0
-* Supported Storage account planned failover: `Invoke-AzStorageAccountFailover`, `Get-AzStorageAccount`
 * Supported Zone and ZonePlacementPolicy on Storage accounts: `New-AzStorageAccount`, `Set-AzStorageAccount`
 * Supported listing Storage SKU: `Get-AzStorageSku`
 * Supported enabling SMB Oauth on Storage accounts: `New-AzStorageAccount`, `Set-AzStorageAccount`
