@@ -25,6 +25,12 @@ Start-AzMLWorkspaceCompute -InputObject <IMachineLearningServicesIdentity> [-Def
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StartViaIdentityWorkspace
+```
+Start-AzMLWorkspaceCompute -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Posts a start action to a compute instance
 
@@ -79,7 +85,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -98,7 +103,7 @@ Name of the Azure Machine Learning compute.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, StartViaIdentityWorkspace
 Aliases: ComputeName
 
 Required: True
@@ -166,6 +171,21 @@ Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: StartViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

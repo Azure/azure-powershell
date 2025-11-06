@@ -21,12 +21,13 @@ Create an in-memory object for AmlCompute.
 Create an in-memory object for AmlCompute.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AmlCompute
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AmlCompute
 .Link
 https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceAmlComputeObject
 #>
 function New-AzMLWorkspaceAmlComputeObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AmlCompute')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AmlCompute')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,15 +47,15 @@ function New-AzMLWorkspaceAmlComputeObject {
         [bool]
         $IsolatedNetwork,
         [Parameter(HelpMessage="Compute OS Type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OSType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OSType]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Linux", "Windows")]
+        [string]
         $OSType,
         [Parameter(HelpMessage="A property bag containing additional properties.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAny]
         $PropertyBag,
         [Parameter(HelpMessage="State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RemoteLoginPortPublicAccess])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RemoteLoginPortPublicAccess]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Enabled", "Disabled", "NotSpecified")]
+        [string]
         $RemoteLoginPortPublicAccess,
         [Parameter(HelpMessage="Max number of nodes to use.")]
         [int]
@@ -78,8 +79,8 @@ function New-AzMLWorkspaceAmlComputeObject {
         [string]
         $AdminUserSshPublicKey,
         [Parameter(HelpMessage="Virtual Machine priority.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.VMPriority])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.VMPriority]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Dedicated", "LowPriority")]
+        [string]
         $VMPriority,
         [Parameter(HelpMessage="Virtual Machine Size.")]
         [string]
@@ -90,8 +91,7 @@ function New-AzMLWorkspaceAmlComputeObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AmlCompute]::New()
-        $Object.Type = 'AmlCompute'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AmlCompute]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

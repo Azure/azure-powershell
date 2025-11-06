@@ -19,6 +19,12 @@ Get-AzMLWorkspaceCompute -ResourceGroupName <String> [-SubscriptionId <String[]>
  [-Skip <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceCompute -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzMLWorkspaceCompute -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
@@ -85,7 +91,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -104,7 +109,7 @@ Name of the Azure Machine Learning compute.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityWorkspace, Get
 Aliases: ComputeName
 
 Required: True
@@ -142,6 +147,21 @@ Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -184,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComputeResource
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeResource
 
 ## NOTES
 

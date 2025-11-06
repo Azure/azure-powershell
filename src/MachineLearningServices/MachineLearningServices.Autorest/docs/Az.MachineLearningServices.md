@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MachineLearningServices
-Module Guid: 56293047-9014-4c88-96b7-98b69c3b687d
+Module Guid: c5d46406-00d6-435f-9b1c-adc51065ddf9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.machinelearningservices
 Help Version: 1.0.0.0
 Locale: en-US
@@ -86,7 +86,7 @@ Get container.
 Get version.
 
 ### [Get-AzMLWorkspaceNotebookAccessToken](Get-AzMLWorkspaceNotebookAccessToken.md)
-return notebook access token and refresh token
+Return notebook access token and refresh token
 
 ### [Get-AzMLWorkspaceNotebookKey](Get-AzMLWorkspaceNotebookKey.md)
 List keys of a notebook.
@@ -122,7 +122,7 @@ Diagnose workspace setup issue.
 Prepare a notebook.
 
 ### [New-AzMLWorkspace](New-AzMLWorkspace.md)
-Creates or updates a workspace with the specified parameters.
+Create a workspace with the specified parameters.
 
 ### [New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject.md)
 Create an in-memory object for AadAuthTypeWorkspaceConnectionProperties.
@@ -143,25 +143,25 @@ Create an in-memory object for AmlCompute.
 Create an in-memory object for ApiKeyAuthWorkspaceConnectionProperties.
 
 ### [New-AzMLWorkspaceBatchDeployment](New-AzMLWorkspaceBatchDeployment.md)
-Creates/updates a batch inference deployment (asynchronous).
+Create create a batch inference deployment (asynchronous).
 
 ### [New-AzMLWorkspaceBatchEndpoint](New-AzMLWorkspaceBatchEndpoint.md)
-Creates a batch inference endpoint (asynchronous).
+Create a batch inference endpoint (asynchronous).
 
 ### [New-AzMLWorkspaceCodeVersion](New-AzMLWorkspaceCodeVersion.md)
-Create or update version.
+Create version.
 
 ### [New-AzMLWorkspaceCommandJobObject](New-AzMLWorkspaceCommandJobObject.md)
 Create an in-memory object for CommandJob.
 
 ### [New-AzMLWorkspaceComponentContainer](New-AzMLWorkspaceComponentContainer.md)
-Create or update container.
+Create container.
 
 ### [New-AzMLWorkspaceComponentVersion](New-AzMLWorkspaceComponentVersion.md)
-Create or update version.
+Create version.
 
 ### [New-AzMLWorkspaceCompute](New-AzMLWorkspaceCompute.md)
-Creates or updates compute.
+Create compute.
 This call will overwrite a compute if it exists.
 This is a nonrecoverable operation.
 If your intent is to create a new compute, do a GET first to verify that it does not exist yet.
@@ -188,7 +188,7 @@ Create an in-memory object for CustomModelJobOutput.
 Create an in-memory object for Databricks.
 
 ### [New-AzMLWorkspaceDataContainer](New-AzMLWorkspaceDataContainer.md)
-Create or update container.
+Create container.
 
 ### [New-AzMLWorkspaceDataFactoryObject](New-AzMLWorkspaceDataFactoryObject.md)
 Create an in-memory object for DataFactory.
@@ -200,7 +200,7 @@ Create an in-memory object for DataLakeAnalytics.
 Create an in-memory object for DataPathAssetReference.
 
 ### [New-AzMLWorkspaceDatastore](New-AzMLWorkspaceDatastore.md)
-Create or update datastore.
+Create datastore.
 
 ### [New-AzMLWorkspaceDatastoreBlobObject](New-AzMLWorkspaceDatastoreBlobObject.md)
 Create an in-memory object for AzureBlobDatastore.
@@ -230,10 +230,10 @@ Create an in-memory object for SasDatastoreCredentials.
 Create an in-memory object for ServicePrincipalDatastoreCredentials.
 
 ### [New-AzMLWorkspaceDataVersion](New-AzMLWorkspaceDataVersion.md)
-Create or update version.
+Create version.
 
 ### [New-AzMLWorkspaceEnvironmentVersion](New-AzMLWorkspaceEnvironmentVersion.md)
-Creates or updates an EnvironmentVersion.
+Create an EnvironmentVersion.
 
 ### [New-AzMLWorkspaceHDInsightObject](New-AzMLWorkspaceHDInsightObject.md)
 Create an in-memory object for HDInsight.
@@ -242,7 +242,7 @@ Create an in-memory object for HDInsight.
 Create an in-memory object for IdAssetReference.
 
 ### [New-AzMLWorkspaceJob](New-AzMLWorkspaceJob.md)
-Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.
+Create and execute a Job.For update case, the Tags in the definition passed in will replace Tags in the existing job.
 
 ### [New-AzMLWorkspaceJobServiceObject](New-AzMLWorkspaceJobServiceObject.md)
 Create an in-memory object for JobService.
@@ -269,10 +269,10 @@ Create an in-memory object for MLTableJobInput.
 Create an in-memory object for MLTableJobOutput.
 
 ### [New-AzMLWorkspaceModelContainer](New-AzMLWorkspaceModelContainer.md)
-Create or update container.
+Create container.
 
 ### [New-AzMLWorkspaceModelVersion](New-AzMLWorkspaceModelVersion.md)
-Create or update version.
+Create version.
 
 ### [New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject](New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject.md)
 Create an in-memory object for NoneAuthTypeWorkspaceConnectionProperties.
@@ -281,10 +281,10 @@ Create an in-memory object for NoneAuthTypeWorkspaceConnectionProperties.
 Create an in-memory object for OAuth2AuthTypeWorkspaceConnectionProperties.
 
 ### [New-AzMLWorkspaceOnlineDeployment](New-AzMLWorkspaceOnlineDeployment.md)
-Create or update Inference Endpoint Deployment (asynchronous).
+Create Inference Endpoint Deployment (asynchronous).
 
 ### [New-AzMLWorkspaceOnlineEndpoint](New-AzMLWorkspaceOnlineEndpoint.md)
-Create or update Online Endpoint (asynchronous).
+Create Online Endpoint (asynchronous).
 
 ### [New-AzMLWorkspaceOnlineEndpointKey](New-AzMLWorkspaceOnlineEndpointKey.md)
 Regenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).
@@ -414,7 +414,7 @@ This includes keys for the storage account, app insights and password for contai
 Update quota for each VM family in workspace.
 
 ### [Update-AzMLWorkspace](Update-AzMLWorkspace.md)
-Updates a machine learning workspace with the specified parameters.
+Update a workspace with the specified parameters.
 
 ### [Update-AzMLWorkspaceBatchDeployment](Update-AzMLWorkspaceBatchDeployment.md)
 Update a batch inference deployment (asynchronous).
@@ -422,10 +422,40 @@ Update a batch inference deployment (asynchronous).
 ### [Update-AzMLWorkspaceBatchEndpoint](Update-AzMLWorkspaceBatchEndpoint.md)
 Update a batch inference endpoint (asynchronous).
 
+### [Update-AzMLWorkspaceCodeVersion](Update-AzMLWorkspaceCodeVersion.md)
+Update version.
+
+### [Update-AzMLWorkspaceComponentContainer](Update-AzMLWorkspaceComponentContainer.md)
+Update container.
+
+### [Update-AzMLWorkspaceComponentVersion](Update-AzMLWorkspaceComponentVersion.md)
+Update version.
+
 ### [Update-AzMLWorkspaceCompute](Update-AzMLWorkspaceCompute.md)
-Updates properties of a compute.
+Update properties of a compute.
 This call will overwrite a compute if it exists.
 This is a nonrecoverable operation.
+
+### [Update-AzMLWorkspaceConnection](Update-AzMLWorkspaceConnection.md)
+Creating or updating a new workspace connection
+
+### [Update-AzMLWorkspaceDataContainer](Update-AzMLWorkspaceDataContainer.md)
+Update container.
+
+### [Update-AzMLWorkspaceDataVersion](Update-AzMLWorkspaceDataVersion.md)
+Update version.
+
+### [Update-AzMLWorkspaceEnvironmentVersion](Update-AzMLWorkspaceEnvironmentVersion.md)
+Update an EnvironmentVersion.
+
+### [Update-AzMLWorkspaceJob](Update-AzMLWorkspaceJob.md)
+Update and execute a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.
+
+### [Update-AzMLWorkspaceModelContainer](Update-AzMLWorkspaceModelContainer.md)
+Update container.
+
+### [Update-AzMLWorkspaceModelVersion](Update-AzMLWorkspaceModelVersion.md)
+Update version.
 
 ### [Update-AzMLWorkspaceOnlineDeployment](Update-AzMLWorkspaceOnlineDeployment.md)
 Update Online Deployment (asynchronous).

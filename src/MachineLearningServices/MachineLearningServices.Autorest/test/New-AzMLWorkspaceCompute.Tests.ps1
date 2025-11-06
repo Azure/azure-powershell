@@ -19,7 +19,7 @@ Describe 'New-AzMLWorkspaceCompute' {
     It 'AmlCompute' {
         { 
             $aml = New-AzMLWorkspaceAmlComputeObject -OSType 'Linux' -VMSize "STANDARD_DS3_V2" -ScaleMaxNodeCount 8 -ScaleMinNodeCount 0 -RemoteLoginPortPublicAccess 'NotSpecified' -EnableNodePublicIP $true
-            New-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -Name aml03 -Location eastus -Compute $aml
+            New-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -Name aml03 -Location $env.manualRegion -Compute $aml
             Update-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -Name aml03 -MaxNodeCount 8
             Remove-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -Name aml03 -UnderlyingResourceAction 'Delete'
         } | Should -Not -Throw

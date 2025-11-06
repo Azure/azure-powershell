@@ -16,9 +16,9 @@ Create an in-memory object for Aks.
 New-AzMLWorkspaceAksObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-ResourceId <String>]
  [-AgentCount <Int32>] [-AgentVMSize <String>] [-AkNetworkingDnsServiceIP <String>]
  [-AkNetworkingDockerBridgeCidr <String>] [-AkNetworkingServiceCidr <String>] [-AkNetworkingSubnetId <String>]
- [-ClusterFqdn <String>] [-ClusterPurpose <ClusterPurpose>] [-LoadBalancerSubnet <String>]
- [-LoadBalancerType <LoadBalancerType>] [-SslCert <String>] [-SslCname <String>] [-SslKey <String>]
- [-SslLeafDomainLabel <String>] [-SslOverwriteExistingDomain <Boolean>] [-SslStatus <SslConfigStatus>]
+ [-ClusterFqdn <String>] [-ClusterPurpose <String>] [-LoadBalancerSubnet <String>] [-LoadBalancerType <String>]
+ [-SslCert <String>] [-SslCname <String>] [-SslKey <String>] [-SslLeafDomainLabel <String>]
+ [-SslOverwriteExistingDomain <Boolean>] [-SslStatus <String>]
  [<CommonParameters>]
 ```
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Intended usage of the cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Load Balancer Type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +313,7 @@ Accept wildcard characters: False
 Enable or disable ssl for scoring.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -331,7 +331,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Aks
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks
 
 ## NOTES
 

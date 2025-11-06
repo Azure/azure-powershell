@@ -50,7 +50,8 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
 
-    $env.region = 'eastus'
+    $env.region = 'eastus2'
+    $env.manualRegion = 'eastus'
     $env.DataGroupName = 'ml-test'
     $env.TestGroupName = 'ml-psh-test'
     $env.mainWorkspace = 'mlworkspace-test1'
@@ -58,10 +59,10 @@ function setupEnv() {
     $env.hubWorkspace = 'mlworkspace-testhub1'
     $env.projWorkspace = 'mlworkspace-testproj1'
 
-    $env.ManualStorageAccount = 'mltestaccount02'
+    $env.ManualStorageAccount = 'mltestaccount03'
     # $ManualKeyVaultName = 'mltestkey02'
 
-    $uniquename1 = '0722'
+    $uniquename1 = '1104'
     $KeyVaultName1 = "key"+ $uniquename1 +"ml"
     $StorageAccountName1 = 'storageaccount'+ $uniquename1 +'ml'
     $env.StorageAccountName1 = $StorageAccountName1
@@ -89,25 +90,27 @@ function setupEnv() {
     $env.commandJob02 = 'commandJob02'
     
     # manual step: 1. Create Data Group, key vault and storage account
+    #   New-AzResourceGroup -Location eastus -Name ml-test
     #   $Key1 = New-AzKeyVault -Name mltestkey2 -ResourceGroupName ml-test -Location eastus
-    # Write-Host 'Get key vault' $ManualKeyVaultName 'in' $env.DataGroupName
-    #   $key1 = (Get-AzKeyVault -Name mltestkey2 -ResourceGroupName ml-test).ResourceId       
+    #   $Key1ID = $Key1.ResourceId, $key1ID = (Get-AzKeyVault -Name mltestkey2 -ResourceGroupName ml-test).ResourceId
     
-    #   $StorageAccount = New-AzStorageAccount -SkuName "Standard_LRS" -Kind StorageV2 -ResourceGroupName ml-test -Name mltestaccount02 -Location eastus
-    #   $sa1 = (Get-AzStorageAccount -Name mltestaccount02 -ResourceGroupName ml-test).Id
-    #   $insight = (Get-AzApplicationInsights -Name mlinsight002 -ResourceGroupName ml-test).Id
+    #   $StorageAccount = New-AzStorageAccount -SkuName "Standard_LRS" -Kind StorageV2 -ResourceGroupName ml-test -Name mltestaccount03 -Location eastus
+    #   $StorageAccount.Id, $StorageAccountId = (Get-AzStorageAccount -Name mltestaccount03 -ResourceGroupName ml-test).Id
+    #   $worksspace = New-AzOperationalInsightsWorkspace -ResourceGroupName ml-test -Name la-ml-test -Location eastus
+    #   $insight = New-AzApplicationInsights -ResourceGroupName "ml-test" -Name mlinsight002 -Location eastus -ApplicationType "web" -WorkspaceResourceId $worksspace.ResourceId
+    #   $insight.Id, $insightId = (Get-AzApplicationInsights -Name mlinsight002 -ResourceGroupName ml-test).Id
     Write-Host 'Get test storage account' $env.ManualStorageAccount 'in' $env.DataGroupName
     $storageAccount2 = Get-AzStorageAccount -Name $env.ManualStorageAccount -ResourceGroupName $env.DataGroupName
     # manual step: 2. Create a workspace in data group
-    # New-AzMLWorkspace -ResourceGroupName ml-test -Name mlworkspace-test2 -Location eastus -Kind 'Default' -StorageAccountId $sa1 -KeyVaultId $key1 -ApplicationInsightId $insight -IdentityType 'SystemAssigned'
+    # New-AzMLWorkspace -ResourceGroupName ml-test -Name mlworkspace-test2 -Location eastus -Kind 'Default' -StorageAccountId $StorageAccountId -KeyVaultId $key1ID -ApplicationInsightId $insightId -EnableSystemAssignedIdentity
 
     # manual step: 3. Workspace Storage Container Name, use to store model file
-    $env.storageContainer = 'azureml-blobstore-8fb755b9-c4c8-490a-a83d-a4df8f862d9e'
-    $env.onlinestorageContainer = 'azureml-blobstore-8fb755b9-c4c8-490a-a83d-a4df8f862d9e' #Online can be the same with batch storage
+    $env.storageContainer = 'azureml-blobstore-38f33446-3fc3-4d31-8243-029e4a988f9f'
+    $env.onlinestorageContainer = 'azureml-blobstore-38f33446-3fc3-4d31-8243-029e4a988f9f' #Online can be the same with batch storage
     $env.codestore = 'heart-classifier-mlflow'
     $env.OnlineStore = 'Online'
-    # manual step: 4. Clone azureml example, Upload model and score script batch_driver.py to workspace blob store storage container and select 'Upload to folder' option, folder name 'heart-classifier-mlflow'
-    # It will create data store for model creation. The code is under folder 'ScriptCodeExample'.
+    # manual step: 4. clone azureml example(The code is under folder 'ScriptCodeExample'.) It is used to create data store for model creation.
+    # Upload model and score script batch_driver.py to workspace blob store storage container and select 'Upload to folder' option, folder name 'heart-classifier-mlflow', same as Online.
     # manual step: 5. Create a environment named "openmpi4_1_0-ubuntu22_04" with conda file which under ScriptCodeExample/online folder
 
     # Step 1: Create test group
@@ -126,7 +129,7 @@ function setupEnv() {
         $storageAccount1 = Get-AzStorageAccount -Name $StorageAccountName1 -ResourceGroupName $env.DataGroupName -ErrorAction Stop
         Write-Host 'Get storage account, go ahead'
     } catch {
-        # Must be public newwork access to use
+        # Must be public network access to use
         $storageAccount1 = New-AzStorageAccount -SkuName "Standard_LRS" -Kind StorageV2 -ResourceGroupName $env.DataGroupName -Name $StorageAccountName1 -Location $env.region
     }
 

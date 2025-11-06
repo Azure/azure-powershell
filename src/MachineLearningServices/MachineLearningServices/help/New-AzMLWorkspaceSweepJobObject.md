@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSweepJobObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacesweepjobobject
 schema: 2.0.0
 ---
 
@@ -13,19 +13,20 @@ Create an in-memory object for SweepJob.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceSweepJobObject -ObjectiveGoal <Goal> -ObjectivePrimaryMetric <String>
- -SamplingAlgorithmType <SamplingAlgorithmType> -SearchSpace <IAny> -TrialCommand <String>
- -TrialEnvironmentId <String> [-DistributionType <DistributionType>] [-EarlyTerminationDelayEvaluation <Int32>]
- [-EarlyTerminationEvaluationInterval <Int32>] [-EarlyTerminationPolicyType <EarlyTerminationPolicyType>]
- [-JobInput <ISweepJobInputs>] [-LimitMaxConcurrentTrial <Int32>] [-LimitMaxTotalTrial <Int32>]
- [-LimitTimeout <TimeSpan>] [-LimitTrialTimeout <TimeSpan>] [-JobOutput <ISweepJobOutputs>]
+New-AzMLWorkspaceSweepJobObject -ObjectiveGoal <String> -ObjectivePrimaryMetric <String>
+ -SamplingAlgorithmType <String> -SearchSpace <IAny> -TrialCommand <String> -TrialEnvironmentId <String>
+ [-DistributionType <String>] [-EarlyTerminationDelayEvaluation <Int32>]
+ [-EarlyTerminationEvaluationInterval <Int32>] [-EarlyTerminationPolicyType <String>]
+ [-Input <ISweepJobInputs>] [-LimitJobLimitsType <String>] [-LimitMaxConcurrentTrial <Int32>]
+ [-LimitMaxTotalTrial <Int32>] [-LimitTimeout <TimeSpan>] [-LimitTrialTimeout <TimeSpan>]
+ [-Output <ISweepJobOutputs>] [-QueueSettingJobTier <String>] [-ResourceDockerArg <String>]
  [-ResourceInstanceCount <Int32>] [-ResourceInstanceType <String>]
- [-ResourceProperty <IResourceConfigurationProperties>] [-TrialCodeId <String>]
- [-TrialEnvironmentVariable <ITrialComponentEnvironmentVariables>] [-ComputeId <String>]
- [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>]
- [-IsArchived <Boolean>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
- [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Description <String>]
- [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
+ [-ResourceProperty <IResourceConfigurationProperties>] [-ResourceShmSize <String>] [-TrialCodeId <String>]
+ [-TrialEnvironmentVariable <ITrialComponentEnvironmentVariables>] [-ComponentId <String>]
+ [-ComputeId <String>] [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <String>]
+ [-IsArchived <Boolean>] [-NotificationSettingEmail <String[]>] [-NotificationSettingEmailOn <String[]>]
+ [-NotificationSettingWebhook <INotificationSettingWebhooks>] [-Service <IJobBaseServices>]
+ [-Description <String>] [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
  [<CommonParameters>]
 ```
 
@@ -59,6 +60,21 @@ New-AzMLWorkspaceSweepJobObject
 Create an in-memory object for SweepJob
 
 ## PARAMETERS
+
+### -ComponentId
+ARM resource ID of the component resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ComputeId
 ARM resource ID of the compute resource.
@@ -109,7 +125,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of distribution framework.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +170,7 @@ Accept wildcard characters: False
 [Required] Name of policy configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EarlyTerminationPolicyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +201,22 @@ Accept wildcard characters: False
 [Required] Specifies the type of identity framework.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Input
+Mapping of input data bindings used in the job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISweepJobInputs
 Parameter Sets: (All)
 Aliases:
 
@@ -211,28 +242,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobInput
-Mapping of input data bindings used in the job.
-To construct, see NOTES section for JOBINPUT properties and create a hash table.
+### -LimitJobLimitsType
+[Required] JobLimit type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobInputs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JobOutput
-Mapping of output data bindings used in the job.
-To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobOutputs
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -304,11 +318,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NotificationSettingEmail
+This is the email recipient list which has a limitation of 499 characters in total concat with comma separator.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationSettingEmailOn
+Send email notification to user on specified notification type.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationSettingWebhook
+Send webhook callback to a service.
+Key is a user-provided name for the webhook.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.INotificationSettingWebhooks
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectiveGoal
 [Required] Defines supported metric goals for hyperparameter tuning.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.Goal
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -334,12 +394,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Property
-The asset property dictionary.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
+### -Output
+Mapping of output data bindings used in the job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISweepJobOutputs
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+The asset property dictionary.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QueueSettingJobTier
+Controls the compute job tier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceDockerArg
+Extra arguments to pass to the Docker run command.
+This would override any parameters that have already been set by the system, or in this section.
+This parameter is only supported for Azure ML compute types.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -382,10 +488,25 @@ Accept wildcard characters: False
 
 ### -ResourceProperty
 Additional properties bag.
-To construct, see NOTES section for RESOURCEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceConfigurationProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceShmSize
+Size of the docker container's shared memory block.
+This should be in the format of (number)(unit) where number as to be greater than 0 and the unit can be one of b(bytes), k(kilobytes), m(megabytes), or g(gigabytes).
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -400,7 +521,7 @@ Accept wildcard characters: False
 [Required] The algorithm used for generating hyperparameter values, along with configuration properties.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SamplingAlgorithmType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -427,57 +548,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceEndpoint
-Url for endpoint.
+### -Service
+List of JobEndpoints.
+        For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServicePort
-Port for endpoint.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceProperty
-Additional properties to set on the endpoint.
-To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceType
-Endpoint type.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices
 Parameter Sets: (All)
 Aliases:
 
@@ -491,10 +567,9 @@ Accept wildcard characters: False
 ### -Tag
 Tag dictionary.
 Tags can be added, removed, and updated.
-To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -554,10 +629,9 @@ Accept wildcard characters: False
 
 ### -TrialEnvironmentVariable
 Environment variables included in the job.
-To construct, see NOTES section for TRIALENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ITrialComponentEnvironmentVariables
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ITrialComponentEnvironmentVariables
 Parameter Sets: (All)
 Aliases:
 
@@ -575,7 +649,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SweepJob
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SweepJob
 
 ## NOTES
 

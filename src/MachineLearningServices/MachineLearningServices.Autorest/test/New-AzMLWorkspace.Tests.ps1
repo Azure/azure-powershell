@@ -21,7 +21,7 @@ Describe 'New-AzMLWorkspace' { #Moved
             -ApplicationInsightId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test01/providers/microsoft.insights/components/mlworkspace7563533476" `
             -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test01/providers/microsoft.keyvault/vaults/mlworkspace2798527761" `
             -StorageAccountId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test01/providers/microsoft.storage/storageaccounts/mlworkspace6620575898" `
-            -IdentityType 'SystemAssigned' 
+            -EnableSystemAssignedIdentity 
             Update-AzMLWorkspace -ResourceGroupName ml-rg-test01 -Name mlworkspace -Tag @{'key1' = 'value2'}
             Remove-AzMLWorkspace -ResourceGroupName ml-rg-test01 -Name mlworkspace
         } | Should -Not -Throw

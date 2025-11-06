@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceMLFlowModelJobInputObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacemlflowmodeljobinputobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for MLFlowModelJobInput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceMLFlowModelJobInputObject -Type <JobInputType> -Uri <String> [-Description <String>]
- [-Mode <InputDeliveryMode>] [<CommonParameters>]
+New-AzMLWorkspaceMLFlowModelJobInputObject -Uri <String> [-Description <String>] [-Mode <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,26 +50,11 @@ Accept wildcard characters: False
 Input Asset Delivery Mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-[Required] Specifies the type of job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MlFlowModelJobInput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MlFlowModelJobInput
 
 ## NOTES
 

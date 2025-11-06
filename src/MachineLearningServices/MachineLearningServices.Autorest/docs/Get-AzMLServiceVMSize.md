@@ -94,7 +94,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IVirtualMachineSize
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IVirtualMachineSizeListResult
 
 ## NOTES
 
