@@ -55,57 +55,76 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrycredentials
 #>
 function New-AzContainerRegistryCredentials {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential])]
-  [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.PSContainerRegistryCredential", DeprecatedOutputProperties = ("NetworkRuleSetIPRule, PrivateEndpointConnection, DataEndpointHostName"), NewOutputProperties = ("NetworkRuleSetIPRule, PrivateEndpointConnection, DataEndpointHostName. This parameter will be changed from single object to 'List'."))]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IGenerateCredentialsResult])]
   [CmdletBinding(DefaultParameterSetName='GenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+      [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+      [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
       [System.String]
       # The name of the container registry.
       ${RegistryName},
-  
+
       [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+      [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+      [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
       [System.String]
       # The name of the resource group.
       # The name is case insensitive.
       ${ResourceGroupName},
-  
+
       [Parameter(ParameterSetName='GenerateExpanded')]
+      [Parameter(ParameterSetName='GenerateViaJsonFilePath')]
+      [Parameter(ParameterSetName='GenerateViaJsonString')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
       [System.String]
       # The ID of the target subscription.
       # The value must be an UUID.
       ${SubscriptionId},
-  
+
       [Parameter(ParameterSetName='GenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
       # Identity Parameter
-      # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
       ${InputObject},
-  
-      [Parameter()]
+
+      [Parameter(ParameterSetName='GenerateExpanded')]
+      [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
       [System.DateTime]
       # The expiry date of the generated credentials after which the credentials become invalid.
       ${Expiry},
-  
-      [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenPasswordName])]
+
+      [Parameter(ParameterSetName='GenerateExpanded')]
+      [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+      [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("password1", "password2")]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenPasswordName]
+      [System.String]
       # Specifies name of the password which should be regenerated if any -- password1 or password2.
       ${Name},
-  
-      [Parameter()]
+
+      [Parameter(ParameterSetName='GenerateExpanded')]
+      [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
       [System.String]
       # The resource ID of the token for which credentials have to be generated.
       ${TokenId},
-  
+
+      [Parameter(ParameterSetName='GenerateViaJsonFilePath', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+      [System.String]
+      # Path of Json file supplied to the Generate operation
+      ${JsonFilePath},
+
+      [Parameter(ParameterSetName='GenerateViaJsonString', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+      [System.String]
+      # Json string supplied to the Generate operation
+      ${JsonString},
+
       [Parameter()]
       [Alias('AzureRMContext', 'AzureCredential')]
       [ValidateNotNull()]
@@ -114,52 +133,52 @@ function New-AzContainerRegistryCredentials {
       # The DefaultProfile parameter is not functional.
       # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
       ${DefaultProfile},
-  
+
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Run the command as a job
       ${AsJob},
-  
+
       [Parameter(DontShow)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Wait for .NET debugger to attach
       ${Break},
-  
+
       [Parameter(DontShow)]
       [ValidateNotNull()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be appended to the front of the pipeline
       ${HttpPipelineAppend},
-  
+
       [Parameter(DontShow)]
       [ValidateNotNull()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be prepended to the front of the pipeline
       ${HttpPipelinePrepend},
-  
+
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Run the command asynchronously
       ${NoWait},
-  
+
       [Parameter(DontShow)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [System.Uri]
       # The URI for the proxy server to use
       ${Proxy},
-  
+
       [Parameter(DontShow)]
       [ValidateNotNull()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [System.Management.Automation.PSCredential]
       # Credentials for a proxy server to use for the remote call
       ${ProxyCredential},
-  
+
       [Parameter(DontShow)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
@@ -169,7 +188,7 @@ function New-AzContainerRegistryCredentials {
 
   process {
     $Credential = Az.ContainerRegistry.internal\New-AzContainerRegistryCredentials @PSBoundParameters
-    $Result = New-Object Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential($Credential)
+    $Result = New-Object Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.PSContainerRegistryCredential($Credential)
     return $Result
   }
 }

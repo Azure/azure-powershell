@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List TagRule resources by NewRelicMonitorResource</summary>
+    /// <summary>
+    /// Lists all tag rules associated with a specific New Relic monitor resource, helping you manage and audit the rules that
+    /// control resource monitoring
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] ListByNewRelicMonitorResource=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/tagRules"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicMonitorTagRule_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"List TagRule resources by NewRelicMonitorResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Lists all tag rules associated with a specific New Relic monitor resource, helping you manage and audit the rules that control resource monitoring")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/tagRules", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/tagRules", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzNewRelicMonitorTagRule_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

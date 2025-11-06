@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Supported Storage account planned failover: `Invoke-AzStorageAccountFailover`, `Get-AzStorageAccount`
+
+## Version 9.3.0
 * Supported Blob Geo Replication SLA on Storage accounts
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

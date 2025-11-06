@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.10.0'
+ModuleVersion = '2.10.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -135,11 +135,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed bugs in ''New-AzMigrateLocalDiskMappingObject'': Only validate for non-512 physical sector size of VHD when ''-PhysicalSectorSize'' parameter is given
-* Fixed bugs in ''New-AzMigrateLocalServerReplication'': Only validate for non-512 physical sector size of VHD when ''-PhysicalSectorSize'' parameter is given. Removed reserved words validation for source disk names as it is no longer required. Added ARM id validation for input parameters
-* Fixed bugs in ''Set-AzMigrateLocalServerReplication'': Added ARM id validation for input parameters
-* Fixed bugs in ''Get-AzMigrateLocalServerReplication'': Added ARM id validation for input parameters
-* Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.'
+        ReleaseNotes = '* Fixed bugs in ''Initialize-AzMigrateLocalReplicationInfrastructure''
+  - Correct AMH solution tool name of ''ServerMigration_DataReplication'' is now being passed in to address replication count missing and UX experience load issues in Azure Migrate on Azure portal.
+* Address Join-Path compatibility issue in older version of PowerShell environment such as PowerShell 5.1 in the following commands
+ - ''Initialize-AzMigrateLocalReplicationInfrastructure''
+ - ''Initialize-AzMigrateReplicationInfrastructure''
+ - ''New-AzMigrateLocalServerReplication''
+ - ''Get-AzMigrateLocalServerReplication''
+ - ''Set-AzMigrateLocalServerReplication''
+ - ''Start-AzMigrateLocalServerMigration'''
 
         # Prerelease string of this module
         # Prerelease = ''
