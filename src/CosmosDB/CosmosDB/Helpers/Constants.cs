@@ -127,6 +127,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SpatialPathHelpMessage = "Path in JSON document to index.";
         public const string VectorIndexPathHelpMessage = "The path to the vector field in the document.";
         public const string VectorIndexTypeHelpMessage = "The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.";
+        public const string VectorIndexQuantizationByteSizeHelpMessage = "The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.";
+        public const string VectorIndexIndexingSearchListSizeHelpMessage = "This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.";
+        public const string VectorIndexShardKeyHelpMessage = "Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.";
         public const string SortOrderHelpMessage = "The sort order of the CompositeIndex";
         public const string PathHelpMessage = "String value of the path";
         public const string PartitionKeyVersionHelpMessage = "The version of the partition key definition";
