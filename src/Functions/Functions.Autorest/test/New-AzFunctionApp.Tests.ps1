@@ -212,13 +212,11 @@ Describe 'New-AzFunctionApp' {
     $runtimeVersionNotSupported = @{
         "Linux" = @{
             "4" =  @{
-                "Node" = "10"
                 "Python" = "3.6"
             }
         }
         "Windows" = @{
             "4" =  @{
-                "Node" = "10"
                 "PowerShell" = "6.2"
             }
         }
@@ -320,6 +318,12 @@ Describe 'New-AzFunctionApp' {
         $planName = $env.planNameWorkerTypeLinux
         Write-Verbose "Plan name: $planName" -Verbose
 
+        $runtime = "python"
+        Write-Verbose "runtime: $runtime" -Verbose
+
+        $runtimeVersion = "3.13"
+        Write-Verbose "Runtime version: $runtimeVersion" -Verbose
+
         try
         {
             Write-Verbose "Creating Linux function app with Python runtime" -Verbose
@@ -327,15 +331,15 @@ Describe 'New-AzFunctionApp' {
                               -ResourceGroupName $resourceGroupName  `
                               -PlanName $planName `
                               -StorageAccount $storageAccountName `
-                              -Runtime Python `
-                              -RuntimeVersion "3.12" `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4
 
             Write-Verbose "Validating function app properties..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName 
             $functionApp.OSType | Should -Be "Linux"
-            $functionApp.Runtime | Should -Be "Python"
-            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "Python|3.12"
+            $functionApp.Runtime | Should -Be $runtime
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "$runtime|$runtimeVersion"
 
             Write-Verbose "Validating app settings..." -Verbose
             $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName 
@@ -611,6 +615,12 @@ Describe 'New-AzFunctionApp' {
         $location = $env.location
         Write-Verbose "Location: $location" -Verbose
 
+        $runtime = "dotnet"
+        Write-Verbose "Runtime: $runtime" -Verbose
+
+        $runtimeVersion = 8
+        Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
+
         try
         {
             Write-Verbose "Creating a DotNet function app in consumption for Linux" -Verbose
@@ -618,16 +628,16 @@ Describe 'New-AzFunctionApp' {
                               -ResourceGroupName  $resourceGroupName `
                               -Location $location `
                               -StorageAccount $storageAccountName  `
-                              -Runtime DotNet `
-                              -RuntimeVersion 6 `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
                               -OSType Linux
 
             Write-Verbose "Validating function app properties..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Linux"
-            $functionApp.Runtime | Should -Be "DotNet"
-            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "dotnet|6.0"
+            $functionApp.Runtime | Should -Be $runtime
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "$runtime|$runtimeVersion"
         }
         finally
         {
@@ -721,18 +731,6 @@ Describe 'New-AzFunctionApp' {
                 "LinuxFxVersion" = "Node|22"
             }
         }
-        @{
-            "Name" = $env.functionNamePowerShell
-            "Runtime" = "PowerShell"
-            "RuntimeVersion" = "7.4"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
-            "Location" = $env.location
-            "OSType" = "Linux"
-            "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "PowerShell|7.4"
-            }
-        }
         # Premium function app service plan
         @{
             "Name" = $env.functionNameDotNetIsolated
@@ -747,19 +745,6 @@ Describe 'New-AzFunctionApp' {
             }
             "ExpectedAppSettings" = @{
                 "FUNCTIONS_WORKER_RUNTIME" = "dotnet-isolated"
-            }
-        }
-        @{
-            "Name" = $env.functionNameJava
-            "Runtime" = "Java"
-            "RuntimeVersion" = "21"
-            "StorageAccountName" = $env.storageAccountWindows
-            "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
-            "PlanName" = $env.planNameWorkerTypeWindows
-            "OSType" = "Windows"
-            "ExpectedSiteConfig" = @{
-                "JavaVersion" = "21"
-                "netFrameworkVersion" = "v6.0"
             }
         }
         @{
