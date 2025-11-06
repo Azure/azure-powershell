@@ -1859,6 +1859,7 @@ function GetFunctionAppStackDefinition
 
     $apiEndPoint = $null
     $params = @{}
+    $apiVersion = '2020-10-01'
 
     if ($StackType -eq "PremiumAndConsumption")
     {
@@ -1866,16 +1867,24 @@ function GetFunctionAppStackDefinition
             stackOsType = 'All'
             removeDeprecatedStacks = 'true'
         }
-        $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/functionAppStacks?api-version=2020-10-01"
+
+        $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/functionAppStacks?api-version={0}" -f $apiVersion
     }
     elseif ($StackType -eq "FlexConsumption")
     {
-        $ApiVersion = '2020-10-01'
         $removeDeprecatedStacks = $true
         $removeHiddenStacks = $true
-        $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/locations/{0}/functionAppStacks?api-version={1}&removeHiddenStacks={2}&removeDeprecatedStacks={3}&stack={4}" -f `
-                                             $Location, $ApiVersion, $removeHiddenStacks.ToString().ToLower(), $removeDeprecatedStacks.ToString().ToLower(), $Runtime.ToString().ToLower()
+
+        $apiEndPoint = $resourceManagerUrl +
+            "providers/Microsoft.Web/locations/{0}/functionAppStacks?api-version={1}&removeHiddenStacks={2}&removeDeprecatedStacks={3}&stack={4}&sku=FC1" -f `
+            $Location,
+            $apiVersion,
+            $removeHiddenStacks.ToString().ToLower(),
+            $removeDeprecatedStacks.ToString().ToLower(),
+            $Runtime.ToString().ToLower()
     }
+
+    Write-Debug "$DEBUG_PREFIX Target API endpoint: $apiEndPoint"
 
     $maxNumberOfTries = 3
     $currentCount = 1
@@ -3130,7 +3139,8 @@ function ValidateMaximumInstanceCount
     $max = [int]$SkuMaximumInstanceCount.highestMaximumInstanceCount
     $default = [int]$SkuMaximumInstanceCount.defaultValue
 
-    if ($MaximumInstanceCount -gt 0) {
+    if ($MaximumInstanceCount -gt 0)
+    {
         # Validate range
         if ($MaximumInstanceCount -lt $min -or $MaximumInstanceCount -gt $max) {
             $errorMessage = "Invalid MaximumInstanceCount '{0}'. Allowed range for this runtime is {1} - {2}. " +
@@ -3149,4 +3159,115 @@ function ValidateMaximumInstanceCount
     }
 
     return $MaximumInstanceCount
+}
+
+function Test-FlexConsumptionLocation {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Location,
+
+        [Parameter(Mandatory = $false)]
+        [System.Management.Automation.SwitchParameter]
+        $ZoneRedundant,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    $paramsToRemove = @(
+        "Location"
+        "ZoneRedundant"
+    )
+    foreach ($paramName in $paramsToRemove)
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    # Validate Flex Consumption location
+    $formattedLocation = Format-FlexConsumptionLocation -Location $Location
+    $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant @PSBoundParameters
+
+    $found = $false
+    foreach ($region in $flexConsumptionRegions)
+    {
+        $regionName = Format-FlexConsumptionLocation -Location $region.Name
+
+        if ($region.Name -eq $FlexConsumptionLocation)
+        {
+            $found = $true
+            break
+        }
+        elseif ($regionName -eq $formattedLocation)
+        {
+            $found = $true
+            break
+        }
+    }
+
+    return $found
+}
+
+function Validate-FlexConsumptionLocation
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Location,
+
+        [Parameter(Mandatory = $false)]
+        [System.Management.Automation.SwitchParameter]
+        $ZoneRedundant,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    $paramsToRemove = @(
+        "Location"
+        "ZoneRedundant"
+    )
+    foreach ($paramName in $paramsToRemove)
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant @PSBoundParameters
+
+    if (-not $isRegionSupported)
+    {
+        $errorMessage = $null
+        $errorId = $null
+        if ($ZoneRedundant.IsPresent)
+        {
+            $errorMessage = "The specified location '$Location' doesn't support zone redundancy in Flex Consumption. "
+            $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant' for the list of supported locations."
+            $errorId = "RegionNotSupportedForZoneRedundancyInFlexConsumption"
+        }
+        else
+        {
+            $errorMessage = "The specified location '$Location' doesn't support Flex Consumption. "
+            $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption' for the list of supported locations."
+            $errorId = "RegionNotSupportedForFlexConsumption"
+        }
+
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId $errorId `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
 }

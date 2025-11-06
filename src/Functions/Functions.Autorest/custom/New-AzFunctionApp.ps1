@@ -619,54 +619,32 @@ Example:
                 $functionAppDef.IsXenon = $null
                 $appSettings.Clear()
 
+                # # Validate Flex Consumption location
+                # $formattedLocation = Format-FlexConsumptionLocation -Location $FlexConsumptionLocation
+                # $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption `
+                #                                                             -ZoneRedundant:$EnableZoneRedundancy `
+                #                                                             @params
+
+                # $found = $false
+                # foreach ($region in $flexConsumptionRegions)
+                # {
+                #     $regionName = Format-FlexConsumptionLocation -Location $region.Name
+
+                #     if ($region.Name -eq $FlexConsumptionLocation)
+                #     {
+                #         $found = $true
+                #         break
+                #     }
+                #     elseif ($regionName -eq $formattedLocation)
+                #     {
+                #         $found = $true
+                #         break
+                #     }
+                # }
+
                 # Validate Flex Consumption location
-                $formattedLocation = Format-FlexConsumptionLocation -Location $FlexConsumptionLocation
-                $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption `
-                                                                            -ZoneRedundant:$EnableZoneRedundancy `
-                                                                            @params
-
-                $found = $false
-                foreach ($region in $flexConsumptionRegions)
-                {
-                    $regionName = Format-FlexConsumptionLocation -Location $region.Name
-
-                    if ($region.Name -eq $FlexConsumptionLocation)
-                    {
-                        $found = $true
-                        break
-                    }
-                    elseif ($regionName -eq $formattedLocation)
-                    {
-                        $found = $true
-                        break
-                    }
-                }
-
-                if (-not $found)
-                {
-                    $errorMessage = $null
-                    $errorId = $null
-                    if ($EnableZoneRedundancy.IsPresent)
-                    {
-                        $errorMessage = "The specified location '$FlexConsumptionLocation' doesn't support zone redundancy in Flex Consumption. "
-                        $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant' for the list of supported locations."
-                        $errorId = "RegionNotSupportedForZoneRedundancyInFlexConsumption"
-                    }
-                    else
-                    {
-                        $errorMessage = "The specified location '$FlexConsumptionLocation' doesn't support Flex Consumption. "
-                        $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption' for the list of supported locations."
-                        $errorId = "RegionNotSupportedForFlexConsumption"
-                    }
-
-                    $exception = [System.InvalidOperationException]::New($errorMessage)
-                    ThrowTerminatingError -ErrorId $errorId `
-                                        -ErrorMessage $errorMessage `
-                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                        -Exception $exception
-                }
-
-                $FlexConsumptionLocation = $formattedLocation
+                Validate-FlexConsumptionLocation -Location $FlexConsumptionLocation ZoneRedundant:$EnableZoneRedundancy @params
+                $FlexConsumptionLocation = Format-FlexConsumptionLocation -Location $FlexConsumptionLocation
 
                 # Validate runtime and runtime version
                 $runtimeInfo = $null
@@ -1065,14 +1043,14 @@ Example:
                 {
                     # Reset the ErrorActionPreference
                     $ErrorActionPreference = $currentErrorActionPreference
+                }
 
-                    if (-not $exceptionThrown)
+                if (-not $exceptionThrown)
+                {
+                    if ($consumptionPlan -and $OSIsLinux)
                     {
-                        if ($consumptionPlan -and $OSIsLinux)
-                        {
-                            $message = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
-                            Write-Verbose $message -Verbose
-                        }
+                        $message = "Your Linux function app '$Name', that uses a consumption plan has been successfully created but is not active until content is published using Azure Portal or the Functions Core Tools."
+                        Write-Verbose $message -Verbose
                     }
                 }
             }
@@ -1084,7 +1062,7 @@ Example:
             {
                 if ($flexConsumptionPlanCreated)
                 {
-                    Remove-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName -Name $planName @params
+                    Remove-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName -Name $planName @params -Force
                 }
                 if ($flexConsumptionStorageContainerCreated)
                 {
@@ -1094,8 +1072,7 @@ Example:
                 if ($appInsightCreated -and ($null -ne $newAppInsightsProject))
                 {
                     $ApplicationInsightsName = $newAppInsightsProject.Name
-                    Remove-AzApplicationInsights -ResourceGroupName $ResourceGroupName -Name $ApplicationInsightsName @params
-                    #Az.Functions.internal\Remove-AzAppInsights
+                    Az.Functions.internal\Remove-AzAppInsights -ResourceGroupName $ResourceGroupName -ResourceName $ApplicationInsightsName @params
                 }
             }
         }

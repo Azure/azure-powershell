@@ -32,6 +32,9 @@ function Get-AzFunctionAppFlexConsumptionRuntime {
 
         RegisterFunctionsTabCompleters
 
+        # Validate Flex Consumption location
+        Validate-FlexConsumptionLocation -Location $Location
+
         switch ($PSCmdlet.ParameterSetName) {
             'AllRuntimes' {
                 # Return all runtimes
