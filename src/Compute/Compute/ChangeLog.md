@@ -22,6 +22,8 @@
 ## Upcoming Release
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Updated Azure.Core from 1.45.0 to 1.47.3
+* Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Bool) to `New-AzVmGalleryApplication` and `New-AzVmssGalleryApplication` cmdlets.
+* Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Switch) to `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication` cmdlets.
 
 ## Version 10.5.0
 * Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
