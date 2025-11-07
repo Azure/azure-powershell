@@ -1,8 +1,8 @@
 {
-  "Get-AzDevCenterUserEnvironmentAction+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentAction+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentAction+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentAction+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentAction+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentAction+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
