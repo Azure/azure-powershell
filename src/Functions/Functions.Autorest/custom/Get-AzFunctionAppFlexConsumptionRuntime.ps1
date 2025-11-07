@@ -13,7 +13,7 @@ function Get-AzFunctionAppFlexConsumptionRuntime {
         [Parameter(ParameterSetName='ByVersion', Mandatory=$true, HelpMessage='The Flex Consumption function app runtime.')]
         [Parameter(ParameterSetName='AllVersions', Mandatory=$true)]
         [Parameter(ParameterSetName='DefaultOrLatest', Mandatory=$true)]
-        [ValidateSet("DotNet-Isolated", "Node", "Java", "Python", "PowerShell", "Custom")]
+        [ValidateSet("DotNet-Isolated", "Node", "Java", "PowerShell", "Python", "Custom")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${Runtime},
@@ -38,7 +38,7 @@ function Get-AzFunctionAppFlexConsumptionRuntime {
         switch ($PSCmdlet.ParameterSetName) {
             'AllRuntimes' {
                 # Return all runtimes
-                foreach ($runtimeName in @("DotNet-Isolated", "Node", "Java", "Python", "PowerShell", "Custom"))
+                foreach ($runtimeName in @("DotNet-Isolated", "Node", "Java", "PowerShell", "Python", "Custom"))
                 {
                     Get-FlexFunctionAppRuntime -Location $Location -Runtime $runtimeName
                 }
