@@ -38,6 +38,7 @@ function setupEnv() {
     # This is requried to support playback mode (given that we need to have the same values in teh payload for each function app creation)
     # Currently this flag is used to have a constant share name when creation an app
     $env:FunctionsTestMode = $true
+    $env:FunctionsUseFlexStackTestData = $true
 
     <#
     $localEnvFilePath = Join-Path $PSScriptRoot 'localEnv.json'
@@ -181,8 +182,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "DotNet"
-            RuntimeVersion = 6
-            Name = "Functions-DotNet-6-" + (RandomString -len 6)
+            RuntimeVersion = 8
+            Name = "Functions-DotNet-8-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -191,8 +192,8 @@ function setupEnv() {
             Location = $location
             OSType = "Linux"
             Runtime = "Python"
-            RuntimeVersion = "3.10"
-            Name = "Functions-Python-310-" + (RandomString -len 6)
+            RuntimeVersion = "3.12"
+            Name = "Functions-Python-312-" + (RandomString -len 6)
             FunctionsVersion = 4
         }
     )
@@ -269,6 +270,7 @@ function setupEnv() {
 function cleanupEnv() {
 
     $env:FunctionsTestMode = $null
+    $env:FunctionsUseFlexStackTestData = $null
 
     # Clean test resources
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsPremium
@@ -276,4 +278,3 @@ function cleanupEnv() {
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsConsumption
     Remove-AzResourceGroup -Name $env.resourceGroupNameLinuxConsumption
 }
-
