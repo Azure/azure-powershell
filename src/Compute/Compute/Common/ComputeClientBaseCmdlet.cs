@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Send the invoked PowerShell command (ps_script) and subscription id to a remote endpoint without executing the real operation.")]
         public SwitchParameter DryRun { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "When used together with -DryRun, exports generated Bicep template to the specified file or directory path.")]
-        public string ExportTemplateToPath { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "When used together with -DryRun, export generated Bicep templates to the user's .azure directory.")]
+        public SwitchParameter ExportBicep { get; set; }
 
         public ComputeClient ComputeClient
         {
@@ -93,12 +93,12 @@ namespace Microsoft.Azure.Commands.Compute
         {
             StartTime = DateTime.Now;
 
-            // Validate ExportTemplateToPath usage
-            if (MyInvocation?.BoundParameters?.ContainsKey("ExportTemplateToPath") == true && !DryRun.IsPresent)
+            // Validate ExportBicep usage
+            if (ExportBicep.IsPresent && !DryRun.IsPresent)
             {
                 ThrowTerminatingError(new ErrorRecord(
-                    new ArgumentException("-ExportTemplateToPath must be used together with -DryRun"),
-                    "ExportTemplateRequiresDryRun",
+                    new ArgumentException("-ExportBicep must be used together with -DryRun"),
+                    "ExportBicepRequiresDryRun",
                     ErrorCategory.InvalidArgument,
                     null));
             }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute
                     : prePsInvocationScript + "\n" + invocationLine;
                 string subscriptionId = this.DefaultContext?.Subscription?.Id ?? DefaultProfile.DefaultContext?.Subscription?.Id ?? string.Empty;
 
-                bool exportBicep = MyInvocation?.BoundParameters?.ContainsKey("ExportTemplateToPath") == true;
+                bool exportBicep = ExportBicep.IsPresent;
 
                 var payload = new
                 {
@@ -166,54 +166,97 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 catch { /* ignore parse errors */ }
 
-                // If export requested, attempt to extract and persist bicep template
+                // If export requested, attempt to extract and persist bicep templates
                 if (exportBicep && resultToken != null)
                 {
-                    var bicepContent = resultToken.SelectToken("bicep_template.main_template")?.Value<string>();
-                    if (!string.IsNullOrWhiteSpace(bicepContent))
+                    var bicepRoot = resultToken.SelectToken("bicep_template");
+                    var mainTemplateContent = bicepRoot?.SelectToken("main_template")?.Value<string>();
+                    var moduleTemplatesToken = bicepRoot?.SelectToken("module_templates");
+
+                    if (!string.IsNullOrWhiteSpace(mainTemplateContent) || moduleTemplatesToken != null)
                     {
                         try
                         {
-                            string targetPathInput = ExportTemplateToPath;
-                            string resolvedPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(targetPathInput);
-                            string filePath;
-                            if (System.IO.Directory.Exists(resolvedPath) || resolvedPath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()) || resolvedPath.EndsWith("/"))
+                            // Base directory: ~/.azure/bicep
+                            string baseDir = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "bicep");
+                            if (!System.IO.Directory.Exists(baseDir))
                             {
-                                // Treat as directory
-                                if (!System.IO.Directory.Exists(resolvedPath))
-                                {
-                                    System.IO.Directory.CreateDirectory(resolvedPath);
-                                }
-                                filePath = System.IO.Path.Combine(resolvedPath, "export.bicep");
+                                System.IO.Directory.CreateDirectory(baseDir);
                             }
-                            else
+
+                            // Create a subfolder per command for organization (optional)
+                            string commandName = (this.MyInvocation?.InvocationName ?? "az_compute").ToLower().Replace('-', '_');
+                            string commandDir = System.IO.Path.Combine(baseDir, commandName);
+                            if (!System.IO.Directory.Exists(commandDir))
                             {
-                                // Treat as file path
-                                string dir = System.IO.Path.GetDirectoryName(resolvedPath);
-                                if (!string.IsNullOrWhiteSpace(dir) && !System.IO.Directory.Exists(dir))
+                                System.IO.Directory.CreateDirectory(commandDir);
+                            }
+
+                            string timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+                            var savedPaths = new List<string>();
+
+                            if (!string.IsNullOrWhiteSpace(mainTemplateContent))
+                            {
+                                string mainFileName = $"{commandName}_main_{timestamp}.bicep";
+                                string mainPath = System.IO.Path.Combine(commandDir, mainFileName);
+                                System.IO.File.WriteAllText(mainPath, mainTemplateContent, Encoding.UTF8);
+                                savedPaths.Add(mainPath);
+                            }
+
+                            if (moduleTemplatesToken != null)
+                            {
+                                // Handle object or array forms
+                                if (moduleTemplatesToken.Type == JTokenType.Object)
                                 {
-                                    System.IO.Directory.CreateDirectory(dir);
+                                    int index = 1;
+                                    foreach (var prop in ((JObject)moduleTemplatesToken).Properties())
+                                    {
+                                        string content = prop.Value.Value<string>();
+                                        if (string.IsNullOrWhiteSpace(content)) continue;
+                                        string moduleFileName = $"{commandName}_module{(index == 1 ? string.Empty : index.ToString())}_{timestamp}.bicep";
+                                        string modulePath = System.IO.Path.Combine(commandDir, moduleFileName);
+                                        System.IO.File.WriteAllText(modulePath, content, Encoding.UTF8);
+                                        savedPaths.Add(modulePath);
+                                        index++;
+                                    }
                                 }
-                                filePath = resolvedPath;
-                                // Ensure extension
-                                if (System.IO.Path.GetExtension(filePath).Equals(string.Empty, StringComparison.OrdinalIgnoreCase))
+                                else if (moduleTemplatesToken.Type == JTokenType.Array)
                                 {
-                                    filePath += ".bicep";
+                                    int index = 1;
+                                    foreach (var item in (JArray)moduleTemplatesToken)
+                                    {
+                                        string content = item?.Value<string>();
+                                        if (string.IsNullOrWhiteSpace(content)) continue;
+                                        string moduleFileName = $"{commandName}_module{(index == 1 ? string.Empty : index.ToString())}_{timestamp}.bicep";
+                                        string modulePath = System.IO.Path.Combine(commandDir, moduleFileName);
+                                        System.IO.File.WriteAllText(modulePath, content, Encoding.UTF8);
+                                        savedPaths.Add(modulePath);
+                                        index++;
+                                    }
                                 }
                             }
 
-                            System.IO.File.WriteAllText(filePath, bicepContent, Encoding.UTF8);
-                            WriteVerbose($"Bicep template exported to: {filePath}");
-                            WriteInformation($"Bicep template exported to: {filePath}", new string[] { "PSHOST" });
+                            if (savedPaths.Count > 0)
+                            {
+                                WriteInformation("Bicep templates saved to:", new[] { "PSHOST" });
+                                foreach (var p in savedPaths)
+                                {
+                                    WriteInformation(p, new[] { "PSHOST" });
+                                }
+                            }
+                            else
+                            {
+                                WriteWarning("No Bicep templates were exported (empty content).");
+                            }
                         }
                         catch (Exception ex)
                         {
-                            WriteWarning($"Failed to write Bicep template: {ex.Message}");
+                            WriteWarning($"Failed to export Bicep templates: {ex.Message}");
                         }
                     }
                     else
                     {
-                        WriteWarning("bicep_template.main_template not found in DryRun response");
+                        WriteWarning("No bicep_template content found in DryRun response");
                     }
                 }
 
