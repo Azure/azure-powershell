@@ -6,20 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Updates a task with the specified parameters.</summary>
+    /// <summary>update a task for a container registry with the specified parameters.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerRegistryTask_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Updates a task with the specified parameters.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"update a task for a container registry with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks/{taskName}", ApiVersion = "2019-06-01-preview")]
     public partial class UpdateAzContainerRegistryTask_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +38,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>The parameters for updating a task.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskUpdateParameters _taskUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.TaskUpdateParameters();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// The task that has the ARM resource and task properties.
+        /// The task will have all information to schedule a run against it.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask _taskCreateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Task();
 
         /// <summary>The CPU configuration in terms of number of cores required for the run.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The CPU configuration in terms of number of cores required for the run.")]
@@ -47,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The CPU configuration in terms of number of cores required for the run.",
         SerializedName = @"cpu",
         PossibleTypes = new [] { typeof(int) })]
-        public int AgentConfigurationCpu { get => _taskUpdateParametersBody.AgentConfigurationCpu ?? default(int); set => _taskUpdateParametersBody.AgentConfigurationCpu = value; }
+        public int AgentConfigurationCpu { get => _taskCreateParametersBody.AgentConfigurationCpu ?? default(int); set => _taskCreateParametersBody.AgentConfigurationCpu = value; }
 
         /// <summary>The dedicated agent pool for the task.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The dedicated agent pool for the task.")]
@@ -58,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The dedicated agent pool for the task.",
         SerializedName = @"agentPoolName",
         PossibleTypes = new [] { typeof(string) })]
-        public string AgentPoolName { get => _taskUpdateParametersBody.AgentPoolName ?? null; set => _taskUpdateParametersBody.AgentPoolName = value; }
+        public string AgentPoolName { get => _taskCreateParametersBody.AgentPoolName ?? null; set => _taskCreateParametersBody.AgentPoolName = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -73,9 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The type of the auto trigger for base image dependency updates.",
         SerializedName = @"baseImageTriggerType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType BaseImageTriggerBaseImageTriggerType { get => _taskUpdateParametersBody.BaseImageTriggerBaseImageTriggerType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType)""); set => _taskUpdateParametersBody.BaseImageTriggerBaseImageTriggerType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("All", "Runtime")]
+        public string BaseImageTriggerBaseImageTriggerType { get => _taskCreateParametersBody.BaseImageTriggerBaseImageTriggerType ?? null; set => _taskCreateParametersBody.BaseImageTriggerBaseImageTriggerType = value; }
 
         /// <summary>The name of the trigger.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the trigger.")]
@@ -86,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The name of the trigger.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string BaseImageTriggerName { get => _taskUpdateParametersBody.BaseImageTriggerName ?? null; set => _taskUpdateParametersBody.BaseImageTriggerName = value; }
+        public string BaseImageTriggerName { get => _taskCreateParametersBody.BaseImageTriggerName ?? null; set => _taskCreateParametersBody.BaseImageTriggerName = value; }
 
         /// <summary>The current status of trigger.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The current status of trigger.")]
@@ -96,9 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The current status of trigger.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus BaseImageTriggerStatus { get => _taskUpdateParametersBody.BaseImageTriggerStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus)""); set => _taskUpdateParametersBody.BaseImageTriggerStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string BaseImageTriggerStatus { get => _taskCreateParametersBody.BaseImageTriggerStatus ?? null; set => _taskCreateParametersBody.BaseImageTriggerStatus = value; }
 
         /// <summary>The endpoint URL for receiving update triggers.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The endpoint URL for receiving update triggers.")]
@@ -109,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The endpoint URL for receiving update triggers.",
         SerializedName = @"updateTriggerEndpoint",
         PossibleTypes = new [] { typeof(string) })]
-        public string BaseImageTriggerUpdateTriggerEndpoint { get => _taskUpdateParametersBody.BaseImageTriggerUpdateTriggerEndpoint ?? null; set => _taskUpdateParametersBody.BaseImageTriggerUpdateTriggerEndpoint = value; }
+        public string BaseImageTriggerUpdateTriggerEndpoint { get => _taskCreateParametersBody.BaseImageTriggerUpdateTriggerEndpoint ?? null; set => _taskCreateParametersBody.BaseImageTriggerUpdateTriggerEndpoint = value; }
 
         /// <summary>Type of Payload body for Base image update triggers.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of Payload body for Base image update triggers.")]
@@ -119,14 +128,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"Type of Payload body for Base image update triggers.",
         SerializedName = @"updateTriggerPayloadType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType BaseImageTriggerUpdateTriggerPayloadType { get => _taskUpdateParametersBody.BaseImageTriggerUpdateTriggerPayloadType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType)""); set => _taskUpdateParametersBody.BaseImageTriggerUpdateTriggerPayloadType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Default", "Token")]
+        public string BaseImageTriggerUpdateTriggerPayloadType { get => _taskCreateParametersBody.BaseImageTriggerUpdateTriggerPayloadType ?? null; set => _taskCreateParametersBody.BaseImageTriggerUpdateTriggerPayloadType = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ContainerRegistry Client => Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.ClientAPI;
@@ -144,8 +156,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"Describes the credential parameters for accessing other custom registries. The keyfor the dictionary item will be the registry login server (myregistry.azurecr.io) andthe value of the item will be the registry credentials for accessing the registry.",
         SerializedName = @"customRegistries",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ICredentialsCustomRegistries) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ICredentialsCustomRegistries CredentialsCustomRegistry { get => _taskUpdateParametersBody.CredentialsCustomRegistry ?? null /* object */; set => _taskUpdateParametersBody.CredentialsCustomRegistry = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialsCustomRegistries) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialsCustomRegistries CredentialsCustomRegistry { get => _taskCreateParametersBody.CredentialsCustomRegistry ?? null /* object */; set => _taskCreateParametersBody.CredentialsCustomRegistry = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -156,6 +168,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -178,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The principal ID of resource identity.",
         SerializedName = @"principalId",
         PossibleTypes = new [] { typeof(string) })]
-        public string IdentityPrincipalId { get => _taskUpdateParametersBody.IdentityPrincipalId ?? null; set => _taskUpdateParametersBody.IdentityPrincipalId = value; }
+        public string IdentityPrincipalId { get => _taskCreateParametersBody.IdentityPrincipalId ?? null; set => _taskCreateParametersBody.IdentityPrincipalId = value; }
 
         /// <summary>The tenant ID of resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tenant ID of resource.")]
@@ -189,34 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The tenant ID of resource.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
-        public string IdentityTenantId { get => _taskUpdateParametersBody.IdentityTenantId ?? null; set => _taskUpdateParametersBody.IdentityTenantId = value; }
-
-        /// <summary>The identity type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType IdentityType { get => _taskUpdateParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType)""); set => _taskUpdateParametersBody.IdentityType = value; }
-
-        /// <summary>
-        /// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource
-        /// ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities IdentityUserAssignedIdentity { get => _taskUpdateParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _taskUpdateParametersBody.IdentityUserAssignedIdentity = value; }
+        public string IdentityTenantId { get => _taskCreateParametersBody.IdentityTenantId ?? null; set => _taskCreateParametersBody.IdentityTenantId = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity _inputObject;
@@ -230,6 +222,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
+        /// The value of this property indicates whether the task resource is system task or not.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value of this property indicates whether the task resource is system task or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The value of this property indicates whether the task resource is system task or not.",
+        SerializedName = @"isSystemTask",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter IsSystemTask { get => _taskCreateParametersBody.IsSystemTask ?? default(global::System.Management.Automation.SwitchParameter); set => _taskCreateParametersBody.IsSystemTask = value; }
+
+        /// <summary>
         /// The template that describes the repository and tag information for run log artifact.
         /// </summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The template that describes the repository and tag information for run log artifact.")]
@@ -240,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The template that describes the repository and tag information for run log artifact.",
         SerializedName = @"logTemplate",
         PossibleTypes = new [] { typeof(string) })]
-        public string LogTemplate { get => _taskUpdateParametersBody.LogTemplate ?? null; set => _taskUpdateParametersBody.LogTemplate = value; }
+        public string LogTemplate { get => _taskCreateParametersBody.LogTemplate ?? null; set => _taskCreateParametersBody.LogTemplate = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -261,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The OS architecture.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The OS architecture.")]
@@ -271,9 +276,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The OS architecture.",
         SerializedName = @"architecture",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture PlatformArchitecture { get => _taskUpdateParametersBody.PlatformArchitecture ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture)""); set => _taskUpdateParametersBody.PlatformArchitecture = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("amd64", "x86", "386", "arm", "arm64")]
+        public string PlatformArchitecture { get => _taskCreateParametersBody.PlatformArchitecture ?? null; set => _taskCreateParametersBody.PlatformArchitecture = value; }
 
         /// <summary>The operating system type required for the run.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The operating system type required for the run.")]
@@ -283,9 +288,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The operating system type required for the run.",
         SerializedName = @"os",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS PlatformOS { get => _taskUpdateParametersBody.PlatformOS ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS)""); set => _taskUpdateParametersBody.PlatformOS = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Windows", "Linux")]
+        public string PlatformOS { get => _taskCreateParametersBody.PlatformOS ?? null; set => _taskCreateParametersBody.PlatformOS = value; }
 
         /// <summary>Variant of the CPU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Variant of the CPU.")]
@@ -295,9 +300,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"Variant of the CPU.",
         SerializedName = @"variant",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant PlatformVariant { get => _taskUpdateParametersBody.PlatformVariant ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant)""); set => _taskUpdateParametersBody.PlatformVariant = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("v6", "v7", "v8")]
+        public string PlatformVariant { get => _taskCreateParametersBody.PlatformVariant ?? null; set => _taskCreateParametersBody.PlatformVariant = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -326,9 +331,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The authentication mode which determines the source registry login scope. The credentials for the source registrywill be generated using the given scope. These credentials will be used to login tothe source registry during the run.",
         SerializedName = @"loginMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode SourceRegistryLoginMode { get => _taskUpdateParametersBody.SourceRegistryLoginMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode)""); set => _taskUpdateParametersBody.SourceRegistryLoginMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("None", "Default")]
+        public string SourceRegistryLoginMode { get => _taskCreateParametersBody.SourceRegistryLoginMode ?? null; set => _taskCreateParametersBody.SourceRegistryLoginMode = value; }
 
         /// <summary>The current status of task.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The current status of task.")]
@@ -338,9 +343,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The current status of task.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus Status { get => _taskUpdateParametersBody.Status ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus)""); set => _taskUpdateParametersBody.Status = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string Status { get => _taskCreateParametersBody.Status ?? null; set => _taskCreateParametersBody.Status = value; }
 
         /// <summary>
         /// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
@@ -353,7 +358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The token (git PAT or SAS token of storage account blob) associated with the context for a step.",
         SerializedName = @"contextAccessToken",
         PossibleTypes = new [] { typeof(string) })]
-        public string StepContextAccessToken { get => _taskUpdateParametersBody.StepContextAccessToken ?? null; set => _taskUpdateParametersBody.StepContextAccessToken = value; }
+        public string StepContextAccessToken { get => _taskCreateParametersBody.StepContextAccessToken ?? null; set => _taskCreateParametersBody.StepContextAccessToken = value; }
 
         /// <summary>The URL(absolute or relative) of the source context for the task step.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URL(absolute or relative) of the source context for the task step.")]
@@ -364,7 +369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The URL(absolute or relative) of the source context for the task step.",
         SerializedName = @"contextPath",
         PossibleTypes = new [] { typeof(string) })]
-        public string StepContextPath { get => _taskUpdateParametersBody.StepContextPath ?? null; set => _taskUpdateParametersBody.StepContextPath = value; }
+        public string StepContextPath { get => _taskCreateParametersBody.StepContextPath ?? null; set => _taskCreateParametersBody.StepContextPath = value; }
 
         /// <summary>The type of the step.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of the step.")]
@@ -374,22 +379,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The type of the step.",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType StepType { get => _taskUpdateParametersBody.StepType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType)""); set => _taskUpdateParametersBody.StepType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Docker", "FileTask", "EncodedTask")]
+        public string StepType { get => _taskCreateParametersBody.StepType ?? null; set => _taskCreateParametersBody.StepType = value; }
 
-        /// <summary>The ARM resource tags.</summary>
+        /// <summary>The tags of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ARM resource tags.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tags of the resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The ARM resource tags.",
+        Description = @"The tags of the resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskUpdateParametersTags) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags) })]
         [global::System.Management.Automation.Alias("Tags")]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskUpdateParametersTags Tag { get => _taskUpdateParametersBody.Tag ?? null /* object */; set => _taskUpdateParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags Tag { get => _taskCreateParametersBody.Tag ?? null /* object */; set => _taskCreateParametersBody.Tag = value; }
 
         /// <summary>Run timeout in seconds.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run timeout in seconds.")]
@@ -400,7 +405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"Run timeout in seconds.",
         SerializedName = @"timeout",
         PossibleTypes = new [] { typeof(int) })]
-        public int Timeout { get => _taskUpdateParametersBody.Timeout ?? default(int); set => _taskUpdateParametersBody.Timeout = value; }
+        public int Timeout { get => _taskCreateParametersBody.Timeout ?? default(int); set => _taskCreateParametersBody.Timeout = value; }
 
         /// <summary>The collection of triggers based on source code repository.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -411,8 +416,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The collection of triggers based on source code repository.",
         SerializedName = @"sourceTriggers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ISourceTriggerUpdateParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ISourceTriggerUpdateParameters[] TriggerSourceTrigger { get => _taskUpdateParametersBody.TriggerSourceTrigger ?? null /* arrayOf */; set => _taskUpdateParametersBody.TriggerSourceTrigger = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceTrigger) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceTrigger[] TriggerSourceTrigger { get => _taskCreateParametersBody.TriggerSourceTrigger?.ToArray() ?? null /* fixedArrayOf */; set => _taskCreateParametersBody.TriggerSourceTrigger = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceTrigger>(value) : null); }
 
         /// <summary>The collection of timer triggers.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -423,32 +428,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The collection of timer triggers.",
         SerializedName = @"timerTriggers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITimerTriggerUpdateParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITimerTriggerUpdateParameters[] TriggerTimerTrigger { get => _taskUpdateParametersBody.TriggerTimerTrigger ?? null /* arrayOf */; set => _taskUpdateParametersBody.TriggerTimerTrigger = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITimerTrigger) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITimerTrigger[] TriggerTimerTrigger { get => _taskCreateParametersBody.TriggerTimerTrigger?.ToArray() ?? null /* fixedArrayOf */; set => _taskCreateParametersBody.TriggerTimerTrigger = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITimerTrigger>(value) : null); }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -485,7 +498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._taskUpdateParametersBody = this._taskUpdateParametersBody;
+            clone._taskCreateParametersBody = this._taskCreateParametersBody;
             return clone;
         }
 
@@ -556,11 +569,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -572,15 +610,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _taskCreateParametersBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _taskCreateParametersBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _taskCreateParametersBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.UserIdentityProperties());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _taskCreateParametersBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _taskCreateParametersBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _taskCreateParametersBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _taskCreateParametersBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _taskCreateParametersBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _taskCreateParametersBody.IdentityType = "None";
             }
         }
 
@@ -592,7 +684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'TasksUpdate' operation"))
+                if (ShouldProcess($"Call remote 'TasksCreate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -643,7 +735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -658,7 +750,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.TasksUpdateViaIdentity(InputObject.Id, _taskUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                        _taskCreateParametersBody = await this.Client.TasksGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_taskCreateParametersBody();
+                        await this.Client.TasksCreateViaIdentity(InputObject.Id, _taskCreateParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -679,13 +774,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.TaskName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.TasksUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.RegistryName ?? null, InputObject.TaskName ?? null, _taskUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                        _taskCreateParametersBody = await this.Client.TasksGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.RegistryName ?? null, InputObject.TaskName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_taskCreateParametersBody();
+                        await this.Client.TasksCreate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.RegistryName ?? null, InputObject.TaskName ?? null, _taskCreateParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_taskUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -705,11 +803,111 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzContainerRegistryTask_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzContainerRegistryTask_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzContainerRegistryTask_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_taskCreateParametersBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IdentityPrincipalId")))
+            {
+                this.IdentityPrincipalId = (string)(this.MyInvocation?.BoundParameters["IdentityPrincipalId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IdentityTenantId")))
+            {
+                this.IdentityTenantId = (string)(this.MyInvocation?.BoundParameters["IdentityTenantId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Status")))
+            {
+                this.Status = (string)(this.MyInvocation?.BoundParameters["Status"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AgentPoolName")))
+            {
+                this.AgentPoolName = (string)(this.MyInvocation?.BoundParameters["AgentPoolName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Timeout")))
+            {
+                this.Timeout = (int)(this.MyInvocation?.BoundParameters["Timeout"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("LogTemplate")))
+            {
+                this.LogTemplate = (string)(this.MyInvocation?.BoundParameters["LogTemplate"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IsSystemTask")))
+            {
+                this.IsSystemTask = (global::System.Management.Automation.SwitchParameter)(this.MyInvocation?.BoundParameters["IsSystemTask"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PlatformOS")))
+            {
+                this.PlatformOS = (string)(this.MyInvocation?.BoundParameters["PlatformOS"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PlatformArchitecture")))
+            {
+                this.PlatformArchitecture = (string)(this.MyInvocation?.BoundParameters["PlatformArchitecture"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PlatformVariant")))
+            {
+                this.PlatformVariant = (string)(this.MyInvocation?.BoundParameters["PlatformVariant"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StepType")))
+            {
+                this.StepType = (string)(this.MyInvocation?.BoundParameters["StepType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("CredentialsCustomRegistry")))
+            {
+                this.CredentialsCustomRegistry = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialsCustomRegistries)(this.MyInvocation?.BoundParameters["CredentialsCustomRegistry"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AgentConfigurationCpu")))
+            {
+                this.AgentConfigurationCpu = (int)(this.MyInvocation?.BoundParameters["AgentConfigurationCpu"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StepContextPath")))
+            {
+                this.StepContextPath = (string)(this.MyInvocation?.BoundParameters["StepContextPath"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StepContextAccessToken")))
+            {
+                this.StepContextAccessToken = (string)(this.MyInvocation?.BoundParameters["StepContextAccessToken"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TriggerTimerTrigger")))
+            {
+                this.TriggerTimerTrigger = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITimerTrigger[])(this.MyInvocation?.BoundParameters["TriggerTimerTrigger"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TriggerSourceTrigger")))
+            {
+                this.TriggerSourceTrigger = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceTrigger[])(this.MyInvocation?.BoundParameters["TriggerSourceTrigger"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("BaseImageTriggerName")))
+            {
+                this.BaseImageTriggerName = (string)(this.MyInvocation?.BoundParameters["BaseImageTriggerName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SourceRegistryLoginMode")))
+            {
+                this.SourceRegistryLoginMode = (string)(this.MyInvocation?.BoundParameters["SourceRegistryLoginMode"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("BaseImageTriggerBaseImageTriggerType")))
+            {
+                this.BaseImageTriggerBaseImageTriggerType = (string)(this.MyInvocation?.BoundParameters["BaseImageTriggerBaseImageTriggerType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("BaseImageTriggerUpdateTriggerEndpoint")))
+            {
+                this.BaseImageTriggerUpdateTriggerEndpoint = (string)(this.MyInvocation?.BoundParameters["BaseImageTriggerUpdateTriggerEndpoint"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("BaseImageTriggerUpdateTriggerPayloadType")))
+            {
+                this.BaseImageTriggerUpdateTriggerPayloadType = (string)(this.MyInvocation?.BoundParameters["BaseImageTriggerUpdateTriggerPayloadType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("BaseImageTriggerStatus")))
+            {
+                this.BaseImageTriggerStatus = (string)(this.MyInvocation?.BoundParameters["BaseImageTriggerStatus"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -731,12 +929,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -753,15 +951,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_taskUpdateParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_taskUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -771,12 +969,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask> response)
         {
             using( NoSynchronizationContext )
             {
@@ -788,8 +986,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

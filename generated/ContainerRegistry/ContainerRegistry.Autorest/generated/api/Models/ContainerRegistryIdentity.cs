@@ -165,6 +165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the agent pool.",
         SerializedName = @"agentPoolName",
         PossibleTypes = new [] { typeof(string) })]
@@ -173,6 +176,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the cache rule.",
         SerializedName = @"cacheRuleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -181,6 +187,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the connected registry.",
         SerializedName = @"connectedRegistryName",
         PossibleTypes = new [] { typeof(string) })]
@@ -189,6 +198,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the credential set.",
         SerializedName = @"credentialSetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -197,6 +209,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the export pipeline.",
         SerializedName = @"exportPipelineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -205,6 +220,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private link resource.",
         SerializedName = @"groupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -213,6 +231,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -221,6 +242,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the import pipeline.",
         SerializedName = @"importPipelineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -229,6 +253,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the pipeline run.",
         SerializedName = @"pipelineRunName",
         PossibleTypes = new [] { typeof(string) })]
@@ -237,6 +264,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -245,6 +275,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the container registry.",
         SerializedName = @"registryName",
         PossibleTypes = new [] { typeof(string) })]
@@ -253,6 +286,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the replication.",
         SerializedName = @"replicationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -261,6 +297,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -269,6 +308,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The run ID.",
         SerializedName = @"runId",
         PossibleTypes = new [] { typeof(string) })]
@@ -277,6 +319,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the scope map.",
         SerializedName = @"scopeMapName",
         PossibleTypes = new [] { typeof(string) })]
@@ -285,6 +330,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -293,6 +341,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the container registry task.",
         SerializedName = @"taskName",
         PossibleTypes = new [] { typeof(string) })]
@@ -301,6 +352,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the task run.",
         SerializedName = @"taskRunName",
         PossibleTypes = new [] { typeof(string) })]
@@ -309,6 +363,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the token.",
         SerializedName = @"tokenName",
         PossibleTypes = new [] { typeof(string) })]
@@ -317,6 +374,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the webhook.",
         SerializedName = @"webhookName",
         PossibleTypes = new [] { typeof(string) })]
