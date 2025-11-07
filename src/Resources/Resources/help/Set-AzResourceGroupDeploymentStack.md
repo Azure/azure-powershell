@@ -165,7 +165,7 @@ Update a resource group scoped deployment stack.
 Set-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResourceGroup -TemplateFile myTemplate.json -DenySettingsMode DenyDelete
 ```
 
-Update a resource group scoped deployment stack named 'MyRGStack' in management group 'MyResoourceGroup,' with deny settings being DenyDelete.
+Update a resource group scoped deployment stack named 'MyRGStack' in management group 'MyResourceGroup,' with deny settings being DenyDelete.
 
 ### Example 2: Use a .bicepparam file to create a stack
 ```powershell

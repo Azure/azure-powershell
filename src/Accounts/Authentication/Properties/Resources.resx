@@ -426,4 +426,12 @@
     <value>The scope of authenticating for SSH is not set. Please run "Set-AzEnvironment -Name {0} -SshAuthScope ..." to set it first.</value>
     <comment>0 = environment name</comment>
   </data>
+  <data name="ErrorMessageOfClaimsChallengeRequired" xml:space="preserve">
+    <value>{0}
+
+Run the cmdlet below to authenticate interactively; additional parameters may be added as needed.
+
+Connect-AzAccount -Tenant (Get-AzContext).Tenant.Id -ClaimsChallenge "{1}"</value>
+    <comment>0 = error message about policy violation; 1 = claims challenge in base64</comment>
+  </data>
 </root>

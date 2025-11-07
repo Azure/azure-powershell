@@ -103,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Set up access policy permission
         /// </summary>
-        /// <param name="permission">Permisson</param>
+        /// <param name="permission">Permission</param>
         internal SharedAccessAccountPermissions SetupAccessPolicyPermission(string permission)
         {
             if (string.IsNullOrEmpty(permission)) return SharedAccessAccountPermissions.None;

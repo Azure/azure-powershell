@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Description
-create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
 $origin = @{
     Name = "origin1"
@@ -147,7 +147,9 @@ ORIGINGROUP <IDeepCreatedOriginGroup[]>: The origin groups comprising of origins
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
@@ -159,6 +161,7 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
+  [Version <String>]: The name of the Edge Action version
 
 URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL hashes.
   KeyId <String>: Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.

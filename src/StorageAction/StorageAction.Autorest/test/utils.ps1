@@ -45,10 +45,10 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
-    $env.resourceGroup = 'joyer-test'
-    $env.region = 'eastus2euap'
-    $env.testTaskName1 = 'storageactiontest1'
-    $env.testTaskName2 = 'storageactiontest2'
+    $env.resourceGroup = 'weitry'
+    $env.region = 'eastus2'
+    $env.testTaskName1 = 'pshtest1'
+    $env.testTaskName2 = 'pshtest2'
     $env.assignmentTask = 'mytask1'
     
     Write-Host 'Start to create test resource group' $env.resourceGroup

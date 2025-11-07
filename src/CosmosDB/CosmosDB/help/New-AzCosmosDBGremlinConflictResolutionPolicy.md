@@ -14,7 +14,8 @@ Creates a new object of type PSConflictResolutionPolicy. It can be passed as a p
 
 ```
 New-AzCosmosDBGremlinConflictResolutionPolicy -Type <String> [-Path <String>]
- [-ConflictResolutionProcedure <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ConflictResolutionProcedure <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

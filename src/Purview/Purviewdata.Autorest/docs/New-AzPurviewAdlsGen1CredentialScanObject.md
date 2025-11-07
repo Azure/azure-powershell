@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1CredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1credentialscanobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,9 @@ Create an in-memory object for AdlsGen1CredentialScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAdlsGen1CredentialScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
- [-CredentialType <CredentialType>] [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>]
- [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewAdlsGen1CredentialScanObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>] [-CredentialType <String>]
+ [-ScanRulesetName <String>] [-ScanRulesetType <String>] [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +25,7 @@ Create an in-memory object for AdlsGen1CredentialScan.
 
 ### Example 1: Create AdlsGen1 Credential scan object
 ```powershell
-New-AzPurviewAdlsGen1CredentialScanObject -Kind 'AdlsGen1Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+New-AzPurviewAdlsGen1CredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
 ```
 
 ```output
@@ -115,26 +114,11 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -160,7 +144,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1CredentialScan
 
 ## NOTES
 

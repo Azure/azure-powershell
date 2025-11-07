@@ -130,6 +130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspacePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -181,6 +185,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -203,6 +227,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspacePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -254,6 +282,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

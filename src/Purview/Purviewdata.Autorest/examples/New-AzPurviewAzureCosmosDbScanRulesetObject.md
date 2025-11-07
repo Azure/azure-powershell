@@ -1,6 +1,6 @@
 ### Example 1: Create CosmosDB custom scanruleset object
 ```powershell
-New-AzPurviewAzureCosmosDbScanRulesetObject -Kind 'AzureCosmosDb' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewAzureCosmosDbScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
 ```
 
 ```output

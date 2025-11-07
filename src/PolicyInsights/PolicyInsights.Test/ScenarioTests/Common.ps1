@@ -405,7 +405,7 @@ function Assert-NotNullOrEmpty {
 
 <#
 .SYNOPSIS
-Gets test manual policy definition name targetted at subcriptions.
+Gets test manual policy definition name targeted at subscriptions.
 #>
 function Get-TestManualPolicyDefinitonNameSub{
    "PSTestAttestationSub"
@@ -413,7 +413,7 @@ function Get-TestManualPolicyDefinitonNameSub{
 
 <#
 .SYNOPSIS
-Gets test manual policy definition name targetted at resource groups.
+Gets test manual policy definition name targeted at resource groups.
 #>
 function Get-TestManualPolicyDefinitonNameRG{
    "PSTestAttestationRG"
@@ -421,7 +421,7 @@ function Get-TestManualPolicyDefinitonNameRG{
 
 <#
 .SYNOPSIS
-Gets test manual policy definition name targetted at resources.
+Gets test manual policy definition name targeted at resources.
 #>
 function Get-TestManualPolicyDefinitonNameResource{
    "PSTestAttestationResource"
@@ -429,7 +429,7 @@ function Get-TestManualPolicyDefinitonNameResource{
 
 <#
 .SYNOPSIS
-Gets test manual policy initiative name targetted at subcriptions.
+Gets test manual policy initiative name targeted at subscriptions.
 #>
 function Get-TestManualPolicyInitiativeNameSub{
    "PSTestAttestationInitiativeSub"
@@ -437,7 +437,7 @@ function Get-TestManualPolicyInitiativeNameSub{
 
 <#
 .SYNOPSIS
-Gets test manual policy initiative name targetted at resource groups.
+Gets test manual policy initiative name targeted at resource groups.
 #>
 function Get-TestManualPolicyInitiativeNameRG{
    "PSTestAttestationInitiativeRG"
@@ -445,13 +445,13 @@ function Get-TestManualPolicyInitiativeNameRG{
 
 <#
 .SYNOPSIS
-Gets test manual policy initiative name targetted at resource.
+Gets test manual policy initiative name targeted at resource.
 #>
 function Get-TestManualPolicyInitiativeNameResource{
    "PSTestAttestationInitiativeResource"
 }
 
-#region Attestation Subsciption Scope
+#region Attestation Subscription Scope
 
 <#
 .SYNOPSIS

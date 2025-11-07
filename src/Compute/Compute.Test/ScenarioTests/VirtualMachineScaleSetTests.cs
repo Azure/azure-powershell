@@ -472,5 +472,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAzureVmssConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProxyAgentSetting()
+        {
+            TestRunner.RunTestScript("Test-ProxyAgentSetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAddProxyAgentExtension()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAddProxyAgentExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetGalleryApplicationFlags()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetGalleryApplicationFlags");
+        }
     }
 }

@@ -39,22 +39,27 @@ namespace Microsoft.Azure.Management.Search
         public SearchManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Initiates the creation or update of a shared private link resource managed by the search service in the given resource group.
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='properties'>
-        /// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+        /// Describes the properties of a shared private link resource managed by the
+        /// Azure AI Search service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -70,19 +75,23 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Gets the details of the shared private link resource managed by the search service in the given resource group.
+        /// Gets the details of the shared private link resource managed by the search
+        /// service in the given resource group.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -121,7 +130,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (sharedPrivateLinkResourceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sharedPrivateLinkResourceName");
@@ -312,19 +327,23 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Initiates the deletion of the shared private link resource from the search service.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -340,16 +359,19 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Gets a list of all shared private link resources managed by the given service.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -400,7 +422,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             System.Guid? clientRequestId = default(System.Guid?);
             if (searchManagementRequestOptions != null)
             {
@@ -573,22 +601,27 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Initiates the creation or update of a shared private link resource managed by the search service in the given resource group.
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='properties'>
-        /// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+        /// Describes the properties of a shared private link resource managed by the
+        /// Azure AI Search service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -627,7 +660,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (sharedPrivateLinkResourceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sharedPrivateLinkResourceName");
@@ -830,19 +869,23 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Initiates the deletion of the shared private link resource from the search service.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -878,7 +921,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (sharedPrivateLinkResourceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sharedPrivateLinkResourceName");
@@ -1051,7 +1100,8 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Gets a list of all shared private link resources managed by the given service.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -417,7 +417,7 @@ Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server0
 
 ### `Get-AzSqlServerAuditing`
 - The cmdlet `Get-AzSqlServerAudit` is replacing this cmdlet.
-- The output type is changing from the existing type :'Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel' to the new type :'Microsoft.Azure.Commands.Sql.Auditing.Model.ServerAuditingSettingsModel'.  Properties `AuditState`, `StorageAccountName`, and `StorageAccountSubscriptionId` are removed.  Scripts that use `StorageAccountName` and `StorageAccountSubscriptionId` proeprties can retrieve this information from the new `StorageAccountResourceId` property.
+- The output type is changing from the existing type :'Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel' to the new type :'Microsoft.Azure.Commands.Sql.Auditing.Model.ServerAuditingSettingsModel'.  Properties `AuditState`, `StorageAccountName`, and `StorageAccountSubscriptionId` are removed.  Scripts that use `StorageAccountName` and `StorageAccountSubscriptionId` properties can retrieve this information from the new `StorageAccountResourceId` property.
 
 #### Before
 ```powershell

@@ -19,9 +19,10 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Update-AzLabServicesUser' {
     It 'Update Existing' {
-        $user = Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:UserNameSecond
+        $user = Get-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.UserNameSecond
         Update-AzLabServicesUser -ResourceId $($user.Id) -AdditionalUsageQuota $(New-TimeSpan -Hours 2)  | Should -Not -BeNullOrEmpty
-        Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:UserNameSecond | Select-Object -Property AdditionalUsageQuota | Should -BeExactly "@{AdditionalUsageQuota=02:00:00}"
+        Get-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.UserNameSecond | Select-Object -Property AdditionalUsageQuota | Should -BeExactly "@{AdditionalUsageQuota=02:00:00}"
+        Remove-AzLabServicesUser -ResourceId $($user.Id)
     }
 
 }

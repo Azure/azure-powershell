@@ -7,50 +7,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Extensions;
 
-    /// <summary>binary hardening analysis result resource</summary>
+    /// <summary>The object representing a firmware analysis binary hardening result resource</summary>
     public partial class BinaryHardeningResource :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResource,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource"
+        /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Resource();
-
-        /// <summary>The architecture of the uploaded firmware.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public string Architecture { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Architecture; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Architecture = value ?? null; }
+        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ProxyResource();
 
         /// <summary>ID for the binary hardening result.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string BinaryHardeningId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).BinaryHardeningId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).BinaryHardeningId = value ?? null; }
 
+        /// <summary>The architecture of the binary being reported on.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string ExecutableArchitecture { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).ExecutableArchitecture; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).ExecutableArchitecture = value ?? null; }
+
         /// <summary>The executable class to indicate 32 or 64 bit.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public string Class { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Class; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Class = value ?? null; }
+        public string ExecutableClass { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).ExecutableClass; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).ExecutableClass = value ?? null; }
 
-        /// <summary>Canary (stack canaries) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureCanary { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureCanary; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureCanary = value ?? default(bool); }
-
-        /// <summary>NX (no-execute) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureNx { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureNx; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureNx = value ?? default(bool); }
-
-        /// <summary>PIE (position independent executable) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeaturePie { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeaturePie; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeaturePie = value ?? default(bool); }
-
-        /// <summary>RELRO (relocation read-only) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureRelro { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureRelro; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureRelro = value ?? default(bool); }
-
-        /// <summary>Stripped flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureStripped { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureStripped; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FeatureStripped = value ?? default(bool); }
-
-        /// <summary>The executable path.</summary>
+        /// <summary>The path to the binary in the firmware.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string FilePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FilePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).FilePath = value ?? null; }
 
@@ -58,80 +39,132 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id; }
-
-        /// <summary>Internal Acessors for Feature</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal.Feature { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Feature; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Feature = value; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResult Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResult()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for SecurityHardeningFeature</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal.SecurityHardeningFeature { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeature; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeature = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResult _property;
 
-        /// <summary>The properties of a binary hardening result found within a firmware image</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResult Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResult()); set => this._property = value; }
 
-        /// <summary>The rpath of the uploaded firmware.</summary>
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).ProvisioningState; }
+
+        /// <summary>
+        /// The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects
+        /// at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string Rpath { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Rpath; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Rpath = value ?? null; }
 
-        /// <summary>The runpath of the uploaded firmware.</summary>
+        /// <summary>
+        /// The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string Runpath { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Runpath; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).Runpath = value ?? null; }
+
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureCanary { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureCanary; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureCanary = value ?? default(bool); }
+
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureNoExecute { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureNoExecute; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureNoExecute = value ?? default(bool); }
+
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeaturePositionIndependentExecutable { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeaturePositionIndependentExecutable; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeaturePositionIndependentExecutable = value ?? default(bool); }
+
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureRelocationReadOnly { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureRelocationReadOnly; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureRelocationReadOnly = value ?? default(bool); }
+
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureStripped { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureStripped; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal)Property).SecurityHardeningFeatureStripped = value ?? default(bool); }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="BinaryHardeningResource" /> instance.</summary>
         public BinaryHardeningResource()
@@ -147,26 +180,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
-    /// binary hardening analysis result resource
+    /// The object representing a firmware analysis binary hardening result resource
     public partial interface IBinaryHardeningResource :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource
     {
-        /// <summary>The architecture of the uploaded firmware.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The architecture of the uploaded firmware.",
-        SerializedName = @"architecture",
-        PossibleTypes = new [] { typeof(string) })]
-        string Architecture { get; set; }
         /// <summary>ID for the binary hardening result.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -178,6 +200,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"binaryHardeningId",
         PossibleTypes = new [] { typeof(string) })]
         string BinaryHardeningId { get; set; }
+        /// <summary>The architecture of the binary being reported on.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The architecture of the binary being reported on.",
+        SerializedName = @"executableArchitecture",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExecutableArchitecture { get; set; }
         /// <summary>The executable class to indicate 32 or 64 bit.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -186,129 +219,160 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The executable class to indicate 32 or 64 bit.",
-        SerializedName = @"class",
+        SerializedName = @"executableClass",
         PossibleTypes = new [] { typeof(string) })]
-        string Class { get; set; }
-        /// <summary>Canary (stack canaries) flag.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("x86", "x64")]
+        string ExecutableClass { get; set; }
+        /// <summary>The path to the binary in the firmware.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Canary (stack canaries) flag.",
-        SerializedName = @"canary",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureCanary { get; set; }
-        /// <summary>NX (no-execute) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"NX (no-execute) flag.",
-        SerializedName = @"nx",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureNx { get; set; }
-        /// <summary>PIE (position independent executable) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"PIE (position independent executable) flag.",
-        SerializedName = @"pie",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeaturePie { get; set; }
-        /// <summary>RELRO (relocation read-only) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"RELRO (relocation read-only) flag.",
-        SerializedName = @"relro",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureRelro { get; set; }
-        /// <summary>Stripped flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Stripped flag.",
-        SerializedName = @"stripped",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureStripped { get; set; }
-        /// <summary>The executable path.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The executable path.",
+        Description = @"The path to the binary in the firmware.",
         SerializedName = @"filePath",
         PossibleTypes = new [] { typeof(string) })]
         string FilePath { get; set; }
-        /// <summary>The rpath of the uploaded firmware.</summary>
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The status of the last operation.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get;  }
+        /// <summary>
+        /// The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects
+        /// at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The rpath of the uploaded firmware.",
+        Description = @"The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects at runtime.",
         SerializedName = @"rpath",
         PossibleTypes = new [] { typeof(string) })]
         string Rpath { get; set; }
-        /// <summary>The runpath of the uploaded firmware.</summary>
+        /// <summary>
+        /// The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The runpath of the uploaded firmware.",
+        Description = @"The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.",
         SerializedName = @"runpath",
         PossibleTypes = new [] { typeof(string) })]
         string Runpath { get; set; }
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating if the binary was compiled with stack canaries enabled.",
+        SerializedName = @"canary",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureCanary { get; set; }
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating the binary's stack is set to NX (no-execute).",
+        SerializedName = @"noExecute",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureNoExecute { get; set; }
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating the binary was compiled to be a position independent executable.",
+        SerializedName = @"positionIndependentExecutable",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeaturePositionIndependentExecutable { get; set; }
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating the binary has enabled relocation read-only protections.",
+        SerializedName = @"relocationReadOnly",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureRelocationReadOnly { get; set; }
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating if debug symbols have been stripped from the binary.",
+        SerializedName = @"stripped",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureStripped { get; set; }
 
     }
-    /// binary hardening analysis result resource
+    /// The object representing a firmware analysis binary hardening result resource
     internal partial interface IBinaryHardeningResourceInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResourceInternal
     {
-        /// <summary>The architecture of the uploaded firmware.</summary>
-        string Architecture { get; set; }
         /// <summary>ID for the binary hardening result.</summary>
         string BinaryHardeningId { get; set; }
+        /// <summary>The architecture of the binary being reported on.</summary>
+        string ExecutableArchitecture { get; set; }
         /// <summary>The executable class to indicate 32 or 64 bit.</summary>
-        string Class { get; set; }
-        /// <summary>Binary hardening features.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures Feature { get; set; }
-        /// <summary>Canary (stack canaries) flag.</summary>
-        bool? FeatureCanary { get; set; }
-        /// <summary>NX (no-execute) flag.</summary>
-        bool? FeatureNx { get; set; }
-        /// <summary>PIE (position independent executable) flag.</summary>
-        bool? FeaturePie { get; set; }
-        /// <summary>RELRO (relocation read-only) flag.</summary>
-        bool? FeatureRelro { get; set; }
-        /// <summary>Stripped flag.</summary>
-        bool? FeatureStripped { get; set; }
-        /// <summary>The executable path.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("x86", "x64")]
+        string ExecutableClass { get; set; }
+        /// <summary>The path to the binary in the firmware.</summary>
         string FilePath { get; set; }
-        /// <summary>The properties of a binary hardening result found within a firmware image</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResult Property { get; set; }
-        /// <summary>The rpath of the uploaded firmware.</summary>
+        /// <summary>The status of the last operation.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get; set; }
+        /// <summary>
+        /// The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects
+        /// at runtime.
+        /// </summary>
         string Rpath { get; set; }
-        /// <summary>The runpath of the uploaded firmware.</summary>
+        /// <summary>
+        /// The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.
+        /// </summary>
         string Runpath { get; set; }
+        /// <summary>The security hardening features of the binary.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures SecurityHardeningFeature { get; set; }
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
+        bool? SecurityHardeningFeatureCanary { get; set; }
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
+        bool? SecurityHardeningFeatureNoExecute { get; set; }
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
+        bool? SecurityHardeningFeaturePositionIndependentExecutable { get; set; }
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
+        bool? SecurityHardeningFeatureRelocationReadOnly { get; set; }
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
+        bool? SecurityHardeningFeatureStripped { get; set; }
 
     }
 }

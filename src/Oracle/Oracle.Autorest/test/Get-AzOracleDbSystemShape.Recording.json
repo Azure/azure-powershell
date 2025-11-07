@@ -1,17 +1,17 @@
 {
-  "Get-AzOracleDbSystemShape+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01+1": {
+  "Get-AzOracleDbSystemShape+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "2c9fbcd6-9038-4acd-ab80-7cd2a1f4d41a" ],
+        "x-ms-client-request-id": [ "16704edb-bbaf-4942-a14f-541e78dc916d" ],
         "CommandName": [ "Get-AzOracleDbSystemShape" ],
         "FullCommandName": [ "Get-AzOracleDbSystemShape_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,25 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/southcentralus/1df1a483-17c6-45f5-8582-1940bffa2732" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "opc-request-id": [ "/AEE442C52FDC3EAE872850AC05F281B9/67847171CAD79D1225C920DAE90AEB2F" ],
+        "opc-request-id": [ "oci-F26EB2E1C15E12C-202510150359/38C2E319BD0A6879061CEF684941445A/E342D8F9B4017A194C4F943A5D3F3B8C" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "040c4ed8-f72f-45bf-90e7-09946d443788" ],
-        "x-ms-correlation-request-id": [ "5e4c3dfe-b7bf-462c-a456-a59b976b2c2a" ],
+        "x-ms-request-id": [ "edd1056a-236b-44b5-88d6-94b4b96d50c6" ],
+        "x-ms-correlation-request-id": [ "fdc95adb-99a8-4882-b938-1fca9cd0be68" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20240705T104334Z:5e4c3dfe-b7bf-462c-a456-a59b976b2c2a" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251015T035910Z:fdc95adb-99a8-4882-b938-1fca9cd0be68" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B4BAB1229F9E40A79C220D66449C6887 Ref B: AMS231032607045 Ref C: 2024-07-05T10:43:33Z" ],
-        "Date": [ "Fri, 05 Jul 2024 10:43:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D3123152621340FE8122B38D1B8B1828 Ref B: SN4AA2022305051 Ref C: 2025-10-15T03:59:01Z" ],
+        "Date": [ "Wed, 15 Oct 2025 03:59:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "789" ],
+        "Content-Length": [ "4975" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes/Exadata.X9M\",\"name\":\"Exadata.X9M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"runtimeMinimumCoreCount\":null,\"coreCountIncrement\":null,\"minStorageCount\":null,\"maxStorageCount\":null,\"availableDataStoragePerServerInTbs\":null,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"availableMemoryInGbs\":null,\"minMemoryPerNodeInGbs\":30,\"availableDbNodeStorageInGbs\":null,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":63,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":126}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*EXADATA+z*1+s*Exadata.X11M\",\"name\":\"sf*EXADATA+z*1+s*Exadata.X11M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"shapeName\":\"Exadata.X11M\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"minStorageCount\":3,\"maxStorageCount\":64,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"minMemoryPerNodeInGbs\":30,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":63,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":760,\"computeModel\":\"ECPU\",\"areServerTypesSupported\":true,\"displayName\":\"X11M\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*EXADATA+z*1+s*Exadata.X9M\",\"name\":\"sf*EXADATA+z*1+s*Exadata.X9M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"shapeName\":\"Exadata.X9M\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"minStorageCount\":3,\"maxStorageCount\":64,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"minMemoryPerNodeInGbs\":30,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":64,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":126,\"computeModel\":\"OCPU\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*VIRTUALMACHINE+z*1+s*VM.Standard.x86\",\"name\":\"sf*VIRTUALMACHINE+z*1+s*VM.Standard.x86\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"VIRTUALMACHINE\",\"shapeName\":\"VM.Standard.x86\",\"availableCoreCount\":256,\"minimumCoreCount\":4,\"coreCountIncrement\":4,\"minCoreCountPerNode\":4,\"minimumNodeCount\":1,\"maximumNodeCount\":1,\"availableCoreCountPerNode\":256,\"computeModel\":\"ECPU\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*EXADB_XS+z*1+s*ExaDbXS\",\"name\":\"sf*EXADB_XS+z*1+s*ExaDbXS\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADB_XS\",\"shapeName\":\"ExaDbXS\",\"availableCoreCount\":2000,\"minimumCoreCount\":8,\"coreCountIncrement\":4,\"minCoreCountPerNode\":8,\"minDbNodeStoragePerNodeInGbs\":220,\"minimumNodeCount\":1,\"maximumNodeCount\":10,\"availableCoreCountPerNode\":200,\"computeModel\":\"ECPU\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*VIRTUALMACHINE+z*2+s*VM.Standard.x86\",\"name\":\"sf*VIRTUALMACHINE+z*2+s*VM.Standard.x86\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"VIRTUALMACHINE\",\"shapeName\":\"VM.Standard.x86\",\"availableCoreCount\":256,\"minimumCoreCount\":4,\"coreCountIncrement\":4,\"minCoreCountPerNode\":4,\"minimumNodeCount\":1,\"maximumNodeCount\":1,\"availableCoreCountPerNode\":256,\"computeModel\":\"ECPU\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*EXADATA+z*2+s*Exadata.X9M\",\"name\":\"sf*EXADATA+z*2+s*Exadata.X9M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"shapeName\":\"Exadata.X9M\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"minStorageCount\":3,\"maxStorageCount\":64,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"minMemoryPerNodeInGbs\":30,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":64,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":126,\"computeModel\":\"OCPU\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*EXADATA+z*2+s*Exadata.X11M\",\"name\":\"sf*EXADATA+z*2+s*Exadata.X11M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"shapeName\":\"Exadata.X11M\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"minStorageCount\":3,\"maxStorageCount\":64,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"minMemoryPerNodeInGbs\":30,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":63,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":760,\"computeModel\":\"ECPU\",\"areServerTypesSupported\":true,\"displayName\":\"X11M\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dbSystemShapes/sf*EXADB_XS+z*2+s*ExaDbXS\",\"name\":\"sf*EXADB_XS+z*2+s*ExaDbXS\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADB_XS\",\"shapeName\":\"ExaDbXS\",\"availableCoreCount\":2000,\"minimumCoreCount\":8,\"coreCountIncrement\":4,\"minCoreCountPerNode\":8,\"minDbNodeStoragePerNodeInGbs\":220,\"minimumNodeCount\":1,\"maximumNodeCount\":10,\"availableCoreCountPerNode\":200,\"computeModel\":\"ECPU\"}}]}",
       "isContentBase64": false
     }
   }

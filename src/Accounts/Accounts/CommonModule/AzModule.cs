@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Common
                 {
                     if(!response.IsSuccessStatusCode && qos.Exception == null)
                     {
-                        // add "InternalException" as message because it is just for telemtry tracking.
+                        // add "InternalException" as message because it is just for telemetry tracking.
                         AzPSCloudException ex = (response.StatusCode == HttpStatusCode.NotFound) ?
                             new AzPSResourceNotFoundCloudException("InternalException") : new AzPSCloudException("InternalException");
                         try

@@ -39,7 +39,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -69,7 +70,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

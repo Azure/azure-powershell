@@ -655,6 +655,14 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Metrics</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PriorityReplication</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Rules</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -684,6 +692,14 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>DestinationAccount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.Metrics.Enabled -eq $true) {'Enabled'} else {if ($_.Metrics.Enabled -eq $false) {'Disabled'} } </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.PriorityReplication.Enabled -eq $true) {"Enabled"} else {if ($_.PriorityReplication.Enabled -eq $false) {"Disabled"} } </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

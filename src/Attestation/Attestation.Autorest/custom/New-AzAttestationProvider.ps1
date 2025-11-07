@@ -31,7 +31,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter is an array of JWK values. Bydefault, the order of the JWK values within the array does not implyan order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, ifdesired.
+POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter is an array of JWK values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, if desired.
   Kty <String>: The "kty" (key type) parameter identifies the cryptographic algorithm         family used with the key, such as "RSA" or "EC". "kty" values should         either be registered in the IANA "JSON Web Key Types" registry         established by [JWA] or be a value that contains a Collision-         Resistant Name.  The "kty" value is a case-sensitive string.
   [Alg <String>]: The "alg" (algorithm) parameter identifies the algorithm intended for         use with the key.  The values used should either be registered in the         IANA "JSON Web Signature and Encryption Algorithms" registry         established by [JWA] or be a value that contains a Collision-         Resistant Name.
   [Crv <String>]: The "crv" (curve) parameter identifies the curve type
@@ -53,7 +53,7 @@ POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter i
 https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
 #>
 function New-AzAttestationProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -77,35 +77,48 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
     [System.String]
     # The supported Azure location where the attestation provider should be created.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
     [System.String]
     # Specifies the set of trusted signing keys for issuance policy in a single certificate file.
     # The value of the "keys" parameter is an array of JWK values.
-    # Bydefault, the order of the JWK values within the array does not implyan order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, ifdesired.
+    # By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, if desired.
     # To construct, see NOTES section for POLICYSIGNINGCERTIFICATEKEY properties and create a hash table.
     ${PolicySigningCertificateKeyPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationServiceCreationParamsTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationServiceCreationParamsTags]))]
     [System.Collections.Hashtable]
     # The tags that will be assigned to the attestation provider.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -151,7 +164,7 @@ param(
 process {
     if($PSBoundParameters.ContainsKey("PolicySigningCertificateKeyPath")){
         $PolicySigningCertificateKeyPath = (Resolve-Path -Path $PolicySigningCertificateKeyPath).Path 
-        $PolicySigningCertificateKey = [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.JsonWebKeyHelper]::GetJsonWebKeys($PolicySigningCertificateKeyPath)
+        $PolicySigningCertificateKey = [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.JsonWebKeyHelper]::GetJsonWebKeys($PolicySigningCertificateKeyPath)
         $null = $PSBoundParameters.Add("PolicySigningCertificateKey", $PolicySigningCertificateKey)
         $null = $PSBoundParameters.Remove("PolicySigningCertificateKeyPath")
     }

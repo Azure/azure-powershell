@@ -43,18 +43,32 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Autonomousdbversionsname <String>]: AutonomousDbVersion name
   [Cloudexadatainfrastructurename <String>]: CloudExadataInfrastructure name
   [Cloudvmclustername <String>]: CloudVmCluster name
+  [DbSystemName <String>]: The name of the DbSystem
   [Dbnodeocid <String>]: DbNode OCID.
   [Dbserverocid <String>]: DbServer OCID.
   [Dbsystemshapename <String>]: DbSystemShape name
+  [Dbversionsname <String>]: DbVersion name
   [Dnsprivateviewocid <String>]: DnsPrivateView OCID
   [Dnsprivatezonename <String>]: DnsPrivateZone name
+  [ExadbVMClusterName <String>]: The name of the ExadbVmCluster
+  [ExascaleDbNodeName <String>]: The name of the ExascaleDbNode
+  [ExascaleDbStorageVaultName <String>]: The name of the ExascaleDbStorageVault
+  [FlexComponentName <String>]: The name of the FlexComponent
+  [GiMinorVersionName <String>]: The name of the GiMinorVersion
   [Giversionname <String>]: GiVersion name
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
+  [NetworkAnchorName <String>]: The name of the NetworkAnchor
+  [ResourceAnchorName <String>]: The name of the ResourceAnchor
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Systemversionname <String>]: SystemVersion name
   [Virtualnetworkaddressname <String>]: Virtual IP address hostname.
+
+SCHEDULEDOPERATIONSLIST <IScheduledOperationsTypeUpdate[]>: The list of scheduled operations.
+  [DayOfWeekName <String>]: Name of the day of the week.
+  [ScheduledStartTime <String>]: auto start time. value must be of ISO-8601 format HH:mm
+  [ScheduledStopTime <String>]: auto stop time. value must be of ISO-8601 format HH:mm
 .Link
 https://learn.microsoft.com/powershell/module/az.oracle/update-azoracleautonomousdatabase
 #>
@@ -164,14 +178,6 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # Name of the day of the week.
-    ${DayOfWeekName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
     [System.String]
     # The user-friendly name for the Autonomous Database.
@@ -264,7 +270,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
     [System.String]
-    # The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+    # The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
     ${PeerDbId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -285,19 +291,11 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto start time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStartTime},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto stop time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStopTime},
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate[]]
+    # The list of scheduled operations.
+    ${ScheduledOperationsList},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -398,6 +396,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -423,8 +430,6 @@ begin {
             UpdateViaJsonString = 'Az.Oracle.private\Update-AzOracleAutonomousDatabase_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -438,6 +443,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

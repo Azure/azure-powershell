@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -MigrationParameter
-Migration paramters to be passed to invoke prepare migration
+Migration parameters to be passed to invoke prepare migration
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayMigrationParameters

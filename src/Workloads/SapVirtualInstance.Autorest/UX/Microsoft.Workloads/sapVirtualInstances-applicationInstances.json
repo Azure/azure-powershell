@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Start-AzWorkloadsSapApplicationInstance",
-      "description": "Starts the SAP Application Server Instance.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapapplicationinstance"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "-SapVirtualInstanceName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Starts the SAP Application Server Instance.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.applicationInstanceName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SapVirtualInstanceName",
-              "value": "[Path.sapVirtualInstanceName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

@@ -24,6 +24,18 @@ Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CheckViaJsonFilePath
+```
+Test-AzDigitalTwinsInstanceNameAvailability -Location <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzDigitalTwinsInstanceNameAvailability -Location <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Check if a DigitalTwinsInstance name is available.
 
@@ -37,7 +49,7 @@ Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name testName
 ```output
 Message                  NameAvailable Reason
 -------                  ------------- ------
-'testName' is available. True
+'testName' is available.          True
 ```
 
 Check if a DigitalTwinsInstance name is available.
@@ -50,7 +62,7 @@ Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name !testName
 ```output
 Message                                                                                                                                NameAvailable Reason
 -------                                                                                                                                ------------- ------
-'!testName' must be between 3 and 63 characters. Alphanumerics and hyphens are allowed. Value must start and end with an alphanumeric. False         Invalid
+'!testName' must be between 3 and 63 characters. Alphanumerics and hyphens are allowed. Value must start and end with an alphanumeric.         False Invalid
 ```
 
 Check if a DigitalTwinsInstance name is not available.
@@ -75,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
@@ -89,12 +100,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Location of DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: True
@@ -109,7 +150,7 @@ Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -124,7 +165,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: False
@@ -174,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ICheckNameResult
 
 ## NOTES
 

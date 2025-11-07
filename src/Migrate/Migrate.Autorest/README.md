@@ -54,7 +54,7 @@ input-file:
   - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2024-01-01/service.json
   - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
 
-module-version: 3.0.10
+module-version: 3.0.13
 title: Migrate 
 subject-prefix: 'Migrate'
 
@@ -123,6 +123,9 @@ directive:
     - JobModelCustomProperties
     - TaskModel
     - TaskModelCustomProperties
+    - FabricAgentModelProperties
+    - FabricAgentModelCustomProperties
+    - VaultModelProperties
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
     where:
@@ -320,7 +323,7 @@ directive:
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
       verb: Get
-      subject: ^HyperV(Cluster|Host|Job|OperationsStatus)$
+      subject: ^HyperV(Job|OperationsStatus)$
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
@@ -388,7 +391,7 @@ directive:
       subject: ^Job$
     set:
       subject: LocalReplicationJob      
-  # Hide cmldets used by custom
+  # Hide cmdlets used by custom
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$
@@ -473,6 +476,11 @@ directive:
     where:
       verb: Get$
       subject: ^VCenter$
+    hide: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Get$
+      subject: ^HyperV(Cluster|Host)$
     hide: true
   - where:
       verb: New$|Update$

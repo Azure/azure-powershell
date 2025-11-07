@@ -470,6 +470,9 @@ Refreshes the value of external governance on the server.
 ### [Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation.md)
 Revalidates the Server Encryption Protector AKV key
 
+### [Lock-AzSqlDatabaseLongTermRetentionBackupImmutability](Lock-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
+Locks the time-based immutability policy for an LTR backup.
+
 ### [Move-AzSqlInstanceDatabase](Move-AzSqlInstanceDatabase.md)
 Move managed database to another managed instance.
 
@@ -599,6 +602,12 @@ Removes an Instance Failover Group.
 ### [Remove-AzSqlDatabaseLongTermRetentionBackup](Remove-AzSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
 
+### [Remove-AzSqlDatabaseLongTermRetentionBackupImmutability](Remove-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
+Removes an unlocked time-based immutability policy for an LTR backup.
+
+### [Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold](Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
+Removes legal hold immutability on an LTR backup. (Public Preview)
+
 ### [Remove-AzSqlDatabaseRestorePoint](Remove-AzSqlDatabaseRestorePoint.md)
 Removes given restore point from a SQL Database.
 
@@ -719,6 +728,9 @@ Restores a SQL database.
 ### [Restore-AzSqlInstanceDatabase](Restore-AzSqlInstanceDatabase.md)
 Restores an Azure SQL Managed Instance database.
 
+### [Restore-AzSqlServer](Restore-AzSqlServer.md)
+Restores a deleted Azure SQL Database server that is still within its soft-delete retention period
+
 ### [Resume-AzSqlDatabase](Resume-AzSqlDatabase.md)
 Resumes a SQL Data Warehouse database.
 
@@ -752,11 +764,14 @@ Sets a database geo backup policy.
 ### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
 Modifies the configuration of an Instance Failover Group.
 
+### [Set-AzSqlDatabaseLongTermRetentionBackupLegalHold](Set-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
+Set legal hold immutability on an LTR backup. (Public Preview)
+
 ### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
 
 ### [Set-AzSqlDatabaseReplicationLink](Set-AzSqlDatabaseReplicationLink.md)
-Updates the Link type of a Replication Link.
+Updates the link type of the geo-replication link
 
 ### [Set-AzSqlDatabaseSecondary](Set-AzSqlDatabaseSecondary.md)
 Switches a secondary database to be primary in order to initiate failover.
@@ -877,6 +892,9 @@ Starts a Log Replay service with the given parameters.
 
 ### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
+
+### [Start-AzSqlInstanceLinkFailover](Start-AzSqlInstanceLinkFailover.md)
+Failovers an instance link.
 
 ### [Start-AzSqlSyncGroupSync](Start-AzSqlSyncGroupSync.md)
 Starts a sync group synchronization.

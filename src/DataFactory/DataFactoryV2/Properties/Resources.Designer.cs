@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continuing execution will renegerate the authentication key &apos;{0}&apos; of integration runtime {1}. This operation will invalidate the existing authentication key.
+        ///   Looks up a localized string similar to Continuing execution will regenerate the authentication key &apos;{0}&apos; of integration runtime {1}. This operation will invalidate the existing authentication key.
         ///Are you sure you want to continue?.
         /// </summary>
         internal static string ContinueRegenerateAuthKey {
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The value for pramater &apos;Type&apos; is different with existing integration runtime with name {0}..
+        ///   Looks up a localized string similar to The value for parameter &apos;Type&apos; is different with existing integration runtime with name {0}..
         /// </summary>
         internal static string IntegrationRuntimeWrongType {
             get {
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The linked data factory name is invlaid..
+        ///   Looks up a localized string similar to The linked data factory name is invalid..
         /// </summary>
         internal static string InvalidLinkedDataFactoryName {
             get {
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pramater &apos;Type&apos; must be provided when creating new integration runtime..
+        ///   Looks up a localized string similar to Parameter &apos;Type&apos; must be provided when creating new integration runtime..
         /// </summary>
         internal static string NeedIntegrationRuntimeType {
             get {
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Renegerate the authentication key &apos;{0}&apos; of integration runtime {1}..
+        ///   Looks up a localized string similar to Regenerate the authentication key &apos;{0}&apos; of integration runtime {1}..
         /// </summary>
         internal static string RegenerateAuthKey {
             get {

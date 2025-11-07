@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a CloudExadataInfrastructure</summary>
+    /// <summary>create a CloudExadataInfrastructure</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzOracleCloudExadataInfrastructure_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructure))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"Create a CloudExadataInfrastructure")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a CloudExadataInfrastructure")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleCloudExadataInfrastructure_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>CloudExadataInfrastructure resource definition</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructure _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.CloudExadataInfrastructure();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -95,6 +86,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         SerializedName = @"customerContacts",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICustomerContact) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICustomerContact[] CustomerContact { get => _resourceBody.CustomerContact?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.CustomerContact = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICustomerContact>(value) : null); }
+
+        /// <summary>The database server model type of the cloud Exadata infrastructure resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The database server model type of the cloud Exadata infrastructure resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The database server model type of the cloud Exadata infrastructure resource.",
+        SerializedName = @"databaseServerType",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DatabaseServerType { get => _resourceBody.DatabaseServerType ?? null; set => _resourceBody.DatabaseServerType = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -370,6 +372,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         PossibleTypes = new [] { typeof(int) })]
         public int StorageCount { get => _resourceBody.StorageCount ?? default(int); set => _resourceBody.StorageCount = value; }
 
+        /// <summary>The storage server model type of the cloud Exadata infrastructure resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The storage server model type of the cloud Exadata infrastructure resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The storage server model type of the cloud Exadata infrastructure resource.",
+        SerializedName = @"storageServerType",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageServerType { get => _resourceBody.StorageServerType ?? null; set => _resourceBody.StorageServerType = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -482,11 +495,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Oracle.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -802,24 +810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructure
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

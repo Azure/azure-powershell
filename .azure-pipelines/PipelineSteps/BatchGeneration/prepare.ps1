@@ -8,7 +8,7 @@ $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGen
 Import-Module $utilFilePath -Force
 
 $srcPath = Join-Path $RepoRoot 'src'
-$moduleMap = Get-AutorestV4ModuleMap -srcPath $srcPath
+$moduleMap = Get-BatchGenerationModuleMap -srcPath $srcPath
 Write-Host "Total matched modules: $($moduleMap.Count)"
 
 $modules = @($moduleMap.Keys | Sort-Object)
@@ -18,7 +18,7 @@ Write-Host "Total module groups: $($groupedModules.Count)"
 $index = 0
 $generationTargets = @{}
 foreach ($moduleGroup in $groupedModules) {
-    Write-Host "##[group]Prepareing module group $($index + 1) with $($moduleGroup.Count) modules"
+    Write-Host "##[group]Preparing module group $($index + 1) with $($moduleGroup.Count) modules"
     $mergedModules = @{}
     foreach ($moduleName in $moduleGroup) {
         Write-Host "Module $($moduleName): $($moduleMap[$moduleName] -join ',')"
@@ -34,14 +34,17 @@ foreach ($moduleGroup in $groupedModules) {
     $index++
 }
 
-$generationTargetsOutputDir = Join-Path $RepoRoot "artifacts"
-if (-not (Test-Path -Path $generationTargetsOutputDir)) {
-    New-Item -ItemType Directory -Path $generationTargetsOutputDir
+$artifactsDir = Join-Path $RepoRoot "artifacts"
+if (-not (Test-Path -Path $artifactsDir)) {
+    New-Item -ItemType Directory -Path $artifactsDir
 }
-$generationTargetsOutputFile = Join-Path $generationTargetsOutputDir "generationTargets.json"
+$generationTargetsOutputFile = Join-Path $artifactsDir "generationTargets.json"
 $generationTargets | ConvertTo-Json -Depth 5 | Out-File -FilePath $generationTargetsOutputFile -Encoding utf8
 
 if ($MatrixStr -and $MatrixStr.Length -gt 1) {
     $MatrixStr = $MatrixStr.Substring(1)
 }
 Write-Host "##vso[task.setVariable variable=generationTargets;isOutput=true]{$MatrixStr}"
+
+$V4ModulesRecordFile = Join-Path $artifactsDir 'preparedV4Modules.txt'
+$modules | Set-Content -Path $V4ModulesRecordFile -Encoding UTF8

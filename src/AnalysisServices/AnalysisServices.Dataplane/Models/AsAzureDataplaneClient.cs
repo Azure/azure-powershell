@@ -116,14 +116,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         }
 
         /// <summary>
-        /// Asynchronosly send an http request.
+        /// Asynchronously send an http request.
         /// </summary>
         /// <param name="method">The http method for this request.</param>
         /// <param name="baseUri">The base URI to send the request to.</param>
         /// <param name="requestUrl">The URL endpoint to send the request to.</param>
         /// <param name="correlationId">The correlation ID for the request.</param>
         /// <param name="content">HttpContent for a POST request.</param>
-        /// <param name="cancellationToken">The cancelation token.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The <see cref="HttpResponseMessage"/> of the request.</returns>
         private async Task<HttpResponseMessage> SendRequestAsync(
             HttpMethod method,

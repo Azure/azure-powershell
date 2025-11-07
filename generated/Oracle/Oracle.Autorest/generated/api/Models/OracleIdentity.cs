@@ -61,6 +61,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Cloudvmclustername { get => this._cloudvmclustername; set => this._cloudvmclustername = value; }
 
+        /// <summary>Backing field for <see cref="DbSystemName" /> property.</summary>
+        private string _dbSystemName;
+
+        /// <summary>The name of the DbSystem</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string DbSystemName { get => this._dbSystemName; set => this._dbSystemName = value; }
+
         /// <summary>Backing field for <see cref="Dbnodeocid" /> property.</summary>
         private string _dbnodeocid;
 
@@ -82,6 +89,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Dbsystemshapename { get => this._dbsystemshapename; set => this._dbsystemshapename = value; }
 
+        /// <summary>Backing field for <see cref="Dbversionsname" /> property.</summary>
+        private string _dbversionsname;
+
+        /// <summary>DbVersion name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string Dbversionsname { get => this._dbversionsname; set => this._dbversionsname = value; }
+
         /// <summary>Backing field for <see cref="Dnsprivateviewocid" /> property.</summary>
         private string _dnsprivateviewocid;
 
@@ -95,6 +109,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>DnsPrivateZone name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Dnsprivatezonename { get => this._dnsprivatezonename; set => this._dnsprivatezonename = value; }
+
+        /// <summary>Backing field for <see cref="ExadbVMClusterName" /> property.</summary>
+        private string _exadbVMClusterName;
+
+        /// <summary>The name of the ExadbVmCluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ExadbVMClusterName { get => this._exadbVMClusterName; set => this._exadbVMClusterName = value; }
+
+        /// <summary>Backing field for <see cref="ExascaleDbNodeName" /> property.</summary>
+        private string _exascaleDbNodeName;
+
+        /// <summary>The name of the ExascaleDbNode</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ExascaleDbNodeName { get => this._exascaleDbNodeName; set => this._exascaleDbNodeName = value; }
+
+        /// <summary>Backing field for <see cref="ExascaleDbStorageVaultName" /> property.</summary>
+        private string _exascaleDbStorageVaultName;
+
+        /// <summary>The name of the ExascaleDbStorageVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ExascaleDbStorageVaultName { get => this._exascaleDbStorageVaultName; set => this._exascaleDbStorageVaultName = value; }
+
+        /// <summary>Backing field for <see cref="FlexComponentName" /> property.</summary>
+        private string _flexComponentName;
+
+        /// <summary>The name of the FlexComponent</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string FlexComponentName { get => this._flexComponentName; set => this._flexComponentName = value; }
+
+        /// <summary>Backing field for <see cref="GiMinorVersionName" /> property.</summary>
+        private string _giMinorVersionName;
+
+        /// <summary>The name of the GiMinorVersion</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string GiMinorVersionName { get => this._giMinorVersionName; set => this._giMinorVersionName = value; }
 
         /// <summary>Backing field for <see cref="Giversionname" /> property.</summary>
         private string _giversionname;
@@ -116,6 +165,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="NetworkAnchorName" /> property.</summary>
+        private string _networkAnchorName;
+
+        /// <summary>The name of the NetworkAnchor</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string NetworkAnchorName { get => this._networkAnchorName; set => this._networkAnchorName = value; }
+
+        /// <summary>Backing field for <see cref="ResourceAnchorName" /> property.</summary>
+        private string _resourceAnchorName;
+
+        /// <summary>The name of the ResourceAnchor</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ResourceAnchorName { get => this._resourceAnchorName; set => this._resourceAnchorName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -231,6 +294,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"cloudvmclustername",
         PossibleTypes = new [] { typeof(string) })]
         string Cloudvmclustername { get; set; }
+        /// <summary>The name of the DbSystem</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the DbSystem",
+        SerializedName = @"dbSystemName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DbSystemName { get; set; }
         /// <summary>DbNode OCID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -264,6 +338,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"dbsystemshapename",
         PossibleTypes = new [] { typeof(string) })]
         string Dbsystemshapename { get; set; }
+        /// <summary>DbVersion name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"DbVersion name",
+        SerializedName = @"dbversionsname",
+        PossibleTypes = new [] { typeof(string) })]
+        string Dbversionsname { get; set; }
         /// <summary>DnsPrivateView OCID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -286,6 +371,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"dnsprivatezonename",
         PossibleTypes = new [] { typeof(string) })]
         string Dnsprivatezonename { get; set; }
+        /// <summary>The name of the ExadbVmCluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the ExadbVmCluster",
+        SerializedName = @"exadbVmClusterName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExadbVMClusterName { get; set; }
+        /// <summary>The name of the ExascaleDbNode</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the ExascaleDbNode",
+        SerializedName = @"exascaleDbNodeName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExascaleDbNodeName { get; set; }
+        /// <summary>The name of the ExascaleDbStorageVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the ExascaleDbStorageVault",
+        SerializedName = @"exascaleDbStorageVaultName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExascaleDbStorageVaultName { get; set; }
+        /// <summary>The name of the FlexComponent</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the FlexComponent",
+        SerializedName = @"flexComponentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FlexComponentName { get; set; }
+        /// <summary>The name of the GiMinorVersion</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the GiMinorVersion",
+        SerializedName = @"giMinorVersionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GiMinorVersionName { get; set; }
         /// <summary>GiVersion name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -319,6 +459,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>The name of the NetworkAnchor</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the NetworkAnchor",
+        SerializedName = @"networkAnchorName",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkAnchorName { get; set; }
+        /// <summary>The name of the ResourceAnchor</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the ResourceAnchor",
+        SerializedName = @"resourceAnchorName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceAnchorName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -382,22 +544,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string Cloudexadatainfrastructurename { get; set; }
         /// <summary>CloudVmCluster name</summary>
         string Cloudvmclustername { get; set; }
+        /// <summary>The name of the DbSystem</summary>
+        string DbSystemName { get; set; }
         /// <summary>DbNode OCID.</summary>
         string Dbnodeocid { get; set; }
         /// <summary>DbServer OCID.</summary>
         string Dbserverocid { get; set; }
         /// <summary>DbSystemShape name</summary>
         string Dbsystemshapename { get; set; }
+        /// <summary>DbVersion name</summary>
+        string Dbversionsname { get; set; }
         /// <summary>DnsPrivateView OCID</summary>
         string Dnsprivateviewocid { get; set; }
         /// <summary>DnsPrivateZone name</summary>
         string Dnsprivatezonename { get; set; }
+        /// <summary>The name of the ExadbVmCluster</summary>
+        string ExadbVMClusterName { get; set; }
+        /// <summary>The name of the ExascaleDbNode</summary>
+        string ExascaleDbNodeName { get; set; }
+        /// <summary>The name of the ExascaleDbStorageVault</summary>
+        string ExascaleDbStorageVaultName { get; set; }
+        /// <summary>The name of the FlexComponent</summary>
+        string FlexComponentName { get; set; }
+        /// <summary>The name of the GiMinorVersion</summary>
+        string GiMinorVersionName { get; set; }
         /// <summary>GiVersion name</summary>
         string Giversionname { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
+        /// <summary>The name of the NetworkAnchor</summary>
+        string NetworkAnchorName { get; set; }
+        /// <summary>The name of the ResourceAnchor</summary>
+        string ResourceAnchorName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>

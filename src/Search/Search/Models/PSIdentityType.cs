@@ -17,6 +17,43 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
     public enum PSIdentityType
     {
         None = 0,
-        SystemAssigned = 1
+        SystemAssigned = 1,
+        UserAssigned = 2,
+        SystemAssignedUserAssigned = 3,
+    }
+
+    internal static class PSIdentityTypeEnumExtension
+    {
+        internal static PSIdentityType? ParsePSIdentityType(this string value)
+        {
+            switch (value)
+            {
+                case "None":
+                    return PSIdentityType.None;
+                case "SystemAssigned":
+                    return PSIdentityType.SystemAssigned;
+                case "UserAssigned":
+                    return PSIdentityType.UserAssigned;
+                case "SystemAssigned, UserAssigned":
+                    return PSIdentityType.SystemAssignedUserAssigned;
+            }
+            return null;
+        }
+
+        internal static string ToString(this PSIdentityType value)
+        {
+            switch (value)
+            {
+                case PSIdentityType.None:
+                    return "None";
+                case PSIdentityType.SystemAssigned:
+                    return "SystemAssigned";
+                case PSIdentityType.UserAssigned:
+                    return "UserAssigned";
+                case PSIdentityType.SystemAssignedUserAssigned:
+                    return "SystemAssigned, UserAssigned";
+            }
+            return null;
+        }
     }
 }

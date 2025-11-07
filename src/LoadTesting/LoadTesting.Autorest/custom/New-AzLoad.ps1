@@ -30,6 +30,11 @@ Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResou
 https://learn.microsoft.com/powershell/module/az.loadtesting/new-azload
 #>
 function New-AzLoad {
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *`n
+    * At least one change applies to this cmdlet.                                                     *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+    ***************************************************************************************************")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -158,7 +163,7 @@ function New-AzLoad {
 
     process {
         try {
-            # if encyyption identity has a value, populate the encryption identity type and encryption identity resource id
+            # if encryption identity has a value, populate the encryption identity type and encryption identity resource id
             # add the managed identity to the list of user assigned identities
             if ($PSBoundParameters.ContainsKey('EncryptionIdentity')) {
                 $null = $PSBoundParameters.Add("EncryptionIdentityResourceId", $PSBoundParameters['EncryptionIdentity'])

@@ -1,17 +1,17 @@
 {
-  "Get-AzMongoDBOrganization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg/providers/MongoDB.Atlas/organizations/testorg5?api-version=2024-11-18-preview+1": {
+  "Get-AzMongoDBOrganization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/ajaykumar-rg/providers/MongoDB.Atlas/organizations/MongoDBV2-11July-5?api-version=2025-06-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg/providers/MongoDB.Atlas/organizations/testorg5?api-version=2024-11-18-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/ajaykumar-rg/providers/MongoDB.Atlas/organizations/MongoDBV2-11July-5?api-version=2025-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "1570f668-b252-476e-b6ca-d73a417658fd" ],
+        "x-ms-client-request-id": [ "c2504467-6cb4-4661-9a2a-1b3cd133823f" ],
         "CommandName": [ "Get-AzMongoDBOrganization" ],
         "FullCommandName": [ "Get-AzMongoDBOrganization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.MongoDB/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.MongoDB/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,25 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"5e04e556-0000-0200-0000-6826cd2a0000\"" ],
+        "ETag": [ "\"28012325-0000-0200-0000-6870af0a0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "74737245-7ed0-4d60-8547-b2760b400609" ],
-        "x-ms-correlation-request-id": [ "11066c0d-a192-4c27-8d0a-683caac90478" ],
+        "x-ms-request-id": [ "43e7dbe4-2c44-46aa-b4ab-78446ae344c8" ],
+        "x-ms-correlation-request-id": [ "3cfc2c5a-72fd-4865-9046-ac1d12c5b286" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250524T121443Z:11066c0d-a192-4c27-8d0a-683caac90478" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250711T063138Z:3cfc2c5a-72fd-4865-9046-ac1d12c5b286" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D9F44C8FACDF4C96A025779C0DBF2801 Ref B: MAA201060514039 Ref C: 2025-05-24T12:14:42Z" ],
-        "Date": [ "Sat, 24 May 2025 12:14:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 152A762B01564A7783B0F8023E570694 Ref B: PNQ231110906042 Ref C: 2025-07-11T06:31:37Z" ],
+        "Date": [ "Fri, 11 Jul 2025 06:31:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1196" ],
+        "Content-Length": [ "1213" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg/providers/MongoDB.Atlas/organizations/testorg5\",\"name\":\"testorg5\",\"type\":\"mongodb.atlas/organizations\",\"location\":\"East US 2\",\"tags\":{\"testName\":\"TestValue3\"},\"systemData\":{\"createdBy\":\"yashikajain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-15T19:17:14.8452289Z\",\"lastModifiedBy\":\"yashikajain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-16T05:29:13.8977528Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"7c9656d5-bf22-4f97-dba3-783e05b079f8\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"mongodb\",\"offerId\":\"mongodb_atlas_azure_native_prod\",\"planId\":\"private_plan\",\"planName\":\"Pay as You Go (Free) (Private)\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"yashikajain@microsoft.com\",\"upn\":\"yashikajain@microsoft.com\"},\"provisioningState\":\"Succeeded\",\"partnerProperties\":{\"organizationId\":\"68263def1158e05a95034cd7\",\"organizationName\":\"testorg5\",\"redirectUrl\":\"https://account.mongodb.com/account/reset/password?email=yashikajain%40microsoft.com\u0026orgId=68263def1158e05a95034cd7\u0026shouldRedirect=true\"}}}",
+      "Content": "{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/ajaykumar-rg/providers/MongoDB.Atlas/organizations/MongoDBV2-11July-5\",\"name\":\"MongoDBV2-11July-5\",\"type\":\"mongodb.atlas/organizations\",\"location\":\"East US 2\",\"systemData\":{\"createdBy\":\"ajaykumar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-11T06:26:59.3569359Z\",\"lastModifiedBy\":\"b059abce-70fd-4c8f-a117-96d2192e90e1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-11T06:28:26.6775428Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"4aa85669-6516-4964-cc9e-758d047a47b5\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"mongodb\",\"offerId\":\"mongodb_atlas_azure_native_prod\",\"planId\":\"private_plan\",\"planName\":\"Pay as You Go (Free) (Private)\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Ajay\",\"lastName\":\"Kumar\",\"emailAddress\":\"ajaykumar@microsoft.com\",\"upn\":\"ajaykumar@microsoft.com\"},\"provisioningState\":\"Succeeded\",\"partnerProperties\":{\"organizationId\":\"6870aee2c10e78749fbe5353\",\"organizationName\":\"MongoDBPortalTest\",\"redirectUrl\":\"https://account.mongodb.com/account/reset/password?email=ajaykumar%40microsoft.com\u0026orgId=6870aee2c10e78749fbe5353\u0026shouldRedirect=true\"}}}",
       "isContentBase64": false
     }
   }

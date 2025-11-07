@@ -9,7 +9,7 @@ function New-AzDataProtectionPolicyTriggerScheduleClientObject{
         [System.DateTime[]]
         ${ScheduleDays},
 
-        [Parameter(Mandatory, HelpMessage='Freuquency of the backup.')]
+        [Parameter(Mandatory, HelpMessage='Frequency of the backup.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
         ${IntervalType},
 

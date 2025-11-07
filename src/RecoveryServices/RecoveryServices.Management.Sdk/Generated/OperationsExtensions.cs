@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
     public static partial class OperationsExtensions
     {
         /// <summary>
-        /// Returns the list of available operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         }
 
         /// <summary>
-        /// Returns the list of available operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
             }
         }
         /// <summary>
-        /// Returns the list of available operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         }
 
         /// <summary>
-        /// Returns the list of available operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

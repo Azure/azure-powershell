@@ -41,55 +41,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for Credentials</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestCredential Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.Credentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Credentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Credentials = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestCredential Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.Credentials { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Credentials; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Credentials = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CustomResourceName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.CustomResourceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).CustomResourceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).CustomResourceName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.CustomResourceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).CustomResourceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).CustomResourceName = value ?? null; }
 
         /// <summary>Internal Acessors for HttpProxyConfig</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IHttpProxyConfiguration Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.HttpProxyConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).HttpProxyConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).HttpProxyConfig = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IHttpProxyConfiguration Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.HttpProxyConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).HttpProxyConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).HttpProxyConfig = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.GuestAgentProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Uuid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Uuid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgentPropertiesInternal)Property).Uuid = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inherited)]
