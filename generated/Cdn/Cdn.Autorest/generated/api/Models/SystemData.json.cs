@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>Read only system data</summary>
+    /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
     public partial class SystemData
     {
 
