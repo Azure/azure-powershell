@@ -23,7 +23,7 @@ Create an in-memory object for BackendPool.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPool
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolobject
 #>
 function New-AzFrontDoorBackendPoolObject {
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
