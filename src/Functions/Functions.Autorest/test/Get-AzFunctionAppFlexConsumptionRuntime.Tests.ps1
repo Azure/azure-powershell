@@ -27,11 +27,11 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         $runtimes | Should -BeOfType [System.Object]
         
         # Verify common runtime properties exist
-        $runtimes[0] | Should -HaveProperty 'Name'
-        $runtimes[0] | Should -HaveProperty 'Version'
-        $runtimes[0] | Should -HaveProperty 'IsDefault'
-        $runtimes[0] | Should -HaveProperty 'EndOfLifeDate'
-        $runtimes[0] | Should -HaveProperty 'Sku'
+        $runtimes[0].Name | Should -Not -BeNullOrEmpty
+        $runtimes[0].Version | Should -Not -BeNullOrEmpty
+        $runtimes[0].IsDefault | Should -BeOfType [System.Boolean]
+        $runtimes[0].EndOfLifeDate | Should -Not -BeNullOrEmpty
+        $runtimes[0].Sku | Should -Not -BeNull
         
         # Verify expected runtimes are available for Flex Consumption
         $runtimeNames = $runtimes | Select-Object -ExpandProperty Name -Unique
@@ -39,6 +39,7 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         $runtimeNames | Should -Contain 'node'
         $runtimeNames | Should -Contain 'python'
         $runtimeNames | Should -Contain 'java'
+        $runtimeNames | Should -Contain 'custom'
     }
 
     It 'Should get specific runtime versions for dotnet-isolated' {
@@ -116,8 +117,8 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         $specificRuntime | Should -Not -BeNullOrEmpty
         $specificRuntime.Name | Should -Be 'dotnet-isolated'
         $specificRuntime.Version | Should -Be '8.0'
-        $specificRuntime | Should -HaveProperty 'IsDefault'
-        $specificRuntime | Should -HaveProperty 'EndOfLifeDate'
+        $specificRuntime.IsDefault | Should -BeOfType [System.Boolean]
+        $specificRuntime.EndOfLifeDate | Should -Not -BeNullOrEmpty
         $specificRuntime.Sku.skuCode | Should -Be 'FC1'
     }
 
@@ -141,14 +142,7 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         $runtimes | Should -Not -BeNullOrEmpty
         
         foreach ($runtime in $runtimes) {
-            # Required properties
-            $runtime | Should -HaveProperty 'Name'
-            $runtime | Should -HaveProperty 'Version'
-            $runtime | Should -HaveProperty 'IsDefault'
-            $runtime | Should -HaveProperty 'EndOfLifeDate'
-            $runtime | Should -HaveProperty 'Sku'
-            
-            # Validate property types and values
+            # Required properties validation
             $runtime.Name | Should -Be 'python'
             $runtime.Version | Should -Not -BeNullOrEmpty
             $runtime.IsDefault | Should -BeOfType [System.Boolean]
@@ -157,10 +151,10 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
             $runtime.Sku.skuCode | Should -Be 'FC1'
             
             # Validate Sku object has expected properties
-            $runtime.Sku | Should -HaveProperty 'skuCode'
-            $runtime.Sku | Should -HaveProperty 'instanceMemoryMB'
-            $runtime.Sku | Should -HaveProperty 'maximumInstanceCount'
-            $runtime.Sku | Should -HaveProperty 'functionAppConfigProperties'
+            $runtime.Sku.skuCode | Should -Not -BeNullOrEmpty
+            $runtime.Sku.instanceMemoryMB | Should -Not -BeNullOrEmpty
+            $runtime.Sku.maximumInstanceCount | Should -Not -BeNullOrEmpty
+            $runtime.Sku.functionAppConfigProperties | Should -Not -BeNull
         }
     }
 

@@ -351,28 +351,25 @@ Describe 'Get-AzFunctionAppAvailableLocation' {
         ValidateAvailableLocation -ActualRegions $actualRegions -ExpectedRegions $expectedRegions
     }
 
-    foreach ($osType in @('Linux', 'Windows'))
-    {
-            It "Validate -PlanType FlexConsumption -OSType $osType -ZoneRedundant fails" {
+    It "Validate -PlanType FlexConsumption -OSType Windows -ZoneRedundant fails" {
 
-            $expectedErrorMessage = "ZoneRedundant parameter is only applicable for FlexConsumption plan type."
-            $expectedErrorId = "ZoneRedundantIsOnlyApplicableForFlexConsumption"
+        $expectedErrorMessage = "ZoneRedundant parameter is only applicable for FlexConsumption plan type."
+        $expectedErrorId = "ZoneRedundantIsOnlyApplicableForFlexConsumption"
 
-            $myError = $null
-            try
-            {
-                Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -OSType $osType -ErrorAction Stop
-            }
-            catch
-            {
-                Write-Verbose "Catch the expected exception" -Verbose
-                $myError = $_
-            }
-
-            Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
-            $myError.FullyQualifiedErrorId | Should Be $expectedErrorId
-            Write-Verbose "Validate Exception.Message" -Verbose
-            $myError.Exception.Message | Should Match $expectedErrorMessage
+        $myError = $null
+        try
+        {
+            Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Windows -ZoneRedundant -ErrorAction Stop
         }
+        catch
+        {
+            Write-Verbose "Catch the expected exception" -Verbose
+            $myError = $_
+        }
+
+        Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
+        $myError.FullyQualifiedErrorId | Should Be $expectedErrorId
+        Write-Verbose "Validate Exception.Message" -Verbose
+        $myError.Exception.Message | Should Match $expectedErrorMessage
     }
 }

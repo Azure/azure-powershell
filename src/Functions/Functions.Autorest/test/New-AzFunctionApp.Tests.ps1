@@ -673,6 +673,8 @@ Describe 'New-AzFunctionApp' {
         $runtimeVersion = 7.4
         Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
 
+        $appSettingName = "APPLICATIONINSIGHTS_CONNECTION_STRING"
+
         try
         {
             Write-Verbose "Creating function app with -DisableApplicationInsights" -Verbose
@@ -690,9 +692,9 @@ Describe 'New-AzFunctionApp' {
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
 
-            Write-Verbose "Validating that the app setting 'APPINSIGHTS_INSTRUMENTATIONKEY' does not exist..." -Verbose
+            Write-Verbose "Validating that the app setting '$appSettingName' does not exist..." -Verbose
             $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
-            $applicationSettings.ContainsKey("APPINSIGHTS_INSTRUMENTATIONKEY") | Should -Be $false
+            $applicationSettings.ContainsKey($appSettingName) | Should -Be $false
         }
         finally
         {
@@ -863,7 +865,10 @@ Describe 'New-AzFunctionApp' {
 
                 Write-Verbose "Validating FUNCTIONS_EXTENSION_VERSION and app settings..." -Verbose
                 $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
-                $applicationSettings.FUNCTIONS_EXTENSION_VERSION | Should be "~$functionsVersion"
+                $applicationSettings.FUNCTIONS_EXTENSION_VERSION | Should -Be "~$functionsVersion"
+
+                Write-Verbose "Validating that APPLICATIONINSIGHTS_CONNECTION_STRING is set..." -Verbose
+                $applicationSettings.APPLICATIONINSIGHTS_CONNECTION_STRING | Should -Not -BeNullOrEmpty
 
                 if ($testCase.ContainsKey("ExpectedSiteConfig"))
                 {
