@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The core properties of ARM resources</summary>
+    /// <summary>
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ResourceTypeConverter))]
     public partial class Resource
     {
@@ -226,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The core properties of ARM resources
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
     [System.ComponentModel.TypeConverter(typeof(ResourceTypeConverter))]
     public partial interface IResource
 

@@ -12,8 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     /// The dictionary values can be empty objects ({}) in requests.
     /// </summary>
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
-    public partial class UserAssignedIdentities
+    [System.ComponentModel.TypeConverter(typeof(ManagedServiceIdentityUserAssignedIdentitiesTypeConverter))]
+    public partial class ManagedServiceIdentityUserAssignedIdentities
     {
 
         /// <summary>
@@ -67,37 +67,80 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentities"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new UserAssignedIdentities(content);
+            return new ManagedServiceIdentityUserAssignedIdentities(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentities"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new UserAssignedIdentities(content);
+            return new ManagedServiceIdentityUserAssignedIdentities(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="UserAssignedIdentities" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="ManagedServiceIdentityUserAssignedIdentities" />, deserializing the content from
+        /// a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="UserAssignedIdentities" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>
+        /// an instance of the <see cref="ManagedServiceIdentityUserAssignedIdentities" /> model class.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentities"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal ManagedServiceIdentityUserAssignedIdentities(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
+            AfterDeserializeDictionary(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentities"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        internal ManagedServiceIdentityUserAssignedIdentities(global::System.Management.Automation.PSObject content)
+        {
+            bool returnNow = false;
+            BeforeDeserializePSObject(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
+            AfterDeserializePSObject(content);
+        }
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -115,50 +158,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             return ToJsonString();
         }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserAssignedIdentities"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal UserAssignedIdentities(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserAssignedIdentities"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal UserAssignedIdentities(global::System.Management.Automation.PSObject content)
-        {
-            bool returnNow = false;
-            BeforeDeserializePSObject(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializePSObject(content);
-        }
     }
     /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
     /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     /// The dictionary values can be empty objects ({}) in requests.
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
-    public partial interface IUserAssignedIdentities
+    [System.ComponentModel.TypeConverter(typeof(ManagedServiceIdentityUserAssignedIdentitiesTypeConverter))]
+    public partial interface IManagedServiceIdentityUserAssignedIdentities
 
     {
 
