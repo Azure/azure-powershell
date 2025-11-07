@@ -19,22 +19,25 @@ API to get labs.
 API to get labs.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
 #>
 function Get-AzLabServicesLab_ListByLabName {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
 [CmdletBinding(PositionalBinding=$false)]
 param(    
 
     [Parameter()]
     [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
     [SupportsWildcards()]
     [System.String]
+    # The name of lab service lab.
     ${Name},
 
     [Parameter()]
@@ -93,8 +96,8 @@ param(
 )
 
 process {
-        
-    if ($(& $PSScriptRoot\Utilities\CheckForWildcards.ps1 -ResourceId $PSBoundParameters.Name))
+    $CheckForWildcards = Join-Path $PSScriptRoot 'Utilities' 'CheckForWildcards.ps1'
+    if ($(. $CheckForWildcards -ResourceId $PSBoundParameters.Name))
     {
         $currentLab = $PSBoundParameters.Name
         $PSBoundParameters.Remove('Name') > $null

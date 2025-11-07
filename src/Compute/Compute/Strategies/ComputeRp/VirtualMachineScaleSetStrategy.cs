@@ -83,7 +83,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string ifNoneMatch = null,
             string securityPostureId = null,
             string[] securityPostureExcludeExtension = null,
-            bool? enableProxyAgent = null
+            bool? enableProxyAgent = null,
+            bool? addProxyAgentExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     var vmss = new VirtualMachineScaleSet
                     {
                         Zones = zones,
-                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
+                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationType.EdgeZone),
                         UpgradePolicy = new UpgradePolicy
                         {
                             Mode = upgradeMode ?? UpgradeMode.Manual,
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 EncryptionAtHost = encryptionAtHost,
                                 UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                                 SecurityType = securityType,
-                                ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings(enableProxyAgent) : null
+                                ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enabled: enableProxyAgent, addProxyAgentExtension: addProxyAgentExtension): null,
                             },
                             OsProfile = new VirtualMachineScaleSetOSProfile
                             {
@@ -252,7 +253,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string ifNoneMatch = null,
             string securityPostureId = null,
             string[] securityPostureExcludeExtension = null,
-            bool? enableProxyAgent = null
+            bool? enableProxyAgent = null,
+            bool? addProxyAgentExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -268,7 +270,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             }
                         },
                         Zones = zones,
-                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
+                        ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationType.EdgeZone),
                         Sku = new Azure.Management.Compute.Models.Sku()
                         {
                             Capacity = instanceCount,
@@ -285,7 +287,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 EncryptionAtHost = encryptionAtHost,
                                 UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                                 SecurityType = securityType,
-                                ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings(enableProxyAgent) : null
+                                ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enabled: enableProxyAgent, addProxyAgentExtension: addProxyAgentExtension) : null,
                             },
                             OsProfile = new VirtualMachineScaleSetOSProfile
                             {

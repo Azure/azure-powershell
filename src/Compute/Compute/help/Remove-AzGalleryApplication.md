@@ -19,6 +19,12 @@ Remove-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupN
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityGallery
+```
+Remove-AzGalleryApplication -Name <String> -GalleryInputObject <IComputeIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzGalleryApplication -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -32,7 +38,7 @@ Delete a gallery Application.
 
 ### Example 1: Remove a Gallery Application
 ```powershell
-Remove-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName -Name $name
+Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
 ```
 
 Delete a gallery application.
@@ -70,6 +76,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GalleryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: DeleteViaIdentityGallery
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -GalleryName
 The name of the Shared Application Gallery in which the Application Definition is to be deleted.
 
@@ -87,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -106,7 +126,7 @@ The name of the gallery Application Definition to be deleted.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityGallery
 Aliases: GalleryApplicationName
 
 Required: True

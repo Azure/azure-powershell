@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzHealthcareApisWorkspace_List1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateEndpointConnection"}, NewOutputProperties=new string[] {"PrivateEndpointConnection"}, ChangeDescription="The types of the properties 'PrivateEndpointConnection' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Lists all the available workspaces under the specified resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]

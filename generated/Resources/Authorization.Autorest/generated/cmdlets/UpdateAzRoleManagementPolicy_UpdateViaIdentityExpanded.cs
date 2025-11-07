@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/{scope}/providers/Microsoft.Authorization/roleManagementPolicies/{roleManagementPolicyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzRoleManagementPolicy_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"EffectiveRule[]","Rule[]"}, NewOutputProperties=new string[] {"List[EffectiveRule]","List[Rule]"})]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Description(@"Update a role management policy")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Generated]
@@ -150,6 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         Description = @"The rule applied to the policy.",
         SerializedName = @"rules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyRule) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.ParameterBreakingChange("Rule", "15.0.0", "9.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyRule[] Rule { get => _parametersBody.Rule ?? null /* arrayOf */; set => _parametersBody.Rule = value; }
 
         /// <summary>

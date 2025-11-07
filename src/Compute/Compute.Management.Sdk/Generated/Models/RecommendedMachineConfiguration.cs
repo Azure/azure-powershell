@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RecommendedMachineConfiguration
         /// class.
         /// </summary>
+        /// <param name="vCPUs">Describes the resource range.</param>
+        /// <param name="memory">Describes the resource range.</param>
         public RecommendedMachineConfiguration(ResourceRange vCPUs = default(ResourceRange), ResourceRange memory = default(ResourceRange))
         {
             VCPUs = vCPUs;
@@ -45,11 +47,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets describes the resource range.
         /// </summary>
         [JsonProperty(PropertyName = "vCPUs")]
         public ResourceRange VCPUs { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the resource range.
         /// </summary>
         [JsonProperty(PropertyName = "memory")]
         public ResourceRange Memory { get; set; }

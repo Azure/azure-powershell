@@ -51,6 +51,52 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - where:
+      verb: Get
+      subject: ActivityLogAlert
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - ActionGroup
+          - ConditionAllOf
+          - Scope
+        new-output-properties:
+          - ActionGroup
+          - ConditionAllOf
+          - Scope
+        change-description: The types of the properties ActionGroup, ConditionAllOf and Scope will be changed from single object or fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: New|Update
+      subject: ActivityLogAlert
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - ActionGroup
+          - ConditionAllOf
+          - Scope
+          - AnyOf
+        new-output-properties:
+          - ActionGroup
+          - ConditionAllOf
+          - Scope
+          - AnyOf
+        change-description: The types of the properties ActionGroup, ConditionAllOf, Scope and AnyOf will be changed from single object or fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: Action|Condition|Scope
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
@@ -83,9 +129,9 @@ directive:
       subject: (ActivityLogAlert)(.*)
     set:
       subject-prefix: ""
-
+  # Add breaking change for them, will add back. 
   - model-cmdlet:
-    - AlertRuleAnyOfOrLeafCondition
-    - AlertRuleLeafCondition
+    # - AlertRuleAnyOfOrLeafCondition
+    # - AlertRuleLeafCondition
     - ActionGroup
 ```

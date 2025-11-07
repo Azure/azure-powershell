@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskSecurityProfile class.
         /// </summary>
-        /// <param name="securityType">Possible values include:
+        /// <param name="securityType">Specifies the SecurityType of the VM.
+        /// Applicable for OS disks only. Possible values include:
         /// 'TrustedLaunch',
         /// 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey',
         /// 'ConfidentialVM_DiskEncryptedWithPlatformKey',
@@ -51,7 +52,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets possible values include: 'TrustedLaunch',
+        /// Gets or sets specifies the SecurityType of the VM. Applicable for
+        /// OS disks only. Possible values include: 'TrustedLaunch',
         /// 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey',
         /// 'ConfidentialVM_DiskEncryptedWithPlatformKey',
         /// 'ConfidentialVM_DiskEncryptedWithCustomerKey',

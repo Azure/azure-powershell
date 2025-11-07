@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get the list of all traffic filters for the account.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Description
-Get the list of all traffic filters for the account.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Example
 Get-AzElasticAllTrafficFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 

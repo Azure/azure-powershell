@@ -42,10 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="managedBy">Unused. Always Null.</param>
-        /// <param name="extendedLocation">The extended location where the
-        /// snapshot will be created. Extended location cannot be
-        /// changed.</param>
         /// <param name="timeCreated">The time when the snapshot was
         /// created.</param>
         /// <param name="osType">The Operating System type. Possible values
@@ -88,30 +84,41 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="encryption">Encryption property can be used to encrypt
         /// data at rest with customer managed keys or platform managed
         /// keys.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
+        /// <param name="networkAccessPolicy">Policy for accessing the disk via
+        /// network. Possible values include: 'AllowAll', 'AllowPrivate',
+        /// 'DenyAll'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="securityProfile">Contains the security related
         /// information for the resource.</param>
         /// <param name="supportsHibernation">Indicates the OS on a snapshot
         /// supports hibernation.</param>
-        /// <param name="publicNetworkAccess">Possible values include:
-        /// 'Enabled', 'Disabled'</param>
+        /// <param name="publicNetworkAccess">Policy for controlling export on
+        /// the disk. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="completionPercent">Percentage complete for the
         /// background copy when a resource is created via the CopyStart
         /// operation.</param>
         /// <param name="copyCompletionError">Indicates the error details if
         /// the background copy of a resource created via the CopyStart
         /// operation fails.</param>
-        /// <param name="dataAccessAuthMode">Possible values include:
-        /// 'AzureActiveDirectory', 'None'</param>
-        public Snapshot(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), ExtendedLocation extendedLocation = default(ExtendedLocation), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string diskState = default(string), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string))
+        /// <param name="dataAccessAuthMode">Additional authentication
+        /// requirements when exporting or uploading to a disk or snapshot.
+        /// Possible values include: 'AzureActiveDirectory', 'None'</param>
+        /// <param name="snapshotAccessState">The state of snapshot which
+        /// determines the access availability of the snapshot. Possible values
+        /// include: 'Unknown', 'Pending', 'Available', 'InstantAccess',
+        /// 'AvailableWithInstantAccess'</param>
+        /// <param name="managedBy">Unused. Always Null.</param>
+        /// <param name="sku">The snapshots sku name. Can be Standard_LRS,
+        /// Premium_LRS, or Standard_ZRS. This is an optional parameter for
+        /// incremental snapshot and the default behavior is the SKU will be
+        /// set to the same sku as the previous snapshot</param>
+        /// <param name="extendedLocation">The extended location where the
+        /// snapshot will be created. Extended location cannot be
+        /// changed.</param>
+        public Snapshot(string location, CreationData creationData, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? timeCreated = default(System.DateTime?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), int? diskSizeGB = default(int?), long? diskSizeBytes = default(long?), string diskState = default(string), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), string incrementalSnapshotFamilyId = default(string), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), double? completionPercent = default(double?), CopyCompletionError copyCompletionError = default(CopyCompletionError), string dataAccessAuthMode = default(string), string snapshotAccessState = default(string), string managedBy = default(string), SnapshotSku sku = default(SnapshotSku), ExtendedLocation extendedLocation = default(ExtendedLocation))
             : base(location, id, name, type, tags)
         {
-            ManagedBy = managedBy;
-            Sku = sku;
-            ExtendedLocation = extendedLocation;
             TimeCreated = timeCreated;
             OsType = osType;
             HyperVGeneration = hyperVGeneration;
@@ -135,6 +142,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             CompletionPercent = completionPercent;
             CopyCompletionError = copyCompletionError;
             DataAccessAuthMode = dataAccessAuthMode;
+            SnapshotAccessState = snapshotAccessState;
+            ManagedBy = managedBy;
+            Sku = sku;
+            ExtendedLocation = extendedLocation;
             CustomInit();
         }
 
@@ -142,24 +153,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets unused. Always Null.
-        /// </summary>
-        [JsonProperty(PropertyName = "managedBy")]
-        public string ManagedBy { get; private set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public SnapshotSku Sku { get; set; }
-
-        /// <summary>
-        /// Gets or sets the extended location where the snapshot will be
-        /// created. Extended location cannot be changed.
-        /// </summary>
-        [JsonProperty(PropertyName = "extendedLocation")]
-        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
         /// Gets the time when the snapshot was created.
@@ -219,12 +212,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         public long? DiskSizeBytes { get; private set; }
 
         /// <summary>
-        /// Gets or sets the state of the snapshot. Possible values include:
+        /// Gets the state of the snapshot. Possible values include:
         /// 'Unattached', 'Attached', 'Reserved', 'Frozen', 'ActiveSAS',
         /// 'ActiveSASFrozen', 'ReadyToUpload', 'ActiveUpload'
         /// </summary>
         [JsonProperty(PropertyName = "properties.diskState")]
-        public string DiskState { get; set; }
+        public string DiskState { get; private set; }
 
         /// <summary>
         /// Gets unique Guid identifying the resource.
@@ -270,8 +263,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public Encryption Encryption { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
+        /// Gets or sets policy for accessing the disk via network. Possible
+        /// values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
@@ -297,7 +290,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? SupportsHibernation { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// Gets or sets policy for controlling export on the disk. Possible
+        /// values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
@@ -317,11 +311,42 @@ namespace Microsoft.Azure.Management.Compute.Models
         public CopyCompletionError CopyCompletionError { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AzureActiveDirectory',
-        /// 'None'
+        /// Gets or sets additional authentication requirements when exporting
+        /// or uploading to a disk or snapshot. Possible values include:
+        /// 'AzureActiveDirectory', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataAccessAuthMode")]
         public string DataAccessAuthMode { get; set; }
+
+        /// <summary>
+        /// Gets the state of snapshot which determines the access availability
+        /// of the snapshot. Possible values include: 'Unknown', 'Pending',
+        /// 'Available', 'InstantAccess', 'AvailableWithInstantAccess'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.snapshotAccessState")]
+        public string SnapshotAccessState { get; private set; }
+
+        /// <summary>
+        /// Gets unused. Always Null.
+        /// </summary>
+        [JsonProperty(PropertyName = "managedBy")]
+        public string ManagedBy { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the snapshots sku name. Can be Standard_LRS,
+        /// Premium_LRS, or Standard_ZRS. This is an optional parameter for
+        /// incremental snapshot and the default behavior is the SKU will be
+        /// set to the same sku as the previous snapshot
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public SnapshotSku Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extended location where the snapshot will be
+        /// created. Extended location cannot be changed.
+        /// </summary>
+        [JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
         /// Validate the object.

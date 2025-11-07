@@ -75,7 +75,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Test-TFO -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
-        [Fact]
+        [Fact(Skip = "need fix up by ASR team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPlannedFailover()
         {

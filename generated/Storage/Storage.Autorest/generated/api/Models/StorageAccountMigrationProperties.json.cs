@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
-    /// <summary>The properties of a storage account’s ongoing or enqueued migration.</summary>
+    /// <summary>The properties of a storage account's ongoing or enqueued migration.</summary>
     public partial class StorageAccountMigrationProperties
     {
 

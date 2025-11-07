@@ -67,11 +67,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             }
             __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties(json);
             {_totalFile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("totalFiles"), out var __jsonTotalFiles) ? (long?)__jsonTotalFiles : _totalFile;}
-            {_nx = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("nx"), out var __jsonNx) ? (int?)__jsonNx : _nx;}
-            {_pie = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("pie"), out var __jsonPie) ? (int?)__jsonPie : _pie;}
-            {_relro = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("relro"), out var __jsonRelro) ? (int?)__jsonRelro : _relro;}
-            {_canary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("canary"), out var __jsonCanary) ? (int?)__jsonCanary : _canary;}
-            {_stripped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("stripped"), out var __jsonStripped) ? (int?)__jsonStripped : _stripped;}
+            {_notExecutableStackCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("notExecutableStackCount"), out var __jsonNotExecutableStackCount) ? (long?)__jsonNotExecutableStackCount : _notExecutableStackCount;}
+            {_positionIndependentExecutableCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("positionIndependentExecutableCount"), out var __jsonPositionIndependentExecutableCount) ? (long?)__jsonPositionIndependentExecutableCount : _positionIndependentExecutableCount;}
+            {_relocationReadOnlyCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("relocationReadOnlyCount"), out var __jsonRelocationReadOnlyCount) ? (long?)__jsonRelocationReadOnlyCount : _relocationReadOnlyCount;}
+            {_stackCanaryCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("stackCanaryCount"), out var __jsonStackCanaryCount) ? (long?)__jsonStackCanaryCount : _stackCanaryCount;}
+            {_strippedBinaryCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("strippedBinaryCount"), out var __jsonStrippedBinaryCount) ? (long?)__jsonStrippedBinaryCount : _strippedBinaryCount;}
             AfterFromJson(json);
         }
 
@@ -108,11 +108,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             }
             __summaryResourceProperties?.ToJson(container, serializationMode);
             AddIf( null != this._totalFile ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._totalFile) : null, "totalFiles" ,container.Add );
-            AddIf( null != this._nx ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((int)this._nx) : null, "nx" ,container.Add );
-            AddIf( null != this._pie ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((int)this._pie) : null, "pie" ,container.Add );
-            AddIf( null != this._relro ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((int)this._relro) : null, "relro" ,container.Add );
-            AddIf( null != this._canary ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((int)this._canary) : null, "canary" ,container.Add );
-            AddIf( null != this._stripped ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((int)this._stripped) : null, "stripped" ,container.Add );
+            AddIf( null != this._notExecutableStackCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._notExecutableStackCount) : null, "notExecutableStackCount" ,container.Add );
+            AddIf( null != this._positionIndependentExecutableCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._positionIndependentExecutableCount) : null, "positionIndependentExecutableCount" ,container.Add );
+            AddIf( null != this._relocationReadOnlyCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._relocationReadOnlyCount) : null, "relocationReadOnlyCount" ,container.Add );
+            AddIf( null != this._stackCanaryCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._stackCanaryCount) : null, "stackCanaryCount" ,container.Add );
+            AddIf( null != this._strippedBinaryCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._strippedBinaryCount) : null, "strippedBinaryCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

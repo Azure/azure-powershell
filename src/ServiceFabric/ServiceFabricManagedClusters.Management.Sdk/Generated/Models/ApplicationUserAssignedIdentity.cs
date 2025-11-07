@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// User assigned identity for the application.
+    /// </summary>
     public partial class ApplicationUserAssignedIdentity
     {
         /// <summary>

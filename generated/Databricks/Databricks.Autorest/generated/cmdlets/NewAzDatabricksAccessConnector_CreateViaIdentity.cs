@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDatabricksAccessConnector_CreateViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"ReferedBy","EnableSystemAssignedIdentity","UserAssignedIdentity"}, NewOutputProperties=new string[] {"ReferedBy","EnableSystemAssignedIdentity","UserAssignedIdentity"}, ChangeDescription="(1) The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates or updates Azure Databricks Access Connector.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]

@@ -1,0 +1,132 @@
+{
+  "Update-AzStorageMoverMultiCloudConnectorEndpoint+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x?api-version=2025-07-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureMultiCloudConnector\",\r\n    \"description\": \"multicloud endpoint description\",\r\n    \"multiCloudConnectorId\": \"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector\",\r\n    \"awsS3BucketId\": \"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-bucket\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "502" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1f00907b-0000-3300-0000-68cd2d190000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/9738b5a4-8655-45b7-9af1-209cc51e11d4" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "c398d1b4-d835-42d6-9e9f-a2ba04c750d6" ],
+        "x-ms-request-id": [ "9a3e6682-2c21-409b-b7e1-64d4bcc9d532" ],
+        "x-ms-correlation-request-id": [ "9880332b-7c96-4b91-bd90-aab1438d18f3" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101449Z:9880332b-7c96-4b91-bd90-aab1438d18f3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F4A02D0984844DC98EDFF378E0DB9CD8 Ref B: MAA201060514019 Ref C: 2025-09-19T10:14:48Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:14:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1035" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x\",\"name\":\"testmulticloudconnectory8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T10:14:48.8843242Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-19T10:14:48.8843242Z\"},\"properties\":{\"multiCloudConnectorId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector\",\"awsS3BucketId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-bucket\",\"endpointType\":\"AzureMultiCloudConnector\",\"description\":\"multicloud endpoint description\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStorageMoverMultiCloudConnectorEndpoint+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x?api-version=2025-07-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x?api-version=2025-07-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureMultiCloudConnector\",\r\n    \"description\": \"update multicloud endpoint description\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "138" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1f00967b-0000-3300-0000-68cd2d1a0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/98a9d588-402b-444c-97f1-2b03fd81eead" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "be44dd0f-f8ba-4b0d-871e-96deef21f058" ],
+        "x-ms-request-id": [ "aafec572-0542-4e0b-8edd-f56e3e95a6d5" ],
+        "x-ms-correlation-request-id": [ "920bd5f4-b0ad-4073-bb5e-3e5af98c6f08" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101450Z:920bd5f4-b0ad-4073-bb5e-3e5af98c6f08" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7FA3DBB765714C5B92268F2A9050F48D Ref B: MAA201060514019 Ref C: 2025-09-19T10:14:49Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:14:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1042" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x\",\"name\":\"testmulticloudconnectory8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T10:14:48.8843242Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-19T10:14:49.8537035Z\"},\"properties\":{\"multiCloudConnectorId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector\",\"awsS3BucketId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-bucket\",\"endpointType\":\"AzureMultiCloudConnector\",\"description\":\"update multicloud endpoint description\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStorageMoverMultiCloudConnectorEndpoint+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x?api-version=2025-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://centraluseuap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "5d4744b2-08b3-4e49-a6e5-2dc45c4e4c5f" ],
+        "CommandName": [ "Get-AzStorageMoverEndpoint" ],
+        "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.5.3", "Az.StorageMover/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1f00967b-0000-3300-0000-68cd2d1a0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/2de99a82-f9db-4bbc-832f-8e4fe3723bc7" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "bee2f343-3e04-4596-ab3f-96de7213dd9d" ],
+        "x-ms-correlation-request-id": [ "58f60e91-1afd-4029-9e7c-02a8d7c4d251" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101515Z:58f60e91-1afd-4029-9e7c-02a8d7c4d251" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1A3FCCBD395A4586A777496528BB9EA1 Ref B: MAA201060514019 Ref C: 2025-09-19T10:14:50Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:15:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1042" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testmulticloudconnectory8nedf6x\",\"name\":\"testmulticloudconnectory8nedf6x\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T10:14:48.8843242Z\",\"lastModifiedBy\":\"choudharysu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-19T10:14:49.8537035Z\"},\"properties\":{\"multiCloudConnectorId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector\",\"awsS3BucketId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-bucket\",\"endpointType\":\"AzureMultiCloudConnector\",\"description\":\"update multicloud endpoint description\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

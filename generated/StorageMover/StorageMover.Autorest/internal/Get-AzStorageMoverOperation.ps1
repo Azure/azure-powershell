@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-Lists all the supported operations for the Azure Storage Mover REST API.
+List the operations for the provider
 .Description
-Lists all the supported operations for the Azure Storage Mover REST API.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
 #>
 function Get-AzStorageMoverOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.StorageMover.private\Get-AzStorageMoverOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

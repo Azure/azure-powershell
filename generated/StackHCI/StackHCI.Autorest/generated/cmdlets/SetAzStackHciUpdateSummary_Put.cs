@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Put=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzStackHciUpdateSummary_Put", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"PackageVersion","HealthCheckResult"}, NewOutputProperties=new string[] {"PackageVersion","HealthCheckResult"}, ChangeDescription="The types of the properties PackageVersion and HealthCheckResult will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Put Update summaries under the HCI cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]

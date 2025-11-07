@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// default.</param>
         /// <param name="securityDataUri">If createOption is ImportSecure, this
         /// is the URI of a blob to be imported into VM guest state.</param>
+        /// <param name="securityMetadataUri">If createOption is ImportSecure,
+        /// this is the URI of a blob to be imported into VM metadata for
+        /// Confidential VM.</param>
         /// <param name="performancePlus">Set this flag to true to get a boost
         /// on the performance target of the disk deployed, see here on the
         /// respective performance target. This flag can only be set on disk
@@ -71,7 +74,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// a snapshot and createOption is CopyStart, the snapshot will be
         /// copied at a quicker speed. Possible values include: 'None',
         /// 'Enhanced'</param>
-        public CreationData(string createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), ImageDiskReference galleryImageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?), int? logicalSectorSize = default(int?), string securityDataUri = default(string), bool? performancePlus = default(bool?), string elasticSanResourceId = default(string), string provisionedBandwidthCopySpeed = default(string))
+        /// <param name="instantAccessDurationMinutes">For snapshots created
+        /// from Premium SSD v2 or Ultra disk, this property determines the
+        /// time in minutes the snapshot is retained for instant access to
+        /// enable faster restore.</param>
+        public CreationData(string createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), ImageDiskReference galleryImageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?), int? logicalSectorSize = default(int?), string securityDataUri = default(string), string securityMetadataUri = default(string), bool? performancePlus = default(bool?), string elasticSanResourceId = default(string), string provisionedBandwidthCopySpeed = default(string), long? instantAccessDurationMinutes = default(long?))
         {
             CreateOption = createOption;
             StorageAccountId = storageAccountId;
@@ -83,9 +90,11 @@ namespace Microsoft.Azure.Management.Compute.Models
             UploadSizeBytes = uploadSizeBytes;
             LogicalSectorSize = logicalSectorSize;
             SecurityDataUri = securityDataUri;
+            SecurityMetadataUri = securityMetadataUri;
             PerformancePlus = performancePlus;
             ElasticSanResourceId = elasticSanResourceId;
             ProvisionedBandwidthCopySpeed = provisionedBandwidthCopySpeed;
+            InstantAccessDurationMinutes = instantAccessDurationMinutes;
             CustomInit();
         }
 
@@ -171,6 +180,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string SecurityDataUri { get; set; }
 
         /// <summary>
+        /// Gets or sets if createOption is ImportSecure, this is the URI of a
+        /// blob to be imported into VM metadata for Confidential VM.
+        /// </summary>
+        [JsonProperty(PropertyName = "securityMetadataUri")]
+        public string SecurityMetadataUri { get; set; }
+
+        /// <summary>
         /// Gets or sets set this flag to true to get a boost on the
         /// performance target of the disk deployed, see here on the respective
         /// performance target. This flag can only be set on disk creation time
@@ -195,6 +211,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string ProvisionedBandwidthCopySpeed { get; set; }
 
         /// <summary>
+        /// Gets or sets for snapshots created from Premium SSD v2 or Ultra
+        /// disk, this property determines the time in minutes the snapshot is
+        /// retained for instant access to enable faster restore.
+        /// </summary>
+        [JsonProperty(PropertyName = "instantAccessDurationMinutes")]
+        public long? InstantAccessDurationMinutes { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -205,6 +229,13 @@ namespace Microsoft.Azure.Management.Compute.Models
             if (CreateOption == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "CreateOption");
+            }
+            if (InstantAccessDurationMinutes != null)
+            {
+                if (InstantAccessDurationMinutes < 1)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "InstantAccessDurationMinutes", 1);
+                }
             }
         }
     }

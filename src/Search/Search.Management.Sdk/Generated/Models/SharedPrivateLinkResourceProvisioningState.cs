@@ -11,59 +11,30 @@ namespace Microsoft.Azure.Management.Search.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SharedPrivateLinkResourceProvisioningState
+    public static class SharedPrivateLinkResourceProvisioningState
     {
-        [System.Runtime.Serialization.EnumMember(Value = "Updating")]
-        Updating,
-        [System.Runtime.Serialization.EnumMember(Value = "Deleting")]
-        Deleting,
-        [System.Runtime.Serialization.EnumMember(Value = "Failed")]
-        Failed,
-        [System.Runtime.Serialization.EnumMember(Value = "Succeeded")]
-        Succeeded,
-        [System.Runtime.Serialization.EnumMember(Value = "Incomplete")]
-        Incomplete
-    }
-    internal static class SharedPrivateLinkResourceProvisioningStateEnumExtension
-    {
-        internal static string ToSerializedValue(this SharedPrivateLinkResourceProvisioningState? value)
-        {
-            return value == null ? null : ((SharedPrivateLinkResourceProvisioningState)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this SharedPrivateLinkResourceProvisioningState value)
-        {
-            switch( value )
-            {
-                case SharedPrivateLinkResourceProvisioningState.Updating:
-                    return "Updating";
-                case SharedPrivateLinkResourceProvisioningState.Deleting:
-                    return "Deleting";
-                case SharedPrivateLinkResourceProvisioningState.Failed:
-                    return "Failed";
-                case SharedPrivateLinkResourceProvisioningState.Succeeded:
-                    return "Succeeded";
-                case SharedPrivateLinkResourceProvisioningState.Incomplete:
-                    return "Incomplete";
-            }
-            return null;
-        }
-        internal static SharedPrivateLinkResourceProvisioningState? ParseSharedPrivateLinkResourceProvisioningState(this string value)
-        {
-            switch( value )
-            {
-                case "Updating":
-                    return SharedPrivateLinkResourceProvisioningState.Updating;
-                case "Deleting":
-                    return SharedPrivateLinkResourceProvisioningState.Deleting;
-                case "Failed":
-                    return SharedPrivateLinkResourceProvisioningState.Failed;
-                case "Succeeded":
-                    return SharedPrivateLinkResourceProvisioningState.Succeeded;
-                case "Incomplete":
-                    return SharedPrivateLinkResourceProvisioningState.Incomplete;
-            }
-            return null;
-        }
+        /// <summary>
+        /// The shared private link resource is in the process of being created along
+        /// with other resources for it to be fully functional.
+        /// </summary>
+        public const string Updating = "Updating";
+        /// <summary>
+        /// The shared private link resource is in the process of being deleted.
+        /// </summary>
+        public const string Deleting = "Deleting";
+        /// <summary>
+        /// The shared private link resource has failed to be provisioned or deleted.
+        /// </summary>
+        public const string Failed = "Failed";
+        /// <summary>
+        /// The shared private link resource has finished provisioning and is ready for
+        /// approval.
+        /// </summary>
+        public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Provisioning request for the shared private link resource has been accepted
+        /// but the process of creation has not commenced yet.
+        /// </summary>
+        public const string Incomplete = "Incomplete";
     }
 }
