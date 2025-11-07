@@ -1,78 +1,68 @@
 ---
-external help file: Az.HealthcareApis-help.xml
+external help file:
 Module Name: Az.HealthcareApis
-online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcareiotconnector
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcareiotconnectorfhirdestination
 schema: 2.0.0
 ---
 
-# Update-AzHealthcareIotConnector
+# Update-AzHealthcareIotConnectorFhirDestination
 
 ## SYNOPSIS
-Update an IoT Connector resource with the specified parameters.
+Update an IoT Connector FHIR destination resource with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzHealthcareIotConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-DeviceMappingContent <Hashtable>] [-EnableSystemAssignedIdentity <Boolean>]
- [-Etag <String>] [-IngestionEndpointConfigurationConsumerGroup <String>]
- [-IngestionEndpointConfigurationEventHubName <String>]
- [-IngestionEndpointConfigurationFullyQualifiedEventHubNamespace <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityWorkspaceExpanded
-```
-Update-AzHealthcareIotConnector -Name <String> -WorkspaceInputObject <IHealthcareApisIdentity>
- [-DeviceMappingContent <Hashtable>] [-EnableSystemAssignedIdentity <Boolean>] [-Etag <String>]
- [-IngestionEndpointConfigurationConsumerGroup <String>] [-IngestionEndpointConfigurationEventHubName <String>]
- [-IngestionEndpointConfigurationFullyQualifiedEventHubNamespace <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
+ -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>] [-Etag <String>]
+ [-FhirMappingContent <Hashtable>] [-FhirServiceResourceId <String>]
+ [-ResourceIdentityResolutionType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzHealthcareIotConnector -InputObject <IHealthcareApisIdentity> [-DeviceMappingContent <Hashtable>]
- [-EnableSystemAssignedIdentity <Boolean>] [-Etag <String>]
- [-IngestionEndpointConfigurationConsumerGroup <String>] [-IngestionEndpointConfigurationEventHubName <String>]
- [-IngestionEndpointConfigurationFullyQualifiedEventHubNamespace <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzHealthcareIotConnectorFhirDestination -InputObject <IHealthcareApisIdentity> [-Etag <String>]
+ [-FhirMappingContent <Hashtable>] [-FhirServiceResourceId <String>]
+ [-ResourceIdentityResolutionType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityIotconnectorExpanded
+```
+Update-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String>
+ -IotconnectorInputObject <IHealthcareApisIdentity> [-Etag <String>] [-FhirMappingContent <Hashtable>]
+ [-FhirServiceResourceId <String>] [-ResourceIdentityResolutionType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityWorkspaceExpanded
+```
+Update-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
+ -WorkspaceInputObject <IHealthcareApisIdentity> [-Etag <String>] [-FhirMappingContent <Hashtable>]
+ [-FhirServiceResourceId <String>] [-ResourceIdentityResolutionType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an IoT Connector resource with the specified parameters.
+Update an IoT Connector FHIR destination resource with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: Patch an IoT Connector.
+### Example 1: Update an IoT Connector FHIR destination resource with the specified parameters.
 ```powershell
-Update-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Tag @{"123"="abc"}
+$arr = @()
+Update-AzHealthcareIotConnectorFhirDestination -FhirDestinationName azpsfhirdestination -IotConnectorName azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws -FhirServiceResourceId "/subscriptions/{SubscriptionId}/resourceGroups/azps_test_group/providers/Microsoft.HealthcareApis/workspaces/azpshcws/fhirservices/azpsfhirservice" -ResourceIdentityResolutionType 'Create' -FhirMappingContent @{"templateType"="CollectionFhirTemplate";"template"=$arr}
 ```
 
 ```output
-Location Name                      ResourceGroupName
--------- ----                      -----------------
-eastus2  azpshcws/azpsiotconnector azps_test_group
+Location Name                                          ResourceGroupName
+-------- ----                                          -----------------
+eastus2  azpshcws/azpsiotconnector/azpsfhirdestination azps_test_group
 ```
 
-Patch an IoT Connector.
-
-### Example 2: Patch an IoT Connector.
-```powershell
-Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Update-AzHealthcareIotConnector -Tag @{"123"="abc"}
-```
-
-```output
-Location Name                      ResourceGroupName
--------- ----                      -----------------
-eastus2  azpshcws/azpsiotconnector azps_test_group
-```
-
-Patch an IoT Connector.
+Update an IoT Connector FHIR destination resource with the specified parameters.
 
 ## PARAMETERS
 
@@ -107,36 +97,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeviceMappingContent
-The mapping.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Etag
 An etag associated with the resource, used for optimistic concurrency when editing it.
 
@@ -152,11 +112,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IngestionEndpointConfigurationConsumerGroup
-Consumer group of the event hub to connected to.
+### -FhirDestinationName
+The name of IoT Connector FHIR destination resource.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityIotconnectorExpanded, UpdateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FhirMappingContent
+The mapping.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -167,23 +142,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IngestionEndpointConfigurationEventHubName
-Event Hub name to connect to.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace
-Fully qualified namespace of the Event Hub to connect to.
+### -FhirServiceResourceId
+Fully qualified resource id of the FHIR service to connect to.
 
 ```yaml
 Type: System.String
@@ -212,13 +172,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -IotconnectorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
+Parameter Sets: UpdateViaIdentityIotconnectorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -IotConnectorName
 The name of IoT Connector resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityWorkspaceExpanded
-Aliases: IotConnectorName
+Aliases:
 
 Required: True
 Position: Named
@@ -257,6 +232,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceIdentityResolutionType
+Determines how resource identity is resolved on the destination.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription identifier.
 
@@ -268,37 +258,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -373,8 +332,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotFhirDestination
 
 ## NOTES
 
 ## RELATED LINKS
+
