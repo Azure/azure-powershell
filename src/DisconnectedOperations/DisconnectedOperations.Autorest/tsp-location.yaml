@@ -1,0 +1,5 @@
+directory: specification/edge/Microsoft.Edge.DisconnectedOperations.Management
+commit: <replace with your value>
+repo: <replace with your value>
+additionalDirectories: 
+- specification/edge/Microsoft.Edge.Shared
