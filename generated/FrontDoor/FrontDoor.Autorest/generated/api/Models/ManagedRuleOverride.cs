@@ -43,6 +43,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string RuleId { get => this._ruleId; set => this._ruleId = value; }
 
+        /// <summary>Backing field for <see cref="Sensitivity" /> property.</summary>
+        private string _sensitivity;
+
+        /// <summary>Describes the override sensitivity to be applied when rule matches.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
+        public string Sensitivity { get => this._sensitivity; set => this._sensitivity = value; }
+
         /// <summary>Creates an new <see cref="ManagedRuleOverride" /> instance.</summary>
         public ManagedRuleOverride()
         {
@@ -101,6 +108,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"ruleId",
         PossibleTypes = new [] { typeof(string) })]
         string RuleId { get; set; }
+        /// <summary>Describes the override sensitivity to be applied when rule matches.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Describes the override sensitivity to be applied when rule matches.",
+        SerializedName = @"sensitivity",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Low", "Medium", "High")]
+        string Sensitivity { get; set; }
 
     }
     /// Defines a managed rule group override setting.
@@ -119,6 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion> Exclusion { get; set; }
         /// <summary>Identifier for the managed rule.</summary>
         string RuleId { get; set; }
+        /// <summary>Describes the override sensitivity to be applied when rule matches.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Low", "Medium", "High")]
+        string Sensitivity { get; set; }
 
     }
 }

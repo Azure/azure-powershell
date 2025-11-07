@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Description = @"Comparison type to use for matching with the variable value.",
         SerializedName = @"operator",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
         string OperatorProperty { get; set; }
         /// <summary>
         /// Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Describes if the result of this condition should be negated.</summary>
         bool? NegateCondition { get; set; }
         /// <summary>Comparison type to use for matching with the variable value.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
         string OperatorProperty { get; set; }
         /// <summary>
         /// Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.

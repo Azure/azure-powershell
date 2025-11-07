@@ -52,6 +52,7 @@ RULEGROUPOVERRIDE <IManagedRuleGroupOverride[]>: Defines the rule group override
     [Action <String>]: Describes the override action to be applied when rule matches.
     [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
     [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to this specific rule.
+    [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
 .Link
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleobject
 #>

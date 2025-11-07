@@ -27,7 +27,7 @@ New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolssettingsobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolssettingsobject
 #>
 function New-AzFrontDoorBackendPoolsSettingObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings])]

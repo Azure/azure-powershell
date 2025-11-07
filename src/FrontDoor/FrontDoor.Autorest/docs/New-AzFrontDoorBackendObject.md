@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendobject
 schema: 2.0.0
 ---
 
@@ -30,13 +30,18 @@ New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
 ```
 
 ```output
-Address           : contoso1.azurewebsites.net
-HttpPort          : 80
-HttpsPort         : 443
-Priority          : 1
-Weight            : 50
-BackendHostHeader :
-EnabledState      : Enabled
+Address                    : contoso1.azurewebsites.net
+BackendHostHeader          : contoso1.azurewebsites.net
+EnabledState               : Enabled
+HttpPort                   : 80
+HttpsPort                  : 443
+Priority                   : 1
+PrivateEndpointStatus      :
+PrivateLinkAlias           :
+PrivateLinkApprovalMessage :
+PrivateLinkLocation        :
+PrivateLinkResourceId      :
+Weight                     : 50
 ```
 
 Create a PSBackend object for Front Door creation

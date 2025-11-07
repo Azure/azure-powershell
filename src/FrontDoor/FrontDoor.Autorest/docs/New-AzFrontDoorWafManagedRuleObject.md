@@ -36,9 +36,31 @@ New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" 
 ```
 
 ```output
-RuleGroupOverrides RuleSetType    RuleSetVersion
------------------- -----------    --------------
-{SQLI, XSS}        DefaultRuleSet preview-0.1
+Exclusion         :
+RuleGroupOverride : {{
+                      "ruleGroupName": "SQLI",
+                      "rules": [
+                        {
+                          "ruleId": "942250",
+                          "action": "Log"
+                        },
+                        {
+                          "ruleId": "942251",
+                          "action": "Log"
+                        }
+                      ]
+                    }, {
+                      "ruleGroupName": "XSS",
+                      "rules": [
+                        {
+                          "ruleId": "941280",
+                          "action": "Log"
+                        }
+                      ]
+                    }}
+RuleSetAction     :
+Type              : DefaultRuleSet
+Version           : preview-0.1
 ```
 
 Create a ManagedRule Object

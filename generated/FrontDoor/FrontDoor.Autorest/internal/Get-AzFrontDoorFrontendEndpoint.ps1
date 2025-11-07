@@ -20,8 +20,6 @@ Gets a Frontend endpoint with the specified name within the specified Front Door
 .Description
 Gets a Frontend endpoint with the specified name within the specified Front Door.
 .Example
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor"
-.Example
 Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor" -Name "myFrontDoor-azurefd-net"
 
 .Inputs

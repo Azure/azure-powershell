@@ -5,9 +5,11 @@ New-AzFrontDoorForwardingConfigurationObject -BackendPoolId "/subscriptions/{sub
 
 ```output
 BackendPoolId        : /subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/frontDoors/myFrontDoor/backendPools/myBackendPool
-CacheConfiguration   : 
-CustomForwardingPath : 
+CacheConfiguration   : {
+                       }
+CustomForwardingPath :
 ForwardingProtocol   : MatchRequest
+OdataType            : #Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration
 ```
 
 Create a basic forwarding configuration object that forwards requests to a backend pool using the same protocol as the incoming request.
@@ -20,9 +22,11 @@ New-AzFrontDoorForwardingConfigurationObject -BackendPoolId "/subscriptions/{sub
 
 ```output
 BackendPoolId        : /subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/frontDoors/myFrontDoor/backendPools/myBackendPool
-CacheConfiguration   : Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CacheConfiguration
+CacheConfiguration   : {
+                       }
 CustomForwardingPath : /api/v2
 ForwardingProtocol   : HttpsOnly
+OdataType            : #Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration
 ```
 
 Create a forwarding configuration object with caching enabled, custom forwarding path, and HTTPS-only forwarding protocol.

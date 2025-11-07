@@ -42,7 +42,7 @@ function New-AzFrontDoorWafMatchConditionObject {
         [bool]
         $NegateCondition,
         [Parameter(Mandatory, HelpMessage="Comparison type to use for matching with the variable value.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
         [string]
         $OperatorProperty,
         [Parameter(HelpMessage="Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.")]

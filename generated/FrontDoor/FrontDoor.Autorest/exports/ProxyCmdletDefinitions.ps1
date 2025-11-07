@@ -270,8 +270,6 @@ Gets a Rules Engine Configuration with the specified name within the specified F
 .Example
 Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name rulesengine3
 .Example
-Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName
-.Example
 Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name nonexistent
 
 .Inputs
@@ -2570,9 +2568,6 @@ Enables a frontendEndpoint for HTTPS traffic
 .Example
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
 .Example
-$vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -VaultId $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
-.Example
 Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
 
 .Inputs
@@ -2879,8 +2874,6 @@ end {
 Gets a Frontend endpoint with the specified name within the specified Front Door.
 .Description
 Gets a Frontend endpoint with the specified name within the specified Front Door.
-.Example
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor"
 .Example
 Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor" -Name "myFrontDoor-azurefd-net"
 
@@ -3474,7 +3467,7 @@ New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendobject
 #>
 function New-AzFrontDoorBackendObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend])]
@@ -3668,7 +3661,7 @@ BACKEND <IBackend[]>: The set of backends for this pool.
   [PrivateLinkResourceId <String>]: The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   [Weight <Int32?>]: Weight of this endpoint for load balancing purposes.
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolobject
 #>
 function New-AzFrontDoorBackendPoolObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPool])]
@@ -3814,7 +3807,7 @@ New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolssettingsobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolssettingsobject
 #>
 function New-AzFrontDoorBackendPoolsSettingObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings])]
@@ -5798,8 +5791,6 @@ Create an in-memory object for RulesEngineRule.
 Create an in-memory object for RulesEngineRule.
 .Example
 New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
-.Example
-New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineRule
@@ -6654,6 +6645,7 @@ RULEGROUPOVERRIDE <IManagedRuleGroupOverride[]>: Defines the rule group override
     [Action <String>]: Describes the override action to be applied when rule matches.
     [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
     [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to this specific rule.
+    [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
 .Link
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleobject
 #>
@@ -6953,7 +6945,7 @@ param(
     ${MatchVariable},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Comparison type to use for matching with the variable value.
@@ -7120,6 +7112,7 @@ MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
       [Action <String>]: Describes the override action to be applied when rule matches.
       [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
       [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to this specific rule.
+      [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
   [RuleSetAction <String>]: Defines the rule set action.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy
@@ -7451,6 +7444,7 @@ MANAGEDRULEOVERRIDE <IManagedRuleOverride[]>: List of rules that will be disable
     Operator <String>: Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
     Selector <String>: Selector value for which elements in the collection this exclusion applies to.
     Variable <String>: The variable type to be excluded.
+  [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
 .Link
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafrulegroupoverrideobject
 #>
@@ -8006,6 +8000,7 @@ MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
       [Action <String>]: Describes the override action to be applied when rule matches.
       [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
       [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to this specific rule.
+      [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
   [RuleSetAction <String>]: Defines the rule set action.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoorwafpolicy

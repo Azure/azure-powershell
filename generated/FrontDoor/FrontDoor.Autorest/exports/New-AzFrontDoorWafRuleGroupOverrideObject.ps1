@@ -45,6 +45,7 @@ MANAGEDRULEOVERRIDE <IManagedRuleOverride[]>: List of rules that will be disable
     Operator <String>: Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
     Selector <String>: Selector value for which elements in the collection this exclusion applies to.
     Variable <String>: The variable type to be excluded.
+  [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
 .Link
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafrulegroupoverrideobject
 #>
