@@ -1,17 +1,17 @@
 {
-  "Get-AzContainerRegistryImportPipeline+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/importPipelines?api-version=2023-01-01-preview+1": {
+  "Get-AzContainerRegistryImportPipeline+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/importPipelines?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/importPipelines?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/importPipelines?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "100" ],
-        "x-ms-client-request-id": [ "1cda5a33-66d3-49c4-ad8a-8d066af0b72d" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "84dc4509-883f-4842-80d4-8c5b2a0d99db" ],
         "CommandName": [ "Get-AzContainerRegistryImportPipeline" ],
         "FullCommandName": [ "Get-AzContainerRegistryImportPipeline_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.10", "Az.ContainerRegistry/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.ContainerRegistry/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
-        "x-ms-request-id": [ "30308bd6-7285-427e-8934-6975e9004c9b" ],
-        "x-ms-correlation-request-id": [ "30308bd6-7285-427e-8934-6975e9004c9b" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230416T210017Z:30308bd6-7285-427e-8934-6975e9004c9b" ],
+        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-09-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/eastus/a7a79449-4f82-42a0-a7c3-526315350b91" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "246" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3746" ],
+        "x-ms-request-id": [ "b82bbe24-00d4-48ff-a2b2-7ca9e475a72f" ],
+        "x-ms-correlation-request-id": [ "b82bbe24-00d4-48ff-a2b2-7ca9e475a72f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250909T081435Z:b82bbe24-00d4-48ff-a2b2-7ca9e475a72f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 16 Apr 2023 21:00:17 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EAA6A8931F484092A7C9DD1419B077F1 Ref B: TYO201100113027 Ref C: 2025-09-09T08:14:35Z" ],
+        "Date": [ "Tue, 09 Sep 2025 08:14:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1911" ],
+        "Content-Length": [ "1901" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"type\":\"Microsoft.ContainerRegistry/registries/importPipelines\",\"identity\":{\"principalId\":\"b9602164-4f93-411a-84c7-6668ec35bc3e\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"systemAssigned\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/importPipelines/rfkqmj\",\"name\":\"rfkqmj\",\"systemData\":{\"createdBy\":\"nanxiangliu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-04-16T20:58:34.8012359+00:00\",\"lastModifiedBy\":\"nanxiangliu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-04-16T20:58:34.8012359+00:00\"},\"properties\":{\"source\":{\"type\":\"AzureStorageBlobContainer\",\"uri\":\"https://acrteststorageaccount.blob.core.windows.net/test\",\"keyVaultUri\":\"https://lnxtestkeyvault.vault.azure.net/secrets/test/de11705d609e48b6a2faf6facc30a9e0\"},\"trigger\":{\"sourceTrigger\":{\"status\":\"Enabled\"}},\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.ContainerRegistry/registries/importPipelines\",\"identity\":{\"principalId\":\"07caad6c-1062-43c1-b0e2-9fec97f0f182\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"systemAssigned\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/importPipelines/tbmdyz\",\"name\":\"tbmdyz\",\"systemData\":{\"createdBy\":\"nanxiangliu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-04-16T20:59:07.3330238+00:00\",\"lastModifiedBy\":\"nanxiangliu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-04-16T20:59:07.3330238+00:00\"},\"properties\":{\"source\":{\"type\":\"AzureStorageBlobContainer\",\"uri\":\"https://acrteststorageaccount.blob.core.windows.net/test\",\"keyVaultUri\":\"https://lnxtestkeyvault.vault.azure.net/secrets/test/de11705d609e48b6a2faf6facc30a9e0\"},\"trigger\":{\"sourceTrigger\":{\"status\":\"Enabled\"}},\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"type\":\"Microsoft.ContainerRegistry/registries/importPipelines\",\"identity\":{\"principalId\":\"90b66d22-dc2e-4555-8aa0-677bb2738527\",\"tenantId\":\"213e87ed-8e08-4eb4-a63c-c073058f7b00\",\"type\":\"systemAssigned\"},\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/importPipelines/beauxq\",\"name\":\"beauxq\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-09T08:12:58.5289594+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-09T08:12:58.5289594+00:00\"},\"properties\":{\"source\":{\"type\":\"AzureStorageBlobContainer\",\"uri\":\"https://acrteststorageaccount1.blob.core.windows.net/tc1\",\"keyVaultUri\":\"https://lnxtestkeyvault.vault.azure.net/secrets/tskv1/1603b830d0a044af847791ca8a22c9c6\"},\"trigger\":{\"sourceTrigger\":{\"status\":\"Enabled\"}},\"provisioningState\":\"Succeeded\"}},{\"type\":\"Microsoft.ContainerRegistry/registries/importPipelines\",\"identity\":{\"principalId\":\"0ec9df09-d408-452a-af29-cff5b55ec79b\",\"tenantId\":\"213e87ed-8e08-4eb4-a63c-c073058f7b00\",\"type\":\"systemAssigned\"},\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/importPipelines/cfskxh\",\"name\":\"cfskxh\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-09T08:13:30.7595693+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-09T08:13:30.7595693+00:00\"},\"properties\":{\"source\":{\"type\":\"AzureStorageBlobContainer\",\"uri\":\"https://acrteststorageaccount1.blob.core.windows.net/tc1\",\"keyVaultUri\":\"https://lnxtestkeyvault.vault.azure.net/secrets/tskv1/1603b830d0a044af847791ca8a22c9c6\"},\"trigger\":{\"sourceTrigger\":{\"status\":\"Enabled\"}},\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzContainerRegistryImportPipeline+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/importPipelines/rfkqmj?api-version=2023-01-01-preview+1": {
+  "Get-AzContainerRegistryImportPipeline+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/importPipelines/beauxq?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/importPipelines/rfkqmj?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/importPipelines/beauxq?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "101" ],
-        "x-ms-client-request-id": [ "349bbfad-0790-4f55-a513-20766b03c9ce" ],
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "f362983f-3d85-44fe-af89-45cab24e4328" ],
         "CommandName": [ "Get-AzContainerRegistryImportPipeline" ],
         "FullCommandName": [ "Get-AzContainerRegistryImportPipeline_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.10", "Az.ContainerRegistry/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.ContainerRegistry/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,22 +67,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11918" ],
-        "x-ms-request-id": [ "086236ae-e3ab-4bb6-9684-7d887d770cae" ],
-        "x-ms-correlation-request-id": [ "086236ae-e3ab-4bb6-9684-7d887d770cae" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230416T210018Z:086236ae-e3ab-4bb6-9684-7d887d770cae" ],
+        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-09-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/eastus/b86e79e0-781f-49c6-b95a-6d9f2c813272" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3747" ],
+        "x-ms-request-id": [ "5f8bd5f2-b9e0-420b-b139-0e0972f193ca" ],
+        "x-ms-correlation-request-id": [ "5f8bd5f2-b9e0-420b-b139-0e0972f193ca" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250909T081435Z:5f8bd5f2-b9e0-420b-b139-0e0972f193ca" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 16 Apr 2023 21:00:17 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9976C27B4225488E973392A728043E92 Ref B: TYO201100113027 Ref C: 2025-09-09T08:14:35Z" ],
+        "Date": [ "Tue, 09 Sep 2025 08:14:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "949" ],
+        "Content-Length": [ "944" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"type\":\"Microsoft.ContainerRegistry/registries/importPipelines\",\"identity\":{\"principalId\":\"b9602164-4f93-411a-84c7-6668ec35bc3e\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"systemAssigned\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/importPipelines/rfkqmj\",\"name\":\"rfkqmj\",\"systemData\":{\"createdBy\":\"nanxiangliu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-04-16T20:58:34.8012359+00:00\",\"lastModifiedBy\":\"nanxiangliu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-04-16T20:58:34.8012359+00:00\"},\"properties\":{\"source\":{\"type\":\"AzureStorageBlobContainer\",\"uri\":\"https://acrteststorageaccount.blob.core.windows.net/test\",\"keyVaultUri\":\"https://lnxtestkeyvault.vault.azure.net/secrets/test/de11705d609e48b6a2faf6facc30a9e0\"},\"trigger\":{\"sourceTrigger\":{\"status\":\"Enabled\"}},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"type\":\"Microsoft.ContainerRegistry/registries/importPipelines\",\"identity\":{\"principalId\":\"90b66d22-dc2e-4555-8aa0-677bb2738527\",\"tenantId\":\"213e87ed-8e08-4eb4-a63c-c073058f7b00\",\"type\":\"systemAssigned\"},\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/importPipelines/beauxq\",\"name\":\"beauxq\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-09T08:12:58.5289594+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-09T08:12:58.5289594+00:00\"},\"properties\":{\"source\":{\"type\":\"AzureStorageBlobContainer\",\"uri\":\"https://acrteststorageaccount1.blob.core.windows.net/tc1\",\"keyVaultUri\":\"https://lnxtestkeyvault.vault.azure.net/secrets/tskv1/1603b830d0a044af847791ca8a22c9c6\"},\"trigger\":{\"sourceTrigger\":{\"status\":\"Enabled\"}},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

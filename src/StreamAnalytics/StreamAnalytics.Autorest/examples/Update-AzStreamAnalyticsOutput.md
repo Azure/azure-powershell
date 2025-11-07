@@ -1,6 +1,6 @@
 ### Example 1: Update an output to a stream analytics job
 ```powershell
-Update-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01 -File .\test\template-json\StroageAccount.json
+Update-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01 -File .\test\template-json\StorageAccount.json
 ```
 ```output
 Name      Type                                            ETag
@@ -12,7 +12,7 @@ This command updates a new output in the stream analytics job.
 
 ### Example 2:  Update an output to a stream analytics job by pipeline
 ```powershell
-Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01| Update-AzStreamAnalyticsOutput -File .\test\template-json\StroageAccount.json
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01| Update-AzStreamAnalyticsOutput -File .\test\template-json\StorageAccount.json
 ```
 ```output
 Name      Type                                            ETag

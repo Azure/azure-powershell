@@ -27,7 +27,7 @@ Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -Enab
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxDeployment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,13 +45,26 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+NETWORKPROFILE <INginxNetworkProfile>: .
+  [FrontEndIPConfiguration <INginxFrontendIPConfiguration>]: 
+    [PrivateIPAddress <List<INginxPrivateIPAddress>>]: 
+      [PrivateIPAddress <String>]: 
+      [PrivateIPAllocationMethod <String>]: 
+      [SubnetId <String>]: 
+    [PublicIPAddress <List<INginxPublicIPAddress>>]: 
+      [Id <String>]: 
+  [NetworkInterfaceConfiguration <INginxNetworkInterfaceConfiguration>]: 
+    [SubnetId <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
 #>
 function Update-AzNginxDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxDeployment])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('DeploymentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
@@ -59,6 +72,8 @@ param(
     # The name of targeted NGINX deployment
     ${Name},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [System.String]
@@ -66,6 +81,8 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -77,81 +94,110 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IScaleProfile[]]
     # .
-    # To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
     ${AutoScaleSettingProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # Channel used for autoupgrade.
     ${AutoUpgradeProfileUpgradeChannel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${EnableDiagnosticsSupport},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType]
-    # .
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # Dictionary of <UserIdentityProperties>
-    ${IdentityUserAssignedIdentity},
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # .
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxNetworkProfile]
+    # .
+    ${NetworkProfile},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.Int32]
     # .
     ${ScalingPropertyCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # Name of the SKU.
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # .
     ${StorageAccountContainerName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # .
     ${StorageAccountName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxDeploymentTags]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # The preferred support contact email address of the user used for sending alerts and notification.
@@ -226,6 +272,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -245,12 +300,12 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Nginx.private\Update-AzNginxDeployment_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Nginx.private\Update-AzNginxDeployment_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Nginx.private\Update-AzNginxDeployment_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Nginx.private\Update-AzNginxDeployment_UpdateViaJsonString';
+            UpdateExpanded = 'Az.Nginx.custom\Update-AzNginxDeployment';
+            UpdateViaIdentityExpanded = 'Az.Nginx.custom\Update-AzNginxDeployment';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateViaJsonFilePath', 'UpdateViaJsonString', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -264,6 +319,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

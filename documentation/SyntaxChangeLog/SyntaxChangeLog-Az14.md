@@ -1,3 +1,102 @@
+## 14.6.0 - November 2025
+#### Az.Compute 10.5.0 
+* Modified cmdlet `New-AzDiskConfig`
+   - Added parameter `-SupportedSecurityOption`
+* Modified cmdlet `New-AzDiskUpdateConfig`
+   - Added parameter `-SupportedSecurityOption`
+* Modified cmdlet `New-AzVM`
+   - Added parameter `-AddProxyAgentExtension`
+* Modified cmdlet `New-AzVmss`
+   - Added parameter `-AddProxyAgentExtension`
+* Modified cmdlet `Set-AzVMProxyAgentSetting`
+   - Added parameter `-AddProxyAgentExtension`
+* Modified cmdlet `Set-AzVmssProxyAgentSetting`
+   - Added parameter `-AddProxyAgentExtension`
+* Modified cmdlet `Update-AzHost`
+   - Added parameter `-Redeploy`
+#### Az.RecoveryServices 7.10.0 
+* Added cmdlet `Get-AzRecoveryServicesSoftDeletedVault`, `Get-AzRecoveryServicesSoftDeletedVaultBackupItem`, `Undo-AzRecoveryServicesVaultDeletion`
+#### Az.RedisEnterpriseCache 1.6.0 
+* Modified cmdlet `New-AzRedisEnterpriseCache`
+   - Added parameter `-PublicNetworkAccess`
+* Modified cmdlet `Update-AzRedisEnterpriseCache`
+   - Added parameter `-PublicNetworkAccess`
+#### Az.SignalR 2.3.0 
+* Added cmdlet `Add-AzSignalRNetworkIpRule`, `Get-AzSignalRReplica`, `New-AzSignalRNetworkIpRuleObject`, `New-AzSignalRReplica`, `Remove-AzSignalRNetworkIpRule`, `Remove-AzSignalRReplica`, `Restart-AzSignalRReplica`, `Start-AzSignalRReplica`, `Stop-AzSignalRReplica`, `Update-AzSignalRReplica`
+#### Az.Sql 6.3.0 
+* Modified cmdlet `Set-AzSqlDatabaseBackupLongTermRetentionPolicy`
+   - Added parameters `-TimeBasedImmutability`, `-TimeBasedImmutabilityMode`
+* Added cmdlet `Lock-AzSqlDatabaseLongTermRetentionBackupImmutability`, `Remove-AzSqlDatabaseLongTermRetentionBackupImmutability`, `Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold`, `Set-AzSqlDatabaseLongTermRetentionBackupLegalHold`
+#### Az.Storage 9.3.0 
+* Modified cmdlet `New-AzStorageAccount`
+   - Added parameter `-EnableBlobGeoPriorityReplication`
+* Modified cmdlet `Set-AzStorageAccount`
+   - Added parameter `-EnableBlobGeoPriorityReplication`
+* Modified cmdlet `Set-AzStorageObjectReplicationPolicy`
+   - Added parameter `-EnablePriorityReplication`
+* Added cmdlet `Get-AzStorageNetworkSecurityPerimeterConfiguration`, `Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration`
+
+## 14.5.0 - October 2025
+#### Az.Compute 10.4.0 
+* Modified cmdlet `Grant-AzSnapshotAccess`
+   - Added parameter `-SecureVMGuestStateSAS`
+* Modified cmdlet `New-AzSnapshotConfig`
+   - Added parameter `-InstantAccessDurationMinutes`
+#### Az.HDInsight 6.4.0 
+* Modified cmdlet `New-AzHDInsightCluster`
+   - Added parameters `-EntraUserIdentity`, `-EntraUserFullInfo`
+* Modified cmdlet `Set-AzHDInsightGatewayCredential`
+   - Added parameters `-EntraUserIdentity`, `-EntraUserFullInfo`
+#### Az.KeyVault 6.4.0 
+* Modified cmdlet `New-AzKeyVaultManagedHsm`
+   - Added parameter `-NetworkRuleSet`
+* Added cmdlet `Add-AzKeyVaultManagedHsmNetworkRule`, `New-AzKeyVaultManagedHsmNetworkRuleSetObject`, `Remove-AzKeyVaultManagedHsmNetworkRule`, `Update-AzKeyVaultManagedHsmNetworkRuleSet`
+#### Az.Migrate 2.10.0 
+* Modified cmdlet `Get-AzMigrateServerMigrationStatus`
+   - Added parameter `-Expedite`
+#### Az.RecoveryServices 7.9.0 
+* Added cmdlet `Redo-AzRecoveryServicesBackupProtection`
+#### Az.ServiceFabric 3.8.0 
+* Modified cmdlet `New-AzServiceFabricManagedCluster`
+   - Added parameters `-EnableAutoOsUpgrade`, `-AllowRdpAccess`
+* Modified cmdlet `New-AzServiceFabricManagedNodeType`
+   - Added parameters `-ZoneBalance`, `-EnableOverProvisioning`, `-Zone`
+* Modified cmdlet `Restart-AzServiceFabricManagedNodeType`
+   - Added parameter `-UpdateType`
+   - Parameter `-NodeName` ValidateNotNullOrEmpty changed from `True` to `False`
+* Modified cmdlet `Set-AzServiceFabricManagedCluster`
+   - Added parameters `-EnableAutoOsUpgrade`, `-AllowRdpAccess`
+* Modified cmdlet `Set-AzServiceFabricManagedNodeType`
+   - Added parameters `-ZoneBalance`, `-EnableOverProvisioning`, `-Zone`
+* Added cmdlet `Invoke-AzServiceFabricDeallocateManagedNodeType`, `Invoke-AzServiceFabricRedeployManagedNodeType`, `Invoke-AzServiceFabricReimageManagedNodeType`, `Start-AzServiceFabricManagedNodeType`
+#### Az.SignalR 2.2.0 
+* Modified cmdlet `New-AzSignalR`
+   - Added parameters `-EnableSystemAssignedIdentity`, `-UserAssignedIdentity`
+* Modified cmdlet `Update-AzSignalR`
+   - Added parameters `-EnableSystemAssignedIdentity`, `-UserAssignedIdentity`
+* Added cmdlet `Get-AzSignalRCustomCertificate`, `Get-AzSignalRCustomDomain`, `New-AzSignalRCustomCertificate`, `New-AzSignalRCustomDomain`, `Remove-AzSignalRCustomCertificate`, `Remove-AzSignalRCustomDomain`, `Update-AzSignalRCustomDomain`
+#### Az.Sql 6.2.0 
+* Modified cmdlet `New-AzSqlServer`
+   - Added parameters `-EnableSoftDelete`, `-SoftDeleteRetentionDays`
+* Modified cmdlet `Set-AzSqlServer`
+   - Added parameters `-EnableSoftDelete`, `-SoftDeleteRetentionDays`
+* Added cmdlet `Restore-AzSqlServer`
+#### Az.Storage 9.2.0 
+* Modified cmdlet `New-AzStorageAccount`
+   - Added parameters `-EnableSmbOAuth`, `-Zone`, `-ZonePlacementPolicy`
+* Modified cmdlet `Set-AzStorageAccount`
+   - Added parameters `-EnableSmbOAuth`, `-Zone`, `-ZonePlacementPolicy`
+* Modified cmdlet `Set-AzStorageObjectReplicationPolicy`
+   - Added parameter `-EnableMetric`
+* Modified cmdlet `Get-AzStorageTaskAssignment`
+   - Removed parameter `-Maxpagesize`
+   - Added parameter `-Top`
+* Added cmdlet `Get-AzStorageFileSymbolicLink`, `New-AzStorageFileSymbolicLink`, `Get-AzStorageSku`
+#### Az.StorageMover 1.6.0 
+* Modified cmdlet `New-AzStorageMoverJobDefinition`
+   - Added parameter `-JobType`
+* Added cmdlet `New-AzStorageMoverAzNfsFileShareEndpoint`, `New-AzStorageMoverMultiCloudConnectorEndpoint`, `Update-AzStorageMoverAzNfsFileShareEndpoint`, `Update-AzStorageMoverMultiCloudConnectorEndpoint`
+
 ## 14.4.0 - September 2025
 #### Az.Accounts 5.3.0 
 * Modified cmdlet `Invoke-AzRestMethod`
@@ -673,6 +772,8 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
+
 
 
 

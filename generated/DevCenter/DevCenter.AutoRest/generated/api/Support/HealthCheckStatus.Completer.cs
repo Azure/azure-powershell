@@ -50,6 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Informational".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Informational'", "Informational", global::System.Management.Automation.CompletionResultType.ParameterValue, "Informational");
+            }
         }
     }
 }
