@@ -30,6 +30,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Ephemeral'", "Ephemeral", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ephemeral");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Persistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Persistent'", "Persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "Persistent");
+            }
         }
     }
 }

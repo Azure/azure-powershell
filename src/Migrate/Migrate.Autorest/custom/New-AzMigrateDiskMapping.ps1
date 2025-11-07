@@ -40,8 +40,8 @@ function New-AzMigrateDiskMapping {
         ${IsOSDisk},
 
         [Parameter(Mandatory)]
-        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS")]
-        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS"})]
+        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS")]
+        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS"})]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the type of disks to be used for the Azure VM.
@@ -50,7 +50,7 @@ function New-AzMigrateDiskMapping {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the disk encyption set to be used.
+        # Specifies the disk encryption set to be used.
         ${DiskEncryptionSetID}
     )
     
@@ -63,6 +63,9 @@ function New-AzMigrateDiskMapping {
             Premium_LRS     = "Premium_LRS";
             StandardSSD_LRS = "StandardSSD_LRS";
             PremiumV2_LRS   = "PremiumV2_LRS";
+            UltraSSD_LRS    = "UltraSSD_LRS";
+            StandardSSD_ZRS = "StandardSSD_ZRS";
+            Premium_ZRS     = "Premium_ZRS"
         }
         $DiskObject.DiskType = $validDiskTypeSpellings[$DiskType]
 
@@ -75,8 +78,8 @@ function New-AzMigrateDiskMapping {
             $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
         }
 
-        if ($DiskObject.IsOSDisk -eq "true" -and $DiskObject.DiskType -eq $validDiskTypeSpellings["PremiumV2_LRS"]) {
-            throw "Premium SSD V2 disk is not supported as an OS Disk in Azure."
+        if ($DiskObject.IsOSDisk -eq "true" -and ($DiskObject.DiskType -eq $validDiskTypeSpellings["PremiumV2_LRS"] -or $DiskObject.DiskType -eq $validDiskTypeSpellings["UltraSSD_LRS"])) {
+            throw "$($DiskObject.DiskType) is not supported as an OS disk in Azure."
         }
 
         return $DiskObject 

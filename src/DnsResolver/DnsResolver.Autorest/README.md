@@ -122,4 +122,10 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      verb: Get|New|Update
+      subject: DnsForwardingRuleset|ForwardingRule|DnsResolverDomainList|InboundEndpoint|PolicyDnsSecurityRule
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```

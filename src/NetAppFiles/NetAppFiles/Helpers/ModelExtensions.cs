@@ -129,7 +129,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps,
                 CoolAccess = capacityPool.CoolAccess,
                 SystemData = capacityPool.SystemData?.ToPsSystemData(),
-                EncryptionType = capacityPool.EncryptionType
+                EncryptionType = capacityPool.EncryptionType,
+                CustomThroughputMibps = capacityPool.CustomThroughputMibps
             };
         }
 
@@ -290,10 +291,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             var dataProtection = new VolumePropertiesDataProtection();
             if (psDataProtection.Replication != null)
             {
-                var replication = new ReplicationObject();
-
-                // replication.ReplicationId = psDataProtection.Replication.ReplicationId;
-                replication.EndpointType = psDataProtection.Replication.EndpointType;
+                var replication = new ReplicationObject();                                
                 replication.ReplicationSchedule = psDataProtection.Replication.ReplicationSchedule;
                 replication.RemoteVolumeResourceId = psDataProtection.Replication.RemoteVolumeResourceId;
                 replication.RemoteVolumeRegion = psDataProtection.Replication.RemoteVolumeRegion;
@@ -326,8 +324,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {
                 var replication = new ReplicationObject();
 
-                // replication.ReplicationId = psDataProtection.Replication.ReplicationId;
-                replication.EndpointType = psDataProtection.Replication.EndpointType;
+                // replication.ReplicationId = psDataProtection.Replication.ReplicationId;                
                 replication.ReplicationSchedule = psDataProtection.Replication.ReplicationSchedule;
                 replication.RemoteVolumeResourceId = psDataProtection.Replication.RemoteVolumeResourceId;
                 // replication.RemoteVolumeRegion = psDataProtection.Replication.RemoteVolumeRegion;
@@ -522,7 +519,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ActualThroughputMibps = volume.ActualThroughputMibps,
                 OriginatingResourceId = volume.OriginatingResourceId,
                 CoolAccessRetrievalPolicy = volume.CoolAccessRetrievalPolicy,
-                CoolAccessTieringPolicy = volume.CoolAccessTieringPolicy
+                CoolAccessTieringPolicy = volume.CoolAccessTieringPolicy,
+                AcceptGrowCapacityPoolForShortTermCloneSplit = volume.AcceptGrowCapacityPoolForShortTermCloneSplit,
+                InheritedSize = volume.InheritedSizeInBytes
             };
         }
 

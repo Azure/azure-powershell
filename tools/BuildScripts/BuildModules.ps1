@@ -175,14 +175,15 @@ else {
     Write-Output "Modules are added to test sln file"
 }
 
-$buildCmdResult = "dotnet $BuildAction $Buildsln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
+$buildCmdArgs = @("$BuildAction", "$Buildsln", "-c", "$Configuration", "-fl", "/flp1:logFile=$LogFile;verbosity=quiet")
 If ($GenerateDocumentationFile -eq "false") {
-    $buildCmdResult += " -p:GenerateDocumentationFile=false"
+    $buildCmdArgs += "-p:GenerateDocumentationFile=false"
 }
 if ($EnableTestCoverage -eq "true") {
-    $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
+    $buildCmdArgs += "-p:TestCoverage=TESTCOVERAGE"
 }
-Invoke-Expression -Command $buildCmdResult
+# Use argument splatting to prevent injection
+& dotnet @buildCmdArgs
 
 $versionControllerCsprojPath = Join-Path $toolDirectory 'VersionController' 'VersionController.Netcore.csproj'
 dotnet build $versionControllerCsprojPath -c $Configuration

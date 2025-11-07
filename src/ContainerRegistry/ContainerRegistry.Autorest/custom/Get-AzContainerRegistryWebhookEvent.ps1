@@ -23,12 +23,12 @@ Lists recent events for the specified webhook.
 Get-AzContainerRegistryWebhookEvent  -ResourceGroupName lnxtest -RegistryName lnxcr -WebhookName webhook001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent
 #>
 function Get-AzContainerRegistryWebhookEvent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -61,7 +61,7 @@ param(
 
     [Parameter(ParameterSetName='GetByWebhook', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook]
     # The Webhook Object.
     ${Webhook},
 

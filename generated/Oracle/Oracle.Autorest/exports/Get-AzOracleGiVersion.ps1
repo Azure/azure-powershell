@@ -39,14 +39,23 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Autonomousdbversionsname <String>]: AutonomousDbVersion name
   [Cloudexadatainfrastructurename <String>]: CloudExadataInfrastructure name
   [Cloudvmclustername <String>]: CloudVmCluster name
+  [DbSystemName <String>]: The name of the DbSystem
   [Dbnodeocid <String>]: DbNode OCID.
   [Dbserverocid <String>]: DbServer OCID.
   [Dbsystemshapename <String>]: DbSystemShape name
+  [Dbversionsname <String>]: DbVersion name
   [Dnsprivateviewocid <String>]: DnsPrivateView OCID
   [Dnsprivatezonename <String>]: DnsPrivateZone name
+  [ExadbVMClusterName <String>]: The name of the ExadbVmCluster
+  [ExascaleDbNodeName <String>]: The name of the ExascaleDbNode
+  [ExascaleDbStorageVaultName <String>]: The name of the ExascaleDbStorageVault
+  [FlexComponentName <String>]: The name of the FlexComponent
+  [GiMinorVersionName <String>]: The name of the GiMinorVersion
   [Giversionname <String>]: GiVersion name
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
+  [NetworkAnchorName <String>]: The name of the NetworkAnchor
+  [ResourceAnchorName <String>]: The name of the ResourceAnchor
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Systemversionname <String>]: SystemVersion name
@@ -60,14 +69,23 @@ LOCATIONINPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Autonomousdbversionsname <String>]: AutonomousDbVersion name
   [Cloudexadatainfrastructurename <String>]: CloudExadataInfrastructure name
   [Cloudvmclustername <String>]: CloudVmCluster name
+  [DbSystemName <String>]: The name of the DbSystem
   [Dbnodeocid <String>]: DbNode OCID.
   [Dbserverocid <String>]: DbServer OCID.
   [Dbsystemshapename <String>]: DbSystemShape name
+  [Dbversionsname <String>]: DbVersion name
   [Dnsprivateviewocid <String>]: DnsPrivateView OCID
   [Dnsprivatezonename <String>]: DnsPrivateZone name
+  [ExadbVMClusterName <String>]: The name of the ExadbVmCluster
+  [ExascaleDbNodeName <String>]: The name of the ExascaleDbNode
+  [ExascaleDbStorageVaultName <String>]: The name of the ExascaleDbStorageVault
+  [FlexComponentName <String>]: The name of the FlexComponent
+  [GiMinorVersionName <String>]: The name of the GiMinorVersion
   [Giversionname <String>]: GiVersion name
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
+  [NetworkAnchorName <String>]: The name of the NetworkAnchor
+  [ResourceAnchorName <String>]: The name of the ResourceAnchor
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Systemversionname <String>]: SystemVersion name
@@ -114,6 +132,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity]
     # Identity Parameter
     ${LocationInputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Exadata.X9M", "Exadata.X11M", "ExaDbXS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Query')]
+    [System.String]
+    # If provided, filters the results for the given shape
+    ${Shape},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Query')]
+    [System.String]
+    # Filters the result for the given Shape Attribute, such as BLOCK_STORAGE or SMART_STORAGE.
+    ${ShapeAttribute},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Query')]
+    [System.String]
+    # Filters the result for the given Azure Availability Zone
+    ${Zone},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -171,6 +208,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -196,8 +242,6 @@ begin {
             List = 'Az.Oracle.private\Get-AzOracleGiVersion_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -211,6 +255,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

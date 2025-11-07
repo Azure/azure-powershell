@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceScanRulesetObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurefileservicescanrulesetobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for AzureFileServiceScanRuleset.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureFileServiceScanRulesetObject -Kind <DataSourceType> [-Description <String>]
+New-AzPurviewAzureFileServiceScanRulesetObject [-Description <String>]
  [-ExcludedSystemClassification <String[]>] [-IncludedCustomClassificationRuleName <String[]>]
- [-ScanningRuleCustomFileExtension <ICustomFileExtension[]>]
- [-ScanningRuleFileExtension <FileExtensionsType[]>] [-Type <ScanRulesetType>] [<CommonParameters>]
+ [-ScanningRuleCustomFileExtension <ICustomFileExtension[]>] [-ScanningRuleFileExtension <String[]>]
+ [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Create an in-memory object for AzureFileServiceScanRuleset.
 
 ### Example 1: Create Azure File Service custom scanruleset object
 ```powershell
-New-AzPurviewAzureFileServiceScanRulesetObject -Kind 'AzureFileService' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+New-AzPurviewAzureFileServiceScanRulesetObject -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 ```
 
 ```output
@@ -94,26 +94,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScanningRuleCustomFileExtension
-To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
+
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +113,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +128,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset
 
 ## NOTES
 

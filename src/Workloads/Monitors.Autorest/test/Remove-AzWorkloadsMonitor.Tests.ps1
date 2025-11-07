@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWorkloadsMonitor'))
 
 Describe 'Remove-AzWorkloadsMonitor' {
     It 'Delete' {
-        $response = Remove-AzWorkloadsMonitor -Name $env.CreateHaMonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
+        $response = Remove-AzWorkloadsMonitor -Name $env.CreateMonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
         $response.Status | Should -Be $env.ProvisioningState
     }
 
     It 'DeleteViaIdentity' {
-        $response = Remove-AzWorkloadsMonitor -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.HaMonitorName)"
+        $response = Remove-AzWorkloadsMonitor -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.MonitorName)"
         $response.Status | Should -Be $env.ProvisioningState
     }
 }

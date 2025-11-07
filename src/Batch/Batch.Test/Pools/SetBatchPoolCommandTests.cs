@@ -79,17 +79,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Update the pool
             cmdlet.Pool.StartTask = new PSStartTask("cmd /c echo start task");
-            cmdlet.Pool.CertificateReferences = new List<PSCertificateReference>()
-            {
-                new PSCertificateReference()
-                {
-                    StoreLocation = Azure.Batch.Common.CertStoreLocation.LocalMachine,
-                    Thumbprint = "thumbprint",
-                    ThumbprintAlgorithm = "sha1",
-                    StoreName = "My",
-                    Visibility = Azure.Batch.Common.CertificateVisibility.StartTask
-                }
-            };
             cmdlet.Pool.ApplicationPackageReferences = new List<PSApplicationPackageReference>()
             {
                 new PSApplicationPackageReference()
@@ -118,10 +107,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Verify the request parameters match the cmdlet parameters
             Assert.Equal(cmdlet.Pool.StartTask.CommandLine, requestParameters.StartTask.CommandLine);
-            Assert.Equal(cmdlet.Pool.CertificateReferences.Count, requestParameters.CertificateReferences.Count);
-            Assert.Equal(cmdlet.Pool.CertificateReferences[0].StoreName, requestParameters.CertificateReferences[0].StoreName);
-            Assert.Equal(cmdlet.Pool.CertificateReferences[0].Thumbprint, requestParameters.CertificateReferences[0].Thumbprint);
-            Assert.Equal(cmdlet.Pool.CertificateReferences[0].ThumbprintAlgorithm, requestParameters.CertificateReferences[0].ThumbprintAlgorithm);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences.Count, requestParameters.ApplicationPackageReferences.Count);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].ApplicationId, requestParameters.ApplicationPackageReferences[0].ApplicationId);
             Assert.Equal(cmdlet.Pool.ApplicationPackageReferences[0].Version, requestParameters.ApplicationPackageReferences[0].Version);

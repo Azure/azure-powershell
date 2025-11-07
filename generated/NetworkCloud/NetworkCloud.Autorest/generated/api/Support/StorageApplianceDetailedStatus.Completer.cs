@@ -26,13 +26,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Error".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("'Error'", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Available".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Available'", "Available", global::System.Management.Automation.CompletionResultType.ParameterValue, "Available");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Degraded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Degraded'", "Degraded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Degraded");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Error".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Error'", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Provisioning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

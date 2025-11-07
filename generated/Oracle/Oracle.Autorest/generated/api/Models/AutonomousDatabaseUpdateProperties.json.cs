@@ -65,7 +65,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 return;
             }
-            {_scheduledOperation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("scheduledOperations"), out var __jsonScheduledOperations) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdate.FromJson(__jsonScheduledOperations) : _scheduledOperation;}
             {_longTermBackupSchedule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("longTermBackupSchedule"), out var __jsonLongTermBackupSchedule) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.LongTermBackUpScheduleDetails.FromJson(__jsonLongTermBackupSchedule) : _longTermBackupSchedule;}
             {_autonomousMaintenanceScheduleType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("autonomousMaintenanceScheduleType"), out var __jsonAutonomousMaintenanceScheduleType) ? (string)__jsonAutonomousMaintenanceScheduleType : (string)_autonomousMaintenanceScheduleType;}
             {_computeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("computeCount"), out var __jsonComputeCount) ? (float?)__jsonComputeCount : _computeCount;}
@@ -79,13 +78,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_isLocalDataGuardEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isLocalDataGuardEnabled"), out var __jsonIsLocalDataGuardEnabled) ? (bool?)__jsonIsLocalDataGuardEnabled : _isLocalDataGuardEnabled;}
             {_isMtlsConnectionRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("isMtlsConnectionRequired"), out var __jsonIsMtlsConnectionRequired) ? (bool?)__jsonIsMtlsConnectionRequired : _isMtlsConnectionRequired;}
             {_licenseModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("licenseModel"), out var __jsonLicenseModel) ? (string)__jsonLicenseModel : (string)_licenseModel;}
+            {_scheduledOperationsList = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("scheduledOperationsList"), out var __jsonScheduledOperationsList) ? If( __jsonScheduledOperationsList as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate) (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdate.FromJson(__p) )) ))() : null : _scheduledOperationsList;}
             {_databaseEdition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("databaseEdition"), out var __jsonDatabaseEdition) ? (string)__jsonDatabaseEdition : (string)_databaseEdition;}
             {_localAdgAutoFailoverMaxDataLossLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("localAdgAutoFailoverMaxDataLossLimit"), out var __jsonLocalAdgAutoFailoverMaxDataLossLimit) ? (int?)__jsonLocalAdgAutoFailoverMaxDataLossLimit : _localAdgAutoFailoverMaxDataLossLimit;}
             {_openMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("openMode"), out var __jsonOpenMode) ? (string)__jsonOpenMode : (string)_openMode;}
             {_permissionLevel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("permissionLevel"), out var __jsonPermissionLevel) ? (string)__jsonPermissionLevel : (string)_permissionLevel;}
             {_role = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("role"), out var __jsonRole) ? (string)__jsonRole : (string)_role;}
             {_backupRetentionPeriodInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("backupRetentionPeriodInDays"), out var __jsonBackupRetentionPeriodInDays) ? (int?)__jsonBackupRetentionPeriodInDays : _backupRetentionPeriodInDay;}
-            {_whitelistedIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("whitelistedIps"), out var __jsonWhitelistedIps) ? If( __jsonWhitelistedIps as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _whitelistedIP;}
+            {_whitelistedIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("whitelistedIps"), out var __jsonWhitelistedIps) ? If( __jsonWhitelistedIps as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _whitelistedIP;}
             AfterFromJson(json);
         }
 
@@ -121,7 +121,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 return container;
             }
-            AddIf( null != this._scheduledOperation ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._scheduledOperation.ToJson(null,serializationMode) : null, "scheduledOperations" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeUpdate))
             {
                 AddIf( null != this._longTermBackupSchedule ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._longTermBackupSchedule.ToJson(null,serializationMode) : null, "longTermBackupSchedule" ,container.Add );
@@ -154,6 +153,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             AddIf( null != this._isLocalDataGuardEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean((bool)this._isLocalDataGuardEnabled) : null, "isLocalDataGuardEnabled" ,container.Add );
             AddIf( null != this._isMtlsConnectionRequired ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean((bool)this._isMtlsConnectionRequired) : null, "isMtlsConnectionRequired" ,container.Add );
             AddIf( null != (((object)this._licenseModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._licenseModel.ToString()) : null, "licenseModel" ,container.Add );
+            if (null != this._scheduledOperationsList)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                foreach( var __s in this._scheduledOperationsList )
+                {
+                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                }
+                container.Add("scheduledOperationsList",__r);
+            }
             AddIf( null != (((object)this._databaseEdition)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._databaseEdition.ToString()) : null, "databaseEdition" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeUpdate))
             {
@@ -174,12 +182,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             AddIf( null != this._backupRetentionPeriodInDay ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber((int)this._backupRetentionPeriodInDay) : null, "backupRetentionPeriodInDays" ,container.Add );
             if (null != this._whitelistedIP)
             {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
-                foreach( var __s in this._whitelistedIP )
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                foreach( var __n in this._whitelistedIP )
                 {
-                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                    AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                 }
-                container.Add("whitelistedIps",__r);
+                container.Add("whitelistedIps",__m);
             }
             AfterToJson(ref container);
             return container;

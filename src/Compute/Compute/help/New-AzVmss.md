@@ -39,7 +39,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
- [-SkuProfileAllocationStrategy <String>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
+ [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
+ [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -234,11 +235,11 @@ $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $
 # $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled;
 ```
 
-This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values, VTpmEnabled and SecureBootEnalbed are true. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
+This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values, VTpmEnabled and SecureBootEnabled are true. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ### Example 5: Create a Vmss in Orchestration Mode: Flexible by default
 ```powershell
-# Create configration object
+# Create configuration object
 $vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -SinglePlacementGroup $true
 
 # VMSS Creation 
@@ -289,6 +290,21 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
+
+### -AddProxyAgentExtension
+Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AllocationMethod
 Allocation method for the Public IP Address of the Scale Set (Static or Dynamic).  If no value is supplied, allocation will be static.
@@ -478,6 +494,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableProxyAgent
+Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

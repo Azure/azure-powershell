@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// <param name="outputPath">The file output path</param>
         /// <param name="overwrite">Overrides existing file</param>
         /// <param name="shouldContinue">The confirmation action</param>
+        /// <param name="extension">The file extension (defaults to .json)</param>
         /// <returns>The file path</returns>
-        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Func<string, string, bool> shouldContinue)
+        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Func<string, string, bool> shouldContinue, string extension = ".json")
         {
             StringBuilder finalOutputPath = new StringBuilder();
 
@@ -48,14 +49,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             if (FileUtilities.IsValidDirectoryPath(outputPath))
             {
-                finalOutputPath.Append(Path.Combine(outputPath, templateName + ".json"));
+                finalOutputPath.Append(Path.Combine(outputPath, templateName + extension));
             }
             else
             {
                 finalOutputPath.Append(outputPath);
-                if (!outputPath.EndsWith(".json"))
+                if (!outputPath.EndsWith(extension))
                 {
-                    finalOutputPath.Append(".json");
+                    finalOutputPath.Append(extension);
                 }
             }
 

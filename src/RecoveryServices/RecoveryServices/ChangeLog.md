@@ -17,7 +17,19 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+
+## Version 7.10.0
+* Added Cross region restore support for new region - northeastus5.
+* Added support for vault soft delete feature - Get soft deleted vault, Undelete softdeleted vault, Get deleted backup items in a soft deleted vault using ARG.
+
+## Version 7.9.0
+* Added Cross region restore support for new region - eastus3.
+* Added support for reregistration of a backup item to another vault.
+
+## Version 7.8.0
+* Added new optional parameter CVMOsDiskEncryptionSetId in Restore-AzRecoveryServicesBackupItem.
 
 ## Version 7.7.2
 * Added fix for resume protection with AzureFileshare.
@@ -87,7 +99,7 @@
 * Added CRR support for taiwannorth, taiwannorthwest region.
 * Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
 * Added warning for Standard to Enhanced policy migration for AzureVMs.
-* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to ouptput Job object if PassThru not given.
+* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to output Job object if PassThru not given.
 * Fixed issue with Get-AzRecoveryServicesVaultSettingsFile cmdlet to return private endpoint state for backup.
 
 ## Version 6.7.0
@@ -414,7 +426,7 @@
 * Updated table format for SQL in azure VM
 * Added alternate method to fetch location in AzureFileShare
 * Updated ScheduleRunDays in SchedulePolicy object according to timezone
-* Made some attibutes read-only in Get-AzRecoveryServicesBackupWorkloadRecoveryConfig
+* Made some attributes read-only in Get-AzRecoveryServicesBackupWorkloadRecoveryConfig
 
 ## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP

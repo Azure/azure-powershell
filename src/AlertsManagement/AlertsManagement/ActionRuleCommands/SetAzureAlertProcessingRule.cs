@@ -278,11 +278,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                HelpMessage = "Start Date Time. Format 2022-09-21 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent  Schedule - Once, Daily, Weekly or Monthly.")]
+                    "Should be mentioned in case of Recurrent Schedule - Once, Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "Start Date Time. Format 2022-09-21 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent Schedule - Once, Daily, Weekly or Monthly.")]
+                    "Should be mentioned in case of Recurrent Schedule - Once, Daily, Weekly or Monthly.")]
         public string ScheduleStartDateTime { get; set; }
 
         /// <summary>
@@ -291,11 +291,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
                HelpMessage = "End Date Time. Format 2022-09-21 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent  Schedule - Once, Daily, Weekly or Monthly.")]
+                    "Should be mentioned in case of Recurrent Schedule - Once, Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
                HelpMessage = "End Date Time. Format 2022-09-21 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent Schedule - Once, Daily, Weekly or Monthly.")]
+                    "Should be mentioned in case of Recurrent Schedule - Once, Daily, Weekly or Monthly.")]
         public string ScheduleEndDateTime { get; set; }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ScheduleTimeZone { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Schedule Reccurence Type
+        /// Alert Processing rule simplified format : Schedule Recurrence Type
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ScheduleReccurenceType { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Schedule Reccurence Type
+        /// Alert Processing rule simplified format : Schedule Recurrence Type
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ScheduleReccurence2Type { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Reccurence Days Of Week
+        /// Alert Processing rule simplified format : Recurrence Days Of Week
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ScheduleReccurenceDaysOfWeek { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : second reccurence Days Of Week
+        /// Alert Processing rule simplified format : second recurrence Days Of Week
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ScheduleReccurence2DaysOfWeek { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Reccurence Days Of Month
+        /// Alert Processing rule simplified format : Recurrence Days Of Month
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ScheduleReccurenceDaysOfMonth { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Second reccurence Days Of Month
+        /// Alert Processing rule simplified format : Second recurrence Days Of Month
         /// </summary>
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
@@ -378,55 +378,55 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string ScheduleReccurence2DaysOfMonth { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Reccurence Start Time
+        /// Alert Processing rule simplified format : Recurrence Start Time
         /// </summary>
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence Start Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence Start Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence Start Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence Start Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         public string ScheduleReccurenceStartTime { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : second reccurence Start Time
+        /// Alert Processing rule simplified format : second recurrence Start Time
         /// </summary>
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence Start Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence Start Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence Start Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence Start Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         public string ScheduleReccurence2StartTime { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Reccurence End Time
+        /// Alert Processing rule simplified format : Recurrence End Time
         /// </summary>
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence End Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence End Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence End Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence End Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         public string ScheduleReccurenceEndTime { get; set; }
 
         /// <summary>
-        /// Alert Processing rule simplified format : Second reccurence End Time
+        /// Alert Processing rule simplified format : Second recurrence End Time
         /// </summary>
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatActionGroupAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence End Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence End Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         [Parameter(Mandatory = false,
                ParameterSetName = BySimplifiedFormatSuppressionAlertProcessingRuleParameterSet,
-               HelpMessage = "Reccurence End Time. Format 06:00:00\n +" +
-                    "Should be mentioned in case of Reccurent Schedule - Daily, Weekly or Monthly.")]
+               HelpMessage = "Recurrence End Time. Format 06:00:00\n +" +
+                    "Should be mentioned in case of Recurrent Schedule - Daily, Weekly or Monthly.")]
         public string ScheduleReccurence2EndTime { get; set; }
 
         /// <summary>

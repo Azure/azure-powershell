@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="notificationLevel">The level of notification.
-        /// Possible values include: 'Critical', 'All'</param>
+        /// Possible values include: &#39;Critical&#39;, &#39;All&#39;</param>
 
         /// <param name="notificationTargets">List of targets that subscribe to the notification.
         /// </param>

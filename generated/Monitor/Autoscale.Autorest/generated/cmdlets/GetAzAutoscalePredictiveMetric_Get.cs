@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}/predictiveMetrics"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzAutoscalePredictiveMetric_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IPredictiveResponse", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Data"}, NewOutputProperties=new string[] {"Data"}, ChangeDescription="The type of the property 'Data' of type 'IPredictiveResponse' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IPredictiveResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Description(@"get predictive autoscale metric future data")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Generated]

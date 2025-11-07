@@ -31,7 +31,7 @@ You can check whether the job succeeded by using the Get-AzRecoveryServicesAsrJo
 $currentJob = Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint -ReplicationProtectionCluster $protectionCluster -LatestProcessedRecoveryPoint
 ```
 
-Starts applying the recovery point on specified cluster. If LatestProcessedRecoveryPoint is passed and no specific recovery point is provided, it will pick the lastest processed recovery points and returns the ASR job used to track the operation.
+Starts applying the recovery point on specified cluster. If LatestProcessedRecoveryPoint is passed and no specific recovery point is provided, it will pick the latest processed recovery points and returns the ASR job used to track the operation.
 
 ### Example 2
 ```powershell

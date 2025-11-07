@@ -12,46 +12,46 @@ Remove the node type or specific nodes within the node type.
 
 ## SYNTAX
 
-### DeleteNodeTypeByObj (Default)
+### RemoveNodeTypeByObj (Default)
 ```
 Remove-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteNodeTypeByName
+### RemoveNodeTypeByName
 ```
 Remove-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteNodeByName
+### RemoveNodeByName
 ```
 Remove-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
  -NodeName <String[]> [-ForceRemoveNode] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteNodeByObj
+### RemoveNodeByObj
 ```
 Remove-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> -NodeName <String[]>
  [-ForceRemoveNode] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### DeleteNodeTypeById
+### RemoveNodeTypeById
 ```
 Remove-AzServiceFabricManagedNodeType [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteNodeById
+### RemoveNodeById
 ```
 Remove-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]> [-ForceRemoveNode]
  [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove the node type or specific nodes within the node type. If the paremter -NodeName is used then only nodes specified will be removed.
+Remove the node type or specific nodes within the node type. If the parameter -NodeName is used then only nodes specified will be removed.
 
 ## EXAMPLES
 
@@ -121,7 +121,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteNodeTypeByName, DeleteNodeByName
+Parameter Sets: RemoveNodeTypeByName, RemoveNodeByName
 Aliases:
 
 Required: True
@@ -148,11 +148,11 @@ Accept wildcard characters: False
 
 ### -ForceRemoveNode
 Using this flag will force the removal even if service fabric is unable to disable the nodes.
-Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the opearion.
+Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the operation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DeleteNodeByName, DeleteNodeByObj, DeleteNodeById
+Parameter Sets: RemoveNodeByName, RemoveNodeByObj, RemoveNodeById
 Aliases:
 
 Required: False
@@ -167,7 +167,7 @@ Node type resource
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
-Parameter Sets: DeleteNodeTypeByObj, DeleteNodeByObj
+Parameter Sets: RemoveNodeTypeByObj, RemoveNodeByObj
 Aliases:
 
 Required: True
@@ -182,7 +182,7 @@ Specify the name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteNodeTypeByName, DeleteNodeByName
+Parameter Sets: RemoveNodeTypeByName, RemoveNodeByName
 Aliases: NodeTypeName
 
 Required: True
@@ -197,7 +197,7 @@ List of node names for the operation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: DeleteNodeByName, DeleteNodeByObj, DeleteNodeById
+Parameter Sets: RemoveNodeByName, RemoveNodeByObj, RemoveNodeById
 Aliases:
 
 Required: True
@@ -227,7 +227,7 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteNodeTypeByName, DeleteNodeByName
+Parameter Sets: RemoveNodeTypeByName, RemoveNodeByName
 Aliases:
 
 Required: True
@@ -242,7 +242,7 @@ Node type resource id
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteNodeTypeById, DeleteNodeById
+Parameter Sets: RemoveNodeTypeById, RemoveNodeById
 Aliases:
 
 Required: True

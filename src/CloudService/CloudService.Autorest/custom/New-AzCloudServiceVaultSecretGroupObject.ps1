@@ -21,6 +21,7 @@ Create a in-memory object for Secret Group
 
 function New-AzCloudServiceVaultSecretGroupObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultSecretGroup')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultSecretGroup", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup", DeprecatedOutputProperties = ("VaultCertificate Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceVaultCertificate"), NewOutputProperties = ("VaultCertificate System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceVaultCertificate]"))]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Parameter(HelpMessage="Key Vault Resource Id.")]

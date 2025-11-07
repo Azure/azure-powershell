@@ -151,7 +151,7 @@ directive:
       subject: (.*)PrivateEndpoint(.*)
     remove: true
 
-  # swagger definiition incorrect.
+  # swagger definition incorrect.
   - where:
       subject: PreviewWorkflow
     remove: true
@@ -268,7 +268,7 @@ directive:
 
   - where:
       verb: Update
-      subjet: null
+      subject: null
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
@@ -332,13 +332,13 @@ directive:
     set:
       parameter-name: ForkRepository$1
 
-  # Hide New/Updaete-AzStaticWebApp for remove no-require sku parameters.
+  # Hide New/Update-AzStaticWebApp for remove no-require sku parameters.
   - where:
       verb: New
       subject: ^$
     hide: true
   
-  # Customise for webapp swagger. Only keep continuouswebjobs path and delete others path.
+  # Customize for webapp swagger. Only keep continuouswebjobs path and delete others path.
 
   - from: swagger-document
     where: $.paths
@@ -1626,4 +1626,18 @@ directive:
       property-name: Id1
     set:
       property-name: Id
+
+  - where:
+      verb: Get
+      subject: ContinuousWebJob|SlotContinuousWebJob|SlotTriggeredWebJob|TriggeredWebJob|TriggeredWebJobHistory
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+
+  - where:
+      verb: Get|Update
+      subject: ""
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```

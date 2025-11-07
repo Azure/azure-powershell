@@ -120,6 +120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).OrganizationName = (string) content.GetValueForProperty("OrganizationName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).OrganizationName, global::System.Convert.ToString);
             }
+            if (content.Contains("ProjectName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).ProjectName = (string) content.GetValueForProperty("ProjectName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).ProjectName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BranchName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).BranchName = (string) content.GetValueForProperty("BranchName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).BranchName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -152,6 +160,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
             if (content.Contains("OrganizationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).OrganizationName = (string) content.GetValueForProperty("OrganizationName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).OrganizationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProjectName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).ProjectName = (string) content.GetValueForProperty("ProjectName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).ProjectName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BranchName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).BranchName = (string) content.GetValueForProperty("BranchName",((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentityInternal)this).BranchName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

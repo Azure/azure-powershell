@@ -1,0 +1,95 @@
+{
+  "resourceType": "storageAccounts/networkSecurityPerimeterConfigurations",
+  "apiVersion": "2025-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storage"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageNetworkSecurityPerimeterConfiguration",
+      "description": "Gets effective NetworkSecurityPerimeterConfiguration for association",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstoragenetworksecurityperimeterconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets effective NetworkSecurityPerimeterConfiguration for association",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.networkSecurityPerimeterConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration",
+      "description": "Refreshes any information about the association.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/invoke-azstoragereconcilenetworksecurityperimeterconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-NetworkSecurityPerimeterConfigurationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Refreshes any information about the association.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-NetworkSecurityPerimeterConfigurationName",
+              "value": "[Path.networkSecurityPerimeterConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

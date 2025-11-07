@@ -80,6 +80,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<TO.PSGalleryImageVersionList, TO.PSGalleryImageVersion>();
                 cfg.CreateMap<TO.PSGalleryImageVersion, TO.PSGalleryImageVersionList>();
+
+                cfg.CreateMap<FROM.GalleryInVMAccessControlProfile, TO.PSGalleryInVMAccessControlProfileList>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileList, TO.PSGalleryInVMAccessControlProfile>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfile, TO.PSGalleryInVMAccessControlProfileList>();
+
+                cfg.CreateMap<FROM.GalleryInVMAccessControlProfileVersion, TO.PSGalleryInVMAccessControlProfileVersionList>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileVersionList, TO.PSGalleryInVMAccessControlProfileVersion>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileVersion, TO.PSGalleryInVMAccessControlProfileVersionList>();
+
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
@@ -182,9 +191,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtensionProfile, TO.PSVirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtensionProfile, FROM.VirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtension, TO.PSVirtualMachineScaleSetExtension>()
-                    .ForMember(c => c.Type, o => o.MapFrom(r => r.Type1));
+                    .ForMember(c => c.Type, o => o.MapFrom(r => r.VirtualMachineScaleSetExtensionPropertiesType));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtension, FROM.VirtualMachineScaleSetExtension>()
-                    .ForMember(c => c.Type1, o => o.MapFrom(r => r.Type));
+                    .ForMember(c => c.VirtualMachineScaleSetExtensionPropertiesType, o => o.MapFrom(r => r.Type));
 
                 cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccess>();
                 cfg.CreateMap<TO.PSDiskAccess, FROM.DiskAccess>();

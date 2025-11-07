@@ -113,7 +113,7 @@ function Test-SetAttestationPolicy
 	$policyJwt = "eyJhbGciOiJub25lIn0.eyJBdHRlc3RhdGlvblBvbGljeSI6ICJ7XHJcbiAgICBcIiR2ZXJzaW9uXCI6IDEsXHJcbiAgICBcIiRhbGxvdy1kZWJ1Z2dhYmxlXCIgOiB0cnVlLFxyXG4gICAgXCIkY2xhaW1zXCI6W1xyXG4gICAgICAgIFwiaXMtZGVidWdnYWJsZVwiICxcclxuICAgICAgICBcInNneC1tcnNpZ25lclwiLFxyXG4gICAgICAgIFwic2d4LW1yZW5jbGF2ZVwiLFxyXG4gICAgICAgIFwicHJvZHVjdC1pZFwiLFxyXG4gICAgICAgIFwic3ZuXCIsXHJcbiAgICAgICAgXCJ0ZWVcIixcclxuICAgICAgICBcIk5vdERlYnVnZ2FibGVcIlxyXG4gICAgXSxcclxuICAgIFwiTm90RGVidWdnYWJsZVwiOiB7XCJ5ZXNcIjp7XCIkaXMtZGVidWdnYWJsZVwiOnRydWUsIFwiJG1hbmRhdG9yeVwiOnRydWUsIFwiJHZpc2libGVcIjpmYWxzZX19LFxyXG4gICAgXCJpcy1kZWJ1Z2dhYmxlXCIgOiBcIiRpcy1kZWJ1Z2dhYmxlXCIsXHJcbiAgICBcInNneC1tcnNpZ25lclwiIDogXCIkc2d4LW1yc2lnbmVyXCIsXHJcbiAgICBcInNneC1tcmVuY2xhdmVcIiA6IFwiJHNneC1tcmVuY2xhdmVcIixcclxuICAgIFwicHJvZHVjdC1pZFwiIDogXCIkcHJvZHVjdC1pZFwiLFxyXG4gICAgXCJzdm5cIiA6IFwiJHN2blwiLFxyXG4gICAgXCJ0ZWVcIiA6IFwiJHRlZVwiXHJcbn0ifQ."
 	$policyText = 'version= 1.0;authorizationrules{c:[type=="$is-debuggable"] => permit();};issuancerules{c:[type=="$is-debuggable"] => issue(type="is-debuggable", value=c.value);c:[type=="$sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);c:[type=="$sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);c:[type=="$product-id"] => issue(type="product-id", value=c.value);c:[type=="$svn"] => issue(type="svn", value=c.value);c:[type=="$tee"] => issue(type="tee", value=c.value);c:[type=="$tee-future"] => issue(type="tee-future", value=c.value);};'
 
-	# Prevent this script from inadvertantly running in Record or Playback modes
+	# Prevent this script from inadvertently running in Record or Playback modes
 	try
 	{
 		if (((Get-ChildItem Env:\HttpRecorderMode).Value -eq "Playback") -or ((Get-ChildItem Env:\HttpRecorderMode).Value -eq "Record"))
@@ -138,7 +138,7 @@ function Test-SetAttestationPolicy
 		Assert-NotNull $attestationCreated.Id
 		Assert-NotNull $attestationCreated.Status
 
-		# NOTE: Set-AzAttestionPolicy does not work in recording/playback mode because the recorded JWT token expires and then fails validation
+		# NOTE: Set-AzAttestationPolicy does not work in recording/playback mode because the recorded JWT token expires and then fails validation
 		$setPolicyResponse = Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType -Policy $policyJwt -PolicyFormat Jwt -PassThru
 		Assert-AreEqual $setPolicyResponse $true
 
