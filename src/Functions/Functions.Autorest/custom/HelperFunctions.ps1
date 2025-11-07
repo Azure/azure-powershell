@@ -1819,7 +1819,7 @@ function GetFunctionAppStackDefinition
         if ($StackType -eq "PremiumAndConsumption")
         {
             Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
-            $json = Get-BuiltInFunctionAppStacksDefinition -DoNotShowWarning
+            $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
             return $json
         }
     }
@@ -2905,11 +2905,29 @@ function Get-FlexFunctionAppRuntime
     # Map dotnet-isolated -> dotnet for this endpoint
     $runtimeForAPI = if ($Runtime -eq 'dotnet-isolated') { 'dotnet' } else { $Runtime }
 
+    $json = $null
+
     # Format location for Flex Consumption (remove spaces and make lowercase)
     $formattedLocation = Format-FlexConsumptionLocation -Location $Location
 
+    if ($env:FunctionsTestMode -and $env:FunctionsUseFlexStackTestData)
+    {
+        # Test hook to use mock Flex Consumption stacks during playback mode.
+        if ($formattedLocation -ne "eastasia")
+        {
+            $message = "In test mode, only 'East Asia' location is supported for Flex Consumption stack definitions."
+            throw $message
+        }
+
+        $filePath = Join-Path -Path $PSScriptRoot "FunctionsStackFlexData/$formattedLocation/$runtimeForAPI.json"
+        $json = Get-Content $filePath -Raw -ErrorAction Stop
+    }
+
     # Get Flex Consumption Function App Runtime Definitions
-    $json = GetFunctionAppStackDefinition -StackType FlexConsumption -Location $formattedLocation -Runtime $runtimeForAPI
+    else
+    {
+        $json = GetFunctionAppStackDefinition -StackType FlexConsumption -Location $formattedLocation -Runtime $runtimeForAPI
+    }
 
     if (-not $json)
     {
