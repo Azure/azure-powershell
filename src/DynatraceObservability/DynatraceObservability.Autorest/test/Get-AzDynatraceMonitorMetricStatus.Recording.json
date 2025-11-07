@@ -1,8 +1,8 @@
 {
-  "Get-AzDynatraceMonitorMetricStatus+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgucrdmo/providers/Dynatrace.Observability/monitors/dyobtpb4k8/getMetricStatus?api-version=2024-04-24+1": {
+  "Get-AzDynatraceMonitorMetricStatus+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgacdneu/providers/Dynatrace.Observability/monitors/dyob3gtw04/getMetricStatus?api-version=2024-04-24+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgucrdmo/providers/Dynatrace.Observability/monitors/dyobtpb4k8/getMetricStatus?api-version=2024-04-24",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgacdneu/providers/Dynatrace.Observability/monitors/dyob3gtw04/getMetricStatus?api-version=2024-04-24",
       "Content": "{\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,21 +17,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/southindia/6f7f3d0c-44ba-4ac3-8338-b7e91c220e09" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/southindia/10d6bfc5-38e2-4f1c-86c1-5c8909d5e602" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
-        "mise-correlation-id": [ "04400eea-0227-4534-b48c-95a8f9b95ed4" ],
-        "x-ms-correlation-request-id": [ "0443d12e-bdb8-43b1-a0cf-443a64588aff" ],
-        "x-ms-client-request-id": [ "d616a59c-a7ad-4a29-a8f5-2b0d4291633f" ],
+        "mise-correlation-id": [ "f6327364-45b2-4540-93e4-0cf247fc2b64" ],
+        "x-ms-correlation-request-id": [ "5bce086c-082d-4733-94fb-e17128b1703f" ],
+        "x-ms-client-request-id": [ "cb139cec-85b9-49d1-928d-3f2ebc75e1d2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "628f8373-6321-44ce-88bc-7a3805c0f1ef" ],
+        "x-ms-request-id": [ "cf207ffb-b085-4cbf-8b34-71ce58c967b3" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20251106T102233Z:0443d12e-bdb8-43b1-a0cf-443a64588aff" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251107T125742Z:5bce086c-082d-4733-94fb-e17128b1703f" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A0884D894E6246E6A2D9471F297B5537 Ref B: PNQ231110907031 Ref C: 2025-11-06T10:22:30Z" ],
-        "Date": [ "Thu, 06 Nov 2025 10:22:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AD10DA49DAFE4A0FA6EE471BF2D180DF Ref B: PNQ231110909040 Ref C: 2025-11-07T12:57:39Z" ],
+        "Date": [ "Fri, 07 Nov 2025 12:57:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "23" ],

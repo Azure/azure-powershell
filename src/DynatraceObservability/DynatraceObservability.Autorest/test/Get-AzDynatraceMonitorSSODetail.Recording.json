@@ -1,13 +1,13 @@
 {
-  "Get-AzDynatraceMonitorSSODetail+[NoContext]+GetExpanded+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgucrdmo/providers/Dynatrace.Observability/monitors/dyobtpb4k8/singleSignOnConfigurations/default?api-version=2024-04-24+1": {
+  "Get-AzDynatraceMonitorSSODetail+[NoContext]+GetExpanded+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgacdneu/providers/Dynatrace.Observability/monitors/dyob3gtw04/singleSignOnConfigurations/default?api-version=2024-04-24+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgucrdmo/providers/Dynatrace.Observability/monitors/dyobtpb4k8/singleSignOnConfigurations/default?api-version=2024-04-24",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgacdneu/providers/Dynatrace.Observability/monitors/dyob3gtw04/singleSignOnConfigurations/default?api-version=2024-04-24",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "143cf3e2-817e-4638-bc85-103e447cf31a" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "680d378c-2e3e-4b50-b87b-fcac1864bbfd" ],
         "CommandName": [ "Get-AzDynatraceMonitorSSOConfig" ],
         "FullCommandName": [ "Get-AzDynatraceMonitorSSOConfig_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,26 +22,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"4702f94d-0000-0800-0000-690c75ed0000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/4ed5cffa-e783-4a89-a111-f8de479eb191" ],
+        "ETag": [ "\"8b02edec-0000-0800-0000-690debc80000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/d2a2ef65-4318-4eee-a4ea-e0a457368058" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "f4793014-f427-4878-88c1-9fa7b1b91676" ],
-        "x-ms-correlation-request-id": [ "569f2a3f-8611-4deb-a82b-d52a767d37fa" ],
+        "x-ms-request-id": [ "405b4d5e-8805-4003-8ecc-51400ab3325b" ],
+        "x-ms-correlation-request-id": [ "d3815539-d761-45a5-9ebf-7b372061e06d" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251106T102304Z:569f2a3f-8611-4deb-a82b-d52a767d37fa" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251107T125812Z:d3815539-d761-45a5-9ebf-7b372061e06d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6163721885994086B98487D175A37C39 Ref B: PNQ231110907031 Ref C: 2025-11-06T10:23:04Z" ],
-        "Date": [ "Thu, 06 Nov 2025 10:23:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 84D8E0BC20BE4495969E4495A2A09300 Ref B: PNQ231110909040 Ref C: 2025-11-07T12:58:11Z" ],
+        "Date": [ "Fri, 07 Nov 2025 12:58:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "642" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgucrdmo/providers/Dynatrace.Observability/monitors/dyobtpb4k8/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"dynatrace.observability/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"arushiarora@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-06T10:18:15.7532632Z\",\"lastModifiedBy\":\"arushiarora@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-06T10:18:15.7532632Z\"},\"properties\":{\"singleSignOnState\":\"Initial\",\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgacdneu/providers/Dynatrace.Observability/monitors/dyob3gtw04/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"dynatrace.observability/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"arushiarora@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-07T12:53:25.3920062Z\",\"lastModifiedBy\":\"arushiarora@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-07T12:53:25.3920062Z\"},\"properties\":{\"singleSignOnState\":\"Initial\",\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

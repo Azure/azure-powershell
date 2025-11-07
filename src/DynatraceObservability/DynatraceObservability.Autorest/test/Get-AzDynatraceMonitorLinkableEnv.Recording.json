@@ -1,8 +1,8 @@
 {
-  "Get-AzDynatraceMonitorLinkableEnv+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgucrdmo/providers/Dynatrace.Observability/monitors/dyobtpb4k8/listLinkableEnvironments?api-version=2024-04-24+1": {
+  "Get-AzDynatraceMonitorLinkableEnv+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgacdneu/providers/Dynatrace.Observability/monitors/dyob3gtw04/listLinkableEnvironments?api-version=2024-04-24+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgucrdmo/providers/Dynatrace.Observability/monitors/dyobtpb4k8/listLinkableEnvironments?api-version=2024-04-24",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgacdneu/providers/Dynatrace.Observability/monitors/dyob3gtw04/listLinkableEnvironments?api-version=2024-04-24",
       "Content": "{\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n  \"userPrincipal\": \"agarwalshiv@microsoft.com\",\n  \"region\": \"eastus\"\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,27 +17,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/18f250f6-d81e-4540-a6b5-560fcf67d031" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/81c22985-9ed5-4c2a-8ee1-cc746254939d" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
-        "mise-correlation-id": [ "971c3d2e-b683-4f54-8006-82fab533a7e1" ],
+        "mise-correlation-id": [ "905e3e2c-a247-45a2-93d6-670ecc56a06b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "bdb9a0ef-0eec-45fa-bcd4-9f8f48142b00" ],
-        "x-ms-correlation-request-id": [ "b9796bdb-33ac-42a1-9b94-19f6b7d221a1" ],
+        "x-ms-request-id": [ "771270e9-a1de-4d42-bb32-eb003e44b043" ],
+        "x-ms-correlation-request-id": [ "682452fa-3cff-4c65-a22f-a8ba56b99852" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251106T102157Z:b9796bdb-33ac-42a1-9b94-19f6b7d221a1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251107T125707Z:682452fa-3cff-4c65-a22f-a8ba56b99852" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5F85B53FC2B242ED93647BE8970BC80F Ref B: PNQ231110907031 Ref C: 2025-11-06T10:21:56Z" ],
-        "Date": [ "Thu, 06 Nov 2025 10:21:56 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 004E0E8FDACA45FF888D422A6A06FF89 Ref B: PNQ231110909040 Ref C: 2025-11-07T12:57:05Z" ],
+        "Date": [ "Fri, 07 Nov 2025 12:57:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "969" ],
+        "Content-Length": [ "970" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"environmentId\":\"xfu61326\",\"environmentName\":\"agarwalshiv-dt--2\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-06T10:21:57.6955013+00:00\"}},{\"environmentId\":\"yll69426\",\"environmentName\":\"test-resource-03\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-06T10:21:57.6955702+00:00\"}},{\"environmentId\":\"fwz21753\",\"environmentName\":\"random-dt\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-06T10:21:57.6955708+00:00\"}},{\"environmentId\":\"adb66994\",\"environmentName\":\"dt-powershell-rs1-DoNotDelete\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-06T10:21:57.695571+00:00\"}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"environmentId\":\"xfu61326\",\"environmentName\":\"agarwalshiv-dt--2\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-07T12:57:07.1395656+00:00\"}},{\"environmentId\":\"yll69426\",\"environmentName\":\"test-resource-03\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-07T12:57:07.1395661+00:00\"}},{\"environmentId\":\"fwz21753\",\"environmentName\":\"random-dt\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-07T12:57:07.1395664+00:00\"}},{\"environmentId\":\"adb66994\",\"environmentName\":\"dt-powershell-rs1-DoNotDelete\",\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview\",\"effectiveDate\":\"2025-11-07T12:57:07.1395666+00:00\"}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }
