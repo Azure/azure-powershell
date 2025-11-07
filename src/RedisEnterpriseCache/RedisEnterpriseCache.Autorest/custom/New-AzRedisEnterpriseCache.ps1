@@ -192,6 +192,14 @@ function New-AzRedisEnterpriseCache {
         ${HighAvailability},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [System.String]
+        # Whether or not public network traffic can access the Redis cluster.
+        # Only 'Enabled' or 'Disabled' can be set.
+        ${PublicNetworkAccess},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Determines whether to enable a system-assigned identity for the resource.

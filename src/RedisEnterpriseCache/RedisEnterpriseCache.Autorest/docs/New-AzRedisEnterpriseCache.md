@@ -21,9 +21,9 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Lo
  [-EvictionPolicy <String>] [-GroupNickname <String>] [-HighAvailability <String>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-LinkedDatabase <ILinkedDatabase[]>] [-MinimumTlsVersion <String>] [-Module <IModule[]>] [-Port <Int32>]
- [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateClusterOnly
@@ -32,8 +32,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Lo
  -NoDatabase [-SubscriptionId <String>] [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
  [-EnableSystemAssignedIdentity] [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -469,7 +469,7 @@ Whether or not public network traffic can access the Redis cluster.
 Only 'Enabled' or 'Disabled' can be set.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

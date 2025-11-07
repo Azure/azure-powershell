@@ -19,11 +19,12 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-Tag <Hashtable>] [-Module <IModule[]>] [-ClientProtocol <String>] [-Port <Int32>] [-EvictionPolicy <String>]
  [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-ClusteringPolicy <String>]
  [-AccessKeysAuthentication <String>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
- [-HighAvailability <String>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
- [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
- [-AofPersistenceEnabled] [-AofPersistenceFrequency <String>] [-RdbPersistenceEnabled]
- [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HighAvailability <String>] [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateClusterOnly
@@ -31,9 +32,10 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Sku <String> [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Zone <String[]>]
  [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-NoDatabase] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -451,6 +453,22 @@ Specified at create time.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateClusterWithDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network traffic can access the Redis cluster.
+Only 'Enabled' or 'Disabled' can be set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

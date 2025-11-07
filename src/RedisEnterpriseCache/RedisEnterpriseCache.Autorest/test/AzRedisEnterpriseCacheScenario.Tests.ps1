@@ -24,6 +24,8 @@ Describe 'New-AzRedisEnterpriseCache' {
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "OSSCluster"
             EvictionPolicy = "VolatileLRU"
+            PublicNetworkAccess = "Enabled"
+            AccessKeysAuthentication = "Enabled"
         }
         $cache = New-AzRedisEnterpriseCache @splat -EnableSystemAssignedIdentity -Module "{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RedisBloom, args:`"ERROR_RATE 0.001 INITIAL_SIZE 400`"}"
         $cache.Name | Should -Be $splat.Name
@@ -54,6 +56,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             SubscriptionId = $env.SubscriptionId
             Sku = "Balanced_B10"
             NoDatabase = $true
+            PublicNetworkAccess = "Enabled"
         }
         $cache = New-AzRedisEnterpriseCache @splat
         $cache.Name | Should -Be $splat.Name
@@ -74,6 +77,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             SubscriptionId = $env.SubscriptionId
             Sku = "Balanced_B10"
             NoDatabase = $true
+            PublicNetworkAccess = "Enabled"
         }
         # Write-Host $splat.Name
         $cache = New-AzRedisEnterpriseCache @splat
@@ -98,6 +102,8 @@ Describe 'New-AzRedisEnterpriseCache' {
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "NoEviction"
+            PublicNetworkAccess = "Enabled"
+            AccessKeysAuthentication = "Enabled"
             GroupNickname = "GroupName" 
             LinkedDatabase = $id -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
         }
@@ -154,6 +160,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "AllKeysLFU"
             Port = 10000
+            AccessKeysAuthentication = "Enabled"
         }
         $database = New-AzRedisEnterpriseCacheDatabase @splat
         $databaseName = "default"
@@ -177,6 +184,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "NoEviction"
+            AccessKeysAuthentication = "Enabled"
             GroupNickname = "GroupName" 
             LinkedDatabase = $idCluster3,$idCluster4 -join ","
         }
