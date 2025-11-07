@@ -15,14 +15,14 @@ If you do not want to initialize storage resources, you can use Reimage Role Ins
 
 ### RebuildExpanded (Default)
 ```
-Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-RoleInstance <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> -RoleInstance <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RebuildViaIdentityExpanded
 ```
-Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> [-RoleInstance <String[]>]
+Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> -RoleInstance <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -208,7 +208,7 @@ Type: System.String[]
 Parameter Sets: RebuildExpanded, RebuildViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

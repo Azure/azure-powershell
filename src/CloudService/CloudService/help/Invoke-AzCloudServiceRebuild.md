@@ -16,14 +16,7 @@ If you do not want to initialize storage resources, you can use Reimage Role Ins
 ### RebuildExpanded (Default)
 ```
 Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-RoleInstance <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RebuildViaJsonString
-```
-Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ -RoleInstance <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,9 +27,16 @@ Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RebuildViaJsonString
+```
+Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### RebuildViaIdentityExpanded
 ```
-Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> [-RoleInstance <String[]>]
+Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> -RoleInstance <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -84,7 +84,7 @@ Name of the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded, RebuildViaJsonString, RebuildViaJsonFilePath
+Parameter Sets: RebuildExpanded, RebuildViaJsonFilePath, RebuildViaJsonString
 Aliases:
 
 Required: True
@@ -190,7 +190,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded, RebuildViaJsonString, RebuildViaJsonFilePath
+Parameter Sets: RebuildExpanded, RebuildViaJsonFilePath, RebuildViaJsonString
 Aliases:
 
 Required: True
@@ -209,7 +209,7 @@ Type: System.String[]
 Parameter Sets: RebuildExpanded, RebuildViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -222,7 +222,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded, RebuildViaJsonString, RebuildViaJsonFilePath
+Parameter Sets: RebuildExpanded, RebuildViaJsonFilePath, RebuildViaJsonString
 Aliases:
 
 Required: False

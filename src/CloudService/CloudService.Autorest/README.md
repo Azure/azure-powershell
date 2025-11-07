@@ -73,6 +73,9 @@ directive:
     set:
       subject: Rebuild
   - where:
+      subject: Rebuild
+    hide: true
+  - where:
       variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$
       subject: ^CloudService$
     remove: true
