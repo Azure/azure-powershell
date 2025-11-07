@@ -12,13 +12,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     /// The dictionary values can be empty objects ({}) in requests.
     /// </summary>
-    public partial class UserAssignedIdentities :
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentitiesInternal
+    public partial class ManagedServiceIdentityUserAssignedIdentities :
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentitiesInternal
     {
 
-        /// <summary>Creates an new <see cref="UserAssignedIdentities" /> instance.</summary>
-        public UserAssignedIdentities()
+        /// <summary>
+        /// Creates an new <see cref="ManagedServiceIdentityUserAssignedIdentities" /> instance.
+        /// </summary>
+        public ManagedServiceIdentityUserAssignedIdentities()
         {
 
         }
@@ -26,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
     /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     /// The dictionary values can be empty objects ({}) in requests.
-    public partial interface IUserAssignedIdentities :
+    public partial interface IManagedServiceIdentityUserAssignedIdentities :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentity>
     {
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
     /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     /// The dictionary values can be empty objects ({}) in requests.
-    internal partial interface IUserAssignedIdentitiesInternal
+    internal partial interface IManagedServiceIdentityUserAssignedIdentitiesInternal
 
     {
 
