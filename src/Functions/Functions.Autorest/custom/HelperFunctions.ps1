@@ -3179,10 +3179,10 @@ function ValidateMaximumInstanceCount
     return $MaximumInstanceCount
 }
 
-function Test-FlexConsumptionLocation {
+function Test-FlexConsumptionLocation
+{
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    [CmdletBinding()]
-    param(
+    param (
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [String]
@@ -3190,24 +3190,8 @@ function Test-FlexConsumptionLocation {
 
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
-        $ZoneRedundant,
-
-        $SubscriptionId,
-        $HttpPipelineAppend,
-        $HttpPipelinePrepend
+        $ZoneRedundant
     )
-
-    $paramsToRemove = @(
-        "Location"
-        "ZoneRedundant"
-    )
-    foreach ($paramName in $paramsToRemove)
-    {
-        if ($PSBoundParameters.ContainsKey($paramName))
-        {
-            $PSBoundParameters.Remove($paramName)  | Out-Null
-        }
-    }
 
     # Validate Flex Consumption location
     $formattedLocation = Format-FlexConsumptionLocation -Location $Location
@@ -3233,6 +3217,60 @@ function Test-FlexConsumptionLocation {
     return $found
 }
 
+# function Test-FlexConsumptionLocation {
+#     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+#     [CmdletBinding()]
+#     param(
+#         [Parameter(Mandatory = $true)]
+#         [ValidateNotNullOrEmpty()]
+#         [String]
+#         $Location,
+
+#         [Parameter(Mandatory = $false)]
+#         [System.Management.Automation.SwitchParameter]
+#         $ZoneRedundant,
+
+#         $SubscriptionId,
+#         $HttpPipelineAppend,
+#         $HttpPipelinePrepend
+#     )
+
+#     $paramsToRemove = @(
+#         "Location"
+#         "ZoneRedundant"
+#     )
+#     foreach ($paramName in $paramsToRemove)
+#     {
+#         if ($PSBoundParameters.ContainsKey($paramName))
+#         {
+#             $PSBoundParameters.Remove($paramName)  | Out-Null
+#         }
+#     }
+
+#     # Validate Flex Consumption location
+#     $formattedLocation = Format-FlexConsumptionLocation -Location $Location
+#     $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant @PSBoundParameters
+
+#     $found = $false
+#     foreach ($region in $flexConsumptionRegions)
+#     {
+#         $regionName = Format-FlexConsumptionLocation -Location $region.Name
+
+#         if ($region.Name -eq $FlexConsumptionLocation)
+#         {
+#             $found = $true
+#             break
+#         }
+#         elseif ($regionName -eq $formattedLocation)
+#         {
+#             $found = $true
+#             break
+#         }
+#     }
+
+#     return $found
+# }
+
 function Validate-FlexConsumptionLocation
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
@@ -3244,26 +3282,10 @@ function Validate-FlexConsumptionLocation
 
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
-        $ZoneRedundant,
-
-        $SubscriptionId,
-        $HttpPipelineAppend,
-        $HttpPipelinePrepend
+        $ZoneRedundant
     )
 
-    $paramsToRemove = @(
-        "Location"
-        "ZoneRedundant"
-    )
-    foreach ($paramName in $paramsToRemove)
-    {
-        if ($PSBoundParameters.ContainsKey($paramName))
-        {
-            $PSBoundParameters.Remove($paramName)  | Out-Null
-        }
-    }
-
-    $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant @PSBoundParameters
+    $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant
 
     if (-not $isRegionSupported)
     {
@@ -3289,3 +3311,60 @@ function Validate-FlexConsumptionLocation
                               -Exception $exception
     }
 }
+
+# function Validate-FlexConsumptionLocation
+# {
+#     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+#     param (
+#         [Parameter(Mandatory = $true)]
+#         [ValidateNotNullOrEmpty()]
+#         [String]
+#         $Location,
+
+#         [Parameter(Mandatory = $false)]
+#         [System.Management.Automation.SwitchParameter]
+#         $ZoneRedundant,
+
+#         $SubscriptionId,
+#         $HttpPipelineAppend,
+#         $HttpPipelinePrepend
+#     )
+
+#     $paramsToRemove = @(
+#         "Location"
+#         "ZoneRedundant"
+#     )
+#     foreach ($paramName in $paramsToRemove)
+#     {
+#         if ($PSBoundParameters.ContainsKey($paramName))
+#         {
+#             $PSBoundParameters.Remove($paramName)  | Out-Null
+#         }
+#     }
+
+#     $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant @PSBoundParameters
+
+#     if (-not $isRegionSupported)
+#     {
+#         $errorMessage = $null
+#         $errorId = $null
+#         if ($ZoneRedundant.IsPresent)
+#         {
+#             $errorMessage = "The specified location '$Location' doesn't support zone redundancy in Flex Consumption. "
+#             $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant' for the list of supported locations."
+#             $errorId = "RegionNotSupportedForZoneRedundancyInFlexConsumption"
+#         }
+#         else
+#         {
+#             $errorMessage = "The specified location '$Location' doesn't support Flex Consumption. "
+#             $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption' for the list of supported locations."
+#             $errorId = "RegionNotSupportedForFlexConsumption"
+#         }
+
+#         $exception = [System.InvalidOperationException]::New($errorMessage)
+#         ThrowTerminatingError -ErrorId $errorId `
+#                               -ErrorMessage $errorMessage `
+#                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+#                               -Exception $exception
+#     }
+# }
