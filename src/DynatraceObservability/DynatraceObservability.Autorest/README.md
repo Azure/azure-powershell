@@ -42,6 +42,7 @@ subject-prefix: Dynatrace
 inlining-threshold: 100
 
 ## Flags to use PATCH method for Update-*
+disable-transform-identity-type: true
 
 directive:
   - where:

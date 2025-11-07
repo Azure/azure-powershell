@@ -16,15 +16,15 @@ Create a MonitorResource
 ```
 New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AccountId <String>] [-AccountInfoCompanyName <String>]
- [-AccountRegionId <String>] [-EnableSystemAssignedIdentity] [-EnvironmentId <String>]
- [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
- [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
- [-MarketplaceSaasAutoRenew <String>] [-MarketplaceSubscriptionStatus <String>] [-MonitoringStatus <String>]
- [-PlanBillingCycle <String>] [-PlanDetail <String>] [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>]
- [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <String>]
- [-SingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserCountry <String>]
- [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AccountRegionId <String>] [-EnvironmentId <String>] [-EnvironmentIngestionKey <String>]
+ [-EnvironmentLandingUrl <String>] [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
+ [-IdentityType <String>] [-MarketplaceSaasAutoRenew <String>] [-MarketplaceSubscriptionStatus <String>]
+ [-MonitoringStatus <String>] [-PlanBillingCycle <String>] [-PlanDetail <String>]
+ [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>] [-SingleSignOnAadDomain <String[]>]
+ [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserCountry <String>] [-UserEmailAddress <String>]
+ [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -137,21 +137,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnvironmentId
 Id of the environment created
 
@@ -214,6 +199,21 @@ Accept wildcard characters: False
 
 ### -EnvironmentUserId
 User id
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The type of managed identity assigned to this resource.
 
 ```yaml
 Type: System.String
