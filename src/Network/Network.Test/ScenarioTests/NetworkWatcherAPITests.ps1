@@ -1727,9 +1727,9 @@ function Test-VnetFlowLogWithEmptyFilteringCondition {
 
 <#
 .SYNOPSIS
-Test Flow log with RecordTypes parameter.
+Test Flow log with RecordType parameter.
 #>
-function Test-VnetFlowLogWithRecordTypes
+function Test-VnetFlowLogWithRecordType
 {
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
@@ -1769,7 +1769,7 @@ function Test-VnetFlowLogWithRecordTypes
         Start-Sleep -Seconds 10
 
         # Create flow log
-        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordTypes "B,E"
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordType "B,E"
         Start-Sleep -Seconds 5
 
         # Validation set operation
@@ -1811,9 +1811,9 @@ function Test-VnetFlowLogWithRecordTypes
 
 <#
 .SYNOPSIS
-Test Flow log with empty RecordTypes parameter.
+Test Flow log with empty RecordType parameter.
 #>
-function Test-VnetFlowLogWithEmptyRecordTypesCondition
+function Test-VnetFlowLogWithEmptyRecordTypeCondition
 {
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
@@ -1853,7 +1853,7 @@ function Test-VnetFlowLogWithEmptyRecordTypesCondition
         Start-Sleep -Seconds 10
 
         # Create flow log
-        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordTypes ""
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -RecordType ""
         Start-Sleep -Seconds 5
 
         # Validation set operation

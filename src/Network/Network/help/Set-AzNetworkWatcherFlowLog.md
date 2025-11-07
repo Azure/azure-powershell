@@ -360,7 +360,10 @@ Accept wildcard characters: False
 ```
 
 ### -RecordType
-Optional field to filter network traffic logs.
+Optional field to filter network traffic logs based on flow states.
+Specify one or more flow record state codes as a comma-separated list (example: B,E).
+Use empty string ("") to collect all records.
+`RecordTypes` is an alias of `RecordType`; both map to the same underlying parameter.
 
 ```yaml
 Type: System.String
