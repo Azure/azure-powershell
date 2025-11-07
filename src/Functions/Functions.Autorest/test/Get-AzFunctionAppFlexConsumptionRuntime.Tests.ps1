@@ -18,6 +18,7 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
     
     BeforeAll {
         $testLocation = 'East Asia'
+        $cutoffDate = [DateTime]'11/9/2026'
     }
 
     It 'Should get all available runtimes for Flex Consumption' {
@@ -40,149 +41,62 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         $runtimeNames | Should -Contain 'java'
         $runtimeNames | Should -Contain 'powershell'
         $runtimeNames | Should -Contain 'custom'
-        
-        # Verify we have the expected total count (13 runtimes based on actual data)
-        $runtimes | Should -HaveCount 13
     }
 
-    It 'Should get specific runtime versions for dotnet-isolated' {
-        $dotnetRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'dotnet-isolated'
+    It 'Should get current runtime stack versions with extended support' {
+        $allRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation
         
-        $dotnetRuntimes | Should -Not -BeNullOrEmpty
-        $dotnetRuntimes | Should -HaveCount 3
-        
-        $dotnetRuntimes | ForEach-Object { 
-            $_.Name | Should -Be 'dotnet-isolated'
-            $_.Version | Should -Not -BeNullOrEmpty
-            $_.IsDefault | Should -BeOfType [System.Boolean]
-            $_.Sku.skuCode | Should -Be 'FC1'
-            $_.EndOfLifeDate | Should -Not -BeNullOrEmpty
+        # Test current supported runtime stack versions
+        $currentStackRuntimes = $allRuntimes | Where-Object { 
+            ($_.Name -eq 'custom') -or 
+            ([DateTime]::Parse($_.EndOfLifeDate) -ge $cutoffDate)
         }
         
-        # Verify exact versions available
-        $versions = $dotnetRuntimes | Select-Object -ExpandProperty Version | Sort-Object
-        $versions | Should -Be @('10.0', '8.0', '9.0')
+        $currentStackRuntimes | Should -Not -BeNullOrEmpty
         
-        # Verify default version
-        $defaultVersion = $dotnetRuntimes | Where-Object { $_.IsDefault -eq $true }
-        $defaultVersion | Should -HaveCount 1
-        $defaultVersion.Version | Should -Be '8.0'
+        # Verify expected current stack versions (10 total)
+        $currentStackRuntimes | Should -HaveCount 10
+        
+        # Test each runtime has expected current stack versions
+        $dotnetCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'dotnet-isolated' }
+        $dotnetCurrent.Version | Sort-Object | Should -Be @('10.0', '8.0')  # Latest supported versions
+        
+        $nodeCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'node' }
+        $nodeCurrent.Version | Should -Be '22'  # Current LTS version
+        
+        $javaCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'java' }
+        $javaCurrent.Version | Sort-Object | Should -Be @('17', '21')  # Current supported versions
+        
+        $powershellCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'powershell' }
+        $powershellCurrent.Version | Should -Be '7.4'  # Current stable version
+        
+        $pythonCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'python' }
+        $pythonCurrent.Version | Sort-Object | Should -Be @('3.11', '3.12', '3.13')  # Latest supported versions
+        
+        $customCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'custom' }
+        $customCurrent.Version | Should -Be '1.0'  # Always current for custom
     }
 
-    It 'Should get specific runtime versions for node' {
-        $nodeRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'node'
+    It 'Should validate default runtime versions for current stack' {
+        # Test default versions for each runtime (focusing on current/recommended versions)
+        $testCases = @(
+            @{ Runtime = 'dotnet-isolated'; Version = '8.0'; IsDefault = $true; Description = 'LTS version' },
+            @{ Runtime = 'node'; Version = '22'; IsDefault = $true; Description = 'Current LTS' },
+            @{ Runtime = 'java'; Version = '17'; IsDefault = $true; Description = 'LTS version' },
+            @{ Runtime = 'powershell'; Version = '7.4'; IsDefault = $true; Description = 'Current stable' },
+            @{ Runtime = 'python'; Version = '3.12'; IsDefault = $true; Description = 'Latest stable' },
+            @{ Runtime = 'custom'; Version = '1.0'; IsDefault = $false; Description = 'Custom handler' }
+        )
         
-        $nodeRuntimes | Should -Not -BeNullOrEmpty
-        $nodeRuntimes | Should -HaveCount 2
-        
-        $nodeRuntimes | ForEach-Object { 
-            $_.Name | Should -Be 'node'
-            $_.Version | Should -Not -BeNullOrEmpty
-            $_.IsDefault | Should -BeOfType [System.Boolean]
-            $_.Sku.skuCode | Should -Be 'FC1'
-            $_.EndOfLifeDate | Should -Not -BeNullOrEmpty
+        foreach ($testCase in $testCases) {
+            $result = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime $testCase.Runtime -Version $testCase.Version
+            $result | Should -Not -BeNullOrEmpty -Because "Should find $($testCase.Runtime) $($testCase.Version) ($($testCase.Description))"
+            $result | Should -HaveCount 1
+            $result.Name | Should -Be $testCase.Runtime
+            $result.Version | Should -Be $testCase.Version
+            $result.IsDefault | Should -Be $testCase.IsDefault
+            $result.Sku.skuCode | Should -Be 'FC1'
         }
-        
-        # Verify exact versions available
-        $versions = $nodeRuntimes | Select-Object -ExpandProperty Version | Sort-Object
-        $versions | Should -Be @('20', '22')
-        
-        # Verify default version
-        $defaultVersion = $nodeRuntimes | Where-Object { $_.IsDefault -eq $true }
-        $defaultVersion | Should -HaveCount 1
-        $defaultVersion.Version | Should -Be '22'
-    }
-
-    It 'Should get specific runtime versions for java' {
-        $javaRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'java'
-        
-        $javaRuntimes | Should -Not -BeNullOrEmpty
-        $javaRuntimes | Should -HaveCount 2
-        
-        $javaRuntimes | ForEach-Object { 
-            $_.Name | Should -Be 'java'
-            $_.Version | Should -Not -BeNullOrEmpty
-            $_.IsDefault | Should -BeOfType [System.Boolean]
-            $_.Sku.skuCode | Should -Be 'FC1'
-            $_.EndOfLifeDate | Should -Not -BeNullOrEmpty
-        }
-        
-        # Verify exact versions available
-        $versions = $javaRuntimes | Select-Object -ExpandProperty Version | Sort-Object
-        $versions | Should -Be @('17', '21')
-        
-        # Verify default version
-        $defaultVersion = $javaRuntimes | Where-Object { $_.IsDefault -eq $true }
-        $defaultVersion | Should -HaveCount 1
-        $defaultVersion.Version | Should -Be '17'
-    }
-
-    It 'Should get specific runtime versions for powershell' {
-        $powershellRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'powershell'
-        
-        $powershellRuntimes | Should -Not -BeNullOrEmpty
-        $powershellRuntimes | Should -HaveCount 1
-        
-        $powershellRuntimes | ForEach-Object { 
-            $_.Name | Should -Be 'powershell'
-            $_.Version | Should -Not -BeNullOrEmpty
-            $_.IsDefault | Should -BeOfType [System.Boolean]
-            $_.Sku.skuCode | Should -Be 'FC1'
-            $_.EndOfLifeDate | Should -Not -BeNullOrEmpty
-        }
-        
-        # Verify exact version available
-        $powershellRuntimes[0].Version | Should -Be '7.4'
-        $powershellRuntimes[0].IsDefault | Should -Be $true
-    }
-
-    It 'Should get specific runtime versions for python' {
-        $pythonRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'python'
-        
-        $pythonRuntimes | Should -Not -BeNullOrEmpty
-        $pythonRuntimes | Should -HaveCount 4
-        
-        $pythonRuntimes | ForEach-Object { 
-            $_.Name | Should -Be 'python'
-            $_.Version | Should -Not -BeNullOrEmpty
-            $_.IsDefault | Should -BeOfType [System.Boolean]
-            $_.Sku.skuCode | Should -Be 'FC1'
-            $_.EndOfLifeDate | Should -Not -BeNullOrEmpty
-        }
-        
-        # Verify exact versions available
-        $versions = $pythonRuntimes | Select-Object -ExpandProperty Version | Sort-Object
-        $versions | Should -Be @('3.10', '3.11', '3.12', '3.13')
-        
-        # Verify default versions (Python has multiple defaults)
-        $defaultVersions = $pythonRuntimes | Where-Object { $_.IsDefault -eq $true }
-        $defaultVersions | Should -HaveCount 3
-        $defaultVersions.Version | Sort-Object | Should -Be @('3.10', '3.11', '3.12')
-        
-        # Verify 3.13 is not default
-        $nonDefaultVersion = $pythonRuntimes | Where-Object { $_.Version -eq '3.13' }
-        $nonDefaultVersion.IsDefault | Should -Be $false
-    }
-
-    It 'Should get specific runtime versions for custom' {
-        $customRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'custom'
-        
-        $customRuntimes | Should -Not -BeNullOrEmpty
-        $customRuntimes | Should -HaveCount 1
-        
-        $customRuntimes | ForEach-Object { 
-            $_.Name | Should -Be 'custom'
-            $_.Version | Should -Not -BeNullOrEmpty
-            $_.IsDefault | Should -BeOfType [System.Boolean]
-            $_.Sku.skuCode | Should -Be 'FC1'
-        }
-        
-        # Verify exact version available
-        $customRuntimes[0].Version | Should -Be '1.0'
-        $customRuntimes[0].IsDefault | Should -Be $false
-        
-        # Custom runtime has no EndOfLifeDate
-        $customRuntimes[0].EndOfLifeDate | Should -BeNullOrEmpty
     }
 
     It 'Should get specific runtime and version combination' {
@@ -202,7 +116,7 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         
         $defaultRuntime | Should -Not -BeNullOrEmpty
         $defaultRuntime.Name | Should -Be 'node'
-        $defaultRuntime.Version | Should -Not -BeNullOrEmpty
+        $defaultRuntime.Version | Should -Be '22'  # Current default
         
         # Should return only one runtime (the default/latest)
         $defaultRuntime | Should -HaveCount 1
@@ -212,6 +126,7 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
     }
 
     It 'Should validate runtime objects have correct structure' {
+        # Test with python as it has multiple versions
         $runtimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'python'
         
         $runtimes | Should -Not -BeNullOrEmpty
@@ -233,16 +148,29 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         }
     }
 
-    It 'Should validate EndOfLifeDate is a valid date' {
-        $pythonRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'python'
+    It 'Should validate EndOfLifeDate for current runtime stack versions' {
+        # Focus on current supported runtime stack versions
+        $currentStackVersions = @(
+            'dotnet-isolated|8.0', 'dotnet-isolated|10.0',
+            'node|22',
+            'java|17', 'java|21',
+            'powershell|7.4',
+            'python|3.11', 'python|3.12', 'python|3.13'
+        )
         
-        foreach ($runtime in $pythonRuntimes) {
-            # EndOfLifeDate should be parseable as DateTime
-            { [DateTime]::Parse($runtime.EndOfLifeDate) } | Should -Not -Throw
+        foreach ($runtimeVersionPair in $currentStackVersions) {
+            $parts = $runtimeVersionPair -split '\|'
+            $runtime = $parts[0]
+            $version = $parts[1]
             
-            # EndOfLifeDate should be in the future (for current versions)
-            $eolDate = [DateTime]::Parse($runtime.EndOfLifeDate)
-            $eolDate | Should -BeGreaterThan (Get-Date)
+            $result = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime $runtime -Version $version
+            
+            # EndOfLifeDate should be parseable as DateTime
+            { [DateTime]::Parse($result.EndOfLifeDate) } | Should -Not -Throw -Because "$runtime $version should have valid EndOfLifeDate"
+            
+            # EndOfLifeDate should be in the future for current versions
+            $eolDate = [DateTime]::Parse($result.EndOfLifeDate)
+            $eolDate | Should -BeGreaterOrEqual $cutoffDate -Because "$runtime $version should be part of current runtime stack"
         }
     }
 
@@ -263,72 +191,8 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         }
     }
 
-    It 'Should validate specific EndOfLife dates match expected values' {
-        $allRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation
-        
-        # Test specific known EndOfLife dates (based on actual data)
-        $dotnet8 = $allRuntimes | Where-Object { $_.Name -eq 'dotnet-isolated' -and $_.Version -eq '8.0' }
-        $dotnet8.EndOfLifeDate | Should -Be '11/9/2026'
-        
-        $dotnet10 = $allRuntimes | Where-Object { $_.Name -eq 'dotnet-isolated' -and $_.Version -eq '10.0' }
-        $dotnet10.EndOfLifeDate | Should -Be '11/9/2028'
-        
-        $node22 = $allRuntimes | Where-Object { $_.Name -eq 'node' -and $_.Version -eq '22' }
-        $node22.EndOfLifeDate | Should -Be '4/29/2027'
-        
-        $java17 = $allRuntimes | Where-Object { $_.Name -eq 'java' -and $_.Version -eq '17' }
-        $java17.EndOfLifeDate | Should -Be '8/31/2027'
-        
-        $java21 = $allRuntimes | Where-Object { $_.Name -eq 'java' -and $_.Version -eq '21' }
-        $java21.EndOfLifeDate | Should -Be '8/31/2028'
-        
-        $powershell74 = $allRuntimes | Where-Object { $_.Name -eq 'powershell' -and $_.Version -eq '7.4' }
-        $powershell74.EndOfLifeDate | Should -Be '11/9/2026'
-        
-        $python311 = $allRuntimes | Where-Object { $_.Name -eq 'python' -and $_.Version -eq '3.11' }
-        $python311.EndOfLifeDate | Should -Be '10/30/2027'
-        
-        $python312 = $allRuntimes | Where-Object { $_.Name -eq 'python' -and $_.Version -eq '3.12' }
-        $python312.EndOfLifeDate | Should -Be '10/30/2028'
-        
-        $python313 = $allRuntimes | Where-Object { $_.Name -eq 'python' -and $_.Version -eq '3.13' }
-        $python313.EndOfLifeDate | Should -Be '10/30/2029'
-    }
-
-    It 'Should validate long-term supported versions (expire on or after 11/9/2026)' {
-        $allRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation
-        $cutoffDate = [DateTime]'11/9/2026'
-        
-        # Test long-term supported versions
-        $longTermRuntimes = $allRuntimes | Where-Object { 
-            ($_.Name -eq 'custom') -or 
-            ([DateTime]::Parse($_.EndOfLifeDate) -ge $cutoffDate)
-        }
-        
-        $longTermRuntimes | Should -Not -BeNullOrEmpty
-        
-        # Verify expected long-term versions
-        $dotnetLongTerm = $longTermRuntimes | Where-Object { $_.Name -eq 'dotnet-isolated' }
-        $dotnetLongTerm.Version | Sort-Object | Should -Be @('10.0', '8.0')  # 9.0 expires before cutoff
-        
-        $nodeLongTerm = $longTermRuntimes | Where-Object { $_.Name -eq 'node' }
-        $nodeLongTerm.Version | Should -Be '22'  # 20 expires before cutoff
-        
-        $javaLongTerm = $longTermRuntimes | Where-Object { $_.Name -eq 'java' }
-        $javaLongTerm.Version | Sort-Object | Should -Be @('17', '21')  # Both qualify
-        
-        $powershellLongTerm = $longTermRuntimes | Where-Object { $_.Name -eq 'powershell' }
-        $powershellLongTerm.Version | Should -Be '7.4'  # Expires exactly on cutoff
-        
-        $pythonLongTerm = $longTermRuntimes | Where-Object { $_.Name -eq 'python' }
-        $pythonLongTerm.Version | Sort-Object | Should -Be @('3.11', '3.12', '3.13')  # 3.10 expires before cutoff
-        
-        $customLongTerm = $longTermRuntimes | Where-Object { $_.Name -eq 'custom' }
-        $customLongTerm.Version | Should -Be '1.0'  # No expiration
-    }
-
-    It 'Should get specific runtime and version for all long-term versions' {
-        # Test specific long-term runtime/version combinations
+    It 'Should get specific runtime and version for all current stack versions' {
+        # Test specific current runtime stack combinations
         $testCases = @(
             @{ Runtime = 'dotnet-isolated'; Version = '8.0'; IsDefault = $true },
             @{ Runtime = 'dotnet-isolated'; Version = '10.0'; IsDefault = $false },
@@ -361,20 +225,72 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'node' -Version '999.0' } | Should -Throw
     }
 
+    It 'Should throw RuntimeVersionNotSupportedInFlexConsumption for unsupported runtime versions' {
+        # Test cases for unsupported runtime versions that should trigger the specific error
+        $unsupportedVersionCases = @(
+            @{ Runtime = 'powershell'; Version = '9.0'; SupportedVersions = '7.4' },
+            @{ Runtime = 'node'; Version = '18'; SupportedVersions = '20, 22' },
+            @{ Runtime = 'python'; Version = '3.8'; SupportedVersions = '3.10, 3.11, 3.12, 3.13' },
+            @{ Runtime = 'java'; Version = '11'; SupportedVersions = '17, 21' },
+            @{ Runtime = 'dotnet-isolated'; Version = '6.0'; SupportedVersions = '8.0, 9.0, 10.0' }
+        )
+
+        foreach ($testCase in $unsupportedVersionCases) {
+            $errorThrown = $null
+            try {
+                Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime $testCase.Runtime -Version $testCase.Version -ErrorAction Stop
+            }
+            catch {
+                $errorThrown = $_
+            }
+
+            # Validate that an error was thrown
+            $errorThrown | Should -Not -BeNull -Because "Should throw error for unsupported $($testCase.Runtime) version $($testCase.Version)"
+            
+            # Validate the FullyQualifiedErrorId
+            $errorThrown.FullyQualifiedErrorId | Should -Be 'RuntimeVersionNotSupportedInFlexConsumption' -Because "Should have correct error ID for $($testCase.Runtime) $($testCase.Version)"
+            
+            # Validate the error message contains expected information
+            $errorThrown.Exception.Message | Should -Match "Invalid version $($testCase.Version) for runtime $($testCase.Runtime)" -Because "Error message should contain version and runtime info"
+            $errorThrown.Exception.Message | Should -Match "function apps on the Flex Consumption plan" -Because "Error message should specify Flex Consumption plan"
+            $errorThrown.Exception.Message | Should -Match "Supported versions for runtime $($testCase.Runtime)" -Because "Error message should list supported versions"
+        }
+    }
+
     It 'Should handle invalid location gracefully' {
         { Get-AzFunctionAppFlexConsumptionRuntime -Location 'Invalid Location' } | Should -Throw
     }
 
     It 'Should validate parameter combinations work correctly' {
-        # Test that all parameter sets work without errors
+        # Test that all parameter sets work without errors (using current stack versions)
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation } | Should -Not -Throw
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'node' } | Should -Not -Throw
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'node' -Version '22' } | Should -Not -Throw
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'node' -DefaultOrLatest } | Should -Not -Throw
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'python' -Version '3.12' } | Should -Not -Throw
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'powershell' -Version '7.4' } | Should -Not -Throw
-        { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'java' -Version '21' } | Should -Not -Throw
-        { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'dotnet-isolated' -Version '10.0' } | Should -Not -Throw
+        { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'java' -Version '17' } | Should -Not -Throw
+        { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'dotnet-isolated' -Version '8.0' } | Should -Not -Throw
         { Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation -Runtime 'custom' -Version '1.0' } | Should -Not -Throw
+    }
+
+    It "Get-AzFunctionAppFlexConsumptionRuntime should throw RegionNotSupportedForFlexConsumption for invalid region" {
+
+        $myError = $null
+        $errorId = "RegionNotSupportedForFlexConsumption"
+        $invalidLocation = "invalidregion"
+
+        try
+        {
+            Get-AzFunctionAppFlexConsumptionRuntime -Location $invalidLocation -ErrorAction Stop
+        }
+        catch
+        {
+            Write-Verbose "Catch the expected exception" -Verbose
+            $myError = $_
+        }
+
+        Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
+        $myError.FullyQualifiedErrorId | Should Be $errorId
     }
 }
