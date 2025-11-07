@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the Clouds resource.
+Update the Clouds resource.
 .Description
-update the Clouds resource.
+Update the Clouds resource.
 .Example
 Update-AzScVmmCloud  -Name "test-cloud" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000d" -Tag @{"key-1"="value-1"}
 

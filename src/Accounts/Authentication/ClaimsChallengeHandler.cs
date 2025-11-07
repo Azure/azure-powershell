@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using System;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -34,18 +34,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var response = await base.SendAsync(request, cancellationToken);
-            if (response.MatchClaimsChallengePattern())
+            if (response.MatchClaimsChallengePattern(out var claimsChallenge))
             {
                 try
                 {
-                    if (await OnChallengeAsync(request, response, cancellationToken))
+                    if (await OnChallengeAsync(claimsChallenge, request, response, cancellationToken))
                     {
                         return await base.SendAsync(request, cancellationToken);
                     }
                 }
                 catch (AuthenticationFailedException e)
                 {
-                    throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
+                    string additionalErrorMessage = ClaimsChallengeUtilities.FormatClaimsChallengeErrorMessage(claimsChallenge, await response?.Content?.ReadAsStringAsync());
+                    throw new AzPSAuthenticationFailedException(additionalErrorMessage, null, e);
                 }
             }
             return response;
@@ -59,14 +60,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Executed in the event a 401 response with a WWW-Authenticate authentication challenge header is received after the initial request.
         /// </summary>
         /// <remarks>This implementation handles common authentication challenges such as claims challenges. Service client libraries may derive from this and extend to handle service specific authentication challenges.</remarks>
+        /// <param name="claimsChallenge"></param>
         /// <param name="requestMessage">The HttpMessage to be authenticated.</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <param name="responseMessage"></param>
         /// <returns>A boolean indicated whether the request should be retried</returns>
-        protected virtual async Task<bool> OnChallengeAsync(HttpRequestMessage requestMessage, HttpResponseMessage responseMessage, CancellationToken cancellationToken)
+        protected virtual async Task<bool> OnChallengeAsync(string claimsChallenge, HttpRequestMessage requestMessage, HttpResponseMessage responseMessage, CancellationToken cancellationToken)
         {
-            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(responseMessage);
-
             if (!string.IsNullOrEmpty(claimsChallenge))
             {
                 return await ClaimsChallengeProcessor.OnClaimsChallenageAsync(requestMessage, claimsChallenge, cancellationToken).ConfigureAwait(false);

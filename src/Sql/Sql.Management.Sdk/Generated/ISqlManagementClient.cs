@@ -495,6 +495,11 @@ namespace Microsoft.Azure.Management.Sql
         IServersOperations Servers { get; }
 
         /// <summary>
+        /// Gets the IDeletedServersOperations
+        /// </summary>
+        IDeletedServersOperations DeletedServers { get; }
+
+        /// <summary>
         /// Gets the IServerConfigurationOptionsOperations
         /// </summary>
         IServerConfigurationOptionsOperations ServerConfigurationOptions { get; }
@@ -528,6 +533,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IStartStopManagedInstanceSchedulesOperations
         /// </summary>
         IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; }
+
+        /// <summary>
+        /// Gets the IDatabaseSchemasOperations
+        /// </summary>
+        IDatabaseSchemasOperations DatabaseSchemas { get; }
 
     }
 }

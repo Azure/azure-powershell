@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// Describes a VMSS VM Extension.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetVMExtension : IResource
+    public partial class VirtualMachineScaleSetVMExtension : SubResourceReadOnly
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetVMExtension
@@ -37,16 +36,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VirtualMachineScaleSetVMExtension
         /// class.
         /// </summary>
-        /// <param name="name">The name of the extension.</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="location">The location of the extension.</param>
+        /// <param name="id">Resource Id</param>
         /// <param name="forceUpdateTag">How the extension handler should be
         /// forced to update even if the extension configuration has not
         /// changed.</param>
         /// <param name="publisher">The name of the extension handler
         /// publisher.</param>
-        /// <param name="type1">Specifies the type of the extension; an example
-        /// is "CustomScriptExtension".</param>
+        /// <param name="virtualMachineExtensionPropertiesType">Specifies the
+        /// type of the extension; an example is
+        /// "CustomScriptExtension".</param>
         /// <param name="typeHandlerVersion">Specifies the version of the
         /// script handler.</param>
         /// <param name="autoUpgradeMinorVersion">Indicates whether the
@@ -75,14 +73,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// key vault</param>
         /// <param name="provisionAfterExtensions">Collection of extension
         /// names after which this extension needs to be provisioned.</param>
-        public VirtualMachineScaleSetVMExtension(string name = default(string), string type = default(string), string location = default(string), string forceUpdateTag = default(string), string publisher = default(string), string type1 = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), IList<string> provisionAfterExtensions = default(IList<string>))
+        /// <param name="location">The location of the extension.</param>
+        /// <param name="type">Resource type</param>
+        /// <param name="name">Resource name</param>
+        public VirtualMachineScaleSetVMExtension(string id = default(string), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionPropertiesType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), IList<string> provisionAfterExtensions = default(IList<string>), string location = default(string), string type = default(string), string name = default(string))
+            : base(id)
         {
-            Name = name;
-            Type = type;
-            Location = location;
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
-            Type1 = type1;
+            VirtualMachineExtensionPropertiesType = virtualMachineExtensionPropertiesType;
             TypeHandlerVersion = typeHandlerVersion;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             EnableAutomaticUpgrade = enableAutomaticUpgrade;
@@ -93,6 +92,9 @@ namespace Microsoft.Azure.Management.Compute.Models
             SuppressFailures = suppressFailures;
             ProtectedSettingsFromKeyVault = protectedSettingsFromKeyVault;
             ProvisionAfterExtensions = provisionAfterExtensions;
+            Location = location;
+            Type = type;
+            Name = name;
             CustomInit();
         }
 
@@ -100,24 +102,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets the name of the extension.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the location of the extension.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets how the extension handler should be forced to update
@@ -137,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// "CustomScriptExtension".
         /// </summary>
         [JsonProperty(PropertyName = "properties.type")]
-        public string Type1 { get; set; }
+        public string VirtualMachineExtensionPropertiesType { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the version of the script handler.
@@ -209,6 +193,24 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisionAfterExtensions")]
         public IList<string> ProvisionAfterExtensions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the extension.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets resource type
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets resource name
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
 
         /// <summary>
         /// Validate the object.

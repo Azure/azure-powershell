@@ -221,6 +221,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestInvokeAzureFirewallPacketCaptureOperation()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzureFirewallPacketCaptureOperation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestByopipAzureHubFirewall()
         {
             TestRunner.RunTestScript("Test-InvokeAzureByopipHubFirewall");

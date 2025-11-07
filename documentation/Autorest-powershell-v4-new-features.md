@@ -1,4 +1,5 @@
 # Autorest PowerShell V4 Features from the End Users' Perspective
+How to migrate from Autorest PowerShell v3 to v4 please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340250).
 
 ## 1. Support for piping parent object: 
     This allows users to pipe parent objects into cmdlets, simplifying commands. 

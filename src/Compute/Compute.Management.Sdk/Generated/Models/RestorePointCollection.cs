@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
+        /// <param name="source">The properties of the source resource that
+        /// this restore point collection is created from.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// restore point collection.</param>
         /// <param name="restorePointCollectionId">The unique id of the restore
@@ -61,6 +63,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the properties of the source resource that this
+        /// restore point collection is created from.
         /// </summary>
         [JsonProperty(PropertyName = "properties.source")]
         public RestorePointCollectionSourceProperties Source { get; set; }

@@ -22,6 +22,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance
     {
     }
 
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    public class ModelCmdletAttribute : Attribute
+    {
+    }
+
     [AttributeUsage(AttributeTargets.Class)]
     public class InternalExportAttribute : Attribute
     {
@@ -53,6 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance
     {
         public string Path { get; set; }
         public string ApiVersion { get; set; }
+    }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public class NotSuggestDefaultParameterSetAttribute : Attribute
+    {
     }
 
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
@@ -107,6 +117,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance
         Inherited = 0,
         Owned,
         Inlined
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class ConstantAttribute : Attribute
+    {
     }
 
     [AttributeUsage(AttributeTargets.Property)]

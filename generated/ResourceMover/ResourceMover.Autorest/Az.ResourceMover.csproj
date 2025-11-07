@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>ResourceMover</PsModuleName>
     <PsRootModuleName>ResourceMover</PsRootModuleName>
+    <PsModuleFolder>ResourceMover.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ResourceMover</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

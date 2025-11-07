@@ -3,6 +3,7 @@
     <PsModuleName>DeviceRegistry</PsModuleName>
     <PsRootModuleName>DeviceRegistry</PsRootModuleName>
     <PsModuleFolder>DeviceRegistry.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

@@ -62,11 +62,6 @@ foreach ($moduleName in $moduleGroup) {
         {
             $FailedTasks += "UXMetadata"
         }
-        .("$toolsDirectory/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters 2>>$ErrorLogPath
-        If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
-        {
-            $FailedTasks += "CmdletDiff"
-        }
         If ($FailedTasks.Length -ne 0)
         {
             Write-Host "There are failed tasks: $FailedTasks"
