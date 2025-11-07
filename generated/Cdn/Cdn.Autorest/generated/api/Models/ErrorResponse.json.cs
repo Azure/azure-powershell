@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
     /// <summary>
-    /// Error response indicates Azure Front Door Standard or Azure Front Door Premium or CDN service is not able to process the
-    /// incoming request. The reason is provided in the error message.
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.).
     /// </summary>
     public partial class ErrorResponse
     {
