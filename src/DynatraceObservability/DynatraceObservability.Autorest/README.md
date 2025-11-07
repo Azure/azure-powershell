@@ -27,8 +27,8 @@ For information on how to develop for `Az.DynatraceObservability`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 099640c73c1af7f9410f184d204807f9d0da2edb
-tag: package-2023-04-27
+commit: a0793fce3022a236e74f774aac1b2fb07974a1ab
+tag: package-2024-04-24
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/dynatrace/resource-manager/readme.md
@@ -40,6 +40,8 @@ title: DynatraceObservability
 subject-prefix: Dynatrace
 
 inlining-threshold: 100
+
+## Flags to use PATCH method for Update-*
 
 directive:
   - where:
@@ -82,6 +84,21 @@ directive:
     set:
       subject: MonitoredResource
   # remove cmdlet
+  - where:
+      verb: Update
+      subject-prefix: Dynatrace
+      subject: MonitoredSubscription
+    remove: true
+  - where:
+      verb: Get
+      subject-prefix: Dynatrace
+      subject: MonitorConnectedResourceCount
+    remove: true
+  - where:
+      verb: Get
+      subject-prefix: Dynatrace
+      subject: CreationSupported
+    remove: true
   # unsupport on server
   - where:
       subject: ^MonitorAccountCredential$

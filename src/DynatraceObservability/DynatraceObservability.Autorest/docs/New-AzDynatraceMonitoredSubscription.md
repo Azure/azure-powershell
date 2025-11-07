@@ -1,73 +1,66 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitorssoconfig
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitoredsubscription
 schema: 2.0.0
 ---
 
-# Update-AzDynatraceMonitorSSOConfig
+# New-AzDynatraceMonitoredSubscription
 
 ## SYNOPSIS
-Update a DynatraceSingleSignOnResource
+Add the subscriptions that should be monitored by the Dynatrace monitor resource.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Update-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>]
- [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-MonitoredSubscriptionList <IMonitoredSubscription[]>] [-Operation <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### CreateViaJsonString
 ```
-Update-AzDynatraceMonitorSSOConfig -InputObject <IDynatraceObservabilityIdentity> [-AadDomain <String[]>]
- [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityMonitorExpanded
-```
-Update-AzDynatraceMonitorSSOConfig -MonitorInputObject <IDynatraceObservabilityIdentity>
- [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a DynatraceSingleSignOnResource
+Add the subscriptions that should be monitored by the Dynatrace monitor resource.
 
 ## EXAMPLES
 
-### Example 1: Update a dynatrace SingleSignOn resource
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
+{{ Add code here }}
 ```
 
 ```output
-Name    ProvisioningState SingleSignOnState SingleSignOnUrl
-----    ----------------- ----------------- ---------------
-default Succeeded         Initial
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command update a dynatrace SingleSignOn resource.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AadDomain
-array of Aad(azure active directory) domains
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -100,12 +93,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnterpriseAppId
-Version of the Dynatrace agent installed on the VM.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitoredSubscriptionList
+List of subscriptions and the state of the monitoring.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscription[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -115,42 +138,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MonitorInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: UpdateViaIdentityMonitorExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -175,46 +168,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Operation
+The operation for the patch on the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SingleSignOnState
-State of Single Sign On
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SingleSignOnUrl
-The login URL specific to this Dynatrace Environment
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -227,7 +205,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,11 +251,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties
 
 ## NOTES
 

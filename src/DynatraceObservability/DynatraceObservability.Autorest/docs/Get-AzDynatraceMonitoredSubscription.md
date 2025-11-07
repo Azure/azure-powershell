@@ -1,39 +1,61 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorvmhostpayload
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitoredsubscription
 schema: 2.0.0
 ---
 
-# Get-AzDynatraceMonitorVMHostPayload
+# Get-AzDynatraceMonitoredSubscription
 
 ## SYNOPSIS
-Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
+List the subscriptions currently being monitored by the Dynatrace monitor resource.
 
 ## SYNTAX
 
+### Get (Default)
 ```
-Get-AzDynatraceMonitorVMHostPayload -MonitorName <String> -ResourceGroupName <String>
+Get-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDynatraceMonitoredSubscription -InputObject <IDynatraceObservabilityIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
+List the subscriptions currently being monitored by the Dynatrace monitor resource.
 
 ## EXAMPLES
 
-### Example 1: Get the payload that needs to be passed in the request body for installing Dynatrace agent on a VM
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzDynatraceMonitorVMHostPayload -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
+{{ Add code here }}
 ```
 
 ```output
-EnvironmentId IngestionKey
-------------- ------------
-ihx78752      dt0c01.C3A5JBXDZ4C3SCZDRBJ3D23I.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This coammnd gets the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -53,12 +75,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -74,7 +111,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -90,7 +127,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -105,9 +142,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties
 
 ## NOTES
 

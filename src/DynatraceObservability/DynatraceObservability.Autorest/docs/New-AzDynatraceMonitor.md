@@ -8,18 +8,19 @@ schema: 2.0.0
 # New-AzDynatraceMonitor
 
 ## SYNOPSIS
-create a MonitorResource
+Create a MonitorResource
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AccountId <String>] [-AccountRegionId <String>] [-EnableSystemAssignedIdentity]
- [-EnvironmentId <String>] [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
+ [-SubscriptionId <String>] [-AccountId <String>] [-AccountInfoCompanyName <String>]
+ [-AccountRegionId <String>] [-EnableSystemAssignedIdentity] [-EnvironmentId <String>]
+ [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
  [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
- [-MarketplaceSubscriptionStatus <String>] [-MonitoringStatus <String>] [-PlanBillingCycle <String>]
- [-PlanDetail <String>] [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>]
+ [-MarketplaceSaasAutoRenew <String>] [-MarketplaceSubscriptionStatus <String>] [-MonitoringStatus <String>]
+ [-PlanBillingCycle <String>] [-PlanDetail <String>] [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>]
  [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <String>]
  [-SingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserCountry <String>]
  [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>]
@@ -41,7 +42,7 @@ New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-create a MonitorResource
+Create a MonitorResource
 
 ## EXAMPLES
 
@@ -62,6 +63,21 @@ This command creates a dynatrace monitor.
 
 ### -AccountId
 Account Id of the account this environment is linked to
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountInfoCompanyName
+Name of the customer account / company
 
 ```yaml
 Type: System.String
@@ -250,6 +266,21 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceSaasAutoRenew
+Marketplace resource autorenew flag
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -456,6 +487,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
