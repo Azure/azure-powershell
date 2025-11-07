@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWorkloadsProviderIns
 
 Describe 'Remove-AzWorkloadsProviderInstance' {
     It 'Delete' {
-        $response = Remove-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.sqlProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
+        $response = Remove-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.osProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
         $response.Status | Should -Be $env.ProvisioningState
     }
 

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData PlanData { get => (this._planData = this._planData ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.PlanData()); set => this._planData = value; }
 
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
         public string PlanDataBillingCycle { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataInternal)PlanData).BillingCycle; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataInternal)PlanData).BillingCycle = value ?? null; }
 
@@ -87,17 +87,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("LIFTR", "NEWRELIC")]
         string OrgCreationSource { get; set; }
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Different billing cycles like MONTHLY/WEEKLY. this could be enum",
+        Description = @"Different billing cycles like Monthly/Weekly.",
         SerializedName = @"billingCycle",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
         string PlanDataBillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
@@ -147,8 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         string OrgCreationSource { get; set; }
         /// <summary>Plan details</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData PlanData { get; set; }
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         string PlanDataBillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         global::System.DateTime? PlanDataEffectiveDate { get; set; }

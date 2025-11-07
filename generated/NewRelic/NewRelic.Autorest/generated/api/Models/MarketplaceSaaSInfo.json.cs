@@ -82,6 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {_marketplaceResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("marketplaceResourceId"), out var __jsonMarketplaceResourceId) ? (string)__jsonMarketplaceResourceId : (string)_marketplaceResourceId;}
             {_marketplaceStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("marketplaceStatus"), out var __jsonMarketplaceStatus) ? (string)__jsonMarketplaceStatus : (string)_marketplaceStatus;}
             {_billedAzureSubscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("billedAzureSubscriptionId"), out var __jsonBilledAzureSubscriptionId) ? (string)__jsonBilledAzureSubscriptionId : (string)_billedAzureSubscriptionId;}
+            {_publisherId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("publisherId"), out var __jsonPublisherId) ? (string)__jsonPublisherId : (string)_publisherId;}
+            {_offerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("offerId"), out var __jsonOfferId) ? (string)__jsonOfferId : (string)_offerId;}
             AfterFromJson(json);
         }
 
@@ -109,6 +111,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             AddIf( null != (((object)this._marketplaceResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._marketplaceResourceId.ToString()) : null, "marketplaceResourceId" ,container.Add );
             AddIf( null != (((object)this._marketplaceStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._marketplaceStatus.ToString()) : null, "marketplaceStatus" ,container.Add );
             AddIf( null != (((object)this._billedAzureSubscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._billedAzureSubscriptionId.ToString()) : null, "billedAzureSubscriptionId" ,container.Add );
+            AddIf( null != (((object)this._publisherId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._publisherId.ToString()) : null, "publisherId" ,container.Add );
+            AddIf( null != (((object)this._offerId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._offerId.ToString()) : null, "offerId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

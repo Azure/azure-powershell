@@ -42,24 +42,20 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Attestation
 subject-prefix: $(service-name)
-identity-correction-for-post: true
-nested-object-to-string: true
-resourcegroup-append: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correctiEXon-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Install$|^InstallViaIdentity$
+      variant: ^(Create|Update|Install)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -86,36 +82,4 @@ directive:
       subject: AttestationProvider
       verb: New
     hide: true
-
-  - where:
-      verb: Get
-      subject: AttestationDefaultProvider
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        new-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        change-description: The types of the properties 'PrivateEndpointConnection' and 'Value' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|Update
-      subject: AttestationProvider
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        new-output-properties:
-          - PrivateEndpointConnection
-          - Value
-        change-description: The types of the properties 'PrivateEndpointConnection' and 'Value' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```

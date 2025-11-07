@@ -32,7 +32,7 @@ pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.1.1.zip;sourceType=sa]Az.CloudService,2.1.1
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.16.0.zip;sourceType=sa]Az.CognitiveServices,1.16.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.6.0.zip;sourceType=sa]Az.Communication,0.6.0
-pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.10.4.0.zip;sourceType=sa]Az.Compute,10.4.0
+pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.10.5.0.zip;sourceType=sa]Az.Compute,10.5.0
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeFleet.0.1.1.zip;sourceType=sa]Az.ComputeFleet,0.1.1
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeSchedule.0.1.1.zip;sourceType=sa]Az.ComputeSchedule,0.1.1
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.1.1.zip;sourceType=sa]Az.ConfidentialLedger,1.1.1
@@ -56,7 +56,7 @@ pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.1.0.zip;sourceType=sa]Az.DataLakeAnalytics,1.1.0
 pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeStore.1.5.0.zip;sourceType=sa]Az.DataLakeStore,1.5.0
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataMigration.1.0.0.zip;sourceType=sa]Az.DataMigration,1.0.0
-pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.7.0.zip;sourceType=sa]Az.DataProtection,2.7.0
+pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.8.0.zip;sourceType=sa]Az.DataProtection,2.8.0
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.1.1.zip;sourceType=sa]Az.DataShare,1.1.1
 pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataTransfer.1.0.0.zip;sourceType=sa]Az.DataTransfer,1.0.0
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.4.0.zip;sourceType=sa]Az.DedicatedHsm,0.4.0
@@ -64,7 +64,7 @@ pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.5.4.1.zip;sourceType=sa]Az.DesktopVirtualization,5.4.1
 pac64,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevCenter.2.0.2.zip;sourceType=sa]Az.DevCenter,2.0.2
 pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceProvisioningServices.0.10.4.zip;sourceType=sa]Az.DeviceProvisioningServices,0.10.4
-pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceRegistry.0.2.0.zip;sourceType=sa]Az.DeviceRegistry,0.2.0
+pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceRegistry.1.0.0.zip;sourceType=sa]Az.DeviceRegistry,1.0.0
 pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceUpdate.0.2.0.zip;sourceType=sa]Az.DeviceUpdate,0.2.0
 pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevTestLabs.1.1.0.zip;sourceType=sa]Az.DevTestLabs,1.1.0
 pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DigitalTwins.0.3.0.zip;sourceType=sa]Az.DigitalTwins,0.3.0
@@ -82,7 +82,7 @@ pac80,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac81,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FirmwareAnalysis.1.0.0.zip;sourceType=sa]Az.FirmwareAnalysis,1.0.0
 pac82,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fleet.0.2.2.zip;sourceType=sa]Az.Fleet,0.2.2
 pac83,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FluidRelay.0.2.0.zip;sourceType=sa]Az.FluidRelay,0.2.0
-pac84,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FrontDoor.1.13.0.zip;sourceType=sa]Az.FrontDoor,1.13.0
+pac84,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FrontDoor.1.13.1.zip;sourceType=sa]Az.FrontDoor,1.13.1
 pac85,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Functions.4.2.1.zip;sourceType=sa]Az.Functions,4.2.1
 pac86,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.GraphServices.0.2.0.zip;sourceType=sa]Az.GraphServices,0.2.0
 pac87,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.GuestConfiguration.0.12.0.zip;sourceType=sa]Az.GuestConfiguration,0.12.0
@@ -118,7 +118,7 @@ pac116,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac117,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Marketplace.0.5.2.zip;sourceType=sa]Az.Marketplace,0.5.2
 pac118,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MarketplaceOrdering.2.2.0.zip;sourceType=sa]Az.MarketplaceOrdering,2.2.0
 pac119,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Mdp.0.1.2.zip;sourceType=sa]Az.Mdp,0.1.2
-pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.10.0.zip;sourceType=sa]Az.Migrate,2.10.0
+pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.10.1.zip;sourceType=sa]Az.Migrate,2.10.1
 pac121,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.3.0.zip;sourceType=sa]Az.MixedReality,0.3.0
 pac122,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MobileNetwork.0.5.0.zip;sourceType=sa]Az.MobileNetwork,0.5.0
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// application.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationPackage : ProxyResource
+    public partial class ApplicationPackage : AzureProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationPackage class.
@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
         /// </param>
 
+        /// <param name="tags">The tags of the resource.
+        /// </param>
+
         /// <param name="state">The current state of the application package.
         /// Possible values include: &#39;Pending&#39;, &#39;Active&#39;</param>
 
@@ -52,9 +55,9 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="lastActivationTime">The time at which the package was last activated, if the package is active.
         /// </param>
-        public ApplicationPackage(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), PackageState? state = default(PackageState?), string format = default(string), string storageUrl = default(string), System.DateTime? storageUrlExpiry = default(System.DateTime?), System.DateTime? lastActivationTime = default(System.DateTime?))
+        public ApplicationPackage(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), PackageState? state = default(PackageState?), string format = default(string), string storageUrl = default(string), System.DateTime? storageUrlExpiry = default(System.DateTime?), System.DateTime? lastActivationTime = default(System.DateTime?))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, etag, tags)
         {
             this.State = state;
             this.Format = format;
