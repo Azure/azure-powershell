@@ -42,7 +42,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"createdBy\":\"bhanuchandj@microsoft.com\",\"name\":\"Azure Admin User API Key\",\"key\":\"8e7ce94f260ac70fe109590209b8172e\",\"created\":\"2025-11-08 17:01:25\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"createdBy\":\"bhanuchandj@microsoft.com\",\"name\":\"Azure Admin User API Key\",\"key\":\"00000000000000000000000000000000\",\"created\":\"2025-11-08 17:01:25\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }
