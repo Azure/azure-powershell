@@ -27,11 +27,11 @@ For information on how to develop for `Az.Datadog`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
+commit: 84298cdc6b918812b002cc2ba05df0ec23f4e352
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json
   
 title: Datadog
 module-version: 0.1.0
