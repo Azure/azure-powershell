@@ -2568,7 +2568,15 @@ function New-PlanName
         $ResourceGroupName
     )
 
-    $suffix = "-" + ([guid]::NewGuid().ToString().Substring(0,4))
+    if ($env:FunctionsTestMode)
+    {
+        $suffix = "-0000"
+    }
+    else
+    {
+        $suffix = "-" + ([guid]::NewGuid().ToString().Substring(0,4))
+    }
+
     $name = $ResourceGroupName -replace '[^a-zA-Z0-9]', ''
     $prefix = "ASP-$name"
     return $prefix.Substring(0, [Math]::Min(35, $prefix.Length)) + $suffix

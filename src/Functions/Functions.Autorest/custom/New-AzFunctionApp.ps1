@@ -768,17 +768,28 @@ Example:
                 {
                     # Generate a unique container name
                     $normalizedName = ($Name -replace '[^a-zA-Z0-9]', '').Substring(0, [Math]::Min(32, $Name.Length))
-                    $randomSuffix = Get-Random -Minimum 0 -Maximum 9999999
+                    $normalizedName = $normalizedName.ToLower()
+
+                    if ($env:FunctionsTestMode)
+                    {
+                        $randomSuffix = 0
+                    }
+                    else
+                    {
+                        $randomSuffix = Get-Random -Minimum 0 -Maximum 9999999
+                    }
+
                     $DeploymentStorageContainerName = "app-package-$normalizedName-{0:D7}" -f $randomSuffix
                 }
 
-                # Check if container exists; create if missing
                 $StorageAccountInfo = Get-StorageAccountInfo -Name $DeploymentStorageName @params
 
+                # If container does not exist, create it
                 $container = Get-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
-                                                    -AccountName $DeploymentStorageName `
-                                                    -ResourceGroupName $ResourceGroupName `
-                                                    -ErrorAction SilentlyContinue @params
+                                                 -AccountName $DeploymentStorageName `
+                                                 -ResourceGroupName $ResourceGroupName `
+                                                 -ErrorAction SilentlyContinue
+                                                 @params
                 if (-not $container)
                 {
                     if ($WhatIfPreference.IsPresent)
@@ -788,17 +799,16 @@ Example:
                     }
                     else
                     {
-                        Write-Verbose "Container '$DeploymentStorageContainerName' does not exist. Creating..."
                         $container = New-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
-                                                        -AccountName $DeploymentStorageName `
-                                                        -ResourceGroupName $ResourceGroupName `
-                                                        -ContainerPropertyPublicAccess None `
-                                                        @params
+                                                         -AccountName $DeploymentStorageName `
+                                                         -ResourceGroupName $ResourceGroupName `
+                                                         -ContainerPropertyPublicAccess None `
+                                                         @params
                         $flexConsumptionStorageContainerCreated = $true
                     }
                 }
 
-                # Blob URL
+                # Set storage type and value
                 $blobContainerUrl = "$($StorageAccountInfo.PrimaryEndpointBlob)$DeploymentStorageContainerName"
                 $functionAppDef.StorageType = "blobContainer"
                 $functionAppDef.StorageValue = $blobContainerUrl
@@ -828,7 +838,7 @@ Example:
                 {
                     if (-not $DeploymentStorageAuthValue)
                     {
-                        Write-Verbose "DeploymentStorageAuthValue was not provided. Generating a connection string for deployment storage..."
+                        # Get connection string for deployment storage
                         $DeploymentStorageAuthValue = GetConnectionString -StorageAccountName $DeploymentStorageName @params
                     }
 
@@ -858,6 +868,7 @@ Example:
                 # Set runtime information
                 $functionAppDef.RuntimeName = $runtimeInfo.Sku.functionAppConfigProperties.runtime.name
                 $functionAppDef.RuntimeVersion = $runtimeInfo.Sku.functionAppConfigProperties.runtime.version
+
             }
 
             # Validate storage account and get connection string
@@ -928,7 +939,7 @@ Example:
                     }
                     else
                     {
-                        Write-Verbose "Creating new Application Insights project for function app '$Name' in resource group '$ResourceGroupName'." -Verbose
+                        # Create the Application Insights project
                         $newAppInsightsProject = CreateApplicationInsightsProject -ResourceGroupName $resourceGroupName `
                                                                                   -ResourceName $Name `
                                                                                   -Location $functionAppDef.Location `
