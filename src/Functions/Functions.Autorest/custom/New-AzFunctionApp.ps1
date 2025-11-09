@@ -737,148 +737,127 @@ Example:
                     $functionAppDef.HttpPerInstanceConcurrency = $HttpPerInstanceConcurrency
                 }
 
-                try {
+                # Create Flex Consumption App Service Plan
+                $planName = New-PlanName -ResourceGroupName $ResourceGroupName
+                if ($WhatIfPreference.IsPresent)
+                {
+                    Write-Verbose "WhatIf: Creating Flex Consumption App Service Plan '$planName' in resource group '$ResourceGroupName' at location '$FlexConsumptionLocation'..." -Verbose
+                    $planInfo = New-Object PSObject -Property @{
+                        Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/serverfarms/$planName"
+                    }
+                }
+                else
+                {
+                    $planInfo = New-FlexConsumptionAppPlan -Name $PlanName `
+                                                           -ResourceGroupName $ResourceGroupName `
+                                                           -Location $FlexConsumptionLocation `
+                                                           -EnableZoneRedundancy:$EnableZoneRedundancy `
+                                                           @params
+                    $flexConsumptionPlanCreated = $true
+                }
 
-                    # Create Flex Consumption App Service Plan
-                    $planName = New-PlanName -ResourceGroupName $ResourceGroupName
+                $functionAppDef.ServerFarmId = $planInfo.Id
+                $functionAppDef.Location = $FlexConsumptionLocation
+
+                # Validate Deployment Storage
+                if (-not $DeploymentStorageName) {
+                    $DeploymentStorageName = $StorageAccountName
+                }
+
+                if (-not $DeploymentStorageContainerName)
+                {
+                    # Generate a unique container name
+                    $normalizedName = ($Name -replace '[^a-zA-Z0-9]', '').Substring(0, [Math]::Min(32, $Name.Length))
+                    $randomSuffix = Get-Random -Minimum 0 -Maximum 9999999
+                    $DeploymentStorageContainerName = "app-package-$normalizedName-{0:D7}" -f $randomSuffix
+                }
+
+                # Check if container exists; create if missing
+                $StorageAccountInfo = Get-StorageAccountInfo -Name $DeploymentStorageName @params
+
+                $container = Get-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
+                                                    -AccountName $DeploymentStorageName `
+                                                    -ResourceGroupName $ResourceGroupName `
+                                                    -ErrorAction SilentlyContinue @params
+                if (-not $container)
+                {
                     if ($WhatIfPreference.IsPresent)
                     {
-                        Write-Verbose "WhatIf: Creating Flex Consumption App Service Plan '$planName' in resource group '$ResourceGroupName' at location '$FlexConsumptionLocation'..." -Verbose
-                        $planInfo = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.AppServicePlan
-                        $planInfo.Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/serverfarms/$planName"
+                        Write-Verbose "WhatIf: Creating container '$DeploymentStorageContainerName' in storage account '$DeploymentStorageName'..." -Verbose
+                        $container = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.BlobContainer
                     }
                     else
                     {
-                        $planInfo = New-FlexConsumptionAppPlan -Name $PlanName `
-                                                               -ResourceGroupName $ResourceGroupName `
-                                                               -Location $FlexConsumptionLocation `
-                                                               -EnableZoneRedundancy:$EnableZoneRedundancy `
-                                                               @params
-                        $flexConsumptionPlanCreated = $true
+                        Write-Verbose "Container '$DeploymentStorageContainerName' does not exist. Creating..."
+                        $container = New-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
+                                                        -AccountName $DeploymentStorageName `
+                                                        -ResourceGroupName $ResourceGroupName `
+                                                        -ContainerPropertyPublicAccess None `
+                                                        @params
+                        $flexConsumptionStorageContainerCreated = $true
                     }
+                }
 
-                    $functionAppDef.ServerFarmId = $planInfo.Id
-                    $functionAppDef.Location = $FlexConsumptionLocation
+                # Blob URL
+                $blobContainerUrl = "$($StorageAccountInfo.PrimaryEndpointBlob)$DeploymentStorageContainerName"
+                $functionAppDef.StorageType = "blobContainer"
+                $functionAppDef.StorageValue = $blobContainerUrl
 
-                    # Validate Deployment Storage
-                    if (-not $DeploymentStorageName) {
-                        $DeploymentStorageName = $StorageAccountName
-                    }
+                # Validate DeploymentStorageAuthType
+                if (-not $DeploymentStorageAuthType)
+                {
+                    $DeploymentStorageAuthType = 'StorageAccountConnectionString'
+                }
 
-                    if (-not $DeploymentStorageContainerName)
+                $functionAppDef.AuthenticationType = $DeploymentStorageAuthType
+
+                # Set deployment storage authentication
+                if ($DeploymentStorageAuthType -eq "SystemAssignedIdentity")
+                {
+                    if ($DeploymentStorageAuthValue)
                     {
-                        # Generate a unique container name
-                        $normalizedName = ($Name -replace '[^a-zA-Z0-9]', '').Substring(0, [Math]::Min(32, $Name.Length))
-                        $randomSuffix = Get-Random -Minimum 0 -Maximum 9999999
-                        $DeploymentStorageContainerName = "app-package-$normalizedName-{0:D7}" -f $randomSuffix
+                        $errorMessage = "-DeploymentStorageAuthValue is only valid when -DeploymentStorageAuthType is UserAssignedIdentity or StorageAccountConnectionString."
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId $errorId `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
+                    }
+                }
+                elseif ($DeploymentStorageAuthType -eq "StorageAccountConnectionString")
+                {
+                    if (-not $DeploymentStorageAuthValue)
+                    {
+                        Write-Verbose "DeploymentStorageAuthValue was not provided. Generating a connection string for deployment storage..."
+                        $DeploymentStorageAuthValue = GetConnectionString -StorageAccountName $DeploymentStorageName @params
                     }
 
-                    # Check if container exists; create if missing
-                    $StorageAccountInfo = Get-StorageAccountInfo -Name $DeploymentStorageName @params
+                    $DEPLOYMENT_STORAGE_CONNECTION_STRING = 'DEPLOYMENT_STORAGE_CONNECTION_STRING'
 
-                    $container = Get-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
-                                                     -AccountName $DeploymentStorageName `
-                                                     -ResourceGroupName $ResourceGroupName `
-                                                     -ErrorAction SilentlyContinue @params
-                    if (-not $container)
+                    $functionAppDef.AuthenticationStorageAccountConnectionStringName = $DEPLOYMENT_STORAGE_CONNECTION_STRING
+                    $appSettings.Add((NewAppSetting -Name $DEPLOYMENT_STORAGE_CONNECTION_STRING -Value $DeploymentStorageAuthValue))
+                }
+                elseif ($DeploymentStorageAuthType -eq "UserAssignedIdentity")
+                {
+                    if (-not $DeploymentStorageAuthValue)
                     {
-                        if ($WhatIfPreference.IsPresent)
-                        {
-                            Write-Verbose "WhatIf: Creating container '$DeploymentStorageContainerName' in storage account '$DeploymentStorageName'..." -Verbose
-                            $container = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.BlobContainer
-                        }
-                        else
-                        {
-                            Write-Verbose "Container '$DeploymentStorageContainerName' does not exist. Creating..."
-                            $container = New-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
-                                                            -AccountName $DeploymentStorageName `
-                                                            -ResourceGroupName $ResourceGroupName `
-                                                            -ContainerPropertyPublicAccess None `
-                                                            @params
-                            $flexConsumptionStorageContainerCreated = $true
-                        }
-                    }
-
-                    # Blob URL
-                    $blobContainerUrl = "$($StorageAccountInfo.PrimaryEndpointBlob)$DeploymentStorageContainerName"
-                    $functionAppDef.StorageType = "blobContainer"
-                    $functionAppDef.StorageValue = $blobContainerUrl
-
-                    # Validate DeploymentStorageAuthType
-                    if (-not $DeploymentStorageAuthType)
-                    {
-                        $DeploymentStorageAuthType = 'StorageAccountConnectionString'
-                    }
-
-                    $functionAppDef.AuthenticationType = $DeploymentStorageAuthType
-
-                    # Set deployment storage authentication
-                    if ($DeploymentStorageAuthType -eq "SystemAssignedIdentity")
-                    {
-                        if ($DeploymentStorageAuthValue)
-                        {
-                            $errorMessage = "-DeploymentStorageAuthValue is only valid when -DeploymentStorageAuthType is UserAssignedIdentity or StorageAccountConnectionString."
-                            $exception = [System.InvalidOperationException]::New($errorMessage)
-                            ThrowTerminatingError -ErrorId $errorId `
+                        $errorMessage = "IdentityID is required for UserAssigned identity"
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
                                                 -ErrorMessage $errorMessage `
                                                 -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                                                 -Exception $exception
-                        }
-                    }
-                    elseif ($DeploymentStorageAuthType -eq "StorageAccountConnectionString")
-                    {
-                        if (-not $DeploymentStorageAuthValue)
-                        {
-                            Write-Verbose "DeploymentStorageAuthValue was not provided. Generating a connection string for deployment storage..."
-                            $DeploymentStorageAuthValue = GetConnectionString -StorageAccountName $DeploymentStorageName @params
-                        }
-
-                        $DEPLOYMENT_STORAGE_CONNECTION_STRING = 'DEPLOYMENT_STORAGE_CONNECTION_STRING'
-
-                        $functionAppDef.AuthenticationStorageAccountConnectionStringName = $DEPLOYMENT_STORAGE_CONNECTION_STRING
-                        $appSettings.Add((NewAppSetting -Name $DEPLOYMENT_STORAGE_CONNECTION_STRING -Value $DeploymentStorageAuthValue))
-                    }
-                    elseif ($DeploymentStorageAuthType -eq "UserAssignedIdentity")
-                    {
-                        if (-not $DeploymentStorageAuthValue)
-                        {
-                            $errorMessage = "IdentityID is required for UserAssigned identity"
-                            $exception = [System.InvalidOperationException]::New($errorMessage)
-                            ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
-                                                    -ErrorMessage $errorMessage `
-                                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                                    -Exception $exception
-                        }
-
-                        # $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                        # $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
-                        $identity = Resolve-UserAssignedIdentity -IdentityResourceId $DeploymentStorageAuthValue @params
-                        $functionAppDef.AuthenticationUserAssignedIdentityResourceId = $identity.Id
                     }
 
-                    # Set runtime information
-                    $functionAppDef.RuntimeName = $runtimeInfo.Sku.functionAppConfigProperties.runtime.name
-                    $functionAppDef.RuntimeVersion = $runtimeInfo.Sku.functionAppConfigProperties.runtime.version
+                    # $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                    # $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                    $identity = Resolve-UserAssignedIdentity -IdentityResourceId $DeploymentStorageAuthValue @params
+                    $functionAppDef.AuthenticationUserAssignedIdentityResourceId = $identity.Id
                 }
-                catch
-                {
-                    # TODO: We need a similar cleanup logic for when we fail to create the function app.
-                    if ($flexConsumptionPlanCreated)
-                    {
-                        Remove-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName -Name $planName @params
-                    }
-                    if ($flexConsumptionStorageContainerCreated)
-                    {
-                        Remove-AzBlobContainer -ResourceGroupName $ResourceGroupName -StorageAccountName $DeploymentStorageName -ContainerName $DeploymentStorageContainerName @params
-                    }
 
-                    $errorMessage = "Failed to create Flex Consumption Function App. Exception: $_"
-                    $exception = [System.InvalidOperationException]::New($errorMessage)
-                    ThrowTerminatingError -ErrorId "FailedToCreateFlexConsumptionFunctionApp" `
-                                        -ErrorMessage $errorMessage `
-                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                        -Exception $exception
-                }
+                # Set runtime information
+                $functionAppDef.RuntimeName = $runtimeInfo.Sku.functionAppConfigProperties.runtime.name
+                $functionAppDef.RuntimeVersion = $runtimeInfo.Sku.functionAppConfigProperties.runtime.version
             }
 
             # Validate storage account and get connection string
