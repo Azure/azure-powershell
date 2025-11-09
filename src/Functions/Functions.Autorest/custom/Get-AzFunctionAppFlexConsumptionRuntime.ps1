@@ -38,7 +38,7 @@ function Get-AzFunctionAppFlexConsumptionRuntime {
         switch ($PSCmdlet.ParameterSetName) {
             'AllRuntimes' {
                 # Return all runtimes
-                foreach ($runtimeName in @("DotNet-Isolated", "Node", "Java", "PowerShell", "Python", "Custom"))
+                foreach ($runtimeName in $FlexConsumptionSupportedRuntimes)
                 {
                     Get-FlexFunctionAppRuntime -Location $Location -Runtime $runtimeName
                 }

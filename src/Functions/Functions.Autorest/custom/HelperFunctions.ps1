@@ -41,6 +41,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
 $constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 $constants["DEBUG_PREFIX"] = '[Stacks API] - '
 $constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0'
+$constants["FlexConsumptionSupportedRuntimes"] = @('DotNet-Isolated', 'Custom', 'Node', 'Python', 'Java', 'PowerShell')
 
 foreach ($variableName in $constants.Keys)
 {
@@ -541,7 +542,16 @@ function AddFunctionAppSettings
 
     # Add application settings and runtime
     $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -RedactAppSettings
-    $App.Runtime = GetRuntime -Settings $settings -AppKind $App.kind
+
+    # Add runtime
+    $App.Runtime = if ((-not [string]::IsNullOrEmpty($App.RuntimeName)) -and ($RuntimeToFormattedName.ContainsKey($App.RuntimeName)))
+    {
+        $RuntimeToFormattedName[$App.RuntimeName]
+    }
+    else
+    {
+        GetRuntime -Settings $settings -AppKind $App.kind
+    }
 
     # Get the app site config
     $config = GetAzWebAppConfig -Name $App.Name -ResourceGroupName $App.ResourceGroup @PSBoundParameters
@@ -1094,32 +1104,14 @@ function GetStackDefinitionForRuntime
 
     if ($runtimeJsonDefinition.EndOfLifeDate)
     {
-        $today = Get-Today
-        $sixMonthsFromToday = (Get-Today).AddMonths(6)
-        $endOfLifeDate = $runtimeJsonDefinition.EndOfLifeDate
-        $formattedEOLDate = ([DateTime]$endOfLifeDate).ToString("MMMM dd yyyy")
-
         $defaultRuntimeVersion = GetDefaultOrLatestRuntimeVersion -SupportedRuntimes $supportedRuntimes `
                                                                   -Runtime $Runtime `
                                                                   -FunctionsExtensionVersion $functionsExtensionVersion
 
-        if ($endOfLifeDate -le $today)
-        {
-            $errorMsg = "Use $Runtime $defaultRuntimeVersion as $Runtime $RuntimeVersion has reached end-of-life "
-            $errorMsg += "on $formattedEOLDate and is no longer supported. Learn more: aka.ms/FunctionsStackUpgrade."
-
-            $exception = [System.InvalidOperationException]::New($errorMsg)
-            ThrowTerminatingError -ErrorId "RuntimeVersionEndOfLife" `
-                                  -ErrorMessage $errorMsg `
-                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                  -Exception $exception
-        }
-        elseif ($endOfLifeDate -lt $sixMonthsFromToday)
-        {
-            $warningMsg = "Use $Runtime $defaultRuntimeVersion as $Runtime $RuntimeVersion will reach end-of-life on $formattedEOLDate"
-            $warningMsg += " and will no longer be supported. Learn more: aka.ms/FunctionsStackUpgrade."
-            Write-Warning $warningMsg
-        }
+        Validate-EndOfLifeDate -EndOfLifeDate $runtimeJsonDefinition.EndOfLifeDate `
+                               -Runtime $Runtime `
+                               -RuntimeVersion $RuntimeVersion `
+                               -DefaultRuntimeVersion $defaultRuntimeVersion
     }
 
     return $runtimeJsonDefinition
@@ -1872,8 +1864,8 @@ function GetFunctionAppStackDefinition
     }
     elseif ($StackType -eq "FlexConsumption")
     {
+        $removeHiddenStacks = if ($env:FunctionsTestMode) { $false } else { $true }
         $removeDeprecatedStacks = $true
-        $removeHiddenStacks = $true
 
         $apiEndPoint = $resourceManagerUrl +
             "providers/Microsoft.Web/locations/{0}/functionAppStacks?api-version={1}&removeHiddenStacks={2}&removeDeprecatedStacks={3}&stack={4}&sku=FC1" -f `
@@ -2568,7 +2560,8 @@ function Get-Today {
 function New-PlanName
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -2584,7 +2577,8 @@ function New-PlanName
 function New-FlexConsumptionAppPlan
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -2678,7 +2672,8 @@ function New-FlexConsumptionAppPlan
 function Get-StorageAccountInfo
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $true)]
         [System.String]
         $Name,
@@ -2754,7 +2749,8 @@ function Get-StorageAccountInfo
 function Get-ConnectionString
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         $StorageAccountInfo
     )
 
@@ -2810,7 +2806,8 @@ function Format-FlexConsumptionLocation
 function Resolve-UserAssignedIdentity
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $true)]
         [System.String]
         $IdentityResourceId,
@@ -2877,7 +2874,8 @@ function Resolve-UserAssignedIdentity
 function Get-FlexFunctionAppRuntime
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(ParameterSetName = 'AllVersions', Mandatory = $true)]
         [Parameter(ParameterSetName = 'ByVersion', Mandatory = $true)]
         [Parameter(ParameterSetName = 'DefaultOrLatest', Mandatory = $true)]
@@ -3067,7 +3065,7 @@ function Get-FlexFunctionAppRuntime
     }
 }
 
-function ValidateIntanceMemoryMB
+function Validate-InstanceMemoryMB
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
@@ -3122,15 +3120,17 @@ function ValidateIntanceMemoryMB
     {
         # If not provided, set to default size
         $InstanceMemoryMB = [int]$defaultSize
+        Write-Warning "InstanceMemoryMB not specified. Setting default value to '$InstanceMemoryMB'. $SetDefaultValueParameterWarningMessage"
     }
 
     return $InstanceMemoryMB
 }
 
-function ValidateMaximumInstanceCount
+function Validate-MaximumInstanceCount
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $true)]
         [PSCustomObject]
         $SkuMaximumInstanceCount,   # expects keys: lowestMaximumInstanceCount, highestMaximumInstanceCount, defaultValue
@@ -3174,6 +3174,7 @@ function ValidateMaximumInstanceCount
     {
         # If not provided, set to default
         $MaximumInstanceCount = $default
+        Write-Warning "MaximumInstanceCount not specified. Setting default value to '$MaximumInstanceCount'. $SetDefaultValueParameterWarningMessage"
     }
 
     return $MaximumInstanceCount
@@ -3182,7 +3183,8 @@ function ValidateMaximumInstanceCount
 function Test-FlexConsumptionLocation
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [String]
@@ -3191,18 +3193,36 @@ function Test-FlexConsumptionLocation
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
         $ZoneRedundant
+        # ,
+
+        # $SubscriptionId,
+        # $HttpPipelineAppend,
+        # $HttpPipelinePrepend
     )
+
+    # $paramsToRemove = @(
+    #     "Location"
+    #     "ZoneRedundant"
+    # )
+    # foreach ($paramName in $paramsToRemove)
+    # {
+    #     if ($PSBoundParameters.ContainsKey($paramName))
+    #     {
+    #         $PSBoundParameters.Remove($paramName)  | Out-Null
+    #     }
+    # }
 
     # Validate Flex Consumption location
     $formattedLocation = Format-FlexConsumptionLocation -Location $Location
-    $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant @PSBoundParameters
+    #$flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant @PSBoundParameters
+    $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant
 
     $found = $false
     foreach ($region in $flexConsumptionRegions)
     {
         $regionName = Format-FlexConsumptionLocation -Location $region.Name
 
-        if ($region.Name -eq $FlexConsumptionLocation)
+        if ($region.Name -eq $Location)
         {
             $found = $true
             break
@@ -3217,64 +3237,11 @@ function Test-FlexConsumptionLocation
     return $found
 }
 
-# function Test-FlexConsumptionLocation {
-#     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-#     [CmdletBinding()]
-#     param(
-#         [Parameter(Mandatory = $true)]
-#         [ValidateNotNullOrEmpty()]
-#         [String]
-#         $Location,
-
-#         [Parameter(Mandatory = $false)]
-#         [System.Management.Automation.SwitchParameter]
-#         $ZoneRedundant,
-
-#         $SubscriptionId,
-#         $HttpPipelineAppend,
-#         $HttpPipelinePrepend
-#     )
-
-#     $paramsToRemove = @(
-#         "Location"
-#         "ZoneRedundant"
-#     )
-#     foreach ($paramName in $paramsToRemove)
-#     {
-#         if ($PSBoundParameters.ContainsKey($paramName))
-#         {
-#             $PSBoundParameters.Remove($paramName)  | Out-Null
-#         }
-#     }
-
-#     # Validate Flex Consumption location
-#     $formattedLocation = Format-FlexConsumptionLocation -Location $Location
-#     $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant @PSBoundParameters
-
-#     $found = $false
-#     foreach ($region in $flexConsumptionRegions)
-#     {
-#         $regionName = Format-FlexConsumptionLocation -Location $region.Name
-
-#         if ($region.Name -eq $FlexConsumptionLocation)
-#         {
-#             $found = $true
-#             break
-#         }
-#         elseif ($regionName -eq $formattedLocation)
-#         {
-#             $found = $true
-#             break
-#         }
-#     }
-
-#     return $found
-# }
-
 function Validate-FlexConsumptionLocation
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param (
+    param
+    (
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [String]
@@ -3283,8 +3250,26 @@ function Validate-FlexConsumptionLocation
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
         $ZoneRedundant
+        # ,
+
+        # $SubscriptionId,
+        # $HttpPipelineAppend,
+        # $HttpPipelinePrepend
     )
 
+    # $paramsToRemove = @(
+    #     "Location"
+    #     "ZoneRedundant"
+    # )
+    # foreach ($paramName in $paramsToRemove)
+    # {
+    #     if ($PSBoundParameters.ContainsKey($paramName))
+    #     {
+    #         $PSBoundParameters.Remove($paramName)  | Out-Null
+    #     }
+    # }
+
+    #$isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant @PSBoundParameters
     $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant
 
     if (-not $isRegionSupported)
@@ -3312,59 +3297,49 @@ function Validate-FlexConsumptionLocation
     }
 }
 
-# function Validate-FlexConsumptionLocation
-# {
-#     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-#     param (
-#         [Parameter(Mandatory = $true)]
-#         [ValidateNotNullOrEmpty()]
-#         [String]
-#         $Location,
+function Validate-EndOfLifeDate
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [DateTime]
+        $EndOfLifeDate,
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Runtime,
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $RuntimeVersion,
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $DefaultRuntimeVersion
+    )
 
-#         [Parameter(Mandatory = $false)]
-#         [System.Management.Automation.SwitchParameter]
-#         $ZoneRedundant,
+    $today = Get-Today
+    $sixMonthsFromToday = (Get-Today).AddMonths(6)
+    $endOfLifeDate = [DateTime]::Parse($EndOfLifeDate)
+    $formattedEOLDate = $endOfLifeDate.ToString("MMMM dd yyyy")
 
-#         $SubscriptionId,
-#         $HttpPipelineAppend,
-#         $HttpPipelinePrepend
-#     )
+    if ($endOfLifeDate -le $today)
+    {
+        $errorMsg = "Use $Runtime $DefaultRuntimeVersion as $Runtime $RuntimeVersion has reached end-of-life "
+        $errorMsg += "on $formattedEOLDate and is no longer supported. Learn more: aka.ms/FunctionsStackUpgrade."
 
-#     $paramsToRemove = @(
-#         "Location"
-#         "ZoneRedundant"
-#     )
-#     foreach ($paramName in $paramsToRemove)
-#     {
-#         if ($PSBoundParameters.ContainsKey($paramName))
-#         {
-#             $PSBoundParameters.Remove($paramName)  | Out-Null
-#         }
-#     }
-
-#     $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant @PSBoundParameters
-
-#     if (-not $isRegionSupported)
-#     {
-#         $errorMessage = $null
-#         $errorId = $null
-#         if ($ZoneRedundant.IsPresent)
-#         {
-#             $errorMessage = "The specified location '$Location' doesn't support zone redundancy in Flex Consumption. "
-#             $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant' for the list of supported locations."
-#             $errorId = "RegionNotSupportedForZoneRedundancyInFlexConsumption"
-#         }
-#         else
-#         {
-#             $errorMessage = "The specified location '$Location' doesn't support Flex Consumption. "
-#             $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption' for the list of supported locations."
-#             $errorId = "RegionNotSupportedForFlexConsumption"
-#         }
-
-#         $exception = [System.InvalidOperationException]::New($errorMessage)
-#         ThrowTerminatingError -ErrorId $errorId `
-#                               -ErrorMessage $errorMessage `
-#                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-#                               -Exception $exception
-#     }
-# }
+        $exception = [System.InvalidOperationException]::New($errorMsg)
+        ThrowTerminatingError -ErrorId "RuntimeVersionEndOfLife" `
+                                -ErrorMessage $errorMsg `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+    }
+    elseif ($endOfLifeDate -lt $sixMonthsFromToday)
+    {
+        $warningMsg = "Use $Runtime $DefaultRuntimeVersion as $Runtime $RuntimeVersion will reach end-of-life on $formattedEOLDate"
+        $warningMsg += " and will no longer be supported. Learn more: aka.ms/FunctionsStackUpgrade."
+        Write-Warning $warningMsg
+    }
+}
