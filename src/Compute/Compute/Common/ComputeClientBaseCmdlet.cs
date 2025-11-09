@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Send the invoked PowerShell command (ps_script) and subscription id to a remote endpoint without executing the real operation.")]
         public SwitchParameter DryRun { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "When used together with -DryRun, export generated Bicep templates to the user's .azure directory.")]
+        [Parameter(Mandatory = false, HelpMessage = "When used together with -DryRun, export generated Bicep templates to the user's .azure\\whatif directory.")]
         public SwitchParameter ExportBicep { get; set; }
 
         public ComputeClient ComputeClient
@@ -177,8 +177,8 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         try
                         {
-                            // Base directory: ~/.azure/bicep
-                            string baseDir = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "bicep");
+                            // Base directory: ~/.azure/whatif
+                            string baseDir = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "whatif");
                             if (!System.IO.Directory.Exists(baseDir))
                             {
                                 System.IO.Directory.CreateDirectory(baseDir);
