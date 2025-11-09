@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Preannounced breaking changes
 
 * New anchor resource types and their corresponding cmdlets for resource and network anchors
