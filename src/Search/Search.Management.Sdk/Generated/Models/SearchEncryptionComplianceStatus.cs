@@ -15,12 +15,14 @@ namespace Microsoft.Azure.Management.Search.Models
     public enum SearchEncryptionComplianceStatus
     {
         /// <summary>
-        /// Indicates that the search service is compliant, either because number of non customer encrypted resources is zero or enforcement is disabled.
+        /// Indicates that the search service is compliant, either because the number
+        /// of non-CMK-encrypted objects is zero or enforcement is disabled.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Compliant")]
         Compliant,
         /// <summary>
-        /// Indicates that the search service has more than 1 non customer encrypted resources.
+        /// Indicates that the search service has more than one non-CMK-encrypted
+        /// objects.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "NonCompliant")]
         NonCompliant

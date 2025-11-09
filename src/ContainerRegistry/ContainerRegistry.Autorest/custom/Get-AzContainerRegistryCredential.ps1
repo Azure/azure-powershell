@@ -24,13 +24,12 @@ Lists the login credentials for the specified container registry.
  $Cred.Password
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryListCredentialsResult
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrycredential
 #>
 function Get-AzContainerRegistryCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential])]
-[Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.PSContainerRegistryCredential", DeprecatedOutputProperties = ("NetworkRuleSetIPRule, PrivateEndpointConnection, DataEndpointHostName"), NewOutputProperties = ("NetworkRuleSetIPRule, PrivateEndpointConnection, DataEndpointHostName. This parameter will be changed from single object to 'List'."))]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.PSContainerRegistryCredential])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -49,7 +48,7 @@ param(
 
     [Parameter(ParameterSetName='GetByRegistry', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry]
     # The Registry Object.
     ${Registry},
 
@@ -119,7 +118,7 @@ process {
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
     }
     $Credential = Az.ContainerRegistry.internal\Get-AzContainerRegistryCredential @PSBoundParameters
-    $Result = New-Object Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential($Credential)
+    $Result = New-Object Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.PSContainerRegistryCredential($Credential)
     return $Result
 }
 }

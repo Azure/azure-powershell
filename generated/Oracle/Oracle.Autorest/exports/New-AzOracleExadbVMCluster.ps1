@@ -204,6 +204,13 @@ param(
     ${Shape},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("SMART_STORAGE", "BLOCK_STORAGE")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
+    [System.String]
+    # The type of Exascale storage used for Exadata VM cluster.
+    ${ShapeAttribute},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
     [System.String[]]

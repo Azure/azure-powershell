@@ -211,7 +211,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -228,7 +229,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -250,7 +252,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -264,7 +267,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -349,7 +353,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -366,7 +371,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -385,7 +391,8 @@ namespace Microsoft.Azure.Management.KeyVault
             (await operations.PurgeDeletedWithHttpMessagesAsync(vaultName, location, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -399,7 +406,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -484,7 +492,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -501,7 +510,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -520,7 +530,8 @@ namespace Microsoft.Azure.Management.KeyVault
             (await operations.BeginPurgeDeletedWithHttpMessagesAsync(vaultName, location, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -534,7 +545,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -553,7 +565,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -567,7 +580,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -619,7 +633,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -633,7 +648,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
