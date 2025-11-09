@@ -767,7 +767,8 @@ Example:
                 if (-not $DeploymentStorageContainerName)
                 {
                     # Generate a unique container name
-                    $normalizedName = ($Name -replace '[^a-zA-Z0-9]', '').Substring(0, [Math]::Min(32, $Name.Length))
+                    $tempName = $Name -replace '[^a-zA-Z0-9]', ''
+                    $normalizedName = $tempName.Substring(0, [Math]::Min(32, $tempName.Length))
                     $normalizedName = $normalizedName.ToLower()
 
                     if ($env:FunctionsTestMode)
@@ -788,7 +789,7 @@ Example:
                 $container = Get-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
                                                  -AccountName $DeploymentStorageName `
                                                  -ResourceGroupName $ResourceGroupName `
-                                                 -ErrorAction SilentlyContinue
+                                                 -ErrorAction SilentlyContinue `
                                                  @params
                 if (-not $container)
                 {
