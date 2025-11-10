@@ -13,7 +13,7 @@ pac11,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac12,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Nginx.1.2.1.zip;sourceType=sa]Az.Nginx,1.2.1
 pac13,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NotificationHubs.1.2.0.zip;sourceType=sa]Az.NotificationHubs,1.2.0
 pac14,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.OperationalInsights.3.3.0.zip;sourceType=sa]Az.OperationalInsights,3.3.0
-pac15,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Oracle.1.2.0.zip;sourceType=sa]Az.Oracle,1.2.0
+pac15,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Oracle.1.2.1.zip;sourceType=sa]Az.Oracle,1.2.1
 pac16,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Orbital.0.2.0.zip;sourceType=sa]Az.Orbital,0.2.0
 pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.PaloAltoNetworks.0.3.1.zip;sourceType=sa]Az.PaloAltoNetworks,0.3.1
 pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Peering.0.5.0.zip;sourceType=sa]Az.Peering,0.5.0

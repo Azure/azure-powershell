@@ -67,13 +67,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
 LOGSCRUBBINGRULE <IProfileScrubbingRules[]>: List of log scrubbing rules applied to the Azure Front Door profile logs.
@@ -130,7 +130,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The set of user assigned identities associated with the resource.
     # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.

@@ -20,12 +20,17 @@ Create a new Activity Log Alert rule or update an existing one.
 .Description
 Create a new Activity Log Alert rule or update an existing one.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$scope = "/subscriptions/"+(Get-AzContext).Subscription.ID
+$actiongroup=New-AzActivityLogAlertActionGroupObject -Id $ActionGroupResourceId -WebhookProperty @{"sampleWebhookProperty"="SamplePropertyValue"}
+$condition1=New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject -Equal Administrative -Field category
+$condition2=New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject -Equal Error -Field level
+$any1=New-AzActivityLogAlertAlertRuleLeafConditionObject -Field properties.incidentType -Equal Maintenance
+$any2=New-AzActivityLogAlertAlertRuleLeafConditionObject -Field properties.incidentType -Equal Incident
+$condition3=New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject -AnyOf $any1,$any2
+New-AzActivityLogAlert -Name $AlertName -ResourceGroupName $ResourceGroupName -Action $actiongroup -Condition @($condition1,$condition2,$condition3) -Location global -Scope $scope
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,18 +42,18 @@ ACTIONGROUP <IActionGroup[]>: The list of the Action Groups.
     [(Any) <String>]: This indicates any property can be added to this object.
 
 CONDITIONALLOF <IAlertRuleAnyOfOrLeafCondition[]>: The list of Activity Log Alert rule conditions.
-  [ContainsAny <String[]>]: The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+  [ContainsAny <List<String>>]: The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
   [Equal <String>]: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
   [Field <String>]: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
-  [AnyOf <IAlertRuleLeafCondition[]>]: An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
-    [ContainsAny <String[]>]: The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
+  [AnyOf <List<IAlertRuleLeafCondition>>]: An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
+    [ContainsAny <List<String>>]: The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
     [Equal <String>]: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
     [Field <String>]: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
 .Link
 https://learn.microsoft.com/powershell/module/az.monitor/new-azactivitylogalert
 #>
 function New-AzActivityLogAlert {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -72,43 +77,43 @@ function New-AzActivityLogAlert {
         # The ID of the target subscription.
         ${SubscriptionId},
     
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroup[]]
         # The list of the Action Groups.
         # To construct, see NOTES section for ACTIONGROUP properties and create a hash table.
         ${Action},
     
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleAnyOfOrLeafCondition[]]
         # The list of Activity Log Alert rule conditions.
         # To construct, see NOTES section for CONDITIONALLOF properties and create a hash table.
         ${Condition},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.String]
         # A description of this Activity Log Alert rule.
         ${Description},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.Boolean]
         # Indicates whether this Activity Log Alert rule is enabled.
         # If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
         ${Enabled},
     
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.String]
         # The location of the resource.
         # Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
         ${Location},
     
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.String[]]
@@ -117,19 +122,32 @@ function New-AzActivityLogAlert {
         # This list must include at least one item.
         ${Scope},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAzureResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAzureResourceTags]))]
         [System.Collections.Hashtable]
         # The tags of the resource.
         ${Tag},
+
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]

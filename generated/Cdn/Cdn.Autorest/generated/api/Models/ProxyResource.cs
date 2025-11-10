@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
     /// <summary>
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     /// </summary>
     public partial class ProxyResource :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResource,
@@ -20,7 +20,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Resource();
 
-        /// <summary>Resource ID.</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).Id; }
 
@@ -54,26 +56,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).Type = value ?? null; }
 
-        /// <summary>Resource name.</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).Name; }
 
-        /// <summary>Read only system data</summary>
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemData = value ?? null /* model class */; }
 
-        /// <summary>The timestamp of resource creation (UTC)</summary>
+        /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemDataCreatedAt; }
 
-        /// <summary>An identifier for the identity that created the resource</summary>
+        /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemDataCreatedBy; }
 
-        /// <summary>The type of identity that created the resource</summary>
+        /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemDataCreatedByType; }
@@ -83,17 +87,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemDataLastModifiedAt; }
 
-        /// <summary>An identifier for the identity that last modified the resource</summary>
+        /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemDataLastModifiedBy; }
 
-        /// <summary>The type of identity that last modified the resource</summary>
+        /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; }
 
-        /// <summary>Resource type.</summary>
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__resource).Type; }
 
@@ -115,14 +121,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     public partial interface IProxyResource :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResource
     {
 
     }
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     internal partial interface IProxyResourceInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal
     {
