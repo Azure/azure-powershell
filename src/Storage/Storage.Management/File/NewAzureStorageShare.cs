@@ -194,6 +194,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
+            if (DryRun.IsPresent && TryHandleDryRun())
+            {
+                return; // skip real execution
+            }
+
             base.ExecuteCmdlet();
 
             if (!string.IsNullOrWhiteSpace(this.RootSquash)
