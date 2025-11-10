@@ -140,18 +140,30 @@ function New-AzFrontDoorRoutingRuleObject {
                     if ($PSBoundParameters.ContainsKey('CacheDuration')) {
                         $CacheConfiguration.CacheDuration = $CacheDuration
                     }
-                    $CacheConfiguration.DynamicCompression = $PSBoundParameters.ContainsKey('DynamicCompression')? $DynamicCompression : 'Enabled'
+                    if ($PSBoundParameters.ContainsKey('DynamicCompression')) {
+                        $CacheConfiguration.DynamicCompression = $DynamicCompression
+                    } else {
+                        $CacheConfiguration.DynamicCompression = 'Enabled'
+                    }
                     if ($PSBoundParameters.ContainsKey('QueryParameter')) {
                         $CacheConfiguration.QueryParameter = $QueryParameter
                     }
-                    $CacheConfiguration.QueryParameterStripDirective = $PSBoundParameters.ContainsKey('QueryParameterStripDirective')? $QueryParameterStripDirective : 'StripAll'
+                    if ($PSBoundParameters.ContainsKey('QueryParameterStripDirective')) {
+                        $CacheConfiguration.QueryParameterStripDirective = $QueryParameterStripDirective
+                    } else {
+                        $CacheConfiguration.QueryParameterStripDirective = 'StripAll'
+                    }
                     $ForwardingConfiguration.CacheConfiguration = $CacheConfiguration
                 }
 
                 if ($PSBoundParameters.ContainsKey('CustomForwardingPath')) {
                     $ForwardingConfiguration.CustomForwardingPath = $CustomForwardingPath
                 }
-                $ForwardingConfiguration.ForwardingProtocol = $PSBoundParameters.ContainsKey('ForwardingProtocol')? $ForwardingProtocol : 'MatchRequest'
+                if ($PSBoundParameters.ContainsKey('ForwardingProtocol')) {
+                    $ForwardingConfiguration.ForwardingProtocol = $ForwardingProtocol
+                } else {
+                    $ForwardingConfiguration.ForwardingProtocol = 'MatchRequest'
+                }
                 $Object.RouteConfiguration = $ForwardingConfiguration
             }
             "ByFieldsWithRedirectParameterSet" {
@@ -160,13 +172,29 @@ function New-AzFrontDoorRoutingRuleObject {
                 if ($PSBoundParameters.ContainsKey('CustomFragment')) {
                     $RedirectConfiguration.CustomFragment = $CustomFragment
                 }
-                $RedirectConfiguration.CustomHost = $PSBoundParameters.ContainsKey('CustomHost')? $CustomHost : ''
-                $RedirectConfiguration.CustomPath = $PSBoundParameters.ContainsKey('CustomPath')? $CustomPath : ''
+                if ($PSBoundParameters.ContainsKey('CustomHost')) {
+                    $RedirectConfiguration.CustomHost = $CustomHost
+                } else {
+                    $RedirectConfiguration.CustomHost = ''
+                }
+                if ($PSBoundParameters.ContainsKey('CustomPath')) {
+                    $RedirectConfiguration.CustomPath = $CustomPath
+                } else {
+                    $RedirectConfiguration.CustomPath = ''
+                }
                 if ($PSBoundParameters.ContainsKey('CustomQueryString')) {
                     $RedirectConfiguration.CustomQueryString = $CustomQueryString
                 }
-                $RedirectConfiguration.RedirectProtocol = $PSBoundParameters.ContainsKey('RedirectProtocol')? $RedirectProtocol : 'MatchRequest'
-                $RedirectConfiguration.RedirectType = $PSBoundParameters.ContainsKey('RedirectType')? $RedirectType : 'Moved'
+                if ($PSBoundParameters.ContainsKey('RedirectProtocol')) {
+                    $RedirectConfiguration.RedirectProtocol = $RedirectProtocol
+                } else {
+                    $RedirectConfiguration.RedirectProtocol = 'MatchRequest'
+                }
+                if ($PSBoundParameters.ContainsKey('RedirectType')) {
+                    $RedirectConfiguration.RedirectType = $RedirectType
+                } else {
+                    $RedirectConfiguration.RedirectType = 'Moved'
+                }
 
                 $Object.RouteConfiguration = $RedirectConfiguration
             }

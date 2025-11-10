@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -51,27 +51,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataCollectionRule.Autorest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataCollectionRule", "..\..\generated\Monitor\DataCollectionRule.Autorest\Az.DataCollectionRule.csproj", "{138B61C0-9D0E-44A1-9EA1-E8142303ECA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autoscale.Autorest", "Autoscale.Autorest", "{0832AC06-44A1-FEDA-3879-082134F4AAB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "..\..\generated\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{7AD2DC17-D116-4480-A74F-EB823CB6F7B5}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metricdata.Autorest", "Metricdata.Autorest", "{97973F8C-3EE1-368A-3B71-C62280C2DC8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "..\..\generated\Monitor\Metricdata.Autorest\Az.Metricdata.csproj", "{ABBBEF38-2D27-4BBA-B980-BEEBDC2843F4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autoscale.Autorest", "Autoscale.Autorest", "{0832AC06-44A1-FEDA-3879-082134F4AAB5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "..\..\generated\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{A55047D2-EBBB-4C25-BD5E-52FEF9E5C627}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActivityLogAlert.Autorest", "ActivityLogAlert.Autorest", "{F5B68159-9278-7C75-41B6-315547561DBE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActivityLogAlert", "..\..\generated\Monitor\ActivityLogAlert.Autorest\Az.ActivityLogAlert.csproj", "{81F263BA-D395-42CB-A7E0-AFC20029C4BC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiagnosticSetting.Autorest", "DiagnosticSetting.Autorest", "{4644B825-05AB-0B45-5567-89C0D700A638}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "..\..\generated\Monitor\DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{88085FD3-B4EE-4AC4-94B7-D1D2A9A18033}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorWorkspace.Autorest", "MonitorWorkspace.Autorest", "{635E4282-7AFB-1B5B-749B-823438FF2057}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\..\generated\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScheduledQueryRule.Autorest", "ScheduledQueryRule.Autorest", "{DFE9A16E-4879-AFA3-BD8B-DBC73F42D0CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{A3CBC4A9-A39C-4343-99F2-F3F53F20049B}"
 EndProject
