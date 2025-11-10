@@ -158,8 +158,9 @@ FunctionsToExport = 'Enable-AzActionGroupReceiver', 'Get-AzActionGroup',
                'Update-AzAutoscaleSetting', 'Update-AzDataCollectionEndpoint', 
                'Update-AzDataCollectionRule', 
                'Update-AzDataCollectionRuleAssociation', 
-               'Update-AzMonitorWorkspace', 'Update-AzPipelineGroup', 
-               'Update-AzScheduledQueryRule'
+               'Update-AzDiagnosticSetting', 'Update-AzMonitorWorkspace', 
+               'Update-AzPipelineGroup', 'Update-AzScheduledQueryRule', 
+               'Update-AzSubscriptionDiagnosticSetting'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Add-AzLogProfile', 'Add-AzMetricAlertRule', 
