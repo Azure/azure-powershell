@@ -16,15 +16,15 @@ Updates a function app.
 ```
 Update-AzFunctionApp -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>] [-PlanName <String>]
  [-Force] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>] [-Tag <Hashtable>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <String>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
 Update-AzFunctionApp [-PlanName <String>] [-Force] [-ApplicationInsightsName <String>]
- [-ApplicationInsightsKey <String>] [-Tag <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityID <String[]>] -InputObject <ISite> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-ApplicationInsightsKey <String>] [-Tag <Hashtable>] [-IdentityType <String>] [-IdentityID <String[]>]
+ -InputObject <ISite> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -163,7 +163,7 @@ The acceptable values for this parameter are:
             - None
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -175,10 +175,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -316,11 +315,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 
 ## NOTES
 

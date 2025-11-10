@@ -77,10 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -186,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 
 ## OUTPUTS
 
