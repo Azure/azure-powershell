@@ -37,27 +37,16 @@ Delete the subscriptions that are being monitored by the Datadog monitor resourc
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove monitored subscription from a Datadog monitor
 ```powershell
-{{ Add code here }}
+Remove-AzDatadogMonitoredSubscription -ConfigurationName default -MonitorName ddmonitor01 -ResourceGroupName datadog-rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Empty output indicates the command succeeded.
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removed the subscriptions currently being monitored by the specified Datadog monitor resource.
 
 ## PARAMETERS
 

@@ -43,27 +43,33 @@ List the subscriptions currently being monitored by the Datadog monitor resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get monitored subscriptions for a Datadog monitor
 ```powershell
-{{ Add code here }}
+Get-AzDatadogMonitoredSubscription -ResourceGroupName datadog-rg -MonitorName monitordd01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/YYYYYYYY-ZZZZ-AAAA-BBBB-000011112222/resourceGroups/datadog-rg/providers/Microsoft.Datadog/monitors/monitordd01/monitoredSubscriptions/default
+MonitoredSubscriptionList    : {{
+                                 "tagRules": {
+                                   "provisioningState": "Accepted"
+                                 },
+                                 "subscriptionId": "/SUBSCRIPTIONS/AAAAAAAA-BBBB-CCCC-DDDD-DBDD3AB55AC5",
+                                 "status": "Active"
+                               }}
+Name                         : default
+Operation                    :
+ResourceGroupName            : datadog-rg
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Datadog/monitors/monitoredSubscriptions
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists the subscriptions currently being monitored by the specified Datadog monitor resource.
 
 ## PARAMETERS
 
