@@ -162,8 +162,8 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         Write-Verbose "Removing resource group: $flexResourceGroupName" -Verbose
 
         # After recording the tests, use -Force to avoid prompt during cleanup
-        #Remove-AzResourceGroup -Name $flexResourceGroupName -Force
-        Remove-AzResourceGroup -Name $flexResourceGroupName -Force -ErrorAction SilentlyContinue
+        #Remove-AzResourceGroup -Name $flexResourceGroupName -Force -ErrorAction SilentlyContinue
+        Remove-AzResourceGroup -Name $flexResourceGroupName -ErrorAction SilentlyContinue
 
         Write-Verbose "Done." -Verbose
     }
