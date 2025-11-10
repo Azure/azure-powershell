@@ -48,7 +48,7 @@ Gets classic alert rules.
 Gets the Autoscale history.
 
 ### [Get-AzAutoscalePredictiveMetric](Get-AzAutoscalePredictiveMetric.md)
-get predictive autoscale metric future data
+Get predictive autoscale metric future data
 
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets an autoscale setting
@@ -172,7 +172,7 @@ Create an in-memory object for ScaleRuleMetricDimension.
 Create an in-memory object for ScaleRule.
 
 ### [New-AzAutoscaleSetting](New-AzAutoscaleSetting.md)
-Creates or updates an autoscale setting.
+Create an autoscale setting.
 
 ### [New-AzAutoscaleWebhookNotificationObject](New-AzAutoscaleWebhookNotificationObject.md)
 Create an in-memory object for WebhookNotification.
