@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 8.1.2
 * Aligned dependency versions with other modules
 
 ## Version 8.1.1
