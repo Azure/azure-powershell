@@ -172,6 +172,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
             }
+            if (content.Contains("ShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).ShapeAttribute = (System.Collections.Generic.List<string>) content.GetValueForProperty("ShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).ShapeAttribute, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -284,6 +288,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("DisplayName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).ShapeAttribute = (System.Collections.Generic.List<string>) content.GetValueForProperty("ShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)this).ShapeAttribute, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

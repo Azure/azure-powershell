@@ -15,19 +15,19 @@ Get SignalR replica resources for a SignalR service or a specific replica by nam
 ### ResourceGroupParameterSet (Default)
 ```
 Get-AzSignalRReplica [-ResourceGroupName <String>] -SignalRName <String> [-Name <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputSignalRObjectParameterSet
 ```
 Get-AzSignalRReplica [-Name <String>] -SignalRObject <PSSignalRResource> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Get-AzSignalRReplica -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,21 +108,6 @@ The name of the replica
 Type: System.String
 Parameter Sets: ResourceGroupParameterSet, InputSignalRObjectParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

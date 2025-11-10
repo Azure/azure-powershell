@@ -12,8 +12,21 @@ Check the specified namespace name availability.
 
 ## SYNTAX
 
+### CheckExpanded (Default)
 ```
 Test-AzRelayName -Namespace <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzRelayName -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzRelayName -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -53,6 +66,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Namespace
 The namespace name to check for availability.
 The namespace name can contain only letters, numbers, and hyphens.
@@ -60,7 +103,7 @@ The namespace must start with a letter, and it must end with a letter or number.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -124,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailabilityResult
 
 ## NOTES
 

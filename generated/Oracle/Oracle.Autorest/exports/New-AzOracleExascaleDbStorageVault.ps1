@@ -84,6 +84,12 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
+    [System.String]
+    # Cloud Exadata infrastructure ID
+    ${ExadataInfrastructureId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
     [System.Int32]
     # Total Capacity
     ${HighCapacityDatabaseStorageInputTotalSizeInGb},

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a TagRule
+Create a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored based on their tags
 .Description
-Create a TagRule
+Create a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored based on their tags
 .Example
 New-AzNewRelicMonitorTagRule -MonitorName test-01 -ResourceGroupName ps-test -RuleSetName default -LogRuleSendAadLog 'Disabled' -LogRuleSendActivityLog 'Enabled' -LogRuleSendSubscriptionLog 'Disabled' -MetricRuleSendMetric 'Enabled' -MetricRuleUserEmail user1@outlook.com
 
@@ -202,6 +202,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -226,8 +235,6 @@ begin {
             CreateViaJsonString = 'Az.NewRelic.private\New-AzNewRelicMonitorTagRule_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -241,6 +248,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

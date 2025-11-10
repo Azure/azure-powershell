@@ -22,45 +22,58 @@ Create Azure Relay namespace.
 .Example
 New-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Location eastus
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
 PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections.
   [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
   [PrivateLinkServiceConnectionStateDescription <String>]: Description of the connection state.
-  [PrivateLinkServiceConnectionStateStatus <PrivateLinkConnectionStatus?>]: Status of the connection.
-  [ProvisioningState <EndPointProvisioningState?>]: Provisioning state of the Private Endpoint Connection.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [PrivateLinkServiceConnectionStateStatus <String>]: Status of the connection.
+  [ProvisioningState <String>]: Provisioning state of the Private Endpoint Connection.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespace
 #>
 function New-AzRelayNamespace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('NamespaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The namespace name
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -68,25 +81,46 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
     [System.String]
     # Resource location.
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.SkuTier])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Standard")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.SkuTier]
+    [System.String]
     # The tier of this SKU.
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20170401.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -156,6 +190,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -176,10 +219,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Relay.private\New-AzRelayNamespace_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.Relay.private\New-AzRelayNamespace_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Relay.private\New-AzRelayNamespace_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Relay.private\New-AzRelayNamespace_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -193,6 +237,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
