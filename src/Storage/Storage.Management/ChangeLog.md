@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported `-DryRun` and `-ExportBicep` 
 * Updated Azure.Core from 1.45.0 to 1.47.3
 * Supported Storage account planned failover: `Invoke-AzStorageAccountFailover`, `Get-AzStorageAccount`
 
