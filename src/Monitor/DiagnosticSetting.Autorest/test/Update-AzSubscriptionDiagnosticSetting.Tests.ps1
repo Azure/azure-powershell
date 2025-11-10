@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventCategory'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSubscriptionDiagnosticSetting'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzEventCategory.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzSubscriptionDiagnosticSetting.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventCategory'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzEventCategory' {
-    It 'List' {
-        { Get-AzEventCategory | Should -Not -BeNullOrEmpty} | Should -Not -Throw
+Describe 'Update-AzSubscriptionDiagnosticSetting' {
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
