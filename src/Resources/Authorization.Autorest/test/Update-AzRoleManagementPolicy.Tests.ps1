@@ -18,11 +18,11 @@ Describe 'Update-AzRoleManagementPolicy' {
     It 'UpdateExpanded' {
         { 
             $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-            $expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyExpirationRule]@{
+            $expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.RoleManagementPolicyExpirationRule]@{
                 isExpirationRequired = "false";
                 maximumDuration = "P180D";
                 id = "Expiration_Admin_Eligibility";
-                ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+                ruleType = "RoleManagementPolicyExpirationRule";
                 targetCaller = "Admin";
                 targetOperation = @('All');
                 targetLevel = "Eligibility";
@@ -30,14 +30,14 @@ Describe 'Update-AzRoleManagementPolicy' {
                 targetInheritableSetting = $null;
                 targetEnforcedSetting = $null;
             }
-            $notificationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyNotificationRule]@{
+            $notificationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.RoleManagementPolicyNotificationRule]@{
                 notificationType = "Email";
                 recipientType = "Approver";
                 isDefaultRecipientsEnabled = "false";
                 notificationLevel = "Critical";
                 notificationRecipient = $null;                
                 id = "Notification_Approver_Admin_Eligibility";
-                ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
+                ruleType = "RoleManagementPolicyNotificationRule";
                 targetCaller = "Admin";
                 targetOperation = @('All');
                 targetLevel = "Eligibility";
@@ -45,7 +45,7 @@ Describe 'Update-AzRoleManagementPolicy' {
                 targetInheritableSetting = $null;
                 targetEnforcedSetting = $null;
             }
-            $rules = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
+            $rules = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
             $policy = Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
         } | Should -Not -Throw
     }
