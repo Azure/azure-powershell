@@ -206,11 +206,6 @@ Malaysia West
 This command gets the locations where Flex Consumption is available.
 
 ### Example 5: Get the locations where Flex Consumption supports Zone Redundancy
-
-Flex Consumption plans can optionally be zone redundant in regions that support Availability Zones.
-To retrieve the list of regions where zone redundancy is available for Flex Consumption, set the PlanType parameter to 'FlexConsumption' and include the ZoneRedundant switch.
-Note that zone redundancy is currently supported only for Flex Consumption.
-
 ```powershell
 Get-AzFunctionAppavailableLocation -PlanType FlexConsumption -ZoneRedundant
 ```
