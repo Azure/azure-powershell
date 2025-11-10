@@ -100,6 +100,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string StorageFileDataSmbShareOwner = "StorageFileDataSmbShareOwner";
         }
 
+        protected struct AccountFailoverType
+        {
+            internal const string Planned = "Planned";
+            internal const string Unplanned = "Unplanned";
+        }
+
         public IStorageManagementClient StorageClient
         {
             get

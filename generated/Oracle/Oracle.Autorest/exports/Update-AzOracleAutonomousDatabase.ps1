@@ -43,9 +43,11 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Autonomousdbversionsname <String>]: AutonomousDbVersion name
   [Cloudexadatainfrastructurename <String>]: CloudExadataInfrastructure name
   [Cloudvmclustername <String>]: CloudVmCluster name
+  [DbSystemName <String>]: The name of the DbSystem
   [Dbnodeocid <String>]: DbNode OCID.
   [Dbserverocid <String>]: DbServer OCID.
   [Dbsystemshapename <String>]: DbSystemShape name
+  [Dbversionsname <String>]: DbVersion name
   [Dnsprivateviewocid <String>]: DnsPrivateView OCID
   [Dnsprivatezonename <String>]: DnsPrivateZone name
   [ExadbVMClusterName <String>]: The name of the ExadbVmCluster
@@ -56,10 +58,17 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Giversionname <String>]: GiVersion name
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
+  [NetworkAnchorName <String>]: The name of the NetworkAnchor
+  [ResourceAnchorName <String>]: The name of the ResourceAnchor
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Systemversionname <String>]: SystemVersion name
   [Virtualnetworkaddressname <String>]: Virtual IP address hostname.
+
+SCHEDULEDOPERATIONSLIST <IScheduledOperationsTypeUpdate[]>: The list of scheduled operations.
+  [DayOfWeekName <String>]: Name of the day of the week.
+  [ScheduledStartTime <String>]: auto start time. value must be of ISO-8601 format HH:mm
+  [ScheduledStopTime <String>]: auto stop time. value must be of ISO-8601 format HH:mm
 .Link
 https://learn.microsoft.com/powershell/module/az.oracle/update-azoracleautonomousdatabase
 #>
@@ -166,14 +175,6 @@ param(
     [System.String]
     # The Oracle Database Edition that applies to the Autonomous databases.
     ${DatabaseEdition},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # Name of the day of the week.
-    ${DayOfWeekName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -290,19 +291,11 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto start time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStartTime},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto stop time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStopTime},
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate[]]
+    # The list of scheduled operations.
+    ${ScheduledOperationsList},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

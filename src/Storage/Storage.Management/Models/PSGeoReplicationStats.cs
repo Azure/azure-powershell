@@ -27,11 +27,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 return null;
             }
 
-            PSGeoReplicationStats pSGeoReplicationStats = new PSGeoReplicationStats();
-
-            pSGeoReplicationStats.Status = geoReplicationStats.Status;
-            pSGeoReplicationStats.LastSyncTime = geoReplicationStats.LastSyncTime;
-            pSGeoReplicationStats.CanFailover = geoReplicationStats.CanFailover;
+            PSGeoReplicationStats pSGeoReplicationStats = new PSGeoReplicationStats
+            {
+                Status = geoReplicationStats.Status,
+                LastSyncTime = geoReplicationStats.LastSyncTime,
+                CanFailover = geoReplicationStats.CanFailover,
+                CanPlannedFailover = geoReplicationStats.CanPlannedFailover,
+                PostFailoverRedundancy = geoReplicationStats.PostFailoverRedundancy,
+                PostPlannedFailoverRedundancy = geoReplicationStats.PostPlannedFailoverRedundancy
+            };
 
             return pSGeoReplicationStats;
         }
@@ -39,5 +43,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Status { get; set; }
         public DateTime? LastSyncTime { get; set; }
         public bool? CanFailover { get; set; }
+        public bool? CanPlannedFailover { get; set; }
+        public string PostFailoverRedundancy { get; set; }
+        public string PostPlannedFailoverRedundancy { get; set; }
     }
 }

@@ -41,62 +41,25 @@ Gets properties of a SAP monitor for the specified subscription, resource group,
 
 ## EXAMPLES
 
-### Example 1: List all AMS Instances
-```powershell
+### EXAMPLE 1
+```
 Get-AzWorkloadsMonitor
 ```
 
-```output
-Name        ResourceGroupName ManagedResourceGroupConfigurationName Location    ProvisioningState
-----        ----------------- ------------------------------------- --------    -----------------
-ad-ams-inst ad-ams-rg         ad-ams-mrg                            eastus2euap Deleting
-ad-ams-tp   ad-ams-rg         sapmonrg-q2nti3                       eastus2euap Succeeded
-ad-ams      ad-ams-rg         sapmonrg-u2mtiw                       eastus      Succeeded
-suha-1606-ams2 suha-0802-rg1     mrg-15061                          eastus2euap Failed
+### EXAMPLE 2
 ```
-
-Lists all AMS Instances in the subscription
-
-### Example 2: List all AMS instances in a Resource Group
-```powershell
 Get-AzWorkloadsMonitor -ResourceGroupName ad-ams-rg
 ```
 
-```output
-Name        ResourceGroupName ManagedResourceGroupConfigurationName Location    ProvisioningState
-----        ----------------- ------------------------------------- --------    -----------------
-ad-ams-inst ad-ams-rg         ad-ams-mrg                            eastus2euap Deleting
-ad-ams-tp   ad-ams-rg         sapmonrg-q2nti3                       eastus2euap Succeeded
-ad-ams      ad-ams-rg         sapmonrg-u2mtiw                       eastus      Succeeded
+### EXAMPLE 3
 ```
-
-List all AMS instances in a Resource Group
-
-### Example 3: Get Information about an AMS Instance
-```powershell
 Get-AzWorkloadsMonitor -ResourceGroupName ad-ams-rg -Name ad-ams
 ```
 
-```output
-Name   ResourceGroupName ManagedResourceGroupConfigurationName Location ProvisioningState
-----   ----------------- ------------------------------------- -------- -----------------
-ad-ams ad-ams-rg         sapmonrg-u2mtiw                       eastus   Succeeded
+### EXAMPLE 4
 ```
-
-Gets information about a specific AMS instance in a resource group
-
-### Example 4: Get Information about an AMS Instance by Id
-```powershell
 Get-AzWorkloadsMonitor -InputObject '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-1606-ams2'
 ```
-
-```output
-Name           ResourceGroupName ManagedResourceGroupConfigurationName Location    ProvisioningState
-----           ----------------- ------------------------------------- --------    -----------------
-suha-1606-ams2 suha-0802-rg1     mrg-15061                             eastus2euap Failed
-```
-
-Get Information about an AMS Instance by ArmId
 
 ## PARAMETERS
 
@@ -105,7 +68,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -120,7 +83,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+Type: IMonitorsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -135,7 +98,7 @@ Accept wildcard characters: False
 Name of the SAP monitor resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Get
 Aliases: MonitorName
 
@@ -151,7 +114,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Get, List1
 Aliases:
 
@@ -166,13 +129,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -183,11 +146,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
-
 ## NOTES
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT \<IMonitorsIdentity\>: Identity Parameter
+  \[Id \<String\>\]: Resource identity path
+  \[MonitorName \<String\>\]: Name of the SAP monitor resource.
+  \[ProviderInstanceName \<String\>\]: Name of the provider instance.
+  \[ResourceGroupName \<String\>\]: The name of the resource group.
+The name is case insensitive.
+  \[SubscriptionId \<String\>\]: The ID of the target subscription.
 
 ## RELATED LINKS
+
+[https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadsmonitor](https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadsmonitor)

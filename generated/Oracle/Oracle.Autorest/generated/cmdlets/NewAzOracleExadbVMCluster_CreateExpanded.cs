@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMCluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a ExadbVmCluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exadbVmClusters/{exadbVmClusterName}", ApiVersion = "2025-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exadbVmClusters/{exadbVmClusterName}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleExadbVMCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -383,6 +383,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         SerializedName = @"shape",
         PossibleTypes = new [] { typeof(string) })]
         public string Shape { get => _resourceBody.Shape ?? null; set => _resourceBody.Shape = value; }
+
+        /// <summary>The type of Exascale storage used for Exadata VM cluster.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of Exascale storage used for Exadata VM cluster.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of Exascale storage used for Exadata VM cluster.",
+        SerializedName = @"shapeAttribute",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("SMART_STORAGE", "BLOCK_STORAGE")]
+        public string ShapeAttribute { get => _resourceBody.ShapeAttribute ?? null; set => _resourceBody.ShapeAttribute = value; }
 
         /// <summary>
         /// The public key portion of one or more key pairs used for SSH access to the Exadata VM cluster on Exascale Infrastructure.

@@ -7975,3 +7975,144 @@ function Test-VirtualMachineAddProxyAgentExtension
         Clean-ResourceGroup $resourceGroupName;
     }
 }
+
+<#
+.SYNOPSIS
+Test-VirtualMachineGalleryApplicationFlags tests GalleryApplication Creation and Addition of TreatFailureAsDeploymentFailure and EnableAutomaticUpgrade flags
+#>
+function Test-VirtualMachineGalleryApplicationFlags
+{
+    if ((Get-ComputeTestMode) -eq 'Playback') {
+        Write-Verbose "Skipping Test-VirtualMachineGalleryApplicationFlags in Playback (uses storage & gallery live operations)";
+        Assert-True { $true }
+        return
+    }
+
+    # Setup
+    $resourceGroupName = Get-ComputeTestResourceName;
+    $adminUsername = Get-ComputeTestResourceName;
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+    $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+    $vmName = 'VM1';
+    $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
+    $domainNameLabel = "d1" + $resourceGroupName;
+    $loc = 'eastus2';
+
+    try {
+        # Create VM
+        New-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -Credential $cred -Image $imageName -DomainNameLabel $domainNameLabel -Location $loc -EnableProxyAgent -AddProxyAgentExtension | Out-Null
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+
+        # Names
+        $galleryName        = "gal" + $resourceGroupName
+        $galleryAppName1    = "app"  + $resourceGroupName
+        $galleryAppName2    = "app2" + $resourceGroupName
+        $galleryAppVersion1 = "1.0.0"
+        $galleryAppVersion2 = "1.0.0"   # version string can be same; application name must differ
+
+        # Storage account + package blob (page blob with valid minimal ZIP)
+        $storageName   = ("pkg" + ($resourceGroupName.ToLower()))[0..([Math]::Min(23,("pkg" + ($resourceGroupName.ToLower())).Length-1))] -join ''
+        $containerName = "packages"
+        $blobName      = "apppkg.zip"
+
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $loc -Type Standard_LRS | Out-Null
+        $acctKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName
+        $ctx = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $acctKeys[0].Value
+        New-AzStorageContainer -Name $containerName -Context $ctx -Permission Blob | Out-Null
+
+        $localPackage = Join-Path $TestOutputRoot $blobName
+        if (Test-Path $localPackage) { Remove-Item $localPackage -Force }
+
+        # Create a minimal valid ZIP (empty directory) then pad to 512-byte multiple for page blob
+        $tmpDir = Join-Path $TestOutputRoot "pkgtmp"
+        if (Test-Path $tmpDir) { Remove-Item $tmpDir -Recurse -Force }
+        New-Item -ItemType Directory -Path $tmpDir | Out-Null
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        [System.IO.Compression.ZipFile]::CreateFromDirectory($tmpDir, $localPackage)
+        Remove-Item $tmpDir -Force
+        $bytes = [IO.File]::ReadAllBytes($localPackage)
+        $pad = 512 - ($bytes.Length % 512)
+        if ($pad -ne 512) {
+            $bytes += (0..($pad-1) | ForEach-Object { 0 })
+            [IO.File]::WriteAllBytes($localPackage, $bytes)
+        }
+
+        Set-AzStorageBlobContent -File $localPackage -Container $containerName -Blob $blobName -Context $ctx -BlobType Page | Out-Null
+        $packageUri = (Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx).ICloudBlob.Uri.AbsoluteUri
+
+        # Gallery + application definitions
+        New-AzGallery -ResourceGroupName $resourceGroupName -Name $galleryName -Location $loc | Out-Null
+        New-AzGalleryApplication -ResourceGroupName $resourceGroupName -GalleryName $galleryName -Name $galleryAppName1 -Location $loc -SupportedOSType Linux -Description "Test gallery app flags - app1" | Out-Null
+        New-AzGalleryApplication -ResourceGroupName $resourceGroupName -GalleryName $galleryName -Name $galleryAppName2 -Location $loc -SupportedOSType Linux -Description "Test gallery app flags - app2" | Out-Null
+
+        $installCmd = "echo install"
+        $removeCmd  = "echo remove"
+
+        function Wait-GalleryAppVersionSucceeded {
+            param(
+                [string] $RG,
+                [string] $Gal,
+                [string] $App,
+                [string] $Ver,
+                [int] $TimeoutSeconds = 300
+            )
+            $start = Get-Date
+            do {
+                try {
+                    $v = Get-AzGalleryApplicationVersion -ResourceGroupName $RG -GalleryName $Gal -GalleryApplicationName $App -Name $Ver -ErrorAction Stop
+                    if ($v.ProvisioningState -eq 'Succeeded') { return $v }
+                }
+                catch {
+                    # transient – ignore during creation
+                }
+                Start-Sleep -Seconds 5
+            } while ((Get-Date) - $start -lt [TimeSpan]::FromSeconds($TimeoutSeconds))
+            throw "Gallery Application Version $App/$Ver did not reach Succeeded within timeout."
+        }
+
+        # Version for app1
+        New-AzGalleryApplicationVersion -ResourceGroupName $resourceGroupName -GalleryName $galleryName -GalleryApplicationName $galleryAppName1 -Name $galleryAppVersion1 -Location $loc -PackageFileLink $packageUri -Install $installCmd -Remove $removeCmd -TargetRegion @(@{ Name = $loc; ReplicaCount = 1 }) | Out-Null
+        $galVerApp1 = Wait-GalleryAppVersionSucceeded -RG $resourceGroupName -Gal $galleryName -App $galleryAppName1 -Ver $galleryAppVersion1
+        $pkgId1 = $galVerApp1.Id
+
+        # Version for app2
+        New-AzGalleryApplicationVersion -ResourceGroupName $resourceGroupName -GalleryName $galleryName -GalleryApplicationName $galleryAppName2 -Name $galleryAppVersion2 -Location $loc -PackageFileLink $packageUri -Install $installCmd -Remove $removeCmd -TargetRegion @(@{ Name = $loc; ReplicaCount = 1 }) | Out-Null
+        $galVerApp2 = Wait-GalleryAppVersionSucceeded -RG $resourceGroupName -Gal $galleryName -App $galleryAppName2 -Ver $galleryAppVersion2
+        $pkgId2 = $galVerApp2.Id
+
+        # Case 0: Add first gallery application with both flags false
+        $vmGalleryApplication0 = New-AzVmGalleryApplication -PackageReferenceId $pkgId1 -EnableAutomaticUpgrade:$false -TreatFailureAsDeploymentFailure:$false
+        $VM = Add-AzVmGalleryApplication -VM $VM -GalleryApplication $vmGalleryApplication0
+        $VM | Update-AzVM
+        $vmAfter0 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $gal0 = $vmAfter0.ApplicationProfile.GalleryApplications[0]
+        Assert-AreEqual $pkgId1 $gal0.PackageReferenceId
+        Assert-AreEqual $false $gal0.EnableAutomaticUpgrade
+        Assert-AreEqual $false $gal0.TreatFailureAsDeploymentFailure
+
+        # Case 1: Update existing application flags to true
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $VM.ApplicationProfile.GalleryApplications[0].EnableAutomaticUpgrade = $true
+        $VM.ApplicationProfile.GalleryApplications[0].TreatFailureAsDeploymentFailure = $true
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+        $vmAfter1 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $gal1 = $vmAfter1.ApplicationProfile.GalleryApplications[0]
+        Assert-AreEqual $pkgId1 $gal1.PackageReferenceId
+        Assert-AreEqual $true $gal1.EnableAutomaticUpgrade
+        Assert-AreEqual $true $gal1.TreatFailureAsDeploymentFailure
+
+        # Case 2: Add second (distinct) application with preset true flags
+        $vmGalleryApplication2 = New-AzVmGalleryApplication -PackageReferenceId $pkgId2 -EnableAutomaticUpgrade:$true -TreatFailureAsDeploymentFailure:$true
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $VM = Add-AzVmGalleryApplication -VM $VM -GalleryApplication $vmGalleryApplication2
+        $VM | Update-AzVM
+        $vmAfter2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $gal2 = $vmAfter2.ApplicationProfile.GalleryApplications | Where-Object { $_.PackageReferenceId -eq $pkgId2 }
+        Assert-AreEqual $pkgId2 $gal2.PackageReferenceId
+        Assert-AreEqual $true $gal2.EnableAutomaticUpgrade
+        Assert-AreEqual $true $gal2.TreatFailureAsDeploymentFailure
+    }
+    finally {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}

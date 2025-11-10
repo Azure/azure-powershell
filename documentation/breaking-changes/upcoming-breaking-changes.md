@@ -1864,6 +1864,385 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '9.0.0'
 
+## Az.FrontDoor
+
+### `Disable-AzFrontDoorCustomDomainHttps`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Enable-AzFrontDoorCustomDomainHttps`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Get-AzFrontDoor`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Get-AzFrontDoorFrontendEndpoint`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-FrontDoorObject`
+    - The element type for parameter 'FrontDoorObject' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Get-AzFrontDoorRulesEngine`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Get-AzFrontDoorWafManagedRuleSetDefinition`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleSetDefinition'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Get-AzFrontDoorWafPolicy`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoor`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-BackendPool`
+    - The element type for parameter 'BackendPool' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-BackendPoolsSetting`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting' for parameter 'BackendPoolsSetting'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-EnabledState`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-FrontendEndpoint`
+    - The element type for parameter 'FrontendEndpoint' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-HealthProbeSetting`
+    - The element type for parameter 'HealthProbeSetting' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-LoadBalancingSetting`
+    - The element type for parameter 'LoadBalancingSetting' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-RoutingRule`
+    - The element type for parameter 'RoutingRule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorBackendObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackend'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnabledState`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorBackendPoolObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Backend`
+    - The element type for parameter 'Backend' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackend' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackend'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorBackendPoolsSettingObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnforceCertificateNameCheck`
+    - parameter 'EnforceCertificateNameCheck' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' to type 'System.String'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorFrontendEndpointObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SessionAffinityEnabledState`
+    - parameter 'SessionAffinityEnabledState' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' to type 'System.String'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorHeaderActionObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-HeaderActionType`
+    - parameter 'HeaderActionType' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderActionType' to type 'System.String'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorHealthProbeSettingObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnabledState`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-Protocol`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol' for parameter 'Protocol'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorLoadBalancingSettingObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorRoutingRuleObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-AcceptedProtocol`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol' for parameter 'AcceptedProtocol'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-DynamicCompression`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'DynamicCompression'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-EnabledState`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorRulesEngine`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Rule`
+    - The element type for parameter 'Rule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorRulesEngineActionObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-DynamicCompression`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'DynamicCompression'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-RequestHeaderAction`
+    - no longer supports the type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction]' for parameter 'RequestHeaderAction'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-ResponseHeaderAction`
+    - no longer supports the type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction]' for parameter 'ResponseHeaderAction'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorRulesEngineMatchConditionObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-MatchVariable`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchVariable' for parameter 'MatchVariable'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-Operator`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineOperator' for parameter 'Operator'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-Transform`
+    - The element type for parameter 'Transform' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSTransform' to 'System.String'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorRulesEngineRuleObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Action`
+    - parameter 'Action' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-MatchCondition`
+    - parameter 'MatchCondition' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineMatchCondition[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-MatchProcessingBehavior`
+    - parameter 'MatchProcessingBehavior' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSMatchProcessingBehavior' to type 'System.String'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorWafCustomRuleObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-MatchCondition`
+    - parameter 'MatchCondition' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchCondition[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorWafLogScrubbingSettingObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ScrubbingRule`
+    - parameter 'ScrubbingRule' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorWafManagedRuleExclusionObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorWafManagedRuleObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Exclusion`
+    - parameter 'Exclusion' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-RuleGroupOverride`
+    - parameter 'RuleGroupOverride' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupOverride[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorWafManagedRuleOverrideObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Exclusion`
+    - parameter 'Exclusion' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorWafPolicy`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Customrule`
+    - The element type for parameter 'Customrule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-EnabledState`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-LogScrubbingSetting`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting' for parameter 'LogScrubbingSetting'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-ManagedRule`
+    - The element type for parameter 'ManagedRule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `New-AzFrontDoorWafRuleGroupOverrideObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Exclusion`
+    - parameter 'Exclusion' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-ManagedRuleOverride`
+    - parameter 'ManagedRuleOverride' is changing from type 'Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride[]' to type 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverride[]'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Set-AzFrontDoor`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-BackendPool`
+    - The element type for parameter 'BackendPool' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-BackendPoolsSetting`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting' for parameter 'BackendPoolsSetting'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-EnabledState`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-FrontendEndpoint`
+    - The element type for parameter 'FrontendEndpoint' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-HealthProbeSetting`
+    - The element type for parameter 'HealthProbeSetting' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-LoadBalancingSetting`
+    - The element type for parameter 'LoadBalancingSetting' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-RoutingRule`
+    - The element type for parameter 'RoutingRule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Set-AzFrontDoorRulesEngine`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Rule`
+    - The element type for parameter 'Rule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+### `Update-AzFrontDoorWafPolicy`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - no longer has output type 'Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy'.
+  - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Customrule`
+    - The element type for parameter 'Customrule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-EnabledState`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState' for parameter 'EnabledState'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-LogScrubbingSetting`
+    - no longer supports the type 'Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting' for parameter 'LogScrubbingSetting'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+  - `-ManagedRule`
+    - The element type for parameter 'ManagedRule' has been changed from 'Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule' to 'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet'.
+    - This change is expected to take effect from Az.FrontDoor version: 6.0.0 and Az version: 15.0.0
+
 ## Az.HealthcareApis
 
 ### `Get-AzHealthcareApisService`
@@ -2876,18 +3255,12 @@ Preview modules are not included in this list. Read more about [module version t
   - Change description : The type of the property DataError will be changed from fixed array to 'List'. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '7.0.0'
+  The cmdlet parameter set is being deprecated. There will be no replacement for it.
+  - Change description : The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
 
 - Cmdlet breaking-change will happen to parameter set `InvokeAzNginxAnalysisConfiguration_Analysis`
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - Change description : The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed. 
-  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect from version : '7.0.0'
-
-- Cmdlet breaking-change will happen to parameter set `InvokeAzNginxAnalysisConfiguration_AnalysisViaIdentity`
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - Change description : The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed. 
-  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect from version : '7.0.0'
 
 ### `New-AzNginxConfiguration`
 
@@ -3338,18 +3711,12 @@ Preview modules are not included in this list. Read more about [module version t
   - Change description : The type of the property UploadLimitScheduleWeeklyRecurrence will be changed from fixed array to 'List'. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '2.0.0'
-
-- Cmdlet breaking-change will happen to parameter set `UpdateAzStorageMoverAgent_Update`
   The cmdlet parameter set is being deprecated. There will be no replacement for it.
   - Change description : The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 - Cmdlet breaking-change will happen to parameter set `UpdateAzStorageMoverAgent_UpdateViaIdentity`
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - Change description : The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead. 
-  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect from version : '2.0.0'
 
 ### `Update-AzStorageMoverJobDefinition`
 

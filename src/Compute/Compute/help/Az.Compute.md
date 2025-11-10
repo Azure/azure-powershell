@@ -687,7 +687,7 @@ Sets the Marketplace plan information on a virtual machine.
 Sets the Proxy Agent settings properties for a PSVirtualMachine object.
 
 ### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
-The operation to create or update the run command.
+The operation to update the run command.
 
 ### [Set-AzVMSecurityProfile](Set-AzVMSecurityProfile.md)
 Sets the SecurityType enum for Virtual Machines.
@@ -732,7 +732,7 @@ Modifies UEFI properties of gen 2 virtual machines that are part of virtual mach
 Modifies the state of a VMSS instance.
 
 ### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 
 ### [Set-AzVMUefi](Set-AzVMUefi.md)
 Modifies UEFI properties of a gen 2 virtual machine

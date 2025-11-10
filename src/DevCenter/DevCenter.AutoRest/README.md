@@ -28,14 +28,14 @@ For information on how to develop for `Az.DevCenter`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 490e7fec728b018ff3ab103a6e1cb09644452ccf
+commit: 4689e75cdeaa04dbeead0237b72cae8dc8dbba4d
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/commonDefinitions.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/devcenter.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/vdi.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2025-04-01-preview/commonDefinitions.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2025-04-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2025-04-01-preview/vdi.json
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "3.x"
@@ -166,18 +166,6 @@ directive:
         "description": "OK. The request has succeeded."
       }
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}"].delete.responses
-    transform: >
-      $['200'] = {
-        "description": "OK. The request has succeeded."
-      }
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}/members/{memberName}"].delete.responses
-    transform: >
-      $['200'] = {
-        "description": "OK. The request has succeeded."
-      }
-  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/runHealthChecks"].post.responses
     transform: >
       $['200'] = {
@@ -189,6 +177,40 @@ directive:
       $['200'] = {
         "description": "OK. The request has succeeded."
       }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/cancel"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "headers": {
+              "Azure-AsyncOperation": {
+                "type": "string"
+              },
+              "Location": {
+                "type": "string"
+              }
+        }
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/buildImage"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "headers": {
+              "Azure-AsyncOperation": {
+                "type": "string"
+              },
+              "Location": {
+                "type": "string"
+              }
+        }
+      }
   #Use v3 for OperationStatus, remove this for breaking change version
   - from: swagger-document
     where: $.definitions
@@ -198,7 +220,7 @@ directive:
         "type": "object",
         "allOf": [
           {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/490e7fec728b018ff3ab103a6e1cb09644452ccf/specification/common-types/resource-management/v3/types.json#/definitions/OperationStatusResult"
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/4689e75cdeaa04dbeead0237b72cae8dc8dbba4d/specification/common-types/resource-management/v3/types.json#/definitions/OperationStatusResult"
           }
         ],
         "properties": {
@@ -241,9 +263,6 @@ directive:
     set:
       default:
         script: '"default"'
-  - where:
-      subject: Schedule
-    hide: true
   - where:
       subject: Pool
       parameter-name: LicenseType
@@ -335,144 +354,15 @@ directive:
     hide: true
   - where:
       verb: New
-      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$|^ProjectCatalog$|^Plan$|^PlanMember$
+      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$|^ProjectCatalog$
     hide: true
   - where:
-      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^EncryptionSet$
+      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^EncryptionSet$|^DevCenterCatalogImageDefinitionImage$|^DevCenterCatalogImageDefinition$|^DevCenterCatalogImageDefinitionBuild$|^DevCenterCatalogImageDefinitionBuildDetail$|^DevCenterCatalogImageDefinitionErrorDetail$
     hide: true
   - where:
       subject: OperationStatuses
     set:
       subject: OperationStatus
-  #Breaking changes
-  - where:
-      subject: ^Plan$|^PlanMember$
-    set:
-      breaking-change:
-        change-description: The Plan and PlanMember resources will be removed.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Connect
-      subject: ^Catalog$|^ProjectCatalog$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Get|Update|New|Remove
-      subject: DevCenter
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdminDevCenter")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      subject: DevCenter
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdminDevCenter")
-        deprecated-cmdlet-output-type: DevCenter
-        deprecated-output-properties:
-          - PlanId
-        change-description: PlanId will be removed from the DevCenter output.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Get
-      subject: ^AttachedNetwork$|^Catalog$|^CatalogSyncErrorDetail$|^CustomizationTask$|^CustomizationTaskErrorDetail$|^DevBoxDefinition$|^EnvironmentDefinition$|^EnvironmentDefinitionErrorDetail$|^EnvironmentType$|^Gallery$|^Image$|^ImageVersion$|^NetworkConnection$|^NetworkConnectionHealthDetail$|^OperationStatus$|^Pool$|^Project$|^ProjectAllowedEnvironmentType$|^ProjectCatalog$|^ProjectCatalogSyncErrorDetail$|^ProjectEnvironmentDefinition$|^ProjectEnvironmentType$|^ProjectInheritedSetting$|^ProjectEnvironmentDefinitionErrorDetail$|^Schedule$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Get
-      subject: ImageVersion
-      variant: List
-    set:
-      breaking-change:
-        change-description: The default parameter set will change from list dev center image versions to list project image versions.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      parameter-name: PlanId
-    set:
-      breaking-change:
-        change-description: PlanId parameter will be removed.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Invoke
-      subject: ^ExecuteCheckNameAvailability$|^ExecuteCheckScopedNameAvailability$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: New
-      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^EnvironmentType$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Remove
-      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^EnvironmentType$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Start
-      subject: ^NetworkConnectionHealthCheck$|^PoolHealthCheck$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Sync
-      subject: ^Catalog$|^ProjectCatalog$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
-  - where:
-      verb: Update
-      subject: ^Catalog$|^DevBoxDefinition$|^EnvironmentType$|^NetworkConnection$|^Pool$|^Project$|^ProjectCatalog$|^ProjectEnvironmentType$|^Schedule$
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("DevCenter", "AzDevCenterAdmin")
-        change-description: PlanName and MemberName will be removed from the InputObject parameter.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/18
   - where:
       subject: ^(.*)
     set:

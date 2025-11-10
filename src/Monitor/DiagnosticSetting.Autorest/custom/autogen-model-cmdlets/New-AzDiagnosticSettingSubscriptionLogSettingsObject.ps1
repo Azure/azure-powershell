@@ -21,12 +21,13 @@ Create an in-memory object for SubscriptionLogSettings.
 Create an in-memory object for SubscriptionLogSettings.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionLogSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingSubscriptionLogSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettingsubscriptionlogsettingsobject
 #>
 function New-AzDiagnosticSettingSubscriptionLogSettingsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionLogSettings')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +43,7 @@ function New-AzDiagnosticSettingSubscriptionLogSettingsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionLogSettings]::New()
 
         if ($PSBoundParameters.ContainsKey('Category')) {
             $Object.Category = $Category
