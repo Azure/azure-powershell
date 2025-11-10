@@ -2630,7 +2630,7 @@ function New-FlexConsumptionAppPlan
     if ($EnableZoneRedundancy.IsPresent)
     {
         $servicePlan.ZoneRedundant = $true
-        $servicePlan.SkuCapability = 3
+        $servicePlan.Capacity = 3
     }
 
     # Add plan definition
@@ -2842,7 +2842,7 @@ function Resolve-UserAssignedIdentity
         $resourceGroup = $matches['ResourceGroup']
         $identityName   = $matches['IdentityName']
 
-        if ((-not [string]::IsNullOrEmpty($resourceGroup)) -or (-not [string]::IsNullOrEmpty($identityName)) -or (-not [string]::IsNullOrEmpty($subscriptionId)))
+        if ([string]::IsNullOrEmpty($resourceGroup) -or [string]::IsNullOrEmpty($identityName) -or [string]::IsNullOrEmpty($subscriptionId))
         {
             $errorMessage = "Invalid identity resource ID: '$IdentityResourceId'. Unable to parse resource group name and identity name."
             $exception = [System.InvalidOperationException]::New($errorMessage)
@@ -2853,7 +2853,7 @@ function Resolve-UserAssignedIdentity
         }
 
         # Check if identity exists
-        $identity = Get-AzUserAssignedIdentity -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroup -ResourceName $identityName -ErrorAction SilentlyContinue
+        $identity = Get-AzUserAssignedIdentity -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroup -ResourceName $identityName -ErrorAction SilentlyContinue @PSBoundParameters
 
         if (-not $identity)
         {
@@ -2872,7 +2872,7 @@ function Resolve-UserAssignedIdentity
     {
         $errorMessage = "Invalid resource ID format: '$IdentityResourceId'."
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "StorageAccountHasNoKeyValue" `
+        ThrowTerminatingError -ErrorId "InvalidIdentityResourceIdFormat" `
                             -ErrorMessage $errorMessage `
                             -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                             -Exception $exception
@@ -3048,7 +3048,7 @@ function Get-FlexFunctionAppRuntime
             }
 
             'DefaultOrLatest' {
-                # Return default/latest version
+                # Return default/latest version, which ever is the newest one
                 $defaultStack = $stacks | Where-Object { $_.IsDefault } | Sort-Object -Property Version -Descending | Select-Object -First 1
 
                 if (-not $defaultStack)

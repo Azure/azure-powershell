@@ -209,12 +209,14 @@ function New-AzFunctionApp {
         ${DeploymentStorageContainerName},
 
         [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Deployment storage authentication type. Allowed values: StorageAccountConnectionString, SystemAssignedIdentity, UserAssignedIdentity')]
-        [ValidateSet("StorageAccountConnectionString","SystemAssignedIdentity","UserAssignedIdentity")]
+        [ValidateSet("StorageAccountConnectionString", "SystemAssignedIdentity", "UserAssignedIdentity")]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         ${DeploymentStorageAuthType},
 
         [Parameter(ParameterSetName="FlexConsumption", HelpMessage='Deployment storage authentication value used for the chosen auth type (eg: connection string, or user-assigned identity resource id).')]
         [System.String]
+        [ValidateNotNullOrEmpty()]
         ${DeploymentStorageAuthValue},
 
         [Parameter(ParameterSetName="FlexConsumption", HelpMessage=
@@ -224,6 +226,7 @@ function New-AzFunctionApp {
 
 Example:
 @(@{ name = "http"; instanceCount = 2 }).')]
+        [ValidateNotNullOrEmpty()]
         [Hashtable[]]
         ${AlwaysReady},
 
@@ -609,31 +612,7 @@ Example:
                 $functionAppDef.IsXenon = $null
                 $appSettings.Clear()
 
-                # # Validate Flex Consumption location
-                # $formattedLocation = Format-FlexConsumptionLocation -Location $FlexConsumptionLocation
-                # $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption `
-                #                                                             -ZoneRedundant:$EnableZoneRedundancy `
-                #                                                             @params
-
-                # $found = $false
-                # foreach ($region in $flexConsumptionRegions)
-                # {
-                #     $regionName = Format-FlexConsumptionLocation -Location $region.Name
-
-                #     if ($region.Name -eq $FlexConsumptionLocation)
-                #     {
-                #         $found = $true
-                #         break
-                #     }
-                #     elseif ($regionName -eq $formattedLocation)
-                #     {
-                #         $found = $true
-                #         break
-                #     }
-                # }
-
                 # Validate Flex Consumption location
-                #Validate-FlexConsumptionLocation -Location $FlexConsumptionLocation -ZoneRedundant:$EnableZoneRedundancy @params
                 Validate-FlexConsumptionLocation -Location $FlexConsumptionLocation -ZoneRedundant:$EnableZoneRedundancy
                 $FlexConsumptionLocation = Format-FlexConsumptionLocation -Location $FlexConsumptionLocation
 
@@ -800,12 +779,58 @@ Example:
                     }
                     else
                     {
-                        $container = New-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
-                                                         -AccountName $DeploymentStorageName `
-                                                         -ResourceGroupName $ResourceGroupName `
-                                                         -ContainerPropertyPublicAccess None `
-                                                         @params
-                        $flexConsumptionStorageContainerCreated = $true
+                        # Create blob container
+                        $maxNumberOfTries = 3
+                        $tries = 1
+                        $myError = $null
+                        while ($true)
+                        {
+                            try
+                            {
+                                $container = New-AzBlobContainer -ContainerName $DeploymentStorageContainerName `
+                                                                 -AccountName $DeploymentStorageName `
+                                                                 -ResourceGroupName $ResourceGroupName `
+                                                                 -ContainerPropertyPublicAccess None `
+                                                                 -ErrorAction Stop `
+                                                                 @params
+                                if ($container)
+                                {
+                                    $flexConsumptionStorageContainerCreated = $true
+                                    break
+                                }
+                            }
+                            catch
+                            {
+                                # Ignore the failure and continue
+                                $myError = $_
+                            }
+
+                            if ($tries -ge $maxNumberOfTries)
+                            {
+                                break
+                            }
+
+                            # Wait for 2^(tries-1) seconds between retries. In this case, it would be 1, 2, and 4 seconds, respectively.
+                            $waitInSeconds = [Math]::Pow(2, $tries - 1)
+                            Start-Sleep -Seconds $waitInSeconds
+
+                            $tries++
+                        }
+
+                        if (-not $container)
+                        {
+                            $errorMessage = "Failed to create blob container '$DeploymentStorageContainerName' in storage account '$DeploymentStorageName'."
+                            if ($myError.Exception.Message)
+                            {
+                                $errorMessage += " Error details: $($myError.Exception.Message)"
+                            }
+
+                            $exception = [System.InvalidOperationException]::New($errorMessage)
+                            ThrowTerminatingError -ErrorId "FailedToCreateBlobContainer" `
+                                                  -ErrorMessage $errorMessage `
+                                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                  -Exception $exception
+                        }
                     }
                 }
 
@@ -860,8 +885,6 @@ Example:
                                                 -Exception $exception
                     }
 
-                    # $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                    # $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
                     $identity = Resolve-UserAssignedIdentity -IdentityResourceId $DeploymentStorageAuthValue @params
                     $functionAppDef.AuthenticationUserAssignedIdentityResourceId = $identity.Id
                 }
@@ -923,7 +946,6 @@ Example:
                                             -Exception $exception
                     }
 
-                    #$appSettings.Add((NewAppSetting -Name 'APPINSIGHTS_INSTRUMENTATIONKEY' -Value $appInsightsProject.InstrumentationKey))
                     $appSettings.Add((NewAppSetting -Name 'APPLICATIONINSIGHTS_CONNECTION_STRING' -Value $appInsightsProject.ConnectionString))
                 }
                 else
