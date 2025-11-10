@@ -13,11 +13,12 @@ Create an in-memory object for PipelineJob.
 ## SYNTAX
 
 ```
-New-AzMLWorkspacePipelineJobObject [-Input <IPipelineJobInputs>] [-Job <IPipelineJobJobs>]
- [-Output <IPipelineJobOutputs>] [-Setting <IAny>] [-SourceJobId <String>] [-ComponentId <String>]
+New-AzMLWorkspacePipelineJobObject [-JobInput <IPipelineJobInputs>] [-Job <IPipelineJobJobs>]
+ [-JobOutput <IPipelineJobOutputs>] [-Setting <IAny>] [-SourceJobId <String>] [-ComponentId <String>]
  [-ComputeId <String>] [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <String>]
  [-IsArchived <Boolean>] [-NotificationSettingEmail <String[]>] [-NotificationSettingEmailOn <String[]>]
- [-NotificationSettingWebhook <INotificationSettingWebhooks>] [-Service <IJobBaseServices>]
+ [-NotificationSettingWebhook <INotificationSettingWebhooks>] [-ServiceEndpoint <String>]
+ [-ServicePort <Int32>] [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>]
  [-Description <String>] [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
  [<CommonParameters>]
 ```
@@ -144,21 +145,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Input
-Inputs for the pipeline job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobInputs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IsArchived
 Is the asset archived?.
 
@@ -179,6 +165,36 @@ Jobs construct the Pipeline Job.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobJobs
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobInput
+Inputs for the pipeline job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobInputs
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobOutput
+Outputs for the pipeline job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -235,21 +251,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Output
-Outputs for the pipeline job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobOutputs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Property
 The asset property dictionary.
 
@@ -265,12 +266,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
-List of JobEndpoints.
-        For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+### -ServiceEndpoint
+Url for endpoint.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePort
+Port for endpoint.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceProperty
+Additional properties to set on the endpoint.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceType
+Endpoint type.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

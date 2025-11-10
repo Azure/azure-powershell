@@ -33,13 +33,13 @@ function New-AzMLWorkspacePipelineJobObject {
 
         [Parameter(HelpMessage="Inputs for the pipeline job.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobInputs]
-        $Input,
+        $JobInput,
         [Parameter(HelpMessage="Jobs construct the Pipeline Job.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobJobs]
         $Job,
         [Parameter(HelpMessage="Outputs for the pipeline job.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobOutputs]
-        $Output,
+        $JobOutput,
         [Parameter(HelpMessage="Pipeline settings, for things like ContinueRunOnStepFailure etc.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAny]
         $Setting,
@@ -75,10 +75,22 @@ function New-AzMLWorkspacePipelineJobObject {
         [Parameter(HelpMessage="Send webhook callback to a service. Key is a user-provided name for the webhook.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.INotificationSettingWebhooks]
         $NotificationSettingWebhook,
-        [Parameter(HelpMessage="List of JobEndpoints.
-        For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices]
-        $Service,
+        # [Parameter(HelpMessage="List of JobEndpoints.
+        # For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices]
+        # $Service,
+        [Parameter(HelpMessage="Url for endpoint.")]
+        [string]
+        $ServiceEndpoint,
+        [Parameter(HelpMessage="Port for endpoint.")]
+        [int]
+        $ServicePort,
+        [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties]
+        $ServiceProperty,
+        [Parameter(HelpMessage="Endpoint type.")]
+        [string]
+        $ServiceType,
         [Parameter(HelpMessage="The asset description text.")]
         [string]
         $Description,
@@ -93,14 +105,14 @@ function New-AzMLWorkspacePipelineJobObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.PipelineJob]::New()
 
-        if ($PSBoundParameters.ContainsKey('Input')) {
-            $Object.Input = $Input
+        if ($PSBoundParameters.ContainsKey('JobInput')) {
+            $Object.Input = $JobInput
         }
         if ($PSBoundParameters.ContainsKey('Job')) {
             $Object.Job = $Job
         }
-        if ($PSBoundParameters.ContainsKey('Output')) {
-            $Object.Output = $Output
+        if ($PSBoundParameters.ContainsKey('JobOutput')) {
+            $Object.Output = $JobOutput
         }
         if ($PSBoundParameters.ContainsKey('Setting')) {
             $Object.Setting = $Setting
@@ -135,8 +147,20 @@ function New-AzMLWorkspacePipelineJobObject {
         if ($PSBoundParameters.ContainsKey('NotificationSettingWebhook')) {
             $Object.NotificationSettingWebhook = $NotificationSettingWebhook
         }
-        if ($PSBoundParameters.ContainsKey('Service')) {
-            $Object.Service = $Service
+        # if ($PSBoundParameters.ContainsKey('Service')) {
+        #     $Object.Service = $Service
+        # }
+        if ($PSBoundParameters.ContainsKey('ServiceEndpoint')) {
+            $Service.Endpoint = $ServiceEndpoint
+        }
+        if ($PSBoundParameters.ContainsKey('ServicePort')) {
+            $Service.Port = $ServicePort
+        }
+        if ($PSBoundParameters.ContainsKey('ServiceProperty')) {
+            $Service.Property = $ServiceProperty
+        }
+        if ($PSBoundParameters.ContainsKey('ServiceType')) {
+            $Service.Type = $ServiceType
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

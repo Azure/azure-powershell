@@ -18,15 +18,17 @@ New-AzMLWorkspaceSweepJobObject -ObjectiveGoal <String> -ObjectivePrimaryMetric 
  [-ComponentId <String>] [-ComputeId <String>] [-Description <String>] [-DisplayName <String>]
  [-DistributionType <String>] [-EarlyTerminationDelayEvaluation <Int32>]
  [-EarlyTerminationEvaluationInterval <Int32>] [-EarlyTerminationPolicyType <String>]
- [-ExperimentName <String>] [-IdentityType <String>] [-Input <ISweepJobInputs>] [-IsArchived <Boolean>]
- [-LimitJobLimitsType <String>] [-LimitMaxConcurrentTrial <Int32>] [-LimitMaxTotalTrial <Int32>]
- [-LimitTimeout <TimeSpan>] [-LimitTrialTimeout <TimeSpan>] [-NotificationSettingEmail <String[]>]
- [-NotificationSettingEmailOn <String[]>] [-NotificationSettingWebhook <INotificationSettingWebhooks>]
- [-Output <ISweepJobOutputs>] [-Property <IResourceBaseProperties>] [-QueueSettingJobTier <String>]
- [-ResourceDockerArg <String>] [-ResourceInstanceCount <Int32>] [-ResourceInstanceType <String>]
- [-ResourceProperty <IResourceConfigurationProperties>] [-ResourceShmSize <String>]
- [-Service <IJobBaseServices>] [-Tag <IResourceBaseTags>] [-TrialCodeId <String>]
- [-TrialEnvironmentVariable <ITrialComponentEnvironmentVariables>] [<CommonParameters>]
+ [-ExperimentName <String>] [-IdentityType <String>] [-IsArchived <Boolean>] [-JobInput <ISweepJobInputs>]
+ [-JobOutput <ISweepJobOutputs>] [-LimitJobLimitsType <String>] [-LimitMaxConcurrentTrial <Int32>]
+ [-LimitMaxTotalTrial <Int32>] [-LimitTimeout <TimeSpan>] [-LimitTrialTimeout <TimeSpan>]
+ [-NotificationSettingEmail <String[]>] [-NotificationSettingEmailOn <String[]>]
+ [-NotificationSettingWebhook <INotificationSettingWebhooks>] [-Property <IResourceBaseProperties>]
+ [-QueueSettingJobTier <String>] [-ResourceDockerArg <String>] [-ResourceInstanceCount <Int32>]
+ [-ResourceInstanceType <String>] [-ResourceProperty <IResourceConfigurationProperties>]
+ [-ResourceShmSize <String>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
+ [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Tag <IResourceBaseTags>]
+ [-TrialCodeId <String>] [-TrialEnvironmentVariable <ITrialComponentEnvironmentVariables>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,7 +213,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Input
+### -IsArchived
+Is the asset archived?.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobInput
 Mapping of input data bindings used in the job.
 
 ```yaml
@@ -226,11 +243,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IsArchived
-Is the asset archived?.
+### -JobOutput
+Mapping of output data bindings used in the job.
 
 ```yaml
-Type: System.Boolean
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISweepJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -393,21 +410,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Output
-Mapping of output data bindings used in the job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISweepJobOutputs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Property
 The asset property dictionary.
 
@@ -547,12 +549,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
-List of JobEndpoints.
-        For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+### -ServiceEndpoint
+Url for endpoint.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePort
+Port for endpoint.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceProperty
+Additional properties to set on the endpoint.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceType
+Endpoint type.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

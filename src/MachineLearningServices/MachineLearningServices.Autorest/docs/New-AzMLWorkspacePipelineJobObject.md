@@ -14,11 +14,13 @@ Create an in-memory object for PipelineJob.
 
 ```
 New-AzMLWorkspacePipelineJobObject [-ComponentId <String>] [-ComputeId <String>] [-Description <String>]
- [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <String>] [-Input <IPipelineJobInputs>]
- [-IsArchived <Boolean>] [-Job <IPipelineJobJobs>] [-NotificationSettingEmail <String[]>]
- [-NotificationSettingEmailOn <String[]>] [-NotificationSettingWebhook <INotificationSettingWebhooks>]
- [-Output <IPipelineJobOutputs>] [-Property <IResourceBaseProperties>] [-Service <IJobBaseServices>]
- [-Setting <IAny>] [-SourceJobId <String>] [-Tag <IResourceBaseTags>] [<CommonParameters>]
+ [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <String>] [-IsArchived <Boolean>]
+ [-Job <IPipelineJobJobs>] [-JobInput <IPipelineJobInputs>] [-JobOutput <IPipelineJobOutputs>]
+ [-NotificationSettingEmail <String[]>] [-NotificationSettingEmailOn <String[]>]
+ [-NotificationSettingWebhook <INotificationSettingWebhooks>] [-Property <IResourceBaseProperties>]
+ [-ServiceEndpoint <String>] [-ServicePort <Int32>] [-ServiceProperty <IJobServiceProperties>]
+ [-ServiceType <String>] [-Setting <IAny>] [-SourceJobId <String>] [-Tag <IResourceBaseTags>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,21 +145,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Input
-Inputs for the pipeline job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobInputs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IsArchived
 Is the asset archived?.
 
@@ -178,6 +165,36 @@ Jobs construct the Pipeline Job.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobJobs
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobInput
+Inputs for the pipeline job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobInputs
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JobOutput
+Outputs for the pipeline job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -234,21 +251,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Output
-Outputs for the pipeline job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IPipelineJobOutputs
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Property
 The asset property dictionary.
 
@@ -264,12 +266,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
-List of JobEndpoints.
-        For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+### -ServiceEndpoint
+Url for endpoint.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePort
+Port for endpoint.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceProperty
+Additional properties to set on the endpoint.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceType
+Endpoint type.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

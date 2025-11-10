@@ -47,7 +47,7 @@ function New-AzMLWorkspaceSweepJobObject {
         $EarlyTerminationPolicyType,
         [Parameter(HelpMessage="Mapping of input data bindings used in the job.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISweepJobInputs]
-        $Input,
+        $JobInput,
         [Parameter(HelpMessage="[Required] JobLimit type.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Command", "Sweep")]
         [string]
@@ -73,7 +73,7 @@ function New-AzMLWorkspaceSweepJobObject {
         $ObjectivePrimaryMetric,
         [Parameter(HelpMessage="Mapping of output data bindings used in the job.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISweepJobOutputs]
-        $Output,
+        $JobOutput,
         [Parameter(HelpMessage="Controls the compute job tier.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Null", "Spot", "Basic", "Standard", "Premium")]
         [string]
@@ -141,10 +141,22 @@ function New-AzMLWorkspaceSweepJobObject {
         [Parameter(HelpMessage="Send webhook callback to a service. Key is a user-provided name for the webhook.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.INotificationSettingWebhooks]
         $NotificationSettingWebhook,
-        [Parameter(HelpMessage="List of JobEndpoints.
-        For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices]
-        $Service,
+        # [Parameter(HelpMessage="List of JobEndpoints.
+        # For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices]
+        # $Service,
+        [Parameter(HelpMessage="Url for endpoint.")]
+        [string]
+        $ServiceEndpoint,
+        [Parameter(HelpMessage="Port for endpoint.")]
+        [int]
+        $ServicePort,
+        [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties]
+        $ServiceProperty,
+        [Parameter(HelpMessage="Endpoint type.")]
+        [string]
+        $ServiceType,
         [Parameter(HelpMessage="The asset description text.")]
         [string]
         $Description,
@@ -171,8 +183,8 @@ function New-AzMLWorkspaceSweepJobObject {
         if ($PSBoundParameters.ContainsKey('EarlyTerminationPolicyType')) {
             $Object.EarlyTerminationPolicyType = $EarlyTerminationPolicyType
         }
-        if ($PSBoundParameters.ContainsKey('Input')) {
-            $Object.Input = $Input
+        if ($PSBoundParameters.ContainsKey('JobInput')) {
+            $Object.Input = $JobInput
         }
         if ($PSBoundParameters.ContainsKey('LimitJobLimitsType')) {
             $Object.LimitJobLimitsType = $LimitJobLimitsType
@@ -195,8 +207,8 @@ function New-AzMLWorkspaceSweepJobObject {
         if ($PSBoundParameters.ContainsKey('ObjectivePrimaryMetric')) {
             $Object.ObjectivePrimaryMetric = $ObjectivePrimaryMetric
         }
-        if ($PSBoundParameters.ContainsKey('Output')) {
-            $Object.Output = $Output
+        if ($PSBoundParameters.ContainsKey('JobOutput')) {
+            $Object.Output = $JobOutput
         }
         if ($PSBoundParameters.ContainsKey('QueueSettingJobTier')) {
             $Object.QueueSettingJobTier = $QueueSettingJobTier
@@ -261,8 +273,20 @@ function New-AzMLWorkspaceSweepJobObject {
         if ($PSBoundParameters.ContainsKey('NotificationSettingWebhook')) {
             $Object.NotificationSettingWebhook = $NotificationSettingWebhook
         }
-        if ($PSBoundParameters.ContainsKey('Service')) {
-            $Object.Service = $Service
+        # if ($PSBoundParameters.ContainsKey('Service')) {
+        #     $Object.Service = $Service
+        # }
+        if ($PSBoundParameters.ContainsKey('ServiceEndpoint')) {
+            $Service.Endpoint = $ServiceEndpoint
+        }
+        if ($PSBoundParameters.ContainsKey('ServicePort')) {
+            $Service.Port = $ServicePort
+        }
+        if ($PSBoundParameters.ContainsKey('ServiceProperty')) {
+            $Service.Property = $ServiceProperty
+        }
+        if ($PSBoundParameters.ContainsKey('ServiceType')) {
+            $Service.Type = $ServiceType
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

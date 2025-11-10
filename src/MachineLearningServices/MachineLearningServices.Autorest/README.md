@@ -588,8 +588,8 @@ directive:
     #   cmdlet-name: New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
   # Job type
     # - model-name: CommandJob #Custom parameter logic, remind you sync parameters
-    - model-name: PipelineJob #Custom parameter logic, remind you sync parameters
-    - model-name: SweepJob #Custom parameter logic, remind you sync parameters
+    # - model-name: PipelineJob #Custom parameter logic, remind you sync parameters
+    # - model-name: SweepJob #Custom parameter logic, remind you sync parameters
   # Job input and output
     - model-name: CustomModelJobInput
     - model-name: CustomModelJobOutput
