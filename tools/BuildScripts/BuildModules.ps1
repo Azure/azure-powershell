@@ -14,6 +14,7 @@
 [CmdletBinding(DefaultParameterSetName = "AllSet")]
 param (
     [string]$RepoRoot,
+    [ValidateSet("Debug", "Release")]
     [string]$Configuration = 'Debug',
     [Parameter(ParameterSetName = "AllSet")]
     [string]$TestsToRun = 'All',
