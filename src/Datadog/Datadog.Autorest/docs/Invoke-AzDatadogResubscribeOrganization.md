@@ -58,27 +58,16 @@ Reinstate integration with your Datadog organization by choosing one of the avai
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resubscribe using the default plan
 ```powershell
-{{ Add code here }}
+Invoke-AzDatadogResubscribeOrganization -MonitorName datadodmonitor01 -ResourceGroupName datadog-rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Object of Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20250611.DatadogMonitorResource
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Resubscribed to datadog using the default plan.
 
 ## PARAMETERS
 
