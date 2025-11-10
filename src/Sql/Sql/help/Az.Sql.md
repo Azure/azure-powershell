@@ -21,7 +21,7 @@ Adds a job step to a job
 Adds a target to a target group
 
 ### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
-Adds a key vault key to the provided Managed Instance.
+Adds a key vault key to the provided Managed Instance. 
 
 ### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
@@ -66,7 +66,7 @@ Converts a vulnerability assessment scan results to Excel format.
 Converts a vulnerability assessment scan results to Excel format.
 
 ### [Copy-AzSqlDatabaseLongTermRetentionBackup](Copy-AzSqlDatabaseLongTermRetentionBackup.md)
-Copies a long term retention backup to a target database.
+Copies a long term retention backup to a target database.  
 
 ### [Copy-AzSqlInstanceDatabase](Copy-AzSqlInstanceDatabase.md)
 Copy managed database to another managed instance.
@@ -470,6 +470,9 @@ Refreshes the value of external governance on the server.
 ### [Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation.md)
 Revalidates the Server Encryption Protector AKV key
 
+### [Lock-AzSqlDatabaseLongTermRetentionBackupImmutability](Lock-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
+Locks the time-based immutability policy for an LTR backup.
+
 ### [Move-AzSqlInstanceDatabase](Move-AzSqlInstanceDatabase.md)
 Move managed database to another managed instance.
 
@@ -564,7 +567,7 @@ Adds the allowed FQDN to the list of outbound firewall rules and creates a new o
 Creates or updates a Server Trust Group.
 
 ### [New-AzSqlServerVirtualNetworkRule](New-AzSqlServerVirtualNetworkRule.md)
-Creates an Azure SQL Server Virtual Network Rule.
+Creates an Azure SQL Server Virtual Network Rule. 
 
 ### [New-AzSqlSyncAgent](New-AzSqlSyncAgent.md)
 Creates an Azure SQL Sync Agent.
@@ -598,6 +601,12 @@ Removes an Instance Failover Group.
 
 ### [Remove-AzSqlDatabaseLongTermRetentionBackup](Remove-AzSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
+
+### [Remove-AzSqlDatabaseLongTermRetentionBackupImmutability](Remove-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
+Removes an unlocked time-based immutability policy for an LTR backup.
+
+### [Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold](Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
+Removes legal hold immutability on an LTR backup. (Public Preview)
 
 ### [Remove-AzSqlDatabaseRestorePoint](Remove-AzSqlDatabaseRestorePoint.md)
 Removes given restore point from a SQL Database.
@@ -719,6 +728,9 @@ Restores a SQL database.
 ### [Restore-AzSqlInstanceDatabase](Restore-AzSqlInstanceDatabase.md)
 Restores an Azure SQL Managed Instance database.
 
+### [Restore-AzSqlServer](Restore-AzSqlServer.md)
+Restores a deleted Azure SQL Database server that is still within its soft-delete retention period
+
 ### [Resume-AzSqlDatabase](Resume-AzSqlDatabase.md)
 Resumes a SQL Data Warehouse database.
 
@@ -751,6 +763,9 @@ Sets a database geo backup policy.
 
 ### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
 Modifies the configuration of an Instance Failover Group.
+
+### [Set-AzSqlDatabaseLongTermRetentionBackupLegalHold](Set-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
+Set legal hold immutability on an LTR backup. (Public Preview)
 
 ### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
@@ -960,5 +975,7 @@ Updates an Azure SQL Database Sync Group.
 Updates an Azure SQL Database Sync Member.
 
 ### [Update-AzSqlSyncSchema](Update-AzSqlSyncSchema.md)
-Update the sync schema for a sync member database or a sync hub database. It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database. If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
+Update the sync schema for a sync member database or a sync hub database.
+It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 

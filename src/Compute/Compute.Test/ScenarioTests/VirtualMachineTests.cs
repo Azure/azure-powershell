@@ -696,5 +696,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineAddProxyAgentExtension");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGalleryApplicationFlags()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGalleryApplicationFlags");
+        }
     }
 }

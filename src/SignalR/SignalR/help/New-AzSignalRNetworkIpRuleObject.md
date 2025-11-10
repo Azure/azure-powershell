@@ -13,7 +13,7 @@ Create an in-memory IP rule object for use with SignalR Network ACL Ip rule cmdl
 ## SYNTAX
 
 ```
-New-AzSignalRNetworkIpRuleObject -Value <String> [-Action <String>] [-ProgressAction <ActionPreference>]
+New-AzSignalRNetworkIpRuleObject -Value <String> [-Action <String>]
  [<CommonParameters>]
 ```
 
@@ -45,21 +45,6 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Deny
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-Determines how PowerShell handles progress updates for the cmdlet. Specify SilentlyContinue to suppress progress output.
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

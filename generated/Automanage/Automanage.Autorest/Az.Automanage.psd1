@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Automanage.private.dll'
   FormatsToProcess = './Az.Automanage.format.ps1xml'
-  FunctionsToExport = 'Get-AzAutomanageBestPractice', 'Get-AzAutomanageConfigProfile', 'Get-AzAutomanageConfigProfileAssignment', 'Get-AzAutomanageConfigProfileHciAssignment', 'Get-AzAutomanageConfigProfileHcrpAssignment', 'Get-AzAutomanageHciReport', 'Get-AzAutomanageHcrpReport', 'Get-AzAutomanageReport', 'New-AzAutomanageConfigProfile', 'New-AzAutomanageConfigProfileAssignment', 'New-AzAutomanageConfigProfileHciAssignment', 'New-AzAutomanageConfigProfileHcrpAssignment', 'Remove-AzAutomanageConfigProfile', 'Remove-AzAutomanageConfigProfileAssignment', 'Remove-AzAutomanageConfigProfileHciAssignment', 'Remove-AzAutomanageConfigProfileHcrpAssignment', 'Update-AzAutomanageConfigProfile', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzAutomanageBestPractice', 'Get-AzAutomanageConfigProfile', 'Get-AzAutomanageConfigProfileAssignment', 'Get-AzAutomanageConfigProfileHciAssignment', 'Get-AzAutomanageConfigProfileHcrpAssignment', 'Get-AzAutomanageHciReport', 'Get-AzAutomanageHcrpReport', 'Get-AzAutomanageReport', 'New-AzAutomanageConfigProfile', 'New-AzAutomanageConfigProfileAssignment', 'New-AzAutomanageConfigProfileHciAssignment', 'New-AzAutomanageConfigProfileHcrpAssignment', 'Remove-AzAutomanageConfigProfile', 'Remove-AzAutomanageConfigProfileAssignment', 'Remove-AzAutomanageConfigProfileHciAssignment', 'Remove-AzAutomanageConfigProfileHcrpAssignment', 'Update-AzAutomanageConfigProfile', 'Update-AzAutomanageConfigProfileAssignment', 'Update-AzAutomanageConfigProfileHciAssignment', 'Update-AzAutomanageConfigProfileHcrpAssignment'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Automanage'

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
 ## Version 6.0.3
 * Added breaking change announcement for below cmdlets from single object or fixed array to list.

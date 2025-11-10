@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabase))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a AutonomousDatabase")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}", ApiVersion = "2025-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/autonomousDatabases/{autonomousdatabasename}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleAutonomousDatabase_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -208,18 +208,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("StandardEdition", "EnterpriseEdition")]
         public string DatabaseEdition { get => _resourceBody.DatabaseEdition ?? null; set => _resourceBody.DatabaseEdition = value; }
-
-        /// <summary>Name of the day of the week.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the day of the week.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Name of the day of the week.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-        public string DayOfWeekName { get => _resourceBody.DayOfWeekName ?? null; set => _resourceBody.DayOfWeekName = value; }
 
         /// <summary>A valid Oracle Database version for Autonomous Database.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A valid Oracle Database version for Autonomous Database.")]
@@ -466,27 +454,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "auto start time. value must be of ISO-8601 format HH:mm")]
+        /// <summary>The list of scheduled operations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of scheduled operations.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"auto start time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStartTime",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ScheduledStartTime { get => _resourceBody.ScheduledOperationScheduledStartTime ?? null; set => _resourceBody.ScheduledOperationScheduledStartTime = value; }
-
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "auto stop time. value must be of ISO-8601 format HH:mm")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"auto stop time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStopTime",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ScheduledStopTime { get => _resourceBody.ScheduledOperationScheduledStopTime ?? null; set => _resourceBody.ScheduledOperationScheduledStopTime = value; }
+        Description = @"The list of scheduled operations.",
+        SerializedName = @"scheduledOperationsList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType[] ScheduledOperationsList { get => _resourceBody.ScheduledOperationsList?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.ScheduledOperationsList = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType>(value) : null); }
 
         /// <summary>Client subnet</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Client subnet")]

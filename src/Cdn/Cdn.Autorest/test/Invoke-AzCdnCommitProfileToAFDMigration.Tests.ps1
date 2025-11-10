@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnCommitProfileToAF
 Describe 'Invoke-AzCdnCommitProfileToAFDMigration' {
     It '__AllParameterSets' {
         $subId = $env.SubscriptionId
-        $cdnProfileName = 'cdn-migratipn-test-profile-commit'
+        $cdnProfileName = 'cdn-migration-test-profile-commit'
         Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
         $profileSku = "Standard_Microsoft";
         New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global

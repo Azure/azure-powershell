@@ -7,28 +7,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
-    /// <summary>
-    /// List of private endpoint connection associated with the specified storage account
-    /// </summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     public partial class PrivateEndpointConnectionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnectionListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnectionListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnectionListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnection> _value;
 
-        /// <summary>Array of private endpoint connections</summary>
+        /// <summary>The PrivateEndpointConnection items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnection> Value { get => this._value; set => this._value = value; }
 
@@ -38,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 
         }
     }
-    /// List of private endpoint connection associated with the specified storage account
+    /// The response of a PrivateEndpointConnection list operation.
     public partial interface IPrivateEndpointConnectionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to get the next set of operation list results (if there are any).",
-        SerializedName = @"nextLink",
-        PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>Array of private endpoint connections</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of private endpoint connections",
+        Description = @"The link to the next page of items",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
+        /// <summary>The PrivateEndpointConnection items on this page</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The PrivateEndpointConnection items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnection) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnection> Value { get; set; }
 
     }
-    /// List of private endpoint connection associated with the specified storage account
+    /// The response of a PrivateEndpointConnection list operation.
     internal partial interface IPrivateEndpointConnectionListResultInternal
 
     {
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Array of private endpoint connections</summary>
+        /// <summary>The PrivateEndpointConnection items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateEndpointConnection> Value { get; set; }
 
     }

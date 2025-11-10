@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ContainerRegistry
-Module Guid: ba2b4f71-7ef5-4e22-a608-1409b0437e90
+Module Guid: 17d734b7-a463-4268-ae20-11e8432841a1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.containerregistry
 Help Version: 1.0.0.0
 Locale: en-US
@@ -54,19 +54,19 @@ Lists recent events for the specified webhook.
 Copies an image to this container registry from the specified container registry.
 
 ### [New-AzContainerRegistry](New-AzContainerRegistry.md)
-Creates a container registry with the specified parameters.
+Create a container registry with the specified parameters.
 
 ### [New-AzContainerRegistryAgentPool](New-AzContainerRegistryAgentPool.md)
-Creates an agent pool for a container registry with the specified parameters.
+Create an agent pool for a container registry with the specified parameters.
 
 ### [New-AzContainerRegistryCredentials](New-AzContainerRegistryCredentials.md)
 Generate keys for a token of a specified container registry.
 
 ### [New-AzContainerRegistryExportPipeline](New-AzContainerRegistryExportPipeline.md)
-Creates an export pipeline for a container registry with the specified parameters.
+Create an export pipeline for a container registry with the specified parameters.
 
 ### [New-AzContainerRegistryImportPipeline](New-AzContainerRegistryImportPipeline.md)
-Creates an import pipeline for a container registry with the specified parameters.
+Create an import pipeline for a container registry with the specified parameters.
 
 ### [New-AzContainerRegistryIPRuleObject](New-AzContainerRegistryIPRuleObject.md)
 Create an in-memory object for IPRule.
@@ -75,10 +75,10 @@ Create an in-memory object for IPRule.
 Creates a replication for a container registry with the specified parameters.
 
 ### [New-AzContainerRegistryScopeMap](New-AzContainerRegistryScopeMap.md)
-Creates a scope map for a container registry with the specified parameters.
+Create a scope map for a container registry with the specified parameters.
 
 ### [New-AzContainerRegistryToken](New-AzContainerRegistryToken.md)
-Creates a token for a container registry with the specified parameters.
+Create a token for a container registry with the specified parameters.
 
 ### [New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
 Creates a webhook for a container registry with the specified parameters.
@@ -115,20 +115,26 @@ The name must contain only alphanumeric characters, be globally unique, and betw
 Triggers a ping event to be sent to the webhook.
 
 ### [Update-AzContainerRegistry](Update-AzContainerRegistry.md)
-Updates a container registry with the specified parameters.
+Update a container registry with the specified parameters.
 
 ### [Update-AzContainerRegistryAgentPool](Update-AzContainerRegistryAgentPool.md)
-Updates an agent pool with the specified parameters.
+Update an agent pool with the specified parameters.
 
 ### [Update-AzContainerRegistryCredential](Update-AzContainerRegistryCredential.md)
 Regenerates one of the login credentials for the specified container registry.
 
+### [Update-AzContainerRegistryExportPipeline](Update-AzContainerRegistryExportPipeline.md)
+Update an export pipeline for a container registry with the specified parameters.
+
+### [Update-AzContainerRegistryImportPipeline](Update-AzContainerRegistryImportPipeline.md)
+Update an import pipeline for a container registry with the specified parameters.
+
 ### [Update-AzContainerRegistryScopeMap](Update-AzContainerRegistryScopeMap.md)
-Updates a scope map with the specified parameters.
+Update a scope map with the specified parameters.
 
 ### [Update-AzContainerRegistryToken](Update-AzContainerRegistryToken.md)
-Updates a token with the specified parameters.
+Update a token with the specified parameters.
 
 ### [Update-AzContainerRegistryWebhook](Update-AzContainerRegistryWebhook.md)
-Updates a webhook with the specified parameters.
+Update a webhook with the specified parameters.
 

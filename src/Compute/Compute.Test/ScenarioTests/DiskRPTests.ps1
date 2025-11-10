@@ -1951,3 +1951,35 @@ function Test-DiskSnapshotInstantAccess
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test SupportedSecurityOption Parameter during creation and update of disk
+#>
+function Test-SupportedSecurityOption 
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+
+    try{
+    	New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskConfig = New-AzDiskConfig -Location $loc -SkuName 'PremiumV2_LRS' -DiskSizeGB 2 -CreateOption Empty -SupportedSecurityOption 'TrustedLaunchSupported';
+		$diskname = "disk" + $rgname;
+		New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        
+        Assert-NotNull $disk.SupportedCapabilities;
+        Assert-AreEqual "TrustedLaunchSupported" $disk.SupportedCapabilities.SupportedSecurityOption;
+
+        $updateconfig = New-AzDiskUpdateConfig -SupportedSecurityOption "TrustedLaunchAndConfidentialVMSupported";
+        $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual "TrustedLaunchAndConfidentialVMSupported" $disk.SupportedCapabilities.SupportedSecurityOption;
+    }
+
+    finally
+    {
+    	# Cleanup
+		Clean-ResourceGroup $rgname
+    }
+}
